@@ -1,0 +1,141 @@
+{
+  "id": "imo-2004-c8-triangles-tetrahedra-graph",
+  "title": "Треугольники и тетраэдры в конечном графе, IMO Shortlist 2004 C8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "finite_graph",
+      "triangles",
+      "k4_cliques"
+    ],
+    "methods": [
+      "double_counting",
+      "holder_inequality",
+      "extremal_example"
+    ],
+    "transformations": [],
+    "goal": [
+      "best_constant"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "clique_counts"
+    ],
+    "keywords": [
+      "imo_2004_c8",
+      "secondary_shortlist",
+      "early_imo_shortlist"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Для конечного графа \\(G\\) пусть \\(f(G)\\) — число треугольников, а \\(g(G)\\) — число тетраэдров, то есть копий \\(K_4\\), образованных рёбрами \\(G\\). Найдите наименьшую константу \\(c\\), такую что \\(g(G)^3\\le c f(G)^4\\) для любого графа \\(G\\).",
+        "source_id": "src-secondary-imo-2004-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это экстремальная задача о числе копий \\(K_3\\) и \\(K_4\\) в конечном графе.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-clique-density",
+      "title": "Сравнение плотностей клик",
+      "text": "Неравенство связывает число 3-клик и 4-клик; равенство асимптотически проверяется на полных графах.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-complete-graph-sharpness",
+      "title": "Острота на полных графах",
+      "text": "Для \\(K_n\\) отношение \\(g^3/f^4\\) стремится к \\(3/32\\), что задаёт ожидаемую константу.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-secondary-sketch",
+      "title": "Сжатый графовый разбор",
+      "text": "Для полного графа \\(K_n\\) имеем \\(f=\\binom n3\\), \\(g=\\binom n4\\), и отношение \\(g^3/f^4\\) стремится к \\(3/32\\), поэтому \\(c\\) не может быть меньше \\(3/32\\). Верхняя оценка доказывается через стандартное сравнение чисел клик: суммируют по вершинам и рёбрам числа треугольников и тетраэдров, применяя выпуклость/Гёльдера к локальным количествам общих соседей. В результате получается \\(g(G)^3\\le (3/32)f(G)^4\\). Карточка фиксирует графовую суть; перед публичной версией стоит восстановить полный официальный вывод неравенства.",
+      "idea_ids": [
+        "idea-clique-density",
+        "idea-complete-graph-sharpness"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 11,
+    "comment": "IMO Shortlist 2004 C8; источник вторичный, карточка первого прохода.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "holder_inequality",
+        "extremal_example"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-2004-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "id": "imo-2004-c3-delete-edge-from-4cycle",
+  "title": "Удаление ребра из 4-цикла, IMO Shortlist 2004 C3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "4_cycle",
+      "odd_cycle"
+    ],
+    "methods": [
+      "connectivity",
+      "induction",
+      "cycle_invariant"
+    ],
+    "transformations": [],
+    "goal": [
+      "minimum_edges_after_operations"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectedness",
+      "odd_cycle_exists"
+    ],
+    "keywords": [
+      "imo-2004-c3-delete-edge-from-4cycle",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Дан полный граф на \\(n\\ge4\\) вершинах. Разрешено выбрать цикл длины 4 и удалить из него одно ребро. Найдите наименьшее число рёбер графа, которое можно получить повторением таких операций.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие",
+        "source_id": "src-secondary-imo-2004-shortlist",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это чистая задача о графовой операции: из \\(K_n\\) удаляются только рёбра, лежащие в текущем 4-цикле.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-connectivity-preserved",
+      "title": "Связность сохраняется",
+      "text": "Удаляемое ребро лежит в 4-цикле, значит его концы остаются соединены другим путём.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-odd-cycle-preserved",
+      "title": "Нечётный цикл сохраняется",
+      "text": "Из полного графа нельзя прийти к дереву: после каждой операции остаётся нечётный цикл.",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-reviewed-secondary",
+      "title": "Сжатое решение после review",
+      "text": "Ответ: \\(n\\). Связность сохраняется: если удаляется ребро \\(AB\\) из 4-цикла, то в этом же цикле остаётся путь из \\(A\\) в \\(B\\). Кроме того, граф всегда содержит нечётный цикл. Изначально есть треугольник; если удаляемое ребро лежит на некотором нечётном цикле и одновременно на выбранном 4-цикле, то из симметрической перестройки этих двух циклов остаётся другой нечётный цикл, так что одним удалением нельзя уничтожить все нечётные циклы. Поэтому итоговый граф связен и не является деревом, значит имеет хотя бы \\(n\\) рёбер. Достижимость \\(n\\) рёбер строится индуктивно: почти все рёбра, инцидентные последней вершине, удаляются через подходящие 4-циклы, после чего применяется конструкция для \\(n-1\\) вершин.",
+      "idea_ids": [
+        "idea-connectivity-preserved",
+        "idea-odd-cycle-preserved"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice",
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "Ранний IMO Shortlist 2004; источник вторичный, решение сверено по secondary solution.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "trees",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "connectivity",
+        "induction",
+        "cycle_invariant"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-2004-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-aops-imo-2004-c3-solution",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

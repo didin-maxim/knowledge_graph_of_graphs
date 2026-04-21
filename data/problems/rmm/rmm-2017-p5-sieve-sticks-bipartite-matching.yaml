@@ -1,0 +1,143 @@
+{
+  "id": "rmm-2017-p5-sieve-sticks-bipartite-matching",
+  "title": "Разбиение решета на палочки через двудольное паросочетание, RMM 2017 P5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "grid_board",
+      "maximal_stick",
+      "bipartite_graph",
+      "perfect_matching"
+    ],
+    "methods": [
+      "hall_theorem",
+      "grid_to_incidence_graph"
+    ],
+    "transformations": [
+      "stick_partition_to_bipartite_incidence_graph"
+    ],
+    "goal": [
+      "lower_bound_partition_size"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "hall_neighborhood_bound"
+    ],
+    "keywords": [
+      "rmm_2017_p5",
+      "rmm",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Решетом называется доска \\(n\\times n\\), из которой удалено ровно по одной клетке в каждой строке и каждом столбце. Палочка — это прямоугольник \\(1\\times k\\) или \\(k\\times1\\). Для данного решета \\(A\\) обозначим через \\(m(A)\\) минимальное число палочек, на которые можно разбить все его клетки. Найдите все возможные значения \\(m(A)\\).",
+        "source_id": "src-rmm-2017-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "После фиксации разбиения на палочки рассматриваются максимальные горизонтальные и вертикальные отрезки, а клетки задают рёбра инцидентности между ними. Нужно показать, что в этом двудольном графе есть паросочетание размера \\(2n-2\\).",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-sticks-incidence-graph",
+      "title": "Горизонтальные и вертикальные палочки образуют двудольный граф",
+      "text": "Берутся максимальные горизонтальные и вертикальные палочки, возникающие после разрезания по всем линиям сетки. Клетка решета задаёт ребро между двумя палочками, которые в ней пересекаются.",
+      "tags": [
+        "matching"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-hall-cells",
+      "title": "Совершенное паросочетание выбирает попарно несовместимые клетки",
+      "text": "Если в построенном двудольном графе выполнено условие Холла, то существует паросочетание размера \\(2n-2\\). Соответствующие клетки лежат в разных палочках, поэтому никакая палочка не может покрыть две из них; отсюда сразу следует нижняя оценка на число палочек.",
+      "tags": [
+        "matching"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное графовое решение",
+      "text": "В третьем официальном решении нижняя оценка \\(m(A)\\ge 2n-2\\) доказывается графом инцидентности. В одну долю ставятся максимальные горизонтальные палочки, в другую — максимальные вертикальные, а каждая клетка даёт ребро между двумя палочками, проходящими через неё. Достаточно выбрать \\(2n-2\\) клеток так, чтобы никакие две не лежали в одной палочке; это ровно соответствует паросочетанию размера \\(2n-2\\). Остаётся проверить условие Холла для подмножества горизонтальных палочек: через анализ крайних столбцов и дополнения множества показывается, что число соседей не меньше размера самого множества. Поэтому существует совершенное паросочетание между двумя долями размера \\(2n-2\\), и требуемая нижняя оценка доказана. Верхняя оценка достигается тривиальным разрезанием по всем горизонтальным или всем вертикальным линиям.",
+      "idea_ids": [
+        "idea-sticks-incidence-graph",
+        "idea-hall-cells"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "RMM 2017 P5; графовая модель появляется в одном из официальных решений и даёт чистую нижнюю оценку через теорему Холла.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "matching",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "hall_theorem",
+        "grid_to_incidence_graph"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-rmm-2017-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графы появляются не в формулировке, а в одном из официальных решений.",
+    "relations_status": "base_done"
+  }
+}

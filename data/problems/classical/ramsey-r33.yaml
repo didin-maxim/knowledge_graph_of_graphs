@@ -1,0 +1,147 @@
+{
+  "id": "ramsey-r33",
+  "title": "Число Рамсея \\( R(3,3)=6 \\)",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "special_case"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "two_colored_complete_graph",
+      "simple_graph",
+      "complement_graph",
+      "triangle"
+    ],
+    "methods": [
+      "pigeonhole_principle",
+      "case_analysis",
+      "complement_graph_transition"
+    ],
+    "transformations": [
+      "two_coloring_to_graph_and_complement"
+    ],
+    "goal": [
+      "ramsey_number_exact_value",
+      "monochromatic_triangle_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_color_counts",
+      "five_cycle_lower_bound"
+    ],
+    "keywords": [
+      "r33",
+      "friends_and_strangers",
+      "monochromatic_triangle",
+      "c5"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Среди любых шести человек найдутся либо трое попарно знакомых, либо трое попарно незнакомых. При этом для пяти человек такое утверждение неверно.",
+        "source_id": "src-wikipedia-friends-strangers",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complement_graph",
+          "complete_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Любой простой граф на 6 вершинах содержит треугольник, или его дополнительный граф содержит треугольник. На 5 вершинах это неверно, поэтому \\( R(3,3)=6 \\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complement_graph",
+          "complete_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-party-friends-strangers",
+        "title": "Вечеринка: знакомые и незнакомые",
+        "text": "На вечеринке собрались шесть человек. Любые двое из них либо знакомы, либо незнакомы. Докажите, что найдутся трое человек, которые попарно знакомы, или трое человек, которые попарно незнакомы.",
+        "source_id": "src-wikipedia-friends-strangers",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "complement_graph"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-pigeonhole-neighbors",
+      "title": "Три ребра одного типа из одной вершины",
+      "text": "Из одной вершины выходят 5 ребер двух цветов, поэтому хотя бы 3 из них одного цвета.",
+      "tags": [
+        "ramsey_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-pigeonhole",
+      "title": "Доказательство через принцип Дирихле",
+      "text": "Выберем вершину v. Среди пяти ребер из v хотя бы три одного цвета, скажем красные, к вершинам a,b,c. Если среди a,b,c есть красное ребро, оно вместе с v дает красный треугольник. Если красных ребер между a,b,c нет, то все три ребра между ними синие, и есть синий треугольник. Пример без одноцветного треугольника на 5 вершинах — цикл C5, где ребра одного цвета, а диагонали другого.",
+      "idea_ids": [
+        "idea-pigeonhole-neighbors"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "pigeonhole_principle",
+        "complement_graph_transition"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "local_olympiad",
+    "local_score": 3,
+    "comment": "Классическое вводное упражнение по Рамсею.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-friends-strangers",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

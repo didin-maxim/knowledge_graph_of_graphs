@@ -1,0 +1,142 @@
+{
+  "id": "rmm-2013-p2-tester-pair-endomorphism-digraph",
+  "title": "Тестер-пара через жёсткий раскрашенный орграф, RMM 2013 P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "edge_colored_digraph",
+      "endomorphism",
+      "rigid_component"
+    ],
+    "methods": [
+      "graph_encoding",
+      "rigid_component_construction"
+    ],
+    "transformations": [
+      "commuting_functions_to_edge_colored_digraph"
+    ],
+    "goal": [
+      "force_identity_endomorphism"
+    ],
+    "auxiliary_graph_type": [
+      "edge_colored_digraph"
+    ],
+    "invariants": [
+      "component_preservation"
+    ],
+    "keywords": [
+      "rmm_2013_p2",
+      "rmm",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Существует ли пара функций \\(g,h:\\mathbb R\\to\\mathbb R\\), для которой всякая функция \\(f\\), удовлетворяющая \\(f(g(x))=g(f(x))\\) и \\(f(h(x))=h(f(x))\\) для всех \\(x\\), обязана быть тождественной?",
+        "source_id": "src-rmm-2013-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Нужно построить раскрашенный ориентированный граф на континууме вершин без нетривиальных эндоморфизмов, в котором красные и синие дуги реализуются отображениями \\(g\\) и \\(h\\).",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-commuting-endomorphism",
+      "title": "Коммутирование равно эндоморфизму орграфа",
+      "text": "Если провести из каждой вершины красную дугу \\(x\\to g(x)\\) и синюю дугу \\(x\\to h(x)\\), то условие \\(f\\circ g=g\\circ f\\) и \\(f\\circ h=h\\circ f\\) в точности означает, что \\(f\\) сохраняет дуги и их цвета, то есть является эндоморфизмом построенного раскрашенного орграфа.",
+      "tags": [
+        "olympiad_tool"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-rigid-components",
+      "title": "Жёсткие компоненты без гомоморфизмов между ними",
+      "text": "Дальше официальный графовый разбор строит компоненты, каждая из которых не имеет нетривиальных эндоморфизмов, а гомоморфизмов между разными компонентами тоже нет. Тогда любой эндоморфизм всего графа обязан фиксировать каждую компоненту и каждую вершину.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное графовое решение",
+      "text": "В третьем официальном решении задача целиком переводится в язык графов. Строится ориентированный граф на \\(\\mathbb R\\) с красной дугой \\(x\\to g(x)\\) и синей дугой \\(x\\to h(x)\\). Тогда функция \\(f\\) коммутирует с \\(g\\) и \\(h\\) тогда и только тогда, когда она является эндоморфизмом этого раскрашенного орграфа. Значит, нужно лишь построить граф без нетривиальных эндоморфизмов. Для этого пространство разбивается на компоненты специального вида: каждая компонентa кодируется своим параметром и устроена так, чтобы в ней имелся жёсткий маркер, фиксирующий начало, а дальнейшая структура однозначно восстанавливалась. Между различными компонентами гомоморфизмов нет. Следовательно, любой эндоморфизм фиксирует все компоненты и все вершины, то есть тождественен.",
+      "idea_ids": [
+        "idea-commuting-endomorphism",
+        "idea-rigid-components"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "RMM 2013 P2; графовая модель содержится в одном из официальных решений и там уже становится центральным содержанием задачи.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "graph_encoding",
+        "rigid_component_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-rmm-2013-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "В исходной формулировке графов нет; карточка добавлена потому, что одно из официальных решений полностью сводит задачу к раскрашенным орграфам и их эндоморфизмам.",
+    "relations_status": "reviewed_no_links"
+  }
+}

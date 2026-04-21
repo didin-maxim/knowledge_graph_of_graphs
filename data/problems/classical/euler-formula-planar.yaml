@@ -1,0 +1,122 @@
+{
+  "id": "euler-formula-planar",
+  "title": "Формула Эйлера для планарных графов",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "connected_plane_graph",
+      "vertices_edges_faces",
+      "tree"
+    ],
+    "methods": [
+      "delete_to_simplify",
+      "induction"
+    ],
+    "transformations": [
+      "delete_cycle_edge",
+      "reduce_to_tree"
+    ],
+    "goal": [
+      "euler_characteristic_identity"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "v_minus_e_plus_f",
+      "connectedness",
+      "faces"
+    ],
+    "keywords": [
+      "euler_formula",
+      "planar_graph",
+      "faces",
+      "tree_reduction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть связный граф нарисован на плоскости так, что его ребра не пересекаются вне общих концов. Если V — число вершин, E — число ребер, а F — число областей, на которые рисунок делит плоскость, включая внешнюю область, то \\( V-E+F=2 \\).",
+        "source_id": "src-wikipedia-planar",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "planar_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-delete-cycle-edge",
+      "title": "Удаление ребра из цикла",
+      "text": "Удаление ребра, лежащего на цикле, уменьшает и число ребер, и число граней на 1, сохраняя v-e+f.",
+      "tags": [
+        "planar_graphs",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-reduce-to-tree",
+      "title": "Сведение к дереву",
+      "text": "Пока в связном плоском графе есть цикл, удалим ребро этого цикла. Связность не нарушится, число ребер уменьшится на 1, и две грани сольются в одну, так что v-e+f не изменится. В конце получится дерево: у него e=v-1 и f=1, значит v-e+f=v-(v-1)+1=2. Следовательно, равенство было верно и до всех удалений.",
+      "idea_ids": [
+        "idea-delete-cycle-edge"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "delete_to_simplify",
+        "induction"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Базовый планарный инструмент.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "classical_theorem",
+    "olympiad_tool",
+    "induction"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-planar",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-euler-characteristic",
+      "role": "historical_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "base_done"
+  }
+}

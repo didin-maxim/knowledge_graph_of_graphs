@@ -1,0 +1,679 @@
+{
+  "year": 2022,
+  "page_url": "https://memo22.olympiad.ch/",
+  "download_count": 4,
+  "problem_count_extracted": 12,
+  "problems": [
+    {
+      "id": "memo-2022-i1",
+      "year": 2022,
+      "problem_code": "I-1",
+      "statement_en": "Let R be the set of real numbers. Determine all functionsf : R → R such that\nf (x + f (x + y)) = x + f (f (x) + y)\nholds for allx, y ∈ R.",
+      "solution_text_en": "Solution. Denote by P (x, y) the given assertion.\nTaking y =−f (x) we get the equalityf (x + f (x−f (x))) = x + f (0), which implies thatf is\nsurjective.\nLet d be a zero off. From P (d,0) we get 0 = d + f (0), thus−f (0) is the only zero off.\nFrom P (0, y) we get\nf (f (y)) = f (y + f (0)). (1)\nFrom P (−f (0), y+ f (0)) we get f (f (y)−f (0)) = −f (0) + f (y + f (0)). Using (1), we get\nf (f (y)−f (0)) =−f (0) + f (f (y)), or equivalentlyf (f (y)) = f (f (y)−f (0)) + f (0).\nSince f is surjective, we can replacef (y) by y to obtain\nf (y) = f (y−f (0)) + f (0).\nReplacing y by y + f (0) to the right, we getf (y + f (0)) = f (y) + f (0). However, applying (1)\nto the left side gives us\nf (f (y)) = f (y) + f (0).\nOnce again, using surjectivity we conclude thatf (y) = y + f (0) for every real numbery. Thus,\nany function f which is a solution is of the formf (y) = y + c for some real numberc. It’s easy\nto check that all such functions satisfy the problem’s condition.\nSolutionviasurjectivity. Let P (x, y)denotethegivenequation. Thefunction f issurjective,\nas can be seen withP (x,−f (x)). Observe thatP (y, x−y) gives us\nf (y + f (x)) = y + f (f (y) + x−y),\nwhich, when plugged back into the original equation, translates to\nf (x + f (x + y)) = x + y + f (f (y) + x−y). (2)\nObserve the equation\nx + f (x + y0) = f (y0) + x−y0.\nFor every y0 it has a solutionx0, as f is surjective. Plugging x0 and y0 in (2), it follows that\nx0 + y0 = 0. As x0 =−y0 is the only possible solution, it must solve the equation. We now get\nthat−y + f (0) = f (y)−2y for all y, and sof (x) = x + c. We see that all such functions indeed\nsolve the equation.\n1 / 5\nMEMO\n2022\nBern\nIndividual Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 4, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2022-i2",
+      "year": 2022,
+      "problem_code": "I-2",
+      "statement_en": "Let n be a positive integer. Anna and Beatrice play a game with a deck ofn cards labelled\nwith the numbers 1, 2, . . ., n. Initially, the deck is shuffled. The players take turns, starting\nwith Anna. At each turn, ifk denotes the number written on the topmost card, then the player\nfirst looks at all the cards and then rearranges thek topmost cards. If, after rearranging, the\ntopmost card shows the numberk again, then the player has lost and the game ends. Otherwise,\nthe turn of the other player begins. Determine, depending on the initial shuffle, if either player\nhas a winning strategy, and if so, who does.",
+      "solution_text_en": "Answer: A player wins if and only if in the deck she receives, the topmost card with number\nk does not have the smallest number among thek topmost cards\nSolution with explicit strategy. For the sake of brevity, we will always refer to the cards\nas the numbers 1, . . . , nin a row, in some permutation. The first number corresponds to the\ntopmost card.\nAssume it is your turn and the first numberk is not the smallest number among the firstk\nnumbers; let m be that smallest number. You can now placem in the first place and sort the\nremaining numbers in decreasing order.\nIf m = 1, then the opponent will immediately after her next turn.\nOtherwise, the smallest of them−1 numbers on positions 2 to m is now larger thank: The\nsmallest of thek numbers before the rearrangement wasm, so the largest of them was at least\nm + k−1, and the(m−1)-th largest was at leastm + k−1−(m−2) = k + 1.\nThis now forces your opponent to removem from the start and to put something there that is\nbigger thank (else she loses the game). Also,m still remains among the firstm numbers, so the\nnew first numberk′again is not the smallest among the firstk′> m numbers.\nRepeating this ensures that you always have a non-losing move.\nThe game terminates since the leading number cannot increase forever. Therefore, it is forced\nthat your opponent will at some point lose the game.\nIf instead the first numberk is the smallest among the firstk numbers when it is your turn, then\nthe same strategy applies to your opponent after your move.\nSolution with winning positions. Essentially the same idea can also be written as an\niterative characterization of winning positions. We inductively show that a position is a winning\nposition if and only if the first numberk is not the smallest among the firstk numbers.\nFirst, we observe that a player cannot make a legal move if and only if the first number is1.\nConsequently, a player can win within one move if and only if1 is among the firstk numbers.\nIf the first number isn, then1 is always among the firstn numbers, so this is a winning position.\n2 / 5\nMEMO\n2022\nBern\nIndividual Competition - Solutions\nEnglish version\nLet us assume the first number isk, and for allk′> k we have already shown that permutations\nstarting with k′are winning positions if and only ifk′is not the smallest among the firstk′\nnumbers.\nIf k is the smallest number among the firstk numbers, then the player whose turn it is must put\nsome number k′larger than k in the first position andk among the firstk < k′numbers, which\nby the induction hypothesis is a winning position for the other player.\nOn the other hand, if there is a numberm < k among the first k numbers, then like in the\nprevious proof we can show that there are at leastm−1 numbers larger thank among the first\nk numbers, so puttingm in the first place and then thesem−1 numbers in any order forces the\nopponent to create a permutation that is a winning position by induction hypothesis.\n3 / 5\nMEMO\n2022\nBern\nIndividual Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 5
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 5}"
+    },
+    {
+      "id": "memo-2022-i3",
+      "year": 2022,
+      "problem_code": "I-3",
+      "statement_en": "Let ABCD be a parallelogram with ∠DAB < 90◦. Let E ̸= B be the point on the lineBC\nsuch that AE = AB and let F ̸= D be the point on the lineCD such that AF = AD. The\ncircumcircle of the triangleCEF intersects the lineAE again in P and the lineAF again in Q.\nLet X be the reflection ofP over the lineDE and Y the reflection ofQ over the lineBF. Prove\nthat A, X and Y lie on the same line.",
+      "solution_text_en": "Solution: We have∠ECD = ∠EBA = ∠AEC, soAECD is an isosceles trapezoid. We now deduce\n∠EP F = 180◦−∠ECF = ∠EAD, soP F is parallel toAD. Analogously, QE is parallel toAB.\nTherefore the quadrilateralsABEQ and AP F Dare isosceles trapezoids and hence cyclic.\nLet X be the intersection ofDE and BF. Since AD\nAE = AF\nAB and ∠EAD = ∠BAF, the triangles\nADE and AF B are similar. SinceA is the center of the spiral similarity taking one to the other,\nit follows thatX is the second intersection of the circumcircles of trianglesABE and AF D.\nNow, directing angles, we find∠DXP = ∠DAP = ∠F DA, so\n∠P′XA = ∠P′XD + ∠DXF + ∠F XA = ∠DXP + ∠DAF + ∠F DA = 0◦,\nso the pointsA, X, P′are collinear. Analogously we find that the pointsA, X, Q′are collinear,\nwhich solves the problem.\nA B\nCD\nE\nX\nF\nP\nQ\nP ′\nQ′\n4 / 5\nMEMO\n2022\nBern\nIndividual Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 3,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 3, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2022-i4",
+      "year": 2022,
+      "problem_code": "I-4",
+      "statement_en": "Initially, two positive integersa and b with a ̸= b are written on a blackboard. At each step,\nAndrea picks two numbersx and y on the blackboard withx ̸= y and writes the number\ngcd(x, y) + lcm(x, y)\non the blackboard as well. Letn be a positive integer. Prove that, regardless of the values of\na and b, Andrea can perform a finite number of steps such that a multiple ofn appears on the\nblackboard.",
+      "solution_text_en": "Remark. If x and y are two positive integers, then gcd(x, y) denotes their greatest common\ndivisor and lcm(x, y) their least common multiple.\nSolution. Write a = dx, b= dy with d = gcd (a, b). Then\ngcd (a, b) + lcm(a, b) = d + dxy = d(1 + xy) = d·(gcd(x, y) + lcm(x, y))\nand 1 + xy is coprime with bothx and y. This means that wlog we can assume thata and b are\ncoprime.\nNow we start with a and b and obtain the new number 1 + ab > a . Then we compute\ngcd (a,1 + ab) + lcm( a,1 + ab) = 1 + a + a2b, which is again coprime with a. Repeatedly\napplying this procedure witha and the last written number, we obtain all the numbers of the\nform\n1 + a + . . .+ ak−1 + akb = ak−1\na−1 + akb =: Vk.\nBy the pigeonhole principle there exists two positive integerk1 < k 2 such that ak1−1\na−1 and ak2−1\na−1\nare congruent modulob. Therefore their difference is divisible byb and sincea and b are coprime\nit follows that ak2−k1−1\na−1 is divisible byb. Moreover for this integerk = k2−k1 clearly we have\nVk > b, so we will writeVk = t·b with t > 1.\nNow we takeVk and b and compute\ngcd (Vk, b) + lcm(Vk, b) = b + Vk = (t + 1)·b,\nand hence repeatedly applying this procedure with b and the last written number gives all\nnumbers of the forms·b for s≥t. In particular, if we apply this procedure sufficiently many\ntimes s will be a multiple ofn.\n5 / 5",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 5,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 5, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2022-t1",
+      "year": 2022,
+      "problem_code": "T-1",
+      "statement_en": "Given a pair(a0, b0) of real numbers, we define two sequencesa0, a1, a2, . . .and b0, b1, b2, . . .\nof real numbers by\nan+1 = an + bn and bn+1 = an·bn\nfor alln = 0, 1, 2, . . .Find all pairs(a0, b0) of real numbers such thata2022 = a0 and b2022 = b0.",
+      "solution_text_en": "Answer: All pairs (a0, b0) where b0 = 0 and a0 is arbitrary.\nSolution. Consider a functionΦ of two real variables defined byΦ( a, b) = (a−1)2 + (b−1)2.\nWe claim thatΦ( an+1, bn+1)≥Φ( an, bn) for all n, with equality if and only ifanbn = 0. Indeed,\nsetting an = a and bn = b we verify\nΦ( an+1, bn+1)−Φ( an, bn) = (ab−1)2 + (a + b−1)2−(a−1)2−(b−1)2 = (ab)2≥0.\nThis means that\nΦ( a2022, b2022)≥Φ( a2021, b2021)≥···≥Φ( a0, b0)\nso equalities must occur everywhere. We distinguish two cases:\n(a) If b0 = 0 then ai = a0 and bi = 0 for all i = 1 , . . . ,2022 and we get a valid solution for\narbitrary real numbera0.\n(b) If b0̸= 0 then from (a0b0)2 = 0 we infer a0 = 0. Thus a1 = b0̸= 0, b1 = 0 and from this\npoint on ai = b0, bi = 0 for all i = 1, . . . ,2022. Hence we do not get any solution here.\nRemark. Other functions work too. For example a functionΦ 2 defined by\nΦ 2(a, b) = a2−2a−2b\ngives an even slightly more convenientΦ( an+1, bn+1)≥Φ( an, bn) with equality if and only if\nbn = 0.\nAlternative solution. Since\nan+2−an+1 = bn+1 = anbn = an(an+1−an) = anan+1−a2\nn,\nwe can write\n∑\nn\n(an+1−an)2 = 2\n∑\nn\na2\nn−2\n∑\nn\nan+1an =−2\n∑\nn\n(anan+1−a2\nn) =−2\n∑\nn\n(an+2−an+1) = 0,\nthus an = an+1 = an + bn and bn = 0 for all n.\n1 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2022-t2",
+      "year": 2022,
+      "problem_code": "T-2",
+      "statement_en": "Let k be a positive integer anda1, a2, . . ., ak be nonnegative real numbers. Initially, there is\na sequence ofn≥k zeros written on a blackboard. At each step, Nicole choosesk consecutive\nnumbers written on the blackboard and increases the first number bya1, the second one by\na2, and so on, until she increases thek-th one byak. After a positive number of steps, Nicole\nmanaged to make all the numbers on the blackboard equal. Prove that all the nonzero numbers\namong a1, a2, . . ., ak are equal.",
+      "solution_text_en": "Solution. Denote by Li,0≤i < n,the number of tiles that John puts in such a way thata0\nis added at position i. Note that Ln−k = Ln−k+1 =···= Ln−1 = 0. Analogously, we define\nRi,0≤i < n for the number of timesak−1 was added at positioni.\nFirst, note that a0L0 = K, since only the leftmost operations add something to the first zero.\nNote that for all0≤i < k we have K≥aiL0 = aiK/a0, hence ai≤a0. Analogously, focusing\non ak−1 and Rn−1 we conclude that for every0≤i < k we have ai≤ak−1. That is, we have\na0 = ak−1 and this is the largest value in the sequencea0, . . . , ak−1; moreover, L0 = Rn−1. To\nsimplify notation, we denotea = a0 = ak−1 and p = L0 = Rn−1.\nOur task is to prove that everyai has value either0 or a. We will prove that by induction, in\nfact proving the following, stronger, statement. For every0≤i <⌈k/2⌉, we prove:\n(a) ai = ak−1−i,\n(b) Li = Rn−1−i,\n(c) either ai = 0 or ai = a.\nIn plain words, besides proving the required statement, we are also gradually proving that the\nsequence ai is symmetrical, as well as John’s moves.\nWe have already proven this statement fori = 0. Let us now prove it for anyi, assuming it was\nproven for0, . . . , i−1.\nNote that for thei-th position on the blackboard we have\nK =\ni∑\nj=0\nLjai−j.\nLet us first focus on the termsL1ai−1, L2ai−2, . . . , Li−1a1. By the induction statement, the value\nof each of these terms is either0 or p·a = K. If the latter ever happens, the induction statement\nimplies Li = Rn−1−i = 0 together with ai = ak−1−i = 0 and we are finished.\nHence, we can next assume that\nK = L0ai + Lia0 = pai + Lia (1)\nand the analogous argument on the other side (replaceLj by Rn−1−j and aj by ak−1−j) allows\nus to assume that\nK = Rn−1ak−1−i + Rn−1−ia. (2)\n2 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version\nConsider the caseai < a. Equation (1) implies thatLi > 0. Focusing now at thekth number in\nJohn’s sequence, we getK = L0ak−1 +···+ Liak−1−i + . . .. But L0ak−1 = pa = K, so we are\ngetting Liak−1−i = 0, hence ak−1−i = 0.\nWe can apply exactly the same argument on the other side (replaceLj with Rn−1−j and aj with\nak−1−j and eq. (1) with eq. (2)). We get that wheneverak−1−i < a, it has to be thatai = 0.\nPutting these two arguments together, we conclude that one of the two possibilities is true:\nEither ai = ak−1−i = a and eqs. (1) and (2) implyLi = Rn−i = 0. Or ai = ak−1−i = 0 and eqs.\n(1) and (2) implyLi = Rn−i = p. In either case, the induction statement is proven fori and we\nare done.\nNumber-theoretic solution. As in the first solution, we denote byLi the number of times\nthat a0 was added to the i-th position and note that a0 is maximal among the terms of the\nsequence. Obviously, we are done if a0 = 0, so let’s assumea0 > 0, implying L0 > 0. We\nnormalize the sequence by dividing each term bya0, so that a0 = 1 and all numbers on the\nboard are equal toL0 in the end.\nClaim. All terms of the sequence are now rational numbers.\nProof. Assume the contrary. Consider the smallest indexi with ai /∈Q and look at the i-th\nnumber on the board which in the end of the process takes the valueL0∈N. Since ai was added\nto this positionL0 times and all other terms added to it must have been rational by minimality\nof i, we get a contradiction.\nIf there now exists some indexj with 0 < a j < 1, write aj as a reduced fraction and take a\nprime factor q of its denominator. In other words,vq(aj) < 0 = vq(a0).\nWe now choose a minimal indext that minimizes vq(at) and a minimal indexs that minimizes\nvq(Ls). By evaluating the number on the(s + t)-th position on the blackboard, we obtain\nL0·a0 =\ns+t∑\ni=0\nLi·as+t−i.\nHere, we simply setas+t−i = 0 if s + t−i≥k. Note that the termLs·at appearing in this sum\nhas strictly smallervq than any other term in the sum, by definition and minimality ofs and t.\nAlso, since vq(Ls)≤vq(L0) and vq(at) < v q(a0) = 0, we havevq(L0·a0) > v q(Ls·at).Hence,\nvq(L0·a0) > v q(Ls·at) = vq\nÇs+t∑\ni=0\nLi·as+t−i\nå\n,\ncontradiction. We conclude that no suchj could have existed, so all terms are either equal to0\nor a0.\n3 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version\nSolution using Polynomials. By the claim of the previous solution, we see that we may\nassume all terms of the sequence to be nonnegative integers (just multiply everything by the lcm\nof the denominators). Again, we note that for alli, it holds thata0≥ai.\nNow observe the polynomial\nP (x) =\nk−1∑\ni=0\naixi\nand interpret the numbers on the board as a polynomial in a similar way, i.e. if the numbers on\nthe board areb0, . . . , bn−1, read it as\nn−1∑\ni=0\nbixi.\nThe problem states that after each step, the polynomial on the board is increased byxp·P (x)\nfor some p∈N0. Therefore, the condition can be rewritten as\nP (x)·Q(x) = K·xn−1\nx−1\nfor some polynomialQ∈Z[x] and K∈N. It follows that\nP (x) = a·R(x),\nwhere a|K and R(x)|xn−1\nx−1 . We see that the constant term ofR must be equal to1, and so\na0 = a. As a|ai and a0≥ai for all i, they are indeed all equal toa.\n4 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 4,
+        "number_theory": 2,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "oard"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 4, 'number_theory': 2, 'combinatorics': 3}"
+    },
+    {
+      "id": "memo-2022-t3",
+      "year": 2022,
+      "problem_code": "T-3",
+      "statement_en": "Let n be a positive integer. There are n purple and n white cows queuing in a line in some\norder. Tim wishes to sort the cows by colour, such that all purple cows are at the front of the\nline. At each step, he is only allowed to swap two adjacent groups of equally many consecutive\ncows. What is the minimal number of steps Tim needs to be able to fulfill his wish, regardless\nof the initial alignment of the cows?\nExample. For instance, Tim can perform the following three swaps:\nW P WP P W−→W P P P W W−→P W PP W W−→P P W W P W.",
+      "solution_text_en": "Answer: Tim needs at mostn swaps.\nSolution. Imagine that the queue has an additional immovable purple cow in front of all other\ncows and an additional immovable white cow behind all other cows; he can only do swaps that\ndo not displace these two. We will now consider the variable of “the number of pairs of adjacent\nequally coloured cows”. For example, if the queue is\nP P W P P W WW P W\nwe have 4 different such pairs, including the two immovable cows at the start and end in our\nqueue. Now, note that when Tim makes a swap, he changes three pairs - the one preceding the\nfirst block; the one between the two blocks and the one after the second block.\n. . . x1 y1 . . . x2 y2 . . . x3 y3 . . .\n↓\n. . . x1 y2 . . . x3 y1 . . . x2 y3 . . .\nIt is not hard to see that the maximum increase in the number of such pairs is2; it is impossible\nto go from all three of them being unequal to all three being equal.\nIn the worst-case initial scenario, which consists of an alternating sequence beginning with aW,\nthere are no adjacent equal pairs, and the final state contains2n adjacent equal pairs (again\ntaking into account the two immovable cows). This establishesn as a lower bound.\nFinally, we iteratively prove thatn is always sufficient with the induction hypothesis that we can\nalways attain the sorted queueas well as the reversed queue withinn moves. This is trivially\ntrue for n = 1. Now, suppose it holds true up tok, and consider the casek + 1 (disregarding\nthe immovable cows, which we do not need anymore).\n• If the cow in front is purple and the last cow is white, just sort the inner queue of length\n2k with k moves.\n5 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version\n• If the first cow is white and the last cow is purple, sort the inner queue in reverse (ink\nmoves) and then do one final swap on the large blocks white and purple cows.\n• If the first and the last cow have the same colour, use one initial swap to get a purple\ncow at the start and a white cow at the end. This is certainly possible because if both\nare white, there must be a purple cow in the front half of the queue, so we can swap the\nblock from the first cow until right before that white cow with the subsequent block of the\nsame length; this does not modify the end of the queue. If both are purple, a symmetric\nargument allows swapping a white cow to the end without modifying the start. Then sort\nthe inner queue withk moves.\nBy symmetry, we could also have sorted to the reverse queue withink + 1moves. Thus we have\nproved the inductive step and are done.\n6 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [
+        "adjacent",
+        "colour"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2022-t4",
+      "year": 2022,
+      "problem_code": "T-4",
+      "statement_en": "Let n be a positive integer. We are given a2n×2n table. Each cell is coloured with one of2n2\ncolours such that each colour is used exactly twice. Jana stands in one of the cells. There is a\nchocolate bar lying in one of the other cells. Jana wishes to reach the cell with the chocolate\nbar. At each step, she can only move in one of the following two ways. Either she walks to an\nadjacent cell or she teleports to the other cell with the same colour as her current cell. (Jana\ncan move to an adjacent cell of the same colour by either walking or teleporting.) Determine\nwhether Jana can fulfill her wish, regardless of the initial configuration, if she has to alternate\nbetween the two ways of moving and has to start with a teleportation.",
+      "solution_text_en": "Remark. Two cells are adjacent if they share a common edge.\nAnswer: Jana can always reach the chocolate.\nSolution. Fix the colouring of the cells and the starting position. We prove that Jana can\nreach any cell. Call a series of moves legal, if she starts from the starting cell with a teleport\nmove, and uses the two types of moves alternately. Divide the cells into four categories.\n• Call a cellteleport reachable, if Jana can make a legal series of moves finishing in this cell,\nbut all such legal movement ends with a teleport move.\n• Call a celladjacent reachable, if Jana can make a legal series of moves finishing in this cell,\nbut all such legal movement ends with an adjacent move.\n• Call a celleasily reachable if it can be reached legally such that the last move is a telepor-\ntation, and also it can be reached with the last move being an adjacent move.\n• Finally, call a cellunreachable, if Jana cannot move to this cell with a legal movement.\nFor consistency, we assume the cell that Jane starts on to be reachable with an adjacent move\nthat happened before the start of the game and forces Jane to perform a teleport move next.\nThe starting cell therefore is either adjacent reachable or easily reachable. Also, for any given\ncell, we call the other cell with the same colour its “partner cell”.\nLemma. The number of teleport reachable cells and adjacent reachable cells must be the same.\nProof. Consider a cell T and its partner cell T′. If T is easily reachable, so is T′(as any\nmove before teleporting fromT′to T must be an adjacent move toT′and any adjacent move\nto T can be extended by a teleport toT′). Similarly, if T is teleport reachable, T′must be\nadjacent reachable and vice versa. IfT is unreachable, so isT′, otherwise it would contradict\nthe previous observations. Each pair therefore contributes equally many adjacent and teleport\nreachable cells.\n7 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version\nLemma. Each neighbour N of a teleport reachable cell T must be adjacent reachable.\nProof. A legal movement toT can be extended with an adjacent move toN. But ifN was easily\nreachable, we could extend a teleport movement toN with an adjacent move toT, so T would\nbe easily reachable too.\nLemma. Neighbours of easily reachable cells are never unreachable.\nProof. At the very least we could extend a teleport movement to the easily reachable cell with\nan adjacent move.\nAssume that there exist one or more unreachable cells. Then somewhere on the board, there\nare two adjacent cells of which one is unreachable and the other is not. By the second and third\nlemma, this neighbour cell can neither be easily reachable nor teleport reachable, so it must be\nadjacent reachable.\nPut a domino covering these two cells, and tile the whole table with dominoes containing this\ndomino. Clearly, we can do this: Extend the two short sides of the domino such the sides of the\ndomino now partition the board into four rectangular regions. Since each of those rectangles\nhave at least one even dimension, we can cover them by dominoes.\nNow by the second lemma, every domino that contains a teleport reachable cell must contain\nan adjacent reachable cell, and there is a domino that contains an adjacent reachable cell with\nno teleport reachable cell. This is a contradiction, as the number of teleport reachable cells and\nadjacent reachable cells are the same by the first lemma.\n8 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 6
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "adjacent",
+        "colour",
+        "domino",
+        "edge",
+        "oard"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 6}"
+    },
+    {
+      "id": "memo-2022-t5",
+      "year": 2022,
+      "problem_code": "T-5",
+      "statement_en": "Let Ω be the circumcircle of a triangleABC with ∠CAB = 90◦. The medians throughB and C\nmeet Ω again at D and E, respectively. The tangent toΩ at D intersects the lineAC at X and\nthe tangent toΩ at E intersects the lineAB at Y. Prove that the lineXY is tangent toΩ.",
+      "solution_text_en": "Solution. Let G be the second intersection of the median throughA and Ω. We will show\nthat XY is tangent toΩ at G. Let X′be the intersection of the tangents toΩ at D and G. We\nclaim that A, C, and X′are collinear.\nΩ\nA\nCB\nD\nG\nM\nO\nX ′\nLet O be the center ofΩ, and M the midpoint ofAC. We start by noting that\n∠GOX′= 1\n2 ∠GOD = ∠GBD = ∠AM B,\nwhere we used that AC∥BG in the last equality. Hence,△M AB∼△OGX′, in particular\nX ′G\nOG = BA\nAM. As AC = 2·AM and AG = 2·OG, we also have△CAB∼AGX′. In particular,\n∠GAX′= ∠ACB = ∠GAC, proving the claim. Hence X = X′, so that the tangent at G\ncontains X, and by symmetry,Y.\nΩ\nA\nCB\nDE\nX\nY\nG\n9 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2022-t6",
+      "year": 2022,
+      "problem_code": "T-6",
+      "statement_en": "Let ABCD be a convex quadrilateral such that AC = BD and the sides AB and CD are\nnot parallel. Let P be the intersection point of the diagonalsAC and BD. Points E and F\nlie, respectively, on segments BP and AP such that P C = P E and P D = P F. Prove that\nthe circumcircle of the triangle determined by the linesAB, CD and EF is tangent to the\ncircumcircle of the triangleABP.",
+      "solution_text_en": "Solution. Without loss of generality assume that AP < BP . Let X = AB∩CD, Y =\nAB∩C′D′and Z = CD∩C′D′. Furthermore, denote byM the midpoint of arcAP B. We will\nshow that the circumcircle of△XY Z is tangent to the circumcircle of△ABP at M.\nA B\nC\nD\nC′\nD′\nP\nX Y\nZ\nM\nSince M A = M B, AC = BD and ∠M AC = ∠M BD, we have△M AC∼=△M BD. From this\nwe get ∠P CM = ∠ACM = ∠BDM = ∠P DM, which means thatP, D, C, Mare concyclic.\nThe points C and D are the reflections ofC′and D′with respect to the external angle bisector\nof ∠AP B, which is the line P M. Therefore the points M, P, Zare collinear and ZM is the\nexternal angle bisector of∠XZY .\nSince ∠Y BM = ∠AP M = ∠D′P M = ∠Y C′M, we have that the points M, C′, B, Yare\nconcyclic. Furthermore, ∠XCM = ∠DCM = ∠BP M = ∠BAM gives us that the points\nC, M, A, Xare also concyclic. The final angle chasing\n∠M Y X = ∠M Y B = ∠M C′P = ∠P CM = ∠ACM = ∠AXM = ∠Y XM,\nshows M X = M Y. Together with the fact thatZM is the external bisector of∠XZY we have\nthat the pointsX, Y, Z, Mindeed lie on a circle, which clearly is tangent to the circumcircle of\n△ABP due to M A = M B and M X = M Y.\n10 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version\nComment. There are numerous ways to perform angle chasing in this problem, sinceM is one\nof Miquel’s points of lots of quadrilaterals. We know it lies on the circumcircles ofP AB, P CD,\nP C′D′, Y C′B, XAC and XY Z (which is a part of the proven statement), but it also lies on the\ncircumcircles of XBD, Y AD′, ZCD′and ZC′D. To complete the list of cyclic quadrilaterals\nnote that CDD′C′is an isosceles trapezoid.\nComment. The equality M X = M Y is equivalent toXA = BY . This can be shown by means\nof Menelaus theorem. By applying it to triangleABP and line C′D′Y we get\nBY\nAY ·BC′\nP C′·P D′\nD′A = 1,\nwhich together withBC′= D′A gives\nP D′\nP C′= AY\nBY = 1 + AB\nBY .\nAnalogously, by applying it to triangleABP and line CDX we can show\nP D\nP C = BX\nAX = 1 + AB\nAX .\nThe left-hand sides of these two expressions are equal due toP D′= P D and P C′= P C, hence\nthe right-hand sides are equal as well, which impliesBY = AX.\n11 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 10,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 10, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2022-t7",
+      "year": 2022,
+      "problem_code": "T-7",
+      "statement_en": "Let N denote the set of positive integers. Determine all functionsf : N→N such that f(1)≤\nf(2)≤f(3)≤. . .and the numbersf(n) + n + 1 and f(f(n))−f(n) are both perfect squares\nfor every positive integern.",
+      "solution_text_en": "Solution. For a positive integern, denote by bn the number\np\nf(n) + n + 1. Note that we\nhave f(n) +n + 1 > f (n−1) + (n−1) + 1for all n > 1. In other words, the sequence(bn)n is a\nstrictly increasing sequence of positive integers. Sinceb1≥2, we havebn≥n + 1, or, in other\nwords, f(n)≥n2 + n for every n≥1.\nConsider some n≥1. We havef(f(n)) +f(n) + 1 =j2 for some integerj from the condition of\nthe problem applied tof(n). Also f(f(n))−f(n) = k2 for some integerk. Clearly k < j and so\nwe obtain\n2f(n) + 1 = (f(f(n)) + f(n) + 1)−(f(f(n))−f(n)) = j2−k2 = (j−k)(j + k).\nSince j > k, we havej≥k + 1and hencej−k≥1, j + k≥2k + 1. Combining these inequalities\nwith the previous equation yield2f(n) + 1≥2k + 1 and therefore k≤f(n). This means that\nf(f(n))−f(n)≤f(n)2.\nCombining the two results we obtain thatf(f(n)) = f(n)2 + f(n) for all n. Moreover by the\nproblem conditions bn :=\np\nf(n) + n + 1 is a strictly increasing sequence of integers such that\nbn≥n + 1 and bf (n) = f(n) + 1for all n. Therefore we must have thatbn = n + 1 for all n and\nhence f(n) = n2 + n for all n. We verify easily that this function verify the conditions of the\nproblem.\nComment. The condition ’f(f(n))−f(n) is a square’ can be replaced by any condition of the\nform ’f(cn)−cn is a square’. where(cn)n is any unbounded sequence. The same solution applies.\n12 / 13\nMEMO\n2022\nBern\nTeam Competition - Solutions\nEnglish version",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2022-t8",
+      "year": 2022,
+      "problem_code": "T-8",
+      "statement_en": "We call a positive integercheesy if we can obtain the average of the digits in its decimal rep-\nresentation by putting a decimal separator after the leftmost digit. Prove that there are only\nfinitely many cheesy numbers.\nExample. For instance,2250 is cheesy, as the average of the digits is2.250.",
+      "solution_text_en": "Solution. Let n be a positive integer andk be the number of digits ofn. Let m be the sum\nof digits ofn. We prove that ifk≥26 then n is not reflexive.\nLet a = v2(k) be the nonnegative integer such that2a≤k < 2a+1. It is easy to see thatn is\nreflexive exactly if\nm·10k−1 = nk.\nSuppose by contradiction thatn is reflexive andk≥26. The left handside is divisible by10k−1\nand k < 2a+1, and also from this triviallyk < 5a+1, so 2a+1 and 5a+1 do not divide k, which\nmeans 10k−1−a|n.\nHence the last k−1−a digits of n is 0, so only the first a + 1 digits can be nonzero, thus\nm≤9(a + 1). Also n≥10k−1 as n has k digits.\nIt is easy to prove that9(A + 1) < 2A if A≥6.\nCombining these\nm·10k−1≤9(a + 1)·10k−1 < 10k−1·2a≤nk\nwhich is a contradiction.\n13 / 13",
+      "source": {
+        "page_url": "https://memo22.olympiad.ch/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_problem.pdf"
+          },
+          {
+            "kind": "individual_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_I_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-individual_solution.pdf"
+          },
+          {
+            "kind": "team_solution",
+            "url": "https://memo22.olympiad.ch/fileadmin/user_upload/Memo22/MEMO_2022_T_sol_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2022-team_solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    }
+  ]
+}

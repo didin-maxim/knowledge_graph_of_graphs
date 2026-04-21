@@ -1,0 +1,145 @@
+{
+  "id": "memo-2025-t4-toll-complete-graph",
+  "title": "Платные дороги как взвешенный полный граф, MEMO 2025 T-4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "weighted_complete_graph",
+      "edge_removal",
+      "vertex_load"
+    ],
+    "methods": [
+      "handshaking_bound",
+      "partition_minimization"
+    ],
+    "transformations": [
+      "road_revenue_to_weighted_graph"
+    ],
+    "goal": [
+      "guaranteed_edge_removal_count"
+    ],
+    "auxiliary_graph_type": [
+      "weighted_complete_graph"
+    ],
+    "invariants": [
+      "incident_weight_loss"
+    ],
+    "keywords": [
+      "memo_2025_t4",
+      "memo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В Лапландии есть \\(100n\\) городов, каждая пара соединена дорогой с пунктом оплаты. Доход от дороги делится поровну между двумя её концами. Губернатор хочет передать часть пунктов федеральному правительству так, чтобы после этого каждая вершина сохранила как минимум 99% прежнего суммарного дохода от инцидентных дорог. Нужно найти наибольшее число дорог, которое можно гарантированно изъять при любых положительных доходах на дорогах.",
+        "source_id": "src-memo-2025-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Официальное решение прямо переводит задачу во взвешенный полный граф на \\(100n\\) вершинах: вес ребра - доход, получаемый каждым концом дороги. Требуется удалить как можно больше рёбер, не потеряв более 1% суммарного веса у каждой вершины.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-uniform-weight-upper-bound",
+      "title": "Равные веса дают верхнюю оценку через лемму о рукопожатиях",
+      "text": "Если все рёбра имеют одинаковый вес, то у каждой вершины можно удалить не более \\(n-1\\) инцидентных рёбер. По лемме о рукопожатиях это ограничивает общее число удалённых рёбер сверху числом \\(100\\binom n2\\).",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-minimal-partition",
+      "title": "Минимизируем внутриклассовый вес разбиением на 100 частей",
+      "text": "Разбиваем вершины на 100 частей так, чтобы суммарный вес внутриклассовых рёбер был минимален. Тогда у любой вершины вес рёбер внутри своей части не превосходит веса рёбер в любую другую фиксированную часть, следовательно не превышает 1% её полного инцидентного веса. Можно удалить все внутриклассовые рёбра, а их число снизу оценивается через квадратичную среднюю размеров частей.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "нтерпретируем страну как взвешенный полный граф на \\(100n\\) вершинах, где вес ребра - половина дохода соответствующей дороги. Верхняя оценка: если все веса одинаковы, то у каждой вершины можно удалить не более \\(1\\%\\) от \\(100n-1\\) инцидентных рёбер, то есть не более \\(n-1\\). По лемме о рукопожатиях удаляется не более \\(\\frac12(100n)(n-1)=100\\binom n2\\) рёбер. Нижняя оценка: разобьём вершины на 100 частей так, чтобы суммарный вес рёбер внутри частей был минимален. Если бы для вершины \\(v\\) вес рёбер внутри её части был больше веса рёбер из \\(v\\) в некоторую другую часть, то перенос \\(v\\) уменьшил бы внутриклассовый вес, вопреки минимальности. Значит внутриклассовый вес каждой вершины не превосходит \\(1/100\\) её полного инцидентного веса, то есть не более 1%. Поэтому можно удалить все рёбра внутри частей. Если размеры частей равны \\(a_1,\\dots,a_{100}\\), то число удалённых рёбер равно \\(\\sum_i \\binom{a_i}2 = \\frac12\\sum_i a_i^2 - 50n\\). По неравенству между средней квадратичной и средней арифметической имеем \\(\\sum_i a_i^2\\ge 100n^2\\), откуда удаляется не меньше \\(50n^2-50n=100\\binom n2\\) рёбер. Следовательно, искомое максимальное гарантированное число равно \\(100\\binom n2\\).",
+      "idea_ids": [
+        "idea-uniform-weight-upper-bound",
+        "idea-minimal-partition"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "MEMO 2025 T-4; задача и официальное решение прямо формулируются на взвешенном полном графе.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "handshaking_bound",
+        "partition_minimization"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-memo-2025-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

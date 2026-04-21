@@ -1,0 +1,139 @@
+{
+  "id": "tc-2001-02-rooks-odd-attacks",
+  "title": "Ладьи, бьющие нечётное число ранее поставленных, Турнир городов 2001/02",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "chessboard_cells",
+      "visibility_graph",
+      "dynamic_graph",
+      "rooks"
+    ],
+    "methods": [
+      "construction",
+      "parity",
+      "case_analysis"
+    ],
+    "transformations": [
+      "selected_cells_to_visibility_graph"
+    ],
+    "goal": [
+      "maximum_sequence_length",
+      "odd_neighbor_condition"
+    ],
+    "auxiliary_graph_type": [
+      "rook_visibility_graph"
+    ],
+    "invariants": [
+      "degree_parity",
+      "corner_visibility",
+      "placement_order"
+    ],
+    "keywords": [
+      "rooks",
+      "visibility_graph",
+      "odd_attacks",
+      "dynamic_degree"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Саша выставляет ладьи",
+        "text": "Саша выставляет на пустую шахматную доску 8×8 ладьи: первую — куда захочет, а каждую следующую ставит так, чтобы она била нечётное число ранее выставленных ладей. Ладьи бьют по горизонтали и вертикали, если между ними нет другой ладьи. Какое наибольшее число ладей он сможет так выставить?",
+        "source_id": "src-problems-98546",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Клетки доски 8×8 постепенно выбираются. После каждого выбора построим граф на выбранных клетках: две клетки соединены ребром, если они лежат в одной строке или одном столбце и между ними в этой строке или столбце нет другой выбранной клетки. Нужно найти наибольшую длину последовательности выбора клеток, в которой каждая новая клетка, начиная со второй, имеет нечётное число соседей среди уже выбранных клеток в таком графе видимости.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-missing-corner-after-three-corners",
+      "title": "Три угла запрещают четвёртый",
+      "text": "Конструкция почти заполняет доску, но верхняя оценка ловит неизбежную ситуацию: когда три угла уже заняты, четвёртый угол всегда бьёт ровно две ладьи — ближайшую по строке и ближайшую по столбцу.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-construct-63",
+      "title": "Конструкция на 63 ладьи и запрет 64-й",
+      "text": "63 ладьи можно поставить так, как указано в источнике: сначала три угла, затем последовательно заполнить одну сторону, одну соседнюю сторону и оставшиеся вертикали так, чтобы каждая новая ладья била нечётное число уже стоящих. Поставить 64 ладьи нельзя. После того как заняты три угловые клетки, четвёртый угол, когда бы его ни пытались занять, будет бить ровно две ранее поставленные ладьи: ближайшую по своей горизонтали и ближайшую по своей вертикали. Это чётное число, значит четвёртый угол поставить нельзя. Поэтому максимум равен 63.",
+      "idea_ids": [
+        "idea-missing-corner-after-three-corners"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Осенний основной вариант 2001/02, 8-9 класс, задача 5; на problems.ru указано 6 баллов и сложность 4-.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "parity",
+        "construction",
+        "visibility_graph"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-98546",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-turgor-2001-02",
+      "role": "official_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "reviewed_no_links"
+  }
+}

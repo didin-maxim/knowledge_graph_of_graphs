@@ -1,0 +1,153 @@
+{
+  "id": "imo-1992-p3-nine-points-partial-ramsey",
+  "title": "Девять точек и минимальное число окрашенных рёбер, IMO 1992 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "partial_edge_coloring",
+      "monochromatic_triangle"
+    ],
+    "methods": [
+      "ramsey_theory",
+      "extremal_graph_theory",
+      "construction"
+    ],
+    "transformations": [
+      "segments_to_edges_of_k9"
+    ],
+    "goal": [
+      "minimum_edges_for_monochromatic_triangle"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "triangle_free_color_classes"
+    ],
+    "standard_idea_ids": [
+      "complement_graph_transition"
+    ],
+    "local_score": 13,
+    "keywords": [
+      "imo-1992-p3-nine-points-partial-ramsey",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Даны 9 точек в пространстве, никакие 4 не компланарны. Найдите минимальное n такое, что при любой красно-синей раскраске n проведённых между этими точками отрезков обязательно существует одноцветный треугольник.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-imomath-imo-1992"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Геометрия несущественна: это задача о максимальном числе рёбер в подграфе K_9, допускающем 2-раскраску рёбер без одноцветного треугольника.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-ramsey-subgraph",
+      "title": "Частичная Ramsey-задача",
+      "text": "Нужно найти максимум рёбер графа, который можно разложить на два треугольник-свободных цветовых графа.",
+      "tags": [
+        "ramsey_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-five-cycle-blowup",
+      "title": "Конструкция без одноцветного треугольника",
+      "text": "Экстремальный пример получается как blow-up 5-цикла с подходящими размерами долей.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Ответ: 33. Нижний пример на 32 рёбрах строится из 5-цикловой Ramsey-раскраски K_5 без одноцветных треугольников, заменяя вершины на группы размеров 2,2,2,2,1 и раскрашивая междолевые рёбра по цвету соответствующего ребра C_5/дополнения, а внутри больших долей оставляя только безопасные рёбра. Для верхней оценки рассматривают красный и синий треугольник-свободные графы на 9 вершинах, покрывающие все окрашенные рёбра. Усиленная форма оценки Мантеля для пары таких графов даёт не более 32 рёбер без одноцветного треугольника; значит при 33 окрашенных рёбрах одноцветный треугольник неизбежен.",
+      "idea_ids": [
+        "idea-ramsey-subgraph",
+        "idea-five-cycle-blowup"
+      ],
+      "standard_idea_ids": [
+        "complement_graph_transition"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 13,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "ramsey_theory",
+    "coloring",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "ramsey_theory",
+        "extremal_graph_theory",
+        "construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imomath-imo-1992",
+      "role": "statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

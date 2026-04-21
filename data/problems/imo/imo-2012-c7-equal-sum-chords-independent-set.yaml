@@ -1,0 +1,144 @@
+{
+  "id": "imo-2012-c7-equal-sum-chords-independent-set",
+  "title": "Равные суммы на хордах и независимое множество, IMO Shortlist 2012 C7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "circle_chords",
+      "intersection_graph",
+      "independent_set"
+    ],
+    "methods": [
+      "induction",
+      "caro_wei_bound",
+      "averaging"
+    ],
+    "transformations": [
+      "chords_to_intersection_graph"
+    ],
+    "goal": [
+      "large_disjoint_chord_family"
+    ],
+    "auxiliary_graph_type": [
+      "intersection_graph"
+    ],
+    "invariants": [
+      "degree_bound"
+    ],
+    "keywords": [
+      "imo_2012_c7",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На окружности в некотором порядке стоят числа \\(1,2,\\ldots,2500\\). Докажите, что можно выбрать 100 попарно непересекающихся хорд так, чтобы суммы чисел на концах всех выбранных хорд были равны.",
+        "source_id": "src-imo-2012-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Для фиксированной суммы строится граф возможных хорд; нужно найти большое независимое множество вершин-хорд в графе пересечений.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-caro-wei",
+      "title": "Оценка независимого множества",
+      "text": "Официальное решение использует лемму: в графе есть независимое множество размера не меньше \\(\\sum_v 1/(d(v)+1)\\).",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-sum-class",
+      "title": "Классы хорд с одинаковой суммой",
+      "text": "Хорды разбиваются по сумме концов; в одном классе оценка степеней гарантирует 100 непересекающихся хорд.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Ключевая лемма официального решения: в любом графе \\(G\\) существует независимое множество размера не меньше \\(\\sum_{v\\in G}1/(d(v)+1)\\); она доказывается индукцией удалением вершины минимальной степени и её соседей. Далее для каждой возможной суммы рассматриваются хорды, соединяющие пары чисел с этой суммой. Внутри такого класса строится граф пересечений: вершины — хорды, рёбра — пересечения. Суммирование оценки по подходящим классам показывает, что хотя бы в одном классе независимое множество имеет размер не меньше 100. Его вершины и дают 100 попарно непересекающихся хорд с одинаковыми суммами.",
+      "idea_ids": [
+        "idea-caro-wei",
+        "idea-sum-class"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2012 C7, unknown; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "caro_wei_bound",
+        "averaging"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2012-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

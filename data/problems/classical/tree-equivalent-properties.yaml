@@ -1,0 +1,138 @@
+{
+  "id": "tree-equivalent-properties",
+  "title": "Эквивалентные свойства деревьев",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "connected_graph",
+      "acyclic_graph",
+      "unique_path"
+    ],
+    "methods": [
+      "induction",
+      "delete_to_simplify",
+      "longest_path"
+    ],
+    "transformations": [
+      "remove_leaf",
+      "delete_cycle_edge"
+    ],
+    "goal": [
+      "equivalent_characterizations",
+      "edge_count_identity"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "edges_vertices_relation",
+      "acyclicity",
+      "connectedness",
+      "leaf_exists"
+    ],
+    "keywords": [
+      "tree_properties",
+      "n_minus_1_edges",
+      "unique_path"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Для конечного простого графа следующие условия эквивалентны: граф связен и не имеет циклов; граф связен и имеет n-1 ребро, где n — число вершин; между любыми двумя вершинами существует ровно один простой путь.",
+        "source_id": "src-wikipedia-tree",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "cycle",
+          "path",
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Связный граф на n вершинах является деревом тогда и только тогда, когда имеет n-1 ребро. Эквивалентно, дерево — это связный ацикличный граф, и в нем между любыми двумя вершинами существует единственный простой путь.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "cycle",
+          "path",
+          "tree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-leaf-induction",
+      "title": "Индукция по листу",
+      "text": "В каждом конечном дереве с хотя бы двумя вершинами есть лист; удаление листа сохраняет структуру дерева.",
+      "tags": [
+        "trees",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-leaf-induction",
+      "title": "Доказательство через листья",
+      "text": "В ацикличном связном графе любой максимальный простой путь заканчивается листьями, иначе путь можно продолжить или получить цикл. Удалив лист из дерева, получаем дерево на одну вершину меньше. По индукции дерево на n вершинах имеет n-1 ребро. Обратно, связный граф с n-1 ребром не может иметь цикл: удаление ребра из цикла сохранило бы связность и дало связный граф с n-2 ребрами, что невозможно, поскольку связный граф строится добавлением хотя бы одного ребра для каждой новой вершины.",
+      "idea_ids": [
+        "idea-leaf-induction"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction",
+        "delete_to_simplify"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 2,
+    "comment": "Базовый язык задач про деревья.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "induction",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-tree",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

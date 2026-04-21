@@ -1,0 +1,141 @@
+{
+  "id": "imo-2019-c5-social-network-refriending",
+  "title": "Социальная сеть и операция пере-дружбы, IMO Shortlist 2019 C5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "degree_sequence",
+      "local_edge_operation"
+    ],
+    "methods": [
+      "extremal_choice",
+      "degree_argument"
+    ],
+    "transformations": [
+      "social_network_to_graph"
+    ],
+    "goal": [
+      "reduce_max_degree"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_parity",
+      "edge_count_decrease"
+    ],
+    "keywords": [
+      "imo_2019_c5",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В социальной сети 2019 пользователей; дружба симметрична. У 1010 человек по 1009 друзей, у 1009 человек по 1010 друзей. Можно многократно выполнять операцию: если \\(A\\) дружит с \\(B\\) и \\(C\\), а \\(B\\) и \\(C\\) не дружат, то дружбы \\(AB,AC\\) исчезают, а \\(BC\\) появляется. Докажите, что можно прийти к состоянию, где у каждого пользователя не более одного друга.",
+        "source_id": "src-imo-2019-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это графовая задача: пользователи — вершины, дружбы — рёбра, а операция заменяет две стороны длины-2 пути одним ребром между его концами.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-refriending",
+      "title": "Сжатие пути длины 2",
+      "text": "Операция уменьшает число рёбер на 1 и меняет структуру компоненты контролируемым образом.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-connected-degree",
+      "title": "Большие степени дают связность",
+      "text": "Начальный граф связен, потому что суммы степеней любых двух вершин достаточно велики.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Официальное решение сразу переформулирует задачу на языке графов. Дана графовая степень: 1010 вершин степени 1009 и 1009 вершин степени 1010. Операция выбирает путь \\(B-A-C\\), где \\(BC\\) отсутствует, удаляет \\(AB,AC\\) и добавляет \\(BC\\), то есть уменьшает число рёбер на 1. Сначала доказывается связность исходного графа. Затем анализируется, как операция действует на компоненты и степени: пока есть вершина степени хотя бы 2, можно выбрать подходящих соседей и выполнить операцию, не разрушая нужных инвариантов. Повторяя, уменьшаем число рёбер до графа, все компоненты которого имеют размер не больше 2, то есть степени всех вершин не превосходят 1.",
+      "idea_ids": [
+        "idea-refriending",
+        "idea-connected-degree"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2019 C5, Croatia; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice",
+        "degree_argument"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2019-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

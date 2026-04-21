@@ -1,0 +1,351 @@
+{
+  "year": 2013,
+  "edition_code": "rmm2013",
+  "problems_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=problems_math",
+  "solutions_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=solutions_math",
+  "problem_pdf_count": 2,
+  "solution_pdf_count": 2,
+  "problem_count_extracted": 6,
+  "problems": [
+    {
+      "id": "rmm-2013-p1",
+      "year": 2013,
+      "problem_number": 1,
+      "statement_en": "For a positive integer a, define a sequence of integers x1, x2, . . .\nby letting x1 = a and xn+1 = 2xn+1 for n≥ 1. Let yn = 2xn−1. Determine\nthe largest possible k such that, for some positive integer a, the numbers\ny1, . . . , yk are all prime.\n(Russia) V alery Senderov",
+      "solution_text_en": "For a positive integer a, define a sequence of integers x1,x 2,... by letting x1 =a\nand xn+1 = 2xn + 1 forn≥ 1. Let yn = 2xn− 1. Determine the largest possible k such that, for\nsome positive integer a, the numbers y1,...,y k are all prime.\n(Russia) V alery Senderov\nSolution. The largest such is k = 2. Notice first that if yi is prime, then xi is prime as well.\nActually, if xi = 1 then yi = 1 which is not prime, and if xi = mn for integer m,n > 1 then\n2m− 1| 2xi− 1 =yi, so yi is composite. In particular, if y1,y 2,...,y k are primes for some k≥ 1\nthen a =x1 is also prime.\nNow we claim that for every odd prime a at least one of the numbers y1,y 2,y 3 is composite\n(and thus k <3). Assume, to the contrary, that y1, y2, and y3 are primes; then x1,x 2,x 3 are\nprimes as well. Since x1≥ 3 is odd, we have x2 > 3 and x2≡ 3 (mod 4); consequently, x3≡ 7\n(mod 8). This implies that 2 is a quadratic residue modulo p = x3, so 2 ≡ s2 (mod p) for\nsome integer s, and hence 2 x2 = 2 (p−1)/2 ≡ sp−1 ≡ 1 (mod p). This means that p|y2, thus\n2x2− 1 = x3 = 2x2 + 1. But it is easy to show that 2 t− 1 > 2t + 1 for all integer t > 3. A\ncontradiction.\nFinally, if a = 2, then the numbers y1 = 3 and y2 = 31 are primes, while y3 = 211− 1 is\ndivisible by 23; in this case we may choose k = 2 but not k = 3.\nRemark. The fact that 23 | 211− 1 can be shown along the lines in the solution, since 2 is a\nquadratic residue modulo x4 = 23.\n1",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr/RMM2013-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr2/RMM2013-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 4,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 4, 'combinatorics': 2}"
+    },
+    {
+      "id": "rmm-2013-p2",
+      "year": 2013,
+      "problem_number": 2,
+      "statement_en": "Does there exist a pair ( g, h) of functions g, h: R→ R such\nthat the only function f : R→ R satisfying f(g(x)) = g(f(x)) and f(h(x)) =\nh(f(x)) for all x∈ R is the identity function f(x)≡ x?\n(United Kingdom) Alexander Betts",
+      "solution_text_en": "Does there exist a pair ( g,h ) of functions g,h : R→ R such that the only function\nf : R→ R satisfying f(g(x)) = g(f(x)) and f(h(x)) = h(f(x)) for all x∈ R is the identity\nfunction f(x)≡x?\n(United Kingdom) Alexander Betts\nSolution 1. Such a tester pair exists. We may biject R with the closed unit interval, so it\nsuffices to find a tester pair for that instead. We give an explicit example: take some positive\nreal numbers α,β (which we will specify further later). Take\ng(x) = max(x−α, 0) and h(x) = min(x +β, 1).\nSay a set S⊆ [0, 1] is invariant if f(S)⊆ S for all functions f commuting with both g and h.\nNote that intersections and unions of invariant sets are invariant. Preimages of invariant sets\nunder g and h are also invariant; indeed, if S is invariant and, say, T =g−1(S), then g(f(T )) =\nf(g(T ))⊆f(S)⊆S, thus f(T )⊆T .\nWe claim that (if we choose α +β <1) the intervals [0,nα−mβ] are invariant where n\nand m are nonnegative integers with 0≤nα−mβ≤ 1. We prove this by induction on m +n.\nThe set{0} is invariant, as for anyf commuting withg we haveg(f(0)) =f(g(0)) =f(0),\nso f(0) is a fixed point of g. This gives that f(0) = 0, thus the induction base is established.\nSuppose now we have some m,n such that [0,n′α−m′β] is invariant whenever m′ +n′ <\nm +n. At least one of the numbers (n− 1)α−mβ andnα− (m− 1)β lies in (0, 1). Note however\nthat in the first case [0 ,nα−mβ] = g−1 ([0, (n− 1)α−mβ]), so [0,nα−mβ] is invariant. In\nthe second case [0,nα−mβ] =h−1 ([0,nα− (m− 1)β]), so again [0,nα−mβ] is invariant. This\ncompletes the induction.\nWe claim that if we choose α +β < 1, where 0 < α /∈ Q and β = 1/k for some integer\nk >1, then all intervals [0,δ ] are invariant for 0≤δ <1. This occurs, as by the previous claim,\nfor all nonnegative integers n we have [0, (nα mod 1)] is invariant. The set of nα mod 1 is dense\nin [0, 1], so in particular\n[0,δ ] =\n⋂\n(nα mod 1)>δ\n[0, (nα mod 1)]\nis invariant.\nA similar argument establishes that [ δ, 1] is invariant, so by intersecting these {δ} is in-\nvariant for 0 < δ < 1. Yet we also have {0},{1} both invariant, which proves f to be the\nidentity.\nSolution 2. Let us agree that a sequence x = (xn)n=1,2,... is cofinally non-constant if for every\nindex m there exists an index n>m such that xm̸=xn.\nBiject R with the set of cofinally non-constant sequences of 0’s and 1’s, and define g andh\nby\ng(ε, x) =\n{\nε, x if ε = 0\nx else and h(ε, x) =\n{\nε, x if ε = 1\nx else\nwhere ε, x denotes the sequence formed by appending x to the single-element sequence ε. Note\nthat g fixes precisely those sequences beginning with 0, and h fixes precisely those beginning\nwith 1.\nNow assume that f commutes with both f and g. To prove that f(x) = x for all x we\nshow that x and f(x) share the same first n terms, by induction on n.\nThe base casen = 1 is simple, as we have noticed above that the set of sequences beginning\nwith a 0 is precisely the set of g-fixed points, so is preserved by f, and similarly for the set of\nsequences starting with 1.\n2\nSuppose that f(x) and x agree for the first n terms, whatever x. Consider any sequence,\nand write it as x = ε, y. Without loss of generality, we may (and will) assume that ε = 0, so\nf(x) = 0, y′ by the base case. Yet then f(y) =f(h(x)) =h(f(x)) =h(0, y′) = y′. Consequently,\nf(x) = 0,f (y), so f(x) and x agree for the first n + 1 terms by the inductive hypothesis.\nThusf fixes all of cofinally non-constant sequences, and the conclusion follows.\nSolution 3. (Ilya Bogdanov) We will show that there exists a tester pair of bijective functionsg\nand h.\nFirst of all, let us find out when a pair of functions is a tester pair. Let g,h : R→ R be\narbitrary functions. We construct a directed graph Gg,h with R as the set of vertices, its edges\nbeing painted with two colors: for every vertex x∈ R, we introduce a red edge x→g(x) and a\nblue edge x→h(x).\nNow, assume that the functionf : R→ R satisfiesf(g(x)) =g(f(x)) andf(h(x)) =h(f(x))\nfor all x∈ R. This means exactly that if there exists an edge x→ y, then there also exists an\nedge f(x)→f(y) of the same color; that is — f is an endomorphism of Gg,h.\nThus, a pair ( g,h ) is a tester pair if and only if the graph Gg,h admits no nontrivial\nendomorphisms. Notice that each endomorphism maps a component into a component. Thus,\nto construct a tester pair, it suffices to construct a continuum of components with no nontrivial\nendomorphisms and no homomorphisms from one to another. It can be done in many ways;\nbelow we present one of them.\nLetg(x) =x + 1; the construction of h is more involved. For every x∈ [0, 1) we define the\nset Sx =x + Z; the sets Sx will be exactly the components of Gg,h. Now we will construct these\ncomponents.\nLet us fix any x∈ [0, 1); let x = 0.x1x2... be the binary representation of x. Define\nh(x−n) =x−n + 1 for everyn> 3. Next, let h(x− 3) =x,h(x) =x− 2,h(x− 2) =x− 1, and\nh(x− 1) =x + 1 (that would be a “marker” which fixes a point in our component).\nNext, for every i = 1, 2,... , we define\n(1) h(x + 3i− 2) =x + 3i− 1, h(x + 3i− 1) =x + 3i, and h(x + 3i) =x + 3i + 1, if xi = 0;\n(2) h(x + 3i− 2) =x + 3i, h(x + 3i) = 3i− 1, and h(x + 3i− 1) =x + 3i + 1, if xi = 1.\nClearly, h is a bijection mapping each Sx to itself. Now we claim that the graph Gg,h\nsatisfies the desired conditions.\nConsider any homomorphism fx : Sx→Sy (x and y may coincide). Since g is a bijection,\nconsideration of the red edges shows that fx(x +n) = x +n +k for a fixed real k. Next, there\nexists a blue edge ( x− 3)→ x, and the only blue edge of the form ( y +m− 3)→ (y +m) is\n(y− 3)→y; thus fx(x) =y, and k = 0.\nNext, if xi = 0 then there exists a blue edge ( x + 3i− 2)→ (x + 3i− 1); then the edge\n(y + 3i− 2)→ (y + 3i− 1) also should exist, so yi = 0. Analogously, if xi = 1 then there exists\na blue edge (x + 3i− 2)→ (x + 3i); then the edge ( y + 3i− 2)→ (y + 3i) also should exist, so\nyi = 1. We conclude that x =y, and fx is the identity mapping, as required.\nRemark. If g and h are injections, then the components of Gg,h are at most countable. So the\nset of possible pairwise non-isomorphic such components is continual; hence there is no bijective\ntester pair for a hyper-continual set instead of R.\n3",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr/RMM2013-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr2/RMM2013-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 11
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "color",
+        "component",
+        "edge",
+        "edges",
+        "graph",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 4, 'number_theory': 0, 'combinatorics': 11}"
+    },
+    {
+      "id": "rmm-2013-p3",
+      "year": 2013,
+      "problem_number": 3,
+      "statement_en": "Let ABCD be a quadrilateral inscribed in a circle ω. The\nlines AB and CD meet at P , the lines AD and BC meet at Q, and the\ndiagonals AC and BD meet at R. Let M be the midpoint of the segment\nP Q, and let K be the common point of the segment M R and the circle ω.\nProve that the circumcircle of the triangle KP Q and ω are tangent to one\nanother.\n(Russia) Medeubek Kungozhin\nEach of the three problems is worth 7 points.",
+      "solution_text_en": "Let ABCD be a quadrilateral inscribed in a circle ω. The lines AB and CD meet\nat P , the lines AD and BC meet at Q, and the diagonals AC and BD meet at R. Let M be\nthe midpoint of the segment PQ , and let K be the common point of the segment MR and the\ncircle ω. Prove that the circumcircle of the triangle KPQ and ω are tangent to one another.\n(Russia) Medeubek Kungozhin\nSolution. Let O be the centre of ω. Notice that the points P , Q, and R are the poles (with\nrespect to ω) of the lines QR, RP , and PQ , respectively. Hence we have OP⊥QR, OQ⊥RP ,\nand OR⊥ PQ , thus R is the orthocentre of the triangle OPQ . Now, if MR⊥ PQ , then the\npointsP andQ are the reflections of one another in the line MR =MO, and the triangle PQK\nis symmetrical with respect to this line. In this case the statement of the problem is trivial.\nOtherwise, letV be the foot of the perpendicular from O toMR, and letU be the common\npoint of the lines OV and PQ . Since U lies on the polar line of R and OU⊥ MR, we obtain\nthat U is the pole of MR. Therefore, the line UK is tangent to ω. Hence it is enough to prove\nthat UK 2 =UP·UQ, since this relation implies that UK is also tangent to the circle KPQ .\nFrom the rectangular triangleOKU , we getUK 2 =UV·UO. Let Ω be the circumcircle of\ntriangleOPQ , and letR′ be the reflection of its orthocentreR in the midpointM of the sidePQ .\nIt is well known that R′ is the point of Ω opposite to O, hence OR′ is the diameter of Ω. Finally,\nsince ∠OVR′ = 90◦, the point V also lies on Ω, hence UP·UQ =UV ·UO =UK 2, as required.\nA\nB\nCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\nD\nP Q\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\nM\nKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK\nU\nV\nO\nR′\nω\nΩ\nRemark. The statement of the problem is still true if K is the other common point of the\nline MR and ω.\n4",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr/RMM2013-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr2/RMM2013-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 8,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 8, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "rmm-2013-p4",
+      "year": 2013,
+      "problem_number": 4,
+      "statement_en": "Let P and P′ be two convex quadrilateral regions in the plane\n(regions contain their boundary). Let them intersect, with O a point in the\nintersection. Suppose that for every line l through O the segment l∩ P is\nstrictly longer than the segment l∩ P′. Is it possible that the ratio of the\narea of P′ to the area of P is greater than 1 .9?\n(Bulgaria)",
+      "solution_text_en": "Let P and P′ be two convex quadrilateral regions in the plane (regions contain\ntheir boundary). Let them intersect, with O a point in the intersection. Suppose that for every\nline l through O the segment l∩P is strictly longer than the segment l∩P′. Is it possible that\nthe ratio of the area of P′ to the area of P is greater than 1.9?\n(Bulgaria) Nikolai Beluhov\nSolution. The answer is in the affirmative: Given a positive ε <2, the ratio in question may\nindeed be greater than 2−ε.\nTo show this, consider a square ABCD centred at O, and let A′, B′, and C′ be the\nreflections of O in A, B, and C, respectively. Notice that, if l is a line through O, then the\nsegmentsl∩ABCD and l∩A′B′C′ have equal lengths, unless l is the line AC.\nNext, consider the pointsM andN on the segmentsB′A′ andB′C′, respectively, such that\nB′M/B′A′ = B′N/B′C′ = (1−ε/4)1/2. Finally, let P′ be the image of the convex quadrangle\nB′MON under the homothety of ratio (1 −ε/4)1/4 centred at O. Clearly, the quadrangles\nP≡ABCD andP′ satisfy the conditions in the statement, and the ratio of the area of P′ to the\narea of P is exactly 2−ε/2.\nA\nB\nC\nD\nA′\nB′\nC ′\nM N\nO\nRemarks. (1) With some care, one may also construct such example with a point O being\ninterior for both P and P′. In our example, it is enough to replace vertex O of P′ by a point on\nthe segment OD close enough to O. The details are left to the reader.\n(2) On the other hand, one may show that the ratio of areas of P′ andP cannot exceed 2\n(even if P and P′ are arbitrary convex polygons rather than quadrilaterals). Further on, we\ndenote by [S] the area of S.\nIn order to see that [P′]< 2[P ], let us fix some ray r fromO, and let rα be the ray from O\nmaking an (oriented) angle α withr. Denote by Xα andYα the points of P andP′, respectively,\nlying on rα farthest from O, and denote by f(α) and g(α) the lengths of the segments OXα\nand OYα, respectively. Then\n[P ] = 1\n2\n∫ 2π\n0\nf 2(α)dα = 1\n2\n∫ π\n0\n(\nf 2(α) +f 2(π +α)\n)\ndα,\nand similarly\n[P′] = 1\n2\n∫ π\n0\n(\ng2(α) +g2(π +α)\n)\ndα.\n1\nBut XαXπ+α > YαYπ+α yields 2 · 1\n2\n(\nf 2(α) +f 2(π +α)\n)\n= OX 2\nα + OX 2\nπ+α ≥ 1\n2XαX 2\nπ+α >\n1\n2YαY 2\nπ+α≥ 1\n2(OY 2\nα +OY 2\nπ+α) = 1\n2\n(\ng2(α) +g2(π +α)\n)\n. Integration then gives us 2[ P ]> [P′], as\nneeded.\nThis can also be proved via elementary methods. Actually, we will establish the following\nmore general fact.\nF act. Let P = A1A2A3A4 and P′ = B1B2B3B4 be two convex quadrangles in the plane, and\nlet O be one of their common points different from the vertices of P′. Denote by li the line OBi,\nand assume that for every i = 1, 2, 3, 4 the length of segment li∩P is greater than the length of\nsegmentli∩P′. Then [P′]< 2[P ].\nProof. One of (possibly degenerate) quadrilaterals OB1B2B3 andOB1B4B3 is convex; the same\nholds for OB2B3B4 and OB2B1B4. Without loss of generality, we may (and will) assume that\nthe quadrilaterals OB1B2B3 and OB2B3B4 are convex.\nDenote by Ci such a point that li∩P′ is the segment BiCi; let ai be the length of li∩P ,\nand let αi be the angle between li and li+1 (hereafter, we use the cyclic notation, thus l5 = l1\nand so on). Thus C2 andC3 belong to the segment B1B4,C1 lies on B3B4, and C4 lies on B1B2.\nAssume that there exists an index i such that the area of BiBi+1CiCi+1 is at least [P′]/2; then\nwe have\n[P′]\n2 ≤ [BiBi+1CiCi+1] = BiCi·Bi+1Ci+1· sinαi\n2 < aiai+1 sinαi\n2 ≤ [P ],\nas desired. Assume, to the contrary, that such index does not exist. Two cases are possible.\nB1\nB2B3\nB4\nC1\nC2 C3\nC4\nO\nB1\nB2\nB3\nB4\nC1\nC2 C3\nC4\nO\nL\nCase 1. Assume that the rays B1B2 andB4B3 do not intersect (see the left figure above). This\nmeans, in particular, that d(B1,B 3B4)≤d(B2,B 3B4).\nSince the ray B3O lies in the angle B1B3B4, we obtain d(B1,B 3C3)≤d(C4,B 3C3); hence\n[B3B4B1]≤ [B3B4C3C4]< [P′]/2. Similarly, [B1B2B4]≤ [B1B2C1C2]< [P′]/2. Thus,\n[B2B3C2C3] = [P′]− [B1B2C3]− [B3B4C2] = [P′]− B1C3\nB1B4\n· [B1B2B4]− B4C2\nB1B4\n· [B3B4B1]\n> [P′]\n(\n1− B1C3 +B4C2\n2B1B4\n)\n≥ [P′]\n2 .\nA contradiction.\nCase 2. Assume now that the rays B1B2 andB4B3 intersect at some point (see the right figure\nabove). Denote by L the common point of B2C1 and B3C4. We have [ B2C4C1]≥ [B2C4B3],\nhence [C1C4L]≥ [B2B3L]. Thus we have\n[P′]> [B1B2C1C2] + [B3B4C3C4] = [P′] + [LC1C2C3C4]− [B2B3L]\n≥ [P′] + [C1C4L]− [B2B3L]≥ [P′].\nA final contradiction.\n2",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr/RMM2013-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr2/RMM2013-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "rmm-2013-p5",
+      "year": 2013,
+      "problem_number": 5,
+      "statement_en": "Given an integer k≥ 2, set a1 = 1 and, for every integer\nn≥ 2, let an be the smallest x > a n−1 such that:\nx = 1 +\nn−1∑\ni=1\n⌊\nk\n√ x\nai\n⌋\n.\nProve that every prime occurs in the sequence a1, a2, . . ..\n(Bulgaria)",
+      "solution_text_en": "Given an integer k≥ 2, set a1 = 1 and, for every integer n≥ 2, let an be the\nsmallest x>a n−1 such that:\nx = 1 +\nn−1∑\ni=1\n⌊\nk\n√x\nai\n⌋\n.\nProve that every prime occurs in the sequence a1,a 2,... .\n(Bulgaria) Alexander Ivanov\nSolution 1. We prove that the an are precisely the kth-power-free positive integers, that is,\nthose divisible by the kth power of no prime. The conclusion then follows.\nLet B denote the set of all kth-power-free positive integers. We first show that, given a\npositive integer c,\n∑\nb∈B,b≤c\n⌊\nk\n√c\nb\n⌋\n=c.\nTo this end, notice that every positive integer has a unique representation as a product of an\nelement in B and a kth power. Consequently, the set of all positive integers less than or equal\nto c splits into\nCb ={x: x∈ Z>0, x≤c, and x/b is a kth power}, b ∈B, b≤c.\nClearly,|Cb| =\n⌊ k\n√\nc/b\n⌋\n, whence the desired equality.\nFinally, enumerate B according to the natural order: 1 = b1 < b2 <··· < bn <··· . We\nprove by induction on n that an = bn. Clearly, a1 = b1 = 1, so let n≥ 2 and assume am = bm\nfor all indices m<n . Since bn>b n−1 =an−1 and\nbn =\nn∑\ni=1\n⌊\nk\n√\nbn\nbi\n⌋\n=\nn−1∑\ni=1\n⌊\nk\n√\nbn\nbi\n⌋\n+ 1 =\nn−1∑\ni=1\n⌊\nk\n√\nbn\nai\n⌋\n+ 1,\nthe definition of an forces an≤bn. Were an<b n, a contradiction would follow:\nan =\nn−1∑\ni=1\n⌊\nk\n√an\nbi\n⌋\n=\nn−1∑\ni=1\n⌊\nk\n√an\nai\n⌋\n=an− 1.\nConsequently,an =bn. This completes the proof.\nSolution 2. (Ilya Bogdanov) For every n = 1, 2, 3,... , introduce the function\nfn(x) =x− 1−\nn−1∑\ni=1\n⌊\nk\n√x\nai\n⌋\n.\nDenote also by gn(x) the number of the indices i≤ n such that x/ai is the kth power of an\ninteger. Then fn(x+1)−fn(x) = 1−gn(x) for every integerx≥an; hencefn(x)+1 ≥fn(x+1).\nMoreover, fn(an−1) =−1 (since fn−1(an−1) = 0). Now a straightforward induction shows that\nfn(x)< 0 for all integers x∈ [an−1,an).\nNext, if gn(x) > 0 then fn(x)≤ fn(x− 1); this means that such an x cannot equal an.\nThusaj/ai is never the kth power of an integer if j >i.\nNow we are prepared to prove by induction on n that a1,a 2,...,a n are exactly all kth-\npower-free integers in [1,an]. The base case n = 1 is trivial.\n3\nAssume that all the kth-power-free integers on [1,an] are exactly a1,...,a n. Let b be the\nleast integer larger than an such that gn(b) = 0. We claim that: (1) b =an+1; and (2) b is the\nleast kth-power-free number greater than an.\nTo prove (1), notice first that all the numbers of the form aj/ai with 1≤ i < j≤ n are\nnot kth powers of rational numbers since ai and aj are kth-power-free. This means that for\nevery integer x∈ (an,b ) there exists exactly one index i≤ n such that x/ai is the kth power\nof an integer (certainly, x is not kth-power-free). Hence fn+1(x) = fn+1(x− 1) for each such x,\nso fn+1(b− 1) = fn+1(an) =−1. Next, since b/ai is not the kth power of an integer, we have\nfn+1(b) =fn+1(b− 1) + 1 = 0, thusb =an+1. This establishes (1).\nFinally, since all integers in ( an,b ) are not kth-power-free, we are left to prove that b is\nkth-power-free to establish (2). Otherwise, let y >1 be the greatest integer such that yk|b; then\nb/yk iskth-power-free and henceb/yk =ai for somei≤n. So b/ai is thekth power of an integer,\nwhich contradicts the definition of b.\nThusa1,a 2,... are exactly all kth-power-free positive integers; consequently all primes are\ncontained in this sequence.\n4",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr/RMM2013-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr2/RMM2013-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 2,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 2, 'combinatorics': 2}"
+    },
+    {
+      "id": "rmm-2013-p6",
+      "year": 2013,
+      "problem_number": 6,
+      "statement_en": "2n distinct tokens are placed at the vertices of a regular 2 n-\ngon, with one token placed at each vertex. A move consists of choosing an\nedge of the 2 n-gon and interchanging the two tokens at the endpoints of\nthat edge. Suppose that after a finite number of moves, every pair of tokens\nhave been interchanged exactly once. Prove that some edge has never been\nchosen.\n(Russia) Alexander Gribalko\nEach of the three problems is worth 7 points.",
+      "solution_text_en": "2n distinct tokens are placed at the vertices of a regular 2 n-gon, with one token\nplaced at each vertex. A move consists of choosing an edge of the 2 n-gon and interchanging the\ntwo tokens at the endpoints of that edge. Suppose that after a finite number of moves, every pair\nof tokens have been interchanged exactly once. Prove that some edge has never been chosen.\n(Russia) Alexander Gribalko\nSolution. Step 1. Enumerate all the tokens in the initial arrangement in clockwise circular\norder; also enumerate the vertices of the 2n-gon accordingly. Consider any three tokensi<j <k .\nAt each moment, their cyclic order may be either i,j,k or i,k,j , counted clockwise. This order\nchanges exactly when two of these three tokens have been switched. Hence the order has been\nreversed thrice, and in the final arrangement token k stands on the arc passing clockwise from\ntoken i to token j. Thus, at the end, token i + 1 is a counter-clockwise neighbor of token i\nfor all i = 1, 2,..., 2n− 1, so the tokens in the final arrangement are numbered successively in\ncounter-clockwise circular order.\nThis means that the final arrangement of tokens can be obtained from the initial one by\nreflection in some line l.\nStep 2. Notice that each token was involved into 2n−1 switchings, so its initial and final vertices\nhave different parity. Hencel passes through the midpoints of two opposite sides of a 2n-gon; we\nmay assume that these are the sides a andb connecting 2n with 1 and n withn + 1, respectively.\nDuring the process, each token x has crossed l at least once; thus one of its switchings has\nbeen made at edge a or at edge b. Assume that some two its switchings were performed at a\nand at b; we may (and will) assume that the one at a was earlier, and x≤ n. Then the total\nmovement of tokenx consisted at least of: (i) moving from vertex x toa and crossing l alonga;\n(ii) moving from a to b and crossing l along b; (iii) coming to vertex 2 n + 1−x. This tales at\nleast x +n + (n−x) = 2n switchings, which is impossible.\nThus, each token had a switching at exactly one of the edges a and b.\nStep 3. Finally, let us show that either each token has been switched at a, or each token has\nbeen switched atb (then the other edge has never been used, as desired). To the contrary, assume\nthat there were switchings at both a and atb. Consider the first such switchings, and let x andy\nbe the tokens which were moved clockwise during these switchings and crossed l at a and b,\nrespectively. By Step 2, x̸=y. Then tokens x and y initially were on opposite sides of l.\nNow consider the switching of tokens x and y; there was exactly one such switching, and\nwe assume that it has been made on the same side of l as vertex y. Then this switching has\nbeen made after token x had traced a. From this point on, token x is on the clockwise arc from\ntokeny to b, and it has no way to leave out from this arc. But this is impossible, since token y\nshould trace b after that moment. A contradiction.\nRemark. The same statement for (2n−1)-gon is also valid. The problem is stated for a polygon\nwith an even number of sides only to avoid case consideration.\nLet us outline the solution in the case of a (2 n− 1)-gon. We prove the existence of line l\nas in Step 1. This line passes through some vertex x, and through the midpoint of the opposite\nedgea. Then each token either passes through x, or crosses l alonga (but not both; this can be\nshown as in Step 2). Finally, since a token is involved into an even number of moves, it passes\nthrough x but not through a, and a is never used.\n5",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2013/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr/RMM2013-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/pr2/RMM2013-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2013/_dwl/Solutions2013-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2013/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 3,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 6
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "edge",
+        "edges",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 3, 'algebra': 0, 'number_theory': 0, 'combinatorics': 6}"
+    }
+  ]
+}

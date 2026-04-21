@@ -1,0 +1,140 @@
+{
+  "id": "imo-2013-c6-flight-distance-layers",
+  "title": "Города на расстояниях три и четыре, IMO Shortlist 2013 C6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "distance_layers",
+      "shortest_paths"
+    ],
+    "methods": [
+      "extremal_choice",
+      "layer_counting"
+    ],
+    "transformations": [
+      "cities_to_graph"
+    ],
+    "goal": [
+      "bound_sphere_size"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "graph_distance"
+    ],
+    "keywords": [
+      "imo_2013_c6",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В стране некоторые пары городов соединены прямыми двусторонними рейсами, и из любого города можно добраться в любой другой. Расстояние между городами — минимальное число рейсов. Известно, что от каждого города ровно на расстоянии 3 находится не более 100 городов. Докажите, что не существует города, от которого на расстоянии 4 находится более 2550 городов.",
+        "source_id": "src-imo-2013-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это задача о связном неориентированном графе и слоях расстояний от вершины.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-distance-layers",
+      "title": "Слои расстояний",
+      "text": "Фиксируется вершина и рассматриваются множества городов на расстояниях 1,2,3,4.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-private-paths",
+      "title": "Частные кратчайшие пути",
+      "text": "Для многих вершин четвёртого слоя выбираются кратчайшие пути, которые дают слишком много различных вершин третьего слоя.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Пусть от города \\(x\\) слишком много городов на расстоянии 4. Разобьём их по первому шагу кратчайшего пути из \\(x\\). В большой группе выбираем соседа \\(a\\) и для каждого соответствующего города \\(d_y\\) кратчайший путь \\(x-y-b_y-c_y-d_y\\). Официальное решение показывает, что для разных \\(y\\) вершины \\(b_y\\) и \\(c_y\\) не совпадают: иначе возник бы более короткий или запрещённый альтернативный путь к некоторому \\(d_y\\). Кроме того, для каждого \\(y\\) хотя бы одна из вершин \\(b_y,c_y\\) лежит на расстоянии 3 от \\(a\\). Так получается больше 100 городов на расстоянии 3 от \\(a\\), противоречие.",
+      "idea_ids": [
+        "idea-distance-layers",
+        "idea-private-paths"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2013 C6, Russia; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice",
+        "layer_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2013-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

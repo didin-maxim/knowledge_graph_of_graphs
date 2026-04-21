@@ -1,0 +1,143 @@
+{
+  "id": "imo-2010-c5-bad-company-tournament",
+  "title": "Теннисный турнир без плохой четвёрки, IMO Shortlist 2010 C5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "outdegree",
+      "indegree"
+    ],
+    "methods": [
+      "induction",
+      "degree_sum",
+      "forbidden_directed_cycle"
+    ],
+    "transformations": [
+      "tennis_results_to_tournament"
+    ],
+    "goal": [
+      "degree_inequality"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "score_difference"
+    ],
+    "keywords": [
+      "imo_2010_c5",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В турнире \\(n\\ge4\\) игроков каждая пара сыграла ровно один матч без ничьих. Плохой называется четвёрка игроков, где один проиграл трём остальным, а эти трое между собой образуют цикл побед. Если плохих четвёрок нет, докажите, что \\(\\sum_i (w_i-l_i)^3\\ge0\\), где \\(w_i,l_i\\) — числа побед и поражений игрока.",
+        "source_id": "src-imo-2010-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это утверждение о турнире как ориентированном полном графе: плохая четвёрка запрещает локальную конфигурацию, а величина \\(w_i-l_i\\) есть разность исходящей и входящей степеней вершины.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-source-reduction",
+      "title": "Сведение по вершине-источнику",
+      "text": "Официальное решение рассматривает структуру турнира и удаляет/выделяет вершины так, чтобы сохранить запрет плохой четвёрки.",
+      "tags": [
+        "tournaments"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-degree-sum",
+      "title": "Сумма кубов степенных разностей",
+      "text": "Неравенство доказывается через анализ исходящих и входящих степеней в ориентированном полном графе.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Переводим турнир в ориентированный полный граф. Запрет плохой четвёрки означает: если вершина проигрывает трём вершинам, то эти три не могут образовывать ориентированный цикл. Официальное решение доказывает утверждение индукцией по числу вершин, разбивая вершины относительно выбранного игрока на победителей и проигравших и используя, что внутри соответствующих частей сохраняется тот же запрет. При раскрытии суммы кубов \\((w_i-l_i)^3\\) вклад между частями контролируется степенями, а запрещённый цикл в тройке даёт нужный знак. В итоге сумма неотрицательна.",
+      "idea_ids": [
+        "idea-source-reduction",
+        "idea-degree-sum"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2010 C5, South Korea; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "tournaments",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "degree_sum",
+        "forbidden_directed_cycle"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2010-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "id": "imo-2005-c8-noncrossing-diagonals-crossings",
+  "title": "Пересечения двух триангуляционных наборов диагоналей, IMO Shortlist 2005 C8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "convex_polygon",
+      "noncrossing_diagonals",
+      "triangulation",
+      "crossing_number"
+    ],
+    "methods": [
+      "ear_decomposition",
+      "double_counting",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "diagonal_sets_to_plane_graphs"
+    ],
+    "goal": [
+      "maximize_bichromatic_crossings"
+    ],
+    "auxiliary_graph_type": [
+      "outerplanar_graph"
+    ],
+    "invariants": [
+      "triangulation_size"
+    ],
+    "standard_idea_ids": [
+      "double_counting"
+    ],
+    "keywords": [
+      "imo-2005-c8-noncrossing-diagonals-crossings",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "В выпуклом n-угольнике некоторые n-3 диагонали окрашены в чёрный цвет, а другие n-3 диагонали — в красный. Диагонали одного цвета не пересекаются строго внутри многоугольника, хотя могут иметь общую вершину. Найти максимальное число внутренних точек пересечения диагоналей разных цветов.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "source_id": "src-secondary-imo-2005-shortlist",
+        "title": "Условие"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Каждый цвет задаёт максимальное непересекающееся множество диагоналей, то есть триангуляцию. Задача ищет максимальное число пересечений между двумя плоскими диагональными графами на одних и тех же вершинах.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pair-ears",
+      "title": "Попарное снятие ушных диагоналей",
+      "text": "В любой триангуляции есть две диагонали, отсекающие треугольники; их последовательно объединяют в пары, уменьшая оставшийся многоугольник.",
+      "tags": [
+        "planar_graphs"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-crossing-sum-bound",
+      "title": "Оценка суммы пересечений по парам",
+      "text": "Для двух зелёных диагоналей оценивается сумма чисел красных пересечений через размер части многоугольника между ними.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-reviewed-web",
+      "title": "Сжатое решение после web review",
+      "text": "Ответ: ceil(3(n-3)^2/4). Пусть C_d — число пересечений красных диагоналей с зелёной диагональю d. Для двух зелёных диагоналей d_i,d_j, между которыми лежит часть многоугольника с m вершинами, красных диагоналей, пересекающих обе, не больше n-m-1, а остальные relevant диагонали пересекают не более одной из них; отсюда C_{d_i}+C_{d_j} <= 2n-m-4. Затем зелёные диагонали упорядочивают попарно: сначала две ушные диагонали, отсекающие два треугольника, затем две такие же в оставшемся (n-2)-угольнике, и так далее. Для k-й пары соответствующий m не меньше n-2k, поэтому сумма по парам даёт верхнюю оценку ceil(3(n-3)^2/4). Конструкция из официального решения берёт две веерные семьи диагоналей одного цвета и две веерные семьи другого цвета около четырёх подходящих вершин; она достигает этой оценки.",
+      "idea_ids": [
+        "idea-pair-ears",
+        "idea-crossing-sum-bound"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 13,
+    "comment": "Ранний IMO/IMO Shortlist; добавлено после отдельной проверки AoPS, Kalva и/или сборника решений.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "double_counting",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "ear_decomposition",
+        "double_counting",
+        "extremal_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-2005-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imomath-compendium-2005-c8-solution",
+      "role": "published_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

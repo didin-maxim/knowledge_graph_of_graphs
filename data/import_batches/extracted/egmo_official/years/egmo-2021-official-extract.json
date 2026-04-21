@@ -1,0 +1,344 @@
+{
+  "year": 2021,
+  "egmo_number": 10,
+  "official_page_url": "https://www.egmo.org/egmos/egmo10/",
+  "problem_count_declared": 6,
+  "problem_count_extracted": 6,
+  "papers": [
+    {
+      "label": "English",
+      "url": "https://www.egmo.org/egmos/egmo10/paper-day1-English.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-1.pdf",
+      "ok": true,
+      "error": null
+    },
+    {
+      "label": "English",
+      "url": "https://www.egmo.org/egmos/egmo10/paper-day2-English.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-2.pdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "solution_files": [
+    {
+      "url": "https://www.egmo.org/egmos/egmo10/solutions.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/solutions-1.pdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "problems": [
+    {
+      "id": "egmo-2021-p1",
+      "year": 2021,
+      "egmo_number": 10,
+      "problem_number": 1,
+      "statement_en": "The number 2021 is fantabulous. For any positive integer m, if any element of the set\n{m, 2m + 1, 3m} is fantabulous, then all the elements are fantabulous. Does it follow that the number\n20212021 is fantabulous?",
+      "solution_text_en": "According to Anna, the number 2021 is fantabulous. She states that if any element of the\nset {m, 2m + 1, 3m} is fantabulous for a positive integer m, then they are all fantabulous. Is the number\n20212021fantabulous?\n(Australia, Angelo Di Pasquale)\nAnswer:  Yes\n\nSolution 1.\n     Consider the sequence of positive integers m, 3m, 6m + 1, 12m + 3, 4m + 1, 2m. Since each number\nin the sequence is fantabulous if and only if the next one is, we deduce that m is fantabulous if and only\nif 2m is fantabulous.\n     Combined with the fact that m is fantabulous if and only if 2m + 1 is fantabulous, this implies that\nm > 1 is fantabulous if and only if f(m)= [\nm\n2] is fantabulous. We can apply f sufficiently many times\nto any positive integer n to conclude that n is fantabulous if and only if 1 is fantabulous. Therefore, the\nfact that 2021 is fantabulous implies that 1 is fantabulous, which i n turn implies that 20212021 is\nfantabulous.\n\nSolution 2.\n     Let m > 1 be a fantabulous number. Note that at least one of the following four cases must hold.\n\n∎ Case 1. The number m is odd;\nWe have m = 2a + 1 for some positive integer a, so a < m is also fantabulous.\n\n∎ Case 2. The number m is a multiple of 3;\nWe have m = 3a for some positive integer a, so a < m is also fantabulous.\n\n∎ Case 3. The number m is 4 modulo 6;\nWe have m = 6a - 2 for some positive integer a. We have the sequence of fantabulous\nnumbers\n(6a - 2)→ (12a - 3)→ (4a - 1),\nso 4a - 1 < m is also fantabulous.\n\n∎ Case 4. The number m is 2 modulo 6;\nWe have m = 6a + 2 for some positive integer a. We have the sequence of fantabulous\nnumbers\n(6a + 2)→ (12a + 5)→ (36a + 15)→ (18a + 7)→ (9a + 3)→ (3a + 1),\nso 3a + 1 < m is also fantabulous.\n\n     In all cases, we see that there is another fantabulous number less than m. Since 2021 is fantabulous,\nit follows that 1 is fantabulous.\n     Observe that a number m is not fantabulous if and only if all of the elements of the set\n{m, 2m + 1, 3m} are not fantabulous.  So, the argument above shows that if there exists a positive\ninteger that is not fantabulous, then 1 would not be fantabulous either. This is a contradiction, so all\npositive integers are fantabulous and, in particular, 20212021 is fantabulous.\n\nSolution 3.\n     The following transformations show that a is fantabulous if and only if 3a, 3a + 1 or 3a + 2 are\nfantabulous.\na → 3a\na → 2a + 1 → 6a + 3 → 3a + 1\na → 2a + 1 → 4a + 3 → 12a + 9 → 36a + 27 → 18a + 13 → 9a + 6 → 3a + 2\nThis implies that a >= 3 is fantabulous if and only if f(a)= [\na\n3]  is fantabulous.  We can use this to\ndeduce that 1 and 2 are fantabulous from the fact that 2021 is fantabulous in the following way:\n2021 → 673 → 224 → 74 → 24 → 8 → 2 → 5 → 1\n     We can apply f sufficiently many times to any positive integer n to arrive at the number 1 or 2. It\nfollows that every positive integer is fantabulous, so 20212021 is fantabulous.",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo10/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo10/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.64,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 2, 'combinatorics': 2}; manual_override=not_combinatorics",
+      "statement_preview": "The number 2021 is fantabulous. For any positive integer m, if any element of the set {m, 2m + 1, 3m} is fantabulous, then all the elements are fantabulous. Does it follow that the number 20212021 is fantabulous?"
+    },
+    {
+      "id": "egmo-2021-p2",
+      "year": 2021,
+      "egmo_number": 10,
+      "problem_number": 2,
+      "statement_en": "Find all functions f : Q → Q such that the equation\nf (xf (x) + y) = f (y) + x2\nholds for all rational numbers x and y.\nHere, Q denotes the set of rational numbers.",
+      "solution_text_en": "Find all functions f: Q → Q such that the equation\n\nf(xf(x)+  y)=  f(y)+  x2\nholds for all rational numbers x and y.\nHere, Q denotes the set of rational numbers.\n(Slovakia, Patrik Bak)\n\nAnswer:  f(x)= x and f(x)= -x.\n\nSolution.   Denote the equation from the statement by (1). Let xf(x)= A and x2 = B.  The equation\n(1) is of the form\nf(A + y)= f(y)+ B\nAlso, if we put y → -A + y, we have f(A - A + y)= f(-A + y)+ B. Therefore\nf(-A + y)= f(y)- B\nWe can easily show that for any integer n we even have\nf(nA +  y) =  f(y) +  nB                                                              (2)\nIndeed, it’s trivially true for n = 0 and if this holds true for some integer n, then\nf((n + 1)A + y)= f(A + y + nA)= f(ny + A)+ B = f(y)+ nB + B = f(y)+ (n + 1)B\nand\nf((n - 1)A + y) = f(-A + nA + y)= f(nA + y)- B = f(y)+  nB - B = f(y)+ (n - 1)B.\nSo, equation (2) follows from the induction on n.\nNow we can say that for any integer k it holds\nf(nxf(x)+ y)= f(y)+ nx2                                                            (3)\nIf y is given, then f(y)+ nx2 can be any rational number, since nx2 can be any rational number. If it\nis supposed to be\np\nq, where q ≠ 0, then we may take n = pq, and x =\n1\nq. Therefore f is surjective on Q.\nSo there’s a rational number c such that f(c)= 0. Be putting x = c into (1) we immediately get c = 0,\ni.e. f(0) =  0. Therefore, f(x)= 0 if and only if x = 0.\nFor any integer n and for any rational x, y it holds\nf(n2xf(x)+ y)= f(y)+ n2x2 = f(y)+ (nx)2 = f(nxf(nx)+ y)                    (4)\nAfter taking y = -nxf(nx) in (4), the right-hand side becomes 0, therefore\nn2xf(x)- nxf(nx)= 0.\nThis simplifies into nf(x)= f(nx) for x ≠ 0, but it also holds for x = 0. Therefore, for any rational\nnumber x =\np\nq we have,\nf(x)= f (p\nq) = f (p ∙ 1\nq)= p ∙ f (1\np)= p ∙\nf (q ∙ 1\nq)\nq = p\nq ∙ f(1)= xf(1)\nSo, we have f(x)= kx, for some rational number k. Let’s put this answer in (1) and we get\nk(xkx + y)= ky + x2, thus k2 = 1. Therefore f(x)= x and f(x)= -x are solutions.",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo10/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo10/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 0, 'combinatorics': 1}",
+      "statement_preview": "Find all functions f : Q → Q such that the equation f (xf (x) + y) = f (y) + x2 holds for all rational numbers x and y. Here, Q denotes the set of rational numbers."
+    },
+    {
+      "id": "egmo-2021-p3",
+      "year": 2021,
+      "egmo_number": 10,
+      "problem_number": 3,
+      "statement_en": "Let ABC be a triangle with an obtuse angle at A. Let E and F be the intersections\nof the external bisector of angle A with the altitudes of ABC through B and C respectively. Let\nM and N be the points on the segments EC and F B respectively such that ∠EM A = ∠BCA and\n∠AN F = ∠ABC . Prove that the points E, F , N , M lie on a circle.",
+      "solution_text_en": "Let ABC be a triangle with an obtuse angle at A. Let E and F be the intersections of the\nexternal bisector of angle A with the altitudes of ABC through B and C respectively. Let M and N be\nthe points on the segments EC and FB respectively such that ∠EMA = ∠BCA and ∠ANF = ∠ABC.\nProve that the points E, F, N, M lie on a circle.\n(Ukraine, Anton Trygub)\nSolution 1.\n     The first solution is based on the main Lemma. We present this Lemma with two different proofs.\n     Lemma : Let ABC be an acute triangle with AB = BC. Let P be any point on AC. Line passing through\nP perpendicular to AB, intersects ray BC in point T. If the line AT intersects the circumscribed circle\nof the triangle ABC the second time at point K, then ∠AKP = ∠ABP.\n\n     Proof 1:\n     Let H be the orthocenter of the triangle ABP. Then\n∠BHP =  1800 - ∠BAC =  1800 - ∠BCP.\nSo BHPC is cyclic. Then we get\nTK ∙ TA = TC ∙ TB = TP ∙ TH.\nSo, AHPK is also cyclic. But then\n∠AKP = 1800 - ∠AHP = ∠ABP.\n\n     Proof 2:\n     Consider the symmetric points B′ and C′ of B and C,\nrespectively, with respect to the line PT. It is clear that\nTC′ ∙ TB′ = TC ∙ TB = TK ∙ TA.\nSo B′C′KA is cyclic. Also, because of the symmetry we have\n∠PC′B′ = ∠PCB = ∠PAB.\nSo B′C′PA is also cyclic. Therefore, the points B′, C′, K, P and A\nall lie on the common circle. Because of this fact and because of\nthe symmetry again we have\n∠PKA = ∠PB′A = ∠PBA.\nSo, lemma is proved and now return to the problem.\n     Let H be intersection point of the altitudes at B and C. Denote by M′ and N′ the intersection points\nof the circumcircle of the triangle HEF with the segments EC and FB, respectively. We are going to\nshow that M = M′ and N = N′ and it will prove the points E, F, N, M lie on a common circle.\n      Of course, A is an orthocenter of the triangle BCH.\nTherefore ∠BHA = ∠BCA, ∠CHA = ∠CBA and\n∠HBA = ∠HCA. Thus\n∠HEF = ∠HBA+ ∠EAB = ∠HCA + ∠FAC = ∠HFE.\nSo, the triangle HEF is isosceles, HE = HF.\n     By using lemma, we get\n∠AM′E = ∠AHE = ∠ACB,\nand\n∠AN′F = ∠AHF = ∠ABC.\nTherefore M = M′ and N = N′ and we are done.\n\nSolution 2.\n     Let X, Y be projections of B on AC, and C on AB, respectively. Let ω be circumcircle of BXYC. Let Z\nbe intersection of EC and ω and D be projection of E on BA.\n∠MAC = ∠AME - ∠MCA = ∠XCB - ∠XCE = ∠ZCB = ∠ZXB\nSince BXYC is cyclic ∠ACY = ∠XBA, and since\nDEXA is cyclic\n∠EXD = ∠EAD = ∠FAC.\nTherefore, we get that the quadrangles BZXD and\nCMAF are similar. Hence ∠FMC = ∠DZB. Since\nZEDB is cyclic,\n∠DZB = ∠DEB = ∠XAB.\nThus ∠FMC = ∠XAB. Similarly, ∠ENB = ∠YAC.\nWe get that ∠FMC = ∠ENB and it implies that\nthe points E, F, N, M lie on a circle.",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo10/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo10/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 6,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 6, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}",
+      "statement_preview": "Let ABC be a triangle with an obtuse angle at A. Let E and F be the intersections of the external bisector of angle A with the altitudes of ABC through B and C respectively. Let M and N be the points on the segments EC a"
+    },
+    {
+      "id": "egmo-2021-p4",
+      "year": 2021,
+      "egmo_number": 10,
+      "problem_number": 4,
+      "statement_en": "LetABC be a triangle with incentreI and letD be an arbitrary point on the sideBC.\nLet the line throughD perpendicular toBI intersectCI atE. Let the line throughD perpendicular\nto CI intersectBI at F. Prove that the reflection ofA in the lineEF lies on the lineBC.",
+      "solution_text_en": "Let ABC be a triangle with incentre Iand let D be an arbitrary point on the side BC. Let the\nline through D perpendicular to BI intersect CI at E. Let the line through D perpendicular to CI\nintersect BI at F. Prove that the reflection of A  in  the line EF lies on the line  BC.\n(Australia, Sampson Wong)\nSolution 1.\n     Let us consider the case when I lies inside of triangle EFD. For the\nother cases the proof is almost the same only with the slight difference.\n     We are going to prove that the intersection point of the circumcircles\nof AEC and AFB (denote it by T) lies on the line BC and this point is the\nsymmetric point of A with respect to EF. First of all we prove that AEIF\nis cyclic, which implies that T lies on the line BC, because\n∠ATB + ∠ATC = ∠AFB+ ∠AEC = ∠AFI + ∠AEI = 1800.\n     Denote by N an intersection point of the lines DF and AC. Of course N\nis the symmetric point with respect to CI. Thus, ∠INA = ∠IDB. Also,\n∠IFD = ∠NDC - ∠IBC = 900 - ∠ICB - ∠IBC = ∠IAN.\nSo, we get that A, I, N and F lie on a common circle. Therefore,  we have\n∠AFI = ∠INA = ∠IDB. Analogously, ∠AEI = ∠IDC and we have\n∠AFI + ∠AEI = ∠IDB+ ∠IDC\nSo ∠AFI + ∠AEI = 1800, thus AEIF is cyclic and T lies on the line BC.\n\n     Because EC bisects the angle ACB and AETC is cyclic we get EA = ET.\nBecause of the similar reasons we have FA = FT. Therefore T is the\nsymmetric point of A with respect to the line EF and it lies on the line\nBC.\n\nSolution 2.\n     Like to the first solution, consider the case when I lies inside of triangle EFD. we need to prove that\nAEIF is cyclic. The finish of the proof is the same.\n     first note that △ FDB~ △ AIB, because ∠FBD = ∠ABI, and\n∠BFD = ∠FDC - ∠IBC = 900 - ∠ICD - ∠IBC = ∠IAB.\nBecause of the similarity we have\nAB\nAF =\nBI\nBD. This equality of the length ratios\nwith ∠IBD = ∠ABF implies that △ ABF~ △ IBD. Therefore, we have\n∠IDB = ∠AFB. Analogously, we can get ∠IDC = ∠AEC, thus\n∠AFI + ∠AEI = ∠IDB+ ∠IDC = 1800.\nSo, AEIF is cyclic and we are done.\n\nProblems 5. A plane has a special point O called the origin. Let P be a set of  2021 points in the plane,\nsuch that\n(i) no three points in P lie on a line and\n(ii) no two points in P lie on a line through the origin.\nA triangle with vertices in P is fat, if O is strictly inside the triangle. Find the maximum number of fat\ntriangles.\n(Austria, Veronika Schreitter)\n\nAnswer: 2021∙ 505 ∙ 337\nSolution\n     We will count minimal number of triangles that are not fat. Let F set of fat triangles, and S set of\ntriangles that are not fat. If triangle XYZ  in  S, we call X and Z good vertices if OY is located between\nOX and OZ. For A  in  P let SA ⊆ S be set of triangles in S for which A is one of the good vertex.\n     It is easy to see that\n2|S| = ∑ |SA|\nA in P\n                                                                            (1)\n\n     For A  in  P, let RA ⊂ P and LA ⊂ P be parts of P\\{A} divided by AO. Suppose for AXY  in  S vertex A is\ngood, then clearly X, Y  in  RA or X, Y  in  LA. On the other hand, if X, Y  in  RA or X, Y  in  LA then clearly\nAXY  in  S and A is its good vertex. Therefore,\n|SA| = (|RA|\n2 )+ (|LA|\n2 )                                                                    (2)\nIt is easy to show following identity:\nx(x - 1)\n2 + y(y - 1)\n2 - 2 ∙\nx + y\n2 (x + y\n2 - 1)\n2 = (x - y)2\n4                                      (3)\nBy using (2) and (3) we get\n|SA| >= 2 ∙ (\n|RA| + |LA|\n2\n2 ) = 2 ∙ (1010\n2 )= 1010∙ 1009                                        (4)\nand the equality holds when |RA| = |LA| = 1010. Hence\n|S| =\n∑ |SA|A in P\n2 >= 2021∙ 1010∙ 1009\n2 = 2021∙ 505 ∙ 1009.                                   (5)\nTherefore,\n|F| = (2021\n3 )- |S| <= 2021∙ 1010∙ 673 - 2021∙ 505 ∙ 1009= 2021∙ 505 ∙ 337.            (6)\n     For configuration of points on regular 2021-gon which is centered at O, inequalities in (4), (5), (6)\nbecome equalities. Hence 2021∙ 505 ∙ 337 is indeed the answer.\n\nProblems 6. Does there exist a nonnegative integer a for which the equation\n\n⌊m\n1 ⌋ + ⌊m\n2 ⌋ + ⌊m\n3 ⌋+ ⋯ + ⌊m\nm⌋ = n2 + a\n\nhas more than one million different solutions (m, n)  where  m  and n  are   positive integers?\n(The expression ⌊x⌋ denotes the integer part (or floor) of the real number x. Thus ⌊√2⌋ = 1, ⌊π⌋ = ⌊\n22\n7 ⌋ =\n3, ⌊42⌋ = 42 and ⌊0⌋ = 0)\n(Austria, Veronika Schreitter)\n\nAnswer:  Yes.\n\nSolution.\n     Denote the equation from the statement by (1). The left hand side of (1) depends only on m, and\nwill throughout be denoted by L(m). Fix an integer q > 107 and note that for m = q3\nL(q3)= ∑ [q3\nk ]\nq3\nk=1\n<= ∑ q3\nk\nq3\nk=1\n<= q3 ∙ ∑ 1\nk\nq3\nk=1\n<= q3 ∙ q = q4.                                         (2)\nIndeed, the first inequality results from [x] <= x. The second inequality can be seen (for instance)  as\nfollows. We divide the terms in the sum ∑ 1\nk\nq3\nk=1  into several groups: For j >= 0, the j-th group contains\nthe 2j consecutive terms\n1\n2j , ... ,\n1\n2j+1-1. Since every term in the j-th group is bounded by\n1\n2j , the overall\ncontribution of the j-th group to the sum is at most 1. Since the first q groups together would contain\n2q - 1 > q3 terms, the number of groups does not exceed q, and hence the value of the sum under\nconsideration is indeed bounded by q.\n     Call an integer m special, if it sati sfies 1 <= L(m)<= q4. Denote by g(m)>= 1 the largest integer\nwhose square is bounded by L(m); in other words g2(m)<= L(m)< (g(m)+  1)2. Note that g(m)<=\nq2 for all special m, which implies\n0 <= L(m)- g2(m)< (g(m)+ 1)2 - g2(m)= 2g(m)+ 1 <= 2q2 + 1.                      (3)\n     Finally, we do some counting. Inequality (2) and the monotonicity of L(m) imply that there exist\nat least q3 special integers. Because of (3), every special integer m has 0 <= L(m)- g2(m)<= 2q2 + 1.\nBy averaging, at least\nq3\n2q2+2 > 106 special integers must yield the same value  L(m)- g2(m). This\nfrequently occurring value is our choice for α, which yields more than 106 solutions (m, g(m)) to\nequation (1). Hence, the answer to the problem is YES.",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo10/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo10/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 6,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 6, 'algebra': 2, 'number_theory': 0, 'combinatorics': 3}; graph-like signal present",
+      "statement_preview": "LetABC be a triangle with incentreI and letD be an arbitrary point on the sideBC. Let the line throughD perpendicular toBI intersectCI atE. Let the line throughD perpendicular to CI intersectBI at F. Prove that the refle"
+    },
+    {
+      "id": "egmo-2021-p5",
+      "year": 2021,
+      "egmo_number": 10,
+      "problem_number": 5,
+      "statement_en": "A plane has a special pointO called the origin. LetP be a set of2021 points in the\nplane such that\n(i) no three points inP lie on a line and\n(ii) no two points inP lie on a line through the origin.\nA triangle with vertices inP is fat if O is strictly inside the triangle. Find the maximum number of\nfat triangles.",
+      "solution_text_en": "",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo10/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo10/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 2,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.64,
+      "graph_terms": [
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 2, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}; manual_override=candidate",
+      "statement_preview": "A plane has a special pointO called the origin. LetP be a set of2021 points in the plane such that (i) no three points inP lie on a line and (ii) no two points inP lie on a line through the origin. A triangle with vertic"
+    },
+    {
+      "id": "egmo-2021-p6",
+      "year": 2021,
+      "egmo_number": 10,
+      "problem_number": 6,
+      "statement_en": "Does there exist a nonnegative integera for which the equation\n⌊m\n1\n⌋\n+\n⌊m\n2\n⌋\n+\n⌊m\n3\n⌋\n+··· +\n⌊m\nm\n⌋\n=n2 +a\nhas more than one million different solutions(m,n ) where m and n are positive integers?\nThe expression⌊x⌋ denotes the integer part (or floor) of the real numberx. Thus⌊\n√\n2⌋ = 1,⌊π⌋ =\n⌊22/7⌋ = 3,⌊42⌋ = 42 and⌊0⌋ = 0.",
+      "solution_text_en": "",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo10/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo10/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo10/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2021/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 0}; manual_override=not_combinatorics",
+      "statement_preview": "Does there exist a nonnegative integera for which the equation ⌊m 1 ⌋ + ⌊m 2 ⌋ + ⌊m 3 ⌋ +··· + ⌊m m ⌋ =n2 +a has more than one million different solutions(m,n ) where m and n are positive integers? The expression⌊x⌋ deno"
+    }
+  ]
+}

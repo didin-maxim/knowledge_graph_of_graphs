@@ -1,0 +1,141 @@
+{
+  "id": "brooks-theorem",
+  "title": "Теорема Брукса",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "graph_coloring",
+      "maximum_degree",
+      "clique",
+      "odd_cycle"
+    ],
+    "methods": [
+      "greedy_ordering",
+      "minimal_counterexample",
+      "local_recoloring"
+    ],
+    "transformations": [
+      "delete_vertex",
+      "reinsert_vertex",
+      "color_ordering"
+    ],
+    "goal": [
+      "coloring_bound",
+      "chromatic_number_upper_bound"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "maximum_degree",
+      "exceptional_graphs",
+      "available_colors"
+    ],
+    "keywords": [
+      "brooks_theorem",
+      "delta_coloring",
+      "clique_exception",
+      "odd_cycle_exception"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть G — связный простой граф, а Delta — наибольшая степень его вершины. Если G не является полным графом и не является нечетным циклом, то вершины G можно правильно раскрасить в Delta цветов.",
+        "source_id": "src-wikipedia-brooks",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "simple_graph",
+          "complete_graph",
+          "cycle",
+          "chromatic_number",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Если связный граф G не является полной кликой и не является нечетным циклом, то \\( \\chi(G) \\le \\\\\\( \\Delta(G) \\) \\), где chi(G) — хроматическое число, а \\( \\Delta(G) \\) — максимальная степень вершины графа.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "simple_graph",
+          "complete_graph",
+          "cycle",
+          "chromatic_number",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-greedy-order",
+      "title": "Жадная раскраска в правильном порядке",
+      "text": "Нужно упорядочить вершины так, чтобы при жадной раскраске каждая вершина, кроме контролируемых исключений, видела меньше Delta уже раскрашенных соседей.",
+      "tags": [
+        "coloring",
+        "extremal_choice"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-sketch",
+      "title": "Схема доказательства",
+      "text": "Полное доказательство требует разбора случаев. В олимпиадной версии обычно используется слабая форма: если в связном графе максимальной степени Delta есть вершина, удаление которой оставляет связный граф, и ее соседи можно заставить получить не все Delta цветов, то жадная раскраска в порядке обхода дает Delta-раскраску. Исключения — клики и нечетные циклы — ровно те случаи, где такой маневр невозможен.",
+      "idea_ids": [
+        "idea-greedy-order"
+      ],
+      "status": "needs_review",
+      "standard_idea_ids": [
+        "greedy_ordering",
+        "local_recoloring"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 9,
+    "comment": "Скорее справочный инструмент; для базы нужна аккуратная версия доказательства.",
+    "status": "ai_draft"
+  },
+  "tags": [
+    "coloring",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-brooks",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

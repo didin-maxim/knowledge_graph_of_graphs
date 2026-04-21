@@ -1,0 +1,145 @@
+{
+  "id": "mantel-theorem",
+  "title": "Теорема Мантеля",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "special_case"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "triangle_free_graph",
+      "complete_bipartite_graph",
+      "degrees"
+    ],
+    "methods": [
+      "double_counting",
+      "extremal_choice",
+      "cauchy_inequality"
+    ],
+    "transformations": [
+      "sum_over_edges",
+      "degree_square_bound"
+    ],
+    "goal": [
+      "maximum_edges_triangle_free",
+      "extremal_edge_bound"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_sum",
+      "neighbor_disjointness",
+      "edge_count"
+    ],
+    "keywords": [
+      "mantel_theorem",
+      "triangle_free",
+      "complete_bipartite_extremal"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть G — простой неориентированный граф на n вершинах, в котором нет трех попарно соединенных вершин. Тогда в G не более \\( \\lfloor n^2/4 \\rfloor \\) ребер.",
+        "source_id": "src-wikipedia-mantel",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique",
+          "complete_graph",
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Если простой граф G не содержит треугольника K_3, то \\( e(G) \\le \\lfloor |V(G)|^2/4 \\rfloor \\). Равенство достигается на полном двудольном графе, две доли которого имеют размеры, отличающиеся не более чем на 1.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique",
+          "complete_graph",
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-neighborhood-independent",
+      "title": "Окрестность независима",
+      "text": "В графе без треугольников окрестность любой вершины является независимым множеством; экстремальный граф вынужден быть близок к полному двудольному.",
+      "tags": [
+        "forbidden_triangle",
+        "extremal_choice"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-degree-sum",
+      "title": "Доказательство через степени",
+      "text": "Пусть m=e(G), а d(v) — степени. Для каждого ребра uv в графе без треугольников множества N(u) и N(v) не имеют общих вершин, поэтому d(u)+d(v) <= n. Суммируя по всем ребрам, получаем sum_v d(v)^2 <= mn. По неравенству Коши, (2m)^2 <= n sum_v d(v)^2 <= n^2 m. Отсюда m <= n^2/4.",
+      "idea_ids": [
+        "idea-neighborhood-independent"
+      ],
+      "status": "ai_draft",
+      "standard_idea_ids": [
+        "double_counting"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Классический частный случай Турана; короткое доказательство доступно школьникам.",
+    "status": "ai_draft"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "forbidden_triangle",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "forbidden_subgraphs": {
+      "value": [
+        "K3"
+      ],
+      "status": "ai_checked"
+    },
+    "extremal_object": {
+      "value": "complete_balanced_bipartite_graph",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-mantel",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

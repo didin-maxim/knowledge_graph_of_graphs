@@ -1,0 +1,131 @@
+{
+  "id": "ramsey-theorem",
+  "title": "Теорема Рамсея для графов",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "two_colored_complete_graph",
+      "clique",
+      "independent_set"
+    ],
+    "methods": [
+      "induction",
+      "pigeonhole_principle"
+    ],
+    "transformations": [
+      "neighborhood_split_by_color"
+    ],
+    "goal": [
+      "ramsey_number_finiteness",
+      "monochromatic_clique_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "parameters_r_s",
+      "recursive_bound"
+    ],
+    "keywords": [
+      "ramsey_theorem",
+      "clique_or_independent_set",
+      "recursive_bound"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Для любых натуральных r и s существует такое N, что при любой раскраске каждого ребра полного графа K_N в красный или синий цвет найдется либо r вершин, все ребра между которыми красные, либо s вершин, все ребра между которыми синие.",
+        "source_id": "src-wikipedia-ramsey",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "independent_set",
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Число Рамсея \\( R(r,s) \\) конечно: существует такое N, что каждый простой граф на N вершинах содержит либо клику размера r, либо независимое множество размера s.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "independent_set",
+          "simple_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pivot-vertex",
+      "title": "Выбор вершины",
+      "text": "Выбрав вершину, делим остальные вершины по цвету ребра к ней и применяем индукцию к достаточно большой части.",
+      "tags": [
+        "ramsey_theory",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-recursive-bound",
+      "title": "Рекуррентная оценка",
+      "text": "Докажем \\( R(r,s) \\)<=R(r-1,s)+R(r,s-1). В полной раскраске на таком числе вершин выберем вершину v. Если красных ребер из v хотя бы R(r-1,s), то среди их концов есть красная K_{r-1}, которая вместе с v дает красную K_r, либо синяя K_s. Если красных ребер меньше, то синих концов хотя бы R(r,s-1), и аналогично получаем синюю K_s или красную K_r. База R(1,s)=R(r,1)=1.",
+      "idea_ids": [
+        "idea-pivot-vertex"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction",
+        "pigeonhole_principle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 6,
+    "comment": "Базовая теорема с простым индукционным доказательством.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "induction",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-ramsey",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

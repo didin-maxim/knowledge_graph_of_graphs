@@ -1,0 +1,139 @@
+{
+  "relations": [
+    {
+      "id": "rel-tree-imo-2024-c8",
+      "from": "tree-equivalent-properties",
+      "to": "imo-2024-c8-board-coloring-tree",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В решении C8 ключевой шаг — доказать, что граф крестов, возникающий из операций, является деревом: он связен, а цикл невозможен по самому позднему кресту.",
+      "backward_text": "C8 даёт олимпиадное применение базовой дихотомии связность плюс отсутствие циклов: дерево возникает не в условии, а как структура истории операций.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-x-graph-halving"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-state-game-imo-2024-c8",
+      "from": "tc-2018-19-simple-complex-state-game",
+      "to": "imo-2024-c8-board-coloring-tree",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи извлекают дерево или цикл из динамического процесса. В игре с государством наличие цикла меняет стратегию, а в C8 возможный цикл в графе операций сразу противоречит правилу закрашивания.",
+      "backward_text": "C8 является более геометрической версией мотива дерево против цикла: история локальных операций образует дерево, и это дерево затем сжимается вместе с доской.",
+      "anchors": {
+        "from_solution_id": "sol-tree-cycle",
+        "to_solution_id": "sol-x-graph-halving"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-columns-imo-2024-c8",
+      "from": "tc-1980-distinct-rows-delete-column",
+      "to": "imo-2024-c8-board-coloring-tree",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих задачах вспомогательный граф строится из выбранных действий, а цикл в нём даёт противоречие: у таблицы — существенности столбцов, у C8 — требованию, что операция закрашивает три новые клетки.",
+      "backward_text": "C8 использует тот же лесной запрет циклов, но не для оценки числа рёбер, а для самоподобного сжатия доски вдвое.",
+      "anchors": {
+        "from_solution_id": "sol-essential-column-forest",
+        "to_solution_id": "sol-x-graph-halving"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-coins-imo-2024-c8",
+      "from": "tc-2023-24-coins-pairing-weighing-forest",
+      "to": "imo-2024-c8-board-coloring-tree",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих задачах граф появляется только в решении как бухгалтерия процесса: сравнения монет образуют лес, а операции C8 образуют дерево крестов.",
+      "backward_text": "C8 показывает более сильное использование графа истории операций: мало доказать ацикличность, нужно ещё использовать дерево для итеративного сжатия всей конфигурации.",
+      "anchors": {
+        "from_solution_id": "sol-forest-accounting",
+        "to_solution_id": "sol-x-graph-halving"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-even-board-imo-2024-c8",
+      "from": "vosh-2013-14-regional-even-rows-columns",
+      "to": "imo-2024-c8-board-coloring-tree",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи строят вспомогательный граф на клеточной конфигурации и используют лес/дерево, но в задаче о фишках лес нужен для выбора рёбер с нужной чётностью, а в C8 дерево кодирует историю L-тромино.",
+      "backward_text": "C8 родственна задаче о чётных строках и столбцах как пример клеточной задачи, где настоящая структура появляется после перехода к вспомогательному графу.",
+      "anchors": {
+        "from_solution_id": "sol-complement-forest-tjoin",
+        "to_solution_id": "sol-directed-tromino-tree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-hall-imo-2024-c3",
+      "from": "hall-marriage-theorem",
+      "to": "imo-2024-c3-knights-chord-uncrossing",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "C3 не ищет паросочетание, а начинает с уже заданного совершенного паросочетания партнёров; тем не менее язык паросочетаний помогает увидеть, что задача изучает фиксированное matching-ребро под меняющимся циклическим порядком.",
+      "backward_text": "Теорема Холла является задачей о существовании паросочетания, тогда как C3 изучает геометрию уже заданного паросочетания на окружности и пересечения его хорд.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-chord-uncrossing-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.64
+    },
+    {
+      "id": "rel-gnomes-imo-2024-c3",
+      "from": "tc-2020-21-gnomes-two-cycles",
+      "to": "imo-2024-c3-knights-chord-uncrossing",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи работают с круговыми рассадками и парными связями между участниками. У гномов нужно добавить перемычки между двумя циклами, а в C3 фиксированные пары партнёров изображаются хордами одного круга и распутываются обменами.",
+      "backward_text": "C3 можно воспринимать как задачу о динамике парных связей в круговом порядке: вместо построения гамильтонова цикла, как у гномов, требуется сделать каждое ребро заданного паросочетания соседним.",
+      "anchors": {
+        "from_solution_id": "sol-odd-even",
+        "to_solution_id": "sol-chord-uncrossing-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-connectivity-query-imo-2024-c4",
+      "from": "tc-2015-16-connectivity-query-lower-bound",
+      "to": "imo-2024-c4-turbo-grid-monsters",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи являются адаптивными задачами о неизвестной графовой структуре. В задаче о связности противник отвечает на запросы о рёбрах, а в C4/P5 монстры раскрываются только при попытках пройти путь.",
+      "backward_text": "C4/P5 — более геометрическая модель того же adversary-мотива: нужно доказать нижнюю оценку на число попыток и затем построить стратегию, которая гарантирует путь при любой скрытой конфигурации.",
+      "anchors": {
+        "from_solution_id": "sol-adversary-cycle-bridge",
+        "to_solution_id": "sol-three-attempts"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-red-cells-imo-2024-c4",
+      "from": "tc-2022-23-blue-red-cells-connectivity",
+      "to": "imo-2024-c4-turbo-grid-monsters",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе задачи читают клеточную доску как решётчатый граф с переходами через общую сторону. В задаче про красные клетки используется связность множества клеток, а в C4/P5 строятся адаптивные пути через неизвестные безопасные клетки.",
+      "backward_text": "C4/P5 родственна клеточным задачам на связность, но вместо глобальной оценки числа клеток здесь важна пошаговая информация о запретных вершинах решётчатого графа.",
+      "anchors": {
+        "from_solution_id": "sol-bound-boundary",
+        "to_solution_id": "sol-three-attempts"
+      },
+      "status": "ai_checked",
+      "confidence": 0.66
+    }
+  ]
+}

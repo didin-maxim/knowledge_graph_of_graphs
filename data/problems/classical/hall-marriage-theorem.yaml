@@ -1,0 +1,168 @@
+{
+  "id": "hall-marriage-theorem",
+  "title": "Теорема Холла о паросочетаниях",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "matching",
+      "neighborhood_condition"
+    ],
+    "methods": [
+      "induction",
+      "augmenting_path_method"
+    ],
+    "transformations": [
+      "split_tight_subset",
+      "remove_matched_pair"
+    ],
+    "goal": [
+      "perfect_left_matching_existence",
+      "marriage_condition"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "neighborhood_size",
+      "deficiency",
+      "left_part_covered"
+    ],
+    "keywords": [
+      "hall_theorem",
+      "marriage_theorem",
+      "bipartite_matching"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть есть конечный набор множеств A_1,...,A_n. Можно выбрать по одному элементу из каждого множества так, чтобы все выбранные элементы были различны, тогда и только тогда, когда для любых k множеств из этого набора их объединение содержит хотя бы k элементов.",
+        "source_id": "src-wikipedia-hall",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Пусть G=(X,Y,E) — конечный двудольный граф: каждое ребро соединяет вершину из X с вершиной из Y. В G существует паросочетание, покрывающее все вершины X, тогда и только тогда, когда для любого подмножества A вершин из X множество всех соседей N(A) в Y имеет размер хотя бы |A|.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-marriage-boys-girls-1",
+        "title": "Юноши, девушки и свадьбы",
+        "text": "Есть конечное множество юношей и конечное множество девушек. Для каждого юноши известны девушки, с которыми он знаком. Нужно женить каждого юношу на знакомой ему девушке так, чтобы никакие два юноши не женились на одной и той же девушке. Это возможно тогда и только тогда, когда для любой группы из k юношей число девушек, знакомых хотя бы с одним юношей из этой группы, не меньше k.",
+        "source_id": "src-wikipedia-hall",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching"
+        ]
+      },
+      {
+        "id": "stmt-marriage-girls-boys-ctk",
+        "title": "Списки предпочтений девушек",
+        "text": "Есть n девушек и n юношей. Каждая девушка составила список юношей, за одного из которых она согласна выйти замуж. Нужно выбрать для каждой девушки одного юношу из ее списка так, чтобы выбранные юноши были различны. Это возможно тогда и только тогда, когда любые k девушек вместе указали в своих списках хотя бы k различных юношей.",
+        "source_id": "src-cut-the-knot-marriage",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-deficiency",
+      "title": "Дефицит соседей",
+      "text": "Единственное препятствие к покрытию всех вершин X — подмножество A, у которого соседей меньше, чем самих вершин.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-induction",
+      "title": "Индукционное доказательство",
+      "text": "Необходимость очевидна: разные вершины из A должны быть сопоставлены разным соседям. Для достаточности применяем индукцию по |X|. Если для каждого непустого собственного A выполнено |N(A)|>|A|, удаляем одну вершину x и одного ее соседа y, после чего условие Холла сохраняется. Если есть непустое собственное A с |N(A)|=|A|, по индукции покрываем A внутри N(A), а затем покрываем X\\A в оставшемся графе: иначе нарушение Холла там дало бы нарушение в исходном графе.",
+      "idea_ids": [
+        "idea-deficiency"
+      ],
+      "status": "ai_draft",
+      "standard_idea_ids": [
+        "induction"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Как инструмент часто делает сложную задачу короткой; доказательство само по себе олимпиадное.",
+    "status": "ai_draft"
+  },
+  "tags": [
+    "matching",
+    "classical_theorem",
+    "olympiad_tool",
+    "induction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-hall",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-cut-the-knot-marriage",
+      "role": "classic_reformulation",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

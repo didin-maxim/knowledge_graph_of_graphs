@@ -1,0 +1,160 @@
+{
+  "id": "imo-1997-p4-silver-matrix-factorization-graph",
+  "title": "Серебряные матрицы и паритет покрытий, IMO 1997 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "matrix",
+      "matrix",
+      "symbol_covering",
+      "parity"
+    ],
+    "methods": [
+      "parity",
+      "cyclic_construction"
+    ],
+    "transformations": [
+      "matrix_symbols_to_index_coverings"
+    ],
+    "goal": [
+      "existence_and_nonexistence"
+    ],
+    "auxiliary_graph_type": [
+      "weak_graph_interpretation"
+    ],
+    "invariants": [
+      "vertex_coverage"
+    ],
+    "standard_idea_ids": [],
+    "local_score": 14,
+    "keywords": [
+      "imo-1997-p4-silver-matrix-factorization-graph",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Матрица n x n с элементами из {1,2,...,2n-1} называется серебряной, если для каждого i объединение i-й строки и i-го столбца содержит все 2n-1 чисел. Докажите, что серебряных матриц нет при n=1997, и что они существуют для бесконечно многих n.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-imomath-imo-1997"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Можно рассматривать появление символа в клетке \\((i,j)\\) как покрытие индексов \\(i\\) и \\(j\\), но опубликованные решения в основном используют паритетный подсчёт появлений символов, а не полноценную теорию паросочетаний.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-symbol-as-matching",
+      "title": "Один символ покрывает индексы",
+      "text": "Если число стоит в клетке \\((i,j)\\), оно учитывается одновременно для i-й строки и i-го столбца и для j-й строки и j-го столбца.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-parity-obstruction",
+      "title": "Нечётный порядок даёт препятствие",
+      "text": "При n=1997 требуемое покрытие сводится к невозможной 1-факторизации нечётной структуры.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-even-construction",
+      "title": "Конструкция через циклическую таблицу",
+      "text": "Для бесконечно многих n строится регулярное разложение по модулю n или по конечной группе.",
+      "tags": [
+        "graph_symmetry"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Опубликованное решение начинается с подсчёта появлений символов. Если перечислить все элементы по строкам, а затем по столбцам, каждый элемент матрицы посчитан дважды, значит каждый символ встречается чётное число раз. С другой стороны, для каждого \\(i\\) объединение i-й строки и i-го столбца даёт полный набор \\(1,2,\\dots,2n-1\\); по всем \\(i\\) это \\(n\\) полных наборов плюс дополнительный вклад диагональных элементов. Если \\(n\\) нечётно, то каждый символ появляется нечётное число раз в \\(n\\) полных наборах, и диагональ может изменить чётность не более чем для \\(n\\) символов; при \\(2n-1>n\\) это невозможно. Поэтому при \\(n=1997\\) серебряной матрицы нет. Конструкция для бесконечно многих \\(n\\) задаётся рекурсивно/циклически для чётных размеров. Графовая трактовка как покрытия индексов возможна, но в найденных опубликованных решениях она не является основной.",
+      "idea_ids": [
+        "idea-symbol-as-matching",
+        "idea-parity-obstruction",
+        "idea-even-construction"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 14,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "coloring",
+    "graph_symmetry",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "parity",
+        "cyclic_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imomath-imo-1997",
+      "role": "statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "reviewed_no_links"
+  }
+}

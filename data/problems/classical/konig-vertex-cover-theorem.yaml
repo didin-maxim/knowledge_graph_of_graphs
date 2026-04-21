@@ -1,0 +1,134 @@
+{
+  "id": "konig-vertex-cover-theorem",
+  "title": "Теорема Кёнига о паросочетании и покрытии",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "matching",
+      "vertex_cover",
+      "alternating_paths"
+    ],
+    "methods": [
+      "alternating_paths",
+      "augmenting_path_method",
+      "minimax"
+    ],
+    "transformations": [
+      "reachable_set_from_unmatched_vertices",
+      "construct_cover"
+    ],
+    "goal": [
+      "matching_cover_equality",
+      "minimax_certificate"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "matching_size",
+      "cover_size",
+      "reachability"
+    ],
+    "keywords": [
+      "konig_theorem",
+      "vertex_cover",
+      "maximum_matching",
+      "minimum_cover"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "В любом конечном двудольном графе наибольшее число попарно не имеющих общих концов ребер равно наименьшему числу вершин, которые вместе касаются всех ребер графа.",
+        "source_id": "src-wikipedia-konig",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching",
+          "vertex_cover"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Если G — конечный двудольный граф, то \\( \\nu(G)=\\tau(G) \\), где nu(G) — максимальный размер паросочетания, а tau(G) — минимальный размер вершинного покрытия, то есть множества вершин, содержащего хотя бы один конец каждого ребра.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching",
+          "vertex_cover"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-alternating-reachability",
+      "title": "Достижимость чередующимися путями",
+      "text": "Из максимального паросочетания строится минимальное покрытие через вершины, достижимые чередующимися путями от непокрытых вершин одной доли.",
+      "tags": [
+        "matching",
+        "augmenting_path"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-alternating",
+      "title": "Доказательство через чередующиеся пути",
+      "text": "Пусть M — максимальное паросочетание в двудольном графе с долями X,Y. Запустим чередующиеся пути из непокрытых вершин X: из X идем по ребрам не из M, из Y — по ребрам из M. Пусть Z — множество достижимых вершин. Тогда C=(X\\Z) union (Y cap Z) покрывает все ребра: иначе непокрытое ребро нарушило бы достижимость или дало увеличивающий путь. Каждое ребро M покрывает ровно одну вершину C, поэтому |C|=|M|. Так как любое покрытие имеет размер не меньше любого паросочетания, C минимально, M максимально.",
+      "idea_ids": [
+        "idea-alternating-reachability"
+      ],
+      "status": "ai_draft",
+      "standard_idea_ids": [
+        "alternating_paths",
+        "augmenting_path_method"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Очень полезный двудольный инструмент.",
+    "status": "ai_draft"
+  },
+  "tags": [
+    "matching",
+    "augmenting_path",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-konig",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

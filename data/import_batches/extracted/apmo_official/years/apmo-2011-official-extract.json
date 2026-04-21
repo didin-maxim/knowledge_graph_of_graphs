@@ -1,0 +1,156 @@
+{
+  "year": 2011,
+  "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2011_prb.pdf",
+  "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2011_sol.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 5,
+  "problems": [
+    {
+      "id": "apmo-2011-p1",
+      "year": 2011,
+      "problem_number": 1,
+      "statement_en": "Let a, b, c be positive integers. Prove that it is impossible to have\nall of the three numbers a2 + b + c, b 2 + c + a, c 2 + a + b to be perfect squares.",
+      "solution_text_en": "Solution: Suppose all of the 3 numbers a2 + b + c, b 2 + c + a and c2 + a + b are\nperfect squares. Then from the fact that a2 + b + c is a perfect square bigger than\na2 it follows that a2 + b + c>= (a + 1)2, and therefore, b + c>= 2a + 1. Similarly we\nobtain c + a>= 2b + 1 and a + b>= 2c + 1.\nAdding the corresponding sides of the preceding 3 inequalities, we obtain\n2(a + b + c)>= 2(a + b + c) + 3, a contradiction. This proves that it is impos-\nsible to have all the 3 given numbers to be perfect squares.\nAlternate Solution: Since the given conditions of the problem are symmetric in\na, b, c, we may assume that a>= b>= c holds. From the assumption that a2+b+c is a\nperfect square, we can deduce as in the solution above the inequality b+ c>= 2a+1 .\nBut then we have\n2a>= b + c>= 2a + 1,\na contradiction, which proves the assertion of the problem.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2011_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2011_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2011-p2",
+      "year": 2011,
+      "problem_number": 2,
+      "statement_en": "Five points A1, A2, A3, A4, A5 lie on a plane in such a way that no\nthree among them lie on a same straight line. Determine the maximum possible\nvalue that the minimum value for the angles ∠AiAjAk can take where i, j, k are\ndistinct integers between 1 and 5.",
+      "solution_text_en": "Solution: We will show that 36 ◦ is the desired answer for the problem.\nFirst, we observe that if the given 5 points form a regular pentagon, then the\nminimum of the angles formed by any triple among the five vertices is 36 ◦, and\ntherefore, the answer we seek must be bigger than or equal to 36 ◦.\nNext, we show that for any configuration of 5 points satisfying the condition of\nthe problem, there must exist an angle smaller than or equal to 36 ◦ formed by a\ntriple chosen from the given 5 points. For this purpose, let us start with any 5\npoints, say A1, A2, A3, A4, A5, on the plane satisfying the condition of the problem,\nand consider the smallest convex subset, call it Γ, in the plane containing all of the\n5 points. Since this convex subset Γ must be either a triangle or a quadrilateral\nor a pentagon, it must have an interior angle with 108 ◦ or less. We may assume\nwithout loss of generality that this angle is ∠A1A2A3. By the definition of Γ it is\nclear that the remaining 2 points A4 and A5 lie in the interior of the angular region\ndetermined by ∠A1A2A3, and therefore, there must be an angle smaller than or\nequal to 1\n3· 108◦ = 36◦, which is formed by a triple chosen from the given 5 points,\nand this proves that 36 ◦ is the desired maximum.\n1\n2",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2011_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2011_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "apmo-2011-p3",
+      "year": 2011,
+      "problem_number": 3,
+      "statement_en": "Let ABC be an acute triangle with ∠BAC = 30◦. The internal and\nexternal angle bisectors of ∠ABC meet the line AC at B1 and B2, respectively, and\nthe internal and external angle bisectors of ∠ACB meet the line AB at C1 and C2,\nrespectively. Suppose that the circles with diameters B1B2 and C1C2 meet inside\nthe triangle ABC at point P . Prove that ∠BP C = 90◦.",
+      "solution_text_en": "Solution: Since ∠B1BB2 = 90 ◦, the circle having B1B2 as its diameter goes\nthrough the points B, B1, B2. From B1A : B1C = B2A : B2C = BA : BC, it\nfollows that this circle is the Apolonius circle with the ratio of the distances from\nthe points A and C being BA : BC. Since the point P lies on this circle, we have\nP A : P C = BA : BC = sin C : sin A,\nfrom which it follows that P Asin A = P C sin C. Similarly, we have P Asin A =\nP B sin B, and therefore, P Asin A = P B sin B = P C sin C.\nLet us denote by D, E, F the foot of the perpendicular line drawn from P to the\nline segment BC, CA and AB, respectively. Since the points E, F lie on a circle\nhaving P A as its diameter, we have by the law of sines EF = P Asin A. Similarly,\nwe have F D = P B sin B and DE = P C sin C. Consequently, we conclude that\nDEF is an equilateral triangle. Furthermore, we have ∠CP E = ∠CDE , since the\nquadrilateral CDP E is cyclic. Similarly, we have ∠F P B = ∠F DB. Putting these\ntogether, we get\n∠BP C = 360◦- (∠CP E + ∠F P B + ∠EP F)\n= 360◦-{ (∠CDE + ∠F DB) + (180◦- ∠F AE)}\n= 360◦- (120◦ + 150◦) = 90◦,\nwhich proves the assertion of the problem.\nAlternate Solution: Let O be the midpoint of the line segment B1B2. Then\nthe points B and P lie on the circle with center at O and going through the point\nB1. From\n∠OBC = ∠OBB 1- ∠CBB 1 = ∠OB1B- ∠B1BA = ∠BAC\nit follows that the triangles OCD and OBA are similar, and therefore we have that\nOC· OA = OB 2 = OP 2. Thus we conclude that the triangles OCP and OP A are\nsimilar, and therefore, we have ∠OP C = ∠P AC. Using this fact, we obtain\n∠P BC- ∠P BA = (∠B1BC + ∠P BB1)- (∠ABB1- ∠P BB1)\n= 2∠P BB1 = ∠P OB1 = ∠P CA- ∠OP C\n= ∠P CA- ∠P AC,\nfrom which we conclude that ∠P AC + ∠P BC = ∠P BA + ∠P CA. Similarly, we\nget ∠P AB + ∠P CB = ∠P BA + ∠P CA. Putting these facts together and taking\ninto account the fact that\n(∠P AC + ∠P BC) + (∠P AB + ∠P CB) + (∠P BA + ∠P CA) = 180◦,\nwe conclude that ∠P BA + ∠P CA = 60◦, and finally that\n∠BP C = (∠P BA+∠P AB)+(∠P CA+∠P AC) = ∠BAC+(∠P BA+∠P CA) = 90◦,\nproving the assertion of the problem.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2011_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2011_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2011-p4",
+      "year": 2011,
+      "problem_number": 4,
+      "statement_en": "Let n be a fixed positive odd integer. Take m + 2 distinct points\nP0, P1,··· , Pm+1 (where m is a non-negative integer) on the coordinate plane in\nsuch a way that the following 3 conditions are satisfied:\n(1) P0 = (0, 1), P m+1 = (n + 1, n), and for each integer i, 1<= i<= m, both x- and\ny- coordinates of Pi are integers lying in between 1 and n (1 and n inclusive).\n(2) For each integer i, 0<= i<= m, PiPi+1 is parallel to the x-axis if i is even, and\nis parallel to the y-axis if i is odd.\n(3) For each pair i, j with 0<= i < j <= m, line segments PiPi+1 and PjPj+1 share\nat most 1 point.\nDetermine the maximum possible value that m can take.",
+      "solution_text_en": "Solution: We will show that the desired maximum value for m is n(n- 1).\nFirst, let us show thatm<= n(n-1) always holds for any sequenceP0, P1,··· , Pm+1\nsatisfying the conditions of the problem.\n3\nCall a point a turning point if it coincides with Pi for some i with 1<= i<= m.\nLet us say also that 2 points {P, Q} are adjacent if{P, Q} ={Pi-1, Pi} for some\ni with 1<= i<= m, and vertically adjacent if, in addition, P Q is parallel to the\ny-axis.\nAny turning point is vertically adjacent to exactly one other turning point.\nTherefore, the set of all turning points is partitioned into a set of pairs of points\nusing the relation of ”vertical adjacency”. Thus we can conclude that if we fix\nk in { 1, 2,··· , n}, the number of turning points having the x-coordinate k must be\neven, and hence it is less than or equal to n- 1. Therefore, altogether there are\nless than or equal to n(n- 1) turning points, and this shows that m<= n(n- 1)\nmust be satisfied.\nIt remains now to show that for any positive odd number n one can choose a\nsequence for which m = n(n- 1). We will show this by using the mathematical\ninduction on n. For n = 1, this is clear. For n = 3, choose\nP0 = (0, 1), P 1 = (1, 1), P 2 = (1, 2), P 3 = (2, 2),\nP4 = (2, 1), P 5 = (3, 1), P 6 = (3, 3), P 7 = (4, 3).\nIt is easy to see that these points satisfy the requirements (See fig. 1 below).\nfigure 1\nLet n be an odd integer >= 5, and suppose there exists a sequence satisfying the\ndesired conditions for n-4. Then, it is possible to construct a sequence which gives\na configuration indicated in the following diagram (fig. 2), where the configuration\ninside of the dotted square is given by the induction hypothesis:\nfigure 2\nBy the induction hypothesis, there are exactly ( n- 4)(n- 5) turning points for\nthe configuration inside of the dotted square in the figure 2 above, and all of the\nlattice points in the figure 2 lying outside of the dotted square except for the 4\npoints (n, 2), (n- 1, n- 2), (2, 3), (1, n- 1) are turning points. Therefore, the total\n4\nnumber of turning points in this configuration is\n(n- 4)(n- 5) + (n2- (n- 4)2- 4) = n(n- 1),\nshowing that for this n there exists a sequence satisfying the desired properties,\nand thus completing the induction process.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2011_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2011_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "adjacent"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "apmo-2011-p5",
+      "year": 2011,
+      "problem_number": 5,
+      "statement_en": "Determine all functions f : R→ R, where R is the set of all real\nnumbers, satisfying the following 2 conditions:\n(1) There exists a real number M such that for every real number x, f(x) < M is\nsatisfied.\n(2) For every pair of real numbers x and y,\nf(xf(y)) + yf (x) = xf(y) + f(xy)\nis satisfied.\n1",
+      "solution_text_en": "Solution: By substituting x = 1 and y = 1 into the given identity we obtain\nf(f(1)) = f(1). Next, by substituting x = 1 and y = f(1) into the given identity\nand using f(f(1)) = f(1), we get f(1)2 = f(1), from which we conclude that either\nf(1) = 0 or f(1) = 1. But if f(1) = 1, then substituting y = 1 into the given\nidentity, we get f(x) = x for all x, which contradicts the condition (1). Therefore,\nwe must have f(1) = 0.\nBy substituting x = 1 into the given identity and using the fact f(1) = 0, we\nthen obtain f(f(y)) = 2f(y) for all y. This means that if a number t belongs to the\nrange of the function f, then so does 2 t, and by induction we can conclude that for\nany non-negative integer n, 2 nt belongs to the range of f if t does. Now suppose\nthat there exists a real number a for which f(a) > 0, then for any non-negative\ninteger n 2nf(a) must belong to the range of f, which leads to a contradiction to\nthe condition (1). Thus we conclude that f(x)<= 0 for any real number x.\nBy substituting x\n2 for x and f(y) for y in the given identity and using the fact\nthat f(f(y)) = 2f(y), we obtain\nf(xf(y)) + f(y)f\n( x\n2\n)\n= xf(y) + f\n( x\n2 f(y)\n)\n,\nfrom which it follows that xf(y)- f(xf(y)) = f(y)f\n(x\n2\n)\n- f\n(x\n2 f(y)\n)\n>= 0, since the\nvalues of f are non-positive. Combining this with the given identity, we conclude\nthat yf (x)>= f(xy). When x > 0, by letting y to be 1\nx and using the fact that\nf(1) = 0, we get f(x)>= 0. Since f(x)<= 0 for any real number x, we conclude that\nf(x) = 0 for any positive real number x. We also have f(0) = f(f(1)) = 2f(1) = 0.\nIf f is identically 0, i.e., f(x) = 0 for all x, then clearly, this f satisfies the given\nidentity. If f satisfies the given identity but not identically 0, then there exists a\nb < 0 for which f(b) < 0. If we set c = f(b), then we have f(c) = f(f(b)) = 2f(b) =\n2c. For any negative real number x, we have cx > 0 so that f(cx) = f(2cx) = 0,\nand by substituting y = c into the given identity, we get\nf(2cx) + cf(x) = 2cx + f(cx),\nfrom which it follows that f(x) = 2x for any negative real x.\nWe therefore conclude that if f satisfies the given identity and is not identically\n0, then f is of the form f(x) =\n{\n0 if x>= 0\n2x if x < 0. Finally, let us show that the\nfunction f of the form shown above does satisfy the conditions of the problem.\nClearly, it satisfies the condition (1). We can check that f satisfies the condition\n(2) as well by separating into the following 4 cases depending on whether x, y are\nnon-negative or negative.\n• when both x and y are non-negative, both sides of the given identity are 0.\n• when x is non-negative and y is negative, we have xy<= 0 and both sides\nof the given identity are 4 xy.\n5\n• when x is negative and y is non-negative, we have xy<= 0 and both sides\nof the given identity are 2 xy.\n• when both x and y are negative, we have xy > 0 and both sides of the given\nidentity are 2xy.\nSummarizing the arguments above, we conclude that the functions f satisfying the\nconditions of the problem are\nf(x) = 0 and f(x) =\n{\n0 if x>= 0\n2x if x < 0.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2011_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2011_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2011_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 4, 'number_theory': 0, 'combinatorics': 1}"
+    }
+  ]
+}

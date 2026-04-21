@@ -1,0 +1,133 @@
+{
+  "id": "tc-2010-11-odd-main-roads",
+  "title": "Главные дороги нечётной степени, Турнир городов 2010/11",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "spanning_subgraph",
+      "odd_degree_subgraph",
+      "paths"
+    ],
+    "methods": [
+      "pairing_vertices",
+      "parity",
+      "symmetric_difference"
+    ],
+    "transformations": [
+      "choose_paths_between_pairs",
+      "take_edges_mod_two"
+    ],
+    "goal": [
+      "odd_degree_spanning_subgraph_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_parity",
+      "even_number_of_vertices",
+      "path_endpoint_parity"
+    ],
+    "keywords": [
+      "odd_degrees",
+      "main_roads",
+      "connected_graph",
+      "parity_subgraph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "100 городов и главные дороги",
+        "text": "В стране 100 городов и несколько дорог. Каждая дорога соединяет два каких-то города, дороги не пересекаются. Из каждого города можно добраться до любого другого, двигаясь по дорогам. Докажите, что можно объявить несколько дорог главными так, чтобы из каждого города выходило нечётное число главных дорог.",
+        "source_id": "src-problems-116272",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть G — связный конечный граф с чётным числом вершин. Докажите, что можно выбрать несколько рёбер G так, чтобы в подграфе, состоящем из выбранных рёбер и всех вершин G, степень каждой вершины была нечётной.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pair-vertices-by-paths",
+      "title": "Парные маршруты и нечётные кратности",
+      "text": "Разбиваем вершины на пары и соединяем каждую пару путём. Рёбра, встречающиеся в нечётном числе таких путей, дают у каждой вершины нечётную степень.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-path-parity",
+      "title": "Маршруты между парами городов",
+      "text": "Разобьём 100 городов на 50 пар. Так как дорожный граф связен, для каждой пары можно выбрать маршрут, соединяющий города этой пары. Для каждой дороги посчитаем, в скольких выбранных маршрутах она встретилась, и объявим главными ровно те дороги, у которых эта кратность нечётна. В фиксированном городе его собственный маршрут входит или выходит через одну дорогу, а каждый чужой маршрут либо не проходит через город, либо входит и выходит, давая вклад 0 или 2. Поэтому число главных дорог, выходящих из каждого города, нечётно.",
+      "idea_ids": [
+        "idea-pair-vertices-by-paths"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Весенний базовый тур 2010/11, 10-11 класс, задача 5; на problems.ru сложность 4.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-116272",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "year": 2011,
+  "page_url": "https://memo2011.math.hr/",
+  "download_count": 1,
+  "problem_count_extracted": 10,
+  "problems": [
+    {
+      "id": "memo-2011-i1",
+      "year": 2011,
+      "problem_code": "I-1",
+      "statement_en": "(Vjekoslav Kova\u0014 c, Croatia)\nInitially, only the integer 44 is written on a board. An integer a on the board can be\nreplaced with four pairwise different integers a1, a2, a3, a4 such that the arithmetic mean\n1\n4 (a1 + a2 + a3 + a4) of the four new integers is equal to the number a. In a step we\nsimultaneously replace all the integers on the board in the above way. After 30 steps we\nend up with n = 4 30 integers b1; b2; : : : ; bn on the board. Prove that\nb2\n1 + b2\n2 + · · · + b2\nn\nn > 2011 :",
+      "solution_text_en": "First solution\nLet us first prove an auxiliary statement.\nLemma. If a1; a2; a3; a4 are four different integers such that their average a = ( a1 + a2 +\na3 + a4)=4 is also an integer, then\na2\n1 + a2\n2 + a2\n3 + a2\n4\n4 − a2 > 5\n2 :\nProof. Note that the expression on the left hand side can be transformed as\na2\n1 + a2\n2 + a2\n3 + a2\n4\n4 − a2\n= a2\n1 + a2\n2 + a2\n3 + a2\n4 − 8a2 + 4a2\n4\n= a2\n1 + a2\n2 + a2\n3 + a2\n4 − 2a(a1 + a2 + a3 + a4) + 4a2\n4\n= (a1 − a)2 + (a2 − a)2 + (a3 − a)2 + (a4 − a)2\n4 :\nNow, a1 − a, a2 − a, a3 − a, a4 − a are four different integers that add up to 0. We claim\nthat sum of their squares is at least 10. If none of these integers is 0, then that sum is\nat least 1 2 + (−1)2 + 2 2 + (−2)2 = 10. On the other hand, if one of the integers is 0,\nthan the remaining three cannot be only from the set {1; −1; 2; −2}, because no three\ndifferent elements of that set add up to 0. Therefore, the sum of their squares is at least\n32 + 12 + (−1)2 = 11. This completes the proof of the lemma.\nReturning to the given problem, we denote by Sk the average of squares of the numbers\non the board after k steps. More precisely,\nSk =\nb2\nk;1 + b2\nk;2 + · · · + b2\nk;4k\n4k ;\nwhere bk;1; bk;2; : : : ; bk;4k are the numbers appearing on the board after the operation is\nperformed k times. Applying the above lemma to each of the numbers, adding up these\ninequalities, and dividing by 4 k, we obtain Sk+1 − Sk > 5\n2 ; so in particular\nS30 > S0 + 30 · 5\n2 = 44 2 + 30 · 5\n2 = 2011 :\n1\nSecond solution (by Micha l Zaj\u0018 ac, Poland)\nLet a0;1 = 44 and let ai;1, ai;2, . . . , ai;4i be number written on the board after i steps. In\n(i + 1)-st step we replace the number ai;k with ai+1;4k−3, ai+1;4k−2, ai+1;4k−1 and ai+1;4k.\nWe denote\nSi =\n4/x50\nj=1\na2\ni;j\n4i :\nWe want to prove that Si+1 > Si + 2:5, with equality occuring when each number a is\nreplaced by ( a − 2; a − 1; a + 1; a + 2). For a given number a, let ( b1; b2; b3; b4) be an\narbitrary quadruple of integers that satisfy the conditions that b1 + b2 + b3 + b4 = 4a and\nb1 > b 2 > b 3 > b 4. We will prove that ( b1; b2; b3; b4) majorizes ( a + 2; a + 1; a − 1; a − 2).\nFirst we conclude that b1 > a + 2, otherwise\nb1 + b2 + b3 + b4 6 (a + 1) + a + (a − 1) + (a − 2) < 4a:\nNext, it holds that b1 + b2 > (a + 2) + (a + 1) = 2 a + 3.\nOtherwise, it holds that b1 + b2 6 2a + 2 and thus b2 6 a, b3 6 a − 1 and b4 6 a − 2. This\nimplies that b1 + b2 + b3 + b4 6 4a − 1 < 4a, which is false.\nFinally, in order to prove that b1 + b2 + b3 > 3a + 2, which is equivalent to b4 6 a − 2,\nwe assume otherwise: b4 > a − 1 and we arrive to contradiction in the same way as in\nthe first case (in this case the sum is strictly bigger than 4 a). Thus, we have proved that\n(b1; b2; b3; b4) ≻ (a + 2; a + 1; a − 1; a − 2).\nThe function f (x) = x2 is convex (because f ′′(x) = 2 > 0) and by Karamata inequality it\nholds that:\nb2\n1 + b2\n2 + b2\n3 + b2\n4 > (a + 2)2 + (a + 1)2 + (a − 1)2 + (a − 2)2 = 4a2 + 10:\nSimilar to first solution, we conclude that Si+1 > Si+2:5 and finally by inductive argument:\nS30 > S0 + 30 · 2:5 = 2011 :\n2",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [
+        "oard"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 2, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2011-i2",
+      "year": 2011,
+      "problem_code": "I-2",
+      "statement_en": "(Tomislav Pejkovi\u0013 c, Croatia)\nLet n > 3 be an integer. John and Mary play the following game: First John labels the\nsides of a regular n-gon with the numbers 1 ; 2; : : : ; n in whatever order he wants, using\neach number exactly once. Then Mary divides this n-gon into triangles by drawing n − 3\ndiagonals which do not intersect each other inside the n-gon. All these diagonals are\nlabeled with number 1. Into each of the triangles the product of the numbers on its sides\nis written. Let S be the sum of those n − 2 products.\nDetermine the value of S if Mary wants the number S to be as small as possible and John\nwants S to be as large as possible and if they both make the best possible choices.",
+      "solution_text_en": "Solution (by Rudi Mrazovi\u0013 c, coordinator)\nFor n = 3 the answer is 6. Suppose n > 4. It is obvious that in each triangulation there\nare at least two triangles that share two sides with the polygon. We will prove that it\nis always best for Mary to choose a triangulation for which there is no more than two\ntriangles of this kind.\nWe call a triangle in a triangulation bad if all of its sides are diagonals of the polygon. First\nwe prove that Mary can choose an optimal triangulation that contains no bad triangles.\nAssume on the contrary that every optimal triangulation contains a bad triangle. For an\noptimal triangulation T let d(T ) be the length of the smallest side of all bad triangles in\nT . Among all optimal triangulations with minimal number of bad triangles let T0 be such\nthat d(T0) is minimal.\nConsider a bad triangle ABC in T0 such that |AB| = d(T0). Let ABD be the other\ntriangle of T0 that contains AB as one of its sides. Since D lies on the arc /xF8AB of the\ncircumcircle of ABC that does not contain C and ^ACB is acute, we have |AD| < |AB|\nand |BD| < |AB|.\nLet T1 be the triangulation obtained from T0 by replacing AB with CD . If the sides AD\nand BD have labels a and b respectively, then\nS(T1) − S(T0) = a + b − ab − 1 = −(a − 1)(b − 1) 6 0:\nBecause T0 is optimal triangulation, we conclude that T1 is also optimal. Since T0 has the\nminimal number of bad triangles at least one of the segments AD and BD should be a\ndiagonal, but then d(T1) is less than d(T0) what is a contradiction.\nNow that we know that Mary can choose an optimal triangulation that contains no bad\ntriangles, we easily conclude that in a such triangulation there are exactly two triangles\nthat share two sides with the polygon. If we denote by x1 (respectively x2) the number\nof triangles that have exactly one (respectively two) of their sides being the sides of the\npolygon, then x1 + x2 = n − 2 and x1 + 2x2 = n, so x2 = 2.\nMary’s strategy is to choose these two triangles so that the side of the polygon labeled\nwith 1 is contained in one of these triangles and the side labeled with 2 is contained in\nthe other.\n10\nBy this strategy Mary makes sure that\nS 6 max\n/x28\nn(n + 1)\n2 − (1 + 2 + n + n − 1) + 1 · n + 2 · (n − 1);\nn(n + 1)\n2 − (1 + 2 + n + n − 1) + 1 · (n − 1) + 2 · n\n/x29\n= n2 + 3n − 6\n2 :\nOn the other hand, John can force Mary to achieve exactly this bound by labeling the\nsides of the polygon in the following order\n1; n − 1; 4; n − 3; 5; : : : ; n − 2; 3; n; 2:\nThus, the answer to our problem is S = n2 + 3n − 6\n2 , for each n > 3.\n11",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 1, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2011-i3",
+      "year": 2011,
+      "problem_code": "I-3",
+      "statement_en": "(Nik Stopar, Slovenia)\nIn a plane the circles K1 and K2 with centers I1 and I2, respectively, intersect in two points\nA and B. Assume that ^I1AI2 is obtuse. The tangent to K1 in A intersects K2 again in\nC and the tangent to K2 in A intersects K1 again in D. Let K3 be the circumcircle of\nthe triangle BCD . Let E be the midpoint of that arc CD of K3 that contains B. The\nlines AC and AD intersect K3 again in K and L, respectively. Prove that the line AE is\nperpendicular to KL.",
+      "solution_text_en": "First solution (by Tomislav Pejkovi\u0013 c, coordinator)\nK1\nK2\nK3\nA\nB C\nD\nE\nK\nL\nSince AD is tangent to K2, it follows that ^ACB = ^DAB. Similarly, ^ADB = ^BAC .\nFrom this we have ^DBC = (^ADB +^DAB)+(^BAC +^ACB ) = 2( ^DAB +^BAC ),\nhence\n^DBC = 2^DAC:\nBy /xF8XY we denote the angle ^XZY where Z is a point on the circle K3 such that X; Y; Z\nare ordered counterclockwise.\nSince E is the midpoint of the arc CD and the points C; E; D; K are concyclic we have\n^AKE = 1\n2\n/xF8CD = 1\n2 (180◦ − /xF8DC ) = 1\n2 (180◦ − ^CBD ) = 90 ◦ − ^DAC:\nThis means that KE and AL are perpendicular.\nAnalogously, LE and AK are perpendicular and E is the orthocenter of the triangle AKL.\nHence AE and KL are perpendicular.\n15\nRemark: We use the notation /xF8CD and /xF8DC because it provides a convenient way of writ-\ning the solution in all cases regardless of the mutual position of the points A; D; L; C; K.\nSecond solution\nSince AD is tangent to K2, it follows that ^ACB = ^DAB. Similarly, ^ADB = ^BAC .\nFrom this we have ^DBC = (^ADB +^DAB)+(^BAC +^ACB ) = 2( ^DAB +^BAC ),\nhence\n^DEC = ^DBC = 2^DAC:\nSince |ED| = |EC |, the point E is the circumcenter of ACD . Therefore |EC | = |EA| =\n|ED|.\nBecause the points C; B; D; K are concyclic we have ^KDB = ^ACB . From this and\nthe first arguments of this solution we have that |DK | = |AK|. Since we proved |EA| =\n|ED|, we conclude that the line KE is the bisector of the segment AD and therefore\nperpendicular to it.\nAnalogously, LE and AK are perpendicular and E is the orthocenter of the triangle AKL.\nHence AE and KL are perpendicular.\nRemark: The identity ^KDB = ^ACB holds in all cases regardless of the mutual\nposition of the points A; D; L; C; K.\nThird solution (by Karol Kaszuba, Poland)\nLet us apply inversion with respect to a circle with the center A and radius r. Denote the\nimage of point X with X ′. From the assumptions of the problem and well known facts\nabout the inversion directly follows that AD′B′C′ is a parallelogram.\nFrom the definition of the image of the point by inversion we have\n|E′C′| = |EC | r2\n|AE||AC| ; |E′D′| = |ED| r2\n|AE||AD| :\nDividing these two identities and using that E is the midpoint of the arc /xF8CD we obtain\n|E′C′|\n|E′D′| = |EC |\n|ED| · |AD|\n|AC| = |AD|\n|AC| = |AC′|\n|AD′| = |D′B′|\n|C′B′| :\nWe consider all points X with the property\n|XC ′|\n|XD ′| = |D′B′|\n|C′B′| :\nThese points form the Apollonius circle and hence there are exactly two such points\nintersecting the image of K3, each on different arc /xF9C′D′. One of these is the point E′.\nSince the point symmetric to B′ with respect to the line C′D′ also lies on the same arc\n/xF9C′D′ as E′ and lies on the mentioned Apollonius circle we conclude that E′ is symmetric\nto B′.\n16\nThis implies |E′C′| = |B′D′| = |C′A′| (first equality holds because of the symmetry\nthe second because AD′B′C′ is a parallelogram) and similarly |E′D′| = |D′A′|. Hence\nAC′E′D′ is a deltoid so AE′ ⊥ C′D′. This means that AE′ contains the orthocenter of\nthe triangle AC′D′. It is well know that the orthocenter and circumcenter are isogonal\nconjugates (lying on the lines which are symmetric with respect to the angle bisector). On\nthe other hand triangles AC′D′ and AL′K′ are inversely similar, so the circumcenter of\nAK′L′ lies on the same line through A as the orthocenter of AC′D′.\nAll of this shows that AE′ pass through the circumcenter of AK′L′, so AE is perpendicular\nto KL.\n17",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 10,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 10, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2011-i4",
+      "year": 2011,
+      "problem_code": "I-4",
+      "statement_en": "(Kamil Duszenko, Poland)\nLet k and m, with k > m , be positive integers such that the number km(k2 − m2) is\ndivisible by k3 − m3. Prove that ( k − m)3 > 3km.",
+      "solution_text_en": "First solution\nLet d be the greatest common divisor of k and m. Write k = da, m = db. Then a and b\nare relatively prime. Moreover, a > b .\nThe number km\n/x80\nk2 − m2/x8A\n= d4ab\n/x80\na2 − b2/x8A\n= d4ab(a − b)(a + b) is divisible by k3 − m3 =\nd3(a3 − b3) = d3(a − b)(a2 + ab + b2), so we have\na2 + ab + b2 | dab(a + b):\nHowever, since the numbers a and b are relatively prime, the number a2+ab+b2 is relatively\nprime to a, b, and a+b. (For example, in case of a+b we note that a2+ab+b2 = (a+b)a+b2,\nand a + b is relatively prime to b and hence to b2.) Thus\na2 + ab + b2 | d:\nThis, in particular, yields d > a2 + ab + b2 = (a − b)2 + 3ab > 3ab. Therefore\n(k − m)3 = d3(a − b)3 > d3 = d2 · d > d 2 · 3ab = 3km:\nSecond solution (by Wojciech Nadara, Poland)\nSince k2 + km + m2 divides km(k + m) and ( k2 + km + m2)(k + m) we have that it divides\ntheir difference ( k + m)(k2 + m2) = k3 + k2m + km2 + m3. From this we conclude that\nk2 + km + m2 also divides k3 + k2m + km2 + m3 − k(k2 + km + m2) = m3.\nAnalogously, we conclude that k2 + km + m2 divides k3.\nMultiplying the second power of k2 + km + m2 | k3 with k2 + km + m2 | m3 we conclude\n(k2 + km + m2)3 | k6m3. Hence k2 + km + m2 also divides k2m and analogously km2.\nAdding all the results we have obtained we conclude that k2 + km + m2 divides k3 −\n3k2m + 3km2 − m3 = (k − m)3.\nBecause k > m , i.e. k − m > 0, we have k2 + km + m2 6 (k − m)3.\nSince ( k − m)2 is equivalent to k2 + km + m2 > 3km, we obtain 3 km < (k − m)3.\n24\nT 7 (Mariusz Skaba, Poland)\nLet A and B be disjoint nonempty sets with A ∪ B = {1; 2; 3; : : : ;10}. Show that there\nexist elements a ∈ A and b ∈ B such that the number a3 + ab2 + b3 is divisible by 11.\nSolution\nFor each n = 0 ; 1; 2; : : : the numbers 2 n; 2n+1; 2n+2; : : : ;2n+9 have different remainders\nwhen divided by 11.\nSuppose that for every b ∈ B there is no a ∈ A such that a ≡ 2b (mod 11).\nFrom the above statement there exists n ∈ { 0; 1; : : : ;9} such that b ≡ 2n (mod 11) and\nwe conclude that elements of B give ten different remainders when divided by 11, so B\nhas 10 elements. That is a contradiction with the fact that A is nonempty.\nTherefore there exist b ∈ B and a ∈ A such that a ≡ 2b (mod 11), and we have\na3 + ab2 + b3 ≡ 8b3 + 2b3 + b3 = 11b3 ≡ 0 (mod 11) :\n25\nT 8 (Aivaras Novikas, Lithuania)\nWe call a positive integer n amazing if there exist positive integers a; b; c such that the\nequality\nn = (b; c)(a; bc) + (c; a)(b; ca) + (a; b)(c; ab)\nholds. Prove that there exist 2011 consecutive positive integers which are amazing.\n(By ( m; n) we denote the greatest common divisor of positive integers m and n.)\nSolution\nWe may choose such positive integers x1; x2; : : : ; x2011 that the numbers\ny1 = x2\n1(x1 + 2); y 2 = x2\n2(x2 + 2); : : : ; y 2011 = x2\n2011(x2011 + 2)\nare pairwise coprime. For example, we may choose x1 = 1 and xi = y1y2 : : : yi−1 − 1 for\nevery consecutive i. This choice guarantees that for every integer 2 6 i 6 2011 both xi\nand xi + 2 (hence, yi as well) are coprime with any of the numbers y1; y2; : : : ; yi−1.\nIf a positive integer n is divisible by any of the numbers y1; y2; : : : ; y2011 then it is amazing.\nIndeed, if, say, n = yim = x2\ni (xi + 2)m for some positive integers m and 1 6 i 6 2011 then\nn = (b; c)(a; bc) + (c; a)(b; ca) + (a; b)(c; ab) for a = mx2\ni , b = mxi, c = xi.\nSince the numbers y1; y2; : : : ; y2011 are pairwise coprime, the Chinese remainder theorem\nimplies that there exists a positive integer k satisfying the equalities\nk ≡ −i (mod yi); i = 1; 2; : : : ;2011:\nThis means that k +i is divisible by yi for any 1 6 i 6 2011. Thus, the consecutive positive\nintegers k + 1; k + 2; : : : ; k + 2011 are all amazing, and the statement of the problem is\nproved.\n26",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 3,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 3, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2011-t1",
+      "year": 2011,
+      "problem_code": "T-1",
+      "statement_en": "(Ton\u0013 ci Kokan, Croatia)\nFind all functions f : R → R such that the equality\ny2f (x) + x2f (y) + xy = xyf (x + y) + x2 + y2\nholds for all x; y ∈ R, where R is the set of real numbers.",
+      "solution_text_en": "First solution\nSubstituting y = 0 we find that x2f (0) = x2 holds for all real numbers x which implies\nf (0) = 1.\nLet us introduce a new function g : R → R given by g(x) = f (x) − 1. Equation from the\nproblem becomes\ny2g(x) + x2g(y) = xy g(x + y); (1)\nwhile g(0) = 0.\nDenoting c = g(1) and introducing another function h : R → R defined by h(x) = g(x)−cx,\nwe obviously get h(0) = h(1) = 0, whereas the equation that must be satisfied is now\ny2h(x) + x2h(y) = xy h(x + y): (2)\nSubstituting x = y = 1 in the last equation we get h(2) = 0, while another substitution\nx = −1, y = 1 gives h(−1) = 0.\nLet us suppose that there exists a real number y0 such that h(y0) ̸= 0.\nPutting x = 1, y = y0 + 1 in (2) we get:\nh(y0 + 1) = ( y0 + 1)h(y0 + 2); or h(y0 + 2) = h(y0 + 1)\ny0 + 1 : (3)\nOn the other hand, substituting x = 2, y = y0 in (2) gives\n4h(y0) = 2 y0h(y0 + 2); i.e. h(y0 + 2) = 2h(y0)\ny0\n: (4)\nFinally, putting x = 1, y = y0 in (2) leads to:\nh(y0) = y0h(y0 + 1); or h(y0 + 1) = h(y0)\ny0\n: (5)\nFrom (3), (4) and (5) it follows that y0 = − 1\n2 . However, substituting x = y = − 1\n2 in (2)\nand using h(−1) = 0 we arrive at h(− 1\n2 ) = 0, which is a contradiction.\nWe conclude that h(x) = 0 holds for all x ∈ R and thus f (x) = cx + 1 is the only solution.\nWe check that this really is the solution for every real number c.\n3\nSecond solution (by Matija Ba\u0014 si\u0013 c, coordinator)\nWe define function h as in the first solution of the problem. Hence, we have h(0) = 0,\nh(1) = 0,\ny2h(x) + x2h(y) = xyh(x + y): (∗)\nSubstituting y = x : 2 x2h(x) = x2h(2x); ∀x, or h(2x) = 2 h(x) for all x.\nThus h(2) = 0.\nSubstituting y = −x : x2 (h(x) + h(−x)) = x2h(0) = 0 ; ∀x, which gives\nh(−x) = −h(x); ∀x:\nThus h(−1) = 0.\nPut y = 1 in ( ∗) : h(x) + x2h(1) = xh(x + 1) i.e.\nh(x) = xh(x + 1) (1)\nIn (1) we change x → x + 1\nh(x + 1) = ( x + 1)h(x + 2) (2)\nPut y = 2 in ( ∗) : 4 h(x) + x2h(2) = 2 xh(x + 2) i.e.\n2h(x) = xh(x + 2) (3)\nNow we conclude\n2(x + 1)h(x) = (3) = x(x + 1)h(x + 2)\n= (2) = xh(x + 1)\n= (1) = h(x)\nTherefore,\n2(x + 1)h(x) = h(x); ∀x\nso h(x) = 0 or 2( x + 1) = 1 for all x. Obviously, h(x) = 0 for all x ̸= − 1\n2 .\nMoreover, 2h(− 1\n2 ) = h(2 · (− 1\n2 )) = h(−1) = 0 so h(− 1\n2 ) = 0 holds as well.\nWe have proved that h(x) = 0 for all x ∈ R, hence, g(x) = cx, f (x) = cx + 1.\nDirect check shows that f (x) = cx + 1 is the solution of the given functional equation for\nall c ∈ R.\n4\nThird solution (by Klemen \u0014Sivic, Slovenian leader)\nAs in the first solution we obtain f (0) = 1 and we define g(x) = f (x) − 1. Then g(0) = 0\nand\ng(x + y) = y\nx g(x) + x\ny g(y) for x; y ̸= 0: (1)\nTherefore\ng(x + y + z) = y + z\nx g(x) + x\ny + z g(y + z) = y + z\nx g(x) + xy\nz(y + z) g(z) + xz\ny(y + z) g(y)\nfor all nonzero x, y and z such that z ̸= −y. However, since the left side of the above\nequation is symmetric in x and z, we obtain that\ny + z\nx g(x) + xy\nz(y + z) g(z) + xz\ny(y + z) g(y) = y + x\nz g(z) + zy\nx(y + x) g(x) + xz\ny(y + x) g(y)\nfor all nonzero x, y and z such that y ̸= −x and y ̸= −z. In this equation we set y = z = 1\nand we obtain\n2g(x)\nx + x g(1) = 1\nx(x + 1) g(x) +\n/x81\nx + 1 + x\nx + 1\n/x8B\ng(1) for all x ̸= 0; −1;\ni.e. 2x + 1\nx(x + 1) g(x) = 2x + 1\nx + 1 g(1) for all x ̸= 0; −1:\nTherefore\ng(x) = g(1) x for all x ̸= 0; −1; − 1\n2 :\nClearly, the above equation holds also for x = 0. If we set x = 1 and y = −1 into\nthe equation (1), we obtain g(−1) − g(1), and if we set x = y = − 1\n2 , then we obtain\n−g(1) = g(−1) = 2 g\n/x80\n− 1\n2\n/x8A\n, therefore g\n/x80\n− 1\n2\n/x8A\n= − g(1)\n2 . Hence g(x) = g(1) x for all x ∈ R.\nf (1) = a can be arbitrary, therefore all solutions are functions g(x) = ax, or equivalently,\nf (x) = ax + 1 for all x ∈ R, where a ∈ R is arbitrary.\nFourth solution (by team Hungary)\nSimilar to the first solution, we introduce the function g(x) and prove that g(0) = 0 and\ng(−x) = −g(x). Inserting y = 1 and y = −1 into the equation for g(x) we ge:\ng(x) + x2g(1) = x g(x + 1); (1)\ng(x) + x2g(−1) = −x g(x − 1): (2)\nInserting x + 1 instead of x into (2) we get:\ng(x + 1) + (x + 1)2g(−1) = −(x + 1) g(x): (3)\nFrom (2) and (3) we get represent g(x + 1) in two ways:\ng(x + 1) = g(x) + x2g(1)\nx = −(x + 1) g(x) − (x + 1)2g(−1) for x ̸= 0:\nSolving for g(x) and using g(−1) = −g(1) we get:\ng(x)\n/x80\nx2 + x + 1\n/x8A\n= g(1) x\n/x80\nx2 + x + 1\n/x8A\n:\nSince x2 + x + 1 > 0 for all x ∈ R we get g(x) = g(1) x and f (x) = cx + 1. Direct check\nshows that this is, indeed, the solution of the given functional equation for all c ∈ R.\n5",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 4, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2011-t2",
+      "year": 2011,
+      "problem_code": "T-2",
+      "statement_en": "(Kristina Ana \u0014Skreb, Croatia)\nLet a, b, c be positive real numbers such that\na\n1 + a + b\n1 + b + c\n1 + c = 2:\nProve that √a +\n√\nb + √c\n2 > 1√a + 1√\nb\n+ 1√c :",
+      "solution_text_en": "First solution\nNote that the condition of the problem is equivalent to\n1\n1 + a + 1\n1 + b + 1\n1 + c = 1: (1)\nWe want to prove that\n√a +\n√\nb + √c\n2 > 1√a + 1√\nb\n+ 1√c\n⇐ ⇒ √a +\n√\nb + √c > 2\n/x121√a + 1√\nb\n+ 1√c\n/x13\n⇐ ⇒\n/x12√a + 1√a\n/x13\n+\n/x12√\nb + 1√\nb\n/x13\n+\n/x12√c + 1√c\n/x13\n> 3\n/x121√a + 1√\nb\n+ 1√c\n/x13\n⇐ ⇒ a + 1√a + b + 1√\nb\n+ c + 1√c > 3\n/x121√a + 1√\nb\n+ 1√c\n/x13\n(2)\nFrom (1) we see that at most one of the numbers a, b, and c can be strictly smaller than\n1. (Otherwise, we would have 1\n1+a + 1\n1+b + 1\n1+c > 1\n2 + 1\n2 = 1.)\nWithout loss of generality we can take a > b > c.\nCase 1. a > b > c > 1\nWe have √a\n/x80√\nab − 1\n/x8A\n>\n√\nb\n/x80√\nab − 1\n/x8A\n=⇒ a + 1√a > b + 1√\nb\n;\nand also √\nb\n/x80√\nbc − 1\n/x8A\n> √c\n/x80√\nbc − 1\n/x8A\n=⇒ b + 1√\nb\n> c + 1√c :\nCase 2. a > b > 1, and c < 1\nThe same way as in Case 1, we get a+1√a > b+1√\nb .\nSince a, b, and c are positive numbers, (1) implies\n1\n1 + b 6 1 − 1\n1 + c = c\n1 + c =⇒ bc > 1 = ⇒ b > 1\nc :\nAnd this gives\n√\nb\n/x20/xCA\nb\nc − 1\n/x21\n>\n/x72\n1\nc\n/x20/xCA\nb\nc − 1\n/x21\n=⇒ b + 1√\nb\n> c + 1√c :\n6\nWe have showed that\na > b > c =⇒ a + 1√a > b + 1√\nb\n> c + 1√c (3)\nand\na > b > c =⇒ 1\n1 + a 6 1\n1 + b 6 1\n1 + c (4)\nhold.\nNow (3), (4) and the Chebyshev inequality imply\na + 1√a + b + 1√\nb\n+ c + 1√c =\n/x12a + 1√a + b + 1√\nb\n+ c + 1√c\n/x13/x811\n1 + a + 1\n1 + b + 1\n1 + c\n/x8B\n> 3\n/x121√a + 1√\nb\n+ 1√c\n/x13\n;\nwhich is exactly (2).\nSecond solution (by Klemen \u0014Sivic, Slovenian leader)\nWe make a substitution x = 1\na+1 ; y = 1\nb+1 ; z = 1\nc+1 . The condition\n1\n1 + a + 1\n1 + b + 1\n1 + c = 1\nis then equivalent to\nx + y + z = 1;\nand the original variables can be expressed as a = 1\nx − 1 = 1−x\nx = y+z\nx , b = x+z\ny and\nc = x+y\nz . The inequality\n√a +\n√\nb + √c\n2 > 1√a + 1√\nb\n+ 1√c\nis then equivalent to\n/x72\nx + y\n2z +\n/x72\ny + z\n2x +\n/xCA\nz + x\n2y >\n/xCA\n2x\ny + z +\n/xCA\n2y\nz + x +\n/xCA\n2z\ny + x :\nWe will prove that this inequality holds for all positive numbers x, y and z.\nWe make a substitution p = x + y; q = y + z; r = z + x. Then p, q and r are sides of a\ntriangle and we have to prove that\n/x72 p\nq + r − p +\n/x72 q\nr + p − q +\n/x72 r\np + q − r >\n/x72\np + q − r\nr +\n/xCA\nq + r − p\np +\n/xCA\nr + p − q\nq : (1)\nSince p, q and r are sides of a triangle, we can write p = 2 R sin \u000b, q = 2 R sin\n and\nr = 2R sin \r, where R is the circumradius and \u000b,\n and \r angles of the triangle with sides\np, q and r. Then\n/x72 p\nq + r − p =\n/xCA\nsin \u000b\nsin\n + sin \r − sin \u000b =\n/x73\nsin(\n + \r)\nsin\n + sin \r − sin(\n + \r) =\n=\n/xCC\n2 sin\n+\r\n2 cos\n+\r\n2\n2 sin\n+\r\n2 (cos\n−\r\n2 − cos\n+\r\n2 )\n=\n/xCC\nsin \u000b\n2\n2 sin\n\n2 sin \r\n2\n:\n7\nSimilarly we compute the other terms in (1), therefore (1) is equivalent to\n/xCC\nsin \u000b\n2\n2 sin\n\n2 sin \r\n2\n+\n/xCC\nsin\n\n2\n2 sin \r\n2 sin \u000b\n2\n+\n/xCC\nsin \r\n2\n2 sin \u000b\n2 sin\n\n2\n>\n/xCC\n2 sin \u000b\n2 sin\n\n2\nsin \r\n2\n+\n/xCC\n2 sin\n\n2 sin \r\n2\nsin \u000b\n2\n+\n/xCC\n2 sin \r\n2 sin \u000b\n2\nsin\n\n2\n;\nor equivalently, to\nsin \u000b\n2 + sin\n\n2 + sin \r\n2 > 2\n/x12\nsin \u000b\n2 sin\n\n2 + sin \u000b\n2 sin \r\n2 + sin\n\n2 sin \r\n2\n/x13\n=\n/x12\nsin \u000b\n2 + sin\n\n2 + sin \r\n2 )2 − (sin2 \u000b\n2 + sin2\n\n2 + sin2 \r\n2\n/x13\n:\nSince sin x is concave function on (0 ; \u0019), Jensen’s inequality implies that\nsin \u000b\n2 + sin\n\n2 + sin \r\n2 6 3 sin \u000b +\n + \r\n6 = 3 sin \u0019\n6 = 3\n2 :\nTherefore\nsin \u000b\n2 + sin\n\n2 + sin \r\n2 > 2\n3\n/x12\nsin \u000b\n2 + sin\n\n2 + sin \r\n2\n/x132\n>\n/x12\nsin \u000b\n2 + sin\n\n2 + sin \r\n2\n/x132\n−\n/x12\nsin2 \u000b\n2 + sin2\n\n2 + sin2 \r\n2\n/x13\n;\nwhere at the end we used the arithmetic-quadratic mean. Therefore the inequality is\nproved.\nThird solution (by team Croatia)\nLet a = 2x; b = 2y; c = 2z. Then our condition is equivalent to :\nx\n1 + 2x + y\n1 + 2y + z\n1 + 2z = 1 ⇐ ⇒ 1\n1 + 2x + 1\n1 + 2y + 1\n1 + 2z = 2:\nand we need to prove that\n√x + √y + √z > 1√x + 1√y + 1√z ;\nwhich is equivalent to :\n/x58\ncyc\nx − 1√x > 0 ⇐ ⇒\n/x58\ncyc\nx − 1\n2x + 1 · 2x + 1√x > 0:\nSince this inequality is symmetric, we can assume x > y > z. We prove that then:\nx − 1\n2x + 1 > y − 1\n2y + 1 > z − 1\n2z + 1 (1)\nand 2x + 1√x > 2y + 1√y > 2z + 1√z : (2)\nIn order to prove (1) we note that:\nx − 1\n2x + 1 > y − 1\n2y + 1 ⇐ ⇒ 3x > 3y;\nwhich holds. The same argument holds for y and z.\n8\nIn order to prove (2) we factor the inequality in the following equivalent way:\n(√x − √y)(2√xy − 1) > 0:\nBy the assumption, √x − √y > 0 thus we need to prove that 2 √xy − 1 > 0. Assume the\nopposite, ie. that 4 xy < 1. Then:\n1\n1 + 2x + 1\n1 + 2y = 2(1 + x + y)\n1 + 2(x + y) + 4xy = 1 + 1 − 4xy\n(1 + 2x)(1 + 2y) > 1;\nwhich contradicts the condition.\nWe have proven that triplets\n/x12x − 1\n2x + 1 ; y − 1\n2y + 1 ; z − 1\n2z + 1\n/x13\nand\n/x82\n2x + 1√x ; 2y + 1√y ; 2z + 1√z\n/x8C\nare ordered in the same way thus by Chebyshev inequality we have:\n/x58\ncyc\n/x12x − 1\n2x + 1 · 2x + 1√x\n/x13\n> 1\n3\n/x58\ncyc\nx − 1\n2x + 1 ·\n/x58\ncyc\n2x + 1√x = 0:\n9\nCOMBINATORICS",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 1, 'algebra': 4, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2011-t3",
+      "year": 2011,
+      "problem_code": "T-3",
+      "statement_en": "(Viktor Harangi, Hungary)\nFor an integer n > 3, let M be the set {(x; y) | x; y ∈ Z; 1 6 x 6 n; 1 6 y 6 n} of points\nin the plane. ( Z is the set of integers.)\nWhat is the maximum possible number of points in a subset S ⊆ M which does not\ncontain three distinct points being the vertices of a right triangle?",
+      "solution_text_en": "Solution\nWe will prove that the maximal cardinality of S is 2 n − 2.\nThe set\nS = {1} × {2; : : : ; n} ∪ {2; : : : ; n} × {1}\nhas cardinality 2 n − 2 and it does not contain three distinct points that form a right\ntriangle.\nWe will show that any subset S ⊂ M which does not contain three distinct points that\nform a right triangle can have at most 2 n − 2 points. For such set S consider its subsets:\n• Sx consists of those points P = ( x; y) in S that have unique x coordinate, that is,\nthere exists no y′ ̸= y such that ( x; y′) ∈ S.\n• Sy consists of those points P = ( x; y) in S that have unique y coordinate, that is,\nthere exists no x′ ̸= x such that ( x′; y) ∈ S.\nWe claim that S = Sx ∪ Sy. We prove this by contradiction. Assume ther exists a point\nP ∈ S \\(Sx ∪Sy). Since P =∈ Sx, there exists Px ̸= P in S with the same x coordinate as P .\nSimilarly, there exists Py ̸= P in S with the same y coordinate as P . Hence P; Px; Py ∈ S\nand ^PxP Py = 90 ◦, a contradiction.\nClearly, |Sx| 6 n, and if |Sx| = n, then S = Sx. The same holds for Sy. So, |S| = n or\n|Sx|; |Sy| 6 n − 1 and |S| 6 |Sx| + |Sy| 6 2n − 2. It follows that the cardinality of S is at\nmost max( n; 2n − 2) = 2 n − 2.\n12",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 0, 'combinatorics': 4}"
+    },
+    {
+      "id": "memo-2011-t4",
+      "year": 2011,
+      "problem_code": "T-4",
+      "statement_en": "(Vjekoslav Kova\u0014 c, Croatia)\nLet n > 3 be an integer. At a MEMO-like competition, there are 3 n participants, there\nare n languages spoken, and each participant speaks exactly three different languages.\nProve that at least\n/xA12n\n9\n/xA4\nof the spoken languages can be chosen in such a way that no\nparticipant speaks more than two of the chosen languages.\n(⌈x⌉ is the smallest integer which is greater than or equal to x.)",
+      "solution_text_en": "First solution\nConsider the classifications of the set of n available languages into easy, medium, and\nhard languages. There are 3 n possible classifications in total and we denote by S the set\nof all possible classifications. For each classification s ∈ S, let A(s) be the number of easy\nlanguages and let B(s) be the number of students who speak 3 easy languages.\nIf we add up quantities A(s) over all possible classifications s ∈ S, the resulting sum will\nbe /x50\ns∈S A(s) = n3n−1: In order to verify that, we realize that the result should be the\nsame for medium and hard languages too, but all three of these sums add up to\n3\n/x58\ns∈S\nA(s) = number of classifications × number of languages = 3 n · n :\nOn the other hand, we use double counting to compute the sum of quantities B(s) over\nall possible classifications s ∈ S.\nFor each student there are 3 n−3 classifications for which he speaks 3 easy languages, as\nwe only have the choice to classify each of the n − 3 languages that the student does not\nspeak. In two ways, we count the cardinality of the set\n{(X; s) : for a classification s student X speaks 3 easy languages }\nto get the identity /x58\ns∈S\nB(s) = 3 n · 3n−3 = n3n−2 :\nWe claim that there exists a classification s ∈ S such that A(s) − B(s) > 2n\n9 . If we assume\non the contrary that A(s) − B(s) < 2n\n9 for all classifications s ∈ S, then summing over all\n3n of them would give\nn3n−1 − n3n−2 =\n/x58\ns∈S\nA(s) −\n/x58\ns∈S\nB(s) < 3n · 2n\n9 ;\ni.e. 2 n3n−2 < 2n3n−2, which is a contradiction.\nLet us consider any classification s ∈ S of languages satisfying A(s) − B(s) > 2n\n9 . We can\nfirst choose all A(s) easy languages. Then we find all B(s) students who can speak 3 of\nthese languages, and for each of them we remove one of the languages the student speaks.\nThis leaves us with a choice of at least 2n\n9 languages.\nRemark: Classification of languages simply as easy or hard would not give the desired\nbound. It would lead to a choice of at least n\n8 languages only. Taking more than three\nlanguage classes would not be a better strategy either.\n13\nSolution (by Rudi Mrazovi\u0013 c, coordinator)\nIn this proof we will use probabilistic method. Let p ∈ [0; 1]. For each language, suppose\nwe choose it with probability p and we make these decisions independently. 1 Let A be\nthe number of chosen languages (i.e. the number of 1s in !) and B the number of students\nwhose all three languages are among chosen ones. Lets calculate the expectations 2 of\nthese random variables.\nEA = E\n/x32\n/x34/x58\nlanguage l\n1we have chosen the language l\n/x33\n/x35=\n/x58\nlanguage l\nE [1we have chosen the language l]\n=\n/x58\nlanguage l\nP (we have chosen the language l) = np:\nEB = E\n/x22/x58\nstudent s\n1student's s languages are all chosen\n/x23\n=\n/x58\nstudent s\nE [1student's s languages are all chosen ]\n=\n/x58\nstudent s\nP (student’s s languages are all chosen) = 3 np3:\nWe will use the following obvious (and easily proved inequality). For arbitrary random\nvariable X we have\nP(X > EX) > 0:\nFor X = A − B we get\nP(A − B > np − 3np3) > 0:\nIn this way we have proved that there is a choosing of languages such that A − B >\nnp − 3np3. For this choosing for each student that speaks three chosen languages remove\none of them. In the end we are left with at least A − B (and thus np − 3np3) languages\nthat do the job. Taking p = 1\n3 we get what we need, i.e. we can choose at least ⌈ 2n\n9 ⌉ such\nthat no student speaks more than two of them.\nAlternative approach (based on the solution by team Poland)\nWe choose ⌈ n\n3 ⌉ languages uniformly and randomly. Similarly to the previous probabilistic\nsolution we show that with positive probability the number of students that speak three\nof the chosen languages is less or equal to ⌊ n\n9 ⌋. Again, use the same trick of removing\nsome of the languages to obtain at least ⌈ 2n\n9 ⌉ of them such that no student speaks three\nof them.\n1Formally, we consider probability space ( f0; 1gn; P(f0; 1gn); P) where\nP(!) = pk(!)(1 \u0000 p)n\u0000k(!); for each ! 2 f0; 1gn\nwhere k(!) is the number of 1s in !.\n2The expectation of integer random variable X is the number EX =\n/x50n\nk=0 kP(X = k).\n14\nGEOMETRY",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "memo-2011-t5",
+      "year": 2011,
+      "problem_code": "T-5",
+      "statement_en": "(Michal Szabados, Slovakia)\nLet ABCDE be a convex pentagon with all five sides equal in length. The diagonals AD\nand EC meet in S with ^ASE = 60 ◦. Prove that ABCDE has a pair of parallel sides.",
+      "solution_text_en": "First solution\nLet F be such that DEF is an equilateral triangle and the points B and F lay in the\nopposite half-planes determined by DE. Denote ^DAE = \u000b. Then ^ADE = \u000b.\nA\nB\nC\nD\nE\nF\nS\nSince ^ESD = 120 ◦ , we have ^DEC = 60 ◦ − \u000b. Then ^SCD = ^ECD and\n^ADC = ^SDC = 180 ◦ − ^SCD − ^DSC = 60 ◦ + \u000b:\nObviously ^ADF = 60 ◦ + \u000b and because |F D| = |CD | we conclude that ADF ≃ ADC .\nSimilarly, ^AEC = ^F EC = 120 ◦ − \u000b, so ACE ∼= F CE.\nFrom these two pairs of equal triangles we conclude |AF | = |AC| = |F C|, so both triangles\nDEF and ACF are equilateral.\nIf E lies on the line AF or D lies on the line F C then |AC| = 2|ED| = |AB| + |BC | and\nB lies on AC, which is not possible. Therefore exactly one of the points D and E lays\ninside the triangle ACF . Without loss of generality, let it be the point E.\nThe triangles AEF and ABC have their corresponding sides equal therefore AEF ∼= ABC\nand this yields 60 ◦ = ^F AC = ^EAB , so |EB | = |AB|. Hence BCDE is a rhombus,\ni. e., ED ∥ BC .\n18\nSecond solution (by Matija Ba\u0014 si\u0013 c, coordinator)\nLet \u000b be as in the first solution. In the same way we prove ^AEC = 120 ◦ − \u000b and\n^CED = 60 ◦ − \u000b. Let F be the symmetric image of A with respect to CE . We get\n^DEF = 120 ◦ − \u000b − (60◦ − \u000b) = 60 ◦. Since |DE| = |AE| = |EF |, triangle DEF is\nequilateral.\nBecause |AB| = |BC | = |DF | = |CD | the triangles ABC and CDF are congruent.\nIf the point D is outside the triangle ACF then this implies that B and D are symmetric\nwith respect to CE , so |BE | = |DE|. Hence BCDE is a rhombus and DE∥BC .\nIf the point D is inside the triangle ACF then the point E is outside that triangle and we\nsee in the similar way that F and C are symmetric with respect to AD and also B and\nE are symmetric with respect to AD. Hence |BD| = |DE| and ABDE is a rhombus, so\nDE ∥ AB.\nThird solution (by Gerd Baron, Austrian leader)\nDefine the point B′ such that B′CDE is rhombus.\nIf the pentagon AB′CDE is convex, denote ^EAD = ^EDA = \u000b. Similarly to other\nsolution we have ^AEB ′ = ^AED −^B′EC −^CED = 180 ◦−2\u000b−(60◦−\u000b)−(60◦−\u000b) =\n60◦:\nSince |AE| = |B′E|, we conclude that AB′E is equilateral.\nPoints B and B′ are on the same side of the line AC, so we conclude that B = B′, so\nDE ∥ AB.\nIf the pentagon AB′CDE is not convex, denote the intersection of B′E and AD by F and\n^DEC = ^DCE =\n. Similarly to other solutions we have AEB ′ = 180 ◦ − ^EAF −\n^EF A = 180 ◦ − ^EDA − (^F EC + ^F SE) = 180 ◦ − (60◦ −\n) − (\n + 60◦) = 60 ◦:\nSince |AE| = |B′E|, we conclude that AB′E is equilateral.\nLet B′′ be the symmetric image of B′ with respect to AC. Then AB′′CB ′ is a rhombus\nand B = B′′, so we conclude B′C ∥ AB′′ and hence DE ∥ AB.\n19\nFourth solution (by team Slovakia)\nDenote ^DEC = ^DCE = \u000b and suppose that all five sides of the pentagon have length\na. As in the previous solutions we see that ^SEA = 60 ◦ + \u000b; ^SDC = 120 ◦ − \u000b. Applying\nthe law of sines to the triangles ASE and CSD implies\n|SA| = a sin(60◦ + \u000b)\nsin 60◦ = a sin(120◦ − \u000b)\nsin 60◦ = |SC |:\nThe triangle ASC is isosceles and ^ACS = ^CAS = 30 ◦ and we have |AC| =\n√\n3 · |AS|.\nThe law of cosines applied to the triangle ABC gives\na2 = a2 + 3|AS|2 − 2\n√\n3a · |AS| · cos(^ACB )\nfrom where we get cos( ^ACB ) = 3|AS|\n2\n√\n3a = sin(60 ◦ + \u000b) = cos(30 ◦ − \u000b).\nSince 0 < ^ACB < 90◦ we have two possibilities.\nThe first possibility is that ^ACB = 30 ◦ − \u000b, so ^BCE = \u000b = ^CED and hence\nBC ∥ ED.\nThe second possibility is that ^ACB = \u000b − 30◦, so ^BAD = 60 ◦ − \u000b = ^ADE and hence\nAB ∥ ED.\nFifth solution (by team Germany)\nWe construct a point Q on the line SE such that ASQ is the equilateral triangle. As in\nthe previous solutions it is easily seen that ^EAQ = ^DCS and since ^AQS = 60 ◦ =\n^CSD and |AE| = |DC | we have that the triangle AEQ and SCD are congruent, so\n|AS| = |AQ| = |CS |.\nThis shows that the quadrilateral ABCS is a deltoid, so ^ASB = ^BSC = 60 ◦ and the\npoint S is the Fermat’s point of the triangle BDE .\nLet point X be such that BEX is equilateral and that S and X lie on different sides of\nthe line EB . It is well know that the property of the Fermat’s point S is that X; S and\nD are collinear. Also, since |BX | = |EX |, X lies on the bisector of the segment BE .\nWe have two cases. In the first case, the segment bisector of BE coincides with the line\nDS, so ABDE is a rhombus and AB ∥ ED.\nIn the second case, the segment bisector of BE intersects the line AS at exactly one point.\nFrom the remarks we have given, that point must be X and also A, so A = X. Then the\ntriangle BEA is equilateral, so ABCD is a rhombus and BC ∥ ED.\n20",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 6,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 6, 'algebra': 0, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2011-t6",
+      "year": 2011,
+      "problem_code": "T-6",
+      "statement_en": ", (Michal Rol \u0013 \u0010nek, Josef Tkadlec, Czech Republic)\nLet ABC be an acute triangle. Denote by B0 and C0 the feet of the altitudes from vertices\nB and C, respectively. Let X be a point inside the triangle ABC such that the line BX\nis tangent to the circumcircle of the triangle AXC 0 and the line CX is tangent to the\ncircumcircle of the triangle AXB 0. Show that the line AX is perpendicular to BC .",
+      "solution_text_en": "First solution\nA B\nC\nA0\nC0\nX\nH\nLet A0 be the foot of the altitude from A. The quadrilateral ACA0C0 is cyclic because\n^AA0C = ^AC0C = 90 ◦. By the power of the point B with respect to that circle we have\n|BA||BC0| = |BA0||BC |.\nThe power of the point B with respect to the circumcircle of AXC 0 gives |BX |2 =\n|BA||BC0|.\nSimilarly, we have |CX |2 = |CA||CB0| = |CA0||BC |.\nSumming these two results we have\n|BX |2 + |CX |2 = |BA0||BC | + |CA0||BC | = |BC |2:\nThe converse of Pythagora’s theorem implies ^BXC = 90 ◦.\nMoreover, from |BX |2 = |BA0||BC |, i.e. |BX | : |BC | = |BA0| : |BX | we have that the\ntriangles BXA 0 and BCX are similar. It follows that\n^BA0X = ^BXC = 90 ◦ = ^BA0A;\nso A0; X and A are collinear, so AX and BC are perpendicular.\n21\nSecond solution (by Tomislav Pejkovi\u0013 c, coordinator)\nLet H be the orthocenter of the triangle ABC . Because BX is tangent to the circumcircle\nof AXC 0 we have ^BXC 0 = ^BAX (the tangent chord angle theorem). Hence the\ntriangles BAX and BXC 0 are similar.\nAnalogously, the triangle CAX and CXB 0 are similar.\nA B\nC\nH\nB0\nC0\nX\nObserve that the quadrilateral AC0HB 0 is cyclic because ^AC0H = ^AB0H = 90 ◦. The\npower of the point B with respect to circumcircles of AC0X and AC0HB 0 gives\n|BB0||BH | = |BA||BC0| = |BX |2:\nFrom this we conclude that the triangles BXH and BB0X are similar and ^BXH =\n^XB 0H = ^XB 0C − 90◦. Since CAX and CXB 0 are similar we have ^XB 0C = ^AXC .\nWe obtained ^BXH = ^AXC − 90◦ and analogously ^CXH = ^AXB − 90◦.\nSumming up these results we get\n^BXC = ^BXH + ^CXH = ^AXC + ^AXB − 180◦ = 180 ◦ − ^BXC\nand so ^BXC = 90 ◦.\nHence, the points B; C0; X; B0; C all lie on the same circle and we have\n^AXB = ^BC0X = 180 ◦ − ^XB 0B = 180 ◦ − ^BXH\nwhich means that A; X and H are collinear. So AX and BC are perpendicular.\n22\nThird solution (by teams Croatia, Hungary and Poland)\nBy power of the point we have\n|CX |2 = |CA||CB0|; |BX |2 = |BA||BC0|;\nso the point X is the intersection of the circle with center C and radius\n/xC8\n|CA||CB0| and\nthe circle with center B and radius\n/xC8\n|BA||BC0|. There are two such points, but only one\nis in the interior of the triangle ABC , so we conclude that the point X is unique.\nOn the other hand we will prove that the point Y which is the intersection of the circle\nwith diameter BC and the altitude from the point A has the same properties as the point\nX, from which we conclude that X and Y are the same point and hence X lies on the line\nperpendicular to BC .\nSince ^BB0C = 90 ◦, the quadrilateral BCB 0Y is cyclic and hence ^CBB 0 = ^CY B 0.\nOn the other hand ^CAY = 90 ◦ − ^ACB = ^CBB 0 = ^CY B 0, so by the tangent-chord\ntheorem the line CY is tangent to the circumcircle of the triangle AY B0. Analogously,\nthe line BY is tangent to the circumcircle of the triangle AY C0. Hence, X = Y .\n23\nNUMBER THEORY",
+      "source": {
+        "page_url": "https://memo2011.math.hr/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2011.math.hr/documents/MEMO2011solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2011-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 8,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 8, 'algebra': 0, 'number_theory': 0, 'combinatorics': 1}"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "id": "dirac-theorem",
+  "title": "Теорема Дирака о гамильтоновом цикле",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "hamiltonian_cycle",
+      "longest_path",
+      "minimum_degree"
+    ],
+    "methods": [
+      "longest_path",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "close_longest_path_to_cycle"
+    ],
+    "goal": [
+      "hamiltonian_cycle_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "minimum_degree",
+      "path_end_neighbors",
+      "cycle_length"
+    ],
+    "keywords": [
+      "dirac_theorem",
+      "minimum_degree_half",
+      "hamiltonian_cycle"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть G — простой граф на n>=3 вершинах. Если каждая вершина G соединена хотя бы с n/2 другими вершинами, то в G существует гамильтонов цикл, то есть цикл, проходящий через все вершины ровно один раз.",
+        "source_id": "src-wikipedia-dirac",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-longest-path",
+      "title": "Максимальный путь",
+      "text": "Берется самый длинный путь; большая минимальная степень заставляет его концы замкнуться в цикл, а затем цикл оказывается гамильтоновым.",
+      "tags": [
+        "hamiltonian_cycles",
+        "extremal_choice"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-longest-path",
+      "title": "Доказательство через длиннейший путь",
+      "text": "Пусть v1,...,vk — длиннейший путь. Все соседи v1 и vk лежат на этом пути. Так как deg(v1)+deg(vk)>=n и k<=n, существуют индексы i такие, что v1 смежна с \\( v_{i+1} \\), а vk смежна с \\( v_i \\); иначе две соответствующие позиции на пути не пересеклись бы. Тогда v1 \\( v_{i+1} \\) ... vk \\( v_i \\) ... v1 образует цикл длины k. Если k<n, вершина вне цикла, смежная с ним в связном компоненте, позволила бы удлинить путь; условие минимальной степени также дает связность. Значит k=n.",
+      "idea_ids": [
+        "idea-longest-path"
+      ],
+      "status": "ai_draft",
+      "standard_idea_ids": [
+        "longest_path",
+        "extremal_choice"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Классический прием с длиннейшим путем.",
+    "status": "ai_draft"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "extremal_choice",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-dirac",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "base_done"
+  }
+}

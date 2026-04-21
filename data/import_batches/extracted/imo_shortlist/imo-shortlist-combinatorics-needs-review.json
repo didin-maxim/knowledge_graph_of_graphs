@@ -1,0 +1,1093 @@
+{
+  "created_at": "2026-04-20",
+  "scope": "IMO Shortlist C-problems with weak or graph-like signals",
+  "count": 42,
+  "problems": [
+    {
+      "id": "imo-2006-sl-c2",
+      "year": 2006,
+      "shortlist_id": "C2",
+      "country": "endpoints A, B",
+      "source": {
+        "source_id": "src-imo-2006-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2006SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2006SL.pdf"
+      },
+      "statement_en": "A diagonal of a regular 2006-gon is called odd if its endpoints divide the boundary into\ntwo parts, each composed of an odd number of sides. Sides are a lso regarded as odd diagonals.\nSuppose the 2006-gon has been dissected into triangles by 20 03 nonintersecting diagonals.\nFind the maximum possible number of isosceles triangles wit h two odd sides.\n(Serbia)\nSolution 1. Call an isosceles triangle odd if it has two odd sides. Suppose we are given a\ndissection as in the problem statement. A triangle in the dis section which is odd and isosceles\nwill be called iso-odd for brevity.\nLemma. Let AB be one of dissecting diagonals and let L be the shorter part of the boundary of\nthe 2006-gon with endpoints A, B. Suppose that L consists of n segments. Then the number\nof iso-odd triangles with vertices on L does not exceed n/2.\nProof. This is obvious for n = 2. Take n with 2 < n ≤ 1003 and assume the claim to be true\nfor every L of length less than n. Let now L (endpoints A, B) consist of n segments. Let P Q\nbe the longest diagonal which is a side of an iso-odd triangle P QS with all vertices on L (if\nthere is no such triangle, there is nothing to prove). Every t riangle whose vertices lie on L is\nobtuse or right-angled; thus S is the summit of P QS. We may assume that the five points\nA, P, S, Q, B lie on L in this order and partition L into four pieces LAP , LP S, LSQ, LQB (the\nouter ones possibly reducing to a point).\nBy the definition of P Q, an iso-odd triangle cannot have vertices on both LAP and LQB.\nTherefore every iso-odd triangle within L has all its vertices on just one of the four pieces.\nApplying to each of these pieces the induction hypothesis an d adding the four inequalities we\nget that the number of iso-odd triangles within L other than P QS does not exceed n/2. And\nsince each of LP S, LSQ consists of an odd number of sides, the inequalities for thes e two pieces\nare actually strict, leaving a 1 /2 + 1/2 in excess. Hence the triangle P SQ is also covered by\nthe estimate n/2. This concludes the induction step and proves the lemma. □\nThe remaining part of the solution in fact repeats the argume nt from the above proof.\nConsider the longest dissecting diagonal XY . Let LXY be the shorter of the two parts of the\nboundary with endpoints X, Y and let XY Z be the triangle in the dissection with vertex Z\nnot on LXY . Notice that XY Z is acute or right-angled, otherwise one of the segments XZ , Y Z\nwould be longer than XY . Denoting by LXZ , LY Z the two pieces defined by Z and applying\nthe lemma to each of LXY , LXZ , LY Z we infer that there are no more than 2006 /2 iso-odd\ntriangles in all, unless XY Z is one of them. But in that case XZ and Y Z are odd diagonals\nand the corresponding inequalities are strict. This shows t hat also in this case the total number\nof iso-odd triangles in the dissection, including XY Z , is not greater than 1003.\nThis bound can be achieved. For this to happen, it just suffices to select a vertex of the\n2006-gon and draw a broken line joining every second vertex, starting from the selected one.\nSince 2006 is even, the line closes. This already gives us the required 1003 iso-odd triangles.\nThen we can complete the triangulation in an arbitrary fashi on.\n\n[[PAGE 23]]\n22\nSolution 2. Let the terms odd triangle and iso-odd triangle have the same meaning as in the\nfirst solution.\nLet ABC be an iso-odd triangle, with AB and BC odd sides. This means that there are\nan odd number of sides of the 2006-gon between A and B and also between B and C. We say\nthat these sides belong to the iso-odd triangle ABC .\nAt least one side in each of these groups does not belong to any other iso-odd triangle.\nThis is so because any odd triangle whose vertices are among t he points between A and B has\ntwo sides of equal length and therefore has an even number of s ides belonging to it in total.\nEliminating all sides belonging to any other iso-odd triang le in this area must therefore leave\none side that belongs to no other iso-odd triangle. Let us assign these two sides (one in each\ngroup) to the triangle ABC .\nTo each iso-odd triangle we have thus assigned a pair of sides , with no two triangles sharing\nan assigned side. It follows that at most 1003 iso-odd triang les can appear in the dissection.\nThis value can be attained, as shows the example from the first solution.\n\n[[PAGE 24]]\n23",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "vertex"
+        ],
+        "reason": "Matched graph terms: vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "he boundary of the 2006-gon with endpoints A, B. Suppose that L consists of n segments. Then the number of iso-odd triangles with vertices on L does not exceed n/2. Proof. This is obvious for n = 2. Take n with 2 < n ≤ 1003 and assume the claim to be true for every L"
+      ]
+    },
+    {
+      "id": "imo-2006-sl-c3",
+      "year": 2006,
+      "shortlist_id": "C3",
+      "country": "P",
+      "source": {
+        "source_id": "src-imo-2006-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2006SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2006SL.pdf"
+      },
+      "statement_en": "Let S be a finite set of points in the plane such that no three of them a re on a line. For\neach convex polygon P whose vertices are in S, let a(P ) be the number of vertices of P , and\nlet b(P ) be the number of points of S which are outside P . Prove that for every real number x\n∑\nP\nxa(P )(1 − x)b(P ) = 1,\nwhere the sum is taken over all convex polygons with vertices in S.\nNB. A line segment, a point and the empty set are considered as convex polygons of 2, 1\nand 0 vertices, respectively.\n(Colombia)\nSolution 1. For each convex polygon P whose vertices are in S, let c(P ) be the number of\npoints of S which are inside P , so that a(P ) + b(P ) + c(P ) = n, the total number of points\nin S. Denoting 1 − x by y,\n∑\nP\nxa(P )yb(P ) =\n∑\nP\nxa(P )yb(P )(x + y)c(P ) =\n∑\nP\nc(P )∑\ni=0\n(c(P )\ni\n)\nxa(P )+iyb(P )+c(P )−i .\nView this expression as a homogeneous polynomial of degree n in two independent variables\nx, y. In the expanded form, it is the sum of terms xryn−r (0 ≤ r ≤ n) multiplied by some\nnonnegative integer coefficients.\nFor a fixed r, the coefficient of xryn−r represents the number of ways of choosing a convex\npolygon P and then choosing some of the points of S inside P so that the number of vertices\nof P and the number of chosen points inside P jointly add up to r.\nThis corresponds to just choosing an r-element subset of S. The correspondence is bijective\nbecause every set T of points from S splits in exactly one way into the union of two disjoint\nsubsets, of which the first is the set of vertices of a convex po lygon — namely, the convex hull\nof T — and the second consists of some points inside that polygon.\nSo the coefficient of xryn−r equals\n(n\nr\n)\n. The desired result follows:\n∑\nP\nxa(P )yb(P ) =\nn∑\nr=0\n(n\nr\n)\nxryn−r = (x + y)n = 1.\n\n[[PAGE 25]]\n24\nSolution 2. Apply induction on the number n of points. The case n = 0 is trivial. Let n > 0\nand assume the statement for less than n points. Take a set S of n points.\nLet C be the set of vertices of the convex hull of S, let m = |C|.\nLet X ⊂ C be an arbitrary nonempty set. For any convex polygon P with vertices in the\nset S \\ X, we have b(P ) points of S outside P . Excluding the points of X — all outside P\n— the set S \\ X contains exactly b(P ) − |X| of them. Writing 1 − x = y, by the induction\nhypothesis ∑\nP ⊂S\\X\nxa(P )yb(P )−|X| = 1\n(where P ⊂ S \\ X means that the vertices of P belong to the set S \\ X). Therefore\n∑\nP ⊂S\\X\nxa(P )yb(P ) = y|X|.\nAll convex polygons appear at least once, except the convex h ull C itself. The convex hull\nadds xm. We can use the inclusion-exclusion principle to compute th e sum of the other terms:\n∑\nP ̸=C\nxa(P )yb(P ) =\nm∑\nk=1\n(−1)k−1 ∑\n|X|=k\n∑\nP ⊂S\\X\nxa(P )yb(P ) =\nm∑\nk=1\n(−1)k−1 ∑\n|X|=k\nyk\n=\nm∑\nk=1\n(−1)k−1\n(m\nk\n)\nyk = −\n(\n(1 − y)m − 1\n)\n= 1 − xm\nand then ∑\nP\nxa(P )yb(P ) =\n∑\nP =C\n+\n∑\nP ̸=C\n= xm + (1 − xm) = 1 .\n\n[[PAGE 26]]\n25",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "vertex"
+        ],
+        "reason": "Matched graph terms: vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Let S be a finite set of points in the plane such that no three of them a re on a line. For each convex polygon P whose vertices are in S, let a(P ) be the number of vertices of P , and let b(P ) be the number of points of S which are outside P . Prove that"
+      ]
+    },
+    {
+      "id": "imo-2006-sl-c6",
+      "year": 2006,
+      "shortlist_id": "C6",
+      "country": "not counting those sticking out",
+      "source": {
+        "source_id": "src-imo-2006-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2006SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2006SL.pdf"
+      },
+      "statement_en": "A holey triangle is an upward equilateral triangle of side length n with n upward unit\ntriangular holes cut out. A diamond is a 60 ◦ −120◦ unit rhombus. Prove that a holey triangle T\ncan be tiled with diamonds if and only if the following condit ion holds: Every upward equilateral\ntriangle of side length k in T contains at most k holes, for 1 ≤ k ≤ n.\n(Colombia)\nSolution. Let T be a holey triangle. The unit triangles in it will be called cells. We say simply\n\"triangle\" instead of \"upward equilateral triangle\" and \"s ize\" instead of \"side length.\"\nThe necessity will be proven first. Assume that a holey triang le T can be tiled with diamonds\nand consider such a tiling. Let T ′ be a triangle of size k in T containing h holes. Focus on the\ndiamonds which cover (one or two) cells in T ′. Let them form a figure R. The boundary of T ′\nconsists of upward cells, so R is a triangle of size k with h upward holes cut out and possibly\nsome downward cells sticking out. Hence there are exactly ( k2 + k)/2 − h upward cells in R, and\nat least ( k2 − k)/2 downward cells (not counting those sticking out). On the ot her hand each\ndiamond covers one upward and one downward cell, which impli es (k2 + k)/2 − h ≥ (k2 − k)/2.\nIt follows that h ≤ k, as needed.\nWe pass on to the sufficiency. For brevity, let us say that a set o f holes in a given triangle T\nis spread out if every triangle of size k in T contains at most k holes. For any set S of spread\nout holes, a triangle of size k will be called full of S if it contains exactly k holes of S. The\nproof is based on the following observation.\nLemma. Let S be a set of spread out holes in T . Suppose that two triangles T ′ and T ′′ are full\nof S, and that they touch or intersect. Let T ′ + T ′′ denote the smallest triangle in T containing\nthem. Then T ′ + T ′′ is also full of S.\nProof. Let triangles T ′, T ′′, T ′ ∩ T ′′ and T ′ + T ′′ have sizes a, b, c and d, and let them contain\na, b, x and y holes of S, respectively. (Note that T ′ ∩ T ′′ could be a point, in which case c = 0.)\nSince S is spread out, we have x ≤ c and y ≤ d. The geometric configuration of triangles\nclearly satisfies a + b = c + d. Furthermore, a + b ≤ x + y, since a + b counts twice the holes in\nT ′ ∩ T ′′. These conclusions imply x = c and y = d, as we wished to show. □\nNow let Tn be a holey triangle of size n, and let the set H of its holes be spread out. We\nshow by induction on n that Tn can be tiled with diamonds. The base n = 1 is trivial. Suppose\nthat n ≥ 2 and that the claim holds for holey triangles of size less tha n n.\nDenote by B the bottom row of Tn and by T ′ the triangle formed by its top n − 1 rows.\nThere is at least one hole in B as T ′ contains at most n − 1 holes. If this hole is only one,\nthere is a unique way to tile B with diamonds. Also, T ′ contains exactly n − 1 holes, making\nit a holey triangle of size n − 1, and these holes are spread out. Hence it remains to apply th e\ninduction hypothesis.\nSo suppose that there are m ≥ 2 holes in B and label them a1, . . . , am from left to right. Let\nl be the line separating B from T ′. For each i = 1, . . . , m− 1, pick an upward cell bi between ai\nand ai+1, with base on l. Place a diamond to cover bi and its lower neighbour, a downward\ncell in B. The remaining part of B can be tiled uniquely with diamonds. Remove from Tn\nrow B and the cells b1, . . . , bm−1 to obtain a holey triangle Tn−1 of size n − 1. The conclusion\nwill follow by induction if the choice of b1, . . . , bm−1 guarantees that the following condition\nis satisfied: If the holes a1, . . . , am−1 are replaced by b1, . . . , bm−1 then the new set of holes is\nspread out again.\nWe show that such a choice is possible. The cells b1, . . . , bm−1 can be defined one at a time\nin this order, making sure that the above condition holds at e ach step. Thus it suffices to prove\nthat there is an appropriate choice for b1, and we set a1 = u, a2 = v for clarity.\n\n[[PAGE 31]]\n30\nLet ∆ be the triangle of maximum size which is full of H, contains the top vertex of the\nhole u, and has base on line l. Call ∆ the associate of u. Observe that ∆ does not touch v.\nIndeed, if ∆ has size r then it contains r holes of Tn. Extending its slanted sides downwards\nproduces a triangle ∆ ′ of size r + 1 containing at least one more hole, namely u. Since there\nare at most r + 1 holes in ∆ ′, it cannot contain v. Consequently, ∆ does not contain the top\nvertex of v.\nLet w be the upward cell with base on l which is to the right of ∆ and shares a common\nvertex with it. The observation above shows that w is to the left of v. Note that w is not a\nhole, or else ∆ could be extended to a larger triangle full of H.\nWe prove that if the hole u is replaced by w then the new set of holes is spread out again.\nTo verify this, we only need to check that if a triangle Γ in Tn contains w but not u then Γ is\nnot full of H. Suppose to the contrary that Γ is full of H. Consider the minimum triangle Γ+∆\ncontaining Γ and the associate ∆ of u. Clearly Γ + ∆ is larger than ∆, because Γ contains w\nbut ∆ does not. Next, Γ + ∆ is full of H \\ {u} by the lemma, since Γ and ∆ have a common\npoint and neither of them contains u.\nu v\n∆\nΓ\nΓ + ∆\nw\nIf Γ is above line l then so is Γ + ∆, which contradicts the maximum choice of ∆. If Γ\ncontains cells from row B, observe that Γ + ∆ contains u. Let s be the size of Γ + ∆. Being\nfull of H \\ {u}, Γ + ∆ contains s holes other than u. But it also contains u, contradicting the\nassumption that H is spread out.\nThe claim follows, showing that b1 = w is an appropriate choice for a1 = u and a2 = v. As\nexplained above, this is enough to complete the induction.\n\n[[PAGE 32]]\n31",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "domino_polyomino",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: domino_polyomino, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "ength n with n upward unit triangular holes cut out. A diamond is a 60 ◦ −120◦ unit rhombus. Prove that a holey triangle T can be tiled with diamonds if and only if the following condit ion holds: Every upward equilateral triangle of side length k in T contains at",
+        "and we set a1 = u, a2 = v for clarity. [[PAGE 31]] 30 Let ∆ be the triangle of maximum size which is full of H, contains the top vertex of the hole u, and has base on line l. Call ∆ the associate of u. Observe that ∆ does not touch v. Indeed, if ∆ has size r then i"
+      ]
+    },
+    {
+      "id": "imo-2007-sl-c2",
+      "year": 2007,
+      "shortlist_id": "C2",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "statement_en": "A unit square is dissected into n > 1 rectangles such that their sides are parallel to the\nsides of the square. Any line, parallel to a side of the square and intersecting its interior, also\nintersects the interior of some rectangle. Prove that in thi s dissection, there exists a rectangle\nhaving no point on the boundary of the square.\n(Japan)\nSolution 1. Call the directions of the sides of the square horizontal and vertical. A horizontal\nor vertical line, which intersects the interior of the squar e but does not intersect the interior of\nany rectangle, will be called a splitting line . A rectangle having no point on the boundary of\nthe square will be called an interior rectangle.\nSuppose, to the contrary, that there exists a dissection of t he square into more than one\nrectangle, such that no interior rectangle and no splitting line appear. Consider such a dissection\nwith the least possible number of rectangles. Notice that th is number of rectangles is greater\nthan 2, otherwise their common side provides a splitting lin e.\nIf there exist two rectangles having a common side, then we ca n replace them by their union\n(see Figure 1). The number of rectangles was greater than 2, s o in a new dissection it is greater\nthan 1. Clearly, in the new dissection, there is also no split ting line as well as no interior\nrectangle. This contradicts the choice of the original diss ection.\nDenote the initial square by ABCD , with A and B being respectively the lower left and lower\nright vertices. Consider those two rectangles a and b containing vertices A and B, respectively.\n(Note that a ̸= b, otherwise its top side provides a splitting line.) We can as sume that the\nheight of a is not greater than that of b. Then consider the rectangle c neighboring to the lower\nright corner of a (it may happen that c = b). By aforementioned, the heights of a and c are\ndistinct. Then two cases are possible.\na b\nc\nd\nA B\nD C\na bc\nd\nA B\nD C\nFigure 1 Figure 2 Figure 3\nCase 1. The height of c is less than that of a. Consider the rectangle d which is adjacent\nto both a and c, i. e. the one containing the angle marked in Figure 2. This re ctangle has no\ncommon point with BC (since a is not higher than b), as well as no common point with AB\nor with AD (obviously). Then d has a common point with CD , and its left side provides a\nsplitting line. Contradiction.\nCase 2. The height of c is greater than that of a. Analogously, consider the rectangle d\ncontaining the angle marked on Figure 3. It has no common poin t with AD (otherwise it has\na common side with a), as well as no common point with AB or with BC (obviously). Then d\nhas a common point with CD . Hence its right side provides a splitting line, and we get th e\ncontradiction again.\n\n[[PAGE 30]]\n29\nSolution 2. Again, we suppose the contrary. Consider an arbitrary count erexample. Then we\nknow that each rectangle is attached to at least one side of th e square. Observe that a rectangle\ncannot be attached to two opposite sides, otherwise one of it s sides lies on a splitting line.\nWe say that two rectangles are opposite if they are attached to opposite sides of ABCD . We\nclaim that there exist two opposite rectangles having a comm on point.\nConsider the union L of all rectangles attached to the left. Assume, to the contra ry, that L\nhas no common point with the rectangles attached to the right . Take a polygonal line p\nconnecting the top and the bottom sides of the square and pass ing close from the right to the\nboundary of L (see Figure 4). Then all its points belong to the rectangles a ttached either to\nthe top or to the bottom. Moreover, the upper end-point of p belongs to a rectangle attached\nto the top, and the lower one belongs to an other rectangle att ached to the bottom. Hence,\nthere is a point on p where some rectangles attached to the top and to the bottom me et each\nother. So, there always exists a pair of neighboring opposit e rectangles.\nL\np\na\nbX\na\nb\na′ b′\nc\nl\nX\nY\nFigure 4 Figure 5 Figure 6\nNow, take two opposite neighboring rectangles a and b. We can assume that a is attached\nto the left and b is attached to the right. Let X be their common point. If X belongs to their\nhorizontal sides (in particular, X may appear to be a common vertex of a and b), then these\nsides provide a splitting line (see Figure 5). Otherwise, X lies on the vertical sides. Let l be\nthe line containing these sides.\nSince l is not a splitting line, it intersects the interior of some re ctangle. Let c be such a\nrectangle, closest to X; we can assume that c lies above X. Let Y be the common point of l\nand the bottom side of c (see Figure 6). Then Y is also a vertex of two rectangles lying below c.\nSo, let Y be the upper-right and upper-left corners of the rectangles a′ and b′, respectively.\nThen a′ and b′ are situated not lower than a and b, respectively (it may happen that a = a′\nor b = b′). We claim that a′ is attached to the left. If a = a′ then of course it is. If a ̸= a′\nthen a′ is above a, below c and to the left from b′. Hence, it can be attached to the left only.\nAnalogously, b′ is attached to the right. Now, the top sides of these two recta ngles pass\nthrough Y , hence they provide a splitting line again. This last contra diction completes the\nproof.\n\n[[PAGE 31]]\n30",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "issection with the least possible number of rectangles. Notice that th is number of rectangles is greater than 2, otherwise their common side provides a splitting lin e. If there exist two rectangles having a common side, then we ca n replace them by their union (see Fig",
+        "e of the original diss ection. Denote the initial square by ABCD , with A and B being respectively the lower left and lower right vertices. Consider those two rectangles a and b containing vertices A and B, respectively. (Note that a ̸= b, otherwise its top side provi"
+      ]
+    },
+    {
+      "id": "imo-2007-sl-c3",
+      "year": 2007,
+      "shortlist_id": "C3",
+      "country": "y, z, x",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "statement_en": "Find all positive integers n, for which the numbers in the set S = {1, 2, . . . , n} can be\ncolored red and blue, with the following condition being sat isfied: the set S × S × S contains\nexactly 2007 ordered triples ( x, y, z) such that (i) x, y, z are of the same color and (ii) x + y + z\nis divisible by n.\n(Netherlands)\nAnswer. n = 69 and n = 84.\nSolution. Suppose that the numbers 1 , 2, . . . , n are colored red and blue. Denote by R and B\nthe sets of red and blue numbers, respectively; let |R| = r and |B| = b = n − r. Call a\ntriple ( x, y, z) ∈ S × S × S monochromatic if x, y, z have the same color, and bichromatic\notherwise. Call a triple ( x, y, z) divisible if x + y + z is divisible by n. We claim that there are\nexactly r2 − rb + b2 divisible monochromatic triples.\nFor any pair ( x, y) ∈ S × S there exists a unique zx,y ∈ S such that the triple ( x, y, zx,y) is\ndivisible; so there are exactly n2 divisible triples. Furthermore, if a divisible triple ( x, y, z) is\nbichromatic, then among x, y, z there are either one blue and two red numbers, or vice versa.\nIn both cases, exactly one of the pairs ( x, y), ( y, z) and ( z, x) belongs to the set R × B. Assign\nsuch pair to the triple ( x, y, z).\nConversely, consider any pair ( x, y) ∈ R × B, and denote z = zx,y. Since x ̸= y, the\ntriples (x, y, z), (y, z, x) and ( z, x, y) are distinct, and ( x, y) is assigned to each of them. On the\nother hand, if ( x, y) is assigned to some triple, then this triple is clearly one o f those mentioned\nabove. So each pair in R × B is assigned exactly three times.\nThus, the number of bichromatic divisible triples is three t imes the number of elements\nin R × B, and the number of monochromatic ones is n2 − 3rb = (r + b)2 − 3rb = r2 − rb + b2,\nas claimed.\nSo, to find all values of n for which the desired coloring is possible, we have to find all\nn, for which there exists a decomposition n = r + b with r2 − rb + b2 = 2007. Therefore,\n9\n⏐\n⏐ r2 − rb + b2 = ( r + b)2 − 3rb. From this it consequently follows that 3\n⏐\n⏐ r + b, 3\n⏐\n⏐ rb, and\nthen 3\n⏐\n⏐ r, 3\n⏐\n⏐ b. Set r = 3s, b = 3c. We can assume that s ≥ c. We have s2 − sc + c2 = 223.\nFurthermore,\n892 = 4( s2 − sc + c2) = (2 c − s)2 + 3s2 ≥ 3s2 ≥ 3s2 − 3c(s − c) = 3( s2 − sc + c2) = 669 ,\nso 297 ≥ s2 ≥ 223 and 17 ≥ s ≥ 15. If s = 15 then\nc(15 − c) = c(s − c) = s2 − (s2 − sc + c2) = 15 2 − 223 = 2\nwhich is impossible for an integer c. In a similar way, if s = 16 then c(16 − c) = 33, which is\nalso impossible. Finally, if s = 17 then c(17 − c) = 66, and the solutions are c = 6 and c = 11.\nHence, ( r, b) = (51 , 18) or ( r, b) = (51 , 33), and the possible values of n are n = 51 + 18 = 69\nand n = 51 + 33 = 84.\nComment. After the formula for the number of monochromatic divisible triples is found, the solution\ncan be finished in various ways. The one presented is aimed to d ecrease the number of considered\ncases.\n\n[[PAGE 32]]\n31",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring",
+          "complete_graph_language"
+        ],
+        "reason": "Matched graph terms: coloring, complete_graph_language"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Find all positive integers n, for which the numbers in the set S = {1, 2, . . . , n} can be colored red and blue, with the following condition being sat isfied: the set S × S × S contains exactly 2007 ordered triples ( x, y, z) s",
+        "of them. On the other hand, if ( x, y) is assigned to some triple, then this triple is clearly one o f those mentioned above. So each pair in R × B is assigned exactly three times. Thus, the number of bichromatic divisible triples is three t imes the number of element"
+      ]
+    },
+    {
+      "id": "imo-2007-sl-c5",
+      "year": 2007,
+      "shortlist_id": "C5",
+      "country": "Romania",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "statement_en": "In the Cartesian coordinate plane define the strip Sn = {(x, y) | n ≤ x < n + 1} for\nevery integer n. Assume that each strip Sn is colored either red or blue, and let a and b be two\ndistinct positive integers. Prove that there exists a recta ngle with side lengths a and b such\nthat its vertices have the same color.\n(Romania)\nSolution. If Sn and Sn+a have the same color for some integer n, then we can choose the\nrectangle with vertices ( n, 0) ∈ Sn, ( n, b) ∈ Sn, ( n + a, 0) ∈ Sn+a, and ( n + a, b) ∈ Sn+a, and we\nare done. So it can be assumed that Sn and Sn+a have opposite colors for each n.\nSimilarly, it also can be assumed that Sn and Sn+b have opposite colors. Then, by induction\non |p| + |q|, we obtain that for arbitrary integers p and q, strips Sn and Sn+pa+qb have the same\ncolor if p + q is even, and these two strips have opposite colors if p + q is odd.\nLet d = gcd( a, b), a1 = a/d and b1 = b/d. Apply the result above for p = b1 and q = −a1.\nThe strips S0 and S0+b1a−a1b are identical and therefore they have the same color. Hence, a1 +b1\nis even. By the construction, a1 and b1 are coprime, so this is possible only if both are odd.\nWithout loss of generality, we can assume a > b . Then a1 > b 1 ≥ 1, so a1 ≥ 3.\nChoose integers k and l such that ka1 − lb1 = 1 and therefore ka − lb = d. Since a1 and b1\nare odd, k + l is odd as well. Hence, for every integer n, strips Sn and Sn+ka−lb = Sn+d have\nopposite colors. This also implies that the coloring is peri odic with period 2 d, i.e. strips Sn\nand Sn+2d have the same color for every n.\nA\nB\nC\nD\nD0B0\nt t + 2d u u + 2d\na\nb\na\nb\nx\nFigure 1\nWe will construct the desired rectangle ABCD with AB = CD = a and BC = AD = b in\na position such that vertex A lies on the x-axis, and the projection of side AB onto the x-axis\nis of length 2 d (see Figure 1). This is possible since a = a1d > 2d. The coordinates of the\nvertices will have the forms\nA = (t, 0), B = (t + 2d, y1), C = (u + 2d, y2), D = (u, y3).\nLet φ =\n√\na2\n1 − 4. By Pythagoras' theorem,\ny1 = BB0 =\n√\na2 − 4d2 = d\n√\na2\n1 − 4 = dφ.\nSo, by the similar triangles ADD0 and BAB0, we have the constraint\nu − t = AD0 = AD\nAB · BB0 = bd\na φ (1)\n\n[[PAGE 34]]\n33\nfor numbers t and u. Computing the numbers y2 and y3 is not required since they have no\neffect to the colors.\nObserve that the number φ is irrational, because φ2 is an integer, but φ is not: a1 > φ ≥√\na2\n1 − 2a1 + 2 > a 1 − 1.\nBy the periodicity, points A and B have the same color; similarly, points C and D have the\nsame color. Furthermore, these colors depend only on the val ues of t and u. So it is sufficient\nto choose numbers t and u such that vertices A and D have the same color.\nLet w be the largest positive integer such that there exist w consecutive strips Sn0, Sn0+1, . . .,\nSn0+w−1 with the same color, say red. (Since Sn0+d must be blue, we have w ≤ d.) We will\nchoose t from the interval ( n0, n0 + w).\nI\nA D0B0\nt t + 2d u x( )n0 n0 + w ( )\nFigure 2\nConsider the interval I =\n(\nn0 + bd\na φ, n0 + bd\na φ + w\n)\non the x-axis (see Figure 2). Its length\nis w, and the end-points are irrational. Therefore, this interv al intersects w + 1 consecutive\nstrips. Since at most w consecutive strips may have the same color, interval I must contain both\nred and blue points. Choose u ∈ I such that the line x = u is red and set t = u− bd\na φ, according\nto the constraint (1). Then t ∈ (n0, n0 + w) and A = (t, 0) is red as well as D = (u, y3).\nHence, variables u and t can be set such that they provide a rectangle with four red ver tices.\nComment. The statement is false for squares, i.e. in the case a = b. If strips S2ka, S2ka+1, . . .,\nS(2k+1)a−1 are red, and strips S(2k+1)a, S(2k+1)a+1, . . ., S(2k+2)a−1 are blue for every integer k, then\neach square of size a × a has at least one red and at least one blue vertex as well.\n\n[[PAGE 35]]\n34",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "n the Cartesian coordinate plane define the strip Sn = {(x, y) | n ≤ x < n + 1} for every integer n. Assume that each strip Sn is colored either red or blue, and let a and b be two distinct positive integers. Prove that there exists a recta ngle with side lengths a a",
+        ", and let a and b be two distinct positive integers. Prove that there exists a recta ngle with side lengths a and b such that its vertices have the same color. (Romania) Solution. If Sn and Sn+a have the same color for some integer n, then we can choose the rectangle"
+      ]
+    },
+    {
+      "id": "imo-2007-sl-c8",
+      "year": 2007,
+      "shortlist_id": "C8",
+      "country": "either in its interior or on segment XY",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "statement_en": "Given a convex n-gon P in the plane. For every three vertices of P , consider the triangle\ndetermined by them. Call such a triangle good if all its sides are of unit length.\nProve that there are not more than 2\n3 n good triangles.\n(Ukraine)\nSolution. Consider all good triangles containing a certain vertex A. The other two vertices\nof any such triangle lie on the circle ωA with unit radius and center A. Since P is convex, all\nthese vertices lie on an arc of angle less than 180 ◦. Let LARA be the shortest such arc, oriented\nclockwise (see Figure 1). Each of segments ALA and ARA belongs to a unique good triangle.\nWe say that the good triangle with side ALA is assigned counterclockwise to A, and the second\none, with side ARA, is assigned clockwise to A. In those cases when there is a single good\ntriangle containing vertex A, this triangle is assigned to A twice.\nThere are at most two assignments to each vertex of the polygo n. (Vertices which do not\nbelong to any good triangle have no assignment.) So the numbe r of assignments is at most 2 n.\nConsider an arbitrary good triangle ABC , with vertices arranged clockwise. We prove\nthat ABC is assigned to its vertices at least three times. Then, denot ing the number of good\ntriangles by t, we obtain that the number K of all assignments is at most 2 n, while it is not\nless than 3 t. Then 3 t ≤ K ≤ 2n, as required.\nActually, we prove that triangle ABC is assigned either counterclockwise to C or clockwise\nto B. Then, by the cyclic symmetry of the vertices, we obtain that triangle ABC is assigned\neither counterclockwise to A or clockwise to C, and either counterclockwise to B or clockwise\nto A, providing the claim.\nA\nLA\nRA\nωA\nA\nLA\nRA\nωA A\nB C\nA′\nB′C ′\nX=L(′)\nCY =R(′)\nB\nωA\nωBωC\nFigure 1 Figure 2\nAssume, to the contrary, that LC ̸= A and RB ̸= A. Denote by A′, B′, C ′ the intersection\npoints of circles ωA, ωB and ωC, distinct from A, B, C (see Figure 2). Let CL CL′\nC be the good\ntriangle containing CL C. Observe that the angle of arc LCA is less than 120 ◦. Then one of the\npoints LC and L′\nC belongs to arc B′A of ωC; let this point be X. In the case when LC = B′\nand L′\nC = A, choose X = B′.\nAnalogously, considering the good triangle BR′\nBRB which contains BRB as an edge, we see\nthat one of the points RB and R′\nB lies on arc AC ′ of ωB. Denote this point by Y , Y ̸= A.\nThen angles XAY , Y AB, BAC and CAX (oriented clockwise) are not greater than 180 ◦.\nHence, point A lies in quadrilateral XY BC (either in its interior or on segment XY ). This is\nimpossible, since all these five points are vertices of P .\nHence, each good triangle has at least three assignments, an d the statement is proved.\nComment 1. Considering a diameter AB of the polygon, one can prove that every good triangle\ncontaining either A or B has at least four assignments. This observation leads to t ≤\n⌊2\n3 (n − 1)\n⌋\n.\n\n[[PAGE 39]]\n38\nA\nB1\nBn\nC1 Cn\nD1\nDn\nFigure 3\nComment 2. The result t ≤\n⌊2\n3 (n − 1)\n⌋\nis sharp. To\nconstruct a polygon with n = 3k + 1 vertices and t = 2k tri-\nangles, take a rhombus AB1C1D1 with unit side length and\n∠B1 = 60 ◦. Then rotate it around A by small angles ob-\ntaining rhombi AB2C2D2, . . . , ABkCkDk (see Figure 3). The\npolygon AB1 . . . BkC1 . . . CkD1 . . . Dk has 3k + 1 vertices and\ncontains 2k good triangles.\nThe construction for n = 3 k and n = 3 k − 1 can be\nobtained by deleting vertices Dn and Dn−1.\n\n[[PAGE 40]]",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "edge",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: edge, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "In the case when LC = B′ and L′ C = A, choose X = B′. Analogously, considering the good triangle BR′ BRB which contains BRB as an edge, we see that one of the points RB and R′ B lies on arc AC ′ of ωB. Denote this point by Y , Y ̸= A. Then angles XAY , Y AB, BAC a",
+        "Given a convex n-gon P in the plane. For every three vertices of P , consider the triangle determined by them. Call such a triangle good if all its sides are of unit length. Prove that there"
+      ]
+    },
+    {
+      "id": "imo-2008-sl-c1",
+      "year": 2008,
+      "shortlist_id": "C1",
+      "country": "mod n",
+      "source": {
+        "source_id": "src-imo-2008-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2008SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2008SL.pdf"
+      },
+      "statement_en": "In the plane we consider rectangles whose sides are parallel to the coordinate axes and\nhave positive length. Such a rectangle will be called a box. Two boxes intersect if they have a\ncommon point in their interior or on their boundary.\nFind the largest n for which there exist n boxes B1, . . . , Bn such that Bi and Bj intersect if\nand only if i ̸≡ j ± 1 (mod n).\nSolution. The maximum number of such boxes is 6. One example is shown in t he figure.\nB2B1\nB4B3\nB6\nB5\nNow we show that 6 is the maximum. Suppose that boxes B1, . . . , Bn satisfy the condition.\nLet the closed intervals Ik and Jk be the projections of Bk onto the x- and y-axis, for 1 ≤ k ≤ n.\nIf Bi and Bj intersect, with a common point ( x, y), then x ∈ Ii ∩ Ij and y ∈ Ji ∩ Jj. So the\nintersections Ii ∩ Ij and Ji ∩ Jj are nonempty. Conversely, if x ∈ Ii ∩ Ij and y ∈ Ji ∩ Jj for some\nreal numbers x, y, then ( x, y) is a common point of Bi and Bj. Putting it around, Bi and Bj\nare disjoint if and only if their projections on at least one c oordinate axis are disjoint.\nFor brevity we call two boxes or intervals adjacent if their i ndices differ by 1 modulo n, and\nnonadjacent otherwise.\nThe adjacent boxes Bk and Bk+1 do not intersect for each k = 1 , . . . , n. Hence ( Ik, Ik+1)\nor ( Jk, Jk+1) is a pair of disjoint intervals, 1 ≤ k ≤ n. So there are at least n pairs of disjoint\nintervals among ( I1, I2), . . . ,(In−1, In), (In, I1); (J1, J2), . . . ,(Jn−1, Jn), (Jn, J1).\nNext, every two nonadjacent boxes intersect, hence their pr ojections on both axes intersect,\ntoo. Then the claim below shows that at most 3 pairs among ( I1, I2), . . . ,(In−1, In), (In, I1) are\ndisjoint, and the same holds for ( J1, J2), . . . ,(Jn−1, Jn), (Jn, J1). Consequently n ≤ 3 + 3 = 6,\nas stated. Thus we are left with the claim and its justificatio n.\nClaim. Let ∆ 1, ∆2, . . . ,∆n be intervals on a straight line such that every two nonadjace nt\nintervals intersect. Then ∆ k and ∆ k+1 are disjoint for at most three values of k = 1, . . . , n.\nProof. Denote ∆ k = [ ak, bk], 1 ≤ k ≤ n. Let α = max( a1, . . . , an) be the rightmost among\nthe left endpoints of ∆ 1, . . . ,∆n, and let β = min(b1, . . . , bn) be the leftmost among their right\nendpoints. Assume that α = a2 without loss of generality.\nIf α ≤ β then ai ≤ α ≤ β ≤ bi for all i. Every ∆ i contains α, and thus no disjoint pair\n(∆i, ∆i+1) exists.\n\n[[PAGE 23]]\n22\nIf β < α then β = bi for some i such that ai < b i = β < α = a2 < b 2, hence ∆ 2 and ∆ i are\ndisjoint. Now ∆ 2 intersects all remaining intervals except possibly ∆ 1 and ∆ 3, so ∆ 2 and ∆ i\ncan be disjoint only if i = 1 or i = 3. Suppose by symmetry that i = 3; then β = b3. Since\neach of the intervals ∆ 4, . . . ,∆n intersects ∆ 2, we have ai ≤ α ≤ bi for i = 4, . . . , n. Therefore\nα ∈ ∆4 ∩ . . . ∩ ∆n, in particular ∆ 4 ∩ . . . ∩ ∆n ̸= ∅. Similarly, ∆ 5, . . . ,∆n, ∆1 all intersect ∆ 3,\nso that ∆ 5 ∩ . . . ∩ ∆n ∩ ∆1 ̸= ∅ as β ∈ ∆5 ∩ . . . ∩ ∆n ∩ ∆1. This leaves (∆ 1, ∆2), (∆ 2, ∆3) and\n(∆3, ∆4) as the only candidates for disjoint interval pairs, as desi red.\nComment. The problem is a two-dimensional version of the original pro posal which is included below.\nThe extreme shortage of easy and appropriate submissions fo rced the Problem Selection Committee\nto shortlist a simplified variant. The same one-dimensional Claim is used in both versions.\nOriginal proposal. We consider parallelepipeds in three-dimensional space, w ith edges par-\nallel to the coordinate axes and of positive length. Such a pa rallelepiped will be called a box.\nTwo boxes intersect if they have a common point in their interior or on their bound ary.\nFind the largest n for which there exist n boxes B1, . . . , Bn such that Bi and Bj intersect if\nand only if i ̸≡ j ± 1 (mod n).\nThe maximum number of such boxes is 9. Suppose that boxes B1, . . . , Bn satisfy the con-\ndition. Let the closed intervals Ik, Jk and Kk be the projections of box Bk onto the x-, y-\nand z-axis, respectively, for 1 ≤ k ≤ n. As before, Bi and Bj are disjoint if and only if their\nprojections on at least one coordinate axis are disjoint.\nWe call again two boxes or intervals adjacent if their indice s differ by 1 modulo n, and\nnonadjacent otherwise.\nThe adjacent boxes Bi and Bi+1 do not intersect for each i = 1, . . . , n. Hence at least one of\nthe pairs ( Ii, Ii+1), ( Ji, Ji+1) and ( Ki, Ki+1) is a pair of disjoint intervals. So there are at least\nn pairs of disjoint intervals among ( Ii, Ii+1), (Ji, Ji+1), (Ki, Ki+1), 1 ≤ i ≤ n.\nNext, every two nonadjacent boxes intersect, hence their pr ojections on the three axes\nintersect, too. Referring to the Claim in the solution of the two-dimensional version, we\ncocnclude that at most 3 pairs among ( I1, I2), . . . ,(In−1, In), (In, I1) are disjoint; the same\nholds for ( J1, J2), . . . ,(Jn−1, Jn), (Jn, J1) and ( K1, K2), . . . ,(Kn−1, Kn), (Kn, K1). Consequently\nn ≤ 3 + 3 + 3 = 9, as stated.\nFor n = 9, the desired system of boxes exists. Consider the interva ls in the following table:\ni I i Ji Ki\n1 [1 , 4] [1 , 6] [3 , 6]\n2 [5 , 6] [1 , 6] [1 , 6]\n3 [1 , 2] [1 , 6] [1 , 6]\n4 [3 , 6] [1 , 4] [1 , 6]\n5 [1 , 6] [5 , 6] [1 , 6]\n6 [1 , 6] [1 , 2] [1 , 6]\n7 [1 , 6] [3 , 6] [1 , 4]\n8 [1 , 6] [1 , 6] [5 , 6]\n9 [1 , 6] [1 , 6] [1 , 2]\nWe have I1 ∩ I2 = I2 ∩ I3 = I3 ∩ I4 = ∅, J4 ∩ J5 = J5 ∩ J6 = J6 ∩ J7 = ∅, and finally\nK7 ∩ K8 = K8 ∩ K9 = K9 ∩ K1 = ∅. The intervals in each column intersect in all other cases.\nIt follows that the boxes Bi = Ii × Ji × Ki, i = 1, . . . ,9, have the stated property.\n\n[[PAGE 24]]\n23",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "edge"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, edge"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "sjoint if and only if their projections on at least one c oordinate axis are disjoint. For brevity we call two boxes or intervals adjacent if their i ndices differ by 1 modulo n, and nonadjacent otherwise. The adjacent boxes Bk and Bk+1 do not intersect for each k = 1",
+        "one-dimensional Claim is used in both versions. Original proposal. We consider parallelepipeds in three-dimensional space, w ith edges par- allel to the coordinate axes and of positive length. Such a pa rallelepiped will be called a box. Two boxes intersect if the"
+      ]
+    },
+    {
+      "id": "imo-2008-sl-c5",
+      "year": 2008,
+      "shortlist_id": "C5",
+      "country": "Aq",
+      "source": {
+        "source_id": "src-imo-2008-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2008SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2008SL.pdf"
+      },
+      "statement_en": "Let S = {x1, x2, . . . , xk+l} be a ( k + l)-element set of real numbers contained in the\ninterval [0, 1]; k and l are positive integers. A k-element subset A ⊂ S is called nice if\n⏐\n⏐\n⏐\n⏐\n⏐\n⏐\n1\nk\n∑\nxi∈A\nxi − 1\nl\n∑\nxj∈S\\A\nxj\n⏐\n⏐\n⏐\n⏐\n⏐\n⏐\n≤ k + l\n2kl .\nProve that the number of nice subsets is at least 2\nk + l\n( k + l\nk\n)\n.\nSolution. For a k-element subset A ⊂ S, let f (A) = 1\nk\n∑\nxi∈A\nxi − 1\nl\n∑\nxj∈S\\A\nxj. Denote k + l\n2kl = d.\nBy definition a subset A is nice if |f (A)| ≤ d.\nTo each permutation (y1, y2, . . . , yk+l) of the set S = {x1, x2, . . . , xk+l} we assign k+l subsets\nof S with k elements each, namely Ai = {yi, yi+1, . . . , yi+k−1}, i = 1 , 2, . . . , k + l. Indices are\ntaken modulo k + l here and henceforth. In other words, if y1, y2, . . . , yk+l are arranged around\na circle in this order, the sets in question are all possible b locks of k consecutive elements.\nClaim. At least two nice sets are assigned to every permutation of S.\nProof. Adjacent sets Ai and Ai+1 differ only by the elements yi and yi+k, i = 1 , . . . , k + l. By\nthe definition of f , and because yi, yi+k ∈ [0, 1],\n|f (Ai+1) − f (Ai)| =\n⏐\n⏐\n⏐\n⏐\n( 1\nk + 1\nl\n)\n(yi+k − yi)\n⏐\n⏐\n⏐\n⏐ ≤ 1\nk + 1\nl = 2d.\nEach element yi ∈ S belongs to exactly k of the sets A1, . . . , Ak+l. Hence in k of the\nexpressions f (A1), . . . , f(Ak+l) the coefficient of yi is 1 /k; in the remaining l expressions, its\ncoefficient is −1/l. So the contribution of yi to the sum of all f (Ai) equals k · 1/k − l · 1/l = 0.\nSince this holds for all i, it follows that f (A1) + · · · + f (Ak+l) = 0.\nIf f (Ap) = min f (Ai), f (Aq) = max f (Ai), we obtain in particular f (Ap) ≤ 0, f (Aq) ≥ 0.\nLet p < q (the case p > q is analogous; and the claim is true for p = q as f (Ai) = 0 for all i).\nWe are ready to prove that at least two of the sets A1, . . . , Ak+l are nice. The interval [ −d, d]\nhas length 2d, and we saw that adjacent numbers in the circular arrangemen t f (A1), . . . , f(Ak+l)\ndiffer by at most 2 d. Suppose that f (Ap) < −d and f (Aq) > d . Then one of the numbers\nf (Ap+1), . . . , f(Aq−1) lies in [ −d, d], and also one of the numbers f (Aq+1), . . . , f(Ap−1) lies there.\nConsequently, one of the sets Ap+1, . . . , Aq−1 is nice, as well as one of the sets Aq+1, . . . , Ap−1.\nIf −d ≤ f (Ap) and f (Aq) ≤ d then Ap and Aq are nice.\nLet now f (Ap) < −d and f (Aq) ≤ d. Then f (Ap) + f (Aq) < 0, and since ∑f (Ai) = 0,\nthere is an r ̸= q such that f (Ar) > 0. We have 0 < f (Ar) ≤ f (Aq) ≤ d, so the sets f (Ar)\nand f (Aq) are nice. The only case remaining, −d ≤ f (Ap) and d < f (Aq), is analogous.\nApply the claim to each of the ( k + l)! permutations of S = {x1, x2, . . . , xk+l}. This gives\nat least 2( k + l)! nice sets, counted with repetitions: each nice set is coun ted as many times as\nthere are permutations to which it is assigned.\nOn the other hand, each k-element set A ⊂ S is assigned to exactly ( k+l) k! l! permutations.\nIndeed, such a permutation ( y1, y2, . . . , yk+l) is determined by three independent choices: an in-\ndex i ∈ {1, 2, . . . , k+ l} such that A = {yi, yi+1, . . . , yi+k−1}, a permutation ( yi, yi+1, . . . , yi+k−1)\nof the set A, and a permutation ( yi+k, yi+k+1, . . . , yi−1) of the set S \\ A.\nIn summary, there are at least 2(k + l)!\n(k + l) k! l! = 2\nk + l\n( k + l\nk\n)\nnice sets.\n\n[[PAGE 28]]\n27",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "are all possible b locks of k consecutive elements. Claim. At least two nice sets are assigned to every permutation of S. Proof. Adjacent sets Ai and Ai+1 differ only by the elements yi and yi+k, i = 1 , . . . , k + l. By the definition of f , and because yi, yi+k ∈"
+      ]
+    },
+    {
+      "id": "imo-2009-sl-c2",
+      "year": 2009,
+      "shortlist_id": "C2",
+      "country": "Romania",
+      "source": {
+        "source_id": "src-imo-2009-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2009SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2009SL.pdf"
+      },
+      "statement_en": "For any integer n≥ 2, let N(n) be the maximal number of triples ( ai, bi, ci), i = 1, . . . , N(n),\nconsisting of nonnegative integers ai, bi and ci such that the following two conditions are satis-\nfied:\n(1) ai + bi + ci = n for all i = 1, . . . , N(n),\n(2) If i̸= j, then ai̸= aj, bi̸= bj and ci̸= cj.\nDetermine N(n) for all n≥ 2.\nComment. The original problem was formulated form-tuples instead for triples. The numbers\nN(m, n) are then defined similarly to N(n) in the case m = 3. The numbers N(3, n) and\nN(n, n) should be determined. The case m = 3 is the same as in the present problem. The\nupper bound for N(n, n) can be proved by a simple generalization. The construction of a set\nof triples attaining the bound can be easily done by induction from n to n + 2.\nSolution. Let n≥ 2 be an integer and let {T1, . . . , TN} be any set of triples of nonnegative\nintegers satisfying the conditions (1) and (2). Since the a-coordinates are pairwise distinct we\nhave\nN∑\ni=1\nai≥\nN∑\ni=1\n(i− 1) = N(N− 1)\n2 .\nAnalogously,\nN∑\ni=1\nbi≥ N(N− 1)\n2 and\nN∑\ni=1\nci≥ N(N− 1)\n2 .\nSumming these three inequalities and applying (1) yields\n3 N(N− 1)\n2 ≤\nN∑\ni=1\nai +\nN∑\ni=1\nbi +\nN∑\ni=1\nci =\nN∑\ni=1\n(ai + bi + ci) = nN,\nhence 3N−1\n2 ≤ n and, consequently,\nN≤\n⌊2n\n3\n⌋\n+ 1.\nBy constructing examples, we show that this upper bound can be attained, so N(n) =⌊ 2n\n3⌋+1.\n27\n\n[[PAGE 30]]\nC2 Combinatorics 50th IMO 2009\nWe distinguish the cases n = 3k− 1, n = 3k and n = 3k + 1 for k≥ 1 and present the extremal\nexamples in form of a table.\nn = 3k− 1⌊2n\n3\n⌋\n+ 1 = 2k\nai bi ci\n0 k + 1 2k− 2\n1 k + 2 2k− 4\n... ... ...\nk− 1 2k 0\nk 0 2k− 1\nk + 1 1 2k− 3\n... ... ...\n2k− 1 k− 1 1\nn = 3k⌊2n\n3\n⌋\n+ 1 = 2k + 1\nai bi ci\n0 k 2k\n1 k + 1 2k− 2\n... ... ...\nk 2k 0\nk + 1 0 2k− 1\nk + 2 1 2k− 3\n... ... ...\n2k k− 1 1\nn = 3k + 1⌊2n\n3\n⌋\n+ 1 = 2k + 1\nai bi ci\n0 k 2k + 1\n1 k + 1 2k− 1\n... ... ...\nk 2k 1\nk + 1 0 2k\nk + 2 1 2k− 2\n... ... ...\n2k k− 1 2\nIt can be easily seen that the conditions (1) and (2) are satisfied and that we indeed have\n⌊ 2n\n3⌋ + 1 triples in each case.\nComment. A cute combinatorial model is given by an equilateral triangle, partitioned into\nn2 congruent equilateral triangles by n− 1 equidistant parallels to each of its three sides. Two\nchess-like bishops placed at any two vertices of the small triangles are said to menace one\nanother if they lie on a same parallel. The problem is to determine the largest number of\nbishops that can be placed so that none menaces another. A bishop may be assigned three\ncoordinates a, b, c, namely the numbers of sides of small triangles they are off each of the sides\nof the big triangle. It is readily seen that the sum of these coordinates is always n, therefore\nfulfilling the requirements.\n28\n\n[[PAGE 31]]\n50th IMO 2009 Combinatorics C3",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "vertex"
+        ],
+        "reason": "Matched graph terms: vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "ongruent equilateral triangles by n− 1 equidistant parallels to each of its three sides. Two chess-like bishops placed at any two vertices of the small triangles are said to menace one another if they lie on a same parallel. The problem is to determine the largest num"
+      ]
+    },
+    {
+      "id": "imo-2009-sl-c5",
+      "year": 2009,
+      "shortlist_id": "C5",
+      "country": "Netherlands",
+      "source": {
+        "source_id": "src-imo-2009-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2009SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2009SL.pdf"
+      },
+      "statement_en": "Five identical empty buckets of 2-liter capacity stand at the vertices of a regular pentagon.\nCinderella and her wicked Stepmother go through a sequence of rounds: At the beginning of\nevery round, the Stepmother takes one liter of water from the nearby river and distributes it\narbitrarily over the five buckets. Then Cinderella chooses a pair of neighboring buckets, empties\nthem into the river, and puts them back. Then the next round begins. The Stepmother's goal\nis to make one of these buckets overflow. Cinderella's goal is to prevent this. Can the wicked\nStepmother enforce a bucket overflow?\nSolution 1. No, the Stepmother cannot enforce a bucket overflow and Cinderella can keep\nplaying forever. Throughout we denote the five buckets by B0, B1, B2, B3, and B4, where Bk\nis adjacent to bucket Bk−1 and Bk+1 (k = 0 , 1, 2, 3, 4) and all indices are taken modulo 5.\nCinderella enforces that the following three conditions are satisfied at the beginning of every\nround:\n(1) Two adjacent buckets (say B1 and B2) are empty.\n(2) The two buckets standing next to these adjacent buckets (here B0 and B3) have total\ncontents at most 1.\n(3) The remaining bucket (here B4) has contents at most 1.\nThese conditions clearly hold at the beginning of the first round, when all buckets are empty.\nAssume that Cinderella manages to maintain them until the beginning of ther-th round (r≥ 1).\nDenote by xk (k = 0 , 1, 2, 3, 4) the contents of bucket Bk at the beginning of this round and\nby yk the corresponding contents after the Stepmother has distributed her liter of water in this\nround.\nBy the conditions, we can assume x1 = x2 = 0, x0 + x3≤ 1 and x4≤ 1. Then, since the\nStepmother adds one liter, we conclude y0 + y1 + y2 + y3≤ 2. This inequality implies y0 + y2≤ 1\nor y1 + y3≤ 1. For reasons of symmetry, we only consider the second case.\nThen Cinderella empties buckets B0 and B4.\nAt the beginning of the next round B0 and B4 are empty (condition (1) is fulfilled), due to\ny1 + y3≤ 1 condition (2) is fulfilled and finally since x2 = 0 we also must have y2≤ 1 (condition\n(3) is fulfilled).\nTherefore, Cinderella can indeed manage to maintain the three conditions (1)–(3) also at the\nbeginning of the ( r + 1)-th round. By induction, she thus manages to maintain them at the\nbeginning of every round. In particular she manages to keep the contents of every single bucket\nat most 1 liter. Therefore, the buckets of 2-liter capacity will never overflow.\nSolution 2. We prove that Cinderella can maintain the following two conditions and hence\nshe can prevent the buckets from overflow:\n(1′) Every two non-adjacent buckets contain a total of at most 1.\n(2′) The total contents of all five buckets is at most 3\n2.\nWe use the same notations as in the first solution. The two conditions again clearly hold at\nthe beginning. Assume that Cinderella maintained these two conditions until the beginning of\nthe r-th round. A pair of non-neighboring buckets ( Bi, Bi+2), i = 0, 1, 2, 3, 4 is called critical\n33\n\n[[PAGE 36]]\nC5 Combinatorics 50th IMO 2009\nif yi + yi+2 > 1. By condition (2 ′), after the Stepmother has distributed her water we have\ny0 + y1 + y2 + y3 + y4≤ 5\n2. Therefore,\n(y0 + y2) + (y1 + y3) + (y2 + y4) + (y3 + y0) + (y4 + y1) = 2(y0 + y1 + y2 + y3 + y4)≤ 5,\nand hence there is a pair of non-neighboring buckets which is not critical, say ( B0, B2). Now,\nif both of the pairs ( B3, B0) and ( B2, B4) are critical, we must have y1 < 1\n2 and Cinderella\ncan empty the buckets B3 and B4. This clearly leaves no critical pair of buckets and the total\ncontents of all the buckets is then y1 + (y0 + y2)≤ 3\n2. Therefore, conditions (1 ′) and (2′) are\nfulfilled.\nNow suppose that without loss of generality the pair ( B3, B0) is not critical. If in this case\ny0≤ 1\n2, then one of the inequalities y0 + y1 + y2≤ 3\n2 and y0 + y3 + y4≤ 3\n2 must hold. But then\nCinderella can empty B3 and B4 or B1 and B2, respectively and clearly fulfill the conditions.\nFinally consider the case y0 > 1\n2. By y0 + y1 + y2 + y3 + y4≤ 5\n2, at least one of the pairs (B1, B3)\nand (B2, B4) is not critical. Without loss of generality let this be the pair ( B1, B3). Since the\npair (B3, B0) is not critical and y0 > 1\n2, we must have y3≤ 1\n2. But then, as before, Cinderella\ncan maintain the two conditions at the beginning of the next round by either emptying B1 and\nB2 or B4 and B0.\nComments on GREEDY approaches. A natural approach for Cinderella would be a GREEDY\nstrategy as for example: Always remove as much water as possible from the system . It is\nstraightforward to prove that GREEDY can avoid buckets of capacity 5\n2 from overflowing: If\nbefore the Stepmothers move one has x0 + x1 + x2 + x3 + x4≤ 3\n2 then after her move the\ninequality Y = y0 + y1 + y2 + y3 + y4≤ 5\n2 holds. If now Cinderella removes the two adjacent\nbuckets with maximum total contents she removes at least 2Y\n5 and thus the remaining buckets\ncontain at most 3\n5· Y≤ 3\n2.\nBut GREEDY is in general not strong enough to settle this problem as can be seen in the\nfollowing example:\n• In an initial phase, the Stepmother brings all the buckets (after her move) to contents\nof at least 1\n2− 2ε, where ε is an arbitrary small positive number. This can be done\nby always splitting the 1 liter she has to distribute so that all buckets have the same\ncontents. After her r-th move the total contents of each of the buckets is then cr with\nc1 = 1 and cr+1 = 1 + 3\n5· cr and hence cr = 5\n2− 3\n2·\n(3\n5\n)r−1\n. So the contents of each\nsingle bucket indeed approaches 1\n2 (from below). In particular, any two adjacent buckets\nhave total contents strictly less than 1 which enables the Stepmother to always refill the\nbuckets that Cinderella just emptied and then distribute the remaining water evenly over\nall buckets.\n• After that phase GREEDY faces a situation like this ( 1\n2− 2ε, 1\n2− 2ε, 1\n2− 2ε, 1\n2− 2ε, 1\n2− 2ε)\nand leaves a situation of the form ( x0, x1, x2, x3, x4) = ( 1\n2− 2ε, 1\n2− 2ε, 1\n2− 2ε, 0, 0).\n• Then the Stepmother can add the amounts (0 , 1\n4 + ε, ε, 3\n4− 2ε, 0) to achieve a situation\nlike this: ( y0, y1, y2, y3, y4) = ( 1\n2− 2ε, 3\n4− ε, 1\n2− ε, 3\n4− 2ε, 0).\n• Now B1 and B2 are the adjacent buckets with the maximum total contents and thus\nGREEDY empties them to yield ( x0, x1, x2, x3, x4) = ( 1\n2− 2ε, 0, 0, 3\n4− 2ε, 0).\n• Then the Stepmother adds ( 5\n8 , 0, 0, 3\n8 , 0), which yields ( 9\n8− 2ε, 0, 0, 9\n8− 2ε, 0).\n• Now GREEDY can only empty one of the two nonempty buckets and in the next step the\nStepmother adds her liter to the other bucket and brings it to 17\n8− 2ε, i.e. an overflow.\n34\n\n[[PAGE 37]]\n50th IMO 2009 Combinatorics C5\nA harder variant. Five identical empty buckets of capacity b stand at the vertices of a regular\npentagon. Cinderella and her wicked Stepmother go through a sequence of rounds: At the\nbeginning of every round, the Stepmother takes one liter of water from the nearby river and\ndistributes it arbitrarily over the five buckets. Then Cinderella chooses a pair of neighboring\nbuckets, empties them into the river, and puts them back. Then the next round begins. The\nStepmother's goal is to make one of these buckets overflow. Cinderella's goal is to prevent this.\nDetermine all bucket capacities b for which the Stepmother can enforce a bucket to overflow.\nSolution to the harder variant. The answer is b < 2.\nThe previous proof shows that for all b≥ 2 the Stepmother cannot enforce overflowing. Now if\nb < 2, let R be a positive integer such that b < 2− 21−R. In the first R rounds the Stepmother\nnow ensures that at least one of the (nonadjacent) buckets B1 and B3 have contents of at\nleast 1− 21−r at the beginning of round r (r = 1, 2, . . . , R). This is trivial for r = 1 and if it\nholds at the beginning of round r, she can fill the bucket which contains at least 1− 21−r liters\nwith another 2−r liters and put the rest of her water – 1 − 2−r liters – in the other bucket.\nAs Cinderella now can remove the water of at most one of the two buckets, the other bucket\ncarries its contents into the next round.\nAt the beginning of the R-th round there are 1− 21−R liters in B1 or B3. The Stepmother puts\nthe entire liter into that bucket and produces an overflow since b < 2− 21−R.\n35\n\n[[PAGE 38]]\nC6 Combinatorics 50th IMO 2009",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "one liter of water from the nearby river and distributes it arbitrarily over the five buckets. Then Cinderella chooses a pair of neighboring buckets, empties them into the river, and puts them back. Then the next round begins. The Stepmother's goal is to make one of the",
+        "Five identical empty buckets of 2-liter capacity stand at the vertices of a regular pentagon. Cinderella and her wicked Stepmother go through a sequence of rounds: At the beginning of every round, the"
+      ]
+    },
+    {
+      "id": "imo-2009-sl-c8",
+      "year": 2009,
+      "shortlist_id": "C8",
+      "country": "Austria",
+      "source": {
+        "source_id": "src-imo-2009-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2009SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2009SL.pdf"
+      },
+      "statement_en": "For any integer n≥ 2, we compute the integer h(n) by applying the following procedure to its\ndecimal representation. Let r be the rightmost digit of n.\n(1) If r = 0, then the decimal representation of h(n) results from the decimal representation\nof n by removing this rightmost digit 0.\n(2) If 1 ≤ r≤ 9 we split the decimal representation of n into a maximal right part R that\nsolely consists of digits not less than r and into a left part L that either is empty or ends\nwith a digit strictly smaller than r. Then the decimal representation of h(n) consists of the\ndecimal representation of L, followed by two copies of the decimal representation of R− 1.\nFor instance, for the number n = 17 ,151,345,543, we will have L = 17 ,151, R = 345 ,543\nand h(n) = 17,151,345,542,345,542.\nProve that, starting with an arbitrary integer n≥ 2, iterated application of h produces the\ninteger 1 after finitely many steps.\nSolution 1. We identify integers n≥ 2 with the digit-strings, briefly strings, of their decimal\nrepresentation and extend the definition of h to all non-empty strings with digits from 0 to\n9. We recursively define ten functions f0, . . . , f9 that map some strings into integers for k =\n9, 8, . . . ,1, 0. The function f9 is only defined on strings x (including the empty string ε) that\nentirely consist of nines. If x consists of m nines, then f9(x) = m + 1, m = 0, 1, . . .. For k≤ 8,\nthe domain of fk(x) is the set of all strings consisting only of digits that are ≥ k. We write x\nin the form x0kx1kx2k . . . xm−1kxm where the strings xs only consist of digits ≥ k + 1. Note\nthat some of these strings might equal the empty string ε and that m = 0 is possible, i.e. the\ndigit k does not appear in x. Then we define\nfk(x) =\nm∑\ns=0\n4fk+1(xs).\nWe will use the following obvious fact:\nFact 1. If x does not contain digits smaller than k, then fi(x) = 4fi+1(x) for all i = 0, . . . , k− 1.\nIn particular, fi(ε) = 49−i for all i = 0, 1, . . . ,9.\nMoreover, by induction on k = 9, 8, . . . ,0 it follows easily:\nFact 2. If the nonempty string x does not contain digits smaller than k, then fi(x) > fi(ε) for\nall i = 0, . . . , k.\nWe will show the essential fact:\nFact 3. f0(n) > f 0(h(n)).\nThen the empty string will necessarily be reached after a finite number of applications of\nh. But starting from a string without leading zeros, ε can only be reached via the strings\n1→ 00→ 0→ ε. Hence also the number 1 will appear after a finite number of applications of\nh.\nProof of Fact 3. If the last digit r of n is 0, then we write n = x00 . . .0xm−10ε where the xi do\nnot contain the digit 0. Then h(n) = x00 . . .0xm−1 and f0(n)− f0(h(n)) = f0(ε) > 0.\nSo let the last digit r of n be at least 1. Let L = yk and R = zr be the corresponding left and\nright parts where y is some string, k≤ r− 1 and the string z consists only of digits not less\n41\n\n[[PAGE 44]]\nC8 Combinatorics 50th IMO 2009\nthan r. Then n = ykzr and h(n) = ykz(r− 1)z(r− 1). Let d(y) be the smallest digit of y. We\nconsider two cases which do not exclude each other.\nCase 1. d(y)≥ k.\nThen\nfk(n)− fk(h(n)) = fk(zr)− fk(z(r− 1)z(r− 1)).\nIn view of Fact 1 this difference is positive if and only if\nfr−1(zr)− fr−1(z(r− 1)z(r− 1)) > 0.\nWe have, using Fact 2,\nfr−1(zr) = 4fr(zr) = 4fr(z)+4fr+1(ε)\n≥ 4· 4fr(z) > 4fr(z) + 4fr(z) + 4fr(ε) = fr−1(z(r− 1)z(r− 1)).\nHere we use the additional definition f10(ε) = 0 if r = 9. Consequently, fk(n)− fk(h(n)) > 0\nand according to Fact 1, f0(n)− f0(h(n)) > 0.\nCase 2. d(y)≤ k.\nWe prove by induction on d(y) = k, k− 1, . . . ,0 that fi(n)− fi(h(n)) > 0 for all i = 0, . . . , d(y).\nBy Fact 1, it suffices to do so for i = d(y). The initialization d(y) = k was already treated in\nCase 1. Let t = d(y) < k. Write y in the form utv where v does not contain digits ≤ t. Then,\nin view of the induction hypothesis,\nft(n)− ft(h(n)) = ft(vkzr )− ft(vkz(r− 1)z(r− 1)) = 4ft+1(vkzr )− 4ft+1(vkz (r−1)z(r−1)) > 0.\nThus the inequality fd(y)(n)− fd(y)(h(n)) > 0 is established and from Fact 1 it follows that\nf0(n)− f0(h(n)) > 0.\nSolution 2. We identify integers n≥ 2 with the digit-strings, briefly strings, of their decimal\nrepresentation and extend the definition of h to all non-empty strings with digits from 0 to\n9. Moreover, let us define that the empty string, ε, is being mapped to the empty string. In\nthe following all functions map the set of strings into the set of strings. For two functions f\nand g let g◦ f be defined by ( g◦ f)(x) = g(f(x)) for all strings x and let, for non-negative\nintegers n, fn denote the n-fold application of f. For any string x let s(x) be the smallest digit\nof x, and for the empty string let s(ε) =∞. We define nine functions g1, . . . , g9 as follows: Let\nk∈{ 1, . . . ,9} and let x be a string. If x = ε then gk(x) = ε. Otherwise, write x in the form\nx = yzr where y is either the empty string or ends with a digit smaller than k, s(z)≥ k and r\nis the rightmost digit of x. Then gk(x) = zr.\nLemma 1. We have gk◦ h = gk◦ h◦ gk for all k = 1, . . . ,9.\nProof of Lemma 1. Let x = yzr be as in the definition of gk. If y = ε, then gk(x) = x, whence\ngk(h(x)) = gk(h(gk(x)). (1)\nSo let y̸= ε.\nCase 1. z contains a digit smaller than r.\nLet z = uav where a < r and s(v)≥ r. Then\nh(x) =\n{\nyuav if r = 0,\nyuav(r− 1)v(r− 1) if r > 0\n42\n\n[[PAGE 45]]\n50th IMO 2009 Combinatorics C8\nand\nh(gk(x)) = h(zr) = h(uavr) =\n{\nuav if r = 0,\nuav(r− 1)v(r− 1) if r > 0.\nSince y ends with a digit smaller than k, (1) is obviously true.\nCase 2. z does not contain a digit smaller than r.\nLet y = uv where u is either the empty string or ends with a digit smaller than r and s(v)≥ r.\nWe have\nh(x) =\n{\nuvz if r = 0,\nuvz(r− 1)vz(r− 1) if r > 0\nand\nh(gk(x)) = h(zr) =\n{\nz if r = 0,\nz(r− 1)z(r− 1) if r > 0.\nRecall that y and hence v ends with a digit smaller than k, but all digits of v are at least r.\nNow if r > k , then v = ε, whence the terminal digit of u is smaller than k, which entails\ngk(h(x)) = z(r− 1)z(r− 1) = gk(h(gk(x))).\nIf r≤ k, then\ngk(h(x)) = z(r− 1) = gk(h(gk(x))) ,\nso that in both cases (1) is true. Thus Lemma 1 is proved.\nLemma 2. Let k∈{ 1, . . . ,9}, let x be a non-empty string and let n be a positive integer. If\nhn(x) = ε then (gk◦ h)n(x) = ε.\nProof of Lemma 2. We proceed by induction on n. If n = 1 we have\nε = h(x) = gk(h(x)) = (gk◦ h)(x).\nNow consider the step from n− 1 to n where n≥ 2. Let hn(x) = ε and let y = h(x). Then\nhn−1(y) = ε and by the induction hypothesis ( gk◦ h)n−1(y) = ε. In view of Lemma 1,\nε = (gk◦ h)n−2((gk◦ h)(y)) = (gk◦ h)n−2(gk(h(y))\n= (gk◦ h)n−2(gk(h(gk(y))) = (gk◦ h)n−2(gk(h(gk(h(x)))) = (gk◦ h)n(x).\nThus the induction step is complete and Lemma 2 is proved.\nWe say that the non-empty string x terminates if hn(x) = ε for some non-negative integer n.\nLemma 3. Let x = yzr where s(y)≥ k, s(z)≥ k, y ends with the digit k and z is possibly\nempty. If y and zr terminate then also x terminates.\nProof of Lemma 3. Suppose that y and zr terminate. We proceed by induction on k. Let k = 0.\nObviously, h(yw) = yh(w) for any non-empty string w. Let hn(zr) = ε. It follows easily by\ninduction on m that hm(yzr) = yhm(zr) for m = 1, . . . , n. Consequently, hn(yzr) = y. Since y\nterminates, also x = yzr terminates.\nNow let the assertion be true for all nonnegative integers less than k and let us prove it for k\nwhere k≥ 1. It turns out that it is sufficient to prove that ygk(h(zr)) terminates. Indeed:\nCase 1. r = 0.\nThen h(yzr) = yz = ygk(h(zr)).\nCase 2. 0 < r≤ k.\nWe have h(zr) = z(r− 1)z(r− 1) and gk(h(zr)) = z(r− 1). Then h(yzr) = yz(r− 1)yz(r−\n43\n\n[[PAGE 46]]\nC8 Combinatorics 50th IMO 2009\n1) = ygk(h(zr))ygk(h(zr)) and we may apply the induction hypothesis to see that if ygkh(zr))\nterminates, then h(yzr) terminates.\nCase 3. r > k .\nThen h(yzr) = yh(zr) = ygk(h(zr)).\nNote that ygk(h(zr)) has the form yz′r′ where s(z′)≥ k. By the same arguments it is sufficient\nto prove that ygk(h(z′r′)) = y(gk◦ h)2(zr) terminates and, by induction, that y(gk◦ h)m(zr)\nterminates for some positive integer m. In view of Lemma 2 there is some m such that ( gk◦\nh)m(zr) = ε, so x = yzr terminates if y terminates. Thus Lemma 3 is proved.\nNow assume that there is some string x that does not terminate. We choose x minimal. If\nx≥ 10, we can write x in the form x = yzr of Lemma 3 and by this lemma x terminates since\ny and zr are smaller than x. If x≤ 9, then h(x) = ( x− 1)(x− 1) and h(x) terminates again\nby Lemma 3 and the minimal choice of x.\nSolution 3. We commence by introducing some terminology. Instead of integers, we will\nconsider the set S of all strings consisting of the digits 0 , 1, . . . ,9, including the empty string\nε. If ( a1, a2, . . . , an) is a nonempty string, we let ρ(a) = an denote the terminal digit of a and\nλ(a) be the string with the last digit removed. We also define λ(ε) = ε and denote the set of\nnon-negative integers by N0.\nNow let k∈{ 0, 1, 2, . . . ,9} denote any digit. We define a function fk : S−→ S on the set of\nstrings: First, if the terminal digit of n belongs to{0, 1, . . . , k}, then fk(n) is obtained from n\nby deleting this terminal digit, i.e fk(n) = λ(n). Secondly, if the terminal digit of n belongs to\n{k + 1, . . . ,9}, then fk(n) is obtained from n by the process described in the problem. We also\ndefine fk(ε) = ε. Note that up to the definition for integers n≤ 1, the function f0 coincides with\nthe function h in the problem, through interpreting integers as digit strings. The argument will\nbe roughly as follows. We begin by introducing a straightforward generalization of our claim\nabout f0. Then it will be easy to see that f9 has all these stronger properties, which means\nthat is suffices to show for k∈{ 0, 1, . . . ,8} that fk possesses these properties provided that\nfk+1 does.\nWe continue to use k to denote any digit. The operation fk is said to be separating, if the\nfollowings holds: Whenever a is an initial segment of b, there is some N ∈ N0 such that\nfN\nk (b) = a. The following two notions only apply to the case where fk is indeed separating,\notherwise they remain undefined. For every a∈ S we denote the least N ∈ N0 for which\nfN\nk (a) = ε occurs by gk(a) (because ε is an initial segment of a, such an N exists if fk is\nseparating). If for every two strings a and b such that a is a terminal segment of b one has\ngk(a)≤ gk(b), we say that fk is coherent. In case that fk is separating and coherent we call the\ndigit k seductive.\nAs f9(a) = λ(a) for all a, it is obvious that 9 is seductive. Hence in order to show that 0 is seduc-\ntive, which clearly implies the statement of the problem, it suffices to take any k∈{ 0, 1, . . . ,8}\nsuch that k + 1 is seductive and to prove that k has to be seductive as well. Note that in doing\nso, we have the functiongk+1 at our disposal. We have to establish two things and we begin with\nStep 1. fk is separating.\nBefore embarking on the proof of this, we record a useful observation which is easily proved by\ninduction on M.\n44\n\n[[PAGE 47]]\n50th IMO 2009 Combinatorics C8\nClaim 1. For any strings A, B and any positive integer M such that fM−1\nk (B)̸= ε, we have\nfM\nk (AkB) = AkfM\nk (B).\nNow we call a pair ( a, b) of strings wicked provided that a is an initial segment of b, but there\nis no N ∈ N0 such that fN\nk (b) = a. We need to show that there are none, so assume that\nthere were such pairs. Choose a wicked pair ( a, b) for which gk+1(b) attains its minimal possible\nvalue. Obviously b̸= ε for any wicked pair (a, b). Let z denote the terminal digit of b. Observe\nthat a̸= b, which means that a is also an initial segment of λ(b). To facilitate the construction\nof the eventual contradiction, we prove\nClaim 2. There cannot be an N∈ N0 such that\nfN\nk (b) = λ(b).\nProof of Claim 2. For suppose that such an N existed. Because gk+1(λ(b)) < gk+1(b) in view\nof the coherency of fk+1, the pair ( a, λ(b)) is not wicked. But then there is some N′ for which\nfN′\nk (λ(b)) = a which entails fN +N′\nk (b) = a, contradiction. Hence Claim 2 is proved.\nIt follows that z≤ k is impossible, for otherwise N = 1 violated Claim 2.\nAlso z > k + 1 is impossible: Set B = fk(b). Then also fk+1(b) = B, but gk+1(B) < gk+1(b) and\na is an initial segment of B. Thus the pair ( a, B) is not wicked. Hence there is some N∈ N0\nwith a = fN\nk (B), which, however, entails a = fN +1\nk (b).\nWe are left with the case z = k + 1. Let L denote the left part and R = R∗(k + 1) the right\npart of b. Then we have symbolically\nfk(b) = LR∗kR∗k , f 2\nk(b) = LR∗kR∗ and fk+1(b) = LR∗.\nUsing that R∗ is a terminal segment of LR∗ and the coherency of fk+1, we infer\ngk+1(R∗)≤ gk+1(LR∗) < gk+1(b).\nHence the pair ( ε, R∗) is not wicked, so there is some minimal M∈ N0 with fM\nk (R∗) = ε and\nby Claim 1 it follows that f 2+M\nk (b) = LR∗k. Finally, we infer that λ(b) = LR∗ = fk(LR∗k) =\nf 3+M\nk (b), which yields a contradiction to Claim 2.\nThis final contradiction establishes that fk is indeed separating.\nStep 2. fk is coherent.\nTo prepare the proof of this, we introduce some further pieces of terminology. A nonempty\nstring ( a1, a2, . . . , an) is called a hypostasis, if an < a i for all i = 1 , . . . , n− 1. Reading an\narbitrary string a backwards, we easily find a, possibly empty, sequence ( A1, A2, . . . , Am) of\nhypostases such that ρ(A1) ≤ ρ(A2) ≤ ··· ≤ρ(Am) and, symbolically, a = A1A2 . . . Am.\nThe latter sequence is referred to as the decomposition of a. So, for instance, (20 , 0, 9) is the\ndecomposition of 2009 and the string 50 is a hypostasis. Next we explain when we say about\ntwo strings a and b that a is injectible into b. The definition is by induction on the length\nof b. Let ( B1, B2, . . . , Bn) be the decomposition of b into hypostases. Then a is injectible\ninto b if for the decomposition ( A1, A2, . . . , Am) of a there is a strictly increasing function\nH :{1, 2, . . . , m}−→{ 1, 2, . . . , n} satisfying\nρ(Ai) = ρ(BH(i)) for all i = 1, . . . , m;\n45\n\n[[PAGE 48]]\nC8 Combinatorics 50th IMO 2009\nλ(Ai) is injectible into λ(BH(i)) for all i = 1, . . . , m.\nIf one can choose H with H(m) = n, then we say that a is strongly injectible into b. Obviously,\nif a is a terminal segment of b, then a is strongly injectible into b.\nClaim 3. If a and b are two nonempty strings such that a is strongly injectible into b, then λ(a)\nis injectible into λ(b).\nProof of Claim 3. Let (B1, B2, . . . , Bn) be the decomposition of b and let ( A1, A2, . . . , Am) be\nthe decomposition of a. Take a function H exemplifying that a is strongly injectible into b.\nLet (C1, C2, . . . , Cr) be the decomposition of λ(Am) and let ( D1, D2, . . . , Ds) be the decompo-\nsition of λ(Bn). Choose a strictly increasing H′ :{1, 2, . . . , r}−→{ 1, 2, . . . s} witnessing that\nλ(Am) is injectible into λ(Bn). Clearly, ( A1, A2, . . . , Am−1, C1, C2, . . . , Cr) is the decomposition\nof λ(a) and (B1, B2, . . . , Bn−1, D1, D2, . . . , Ds) is the decomposition of λ(b). Then the function\nH′′ :{1, 2, . . . , m+ r− 1}−→{ 1, 2, . . . , n+ s− 1} given by H′′(i) = H(i) for i = 1, 2, . . . , m− 1\nand H′′(m− 1 + i) = n− 1 + H′(i) for i = 1 , 2, . . . , r exemplifies that λ(a) is injectible into\nλ(b), which finishes the proof of the claim.\nA pair (a, b) of strings is called aggressive if a is injectible into b and nevertheless gk(a) > gk(b).\nObserve that if fk was incoherent, which we shall assume from now on, then such pairs existed.\nNow among all aggressive pairs we choose one, say (a, b), for which gk(b) attains its least possible\nvalue. Obviously fk(a) cannot be injectible into fk(b), for otherwise the pair ( fk(a), fk(b)) was\naggressive and contradicted our choice of ( a, b). Let ( A1, A2, . . . , Am) and ( B1, B2, . . . , Bn)\nbe the decompositions of a and b and take a function H : {1, 2, . . . , m} −→ {1, 2, . . . , n}\nexemplifying that a is indeed injectible into b. If we had H(m) < n, then a was also injectible\ninto the number b′ whose decomposition is ( B1, B2, . . . , Bn−1) and by separativity of fk we\nobtained gk(b′) < gk(b), whence the pair ( a, b′) was also aggressive, contrary to the minimality\ncondition imposed on b. Therefore a is strongly injectible into b. In particular, a and b have a\ncommon terminal digit, say z. If we had z≤ k, then fk(a) = λ(a) and fk(b) = λ(b), so that by\nClaim 3, fk(a) was injectible into fk(b), which is a contradiction. Hence, z≥ k + 1.\nNow let r be the minimal element of {1, 2, . . . , m} for which ρ(Ar) = z. Then the maximal\nright part of a consisting of digits ≥ z is equal to Ra, the string whose decomposition is\n(Ar, Ar+1, . . . , Am). Then Ra− 1 is a hypostasis and ( A1, . . . , Ar−1, Ra− 1, Ra− 1) is the\ndecomposition of fk(a). Defining s and Rb in a similar fashion with respect to b, we see that\n(B1, . . . , Bs−1, Rb− 1, Rb− 1) is the decomposition of fk(b). The definition of injectibility then\neasily entails that Ra is strongly injectible into Rb. It follows from Claim 3 that λ(Ra) =\nλ(Ra− 1) is injectible into λ(Rb) = λ(Rb− 1), whence the function H′ :{1, 2, . . . , r+ 1}−→\n{1, 2, . . . , s+ 1}, given by H′(i) = H(i) for i = 1, 2, . . . , r− 1, H′(r) = s and H′(r + 1) = s + 1\nexemplifies that fk(a) is injectible into fk(b), which yields a contradiction as before.\nThis shows that aggressive pairs cannot exist, whence fk is indeed coherent, which finishes the\nproof of the seductivity of k, whereby the problem is finally solved.\n46\n\n[[PAGE 49]]\n50th IMO 2009 Geometry G1",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "map"
+        ],
+        "reason": "Matched graph terms: map"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "end the definition of h to all non-empty strings with digits from 0 to 9. We recursively define ten functions f0, . . . , f9 that map some strings into integers for k = 9, 8, . . . ,1, 0. The function f9 is only defined on strings x (including the empty string ε)"
+      ]
+    },
+    {
+      "id": "imo-2011-sl-c5",
+      "year": 2011,
+      "shortlist_id": "C5",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2011-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2011SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2011SL.pdf"
+      },
+      "statement_en": "Let m be a positive integer and consider a checkerboard consisting of m by m unit squares.\nAt the midpoints of some of these unit squares there is an ant. At tim e 0, each ant starts\nmoving with speed 1 parallel to some edge of the checkerboard. Whe n two ants moving in\nopposite directions meet, they both turn 90 ◦ clockwise and continue moving with speed 1.\nWhen more than two ants meet, or when two ants moving in perpendic ular directions meet,\nthe ants continue moving in the same direction as before they met. W hen an ant reaches one\nof the edges of the checkerboard, it falls off and will not re-appear .\nConsidering all possible starting positions, determine the latest pos sible moment at which the\nlast ant falls off the checkerboard or prove that such a moment doe s not necessarily exist.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "edge"
+        ],
+        "reason": "Matched graph terms: edge"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "At the midpoints of some of these unit squares there is an ant. At tim e 0, each ant starts moving with speed 1 parallel to some edge of the checkerboard. Whe n two ants moving in opposite directions meet, they both turn 90 ◦ clockwise and continue moving with sp"
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c1",
+      "year": 2012,
+      "shortlist_id": "C1",
+      "country": "a, x",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "statement_en": "Several positive integers are written in a row. Iteratively, Alice cho oses two adjacent\nnumbers x and y such that x > y and x is to the left of y, and replaces the pair ( x, y ) by either\n(y + 1, x ) or ( x − 1, x ). Prove that she can perform only finitely many such iterations.\nSolution 1. Note first that the allowed operation does not change the maximum M of the\ninitial sequence. Let a1, a 2, . . . , a n be the numbers obtained at some point of the process.\nConsider the sum\nS = a1 + 2a2 + · · ·+ nan.\nWe claim that S increases by a positive integer amount with every operation. Let th e operation\nreplace the pair (ai, a i+1) by a pair (c, a i), where ai > a i+1 and c = ai+1+1 or c = ai− 1. Then the\nnew and the old value of S differ by d = (ic+(i+1)ai)− (iai +(i+1)ai+1) = ai − ai+1 +i(c− ai+1).\nThe integer d is positive since ai − ai+1 ≥ 1 and c − ai+1 ≥ 0.\nOn the other hand S ≤ (1 + 2 + · · ·+ n)M as ai ≤ M for all i = 1, . . . , n . Since S increases\nby at least 1 at each step and never exceeds the constant (1 + 2 + · · ·+ n)M, the process stops\nafter a finite number of iterations.\nSolution 2. Like in the first solution note that the operations do not change the maximum M\nof the initial sequence. Now consider the reverse lexicographical o rder for n-tuples of integers.\nWe say that ( x1, . . . , x n) < (y1, . . . , y n) if xn < y n, or if xn = yn and xn− 1 < y n− 1, or if xn = yn,\nxn− 1 = yn− 1 and xn− 2 < y n− 2, etc. Each iteration creates a sequence that is greater than\nthe previous one with respect to this order, and no sequence occu rs twice during the process.\nOn the other hand there are finitely many possible sequences becau se their terms are always\npositive integers not exceeding M. Hence the process cannot continue forever.\nSolution 3. Let the current numbers be a1, a 2, . . . , a n. Define the score si of ai as the number\nof aj's that are less than ai. Call the sequence s1, s 2, . . . , s n the score sequence of a1, a 2, . . . , a n.\nLet us say that a sequence x1, . . . , x n dominates a sequence y1, . . . , y n if the first index i\nwith xi ̸= yi is such that xi < y i. We show that after each operation the new score sequence\ndominates the old one. Score sequences do not repeat, and there are finitely many possibilities\nfor them, no more than ( n − 1)n. Hence the process will terminate.\nConsider an operation that replaces ( x, y ) by ( a, x ), with a = y + 1 or a = x − 1. Suppose\nthat x was originally at position i. For each j < i the score sj does not increase with the\nchange because y ≤ a and x ≤ x. If sj decreases for some j < i then the new score sequence\ndominates the old one. Assume that sj stays the same for all j < i and consider si. Since x > y\nand y ≤ a ≤ x, we see that si decreases by at least 1. This concludes the proof.\nComment. All three proofs work if x and y are not necessarily adjacent, and if the pair ( x, y ) is\nreplaced by any pair ( a, x ), with a an integer satisfying y ≤ a ≤ x. There is nothing special about\nthe \"weights\" 1 , 2, . . . , n in the definition of S = ∑n\ni=1 iai from the first solution. For any sequence\nw1 < w 2 < · · ·< w n of positive integers, the sum ∑n\ni=1 wiai increases by at least 1 with each operation.\nConsider the same problem, but letting Alice replace the pai r (x, y ) by (a, x ), where a is any positive\ninteger less than x. The same conclusion holds in this version, i. e. the process stops eventually. The\nsolution using the reverse lexicographical order works wit hout any change. The first solution would\nrequire a special set of weights like wi = M i for i = 1, . . . , n .\nComment. The first and the second solutions provide upper bounds for th e number of possible\noperations, respectively of order M n2 and M n where M is the maximum of the original sequence.\nThe upper bound ( n − 1)n in the third solution does not depend on M .\n\n[[PAGE 20]]\n20",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Several positive integers are written in a row. Iteratively, Alice cho oses two adjacent numbers x and y such that x > y and x is to the left of y, and replaces the pair ( x, y ) by either (y + 1, x ) or ( x − 1, x )."
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c3",
+      "year": 2012,
+      "shortlist_id": "C3",
+      "country": "i,j",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "statement_en": "In a 999 × 999 square table some cells are white and the remaining ones are red. Let T\nbe the number of triples ( C1, C 2, C 3) of cells, the first two in the same row and the last two in\nthe same column, with C1 and C3 white and C2 red. Find the maximum value T can attain.\nSolution. We prove that in an n × n square table there are at most 4n4\n27 such triples.\nLet row i and column j contain ai and bj white cells respectively, and let R be the set of\nred cells. For every red cell ( i, j ) there are aibj admissible triples ( C1, C 2, C 3) with C2 = (i, j ),\ntherefore\nT =\n∑\n(i,j)∈ R\naibj.\nWe use the inequality 2 ab ≤ a2 + b2 to obtain\nT ≤ 1\n2\n∑\n(i,j)∈ R\n(a2\ni + b2\nj ) = 1\n2\nn∑\ni=1\n(n − ai)a2\ni + 1\n2\nn∑\nj=1\n(n − bj)b2\nj .\nThis is because there are n − ai red cells in row i and n − bj red cells in column j. Now we\nmaximize the right-hand side.\nBy the AM-GM inequality we have\n(n − x)x2 = 1\n2 (2n − 2x) ·x ·x ≤ 1\n2\n(2n\n3\n) 3\n= 4n3\n27 ,\nwith equality if and only if x = 2n\n3 . By putting everything together, we get\nT ≤ n\n2\n4n3\n27 + n\n2\n4n3\n27 = 4n4\n27 .\nIf n = 999 then any coloring of the square table with x = 2n\n3 = 666 white cells in each row\nand column attains the maximum as all inequalities in the previous argum ent become equalities.\nFor example color a cell ( i, j ) white if i − j ≡ 1, 2, . . . , 666 (mod 999), and red otherwise.\nTherefore the maximum value T can attain is T = 4·9994\n27 .\nComment. One can obtain a better preliminary estimate with the Cauchy-Schwarz inequality:\nT =\n∑\n(i,j)∈ R\naibj ≤\n\n ∑\n(i,j)∈ R\na2\ni\n\n\n1\n2\n·\n\n ∑\n(i,j)∈ R\nb2\nj\n\n\n1\n2\n=\n( n∑\ni=1\n(n − ai)a2\ni\n) 1\n2\n·\n\n\nn∑\nj=1\n(n − bj)b2\nj\n\n\n1\n2\n.\nIt can be used to reach the same conclusion.\n\n[[PAGE 22]]\n22",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring"
+        ],
+        "reason": "Matched graph terms: coloring"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "ality if and only if x = 2n 3 . By putting everything together, we get T ≤ n 2 4n3 27 + n 2 4n3 27 = 4n4 27 . If n = 999 then any coloring of the square table with x = 2n 3 = 666 white cells in each row and column attains the maximum as all inequalities in the previou"
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c4",
+      "year": 2012,
+      "shortlist_id": "C4",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "statement_en": "Players A and B play a game with N ≥ 2012 coins and 2012 boxes arranged around a\ncircle. Initially A distributes the coins among the boxes so that there is at least 1 coin in each\nbox. Then the two of them make moves in the order B, A, B, A, . . . by the following rules:\n• On every move of his B passes 1 coin from every box to an adjacent box.\n• On every move of hers A chooses several coins that were not involved in B's previous\nmove and are in different boxes. She passes every chosen coin to an adjacent box.\nPlayer A's goal is to ensure at least 1 coin in each box after every move of her s, regardless of\nhow B plays and how many moves are made. Find the least N that enables her to succeed.\nSolution. We argue for a general n ≥ 7 instead of 2012 and prove that the required minimum N\nis 2 n − 2. For n = 2012 this gives Nmin = 4022.\na) If N = 2 n − 2 player A can achieve her goal. Let her start the game with a regular\ndistribution: n − 2 boxes with 2 coins and 2 boxes with 1 coin. Call the boxes of the two k inds\nred and white respectively. We claim that on her first move A can achieve a regular distribution\nagain, regardless of B's first move M. She acts according as the following situation S occurs\nafter M or not: The initial distribution contains a red box R with 2 white neighbors, and R\nreceives no coins from them on move M.\nSuppose that S does not occur. Exactly one of the coins c1 and c2 in a given red box X\nis involved in M, say c1. If M passes c1 to the right neighbor of X, let A pass c2 to its left\nneighbor, and vice versa. By doing so with all red boxes A performs a legal move M ′. Thus\nM and M ′ combined move the 2 coins of every red box in opposite directions. He nce after M\nand M ′ are complete each neighbor of a red box X contains exactly 1 coin that was initially\nin X. So each box with a red neighbor is non-empty after M ′. If initially there is a box X\nwith 2 white neighbors ( X is red and unique) then X receives a coin from at least one of them\non move M since S does not occur. Such a coin is not involved in M ′, so X is also non-empty\nafter M ′. Furthermore each box Y has given away its initial content after M and M ′. A red\nneighbor of Y adds 1 coin to it; a white neighbor adds at most 1 coin because it is not in volved\nin M ′. Hence each box contains 1 or 2 coins after M ′. Because N = 2n − 2, such a distribution\nis regular.\nNow let S occur after move M. Then A leaves untouched the exceptional red box R. With\nall remaining red boxes she proceeds like in the previous case, thus m aking a legal move M ′′.\nBox R receives no coins from its neighbors on either move, so there is 1 coin in it after M ′′.\nLike above M and M ′′ combined pass exactly 1 coin from every red box different from R to\neach of its neighbors. Every box except R has a red neighbor different from R, hence all boxes\nare non-empty after M ′′. Next, each box Y except R loses its initial content after M and M ′′.\nA red neighbor of Y adds at most 1 coin to it; a white neighbor also adds at most 1 coin as\nit does not participate in M ′′. Thus each box has 1 or 2 coins after M ′′, and the obtained\ndistribution is regular.\nPlayer A can apply the described strategy indefinitely, so N = 2n− 2 enables her to succeed.\nb) For N ≤ 2n − 3 player B can achieve an empty box after some move of A. Let α be a\nset of l consecutive boxes containing a total of N(α ) coins. We call α an arc if l ≤ n − 2 and\nN(α ) ≤ 2l − 3. Note that l ≥ 2 by the last condition. Moreover if both extremes of α are\nnon-empty boxes then N(α ) ≥ 2, so that N(α ) ≤ 2l − 3 implies l ≥ 3. Observe also that if\nan extreme X of α has more than 1 coin then ignoring X yields a shorter arc. It follows that\nevery arc contains an arc whose extremes have at most 1 coin each .\nGiven a clockwise labeling 1 , 2, . . . , n of the boxes, suppose that boxes 1 , 2, . . . , l form an\narc α , with l ≤ n − 2 and N(α ) ≤ 2l − 3. Suppose also that all n ≥ 7 boxes are non-empty.\nThen B can move so that an arc α ′ with N(α ′) < N (α ) will appear after any response of A.\n\n[[PAGE 23]]\n23\nOne may assume exactly 1 coin in boxes 1 and l by a previous remark. Let B pass 1 coin\nin counterclockwise direction from box 1 and box n, and in clockwise direction from each\nremaining box. This leaves N(α ) − 2 coins in the boxes of α . In addition, due to 3 ≤ l ≤ n − 2,\nbox l has exactly 1 coin c, the one received from box l − 1.\nLet player A's next move M pass k ≤ 2 coins to boxes 1 , 2, . . . , l from the remaining ones.\nOnly boxes 1 and l can receive such coins, at most 1 each. If k < 2 then after move M boxes\n1, 2, . . . , l form an arc α ′ with N(α ′) < N (α ). If k = 2 then M adds a coin to box l. Also\nM does not move coin c from l because c is involved in the previous move of B. In summary\nboxes 1 , 2, . . . , l contain N(α ) coins like before, so they form an arc. However there are 2 coins\nnow in the extreme l of the arc. Ignore l to obtain a shorter arc α ′ with N(α ′) < N (α ).\nConsider any initial distribution without empty boxes. Since N ≤ 2n − 3, there are at\nleast 3 boxes in it with exactly 1 coin. It follows from n ≥ 7 that some 2 of them are the\nextremes of an arc α . Hence B can make the move described above, which leads to an arc α ′\nwith N(α ′) < N (α ) after A's response. If all boxes in the new distribution are non-empty he\ncan repeat the same, and so on. Because N(α ) cannot decrease indefinitely, an empty box will\noccur after some move of A.\n\n[[PAGE 24]]\n24",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "hem make moves in the order B, A, B, A, . . . by the following rules: • On every move of his B passes 1 coin from every box to an adjacent box. • On every move of hers A chooses several coins that were not involved in B's previous move and are in different boxes. She"
+      ]
+    },
+    {
+      "id": "imo-2013-sl-c2",
+      "year": 2013,
+      "shortlist_id": "C2",
+      "country": "Australia",
+      "source": {
+        "source_id": "src-imo-2013-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2013SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2013SL.pdf"
+      },
+      "statement_en": "In the plane, 2013 red points and 2014 blue points are marked so tha t no three of the\nmarked points are collinear. One needs to draw k lines not passing through the marked points and\ndividing the plane into several regions. The goal is to do it in such a way that no region contains\npoints of both colors.\nFind the minimal value of k such that the goal is attainable for every possible configuration of\n4027 points.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring",
+          "complete_graph_language",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, complete_graph_language, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "rove that one can reach the goal using 2013 lines. Fir st of all, let us mention that for every two points A andB having the same color, one can draw two lines separating these points from all other ones. Namely, it suffices to take two lines paralle l toAB and lyi",
+        "Then one may draw a line separating A from all the other points, pair up the other 2012 red points into 1006 pairs, and separate each pair from the other points by two lines. Thus, 2013 lines will be used. Case 2. Assume now that all the vertices of P are blue. Consid",
+        "ines will be A and B. Now, let P be the convex hull of all marked points. Two cases are possible. Case 1. Assume that P has a red vertex A. Then one may draw a line separating A from all the other points, pair up the other 2012 red points into 1006 pairs, and separa"
+      ]
+    },
+    {
+      "id": "imo-2013-sl-c7",
+      "year": 2013,
+      "shortlist_id": "C7",
+      "country": "Russia",
+      "source": {
+        "source_id": "src-imo-2013-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2013SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2013SL.pdf"
+      },
+      "statement_en": "Let n >= 2 be an integer. Consider all circular arrangements of the numbers 0, 1,...,n ; the\nn ` 1 rotations of an arrangement are considered to be equal. A circula r arrangement is called\nbeautiful if, for any four distinct numbers 0 <= a,b,c,d <= n with a ` c \" b ` d, the chord joining\nnumbersa and c does not intersect the chord joining numbers b and d.\nLet M be the number of beautiful arrangements of 0 , 1,...,n . Let N be the number of pairs\npx,y q of positive integers such that x ` y <= n and gcd px,y q \" 1. Prove that\nM \" N ` 1.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        ">= n. Thus 0 and n are the endpoints of one of the chords; say it is C. LetD be the chord formed by the numbers u andv which are adjacent to 0 and n and on the same side of C asA andB, as shown in Figure 2. Set t \" u ` v. If we had t \" n, the n–chordsA, B, and D woul"
+      ]
+    },
+    {
+      "id": "imo-2013-sl-c8",
+      "year": 2013,
+      "shortlist_id": "C8",
+      "country": "Austria",
+      "source": {
+        "source_id": "src-imo-2013-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2013SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2013SL.pdf"
+      },
+      "statement_en": "Players A and B play a paintful game on the real line. Player A has a pot of paint with\nfour units of black ink. A quantity p of this ink suffices to blacken a (closed) real interval of length\np. In every round, player A picks some positive integer m and provides 1 {2m units of ink from the\npot. Player B then picks an integer k and blackens the interval from k{2m to pk ` 1q{2m (some\nparts of this interval may have been blackened before). The goal of player A is to reach a situation\nwhere the pot is empty and the interval r0, 1s is not completely blackened.\nDecide whether there exists a strategy for player A to win in a finite number of moves.\n(Austria)\n\n[[PAGE 6]]\n6 IMO 2013 Colombia",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring"
+        ],
+        "reason": "Matched graph terms: coloring"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Players A and B play a paintful game on the real line. Player A has a pot of paint with four units of black ink. A quantity p of this ink suffices to blacken a (closed) real interval of length p. In every round,"
+      ]
+    },
+    {
+      "id": "imo-2014-sl-c3",
+      "year": 2014,
+      "shortlist_id": "C3",
+      "country": "Croatia",
+      "source": {
+        "source_id": "src-imo-2014-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2014SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2014SL.pdf"
+      },
+      "statement_en": "Let n >= 2 be an integer. Consider an n x n chessboard divided into n2 unit squares.\nWe call a configuration of n rooks on this board happy if every row and every column contains\nexactly one rook. Find the greatest positive integer k such that for every happy configuration\nof rooks, we can find a k x k square without a rook on any of its k2 unit squares.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "grid"
+        ],
+        "reason": "Matched graph terms: grid"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Let n >= 2 be an integer. Consider an n x n chessboard divided into n2 unit squares. We call a configuration of n rooks on this board happy if every row and every column contains exact"
+      ]
+    },
+    {
+      "id": "imo-2014-sl-c5",
+      "year": 2014,
+      "shortlist_id": "C5",
+      "country": "Austria",
+      "source": {
+        "source_id": "src-imo-2014-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2014SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2014SL.pdf"
+      },
+      "statement_en": "Consider n >= 3 lines in the plane such that no two lines are parallel and no three have a\ncommon point. These lines divide the plane into polygonal regions; let F be the set of regions\nhaving finite area. Prove that it is possible to colour\nPa\nn{2\nT\nof the lines blue in such a way\nthat no region in F has a completely blue boundary. (For a real number x, rxs denotes the\nleast integer which is not smaller than x.)\n(Austria)\n\n[[PAGE 8]]\nShortlisted problems 7",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring",
+          "complete_graph_language",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring, complete_graph_language, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "association. So the sum of the weights of all the a ssociations is exactly n ́ k. Now, one may check that among the four regions adjacent to a bl ue vertex v, at most two are trian- gles. This means that the sum of the weights of all associatio ns involving v is at m",
+        "These lines divide the plane into polygonal regions; let F be the set of regions having finite area. Prove that it is possible to colour Pa n{2 T of the lines blue in such a way that no region in F has a completely blue boundary. (For a real number x, rxs denotes th",
+        "while all the points b1, . . . , bk are blue. Let us associate to l the red point r and the blue point b1. One may notice that to each pair of a red point r and a blue point b, at most one red line can be associated, since there is at most one region A having r and b a",
+        "exists at least one region A P F whose only red side lies on l. Since A has at least three sides, it must have at least one blue vertex. Let us take one such vertex and associate it to l. Since each blue point belongs to four regions (some of which may be un bounde"
+      ]
+    },
+    {
+      "id": "imo-2014-sl-c7",
+      "year": 2014,
+      "shortlist_id": "C7",
+      "country": "Russia",
+      "source": {
+        "source_id": "src-imo-2014-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2014SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2014SL.pdf"
+      },
+      "statement_en": "Let M be a set of n >= 4 points in the plane, no three of which are collinear. Initially these\npoints are connected with n segments so that each point in M is the endpoint of exactly two\nsegments. Then, at each step, one may choose two segments AB and CD sharing a common\ninterior point and replace them by the segments AC and BD if none of them is present at this\nmoment. Prove that it is impossible to perform n3{4 or more such moves.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "connected"
+        ],
+        "reason": "Matched graph terms: connected"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Let M be a set of n >= 4 points in the plane, no three of which are collinear. Initially these points are connected with n segments so that each point in M is the endpoint of exactly two segments. Then, at each step, one may choose two segments"
+      ]
+    },
+    {
+      "id": "imo-2015-sl-c1",
+      "year": 2015,
+      "shortlist_id": "C1",
+      "country": "Estonia",
+      "source": {
+        "source_id": "src-imo-2015-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2015SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2015SL.pdf"
+      },
+      "statement_en": "In Lineland there are n >= 1 towns, arranged along a road running from left to right.\nEach town has a left bulldozer (put to the left of the town and facing left) and a right bulldozer\n(put to the right of the town and facing right). The sizes of the 2 n bulldozers are distinct.\nEvery time when a right and a left bulldozer confront each other, th e larger bulldozer pushes\nthe smaller one off the road. On the other hand, the bulldozers are q uite unprotected at their\nrears; so, if a bulldozer reaches the rear-end of another one, th e first one pushes the second one\noff the road, regardless of their sizes.\nLetA andB be two towns, with B being to the right of A. We say that town A can sweep\ntownB away if the right bulldozer of A can move over to B pushing off all bulldozers it meets.\nSimilarly,B can sweepA away if the left bulldozer of B can move to A pushing off all bulldozers\nof all towns on its way.\nProve that there is exactly one town which cannot be swept away by any other one.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "pt for the bordering ones each of which has one); we call such town a loser. Such a town exists, because there aren ́ 1 pairs of neighboring towns, and in each of them there is only one which can sweep the other away; so there exists a town which is a winner in none of"
+      ]
+    },
+    {
+      "id": "imo-2015-sl-c4",
+      "year": 2015,
+      "shortlist_id": "C4",
+      "country": "Finland",
+      "source": {
+        "source_id": "src-imo-2015-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2015SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2015SL.pdf"
+      },
+      "statement_en": "Let n be a positive integer. Two players A and B play a game in which they take turns\nchoosing positive integers k <= n. The rules of the game are:\npiq A player cannot choose a number that has been chosen by either pla yer on any previous\nturn.\npiiq A player cannot choose a number consecutive to any of those the p layer has already chosen\non any previous turn.\npiiiq The game is a draw if all numbers have been chosen; otherwise the pla yer who cannot\nchoose a number anymore loses the game.\nThe player A takes the first turn. Determine the outcome of the game, assumin g that both\nplayers use optimal strategies.\n(Finland)\n\n[[PAGE 6]]\nShortlisted problems 5",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "component"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, component"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "er is chosen in the real play exactly if the cor responding number is chosen in the imaginary one. Next, if an unchosen number is neighboring to one chosen by A in the imaginary play, then the corresponding number also has this property in the r eal play, so A also canno",
+        "first k numbers chosen byA. Since S does not contain consecutive integers, we see that the set rns z S consists of k \"contiguous components\" if 1 P S, and k ` 1 components otherwise. Since B has chosen only k ́ 1 numbers, there is at least one component of rns z S con"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c3",
+      "year": 2016,
+      "shortlist_id": "C3",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "statement_en": "Let n be a positive integer relatively prime to 6. We paint the vertices of a regular\nn-gon with three colours so that there is an odd number of vertices of each colour. Show that\nthere exists an isosceles triangle whose three vertices are of different colours.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Let n be a positive integer relatively prime to 6. We paint the vertices of a regular n-gon with three colours so that there is an odd number of vertices of each colour. Show that there exi",
+        "Let n be a positive integer relatively prime to 6. We paint the vertices of a regular n-gon with three colours so that there is an odd number of vertices of each colour. Show that there exists an isosce"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c5",
+      "year": 2016,
+      "shortlist_id": "C5",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "statement_en": "Let n ⩾ 3 be a positive integer. Find the maximum number of diagonals of a regular\nn-gon one can select, so that any two of them do not intersect in the interior or they are\nperpendicular to each other.\n\n[[PAGE 9]]\n6 IMO 2016 Hong Kong",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "h AA′ is a diameter of the circumcircle. If we select all diagonals emanated from A together with the diagonal d′ joining the two neighbouring vertices of A′, then the only pair of diagonals that meet each other is AA′ and d′, which are perpendicular to each other. In tot",
+        "according to the parity of n. • Case 1. n is odd. We first claim that no pair of diagonals is perpendicular. Suppose A,B,C,D are vertices where AB and CD are perpendicular, and let E be the vertex lying on the perpendicular bisector of AB. Let E′ be the opposite poin"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c7",
+      "year": 2016,
+      "shortlist_id": "C7",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "statement_en": "Let n ⩾ 2 be an integer. In the plane, there are n segments given in such a way that\nany two segments have an intersection point in the interior, and no three segments intersect\nat a single point. Jeff places a snail at one of the endpoints of each of the segments and claps\nhis handsn−1 times. Each time when he claps his hands, all the snails move along their own\nsegments and stay at the next intersection points until the next clap. Since there are n− 1\nintersection points on each segment, all snails will reach the furthest intersection points from\ntheir starting points after n− 1 claps.\n(a) Prove that if n is odd then Jeff can always place the snails so that no two of them ever\noccupy the same intersection point.\n(b) Prove that if n is even then there must be a moment when some two snails occupy the\nsame intersection point no matter how Jeff places the snails.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "complete_graph_language"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, complete_graph_language"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "rk each of the points Ai or Bi 'in' and 'out' according to the directions travelled by the snails. In this case there must be two neighbouring points Ai and Aj both of which are marked 'in'. Let P be the intersection of the segments AiBi and AjBj. Then any other segment m",
+        ") For odd n, we travel along the circumference of the disk and mark each of the points Ai or Bi 'in' and 'out' alternately. Since every pair of lines intersect in the disk, there are exactly n− 1 points between Ai and Bi for any fixed 1 ⩽i ⩽n. As n is odd, this means on"
+      ]
+    },
+    {
+      "id": "imo-2017-sl-c3",
+      "year": 2017,
+      "shortlist_id": "C3",
+      "country": "Thailand",
+      "source": {
+        "source_id": "src-imo-2017-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2017SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2017SL.pdf"
+      },
+      "statement_en": "Sir\nAlex\npla\nys\nthe\nfollo\nwing\ngame\non\na\nro\nw\nof 9\n ells.\nInitially\n,\nall\n ells\nare\nempt\ny\n.\nIn\nea\nh\nmo\nv\ne,\nSir\nAlex\nis\nallo\nw\ned\nto\np\nerform\nexa tly\none\nof\nthe\nfollo\nwing\nt\nw\no\nop\nerations:\n(1)\nCho\nose\nan\ny\nn\num\nb\ner\nof\nthe\nform 2j\n,\nwhere j\nis\na\nnon-negativ\ne\nin\nteger,\nand\nput\nit\nin\nto\nan\nempt\ny\n ell.\n(2)\nCho\nose\nt\nw\no\n(not\nne essarily\nadja en\nt)\n ells\nwith\nthe\nsame\nn\num\nb\ner\nin\nthem;\ndenote\nthat\nn\num\nb\ner\nb\ny 2j\n.\nRepla e\nthe\nn\num\nb\ner\nin\none\nof\nthe\n ells\nwith 2j`1\nand\nerase\nthe\nn\num\nb\ner\nin\nthe\nother\n ell.\nA\nt\nthe\nend\nof\nthe\ngame,\none\n ell\n on\ntains\nthe\nn\num\nb\ner 2n\n,\nwhere n\nis\na\ngiv\nen\np\nositiv\ne\nin\nteger,\nwhile\nthe\nother\n ells\nare\nempt\ny\n.\nDetermine\nthe\nmaxim\num\nn\num\nb\ner\nof\nmo\nv\nes\nthat\nSir\nAlex\n ould\nha\nv\ne\nmade,\nin\nterms\nof n.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "um b er of the form 2j , where j is a non-negativ e in teger, and put it in to an empt y ell. (2) Cho ose t w o (not ne essarily adja en t) ells with the same n um b er in them; denote that n um b er b y 2j . Repla e the n um b er in one of the ells with 2j`1 and er"
+      ]
+    },
+    {
+      "id": "imo-2018-sl-c1",
+      "year": 2018,
+      "shortlist_id": "C1",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2018-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2018SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2018SL.pdf"
+      },
+      "statement_en": "Let n >= 3\nb\ne\nan\nin\nteger.\nPro\nv\ne\nthat\nthere\nexists\na\nset S\nof 2n\np\nositiv\ne\nin\ntegers\nsatisfying\nthe\nfollo\nwing\nprop\nert\ny:\nF\nor\nev\nery m \" 2, 3, . . . , n\nthe\nset S\n an\nb\ne\npartitioned\nin\nto\nt\nw\no\nsubsets\nwith\nequal\nsums\nof\nelemen\nts,\nwith\none\nof\nsubsets\nof\n ardinalit\ny m.\n(I\neland)",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "grid"
+        ],
+        "reason": "Matched graph terms: grid"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        ", . . . , an is p ositiv e; without loss of generalit y supp ose a1 >= 1 . Consider the p olynomials F1 \" ∆1F and G1 \" ∆G. On the grid t0, . . . , a1 ́1uxt0, . . . , a2ux . . . x t0, . . . , anu w e ha v e F1px1, . . . , xnq \" Fpx1 ` 1, x2, . . . , xnq ́ Fpx1, x2"
+      ]
+    },
+    {
+      "id": "imo-2018-sl-c3",
+      "year": 2018,
+      "shortlist_id": "C3",
+      "country": "Netherlands",
+      "source": {
+        "source_id": "src-imo-2018-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2018SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2018SL.pdf"
+      },
+      "statement_en": "Let n\nb\ne\na\ngiv\nen\np\nositiv\ne\nin\nteger.\nSisyph\nus\np\nerforms\na\nsequen e\nof\nturns\non\na\nb\noard\n onsisting\nof n ` 1\nsquares\nin\na\nro\nw,\nn\num\nb\nered 0\nto n\nfrom\nleft\nto\nrigh\nt.\nInitially\n, n\nstones\nare\nput\nin\nto\nsquare 0 ,\nand\nthe\nother\nsquares\nare\nempt\ny\n.\nA\nt\nev\nery\nturn,\nSisyph\nus\n\nho\noses\nan\ny\nnonempt\ny\nsquare,\nsa\ny\nwith k\nstones,\ntak\nes\none\nof\nthose\nstones\nand\nmo\nv\nes\nit\nto\nthe\nrigh\nt\nb\ny\nat\nmost k\nsquares\n(the\nstone\nshould\nsta\ny\nwithin\nthe\nb\noard).\nSisyph\nus'\naim\nis\nto\nmo\nv\ne\nall n\nstones\nto\nsquare n.\nPro\nv\ne\nthat\nSisyph\nus\n annot\nrea\nh\nthe\naim\nin\nless\nthan\nQn\n1\nU\n`\nQn\n2\nU\n`\nQn\n3\nU\n`  ̈  ̈  ̈ `\nQn\nn\nU\nturns.\n(As\nusual, rxs\nstands\nfor\nthe\nleast\nin\nteger\nnot\nsmaller\nthan x.)",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "grid"
+        ],
+        "reason": "Matched graph terms: grid"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Let n b e a giv en p ositiv e in teger. Sisyph us p erforms a sequen e of turns on a b oard onsisting of n ` 1 squares in a ro w, n um b ered 0 to n from left to righ t. Initially , n stones are put in to square 0 , and"
+      ]
+    },
+    {
+      "id": "imo-2018-sl-c6",
+      "year": 2018,
+      "shortlist_id": "C6",
+      "country": "Serbia",
+      "source": {
+        "source_id": "src-imo-2018-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2018SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2018SL.pdf"
+      },
+      "statement_en": "Let a\nand b\nb\ne\ndistin t\np\nositiv\ne\nin\ntegers.\nThe\nfollo\nwing\nin\u001cnite\npro\n ess\ntak\nes\npla e\non\nan\ninitially\nempt\ny\nb\noard.\npiq\nIf\nthere\nis\nat\nleast\na\npair\nof\nequal\nn\num\nb\ners\non\nthe\nb\noard,\nw\ne\n\nho\nose\nsu\nh\na\npair\nand\nin rease\none\nof\nits\n omp\nonen\nts\nb\ny a\nand\nthe\nother\nb\ny b.\npiiq\nIf\nno\nsu\nh\npair\nexists,\nw\ne\nwrite\ndo\nwn\nt\nw\no\ntimes\nthe\nn\num\nb\ner\n0.\nPro\nv\ne\nthat,\nno\nmatter\nho\nw\nw\ne\nmak\ne\nthe\n\nhoi es\nin piq,\nop\neration piiq\nwill\nb\ne\np\nerformed\nonly\n\u001cnitely\nman\ny\ntimes.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "grid"
+        ],
+        "reason": "Matched graph terms: grid"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Let a and b b e distin t p ositiv e in tegers. The follo wing in nite pro ess tak es pla e on an initially empt y b oard. piq If there is at least a pair of equal n um b ers on the b oard, w e ho ose su h a pair and in rease one of its omp onen ts"
+      ]
+    },
+    {
+      "id": "imo-2019-sl-c2",
+      "year": 2019,
+      "shortlist_id": "C2",
+      "country": "Thailand",
+      "source": {
+        "source_id": "src-imo-2019-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2019SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2019SL.pdf"
+      },
+      "statement_en": "You are given a set of n blocks, each weighing at least 1; their total weight is 2n.\nProve that for every real number r with 0 <= r <= 2n  ́ 2 you can choose a subset of the blocks\nwhose total weight is at least r but at most r ` 2.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "of the form ř jPJxj for a subset J Ď t 1, 2,...,n u. We want to prove that the mesh of S – i.e. the largest distance between two adjacent elements – i s at most 2. For 0 <= k <= n, letSk denote the set of sums of the form ř iPJxi for a subsetJ Ď t 1, 2,...,k u. We wi"
+      ]
+    },
+    {
+      "id": "imo-2020-sl-c1",
+      "year": 2020,
+      "shortlist_id": "C1",
+      "country": "United Kingdom",
+      "source": {
+        "source_id": "src-imo-2020-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2020SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2020SL.pdf"
+      },
+      "statement_en": "Let n be a positive integer. Find the number of permutations a1,a 2,...,a n of the\nsequence 1, 2,...,n satisfying\na1 <= 2a2 <= 3a3 <= ... <= nan.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "map"
+        ],
+        "reason": "Matched graph terms: map"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        ",c 1 ̆ >= a ` ρ2pr1q,σ 2pc1q ̆ >= a ` r1,σ 2pc1q ̆ >= a ` r1,σ 1pσ2pc1qq ̆ \" a ` r1,σ pc1q ̆ , (2) as desired. Step 2: Given maps ρ and σ, we construct a proper saddle subpair pR1,C 1q of pR1,C 1q. The properties of ρ and σ yield that a ` ρipr1q,c 1 ̆ >= a `"
+      ]
+    },
+    {
+      "id": "imo-2020-sl-c2",
+      "year": 2020,
+      "shortlist_id": "C2",
+      "country": "Austria",
+      "source": {
+        "source_id": "src-imo-2020-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2020SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2020SL.pdf"
+      },
+      "statement_en": "In a regular 100-gon, 41 vertices are colored black and the remaining 59 vertices are\ncolored white. Prove that there exist 24 convex quadrilaterals Q1, . . . , Q24 whose corners are\nvertices of the 100-gon, so that\n• the quadrilaterals Q1, . . . , Q24 are pairwise disjoint, and\n• every quadrilateral Qi has three corners of one color and one corner of the other colo r.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, vertex"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "In a regular 100-gon, 41 vertices are colored black and the remaining 59 vertices are colored white. Prove that there exist 24 convex quadrilaterals Q1, . . . , Q24 whose corn",
+        "In a regular 100-gon, 41 vertices are colored black and the remaining 59 vertices are colored white. Prove that there exist 24 convex quadrilaterals Q1, . . . , Q2"
+      ]
+    },
+    {
+      "id": "imo-2020-sl-c5",
+      "year": 2020,
+      "shortlist_id": "C5",
+      "country": "Netherlands",
+      "source": {
+        "source_id": "src-imo-2020-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2020SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2020SL.pdf"
+      },
+      "statement_en": "Let p be an odd prime, and put N \" 1\n4 pp3  ́ pq  ́ 1. The numbers 1, 2,...,N are\npainted arbitrarily in two colors, red and blue. For any posi tive integer n <= N, denote by rpnq\nthe fraction of integers in t1, 2,...,n u that are red.\nProve that there exists a positive integer a P t 1, 2,...,p  ́ 1u such that rpnq ‰ a{p for all\nn \" 1, 2,...,N .",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring"
+        ],
+        "reason": "Matched graph terms: coloring"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "Let p be an odd prime, and put N \" 1 4 pp3 ́ pq ́ 1. The numbers 1, 2,...,N are painted arbitrarily in two colors, red and blue. For any posi tive integer n <= N, denote by rpnq the fraction of integers in t1, 2,...,n"
+      ]
+    },
+    {
+      "id": "imo-2020-sl-c7",
+      "year": 2020,
+      "shortlist_id": "C7",
+      "country": "Thailand",
+      "source": {
+        "source_id": "src-imo-2020-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2020SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2020SL.pdf"
+      },
+      "statement_en": "Consider any rectangular table having finitely many rows and columns, with a real\nnumber apr,c q in the cell in row r and column c. A pair pR,C q, where R is a set of rows and\nC a set of columns, is called a saddle pair if the following two conditions are satisfied:\npiq For each row r1, there is r PR such that apr,c q >= apr1,c q for all c PC;\npiiq For each column c1, there is c PC such that apr,c q <= apr,c 1q for all r PR.\nA saddle pair pR,C q is called a minimal pair if for each saddle pair pR1,C 1q with R1 Ď R\nand C 1 Ď C, we have R1 \" R and C 1 \" C.\nProve that any two minimal pairs contain the same number of ro ws.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "map"
+        ],
+        "reason": "Matched graph terms: map"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "find a saddle subpair pR1,C 1q of pR1,C 1q with |R1| <= | R2|; clearly, this implies the desired statement. Step 1: We construct maps ρ : R1 -> R1 and σ : C1 -> C1 such that |ρpR1q| <= | R2|, and a ` ρpr1q,c 1 ̆ >= a ` r1,σ pc1q ̆ for all r1 PR1 and c1 PC1. Sin"
+      ]
+    },
+    {
+      "id": "imo-2020-sl-c8",
+      "year": 2020,
+      "shortlist_id": "C8",
+      "country": "Austria",
+      "source": {
+        "source_id": "src-imo-2020-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2020SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2020SL.pdf"
+      },
+      "statement_en": "PlayersA and B play a game on a blackboard that initially contains 2020 copies\nof the number 1. In every round, player A erases two numbers x and y from the blackboard,\nand then player B writes one of the numbers x ` y and |x  ́ y| on the blackboard. The game\nterminates as soon as, at the end of some round, one of the foll owing holds:\n(1) one of the numbers on the blackboard is larger than the sum of all other numbers;\n(2) there are only zeros on the blackboard.\nPlayerB must then give as many cookies to playerA as there are numbers on the blackboard.\nPlayerA wants to get as many cookies as possible, whereas player B wants to give as few as\npossible. Determine the number of cookies that A receives if both players play optimally.\n(Austria)\n\n[[PAGE 10]]\n8 Saint-Petersburg — Russia, 18th–28th September 2020",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "grid"
+        ],
+        "reason": "Matched graph terms: grid"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "tion. For a positive integer n, we denote by S2pnq the sum of digits in its binary represen- tation. We prove that, in fact, if a board initially contains an even number n > 1 of ones, then A can guarantee to obtain S2pnq, but not more, cookies. The binary represen"
+      ]
+    },
+    {
+      "id": "imo-2021-sl-c2",
+      "year": 2021,
+      "shortlist_id": "C2",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2021-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2021SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2021SL.pdf"
+      },
+      "statement_en": "Let n >= 3 be an integer. An integer m >= n ` 1 is called n-colourful if, given infinitely\nmany marbles in each of n colours C1, C 2, . . . , C n, it is possible to place m of them around a\ncircle so that in any group of n ` 1 consecutive marbles there is at least one marble of colour\nCi for each i \" 1, . . . , n .\nProve that there are only finitely many positive integers which are not n-colourful. Find\nthe largest among them.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring"
+        ],
+        "reason": "Matched graph terms: coloring"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "is possible to place m of them around a circle so that in any group of n ` 1 consecutive marbles there is at least one marble of colour Ci for each i \" 1, . . . , n . Prove that there are only finitely many positive integers which are not n-colourful. Find the larg"
+      ]
+    },
+    {
+      "id": "imo-2021-sl-c3",
+      "year": 2021,
+      "shortlist_id": "C3",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2021-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2021SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2021SL.pdf"
+      },
+      "statement_en": "A thimblerigger has 2021 thimbles numbered from 1 through 2021. The thimbles are\narranged in a circle in arbitrary order. The thimblerigger performs a sequence of 2021 moves;\nin the kth move, he swaps the positions of the two thimbles adjacent to thimble k.\nProve that there exists a value of k such that, in the kth move, the thimblerigger swaps\nsome thimbles a and b such that a < k < b.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "arbitrary order. The thimblerigger performs a sequence of 2021 moves; in the kth move, he swaps the positions of the two thimbles adjacent to thimble k. Prove that there exists a value of k such that, in the kth move, the thimblerigger swaps some thimbles a and b such",
+        "s the central thimble of the kth move, and its position on that move is the central position of the move. Step 1: Black and white colouring. Before the moves start, let us paint all thimbles in white. Then, after each move, we repaint its central thimble in black. This"
+      ]
+    },
+    {
+      "id": "imo-2021-sl-c8",
+      "year": 2021,
+      "shortlist_id": "C8",
+      "country": "ii",
+      "source": {
+        "source_id": "src-imo-2021-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2021SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2021SL.pdf"
+      },
+      "statement_en": "Determine the largest N for which there exists a table T of integers with N rows and\n100 columns that has the following properties:\n(i) Every row contains the numbers 1, 2, . . . , 100 in some order.\n(ii) For any two distinct rows r and s, there is a column c such that | T p r, c q  ́ T p s, c q| >= 2.\nHere T p r, c q means the number at the intersection of the row r and the column c.\n\n[[PAGE 8]]\n8 Saint-Petersburg — Russia, 16th–24th July 2021",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "complete_graph_language"
+        ],
+        "reason": "Matched graph terms: complete_graph_language"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "<= 1 for every i. Then there exists a set of disjoint pairs p i, i ` 1q such that π2 is obtained from π1 by swapping elements in each pair from the set. Proof. We may assume that π1p iq \" i for every i and proceed by induction on n. The case n \" 1 is trivial. If π2p n"
+      ]
+    },
+    {
+      "id": "imo-2022-sl-c1",
+      "year": 2022,
+      "shortlist_id": "C1",
+      "country": "Czech Republic",
+      "source": {
+        "source_id": "src-imo-2022-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2022SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2022SL.pdf"
+      },
+      "statement_en": "A ̆1-sequence is a sequence of2022 numbersa1,...,a 2022, each equal to either`1 or\n ́1. Determine the largestC so that, for any ̆1-sequence, there exists an integerk and indices\n1<=t1<... <tk<= 2022 so thatti`1 ́ti<= 2 for alli, and\n⏐⏐⏐⏐⏐\nkÿ\ni\"1\nati\n⏐⏐⏐⏐⏐>=C.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring"
+        ],
+        "reason": "Matched graph terms: coloring"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "as desired. Comment. A possible reformulation of the problem is the following. 2022 buckets of water are arranged in a row, each coloured either red or blue. Sally the salmon plays a game in the following way: first, she chooses any bucket she likes to start in. Then"
+      ]
+    },
+    {
+      "id": "imo-2022-sl-c2",
+      "year": 2022,
+      "shortlist_id": "C2",
+      "country": "France",
+      "source": {
+        "source_id": "src-imo-2022-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2022SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2022SL.pdf"
+      },
+      "statement_en": "The Bank of Oslo issues coins made out of two types of metal: aluminium (denoted\nA) and copper (denotedC). Morgane hasn aluminium coins, andn copper coins, and arranges\nher 2n coins in a row in some arbitrary initial order. Given a fixed positive integerk<= 2n, she\nrepeatedly performs the following operation: identify the largest subsequence containing the\nk-th coin from the left which consists of consecutive coins made of the same metal, and move\nall coins in that subsequence to the left end of the row. For example, ifn\" 4 and k\" 4, the\nprocess starting from the configurationAACCCACA would be\nAACCCACA ->CCCAAACA ->AAACCCCA ->CCCCAAAA -> ̈ ̈ ̈.\nFind all pairspn,kq with 1<=k<= 2n such that for every initial configuration, at some point\nof the process there will be at most one aluminium coin adjacent to a copper coin.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "decision": "needs_review",
+      "evidence": [
+        "q with 1<=k<= 2n such that for every initial configuration, at some point of the process there will be at most one aluminium coin adjacent to a copper coin. The Bank of Oslo issues coins made out of two types of metal: aluminium (denoted A) and copper (denotedC). Morg"
+      ]
+    }
+  ]
+}

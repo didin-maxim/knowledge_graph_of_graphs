@@ -1,0 +1,140 @@
+{
+  "id": "imo-2016-c6-ferry-graph-dynamics",
+  "title": "Паромы и появление универсального острова, IMO Shortlist 2016 C6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "dynamic_graph",
+      "connected_graph",
+      "universal_vertex"
+    ],
+    "methods": [
+      "extremal_choice",
+      "cut_argument"
+    ],
+    "transformations": [
+      "ferry_routes_to_graph"
+    ],
+    "goal": [
+      "force_universal_vertex"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "common_neighborhood_size"
+    ],
+    "keywords": [
+      "imo_2016_c6",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Есть \\(n\\ge3\\) островов и некоторые двусторонние паромные маршруты; граф маршрутов связен. Каждый год компания закрывает один маршрут \\(XY\\), а затем для каждого острова, соединённого ровно с одним из \\(X,Y\\), открывает маршрут к другому из них. Известно, что для любого разбиения островов на две непустые группы когда-нибудь будет закрыт маршрут между этими группами. Докажите, что через некоторое число лет появится остров, соединённый маршрутами со всеми остальными.",
+        "source_id": "src-imo-2016-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это динамическая задача о связном графе: операция над ребром \\(XY\\) заменяет окрестности концов симметрической разностью.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-common-neighborhood",
+      "title": "Рост общей окрестности",
+      "text": "Выбирается пара островов и отслеживается число островов, связанных с обоими.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-cut-condition",
+      "title": "Условие на каждый разрез",
+      "text": "Гарантия закрытия ребра через любой разрез не даёт процессу застрять до появления универсальной вершины.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Рассмотрим граф маршрутов. Операция закрытия ребра \\(XY\\) фактически переносит различия в окрестностях \\(X\\) и \\(Y\\): вершины, смежные ровно с одним концом, становятся смежными с обоими. Официальное решение выбирает пару вершин с максимальным числом общих соседей и показывает, что если ни одна вершина ещё не универсальна, то условие о будущих закрытиях рёбер через любой разрез позволит найти операцию, увеличивающую этот максимум. Так как максимум ограничен \\(n-2\\), процесс не может продолжаться без появления вершины, смежной со всеми остальными.",
+      "idea_ids": [
+        "idea-common-neighborhood",
+        "idea-cut-condition"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2016 C6, unknown; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice",
+        "cut_argument"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2016-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

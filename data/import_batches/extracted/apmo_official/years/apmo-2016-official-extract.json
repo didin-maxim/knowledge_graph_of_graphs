@@ -1,0 +1,159 @@
+{
+  "year": 2016,
+  "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2016_prb.pdf",
+  "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2016_sol.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 5,
+  "problems": [
+    {
+      "id": "apmo-2016-p1",
+      "year": 2016,
+      "problem_number": 1,
+      "statement_en": "We say that a triangle ABC is great if the following holds: for any\npoint D on the side BC , if P and Q are the feet of the perpendiculars from D to the\nlines AB and AC, respectively, then the reflection of D in the line P Q lies on the\ncircumcircle of the triangle ABC .\nProve that triangle ABC is great if and only if ∠A = 90 ◦ and AB = AC.",
+      "solution_text_en": "",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2016_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2016_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 2,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 2, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2016-p2",
+      "year": 2016,
+      "problem_number": 2,
+      "statement_en": "A positive integer is called fancy if it can be expressed in the form\n2a1 + 2a2 + · · · + 2a100,\nwhere a1, a2, . . . , a100 are non-negative integers that are not necessarily distinc t.\nFind the smallest positive integer n such that no multiple of n is a fancy number.",
+      "solution_text_en": "",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2016_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2016_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2016-p3",
+      "year": 2016,
+      "problem_number": 3,
+      "statement_en": "Let AB and AC be two distinct rays not lying on the same line, and let\nω be a circle with center O that is tangent to ray AC at E and ray AB at F . Let R\nbe a point on segment EF . The line through O parallel to EF intersects line AB at\nP . Let N be the intersection of lines P R and AC, and let M be the intersection of\nline AB and the line through R parallel to AC. Prove that line M N is tangent to ω.",
+      "solution_text_en": "",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2016_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2016_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2016-p4",
+      "year": 2016,
+      "problem_number": 4,
+      "statement_en": "The country Dreamland consists of 2016 cities. The airline S tarways\nwants to establish some one-way flights between pairs of citi es in such a way that each\ncity has exactly one flight out of it. Find the smallest positi ve integer k such that no\nmatter how Starways establishes its flights, the cities can a lways be partitioned into\nk groups so that from any city it is not possible to reach anothe r city in the same\ngroup by using at most 28 flights.",
+      "solution_text_en": "The country Dreamland consists of 2016 cities. The airline Starways wants to\nestablish some one-way flights between pairs of cities in such a way that each city has exactly\none flight out of it. Find the smallest positive integer k such that no matter how Starways\nestablishes its flights, the cities can always be partitioned into k groups so that from any city\nit is not possible to reach another city in the same group by using at most 28 flights.\nAnswer: 57\nSolution. The flights established by Starways yield a directed graph G on 2016 vertices\nin which each vertex has out-degree equal to 1.\nWe first show that we need at least 57 groups. For this, suppose that G has a directed cycle\nof length 57. Then, for any two cities in the cycle, one is reachable from the other using at\nmost 28 flights. So no two cities in the cycle can belong to the same group. Hence, we need at\nleast 57 groups.\nWe will now show that 57 groups are enough. Consider another auxiliary directed graph H\nin which the vertices are the cities of Dreamland and there is an arrow from city u to city v\nif u can be reached from v using at most 28 flights. Each city has out-degree at most 28. We\nwill be done if we can split the cities of H in at most 57 groups such that there are no arrows\nbetween vertices of the same group. We prove the following stronger statement.\nLemma: Suppose we have a directed graph on n>= 1 vertices such that each vertex has\nout-degree at most 28. Then the vertices can be partitioned into 57 groups in such a way that\nno vertices in the same group are connected by an arrow.\nProof: We apply induction. The result is clear for 1 vertex. Now suppose we have more\nthan one vertex. Since the out-degree of each vertex is at most 28, there is a vertex, say v, with\nin-degree at most 28. If we remove the vertex v we obtain a graph with fewer vertices which\nstill satifies the conditions, so by inductive hypothesis we may split it into at most 57 groups\nwith no adjacent vertices in the same group. Since v has in-degree and out-degree at most 28,\nit has at most 56 neighboors in the original directed graph. Therefore, we may add v back and\nplace it in a group in which it has no neighbors. This completes the inductive step.\n□\nProblem 5 . Find all functions f : R+→ R+ such that\n(z + 1)f(x + y) = f(xf(z) + y) + f(yf (z) + x), (3)\nfor all positive real numbers x, y, z.\nAnswer: The only solution is f(x) = x for all positive real numbers x.\nSolution. The identity function f(x) = x clearly satisfies the functional equation. Now,\nlet f be a function satisfying the functional equation. Plugging x = y = 1 into (3) we get\n2f(f(z) + 1) = (z + 1)(f(2)) for all z in  R+. Hence, f is not bounded above.\nLemma. Let a, b, c be positive real numbers. If c is greater than 1, a/b and b/a, then the\nsystem of linear equations\ncu + v = a u + cv = b\nhas a positive real solution u, v.\nProof. The solution is\nu = ca- b\nc2- 1 v = cb- a\nc2- 1 .\nThe numbers u and v are positive if the conditions on c above are satisfied.\n□\n5\nWe will now prove that\nf(a) + f(b) = f(c) + f(d) for all a, b, c, d in  R+ with a + b = c + d. (4)\nConsider a, b, c, d in  R+ such that a + b = c + d. Since f is not bounded above, we can\nchoose a positive number e such that f(e) is greater than 1, a/b, b/a, c/d and d/c. Using the\nabove lemma, we can find u, v, w, t in  R+ satisfying\nf(e)u + v = a, u + f(e)v = b\nf(e)w + t = c, w + f(e)t = d.\nNote that u + v = w + t since ( u + v)(f(e) + 1) = a + b and ( w + t)(f(e) + 1) = c + d.\nPlugging x = u, y = v and z = e into (3) yields f(a) + f(b) = ( e + 1)f(u + v). Similarly, we\nhave f(c) + f(d) = (e + 1)f(w + t). The claim follows immediately.\nWe then have\nyf (x) = f(xf(y)) for all x, y in  R+ (5)\nsince by (3) and (4),\n(y + 1)f(x) = f\n(x\n2 f(y) + x\n2\n)\n+ f\n(x\n2 f(y) + x\n2\n)\n= f(xf(y)) + f(x).\nNow, let a = f(1/f(1)). Plugging x = 1 and y = 1/f(1) into (5) yields f(a) = 1. Hence\na = af(a) and f(af(a)) = f(a) = 1. Since af(a) = f(af(a)) by (5), we have f(1) = a = 1. It\nfollows from (5) that\nf(f(y)) = y for all y in  R+. (6)\nUsing (4) we have for all x, y in  R+ that\nf(x + y) + f(1) = f(x) + f(y + 1), and\nf(y + 1) + f(1) = f(y) + f(2).\nTherefore\nf(x + y) = f(x) + f(y) + b for all x, y in  R+, (7)\nwhere b = f(2)- 2f(1) = f(2)- 2. Using (5), (7) and (6), we get\n4 + 2b = 2f(2) = f(2f(2)) = f(f(2) + f(2)) = f(f(2)) + f(f(2)) + b = 4 + b.\nThis shows that b = 0 and thus\nf(x + y) = f(x) + f(y) for all x, y in  R+.\nIn particular, f is strictly increasing.\nWe conclude as follows. Take any positive real number x. If f(x) > x , then f(f(x)) >\nf(x) > x = f(f(x)), a contradiction. Similarly, it is not possible that f(x) < x . This shows\nthat f(x) = x for all positive real numbers x.\n□\n6",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2016_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2016_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 5
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "adjacent",
+        "connected",
+        "cycle",
+        "graph",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 4, 'number_theory': 0, 'combinatorics': 5}"
+    },
+    {
+      "id": "apmo-2016-p5",
+      "year": 2016,
+      "problem_number": 5,
+      "statement_en": "Find all functions f : R+ → R+ such that\n(z + 1)f (x + y) = f (xf (z) + y) + f (yf (z) + x),\nfor all positive real numbers x, y, z.",
+      "solution_text_en": "",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2016_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2016_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2016_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 0}"
+    }
+  ]
+}

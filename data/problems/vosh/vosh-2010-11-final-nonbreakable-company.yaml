@@ -1,0 +1,139 @@
+{
+  "id": "vosh-2010-11-final-nonbreakable-company",
+  "title": "Неразбиваемая компания без четырёх попарно знакомых, Всероссийская олимпиада 2010/11",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "non_3_colorable_graph",
+      "clique_free_graph",
+      "odd_cycle",
+      "bipartite_subgraph"
+    ],
+    "methods": [
+      "minimal_counterexample",
+      "minimal_odd_cycle",
+      "coloring_argument"
+    ],
+    "transformations": [
+      "company_partition_to_vertex_coloring",
+      "choose_minimal_odd_cycle"
+    ],
+    "goal": [
+      "partition_with_nonbipartite_part_and_edge"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "chromatic_number",
+      "clique_number",
+      "odd_cycle_chordlessness",
+      "neighbor_count_to_cycle"
+    ],
+    "keywords": [
+      "nonbreakable_company",
+      "three_coloring",
+      "odd_cycle",
+      "clique_free"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "k-неразбиваемая компания",
+        "text": "Назовём компанию k-неразбиваемой, если при любом разбиении её на k групп в одной из групп найдутся два знакомых человека. Дана 3-неразбиваемая компания, в которой нет четырёх попарно знакомых человек. Докажите, что её можно разделить на две компании, одна из которых 2-неразбиваемая, а другая — 1-неразбиваемая.",
+        "source_id": "src-problems-116640",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть G — простой граф, который нельзя правильно раскрасить в 3 цвета, и в G нет клики из четырёх вершин. Докажите, что множество вершин G можно разбить на две части A и B так, что подграф G[A] не является двудольным, а в подграфе G[B] есть хотя бы одно ребро.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "chromatic_number",
+          "bipartite_graph",
+          "clique"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-minimal-odd-cycle-controls-neighbors",
+      "title": "Минимальный нечётный цикл контролирует внешние вершины",
+      "text": "Берётся нечётный цикл минимальной длины. У него нет хорд, а любая внешняя вершина может быть соединена не более чем с двумя его вершинами; иначе появился бы меньший нечётный цикл или клика K_4.",
+      "tags": [
+        "coloring",
+        "minimal_counterexample"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-minimal-odd-cycle",
+      "title": "Минимальный нечётный цикл",
+      "text": "Переведём условие на язык графов: k-разбиваемость означает правильную k-раскраску. Так как граф не 3-раскрашиваем, он содержит нечётный цикл. Возьмём нечётный цикл C минимальной длины. У него нет хорд, иначе хорда разбила бы его на два меньших цикла, один из которых нечётный. Кроме того, любая вершина вне C смежна не более чем с двумя вершинами C: при трёх соседях либо возник бы меньший нечётный цикл, либо, в случае треугольника C, появилась бы клика из четырёх вершин. Пусть A — вершины C, а B — все остальные вершины. Подграф на A не двудолен. Если бы в B не было рёбер, то C можно было бы раскрасить тремя цветами так, чтобы только одна вершина получила третий цвет, а каждую вершину из B можно было бы покрасить в цвет, отличный от цветов её не более чем двух соседей на C. Получилась бы 3-раскраска всего графа, противоречие. Значит, в B есть ребро.",
+      "idea_ids": [
+        "idea-minimal-odd-cycle-controls-neighbors"
+      ],
+      "standard_idea_ids": [
+        "minimal_counterexample",
+        "local_recoloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Заключительный этап 2010/11, 10 класс, задача 3; на problems.ru сложность 5-.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "minimal_counterexample",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "minimal_odd_cycle",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-116640",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

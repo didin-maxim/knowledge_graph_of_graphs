@@ -1,0 +1,128 @@
+{
+  "id": "imo-2015-c5-sequence-rays",
+  "title": "Последовательность и лучи ориентированного графа, IMO Shortlist 2015 C5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "functional_digraph",
+      "directed_rays",
+      "bounded_jump"
+    ],
+    "methods": [
+      "pigeonhole_principle",
+      "ray_counting"
+    ],
+    "transformations": [
+      "sequence_to_directed_graph"
+    ],
+    "goal": [
+      "bounded_discrepancy"
+    ],
+    "auxiliary_graph_type": [
+      "functional_digraph"
+    ],
+    "invariants": [
+      "number_of_rays"
+    ],
+    "keywords": [
+      "imo_2015_c5",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Дана бесконечная последовательность положительных целых чисел \\(a_i\\le2015\\). Для любых разных \\(i,j\\) выполнено \\(i+a_i\\ne j+a_j\\). Докажите, что существуют положительные целые \\(b,N\\), такие что для всех \\(n>m\\ge N\\) сумма \\(\\sum_{i=m+1}^n(a_i-b)\\) ограничена по модулю константой \\(1007^2\\).",
+        "source_id": "src-imo-2015-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-functional-digraph",
+      "title": "Стрелки из \\(i\\) в \\(i+a_i\\)",
+      "text": "Условие означает, что каждая вершина получает не более одной стрелки; все компоненты уходят в бесконечные лучи.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-bounded-rays",
+      "title": "Ограниченное число стартовых лучей",
+      "text": "Так как длина каждой стрелки не больше 2015, слишком много лучей обязаны попасть в один короткий интервал.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Строим ориентированный граф на положительных целых числах, проводя стрелку \\(i\\to i+a_i\\). Условие \\(i+a_i\\ne j+a_j\\) означает, что входящая степень каждой вершины не больше 1; так как стрелки идут вправо и имеют длину не больше 2015, компоненты являются бесконечными лучами, начинающимися в вершинах без входящей стрелки. Таких стартовых вершин не больше 2015: иначе все соответствующие лучи пересекли бы один интервал длины 2015 в разных точках. Число лучей обозначается \\(b\\). Сравнивая количество стрелок, пересекающих большие отрезки, официальное решение получает, что сумма \\(\\sum(a_i-b)\\) на любом достаточно далёком отрезке ограничена универсальной константой.",
+      "idea_ids": [
+        "idea-functional-digraph",
+        "idea-bounded-rays"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2015 C5, Australia; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "pigeonhole_principle",
+        "ray_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2015-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая структура используется в официальном решении, но не является самостоятельной переформулировкой исходного условия.",
+    "relations_status": "deep_done"
+  }
+}

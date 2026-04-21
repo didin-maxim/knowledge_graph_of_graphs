@@ -1,0 +1,590 @@
+{
+  "year": 2024,
+  "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+  "download_count": 3,
+  "problem_count_extracted": 12,
+  "problems": [
+    {
+      "id": "memo-2024-i1",
+      "year": 2024,
+      "problem_code": "I-1",
+      "statement_en": "Determine allk∈N0 for which there exists a functionf : N0→N0 such thatf (2024) = k and\nf (f (n))≤f (n + 1)−f (n)\nfor alln∈N0.",
+      "solution_text_en": "Remark. Here N0 denotes the set of nonnegative integers.\nAnswer. The possible values off(2024) are 0, 1, 2,..., 2023.\nSolution. Note that 0≤f(f(n))≤f(n + 1)−f(n), hencef is increasing.\nClaim. f(n)≤n for alln∈N0.\nProof. Suppose indirectly thatf(n) > n, i.e., f(n)≥n + 1. By monotonicity, this implies\nf(f(n))≥f(n + 1). Consequently,\nf(n + 1)≤f(f(n))≤f(n + 1)−f(n),\nleading tof(n)≤0, which contradicts0≤n<f (n).\nThe claim immediately yields f(2024)≤2024. However, f(2024) = 2024 is impossible as\nit would mean f(f(2024)) = f(2024) = 2024 ≤f(2025)−f(2024) = f(2025)−2024 or\n4048≤f(2025), contradicting the claim forn = 2025.\nOn the other hand, for any0≤k≤2023 the function\nf(n) =\n\n\n\n0 n≤2023\nk n ≥2024\nsatisfies the condition, asf(0) =f(k) = 0, hencef(f(n)) = 0 for alln∈N0.\nSolution 2. We only give a new proof for the claim.\n5\nMEMO 2024 Individual I-1\nSuppose indirectly thatf(n)>n . Using the condition of the problem\nf(f(n))≤f(n + 1)−f(n)\nf(f(n + 1))≤f(n + 2)−f(n + 1)\nf(f(n + 2))≤f(n + 3)−f(n + 2)\n...\nf(f(f(n)−1))≤f(f(n))−f(f(n)−1)\nSumming up the inequalities, we get\nf(f(n))≤f(f(n)) +f(f(n + 1)) +f(f(n + 2)) +···+f(f(f(n)−1))≤f(f(n))−f(n),\nleading tof(n)≤0, which contradicts0≤n<f (n).\n6\nMEMO 2024 Individual I-2",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2024-i2",
+      "year": 2024,
+      "problem_code": "I-2",
+      "statement_en": "There is a sheet of paper (like this one) on an infinite blackboard. Marvin secretly chooses a\nconvex 2024-gonP that lies fully on the piece of paper. Tigerin wants to find the vertices of\nP. In each step, Tigerin can draw a lineg on the blackboard that is fully outside the piece of\npaper, then Marvin replies with the lineh parallel tog that is the closest tog which passes\nthrough at least one vertex ofP. Prove that there exists a positive integern such that Tigerin\ncan always determine the vertices ofP in at mostn steps.",
+      "solution_text_en": "Solution 1. One of the key observations is the following. If 3 answer lines intersect at a\ncommon pointX, thenX must be a vertex ofP.\nLet us start by querying the four sides of the paper. This determines a rectangle on the paper\nwhich containsP and each of the sides of the rectangle contain at least one vertex ofP.\nLet us assume thatQ is the convex polygon given by the intersection of the closed half-planes\nwith the answered line boundaries obtained so far containingP. Let’s call a vertex ofQ good\nif at least 3 answered lines have passed through it already, and call it bad otherwise.\nIf we have not found all vertices ofP yet, i.e. there are less than 2024 good vertices, then there\nmust be still at least one bad vertex ofQ, sinceP is insideQ and if all vertices ofQ were good,\nP couldn’t have more vertices thanQ.\nNow suppose that we have not found all vertices ofP yet. Then we repeat the following until\nwe have not found all vertices ofP yet. Pick B, a bad vertex ofQ, and letA and C be its\nneighbours on Q, and query for a line parallel withAC outside the paper in half-planeAC\ncontaining B. We claim that repeatedly querying this way results in us finding all vertices of\nP in a bounded number of steps.\nLet us look at the different cases based on which vertex (or possibly 2 vertices) ofP the answer\nto this query contains.\nA\nA′\nB\nC\nC ′\nX\n7\nMEMO 2024 Individual I-2\nCase 1: The answer passes throughB (orange). ThenB is a new good vertex. Therefore this\ncase can happen at most 2024 times.\nCase 2: The answer is the lineAC itself (blue). ThenA and C are points ofP. We might or\nmight not have known this before, but now we additionally know that they are direct neighbors\non P. Therefore this case can happen at most 2024 times as we didn’t know they were direct\nneighbours before this query.\nCase 3: At least one vertexX ofP on the answered line is in the interior ofQ. In this case the\nanswer intersectsAB in A′and BC in C′(red line on the figure above). Once a vertex ofP\nis on the boundary ofQ, it can never become an interior point ofQ again, therefore this case\ncan happen at most 2024 times asX was not on the boundary ofQ before this query.\nCase 4: The vertex (or vertices) ofP on the answered line is (are) in the line segmentAB or\nBC, excluding endpoints. In this case the answer intersectsAB in A′and BC in C′(red line\non the figure above) and so eitherA′or C′is a vertex ofP. Once a vertex ofP becomes a\nvertex ofQ, it can never become a non-vertex ofQ again, therefore this case can happen at\nmost 2024 times asA′and C′weren’t vertices ofQ before this query.\nTo summarize, our algorithm is as follows: Pick a bad vertexB. Query for a line parallel to\nAC. If we get a line passing throughB (orange) or throughAC (blue), there is nothing else\nto do. Otherwise, pick a new badB and repeat. All cases can only occur at most 2024 times\neach, therefore the algorithm stops and all vertices ofQ are good at this point. ThenP =Q.\nNote: When applying the algorithm we do not know if the current answer is case 3 or case 4.\nThis solution proves thatn = 4·2025 suffices.\nSolution 2. We present an alternative argument that cases 3 and 4 from the above solution\ncan happen finitely many times.\nNote that in both cases the number of the sides ofQ is increased by one.\nWe can observe that the maximum number of sides ofQ is at most 4048, because each side of\nQ contains a vertex ofP and each vertex ofP can be part of at most two sides ofQ. This\nmeans that cases 3 or 4 can occur at most 4048 times in a row, as otherwise the number of\nsides ofQ would increase by at least 4049 times in a row. Thus before the first case 1 or case\n2, and between any case 1 and case 2, and after the last case 1 or case 2, at most 4048 steps\ncan be taken. Thus the algorithm stops in at most4048·(2024 + 2024 + 1)steps and we found\nP =Q as above.\n8\nMEMO 2024 Individual I-2\nSolution 3. We use the same observation as the previous solution. If 3 answer lines intersect\nat a common pointX, then X must be a vertex ofP. Start by querying the 4 sides of the\npaper. DefineQ, good vertices and bad vertices as above. In this solution we use the pigeonhole\nprinciple with the observation to find vertices ofP.\nWe will prove that we can always find a new vertex in at most2024·3 + 2steps if we haven’t\nfound all vertices ofP yet. Hence we findP in at mostn = 4 + 2024·(2024·3 + 2)steps. (Note\nthat we could give a much bettern with a bit more care.)\nAssume that we have foundk <2024 vertices ofP so far. By design,P lies inQ and both are\nconvex, so if all ofQ’s vertices were good,P =Q and we are done. Hence there is at least one\nbad vertex ofQ.\nIn case there are two bad neighboring verticesA and B of Q, and letC be the next vertex of\nQ afterA andB in this order. As the lineAB is a side ofQ, it must be an answered line, so it\ncontains a vertex ofP. Furthermore, in this line, only the points of segmentAB are contained\nin Q, henceP has a vertex on segmentAB. Choose an arbitrary pointC′inside the segment\nBC, and let us query a line parallel toAC′outside the paper in half-planeAC′containingB.\nIt is easy to see that the answer we get must intersect segmentAB (possibly going through\none of its endpoints), and it cannot pass through any other vertex ofQ. Therefore it cannot\npass through a previously known good vertex. Hence with2024·2 + 1 different such queries\n(always choosing a different pointC′from BC), by the pigeonhole principle there must be a\nvertex ofP with at least 3 of these answered lines passing through it, and so we found a new\ngood vertex. So in this case, we find a new vertex in at most2024·2 + 1many queries.\nIf there are no neighboring vertices ofQ which are both bad, then there must be neighboring\nvertices A,B,C with A and C being good, andB being bad. Let us query a line parallel to\nAC outside the paper in half-planeAC containingB. We know that the boundary line of the\nanswer intersectsQ, and the given half-plane containsA and C, hence there are 3 options.\nIf the boundary line goes throughB, then it is a new good vertex as this is the third answer\nline going through it. In this case we immediately found a new good vertex, so in this case, we\nfind a new vertex in1 query.\nIf the boundary line doesn’t go throughB, and also doesn’t go throughA and C, then it\nmust intersect the segmentsAB and BC at some pointsA′and C′. Then A′and C′become\nneighboring bad vertices of the polygon obtained by the intersection ofQ with this half-plane,\nand so we can apply the previous case to find a new vertex ofP in at most2024·2 + 1queries.\nSo in this case, we find a new vertex in at most2024·2 + 2many queries.\nFinally, if the boundary line isAC, then the intersection ofQ and this half-plane has one less\nside. This case can happen at most 2024 times, as in this case we find a side ofP. Hence, after\nat most 2024 steps we can apply one of the previous cases finding a new good vertex to find a\nnew vertex ofP. So in this case, we find a new vertex in at most2024·3 + 2 many queries.\nThis finishes the proof.\n9\nMEMO 2024 Individual I-2\nSolution 4. Let m = 2024·2 + 1. Then, by the pigeonhole principle, if we querym pairwise\nnon-parallel lines, there is a vertex ofP through which at least 3 of them lines pass through.\nCall a vertex ofP found if we have already received at least 3 answer lines passing through\nit.\nWe start by asking anym pairwise non-parallel lines outside the paper and askingm lines\nparallel to the firstm lines so that the paper is in the strips for each pair of parallel lines. Then\nthere is a vertexA1 ofP through which at least 3 answered lines go. However, of each parallel\nline pair, at most one can go throughA1, so at leastm answered lines do not go throughA1.\nThen there is a vertexA2̸=A1 ofP through which at least 3 of the answered lines go through.\nSo we know thatA1 and A2 are vertices ofP.\nNow suppose we already have found verticesA1,A 2,...,Ak ofP forming convex polygonP′so\nthat they are in this order on the boundary ofP′, and suppose thatk <2024. We will show\nthat we can find a new vertex ofP in a bounded number of queries.\nWe first query a line parallel toA1A2 outside the paper so thatP′and the queried line fall on\ndifferent sides of lineA1A2. This tells us either thatA1A2 is edge ofP, or gives us a linel\nparallel toA1A2 containing a vertex ofP, which we have not found yet.\nWhen we get the linel, we choosem different points(Xi)1≤i≤m on the perpendicular bisector\nof A1A2 such that they lie in betweenland A1A2 and all the points ofP′lie on the same side\nof linesA1Xi and A2Xi for alli. We querym lines parallel toA1Xi outside the paper so that\nthey are closer toA1 than A2 and m lines outside the paper parallel toXiA2 so that they are\ncloser toA2 than A1.\nNotice that from each pair of answered lines (parallel toA1Xi and XiA2 respectively) at least\none must not pass through any found vertex, as the only vertex ofP the answers can go through\nare A1 and A2, so otherwise linelcould not touchP. Thus there are at leastm of the 2m\nanswered lines not passing through any vertex ofP′, hence we find a new vertex.\nBy repeating the steps above, the first case of finding a side ofP can happen at most 2024\ntimes, and if it does not happen, we find a new vertex in at most1 + 2m queries. Therefore we\nfindP in at mostn =m +m + 2024 + 2022·(1 + 2m) many steps.\n10\nMEMO 2024 Individual I-3",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 5,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "edge",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 5, 'algebra': 0, 'number_theory': 0, 'combinatorics': 4}"
+    },
+    {
+      "id": "memo-2024-i3",
+      "year": 2024,
+      "problem_code": "I-3",
+      "statement_en": "Let ABC be an acute scalene triangle. Choose a circle ωpassing through B and C which\nintersects segmentsAB and AC again in pointsD̸=A and E̸=A, respectively. LetF be the\nintersection ofBE and CD. Let G be the point on the circumcircle ofABF such thatGB is\ntangent toω. Similarly, letH be the point on the circumcircle ofACF such thatHC is tangent\nto ω. Prove that there exists a pointT ̸= A, independent of the choice ofω, such that the\ncircumcircle ofAGH passes throughT.",
+      "solution_text_en": "Solution. We will prove thatBG and CH are symmetric in the perpendicular bisector of\nBC.\nFirst, we will show∠CBG = ∠HCB. Denote the angles∠EBD = ∠ECD =α, ∠CBF =β,\n∠FCB = γ. Due to the tangency,∠ABG = ∠DCB = γand ∠HCA = ∠CBE = β. From\nthis we can see that both angles∠CBG and ∠HCB are equal toα+β+γ.\nNow, we will prove thatBG = CH, which will be enough to show the symmetry. Firstly,\nnotice that due to∠FBA = ∠ACF, the circumcircles ofABF and ACF have the same radii.\nWe will prove that∠GAB = 180◦−∠CAH and that will be enough. We will do it by angle\nchasing:\n∠GAB + ∠CAH = (180◦−∠BGA−∠ABG) + (180◦−∠AHC−∠HCA ) =\n(∠AFB−γ) + (∠CFA−β) = (∠AFB + ∠CFA )−(β+γ) =\n(360◦−∠BFC )−(180◦−∠BFC ) = 180◦.\nFinally, the claim is now obvious due to symmetry: LetT be the reflection ofA in the per-\npendicular bisector ofBC. Then, A,T,G,H are clearly concyclic due to symmetry andT is\nindependent fromD and E, therefore the solution is complete.\nA\nB\nC\nD\nE\nF\nG\nH\nω\nα\nβ\nγ\nα\nβ\nγ\n11\nMEMO 2024 Individual I-3\nSolution 2. We will work on the projective plane.\nClaim. Lines BG,AF,CH are concurrent.\nProof. Apply Pascal’s theorem on the hexagonBBECCD inscribed inω: as BE∩CD = F\nand BD∩CE =A, we get these two points with the intersection of the tangents atB and C\nare collinear.\nDenote the point of concurrence byP. By the power of point,PG·PB =PA·PF =PH·PC,\nso we conclude thatBCHG is cyclic. Since linesBG,CH are symmetric with respect to the\nperpendicular bisector ofBC, we have thatBCHG is an isosceles trapezoid. (IfP happens to\nbe a point at infinity, we have that quadrilateralsBFAG and CFAH are isosceles trapezoids,\nwhich can only happen ifBCHG is also an isosceles trapezoid.)\nWe finish the problem by noticing that the circumcircle ofAGH is symmetric with respect\nto the bisector ofBC, thus it must pass throughT, the reflection ofA in the perpendicular\nbisector ofBC, which is invariant ofD and E.\nA\nB\nC\nD\nE\nF\nG\nH\nP\nω\n12\nMEMO 2024 Individual I-3\nAlternative proof of the claim Notice that the intersection of linesBG,CH is the pole of\nline BC (with respect toω). By La Hire’s theorem, it suffices to show that the pole of line\nAF lies onBC. Now consider the cyclic quadrilateralBECD. Note thatBE∩CD =F and\nEC∩DB =A. Brocard’s theorem tells us that the pole ofAF is the intersection of diagonals\nBC,DE . This clearly proves our claim.\nSolution 3. (based on the solution of Grzegorz Kaczmarek) This solution uses isogonal\nconjugacy. We will use the fact that in a quadrilateralABCD a pointP has an isogonal con-\njugate if and only if∠APB + ∠CPD = 180◦. For a detailed proof, see the comment below.\nSimilarly to the other solutions, one can prove that∠BAG + ∠CAH = 180◦, which is the\nsame as ∠BFG + ∠CFH = 180◦. It follows that in quadrilateral BCHG point F has an\nisogonal conjugate. Denote this byF′. We claim that it is the desired pointT.\nFirstly, as pointF′hasanisogonal conjugate inBCHG, wehave that∠BF′C+∠HF′G = 180◦.\nNote that ∠BF′C = 180◦−∠F′BC−∠F′CB = 180◦−∠FBG−∠FCH = 180◦−(180◦−\n∠FAG )−(180◦−∠FAH ) = 180◦−∠HAG. Thus, ∠HAG = ∠HF′G, meaning that points\nA,G,H,F ′are, in fact, concyclic.\nIt remains to show that pointF′is fixed, or in other words, it is independent of the choice ofω.\nLuckily, this is fairly easy: sinceGB is tangent toω, ∠F′BC = ∠FBG = ∠EBG = ∠ECB =\n∠ACB, so lineBF′is fix. Similarly, lineCF′is fix too, thereforeF′must be fix, as well. The\nproof is complete.\nComment. Let’s discuss isogonal conjugates in order to prove the used fact.\nLemma. Suppose we have two lines,e and f intersecting atO. Let P and Q be two different\npoints (not lying on any of the lines) such thatOP and OQ are isogonal with respect toe and\nf (or in other words, linesOP andOQ are symmetric with respect to an angle bisector of lines\ne,f ). Then, the projections ofP andQ in linese andf all lie on a circle with center being the\nmidpoint ofPQ.\nProof. Denote the projections ofP and Q onto linese and f by Pe,Pf,Qe,Qf, respectively.\nNote that quadrilateralsPPeOPf, QQfOQe are similar, as you can obtain one from the other\nby a reflection in the angle bisector of linese,f followed by a suitable homothety with center\nO. It follows (from the reflection) thatPePf andQeQf are antiparallel, soPePfQfQe is cyclic.\nThe center of the circle is the intersection of the bisectors of segmentsPeQe, PfQf. These\nbisectors are the midlines of the right-angled trapezoidsPPeQeQ,PPfQfQ. Hence, the center\nmust be the midpoint ofPQ.\n13\nMEMO 2024 Individual I-3\nWe use this lemma to show the following property of isogonal conjugates in polygons: a point\nP has an isogonal conjugate if and only if its projections onto the sides are concyclic. Indeed,\nif the point has an isogonal conjugateP∗, then for any two adjacent sides the projections of\nthe two points lie on a circle with center being the midpointPP∗, thus all projections must lie\non the same circle. The other direction follows similarly but in reverse: the reflection ofP in\nthe center of the circe through the projections must be the isogonal conjugate (the proof of the\nlemma also works in reverse).\nO e\nf\nP\nQ\nPe\nPf\nQe\nQf\nA B\nC\nD\nX\nY\nZ\nW\nP\nNow we are ready to prove our fact. Denote the projections ofP onto sidesAB,BC,CD,DA by\nX,Y,Z,W , respectively. Due to the right angles, we have that quadrilateralsAXPW ,BYPX ,\nCZPY , DWPZ are cyclic. Note that ∠APB + ∠CPD = ( ∠APX + ∠XPB ) + (∠CPZ +\n∠ZPD ) = ∠AWX + ∠XYB + ∠CYZ + ∠ZWD = 360◦−∠XYZ −∠ZWX . Therefore, we\nhave\n∠APB + ∠CPD = 180◦⇐⇒∠XYZ + ∠ZWX = 180◦⇐⇒XYZW is cyclic.\nHence, ∠APB + ∠CPD = 180◦is equivalent toP having an isogonal conjugate.\n14\nMEMO 2024 Individual I-4",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 9,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "adjacent"
+      ],
+      "reason": "scores={'geometry': 9, 'algebra': 0, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2024-i4",
+      "year": 2024,
+      "problem_code": "I-4",
+      "statement_en": "For any positive integern, let σ(n) denote the sum of positive divisors ofn. Determine all\npolynomials P with integer coefficients such thatP (k) is divisible by σ(k) for all positive\nintegersk.",
+      "solution_text_en": "Solution 1. We are going to use the following well-known lemma:\nLemma. For any integersa,b and polynomialp with integer coefficients we have\na−b|p(a)−p(b).\nLet p̸=q be any prime numbers. Then fromσ(pq) = (p + 1)(q + 1) we have\n(p + 1)(q + 1)|P (pq).\nThis is equivalent to\npq−(−p−q−1)|P (pq).\nUsing this and the lemma fora =pq and b =−p−q−1 we get that\n(p + 1)(q + 1)|P (−p−q−1).\nFrom this−p−1|P (−p−q−1) also follows. Now using the lemma fora =−p−q−1 and\nb =−q we get that−p−1|P (−p−q−1)−P (−q). Consequently\np + 1|P (−q)\nfor any primesp and q. But this implies thatP (−q) = 0 for every primeq. Therefore P has\ninfinitely many roots, thus it is the zero polynomial.\nSolution 2. Let p,q be primes, thenσ(pq) = (1 + p)(1 +q), so (1 +p)(1 +q)|P (pq). Let\nP (x) = ∑degP\nk=0 akxk. Using the fact thatpq≡−p (mod 1+q), we can conclude the following:\n0≡P (pq)≡\ndegP∑\nk=0\nak(pq)k≡\ndegP∑\nk=0\nak(−p)k≡P (−p) (mod 1 + q).\nSo we have that1 +q|P (−p) for anyp,q prime.\nAs p,q were arbitrary, we can varyq and obtainP (−p) = 0, and asp was arbitrary, we get\nthat P (−p) = 0 for all primesp, soP (x) = 0 for allx as desired.\n15\nMEMO 2024 Individual I-4\nSolution 3. Let us assume that there is such a polynomialP different from the zero polyno-\nmial. Then it has some fixed degree, let us denote it byc.\nLet p be any prime. Fromσ(pk) = 1 +p +...+pk we have that\n1 +p +...+pk|P (pk).\nLet us define a new polynomialPk as follows:Pk(x) :=P (xk). We know that1 +p +...+pk|\nPk(pk) for every prime p. But since there are infinitely many primes, and the polynomial\n1 +x +...+xk has 1 as its main coefficient, it has to dividePk as a polynomial.\nLet us consider any numberl, and letd be any divisor of it. Then using the above conclusion\nfor k = l\nd and pluggingxd intox we have\n1 +xd +x2d +...+xl|P (xl)\n(again, as polynomials.)\nLet us recall the well-known fact that the greatest common divisor ofxm−1 and xn−1 (as\npolynomials) isxgcd(m,n)−1. We claim that ifd1 andd2 are divisors ofl andl+d1 andl+d2 are\ncoprime, then1 +xd1 +x2d1 +...+xl and 1 +xd2 +x2d2 +...+xl are coprime too. Indeed the\nformer dividesxl+d1−1 and the later dividesxl+d2−1, and they are not divisible byx−1.\nNow let us takel such that it has divisorsd1,d 2,...,dc+1 with the property thatl +di and\nl + dj are coprime for any i ̸= j. (It is easy to find such an l.) Then the polynomials\n1 +xdi +x2di +...+xl are all pairwisely coprime, thus their product dividesP (xl). On one\nhand from the fact thatP has degreec we know thatP (xl) has degreelc. On the other hand\nit is divisible by the product∏c+1\ni=1(1 +xdi +x2di +...+xl), which has degreel(c + 1), which is\na contradiction.\nComment. An alternate ending of Solution 3 from the fact thatQk(x) = 1 +x +...xk|P (xk)\nfor allk is the following.\nFor allk, the first primitivek-th root of unity (zk+1 = cos\nÄ\n2π\nk+1\nä\n+i sin\nÄ\n2π\nk+1\nä\n) is a root ofQk.\nTherefore P (zk\nk+1) = 0, thusuk = zk\nk+1 = cos\nÄ\n2kπ\nk+1\nä\n+i sin\nÄ\n2kπ\nk+1\nä\nis a root ofP. But ifl̸= k,\nthen uk̸=ul, thereforeP has infinitely many roots, meaning thatP is the zero polynomial.\nSolution 4. Let us assume thatP is not identically0, P (x) = xk+1Q(x) +axk (here axk is\nthe term with the lowest exponent). Letp ∤a be a prime, andq1,q 2,...,qk+1 be different primes\nsuch that all of them are congruent to−1 modulop (it is possible to take such primes from the\nDirichlet theorem). Now letN = pq1q2...qk+1. By the fact thatσis multiplicative we have\nσ(N) =σ(q1)·σ(q2)·...σ(qn)·σ(p) = (q1 + 1)·(q2 + 1)·...(qn + 1)·(p + 1), which is divisible\n16\nMEMO 2024 Individual I-4\nbypk+1, thuspk+1|σ(N)|P (N), becauseσ. On the other handpk+1 does not divideP (N), since\nP (N) =Nk+1Q(N) +aNk, andpk+1 ∤aNk, which is a contradiction.\nSolution 5. Letp be any prime number. Choosen, such thatp|n, whilep2 ∤n. Then by the\nfact thatσis multiplicative, we getp+1|σ(n) and thusp+1|P (n).By the Chinese Remainder\nTheorem we can getn1,n 2...np+1, such that these have all different residues modulop+1, and\np|ni, whilep2 ∤ni, thus in particularp + 1|P (ni) for all 1≤i≤p + 1. Consider any natural\nnumber k, then there isi such thatni≡k (mod p + 1). Thus P (k)≡P (ni) (mod p + 1),\ntherefore p + 1 divides P (k) for every integerk. Sincep was any prime we get thatP≡0.\nSolution 6. First fix a primep, and substitutepαinto the polynomialP. Then we have\nσ(pα) = pα+1−1\np−1 |P (pα).\nSo for infinitely many natural numbersn, we havepn−1\np−1|P (n). For rational numbersr,s∈Q,\nwe denote byr|s if s\nr∈Z. We will need the following lemma.\nLemma. Given two polynomialsQ,R ∈Q[x] such that for infinitely manyn∈Z we have\nQ(n)|R(n), thenQ(x)|R(x) in Q[x].\nProof. Since Q[x] is a Euclidian domain,R(x) can be written as followsR(x) = Q(x)S(x) +\nT (x), wheredegT≤degQ. Thereisapositiveinteger N, suchthatR′(x) :=N 2·R(x),Q′(x) :=\nN·Q(x),S′(x) := N·S(x),T′(x) := N 2·T (x) have all integer coefficients. Now the same\nequation holds for the modified polynomials:R′(x) = Q′(x)S′(x) +T′(x). Also the property\nthat for infinitely manyn we haveQ′(n)|R′(n) remains true. Combining these we get that\nQ′(n)|T′(n) for infinitely manyn. But T′has smaller degree thanQ′, so for large enoughn,\n|T′(n)|<|Q′(T )|, thereforeT′≡0.\nApplying the lemma we get that for all primep we have px−1\np−1|P (x), soP has infinitely many\nroots, thus it is the zero polynomial.\n17\nMEMO 2024 T eam T-1",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 6,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 6, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2024-t1",
+      "year": 2024,
+      "problem_code": "T-1",
+      "statement_en": "Consider the two infinite sequences a0, a1, a2, . . .and b0, b1, b2, . . .of real numbers such that\na0 = 0, b0 = 0 and\nak+1 = bk, b k+1 = akbk + ak + 1\nbk + 1\nfor each integerk≥0. Prove thata2024 + b2024≥88.",
+      "solution_text_en": "Solution. Let us notice thatai is the same as the sequencebi shifted by one. So the whole\nproblem might be reduced to the sequence ofbi. The definition ofbk+1 can be rewritten as:\nbk+1 = akbk +ak + 1\nbk + 1 =ak + 1\nbk + 1 =bk−1 + 1\nbk + 1.\nNow if we define a new sequenceBi =bi + 1, then we arrive at\nBk+1 =Bk−1 + 1\nBk\n,\nmultiplying withBk gives\nBkBk+1 =Bk−1Bk + 1.\nHence, usingCk =BkBk+1 we can see that for anyk≥1,\nCk =Ck−1 + 1.\nSince C0 = 1·2 = 2, we obtainC2023 = 2025. Now we just have to remember that\nC2023 =B2023B2024 = (b2023 + 1)(b2024 + 1) = (a2024 + 1)(b2024 + 1).\nUsing the AM-GM inequality,\n45 =\n√\n2025 =\np\n(a2024 + 1)(b2024 + 1)≤(a2024 + 1) + (b2024 + 1)\n2 ,\nwhich gives88≤a2024 +b2024, as we seeked to prove.\nSolution 2. As in Solution 1, we substituteBk =bk + 1 and getBk+1 =Bk−1 + 1\nBk\n. Then by\ncalculating the first few terms, we conjecture that\n18\nMEMO 2024 T eam T-1\nBk =\n\n\n\n(k + 1)·(k−1)·(k−3)·...·2\nk·(k−2)·(k−4)·...·1 , if k is odd\n(k + 1)·(k−1)·(k−3)·...·1\nk·(k−2)·(k−4)·...·2 , if k is even,\nwhich is easily proven by induction. From this we can see that\nB2024 = 2025\nB2023\n.\nThe statement we want to prove is equivalent to:\nB2023 + 2025\nB2023\n≥90 ⇐⇒B2\n2023−90·B2023 + 2025≥0 ⇐⇒(B2023−45)2≥0,\nwhich clearly holds.\n19\nMEMO 2024 T eam T-2",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2024-t2",
+      "year": 2024,
+      "problem_code": "T-2",
+      "statement_en": "Find all functionsf : R→R such that\nyf (x + 1) = f (x + y−f (x)) + f (x)f (f (y))\nfor all x, y∈R.",
+      "solution_text_en": "Answer. The functionsf(x) =x for allx∈R andf(x) = 0 for allx∈R are the only solutions.\nSolution.\nClaim. f(x) =cx +d is a solution if and only ifd = 0 and c = 0 or c = 1.\nProof. It is easy to check thatf(x) = 0 and f(x) = x are indeed solutions. There is no more\nconstant solutions, hence we assume thatc̸= 0 for the rest of the proof.\nPlugging inf(x) =cx +d into the functional equation gives\ny(c(x + 1) +d) =c(x +y−cx−d) +d + (cx +d)(c(cy +d) +d).\nThis equation is true for allx,y ∈R if and only if all the coefficients of the (multivariate)\npolynomials equal. Hence, considering the coefficient ofxy givesc =c3, soc = 1 or c =−1.\nThe coefficient ofx gives 0 =c−c2 +c2d +cd, hence 0 = 1−c +d +cd. Ifc = 1 then d = 0,\nand ifc =−1 then this gives a contradiction, finishing the proof of the claim.\nAssume thatf(t0) = 0 for somet0∈R. Plugging in(t0,y ) gives\nyf (t0 + 1) =f(t0 +y).\nIt follows thatf is linear, hence we are done by the Claim. From now we assume thatf(x)̸= 0\nfor allx∈R.\nPlugging in (x,f (x) + 1)gives\nf(x)f(x + 1) +f(x + 1) =f(x + 1) +f(x)f(f(f(x) + 1)),\nhence\nf(x + 1) =f(f(f(x) + 1)). (1)\nClaim. f is injective.\n20\nMEMO 2024 T eam T-2\nProof. Assume thatf(a) =f(b) for somea̸=b. It follows from (1) that\nf(a + 1) =f(f(f(a) + 1)) =f(f(f(b) + 1)) =f(b + 1).\nPlugging in (a,b ) and (b,a ) into the original equation and usingf(a) =f(b) gives\nbf(a + 1) =f(a +b−f(a)) +f(a)f(f(b)) =f(b +a−f(b)) +f(b)f(f(a)) =af(b + 1),\nhence a =b, asf(a + 1) =f(b + 1)̸= 0.\nBy (1) and injectivity we getx + 1 = f(f(x) + 1). Plugging x =−1 gives f(f(−1) + 1) = 0\nwhich contradicts the assumption thatf(x)̸= 0 for allx∈R. This finishes the proof.\nSolution 2. Throughout the solutionfn denotes then-th iterate off, i.e.,f 1(x) =f(x) and\nfn(x) = f(fn−1(x)) for allx∈R and n >1. We only show a second proof for the statement\nthat iff(x)̸= 0 for allx∈R then there is no solution.\nAssume thatf(x)̸= 0 for allx∈R. Plugging in(x,f (x)) gives\nf(x + 1) = 1 +f 3(x)\nfor allx (upon dividing byf(x)̸= 0) whereas (x,f (x) + 1)gives\nf(x + 1) =f(f(1 +f(x))) =f(1 +f 4(x)) = 1 +f 7(x).\nwhich gives in particular thatf 3(x) =f 7(x). We can now compute:\nf(x + 2) = 1 +f 3(1 +x)\n= 1 +f 2(1 +f 3(x))\n= 1 +f(1 +f 6(x))\n= 2 +f 9(x)\n= 2 +f 5(x)\n21\nMEMO 2024 T eam T-2\nand similarly we have\nf(x + 3) = 2 +f 5(1 +x)\n= 2 +f 4(1 +f 3(x))\n= 2 +f 3(1 +f 6(x))\n= 2 +f 2(1 +f 9(x))\n= 2 +f(1 +f 12(x))\n= 3 +f 15(x)\n= 3 +f 11(x)\n= 3 +f 7(x)\n= 2 +f(x + 1)\nand we obtainf(x + 2) =f(x) + 2for allx∈R. If we now plug in(x + 2,y ) we have\nyf (x + 1) + 2y =f(x +y−f(x)) +f(x)f(f(y)) + 2f(f(y))\nwhich givesf(f(y)) =y so f(f(0)) = 0, a contradiction.\nSolution 3. We reduce to showing thatf(x) = 0 for somex∈R, and reduce this to injectivity,\nas in Solution 1. Therefore we assumef(x)̸= 0 for allx∈R, butf(x1) =f(x2) =a for some\nx1̸=x2. Comparing the given equation for(x1,y ) and (x2,y ) gives\ny(f(x1 + 1)−f(x2 + 1)) =f(x1 +y−a)−f(x2 +y−a).\nFory =a̸= 0 we getf(x1 + 1) =f(x2 + 1), so the left side above is identically 0. Therefore\nf(x1 +y−a) =f(x2 +y−a)\nfor ally, sof is periodic with periodt =x1−x2̸= 0.\nBut now comparing the original equation for(x,y ) and (x,y +t) for any realx,y we get\ntf(x + 1) = 0,\nso f attains the value 0.\n22\nMEMO 2024 T eam T-3",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2024-t3",
+      "year": 2024,
+      "problem_code": "T-3",
+      "statement_en": "There are 2024 mathematicians sitting in a row next to the river Tisza. Each of them is working\non exactly one research topic, and if two mathematicians are working on the same topic, everyone\nsitting between them is also working on it.\nMarvin is trying to figure out for each pair of mathematicians whether they are working on the\nsame topic. He is allowed to ask each mathematician the following question: “How many of\nthese 2024 mathematicians are working on your topic?” He asks the questions one by one, so he\nknows all previous answers before he asks the next one.\nDetermine the smallest positive integerk such that Marvin can always accomplish his goal with\nat most k questions.",
+      "solution_text_en": "Answer. The number of required questions is 2023.\nSolution. We solve the problem more generally, forn mathematicians. We will prove that\nthe answer isn−1.\nBy asking the left-mostn−1 mathematicians, Marvin can determine the working groups from\nthe left to right.\nNow we show thatn−2 questions may not be enough. Let xi be the answer of the i-th\nmathematician. It is easy to see thatx−1\n1 +···+x−1\nn is the number of different topics studied. All\nof the mathematicians will answer1 or 2 to the question in such a way, that after each question\nif a and b are the smallest and largest indices such that thea-th and b-th mathematicians\nhaven’t been asked by Marvin yet, thenx−1\n1 +···+x−1\na−1 and x−1\nb+1 +···+x−1\nn are integers,\nand all valuesxi with a < i < bthat have been already asked satisfyxi = 2. Suppose that\nMarvin askedxk just now, and he asked at mostn−3 questions before this, and by induction\nthe constraint above is satisfied.\n• If there arei,j such that 1≤i<k <j ≤n such thatxi and xj haven’t been asked, the\nanswer will bexk = 2, and it is easy to check that all constraints are still satisfied.\n• If for all1≤i < kMarvin has already askedxi: Let m > kbe the largest integer such\nthat we already askedxj for allk < j≤m. This m exists and is less thann since he\nasked at mostn−3 questions before this. Therefore, for allk < j≤m, xj = 2. By the\ninduction hypothesis,x−1\n1 +···+x−1\nk−1 is an integer, so the constraint can be satisfied by\nansweringxk = 2 if m−k is odd andxk = 1 if m−k is even.\n• If for allk <i≤n Marvin has already askedxi: The answer can be decided similarly as\nin the previous case.\n23\nMEMO 2024 T eam T-3\nTherefore aftern−2 questions we have the following: Only thea-th andb-th mathematicians\nweren’t asked by Marvin, everyone between them answered 2, and everyone not sitting between\nthem has a research topic different from thea-th andb-th mathematician (the topics can be\nreconstructed similarly as in the argument showing thatn−1 questions are always enough).\nIf b−a is odd, thenxa = 1 and xb = 1 can be reconstructed, andxa = 2 and xb = 2 can be\nreconstructed as well, so Marvin can’t decide which mathematicians share the same topic.\nIf b−a is even, thenxa = 1 and xb = 2 can be reconstructed, andxa = 2 and xb = 1 can\nbe reconstructed as well, so again Marvin can’t decide which mathematicians share the same\ntopic.\n24\nMEMO 2024 T eam T-4",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2024-t4",
+      "year": 2024,
+      "problem_code": "T-4",
+      "statement_en": "A finite sequencex1, x2, . . . , xr of positive integers is apalindrome if xi = xr+1−i for all integers\n1≤i≤r.\nLet a1, a2, . . .be an infinite sequence of positive integers. For a positive integerj≥2, denote by\na[j] the finite subsequencea1, a2, . . . , aj−1. Suppose that there exists a strictly increasing infinite\nsequence b1, b2, . . .of positive integers such that for every positive integern, the subsequence\na[bn] is a palindrome andbn+2≤bn+1 + bn. Prove that there exists a positive integerT such\nthat ai = ai+T for every positive integeri.",
+      "solution_text_en": "Solution. Define abreak pointto be a positive integerk such thata[k] is a palidrome. Let\nc1 <c 2 <... be a strictly increasing sequence ofall break points. Thencn+2≤cn+1 +cn also\nholds whenevercn+2 >b 2. Namely, ifbj−1 <c n+2≤bj, thencn+1≥bj−1 and cn≥bj−2.\nFor positive integersp and q, letp∼q denote the fact thatap =aq.\nLetx,x+y andx+y+z be three consecutive break points greater thanb2. From the condition,\nwe havez≤x. Consider any positive integerr <x.\nSince x is a break point,r∼x−r.\nSince x +y is a break point,x−r∼x +y−(x−r) =y +r.\nSince x +y +z is a break point,y +r∼x +z−r.\nHence, r∼x +z−r for allr <x. This implies thatx +z is also a break point, which means\ny =z since we considered consecutive break points. Repeating this argument for the next three\nbreak points, we can conclude that there exists an arithmetic sequence of break points with\ncommon differencez.\nLet (x +nz)n be an arithmetic sequence of break points. Consider any positive integer r.\nLet n be a positive integer such thatx +nz >r.\nSince x +nz is a break point,r∼x +nz−r.\nSince x + (n + 1)z is a break point,x +nz−r∼x + (n + 1)z−(x +nz−r) =z +r.\nHence, the sequence(an)n is periodic with periodz, which proves the claim.\nSolution 2. Similarly to the first solution,x∼y denotes thatax =ay. If we know thata[b] is\npalindromic, thenx∼b−x for all 0<x<b . The notationa[x,y ] denotes (ax,ax+1,...,ay−1).\nThroughout the proof, all variables denote integers.\n25\nMEMO 2024 T eam T-4\nWe show that the sequence is periodic withb2−b1. Note that to show this, it suffices to show\nthata[bn] is periodic withb2−b1 for alln. So the problem statement follows from the following\nproposition.\nMain proposition. a[bn+k] is periodic withbn+1−bn for alln,k≥1.\nWe prove the proposition by induction onk.\nThe casek = 1. If 0<x<b n then by palindromeness ofa[bn] anda[bn+1], we havex∼bn−x∼\nbn+1−(bn−x) =x + (bn+1−bn), soa[bn+1] is periodic withbn+1−bn.\nThe casek = 2. We prove the following helpful lemma:\nLemma. Suppose thatt≥1 and 0<x<y . Ifa[x] is periodic witht, anda[y] is palindromic,\nand 2x−y≥t, thena[y] is periodic witht too.\nProof of lemma.Sincea[x] is periodic witht, by palindromeness ofa[y] we have thata[y−x,y ]\nis periodic witht too. If the two segmentsa[x] and a[y−x,y ] overlap in at leastt elements,\nthis means that all pairs of distancet in a[y] will be contained in at least one of the segments,\nso a[y] is also periodic witht. Here, the overlap isx−(y−x) = 2x−y≥t indeed.\nTo use the lemma here, pickt = bn+1−bn, x = bn+1 and y = bn+2. We already know that\na[bn+1] is periodic witht (by thek = 1 case), and we have2x−y≥t⇔bn+1 +bn≥bn+2\nindeed, concluding thek = 2 case.\nThe casek≥3. To prove this case, we show that ifa[bn+k−1] is periodic withbn+1−bn and\na[bn+k] is periodic with bn+2−bn+1 (both true by the inductive hypothesis) thena[bn+k] is\nperiodic withbn+1−bn too.\nLet t =bn+1−bn and ∆ = bn+2−bn+1.\nThen we can inductively show thata[bn+k−1 +l∆] is periodic witht for alll≥0. For l= 0\nthis is true by thek = 1 case. If forl≥1, we know thata[bn+k−1 + (l−1)∆] is periodic with\nt, then by the periodicity ofa[bn+k] with ∆ , we have thata[∆,bn+k−1 +l∆] is also periodic\nwitht. Also, the twot-periodic intervals overlap in at leastt elements, asbn+k−1 + (l−2)∆ ≥\nbn+k−1−∆ = bn+k−1−bn+2 +bn+1≥bn+1−bn⇔bn+k−1 +bn≥bn+2, true since fromk≥3,\nbn+k−1≥bn+2. Soa[bn+k−1 +l∆] is also periodic witht.\nNow chooselso thatd−∆ ≤bn+k−1 +l∆ ≤bn+k, giving that we have some0≤u≤∆ with\na[bn+k−u] being t-periodic. Now by palindromeness of a[bn+k], also a[u,bn+k] is t-periodic,\nand the two intervals’ overlap is at leastt: bn+k−2u≥t⇔2u≤bn+k−bn+1 +bn, and\n2u≤2∆ = 2bn+2−2bn+1≤bn+k−bn+1 +bn⇔2bn+2≤bn+k +bn+1 +bn, true sincebn+2≤bn+k\nand bn+2≤bn+1 +bn. Soa[bn+k] is t-periodic, finishing the proof.\n26\nMEMO 2024 T eam T-4\nSolution 3. We will show that the sequence is periodic withbk−bk−1 where k≥2 is so that\nbk−bk−1 = min1≤nbn−bn−1. First, we prove thatbk is periodic withbk−bk−1:\nx∼bk−1−x∼bk−bk−1 +x ∀x<b k−1,\nwhere we have used thatbk−1 and bk are palindromic.\nWe will use the lemma from the above solution. Let’s recall it.\nLemma. Suppose thatt≥1 and 0<x<y . Ifa[x] is periodic witht, anda[y] is palindromic,\nand 2x−y≥t, thena[y] is periodic witht too.\nLet us apply the lemma repeatedly so thatt = bk−bk−1, x = bn−1 and y = bn for n =\nk + 1, k + 2, k + 3,.... The two conditions in the first sentence of the lemma are clearly\nsatisfied at such applications, as well as thata[y] is palindromic.\nThe condition 2x−y≥t is equivalent to2bn−1−bn≥bk−bk−1. Since n≥k≥2, we know\nthat bn−1 +bn−2≥bn. Thereforebn−1−bn≥−bn−2. But since we chosek so thatbk−bk−1 is\nsmallest, we have that2x−y≥t is also satisfied at each application of the lemma.\nThe only remaining condition is thata[x] = a[bn−1] is periodic with periodt. However, since\nthe lemma states thata[y] = a[bn] is periodic with periodt, at each application of the lemma\nwe get that this condition is also satisfied for the next application. Therefore we get thata[bn]\nis periodic with periodbk−bk−1∀n≥k. This finishes the proof.\nSolution 4. This solution uses the following lemma.\nLemma. If a palindromic, finite sequence(an)n=l\nn=1 of lengthl is periodic with periodsx and y\nwith x<y and x +y≤l + 1, it is periodic with periody−x.\nProof. Forr≤x−1, we haver +y≤l andx<r +y, so by periodicity withy andx, we have\nar =ar+y =ar+y−x.\nFor x < r≤l−(y−x), we have 1 ≤r−x ≤l−y, so by the periodicities we have\nar =ar−x =ar−x+y.\nIt remains to be proven thatax =ay. In casex +y≤l, the first of the two above arguments\nworks forr =x and showsax =ay, proving the lemma.\nHowever, in casex +y ≰l, by the condition of the lemma we havex +y =l + 1. Then by the\npalindromic condition,ax =al+1−x =ay. This finishes the proof of the lemma.\n27\nMEMO 2024 T eam T-4\nComment. Via Euler’s algoritm, we may use the lemma repeatedly to give that the sequence\nis periodic withgcd(x,y ).\nAs in the previous solution, we use that for alln≥2, a[bn] is periodic with periodbn−bn−1.\nThen as a[bn] is a subsequence for a[bn+1], we have that a[bn] is also periodic with period\nbn+1−bn.\nNow let’s apply the lemma’s remark fora[bn], which we know is palindromic. The two periods\narebn−bn−1 andbn+1−bn. The conditionx +y≤l + 1translates tobn+1−bn−1≤bn (noting\nthat l = bn−1). However, this is satisfied by the problem statement, so we get thata[bn] is\nperiodic with periodgcd(bn−bn−1,bn+1−bn).\nRecalling thata[bn+1] is periodic with periodbn+1−bn, which is a multiple of the period we\ngot fora[bn]. Sincebn+1−bn≤bn−1≤bn−1, an entire larger period is contained ina[bn].Then\neach larger period ina[bn+1] consists of smaller periods of lengthgcd(bn−bn−1,bn+1−bn) from\na[bn], soa[bn+1] is also periodic with periodgcd(bn−bn−1,bn+1−bn).\nThen substitutingn + 1 by n, a[bn] is periodic with periodgcd(bn−1−bn−2,bn−bn−1). So by\nthe remark, it is periodic with periodgcd(bn−1−bn−2,bn−bn−1,bn+1−bn).By repeatedly using\nthe multiple-period argument, substitutingn + 1 byn and using the remark, we get thata[bn]\nis periodic withgcd(b2−b1,b 3−b2,...,bn+1−bn).\nSince\u0000 gcd(b2−b1,b 3−b2,...,bn+1−bn)\u0001\nn is a strictly decreasing positive integer sequence, it\nhas a minimum which it achieves at somen =k. Then forp = gcd(b2−b1,b 3−b2,...,bk+1−bk),\nwe have thata[bn] is periodic with periodp for alln≥k. This finishes the proof.\nComment. The lemma is true even if the palindromic condition is dropped. This stronger\nformulation requires a more in-depth, harder proof for the casex +y =l + 1, presented below.\nProof. We repeatedly perform the following moves, starting from indexx. If the current index\nis at mostl−x, we increase it byx. If we cannot perform this move, and the index is at least\ny + 1, we decrease it byy. If we cannot perform either move, we stop.\nIf at some point we cannot perform more steps, the indexr we have satisfiesl−x<r <y + 1,\nsor =y. Since at each step the elements of(an)n=l\nn=1 at the old and new index are equal due to\nperiodicity, the elements at the first and last indices in our steps are equal, soax =ay.\nIf we can perform the above steps infinitely many times, there will be an index at which we\narrive at least twice. Letr1 be the first such index. Then let the subsequent indices we get by\nthe above steps fromr1 be (rn)n≥0. Sincer1 =rk+1 for some index as we arrive atr1 twice, we\nknow that taking a step fromrk takes it tor1, i.e.r1 =rk +x orr1 =rk−y. However, at any\nindex it is clear that we can only arrive by one type of moves, since then1≤r−x≤l−x and\nl−x < r+y≤l are both satisfied byr so 1 +x≤r≤l−y, contradiction asl =x +y−1.\nSo the index precedingr1 is also repeated atrk as they cannot be different. So necessarily all\nindices repeat. But the index preceding the second time we reachx cannot be 0 = x−x and\nalso cannot bex+y =l+1, contradiction. So we can never take infinitely many such steps.\n28\nMEMO 2024 T eam T-5",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 2, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2024-t5",
+      "year": 2024,
+      "problem_code": "T-5",
+      "statement_en": "Let ABC be a triangle with∠BAC = 60 ◦. Let D be a point on the lineAC such thatAB = AD\nand A lies between C and D. Suppose that there are two points E̸= F on the circumcircle\nof the triangle DBC such that AE = AF = BC. Prove that the lineEF passes through the\ncircumcenter of ABC.",
+      "solution_text_en": "Solution. LetN be the midpoint of arcBAC. Then triangleNBC is equilateral as∠BNC =\n60◦and N lies on the perpendicular bisector ofBC. Moreover,N lies on the angle bisector of\nthe angleDAB, which is the perpendicular bisector of segmentBD considering the isosceles\ntriangle ABD. Therefore,N is the circumcenter of triangleDBC.\nSince NBC is equilateral, the circumradius of triangleDBC is the length of BC. So, we\nhaveBC =NE =NF and we know thatAE =AF =BC, thusAENF is a rhombus. Hence,\nthe lineEF is the perpendicular bisector ofAN. However,AN is a chord of the circumcircle\nof triangleABC, so its perpendicular bisector passes throughO. The solution is complete.\nA\nB\nC\nD\nE\nF\nN\n60◦\n60◦\nO\nSolution 2. Let k be the circumcircle of triangleDBC and letK be its center. Denote byω\nthe circle with centerA and radiusBC. By definition,E and F are the two intersections ofk\nand ω. Thus, we need to prove thatO lies on the radical axis of the two circles.\nSince ∠BAC = 60◦, we have∠DAB = 120◦, and sinceAB =AD, we get∠BDA = ∠BDC =\n29\nMEMO 2024 T eam T-5\n30◦. This has two important corollaries. Firstly, by inscribed angles∠BKC = 60◦= ∠BAC,\nso it follows thatK lies on the circumcircle of triangleABC (asK andA lie on the same side\nof lineBC). In fact,OA =OK. Secondly, the radius ofk is\n1\n2·BC\nsin ∠BDC = BC\n2 sin 30◦=BC.\nTherefore,\nPowk(O) =OK 2−(radius ofk)2 =OK 2−BC 2 =OA2−BC 2 =OA2−(radius ofω)2 = Powω(O).\nThis finishes the proof.\n30◦\n60◦\nA\nB\nC\nD\nE\nF\nO\nω\nK\nk\n30\nMEMO 2024 T eam T-6",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2024-t6",
+      "year": 2024,
+      "problem_code": "T-6",
+      "statement_en": "Let ABC be an acute triangle. LetM be the midpoint of the segmentBC. Let I, J, K be the\nincenters of trianglesABC, ABM, ACM, respectively. Let P, Q be points on the linesM K,\nM J, respectively, such that∠AJ P = ∠ABC and ∠AKQ = ∠BCA. Let R be the intersection\nof the linesCP and BQ. Prove that the linesIR and BC are perpendicular.",
+      "solution_text_en": "Solution. Note thatMK⊥MJ. By simple angle chasing we get that\n∠PJM = ∠AJM−∠AJP = 90◦+ 1\n2 ∠ABC−∠ABC = 90◦−1\n2∠ABC,\n∠JPM = 90◦−∠PJM = 1\n2∠ABC.\nLet P′be the reflection ofP overM. Note that ∠JPM = ∠JP′M as JM⊥MP. Then\n∠JP′M = ∠JPM = 1\n2 ∠ABC = ∠JBM,\nhenceJBP′M is concyclic and asMK⊥MJ, pointP′is theA-excenter of triangleABM by\nthe incenter-excenter lemma. LetQ′be the reflection ofQ overM. Analogously, we get that\nQ′is theA-excenter of triangleAMC.\nLet R′be the intersection of linesBP′and CQ′. Note that R′is the A-exceneter of trian-\ngleABC. PointR is the reflection ofR′overM as by reflecting linesBP′,CQ′overM we get\nlines CP, BQ. It is well-known that distance of incenter and the distance ofA-excenter from\nthe perpendicular bisector ofBC is the same, thus by reflectingR′overM we get a point (R)\nthat lies on the line throughI perpendicular toBC.\nA\nB\nC\nP\nQ\nI\nJ\nK\nP ′\nQ′\nR\nM\n31\nMEMO 2024 T eam T-6\nComment. Another way to finish the problem is by usingBP′∥CP and CQ′∥BQ to show\nthat I is the orthocenter of triangleRBC, asIB⊥BP′and IC⊥CQ′.\nSolution 2. LetA′andJ′be the reflections ofA andJ inM, and let us denote∠ABC byβ.\nFirst we show thatA′,J′and P are collinear. Obviously, ∠JMP = 90◦, which implies that\n∠PJJ′= ∠PJ′J. Simple angle chasing shows that∠MJA = 90◦+β/2. Since ∠AJP = β,\nwe obtain ∠MJP = 90◦−β/2, and by the reflection it follows that∠MJ′A′= 90◦+β/2 and\n∠MJ′P = 90◦−β/2. This yields thatA′,J′, andP are collinear.\nNow we observe thatP is the intersection of two angle bisectors, thusP is the A′-excenter\nof MA′C. It follows that BI and CP are two perpendicular angle bisectors. One can show\nsimilarly thatCI⊥BQ, henceI is the orthocenter ofBCR, and the statement follows.\nA\nB\nC\nP\nI\nJ\nM\nA′\nJ ′\nSolution 3. It is enough to show thatI is the orthocenter of triangleRBC. By symmetry,\nit suffices to prove thatBI⊥RC. Denote the midpoints of sidesAB,AC by B′and C′, re-\nspectively. The famous Iran lemma tells us that the projection ofC onto lineBI lies onMC′.\nThus, we need to prove that linesBI,MC ′,CP are concurrent. This is the same as saying that\ntriangles BCC′,JPM are perspective, which - by Desargues’s theorem - is equivalent to the\npoints BC∩JP,CC ′∩PM,C ′B∩MJ being collinear.\n32\nMEMO 2024 T eam T-6\nNow let us define some new points. Let the circumcircle of AJB intersect lines AM,BM\nfor the second time atS andT, respectively. Since this circle is symmetric with respect toMJ,\nand so are the linesAM,BM , we have thatASBT is an isosceles trapezoid. Notice that the\nangle condition of the problem tells us\n∠AJT + ∠AJP = ∠ABT + ∠AJP = ∠ABT + ∠ABC = 180◦,\nthus T,J,P are collinear. Now observe that ∠JMK = ∠JMA + ∠KMA = ∠BMA/ 2 +\n∠CMA/ 2 = 180◦/2 = 90◦. Also, asMJ is the perpendicular bisector ofAT and BS, we have\nthat linesMK,AT,BS are all perpendicular toMJ, so they are all parallel.\nLetU be the midpoint ofAT andV be the point at infinity of lineMK. As we saw previously,U\nlies onMJ andV lies onAT. Now,BC∩JP =BC∩UV,CC ′∩PM =CC′∩VM,C ′B∩MJ =\nC′B∩MU. We wish to show that these points are collinear, which now becomes same as saying\nthat trianglesBCC′,UVM are perspective. By Desargues’s theorem, it suffices to prove that\nlines BU,CV,C ′M are concurrent.\nSuppose that linesBU,C′M intersect atX. Notice thatU,B′,C′all lie on a midline of triangle\nABC and B′B∥C′M. It follows that trianglesBMX,UB ′B are homothetic, so it is enough\nto prove our goal for triangleUB′B. That is, we need to show that ifU′is the reflection ofU\nin B′, thenBU′is parallel toBS. However, this is fairly trivial, asB′lies on the midline of\nthe isosceles trapezoidASBT (since it is the midpoint of diagonalAB), soU′must lie onBS.\nWe are finally done.\n33\nMEMO 2024 T eam T-6\nA\nB\nC\nP\nI\nJ\nK\nR\nM\nU\nS\nT\nV\nC ′\nB′\nX\nComment. We used the fact thatS̸= A and T̸= B. If this wasn’t the case, then we would\nhaveAM =BM =CM, which would lead to a90◦angle atC in triangleABC, contradicting\nthe acuteness of the triangle.\n34\nMEMO 2024 T eam T-7",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 9,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 9, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2024-t7",
+      "year": 2024,
+      "problem_code": "T-7",
+      "statement_en": "Define glueing of positive integers as writing their base ten representations one after another and\ninterpreting the result as the base ten representation of a single positive integer.\nFind all positive integersk for which there exists an integerNk with the following property: for\nall n≥Nk, we can glue the numbers1,2, . . . , nin some order so that the result is a number\ndivisible by k.",
+      "solution_text_en": "Remark. The base ten representation of a positive integer never starts with zero.\nExample. Glueing 15, 14, 7 in this order makes15147.\nAnswer. k has this property if and only if3 ∤k.\nSolution. If 3|k, then for anyn∈N of the formn = 3k + 1, the sum of the digits of all\npositive integers up ton gives remainder 1 modulo 3. As a positive integer is divisible by3 if\nand only if the sum of its digits is divisible by3, no matter how we glue1, 2,...,n, the resulting\nnumber is not divisible by3, hence also not byk. So no appropriateNk can be chosen.\nIf 3 ∤k, writek = 2a5b·m with gcd(m, 10) = 1. Letl≥⌊log10(m)⌋+2 be an integer divisible by\nφ(m), so 10l≡1 (mod m) by Euler-Fermat. By the size constraint ofl, we can chooseai∈N\nfor 0≤i<m such thatai≡i (mod m) and ai has ldigits. Note that allai are different and\ncan also be chosen to be different from10max(a,b). TakeNk≥max(10max(a,b), 10l). Forn≥Nk\nwe glue1, 2,...,n the following way:\n(a) We put 10max(a,b) at the end of the glueing, so the glued number ends withmax(a,b )\nzeros, ensuring that the number is divisible by2a5b.\n(b) At the beginning of the number we puta0, then the number1, thena1,a 2,...,am−1 in\nthis order.\n(c) We put the remaining numbers in the middle, in an arbitrary order.\nLet G0 be the number given by this glueing, and for1≤i < mlet Gi by the number we get\nfrom the same glueing, except for swappinga0 andai. We show that at least one of the integers\nG0,G 1,...,Gm−1 is divisible bym, and as all of them are divisible by2a5b, one of them will be\ndivisible byk, finishing the proof.\nLet d be the number of digits ofG0 (and hence ofG1,...,Gm−1 as well). Then\nGi−G0 = 10d−l(ai−a0)+10d−l−1−l·i(a0−ai)≡10d−1·(ai−a0)·(10−1)≡i·9·10d−1 (mod m).\nSo ifi is such that−G0≡i·9·10d−1 (mod m), thenm|Gi. This choice ofi is possible, as\nm is coprime to both9 and 10, so the inverse of9·10d−1 exists modulom. Therefore Gi is a\ngluing of 1, 2,...,n, divisible byk.\n35\nMEMO 2024 T eam T-8",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 2, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2024-t8",
+      "year": 2024,
+      "problem_code": "T-8",
+      "statement_en": "Let k be a positive integer anda1, a2, . . .be an infinite sequence of positive integers such that\naiai+1|k−a2\ni\nfor all integersi≥1.Prove that there exists a positive integerM such that an = an+1 for all\nintegers n≥M.",
+      "solution_text_en": "Solution 1. Note thatai|k for alli≥1. Furthermore, we haveai+1|a2\ni, so there are only\nfinitely many primes that divide any element of the sequence.\nFor a prime numberp and a positive integern, letνp(n) denote the exponent ofp in the prime\nfactorization ofn.\nWe’ll prove thatνp(ai+1)≤νp(ai) for all primesp and all but finitely manyi. From this, the\nclaim will follow as for each primep, the sequence (νp(ai))i is eventually constant, and there\nare finitely many primesp to consider.\nTake a prime numberp. Suppose that νp(ai+1) > νp(ai) for some positive integeri (if i with\nthis property don’t exist, we’re done). Sinceaiai+1|k−a2\ni, we must haveνp(a2\ni ) = νp(x), as\notherwise νp(a2\ni−x)≤νp(a2\ni )<νp(aiai+1), a contradiction.\nThen ai+1ai+2|k−a2\ni+1, and sinceνp(x) = νp(a2\ni ) < νp(a2\ni+1), we haveνp(x−a2\ni+1) = νp(x),\nand νp(ai+1ai+2)≤νp(x), from where it follows thatνp(ai+2)< νp(x)\n2 .\nNowai+2ai+3|k−a2\ni+2 and fromνp(ai+2)< νp(x)\n2 we have thatνp(x−a2\ni+2) =νp(a2\ni+2), therefore\nνp(ai+3)≤νp(ai+2)< νp(x)\n2 .\nRepeating the same argument fori + 3,i + 4,...gives us\nνp(ai+j)≤νp(ai+j−1)≤νp(x)\n2\nfor j≥3, and we’re done.\nSolution 2. We can finish the proof slightly differently. We have already seen that there are\nonly finitely many primes dividing any element of the sequence. So it is enough to prove that\nfor any such primep there isM such thatνp(an) is constant for anyn≥M. Take any such\nprime p.\nSuppose that there isi such thatνp(aj) takes its minimum, that isνp(ai)≤νp(aj) for allj,\nfurthermoreνp(ai+1)>νp(ai). (If there is no suchi, then we have proved the required property\nfor p.)\n36\nMEMO 2024 T eam T-8\nWe know thataiai+1|k−a2\ni andai+1ai+2|k−a2\ni+1. Then from the fact thatνp(ai) is minimal\nwe know thatνp(x−a2\ni+1)≥νp(ai+1) +νp(ai). Therefore\nνp(ai+1) +νp(ai)≤νp((x−a2\ni+1)−(x−a2\ni )) =νp(ai +ai+1) +νp(ai+1−ai) = 2νp(ai).\nBut then we get thatνp(ai+1)≤νp(ai), which is a contradiction.\n37",
+      "source": {
+        "page_url": "https://memo2024.bolyai.hu/competition/problems-solutions",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.bolyai.hu/files/MEMO_2024_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.bolyai.hu/files/MEMO-2024-SolutionBooklet-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2024-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 2, 'combinatorics': 1}"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "id": "imo-1998-c6-complete-graph-rainbow-edges",
+  "title": "Раскраска рёбер K10 и разноцветные рёбра, IMO Shortlist 1998 C6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "rainbow_subgraph",
+      "ramsey_triangle"
+    ],
+    "methods": [
+      "explicit_coloring",
+      "ramsey_theory",
+      "degree_counting"
+    ],
+    "transformations": [
+      "points_to_complete_graph"
+    ],
+    "goal": [
+      "determine_possible_number_of_colors"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "color_degree_constraints"
+    ],
+    "standard_idea_ids": [
+      "pigeonhole_principle"
+    ],
+    "keywords": [
+      "imo-1998-c6-complete-graph-rainbow-edges",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Даны 10 точек общего положения на плоскости; каждый отрезок между парой точек окрашен в один из k цветов. Требуется, чтобы для любых k из 10 точек среди отрезков с концами в этих k точках нашлись k отрезков попарно разных цветов. Найти все k, 1 <= k <= 10, для которых это возможно.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "source_id": "src-secondary-imo-1998-shortlist",
+        "title": "Условие"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это задача о раскраске рёбер полного графа K10. Для каждого k нужно, чтобы любой индуцированный K_k содержал k рёбер разных цветов; существенная часть решения для k=4 использует локальные степени цвета и R(3,3)=6.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-five-color-construction",
+      "title": "Пятицветная конструкция через разбиения",
+      "text": "Для каждого цвета задаются группы вершин, внутри которых все рёбра имеют этот цвет; из любых пяти вершин две попадают в одну группу каждого цвета.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-four-color-ramsey-obstruction",
+      "title": "Запрет четырёх цветов через R(3,3)",
+      "text": "Если четыре цвета работали бы для любых четырёх вершин, то анализ цветовых степеней в одной вершине и Ramsey R(3,3)=6 дают одноцветный или безданногоцветный треугольник, что приводит к противоречию.",
+      "tags": [
+        "ramsey_theory"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-reviewed-web",
+      "title": "Сжатое решение после web review",
+      "text": "Ответ: возможны все k, кроме k=4; нетривиальна проверка k=5 и невозможность k=4, остальные значения следуют проще из монотонных/элементарных соображений. Для k=5 строится явная 5-раскраска рёбер K10: каждый цвет задаётся несколькими кликами-группами так, что любые пять вершин содержат ребро каждого из пяти цветов. Для k=4 предположим, что раскраска четырьмя цветами существует. В одной вершине не может быть четырёх рёбер одного цвета, иначе вместе с подходящим ребром среди четырёх соседей получаются четыре ребра одного цвета на четырёх вершинах. Значит для некоторого цвета из вершины выходят ровно три ребра AB, AC, AD. Тогда BC, BD, CD не имеют этого цвета. На оставшихся шести вершинах по R(3,3)=6 есть либо треугольник этого цвета, либо треугольник без этого цвета. В обоих случаях, добавляя A или одну из B,C,D, получаем четыре вершины, где невозможно иметь четыре разных цвета.",
+      "idea_ids": [
+        "idea-five-color-construction",
+        "idea-four-color-ramsey-obstruction"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 13,
+    "comment": "Ранний IMO/IMO Shortlist; добавлено после отдельной проверки AoPS, Kalva и/или сборника решений.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "ramsey_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "explicit_coloring",
+        "ramsey_theory",
+        "degree_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1998-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kalva-imo-1998-c6-solution",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

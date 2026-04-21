@@ -1,0 +1,211 @@
+{
+  "year": 2007,
+  "source_ids": [
+    "src-imo-2007-shortlist"
+  ],
+  "availability": {
+    "official_shortlist_pdf": true
+  },
+  "problems": [
+    {
+      "id": "imo-2007-sl-c1",
+      "year": 2007,
+      "shortlist_id": "C1",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "country": "each bracketed fragment contains n terms",
+      "statement_en": "Let n > 1 be an integer. Find all sequences a1, a2, . . . , an2+n satisfying the following\nconditions:\n(a) ai ∈ {0, 1} for all 1 ≤ i ≤ n2 + n;\n(b) ai+1 + ai+2 + . . . + ai+n < a i+n+1 + ai+n+2 + . . . + ai+2n for all 0 ≤ i ≤ n2 − n.\n(Serbia)\nAnswer. Such a sequence is unique. It can be defined as follows:\nau+vn =\n{\n0, u + v ≤ n,\n1, u + v ≥ n + 1 for all 1 ≤ u ≤ n and 0 ≤ v ≤ n. (1)\nThe terms can be arranged into blocks of length n as\n(\n \nn\n0 . . . 0) (  \nn − 1\n0 . . . 0 1) (  \nn − 2\n0 . . . 0 1 1) . . .(  \nn − v\n0 . . . 0   \nv\n1 . . . 1) . . .(0   \nn − 1\n1 . . . 1) (  \nn\n1 . . . 1).\nSolution 1. Consider a sequence ( ai) satisfying the conditions. For arbitrary integers 0 ≤\nk ≤ l ≤ n2 + n denote S(k, l] = ak+1 + · · · + al. (If k = l then S(k, l] = 0.) Then condition (b)\ncan be rewritten as S(i, i + n] < S (i + n, i + 2 n] for all 0 ≤ i ≤ n2 − n. Notice that for\n0 ≤ k ≤ l ≤ m ≤ n2 + n we have S(k, m] = S(k, l] + S(l, m].\nBy condition (b),\n0 ≤ S(0, n] < S (n, 2n] < · · · < S (n2, n2 + n] ≤ n.\nWe have only n + 1 distinct integers in the interval [0 , n]; hence,\nS\n(\nvn, (v + 1)n\n]\n= v for all 0 ≤ v ≤ n. (2)\nIn particular, S(0, n] = 0 and S(n2, n2 + n] = n, therefore\na1 = a2 = . . . = an = 0, (3)\nan2+1 = an2+2 = . . . = an2+n = 1. (4)\nSubdivide sequence (ai) into n+1 blocks, each consisting of n consecutive terms, and number\nthem from 0 to n. We show by induction on v that the vth blocks has the form\n(  \nn − v\n0 . . . 0   \nv\n1 . . . 1).\nThe base case v = 0 is provided by (3).\n\n[[PAGE 27]]\n26\nConsider the vth block for v > 0. By (2), it contains some \"ones\". Let the first \"one\" in this\nblock be at the uth position (that is, au+vn = 1). By the induction hypothesis, the ( v − 1)th\nand vth blocks of ( ai) have the form\n(  \nn − v + 1\n0 . . .\nP = v\n0 . . . 0   \nv − 1\n1 . . . 1) (  \nu − 1\n0 . . . 0 1 ∗ . . . ∗),\nwhere each star can appear to be any binary digit. Observe tha t u ≤ n − v + 1, since the sum\nin this block is v. Then, the fragment of length n bracketed above has exactly ( v − 1) + 1 ones,\ni. e. S\n(\nu + (v − 1)n, u + vn\n]\n= v. Hence,\nv = S\n(\nu + (v − 1)n, u + vn\n]\n< S\n(\nu + vn, u + (v + 1)n\n]\n< · · · < S\n(\nu + (n − 1)n, u + n2]\n≤ n;\nwe have n − v + 1 distinct integers in the interval [ v, n], therefore S(u + (t − 1)n, u + tn] = t for\neach t = v, . . . , n.\nThus, the end of sequence ( ai) looks as following:\n(  P = v − 1\nu zeroes  \n0 . . . 0\nP = v\n0 . . . 0 1 . . . 1) (  P = v\n0 . . . 0 1\nP = v + 1\n∗ . . . ∗) (  P = v + 1\n∗ . . . ∗\n· · ·\n∗ . . . ∗) . . .\nP = n\n(  P = n\n1 . . . 1\nn − u ones  \n1 . . . 1)\n(each bracketed fragment contains n terms). Computing in two ways the sum of all digits\nabove, we obtain n − u = v − 1 and u = n − v + 1. Then, the first n − v terms in the vth\nblock are zeroes, and the next v terms are ones, due to the sum of all terms in this block. The\nstatement is proved.\nWe are left to check that the sequence obtained satisfies the c ondition. Notice that ai ≤ ai+n\nfor all 1 ≤ i ≤ n2. Moreover, if 1 ≤ u ≤ n and 0 ≤ v ≤ n − 1, then au+vn < a u+vn+n exactly\nwhen u + v = n. In this case we have u + vn = n + v(n − 1).\nConsider now an arbitrary index 0 ≤ i ≤ n2 − n. Clearly, there exists an integer v such that\nn + v(n − 1) ∈ [i + 1, i + n]. Then, applying the above inequalities we obtain that cond ition (b)\nis valid.\nSolution 2. Similarly to Solution 1, we introduce the notation S(k, l] and obtain (2), (3),\nand (4) in the same way. The sum of all elements of the sequence can be computed as\nS(0, n2 + n] = S(0, n] + S(n, 2n] + . . . + S(n2, n2 + n] = 0 + 1 + . . . + n.\nFor an arbitrary integer 0 ≤ u ≤ n, consider the numbers\nS(u, u + n] < S (u + n, u + 2n] < . . . < S\n(\nu + (n − 1)n, u + n2]\n. (5)\nThey are n distinct integers from the n + 1 possible values 0 , 1, 2, . . . , n. Denote by m the\n\"missing\" value which is not listed. We determine m from S(0, n2 + n]. Write this sum as\nS(0, n2+n] = S(0, u]+S(u, u+n]+S(u+n, u+2n]+. . .+S(u+(n−1)n, u+n2]+S(u+n2, n2+n].\nSince a1 = a2 = . . . = au = 0 and au+n2+1 = . . . = an2+n = 1, we have S(0, u] = 0 and\nS(u + n2, n + n2] = n − u. Then\n0 + 1 + . . . + n = S(0, n2 + n] = 0 +\n(\n(0 + 1 + . . . + n) − m\n)\n+ (n − u),\n\n[[PAGE 28]]\n27\nso m = n − u.\nHence, the numbers listed in (5) are 0 , 1, . . . , n− u − 1 and n − u + 1, . . . , n, respectively,\ntherefore\nS\n(\nu + vn, u + (v + 1)n\n]\n=\n{\nv, v ≤ n − u − 1,\nv + 1, v ≥ n − u for all 0 ≤ u ≤ n, 0 ≤ v ≤ n − 1. (6)\nConditions (6), together with (3), provide a system of linea r equations in variables ai. Now\nwe solve this system and show that the solution is unique and s atisfies conditions (a) and (b).\nFirst, observe that any solution of the system (3), (6) satis fies the condition (b). By the con-\nstruction, equations (6) immediately imply (5). On the othe r hand, all inequalities mentioned\nin condition (b) are included into the chain (5) for some valu e of u.\nNext, note that the system (3), (6) is redundant. The numbers S\n(\nkn, (k + 1)n\n]\n, where\n1 ≤ k ≤ n − 1, appear twice in (6). For u = 0 and v = k we have v ≤ n − u − 1, and (6) gives\nS\n(\nkn, (k + 1)n\n]\n= v = k. For u = n and v = k − 1 we have v ≥ n − u and we obtain the same\nvalue, S\n(\nkn, (k + 1)n\n]\n= v + 1 = k. Therefore, deleting one equation from each redundant pair ,\nwe can make every sum S(k, k + n] appear exactly once on the left-hand side in (6).\nNow, from (3), (6), the sequence ( ai) can be reconstructed inductively by\na1 = a2 = . . . = an−1 = 0, a k+n = S(k, k + n] − (ak+1 + ak+2 + . . . + ak+n−1) (0 ≤ k ≤ n2),\ntaking the values of S(k, k + n] from (6). This means first that there exists at most one solut ion\nof our system. Conversely, the constructed sequence obviou sly satisfies all equations (3), (6)\n(the only missing equation is an = 0, which follows from S(0, n] = 0). Hence it satisfies\ncondition (b), and we are left to check condition (a) only.\nFor arbitrary integers 1 ≤ u, t ≤ n we get\nau+tn − au+(t−1)n = S\n(\nu + (t − 1)n, u + tn\n]\n− S\n(\n(u − 1) + (t − 1)n, (u − 1) + tn\n]\n=\n\n\n\n\n\n(t − 1) − (t − 1) = 0 , t ≤ n − u,\nt − (t − 1) = 1 , t = n − u + 1,\nt − t = 0, t ≥ n − u + 2.\nSince au = 0, we have\nau+vn = au+vn − au =\nv∑\nt=1\n(au+tn − au+(t−1)n)\nfor all 1 ≤ u, v ≤ n. If v < n −u + 1 then all terms are 0 on the right-hand side. If v ≥ n−u + 1,\nthen variable t attains the value n − u + 1 once. Hence,\nau+vn =\n{\n0, u + v ≤ n,\n1, u + v ≥ n + 1,\naccording with (1). Note that the formula is valid for v = 0 as well.\nFinally, we presented the direct formula for ( ai), and we have proved that it satisfies condi-\ntion (a). So, the solution is complete.\n\n[[PAGE 29]]\n28",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2007-sl-c2",
+      "year": 2007,
+      "shortlist_id": "C2",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "country": null,
+      "statement_en": "A unit square is dissected into n > 1 rectangles such that their sides are parallel to the\nsides of the square. Any line, parallel to a side of the square and intersecting its interior, also\nintersects the interior of some rectangle. Prove that in thi s dissection, there exists a rectangle\nhaving no point on the boundary of the square.\n(Japan)\nSolution 1. Call the directions of the sides of the square horizontal and vertical. A horizontal\nor vertical line, which intersects the interior of the squar e but does not intersect the interior of\nany rectangle, will be called a splitting line . A rectangle having no point on the boundary of\nthe square will be called an interior rectangle.\nSuppose, to the contrary, that there exists a dissection of t he square into more than one\nrectangle, such that no interior rectangle and no splitting line appear. Consider such a dissection\nwith the least possible number of rectangles. Notice that th is number of rectangles is greater\nthan 2, otherwise their common side provides a splitting lin e.\nIf there exist two rectangles having a common side, then we ca n replace them by their union\n(see Figure 1). The number of rectangles was greater than 2, s o in a new dissection it is greater\nthan 1. Clearly, in the new dissection, there is also no split ting line as well as no interior\nrectangle. This contradicts the choice of the original diss ection.\nDenote the initial square by ABCD , with A and B being respectively the lower left and lower\nright vertices. Consider those two rectangles a and b containing vertices A and B, respectively.\n(Note that a ̸= b, otherwise its top side provides a splitting line.) We can as sume that the\nheight of a is not greater than that of b. Then consider the rectangle c neighboring to the lower\nright corner of a (it may happen that c = b). By aforementioned, the heights of a and c are\ndistinct. Then two cases are possible.\na b\nc\nd\nA B\nD C\na bc\nd\nA B\nD C\nFigure 1 Figure 2 Figure 3\nCase 1. The height of c is less than that of a. Consider the rectangle d which is adjacent\nto both a and c, i. e. the one containing the angle marked in Figure 2. This re ctangle has no\ncommon point with BC (since a is not higher than b), as well as no common point with AB\nor with AD (obviously). Then d has a common point with CD , and its left side provides a\nsplitting line. Contradiction.\nCase 2. The height of c is greater than that of a. Analogously, consider the rectangle d\ncontaining the angle marked on Figure 3. It has no common poin t with AD (otherwise it has\na common side with a), as well as no common point with AB or with BC (obviously). Then d\nhas a common point with CD . Hence its right side provides a splitting line, and we get th e\ncontradiction again.\n\n[[PAGE 30]]\n29\nSolution 2. Again, we suppose the contrary. Consider an arbitrary count erexample. Then we\nknow that each rectangle is attached to at least one side of th e square. Observe that a rectangle\ncannot be attached to two opposite sides, otherwise one of it s sides lies on a splitting line.\nWe say that two rectangles are opposite if they are attached to opposite sides of ABCD . We\nclaim that there exist two opposite rectangles having a comm on point.\nConsider the union L of all rectangles attached to the left. Assume, to the contra ry, that L\nhas no common point with the rectangles attached to the right . Take a polygonal line p\nconnecting the top and the bottom sides of the square and pass ing close from the right to the\nboundary of L (see Figure 4). Then all its points belong to the rectangles a ttached either to\nthe top or to the bottom. Moreover, the upper end-point of p belongs to a rectangle attached\nto the top, and the lower one belongs to an other rectangle att ached to the bottom. Hence,\nthere is a point on p where some rectangles attached to the top and to the bottom me et each\nother. So, there always exists a pair of neighboring opposit e rectangles.\nL\np\na\nbX\na\nb\na′ b′\nc\nl\nX\nY\nFigure 4 Figure 5 Figure 6\nNow, take two opposite neighboring rectangles a and b. We can assume that a is attached\nto the left and b is attached to the right. Let X be their common point. If X belongs to their\nhorizontal sides (in particular, X may appear to be a common vertex of a and b), then these\nsides provide a splitting line (see Figure 5). Otherwise, X lies on the vertical sides. Let l be\nthe line containing these sides.\nSince l is not a splitting line, it intersects the interior of some re ctangle. Let c be such a\nrectangle, closest to X; we can assume that c lies above X. Let Y be the common point of l\nand the bottom side of c (see Figure 6). Then Y is also a vertex of two rectangles lying below c.\nSo, let Y be the upper-right and upper-left corners of the rectangles a′ and b′, respectively.\nThen a′ and b′ are situated not lower than a and b, respectively (it may happen that a = a′\nor b = b′). We claim that a′ is attached to the left. If a = a′ then of course it is. If a ̸= a′\nthen a′ is above a, below c and to the left from b′. Hence, it can be attached to the left only.\nAnalogously, b′ is attached to the right. Now, the top sides of these two recta ngles pass\nthrough Y , hence they provide a splitting line again. This last contra diction completes the\nproof.\n\n[[PAGE 31]]\n30",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, vertex"
+      },
+      "evidence": [
+        "issection with the least possible number of rectangles. Notice that th is number of rectangles is greater than 2, otherwise their common side provides a splitting lin e. If there exist two rectangles having a common side, then we ca n replace them by their union (see Fig",
+        "e of the original diss ection. Denote the initial square by ABCD , with A and B being respectively the lower left and lower right vertices. Consider those two rectangles a and b containing vertices A and B, respectively. (Note that a ̸= b, otherwise its top side provi"
+      ]
+    },
+    {
+      "id": "imo-2007-sl-c3",
+      "year": 2007,
+      "shortlist_id": "C3",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "country": "y, z, x",
+      "statement_en": "Find all positive integers n, for which the numbers in the set S = {1, 2, . . . , n} can be\ncolored red and blue, with the following condition being sat isfied: the set S × S × S contains\nexactly 2007 ordered triples ( x, y, z) such that (i) x, y, z are of the same color and (ii) x + y + z\nis divisible by n.\n(Netherlands)\nAnswer. n = 69 and n = 84.\nSolution. Suppose that the numbers 1 , 2, . . . , n are colored red and blue. Denote by R and B\nthe sets of red and blue numbers, respectively; let |R| = r and |B| = b = n − r. Call a\ntriple ( x, y, z) ∈ S × S × S monochromatic if x, y, z have the same color, and bichromatic\notherwise. Call a triple ( x, y, z) divisible if x + y + z is divisible by n. We claim that there are\nexactly r2 − rb + b2 divisible monochromatic triples.\nFor any pair ( x, y) ∈ S × S there exists a unique zx,y ∈ S such that the triple ( x, y, zx,y) is\ndivisible; so there are exactly n2 divisible triples. Furthermore, if a divisible triple ( x, y, z) is\nbichromatic, then among x, y, z there are either one blue and two red numbers, or vice versa.\nIn both cases, exactly one of the pairs ( x, y), ( y, z) and ( z, x) belongs to the set R × B. Assign\nsuch pair to the triple ( x, y, z).\nConversely, consider any pair ( x, y) ∈ R × B, and denote z = zx,y. Since x ̸= y, the\ntriples (x, y, z), (y, z, x) and ( z, x, y) are distinct, and ( x, y) is assigned to each of them. On the\nother hand, if ( x, y) is assigned to some triple, then this triple is clearly one o f those mentioned\nabove. So each pair in R × B is assigned exactly three times.\nThus, the number of bichromatic divisible triples is three t imes the number of elements\nin R × B, and the number of monochromatic ones is n2 − 3rb = (r + b)2 − 3rb = r2 − rb + b2,\nas claimed.\nSo, to find all values of n for which the desired coloring is possible, we have to find all\nn, for which there exists a decomposition n = r + b with r2 − rb + b2 = 2007. Therefore,\n9\n⏐\n⏐ r2 − rb + b2 = ( r + b)2 − 3rb. From this it consequently follows that 3\n⏐\n⏐ r + b, 3\n⏐\n⏐ rb, and\nthen 3\n⏐\n⏐ r, 3\n⏐\n⏐ b. Set r = 3s, b = 3c. We can assume that s ≥ c. We have s2 − sc + c2 = 223.\nFurthermore,\n892 = 4( s2 − sc + c2) = (2 c − s)2 + 3s2 ≥ 3s2 ≥ 3s2 − 3c(s − c) = 3( s2 − sc + c2) = 669 ,\nso 297 ≥ s2 ≥ 223 and 17 ≥ s ≥ 15. If s = 15 then\nc(15 − c) = c(s − c) = s2 − (s2 − sc + c2) = 15 2 − 223 = 2\nwhich is impossible for an integer c. In a similar way, if s = 16 then c(16 − c) = 33, which is\nalso impossible. Finally, if s = 17 then c(17 − c) = 66, and the solutions are c = 6 and c = 11.\nHence, ( r, b) = (51 , 18) or ( r, b) = (51 , 33), and the possible values of n are n = 51 + 18 = 69\nand n = 51 + 33 = 84.\nComment. After the formula for the number of monochromatic divisible triples is found, the solution\ncan be finished in various ways. The one presented is aimed to d ecrease the number of considered\ncases.\n\n[[PAGE 32]]\n31",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring",
+          "complete_graph_language"
+        ],
+        "reason": "Matched graph terms: coloring, complete_graph_language"
+      },
+      "evidence": [
+        "Find all positive integers n, for which the numbers in the set S = {1, 2, . . . , n} can be colored red and blue, with the following condition being sat isfied: the set S × S × S contains exactly 2007 ordered triples ( x, y, z) s",
+        "of them. On the other hand, if ( x, y) is assigned to some triple, then this triple is clearly one o f those mentioned above. So each pair in R × B is assigned exactly three times. Thus, the number of bichromatic divisible triples is three t imes the number of element"
+      ]
+    },
+    {
+      "id": "imo-2007-sl-c4",
+      "year": 2007,
+      "shortlist_id": "C4",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "country": "Iran",
+      "statement_en": "Let A0 = ( a1, . . . , an) be a finite sequence of real numbers. For each k ≥ 0, from the\nsequence Ak = (x1, . . . , xn) we construct a new sequence Ak+1 in the following way.\n1. We choose a partition {1, . . . , n} = I ∪ J, where I and J are two disjoint sets, such that\nthe expression ⏐\n⏐\n⏐\n⏐\n∑\ni∈I\nxi −\n∑\nj∈J\nxj\n⏐\n⏐\n⏐\n⏐\nattains the smallest possible value. (We allow the sets I or J to be empty; in this case the\ncorresponding sum is 0.) If there are several such partition s, one is chosen arbitrarily.\n2. We set Ak+1 = (y1, . . . , yn), where yi = xi + 1 if i ∈ I, and yi = xi − 1 if i ∈ J.\nProve that for some k, the sequence Ak contains an element x such that |x| ≥ n/2.\n(Iran)\nSolution.\nLemma. Suppose that all terms of the sequence ( x1, . . . , xn) satisfy the inequality |xi| < a .\nThen there exists a partition {1, 2, . . . , n} = I ∪ J into two disjoint sets such that\n⏐\n⏐\n⏐\n⏐\n∑\ni∈I\nxi −\n∑\nj∈J\nxj\n⏐\n⏐\n⏐\n⏐ < a. (1)\nProof. Apply an induction on n. The base case n = 1 is trivial. For the induction step,\nconsider a sequence ( x1, . . . , xn) ( n > 1). By the induction hypothesis there exists a splitting\n{1, . . . , n− 1} = I ′ ∪ J ′ such that\n⏐\n⏐\n⏐\n⏐\n∑\ni∈I ′\nxi −\n∑\nj∈J ′\nxj\n⏐\n⏐\n⏐\n⏐ < a.\nFor convenience, suppose that ∑\ni∈I ′\nxi ≥ ∑\nj∈J ′\nxj. If xn ≥ 0 then choose I = I ′, J = J ∪ {n}; other-\nwise choose I = I ′ ∪ {n}, J = J ′. In both cases, we have ∑\ni∈I ′\nxi − ∑\nj∈J ′\nxj ∈ [0, a) and |xn| ∈ [0, a);\nhence ∑\ni∈I\nxi −\n∑\nj∈J\nxj =\n∑\ni∈I ′\nxi −\n∑\nj∈J ′\nxj − |xn| ∈ (−a, a),\nas desired. □\nLet us turn now to the problem. To the contrary, assume that fo r all k, all the numbers\nin Ak lie in interval ( −n/2, n/2). Consider an arbitrary sequence Ak = ( b1, . . . , bn). To obtain\nthe term bi, we increased and decreased number ai by one several times. Therefore bi − ai is\nalways an integer, and there are not more than n possible values for bi. So, there are not more\nthan nn distinct possible sequences Ak, and hence two of the sequences A1, A2, . . . , Ann+1\nshould be identical, say Ap = Aq for some p < q .\nFor any positive integer k, let Sk be the sum of squares of elements in Ak. Consider two\nconsecutive sequences Ak = (x1, . . . , xn) and Ak+1 = ( y1, . . . , yn). Let {1, 2, . . . , n} = I ∪ J be\nthe partition used in this step — that is, yi = xi + 1 for all i ∈ I and yj = xj − 1 for all j ∈ J.\nSince the value of\n⏐\n⏐\n⏐\n∑\ni∈I\nxi − ∑\nj∈J\nxj\n⏐\n⏐\n⏐ is the smallest possible, the Lemma implies that it is less\nthan n/2. Then we have\nSk+1 − Sk =\n∑\ni∈I\n(\n(xi + 1)2 − x2\ni\n)\n+\n∑\nj∈J\n(\n(xj − 1)2 − x2\nj\n)\n= n + 2\n(∑\ni∈I\nxi −\n∑\nj∈J\nxj\n)\n> n − 2 · n\n2 = 0.\nThus we obtain Sq > S q−1 > · · · > S p. This is impossible since Ap = Aq and hence Sp = Sq.\n\n[[PAGE 33]]\n32",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2007-sl-c5",
+      "year": 2007,
+      "shortlist_id": "C5",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "country": "Romania",
+      "statement_en": "In the Cartesian coordinate plane define the strip Sn = {(x, y) | n ≤ x < n + 1} for\nevery integer n. Assume that each strip Sn is colored either red or blue, and let a and b be two\ndistinct positive integers. Prove that there exists a recta ngle with side lengths a and b such\nthat its vertices have the same color.\n(Romania)\nSolution. If Sn and Sn+a have the same color for some integer n, then we can choose the\nrectangle with vertices ( n, 0) ∈ Sn, ( n, b) ∈ Sn, ( n + a, 0) ∈ Sn+a, and ( n + a, b) ∈ Sn+a, and we\nare done. So it can be assumed that Sn and Sn+a have opposite colors for each n.\nSimilarly, it also can be assumed that Sn and Sn+b have opposite colors. Then, by induction\non |p| + |q|, we obtain that for arbitrary integers p and q, strips Sn and Sn+pa+qb have the same\ncolor if p + q is even, and these two strips have opposite colors if p + q is odd.\nLet d = gcd( a, b), a1 = a/d and b1 = b/d. Apply the result above for p = b1 and q = −a1.\nThe strips S0 and S0+b1a−a1b are identical and therefore they have the same color. Hence, a1 +b1\nis even. By the construction, a1 and b1 are coprime, so this is possible only if both are odd.\nWithout loss of generality, we can assume a > b . Then a1 > b 1 ≥ 1, so a1 ≥ 3.\nChoose integers k and l such that ka1 − lb1 = 1 and therefore ka − lb = d. Since a1 and b1\nare odd, k + l is odd as well. Hence, for every integer n, strips Sn and Sn+ka−lb = Sn+d have\nopposite colors. This also implies that the coloring is peri odic with period 2 d, i.e. strips Sn\nand Sn+2d have the same color for every n.\nA\nB\nC\nD\nD0B0\nt t + 2d u u + 2d\na\nb\na\nb\nx\nFigure 1\nWe will construct the desired rectangle ABCD with AB = CD = a and BC = AD = b in\na position such that vertex A lies on the x-axis, and the projection of side AB onto the x-axis\nis of length 2 d (see Figure 1). This is possible since a = a1d > 2d. The coordinates of the\nvertices will have the forms\nA = (t, 0), B = (t + 2d, y1), C = (u + 2d, y2), D = (u, y3).\nLet φ =\n√\na2\n1 − 4. By Pythagoras' theorem,\ny1 = BB0 =\n√\na2 − 4d2 = d\n√\na2\n1 − 4 = dφ.\nSo, by the similar triangles ADD0 and BAB0, we have the constraint\nu − t = AD0 = AD\nAB · BB0 = bd\na φ (1)\n\n[[PAGE 34]]\n33\nfor numbers t and u. Computing the numbers y2 and y3 is not required since they have no\neffect to the colors.\nObserve that the number φ is irrational, because φ2 is an integer, but φ is not: a1 > φ ≥√\na2\n1 − 2a1 + 2 > a 1 − 1.\nBy the periodicity, points A and B have the same color; similarly, points C and D have the\nsame color. Furthermore, these colors depend only on the val ues of t and u. So it is sufficient\nto choose numbers t and u such that vertices A and D have the same color.\nLet w be the largest positive integer such that there exist w consecutive strips Sn0, Sn0+1, . . .,\nSn0+w−1 with the same color, say red. (Since Sn0+d must be blue, we have w ≤ d.) We will\nchoose t from the interval ( n0, n0 + w).\nI\nA D0B0\nt t + 2d u x( )n0 n0 + w ( )\nFigure 2\nConsider the interval I =\n(\nn0 + bd\na φ, n0 + bd\na φ + w\n)\non the x-axis (see Figure 2). Its length\nis w, and the end-points are irrational. Therefore, this interv al intersects w + 1 consecutive\nstrips. Since at most w consecutive strips may have the same color, interval I must contain both\nred and blue points. Choose u ∈ I such that the line x = u is red and set t = u− bd\na φ, according\nto the constraint (1). Then t ∈ (n0, n0 + w) and A = (t, 0) is red as well as D = (u, y3).\nHence, variables u and t can be set such that they provide a rectangle with four red ver tices.\nComment. The statement is false for squares, i.e. in the case a = b. If strips S2ka, S2ka+1, . . .,\nS(2k+1)a−1 are red, and strips S(2k+1)a, S(2k+1)a+1, . . ., S(2k+2)a−1 are blue for every integer k, then\neach square of size a × a has at least one red and at least one blue vertex as well.\n\n[[PAGE 35]]\n34",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, vertex"
+      },
+      "evidence": [
+        "n the Cartesian coordinate plane define the strip Sn = {(x, y) | n ≤ x < n + 1} for every integer n. Assume that each strip Sn is colored either red or blue, and let a and b be two distinct positive integers. Prove that there exists a recta ngle with side lengths a a",
+        ", and let a and b be two distinct positive integers. Prove that there exists a recta ngle with side lengths a and b such that its vertices have the same color. (Romania) Solution. If Sn and Sn+a have the same color for some integer n, then we can choose the rectangle"
+      ]
+    },
+    {
+      "id": "imo-2007-sl-c6",
+      "year": 2007,
+      "shortlist_id": "C6",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "country": "Russia",
+      "statement_en": "In a mathematical competition some competitors are friends ; friendship is always mutual.\nCall a group of competitors a clique if each two of them are friends. The number of members\nin a clique is called its size.\nIt is known that the largest size of cliques is even. Prove tha t the competitors can be\narranged in two rooms such that the largest size of cliques in one room is the same as the\nlargest size of cliques in the other room.\n(Russia)\nSolution. We present an algorithm to arrange the competitors. Let the t wo rooms be Room A\nand Room B. We start with an initial arrangement, and then we modify it s everal times by\nsending one person to the other room. At any state of the algor ithm, A and B denote the sets\nof the competitors in the rooms, and c(A) and c(B) denote the largest sizes of cliques in the\nrooms, respectively.\nStep 1. Let M be one of the cliques of largest size, |M| = 2 m. Send all members of M to\nRoom A and all other competitors to Room B.\nSince M is a clique of the largest size, we have c(A) = |M| ≥ c(B).\nStep 2. While c(A) > c(B), send one person from Room A to Room B.\nRoom A Room B\nA ∩ M B ∩ M\nNote that c(A) > c(B) implies that Room A is not empty.\nIn each step, c(A) decreases by one and c(B) increases by at most one. So at the end we\nhave c(A) ≤ c(B) ≤ c(A) + 1.\nWe also have c(A) = |A| ≥ m at the end. Otherwise we would have at least m + 1 members\nof M in Room B and at most m − 1 in Room A, implying c(B) − c(A) ≥ (m + 1)− (m − 1) = 2.\nStep 3. Let k = c(A). If c(B) = k then STOP.\nIf we reached c(A) = c(B) = k then we have found the desired arrangement.\nIn all other cases we have c(B) = k + 1.\nFrom the estimate above we also know that k = |A| = |A ∩ M| ≥ m and |B ∩ M| ≤ m.\nStep 4. If there exists a competitor x ∈ B ∩ M and a clique C ⊂ B such that |C| = k + 1\nand x /∈ C, then move x to Room A and STOP.\nRoom A Room B\nA ∩ M B ∩ M\nx C\nAfter moving x back to Room A, we will have k + 1 members of M in Room A, thus\nc(A) = k + 1. Due to x /∈ C, c(B) = |C| is not decreased, and after this step we have\nc(A) = c(B) = k + 1.\n\n[[PAGE 36]]\n35\nIf there is no such competitor x, then in Room B, all cliques of size k + 1 contain B ∩ M\nas a subset.\nStep 5. While c(B) = k + 1, choose a clique C ⊂ B such that |C| = k + 1 and move one\nmember of C \\ M to Room A.\nRoom A Room B\nA ∩ M B ∩ MC\nNote that |C| = k + 1 > m ≥ |B ∩ M|, so C \\ M cannot be empty.\nEvery time we move a single person from Room B to Room A, so c(B) decreases by at\nmost 1. Hence, at the end of this loop we have c(B) = k.\nIn Room A we have the clique A ∩ M with size |A ∩ M| = k thus c(A) ≥ k. We prove that\nthere is no clique of larger size there. Let Q ⊂ A be an arbitrary clique. We show that |Q| ≤ k.\nRoom A Room B\nB ∩ M\nA ∩ M\nQ\nIn Room A, and specially in set Q, there can be two types of competitors:\n– Some members of M. Since M is a clique, they are friends with all members of B ∩ M.\n– Competitors which were moved to Room A in Step 5. Each of them has been in a clique\nwith B ∩ M so they are also friends with all members of B ∩ M.\nHence, all members of Q are friends with all members of B ∩ M. Sets Q and B ∩ M are\ncliques themselves, so Q ∪ (B ∩ M) is also a clique. Since M is a clique of the largest size,\n|M| ≥ | Q ∪ (B ∩ M)| = |Q| + |B ∩ M| = |Q| + |M| − |A ∩ M|,\ntherefore\n|Q| ≤ | A ∩ M| = k.\nFinally, after Step 5 we have c(A) = c(B) = k.\nComment. Obviously, the statement is false without the assumption th at the largest clique size is\neven.\n\n[[PAGE 37]]\n36",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2007-sl-c7",
+      "year": 2007,
+      "shortlist_id": "C7",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "country": "to be determined later",
+      "statement_en": "Let α < 3 −\n√\n5\n2 be a positive real number. Prove that there exist positive in tegers n\nand p > α · 2n for which one can select 2 p pairwise distinct subsets S1, . . . , Sp, T1, . . . , Tp of\nthe set {1, 2, . . . , n} such that Si ∩ Tj ̸= ∅ for all 1 ≤ i, j ≤ p.\n(Austria)\nSolution. Let k and m be positive integers (to be determined later) and set n = km. De-\ncompose the set {1, 2, . . . , n} into k disjoint subsets, each of size m; denote these subsets\nby A1, . . . , Ak. Define the following families of sets:\nS =\n{\nS ⊂ {1, 2, . . . , n} : ∀i S ∩ Ai ̸= ∅\n}\n,\nT1 =\n{\nT ⊂ {1, 2, . . . , n} : ∃i A i ⊂ T\n}\n, T = T1 \\ S.\nFor each set T ∈ T ⊂ T 1, there exists an index 1 ≤ i ≤ k such that Ai ⊂ T . Then for all S ∈ S ,\nS ∩ T ⊃ S ∩ Ai ̸= ∅. Hence, each S ∈ S and each T ∈ T have at least one common element.\nBelow we show that the numbers m and k can be chosen such that |S|, |T | > α · 2n. Then,\nchoosing p = min\n{\n|S|, |T |\n}\n, one can select the desired 2 p sets S1, . . . , Sp and T1, . . . , Tp from\nfamilies S and T , respectively. Since families S and T are disjoint, sets Si and Tj will be\npairwise distinct.\nTo count the sets S ∈ S , observe that each Ai has 2m−1 nonempty subsets so we have 2 m−1\nchoices for S ∩ Ai. These intersections uniquely determine set S, so\n|S| = (2 m − 1)k. (1)\nSimilarly, if a set H ⊂ { 1, 2, . . . , n} does not contain a certain set Ai then we have 2 m − 1\nchoices for H ∩ Ai: all subsets of Ai, except Ai itself. Therefore, the complement of T1 con-\ntains (2 m − 1)k sets and\n|T1| = 2 km − (2m − 1)k. (2)\nNext consider the family S \\ T1. If a set S intersects all Ai but does not contain any of them,\nthen there exists 2 m − 2 possible values for each S ∩ Ai: all subsets of Ai except ∅ and Ai.\nTherefore the number of such sets S is (2 m − 2)k, so\n|S \\ T 1| = (2 m − 2)k. (3)\nFrom (1), (2), and (3) we obtain\n|T | = |T1| − |S ∩ T 1| = |T1| −\n(\n|S| − |S \\ T 1|\n)\n= 2 km − 2(2m − 1)k + (2m − 2)k.\nLet δ = 3 −\n√\n5\n2 and k = k(m) =\n[\n2m log 1\nδ\n]\n. Then\nlim\nm→∞\n|S|\n2km = lim\nm→∞\n(\n1 − 1\n2m\n)k\n= exp\n(\n− lim\nm→∞\nk\n2m\n)\n= δ\nand similarly\nlim\nm→∞\n|T |\n2km = 1 − 2 lim\nm→∞\n(\n1 − 1\n2m\n)k\n+ lim\nm→∞\n(\n1 − 2\n2m\n)k\n= 1 − 2δ + δ2 = δ.\nHence, if m is sufficiently large then |S|\n2mk and |T |\n2mk are greater than α (since α < δ ). So\n|S|, |T | > α · 2mk = α · 2n.\nComment. It can be proved that the constant 3 −\n√\n5\n2 is sharp. Actually, if S1, . . . , Sp, T1, . . . , Tp\nare distinct subsets of {1, 2, . . . , n} such that each Si intersects each Tj, then p < 3 −\n√\n5\n2 · 2n.\n\n[[PAGE 38]]\n37",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2007-sl-c8",
+      "year": 2007,
+      "shortlist_id": "C8",
+      "source": {
+        "source_id": "src-imo-2007-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2007SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2007SL.pdf"
+      },
+      "country": "either in its interior or on segment XY",
+      "statement_en": "Given a convex n-gon P in the plane. For every three vertices of P , consider the triangle\ndetermined by them. Call such a triangle good if all its sides are of unit length.\nProve that there are not more than 2\n3 n good triangles.\n(Ukraine)\nSolution. Consider all good triangles containing a certain vertex A. The other two vertices\nof any such triangle lie on the circle ωA with unit radius and center A. Since P is convex, all\nthese vertices lie on an arc of angle less than 180 ◦. Let LARA be the shortest such arc, oriented\nclockwise (see Figure 1). Each of segments ALA and ARA belongs to a unique good triangle.\nWe say that the good triangle with side ALA is assigned counterclockwise to A, and the second\none, with side ARA, is assigned clockwise to A. In those cases when there is a single good\ntriangle containing vertex A, this triangle is assigned to A twice.\nThere are at most two assignments to each vertex of the polygo n. (Vertices which do not\nbelong to any good triangle have no assignment.) So the numbe r of assignments is at most 2 n.\nConsider an arbitrary good triangle ABC , with vertices arranged clockwise. We prove\nthat ABC is assigned to its vertices at least three times. Then, denot ing the number of good\ntriangles by t, we obtain that the number K of all assignments is at most 2 n, while it is not\nless than 3 t. Then 3 t ≤ K ≤ 2n, as required.\nActually, we prove that triangle ABC is assigned either counterclockwise to C or clockwise\nto B. Then, by the cyclic symmetry of the vertices, we obtain that triangle ABC is assigned\neither counterclockwise to A or clockwise to C, and either counterclockwise to B or clockwise\nto A, providing the claim.\nA\nLA\nRA\nωA\nA\nLA\nRA\nωA A\nB C\nA′\nB′C ′\nX=L(′)\nCY =R(′)\nB\nωA\nωBωC\nFigure 1 Figure 2\nAssume, to the contrary, that LC ̸= A and RB ̸= A. Denote by A′, B′, C ′ the intersection\npoints of circles ωA, ωB and ωC, distinct from A, B, C (see Figure 2). Let CL CL′\nC be the good\ntriangle containing CL C. Observe that the angle of arc LCA is less than 120 ◦. Then one of the\npoints LC and L′\nC belongs to arc B′A of ωC; let this point be X. In the case when LC = B′\nand L′\nC = A, choose X = B′.\nAnalogously, considering the good triangle BR′\nBRB which contains BRB as an edge, we see\nthat one of the points RB and R′\nB lies on arc AC ′ of ωB. Denote this point by Y , Y ̸= A.\nThen angles XAY , Y AB, BAC and CAX (oriented clockwise) are not greater than 180 ◦.\nHence, point A lies in quadrilateral XY BC (either in its interior or on segment XY ). This is\nimpossible, since all these five points are vertices of P .\nHence, each good triangle has at least three assignments, an d the statement is proved.\nComment 1. Considering a diameter AB of the polygon, one can prove that every good triangle\ncontaining either A or B has at least four assignments. This observation leads to t ≤\n⌊2\n3 (n − 1)\n⌋\n.\n\n[[PAGE 39]]\n38\nA\nB1\nBn\nC1 Cn\nD1\nDn\nFigure 3\nComment 2. The result t ≤\n⌊2\n3 (n − 1)\n⌋\nis sharp. To\nconstruct a polygon with n = 3k + 1 vertices and t = 2k tri-\nangles, take a rhombus AB1C1D1 with unit side length and\n∠B1 = 60 ◦. Then rotate it around A by small angles ob-\ntaining rhombi AB2C2D2, . . . , ABkCkDk (see Figure 3). The\npolygon AB1 . . . BkC1 . . . CkD1 . . . Dk has 3k + 1 vertices and\ncontains 2k good triangles.\nThe construction for n = 3 k and n = 3 k − 1 can be\nobtained by deleting vertices Dn and Dn−1.\n\n[[PAGE 40]]",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "edge",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: edge, vertex"
+      },
+      "evidence": [
+        "In the case when LC = B′ and L′ C = A, choose X = B′. Analogously, considering the good triangle BR′ BRB which contains BRB as an edge, we see that one of the points RB and R′ B lies on arc AC ′ of ωB. Denote this point by Y , Y ̸= A. Then angles XAY , Y AB, BAC a",
+        "Given a convex n-gon P in the plane. For every three vertices of P , consider the triangle determined by them. Call such a triangle good if all its sides are of unit length. Prove that there"
+      ]
+    }
+  ]
+}

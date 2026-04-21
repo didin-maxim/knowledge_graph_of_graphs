@@ -1,0 +1,148 @@
+{
+  "id": "imo-1979-p6-octagon-walks-cycle-graph",
+  "title": "Пути фишки по восьмиугольнику, IMO 1979 P6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "cycle_graph",
+      "walks",
+      "recurrence"
+    ],
+    "methods": [
+      "graph_symmetry",
+      "linear_recurrence"
+    ],
+    "transformations": [
+      "octagon_moves_to_cycle_graph"
+    ],
+    "goal": [
+      "count_walks"
+    ],
+    "auxiliary_graph_type": [
+      "cycle_graph"
+    ],
+    "invariants": [
+      "parity"
+    ],
+    "standard_idea_ids": [],
+    "local_score": 9,
+    "keywords": [
+      "imo-1979-p6-octagon-walks-cycle-graph",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "В регулярном восьмиугольнике фишка стартует из вершины S и каждую секунду переходит в одну из двух соседних вершин. Процесс заканчивается в противоположной вершине F. Пусть a_n — число различных путей длительности n из S в F. Докажите заданную формулу для a_n.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-imomath-imo-1979"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это подсчёт числа прогулок длины n между противоположными вершинами в цикле C_8.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-fold-cycle",
+      "title": "Сложить C_8 по симметрии",
+      "text": "По расстоянию от S противоположные вершины имеют одинаковое число путей, поэтому задача сводится к линейной рекурсии на четырёх состояниях.",
+      "tags": [
+        "graph_symmetry"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-characteristic-roots",
+      "title": "Рекурсия для чётных длин",
+      "text": "Для b_n=a_{2n} получается линейная рекурсия с корнями 2+sqrt(2) и 2-sqrt(2).",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Нечётная длина невозможна, потому что C_8 двудолен и S,F лежат в одной доле: a_{2n-1}=0. Для чётных длин сложим вершины цикла по симметрии относительно оси SF и будем считать числа путей в зависимости от расстояния до S. Переходы между четырьмя расстояниями дают линейную систему; исключая промежуточные состояния, получаем для b_n=a_{2n} рекурсию b_n=4b_{n-1}-2b_{n-2} с начальными значениями b_1=0, b_2=2. Поэтому b_n=((2+sqrt(2))^{n-1}-(2-sqrt(2))^{n-1})/sqrt(2).",
+      "idea_ids": [
+        "idea-fold-cycle",
+        "idea-characteristic-roots"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 9,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_symmetry",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "graph_symmetry",
+        "linear_recurrence"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imomath-imo-1979",
+      "role": "statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

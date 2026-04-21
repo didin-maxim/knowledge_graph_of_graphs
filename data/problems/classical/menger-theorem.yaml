@@ -1,0 +1,135 @@
+{
+  "id": "menger-theorem",
+  "title": "Теорема Менгера",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "s_t_paths",
+      "vertex_cut",
+      "internally_disjoint_paths",
+      "flow_network"
+    ],
+    "methods": [
+      "max_flow_min_cut",
+      "vertex_splitting"
+    ],
+    "transformations": [
+      "split_vertices",
+      "reduce_to_flow"
+    ],
+    "goal": [
+      "path_cut_minimax",
+      "connectivity_certificate"
+    ],
+    "auxiliary_graph_type": [
+      "flow_network"
+    ],
+    "invariants": [
+      "cut_capacity",
+      "path_disjointness",
+      "separator_size"
+    ],
+    "keywords": [
+      "menger_theorem",
+      "vertex_connectivity",
+      "disjoint_paths",
+      "separator"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть s и t — две различные несмежные вершины конечного неориентированного графа. Минимальное число вершин, удаление которых отделяет s от t, равно максимальному числу путей из s в t, не имеющих общих внутренних вершин.",
+        "source_id": "src-wikipedia-menger",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path",
+          "connected_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Для различных несмежных вершин s,t в конечном графе максимальное число попарно внутренне непересекающихся s-t путей равно минимальному размеру множества вершин, после удаления которого s и t оказываются в разных компонентах связности.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path",
+          "connected_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-min-cut-max-path",
+      "title": "Пути против разделителей",
+      "text": "Каждый разделитель должен пересекать каждый путь; теорема утверждает, что это очевидное верхнее ограничение точно.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-flow-sketch",
+      "title": "Доказательство через поток",
+      "text": "Раздвоим каждую вершину v на \\( v_i \\)n и v_out и проведем ребро \\( v_i \\)n v_out пропускной способности 1. Исходные ребра заменим ребрами бесконечной пропускной способности между соответствующими копиями. Тогда целочисленный максимальный поток из s в t раскладывается в внутренне непересекающиеся пути, а минимальный разрез выбирает вершины-разделители. Теорема о максимальном потоке и минимальном разрезе дает равенство.",
+      "idea_ids": [
+        "idea-min-cut-max-path"
+      ],
+      "status": "ai_draft",
+      "standard_idea_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 9,
+    "comment": "Мощный инструмент; полное доказательство обычно выходит за рамки короткой школьной задачи.",
+    "status": "ai_draft"
+  },
+  "tags": [
+    "connectivity",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "min_cut_max_path"
+      ],
+      "status": "ai_draft"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-menger",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

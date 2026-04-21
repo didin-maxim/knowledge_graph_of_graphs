@@ -1,0 +1,146 @@
+{
+  "id": "imo-2019-c4-labyrinth-region-graph",
+  "title": "Лабиринт из прямых и граф областей, IMO Shortlist 2019 C4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "line_arrangement",
+      "region_graph",
+      "connected_components"
+    ],
+    "methods": [
+      "component_counting",
+      "induction"
+    ],
+    "transformations": [
+      "labyrinth_to_region_graph"
+    ],
+    "goal": [
+      "max_guaranteed_components"
+    ],
+    "auxiliary_graph_type": [
+      "region_adjacency_graph"
+    ],
+    "invariants": [
+      "number_of_regions",
+      "number_of_edges"
+    ],
+    "keywords": [
+      "imo_2019_c4",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На плоскости проведены \\(n\\) прямых, никакие две не параллельны и никакие три не проходят через одну точку. У каждого пересечения есть дверь только в тех углах, где встречаются стороны разных цветов. Моргана ставит рыцарей в области так, что два рыцаря могут встретиться, если между их областями есть путь через двери. Найдите наибольшее число рыцарей, которых она может гарантированно расставить независимо от раскраски сторон прямых.",
+        "source_id": "src-imo-2019-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Области разбиения плоскости становятся вершинами графа, а двери — рёбрами; нужно оценить число компонент этого графа.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-region-door-graph",
+      "title": "Граф областей и дверей",
+      "text": "Рыцари в разных компонентах графа дверей никогда не встретятся.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-edge-component-count",
+      "title": "Рёбра уменьшают число компонент",
+      "text": "Число областей известно, число дверей равно числу пересечений, значит компонент хотя бы \\(n+1\\).",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Для любой раскраски строим граф \\(G\\): вершины — области разбиения плоскости прямыми, рёбра — двери при пересечениях. Известно, что \\(n\\) прямых дают \\(\\binom{n+1}{2}+1\\) областей, а дверей ровно \\(\\binom n2\\). Добавление каждого ребра уменьшает число компонент не более чем на 1, поэтому компонент в \\(G\\) не меньше \\(n+1\\). Поставив по одному рыцарю в каждую компоненту, Моргана гарантирует \\(n+1\\) невстречающихся рыцарей. Обратная конструкция раскраски из официального решения делает граф дверей имеющим ровно \\(n+1\\) компонент, поэтому больше гарантировать нельзя.",
+      "idea_ids": [
+        "idea-region-door-graph",
+        "idea-edge-component-count"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2019 C4, Canada; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "planar_graphs",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "component_counting",
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2019-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

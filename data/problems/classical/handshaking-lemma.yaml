@@ -1,0 +1,122 @@
+{
+  "id": "handshaking-lemma",
+  "title": "Лемма о рукопожатиях",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "finite_graph",
+      "degrees",
+      "edges"
+    ],
+    "methods": [
+      "double_counting",
+      "parity"
+    ],
+    "transformations": [
+      "count_incidence_pairs"
+    ],
+    "goal": [
+      "degree_sum_identity",
+      "even_number_of_odd_vertices"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_sum_parity",
+      "edge_incidence_count"
+    ],
+    "keywords": [
+      "handshaking_lemma",
+      "sum_of_degrees",
+      "odd_degree_vertices"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "В конечном неориентированном графе сумма степеней всех вершин равна удвоенному числу ребер. Степень вершины — это число ребер, выходящих из нее.",
+        "source_id": "src-wikipedia-handshaking",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Для конечного неориентированного графа G выполнено \\( \\sum_{v \\in V(G)} \\deg(v)=2e(G) \\), где deg(v) — степень вершины v, а e(G) — число ребер графа. В частности, число вершин нечетной степени четно.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-incidences",
+      "title": "Счет инцидентностей",
+      "text": "Каждое ребро имеет два конца и поэтому вносит 2 в сумму степеней.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-double-counting",
+      "title": "Двойной счет",
+      "text": "Посчитаем пары (v,e), где вершина v инцидентна ребру e. С одной стороны, для фиксированной вершины таких пар deg(v), всего сумма степеней. С другой стороны, каждое ребро дает ровно две пары. Поэтому сумма степеней равна 2e(G). Так как эта сумма четна, число нечетных слагаемых в ней четно.",
+      "idea_ids": [
+        "idea-count-incidences"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "double_counting"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 1,
+    "comment": "Базовый инструмент.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-handshaking",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

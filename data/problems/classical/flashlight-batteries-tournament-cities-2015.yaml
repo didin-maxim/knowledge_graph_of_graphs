@@ -1,0 +1,169 @@
+{
+  "id": "flashlight-batteries-tournament-cities-2015",
+  "title": "Фонарик и батарейки, Турнир городов 2015/16",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "special_case",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "independent_set",
+      "complement_graph",
+      "parts_of_size_two_or_three"
+    ],
+    "methods": [
+      "extremal_construction",
+      "pigeonhole_principle",
+      "complement_graph_transition"
+    ],
+    "transformations": [
+      "battery_tests_to_edges",
+      "good_sets_to_independent_sets",
+      "complement_graph"
+    ],
+    "goal": [
+      "minimum_number_of_tests",
+      "extremal_edge_minimum"
+    ],
+    "auxiliary_graph_type": [
+      "test_graph"
+    ],
+    "invariants": [
+      "independence_number",
+      "part_sizes",
+      "covering_good_sets"
+    ],
+    "keywords": [
+      "flashlight_batteries",
+      "turan_application",
+      "independent_set",
+      "tests"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-flashlight-batteries-tournament-cities",
+        "title": "Фонарик и батарейки",
+        "text": "Есть 2n+1 батарейка, n>2. Известно, что хороших батареек на одну больше, чем плохих, но неизвестно, какие именно батарейки хорошие. В фонарик вставляют две батарейки; он светит только тогда, когда обе батарейки хорошие. Нужно найти наименьшее число проверок пар батареек, которое гарантирует, что хотя бы в одной проверке фонарик засветится.",
+        "source_id": "src-problems-65731",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complete_graph",
+          "complement_graph",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-flashlight-batteries-even"
+        ]
+      },
+      {
+        "id": "stmt-flashlight-batteries-even",
+        "title": "Фонарик и батарейки, поровну хороших и плохих",
+        "text": "Есть 2n батареек, n>2. Известно, что хороших и плохих батареек поровну, но неизвестно, какие именно батарейки хорошие. В фонарик вставляют две батарейки; он светит только тогда, когда обе батарейки хорошие. Нужно найти наименьшее число проверок пар батареек, которое гарантирует, что хотя бы в одной проверке фонарик засветится.",
+        "source_id": "src-problems-65731",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complete_graph",
+          "complement_graph",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-flashlight-batteries-tournament-cities"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "В первом пункте нужно выбрать минимальное число ребер в графе на 2n+1 вершине так, чтобы в любом множестве из n+1 вершин нашлось выбранное ребро; иначе говоря, граф не должен содержать независимое множество размера n+1. Во втором пункте нужно выбрать минимальное число ребер в графе на 2n вершинах так, чтобы в любом множестве из n вершин нашлось выбранное ребро; иначе говоря, граф не должен содержать независимое множество размера n.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "independent_set"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-batteries-as-edges",
+      "title": "Проверки как ребра графа",
+      "text": "Батарейки считаются вершинами, а проверенные пары — ребрами. Чтобы гарантировать успех при любом наборе хороших батареек, каждое возможное множество хороших батареек должно содержать хотя бы одно ребро.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-pile-construction",
+      "title": "Оценка и конструкция кучками",
+      "text": "Для случая 2n+1 батарейка достаточно разбить батарейки на n кучек: одну кучку из трех батареек и n-1 кучку из двух батареек. Проверим все пары внутри каждой кучки; всего получится n+2 проверки. Среди n+1 хороших батареек в какой-то кучке окажутся две хорошие, значит фонарик загорится. Нижняя оценка показывает, что n+1 проверки недостаточно: если две проверки имеют общую батарейку, можно объявить ее плохой, а из остальных проверок выбрать по одной плохой батарейке. Всего хватит n плохих батареек, и ни одна проверка не сработает. Для случая 2n батареек аналогично получается ответ n+3: конструкция — n-1 кучка, две из них по три батарейки, остальные по две; нижняя оценка устроена тем же выбором плохих батареек из проверенных пар.",
+      "idea_ids": [
+        "idea-batteries-as-edges"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Официальная задача Турнира городов для 8-9 класса; графовая модель является частным случаем формы Турана через число независимости.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "forbidden_subgraphs": {
+      "value": [
+        "independent set of size n+1",
+        "independent set of size n"
+      ],
+      "status": "ai_checked"
+    },
+    "uses_complement_graph": {
+      "value": true,
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-65731",
+      "role": "official_problem_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

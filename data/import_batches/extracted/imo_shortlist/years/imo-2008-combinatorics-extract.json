@@ -1,0 +1,153 @@
+{
+  "year": 2008,
+  "source_ids": [
+    "src-imo-2008-shortlist"
+  ],
+  "availability": {
+    "official_shortlist_pdf": true
+  },
+  "problems": [
+    {
+      "id": "imo-2008-sl-c1",
+      "year": 2008,
+      "shortlist_id": "C1",
+      "source": {
+        "source_id": "src-imo-2008-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2008SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2008SL.pdf"
+      },
+      "country": "mod n",
+      "statement_en": "In the plane we consider rectangles whose sides are parallel to the coordinate axes and\nhave positive length. Such a rectangle will be called a box. Two boxes intersect if they have a\ncommon point in their interior or on their boundary.\nFind the largest n for which there exist n boxes B1, . . . , Bn such that Bi and Bj intersect if\nand only if i ̸≡ j ± 1 (mod n).\nSolution. The maximum number of such boxes is 6. One example is shown in t he figure.\nB2B1\nB4B3\nB6\nB5\nNow we show that 6 is the maximum. Suppose that boxes B1, . . . , Bn satisfy the condition.\nLet the closed intervals Ik and Jk be the projections of Bk onto the x- and y-axis, for 1 ≤ k ≤ n.\nIf Bi and Bj intersect, with a common point ( x, y), then x ∈ Ii ∩ Ij and y ∈ Ji ∩ Jj. So the\nintersections Ii ∩ Ij and Ji ∩ Jj are nonempty. Conversely, if x ∈ Ii ∩ Ij and y ∈ Ji ∩ Jj for some\nreal numbers x, y, then ( x, y) is a common point of Bi and Bj. Putting it around, Bi and Bj\nare disjoint if and only if their projections on at least one c oordinate axis are disjoint.\nFor brevity we call two boxes or intervals adjacent if their i ndices differ by 1 modulo n, and\nnonadjacent otherwise.\nThe adjacent boxes Bk and Bk+1 do not intersect for each k = 1 , . . . , n. Hence ( Ik, Ik+1)\nor ( Jk, Jk+1) is a pair of disjoint intervals, 1 ≤ k ≤ n. So there are at least n pairs of disjoint\nintervals among ( I1, I2), . . . ,(In−1, In), (In, I1); (J1, J2), . . . ,(Jn−1, Jn), (Jn, J1).\nNext, every two nonadjacent boxes intersect, hence their pr ojections on both axes intersect,\ntoo. Then the claim below shows that at most 3 pairs among ( I1, I2), . . . ,(In−1, In), (In, I1) are\ndisjoint, and the same holds for ( J1, J2), . . . ,(Jn−1, Jn), (Jn, J1). Consequently n ≤ 3 + 3 = 6,\nas stated. Thus we are left with the claim and its justificatio n.\nClaim. Let ∆ 1, ∆2, . . . ,∆n be intervals on a straight line such that every two nonadjace nt\nintervals intersect. Then ∆ k and ∆ k+1 are disjoint for at most three values of k = 1, . . . , n.\nProof. Denote ∆ k = [ ak, bk], 1 ≤ k ≤ n. Let α = max( a1, . . . , an) be the rightmost among\nthe left endpoints of ∆ 1, . . . ,∆n, and let β = min(b1, . . . , bn) be the leftmost among their right\nendpoints. Assume that α = a2 without loss of generality.\nIf α ≤ β then ai ≤ α ≤ β ≤ bi for all i. Every ∆ i contains α, and thus no disjoint pair\n(∆i, ∆i+1) exists.\n\n[[PAGE 23]]\n22\nIf β < α then β = bi for some i such that ai < b i = β < α = a2 < b 2, hence ∆ 2 and ∆ i are\ndisjoint. Now ∆ 2 intersects all remaining intervals except possibly ∆ 1 and ∆ 3, so ∆ 2 and ∆ i\ncan be disjoint only if i = 1 or i = 3. Suppose by symmetry that i = 3; then β = b3. Since\neach of the intervals ∆ 4, . . . ,∆n intersects ∆ 2, we have ai ≤ α ≤ bi for i = 4, . . . , n. Therefore\nα ∈ ∆4 ∩ . . . ∩ ∆n, in particular ∆ 4 ∩ . . . ∩ ∆n ̸= ∅. Similarly, ∆ 5, . . . ,∆n, ∆1 all intersect ∆ 3,\nso that ∆ 5 ∩ . . . ∩ ∆n ∩ ∆1 ̸= ∅ as β ∈ ∆5 ∩ . . . ∩ ∆n ∩ ∆1. This leaves (∆ 1, ∆2), (∆ 2, ∆3) and\n(∆3, ∆4) as the only candidates for disjoint interval pairs, as desi red.\nComment. The problem is a two-dimensional version of the original pro posal which is included below.\nThe extreme shortage of easy and appropriate submissions fo rced the Problem Selection Committee\nto shortlist a simplified variant. The same one-dimensional Claim is used in both versions.\nOriginal proposal. We consider parallelepipeds in three-dimensional space, w ith edges par-\nallel to the coordinate axes and of positive length. Such a pa rallelepiped will be called a box.\nTwo boxes intersect if they have a common point in their interior or on their bound ary.\nFind the largest n for which there exist n boxes B1, . . . , Bn such that Bi and Bj intersect if\nand only if i ̸≡ j ± 1 (mod n).\nThe maximum number of such boxes is 9. Suppose that boxes B1, . . . , Bn satisfy the con-\ndition. Let the closed intervals Ik, Jk and Kk be the projections of box Bk onto the x-, y-\nand z-axis, respectively, for 1 ≤ k ≤ n. As before, Bi and Bj are disjoint if and only if their\nprojections on at least one coordinate axis are disjoint.\nWe call again two boxes or intervals adjacent if their indice s differ by 1 modulo n, and\nnonadjacent otherwise.\nThe adjacent boxes Bi and Bi+1 do not intersect for each i = 1, . . . , n. Hence at least one of\nthe pairs ( Ii, Ii+1), ( Ji, Ji+1) and ( Ki, Ki+1) is a pair of disjoint intervals. So there are at least\nn pairs of disjoint intervals among ( Ii, Ii+1), (Ji, Ji+1), (Ki, Ki+1), 1 ≤ i ≤ n.\nNext, every two nonadjacent boxes intersect, hence their pr ojections on the three axes\nintersect, too. Referring to the Claim in the solution of the two-dimensional version, we\ncocnclude that at most 3 pairs among ( I1, I2), . . . ,(In−1, In), (In, I1) are disjoint; the same\nholds for ( J1, J2), . . . ,(Jn−1, Jn), (Jn, J1) and ( K1, K2), . . . ,(Kn−1, Kn), (Kn, K1). Consequently\nn ≤ 3 + 3 + 3 = 9, as stated.\nFor n = 9, the desired system of boxes exists. Consider the interva ls in the following table:\ni I i Ji Ki\n1 [1 , 4] [1 , 6] [3 , 6]\n2 [5 , 6] [1 , 6] [1 , 6]\n3 [1 , 2] [1 , 6] [1 , 6]\n4 [3 , 6] [1 , 4] [1 , 6]\n5 [1 , 6] [5 , 6] [1 , 6]\n6 [1 , 6] [1 , 2] [1 , 6]\n7 [1 , 6] [3 , 6] [1 , 4]\n8 [1 , 6] [1 , 6] [5 , 6]\n9 [1 , 6] [1 , 6] [1 , 2]\nWe have I1 ∩ I2 = I2 ∩ I3 = I3 ∩ I4 = ∅, J4 ∩ J5 = J5 ∩ J6 = J6 ∩ J7 = ∅, and finally\nK7 ∩ K8 = K8 ∩ K9 = K9 ∩ K1 = ∅. The intervals in each column intersect in all other cases.\nIt follows that the boxes Bi = Ii × Ji × Ki, i = 1, . . . ,9, have the stated property.\n\n[[PAGE 24]]\n23",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "edge"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, edge"
+      },
+      "evidence": [
+        "sjoint if and only if their projections on at least one c oordinate axis are disjoint. For brevity we call two boxes or intervals adjacent if their i ndices differ by 1 modulo n, and nonadjacent otherwise. The adjacent boxes Bk and Bk+1 do not intersect for each k = 1",
+        "one-dimensional Claim is used in both versions. Original proposal. We consider parallelepipeds in three-dimensional space, w ith edges par- allel to the coordinate axes and of positive length. Such a pa rallelepiped will be called a box. Two boxes intersect if the"
+      ]
+    },
+    {
+      "id": "imo-2008-sl-c2",
+      "year": 2008,
+      "shortlist_id": "C2",
+      "source": {
+        "source_id": "src-imo-2008-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2008SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2008SL.pdf"
+      },
+      "country": null,
+      "statement_en": "For every positive integer n determine the number of permutations ( a1, a2, . . . , an) of the\nset {1, 2, . . . , n} with the following property:\n2(a1 + a2 + · · · + ak) is divisible by k for k = 1, 2, . . . , n.\nSolution. For each n let Fn be the number of permutations of {1, 2, . . . , n} with the required\nproperty; call them nice. For n = 1, 2, 3 every permutation is nice, so F1 = 1, F2 = 2, F3 = 6.\nTake an n > 3 and consider any nice permutation ( a1, a2, . . . , an) of {1, 2, . . . , n}. Then\nn − 1 must be a divisor of the number\n2(a1 + a2 + · · · + an−1) = 2\n(\n(1 + 2 + · · · + n) − an\n)\n= n(n + 1) − 2an = (n + 2)(n − 1) + (2 − 2an).\nSo 2 an − 2 must be divisible by n − 1, hence equal to 0 or n − 1 or 2 n − 2. This means that\nan = 1 or an = n + 1\n2 or an = n.\nSuppose that an = (n + 1)/2. Since the permutation is nice, taking k = n − 2 we get that n − 2\nhas to be a divisor of\n2(a1 + a2 + · · · + an−2) = 2\n(\n(1 + 2 + · · · + n) − an − an−1\n)\n= n(n + 1) − (n + 1) − 2an−1 = (n + 2)(n − 2) + (3 − 2an−1).\nSo 2an−1 − 3 should be divisible by n − 2, hence equal to 0 or n − 2 or 2 n − 4. Obviously 0 and\n2n − 4 are excluded because 2 an−1 − 3 is odd. The remaining possibility (2 an−1 − 3 = n − 2)\nleads to an−1 = (n + 1)/2 = an, which also cannot hold. This eliminates ( n + 1)/2 as a possible\nvalue of an. Consequently an = 1 or an = n.\nIf an = n then ( a1, a2, . . . , an−1) is a nice permutation of {1, 2, . . . , n−1}. There are Fn−1\nsuch permutations. Attaching n to any one of them at the end creates a nice permutation of\n{1, 2, . . . , n}.\nIf an = 1 then ( a1−1, a2−1, . . . , an−1−1) is a permutation of {1, 2, . . . , n−1}. It is also nice\nbecause the number\n2\n(\n(a1−1) + · · · + (ak−1)\n)\n= 2(a1 + · · · + ak) − 2k\nis divisible by k, for any k ≤ n − 1. And again, any one of the Fn−1 nice permutations\n(b1, b2, . . . , bn−1) of {1, 2, . . . , n−1} gives rise to a nice permutation of {1, 2, . . . , n} whose last\nterm is 1, namely ( b1+1, b2+1, . . . , bn−1+1, 1).\nThe bijective correspondences established in both cases sh ow that there are Fn−1 nice per-\nmutations of {1, 2, . . . , n} with the last term 1 and also Fn−1 nice permutations of {1, 2, . . . , n}\nwith the last term n. Hence follows the recurrence Fn = 2Fn−1. With the base value F3 = 6\nthis gives the outcome formula Fn = 3 · 2n−2 for n ≥ 3.\n\n[[PAGE 25]]\n24",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2008-sl-c3",
+      "year": 2008,
+      "shortlist_id": "C3",
+      "source": {
+        "source_id": "src-imo-2008-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2008SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2008SL.pdf"
+      },
+      "country": "if nonzero",
+      "statement_en": "In the coordinate plane consider the set S of all points with integer coordinates. For a\npositive integer k, two distinct points A, B ∈ S will be called k-friends if there is a point C ∈ S\nsuch that the area of the triangle ABC is equal to k. A set T ⊂ S will be called a k-clique\nif every two points in T are k-friends. Find the least positive integer k for which there exists\na k-clique with more than 200 elements.\nSolution. To begin, let us describe those points B ∈ S which are k-friends of the point (0 , 0).\nBy definition, B = (u, v) satisfies this condition if and only if there is a point C = (x, y) ∈ S\nsuch that 1\n2|uy − vx| = k. (This is a well-known formula expressing the area of triang le ABC\nwhen A is the origin.)\nTo say that there exist integers x, y for which |uy − vx| = 2k, is equivalent to saying that the\ngreatest common divisor of u and v is also a divisor of 2 k. Summing up, a point B = (u, v) ∈ S\nis a k-friend of (0 , 0) if and only if gcd( u, v) divides 2 k.\nTranslation by a vector with integer coordinates does not affect k-friendship; if two points are\nk-friends, so are their translates. It follows that two point s A, B ∈ S, A = (s, t), B = (u, v), are\nk-friends if and only if the point ( u − s, v − t) is a k-friend of (0 , 0); i.e., if gcd( u − s, v − t)|2k.\nLet n be a positive integer which does not divide 2 k. We claim that a k-clique cannot have\nmore than n2 elements.\nIndeed, all points ( x, y) ∈ S can be divided into n2 classes determined by the remainders\nthat x and y leave in division by n. If a set T has more than n2 elements, some two points\nA, B ∈ T , A = (s, t), B = (u, v), necessarily fall into the same class. This means that n|u − s\nand n|v − t. Hence n|d where d = gcd(u − s, v − t). And since n does not divide 2 k, also d\ndoes not divide 2 k. Thus A and B are not k-friends and the set T is not a k-clique.\nNow let M(k) be the least positive integer which does not divide 2 k. Write M(k) = m for\nthe moment and consider the set T of all points ( x, y) with 0 ≤ x, y < m . There are m2 of\nthem. If A = (s, t), B = (u, v) are two distinct points in T then both differences |u − s|, |v − t|\nare integers less than m and at least one of them is positive. By the definition of m, every\npositive integer less than m divides 2 k. Therefore u − s (if nonzero) divides 2 k, and the same\nis true of v − t. So 2 k is divisible by gcd( u − s, v − t), meaning that A, B are k-friends. Thus\nT is a k-clique.\nIt follows that the maximum size of a k-clique is M(k)2, with M(k) defined as above. We\nare looking for the minimum k such that M(k)2 > 200.\nBy the definition of M(k), 2 k is divisible by the numbers 1 , 2, . . . , M(k)−1, but not by\nM(k) itself. If M(k)2 > 200 then M(k) ≥ 15. Trying to hit M(k) = 15 we get a contradiction\nimmediately (2 k would have to be divisible by 3 and 5, but not by 15).\nSo let us try M(k) = 16. Then 2 k is divisible by the numbers 1 , 2, . . . ,15, hence also by\ntheir least common multiple L, but not by 16. And since L is not a multiple of 16, we infer\nthat k = L/2 is the least k with M(k) = 16.\nFinally, observe that if M(k) ≥ 17 then 2 k must be divisible by the least common multiple\nof 1 , 2, . . . ,16, which is equal to 2 L. Then 2 k ≥ 2L, yielding k > L/ 2.\nIn conclusion, the least k with the required property is equal to L/2 = 180180.\n\n[[PAGE 26]]\n25",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2008-sl-c4",
+      "year": 2008,
+      "shortlist_id": "C4",
+      "source": {
+        "source_id": "src-imo-2008-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2008SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2008SL.pdf"
+      },
+      "country": "with all lamps allowed",
+      "statement_en": "Let n and k be fixed positive integers of the same parity, k ≥ n. We are given 2 n lamps\nnumbered 1 through 2 n; each of them can be on or off. At the beginning all lamps are off. We\nconsider sequences of k steps. At each step one of the lamps is switched (from off to on or from\non to off).\nLet N be the number of k-step sequences ending in the state: lamps 1 , . . . , n on, lamps\nn+1, . . . ,2n off.\nLet M be the number of k-step sequences leading to the same state and not touching la mps\nn+1, . . . ,2n at all.\nFind the ratio N/M.\nSolution. A sequence of k switches ending in the state as described in the problem stat ement\n(lamps 1 , . . . , n on, lamps n+1, . . . ,2n off ) will be called an admissible process. If, moreover,\nthe process does not touch the lamps n+1, . . . ,2n, it will be called restricted. So there are N\nadmissible processes, among which M are restricted.\nIn every admissible process, restricted or not, each one of t he lamps 1 , . . . , n goes from off\nto on, so it is switched an odd number of times; and each one of the la mps n+1, . . . ,2n goes\nfrom off to off, so it is switched an even number of times.\nNotice that M > 0; i.e., restricted admissible processes do exist (it suffice s to switch each\none of the lamps 1 , . . . , n just once and then choose one of them and switch it k − n times,\nwhich by hypothesis is an even number).\nConsider any restricted admissible process p. Take any lamp l, 1 ≤ l ≤ n, and suppose\nthat it was switched kl times. As noticed, kl must be odd. Select arbitrarily an even number\nof these kl switches and replace each of them by the switch of lamp n+l. This can be done\nin 2 kl−1 ways (because a kl-element set has 2 kl−1 subsets of even cardinality). Notice that\nk1 + · · · + kn = k.\nThese actions are independent, in the sense that the action i nvolving lamp l does not\naffect the action involving any other lamp. So there are 2 k1−1 · 2k2−1 · · · 2kn−1 = 2 k−n ways of\ncombining these actions. In any of these combinations, each one of the lamps n+1, . . . ,2n gets\nswitched an even number of times and each one of the lamps 1 , . . . , n remains switched an odd\nnumber of times, so the final state is the same as that resultin g from the original process p.\nThis shows that every restricted admissible process p can be modified in 2 k−n ways, giving\nrise to 2 k−n distinct admissible processes (with all lamps allowed).\nNow we show that every admissible process q can be achieved in that way. Indeed, it is\nenough to replace every switch of a lamp with a label l > n that occurs in q by the switch of\nthe corresponding lamp l−n; in the resulting process p the lamps n+1, . . . ,2n are not involved.\nSwitches of each lamp with a label l > n had occurred in q an even number of times. So\nthe performed replacements have affected each lamp with a lab el l ≤ n also an even number of\ntimes; hence in the overall effect the final state of each lamp h as remained the same. This means\nthat the resulting process p is admissible—and clearly restricted, as the lamps n+1, . . . ,2n are\nnot involved in it any more.\nIf we now take process p and reverse all these replacements, then we obtain process q.\nThese reversed replacements are nothing else than the modifi cations described in the foregoing\nparagraphs.\nThus there is a one–to–(2 k−n) correspondence between the M restricted admissible processes\nand the total of N admissible processes. Therefore N/M = 2 k−n.\n\n[[PAGE 27]]\n26",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2008-sl-c5",
+      "year": 2008,
+      "shortlist_id": "C5",
+      "source": {
+        "source_id": "src-imo-2008-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2008SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2008SL.pdf"
+      },
+      "country": "Aq",
+      "statement_en": "Let S = {x1, x2, . . . , xk+l} be a ( k + l)-element set of real numbers contained in the\ninterval [0, 1]; k and l are positive integers. A k-element subset A ⊂ S is called nice if\n⏐\n⏐\n⏐\n⏐\n⏐\n⏐\n1\nk\n∑\nxi∈A\nxi − 1\nl\n∑\nxj∈S\\A\nxj\n⏐\n⏐\n⏐\n⏐\n⏐\n⏐\n≤ k + l\n2kl .\nProve that the number of nice subsets is at least 2\nk + l\n( k + l\nk\n)\n.\nSolution. For a k-element subset A ⊂ S, let f (A) = 1\nk\n∑\nxi∈A\nxi − 1\nl\n∑\nxj∈S\\A\nxj. Denote k + l\n2kl = d.\nBy definition a subset A is nice if |f (A)| ≤ d.\nTo each permutation (y1, y2, . . . , yk+l) of the set S = {x1, x2, . . . , xk+l} we assign k+l subsets\nof S with k elements each, namely Ai = {yi, yi+1, . . . , yi+k−1}, i = 1 , 2, . . . , k + l. Indices are\ntaken modulo k + l here and henceforth. In other words, if y1, y2, . . . , yk+l are arranged around\na circle in this order, the sets in question are all possible b locks of k consecutive elements.\nClaim. At least two nice sets are assigned to every permutation of S.\nProof. Adjacent sets Ai and Ai+1 differ only by the elements yi and yi+k, i = 1 , . . . , k + l. By\nthe definition of f , and because yi, yi+k ∈ [0, 1],\n|f (Ai+1) − f (Ai)| =\n⏐\n⏐\n⏐\n⏐\n( 1\nk + 1\nl\n)\n(yi+k − yi)\n⏐\n⏐\n⏐\n⏐ ≤ 1\nk + 1\nl = 2d.\nEach element yi ∈ S belongs to exactly k of the sets A1, . . . , Ak+l. Hence in k of the\nexpressions f (A1), . . . , f(Ak+l) the coefficient of yi is 1 /k; in the remaining l expressions, its\ncoefficient is −1/l. So the contribution of yi to the sum of all f (Ai) equals k · 1/k − l · 1/l = 0.\nSince this holds for all i, it follows that f (A1) + · · · + f (Ak+l) = 0.\nIf f (Ap) = min f (Ai), f (Aq) = max f (Ai), we obtain in particular f (Ap) ≤ 0, f (Aq) ≥ 0.\nLet p < q (the case p > q is analogous; and the claim is true for p = q as f (Ai) = 0 for all i).\nWe are ready to prove that at least two of the sets A1, . . . , Ak+l are nice. The interval [ −d, d]\nhas length 2d, and we saw that adjacent numbers in the circular arrangemen t f (A1), . . . , f(Ak+l)\ndiffer by at most 2 d. Suppose that f (Ap) < −d and f (Aq) > d . Then one of the numbers\nf (Ap+1), . . . , f(Aq−1) lies in [ −d, d], and also one of the numbers f (Aq+1), . . . , f(Ap−1) lies there.\nConsequently, one of the sets Ap+1, . . . , Aq−1 is nice, as well as one of the sets Aq+1, . . . , Ap−1.\nIf −d ≤ f (Ap) and f (Aq) ≤ d then Ap and Aq are nice.\nLet now f (Ap) < −d and f (Aq) ≤ d. Then f (Ap) + f (Aq) < 0, and since ∑f (Ai) = 0,\nthere is an r ̸= q such that f (Ar) > 0. We have 0 < f (Ar) ≤ f (Aq) ≤ d, so the sets f (Ar)\nand f (Aq) are nice. The only case remaining, −d ≤ f (Ap) and d < f (Aq), is analogous.\nApply the claim to each of the ( k + l)! permutations of S = {x1, x2, . . . , xk+l}. This gives\nat least 2( k + l)! nice sets, counted with repetitions: each nice set is coun ted as many times as\nthere are permutations to which it is assigned.\nOn the other hand, each k-element set A ⊂ S is assigned to exactly ( k+l) k! l! permutations.\nIndeed, such a permutation ( y1, y2, . . . , yk+l) is determined by three independent choices: an in-\ndex i ∈ {1, 2, . . . , k+ l} such that A = {yi, yi+1, . . . , yi+k−1}, a permutation ( yi, yi+1, . . . , yi+k−1)\nof the set A, and a permutation ( yi+k, yi+k+1, . . . , yi−1) of the set S \\ A.\nIn summary, there are at least 2(k + l)!\n(k + l) k! l! = 2\nk + l\n( k + l\nk\n)\nnice sets.\n\n[[PAGE 28]]\n27",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "evidence": [
+        "are all possible b locks of k consecutive elements. Claim. At least two nice sets are assigned to every permutation of S. Proof. Adjacent sets Ai and Ai+1 differ only by the elements yi and yi+k, i = 1 , . . . , k + l. By the definition of f , and because yi, yi+k ∈"
+      ]
+    },
+    {
+      "id": "imo-2008-sl-c6",
+      "year": 2008,
+      "shortlist_id": "C6",
+      "source": {
+        "source_id": "src-imo-2008-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2008SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2008SL.pdf"
+      },
+      "country": "not necessarily different",
+      "statement_en": "For n ≥ 2, let S1, S2, . . . , S2n be 2 n subsets of A = {1, 2, 3, . . . ,2n+1} that satisfy the\nfollowing property: There do not exist indices a and b with a < b and elements x, y, z ∈ A with\nx < y < z such that y, z ∈ Sa and x, z ∈ Sb. Prove that at least one of the sets S1, S2, . . . , S2n\ncontains no more than 4 n elements.\nSolution 1. We prove that there exists a set Sa with at most 3 n + 1 elements.\nGiven a k ∈ { 1, . . . , n}, we say that an element z ∈ A is k-good to a set Sa if z ∈ Sa and\nSa contains two other elements x and y with x < y < z such that z − y < 2k and z − x ≥ 2k.\nAlso, z ∈ A will be called good to Sa if z is k-good to Sa for some k = 1, . . . , n.\nWe claim that each z ∈ A can be k-good to at most one set Sa. Indeed, suppose on the\ncontrary that z is k-good simultaneously to Sa and Sb, with a < b . Then there exist ya ∈ Sa,\nya < z , and xb ∈ Sb, xb < z , such that z − ya < 2k and z − xb ≥ 2k. On the other hand, since\nz ∈ Sa ∩ Sb, by the condition of the problem there is no element of Sa strictly between xb and z.\nHence ya ≤ xb, implying z − ya ≥ z − xb. However this contradicts z − ya < 2k and z − xb ≥ 2k.\nThe claim follows.\nAs a consequence, a fixed z ∈ A can be good to at most n of the given sets (no more than\none of them for each k = 1, . . . , n).\nFurthermore, let u1 < u 2 < · · · < u m < · · · < u p be all elements of a fixed set Sa that are\nnot good to Sa. We prove that um − u1 > 2(um−1 − u1) for all m ≥ 3.\nIndeed, assume that um − u1 ≤ 2(um−1 − u1) holds for some m ≥ 3. This inequality can be\nwritten as 2( um − um−1) ≤ um − u1. Take the unique k such that 2 k ≤ um − u1 < 2k+1. Then\n2(um − um−1) ≤ um − u1 < 2k+1 yields um − um−1 < 2k. However the elements z = um, x = u1,\ny = um−1 of Sa then satisfy z − y < 2k and z − x ≥ 2k, so that z = um is k-good to Sa.\nThus each term of the sequence u2 − u1, u3 − u1, . . . , up − u1 is more than twice the previous\none. Hence up − u1 > 2p−1(u2 − u1) ≥ 2p−1. But up ∈ { 1, 2, 3, . . . ,2n+1}, so that up ≤ 2n+1.\nThis yields p − 1 ≤ n, i. e. p ≤ n + 1.\nIn other words, each set Sa contains at most n + 1 elements that are not good to it.\nTo summarize the conclusions, mark with red all elements in t he sets Sa that are good to\nthe respective set, and with blue the ones that are not good. T hen the total number of red\nelements, counting multiplicities, is at most n · 2n+1 (each z ∈ A can be marked red in at\nmost n sets). The total number of blue elements is at most ( n + 1)2n (each set Sa contains\nat most n + 1 blue elements). Therefore the sum of cardinalities of S1, S2, . . . , S2n does not\nexceed (3 n + 1)2n. By averaging, the smallest set has at most 3 n + 1 elements.\nSolution 2. We show that one of the sets Sa has at most 2 n + 1 elements. In the sequel | · |\ndenotes the cardinality of a (finite) set.\nClaim. For n ≥ 2, suppose that k subsets S1, . . . , Sk of {1, 2, . . . ,2n} (not necessarily different)\nsatisfy the condition of the problem. Then\nk∑\ni=1\n(|Si| − n) ≤ (2n − 1)2n−2.\nProof. Observe that if the sets Si (1 ≤ i ≤ k) satisfy the condition then so do their arbitrary\nsubsets Ti (1 ≤ i ≤ k). The condition also holds for the sets t + Si = {t + x | x ∈ Si} where t\nis arbitrary.\nNote also that a set may occur more than once among S1, . . . , Sk only if its cardinality is\nless than 3, in which case its contribution to the sum ∑k\ni=1(|Si| − n) is nonpositive (as n ≥ 2).\nThe proof is by induction on n. In the base case n = 2 we have subsets Si of {1, 2, 3, 4}.\nOnly the ones of cardinality 3 and 4 need to be considered by th e remark above; each one of\n\n[[PAGE 29]]\n28\nthem occurs at most once among S1, . . . , Sk. If Si = {1, 2, 3, 4} for some i then no Sj is a\n3-element subset in view of the condition, hence ∑k\ni=1(|Si| − 2) ≤ 2. By the condition again,\nit is impossible that Si = {1, 3, 4} and Sj = {2, 3, 4} for some i, j. So if |Si| ≤ 3 for all i then\nat most 3 summands |Si| − 2 are positive, corresponding to 3-element subsets. This im plies∑k\ni=1(|Si| − 2) ≤ 3, therefore the conclusion is true for n = 2.\nSuppose that the claim holds for some n ≥ 2, and let the sets S1, . . . , Sk ⊆ {1, 2, . . . ,2n+1}\nsatisfy the given property. Denote Ui = Si ∩ {1, 2, . . . ,2n}, Vi = Si ∩ {2n + 1, . . . ,2n+1}. Let\nI = {i | 1 ≤ i ≤ k, |Ui| ̸= 0}, J = {1, . . . , k} \\ I.\nThe sets Sj with j ∈ J are all contained in {2n + 1, . . . ,2n+1}, so the induction hypothesis\napplies to their translates −2n + Sj which have the same cardinalities. Consequently, this give s∑\nj∈J(|Sj| − n) ≤ (2n − 1)2n−2, so that\n∑\nj∈J\n(|Sj| − (n + 1)) ≤\n∑\nj∈J\n(|Sj| − n) ≤ (2n − 1)2n−2. (1)\nFor i ∈ I, denote by vi the least element of Vi. Observe that if Va and Vb intersect, with a < b ,\na, b ∈ I, then va is their unique common element. Indeed, let z ∈ Va ∩ Vb ⊆ Sa ∩ Sb and let m\nbe the least element of Sb. Since b ∈ I, we have m ≤ 2n. By the condition, there is no element\nof Sa strictly between m ≤ 2n and z > 2n, which implies z = va.\nIt follows that if the element vi is removed from each Vi, a family of pairwise disjoint sets\nWi = Vi \\ {vi} is obtained, i ∈ I (we assume Wi = ∅ if Vi = ∅). As Wi ⊆ {2n + 1, . . . ,2n+1} for\nall i, we infer that ∑\ni∈I |Wi| ≤ 2n. Therefore ∑\ni∈I(|Vi| − 1) ≤ ∑\ni∈I |Wi| ≤ 2n.\nOn the other hand, the induction hypothesis applies directl y to the sets Ui, i ∈ I, so that∑\ni∈I(|Ui| − n) ≤ (2n − 1)2n−2. In summary,\n∑\ni∈I\n(|Si| − (n + 1)) =\n∑\ni∈I\n(|Ui| − n) +\n∑\ni∈I\n(|Vi| − 1) ≤ (2n − 1)2n−2 + 2n. (2)\nThe estimates (1) and (2) are sufficient to complete the induct ive step:\nk∑\ni=1\n(|Si| − (n + 1)) =\n∑\ni∈I\n(|Si| − (n + 1)) +\n∑\nj∈J\n(|Sj| − (n + 1))\n≤ (2n − 1)2n−2 + 2n + (2n − 1)2n−2 = (2n + 1)2n−1.\nReturning to the problem, consider k = 2 n subsets S1, S2, . . . , S2n of {1, 2, 3, . . . ,2n+1}. If\nthey satisfy the given condition, the claim implies ∑2n\ni=1(|Si| − (n + 1)) ≤ (2n + 1)2 n−1. By\naveraging again, we see that the smallest set has at most 2 n + 1 elements.\nComment. It can happen that each set Si has cardinality at least n + 1. Here is an example by the\nproposer.\nFor i = 1 , . . . ,2n, let Si = {i + 2k | 0 ≤ k ≤ n}. Then |Si| = n + 1 for all i. Suppose that there\nexist a < b and x < y < z such that y, z ∈ Sa and x, z ∈ Sb. Hence z = a + 2k = b + 2l for some k > l .\nSince y ∈ Sa and y < z , we have y ≤ a + 2k−1. So the element x ∈ Sb satisfies\nx < y ≤ a + 2k−1 = z − 2k−1 ≤ z − 2l = b.\nHowever the least element of Sb is b + 1, a contradiction.\n\n[[PAGE 30]]",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "year": 2024,
+  "page_url": "https://bmo2024.org/problems/",
+  "problem_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_english.pdf",
+  "solution_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_englishSolutions.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 4,
+  "problems": [
+    {
+      "id": "bmo-2024-p1",
+      "year": 2024,
+      "problem_number": 1,
+      "statement_en": "Let ABC be an acute-angled triangle with AC > AB and let D be the foot of the\nA-angle bisector on BC. The reflections of lines AB and AC in line BC meet AC and AB at points\nE and F respectively. A line through D meets AC and AB at G and H respectively such that G\nlies strictly between A and C while H lies strictly between B and F . Prove that the circumcircles of\n△EDG and△F DH are tangent to each other.",
+      "solution_text_en": "Let X and Y lie on the tangent to the circumcircle of △EDG on the opposite side to\nD as shown in the figure below. Regarding diagram dependency, the acute condition with AC > AB\nensures E lies on extension of CA beyond A, and F lies on extension of AB beyond B. The condition\non l means the points lie in the orders E; A; G; C and A; B; H; F .\n/Bullet\nA\n/Bullet\nB\n/Bullet\nC\n/Bullet\nD\n/Bullet\nE\n/Bullet\nF\n/Bullet\nG\n/Bullet\nH\n/Bullet\nX\n/Bullet\nY\nUsing the alternate segment theorem, the condition that ⊙EDG and ⊙F DH are tangent at D can be\nrewritten as\n\u001eHF D = \u001eY DH:\nBut using the same theorem, we get \u001eY DH = \u001eXDG = \u001eDEG. So we can remove G; H from the\nfigure, and it is sufficient to prove that \u001eDEA = \u001eDF B.\nThe reflection property means that AD and BD are external angle bisectors in △EAB and hence D\nis the E-excentre of this triangle. Thus DE (internally) bisects \u001eBEA , giving\n\u001eDEA = \u001eDEB:\nNow observe that the pairs of lines (BE; CE ) and (BF; CF ) are reflections in BC thus E; F are\nreflections in BC . Also D is its own reflection in BC . Hence \u001eDEB = \u001eDF B and so\n\u001eDEA = \u001eDEB = \u001eDF B;\nas required.",
+      "source": {
+        "page_url": "https://bmo2024.org/problems/",
+        "problem_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_english.pdf",
+        "solution_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_englishSolutions.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2024-problems.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2024-solutions.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 5,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 5, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "bmo-2024-p2",
+      "year": 2024,
+      "problem_number": 2,
+      "statement_en": "Let n≥ k≥ 3 be integers. Show that for every integer sequence 1 ≤ a1 < a 2 < . . . <\nak≤ n one can choose non-negative integers b1, b2, . . . , bk, satisfying the following conditions:\n(i) 0 ≤ bi≤ n for each 1≤ i≤ k,\n(ii) all the positive bi are distinct,\n(iii) the sums ai + bi, 1≤ i≤ k, form a permutation of the first k terms of a non-constant arithmetic\nprogression.",
+      "solution_text_en": "Let the resulting progression be Ans := fak \u0000 (k \u0000 1); ak \u0000 (k \u0000 2); : : : ; akg and at be\nthe largest number not belonging to Ans. Clearly the set Ans n fa1; a2; : : : ; akg has cardinality t; let\nits members be c1 > c 2 > \u0001 \u0001 \u0001 > c t. Define bj := cj \u0000 aj for 1 \u0014 j \u0014 t or zero otherwise. Since fcjg is\ndecreasing and fajg is increasing, all bj are distinct and clearly b1 < n. After we add bj to aj we get\na permutation of Ans as desired.\nSolution 2. Let the resulting progression be Ans := fak \u0000 (k \u0000 1); ak \u0000 (k \u0000 2); : : : ; akg.\nWe proceed with the following reduction. Let \u000e be the smallest b we used before (in the beginning\nit is n). While a1 =2 Ans we map a1 to the largest element q of Ans n f a1; a2; : : : ; akg and put\n\u000enew := b1 := q \u0000 a1. Now we rearrange the sequence of a-s. We do not touch Ans \\ fa1; a2; : : : ; akg\nso every b is defined at most once (in the end undefined b-s become zeros). Also b < \u000e and \u000e decreases\nat each step, because q decreases and a1 grows, and hence all nonzero b-s are distinct.",
+      "source": {
+        "page_url": "https://bmo2024.org/problems/",
+        "problem_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_english.pdf",
+        "solution_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_englishSolutions.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2024-problems.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2024-solutions.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 4}"
+    },
+    {
+      "id": "bmo-2024-p3",
+      "year": 2024,
+      "problem_number": 3,
+      "statement_en": "Let a and b be distinct positive integers such that 3 a + 2 is divisible by 3 b + 2. Prove\nthat a > b 2.",
+      "solution_text_en": "Obviously we have a > b . Let a = bq + r, where 0 \u0014 r < b . Then\n3a \u0011 3bq+r \u0011 (\u00002)q:3r \u0011 \u00002 (mod 3 b + 2)\n2\nSo 3b + 2 divides A = (\u00002)q:3r + 2 and it follows that\nj(\u00002)q:3r + 2j \u0015 3b + 2 or (\u00002)q:3r + 2 = 0 :\nWe make case distinction:\n1. (\u00002)q:3r + 2 = 0 . Then q = 1 and r = 0 or a = b, a contradiction.\n2. q is even. Then\nA = 2 q:3r + 2 = (3 b + 2):k:\nConsider both sides of the last equation modulo 3r. Since b > r :\n2 \u0011 2q:3r + 2 = (3 b + 2)k \u0011 2k (mod 3 r);\nso it follows that 3rjk \u0000 1. If k = 1 then 2q:3r = 3 b, a contradiction. So k \u0015 3r + 1, and therefore:\nA = 2 q:3r + 2 = (3 b + 2)k \u0015 (3b + 2)(3r + 1) > 3b:3r + 2\nIt follows that\n2q:3r > 3b:3r; i.e. 2q > 3b; which implies 3b2\n< 2bq < 3bq \u0014 3bq+r = 3 a:\nConsequently a > b 2.\n3. If q is odd. Then\n2q:3r \u0000 2 = (3 b + 2)k:\nConsidering both sides of the last equation modulo 3r, and since b > r , we get: k + 1 is divisible\nby 3r and therefore k \u0015 3r \u0000 1. Thus r > 0 because k > 0, and:\n2q:3r \u0000 2 = (3 b + 2)k \u0015 (3b + 2)(3r \u0000 1); and therefore\n2q:3r > (3b + 2)(3r \u0000 1) > 3b(3r \u0000 1) > 3b 3r\n2 ; which shows\n2q+1 > 3b:\nBut for q > 1 we have 2q+1 < 3q, which combined with the above inequality, implies that\n3b2\n< 2(q+1)b < 3qb \u0014 3a, q.e.d. Finally, If q = 1 then 2q:3r \u0000 2 = (3 b + 2)k and consequently\n2:3r \u0000 2 \u0015 3b + 2 \u0015 3r+1 + 2 > 2:3r \u0000 2, a contradiction.\nSolution 2. D = a \u0000 b, and we shall show D > b 2 \u0000 b. We have 3b + 2j3a + 2, so 3b + 2j3D \u0000 1. Let\nD = bq + r where r < b . First suppose that r ̸= 0. We have\n1 \u0011 3D \u0011 3bq+r \u0011 (\u00002)q+13r\u0000b (mod 3 b + 2) =) 3b\u0000r \u0011 (\u00002)q+1 (mod 3 b + 2)\n3\nTherefore\n3b + 2 \u0014 j(\u00002)q+1 \u0000 3b\u0000rj \u0014 2q+1 + 3b\u0000r \u0014 2q+1 + 3b\u00001\nHence\n2 \u0002 3b\u00001 + 2 \u0014 2q+1 =) 3b\u00001 < 2q =) log 3\nlog 2 (b \u0000 1) < q\nWhich yields D = bq + r > bq > log 3\nlog 2 b(b \u0000 1) \u0015 b2 \u0000 b as desired. Now for the case r = 0 , (\u00002)q \u0011 1\n(mod 3 b + 2) and so\n3b + 2 \u0014 j(\u00002)q \u0000 1j \u0014 2q + 1 =) 3b\u00001 < 3b < 2q =) log 3\nlog 2 (b \u0000 1) < q\nand analogous to the previous case, D = bq + r = bq > log 3\nlog 2 b(b \u0000 1) \u0015 b2 \u0000 b.",
+      "source": {
+        "page_url": "https://bmo2024.org/problems/",
+        "problem_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_english.pdf",
+        "solution_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_englishSolutions.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2024-problems.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2024-solutions.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 2,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 2, 'combinatorics': 0}"
+    },
+    {
+      "id": "bmo-2024-p4",
+      "year": 2024,
+      "problem_number": 4,
+      "statement_en": "Let R+ = (0,∞) be the set of all positive real numbers. Find all functions f : R+→ R+\nand polynomials P (x) with non-negative real coefficients such that P (0) = 0 which satisfy the equality\nf(f(x) + P (y)) = f(x− y) + 2y\nfor all real numbers x > y > 0.\nTime is 4 hours and 30 minutes",
+      "solution_text_en": "Assume that f : R+ ! R+ and the polynomial P with non-negative coefficients and\nP (0) = 0 satisfy the conditions of the problem. For positive reals with x > y , we shall write Q(x; y)\nfor the relation:\nf (f (x) + P (y)) = f (x \u0000 y) + 2y:\n1. Step 1. f (x) \u0015 x. Assume that this is not true. Since P (0) = 0 and P is with non-negative\ncoefficients, P (x) + x is surjective on positive reals. If f (x) < x for some positive real x, then\nsetting y such that y + P (y) = x \u0000 f (x) (where obviously y < x ), we shall get f (x) +P (y) = x \u0000 y\nand by Q(x; y), f (f (x) + P (y)) = f (x \u0000 y) + 2y, we get 2y = 0, a contradiction.\n2. Step 2. P (x) = cx for some non-negative real c. We will show deg P \u0014 1 and together with\nP (0) = 0 the result will follow. Assume the contrary. Hence there exists a positive l such that\nP (x) \u0015 2x for all x \u0015 l. By Step 1 we get\n8x > y \u0015 l : f (x \u0000 y) + 2y = f (f (x) + P (y)) \u0015 f (x) + P (y) \u0015 f (x) + 2y\nand therefore f (x \u0000 y) \u0015 f (x). We get f (y) \u0015 f (2y) \u0015 \u0001 \u0001 \u0001 \u0015 f (ny) \u0015 ny for all positive integers\nn, which is a contradiction.\n3. Step 3. If c ̸= 0 , then f (f (x) + 2 z + c2) = f (x + 1) + 2( z \u0000 1) + 2 c for z > 1. Indeed by\nQ(f (x + z) + cz; c), we get\nf (f (f (x + z) + cz) + c2) = f (f (x + z) + cz \u0000 c) + 2c = f (x + 1) + 2(z \u0000 1) + 2c:\n4\nOn the other hand by Q(x + z; z), we have:\nf (x) + 2z + c2 = f (f (x + z) + P (z)) + c2 = f (f (x + z) + cz) + c2:\nSubstituting in the LHS of Q(f (x + z) +cz; c), we get f (f (x) + 2z + c2) = f (x + 1) + 2(z \u0000 1) + 2c.\n4. Step 4. There is x0, such that f (x) is linear on (x0; 1). If c ̸= 0, then by Step 3, fixing x = 1, we\nget f (f (1) + 2z + c2) = f (2) + 2(z \u0000 1) + 2c which implies that f is linear for z > f (1) + 2 +c2. As\nfor the case c = 0, consider y; z 2 (0; 1). Pick x > max(y; z), then by Q(x; x\u0000 y) and Q(x; x\u0000 z)\nwe get:\nf (y) + 2(x \u0000 y) = f (f (x)) = f (z) + 2(x \u0000 z)\nwhich proves that f (y) \u0000 2y = f (z) \u0000 2z and there fore f is linear on (0; 1).\n5. Step 5. P (y) = y and f (x) = x on (x0; 1). By Step 4, let f (x) = ax + b on (x0; 1). Since f\ntakes only positive values, a \u0015 0. If a = 0, then by Q(x + y; y) for y > x 0 we get:\n2y + f (x) = f (f (x + y) + P (y)) = f (b + cy):\nSince the LHS is not constant, we conclude c ̸= 0 , but then for y > x 0=c, we get that the RHS\nequals b which is a contradiction.\nHence a > 0. Now for x > x 0 and x > (x0 \u0000 b)=a large enough by P (x + y; y) we get:\nax + b + 2y = f (x) + 2y = f (f (x + y) + P (y)) = f (ax + ay + b + cy) = a(ax + ay + b + cy) + b:\nComparing the coefficients before x, we see a2 = a and since a ̸= 0, a = 1. Now 2b = b and thus\nb = 0. Finally, equalising the coefficients before y, we conclude 2 = 1 + c and therefore c = 1.\nNow we know that f (x) = x on (x0; 1) and P (y) = y. Let y > x 0. Then by Q(x + y; x) we conclude:\nf (x) + 2y = f (f (x + y) + P (y)) = f (x + y + y) = x + 2y:\nTherefore f (x) = x for every x. Conversely, it is straightforward that f (x) = x and P (y) = y do\nindeed satisfy the conditions of the problem.\nSolution 2. Assume that the function f : R+ ! R+ and the polynomial with non-negative coeffi-\ncients P (y) = yP1(y) satisfy the given equation. Fix x = x0 > 0 and note that:\nf (f (x0 + y) + P (y)) = f (x0 + y \u0000 y) + 2y = f (x0) + 2y:\nAssume that g = 0 . Then f (f (x + y)) = f (x) + 2 y for x; y > 0. Let x > 0 and z > 0. Pick y > 0.\nThen:\n2y + f (x + z) = f (f (x + y + z)) = f (f (x + z + y)) = f (x) + 2(z + y):\n5\nTherefore f (x + z) = f (x) + 2z for any x > 0 and z > 0. Setting c = f (1), we see that f (z + 1) = c + 2z\nfor all positive z. Therefore if x; y > 1 we have that f (x + y) = c + 2(x + y \u0000 1) > 1. This shows that:\nf (f (x + y)) = c + 2(f (x + y) \u0000 1) = 3 c + 4(x + y) \u0000 4:\nOn the other hand f (x) + 2 y = c + 2x + 2y. Therefore the equality f (f (x + y)) = f (x) + 2 y is not\nuniversally satisfied.\nFrom now on, we assume that g ̸= 0. Therefore P is strictly increasing with P (0) = 0 , limy!1 P (y) =\n1, i.e. g is bijective on [0; 1) and P (0) = 0 .\nLet x > 0; y > 0 and set u = f (x + y), v = P (y). From above, we have u > 0 and v > 0. Therefore:\nf (f (u + v) + P (v)) = f (u) + 2v = f (f (x + y)) + 2P (y):\nOn the other hand f (u + v) = f (f (x + y) + P (y)) = f (x) + 2y. Therefore we obtain that:\nf (f (x) + 2y + P (P (y))) = f (f (x + y)) + 2P (y):\nSince g is bijective from (0; 1) to (0; 1) for any z > 0 there is t such that P (t) = z. Applying this\nobservation to z = P (P (y)) + 2y and setting x′ = x + t, we obtain that:\nf (f (x+t+y))+2P (y) = f (f (x′+y))+2P (y) = f (f (x′)+P (P (y))+2y) = f (f (x+t)+P (t)) = f (x)+2t:\nThus if we denote h(y) = P (P (y)) + 2y, then t = P (\u00001)(h(y)) and the above equality can be rewritten\nas:\nf (f (x + P (\u00001)(h(y)) + y)) = f (x) + 2P (\u00001)(h(y)) \u0000 2P (y) = f (x) + 2P (\u00001)(h(y)) + 2y \u0000 2y \u0000 2P (y):\nLet s(y) = P (\u00001)(h(y))+ y and note that since h is continuous and monotone increasing, g is continuous\nand monotone increasing, then so are P (\u00001) and consequently P (\u00001) ◦ h and s. It is also clear, that\nlimy!0 s(y) = 0 and limy!1 s(y) = 1. Therefore s is continuously bijective from [0; 1) to [0; 1)\nwith s(0) = 0 .\nThus we have:\nf (f (x + s(y))) = f (x) + 2s(y) \u0000 2y \u0000 2P (y)\nand using that s is invertible, we obtain:\nf (f (x + y)) = f (x) + 2y \u0000 2s(\u00001)(y) \u0000 2P (s(\u00001)(y)):\nNow fix x0, then for any x > x 0 and any y > 0 we have:\nf (x) + 2y \u0000 2s(\u00001)(y) \u0000 2P (s(\u00001)(y)) = f (f (x + y)) = f (f (x0 + x + y \u0000 x0))\n= f (x0) + 2(x + y \u0000 x0) \u0000 2s(\u00001)(x + y \u0000 x0) \u0000 2P (s(\u00001)(x + y \u0000 x0)):\n6\nSetting y = x0, we get:\nf (x) + 2x0 \u0000 2s(\u00001)(x0) \u0000 2P (s(\u00001)(x0)) = f (x0) + 2x \u0000 2s(\u00001)(x) \u0000 2P (s(\u00001)(x)):\nSince this equality is valid for any x > x 0 we actually have that:\nf (x) \u0000 2x + 2s(\u00001)(x) + 2P (s(\u00001)(x)) = c for some fixed constant c 2 R and all x 2 R+:\nLet φ(x) = \u0000x + 2s(\u00001)(x) + 2P (s(\u00001)(x)). Then f (x) = x \u0000 φ(x) +c and since φ is a sum of continuous\nfunctions that are continuous at 0. Therefore f is continuous and can be extended to a continuous\nfunction on [0; 1). Back in the original equation we fix x > 0 and let y tend to 0. Using the continuity\nof f and g on [0; 1) and P (0) = 0 we obtain:\nf (f (x)) = lim\ny!0+\nf (f (x) + P (y)) = lim\ny!0+\n(f (x \u0000 y) + P (y)) = f (x) + P (0) = f (x):\nFinally, fixing x = 1 and varying y > 0, we obtain:\nf (f (1 + y) + P (y)) = f (1) + 2y:\nIt follows that f takes every value on (f (1); 1). Therefore for any y 2 (f (1); 1) there is z such that\nf (z) = y. Using that f (f (z)) = f (z) we conclude that f (y) = y for all y 2 (f (1); 1).\nNow fix x and take y > f (1). Hence\nf (x) + 2y = f (f (x + y) + P (y)) = f (x + y + P (y)) = x + y + P (y):\nWe conclude f (x) \u0000 x = P (y) \u0000 y for every x an y > f (1). In particular f (x1) \u0000 x1 = f (x2) \u0000 x2 for\nall x1; x2 2 (0; 1) and since f (x) = x for x 2 (f (1); 1), we get f (x) = x on (0; 1).\nFinally, x + 2y = f (x) + 2y = f (f (x + y) + P (y)) = f (x + y) + P (y) = x + y + P (y), which shows that\nP (y) = y for every y 2 (0; 1).\nIt is also straightforward to check that f (x) = x and P (y) = y satisfy the equality:\nf (f (x + y) + P (y)) = f (x + 2y) = x + 2y = f (x) + 2y:\n7",
+      "source": {
+        "page_url": "https://bmo2024.org/problems/",
+        "problem_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_english.pdf",
+        "solution_pdf_url": "https://bmo2024.org/wp-content/uploads/2024/05/BOM_englishSolutions.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2024-problems.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2024-solutions.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 6,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 6, 'number_theory': 0, 'combinatorics': 1}"
+    }
+  ]
+}

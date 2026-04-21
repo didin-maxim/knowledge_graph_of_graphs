@@ -1,0 +1,141 @@
+{
+  "id": "imo-2023-c7-ferry-companies-hamiltonian-paths",
+  "title": "Паромные компании и гамильтоновы пути, IMO Shortlist 2023 C7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "hamiltonian_path"
+    ],
+    "methods": [
+      "binary_labeling",
+      "induction"
+    ],
+    "transformations": [
+      "ferry_lines_to_edge_coloring"
+    ],
+    "goal": [
+      "maximize_colors_seen_by_every_hamiltonian_path"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "first_differing_bit"
+    ],
+    "keywords": [
+      "imo_2023_c7",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Архипелаг состоит из \\(n\\ge2\\) островов. Между каждой парой островов есть единственная двусторонняя паромная линия, принадлежащая одной из \\(k\\) компаний. Если любая одна компания закрывает все свои линии, путешественник уже не может, откуда бы он ни стартовал, посетить все острова ровно по одному разу. Найдите максимальное возможное \\(k\\).",
+        "source_id": "src-imo-2023-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это раскраска рёбер полного графа \\(K_n\\): требуется, чтобы каждый гамильтонов путь содержал рёбра всех \\(k\\) цветов.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-edge-colored-complete-graph",
+      "title": "Раскраска рёбер полного графа",
+      "text": "Острова — вершины, компании — цвета рёбер, а путешествие по всем островам — гамильтонов путь.",
+      "tags": [
+        "hamiltonian_cycles"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-binary-labels",
+      "title": "Двоичные метки вершин",
+      "text": "Конструкция использует цвета, определённые по первому различающему биту меток вершин.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Ответ: \\(\\lfloor\\log_2 n\\rfloor\\). Переформулируем: нужно раскрасить рёбра \\(K_n\\) в \\(k\\) цветов так, чтобы каждый гамильтонов путь содержал все цвета. Конструкция для \\(k=\\lfloor\\log_2 n\\rfloor\\) нумерует вершины и красит ребро по первому двоичному разряду, в котором номера различаются; при проходе через все вершины каждый разряд обязан где-то измениться, значит каждый цвет встречается. Для верхней оценки официальное решение показывает, что если цветов слишком много, то можно разбить вершины по одному цвету на части и рекурсивно построить гамильтонов путь, избегающий некоторого цвета. Это противоречит требованию, поэтому больше \\(\\lfloor\\log_2 n\\rfloor\\) цветов невозможно.",
+      "idea_ids": [
+        "idea-edge-colored-complete-graph",
+        "idea-binary-labels"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2023 C7, Ukraine; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "hamiltonian_cycles",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "binary_labeling",
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2023-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

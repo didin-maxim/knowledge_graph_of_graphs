@@ -1,0 +1,602 @@
+{
+  "year": 2025,
+  "page_url": "https://www.memo2025.de/Erg_en.html",
+  "download_count": 3,
+  "problem_count_extracted": 12,
+  "problems": [
+    {
+      "id": "memo-2025-i1",
+      "year": 2025,
+      "problem_code": "I-1",
+      "statement_en": "LetR + be the set of positive real numbers. Letf:R +→R+ be a function such that for all\nx, y∈R+ it holds that\nyf 2025(x)≥xf(y).\nShow that there exists a positive integern0 such that for all positive integersn≥n0 and for all\nx∈R+ it holds that\nf n(x)≥x.",
+      "solution_text_en": "Remark.Heref n denotes the functionfappliedntimes, this meansf n(x) =f(f(...f| {z }\nntimes\n(x)...)).\nSolution.By assumption, we know thatxf(y)≤yf 2025(x)for allx,y∈R +. Plugging in\ny=x, we can deduce thatf(x)≤f2025(x)for allx∈R+.\nWe claim that there is somey∈R+ withy≤f(y). To see this, recall thatf(1)≤f2025(1).\nTherefore, there must be somei∈{1,2,...,2024}such thatfi(1)≤fi+1(1). Takingy=f i(1)\nshows that there indeed exists somey∈R+ withy≤f(y).\nNow, takingy∈R+ withy≤f(y)and anyx∈R+, note that we have\nxf(y)≤yf2025(x)≤f(y)f2025(x),\nimplyingx≤f2025(x). Thus, we havex≤f2025(x)for allx∈R+.\nSo, we have shown that for anyx∈R+ we havex≤f2025(x)andf(x)≤f2025(x). In particular,\napplying this tofm(x)and tof m−1(x)for any integerm≥2, we obtainfm(x)≤fm+2025(x)\nandf m(x)≤fm+2024(x). Applying this repeatedly, we can therefore conclude thatfm(x)≤\nfm+a·2024+b·2025(x)for anyx∈R+, any integerm≥2, and any non-negative integersaandb.\nFinally, we claim that for anyn≥20252 and anyx∈R+ we havex≤fn(x). Note that\nn−2025≥2024·2025, and so (as2024and2025are coprime) we can writen−2025 =\na·2024 +b·2025for some non-negative integersaandb. Thus, we can conclude that\nx≤f2025(x)≤f2025+a·2024+b·2025(x) =f n(x),\nas desired.\n5\nMEMO 2025Individual I-2",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2025-i2",
+      "year": 2025,
+      "problem_code": "I-2",
+      "statement_en": "On an infinite square grid, on which some unit squares are coloured red, aruby rookis a piece\nwhich, in one move, can travel any number of squares in one direction parallel to one of the grid\nlines (either vertically or horizontally), while remaining on red squares at all times throughout\nthe move.\nStarting with an uncoloured infinite square grid, Alice performs the following procedure: First,\nshe colours at most 2025 of the unit squares red. Afterwards, she places some ruby rooks on\ndistinct red unit squares, such that the following two rules are satisfied:\n•No ruby rook can reach another ruby rook in one move.\n•Every ruby rook can reach every other ruby rook in two moves.\nFind the maximum possible number of ruby rooks that Alice can place during this proce-\ndure.",
+      "solution_text_en": "Answer.The maximum number of ruby rooks that Alice can place is63.\nProof that63ruby rooks can be placed.Consider a staircase-shaped red area made up of\n63rows ranging from length1to63(see the figure below). It is possible to place63ruby rooks\nalong the main diagonal of the red shape since:\n•No ruby rook can reach another ruby rook in one move since there is at most one ruby\nrook in every row and in every column.\n•Every ruby rook can reach every other ruby rook within two moves. Indeed, it can first\nmove horizontally to the left to a square in the same column as the other ruby rook, and\nthen move vertically upwards to the other ruby rook or first move vertically downwards\nto a square in the same row as the other ruby rook and then horizontally to the right to\nthe second ruby rook.\nThe number of red squares is63·(63+1)\n2 = 2016≤2025, satisfying the condition in the problem\nstatement.\nR\nR\nR\nR\nR\n... ...\n6\nMEMO 2025Individual I-2\nProof that at most63ruby rooks can be placed.Assume that Alice placesnruby rooks,\nand let us enumerate them from1ton. For any two ruby rooks1≤i < j≤non the grid,\nthere must exist a red square that both ruby rookiand ruby rookjcan reach in one move,\nand let us call this red squareSi,j (if such a square did not exist, then it would not be possible\nfor ruby rookito get to ruby rookjin two moves). Note that if(i,j)̸= (i′,j′), thenSi,j and\nSi′,j′are distinct; otherwise, we would have three ruby rooks that can reach the same square,\nwhich would imply that we have a pair of ruby rooks in the same row or column that can reach\neach other in one move. Note that none of thenred squares with a ruby rook can coincide\nwith any squareSi,j, and the squaresSi,j are also all red. Since the number of squaresSi,j is\u0000n\n2\n\u0001, we get Ç\nn\n2\nå\n+n≤2025.\nThis implies(n+ 1\n2)2−1\n4 =n(n+ 1) =n(n−1) + 2n= 2·\u0000n\n2\n\u0001 + 2n≤4050≤4096−1\n4. Thus,\n(n+ 1\n2)2≤4096 = 642, and we can conclude thatn+1\n2≤64. Since the numbernof ruby rooks\nis an integer, this impliesn≤63.\n7\nMEMO 2025Individual I-3",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "colour",
+        "grid"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2025-i3",
+      "year": 2025,
+      "problem_code": "I-3",
+      "statement_en": "LetABCbe a triangle. Its incircleωtouches the sidesBC,CAandABat pointsD,EandF,\nrespectively. LetPandQbe points on the lineBCdistinct fromDsuch thatP B=BDand\nQC=CD. Prove that the circumcircles of the trianglesP CEandQBFand the circleωpass\nthrough a common point.",
+      "solution_text_en": "Solution 1.\nA\nB CD\nEF\nI\nP Q\nWe denote the interior angles in the triangleABCbyα:=∡BAC,β:=∡CBAandγ:=\n∡ACB.\nLetI A be the center of the excircle opposite to the vertexA. By the definition ofPand because\nBEandBDare tangent to the incircle ofABCwe haveBP=BD=BE. Therefore the\ntriangleBFPis isosceles with basePFand\n∡PFB=∡BPF= 180◦−∡FBP\n2 = β\n2 .\nIn the same way, it follows in triangleCEQthatCQ=CEand\n∡CEQ=∡EQC= 180◦−∡QCE\n2 = γ\n2 .\nClaim 1.PFEQare cyclic.\nTo this end we consider the chordFQand show∡QPF+∡FEQ= 180 ◦. We have shown that\n∡QPF=β/2. On the other hand we obtain\n∡FEQ=∡FED+∡DEC+∡CEQ=∡FDB+ (90 ◦−γ/2) +γ/2\n= (90◦−β/2) + 90◦= 180◦−β/2,\nwhich proves the claim.■\n8\nMEMO 2025Individual I-3\nClaim 2.I A is the circumcenter ofPFEQ.\nThe trianglesBFPandCQEare isosceles. Therefore, the perpendicular bisectors of of the\nline segmentsPFandQEare the bisectors of the exterior angles atBandC, respectively. On\nthe one hand these two lines intersect in the circumcenter ofPFEQ, on the other hand they\nintersect inIA. Hence,I A is the circumcenter ofPFEQ.■\nClaim 3.I APCEare cyclic (and analogouslyI ABFQ).\nWe consider the chordPE. Obviously, we have∡ECP=γ. From the central angle - inscribed\nangle theorem inPFEQwe obtain\n∡EIAP= 2∡EQP= 2·γ/2 =γ ,\ni.e.∡EI AP=∡ECPand it follows claim 3.■\nLetG̸=Dbe the intersection of lineIADand the incircle ofABC. We show thatGis the\ndesired common point.\nClaim 4.I AFGQare cyclic (and analogouslyI AEGP).\nWe consider the chordFIA. From the tangent chord angle theorem in the incircle ofABC, it\nfollows\n∡FGIA =∡FGD=∡BFD= 90 ◦−β/2.\nSinceFQI A is isosceles and from the central angle - inscribed angle theorem inPFEQwe\nhave\n∡FQIA = 90◦−∡QIAF\n2 = 90◦−2∡QPF\n2 = 90−β/2,\ni.e.∡FGI A =∡FQI A andI AFGQis cyclic.■\nThe statement follows directly from claim 4.\n9\nMEMO 2025Individual I-3\nA\nB CD\nEF\nI\nP Q\nG\nIA\nSolution 2.We denote byI A the center of the excircle opposite to the vertexAand byDA,E A\nandF A the points of tangency of this excircle with the linesBC,CAandAB, respectively. As\nusual we use the notationsa=BC,b=CAandc=AB,s= a+b+c\n2 ,α=∡BAC,β=∡CBA,\nγ=∡ACBandr A for the radius of the excircle opposite toA.\nClaim 1.PFEQis cyclic with circumcenterI A.\nBy considering the tangent segments from the incircle and the excircle, we obtain the following\nrelations:\nAE=AF=s−a , BP=BD=BF=CD A =s−b ,\nCQ=CD=CE=BD A =s−c , AE A =AF A =s .\nIt follows thatPDA =PB+BD A =s−b+s−c=a,DAQ=D AC+CQ=s−b+s−c=a,\nEAE=AE A−AE=s−(s−a) =aandFAF=AF A−AF=s−(s−a) =a. We conclude\nthat the rectangular trianglesIADAP,I ADAQ,I AEAEandI AFAFare congruent with\n(IAP) 2 = (IAF) 2 = (IAE)2 = (IAQ)2 =r 2\nA +a 2 ,\nwhich shows our claim.■\n10\nMEMO 2025Individual I-3\n90◦\nA\nB CD\nEF\nP Q\nEA\nFA\nDA\nIA\nClaim 2.BI AQFis cyclic (and analogouslyPI ACE).\nWe show that∡FIAB=∡FQBwhich will prove the claim. From the central angle - inscribed\nangle theorem inPQEFwe obtain\n∡FIAP= 2∡FQP .\nOn the other hand the trianglesBIAFandBI APare congruent, because they have the side\nBIA in common,FI A =PI A and∡BFI A =∡I APB(the last equation follows from the\ncongruence of the trianglesIAFAFandI ADAP). Therefore, we have∡FI AP= 2∡FI ABand\nfinally∡FI AB=∡FQB.■\nWe denote the intersection of the circumcircles ofPIACEandBI AQFbyG.\nClaim 3.∡FGI A = 90◦−β/2(and analogously∡IAGE= 90◦−γ/2).\nIn the cyclic quadrilateralFIAQGwe have∡FGI A =∡FQI A. In the isosceles triangleFIAQ\nwe obtain∡FQI A = 90◦−∡QIAF/2. From the central angle - inscribed angle theorem in\nPQEFwe get∡QI AF= 2∡QPF. In the isosceles trianglePBFwith exterior angleβatB\nwe have∡QPF=∡BPFβ/2. Taken all together we get\n∡FGIA =∡FQI A = 90◦−∡QIAF/2 = 90◦−2∡QPF\n2 = 90◦−β/2.\n■\n11\nMEMO 2025Individual I-3\nA\nB C\nEF\nP Q\nG\nIA\nclaim 4.DEGFis cylic.\nFrom claim 3 we have\n∡FGE=∡FGI A +∡IAGE= 90◦−β/2 + 90◦−γ/2 = 180◦−β/2−γ/2.\nOn the other hand in triangleDEFwe obtain\n∡EDF= 180 ◦−∡FDB−∡CDE= 180◦−(90◦−β/2)−(90◦−γ/2) =β/2 +γ/2,\ni.e.∡FGE+∡EDF= 180 ◦, which proves the claim.■\nThe statement follows directly from claim 4.\n12\nMEMO 2025Individual I-3\nA\nB CD\nEF\nI\nG\nSolution 3.LetE ′̸=Ebe the second intersection of the lineEDwith the circumcircle of\n△PCE, and letF′̸=Fbe the second intersection of the lineFDwith the circumcircle of\n△QBF. Then we have\n|DE|·|DE′|=|DP|·|DC|= 2·|DB|·|DC|=|DB|·|DQ|=|DF|·|DF′|,\nsoEFE ′F′is a cyclic quadrilateral. Thus,∡F ′E′E=∡F ′FE=∡DFE=∡CDE(where\nat the last step we used thatCDis tangent to the incircle of△ABCthroughD,EandF).\nTherefore the lineE′F′is parallel to the lineBC.\nFurthermore, sinceCEPE ′is a cyclic quadrilateral by the definition ofE′, and since△CED\nis an isosceles triangle with baseDE, we have\n∡E′PD=∡E ′PC=∡E ′EC=∡DEC=∡CDE=∡PDE ′.\nThis shows that△DPE′is isosceles with basePD. AsBis the midpoint ofDP, this we can\nconclude that∡E′BC=∡E ′BD= 90 ◦.\nAnalogously we can show that that△QDF′is isosceles with baseQDand∡BCF ′= 90◦.\nCombining the facts∡E′BC= 90 ◦and∡BCF ′= 90◦andE ′F′||BC, we can conclude that\nE′F′CBis a rectangle. LetSbe the reflection ofDupon the midpoint of this rectangle. Then\n13\nMEMO 2025Individual I-3\nSlies on the segmentE ′F′and satisfies|E′S|=|DC|and|SF′|=|BD|. ThenE′SCDand\nSF′DBare parallelograms.\nUsingE ′S||PCandSC||E′Dand the fact that△DPE′is isosceles with basePD, we can\nconclude thatE ′SCPis an isosclese trapezoid. In particular,Sis on the circle throughE ′,\nCandP(which also containsE). This implies that the five pointsE ′,S,C,EandPare all\non a common circle. Analogously we can show that the five pointsF′,Q,F,BandSare all\non a common circle. We concude, thatSis one intersection of these two circles. LetG̸=S\nbe the second intersection of these two circles. We need to show thatGlies on the incircle of\n△ABC\nNow, we have (recalling thatEFE′F′is a cyclic quadrilateral)\n∡SGE=∡SE ′E=∡F ′E′E=∡F ′FE=∡DFE.\nAnalogously, we can show∡FGS=∡FED. Adding both of these equations, we obtain\n∡FGE=∡FGS+∡SGE=∡FED+∡DFE= 180 ◦−∡EDF.\nThis shows thatDEGFis a cyclic quadrilateral, soGlies on the incircle of△ABCthrough\nD,EandF.\nA\nB CD\nEF\nP Q\nE′ F′S\nG\n14\nMEMO 2025Individual I-3\nSolution 4.\nClaim.LetPF∩QE=L. ThenL∈ω.\nProof.Denote the angles ofABC∆byα,β,γas standard. By the equalitiesBD=BF=BP\nandCD=CE=CQ, we have:\n•∠DPF= β\n2,\n•∠EQD= γ\n2,\n•hence∠FLE= 180 ◦−β+γ\n2 .\n•∠FDB= 90 ◦−β\n2,\n•∠EDC= 90 ◦−γ\n2,\n•hence∠EDF= 180 ◦−∠FDB−∠EDC=β+γ\n2 .\nSo∠FLE+∠EDF= 180 ◦, meaning thatFLEDis cyclic, showing the claim.\nNow letGbe the centre of the spiral similarity takingFEtoPQ. It is well-known that\nG= (LFE)∩(LPQ) =ω∩(LPQ).\nClaim.The pointsG,P,C,Eare concyclic.\nProof.Using the similarity of trianglesGFEandGPQ, we have∠CPG+∠GEC=∠EFG+\n(∠FEC+∠GEF) =∠FEC+ (180 ◦−∠FGE) = (180◦−∠AEF) +∠EDF= 90◦+ α\n2 + β+γ\n2 =\n180◦.\nSimilarly,G,B,F,Qare concyclic, implying that(PCE)and(BQF)meet atG, onω.\nA\nD\nI\nG\nL\nB\nF\nQ\nC\nE\nP\n15\nMEMO 2025Individual I-4",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 11,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 11, 'algebra': 0, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2025-i4",
+      "year": 2025,
+      "problem_code": "I-4",
+      "statement_en": "A subsetSof the integers is calledSaxonianif for every three pairwise different elementsa,\nb,c∈Sthe numberab+cis the square of an integer. Prove that any Saxonian set is finite.\nDetermine the largest possible number of elements that a Saxonian set can have.",
+      "solution_text_en": "Answer.Every Saxonian set has at most3elements, and there exist Saxonian sets consisting\nof exactly3elements.\nSolution.The set{0,1,4}is an example of a Saxonian set with3elements, as is shown by\nan easy calculation.\nThus, it remains to prove the following claim.\nClaim:A Saxonian set can not have4or more elements.\nProof:Suppose, to the contrary, that there is such setS, and leta<b<c<dbe some of its\nelements. We distinguish between two cases.\nFirst case.c≥0.\nThen one also hasd>0. Ifa<0thenad+c≤(−d) +c<0can not be a perfect square.\nTherefore, it follows that, in fact,d>c>b>a≥0.\nSinceSis Saxonian,cd+a=k 2 andcd+b=l 2, for some nonnegative integerskandl.\nMoreover,b>aimplies thatl≥k+ 1, and by plugging in this inequality again, one finds\ncd+b=l 2≥(k+ 1)2 =k 2 + 2k+ 1 =cd+a+ 2k+ 1.\nThis yields\nk≤b−a−1\n2 .(1)\nOn the other hand,d>c>0anda≥0together imply\nk2 =cd+a≥cd>c 2,\nwhich showsk >c.\nBut this leads to a contradiction, as inequality (1) impliesk≤(b−a−1)/2<b/2<b<c.\n16\nMEMO 2025Individual I-4\nSecond case.c<0.\nThen one also hasa<0. Ifd≥0thenad+c≤(−d) +c<0can not be a perfect square.\nTherefore, it follows thata<b<c<d<0.\nLet us writea=:−A,b=:−B,c=:−C, andd=:−D. Then0<D <C <B <A.\nSinceSis Saxonian,ab+c=AB−C=k 2 andab+d=AB−D=l 2, for some\nnonnegative integerskandl. Moreover,D < Cimplies thatl≥k+ 1, and by plugging\nin this inequality again, one finds\nAB−D=l2≥(k+ 1)2 =k 2 + 2k+ 1 =AB−C+ 2k+ 1.\nThis yields\nk≤C−D−1\n2 .(2)\nOn the other hand,B >C >0andA>Btogether imply\nk2 =AB−C >AB−B= (A−1)B≥B2,\nwhich showsk >B.\nBut this is impossible, as inequality (2) impliesk≤(C−D−1)/2<C/2<C <B.\nThus, both cases above turned out to be contradictory. Therefore, a Saxonian set of at least\nfour elements does indeed not exist.\nRemark:There are many Saxonian sets of three elements. A computer experiment delivers\nalready 107 Saxonian sets{a,b,c}of integers−100≤a < b < c≤100. Among them, there\nare very obvious ones such as those of type{0,i2,j 2}, for positive integersi̸=j, but as well\nmany others, such as{−98,−59,−6}.\n17\nMEMO 2025T eam T-1",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 1,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 1, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2025-t1",
+      "year": 2025,
+      "problem_code": "T-1",
+      "statement_en": "Bob hasncoins with integer values\nc1≥c2≥···≥cn >0.\nHe is standing in front of a vending machine that offersncandy bars with positive integer costs\nb1, b2, . . . , bn.Bob notices that for everyi∈{1, . . . , n}, it holds that\nb1 +b 2 +···+bi≥c1 +c 2 +···+ci.\nFurthermore, the total value of Bob’s coins equals the sum of the costs of all the candy bars.\nThe candy bars can be purchased in any order. In order to buy thei-th candy bar, Bob has to\ninsert coins of total value at leastbi. However, the machine does not give him back any change.\nProve that Bob can buy at least half of the candy bars.",
+      "solution_text_en": "Solution 1.Letm :=⌊n\n2⌋and let\nS :=b 1 +b 2 +···+bn =c 1 +c 2 +···+cn.\nWe call the coins with valuec1,...,cm thevaluable coins. In the following, we will show that\nPepa can buy the bars that costbm+1,...,bn.\nRewriting the condition from the problem statement fori=myields\nb1 +b 2 +···+bm≥c1 +c 2 +···+cm,\n⇐⇒S−b m+1−bm+2−···−bn≥S−cm+1−cm+2 +···+cn,\n⇐⇒c m+1 +cm+2 +···+cn≥bm+1 +bm+2 +···+bn.(†)\nWe can represent the situation visually by splitting an interval of lengthSintonsegments\nB1,...,Bn of lengthb 1,...,bn in that order, and another interval of lengthSintonsegments\nC1,...,Cn of lengthc 1,...,cn in that order. We view these two intervals side by side.\nWe would like to pay for the bar represented byBi (wherei>m) using the coins represented\nby those segments that overlap the intervalBi. That would clearly be enough to pay for the\nbar, but some coins might be used multiple times to pay for different bars. Luckily, because of\n(†), we have not used any valuable coins at all. We just need to show that we can use these\nvaluable coins in place of the coins that were used multiple times.\nWhen did we use the coin represented byCj to pay for both the bars represented byBi and\nBi+1? If and only if the boundary betweenBi andB i+1 lies inside the intervalCj. Hence, the\n18\nMEMO 2025T eam T-1\nb1\nb2\nb3\nb4\nb5\nc1\nc2\nc3\nc4\nc5\nb1\nb2\nb3\nb4\nb5\nc1\nc2\nc3\nc4\nc5\nb1\nb2\nb3\nb4\nb5\nc1\nc2\nc3\nc4\nc5\nnumber of times we use the coin represented byCj equals one plus the number of boundaries\ninside ofCj. We are only buyingn−mbars and thus the number of boundaries between them\nis at mostn−m−1≤m. (Some boundaries between theBi’s might align perfectly with\nboundaries between theCj’s. In that case, the number of repeated uses of some coin will be\neven smaller thann−m−1.)\nThis means that we have enough valuable coins to cover for the coins used multiple times.\nEach of these valuable coins is at least as valuable as any of the “original” coins that were used\nmultiple times, so we successfully pay for the chosen candy bars.\nSolution 2.We may assume without loss of generality thatb 1≥···≥bn. Indeed, if this\nwere not the case andπwould be the permutation such thatbπ(1)≥···≥bπ(n), then for every\ni∈{1,...,n}, we would have\nbπ(1)+···+bπ(i)≥b1 +···+bi≥c1 +···+ci.\nThus, the problem requirement is also fulfilled forbπ(1),...,bπ(n)instead ofb 1,...,bn.\nClaim.The following holds:\n(a)c n≥bn;\n(b)c n−2k+1+cn−2k≥bn−k, for eachk∈{1,...,⌈n/2⌉−1}.\n19\nMEMO 2025T eam T-1\nOnce we prove the claim, we are done because it explicitly shows how Pepe can buy the candy\nbars which costb⌊n/2⌋+1,...,bn.\nProof of the claim.First, we derive the inequality\ncl+cl+1+···+cn≥bl+bl+1+···+bn (∗)\nfor anyl∈{1,...,n}in essentially the same way as in the first solution, where we did this\nonly forl=m+ 1. Taking (∗) forl=nimmediately justifies (a).\nNow, because the sequencesb1,...,bn andc 1,...,cn both are weakly decreasing, for anyk∈\n{1,...,⌈n/2⌉−1}, we have\ncn−2k+cn−2k+1\n(1)\n≥ 2\n2k+ 1 (cn−2k+cn−2k+1+···+cn)\n(∗)\n≥ 2\n2k+ 1 (bn−2k+bn−2k+1+···+bn)\n(2)\n≥ 2\n2k+ 1 (bn−2k+bn−2k+1+···+bn−k)\n(3)\n≥ 2\n2k+ 1 ·(k+ 1)·bn−k.\nThese inequalities are justified as follows: (1) holds because the average ofcn−2k,cn−2k+1is\nclearly at least as large as the average ofcn−2k,...,cn, (2) is merely throwing away some non-\nnegative terms, and (3) is bounding the smallest element ofbn−2k,...,bn−kby the average.\nOverall, we obtain\ncn−2k+cn−2k+1≥2k+ 2\n2k+ 1 ·bn−k>b n−k.\n20\nMEMO 2025T eam T-2",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 1,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 1, 'combinatorics': 3}"
+    },
+    {
+      "id": "memo-2025-t2",
+      "year": 2025,
+      "problem_code": "T-2",
+      "statement_en": "LetR + be the set of positive real numbers. Determine all functionsf:R+→R+ such that for\nall numbersx, y∈R+, we have\nf(xy) +f(x) =f(y)f \u0000xf(y)\u0001 +f(x)f(y),\nand there exists at most one numbera∈R+ such thatf(a) = 1.",
+      "solution_text_en": "Answer.The functionf(x) = 1/xis the only function solving the functional equation.\nProof that this is a solution.For the functionf(x) = 1/x, we indeed have\nf(xy) +f(x) = 1\nxy + 1\nx = 1\ny·1\nx/y + 1\nx·1\ny =f(y)f(xf(y)) +f(x)f(y)\nfor allx,y∈R+. The equalityf(a) = 1is only attained forf(a) = 1\na = 1⇔a= 1.\nProof that there are no other solutions.The solution consists of two parts. In the first\n(more complicated) part, we show thatf(1) = 1follows from the functional equation, so1is\nactually in the image off. In the second part, we show then thatf(x) =1\nx is the only function\nsatisfying the functional equation where1is the unique preimage of1(i.e. wheref(1) = 1but\nf(a)̸= 1for alla̸= 1). For simplicity of notation, let in both partsP(x,y)denote the equality\nfrom the problem and denotef(f(x))byff(x).\nFirst part.We want to describe as much dependencies as possible in terms of1andf(1)\nto finally showf(1) = 1. The key insights to this part are not being afraid of complicated\nconstants and looking at a simplified version ofP(x,yf(1))later.\nPlugging in easy examples forxandygives us\nP(1,1) =⇒ff(1) = 2−f(1)(1)\nP(x,1)\n(1)\n=⇒f(f(1)x) = 2−f(1)\nf(1) f(x) = ff(1)\nf(1) f(x)(2)\nP(x,f(1))\n(1),(2)\n=⇒f(ff(1)x) = 2−2f(1) +f(1)2\nf(1)ff(1) f(x)(3)\n(2),(3)=⇒f\n\u0010ff(1)\nf(1) x\n\u0011\n= 2−2f(1) +f(1)2\nf(1)ff(1) f\n\u0010 x\nf(1)\n\u0011\n= 2−2f(1) +f(1)2\nff(1) 2 f(x).(4)\nThis allows us to simplifyff(1)andf(cx)for some constantsc. Note thatf(x)>0, so all\ndenominators are positive.\n21\nMEMO 2025T eam T-2\nNow,\nP(x,yf(1))\n(2)\n=⇒f(x) +f(f(1)xy) =f(f(1)y)f\n\u0010ff(1)\nf(1) xf(y)\n\u0011\n+f(x)f(f(1)y)\n(2),(4)\n=⇒f(x) + ff(1)\nf(1) f(xy) = 2−2f(1) +f(1)2\nf(1)ff(1) f(y)f(xf(y)) + ff(1)\nf(1) f(x)f(y),\n(5)\nusing (2) and (4) to pull out the constant factors.\nThe identity (5) is similar toP(x,y)with different coefficients, so we may subtract a multiple\nofP(x,y)to anihilate the termf(y)f(xf(y))and get\n\u0010\n1−2−2f(1) +f(1)2\nf(1)ff(1)\n\u0011\nf(x) +c·f(xy) =c·f(x)f(y)\n(1)\n=⇒ −2(1−f(1))2\nf(1)(2−f(1))f(x) =−c·f(xy) +c·f(x)f(y),(6)\nwherecis a constant we do not need to calculate.\nAs the right side of (6) does not change when we exchangexandyand the left side is constant\niny, we can conclude that the left side of (6) must also be also constant inx. Sof(1) = 1and\nwe are done with the first part, or we get thatfis constant. But as2 =f(1) +ff(1)by (1),\nthis also impliesf(1) = 1.\nSecond part.We now know thatf(1) = 1and use it without further notice.\nFirst, we note that the right side of the functional equation only depends onxandf(y), but\nnot ony, so forf(y 1) =f(y 2), we get\nf(x) +f(xy 1) =f(x) +f(xy 2).\nBy choosingx= 1\ny1\n, this implies thatf( y2\ny1\n) =f(1) = 1. By the assumption that there is at\nmost oneawithf(a) = 1, this impliesy 1 =y 2, sofis injective.\nNow,\nP(1,y) =⇒1 =f(y)ff(y)(7)\nP(1,f(y)) =⇒1 =ff(y)fff(y)\nsof(y) = 1\nff(y) =fff(y). By injectivity, we can concludey=ff(y). So, (7) implies that\nf(y) = 1\nff(y) = 1\ny for ally. In other words, the functionfmust be given byf(x) = 1/xfor all\nx∈R+.\n22\nMEMO 2025T eam T-2\nSecond part, alternative.We havef(1) = 1and use it without further notice. Moreover, we\nhave\nP(1,y) =⇒1 =f(y)ff(y)(7)\nP(f(x),f(x))\n(7)\n=⇒f(f(x) 2) = (ff(x)) 2 (8)\nP(f(x),x)\n(7),(8)\n=⇒f(xf(x)) = 1(9)\nAs1is the only preimage of the value1for the functionf, from (9) we can deducexf(x) = 1.\nSo we havef(x) = 1\nx for allx∈R+.\n23\nMEMO 2025T eam T-3",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 1,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 1, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2025-t3",
+      "year": 2025,
+      "problem_code": "T-3",
+      "statement_en": "Asnakein ann×ngrid is a path composed of straight line seg-\nments between centres of adjacent cells, going through the centres\nof all then 2 grid cells, which visits each cell exactly once. Here\ntwo grid cells are considered to be adjacent if they share an edge.\nNote that all pieces of the snake path are parallel to grid lines.\nThe figure shows an example of a snake in a4×4grid. This snake\nmakes nine90 ◦ turns, marked by small black squares.\nLet us now consider a snake through the2025cells of a45×45grid. What is the maximum\npossible number of90◦ turns that such a snake can make?",
+      "solution_text_en": "Answer.The maximum number of90◦turns is 1979.\nOptimal Construction.The maximum number 1979 if turns can be achieved by the “double\nsnail”. The following figure shows these for a7×7grid.\nSuch a double snail goes around the board in L-shaped layers of width 2, as is depicted in the\nfigure. There are two cells in each layer it passes straight through. The only other non-corners\nare the starting and ending point, which gives452−44−2 = 1979turns.\nProof of that at most 1979 turns are possible.Color the table as shown in the figure above:\ncolor like in chess, but instead of black, color alternately by red and blue, with red in the corners\nof the table. This gives232 red and22 2 blue cells, so there are 45 more red cells than blue cells.\nIf the snake turns in a white cell, the cells immediately before and after are of different colors\n(one is red and one is blue). Thus, when considering the sequence of colored (red or blue) cells\nalong the snake, between any two consecutive red cells in this sequence, the snake must pass\nthrough a white cell without turning there. The sequence of colored cells consists of232 red\ncells and22 2 blue cells, so in this sequence there must be at least232−222−1 = 2·22 = 44\npairs of consecutive red cells. Therefore, there must be at least44white cells on which the\nsnake is not turning. Together with the two endpoints of the snake (which must be on colored\n24\nMEMO 2025T eam T-3\ncells since the snake is alternating between colored cells and white cells, and there are more\ncolored than white cells), we find at least 46 cells where the snake does not make a90◦turn.\nThus, we can have at most452−46 = 1979turns, as claimed.\nAlternative proof that at most 1979 turns are possible.Consider a snake in a45×45grid.\nWecallacellstraightifthesnakedoesnothavea90 ◦turninthatcell. Inparticular, thefirstand\nthe last cell of the snake are straight. We will show that the snake has at least46straight cells.\nThis implies that the number of90◦turn of the snake is at most452−46 = 2025−46 = 1979.\nClaim 1.Each row and each column of the grid contains at least one straight cell.\nProof.Indeed, consider any rowR, and suppose thatRdoes not contain a straight cell. In\nparticular, the start and end of the snake cannot be inR. When traversing the snake from\nstart to end, the snake will enterRvertically from the top or bottom, turn to take a horizontal\nstep alongRto a neighboring cell, and then turn away vertically again. Later, the snake will\nenterRagain, take another horizontal step alongRto a neighboring cell, and then leaveR\nagain; and so on. In particular, there would need to be equally many cells inR, where the\nsnake entersRand where the snake exitsR. However, this is impossible, sinceRcontains45\ncells, which is an odd number.\nFor columns, the proof is similar.\nThis already shows the existence of at least45straight cells.\nNow, let us assume without loss of generality that the first step of the snake (from the starting\npoint to its second cell) is horizontal (otherwise we can consider a reflection of the snake along\nthe main diagonal of the grid). Let the first two cells of the snake be in rowR.\nClaim 2.Rcontains another straight cell besides the first cell of the snake.\nOnce we have proved the claim, we are done sinceRcontains at least2straight cells, and each\nof the other44rows contains at least one straight cell (making a total of at least46straight\ncells).\nProof of Claim 2.Suppose thatRdoes not contain another straight cell besides the start of\nthe snake. In particular, the end of the snake cannot be inR. When traversing the snake from\nstart to end, the snake will start inR, take a horizontal step alongRto a neighboring cell, and\nthen turn away vertically. Afterwards, the snake would enter vertically, take a horizontal step\nalongRto a neighboring cell, and then exitRagain there. In particular, there would need to\nbe equally many cells inR, where the snake starts or entersRand where the snake exitsR.\nHowever, this is impossible, sinceRcontains45cells, which is an odd number.\n25\nMEMO 2025T eam T-3\nComments.The problem (and the solutions) can be generalized in a straightforward way for\nany oddnin place of45, the maximum possible number of turns is thenn2−n−1.\nFor evenn, the “double snail” construction gives the valuen2−n, but we do not have a proof\nof its optimality.\n26\nMEMO 2025T eam T-4",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 7
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "adjacent",
+        "color",
+        "edge",
+        "grid",
+        "oard",
+        "path"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 0, 'combinatorics': 7}"
+    },
+    {
+      "id": "memo-2025-t4",
+      "year": 2025,
+      "problem_code": "T-4",
+      "statement_en": "Letnbe a positive integer. In the province of Laplandia there are100ncities, each two\nconnected by a direct road, and each of these roads has a toll station collecting a positive\namount of toll revenue. For each road, the revenue of its toll station is split equally between\nthe two cities at the ends of the road (meaning that each of the two cities receives half of the\nincome). For each city, the total toll revenue is given by the sum of the revenues it receives\nfrom the100n−1toll stations on its roads.\nAccording to a new law, the revenues of some of the toll stations will be collected by the federal\ngovernment instead of by the adjacent cities. The governor of Laplandia is allowed to choose\nthose toll stations. The mayors of the cities demand that for each city, the sum of the remaining\nrevenues it receives from the other toll stations after this change is at least99%of its former\ntotal toll revenue.\nFind the largest positive integerk, depending onn, such that the governor can always choosek\ntoll stations for the federal government to collect the toll revenue, while satisfying the demand\nof the city mayors.",
+      "solution_text_en": "Answer.k= 100 \u0000n\n2\n\u0001.\nWe consider a complete graph whose vertex set is the set of the100ncities in Laplandia. We\nassign weights to the edges, where for every edge the weight is the revenue from the toll station\nof the corresponding road that each of the two cities at its endpoints receives (i.e. half of the\ntotal revenue of the road). The question now asks how many edges can be removed such that\nat each vertex the sum of the weights of the incident edges decreases by at most1%.\nProof ofk≤100\u0000n\n2\n\u0001.Let us consider an assignment of edge weights, where the weights on all\nof the edges are equal (meaning that each road collects the same amount of toll revenue). In\nthis case, one cannot remove more than1%of the100n−1edges incident to any vertex. Thus,\nat every vertex at most⌊1\n100(100n−1)⌋=n−1edges can be removed. So by the handshake\nlemma, the total number of edges that can be removed is at most1\n2(n−1)(100n) = 100\u0000n\n2\n\u0001.\nProof ofk≥100 \u0000n\n2\n\u0001.Now consider any assignment of positive edge weights. We need to\nshow that we can remove100\u0000n\n2\n\u0001 edges in such a way that at every vertex the sum of the edge\nweights is decreased by at most1%.\nPartition the vertices of the graph into100(not necessarily equally sized) parts to minimize\nthe sum of the weights of all edges whose endpoints lie in the same part of the partition. By\nthe minimality of this choice, we have the following: For any vertexvin partPand any other\npartP ′, the sum of the weights of the edges going fromvtoP′is at least as large as the sum\nof the weights of the edges going fromvto the other vertices inP(otherwise we could move\n27\nMEMO 2025T eam T-4\nvfromPtoP ′and improve our partition). Therefore, for each vertexv, the edges fromv\nto the other vertices inPcontribute at most a fraction of 1\n100 = 1%of the total sum of the\nweights at vertexv. Thus, we can remove all edges whose end vertices belong to the same part\nin the partition, and this will decrease the sum of the weights at every vertex by at most1%.\nIt remains to show that when doing this, we remove at least\u0000n\n2\n\u0001 edges.\nLettinga 1,a 2,...,a 100 be the sizes of the parts of the vertex partition (wherea1 +···+a100 =\n100n), the number of removed edges is\nÇ\na1\n2\nå\n+\nÇ\na2\n2\nå\n+···+\nÇ\na100\n2\nå\n=\n100∑\ni=1\n1\n2(a2\ni−ai) = 1\n2(a2\n1 +a 2\n2 +···+a2\n100)−50n\n≥50n2−50n= 100\nÇ\nn\n2\nå\n,\nwhere the inequality follows from the inequality between arithmetic and quadratic mean.\n28\nMEMO 2025T eam T-5",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 8
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "adjacent",
+        "connected",
+        "edge",
+        "edges",
+        "graph",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 8}"
+    },
+    {
+      "id": "memo-2025-t5",
+      "year": 2025,
+      "problem_code": "T-5",
+      "statement_en": "LetABCbe an acute triangle withAB < AC. Denote byDthe foot of the perpendicular from\nAtoBC. LetEbe the point such thatABECis a parallelogram. LetMbe a point inside\ntriangleABCsuch thatM B=M C. LetFbe the reflection of pointDacross the tangent to\nthe circumcircle of triangleADMat pointM. Prove thatAF=DE.",
+      "solution_text_en": "Solution 1.LetD ′be the projection ofEonBC. The parallelogramABECis point sym-\nmetric with respect to the center of the line segmentBC. Therefore,DandD ′are also\nsymmetric with respect to this center and we obtainDE=AD′. Hence we only need to prove\nAD′=AF.\nLetTbe the center of the line segmentDF. By definition of the pointF, the lineTMis the\ntangent to the circumcircle ofADMatMandMD=MF. In addition we haveMD=MD ′\nsince the pointMis on the perpendicular bisector ofBCandDandD ′are symmetric with\nrespect to this bisector. It follows thatMis the circumcenter of triangleDFD′.\nFrom the tangent chord angle theorem with chordDMin the circumcircle ofADMwe obtain\n∡DAM=∡DMT. Furthermore, we have∡DMT=∡TMFand∡DMF= 2∡DMT=\n2∡DAM. In the circumcircle ofDFD′with centerMwe obtain\n∡DD′F= 1\n2∡DMF=∡DAM .\nWe denote byIthe intersection point ofAMandD ′F. From∡DAI=∡DAM=∡DD ′F=\n∡DD′Iit follows thatA,D,I,D ′are concyclic.\nIn the cyclic quadrilateralADID ′with chordAD ′we obtain90◦=∡D ′DA=∡D ′IA, i.e\nAM⊥D′F. SinceMF=MD ′it follows thatAMis the perpendicular bisector ofFD ′and\nwe haveAF=AD ′, as required.\n29\nMEMO 2025T eam T-5\n90◦\n90◦\nA\nB CD\nE\nD′\nF\nM\nT I\nSolution 2.As shown in the first solution we only have to prove, thatAF=AD ′, whereD′\nis the reflection ofDwith respect to the perpendicular bisector of the line segmentBC.\nIn the triangleADMwe denote the projection of the pointMonto the lineADbySand\n∡DAM=αand∡MDA=δ. In the rectangular trianglesASMandMSDthe following\nrelations hold:\nAM 2 =AS 2 +SM 2 , AS=AMcos(α), SM=AMsin(α)\nDM 2 =DS 2 +SM 2 , DS=DMcos(δ), SM=DMsin(δ).(1)\nLetTbe the center of the line segmentDF. By definition of the pointFwe haveMD=MF\nand∡DMT=∡TMFand the lineTMis the tangent to the circumcircle ofADMatM.\nFrom the tangent chord angle theorem with chordDMin the circumcircle ofADMwe obtain\nα=∡DMT. It follows\n∡AMF=∡AMD+∡DMT+∡TMF\n= (180◦−δ−α) + 2α\n= 180◦−δ+α .(2)\n30\nMEMO 2025T eam T-5\nUsing the law of cosine in the triangle AFM we obtain\nAF 2 =AM 2 +MF 2−2AM·MF·cos(∡AMF)\n=AM 2 +MD 2 + 2AM·MD·cos(−δ+α)\n= (AS2 +SM 2) + (SD2 +SM 2) + 2AM·MD(cos(α) cos(δ) + sin(α) sin(δ))\n=AS 2 +SD 2 + 2AS·SD+ 4SM2 =AD 2 + 4SM 2 .(3)\nSince the pointMis on the perpendicular bisector of the line segmentD′DandMSis parallel\ntoDD ′we haveDD′= 2MS. Finally we getAF 2 =AD 2 + (2SM) 2 =AD 2 +D′D2 =AD′2,\nas required.\n90◦\n90◦\nA\nD\nM\nT\nF\nS\nα\nδ\nSolution 3.LetZbe the midpoint ofBC. By definition ofE, the point reflection inZmaps\nEtoA; let it mapDtoD ′. By the choice ofM,MZis the perpendicular bisector ofBC, so the\nreflection acrossMZalso mapsDtoD ′. Consider the concatenation with the reflection across\nAMwhich mapsD ′to some pointD′′. This concatenation is a rotation about the common\npointMof both axes by2∠(MZ,AM) = 2∠DAM=∠DMF, sinceDA∥MZand∠DMF\nis by construction twice the tangent angle ofDMatM. SoDis mapped toF, i.e.F=D ′′,\nand we get|AF|=|AD′′|=|AD′|=|ED|.\n31\nMEMO 2025T eam T-5\n90◦\nA\nB CD\nE\nD′\nF=D ′′\nM\nZ\n32\nMEMO 2025T eam T-6",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 8,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 8, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2025-t6",
+      "year": 2025,
+      "problem_code": "T-6",
+      "statement_en": "LetABCbe an acute triangle with an interior pointDsuch that∠BDC= 180 ◦−∠BAC. The\nlinesBDandACintersect at the pointE, and the linesCDandABintersect at the pointF.\nThe pointsP̸=EandQ̸=Flie on the lineEFso thatBP=BEandCQ=CF. Assume\nthat the segmentsAPandAQintersect the circumcircleωofABCat the pointsR̸=Aand\nS̸=A, respectively. Prove that the linesRFandSEintersect onω.",
+      "solution_text_en": "Solution 1.First of all, pointsA,F,D,Eare concyclic due to∠EDF=∠BDC= 180 ◦−\n∠BAC.\nDenote byTthe intersection point of segmentsADandEF. We will prove thatATBPis\na cyclic quadrilateral, by angle chasing:\n∠BAT=∠FAD=∠FED=∠PEB=∠BPE=∠BPT.\nAnalogously,ATCQis a cyclic quadrilateral.\nConsider triangleAPQand pointsR,S,Ton its sides. Miquel’s theorem gives that there is\na common pointMof the circumcircles ofARS,PTR, andQST.\nA\nB C\nD\nEF\nP\nQ\nR S\nM\nT\nLet us look at the cyclic quadruples(P,R,T,M),(A,T,B,P), and(A,R,B,M). Due to the\nradical axis theorem, the linesPT,AB, andRMare concurrent, which proves that the points\nR,F,Mare collinear.\nAnalogously, the cyclic quadruples(Q,S,T,M),(A,T,C,Q), and(A,S,C,M)give that points\nS,E,Mare collinear, which finishes the proof.\n33\nMEMO 2025T eam T-6\nSolution 2.LetXbe the intersection ofBPandCQ.\nClaim 1.Xis onω.\nBecause the trianglesPBEandFCQare isosceles we have∡BPE=∡PEBand∡CFQ=\n∡FQC. It follows in the trianglesPXQandFDE\n∡QXP= 180 ◦−∡BPE−∡FQC= 180◦−∡PEB−∡CFQ=∡EDF= 180◦−∡BAC.\nIfXandAlie on opposite sides of lineBC, then the claim 1 follows directly. IfXandAlie on\nthe same side of lineBC, then it follows that∡BXC= 180◦−∡QXP=∡BACand finally\nclaim 1.\nLetYbe the intersection ofBSandCR.\nClaim 2.The pointYis on the linePQ=EF.\nBy Pascal’s theorem applied toBSARCXthe pointsBS∩CR=Y,SA∩CX=Qand\nAR∩XB=Pare on one line, which proves claim 2.\nLetZ̸=Sbe the second intersection ofSEwithω.\nClaim 3.Zis on the lineRF.\nBy Pascal’s theorem applied toBSZRCAthe pointsBS∩RC=Y,SZ∩CA=Eand\nZR∩ABare on one line. Because of claim 2Yis onEFand therefore the pointZR∩ABis\nalso onEF, i.e.F=ZR∩ABandR,FandZare on one line.\nIt follows thatZis the intersection ofRFandSEwhich is also onω.\nA\nB C\nD\nE\nF\nR\nS\nP\nQ\nX\nY\nZ\n34\nMEMO 2025T eam T-6\nSketch of a solution using spiral similarityLetX=BP∩CQ. As in the second solution, we\nhaveX∈ω. Now letG̸=Xbe the second intersection of circles(XBC) =ωand(XPQ).\nClaim.We have△GFE∼△GRS.\nProof.By the spiral similarity lemma,△GBC∼△GPQ. So\n∠GPE=∠GPQ=∠GBC=∠GAC=∠GAE,\nimplying thatGEAPis a cyclic quadrilateral. This yields\n∠FEG=∠PEG=∠PAG=∠RAG=∠RSG.\nSimilarly,GFAQis cyclic and we obtain∠GFE=∠GRS. Therefore,△GFE∼△GRS.\nFrom the claim, the spiral similarity lemma yields thatRF∩SElies on(GRS) =ω.\nRemark.PointGsatisfies(A,G;B,C) =−1and is in particular fixed whenDmoves.\nωA\nB C\nD\nE\nF\nG\nP\nQ\nR S\nX\n35\nMEMO 2025T eam T-7",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2025-t7",
+      "year": 2025,
+      "problem_code": "T-7",
+      "statement_en": "Letnbe a positive integer such that thesumof positive divisors ofn 2 +n+ 1is divisible by3.\nProve that it is possible to partition the set of positive divisors ofn2 +n+ 1into three sets such\nthat theproductof all elements in each set is the same.",
+      "solution_text_en": "Solution.We first prove the following lemma.\nLemma.Letpbe prime divisor ofn 2 +n+ 1. Thenp= 3orp≡1 (mod 3).\nProof.We haven 2 +n+ 1≡0 (modp). Multiplying byn−1, we getn 3 ≡1 (modp).\nThus, the order ofnmodulopis either1or3. If the order is1thenn≡1 (modp), hence\n0≡n2 +n+ 1≡3 (modp), andp= 3. Otherwise, the order ofnmodulop, which must divide\np−1according to Fermat, is3. Therefore,p≡1 (mod 3).\nWe now come back to the original problem.\nLetm:=n 2 +n+ 1and consider the prime decompositionm=p α1\n1 ·...·pαk\nk ofm. Then the\nsum of the divisors ofmis\nσ(m) =σ(pα1\n1 )·...·σ(pαk\nk ) = (1 +p 1 +p 2\n1 +···+pα1\n1 )·...·(1 +pk +p 2\nk +···+pαk\n1 ).\nThe assumption implies that at least one of the factors on the right hand side is divisible by3.\nIfp i = 3then(1 +p i +p 2\ni +···+pαi\ni )is not divisible by3. Hence, there must be some prime\nfactorp j≡1 (mod 3)such that3|(1 +pj +p 2\nj +···+p\nαj\nj ), which showsαj≡2 (mod 3).\nThe number of divisors ofmisd(m) =d(p α1\n1 )·...·d(pαk\nk ) = (α1 + 1)·...·(αk + 1). Since\nαj≡2 (mod 3), one may conclude that the number of divisors ofmis divisible by3, too.\nMoreover, one observes thatmis not a perfect square. Indeed,n2 <m=n 2 +n+ 1<(n+ 1) 2.\nLetdbe any divisor ofm. Then m\nd is also a divisor ofn, andd̸=m\nd. Thus, one may pair every\ndivisordofmwith the complementary divisor m\nd. The product of the elements of any of these\npairs is then equal tom\nSince the number of divisors is divisible by3, the same is true for the number of pairs. One can\ntherefore split the set of these pairs into three subsets such that each subset consists of the\nsame number of pairs. This leads to three groups of divisors, and the product of all elements\nof each group must be the same.\nRemarks:1. There are other, less elegant ways to describe a partition of the divisors of\nn2 +n+ 1into three groups such that each group has the same product. Let us indicate at\nleast one of them.\n36\nMEMO 2025T eam T-7\nWritem=p\nαj\nj ·N, forN:=m/p\nαj\nj , and suppose thatαj≡2 (mod 3). Then every divisor\nofmmay uniquely be written in the formpa\nj·n, for0≤a≤αj andn|N. Let us distinguish\nbetween two cases.\nαj≡5 (mod 6).\nThen writeαj = 6l−1, for a positive integerl, and put\nG1 :={pa\nj·n|0≤a≤l−1or5l≤a≤6l−1},\nG2 :={pa\nj·n|l≤a≤2l−1or4l≤a≤5l−1},and\nG3 :={pa\nj·n|2l≤a≤4l−1}.\nαj≡2 (mod 6).\nThenNis a non-square. Put, at first,\nG1 :={pa\nj·n|a≡1 (mod3)}.\nThe remaining divisors ofmcome in blocks of four, and are distributed amongG2 andG 3\naccording to the following rule. Ifpa\nj·nis put intoG2 then putp\nαj−a\nj ·(N/n)intoG2,\nas well, but putp\nαj−a\nj ·nandpa\nj·(N/n)intoG3.\n2. The smallest positive integernsuch that the sum of the positive divisors ofn2 +n+ 1is\ndivisible by3isn= 22. Then\nn2 +n+ 1 = 507 = 3·132\nandσ(507) = (1 + 3)·(1 + 13 + 132)≡0 (mod 3).\n37\nMEMO 2025T eam T-8",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 4,
+        "combinatorics": 5
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 4, 'combinatorics': 5}"
+    },
+    {
+      "id": "memo-2025-t8",
+      "year": 2025,
+      "problem_code": "T-8",
+      "statement_en": "Determine whether the following statement is true for every polynomialPof degree at least 2\nwith nonnegative integer coefficients:\nThere exists a positive integermsuch that for infinitely many positive integersnthe num-\nberP n(m)has more thanndistinct positive divisors.",
+      "solution_text_en": "Remark.HereP n denotesPappliedntimes, this meansP n(x) =P(P(...P| {z }\nntimes\n(x)...)).\nAnswer.Yes, there is always a positive integermsuch thatP n(m)has more thanndistinct\npositive divisors for infinitely many positive integersn.\nSolution.We will show that\nm=\n\n\n\n2,forP(0) = 0,\nP(0),forP(0)>0,\nworks.\nLetτ(r)denote the number of distinct positive divisors of the positive integerr.\nCase 1:P(0) = 0.\nSince the polynomialPhas degree at least two and non-negative coefficients, one has\nP(l)≥l2 >2, for everyl≥2. In particular, one may conclude inductively that\nPk(2)>P k−1(2)>2\nholds, for every integerk≥2.\nFurthermore,P(0) = 0impliesx|P(x), whence each divisor ofP k−1(2)is a divisor of\nPk(2), too. Together with the fact thatPk(2)>P k−1(2)has at least one further divisor\n(itself), one knows thatτ(Pk(2))≥τ(Pk−1(2)) + 1, for every integerk≥2. From this,\nby induction, one gets\nτ\u0000Pk(2)\u0001≥τ\u0000P(2)\u0001 +k−1≥2 +k−1>k,\nas asserted.\nCase 2:P(0)>0.\nThe following lemma is essential.\n38\nMEMO 2025T eam T-8\nLemma.LetAandBbe integers such thatA|BandB >A 2. Then\nτ(B)≥2τ(A).\nProof.One hasB >A 2≥1, so thatBhas at least one prime factor. Thus, one can write\nB=p b1\n1 pb2\n2 ...pbi\ni , for distinct primespj and positive integersbj. Moreover, sinceA|B,\none hasA=p a1\n1 pa2\n2 ...pai\ni , for non-negative integersaj such thataj≤bj.\nThe assumptionB >A 2 implies the existence of an indexksuch thatbk >2a k. Since\nτ(B) =\ni∏\nj=1\n(bj + 1)andτ(A) =\ni∏\nj=1\n(aj + 1),\nit turns out that indeed\nτ(B)\nτ(A)=\ni∏\nj=1\nbj + 1\naj + 1≥bk + 1\nak + 1≥(2ak + 1) + 1\nak + 1 = 2.\nCorollary.LetQ(x)be a polynomial with non-negative coefficients and degree at least2,\nsuch thatQ(0)>0. Then\nτ\u0000Q\u0000Q(0)\u0001\u0001≥2τ\u0000Q(0)\u0001.\nProof.SinceQhas integer coefficients,(a−b)|\u0000Q(a)−Q(b)\u0001, for any integersaandb.\nIn particular,\u0000Q(0)−0\u0001|\u0000Q\u0000Q(0)\u0001−Q(0)\u0001, soQ(0)|\u0000Q\u0000Q(0)\u0001−Q(0)\u0001 and\nQ(0)|Q\u0000Q(0)\u0001.\nIf we writeQ(x) =a dxd +...a 1x+a 0 thena 0 =Q(0)>0, so\nQ(x)≥adxd +a 0 >a dxd≥xd≥x2,\nfor any non-negative integerx. In particular,Q\u0000Q(0)\u0001>Q(0) 2≥1.\nThus, the lemma applies withA:=Q(0)andB:=Q \u0000Q(0)\u0001, and shows that indeed\nτ\u0000Q\u0000Q(0)\u0001\u0001≥2τ\u0000Q(0)\u0001.\nReturning to the original problem, let us putm :=P(0). We will show by induction\nonkthat, for alln := 2k−1, the valuePn(m) =P 2k\n(0)has at leastn+ 1 = 2 k positive\ndivisors.\nFork= 1, the corollary implies thatP \u0000P(0)\u0001 has at least2positive divisors, which is\nexactly what is stated.\nFinally, when the statement is to be shown for some fixedk≥2, one may suppose that\nit is already known fork−1. Then, using the induction hypothesis and the corollary for\n39\nMEMO 2025T eam T-8\nQ:=P 2k\n, one gets\nτ\nÄ\nP 2k−1(m)\nä\n=τ\nÄ\nP 2k\n(0)\nä\n=τ\nÄ\nP 2k−1Ä\nP 2k−1\n(0)\nää\n≥2τ\nÄ\nP 2k−1\n(0)\nä\n≥2·2k−1= 2k.\nThis completes the solution.\n40",
+      "source": {
+        "page_url": "https://www.memo2025.de/Erg_en.html",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_I_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2025.de/media/MEMO_2025_T_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2025.de/media/MEMO-2025-SolutionBooklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2025-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 3,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 3, 'combinatorics': 0}"
+    }
+  ]
+}

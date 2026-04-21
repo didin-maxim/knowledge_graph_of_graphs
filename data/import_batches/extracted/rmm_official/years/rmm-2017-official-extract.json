@@ -1,0 +1,345 @@
+{
+  "year": 2017,
+  "edition_code": "rmm2017",
+  "problems_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=problems_math",
+  "solutions_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=solutions_math",
+  "problem_pdf_count": 2,
+  "solution_pdf_count": 2,
+  "problem_count_extracted": 6,
+  "problems": [
+    {
+      "id": "rmm-2017-p1",
+      "year": 2017,
+      "problem_number": 1,
+      "statement_en": "(a) Prove that every positive integern can be written uniquely\nin the form\nn =\n2k+1∑\nj=1\n(−1)j−12mj ,\nwhere k≥ 0 and 0≤ m1 < m 2 <··· < m 2k+1 are integers.\nThis number k is called the weight of n.\n(b) Find (in closed form) the difference between the number of positive\nintegers at most 2 2017 with even weight and the number of positive integers\nat most 2 2017 with odd weight.",
+      "solution_text_en": "(a) Prove that every positive integer n can be written uniquely in the form\nn =\n2k+1∑\nj=1\n(−1)j−12mj,\nwhere k≥ 0 and 0≤m1<m 2<··· <m 2k+1 are integers.\nThis number k is called the weight of n.\n(b) Find (in closed form) the difference between the number of positive integers at most 2 2017\nwith even weight and the number of positive integers at most 2 2017 with odd weight.\nVjekoslav Kovaˇc, Croatia\nSolution. (a) We show by induction on the integer M≥ 0 that every integer n in the range\n−2M +1 through 2 M can uniquely be written in the form n =∑l\nj=1(−1)j−12mj for some integers\nl≥ 0 and 0 ≤ m1 < m2 < ··· < ml ≤ M (empty sums are 0); moreover, in this unique\nrepresentationl is odd if n> 0, and even if n≤ 0. The integer w(n) =⌊l/2⌋ is called the weight\nof n.\nExistence once proved, uniqueness follows from the fact that there are as many such repre-\nsentations as integers in the range −2M + 1 through 2M, namely, 2M +1.\nTo prove existence, notice that the base case M = 0 is clear, so let M≥ 1 and let n be an\ninteger in the range−2M + 1 through 2M.\nIf−2M + 1≤ n≤− 2M−1, then 1 ≤ n + 2M ≤ 2M−1, so n + 2M =∑2k+1\nj=1 (−1)j−12mj for\nsome integers k≥ 0 and 0 ≤ m1 <··· < m2k+1≤ M− 1 by the induction hypothesis, and\nn =∑2k+2\nj=1 (−1)j−12mj, where m2k+2 =M.\nThe case−2M−1 + 1≤n≤ 2M−1 is covered by the induction hypothesis.\nFinally, if 2M−1 + 1≤n≤ 2M, then−2M−1 + 1≤n− 2M≤ 0, so n− 2M =∑2k\nj=1(−1)j−12mj\nfor some integers k≥ 0 and 0 ≤ m1 <··· < m2k≤ M− 1 by the induction hypothesis, and\nn =∑2k+1\nj=1 (−1)j−12mj, where m2k+1 =M.\n(b) First Approach. Let M≥ 0 be an integer. The solution for part (a) shows that the\nnumber of even (respectively, odd) weight integers in the range 1 through 2 M coincides with\nthe number of subsets in {0, 1, 2,...,M } whose cardinality has remainder 1 (respectively, 3)\nmodulo 4. Therefore, the difference of these numbers is\n⌊M/2⌋∑\nk=0\n(−1)k\n(M + 1\n2k + 1\n)\n= (1 + i)M +1− (1− i)M +1\n2i = 2(M +1)/2 sin (M + 1)π\n4 ,\nwhere i =√−1 is the imaginary unit. Thus, the required difference is 2 1009.\nSecond Approach. For every integer M≥ 0, let AM =∑0\nn=−2M +1(−1)w(n) and let BM =\n∑2M\nn=1(−1)w(n); thus, BM evaluates the difference of the number of even weight integers in the\nrange 1 through 2 M and the number of odd weight integers in that range.\nNotice that\nw(n) =\n{ w(n + 2M) + 1 if −2M + 1≤n≤− 2M−1,\nw(n− 2M) if 2 M−1 + 1≤n≤ 2M,\n1\nto get\nAM =−\n−2M −1\n∑\nn=−2M +1\n(−1)w(n+2M ) +\n0∑\nn=−2M −1+1\n(−1)w(n) =−BM−1 +AM−1,\nBM =\n2M −1\n∑\nn=1\n(−1)w(n) +\n2M\n∑\nn=2M −1+1\n(−1)w(n−2M ) =BM−1 +AM−1.\nIteration yields\nBM =AM−1 +BM−1 = (AM−2−BM−2) + (AM−2 +BM−2) = 2AM−2\n= 2AM−3− 2BM−3 = 2(AM−4−BM−4)− 2(AM−4 +BM−4) =−4BM−4.\nThus,B2017 = (−4)504B1 = 21008B1; since B1 = (−1)w(1) + (−1)w(2) = 2, it follows that B2017 =\n21009.\n2",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr/RMM2017-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr2/RMM2017-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 1, 'combinatorics': 1}"
+    },
+    {
+      "id": "rmm-2017-p2",
+      "year": 2017,
+      "problem_number": 2,
+      "statement_en": "Determine all positive integers n satisfying the following con-\ndition: for every monic polynomial P of degree at most n with integer\ncoefficients, there exists a positive integer k≤ n, and k + 1 distinct integers\nx1, x2, . . ., xk+1 such that\nP (x1) + P (x2) +··· + P (xk) = P (xk+1).\nNote. A polynomial is monic if the coefficient of the highest power is one.",
+      "solution_text_en": "Determine all positive integersn satisfying the following condition: for every monic\npolynomial P of degree at most n with integer coefficients, there exists a positive integer k≤n,\nand k + 1 distinct integers x1, x2, ... , xk+1 such that\nP (x1) +P (x2) +··· +P (xk) =P (xk+1).\nSemen Petrov, Russia\nNote. A polynomial is monic if the coefficient of the highest power is one.\nSolution. There is only one such integer, namely, n = 2. In this case, if P is a constant\npolynomial, the required condition is clearly satisfied; if P =X +c, then P (c− 1) +P (c + 1) =\nP (3c); and if P =X 2 +qX +r, then P (X) =P (−X−q).\nTo rule out all other values of n, it is sufficient to exhibit a monic polynomial P of degree\nat most n with integer coefficients, whose restriction to the integers is injective, and P (x)≡ 1\n(mod n) for all integers x. This is easily seen by reading the relation in the statement modulo n,\nto deduce that k≡ 1 (modn), so k = 1, since 1≤k≤n; hence P (x1) =P (x2) for some distinct\nintegersx1 and x2, which contradicts injectivity.\nIf n = 1, let P = X, and if n = 4, let P = X 4 + 7X 2 + 4X + 1. In the latter case, clearly,\nP (x)≡ 1 (mod 4) for all integers x; and P is injective on the integers, since P (x)−P (y) =\n(x−y)\n(\n(x +y)(x2 +y2 + 7) + 4\n)\n, and the absolute value of (x +y)(x2 +y2 + 7) is either 0 or at\nleast 7 for integral x and y.\nAssume henceforth n≥ 3, n̸= 4, and let fn = (X− 1)(X− 2)··· (X−n). Clearly, fn(x)≡\n0 (modn) for all integers x. If n is odd, then fn is non-decreasing on the integers; and if, in\naddition, n> 3, then fn(x)≡ 0 (modn + 1) for all integers x, since fn(0) =−n! =−1· 2·····\nn+1\n2 ····· n≡ 0 (modn + 1).\nFinally, letP =fn +nX +1 if n is odd, and let P =fn−1 +nX +1 if n is even. In either case,\nP is strictly increasing, hence injective, on the integers, and P (x)≡ 1 (modn) for all integers x.\nRemark. The polynomial P = fn +nX + 1 works equally well for even n > 2. To prove\ninjectivity, notice that P is strictly monotone, hence injective, on non-positive (respectively,\npositive) integers. Suppose, if possible, that P (a) = P (b) for some integers a≤ 0 and b > 0.\nNotice that P (a)≥ P (0) = n! + 1> n2 + 1 = P (n), since n≥ 4, to infer that b≥ n + 1. It is\ntherefore sufficient to show that P (x)>P (n + 1−x)>P (x− 1) for all integers x≥n + 1. The\nformer inequality is trivial, since fn(x) =fn(n + 1−x) for even n. For the latter, write\nP (n + 1−x)−P (x− 1) = (x− 1)··· (x−n)− (x− 2)··· (x−n− 1) +n(n + 2− 2x)\n=n\n(\n(x− 2)··· (x−n) + (n− 2)− 2(x− 2)\n)\n≥n(n− 2)> 0,\nsince (x− 3)··· (x−n)≥ 2.\n3",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr/RMM2017-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr2/RMM2017-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "rmm-2017-p3",
+      "year": 2017,
+      "problem_number": 3,
+      "statement_en": "Let n be an integer greater than 1 and let X be an n-element\nset. A non-empty collection of subsets A1, . . ., Ak of X is tight if the union\nA1∪···∪ Ak is a proper subset of X and no element of X lies in exactly one\nof the Ais. Find the largest cardinality of a collection of proper non-empty\nsubsets of X, no non-empty subcollection of which is tight.\nNote. A subset A of X is proper if A̸= X. The sets in a collection are as-\nsumed to be distinct. The whole collection is assumed to be a subcollection.\nEach of the three problems is worth 7 points.",
+      "solution_text_en": "Let n be an integer greater than 1 and let X be an n-element set. A non-empty\ncollection of subsets A1, ... , Ak of X is tight if the union A1∪···∪ Ak is a proper subset of X\nand no element of X lies in exactly one of the Ais. Find the largest cardinality of a collection of\nproper non-empty subsets of X, no non-empty subcollection of which is tight.\nNote. A subset A of X is proper if A̸=X. The sets in a collection are assumed to be distinct.\nThe whole collection is assumed to be a subcollection.\nAlexander Polyansky, Russia\nSolution 1. (Ilya Bogdanov) The required maximum is 2n− 2. To describe a (2 n− 2)-element\ncollection satisfying the required conditions, write X ={1, 2,...,n } and set Bk ={1, 2,...,k },\nk = 1, 2,...,n − 1, and Bk = {k−n + 2,k −n + 3,...,n }, k = n,n + 1,..., 2n− 2. To\nshow that no subcollection of the Bk is tight, consider a subcollection C whose union U is a\nproper subset of X, let m be an element in X ∖U, and notice that C is a subcollection of\n{B1,...,B m−1,B m+n−1,...,B 2n−2}, since the other B’s are precisely those containing m. If U\ncontains elements less than m, let k be the greatest such and notice that Bk is the only member\nofC containingk; and if U contains elements greater than m, let k be the least such and notice\nthat Bk+n−2 is the only member of C containingk. Consequently,C is not tight.\nWe now proceed to show by induction on n≥ 2 that the cardinality of a collection of proper\nnon-empty subsets of X, no subcollection of which is tight, does not exceed 2 n− 2. The base\ncase n = 2 is clear, so let n> 2 and suppose, if possible, that B is a collection of 2n− 1 proper\nnon-empty subsets of X containing no tight subcollection.\nTo begin, notice thatB has an empty intersection: if the members of B shared an element x,\nthenB′ ={B ∖{x}: B∈B, B̸={x}} would be a collection of at least 2n− 2 proper non-empty\nsubsets of X ∖{x} containing no tight subcollection, and the induction hypothesis would be\ncontradicted.\nNow, for every x inX, letBx be the (non-empty) collection of all members of B not contain-\ningx. Since no subcollection ofB is tight,Bx is not tight, and since the union ofBx does not con-\ntainx, somex′ inX is covered by a single member ofBx. In other words, there is a single set in B\ncoveringx′ but not x. In this case, draw an arrow from x tox′. Since there is at least one arrow\nfrom eachx inX, some of these arrows form a (minimal) cyclex1→x2→···→ xk→xk+1 =x1\nfor some suitable integer k≥ 2. Let Ai be the unique member of B containing xi+1 but not xi,\nand let X′ ={x1,x 2,...,x k}.\nRemoveA1,A2,... ,Ak fromB to obtain a collectionB′ each member of which either contains\nor is disjoint from X′: for if a member B ofB′ contained some but not all elements of X′, then\nB should contain xi+1 but not xi for some i, and B = Ai, a contradiction. This rules out the\ncase k =n, for otherwiseB ={A1,A 2,...,A n}, so|B|< 2n− 1.\nTo rule out the case k<n , consider an extra element x∗ outside X and let\nB∗ ={B : B∈B′, B∩X′ = ∅}∪{ (B ∖X′)∪{x∗}: B∈B′, X′⊆B};\nthus, in each member ofB′ containingX′, the latter is collapsed to singleton x∗. Notice that B∗\nis a collection of proper non-empty subsets of X∗ = (X ∖X′)∪{x∗}, no subcollection of which\nis tight. By the induction hypothesis, |B′| =|B∗|≤ 2|X∗|− 2 = 2(n−k), so|B|≤ 2(n−k) +k =\n2n−k< 2n− 1, a final contradiction.\nSolution 2. Proceed again by induction on n to show that the cardinality of a collection of\nproper non-empty subsets of X, no subcollection of which is tight, does not exceed 2 n− 2.\nConsider any collectionB of proper non-empty subsets of X with no tight subcollection (we\ncall such collection good). Assume that there exist M,N ∈B such that M∪N is distinct from\nM, N, and X. In this case, we will show how to modify B so that it remains good, contains the\nsame number of sets, but the total number of elements in the sets of B increases.\n4\nConsider a maximal (relative to set-theoretic inclusion) subcollectionC⊆B such that the set\nC =⋃\nA∈CA is distinct from X and from all members of C. Notice here that the union of any\nsubcollectionD⊂B cannot coincide with any K∈B ∖D, otherwise{K}∪D would be tight.\nSurely,C exists (since {M,N} is an example of a collection satisfying the requirements on C,\nexcept for maximality); moreover, C /∈B by the above remark.\nSinceC̸=X, there exists anL∈C andx∈L such thatL is the unique set inC containingx.\nNow replace in B the set L by C in order to obtain a new collection B′ (then|B′| =|B|). We\nclaim thatB′ is good.\nAssume, to the contrary, thatB′ contained a tight subcollectionT ; clearly,C∈T , otherwise\nB is not good. If T ⊆C∪{ C}, then C is the unique set in T containing x which is impossible.\nTherefore, there exists P∈T ∖ (C∪{ C}). By maximality of C, the collectionC∪{ P} does not\nsatisfy the requirements imposed on C; since P∪C̸= X, this may happen only if C∪P = P ,\ni.e., if C⊂P . But then G = (T ∖{C})∪C is a tight subcollection in B: all elements of C are\ncovered byG at least twice (by P and an element of C), and all the rest elements are covered\nbyG the same number of times as by T . A contradiction. Thus B′ is good.\nSuch modifications may be performed finitely many times, since the total number of elements\nof sets in B increases. Thus, at some moment we arrive at a good collection B for which the\nprocedure no longer applies. This means that for every M,N ∈B , either M∪N =X or one of\nthem is contained in the other.\nNow let M be a minimal (with respect to inclusion) set in B. Then each set in B either\ncontains M or forms X in union with M (i.e., contains X ∖M). Now one may easily see that\nthe two collections\nB+ ={A ∖M : A∈B, M⊂A, A̸=M}, B− ={A∩M : A∈B, X∖M⊂A, A̸=X ∖M}\nare good as collections of subsets ofX ∖M andM, respectively; thus, by the induction hypothesis,\nwe have|B+| +|B−|≤ 2n− 4.\nFinally, each set A∈B either produces a set in one of the two new collections, or coincides\nwith M or X ∖M. Thus|B|≤|B +| +|B−| + 2≤ 2n− 2, as required.\nSolution 3. We provide yet another proof of the estimate |B|≤ 2n− 2, using the notion of a\ngood collection from Solution 2. Arguing indirectly, we assume that there exists a good collection\nB with|B|≥ 2n− 1, and choose one such for the minimal possible value of n. Clearly, n> 2.\nFirstly, we perform a different modification of B. Choose any x ∈ X, and consider the\nsubcollectionBx ={B : B∈B , x /∈ B}. By our assumption, Bx is not tight. As the union of\nsets inBx is distinct from X, either this collection is empty, or there exists an element y∈ X\ncontained in a unique member Ax ofBx. In the former case, we add the set Bx =X ∖{x} toB,\nand in the latter we replace Ax byBx, to form a new collection B′. (Notice that if Bx∈B , then\nBx∈B x and y∈Bx, so Bx =Ax.)\nWe claim that the collection B′ is also good. Indeed, if B′ has a tight subcollection T , then\nBx should lie in T . Then, as the union of the sets in T is distinct from X, we should have\nT ⊆Bx∪{Bx}. But in this case an element y is contained in a unique member ofT , namely Bx,\nsoT is not tight — a contradiction.\nPerform this procedure for every x ∈ X, to get a good collection B containing the sets\nBx =X ∖{x} for all x∈X. Consider now an element x∈X such that|Bx| is maximal. As we\nhave mentioned before, there exists an element y∈ X belonging to a unique member (namely,\nBx) ofBx. Thus, Bx ∖{Bx}⊂B y; also, By∈B y ∖Bx. Thus we get |By|≥|B x|, which by the\nmaximality assumption yields the equality, which in turn means that By = (Bx ∖{Bx})∪{By}.\nTherefore, each set inB ∖{Bx,B y} contains either bothx andy, or none of them. Collapsing\n{x,y} to singletonx∗, we get a new collection of|B|− 2 subsets of (X ∖{x,y})∪{x∗} containing\nno tight subcollection. This contradicts minimality of n.\n5\nRemarks. 1. Removal of the condition that subsets be proper would only increase the maximum\nby 1. The ‘non-emptiness’ condition could also be omitted, since the empty set forms a tight\ncollection by itself, but the argument is a bit too formal to be considered.\n2. There are many different examples of good collections of 2 n− 2 sets. E.g., applying the\nalgorithm from the first part of Solution 2 to the example shown in Solution 1, one may get\nthe following example: Bk = {1, 2,...,k }, k = 1, 2,...,n − 1, and Bk = X\\{k−n + 1},\nk =n,n + 1,..., 2n− 2.\n6",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr/RMM2017-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr2/RMM2017-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 5
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 5}"
+    },
+    {
+      "id": "rmm-2017-p4",
+      "year": 2017,
+      "problem_number": 4,
+      "statement_en": "In the Cartesian plane, let G1 andG2 be the graphs of the\nquadratic functions f1(x) = p1x2 + q1x + r1 and f2(x) = p2x2 + q2x + r2,\nwhere p1 > 0 > p 2. The graphs G1 andG2 cross at distinct points A and B.\nThe four tangents to G1 andG2 at A and B form a convex quadrilateral\nwhich has an inscribed circle. Prove that the graphs G1 andG2 have the\nsame axis of symmetry.",
+      "solution_text_en": "In the Cartesian plane, let G1 andG2 be the graphs of the quadratic functions\nf1(x) =p1x2 +q1x +r1 and f2(x) =p2x2 +q2x +r2, where p1 > 0>p 2. The graphs G1 andG2\ncross at distinct points A and B. The four tangents to G1 andG2 at A and B form a convex\nquadrilateral which has an inscribed circle. Prove that the graphs G1 andG2 have the same axis\nof symmetry.\nAlexey Zaslavsky, Russia\nSolution 1. LetAi andBi be the tangents toGi atA andB, respectively, and let Ci =Ai∩B i.\nSince f1(x) is convex and f2(x) is concave, the convex quadrangle formed by the four tangents\nis exactly AC1BC2.\nLemma. If CA and CB are the tangents drawn from a point C to the graph G of a quadratic\ntrinomial f(x) =px2 +qx +r, A,B ∈G , A̸=B, then the abscissa of C is the arithmetic mean\nof the abscissae of A and B.\nProof. Assume, without loss of generality, that C is at the origin, so the equations of the two\ntangents have the form y = kax and y = kbx. Next, the abscissae xA and xB of the tangency\npoints A and B, respectively, are multiple roots of the polynomials f(x)−kax and f(x)−kbx,\nrespectively. By the Vieta theorem, x2\nA = r/p = x2\nB, so xA =−xB, since the case xA = xB is\nruled out by A̸=B.\nA\nB\nC1\nC2\nA A′B\nC1\nC2\nO\nA B\nC1\nC2\nO\nThe Lemma shows that the line C1C2 is parallel to the y-axis and the points A and B are\nequidistant from this line.\nSuppose, if possible, that the incentre O of the quadrangle AC1BC2 does not lie on the\nline C1C2. Assume, without loss of generality, that O lies inside the triangle AC1C2 and let A′\nbe the reflection of A in the line C1C2. Then the ray CiB emanating from Ci lies inside the\nangle ACiA′, so B lies inside the quadrangle AC1A′C2, whence A and B are not equidistant\nfrom C1C2 — a contradiction.\nThusO lies onC1C2, so the linesACi andBCi are reflections of one another in the lineC1C2,\nand B = A′. Hence yA = yB, and since fi(x) = yA +pi(x−xA)(x−xB), the line C1C2 is the\naxis of symmetry of both parabolas, as required.\nSolution 2. Use the standard equation of a tangent to a smooth curve in the plane, to deduce\nthat the tangents at two distinct points A and B on the parabola of equation y =px2 +qx +r,\n1\np̸= 0, meet at some point C whose coordinates are\nxC = 1\n2(xA +xB) and yC =pxAxB +q· 1\n2(xA +xB) +r.\nUsage of the standard formula for Euclidean distance yields\nCA = 1\n2|xB−xA|\n√\n1 + (2pxA +q)2 and CB = 1\n2|xB−xA|\n√\n1 + (2pxB +q)2,\nso, after obvious manipulations,\nCB−CA = 2p(xB−xA)|xB−xA|(p(xA +xB) +q)√\n1 + (2pxA +q)2 +\n√\n1 + (2pxB +q)2.\nNow, write the condition in the statement in the form C1B−C1A =C2B−C2A, apply the\nabove formula and clear common factors to get\np1(p1(xA +xB) +q1)√\n1 + (2p1xA +q1)2 +\n√\n1 + (2p1xB +q1)2 = p2(p2(xA +xB) +q2)√\n1 + (2p2xA +q2)2 +\n√\n1 + (2p2xB +q2)2.\nNext, use the fact that xA and xB are the solutions of the quadratic equation ( p1−p2)x2 +\n(q1−q2)x +r1−r2 = 0, so xA +xB =−(q1−q2)/(p1−p2), to obtain\np1(p1q2−p2q1)√\n1 + (2p1xA +q1)2 +\n√\n1 + (2p1xB +q1)2 = p2(p1q2−p2q1)√\n1 + (2p2xA +q2)2 +\n√\n1 + (2p2xB +q2)2.\nFinally, sincep1p2< 0 and the denominators above are both positive, the last equality forces\np1q2−p2q1 = 0; that is, q1/p1 =q2/p2, so the two parabolas have the same axis.\nRemarks. The are, of course, several different proofs of the Lemma in Solution 1 — in particular,\ncomputational. Another argument relies on the following consequence of focal properties: The\ntangents to a parabola at two points meet at the circumcentre of the triangle formed by the\nfocus and the orthogonal projections of those points on the directrix. Since the directrix of the\nparabola in the lemma is parallel to the axis of abscissae, the conclusion follows.\n2",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr/RMM2017-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr2/RMM2017-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 9,
+        "algebra": 2,
+        "number_theory": 1,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "graph"
+      ],
+      "reason": "scores={'geometry': 9, 'algebra': 2, 'number_theory': 1, 'combinatorics': 1}"
+    },
+    {
+      "id": "rmm-2017-p5",
+      "year": 2017,
+      "problem_number": 5,
+      "statement_en": "Fix an integer n≥ 2. An n× n sieve is an n× n array with n\ncells removed so that exactly one cell is removed from every row and every\ncolumn. A stick is a 1× k or k× 1 array for any positive integer k. For any\nsieve A, let m(A) be the minimal number of sticks required to partition A.\nFind all possible values of m(A), as A varies over all possible n× n sieves.",
+      "solution_text_en": "Fix an integer n≥ 2. An n×n sieve is an n×n array withn cells removed so that\nexactly one cell is removed from every row and every column. A stick is a 1×k or k× 1 array\nfor any positive integer k. For any sieve A, let m(A) be the minimal number of sticks required\nto partition A. Find all possible values of m(A), as A varies over all possible n×n sieves.\nPalmer Mebane and Nikolai Beluhov\nSolution 1. GivenA, m(A) = 2n− 2, and it is achieved, for instance, by dissecting A along all\nhorizontal (or vertical) grid lines. It remains to prove that m(A)≥ 2n− 2 for every A.\nBy holes we mean the cells which are cut out from the board. The cross of a hole in A is the\nunion of the row and the column through that hole.\nArguing indirectly, consider a dissection of A into 2n− 3 or fewer sticks. Horizontal sticks\nare all labelled h, and vertical sticks are labelled v; 1× 1 sticks are both horizontal and vertical,\nand labelled arbitrarily. Each cell of A inherits the label of the unique containing stick.\nAssign each stick in the dissection to the cross of the unique hole on its row, if the stick is\nhorizontal; on its column, if the stick is vertical.\nSince there are at most 2 n− 3 sticks and exactly n crosses, there are two crosses each of\nwhich is assigned to at most one stick in the dissection. Let the crosses be c and d, centred at\na = (xa,y a) and b = (xb,y b), respectively, and assume, without loss of generality, xa < xb and\nya < yb. The sticks covering the cells ( xa,y b) and (xb,y a) have like labels, for otherwise one of\nthe two crosses would be assigned to at least two sticks. Say the common label is v, so each of\nc and d contains a stick covering one of those two cells. It follows that the lower (respectively,\nupper) arm of c (respectively, d) is all-h, and the horizontal arms of both crosses are all- v, as\nillustrated below.\nv\nv\nv\nv\nv\nv\nh\nh\nh\na\nv\nv\nv\nv\nv\nv\nv\nv\nb\nh\nh\nh\nv\nv\nv\nv\nv\nv\nEach of the rows between the rows ofa andb, that is, rows ya + 1,ya + 2, . . . ,yb− 1, contains\na hole. The column of each such hole contains at least two v-sticks. All other columns contain at\nleast onev-stick each. In addition, all rows belowa and all rows aboveb contain at least oneh-stick\neach. This amounts to a total of at least 2(yb−ya−1)+(n−yb+ya+1)+(n−yb)+(ya−1) = 2n−2\nsticks. A contradiction.\nRemark. One may find a different argument finishing the solution. Since c and d are proven\nto contain one stick each, there is a third cross e centred at (x∗,y∗) also containing at most one\nstick. It meets the horizontal arms of c andd at twov-cells, so all the cells where two of the three\ncrosses meet are labelled with v. Now, assuming (without loss of generality) that ya < y∗ < yb,\nwe obtain that both vertical arms of e contain v-cells, so e is assigned to two different v-sticks.\nA contradiction.\nSolution 2. (Ilya Bogdanov) We provide a different proof that m(A)≥ 2n− 2.\n3\nCall a stick vertical if it is contained in some column, and horizontal if it is contained in some\nrow; 1×1 sticks may be called arbitrarily, but any of them is supposed to have only one direction.\nAssign to each vertical/horizontal stick the column/row it is contained in. If each row and each\ncolumn is assigned to some stick, then there are at least 2 n sticks, which is even more than we\nwant. Thus we assume, without loss of generality, that some exceptional row R is not assigned\nto any stick. This means that all n− 1 existing cells in R belong to n− 1 distinct vertical sticks;\ncall these sticks central.\nNow we mark n− 1 cells on the board in the following manner. ( ↓) For each hole c belowR,\nwe mark the cell just under c; (↑) for each hole c above R, we mark the cell just above c; and\n(•) for the hole r inR, we mark both the cell just above it and just below it. We have described\nn + 1 cells, but exactly two of them are out of the board; so n− 1 cells are marked within the\nboard. A sample marking is shown in the figure below, where the marked cells are crossed.\n×\n×\n×\n×\n×\n×\n×\nv v v v v v vR\nNotice that all the marked cells lie in different rows, and all of them are marked in different\ncolumns, except for those two marked for ( •); but the latter two have a hole r between them.\nSo no two marked cells may belong to the same stick. Moreover, none of them lies in a central\nstick, since the marked cells are separated from R by the holes. Thus the marked cells should\nbe covered by n− 1 different sticks (call them border) which are distinct from the central sticks.\nThis shows that there are at least ( n− 1) + (n− 1) = 2n− 2 distinct sticks, as desired.\nSolution 3. In order to provem(A)≥ 2n− 2, it suffices to show that there are 2n− 2 cells in A,\nno two of which may be contained in the same stick.\nTo this end, consider the bipartite graph G with parts Gh and Gv, where the vertices in Gh\n(respectively,Gv) are the 2n−2 maximal sticksA is dissected into by all horizontal (respectively,\nvertical) grid lines, two sticks being joined by an edge in G if and only if they share a cell.\nWe show that G admits a perfect matching by proving that it fulfils the condition in Hall’s\ntheorem; the 2n− 2 cells corresponding to the edges of this matching form the desired set. It is\nsufficient to show that every subset S of Gh has at least|S| neighbours (in Gv, of course).\nLet L be the set of all sticks in S that contain a cell in the leftmost column of A, and let R\nbe the set of all sticks in S that contain a cell in the rightmost column of A; let l be the length\nof the longest stick in L (zero if L is empty), and let r be the length of the longest stick in R\n(zero if R is empty).\nSince every row of A contains exactly one hole, L andR partitionS; and since every column\nof A contains exactly one hole, neither L nor R contains two sticks of the same size, so l≥|L|\nand r≥|R|, whence l +r≥|L| +|R| =|S|.\nIfl+r≤n, we are done, since there are at least l+r≥|S| vertical sticks covering the cells of\nthe longest sticks in L andR. So let l +r>n , in which case the sticks in S span all n columns,\nand notice that we are again done if |S|≤ n, to assume further |S|>n .\nLetS′ =Gh ∖S, let T be set of all neighbours of S, and let T′ =Gv ∖T . Since the sticks in\nS span all n columns,|T|≥ n, so|T′|≤ n− 2. Transposition of the above argument (replace S\nbyT′), shows that|T′|≤| S′|, so|S|≤| T|.\nRemark. Here is an alternative argument for s =|S|>n . Add to S two empty sticks formally\npresent to the left of the leftmost hole and to the right of the rightmost one. Then there are at\n4\nleasts−n + 2 rows containing two sticks from S, so two of them are separated by at least s−n\nother rows. Each hole in those s−n rows separates two vertical sticks from Gv both of which\nare neighbours of S. Thus the vertices of S have at least n + (s−n) neighbours.\nSolution 4. Yet another proof of the estimate m(A)≥ 2n− 2. We use the induction on n. Now\nwe need the base cases n = 2, 3 which can be completed by hands.\nAssume now that n >3 and consider any dissection of A into sticks. Define the cross of a\nhole as in Solution 1, and notice that each stick is contained in some cross. Thus, if the dissection\ncontains more than n sticks, then there exists a cross containing at least two sticks. In this case,\nremove this cross from the sieve to obtain an (n−1)×(n−1) sieve. The dissection of the original\nsieve induces a dissection of the new array: even if a stick is partitioned into two by the removed\ncross, then the remaining two parts form a stick in the new array. After this operation has been\nperformed, the number of sticks decreases by at least 2, and by the induction hypothesis the\nnumber of sticks in the new dissection is at least 2n− 4. Hence, the initial dissection contains at\nleast (2n− 4) + 2 = 2n− 2 sticks, as required.\nIt remains to rule out the case when the dissection contains at mostn sticks. This can be done\nin many ways, one of which is removal a cross containing some stick. The resulting dissection of\nan (n− 1)× (n− 1) array contains at most n− 1 sticks, which is impossible by the induction\nhypothesis since n− 1< 2(n− 1)− 2.\nRemark. The idea of removing a cross containing at least two sticks arises naturally when one\nfollows an inductive approach. But it is much trickier to finish the solution using this approach,\nunless one starts to consider removing each cross instead of removing a specific one.\n5",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr/RMM2017-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr2/RMM2017-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 10
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "edge",
+        "edges",
+        "graph",
+        "grid",
+        "matching",
+        "oard",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 10}"
+    },
+    {
+      "id": "rmm-2017-p6",
+      "year": 2017,
+      "problem_number": 6,
+      "statement_en": "Let ABCD be any convex quadrilateral and let P , Q, R, S\nbe points on the segments AB, BC , CD , and DA, respectively. It is given\nthat the segments P R and QS dissect ABCD into four quadrilaterals, each\nof which has perpendicular diagonals. Show that the points P , Q, R, S are\nconcyclic.\nEach of the three problems is worth 7 points.",
+      "solution_text_en": "Let ABCD be any convex quadrilateral and let P , Q, R, S be points on the\nsegmentsAB,BC,CD, and DA, respectively. It is given that the segments PR andQS dissect\nABCD into four quadrilaterals, each of which has perpendicular diagonals. Show that the points\nP , Q, R, S are concyclic.\nNikolai Beluhov\nSolution 1. We start with a lemma which holds even in a more general setup.\nLemma 1. Let PQRS be a convex quadrangle whose diagonals meet at O. Let ω1 and ω2 be\nthe circles on diameters PQ and RS, respectively, and let l be their radical axis. Finally, choose\nthe points A, B, and C outside this quadrangle so that: the point P (respectively,Q) lies on the\nsegment AB (respectively,BC); and AO⊥ PS , BO ⊥ PQ , and CO ⊥ QR. Then the three\nlines AC, PQ , and l are concurrent or parallel.\nProof. Assume first that the lines PR and QS are not perpendicular. Let H1 and H2 be the\northocentres of the trianglesOSP andOQR, respectively; notice thatH1 andH2 do not coincide.\nSince H1 is the radical centre of the circles on diameters RS, SP , and PQ , it lies on l.\nSimilarly,H2 lies on l, so the lines H1H2 and l coincide.\nThe corresponding sides of the triangles APH 1 andCQH 2 meet atO,B, and the orthocentre\nof the triangle OPQ (which lies on OB). By Desargues’ theorem, the lines AC, PQ and l are\nconcurrent or parallel.\nA\nB\nC\nP\nQ\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\nSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\nOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOH1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1H1\nH2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2H2\nT\nω1\nω2\nlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll\nThe case when PR ⊥ QS may be considered as a limit case, since the configuration in the\nstatement of the lemma allows arbitrarily small perturbations. The lemma is proved.\nBack to the problem, let the segments PR and QS cross at O, let ω1 and ω2 be the circles\non diameters PQ andRS, respectively, and let l be their radical axis. By the Lemma, the three\nlinesAC,l, andPQ are concurrent or parallel, and similarly so are the three linesAC,l, andRS.\nThus, if the lines AC and l are distinct, all four lines are concurrent or pairwise parallel.\nThis is clearly the case when the linesPS andQR are not parallel (sincel crossesOA andOC\nat the orthocentres of OSP and OQR, these orthocentres being distinct from A and C). In this\ncase, denote the concurrency point by T . If T is not ideal, then we have TP ·TQ = TR·TS\n(as T∈ l), so PQRS is cyclic. If T is ideal (i.e., all four lines are parallel), then the segments\nPQ andRS have the same perpendicular bisector (namely, the line of centers of ω1 andω2), and\nPQRS is cyclic again.\nAssume now PS and QR parallel. By symmetry, PQ and RS may also be assumed parallel:\notherwise, the preceding argument goes through after relabelling. In this case, we need to prove\nthat the parallelogram PQRS is a rectangle.\n6\nA\nB\nCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCD\nP\nQ\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\nSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\nOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\nT\nω1\nω2\nl\nA\nB\nCM\nN\nP Q\nRS\nO\nK\nSuppose, by way of contradiction, thatOP >OQ. Let the line through O and parallel toPQ\nmeet AB at M, and CB at N. Since OP >OQ, the angle SPQ is acute and the angle PQR is\nobtuse, so the angle AOB is obtuse, the angle BOC is acute, M lies on the segment AB, and\nN lies on the extension of the segment BC beyond C. Therefore: OA > OM, since the angle\nOMA is obtuse; OM >ON , since OM :ON =KP :KQ, where K is the projection of O onto\nPQ ; and ON >OC , since the angle OCN is obtuse. Consequently, OA>OC .\nSimilarly,OR>OS yieldsOC >OA: a contradiction. Consequently, OP =OQ andPQRS\nis a rectangle. This ends the proof.\nSolution 2. (Ilya Bogdanov) To begin, we establish a useful lemma.\nLemma 2. If P is a point on the side AB of a triangle OAB, then\nsinAOP\nOB + sinPOB\nOA = sinAOB\nOP .\nProof. Let [XYZ ] denote the area of a triangle XYZ , to write\n0 = 2([AOB]− [POB ]− [POC ]) =OA·OB· sinAOB−OB·OP· sinPOB−OP·OA· sinAOP,\nand divide by OA·OB·OP to get the required identity.\nA similar statement remains valid if the point C lies on the line AB; the proof is obtained by\nusing signed areas and directed lengths.\nWe now turn to the solution. We first prove some sort of a converse statement, namely:\nClaim. Let PQRS be a cyclic quadrangle with O = PR∩QS; assume that no its diagonal is\nperpendicular to a side. Let lA, lB, lC, and lD be the lines through O perpendicular to SP ,\nPQ , QR, and RS, respectively. Choose any point A∈lA and successively define B =AP∩lB,\nC =BQ∩lC, D =CR∩lD, and A′ =DS∩lA. Then A′ =A.\nProof. We restrict ourselves to the case when the points A, B, C, D, and A′ lie on lA, lB,\nlC, lD, and lA on the same side of O as their points of intersection with the respective sides of\nthe quadrilateral PQRS . Again, a general case is obtained by suitable consideration of directed\nlengths.\n7\nα\nα\nβ\nβ\nγ\nγ δ\nδ\nπ/2−β π/2−\nα\nπ/2−γ\nπ/2−β\nπ/2−δ\nA =A′\nB\nC\nDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\nP\nQ\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\nSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\nlA\nlB\nlC\nlD\nDenote\nα = ∠QPR = ∠QSR =π/2− ∠POB =π/2− ∠DOS,\nβ = ∠RPS = ∠RQS =π/2− ∠AOP =π/2− ∠QOC,\nγ = ∠SQP = ∠SRP =π/2− ∠BOQ =π/2− ∠ROD,\nδ = ∠PRQ = ∠PSQ =π/2− ∠COR =π/2− ∠SOA.\nBy Lemma 2 applied to the lines APB , PQC , CRD, and DSA′, we get\nsin(α +β)\nOP = cosα\nOA + cosβ\nOB , sin(β +γ)\nOQ = cosβ\nOB + cosγ\nOC ,\nsin(γ +δ)\nOR = cosγ\nOC + cosδ\nOD , sin(δ +α)\nOS = cosδ\nOD + cosα\nOA′ .\nAdding the two equalities on the left and subtracting the two on the right, we see that the\nrequired equality A =A′ (i.e., cosα/OA = cosα/OA′, in view of cos α̸= 0) is equivalent to the\nrelation sinQPS\nOP + sinSRQ\nOR = sinPQR\nOQ + sinRSP\nOS .\nLet d denote the circumdiameter of PQRS , so sin QPS = sin SRQ = QS/d and sin RSP =\nsinPQR =PR/d . Thus the required relation reads\nQS\nOP + QS\nOR = PR\nOS + PR\nOQ, or QS·PR\nOP·OR = PR·QS\nOS·OQ.\nThe last relation is trivial, due again to cyclicity.\nFinally, it remains to derive the problem statement from our Claim. Assume that PQRS is\nnot cyclic, e.g., that OP·OR > OQ·OS, where O =PR∩QS. Mark the point S′ on the ray\nOS so that OP·OR =OQ·OS′. Notice that no diagonal of PQRS is perpendicular to a side,\nso the quadrangle PQRS′ satisfies the conditions of the claim.\nLet l′\nA and l′\nD be the lines through O perpendicular to PS′ and RS′, respectively. Then\nl′\nA and l′\nD cross the segments AP and RD, respectively, at some points A′ and D′. By the\nClaim, the line A′D′ passes through S′. This is impossible, because the segment A′D′ crosses\nthe segment OS at some interior point, while S′ lies on the extension of this segment. This\ncontradiction completes the proof.\nRemark. According to the author, there is a remarkable corollary that is worth mentioning:\nFour lines dissect a convex quadrangle into nine smaller quadrangles to make it into a 3×3 array\n8\nA\nB\nCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\nP\nQ\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\nS OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\nA′\nD′\nS′\nlA lB\nlC\nlD\nl′\nA\nl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nDl′\nD\nof quadrangular cells. Label these cells 1 through 9 from left to right and from top to bottom.\nIf the first eight cells are orthodiagonal, then so is the ninth.\n9",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2017/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr/RMM2017-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/pr2/RMM2017-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2017/_dwl/Solutions_RMM2017-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2017/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 0, 'number_theory': 0, 'combinatorics': 1}"
+    }
+  ]
+}

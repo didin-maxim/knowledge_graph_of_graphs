@@ -1,0 +1,152 @@
+{
+  "id": "imo-1999-c5-grid-total-domination",
+  "title": "Минимальное доминирующее множество на доске, IMO 1999 Problem 3 / Shortlist C5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "total_dominating_set",
+      "board_cells"
+    ],
+    "methods": [
+      "coloring",
+      "construction",
+      "lower_bound"
+    ],
+    "transformations": [
+      "board_to_grid_graph"
+    ],
+    "goal": [
+      "minimum_total_dominating_set_size"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "neighbor_coverage"
+    ],
+    "standard_idea_ids": [],
+    "keywords": [
+      "imo-1999-c5-grid-total-domination",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть n — чётное положительное число. На доске n x n нужно отметить минимальное число клеток так, чтобы каждая клетка, отмеченная или нет, имела отмеченную соседнюю по стороне клетку. Найти этот минимум.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "source_id": "src-secondary-imo-1999-shortlist",
+        "title": "Условие"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это точное вычисление total domination number для решёточного графа n x n: вершины — клетки, рёбра соединяют клетки с общей стороной, и каждая вершина должна иметь отмеченного соседа.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-layer-coloring-lower-bound",
+      "title": "Слоистая раскраска для нижней оценки",
+      "text": "Доска раскрашивается слоями так, что каждая клетка соседствует ровно с двумя выделенными клетками цвета-свидетеля; один отмеченный сосед может покрыть не больше двух таких свидетелей.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-alternating-construction",
+      "title": "Конструкция через чередование в слоях",
+      "text": "Отмечаются чередующиеся клетки в выбранных слоях; каждая клетка получает отмеченного соседа, и достигается нижняя оценка.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-reviewed-web",
+      "title": "Сжатое решение после web review",
+      "text": "Пусть n=2k. Ответ равен k(k+1)=n^2/4+n/2. Для нижней оценки используют специальную слоистую раскраску клеток-свидетелей: каждая клетка доски соседствует ровно с двумя такими клетками. Поэтому одна отмеченная клетка может обеспечить соседство не более чем для двух свидетелей, а число свидетелей равно 2k(k+1); нужно хотя бы k(k+1) отмеченных клеток. Конструкция достигает этой оценки: в каждом слое выбираются чередующиеся клетки так, чтобы каждая невыбранная и выбранная клетка имела выбранного соседа. В терминах графов это ровно построение минимального множества вершин, тотально доминирующего решёточный граф.",
+      "idea_ids": [
+        "idea-layer-coloring-lower-bound",
+        "idea-alternating-construction"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 13,
+    "comment": "Ранний IMO/IMO Shortlist; добавлено после отдельной проверки AoPS, Kalva и/или сборника решений.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "coloring",
+        "construction",
+        "lower_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1999-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-aops-imo-1999-p3-statement",
+      "role": "statement_crosscheck",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-olympiad-combinatorics-1999-p3",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

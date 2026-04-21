@@ -1,0 +1,203 @@
+{
+  "year": 2012,
+  "source_ids": [
+    "src-imo-2012-shortlist"
+  ],
+  "availability": {
+    "official_shortlist_pdf": true
+  },
+  "problems": [
+    {
+      "id": "imo-2012-sl-c1",
+      "year": 2012,
+      "shortlist_id": "C1",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "country": "a, x",
+      "statement_en": "Several positive integers are written in a row. Iteratively, Alice cho oses two adjacent\nnumbers x and y such that x > y and x is to the left of y, and replaces the pair ( x, y ) by either\n(y + 1, x ) or ( x − 1, x ). Prove that she can perform only finitely many such iterations.\nSolution 1. Note first that the allowed operation does not change the maximum M of the\ninitial sequence. Let a1, a 2, . . . , a n be the numbers obtained at some point of the process.\nConsider the sum\nS = a1 + 2a2 + · · ·+ nan.\nWe claim that S increases by a positive integer amount with every operation. Let th e operation\nreplace the pair (ai, a i+1) by a pair (c, a i), where ai > a i+1 and c = ai+1+1 or c = ai− 1. Then the\nnew and the old value of S differ by d = (ic+(i+1)ai)− (iai +(i+1)ai+1) = ai − ai+1 +i(c− ai+1).\nThe integer d is positive since ai − ai+1 ≥ 1 and c − ai+1 ≥ 0.\nOn the other hand S ≤ (1 + 2 + · · ·+ n)M as ai ≤ M for all i = 1, . . . , n . Since S increases\nby at least 1 at each step and never exceeds the constant (1 + 2 + · · ·+ n)M, the process stops\nafter a finite number of iterations.\nSolution 2. Like in the first solution note that the operations do not change the maximum M\nof the initial sequence. Now consider the reverse lexicographical o rder for n-tuples of integers.\nWe say that ( x1, . . . , x n) < (y1, . . . , y n) if xn < y n, or if xn = yn and xn− 1 < y n− 1, or if xn = yn,\nxn− 1 = yn− 1 and xn− 2 < y n− 2, etc. Each iteration creates a sequence that is greater than\nthe previous one with respect to this order, and no sequence occu rs twice during the process.\nOn the other hand there are finitely many possible sequences becau se their terms are always\npositive integers not exceeding M. Hence the process cannot continue forever.\nSolution 3. Let the current numbers be a1, a 2, . . . , a n. Define the score si of ai as the number\nof aj's that are less than ai. Call the sequence s1, s 2, . . . , s n the score sequence of a1, a 2, . . . , a n.\nLet us say that a sequence x1, . . . , x n dominates a sequence y1, . . . , y n if the first index i\nwith xi ̸= yi is such that xi < y i. We show that after each operation the new score sequence\ndominates the old one. Score sequences do not repeat, and there are finitely many possibilities\nfor them, no more than ( n − 1)n. Hence the process will terminate.\nConsider an operation that replaces ( x, y ) by ( a, x ), with a = y + 1 or a = x − 1. Suppose\nthat x was originally at position i. For each j < i the score sj does not increase with the\nchange because y ≤ a and x ≤ x. If sj decreases for some j < i then the new score sequence\ndominates the old one. Assume that sj stays the same for all j < i and consider si. Since x > y\nand y ≤ a ≤ x, we see that si decreases by at least 1. This concludes the proof.\nComment. All three proofs work if x and y are not necessarily adjacent, and if the pair ( x, y ) is\nreplaced by any pair ( a, x ), with a an integer satisfying y ≤ a ≤ x. There is nothing special about\nthe \"weights\" 1 , 2, . . . , n in the definition of S = ∑n\ni=1 iai from the first solution. For any sequence\nw1 < w 2 < · · ·< w n of positive integers, the sum ∑n\ni=1 wiai increases by at least 1 with each operation.\nConsider the same problem, but letting Alice replace the pai r (x, y ) by (a, x ), where a is any positive\ninteger less than x. The same conclusion holds in this version, i. e. the process stops eventually. The\nsolution using the reverse lexicographical order works wit hout any change. The first solution would\nrequire a special set of weights like wi = M i for i = 1, . . . , n .\nComment. The first and the second solutions provide upper bounds for th e number of possible\noperations, respectively of order M n2 and M n where M is the maximum of the original sequence.\nThe upper bound ( n − 1)n in the third solution does not depend on M .\n\n[[PAGE 20]]\n20",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "evidence": [
+        "Several positive integers are written in a row. Iteratively, Alice cho oses two adjacent numbers x and y such that x > y and x is to the left of y, and replaces the pair ( x, y ) by either (y + 1, x ) or ( x − 1, x )."
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c2",
+      "year": 2012,
+      "shortlist_id": "C2",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Let n ≥ 1 be an integer. What is the maximum number of disjoint pairs of elemen ts of the\nset {1, 2, . . . , n } such that the sums of the different pairs are different integers not exceeding n?\nSolution. Consider x such pairs in {1, 2, . . . , n }. The sum S of the 2 x numbers in them is at\nleast 1+2+ · · ·+2x since the pairs are disjoint. On the other hand S ≤ n+(n− 1)+· · ·+(n− x+1)\nbecause the sums of the pairs are different and do not exceed n. This gives the inequality\n2x(2x + 1)\n2 ≤ nx − x(x − 1)\n2 ,\nwhich leads to x ≤ 2n− 1\n5 . Hence there are at most\n⌊ 2n− 1\n5\n⌋\npairs with the given properties.\nWe show a construction with exactly\n⌊ 2n− 1\n5\n⌋\npairs. First consider the case n = 5k + 3 with\nk ≥ 0, where\n⌊ 2n− 1\n5\n⌋\n= 2k + 1. The pairs are displayed in the following table.\nPairs 3k + 1 3k · · · 2k + 2 4k + 2 4k + 1 · · · 3k + 3 3k + 2\n2 4 · · · 2k 1 3 · · · 2k − 1 2k + 1\nSums 3k + 3 3k + 4 · · · 4k + 2 4k + 3 4k + 4 · · · 5k + 2 5k + 3\nThe 2k + 1 pairs involve all numbers from 1 to 4 k + 2; their sums are all numbers from 3 k + 3\nto 5 k + 3. The same construction works for n = 5 k + 4 and n = 5 k + 5 with k ≥ 0. In these\ncases the required number\n⌊ 2n− 1\n5\n⌋\nof pairs equals 2 k + 1 again, and the numbers in the table\ndo not exceed 5 k + 3. In the case n = 5 k + 2 with k ≥ 0 one needs only 2 k pairs. They can\nbe obtained by ignoring the last column of the table (thus removing 5 k + 3). Finally, 2 k pairs\nare also needed for the case n = 5 k + 1 with k ≥ 0. Now it suffices to ignore the last column\nof the table and then subtract 1 from each number in the first row.\nComment. The construction above is not unique. For instance, the foll owing table shows another\nset of 2 k + 1 pairs for the cases n = 5k + 3, n = 5k + 4, and n = 5k + 5.\nPairs 1 2 · · · k k + 1 k + 2 · · · 2k + 1\n4k + 1 4k − 1 · · · 2k + 3 4k + 2 4k · · · 2k + 2\nSums 4k + 2 4k + 1 · · · 3k + 3 5k + 3 5k + 2 · · · 4k + 3\nThe table for the case n = 5k + 2 would be the same, with the pair ( k + 1, 4k + 2) removed. For the\ncase n = 5k + 1 remove the last column and subtract 2 from each number in th e second row.\n\n[[PAGE 21]]\n21",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2012-sl-c3",
+      "year": 2012,
+      "shortlist_id": "C3",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "country": "i,j",
+      "statement_en": "In a 999 × 999 square table some cells are white and the remaining ones are red. Let T\nbe the number of triples ( C1, C 2, C 3) of cells, the first two in the same row and the last two in\nthe same column, with C1 and C3 white and C2 red. Find the maximum value T can attain.\nSolution. We prove that in an n × n square table there are at most 4n4\n27 such triples.\nLet row i and column j contain ai and bj white cells respectively, and let R be the set of\nred cells. For every red cell ( i, j ) there are aibj admissible triples ( C1, C 2, C 3) with C2 = (i, j ),\ntherefore\nT =\n∑\n(i,j)∈ R\naibj.\nWe use the inequality 2 ab ≤ a2 + b2 to obtain\nT ≤ 1\n2\n∑\n(i,j)∈ R\n(a2\ni + b2\nj ) = 1\n2\nn∑\ni=1\n(n − ai)a2\ni + 1\n2\nn∑\nj=1\n(n − bj)b2\nj .\nThis is because there are n − ai red cells in row i and n − bj red cells in column j. Now we\nmaximize the right-hand side.\nBy the AM-GM inequality we have\n(n − x)x2 = 1\n2 (2n − 2x) ·x ·x ≤ 1\n2\n(2n\n3\n) 3\n= 4n3\n27 ,\nwith equality if and only if x = 2n\n3 . By putting everything together, we get\nT ≤ n\n2\n4n3\n27 + n\n2\n4n3\n27 = 4n4\n27 .\nIf n = 999 then any coloring of the square table with x = 2n\n3 = 666 white cells in each row\nand column attains the maximum as all inequalities in the previous argum ent become equalities.\nFor example color a cell ( i, j ) white if i − j ≡ 1, 2, . . . , 666 (mod 999), and red otherwise.\nTherefore the maximum value T can attain is T = 4·9994\n27 .\nComment. One can obtain a better preliminary estimate with the Cauchy-Schwarz inequality:\nT =\n∑\n(i,j)∈ R\naibj ≤\n\n ∑\n(i,j)∈ R\na2\ni\n\n\n1\n2\n·\n\n ∑\n(i,j)∈ R\nb2\nj\n\n\n1\n2\n=\n( n∑\ni=1\n(n − ai)a2\ni\n) 1\n2\n·\n\n\nn∑\nj=1\n(n − bj)b2\nj\n\n\n1\n2\n.\nIt can be used to reach the same conclusion.\n\n[[PAGE 22]]\n22",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring"
+        ],
+        "reason": "Matched graph terms: coloring"
+      },
+      "evidence": [
+        "ality if and only if x = 2n 3 . By putting everything together, we get T ≤ n 2 4n3 27 + n 2 4n3 27 = 4n4 27 . If n = 999 then any coloring of the square table with x = 2n 3 = 666 white cells in each row and column attains the maximum as all inequalities in the previou"
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c4",
+      "year": 2012,
+      "shortlist_id": "C4",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Players A and B play a game with N ≥ 2012 coins and 2012 boxes arranged around a\ncircle. Initially A distributes the coins among the boxes so that there is at least 1 coin in each\nbox. Then the two of them make moves in the order B, A, B, A, . . . by the following rules:\n• On every move of his B passes 1 coin from every box to an adjacent box.\n• On every move of hers A chooses several coins that were not involved in B's previous\nmove and are in different boxes. She passes every chosen coin to an adjacent box.\nPlayer A's goal is to ensure at least 1 coin in each box after every move of her s, regardless of\nhow B plays and how many moves are made. Find the least N that enables her to succeed.\nSolution. We argue for a general n ≥ 7 instead of 2012 and prove that the required minimum N\nis 2 n − 2. For n = 2012 this gives Nmin = 4022.\na) If N = 2 n − 2 player A can achieve her goal. Let her start the game with a regular\ndistribution: n − 2 boxes with 2 coins and 2 boxes with 1 coin. Call the boxes of the two k inds\nred and white respectively. We claim that on her first move A can achieve a regular distribution\nagain, regardless of B's first move M. She acts according as the following situation S occurs\nafter M or not: The initial distribution contains a red box R with 2 white neighbors, and R\nreceives no coins from them on move M.\nSuppose that S does not occur. Exactly one of the coins c1 and c2 in a given red box X\nis involved in M, say c1. If M passes c1 to the right neighbor of X, let A pass c2 to its left\nneighbor, and vice versa. By doing so with all red boxes A performs a legal move M ′. Thus\nM and M ′ combined move the 2 coins of every red box in opposite directions. He nce after M\nand M ′ are complete each neighbor of a red box X contains exactly 1 coin that was initially\nin X. So each box with a red neighbor is non-empty after M ′. If initially there is a box X\nwith 2 white neighbors ( X is red and unique) then X receives a coin from at least one of them\non move M since S does not occur. Such a coin is not involved in M ′, so X is also non-empty\nafter M ′. Furthermore each box Y has given away its initial content after M and M ′. A red\nneighbor of Y adds 1 coin to it; a white neighbor adds at most 1 coin because it is not in volved\nin M ′. Hence each box contains 1 or 2 coins after M ′. Because N = 2n − 2, such a distribution\nis regular.\nNow let S occur after move M. Then A leaves untouched the exceptional red box R. With\nall remaining red boxes she proceeds like in the previous case, thus m aking a legal move M ′′.\nBox R receives no coins from its neighbors on either move, so there is 1 coin in it after M ′′.\nLike above M and M ′′ combined pass exactly 1 coin from every red box different from R to\neach of its neighbors. Every box except R has a red neighbor different from R, hence all boxes\nare non-empty after M ′′. Next, each box Y except R loses its initial content after M and M ′′.\nA red neighbor of Y adds at most 1 coin to it; a white neighbor also adds at most 1 coin as\nit does not participate in M ′′. Thus each box has 1 or 2 coins after M ′′, and the obtained\ndistribution is regular.\nPlayer A can apply the described strategy indefinitely, so N = 2n− 2 enables her to succeed.\nb) For N ≤ 2n − 3 player B can achieve an empty box after some move of A. Let α be a\nset of l consecutive boxes containing a total of N(α ) coins. We call α an arc if l ≤ n − 2 and\nN(α ) ≤ 2l − 3. Note that l ≥ 2 by the last condition. Moreover if both extremes of α are\nnon-empty boxes then N(α ) ≥ 2, so that N(α ) ≤ 2l − 3 implies l ≥ 3. Observe also that if\nan extreme X of α has more than 1 coin then ignoring X yields a shorter arc. It follows that\nevery arc contains an arc whose extremes have at most 1 coin each .\nGiven a clockwise labeling 1 , 2, . . . , n of the boxes, suppose that boxes 1 , 2, . . . , l form an\narc α , with l ≤ n − 2 and N(α ) ≤ 2l − 3. Suppose also that all n ≥ 7 boxes are non-empty.\nThen B can move so that an arc α ′ with N(α ′) < N (α ) will appear after any response of A.\n\n[[PAGE 23]]\n23\nOne may assume exactly 1 coin in boxes 1 and l by a previous remark. Let B pass 1 coin\nin counterclockwise direction from box 1 and box n, and in clockwise direction from each\nremaining box. This leaves N(α ) − 2 coins in the boxes of α . In addition, due to 3 ≤ l ≤ n − 2,\nbox l has exactly 1 coin c, the one received from box l − 1.\nLet player A's next move M pass k ≤ 2 coins to boxes 1 , 2, . . . , l from the remaining ones.\nOnly boxes 1 and l can receive such coins, at most 1 each. If k < 2 then after move M boxes\n1, 2, . . . , l form an arc α ′ with N(α ′) < N (α ). If k = 2 then M adds a coin to box l. Also\nM does not move coin c from l because c is involved in the previous move of B. In summary\nboxes 1 , 2, . . . , l contain N(α ) coins like before, so they form an arc. However there are 2 coins\nnow in the extreme l of the arc. Ignore l to obtain a shorter arc α ′ with N(α ′) < N (α ).\nConsider any initial distribution without empty boxes. Since N ≤ 2n − 3, there are at\nleast 3 boxes in it with exactly 1 coin. It follows from n ≥ 7 that some 2 of them are the\nextremes of an arc α . Hence B can make the move described above, which leads to an arc α ′\nwith N(α ′) < N (α ) after A's response. If all boxes in the new distribution are non-empty he\ncan repeat the same, and so on. Because N(α ) cannot decrease indefinitely, an empty box will\noccur after some move of A.\n\n[[PAGE 24]]\n24",
+      "solution_text_en": "",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency"
+        ],
+        "reason": "Matched graph terms: cell_adjacency"
+      },
+      "evidence": [
+        "hem make moves in the order B, A, B, A, . . . by the following rules: • On every move of his B passes 1 coin from every box to an adjacent box. • On every move of hers A chooses several coins that were not involved in B's previous move and are in different boxes. She"
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c5",
+      "year": 2012,
+      "shortlist_id": "C5",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "country": "Ti",
+      "statement_en": "The columns and the rows of a 3 n × 3n square board are numbered 1 , 2, . . . , 3n. Every\nsquare ( x, y ) with 1 ≤ x, y ≤ 3n is colored asparagus, byzantium or citrine according as the\nmodulo 3 remainder of x + y is 0, 1 or 2 respectively. One token colored asparagus, byzantium\nor citrine is placed on each square, so that there are 3 n2 tokens of each color.\nSuppose that one can permute the tokens so that each token is mo ved to a distance of\nat most d from its original position, each asparagus token replaces a byzant ium token, each\nbyzantium token replaces a citrine token, and each citrine token re places an asparagus token.\nProve that it is possible to permute the tokens so that each token is moved to a distance of at\nmost d + 2 from its original position, and each square contains a token with t he same color as\nthe square.\nSolution. Without loss of generality it suffices to prove that the A-tokens can be moved to\ndistinct A-squares in such a way that each A-token is moved to a dist ance at most d + 2 from\nits original place. This means we need a perfect matching between th e 3 n2 A-squares and the\n3n2 A-tokens such that the distance in each pair of the matching is at mo st d + 2.\nTo find the matching, we construct a bipartite graph. The A-squar es will be the vertices in\none class of the graph; the vertices in the other class will be the A-t okens.\nSplit the board into 3 × 1 horizontal triminos; then each trimino contains exactly one A-\nsquare. Take a permutation π of the tokens which moves A-tokens to B-tokens, B-tokens to\nC-tokens, and C-tokens to A-tokens, in each case to a distance a t most d. For each A-square S,\nand for each A-token T , connect S and T by an edge if T , π(T ) or π − 1(T ) is on the trimino\ncontaining S. We allow multiple edges; it is even possible that the same square and th e same\ntoken are connected with three edges. Obviously the lengths of th e edges in the graph do not\nexceed d + 2. By length of an edge we mean the distance between the A-squar e and the A-token\nit connects.\nEach A-token T is connected with the three A-squares whose triminos contain T , π(T )\nand π − 1(T ). Therefore in the graph all tokens are of degree 3. We show that the same is true\nfor the A-squares. Let S be an arbitrary A-square, and let T1, T 2, T 3 be the three tokens on\nthe trimino containing S. For i = 1, 2, 3, if Ti is an A-token, then S is connected with Ti; if Ti\nis a B-token then S is connected with π − 1(Ti); finally, if Ti is a C-token then S is connected\nwith π(Ti). Hence in the graph the A-squares also are of degree 3.\nSince the A-squares are of degree 3, from every set S of A-squares exactly 3 |S|edges start.\nThese edges end in at least |S|tokens because the A-tokens also are of degree 3. Hence every\nset S of A-squares has at least |S|neighbors among the A-tokens.\nTherefore, by Hall's marriage theorem, the graph contains a perfect matching betwe en\nthe two vertex classes. So there is a perfect matching between th e A-squares and A-tokens\nwith edges no longer than d + 2. It follows that the tokens can be permuted as specified in the\nproblem statement.\nComment 1. In the original problem proposal the board was infinite and th ere were only two colors.\nHaving n colors for some positive integer n was an option; we chose n = 3. Moreover, we changed\nthe board to a finite one to avoid dealing with infinite graphs ( although Hall's theorem works in the\ninfinite case as well).\nWith only two colors Hall's theorem is not needed. In this cas e we split the board into 2 × 1\ndominos, and in the resulting graph all vertices are of degre e 2. The graph consists of disjoint cycles\nwith even length and infinite paths, so the existence of the ma tching is trivial.\nHaving more than three colors would make the problem stateme nt more complicated, because we\nneed a matching between every two color classes of tokens. Ho wever, this would not mean a significant\nincrease in difficulty.\n\n[[PAGE 25]]\n25\nComment 2. According to Wikipedia, the color asparagus (hexadecimal code #87A96B) is a tone\nof green that is named after the vegetable. Crayola created t his color in 1993 as one of the 16 to\nbe named in the Name The Color Contest. Byzantium (#702963) is a dark tone of purple. Its first\nrecorded use as a color name in English was in 1926. Citrine (#E4D00A) is variously described as\nyellow, greenish-yellow, brownish-yellow or orange. The fi rst known use of citrine as a color name in\nEnglish was in the 14th century.\n\n[[PAGE 26]]\n26",
+      "solution_text_en": "",
+      "decision": "candidate",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "complete_graph_language",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "grid",
+          "matching",
+          "path",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, complete_graph_language, connected, cycle, edge, graph, grid, matching, path, vertex"
+      },
+      "evidence": [
+        "The columns and the rows of a 3 n × 3n square board are numbered 1 , 2, . . . , 3n. Every square ( x, y ) with 1 ≤ x, y ≤ 3n is colored asparagus, byzantium or citrine according as the modulo 3 remainder of x + y is 0, 1 or 2 respectively. One token colored asparag",
+        "original place. This means we need a perfect matching between th e 3 n2 A-squares and the 3n2 A-tokens such that the distance in each pair of the matching is at mo st d + 2. To find the matching, we construct a bipartite graph. The A-squar es will be the vertices in o",
+        "− 1(T ) is on the trimino containing S. We allow multiple edges; it is even possible that the same square and th e same token are connected with three edges. Obviously the lengths of th e edges in the graph do not exceed d + 2. By length of an edge we mean the distance",
+        "e we split the board into 2 × 1 dominos, and in the resulting graph all vertices are of degre e 2. The graph consists of disjoint cycles with even length and infinite paths, so the existence of the ma tching is trivial. Having more than three colors would make the p"
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c6",
+      "year": 2012,
+      "shortlist_id": "C6",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Let k and n be fixed positive integers. In the liar's guessing game, Amy chooses in tegers\nx and N with 1 ≤ x ≤ N. She tells Ben what N is, but not what x is. Ben may then repeatedly\nask Amy whether x ∈ S for arbitrary sets S of integers. Amy will always answer with yes or no,\nbut she might lie. The only restriction is that she can lie at most k times in a row. After he\nhas asked as many questions as he wants, Ben must specify a set of at most n positive integers.\nIf x is in this set he wins; otherwise, he loses. Prove that:\na) If n ≥ 2k then Ben can always win.\nb) For sufficiently large k there exist n ≥ 1. 99k such that Ben cannot guarantee a win.\nSolution. Consider an answer A ∈ { yes, no} to a question of the kind \"Is x in the set S?\"\nWe say that A is inconsistent with a number i if A = yes and i ̸∈ S, or if A = no and i ∈ S.\nObserve that an answer inconsistent with the target number x is a lie.\na) Suppose that Ben has determined a set T of size m that contains x. This is true initially\nwith m = N and T = {1, 2, . . . , N }. For m > 2k we show how Ben can find a number y ∈ T\nthat is different from x. By performing this step repeatedly he can reduce T to be of size 2 k ≤ n\nand thus win.\nSince only the size m > 2k of T is relevant, assume that T = {0, 1, . . . , 2k, . . . , m − 1}. Ben\nbegins by asking repeatedly whether x is 2 k. If Amy answers no k + 1 times in a row, one\nof these answers is truthful, and so x ̸= 2 k. Otherwise Ben stops asking about 2 k at the first\nanswer yes. He then asks, for each i = 1 , . . . , k , if the binary representation of x has a 0 in\nthe ith digit. Regardless of what the k answers are, they are all inconsistent with a certain\nnumber y ∈ { 0, 1, . . . , 2k − 1}. The preceding answer yes about 2 k is also inconsistent with y.\nHence y ̸= x. Otherwise the last k + 1 answers are not truthful, which is impossible.\nEither way, Ben finds a number in T that is different from x, and the claim is proven.\nb) We prove that if 1 < λ < 2 and n =\n⌊\n(2 − λ)λ k+1⌋\n− 1 then Ben cannot guarantee a win.\nTo complete the proof, then it suffices to take λ such that 1 . 99 < λ < 2 and k large enough so\nthat\nn =\n⌊\n(2 − λ)λ k+1⌋\n− 1 ≥ 1. 99k.\nConsider the following strategy for Amy. First she chooses N = n+1 and x ∈ { 1, 2, . . . , n +1}\narbitrarily. After every answer of hers Amy determines, for each i = 1 , 2, . . . , n + 1, the\nnumber mi of consecutive answers she has given by that point that are incons istent with i. To\ndecide on her next answer, she then uses the quantity\nφ =\nn+1∑\ni=1\nλ mi.\nNo matter what Ben's next question is, Amy chooses the answer whic h minimizes φ.\nWe claim that with this strategy φ will always stay less than λ k+1. Consequently no expo-\nnent mi in φ will ever exceed k, hence Amy will never give more than k consecutive answers\ninconsistent with some i. In particular this applies to the target number x, so she will never lie\nmore than k times in a row. Thus, given the claim, Amy's strategy is legal. Since the s trategy\ndoes not depend on x in any way, Ben can make no deductions about x, and therefore he cannot\nguarantee a win.\nIt remains to show that φ < λ k+1 at all times. Initially each mi is 0, so this condition holds\nin the beginning due to 1 < λ < 2 and n =\n⌊\n(2 − λ)λ k+1⌋\n− 1. Suppose that φ < λ k+1 at some\npoint, and Ben has just asked if x ∈ S for some set S. According as Amy answers yes or no,\nthe new value of φ becomes\nφ 1 =\n∑\ni∈ S\n1 +\n∑\ni /∈ S\nλ mi+1 or φ 2 =\n∑\ni∈ S\nλ mi+1 +\n∑\ni /∈ S\n1.\n\n[[PAGE 27]]\n27\nSince Amy chooses the option minimizing φ, the new φ will equal min( φ 1, φ 2). Now we have\nmin(φ 1, φ 2) ≤ 1\n2(φ 1 + φ 2) = 1\n2\n(∑\ni∈ S\n(\n1 + λ mi+1)\n+\n∑\ni /∈ S\n(\nλ mi+1 + 1\n)\n)\n= 1\n2(λφ + n + 1).\nBecause φ < λ k+1, the assumptions λ < 2 and n =\n⌊\n(2 − λ)λ k+1⌋\n− 1 lead to\nmin(φ 1, φ 2) < 1\n2 (λ k+2 + (2 − λ)λ k+1) = λ k+1.\nThe claim follows, which completes the solution.\nComment. Given a fixed k, let f (k) denote the minimum value of n for which Ben can guarantee a\nvictory. The problem asks for a proof that for large k\n1. 99k ≤ f (k) ≤ 2k.\nA computer search shows that f (k) = 2 , 3, 4, 7, 11, 17 for k = 1, 2, 3, 4, 5, 6.\n\n[[PAGE 28]]\n28",
+      "solution_text_en": "",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2012-sl-c7",
+      "year": 2012,
+      "shortlist_id": "C7",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "country": "Gc",
+      "statement_en": "There are given 2 500 points on a circle labeled 1 , 2, . . . , 2500 in some order. Prove that\none can choose 100 pairwise disjoint chords joining some of these po ints so that the 100 sums\nof the pairs of numbers at the endpoints of the chosen chords are equal.\nSolution. The proof is based on the following general fact.\nLemma. In a graph G each vertex v has degree dv. Then G contains an independent set S of\nvertices such that |S| ≥ f (G) where\nf (G) =\n∑\nv∈ G\n1\ndv + 1 .\nProof. Induction on n = |G|. The base n = 1 is clear. For the inductive step choose a vertex v0\nin G of minimum degree d. Delete v0 and all of its neighbors v1, . . . , v d and also all edges with\nendpoints v0, v 1, . . . , v d. This gives a new graph G′. By the inductive assumption G′ contains\nan independent set S′ of vertices such that |S′| ≥ f (G′). Since no vertex in S′ is a neighbor\nof v0 in G, the set S = S′ ∪ { v0} is independent in G.\nLet d′\nv be the degree of a vertex v in G′. Clearly d′\nv ≤ dv for every such vertex v, and also\ndvi ≥ d for all i = 0, 1, . . . , d by the minimal choice of v0. Therefore\nf (G′) =\n∑\nv∈ G′\n1\nd′\nv + 1 ≥\n∑\nv∈ G′\n1\ndv + 1 = f (G) −\nd∑\ni=0\n1\ndvi + 1 ≥ f (G) − d + 1\nd + 1 = f (G) − 1.\nHence |S|= |S′|+ 1 ≥ f (G′) + 1 ≥ f (G), and the induction is complete. □\nWe pass on to our problem. For clarity denote n = 2 499 and draw all chords determined by\nthe given 2 n points. Color each chord with one of the colors 3 , 4, . . . , 4n − 1 according to the\nsum of the numbers at its endpoints. Chords with a common endpoint have different colors.\nFor each color c consider the following graph Gc. Its vertices are the chords of color c, and two\nchords are neighbors in Gc if they intersect. Let f (Gc) have the same meaning as in the lemma\nfor all graphs Gc.\nEvery chord l divides the circle into two arcs, and one of them contains m(l) ≤ n − 1 given\npoints. (In particular m(l) = 0 if l joins two consecutive points.) For each i = 0 , 1, . . . , n − 2\nthere are 2 n chords l with m(l) = i. Such a chord has degree at most i in the respective graph.\nIndeed let A1, . . . , A i be all points on either arc determined by a chord l with m(l) = i and\ncolor c. Every Aj is an endpoint of at most 1 chord colored c, j = 1 , . . . , i . Hence at most\ni chords of color c intersect l.\nIt follows that for each i = 0 , 1, . . . , n − 2 the 2 n chords l with m(l) = i contribute at\nleast 2n\ni+1 to the sum ∑\nc f (Gc). Summation over i = 0, 1, . . . , n − 2 gives\n∑\nc\nf (Gc) ≥ 2n\nn− 1∑\ni=1\n1\ni .\nBecause there are 4 n − 3 colors in all, averaging yields a color c such that\nf (Gc) ≥ 2n\n4n − 3\nn− 1∑\ni=1\n1\ni > 1\n2\nn− 1∑\ni=1\n1\ni .\nBy the lemma there are at least 1\n2\n∑n− 1\ni=1\n1\ni pairwise disjoint chords of color c, i. e. with the same\nsum c of the pairs of numbers at their endpoints. It remains to show that 1\n2\n∑n− 1\ni=1\n1\ni ≥ 100 for\nn = 2 499. Indeed we have\nn− 1∑\ni=1\n1\ni >\n2400\n∑\ni=1\n1\ni = 1 +\n400∑\nk=1\n2k\n∑\ni=2k− 1+1\n1\ni > 1 +\n400∑\nk=1\n2k− 1\n2k = 201 > 200.\nThis completes the solution.\n\n[[PAGE 29]]\n29",
+      "solution_text_en": "",
+      "decision": "candidate",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "edge",
+          "graph",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, edge, graph, vertex"
+      },
+      "evidence": [
+        "on is complete. □ We pass on to our problem. For clarity denote n = 2 499 and draw all chords determined by the given 2 n points. Color each chord with one of the colors 3 , 4, . . . , 4n − 1 according to the sum of the numbers at its endpoints. Chords with a commo",
+        "r the inductive step choose a vertex v0 in G of minimum degree d. Delete v0 and all of its neighbors v1, . . . , v d and also all edges with endpoints v0, v 1, . . . , v d. This gives a new graph G′. By the inductive assumption G′ contains an independent set S′ of",
+        "numbers at the endpoints of the chosen chords are equal. Solution. The proof is based on the following general fact. Lemma. In a graph G each vertex v has degree dv. Then G contains an independent set S of vertices such that |S| ≥ f (G) where f (G) = ∑ v∈ G 1 dv +",
+        "he endpoints of the chosen chords are equal. Solution. The proof is based on the following general fact. Lemma. In a graph G each vertex v has degree dv. Then G contains an independent set S of vertices such that |S| ≥ f (G) where f (G) = ∑ v∈ G 1 dv + 1 . Proof. In"
+      ]
+    }
+  ]
+}

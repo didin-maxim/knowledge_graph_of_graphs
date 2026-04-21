@@ -1,0 +1,601 @@
+{
+  "year": 2021,
+  "page_url": "https://memo2021.math.hr/competition/",
+  "download_count": 3,
+  "problem_count_extracted": 12,
+  "problems": [
+    {
+      "id": "memo-2021-i1",
+      "year": 2021,
+      "problem_code": "I-1",
+      "statement_en": "Determine all real numbers A such that every sequence of non-zero real numbers x1, x2, . . .\nsatisfying\nxn+1 = A−1\nxn\nfor every integern ⩾ 1, has only finitely many negative terms.",
+      "solution_text_en": "Answer. All A≥2 satisfy the given property.\nFirst Solution\nLet us assume thatA ⩾ 2 holds and there is somen ⩾ 1 withxn < 0. Thenxn+1 >A ⩾ 2.\nWe claim thatxn+k > 1 for allk≥1. This is easily proven by induction: we already did\nthis fork = 1, and the induction step follows from\nxn+k+1 =A−1\nxn+k\n>A −1 ⩾ 1.\nHence, there is at most one negative term ifA ⩾ 2.\nLet us assume thatA < 2 holds and there is a sequence(xn) such thatxn > 0 for all\nn ⩾N. We write\nxn+2 + 2 ⩽xn+2 +xn+1 + 1\nxn+1\n=xn+1 +A\nhence xn+2 ⩽xn+1 + (A−2) and thusxn+k < 0 for large enoughk, contradiction.\nSecond Solution\nThe caseA ⩾ 2 is handled as in the above solution.\nIn the caseA< 2 assume that only finitely many members of the sequence are positive.\nWithout loss of generality we can assume all members are positive. We have that\nxn+1 =A−1\nxn\n<A< 2\nso the sequence is bounded above. Additionally we have\nxn+1−xn = xn−xn−1\nxnxn−1\nso the sequence is monotonic due toxnxn−1 > 0. As we have that the sequence is bounded\nbelow by 0 and bounded above, we have that it has a limit, denote itL> 0. Taking the\nlimit of the recursive relation we obtain\nL =A−1\nL =⇒A =L + 1\nL ⩾ 2,\nwhich is a contradiction.\n2/22\nMEMO 2021 Problems and Solutions\nThird Solution\nThe caseA ⩾ 2 is handled as in the above solution.\nLet us assume that there is a sequence(xn) such thatxn > 0 for alln ⩾N. Without loss\nof generality, we may assume thatxn > 0 for alln ⩾ 0. Summing the firstn equalities\nwe obtain\nx2 +...+xn+1 + 1\nx1\n+...+ 1\nxn\n=nA.\nSince xk + 1\nxk\n⩾ 2 for k = 2,...,n, we get\n0 ⩽xn+1 + 1\nx1\n⩽nA−2(n−1) = 2−n(2−A).\nFor large enoughn this expression is negative so we get a contradiction.\n3/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2021-i2",
+      "year": 2021,
+      "problem_code": "I-2",
+      "statement_en": "Let m and n be positive integers. Some squares of anm×n board are coloured red. A sequence\na1, a2, . . . , a2r of 2r ⩾ 4 pairwise distinct red squares is called a bishop circuit if for every\nk∈{1, . . . ,2r}, the squaresak and ak+1 lie on a diagonal, but the squaresak and ak+2 do not\nlie on a diagonal (herea2r+1 = a1 and a2r+2 = a2).\nIn terms ofm and n, determine the maximum possible number of red squares on anm×n board\nwithout a bishop circuit.\n(Remark. Two squares lie on a diagonal if the line passing through their centres intersects the\nsides of the board at an angle of45◦.)",
+      "solution_text_en": "First Solution\nObviously, for the tables1×n andn×1, the largest number of black cells isn. Therefore,\nwe assume thatm≥2 a n≥2 for the rest of the solution. In the tablem×n, we can\ncolor the first two rows, the first column and the last column, which is2m + 2n−4 black\ncells in total. It is easy to see that such a table contains no bishop circuit.\nNow we show that if there is no bishop circuit, there are at most2m + 2n−4 black cells\nin the tablem×n. We denote the cell ini-th row andj-th column by(i,j ). The k-th\npositive diagonal is a set of cells(i,j ), such thati +j−1 = k. Similarly, thek-th negative\ndiagonal is a set of cells(i,j ), such thatn +i−j =k.\nConsider a bipartite graphG with partitions\nA ={a1,a 2,...,a m+n−1}and B ={b1,b 2,...,b m+n−1},\nwhere the vertices ai and bj are connected by an edge if and only if the cell in the\nintersection of thei-th positive diagonal and thej-th negative diagonal is black. Notice\nthat a bishop circuit corresponds to a circuit inG and vice versa.\nThe graphG has at least two components: If we color the cells of the table alternately\ngreen and red like in chess, then the edges ofG corresponding to green cells lie in a\ndifferent component that the edges ofG corresponding to red cells – it is not possible to\nmove a bishop between a green and a red cell.\nFurthermore,G has 2n + 2m−2 vertices. IfG is acyclic, thenG is a forest consisting of\nat least two trees. Therefore,G contains at most2n + 2m−2−2 = 2n + 2m−4 edges\nand that is the upper bound on the number of black cells we wanted to prove.\nSecond Solution\nDenote byS the coloring configuration from the first proof consisting of the first two rows\nand the first and the last column of the table. It is easy to see thatS does not contain\nthe bishop circle. Also,S is maximal in the sense that if we add any new cell to it, the\nnew coloring will contain a bishop circle.\nWe will show that any optimal coloringC has the same number of cells asS by trans-\nforming C to S by iterating the following steps:\n4/22\nMEMO 2021 Problems and Solutions\n1) First we choose any cella which is inS, but not inC. If there is no such cell, we\nare done since maximality ofS and optimality ofC imply thatS =C.\n2) From the optimality ofC it follows that there is a bishop circleB in the coloring\nC∪{a}containinga. SinceS does not contain a bishop circle, there is an element\nb in cycle B which is not in S. We replace coloring C with the coloring  ̃C =\n(C∪{a})\\{b}.\nTo finish the proof, we need to show that ̃C is optimal. For that we need to prove that\nB is a unique cycle inC∪{a}containinga.\nAssume the opposite. Let a0,a,a 1,...a2r and b0,a,b 1,...b2s be two bishop cycles in\nC∪{a}such thata0 and b1 (as well asa1 and b0) are on the same diagonal. Consider\nthe cycle inC (every two consecutive cells are on the same diagonal)\na0,b 1,b 2,...,b 2s,b 0,a 1,a 2,...,a 2r.\nIt remains to prove that it contains a bishop circle which will contradict the optimality\nof C.\nNote that no three consecutive cells are on the same diagonal, so the only problem is if\nthe cells are not pairwise different. Thus we can assume that we can write the cycle in\nthe following form\nc1,...ck,c 1,d 1,d 2,...,d t−1,\nwhere t≥k. If we remove firstk cells we obtain the cycle\nc1,d 1,d 2,...,d t−1.\nFurthermore, ifdt−1,c 1 andd1 are on the same diagonal, we removec1. By repeating this\nprocedure, we end up with the bishop’s circuit.\n5/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 2,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 13
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "color",
+        "colour",
+        "component",
+        "connected",
+        "cycle",
+        "edge",
+        "edges",
+        "forest",
+        "oard",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 2, 'algebra': 0, 'number_theory': 0, 'combinatorics': 13}"
+    },
+    {
+      "id": "memo-2021-i3",
+      "year": 2021,
+      "problem_code": "I-3",
+      "statement_en": "Let ABC be an acute triangle andD an interior point of segmentBC. Points E and F lie in\nthe half-plane determined by the lineBC containing A such that DE is perpendicular to BE\nand DE is tangent to the circumcircle ofACD, while DF is perpendicular to CF and DF is\ntangent to the circumcircle ofABD. Prove that the pointsA, D, E and F are concyclic.",
+      "solution_text_en": "First solution\nDenote by T the intersection point ofBE and CF. Clearly, D,E,F,T are concyclic\nbecause of the right angleDET and TFD .\nThe tangent lineDE gives ∠ADE = ∠ACD. Similarly ∠FDA = ∠DBA, therefore\n∠FDE = 180◦−∠BAC. This gives\n∠BTC = ∠ETF = 180◦−∠EDF = 180◦−(180◦−∠BAC ) = ∠BAC,\nwhich means thatB,C,A,T are also concyclic. With this we have\n∠ATE = ∠ATB = ∠ACB = ∠ACD = ∠ADE,\nwhich shows thatA,E,D,T are also concyclic.\nTherefore all pointsA,D,E,F,T are concyclic.\n6/22\nMEMO 2021 Problems and Solutions\nSecond solution\nDenote the angles ofABC conventionally byα,β,γ, also let∠BAD =x and ∠DAC =y.\nAs in the previous solution, notice that∠FDE = 180◦−α. It is enough to show that\n∠EAF =α.\nBecause of the tangent lineDE, it holds that∠DBE = 90◦−∠EDB = 90◦−y, and\nanalogously ∠FCD = 90◦−x.\nWewillshowthatitcannothappenthatbothpoints E andF lieinsideoroutside ABC. If\nthey both were outside, we would have∠DBE >∠ABD and ∠FCD > ∠ACD, in other\nwords 90◦−y >βand 90◦−x>γ. The sum of these inequalities gives180◦−x−y >β+γ,\nwhich is a contradiction, sincex +y =α. Analogously,E,F, cannot be both inside.\nWithout loss of generality assume thatE is not outsideABC (i.e. it is inside or onAB)\nand F is not inside (i.e. it is outside or anAC). In order to show that∠EAF = α, it\nremains to show that trianglesAEB and AFC are similar.\nWe have∠EBA =β−(90◦−x) and ∠FCA = (90◦−y)−γ. These two angles are equal,\nsince\nβ−(90◦−x)−((90◦−y)−γ) = x +y +β+γ−180◦=α+β+γ−180◦= 0.\nNow we can finish the proof by calculating ratios:\nBE\nCF = BD·siny\nCD·sinx = BD\nsinx·siny\nCD = AB\nsin ∠ADB·sin ∠ADC\nAC = AB\nAC.\n7/22\nMEMO 2021 Problems and Solutions\nThird Solution\nLet G be the point on the lineFD such that the quadrilateralADCG is cyclic.\nSince DF is tangent to the circumcircle ofABD we have ∠GAC = ∠GDC = ∠DAB.\nSimilarly, sinceDE is tangent to the circumcircle ofACD we have ∠GCA = ∠GDA =\n∠FDA = ∠DBA. We hence conclude that the trianglesABD and ACG are spirally\nsimilar with center atA.\nAdditionally, since ∠FGC = ∠DGC = ∠DAC = ∠BDE and ∠BED = ∠CFG = 90◦\n(and thus△BED∼△CFG), we have that the same spiral similarity maps the pointE\nto pointF. From this we get∠EAF = ∠BAC.\nSince DE and DF are tangent to the circumcircles ofACD and ABD respectively, we\nalso have ∠ADE = ∠ACD and ∠FDA = ∠DBA. Therefore,\n∠FDE = ∠FDA + ∠ADE = ∠DBA + ∠ACD = 180◦−∠BAC.\nBy combining the above equalities, we get that∠EAF = ∠BAC = 180◦−∠FDE and\nthusA,D,E,F are concyclic, as desired.\n8/22",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2021-i4",
+      "year": 2021,
+      "problem_code": "I-4",
+      "statement_en": "Let n ⩾ 3 be an integer. Zagi the squirrel sits at a vertex of a regularn-gon. Zagi plans to\nmake a journey ofn−1 jumps such that in thei-th jump, it jumps byi edges clockwise, for\ni∈{1, ..., n−1}. Prove that if after⌈n\n2⌉jumps Zagi has visited⌈n\n2⌉+ 1 distinct vertices, then\nafter n−1 jumps Zagi will have visited all of the vertices.\n(Remark. For a real numberx, we denote by⌈x⌉the smallest integer larger or equal tox.)",
+      "solution_text_en": "Solution\nNumber the vertices0, 1,...,n−1 clockwise starting at the vertex Zagi is on. After his\ni-th jump Zagi will be at a vertex numbered1 + 2 +···+i = i(i+1)\n2 (mod n). We need\nto prove that if for allk∈\n{\n0, 1, 2,...,⌈n\n2⌉\n}\nthe fractions k(k+1)\n2 achieve different values\nmodulon then they achieve different values modulon even for allk∈{0, 1, 2,...,n−1}.\nWe will in fact prove two following claims:\n•for numbers of the formn = 2 r, withr≥2, allk∈{0, 1, 2,...,n−1}the fractions\nk(k+1)\n2 achieve different values modn;\n•for numbers of the formn = 2 r·l, withr≥0 and l≥3 odd, we have that there\nexist distincta,b∈\n{\n0, 1, 2,...,⌈n\n2⌉\n}\nsuch that a(a+1)\n2 ≡b(b+1)\n2 (mod n).\nLet us firstly observen of the form 2r, with r≥2. Let as assume that there are1≤\nb<a ≤n−1 such that a(a+1)\n2 ≡b(b+1)\n2 (mod 2 r). Equivalently, 2r+1|(a−b)(a +b + 1).\nFactors on the right hand side have different parity, thus we have either2r+1|a−b or\n2r+1|a +b + 1. In the first case we have thata−b≤n−1< 2n. In the second case we\nhavea +b + 1≤(n−1) + (n−2) + 1 = 2 n−2 < 2n. Hence, in both cases we obtain\ncontradiction, and we can conclude that there indeed do not exist sucha and b.\nLet us now observen of the form2r·l, withr≥0,l≥3 odd. SetM = max{2r+1,l}and\nm = min{2r+1,l}. We claim that the pair(a,b ) = ( M +m−1\n2 , M−m−1\n2 ) satisfies the desired\nconditions. Indeed:\n•Since 2r+1 is even andl is odd, bothM +m−1 and M−m−1 are even and thus\na,b are integers.\n•We have: a(a+1)\n2 −b(b+1)\n2 = 1\n2(a−b)(a +b + 1) = 1\n2m·M = 2 rl =n.\n•Since M >m> 0, we have0≤b<a .\nIt remains to argue thata≤⌈n\n2⌉. Since r≥0 and l≥3 we conclude that bothm, M\ngreater or equal tomin{2r+1,l}≥2. From mN = 2n, they are both less or equal ton.\nSo we have inequality(m−n)(m−2)≤0, which impliesm +M = m + 2n\nm ≤2 + n.\nHence a = M +m−1\n2 ≤n+1\n2 ≤⌈n\n2⌉as desired.\nPart II\nTeam Competition\nAugust 26, 2021\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "edges",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "memo-2021-t1",
+      "year": 2021,
+      "problem_code": "T-1",
+      "statement_en": "Determine all functionsf : R→R such that the inequality\nf (x2)−f (y2) ⩽ (f (x) + y)(x−f (y))\nholds for all real numbersx and y.",
+      "solution_text_en": "Answer. We have eitherf (x) = x for allx or f (x) =−x for allx.\nSolution\nIt is easy to verify that the claimed solutions satisfy the desired inequality for all real\nnumbersx and y.\nPlugging inx =y = 0 we get\n0 ⩽−(f (0))2,\nwhich impliesf (0) = 0.\nNow settingy = 0 we obtain\nf (x2) ⩽xf (x).\nOn the other hand settingx = 0, we get\n−f (y2) ⩽−yf (y).\nTherefore\nf (x2) = xf (x) (1)\nholds for all realx. Replacing x here with−x and comparing the expressions we obtain\n−xf (−x) = xf (x). Therefore whenx̸= 0 we havef (−x) =−f (x). We also know this\nholds forx = 0 since we showedf (0) = 0 so f is an odd function.\nReplacing x with y and y with−x in the original inequality we obtain:\n(f (y2)−f (x2)) ⩽ (f (y)−x)(y +f (x)).\nThis together with the original inequality implies\n(f (x2)−f (y2)) = (f (x) +y)(x−f (y))\nfor allx, y∈R.\nWe further obtain (using (1)), that\nxf (x)−yf (y) = (f (x) +y)(x−f (y))\nwhich after expanding implies\n0 = xy−f (x)f (y)\nfor all realsx and y.\nSetting y = 1, we getx =f (x)f (1) for allx∈R. Choosingx = 1 implies f (1) =±1.\n11/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2021-t2",
+      "year": 2021,
+      "problem_code": "T-2",
+      "statement_en": "Given a positive integern, we say that a polynomialP with real coefficients isn-pretty if the\nequation P (⌊x⌋) =⌊P (x)⌋has exactly n real solutions. Show that for each positive integern\n(a) there exists ann-pretty polynomial;\n(b) any n-pretty polynomial has a degree of at least2n+1\n3 .\n(Remark. For a real numberx, we denote by⌊x⌋the largest integer smaller than or equal to\nx.)",
+      "solution_text_en": "Solution\nWe begin by making some preliminary observations. LetP be a real polynomial. We\nassociate to it the sets\nS(P ) ={x∈R|P (⌊x⌋) =⌊P (x)⌋}and I(P ) ={x∈Z|P (x)∈Z}.\nThen it is easily seen that\nS(P ) = I(P )∪\n⋃\ni∈I(P )\n{x∈(i,i + 1)|P (x)∈[P (i),P (i) + 1)}. (†)\n(i) We claim thatP (x) = −\n√\n2(x−1)2(x−2)2·...·(x−n)2 is n-pretty. Indeed, we\nwill show thatS(P ) = {1, 2,...,n}. To see this, first observe that for allx∈R we\nhave P (x) ⩽ 0, with equality iffx∈{1, 2,...,n}. It follows thatI(P )⊇{1, 2,...,n},\nbut I(P )⊆ {1, 2,...,n}is also immediate because\n√\n2 is irrational. Hence, we have\nI(P ) = {1, 2,...,n}. Finally, ifi∈I(P ) and x∈(i,i + 1), thenP (x) < 0, soP (x)̸∈\n[P (i),P (i) + 1). The claim now follows by(†).\n(ii) Suppose P is a real polynomial with|S(P )|= n. It follows from (†) that we may\nwrite I(P ) ={i1,i 2,...,i k}for some positive integerk. Furthermore, if we define\nSj ={x∈(ij,i j + 1)|P (x)∈[P (ij),P (ij) + 1)}\nfor 1 ⩽j ⩽k, then (†) can be rewritten as\nS(P ) = I(P )∪\nk⋃\nj=1\nSj (††).\nClaim 1.k ⩽d\nProof: Suppose thatk≥d + 1 holds. By the Lagrange interpolation formula, we have\nP (x) =\nd+1∑\nj=1\nP (ij)\n∏\nl̸=j\nx−il\nij−il\n.\nHence, P has rational coefficients, so we can writeP (x) = Q(x)\nM , whereM is a positive\ninteger andQ has integer coefficients. Theni1 +M Z⊆I(P ), soI(P ) is infinite, which\n12/22\nMEMO 2021 Problems and Solutions\nis a contradiction.\nClaim 2. For each1 ⩽j ⩽k, we haveP (x) ⩽P (ij) for allx∈[ij,i j + 1).\nProof: Suppose not and pick x ∈(ij,i j + 1) such that P (x) > P(ij). Note that P\nis continuous, so by the intermediate value theorem, there existsy∈(ij,x ) such that\nP (y) = min\n(P (x)+P (ij )\n2 ,P (ij) + 1\n2\n)\n∈(P (ij),P (ij) + 1). By continuity ofP, there exists\nδ >0 such that(y−δ,y+δ)⊆Sj. By (††),S(P ) is infinite, which is a contradiction.\nClaim 3. For each1 ⩽j ⩽k, P′has at least2|Sj|zeroes in (ij,i j + 1).\nProof: Indeed, fix j ∈ {1,...,k}and let Sj = {x1,...,x m}, where we may assume\nij < x1 < ... < xm < ij + 1. By Claim 2, we haveP (xl) = P (ij) for all 1 ⩽ l⩽ m.\nThen note that eachxl is zero ofP′since it is a local maximum ofP. Letting x0 = ij,\nnote thatP (xl−1) = P (xl), so Rolle’s theorem implies that(xl−1,x l) contains at least one\nzero ofP′for each1 ⩽l⩽m. In total, there are at least2mzeroes ofP′in (ij,i j +1).\nFinally, (††) implies that ∑k\nj=1|Sj|= n−k. It follows from Claim 1 that P is non-\nconstant, soP′has at mostd−1 zeroes. Hence, Claim 3 implies that2\n∑k\nj=1|Sj|⩽d−1.\nTherefore, 2(n−k) ⩽ d−1, so using Claim 1 we get2(n−d) ⩽ d−1. The desired\nconclusion follows.\n13/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2021-t3",
+      "year": 2021,
+      "problem_code": "T-3",
+      "statement_en": "Let n, b and c be positive integers. A group ofn pirates wants to fairly split their treasure. The\ntreasure consists ofc·n identical coins distributed overb·n bags, of which at leastn−1 bags are\ninitially empty. Captain Jack inspects the contents of each bag and then performs a sequence of\nmoves. In one move, he can take any number of coins from a single bag and put them into one\nempty bag. Prove that no matter how the coins are initially distributed, Jack can perform at\nmost n−1 moves and then split the bags among the pirates such that each pirate getsb bags\nand c coins.",
+      "solution_text_en": "Solution\nWe proceed by induction onn. The casen = 1 is trivial. Below we show that using one\nmove we can always create ab-tuple of non-empty bags with preciselyc coins in total.\nThis finishes the proof as we can put thatb-tuple of bags aside for one pirate and finish\nby induction.\nSort the non-empty bags by size (the number of coins in them). Take ab-tupleB1 withb\nsmallest non-empty bags and ab-tuple B2 with b largest non-empty bags. IfB1 contains\nc coins in total, we are done. Otherwise,B1 contains fewer thanc coins andB2 contains\nmore thanc coins. One by one, replace a bag inB1 by a bag inB2. At some point, the\nnumber of coins reaches (or exceeds)c for the first time. Suppose this happened when a\nbag withx coins was replaced by a bag withy >xcoins, the otherb−1 bags in theb-tuple\ncontaining a coins in total. Then we havea +x < c⩽ a +y. Therefore we can move\na +y−c<y −x ⩽y coins from the last bag to one empty bag which leaves theb-tuple\nwith preciselyc coins and decreases the number of empty bags by one (ifa +y =c, i.e.\nwe don’t move any coins, we still think of one bag becoming non-empty and containing 0\ncoins).\n14/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2021-t4",
+      "year": 2021,
+      "problem_code": "T-4",
+      "statement_en": "Let n be a positive integer. Prove that in a regular6n-gon, we can draw 3n diagonals with\npairwise distinct ends and partition the drawn diagonals inton triplets so that:\n• the diagonals in each triplet intersect in one interior point of the polygon and\n• all these n intersection points are distinct.",
+      "solution_text_en": "Solution\nForn = 1 take the main diagonals.\nForn = 2 we have the following construction:\nDenote the verticesA1,A 2...,A12. We will show that the linesA1A4, A2A6 and A3A11\nare concurrent. Let X be the intersection point of A2A6 and A3A11. By symmetry,\nA2A3X is isosceles right-angled triangle, so we have∠A6A2A3 = ∠A11A3A2 = 45◦. Also\nin the isosceles trapeziumA1A2A3A4, we have∠A2A1A4 = ∠A3A4A1 = 30◦. Hence we\ncan calculate the angles in the trianglesA1A2X and A3A4X and we see\n∠A1XA 2 + ∠A2XA 3 + ∠A3XA 4 = 45◦+ 90◦+ 45◦= 180◦.\nThis shows thatX also lies on the lineA1A4. In a similar manner we show that the lines\nA5A9, A7A10 and A8A12 are concurrent.\nForn = 2 k, we can make the same construction and rotate it2k−1 times.\nNext we give the construction for odd primesn. LetA1,A 2...,A6n be the vertices. Take\nevery third main diagonal, starting atA1. Now let the other two diagonals for the main\ndiagonal A1A3n be A2A6n−1 and A3A6n. For the main diagonalA7A3n+7 take A5A8 and\nA6A9 and so on. Going around this way we get a correct construction. The figure shows\nit forn = 3.\n15/22\nMEMO 2021 Problems and Solutions\nThis shows that a construction exist for all odd primen and in these constructions all the\nn points lie on main diagonals, and none of them is the midpoint of the6n-gon. For any\npositive integern which is not a power of2, we can choose an odd primep that divides\nn. Then we can rotate the construction forp with angle 360◦\n6n·around the middle of the\np-gon. If we rotate itn\np-times, then we get a construction forn, and all then intersection\npoints are different. This holds, since all of the points lie on a main diagonal, and these\nmain diagonals are distinct for each rotation.\n16/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 1, 'combinatorics': 3}"
+    },
+    {
+      "id": "memo-2021-t5",
+      "year": 2021,
+      "problem_code": "T-5",
+      "statement_en": "Let AD be the diameter of the circumcircle of an acute triangleABC. The lines through D\nparallel to AB and AC meet lines AC and AB in points E and F, respectively. LinesEF and\nBC meet at G. Prove thatAD and DG are perpendicular.",
+      "solution_text_en": "Solution\nLet G′denote the intersection of the line throughD perpendicular toAD with lineBC.\nWe will use Menelaus’ theorem to prove thatE,F andG′are collinear and hence,G =G′.\nFirst, observe that because ∠DBE = ∠FCD = 90◦and ∠DFC = ∠BED, triangles\nEBD and FCD are similar. Let\nλ:= BE\nCF = DB\nDC = DE\nDF.\nSince AEDF is a parallelogram,λ= DE\nDF = FA\nAE.\nBy the tangent angle theorem, trianglesG′CD and G′DB are similar. From the sine\ntheorem we obtain\nCG′\nG′D = sin(∠G′DC)\nsin(∠DCG′) = sin(∠DBC )\nsin(∠BCD ) = DC\nDB.\nAnalogously, we inferBG′\nG′D = DB\nDC. Therefore,\nBG′\nG′C = BG′\nG′D·G′D\nCG′=\n(DB\nDC\n)2\n=λ2.\n17/22\nMEMO 2021 Problems and Solutions\nIn total, we obtain\nCF\nEB·AE\nFA·BG′\nG′C = 1\nλ·1\nλ·λ2 = 1,\nand since E and F lie on segmentsAB and AC by acuteness of ∠BAC, and G′lies\noutside of the segmentBC by convexity, Menelaus’ theorem impliesG = G′as desired.\nThus, ∠GDA = 90◦.\n18/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 6,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 6, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2021-t6",
+      "year": 2021,
+      "problem_code": "T-6",
+      "statement_en": "Let ABC be a triangle and let M be the midpoint of the segment BC. Let X be a point\non the ray AB such that 2∠CXA = ∠CM A. Let Y be a point on the ray AC such that\n2∠AY B = ∠AM B. The line BC intersects the circumcircle of the triangleAXY at P and Q,\nsuch that the pointsP, B, C, and Q lie in this order on the lineBC. Prove thatP B = QC.",
+      "solution_text_en": "First Solution\nLet P′and Q′be points on lineBC such thatP′M =AM =Q′M and B and P′are on\nthe same side of the lineAM.\nWe have ∠P′AM = ∠MP′A = 1\n2∠CMA = ∠CXA. Therefore points P′,A,C,X are\nconcyclic.\nThis gives us thatBP′·BC =BX·BA. Power of pointB with respect to the circumcircle\nof triangleAXY gives thatBX·BA =BP·BQ. By combining the above equalities, we\nget BP′·BC =BP·BQ.\nAnalogously as above, by considering pointQ′instead ofP′, we get thatQ′,A,B,Y are\nconcyclic and thusCQ′·BC =CP·CQ.\nSinceCQ′=BP′, we getBP·BQ =CP·CQ which is equivalent toBP·(BC +CQ) =\n(BP +BC )·CQ, which finally givesBP =CQ, as desired.\n19/22\nMEMO 2021 Problems and Solutions\nSecond Solution\nDenote the circumcircle ofAXY by ω. Let O be the center ofω. Let XC and YB\nintersectωagain atZ and T, respectively. Note that\n∠ZXT = ∠ZXA + ∠AYT = 1\n2∠CMA + 1\n2∠AMB = 1\n2∠CMB = 90◦,\nand thereforeO is the midpoint ofTZ.\nUsing Pascal’s theorem for degenerated hexagonAAXZTY we obtain that the intersec-\ntion ofZT with the tangent linelat A to ωis collinear with the pointsAX∩TY =B\nand XZ∩YA =C. In other words,l, ZT, andBC concur at a single point, which we\nshall denote byR.\nLet M′be the midpoint ofPQ. Then M′is the projection ofO ontoPQ. PointsA, O,\nM′, andR lie on the circle with diameterOR. Hence\n∠AM′B = ∠AOR = 2∠AYT = ∠AMB,\nand it follows thatM′coincides withM.\nFinally, sinceBC and PQ share their midpoints, we havePB =QC.\nThird Solution\nChoose a pointD on the rayAM beyond the pointM such thatDM = BM = CM.\nThen\n∠ADB = 1\n2∠AMB = ∠AYB,\nhence A,B,D,Y lie on a circle. Similarly,A,C,D,X lie on a circle. Thus ∠DXB =\n∠DCY and ∠XBD = ∠CYD . It follows that△DXB∼△DCY . Hence\nBX\nCY = BD\nDY .\nThe sine rule yields\nBD\nDY = sin ∠BAD\nsin ∠DAY .\nMoreover,\nBM\nAB = sin ∠BAM\nsin ∠AMB and CM\nAC = sin ∠MAC\nsin ∠CMA,\nhence sin ∠BAM\nsin ∠MAC = AC\nAB.\nCombining all of these gives\nBX\nCY = AC\nAB.\nThis meansBX·AB =AC·CY , i.e. the power of pointsB and C with respect to the\ncircumcircle of AXY are equal. Hence PB·BQ = PC·CQ, so PB·(BC +CQ) =\n(PB +BC )·CQ. This simplifies toPB =CQ.\n20/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 0, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2021-t7",
+      "year": 2021,
+      "problem_code": "T-7",
+      "statement_en": "Find all pairs(n, p) of positive integers such thatp is prime and\n1 + 2 +···+ n = 3·(12 + 22 +···+ p2).",
+      "solution_text_en": "Answer. The only such pair is(n,p ) = (5, 2).\nSolution\nThe equation can be rewritten as\nn(n + 1) = p(p + 1)(2p + 1). (2)\nWe conclude thatp divides n or n + 1, so we divide the solution in two cases.\nIn the first case, ifn = kp for some integerk > 0, then k(kp + 1) = ( p + 1)(2p + 1).\nFirstly, after observing the equation modulop we can deduce thatp|k−1. Secondly,\nthe equation can be written as quadratic equation inp:\n2p2 + (3−k2)p + 1−k = 0.\nIts discriminant isD = (k2−3)2 + 8(k−1). Ifk = 1 we obtainn =p, but this does not\nlead to any solution. Ifk >1, thenD is strictly greater than(k2−3)2. To be a perfect\nsquare, D must be greater than or equal to(k2−2)2. Hence we obtain\n(k2−3)2 + 8(k−1)≥(k2−2)2 =⇒2(k−2)2≥5,\nwhich holds only fork = 1, 2, 3. The case k = 1 is already solved. The case k = 2\nimplies thatp|2−1 = 1, which leads to contradiction. In the casek = 3, we similarly\nobtain thatp must be equal to2, but the pair(k,p ) = (3, 2) does not satisfy the equation\nk(kp + 1) = (p + 1)(2p + 1).\nIn the second case, ifp|n + 1, then we again introduce positive integerk such that\nn + 1 = kp and obtain equationk(kp−1) = (p + 1)(2p + 1). Now we have thatp|k + 1,\nand the quadratic equation in terms ofp is\n2p2 + (3−k2)p + 1 +k = 0.\nIt discriminantD = (k2−3)2−8(k + 1) is less than(k2−3)2, so it must be less than or\nequal to (k2−4)2:\n(k2−3)2−8(k + 1)≤(k2−4)2 =⇒2(k−2)2≤23.\nWe concludek≤5. Sincep|k + 1, we have thatp divides one of the numbers2, 3, 4, 5, 6,\nso we havep∈{2, 3, 5}. After we plug in those choices forp in (2), we obtain the only\nsolution (n,p ) = (5, 2).\n21/22\nMEMO 2021 Problems and Solutions",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 2, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2021-t8",
+      "year": 2021,
+      "problem_code": "T-8",
+      "statement_en": "Prove that there are infinitely many positive integersn such that n2 written in base4 contains\nonly digits 1 and 2.",
+      "solution_text_en": "Solution\nWe prove that there are infinitely manyn’s such thatn2 written in base 4 contains\nonly 1 and 2, with the first and last digit being 1. One example isn = 5, for which\nn2 = 25 = 121 4.\nNow we describe how for given suchn we can obtain another, bigger one, which satisfies\nthese requirements as well. Let n2 have k digits in base 4 and satisfy aforementioned\nrequirements. Now let us consider the numbern′= 2 2k−1n +n. Then we have\nn′2 = (2 2k−1n +n)\n2\n= 4 2k−1n2 + 2·22k−1n2 +n2 = 4 2k−1n2 + 4kn2 +n2.\nIn base 4 this number consists of three copies ofn2, with the first one (n2) ending on the\nright, the second one (4kn2) ending right before the beginning of first one and the third\none (42k−1n2) overlapping by its last digit with first digit of second one. As both first\nand last digit ofn2 are 1, in this place 2 digits 1 get summed to digit 2. Otherwise there\nare no other places where two non-zero digits would overlap, neither is there any ’empty\nspace’ which would get filled by zeros, son′2 contains only digits 1 and 2. Furthermore,\nfirst and last digit ofn′2 is same as first and last digit ofn2, so this property also remains.\nBy repeating this construction one gets an infinite sequence of numbers satisfying the\nproblem statement.\n22/22",
+      "source": {
+        "page_url": "https://memo2021.math.hr/competition/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Individual_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/09/MEMO_2021_Team_en.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2021.math.hr/wp-content/uploads/2021/12/Problems-and-Solutions-Booklet.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2021-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.58,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 1}"
+    }
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "year": 2016,
+  "egmo_number": 5,
+  "official_page_url": "https://www.egmo.org/egmos/egmo5/",
+  "problem_count_declared": 6,
+  "problem_count_extracted": 6,
+  "papers": [
+    {
+      "label": "English",
+      "url": "https://www.egmo.org/egmos/egmo5/paper-day1-English.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-1.pdf",
+      "ok": true,
+      "error": null
+    },
+    {
+      "label": "English",
+      "url": "https://www.egmo.org/egmos/egmo5/paper-day2-English.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-2.pdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "solution_files": [
+    {
+      "url": "https://www.egmo.org/egmos/egmo5/solutions.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/solutions-1.pdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "problems": [
+    {
+      "id": "egmo-2016-p1",
+      "year": 2016,
+      "egmo_number": 5,
+      "problem_number": 1,
+      "statement_en": "Let n be an odd positive integer, and letx1, x2, . . ., xn be non-negative real numbers.\nShow that\nmin\ni=1,...,n\n(x2\ni + x2\ni+1) <= max\nj=1,...,n\n(2xjxj+1),\nwhere xn+1 = x1.",
+      "solution_text_en": "Let n be an odd positive integer, and let x1, x2, ... , xn be\nnon-negative real numbers. Show that\nmin\ni=1,...,n\n(x2\ni +x2\ni+1)<= max\nj=1,...,n\n(2xjxj+1),\nwhere xn+1 =x1.\nSolution. In what follows, indices are reduced modulo n. Consider the n\ndifferencesxk+1-xk,k = 1,...,n . Since n is odd, there exists an indexj such\nthat (xj+1-xj)(xj+2-xj+1)>= 0. Without loss of generality, we may and\nwill assume both factors non-negative, so xj<=xj+1<=xj+2. Consequently,\nmin\nk=1,...,n\n(x2\nk +x2\nk+1)<=x2\nj +x2\nj+1<= 2x2\nj+1<= 2xj+1xj+2<= max\nk=1,...,n\n(2xkxk+1).\nRemark. Ifn>= 3 is odd, and one of the xk is negative, then the conclusion\nmay no longer hold. This is the case if, for instance, x1 =-b, and x2k =a,\nx2k+1 =b,k = 1,..., (n- 1)/2, where 0<=a<b , so the string of numbers is\n-b,b,a,b,a,...,b,a.\nIf n is even, the conclusion may again no longer hold, as shown by any\nstring of alternate real numbers: a,b,a,b,...,a,b , where a̸=b.",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo5/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo5/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 1, 'combinatorics': 0}",
+      "statement_preview": "Let n be an odd positive integer, and letx1, x2, . . ., xn be non-negative real numbers. Show that min i=1,...,n (x2 i + x2 i+1) <= max j=1,...,n (2xjxj+1), where xn+1 = x1."
+    },
+    {
+      "id": "egmo-2016-p2",
+      "year": 2016,
+      "egmo_number": 5,
+      "problem_number": 2,
+      "statement_en": "Let ABCD be a cyclic quadrilateral, and let diagonalsAC and BD intersect atX. Let\nC1, D1 and M be the midpoints of segmentsCX, DX and CD, respectively. Lines AD1 and BC1\nintersect atY, and lineM Y intersects diagonalsAC and BD at different pointsE and F, respectively.\nProve that lineXY is tangent to the circle throughE, F and X.",
+      "solution_text_en": "LetABCD be a cyclic quadrilateral, and let diagonals AC and\nBD intersect at X. Let C1, D1 and M be the midpoints of segments CX ,\nDX andCD, respectively. Lines AD1 andBC1 intersect atY , and line MY\nintersects diagonals AC and BD at different points E and F , respectively.\nProve that line XY is tangent to the circle through E, F and X.\nA B\nCY\nD\nC\nF\nM\nD\nX\nE\n1\n1\nSolution. We are to prove that ∠EXY = ∠EFX ; alternatively, but equi-\nvalently, ∠AYX + ∠XAY = ∠BYF + ∠XBY .\nSince the quadrangle ABCD is cyclic, the triangles XAD andXBC are\nsimilar, and sinceAD1 andBC1 are corresponding medians in these triangles,\nit follows that ∠XAY = ∠XAD 1 = ∠XBC 1 = ∠XBY .\nFinally, ∠AYX = ∠BYF , sinceX andM are corresponding points in the\nsimilar triangles ABY and C1D1Y : indeed, ∠XAB = ∠XDC = ∠MC 1D1,\nand ∠XBA = ∠XCD = ∠MD 1C1.",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo5/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo5/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}",
+      "statement_preview": "Let ABCD be a cyclic quadrilateral, and let diagonalsAC and BD intersect atX. Let C1, D1 and M be the midpoints of segmentsCX, DX and CD, respectively. Lines AD1 and BC1 intersect atY, and lineM Y intersects diagonalsAC "
+    },
+    {
+      "id": "egmo-2016-p3",
+      "year": 2016,
+      "egmo_number": 5,
+      "problem_number": 3,
+      "statement_en": "Let m be a positive integer. Consider a 4m × 4m array of square unit cells. Two\ndifferent cells arerelatedto each other if they are in either the same row or in the same column. No\ncell is related to itself. Some cells are coloured blue, such that every cell is related to at least two blue\ncells. Determine the minimum number of blue cells.",
+      "solution_text_en": "Let m be a positive integer. Consider a 4 m× 4m array of\nsquare unit cells. Two different cells are related to each other if they are in\neither the same row or in the same column. No cell is related to itself. Some\ncells are coloured blue, such that every cell is related to at least two blue\ncells. Determine the minimum number of blue cells.\nSolution 1 (Israel). The required minimum is 6 m and is achieved by a\ndiagonal string of m 4× 4 blocks of the form below (bullets mark centres of\nblue cells):\n•\n•\n•\n• • •\nIn particular, this configuration shows that the required minimum does not\nexceed 6m.\nWe now show that any configuration of blue cells satisfying the condition\nin the statement has cardinality at least 6 m.\nFix such a configuration and let mr\n1 be the number of blue cells in rows\ncontaining exactly one such, let mr\n2 be the number of blue cells in rows\ncontaining exactly two such, and let mr\n3 be the number of blue cells in rows\ncontaining at least three such; the numbers mc\n1, mc\n2 and mc\n3 are defined\nsimilarly.\nBegin by noticing that mc\n3>= mr\n1 and, similarly, mr\n3>= mc\n1. Indeed, if a\nblue cell is alone in its row, respectively column, then there are at least two\nother blue cells in its column, respectively row, and the claim follows.\nSuppose now, if possible, the total number of blue cells is less than 6 m.\nWe will show that mr\n1 >m r\n3 and mc\n1 >m c\n3, and reach a contradiction by the\npreceding: mr\n1 >m r\n3>=mc\n1 >m c\n3>=mr\n1.\nWe prove the first inequality; the other one is dealt with similarly. To this\nend, notice that there are no empty rows - otherwise, each column would\ncontain at least two blue cells, whence a total of at least 8m> 6m blue cells,\nwhich is a contradiction. Next, count rows to get mr\n1 +mr\n2/2 +mr\n3/3>= 4m,\n2\nand count blue cells to get mr\n1 +mr\n2 +mr\n3 < 6m. Subtraction of the latter\nfrom the former multiplied by 3 /2 yields mr\n1-mr\n3 > mr\n2/2>= 0, and the\nconclusion follows.\nSolution 2. To prove that a minimal configuration of blue cells satisfying\nthe condition in the statement has cardinality at least 6 m, consider a bipar-\ntite graph whose vertex parts are the rows and the columns of the array,\nrespectively, a row and a column being joined by an edge if and only if the\ntwo cross at a blue cell. Clearly, the number of blue cells is equal to the num-\nber of edges of this graph, and the relationship condition in the statement\nreads: for every row r and every column c, degr + degc-ε(r,c )>= 2, where\nε(r,c ) = 2 if r and c are joined by an edge, and ε(r,c ) = 0 otherwise.\nNotice that there are no empty rows/columns, so the graph has no isolated\nvertices. By the preceding, the cardinality of every connected component\nof the graph is at least 4, so there are at most 2 · 4m/4 = 2 m such and,\nconsequently, the graph has at least 8 m- 2m = 6m edges. This completes\nthe proof.\nRemarks. The argument in the first solution shows that equality to 6 m is\npossible only if mr\n1 =mr\n3 =mc\n1 =mc\n3 = 3m, mr\n2 =mc\n2 = 0, and there are no\nrows, respectively columns, containing four blue cells or more.\nConsider the same problem for ann×n array. The argument in the second\nsolution shows that the corresponding minimum is 3 n/2 if n is divisible by\n4, and 3n/2 + 1/2 if n is odd; if n≡ 2 (mod 4), the minimum in question is\n3n/2 + 1. To describe corresponding minimal configurations Cn, refer to the\nminimal configurations C2, C3, C4, C5 below:\n•\n• •\n• • •\n• • • • •\n• • • • • • • • • • • •\nThe case n≡ 0 (mod 4) was dealt with above: a Cn consists of a diagonal\nstring ofn/4 blocksC4. If n≡r (mod 4),r = 2, 3, aCn consists of a diagonal\nstring of⌊n/4⌋ blocksC4 followed by aCr, and ifn≡ 1 (mod 4), aCn consists\nof a diagonal string of ⌊n/4⌋- 1 blocks C4 followed by a C5.\nMinimal configurations are not necessarily unique (two configurations be-\ning equivalent if one is obtained from the other by permuting the rows and/or\nthe columns). For instance, if n = 6, the configurations below are both min-\nimal:\n3\n• • •\n• • •\n• • • •\n• •\n• •\n• • • • • •\n4\nEGMO 2016, Day 2 - Solutions",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo5/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo5/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 8
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.75,
+      "graph_terms": [
+        "colour",
+        "component",
+        "connected",
+        "edge",
+        "edges",
+        "graph",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 8}; manual_override=candidate",
+      "statement_preview": "Let m be a positive integer. Consider a 4m × 4m array of square unit cells. Two different cells arerelatedto each other if they are in either the same row or in the same column. No cell is related to itself. Some cells a"
+    },
+    {
+      "id": "egmo-2016-p4",
+      "year": 2016,
+      "egmo_number": 5,
+      "problem_number": 4,
+      "statement_en": "Two circles,ω1 and ω2, of equal radius intersect at different pointsX1 and X2. Consider\na circle ω externally tangent toω1 at a point T1, and internally tangent toω2 at a point T2. Prove\nthat lines X1T1 and X2T2 intersect at a point lying onω.",
+      "solution_text_en": "Two circles, ω1 and ω2, of equal radius intersect at different\npoints X1 and X2. Consider a circle ω externally tangent to ω1 at a point T1,\nand internally tangent to ω2 at a point T2. Prove that lines X1T1 and X2T2\nintersect at a point lying on ω.\nSolution 1. Let the line XkTk and ω meet again at X′\nk, k = 1, 2, and notice\nthat the tangent tk to ωk at Xk and the tangent t′\nk to ω at X′\nk are parallel.\nSince the ωk have equal radii, the tk are parallel, so the t′\nk are parallel, and\nconsequently the points X′\n1 and X′\n2 coincide (they are not antipodal, since\nthey both lie on the same side of the line T1T2). The conclusion follows.\nSolution 2. The circle ω is the image of ωk under a homothety hk centred\nat Tk, k = 1, 2. The tangent to ω at X′\nk = hk(Xk) is therefore parallel to the\ntangent tk to ωk at Xk. Since the ωk have equal radii, the tk are parallel, so\nX′\n1 = X′\n2; and since the points Xk, Tk and X′\nk are collinear, the conclusion\nfollows.\nY\nX1\nT1\nX2\nT2\nt1\nt2\n\n21\n\n1\nX2\n2\nX1\nT2\nT1\n\n\n\n\n\n\nSolution 3. Invert from X1 and use an asterisk to denote images under this\ninversion. Notice that ω∗\nk is the tangent from X∗\n2 to ω∗ at T∗\nk , and the pole\nX1 lies on the bisectrix of the angle formed by the ω∗\nk, not containing ω∗.\nLetting X1T∗\n1 and ω∗ meet again at Y , standard angle chase shows that Y\nlies on the circle X1X∗\n2 T∗\n2 , and the conclusion follows.\nRemarks. The product h1h2 of the two homotheties in the first solution\nis reflexion across the midpoint of the segment X1X2, which lies on the line\nT1T2.\nVarious arguments, involving similarities, radical axes, and the like, work\nequally well to prove the required result.",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo5/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo5/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 8,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 8, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}",
+      "statement_preview": "Two circles,ω1 and ω2, of equal radius intersect at different pointsX1 and X2. Consider a circle ω externally tangent toω1 at a point T1, and internally tangent toω2 at a point T2. Prove that lines X1T1 and X2T2 intersec"
+    },
+    {
+      "id": "egmo-2016-p5",
+      "year": 2016,
+      "egmo_number": 5,
+      "problem_number": 5,
+      "statement_en": "Let k and n be integers such thatk >= 2 and k <= n <= 2k - 1. Place rectangular tiles,\neach of size1 × k or k × 1, on ann × n chessboard so that each tile covers exactlyk cells, and no two\ntiles overlap. Do this until no further tile can be placed in this way. For each suchk and n, determine\nthe minimum number of tiles that such an arrangement may contain.",
+      "solution_text_en": "Let k and n be integers such that k>= 2 and k<= n<= 2k- 1.\nPlace rectangular tiles, each of size 1× k or k× 1, on an n× n chessboard so\nthat each tile covers exactly k cells, and no two tiles overlap. Do this until\nno further tile can be placed in this way. For each such k and n, determine\nthe minimum number of tiles that such an arrangement may contain.\nSolution. The required minimum is n if n = k, and it is min(n, 2n- 2k + 2)\nif k < n < 2k.\nThe case n = k being clear, assume henceforth k < n < 2k. Begin\nby describing maximal arrangements on the board [0 , n]× [0, n], having the\nabove mentioned cardinalities.\nIf k < n < 2k- 1, then min( n, 2n- 2k + 2) = 2 n- 2k + 2. To obtain\na maximal arrangement of this cardinality, place four tiles, [0 , k]× [0, 1],\n[0, 1]× [1, k + 1], [1 , k + 1]× [k, k + 1] and [ k, k + 1]× [0, k] in the square\n[0, k]×[0, k], stack n-k-1 horizontal tiles in the rectangle [1, k+1]×[k+1, n],\nand erect n- k- 1 vertical tiles in the rectangle [ k + 1, n]× [1, k + 1].\nIf n = 2 k- 1, then min( n, 2n- 2k + 2) = n = 2 k- 1. A maximal\narrangement of 2 k- 1 tiles is obtained by stacking k- 1 horizontal tiles in\nthe rectangle [0, k]× [0, k- 1], another k- 1 horizontal tiles in the rectangle\n[0, k]× [k, 2k- 1], and adding the horizontal tile [ k- 1, 2k- 1]× [k- 1, k].\nThe above examples show that the required minimum does not exceed\nthe mentioned values.\nTo prove the reverse inequality, consider a maximal arrangement and let\nr, respectively c, be the number of rows, respectively columns, not containing\na tile.\nIf r = 0 or c = 0, the arrangement clearly contains at least n tiles.\nIf r and c are both positive, we show that the arrangement contains at\nleast 2n- 2k + 2 tiles. To this end, we will prove that the rows, respectively\ncolumns, not containing a tile are consecutive. Assume this for the moment,\nto notice that these r rows and c columns cross to form an r× c rectangular\narray containing no tile at all, so r < k and c < k by maximality. Conse-\nquently, there are n- r>= n- k + 1 rows containing at least one horizontal\ntile each, and n- c>= n- k + 1 columns containing at least one vertical tile\neach, whence a total of at least 2 n- 2k + 2 tiles.\nWe now show that the rows not containing a tile are consecutive; columns\nare dealt with similarly. Consider a horizontal tile T . Since n < 2k, the\nnearest horizontal side of the board is at most k- 1 rows away from the row\ncontaining T . These rows, if any, cross the k columns T crosses to form a\nrectangular array no vertical tile fits in. Maximality forces each of these rows\nto contain a horizontal tile and the claim follows.\nConsequently, the cardinality of every maximal arrangement is at least\nmin(n, 2n- 2k + 2), and the conclusion follows.\nRemarks. (1) If k >= 3 and n = 2 k, the minimum is n + 1 = 2 k + 1\n2\nand is achieved, for instance, by the maximal arrangement consisting of the\nvertical tile [0 , 1]× [1, k + 1] along with k- 1 horizontal tiles stacked in\n[1, k+1]×[0, k-1], another k-1 horizontal tiles stacked in [1, k+1]×[k+1, 2k],\nand two horizontal tiles stacked in [k, 2k]×[k-1, k+1]. This example shows\nthat the corresponding minimum does not exceed n + 1 < 2n- 2k + 2. The\nargument in the solution also applies to the case n = 2k to infer that for a\nmaximal arrangement of minimal cardinality either r = 0 or c = 0, and the\ncardinality is at least n. Clearly, we may and will assume r = 0. Suppose,\nif possible, such an arrangement contains exactly n tiles. Then each row\ncontains exactly one tile, and there are no vertical tiles. Since there is no\nroom left for an additional tile, some tile T must cover a cell of the leftmost\ncolumn, so it covers the k leftmost cells along its row, and there is then room\nfor another tile along that row - a contradiction.\n(2) For every pair (r, c) of integers in the range 2k- n, . . ., k- 1, at least\none of which is positive, say c > 0, there exists a maximal arrangement of\ncardinality 2n- r- c.\nUse again the board [0 , n]× [0, n] to stack k- r horizontal tiles in each of\nthe rectangles [0, k]×[0, k-r] and [k-c, 2k-c]×[k, 2k-r], erect k-c vertical\ntiles in each of the rectangles [0 , k- c]× [k- r, 2k- r] and [k, 2k- c]× [0, k],\nthen stack n-2k+r horizontal tiles in the rectangle [k-c, 2k-c]×[2k-r, n],\nand erect n- 2k + c vertical tiles in the rectangle [2 k- c, n]× [1, k + 1].",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo5/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo5/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 5
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.75,
+      "graph_terms": [
+        "oard"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 5}; manual_override=candidate",
+      "statement_preview": "Let k and n be integers such thatk >= 2 and k <= n <= 2k - 1. Place rectangular tiles, each of size1 × k or k × 1, on ann × n chessboard so that each tile covers exactlyk cells, and no two tiles overlap. Do this until no"
+    },
+    {
+      "id": "egmo-2016-p6",
+      "year": 2016,
+      "egmo_number": 5,
+      "problem_number": 6,
+      "statement_en": "Let S be the set of all positive integersn such thatn4 has a divisor in the rangen2 + 1,\nn2 + 2, . . ., n2 + 2n. Prove that there are infinitely many elements ofS of each of the forms7m,\n7m + 1, 7m + 2, 7m + 5, 7m + 6 and no elements ofS of the form7m + 3 or 7m + 4, where m is an\ninteger.",
+      "solution_text_en": "Let S be the set of all positive integers n such that n4 has a\ndivisor in the range n2 +1, n2 +2, . . ., n2 +2 n. Prove that there are infinitely\nmany elements of S of each of the forms 7m, 7m + 1, 7m + 2, 7m + 5, 7m + 6\nand no elements of S of the form 7 m + 3 or 7m + 4, where m is an integer.\nSolution. The conclusion is a consequence of the lemma below which actu-\nally provides a recursive description of S. The proof of the lemma is at the\nend of the solution.\nLemma. The fourth power of a positive integer n has a divisor in the range\nn2 + 1, n2 + 2, . . ., n2 + 2n if and only if at least one of the numbers 2n2 + 1\nand 12n2 + 9 is a perfect square.\nConsequently, a positive integer n is a member of S if and only if m2-\n2n2 = 1 or m2- 12n2 = 9 for some positive integer m.\nThe former is a Pell equation whose solutions are ( m1, n1) = (3, 2) and\n(mk+1, nk+1) = (3mk + 4nk, 2mk + 3nk), k = 1, 2, 3, . . . .\nIn what follows, all congruences are modulo 7. Iteration shows that\n(mk+3, nk+3)≡ (mk, nk). Since ( m1, n1)≡ (3, 2), ( m2, n2)≡ (3,-2), and\n3\n(m3, n3)≡ (1, 0), it follows that S contains infinitely many integers from\neach of the residue classes 0 and ±2 modulo 7.\nThe other equation is easily transformed into a Pell equation, m′2-\n12n′2 = 1, by noticing that m and n are both divisible by 3, say m = 3m′\nand n = 3n′. In this case, the solutions are ( m1, n1) = (21, 6) and\n(mk+1, nk+1) = (7mk + 24nk, 2mk + 7nk), k = 1, 2, 3, . . . .\nThis time iteration shows that ( mk+4, nk+4)≡ (mk, nk). Since ( m1, n1)≡\n(0,-1), (m2, n2)≡ (-3, 0), (m3, n3)≡ (0, 1), and (m4, n4)≡ (3, 0), it follows\nthat S contains infinitely many integers from each of the residue classes 0\nand±1 modulo 7.\nFinally, since the nk from the two sets of formulae exhaust S, by the\npreceding no integer in the residue classes ±3 modulo 7 is a member of S.\nWe now turn to the proof of the lemma. Let n be a member of S, and\nlet d = n2 + m be a divisor of n4 in the range n2 + 1, n2 + 2, . . . , n2 + 2n, so\n1<= m<= 2n. Consideration of the square of n2 = d- m shows m2 divisible\nby d, so m2/d is a positive integer. Since n2 < d < (n + 1)2, it follows that\nd is not a square; in particular, m2/d̸= 1, so m2/d>= 2. On the other hand,\n1<= m<= 2n, so m2/d = m2/(n2 + m)<= 4n2/(n2 + 1) < 4. Consequently,\nm2/d = 2 or m2/d = 3; that is, m2/(n2 + m) = 2 or m2/(n2 + m) = 3. In\nthe former case, 2n2 + 1 = (m- 1)2, and in the latter, 12 n2 + 9 = (2m- 3)2.\nConversely, if 2n2 + 1 = m2 for some positive integer m, then 1 < m 2 <\n4n2, so 1 < m < 2n, and n4 = (n2 + m + 1)(n2- m + 1), so the first factor\nis the desired divisor.\nSimilarly, if 12 n2 + 9 = m2 for some positive integer m, then m is odd,\nn>= 6, and n4 = (n2 + m/2 + 3/2)(n2- m/2 + 3/2), and again the first factor\nis the desired divisor.\n4",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo5/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo5/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo5/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2016/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 5,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.64,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 5, 'combinatorics': 2}",
+      "statement_preview": "Let S be the set of all positive integersn such thatn4 has a divisor in the rangen2 + 1, n2 + 2, . . ., n2 + 2n. Prove that there are infinitely many elements ofS of each of the forms7m, 7m + 1, 7m + 2, 7m + 5, 7m + 6 an"
+    }
+  ]
+}

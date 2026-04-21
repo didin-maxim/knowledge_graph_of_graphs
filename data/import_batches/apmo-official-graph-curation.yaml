@@ -1,0 +1,63 @@
+{
+  "id": "apmo-official-graph-curation",
+  "title": "APMO official archive: graph curation pass",
+  "status": "needs_human_review",
+  "created_at": "2026-04-20",
+  "updated_at": "2026-04-20",
+  "source_scope": {
+    "source_ids": [
+      "src-apmo-2005-official",
+      "src-apmo-2010-official",
+      "src-apmo-2016-official"
+    ],
+    "notes": [
+      "Проход по официальному архиву APMO после автоматической выгрузки задач.",
+      "В карточки включались только задачи, где графы существенны в условии или в официальном решении; глубокие родственные связи пока не искались."
+    ]
+  },
+  "items": [
+    {
+      "id": "apmo-2005-p4",
+      "problem_id": "apmo-2005-p4-firefighters-grid-spread",
+      "status": "added",
+      "source_ids": [
+        "src-apmo-2005-official"
+      ],
+      "decision_reason": "Условие уже является задачей на распространение по графу решётки, а официальное решение использует уровни расстояния и оценку фронта пожара."
+    },
+    {
+      "id": "apmo-2010-p3",
+      "problem_id": "apmo-2010-p3-common-acquaintance-extremal",
+      "status": "added",
+      "source_ids": [
+        "src-apmo-2010-official"
+      ],
+      "decision_reason": "Задача напрямую формулируется на графе знакомств и решается как экстремальная графовая задача."
+    },
+    {
+      "id": "apmo-2013-p4",
+      "status": "skipped",
+      "source_ids": [
+        "src-apmo-2010-official"
+      ],
+      "decision_reason": "Хотя в официальном PDF есть альтернативное графовое решение через циклы, основное решение арифметическое и граф не является главным для карточки."
+    },
+    {
+      "id": "apmo-2016-p4",
+      "problem_id": "apmo-2016-p4-dreamland-28-step-coloring",
+      "status": "added",
+      "source_ids": [
+        "src-apmo-2016-official"
+      ],
+      "decision_reason": "Условие и официальное решение целиком устроены как задача о функциональном орграфе, вспомогательном графе достижимости и его раскраске."
+    },
+    {
+      "id": "apmo-2019-p4",
+      "status": "skipped",
+      "source_ids": [
+        "src-apmo-2016-official"
+      ],
+      "decision_reason": "Несмотря на соседство клеток, официальное решение построено на модульном инварианте и отражениях, без центрального графового аппарата."
+    }
+  ]
+}

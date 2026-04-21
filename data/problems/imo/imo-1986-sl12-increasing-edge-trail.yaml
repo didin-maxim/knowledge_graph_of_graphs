@@ -1,0 +1,153 @@
+{
+  "id": "imo-1986-sl12-increasing-edge-trail",
+  "title": "Возрастающая цепь рёбер в размеченном графе, IMO Shortlist 1986",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "graph",
+      "edge_labels",
+      "line_graph",
+      "directed_path"
+    ],
+    "methods": [
+      "longest_path",
+      "average_degree"
+    ],
+    "transformations": [
+      "edges_to_line_graph_vertices"
+    ],
+    "goal": [
+      "find_long_increasing_trail"
+    ],
+    "auxiliary_graph_type": [
+      "line_graph"
+    ],
+    "invariants": [
+      "edge_label_order"
+    ],
+    "standard_idea_ids": [
+      "longest_path"
+    ],
+    "local_score": 12,
+    "keywords": [
+      "imo-1986-sl12-increasing-edge-trail",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "В графе n вершин и q рёбер; рёбра помечены числами 1,2,...,q. Докажите, что найдётся последовательность по крайней мере 2q/n рёбер, в которой метки возрастают, а соседние рёбра имеют общую вершину.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-kalva-imo-1986-shortlist"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Нужно найти длинный ориентированный путь в линейном графе L(G), где рёбра исходного графа стали вершинами, упорядоченными по меткам.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-line-graph-path",
+      "title": "Перейти к линейному графу",
+      "text": "Последовательность рёбер с общей вершиной — это путь в L(G), а возрастание меток задаёт ациклическую ориентацию.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-average-degree-bound",
+      "title": "Средняя степень заставляет длинный путь",
+      "text": "В размеченном графе можно выбрать вершину большой степени и продолжать возрастающую цепь через ранги инцидентных рёбер.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Рассматриваем каждое ребро исходного графа как вершину линейного графа L(G); две такие вершины смежны, если соответствующие рёбра имеют общий конец. Направим каждое ребро L(G) от меньшей метки к большей. Требуется длинный ориентированный путь. Стандартное доказательство берёт для каждого ребра наибольшую длину возрастающей цепи, заканчивающейся в нём, и суммирует эти величины по инцидентным рёбрам у каждой вершины исходного графа. Из выпуклости/средней степени получается, что максимальная длина не меньше средней степени исходного графа, то есть 2q/n.",
+      "idea_ids": [
+        "idea-line-graph-path",
+        "idea-average-degree-bound"
+      ],
+      "standard_idea_ids": [
+        "longest_path"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "longest_path",
+        "average_degree"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kalva-imo-1986-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

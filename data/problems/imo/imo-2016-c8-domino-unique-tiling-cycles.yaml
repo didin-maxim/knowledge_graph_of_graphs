@@ -1,0 +1,144 @@
+{
+  "id": "imo-2016-c8-domino-unique-tiling-cycles",
+  "title": "Домино, отмеченные клетки и чередующиеся циклы, IMO Shortlist 2016 C8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "domino_tiling",
+      "alternating_cycles",
+      "grid_board"
+    ],
+    "methods": [
+      "alternating_paths",
+      "symmetrization"
+    ],
+    "transformations": [
+      "two_tilings_to_colored_graph"
+    ],
+    "goal": [
+      "unique_tiling_forcing"
+    ],
+    "auxiliary_graph_type": [
+      "2_colored_2_regular_graph"
+    ],
+    "invariants": [
+      "cycle_switching"
+    ],
+    "keywords": [
+      "imo_2016_c8",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Для положительного \\(n\\) найдите наименьшее \\(k\\), для которого можно отметить \\(k\\) клеток доски \\(2n\\times2n\\) так, чтобы существовало единственное разбиение доски на домино \\(1\\times2\\) и \\(2\\times1\\), причём ни одно домино не содержит две отмеченные клетки.",
+        "source_id": "src-imo-2016-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В доказательстве неединственности строится граф на клетках с красными рёбрами выбранного разбиения и синими рёбрами отражённого разбиения; каждая компонента является чередующимся циклом.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-alternating-cycle",
+      "title": "Чередующиеся циклы двух разбиений",
+      "text": "Суперпозиция двух домино-разбиений даёт циклы, по которым можно поменять домино.",
+      "tags": [
+        "matching"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-diagonal-reflection",
+      "title": "Отражение относительно диагонали",
+      "text": "Отражённое разбиение сравнивается с исходным, чтобы найти цикл без запрещённых пар отмеченных клеток.",
+      "tags": [
+        "symmetrization"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Официальное решение даёт конструкцию и нижнюю оценку. Для нижней оценки фиксируем допустимое домино-разбиение \\(P\\) и отражаем его относительно главной диагонали. Строим граф на клетках: красное ребро соединяет клетки одного домино из \\(P\\), синее — клетки, которые стали парой после отражения. У каждой вершины красная и синяя степень равны 1, поэтому граф распадается на чередующиеся циклы. Если найти цикл, не заблокированный отмеченными клетками, то вдоль него можно заменить красные домино синими и получить другое допустимое разбиение, противореча единственности. Анализ циклов, проходящих через диагональ, даёт требуемую нижнюю оценку, а явная расстановка отмеченных клеток показывает её достижимость.",
+      "idea_ids": [
+        "idea-alternating-cycle",
+        "idea-diagonal-reflection"
+      ],
+      "standard_idea_ids": [
+        "alternating_paths",
+        "symmetrization"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2016 C8, unknown; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "matching",
+    "graph_symmetry",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "alternating_paths",
+        "symmetrization"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2016-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

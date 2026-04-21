@@ -1,0 +1,152 @@
+{
+  "year": 2014,
+  "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2014_prb.pdf",
+  "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2014_sol.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 5,
+  "problems": [
+    {
+      "id": "apmo-2014-p1",
+      "year": 2014,
+      "problem_number": 1,
+      "statement_en": "For a positive integer m denote by S(m) and P (m) the sum and\nproduct, respectively, of the digits of m. Show that for each positive integer n, there\nexist positive integers a1, a2, . . . , an satisfying the following conditions:\nS(a1) < S (a2) <··· < S (an) and S(ai) = P (ai+1) ( i = 1, 2, . . . , n).\n(We let an+1 = a1.)\n(Proposed by the Problem Committee of\nthe Japan Mathematical Olympiad Foundation )",
+      "solution_text_en": "For a positive integer m denote by S(m) and P (m) the sum and product,\nrespectively, of the digits of m. Show that for each positive integer n, there exist positive\nintegers a1, a2, . . . , an satisfying the following conditions:\nS(a1) < S (a2) <··· < S (an) and S(ai) = P (ai+1) ( i = 1, 2, . . . , n).\n(We let an+1 = a1.) ( Problem Committee of the Japan Mathematical Olympiad Foundation )\nSolution. Let k be a sufficiently large positive integer. Choose for each i = 2, 3, . . . , n,\nai to be a positive integer among whose digits the number 2 appears exactly k + i- 2 times\nand the number 1 appears exactly 2 k+i-1- 2(k + i- 2) times, and nothing else. Then, we\nhave S(ai) = 2k+i-1 and P (ai) = 2k+i-2 for each i, 2<= i<= n. Then, we let a1 be a positive\ninteger among whose digits the number 2 appears exactly k + n- 1 times and the number\n1 appears exactly 2 k- 2(k + n- 1) times, and nothing else. Then, we see that a1 satisfies\nS(a1) = 2 k and P (a1) = 2 k+n-1. Such a choice of a1 is possible if we take k to be large\nenough to satisfy 2 k > 2(k + n- 1) and we see that the numbers a1, . . . , an chosen this way\nsatisfy the given requirements.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2014_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2014_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "apmo-2014-p2",
+      "year": 2014,
+      "problem_number": 2,
+      "statement_en": "Let S = {1, 2, . . . ,2014}. For each non-empty subset T ⊆ S, one\nof its members is chosen as its representative. Find the number of ways to assign\nrepresentatives to all non-empty subsets of S so that if a subset D⊆ S is a disjoint\nunion of non-empty subsets A, B, C⊆ S, then the representative of D is also the\nrepresentative of at least one of A, B, C.\n(Proposed by Warut Suksompong, Thailand )",
+      "solution_text_en": "Let S ={1, 2, . . . ,2014}. For each non-empty subset T ⊆ S, one of its\nmembers is chosen as its representative. Find the number of ways to assign representatives\nto all non-empty subsets of S so that if a subset D⊆ S is a disjoint union of non-empty\nsubsets A, B, C⊆ S, then the representative of D is also the representative of at least one\nof A, B, C. (Warut Suksompong, Thailand )\nSolution. Answer: 108· 2014!.\nFor any subset X let r(X) denotes the representative of X. Suppose that x1 = r(S).\nFirst, we prove the following fact:\nIf x1 in  X and X⊆ S, then x1 = r(X).\nIf|X|<= 2012, then we can write S as a disjoint union of X and two other subsets of S,\nwhich gives that x1 = r(X). If |X| = 2013, then let y in  X and y̸= x1. We can write X as\na disjoint union of {x1, y} and two other subsets. We already proved that r({x1, y}) = x1\n(since|{x1, y}| = 2 < 2012) and it follows that y̸= r(X) for every y in  X except x1. We\nhave proved the fact.\nNote that this fact is true and can be proved similarly, if the ground set S would contain\nat least 5 elements.\nThere are 2014 ways to choose x1 = r(S) and for x1 in  X⊆ S we have r(X) = x1. Let\nS1 = S\\{ x1}. Analogously, we can state that there are 2013 ways to choose x2 = r(S1)\nand for x2 in  X ⊆ S1 we have r(X) = x2. Proceeding similarly (or by induction), there\nare 2014· 2013··· 5 ways to choose x1, x2, . . . , x2010 in  S so that for all i = 1 , 2 . . . ,2010,\nxi = r(X) for each X⊆ S\\{ x1, . . . , xi-1} and xi in  X.\nWe are now left with four elements Y ={y1, y2, y3, y4}. There are 4 ways to choose r(Y ).\nSuppose that y1 = r(Y ). Then we clearly have y1 = r({y1, y2}) = r({y1, y3}) = r({y1, y4}).\nThe only subsets whose representative has not been assigned yet are{y1, y2, y3},{y1, y2, y4},\n{y1, y3, y4},{y2, y3, y4},{y2, y3},{y2, y4},{y3, y4}. These subsets can be assigned in any way,\nhence giving 3 4· 23 more choices.\n1\nIn conclusion, the total number of assignments is 2014 · 2013··· 4· 34· 23 = 108· 2014!.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2014_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2014_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 5
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 5}"
+    },
+    {
+      "id": "apmo-2014-p3",
+      "year": 2014,
+      "problem_number": 3,
+      "statement_en": "Find all positive integers n such that for any integer k there exists an\ninteger a for which a3 + a- k is divisible by n.\n(Proposed by Warut Suksompong, Thailand )",
+      "solution_text_en": "Find all positive integers n such that for any integer k there exists an\ninteger a for which a3 + a- k is divisible by n. ( Warut Suksompong, Thailand )\nSolution. Answer: All integers n = 3b, where b is a nonnegative integer.\nWe are looking for integers n such that the set A ={a3 + a| a in  Z} is a complete residue\nsystem by modulo n. Let us call this property by (*). It is not hard to see that n = 1\nsatisfies (*) and n = 2 does not.\nIf a≡ b (mod n), then a3 + a≡ b3 + b (mod n). So n satisfies (*) iff there are no\na, b in { 0, . . . , n- 1} with a̸= b and a3 + a≡ b3 + b (mod n).\nFirst, let us prove that 3j satisfies (*) for all j>= 1. Suppose that a3 + a≡ b3 + b (mod 3 j)\nfor a̸= b. Then ( a- b)(a2 + ab + b2 + 1)≡ 0 (mod 3 j). We can easily check mod 3 that\na2 + ab + b2 + 1 is not divisible by 3.\nNext note that if A is not a complete residue system modulo integer r, then it is also not\na complete residue system modulo any multiple of r. Hence it remains to prove that any\nprime p > 3 does not satisfy (*).\nIf p≡ 1 (mod 4) , there exists b such that b2≡- 1 (mod p). We then take a = 0 to\nobtain the congruence a3 + a≡ b3 + b (mod p).\nSuppose now that p≡ 3 (mod 4) . We will prove that there are integers a, b̸≡ 0 (mod p)\nsuch that a2 + ab + b2≡- 1 (mod p). Note that we may suppose that a̸≡ b (mod p), since\notherwise if a≡ b (mod p) satisfies a2 + ab + b2 + 1≡ 0 (mod p), then (2a)2 + (2a)(-a) +\na2 + 1≡ 0 (mod p) and 2 a̸≡- a (mod p). Letting c be the inverse of b modulo p (i.e.\nbc≡ 1 (mod p)), the relation is equivalent to ( ac)2 + ac + 1≡- c2 (mod p). Note that-c2\ncan take on the values of all non-quadratic residues modulo p. If we can find an integer x\nsuch that x2 + x + 1 is a non-quadratic residue modulo p, the values of a and c will follow\nimmediately. Hence we focus on this latter task.\nNote that if x, y in { 0, . . . , p- 1} = B, then x2 + x + 1≡ y2 + y + 1 (mod p) iff p divides\nx + y + 1. We can deduce that x2 + x + 1 takes on ( p + 1)/2 values as x varies in B. Since\nthere are ( p- 1)/2 non-quadratic residues modulo p, the ( p + 1)/2 values that x2 + x + 1\ntake on must be 0 and all the quadratic residues.\nLet C be the set of quadratic residues modulo p and 0, and let y in  C. Suppose that\ny≡ z2 (mod p) and let z≡ 2w + 1 (mod p) (we can always choose such w). Then y + 3≡\n4(w2 + w + 1) (mod p). From the previous paragraph, we know that 4( w2 + w + 1) in  C.\nThis means that y in  C =⇒ y + 3 in  C. Unless p = 3, the relation implies that all elements\nof B are in C, a contradiction. This concludes the proof.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2014_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2014_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 6,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 6, 'combinatorics': 2}"
+    },
+    {
+      "id": "apmo-2014-p4",
+      "year": 2014,
+      "problem_number": 4,
+      "statement_en": "Let n and b be positive integers. We say n is b-discerning if there exists\na set consisting of n different positive integers less than b that has no two different\nsubsets U and V such that the sum of all elements in U equals the sum of all elements\nin V .\n(a) Prove that 8 is a 100-discerning.\n(b) Prove that 9 is not 100-discerning.\n(Proposed by the Senior Problems Committee of\nthe Australian Mathematical Olympiad Committee )",
+      "solution_text_en": "Let n and b be positive integers. We say n is b-discerning if there exists a\nset consisting of n different positive integers less than b that has no two different subsets U\nand V such that the sum of all elements in U equals the sum of all elements in V .\n(a) Prove that 8 is a 100-discerning.\n(b) Prove that 9 is not 100-discerning.\n(Senior Problems Committee of the Australian Mathematical Olympiad Committee )\nSolution.\n(a) Take S ={3, 6, 12, 24, 48, 95, 96, 97}, i.e.\nS ={3· 2k : 0<= k<= 5}∪{ 3· 25- 1, 3· 25 + 1}.\n2\nAs k ranges between 0 to 5, the sums obtained from the numbers 3 · 2k are 3 t, where\n1<= t<= 63. These are 63 numbers that are divisible by 3 and are at most 3 · 63 = 189.\nSums of elements of S are also the numbers 95 + 97 = 192 and all the numbers that\nare sums of 192 and sums obtained from the numbers 3 · 2k with 0<= k<= 5. These are 64\nnumbers that are all divisible by 3 and at least equal to 192 . In addition, sums of elements\nof S are the numbers 95 and all the numbers that are sums of 95 and sums obtained from\nthe numbers 3· 2k with 0<= k<= 5. These are 64 numbers that are all congruent to -1 mod\n3.\nFinally, sums of elements of S are the numbers 97 and all the numbers that are sums of\n97 and sums obtained from the numbers 3 · 2k with 0<= k<= 5. These are 64 numbers that\nare all congruent to 1 mod 3 .\nHence there are at least 63 + 64 + 64 + 64 = 255 different sums from elements of S. On\nthe other hand, S has 2 8- 1 = 255 non-empty subsets. Therefore S has no two different\nsubsets with equal sums of elements. Therefore, 8 is 100-discerning.\n(b) Suppose that 9 is 100-discerning. Then there is a set S ={s1, . . . , s9}, si < 100 that\nhas no two different subsets with equal sums of elements. Assume that 0 < s 1 <··· < s 9 <\n100.\nLet X be the set of all subsets of S having at least 3 and at most 6 elements and let Y\nbe the set of all subsets of S having exactly 2 or 3 or 4 elements greater than s3.\nThe set X consists of\n(9\n3\n)\n+\n(9\n4\n)\n+\n(9\n5\n)\n+\n(9\n6\n)\n= 84 + 126 + 126 + 84 = 420\nsubsets of S. The set in X with the largest sums of elements is{s4, . . . , s9} and the smallest\nsums is in{s1, s2, s3}. Thus the sum of the elements of each of the 420 sets in X is at least\ns1 + s2 + s3 and at most s4 +··· + s9, which is one of (s4 +··· + s9)-(s1 + s2 + s3)+1 integers.\nFrom the pigeonhole principle it follows that ( s4 +··· + s9)- (s1 + s2 + s3) + 1>= 420, i.e.,\n(s4 +··· + s9)- (s1 + s2 + s3)>= 419. (1)\nNow let us calculate the number of subsets in Y . Observe that {s4, . . . , s9} has\n(6\n2\n)\n2-element subsets,\n(6\n3\n)\n3-element subsets and\n(6\n4\n)\n4-element subsets, while {s1, s2, s3} has\nexactly 8 subsets. Hence the number of subsets of S in Y equals\n8\n((6\n2\n)\n+\n(6\n3\n)\n+\n(6\n4\n))\n= 8(15 + 20 + 15) = 400.\nThe set in Y with the largest sum of elements is {s1, s2, s3, s6, s7, s8, s9} and the smallest\nsum is in{s4, s5}. Again, by the pigeonhole principle it follows that ( s1 + s2 + s3 + s6 + s7 +\ns8 + s9)- (s4 + s5) + 1>= 400, i.e.,\n(s1 + s2 + s3 + s6 + s7 + s8 + s9)- (s4 + s5)>= 399. (2)\nAdding (1) and (2) yields 2( s6 + s7 + s8 + s9) >= 818, so that s9 + 98 + 97 + 96 >=\ns9 + s8 + s7 + s6>= 409, i.e. s9>= 118, a contradiction with s9 < 100. Therefore, 9 is not\n100-discerning.\n3",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2014_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2014_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 1, 'combinatorics': 3}"
+    },
+    {
+      "id": "apmo-2014-p5",
+      "year": 2014,
+      "problem_number": 5,
+      "statement_en": "Circles ω and Ω meet at points A and B. Let M be the midpoint of\nthe arc AB of circle ω (M lies inside Ω). A chord M P of circle ω intersects Ω at Q\n(Q lies inside ω). Let lP be the tangent line to ω at P , and let lQ be the tangent\nline to Ω at Q. Prove that the circumcircle of the triangle formed by the lines lP , lQ,\nand AB is tangent to Ω.\n(Proposed by Ilya Bogdanov, Russia and\nMedeubek Kungozhin, Kazakhstan )",
+      "solution_text_en": "Circles ω and Ω meet at points A and B. Let M be the midpoint of the\narc AB of circle ω (M lies inside Ω). A chord M P of circle ω intersects Ω at Q (Q lies inside\nω). Let lP be the tangent line to ω at P , and let lQ be the tangent line to Ω at Q. Prove\nthat the circumcircle of the triangle formed by the lines lP , lQ, and AB is tangent to Ω.\n(Ilya Bogdanov, Russia and Medeubek Kungozhin, Kazakhstan )\nSolution. Denote X = AB∩ lP , Y = AB∩ lQ, and Z = lP∩ lQ. Without loss of\ngenerality we have AX < BX . Let F = M P∩ AB.\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\nDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\nF\nM\nP\nQ\nR\nS\nT\nX\nYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\nZ\nω\nΩ\nlQ\nlP\nDenote by R the second point of intersection of P Q and Ω; by S the point of Ω such that\nSR∥ AB; and by T the point of Ω such that RT∥ lP . Since M is the midpoint of arc AB,\nthe tangent lM at M to ω is parallel to AB, so ∠(AB, P M) = ∠(P M, lP ). Therefore we\nhave ∠P RT = ∠M P X = ∠P F X = ∠P RS. Thus the point Q is the midpoint of the\narc T QS of Ω, hence ST ∥ lQ. So the corresponding sides of the triangles RST and XY Z\nare parallel, and there exist a homothety h mapping RST to XY Z .\nLet D be the second point of intersection of XR and Ω. We claim that D is the center of\nthe homothety h; since D in  Ω, this implies that the circumcircles of trianglesRST and XY Z\nare tangent, as required. So, it remains to prove this claim. In order to do this, it suffices to\nshow that D in  SY .\nBy ∠P F X = ∠XP F we have XF 2 = XP 2 = XA· XB = XD· XR. Therefore,\nXF\nXD = XR\nXF , so the triangles XDF and XF R are similar, hence ∠DF X = ∠XRF = ∠DRQ =\n∠DQY ; thus the points D, Y , Q, and F are concyclic. It follows that ∠Y DQ = ∠Y F Q =\n∠SRQ = 180◦- ∠SDQ which means exactly that the points Y , D, and S are collinear, with\nD between S and Y .\n4",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2014_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2014_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2014_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 8,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 8, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    }
+  ]
+}

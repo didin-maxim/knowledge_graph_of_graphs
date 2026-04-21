@@ -1,0 +1,127 @@
+{
+  "id": "tournament-hamiltonian-path",
+  "title": "В каждом турнире есть гамильтонов путь",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "directed_hamiltonian_path",
+      "vertex_order"
+    ],
+    "methods": [
+      "induction",
+      "insertion"
+    ],
+    "transformations": [
+      "insert_vertex_into_path"
+    ],
+    "goal": [
+      "hamiltonian_path_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "tournament_orientation",
+      "path_order"
+    ],
+    "keywords": [
+      "tournament_hamiltonian_path",
+      "insertion_proof"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "В любом конечном турнире существует ориентированный путь, проходящий через все вершины. Турнир — это ориентированный граф, в котором между любой парой различных вершин проведена ровно одна стрелка в одну из двух сторон.",
+        "source_id": "src-wikipedia-tournament",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "path",
+          "tournament"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Если между любой парой вершин ориентированного графа проведено ровно одно ориентированное ребро, то вершины можно упорядочить \\( v_1,\\ldots,v_n \\) так, что для каждого i стрелка идет из \\( v_i \\) в \\( v_{i+1} \\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "path",
+          "tournament"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-insert-vertex",
+      "title": "Вставка вершины в путь",
+      "text": "Новая вершина вставляется в уже построенный гамильтонов путь в первое место, где направление ребра меняется.",
+      "tags": [
+        "tournaments",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-insertion",
+      "title": "Индукция со вставкой",
+      "text": "Докажем индукцией по числу вершин. Для n=1 очевидно. Пусть в турнире без вершины x есть путь v1->v2->...->v_{n-1}. Если x->v1, ставим x в начало. Если v_{n-1}->x, ставим x в конец. Иначе найдется индекс i, для которого \\( v_i \\)->x и x->\\( v_{i+1} \\); вставляем x между \\( v_i \\) и \\( v_{i+1} \\). Получаем путь через все вершины.",
+      "idea_ids": [
+        "idea-insert-vertex"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "local_olympiad",
+    "local_score": 3,
+    "comment": "Красивая базовая задача про турниры.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "tournaments",
+    "hamiltonian_cycles",
+    "induction",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-tournament",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

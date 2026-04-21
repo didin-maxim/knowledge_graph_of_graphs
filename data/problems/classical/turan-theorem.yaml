@@ -1,0 +1,200 @@
+{
+  "id": "turan-theorem",
+  "title": "Теорема Турана",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "clique_free_graph",
+      "complete_multipartite_graph",
+      "independent_parts"
+    ],
+    "methods": [
+      "symmetrization",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "zykov_symmetrization",
+      "replace_neighborhood",
+      "balance_part_sizes"
+    ],
+    "goal": [
+      "maximum_edges_without_clique",
+      "extremal_graph_structure"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "clique_number",
+      "edge_count",
+      "part_sizes"
+    ],
+    "keywords": [
+      "turan_theorem",
+      "forbidden_clique",
+      "balanced_partite_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть n и r — натуральные числа. Среди всех простых неориентированных графов на n вершинах, в которых нет r+1 попарно соединенных вершин, наибольшее число ребер имеет полный r-дольный граф с долями, размеры которых отличаются не более чем на 1.",
+        "source_id": "src-wikipedia-turan",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique",
+          "complete_graph",
+          "independent_set"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Пусть G — простой неориентированный граф на n вершинах. Если G не содержит клики \\( K_{r+1} \\), то \\( e(G) \\le e(T_r(n)) \\), где \\( T_r(n) \\) — полный r-дольный граф Турана: вершины разбиты на r почти равных независимых долей, а ребра проведены между всеми вершинами из разных долей.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique",
+          "complete_graph",
+          "independent_set"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-independence-form",
+        "text": "Пусть m и k — натуральные числа, 1 ≤ k < m. Найдите наименьшее возможное число ребер в простом графе на m вершинах, в котором нет антиклики размера k+1, то есть среди любых k+1 вершин найдутся две соединенные ребром.",
+        "source_id": "src-mathus-turan",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "independent_set",
+          "complete_graph",
+          "complement_graph"
+        ],
+        "title": "Форма через отсутствие большой антиклики"
+      },
+      {
+        "id": "stmt-complement-independence-form",
+        "text": "Если простой граф G на m вершинах имеет число независимости \\( \\alpha(G) \\le k \\), то минимальное число ребер достигается на графе, состоящем из k компонент связности почти равного размера, каждая из которых является кликой. Эквивалентно, дополнительный граф к G является графом Турана \\( T_k(m) \\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "independent_set",
+          "complete_graph",
+          "complement_graph",
+          "connected_graph",
+          "clique"
+        ],
+        "title": "Эквивалентная форма через дополнительный граф"
+      },
+      {
+        "id": "stmt-flashlight-batteries-general",
+        "title": "Фонарик и батарейки, общий вариант",
+        "text": "Есть m батареек, среди которых как минимум k+1 хорошая, но неизвестно, какие батарейки хорошие. Одна проверка состоит в том, что в фонарик вставляют две выбранные батарейки; фонарик светит только если обе хорошие. Нужно найти минимальное число заранее выбранных проверок, которое гарантирует свет независимо от расположения хороших батареек. В графовой модели батарейки являются вершинами, проверки — ребрами, а требование означает, что любое множество из k+1 хороших вершин содержит проверенное ребро.",
+        "source_id": "src-mathus-turan",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complete_graph",
+          "complement_graph",
+          "independent_set"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-symmetrization",
+      "title": "Симметризация",
+      "text": "Если две несмежные вершины имеют разные окрестности, одну из них можно заменить копией другой так, чтобы число ребер не уменьшилось и клика \\( K_{r+1} \\) не появилась.",
+      "tags": [
+        "symmetrization",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-symmetrization",
+      "title": "Доказательство через симметризацию",
+      "text": "Возьмем \\( K_{r+1} \\)-свободный граф с максимальным числом ребер. Последовательно применяем симметризацию Зыкова: для несмежных вершин u,v заменяем окрестность вершины меньшей степени на окрестность вершины большей степени. Число ребер не уменьшается, а запрещенная клика не возникает, потому что новая вершина копирует старую. В предельном экстремальном графе любые две несмежные вершины имеют одинаковые окрестности; классы отношения несмежности становятся независимыми долями, а между разными долями проведены все ребра. Так как граф не содержит \\( K_{r+1} \\), долей не больше r. При фиксированном числе долей произведения размеров долей максимальны при почти равных размерах, значит максимум достигается на \\( T_r(n) \\).",
+      "idea_ids": [
+        "idea-symmetrization"
+      ],
+      "status": "ai_draft",
+      "standard_idea_ids": [
+        "symmetrization",
+        "extremal_choice"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 9,
+    "comment": "Как полная теорема это скорее классический инструмент; частные случаи встречаются на школьных олимпиадах.",
+    "status": "ai_draft"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "forbidden_clique",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "forbidden_subgraphs": {
+      "value": [
+        "\\( K_{r+1} \\)"
+      ],
+      "status": "ai_checked"
+    },
+    "extremal_object": {
+      "value": "complete_balanced_r_partite_graph",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-turan",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-mathus-turan",
+      "role": "standard_reformulation",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

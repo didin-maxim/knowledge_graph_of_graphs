@@ -1,0 +1,144 @@
+{
+  "id": "imo-2013-c3-imons-graph-coloring",
+  "title": "Имоны, удвоение и раскраска графа, IMO Shortlist 2013 C3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "graph",
+      "proper_coloring",
+      "parity_degree"
+    ],
+    "methods": [
+      "induction",
+      "color_reduction",
+      "parity"
+    ],
+    "transformations": [
+      "entanglement_to_graph",
+      "doubling_graph"
+    ],
+    "goal": [
+      "eliminate_edges"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_parity",
+      "chromatic_number_bound"
+    ],
+    "keywords": [
+      "imo_2013_c3",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Есть конечное семейство частиц-имонов; некоторые пары имонов связаны отношением запутанности. Разрешены операции: удалить имона, если он запутан с нечётным числом других, и удвоить всё семейство, создавая копии всех имонов с теми же взаимными запутанностями между копиями и с новой связью каждого имона со своей копией. Докажите, что можно прийти к состоянию, где никакие два имона не запутаны.",
+        "source_id": "src-imo-2013-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это задача о графе: имоны — вершины, запутанности — рёбра; операция удаления разрешена для вершины нечётной степени, а удвоение заменяет граф двумя копиями и совершенным паросочетанием между соответствующими вершинами.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-color-reduction",
+      "title": "Уменьшение числа цветов",
+      "text": "Если граф правильно раскрашен в \\(n>1\\) цветов, операции позволяют перейти к графу, раскрашиваемому в \\(n-1\\) цветов.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-odd-degree-deletion",
+      "title": "Удаление нечётных степеней",
+      "text": "Повторное удаление вершин нечётной степени оставляет граф, где все степени чётны; это нужно для контролируемого удвоения.",
+      "tags": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Строим граф запутанностей. Доказывается лемма: если текущий граф имеет правильную раскраску в \\(n>1\\) цветов, то после конечной последовательности разрешённых операций можно получить граф, раскрашиваемый в \\(n-1\\) цветов. Сначала удаляют все возможные вершины нечётной степени. Затем удваивают граф: две копии и рёбра между соответствующими вершинами меняют чётности так, что один цветовой класс можно устранить, а оставшиеся классы переназначить. Повторяя лемму, уменьшаем число цветов до одного; граф, раскрашиваемый в один цвет, не имеет рёбер.",
+      "idea_ids": [
+        "idea-color-reduction",
+        "idea-odd-degree-deletion"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2013 C3, Japan; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "color_reduction",
+        "parity"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2013-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

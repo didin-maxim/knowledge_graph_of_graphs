@@ -1,0 +1,123 @@
+{
+  "id": "imo-2024-combinatorics",
+  "title": "IMO 2024 и IMO Shortlist 2024, комбинаторика",
+  "status": "ai_checked",
+  "created_at": "2026-04-20",
+  "updated_at": "2026-04-20",
+  "source_scope": {
+    "source_ids": [
+      "src-imo-2024-problems-eng",
+      "src-imo-2024-shortlist"
+    ],
+    "latest_published_year": 2024,
+    "verified_at": "2026-04-20",
+    "notes": [
+      "Просмотрены комбинаторные задачи C1-C8 из официального IMO 2024 Shortlist и задача IMO 2024 P5, совпадающая с Shortlist C4.",
+      "В базу добавлены только задачи, где графовая модель фигурирует в условии или существенно используется в опубликованном решении."
+    ]
+  },
+  "items": [
+    {
+      "id": "imo-2024-sl-c1",
+      "status": "skipped",
+      "source_ids": [
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "Задача о рейтингах по результатам забегов; опубликованные решения используют перестановки, оценки и усреднение, но не существенную графовую модель."
+    },
+    {
+      "id": "imo-2024-sl-c2",
+      "status": "skipped",
+      "source_ids": [
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "Задача о суммах в разбиениях доски и сравнениях по модулю; графовая связь слишком слабая для базы графовых задач."
+    },
+    {
+      "id": "imo-2024-sl-c3",
+      "problem_id": "imo-2024-c3-knights-chord-uncrossing",
+      "status": "added",
+      "source_ids": [
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "Пары рыцарей естественно образуют паросочетание хордами на окружности; решение существенно считает пересечения, вложения и распутывание хорд.",
+      "problem_profile": {
+        "objects": [
+          "circular_matching",
+          "chord_diagram"
+        ],
+        "methods": [
+          "crossing_count",
+          "uncrossing",
+          "induction"
+        ]
+      }
+    },
+    {
+      "id": "imo-2024-sl-c4",
+      "problem_id": "imo-2024-c4-turbo-grid-monsters",
+      "status": "added",
+      "source_ids": [
+        "src-imo-2024-problems-eng",
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "Задача IMO 2024 P5 на пути в решётчатом графе с неизвестными препятствиями и адаптивной стратегией.",
+      "problem_profile": {
+        "objects": [
+          "grid_graph",
+          "hidden_obstacles",
+          "adaptive_paths"
+        ],
+        "methods": [
+          "adversary_strategy",
+          "constructive_path_strategy"
+        ]
+      }
+    },
+    {
+      "id": "imo-2024-sl-c5",
+      "status": "skipped",
+      "source_ids": [
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "В комментарии есть представление через частичные бинарные деревья, но основное опубликованное решение работает с разбиением множеств и игровыми значениями; графовая модель не является центральной."
+    },
+    {
+      "id": "imo-2024-sl-c6",
+      "status": "skipped",
+      "source_ids": [
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "Задача о перемещении шариков на весах; решения используют перестановки, пары весов и числовые оценки без существенного графового слоя."
+    },
+    {
+      "id": "imo-2024-sl-c7",
+      "status": "skipped",
+      "source_ids": [
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "Задача о самосчётной последовательности; опубликованные решения не используют графовую модель."
+    },
+    {
+      "id": "imo-2024-sl-c8",
+      "problem_id": "imo-2024-c8-board-coloring-tree",
+      "status": "added",
+      "source_ids": [
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "Оба опубликованных решения существенно строят дерево: граф из X-операций или ориентированное дерево L-тромино.",
+      "problem_profile": {
+        "objects": [
+          "grid_board",
+          "l_trominoes",
+          "auxiliary_tree"
+        ],
+        "methods": [
+          "tree_cycle_contradiction",
+          "scaling_descent",
+          "induction"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "id": "rmm-2023-p6-colored-spanning-tree-suspicious-edges",
+  "title": "Счёт цветов в остовах через подозрительные рёбра, RMM 2023 P6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "colored_connected_graph",
+      "spanning_tree_family",
+      "exchange_step"
+    ],
+    "methods": [
+      "extremal_family_choice",
+      "tree_exchange_argument"
+    ],
+    "transformations": [
+      "good_family_minimization"
+    ],
+    "goal": [
+      "realize_prescribed_color_profile"
+    ],
+    "auxiliary_graph_type": [
+      "connected_graph"
+    ],
+    "invariants": [
+      "good_family_box",
+      "suspicious_edge_count"
+    ],
+    "keywords": [
+      "rmm_2023_p6",
+      "rmm",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Дан связный граф на \\(r+g+b+1\\) вершинах с красными, зелёными и синими рёбрами. звестно, что у него есть остов с ровно \\(r\\) красными рёбрами, остов с ровно \\(g\\) зелёными и остов с ровно \\(b\\) синими. Докажите, что существует остов, в котором одновременно ровно \\(r\\) красных, \\(g\\) зелёных и \\(b\\) синих рёбер.",
+        "source_id": "src-rmm-2023-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В связном графе с трёхцветными рёбрами нужно найти остов с заранее заданным числом рёбер каждого цвета, зная, что по отдельности каждое из трёх целевых чисел уже достижимо на некотором остове.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-good-family-box",
+      "title": "Выбираем хорошее семейство остовов",
+      "text": "Рассматривается семейство остовов, для которого заданные числа \\(r,g,b\\) лежат внутри прямоугольной коробки между минимальными и максимальными цветовыми счётчиками по этому семейству.",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-suspicious-edges",
+      "title": "Минимизируем число подозрительных рёбер",
+      "text": "Подозрительным называется ребро, которое содержится не во всех и не ни в одном остове семейства. Если выбрать хорошее семейство с минимальным числом подозрительных рёбер, то локальными заменами по циклу или по разрезу можно построить другое хорошее семейство с меньшим числом подозрительных рёбер — противоречие.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Официальное решение рассматривает хорошие семейства остовов: такие, в которых каждая из целевых величин \\(r,g,b\\) лежит между минимумом и максимумом соответствующего цветового счётчика по этому семейству. Выбирается хорошее семейство с минимальным числом подозрительных рёбер — рёбер, присутствующих лишь в части остовов семейства. Если нужного остова ещё нет, то одна из цветовых координат слишком мала на каком-то остове, а другая слишком велика на другом. В первом случае берут подозрительное зелёное ребро и заменяют его в каждом остове через ребро того же разреза из фиксированного эталонного остова; во втором — принудительно вставляют подозрительное красное ребро, удаляя подходящее ребро цикла. В обоих случаях получается новое хорошее семейство с меньшим числом подозрительных рёбер, что невозможно. Значит, нужный остов существует.",
+      "idea_ids": [
+        "idea-good-family-box",
+        "idea-suspicious-edges"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "RMM 2023 P6; полностью графовая задача на остовы, циклы, разрезы и экстремальный выбор семейства.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "trees",
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_family_choice",
+        "tree_exchange_argument"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-rmm-2023-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "reviewed_no_links"
+  }
+}

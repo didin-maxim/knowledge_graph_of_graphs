@@ -1,0 +1,588 @@
+{
+  "year": 2023,
+  "page_url": "http://memo2023.skmo.sk/problems.php",
+  "download_count": 3,
+  "problem_count_extracted": 12,
+  "problems": [
+    {
+      "id": "memo-2023-i1",
+      "year": 2023,
+      "problem_code": "I-1",
+      "statement_en": "Let R denote the set of all real numbers. For each pair(α,β) of nonnegative real numbers subject\nto α+β≥2, determine all functionsf : R→R satisfying\nf (x)f (y)≤f (xy) +αx+βy\nfor all real numbersx and y.",
+      "solution_text_en": "Solution. We knowf (x)f (y)≤f (xy)+αx+βyand by exchangingx andy we getf (x)f (y)≤\nf (xy) +βx+αy. Combining the two we get\nf (x)f (y)≤f (xy) +γx+γy, (1)\nwhere γ= α+β\n2 . Notice thatγ≥1.\nSetting x = y =−1 in (1) we getf (−1)2≤f (1)−2γ, sof (1)≥2γ. Setting x = y = 1 in\n(1) we getf (1)2≤f (1) + 2γ, so f (1)2−f (1)≤2γ. Since f (1)≥2γ≥2 and t2−t is an\nincreasing function fort≥2, we have (2γ)2−2γ≤f (1)2−f (1)≤2γ, hence 4γ2≤4γ, so\nγ≤1. Therefore,γ= 1.\nWe know thatf (1)≥2 and f (1)2−f (1)≤2, thus necessarily f (1) = 2 . We also know\nf (−1)≤f (1)−2γ= 0, sof (−1) = 0.\nSetting x = z, y = 1 in (1) we get2f (z)≤f (z) + z + 1, sof (z)≤z + 1. Setting x =−z,\ny =−1 in (1) we get0≤f (z)−z−1, sof (z)≥z + 1. It follows that the only function which\ncan possibly satisfy the problem statement is\nf (z) = z + 1. (2)\nIt remains to check for whichαand βthis is indeed a solution.\nSubstituting f into original inequality, we get (x + 1)(y + 1) ≤(xy + 1) + αx+βy, thus\n(1−α)x + (1−β)y≤0. This holds for allx,y iff α= β= 1. Hence, for (α,β) = (1, 1) the\nonly solution isf (z) = z + 1 and for (α,β)̸= (1, 1) there are no solutions.\n5\nMEMO 2023 Individual I-2",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 4, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2023-i2",
+      "year": 2023,
+      "problem_code": "I-2",
+      "statement_en": "Find all integersn≥3 for which it is possible to drawn chords of one circle such that their2n\nendpoints are pairwise distinct and each chord intersects preciselyk other chords for:\n(a) k =n−2,\n(b) k =n−3.",
+      "solution_text_en": "Remark. A chord of a circle is a line segment whose both endpoints lie on the circle.\nAnswer. (a) All evenn. (b) Alln≥3.\nSolution. (a) Every chord avoids precisely one other chord, hence the avoiding chords form\npairs andn must be even. On the other hand, for any evenn≥2 the construction is simple\n(see the left figure).\n(b) Forn = 3, 4, 5, 8 we can draw the chords as in the middle figure. From an admissible\ndrawing withn = 3, 4, 8, we can build an admissible drawing withn + 3k by addingk triples\nof parallel lines within the gray strip: Each existing chord crosses all the newly added chords,\nso it avoids precisely the 2 other chords it avoided before. Each newly added chord crosses all\nother chords except the other two chords in its triple.\nAnother Solution to (b). Another way to look at the construction in part (2) is as follows:\nConsider two “blocks”T and F of three and four chords, respectively, shown below in the left\nfigure.\nNote that each chord misses exactly two other chords from its block, so any time we place\nseveral blocks such that any two chords from different blocks cross, we obtain an admissible\ndrawing (see the middle figure). Since all integersn≥3 except n = 5 can be expressed as a\nsum of several 3’s and 4’s (by a casework mod 3, or by the Frobenius coin problem aka the\nChickenMcNugget theorem), it remains to find an admissible drawing forn = 5. For that, see\nthe right figure.\n6\nMEMO 2023 Individual I-3",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 3,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 3, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2023-i3",
+      "year": 2023,
+      "problem_code": "I-3",
+      "statement_en": "Let ABC be a triangle with incenterI. The incircle ωof ABC is tangent to the lineBC at\npoint D. Denote byE and F the points satisfyingAI∥BE∥CF and ∠BEI = ∠CFI = 90◦.\nLines DE and DF intersectωagain at pointsE′and F′, respectively. Prove thatE′F′⊥AI.",
+      "solution_text_en": "Solution 1. Our goal essentially is to prove that the circumcirle ofDEF is tangent to the\nincircle – that would immediately meanEF ∥E′F′, which together withEF ⊥AI gives the\ndesired result. In order to prove that we just need to show∠BDE = ∠EFD.\nA\nB C\nI\nD\nE\nF\nE′\nF ′\nNotice that quadrilateralsBDIE,DCFI are cyclic due to right anglesBDI,BEI,IDC,IFC .\nIt it well-known that the circumcenter ofBIC lies onAI (in fact, it is the second intersection\nofAI with the circumcircle ofABC). This means that lineEIF is tangent to the circumcircle\nof BIC. With all these facts, we just need to perform simple angle chasing:\n∠BDE = ∠BIE = ∠ICB = ∠ICD = ∠IFD = ∠EFD.\nSolution 2. Denote byB′andC′the projections ofI onAC andAB, respectively. The right\nangles gives us thatC,F,B ′,D lie on a circle. Angle chasing usingAI∥CF then gives:\n∠F′IB′= 2∠F′DB′= 2∠FDB′= 2∠FCB′= 2∠IAC = ∠BAC\nFurthermore, we angle chase that:\n∠FIB′= 90◦−∠AIB′= ∠IAC = ∠BAC\n2\n7\nMEMO 2023 Individual I-3\nSo we get that:\n∠F′IF = ∠F′IB′−∠FIB′= ∠BAC−∠BAC\n2 = ∠BAC\n2\nAnalogously, ∠E′IE = ∠BAC\n2 , so the lineEIF is an external angle bisector in the triangle\nE′IF′. Since AI⊥EF, the lineAI is an internal angle bisector in the triangleE′IF′. But\ntriangle E′IF′is isosceles, hence the lineAI is also an altitude, soAI⊥E′F′.\n8\nMEMO 2023 Individual I-4",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2023-i4",
+      "year": 2023,
+      "problem_code": "I-4",
+      "statement_en": "Let n and m be positive integers. We call a setS of positive integers(n,m )-good if it satisfies\nthe following three conditions:\n(i) We havem∈S.\n(ii) For alla∈S, all of the positive divisors ofa are elements ofS too.\n(iii) For all mutually different numbersa,b∈S, we havean +bn∈S.\nDetermine all pairs (n,m ) such that the set of all positive integers is the only(n,m )-good\nset.",
+      "solution_text_en": "Answer. The set Z≥1 is the only(m,n )-good set if and only ifn is odd andm≥2.\nSolution. Form = 1 we have that{1}is (m,n )-good. For the rest of the solution we assume\nm≥2.\n• n is odd\nLetS be (m,n )-good set. Sincex +y|xn +yn, forx,y∈S withx̸=y we havex +y∈S.\nSince 1|m, it implies 1∈S and also m + 1∈S. By induction, all positive integers\ngreater thanm are inS. Moreover, every postive integer smaller thanm has a multiple\nwhich is greater thanm. This implies thatS = Z≥1.\n• n is even\nLetn = 2k and letp be a prime coprime tom such thatp≡3 mod 4 . Such prime exists\nsince there are infinitely many primes with remainder 3 modulo 4 (this well-known fact\nfollows for example from Dirichlet’s theorem). LetS ={x∈Z≥1 :p ∤x}. We will show\nthat S is (m,n )-good set. Clearly, the first two conditions are satisfied. Consider two\ndistinct elementsx,y∈S such that\nx2k≡−y2k mod p.\nBy exponentiating this congruence to the power ofp−1\n2 , we obtain\nxk(p−1)≡(−1)\np−1\n2 ·yk(p−1) mod p,\nform which it follows that\n1≡(−1)\np−1\n2 mod p.\nSince p≡3 mod 4 , (p−1)/2 is an odd number, thus(−1)\np−1\n2 =−1 is a contradiction.\nTherefore, S is (m,n )-good set.\n9\nMEMO 2023 Individual I-4\nComment. The end of the solution can be replaced by stating the well-known fact that for\np≡3 (mod 4) we havep|x2 +y2⇒p|x,y.\n10\nMEMO 2023 T eam T-1",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 6,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 6, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2023-t1",
+      "year": 2023,
+      "problem_code": "T-1",
+      "statement_en": "Let Z denote the set of all integers andZ>0 denote the set of all positive integers.\n(a) A function f : Z→Z is called Z-good if it satisfiesf (a2 + b) = f (b2 + a) for all a, b∈Z.\nDetermine the largest possible number of distinct values that can occur among\nf (1), f(2), . . . , f(2023), where f is a Z-good function.\n(b) A function f : Z>0→Z>0 is called Z>0-good if it satisfies f (a2 + b) = f (b2 + a) for all\na, b∈Z>0. Determine the largest possible number of distinct values that can occur among\nf (1), f(2), . . . , f(2023), where f is a Z>0-good function.",
+      "solution_text_en": "Solution. The answer is (a) 2 and (b) 1077.\n(a) Note that\nf (a2 +b) = f (b2 +a) = f ((−b)2 +a) = f (a2−b).\nIn particular, by settinga∈{0, 1}we getf (b) = f (−b) and f (1 +b) = f (1−b). This then\nyields\nf (2 +b) = f (1 + (1 +b)) = f (1−(1 +b)) = f (−b) = f (b),\nhence by induction the function must be constant on even integers and (separately) on odd\nintegers. On the other hand, a function f (n) = n (mod 2) satisfies the requirements and\nattains 2 distinct values on{1,..., 2023}.\n(b) Given two positive integersm<n , we say thatm is aparent ofn if there exist two positive\nintegersa, b such thata2 +b =m and b2 +a =n. Note that:\n(a) If m =a2 +b and n =b2 +a (for positive integersa, b, m, n) thenm<n if and only if\na<b : This follows from the fact thatx2−x is increasing onN.\n(b) The numbers inS ={1, 2, 3, 4}do not have a parent: This is a simple check.\n(c) For anyn≥2, then−1 numbers inAn ={n2 + 1,...,n 2 + (n−1)}each have a unique\nparent: Let 1≤k≤n−1 and assume thatn2 +k =a2 +b with a>b> 0. Then either\nn =a, k =b (in which case we obtain a parentk2 +n<n 2 +k) ora<n , in which case\nwe getb≥n2 +k−(n−1)2≥2n−1>a , a contradiction.\n(d) For anyn≥2, the n + 2 numbers in Bn ={n2 +n,...,n 2 + 2n + 1}do not have a\nparent: Let n≤k≤2n + 1 and assume thatn2 +k = a2 +b with a > b >0. Since\nn2 +k <(n + 1)2 + 1, we must havea≤n but thenb≥k≥n≥a, a contradiction.\nNote that asn∈N varies, the setsAn,Bn form a partition ofN\\S, hence each positive integer\nhas at most one parent. In other words, if we process the positive integers in increasing order,\nfor any currently processed integern there will always be at most one parent, and thus at most\none requirement on which value to assign tof (n). Therefore, as we process the integers, to any\n11\nMEMO 2023 T eam T-1\nintegern without a parent we can always safely assign any valuef (n). (Clearly, whenn has a\nparentm, wemustassign f (n) = f (m).) Theansweristhenumberofintegers n∈{1,..., 2023}\nwith no parent. Since2023 = 44 2 + 87, this is\n|S|+\nÇ 43∑\ni=2\n(i + 2)\nå\n+ (87−44 + 1) = 1077.\nComment. It is possible to ask only for the answer to the part (b).\n12\nMEMO 2023 T eam T-2",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2023-t2",
+      "year": 2023,
+      "problem_code": "T-2",
+      "statement_en": "Let a, b, c and d be positive real numbers withabcd = 1. Prove that\nab + 1\na + 1 + bc + 1\nb + 1 + cd + 1\nc + 1 + da + 1\nd + 1 ≥4,\nand determine all quadruples(a, b, c, d) for which equality holds.",
+      "solution_text_en": "Solution. By assumption we have\nab + 1\na + 1 + bc + 1\nb + 1 + cd + 1\nc + 1 + da + 1\nd + 1 =\nÅab + 1\na + 1 + cd +abcd\nc + 1\nã\n+\nÅbc + 1\nb + 1 + da +abcd\nd + 1\nã\n=\n= (ab + 1)\nÅ 1\na + 1 + cd\nc + 1\nã\n+ (bc + 1)\nÅ 1\nb + 1 + ad\nd + 1\nã\n=\n= (ab + 1)\nÅ 1\na + 1 + 1\nabc +ab\nã\n+ (bc + 1)\nÅ 1\nb + 1 + 1\nbcd +bc\nã\n.\nWhen estimating the parentheses by the inequality of the arithmetic-harmonic mean (i. e.\n1/u + 1/v≥4/(u +v) for positive real numbersu and v with equality iffu =v), we see that\nthe above expression is at least\n(ab + 1) 4\na + 1 +abc +ab + (bc + 1) 4\nb + 1 +bcd +bc = 4(ab + 1)\na + 1 +abc +ab + 4(bc + 1)·a\n(b + 1 +bcd +bc)·a =\n= 4(ab + 1)\na + 1 +abc +ab + 4(abc +a)\nab +a + 1 +abc =\n= 4(ab + 1 +abc +a)\n1 +a +ab +abc = 4.\nEquality holds iffa + 1 = abc +ab and b + 1 = bcd +bc⇔ab +a = 1 + abc. Addition of\nthese equations yields2a = 2abc, that isbc = 1. Plugging this into the first equation, we also\nget 1 = ab. Therefore ab = bc = cd = 1, which impliesa = c and b = d = 1/a. Indeed, these\nconditions suffice, as is readily checked. Thus, equality holds iff(a,b,c,d ) = (t, 1\nt,t, 1\nt ) for some\npositive realt.\n13\nMEMO 2023 T eam T-3",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2023-t3",
+      "year": 2023,
+      "problem_code": "T-3",
+      "statement_en": "Find the smallest integer b with the following property: For each way of colouring exactlyb\nsquares of an8×8 chessboard green, one can place7 bishops on 7 green squares so that no two\nbishops attack each other.",
+      "solution_text_en": "Remark. Two bishops attack each other if they are on the same diagonal.\nAnswer. 41\nSolution. Let us place40 bishops on 6 diagonals as shown in Figure 2. If we select any7 of\nthe placed bishops, by Pigeon hole principle, at least two of the selected bishops are on the\nsame diagonal, so they attack each other. Thus, the numberb of selected bishops is at least\n41.\nFigure 1\nNow, suppose for a contrary, that there is a placement of41 bishops such there are not 7\nnon-attacking bishops. Divide all tiles to8 groups as shown in Figure??. It is easy to see that\nany two bishops belonging to the same group do not attack each other. Therefore, each group\ncontains at most6 bishops. Moreover, groups 7 and 8 contain at most2 bishops due to their\nsize. Therefore, we have at most6·6 + 2·2 = 40 bishops, which is a contradiction. Therefore,\nfrom any placement of 41 bishops, it is possible to select some7 of them such that no two\nattack each other. This, together with the lower bound ofb≥41 finishes this solution.\nFigure 2\n14\nMEMO 2023 T eam T-3\nComment (1). A weaker upper bound of49 can be shown as follows: Consider a placement of\n49. bishops. We have8 rows and 49/8> 6, so by Pigeon hole principle, there is a row with at\nleast 7 bishops. Clearly, bishops in the same row do not attack each other.\nComment (2). This problem can be generalised for larger dimensions of the chessboard and\nalso larger number of sought non-attacking bishops.\n15\nMEMO 2023 T eam T-4",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [
+        "colour"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2023-t4",
+      "year": 2023,
+      "problem_code": "T-4",
+      "statement_en": "Let c≥4 be an even integer. In some football league, each team has a home uniform and an\naway uniform. Every home uniform is coloured in two different colours, and every away uniform\nis coloured in one colour. A team’s away uniform cannot be coloured in one of the colours from\nthe home uniform. There are at mostc distinct colours on all of the uniforms. If two teams have\nthe same two colours on their home uniforms, then they have different colours on their away\nuniforms.\nWe say a pair of uniforms isclashing if some colour appears on both of them. Suppose that for\nevery team X in the league, there is no teamY in the league such that the home uniform ofX\nis clashing with both uniforms ofY. Determine the maximum possible number of teams in the\nleague.",
+      "solution_text_en": "Answer. We claim the answer isn3\n8 −n2\n4 .\nSolution. We first give an example of a league withn3\n8 −n2\n4 teams.\nSplit the colours in two sets of sizen/2. Letm =n/2 and letc1,...,cm and d1,...,dm be the\ncolours in those sets.\nConsider all pairs of kits of the form({ci,cj},dk) or ({di,dj},ck), wherei<j and 1≤i,j,k ≤\nm. There are2·\u0000m\n2\n\u0001·m =m3−m2 = n3\n8−n2\n4 such pairs of kits. We claim that this construction\nis valid.\nConsider any pair of kits ({ci,cj},dk). Then for any other team of the form ({ca,cb},du),\nthe kitdu is not clashing with the home kit{ci,cj}. Furthermore, for any team of the form\n({da,db},cu) the kit{da,db}is not clashing with the home kit{ci,cj}. Thus, the construction\nis valid.\nWe now prove that there is no larger league. Consider any colourc. Take any other colourd.\nIf there is a team whose home kit is{c,d}, then there is no team whose home kit containsc\nand whose away kit isd. Conversely, if there is a team whose home kit containsc and whose\naway kit isd, then there is no team whose home kit is{c,d}.\nLet A(c) be the number of coloursd such that there is a home kit of the form{c,d}, and let\nB(c) the number of coloursd such that there is a team whose home kit containsc and whose\naway kit isd.\nFrom the observation we made,A(c) +B(c)≤n−1. The number of teams whose home kit\ncontains the colourc is at most\nA(c)B(c)≤n−2\n2 ·n−1\n2 = n2\n4 −n\n2,\n16\nMEMO 2023 T eam T-4\nwhere the inequality follows from the fact that the functionx↦→x(n−1−x) is increasing on\n(0, (n−1)/2) and decreasing on((n−1)/2,n−1).\nSumming up over all coloursc and dividing by 2 since we counted each home kit twice, we\nobtain that the number of teams is at most\n1\n2\n∑\nc\nA(c)B(c)≤n\n2·\nÅn2\n4 −n\n2\nã\n= n3\n8 −n2\n4 .\n17\nMEMO 2023 T eam T-5",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [
+        "colour"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2023-t5",
+      "year": 2023,
+      "problem_code": "T-5",
+      "statement_en": "We are given a convex quadrilateralABCD whose angles are not right. Assume there are points\nP, Q, R, S on its sides AB, BC, CD, DA, respectively, such that P S∥BD, SQ ⊥BC,\nP R⊥CD. Furthermore, assume that the linesP R, SQ, and AC are concurrent. Prove that\nthe points P, Q, R, S are concyclic.",
+      "solution_text_en": "Solution. Let the interesection point of PR,QS,AC be T and let H be the orthocenter\nof BCD. Since ∠BCD is not right, H ̸= C. Notice that triangles HBD and TPS are\nhomothetic due to their corresponding sides being parallel. This means thatHT,BP,DS are\nconcurrent. SinceH̸=C, this gives thatH lies on lineATC.\nDue to parallel lines, we have∠RPS = ∠TPS = ∠HBD. Since H is the orthocenter, we\nhave ∠HBD = ∠DCH = ∠RCT. Finally, note that quadrilateralQTRC is cyclic due to right\nanglesat QandR, whichgives ∠RCT = ∠RQT = ∠RQS. Together, wehave∠RPS = ∠RQS,\nwhich finishes the proof.\nA\nB D\nP S\nR\nQ\nC\nH\nT\n18\nMEMO 2023 T eam T-6",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 2,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 2, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2023-t6",
+      "year": 2023,
+      "problem_code": "T-6",
+      "statement_en": "Let ABC be an acute triangle withAB < AC . Let J be the center of theA-excircle ofABC. Let\nD be the projection ofJ on line BC. The internal bisectors of anglesBDJ and J DC intersect\nlines BJ and J C at X and Y, respectively. SegmentsXY and J Dintersect atP. Let Q be the\nprojection of A on line BC. Prove that the internal angle bisector ofQAP is perpendicular to\nline XY .",
+      "solution_text_en": "Remark. TheA-excircle of the triangleABC is the circle outside the triangle which is tangent\nto the linesAB, AC, and the line segmentBC.\nSolution. Let E and F be the points symmetric toD with respect to lines JC and BJ,\nrespectively. ThenD, E andF are the points of tangency of theA-excircle ofABC withBC,\nCA and AB, respectively. In particular,AE =AF.\nLet Z be the point on rayDP→such thatDZ = AE. Note that CE = CD and ∠CEY =\n∠YDC = ∠ZDY . It follows by SAS that△AEY ≡△ZDY . ThereforeAY =YZ .\nSimilarly,DZ =AF, FX =DX, and ∠XFA = ∠BDX = ∠XDZ. Thus by SAS△XFA ≡\n△XDZ. HenceAX =XZ.\nSince AX = XZ and AY = YZ , it follows thatXY is the perpendicular bisector ofAZ. In\nparticular, AP =PZ. Hence ∠ZAP = ∠PZA = ∠QAZ, where the latter equality holds true\nas AQ∥DZ. This shows thatAZ is the internal angle bisector of∠QAP and we are done\nbecause XY ⊥AZ.\n19\nMEMO 2023 T eam T-6\n20\nMEMO 2023 T eam T-7",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 5,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 5, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2023-t7",
+      "year": 2023,
+      "problem_code": "T-7",
+      "statement_en": "Find all positive integersn for which there exist positive integersa > b satisfying\nn = 4ab\na−b .",
+      "solution_text_en": "Answer. Any compositen̸= 4.\nSolution. We say thatn is good if there exist such positive integersa and b (and bad other-\nwise).\nFirst, we show thatn = 4 is bad. Suppose otherwise. Then there exist positive integersa, b\nsuch that\n4 = 4ab\na−b.\nBut this rewrites as (a + 1)(b−1) = −1 and the left-hand side is non-negative for any two\npositive integersa,b, a contradiction.\nNow considern≥6. We make three observations.\nFirst, note that ifn is good then any its multiplen′= k·n is also good – it suffices to take\na′= k·a and b′= k·b. In particular, for a = 2, b = 1 we have 4ab/(a−b) = 8 , hence all\nmultiples of 8 are good.\nSecond, take any positive integert of the formt = 4k + 1. By settinga =t, b = 1 we get\n4ab\na−b = 4·t\n4k = t\nk,\nhence by setting a = t·k, b = k we obtain that any multiple of any number of the form\nt = 4k + 1 is good.\nThird, likewise, take any positive integert of the formt = 4k−1. By settinga =t, b = 1 we\nget\n4ab\na−b = 4·t\n4k−2 = 2t\n2k−1,\nhence every multiple ofdouble of any number of the formt = 4k−1 is good.\nNow we combine the observations. Consider any composite number n ≥6. If the prime\nfactorization ofn contains a prime of the form4k+1 thenn is good (by the second observation).\nSimilarly, ifn contains at least two (not necessarily distinct) primes of the form4k−1 then\ntheir product is of the form4k +1, and thusn is good (by the second observation). Ifn contains\na prime of the form4k−1 and it is even, thenn is also good (by the third observation). Thus,\n21\nMEMO 2023 T eam T-7\nit remains to consider the powers of 2. But we know that all multiples of 8 are good (by the\nfirst observation) and 4 is bad, so we are done.\n22\nMEMO 2023 T eam T-8",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 3,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 3, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2023-t8",
+      "year": 2023,
+      "problem_code": "T-8",
+      "statement_en": "Let A and B be positive integers. Consider a sequence of positive integers(xn)n≥1 such that\nxn+1 = A·gcd(xn, xn−1) + B for every n≥2.\nProve that the sequence attains only finitely many different values.",
+      "solution_text_en": "Remark. We denote bygcd(a,b ) the greatest common divisor of positive integersa and b.\nSolution. Let n≥2 be a positive integer such thatxn+1 >x n. Then\nxn\ngcd(xn,xn−1) < xn+1\ngcd(xn,xn−1) =A + B\ngcd(xn,xn−1)≤A +B.\nFurthermore,\ngcd(xn,xn+1) = gcd(xn,A gcd(xn,xn−1) +B)\n≤gcd(gcd(xn,xn−1),A gcd(xn,xn−1) +B)·gcd\nÅ xn\ngcd(xn,xn−1),A gcd(xn,xn−1) +B\nã\n= gcd(gcd(xn,xn−1),B )·gcd\nÅ xn\ngcd(xn,xn−1),A gcd(xn,xn−1) +B\nã\n,\nwhere we first used the fact thatgcd(ab,c )≤gcd(a,c ) gcd(b,c ), and then used the Euclidean\nalgorithm on the left factor of the right hand side.\nNow we’ll bound each of the factors by constants. The left factor is not greater thanB, and the\nright factor is not greater than xn\ngcd(xn,xn−1), which is less than or equal toA +B. We conclude\nthat\ngcd(xn+1,xn)≤B(A +B),\nwhich impliesxn+2≤AB(A +B) +B.\nWe say an element of the sequence is big if it is greater thanAB(A +B) + B, and small\notherwise. The sequence is either eventually decreasing, or it contains a small element, since\nxn+2 is small wheneverxn+1 >x n.\nWe’ve proven that wheneverxj is small, eitherxj+1≤xj and hencexj+1 is also small, orxj+2 is\nsmall. This means that from some point in the sequence onwards there are no two consecutive\nbig elements, but then all but finitely many elements of the sequence are not greater than\nA(AB(A +B) +B) +B, because either they’re small or the previous element of the sequence\nis small.\nSince we bounded all but finitely many elements of the sequence, the claim is proven.\n23",
+      "source": {
+        "page_url": "http://memo2023.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "http://memo2023.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "http://memo2023.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "http://memo2023.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2023-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 2, 'combinatorics': 1}"
+    }
+  ]
+}

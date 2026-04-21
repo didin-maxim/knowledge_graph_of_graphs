@@ -1,0 +1,592 @@
+{
+  "year": 2010,
+  "page_url": "https://memo2010.skmo.sk/problems.php",
+  "download_count": 3,
+  "problem_count_extracted": 12,
+  "problems": [
+    {
+      "id": "memo-2010-i1",
+      "year": 2010,
+      "problem_code": "I-1",
+      "statement_en": "Find all functions f : R→ R such that for all x, y∈ R, we have\nf(x + y) + f(x)f(y) = f(xy) + (y + 1)f(x) + (x + 1)f(y).",
+      "solution_text_en": "Solution. Setting y = 0 yields\n0 =f(0)(f(x)−x− 2).\nIt is easy to check that f(x) = x + 2 is not a solution, so f(0) = 0. Setting x = 1, y =−1,\nwe obtain\n0 =f(−1)(f(1)− 3),\nso f(−1) = 0 or f(1) = 3.\nLet us assume f(−1) = 0. Putting x = 2, y =−1 in the original functional equation, we\ngetf(−2) =f(1). On the other hand, setting x =−2,y = 1 givesf(−2)f(1) = 3f(−2)−f(1)\nwhich together with f(−2) =f(1) gives f(1)∈{ 0, 2}.\nSo we have f(1) =a∈{ 0, 2, 3}. Setting y = 1 yields\nf(x + 1) = (3−a)f(x) +a(x + 1). (1)\nfor all real x.\nNow we set y = 1 + 1/x for arbitrary x̸= 0, we obtain\nf\n(\nx + 1\nx + 1\n)\n+f(x)f\n(1\nx + 1\n)\n=f(x + 1) +\n(1\nx + 2\n)\nf(x) +f\n(1\nx + 1\n)\n(x + 1).\nApplying (1) yields\n(3−a)\n(\nf\n(\nx + 1\nx\n)\n+f(x)f\n(1\nx\n)\n− (x + 1)f\n(1\nx\n))\n=f(x)\n(\n5− 2a− (a− 1) 1\nx\n)\n+ 2a +ax.\nFrom this and the original functional equation with y = 1/x we have\n(3−a)\n(\na +f(x)\n(\n1 + 1\nx\n))\n=f(x)\n(\n5− 2a− (a− 1)· 1\nx\n)\n+ 2a +ax,\nwhich is equivalent to\nf(x)\n(\n−2 +a + 2\nx\n)\n=a2 +ax−a.\nUsing a∈{ 0, 2, 3} we get f(x) = 0, f(x) = x2 +x, f(x) = 3x for all real x (with some\nexceptions when−2 +a + 2\nx = 0, but this cases can be handled easily for example by using\n(1)). We can also easily check that the functions f(x) = 0, f(x) = x2 +x, f(x) = 3x are\nsolutions of the original functional equation.\nSolution 2. As in the first solution we obtain f(0) = 0, f(1) =a∈{ 0, 2, 3} and\nf(x + 1) = (3−a)f(x) +a(x + 1) for x∈ R. (2)\nIf a = 3, then (2) implies that f(x + 1) = 3(x + 1) for all x∈ R (and therefore f(x) = 3x for\nall x). It is easy to verify that this is a solution of the functional equation.\nIn the sequel we will assume that a∈{ 0, 2} and therefore f(−1) = 0. We will compute\nf(xyz) in two different ways. Setting yz fory into the original functional equation we obtain\nf(xyz) =f(x +yz) +f(x)f(yz)− (yz + 1)f(x)− (x + 1)f(yz) =\n=f(x +yz) +f(x)f(y +z) +f(x)f(y)f(z)− (z + 1)f(x)f(y)−\n− (y + 1)f(x)f(z)− (yz + 1)f(x)− (x + 1)f(y +z)− (x + 1)f(y)f(z)+\n+ (x + 1)(z + 1)f(y) + (x + 1)(y + 1)f(z).\nOn the other hand, settingxy forx andz fory into the original functional equation we obtain\nf(xyz) =f(xy +z) +f(xy)f(z)− (z + 1)f(xy)− (xy + 1)f(z) =\n=f(xy +z) +f(x +y)f(z) +f(x)f(y)f(z)− (y + 1)f(x)f(z)−\n− (x + 1)f(y)f(z)− (z + 1)f(x +y)− (z + 1)f(x)f(y) + (y + 1)(z + 1)f(x) +\n+ (x + 1)(z + 1)f(y)− (xy + 1)f(z).\nTherefore\nf(x +yz) +f(x)f(y +z)− (yz + 1)f(x)− (x + 1)f(y +z) + (x + 1)(y + 1)f(z) =\n=f(xy +z) +f(x +y)f(z)− (z + 1)f(x +y) + (y + 1)(z + 1)f(x)− (xy + 1)f(z).\nIn particular, for x =−1 and y =z we obtain\nf(z2− 1) =f(z− 1)f(z)− (z + 1)f(z− 1) + (z− 1)f(z).\nOn the other hand, setting x =z + 1 and y =z− 1 into the original equation we obtain\nf(2z) +f(z + 1)f(z− 1) =f(z2− 1) + (z + 2)f(z− 1) +zf (z + 1).\nTherefore\nf(2z) +f(z + 1)f(z− 1) =f(z− 1)f(z) +f(z− 1) + (z− 1)f(z) +zf (z + 1).\nSince (2) implies that f(2) = 5a−a2 and since for x = 2 and y = z the original functional\nequation implies\nf(z + 2) +f(2)f(z) =f(2z) + (z + 1)f(2) + 3f(z),\nit follows that\nf(z + 2) + (5a−a2)f(z) +f(z + 1)f(z− 1) =\n=f(z− 1)f(z) +f(z− 1) + (z + 2)f(z) +zf (z + 1) + (5a−a2)(z + 1).\nThe equation (2) implies that\nf(z) = (3−a)f(z− 1) +az,\nf(z + 1) = (3−a)2f(z− 1) + (4a−a2)z +a\nand\nf(z + 2) = (3−a)3f(z− 1) + (a3− 7a2 + 13a)z + 5a−a2.\nFrom the last four equations we obtain that\n(3−a)(2−a)f(z− 1)2− 2(a− 3)(a− 2)zf (z− 1) + (a2− 9a + 20)f(z− 1) =\n= (5a−a2)z2 + (a2− 5a)z.\nFora = 2 we get 6f(z− 1) = 6z2− 6z, therefore f(z) = z2 +z and it is easy to verify that\nthis is a solution of the functional equation.\nFor a = 0 we get 6 f(z− 1)2− 12zf (z− 1) + 20f(z− 1) = 0, which implies that for\neach z ∈ R one of the equalities f(z) = 0 and f(z) = 2 z− 4\n3 is satisfied. Assume that\nf(z) = 2z− 4\n3 for some z∈ R. Then the original functional equation for x = 1 and y = z\nimplies that f(z + 1) = 3f(z) = 6z− 4. Therefore either 6z− 4 = 0 or 6z− 4 = 2(z + 1)− 4\n3.\nThe first equation implies that z = 2\n3 and f(z) = 2 z− 4\n3 = 0, and the second equation\nimplies that z = 7\n6 and therefore f(z) = 2z− 4\n3 = 1, f(z + 1) = 3z = 3 = 2(z + 1)− 4\n3 and\nf(z + 2) = 3f(z + 1) = 9̸= 5 = 2(z + 2)− 4\n3. The contradiction shows that f(z) = 0 for each\nz∈ R.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2010-i2",
+      "year": 2010,
+      "problem_code": "I-2",
+      "statement_en": "All positive divisors of a positive integer N are written on a blackboard. Two players A and\nB play the following game taking alternate moves. In the first move, the player A erases N. If\nthe last erased number is d, then the next player erases either a divisor of d or a multiple of\nd. The player who cannot make a move loses. Determine all numbers N for which A can win\nindependently of the moves of B.",
+      "solution_text_en": "Solution. Let N = pa1\n1 pa2\n2 ...p ak\nk be the prime factorization of N. In an arbitrary move\nthe players writes down a divisor of N, which we can represent as a sequence ( b1,b 2,...,b k),\nwhere bi≤ ai (such a sequence represents the number pb1\n1 pb2\n2 ...p bk\nk ). The rules of the game\nsay that the sequence (b1,b 2,...,b k) can be followed by a sequence (c1,c 2,...,c k) with either\nci≤bi for eachi, or ai≥ci≥bi for eachi (obviously, if such a sequence is not on the sheet).\nIf one of the numbers ai is odd, then the player B posses the winning strategy. Indeed,\nlet for simplicity a1 be odd. Then the response for the move ( b1,b 2,...,b k) should be\n(a1−b1,b 2,...,b k).\nOne can easily check that this is a winning strategy for B: All the legal sequences split up\ninto pairs and when A writes down one sequence from a pair, player B responds with the\nsecond one from the same pair ( a1−b1̸=b1 because of a1 is odd).\nIf all ai are even, then the player A has a winning strategy. Let the move of player B be\n(b1,b 2,...,b k), where one of bi is strictly less than ai ((b1,b 2,...,b k)̸= (a1,a 2,...,a k), as it\nwas the first move of A). Let j be the smallest index such that bj < aj. Then the response\nof A can be\n(b1,b 2,...,b j−1,a j−bj− 1,b j+1,...,b k) (symmetric reflection of bj).\nAgain, all legal sequences (except for ( a1,a 2,...,a k)) split up into pairs and when B writes\ndown one sequence from a pair, player A can respond with the second one ( aj−bj− 1̸=bj\nbecause of aj is even).\nObviously the condition ”allai are even” means that ”N is a square”. ForN∈ [2000, 2100]\nit is possible only for N = 2025. The answer for the alternative question is 2010 1005.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 4,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 4, 'combinatorics': 4}"
+    },
+    {
+      "id": "memo-2010-i3",
+      "year": 2010,
+      "problem_code": "I-3",
+      "statement_en": "We are given a cyclic quadrilateral ABCD with a point E on the diagonal\nAC such that AD = AE and CB = CE . Let M be the center of the circumcircle k of the\ntriangle BDE . The circle k intersects the line AC in the points E and F . Prove that the\nlines FM , AD, and BC meet at one point.\nProblem 5\nPoints A, B, C and D lie on a circle in this order. Let E be a point on the segment AC\nsuch that AD = AE and CB = CE holds. Let k be the circumcircle of triangle BDE let\nM the center ofk. LetF be the second intersection point of k andAC. Prove that the lines\nFM , AD and BC meet in a point.\n1. Solution\nAssumeA lies betweenC andF (the case when C lies betweenA andF can be handled in\nthe same way). Let the lines BC and AD meet in P . Using|MB|=|ME|,|BC|=|CE|\nand|ME|=|MF|we get\n∠MBP =π−∠MBE−∠EBC =π−∠BEM−∠CEB = ∠FEM = ∠MFE.\nTherefore ∠MFC + ∠CBM = ∠MFE +π−∠MBP = π, which implies that the points\nM, B, C and F are concyclic.\nProblem. The problem statement to be inserted. :)",
+      "solution_text_en": "Solution. Assume A lies between C and F (the case when C lies between A and F can\nbe handled in the same way). Let the lines BC and AD meet in P . Using |M B|= |M E|,\n|BC |= |CE |and |M E|= |M F|we get\n∠M BP = π − ∠M BE − ∠EBC = π − ∠BEM − ∠CEB = ∠F EM = ∠M F E.\nTherefore ∠M F C+ ∠CBM = ∠M F E+ π − ∠M BP = π, which implies that the points\nM, B, C and F are concyclic.\nA C\nE\nD\nB\nM\nF\nP\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\nUsing |M E|= |M D|and |AE|= |AD|we get\n∠AEM = ∠DEM − ∠DEA = ∠EDM − ∠EDA = ∠M DA,\nhence ∠M DP = ∠M BP and the quadrilateral M P BD is cyclic. This gives (using that\nquadrilaterals ABCD and F M BC are cyclic as well)\n∠P M B = ∠P DB = ∠ADB = ∠ACB = ∠F CB = π − ∠F M B,\nwhich means that the points F , M and P are collinear, therefore the lines AD, BC and\nF M meet in a point.\nAlternative solution. Assume A lies between C and F (the case when C lies between\nA and F can be handled in the same way). Using |M B| = |M E|, |BC | = |CE | and\n|M E|= |M F|we get\n∠M BP = π − ∠M BE − ∠EBC = π − ∠BEM − ∠CEB = ∠F EM = ∠M F E.\nTherefore ∠M F C+ ∠CBM = ∠M F E+ π − ∠M BP = π, which implies that the points\nM, B, C and F are concyclic.\n1\nUsing|ME|=|MD|and|AE|=|AD|we get\n∠AEM = ∠DEM−∠DEA = ∠EDM−∠EDA = ∠MDA,\nhence ∠MDP = ∠MBP and the quadrilateral MPBD is cyclic. This gives (using that\nquadrilaterals ABCD and FMBC are cyclic as well)\n∠PMB = ∠PDB = ∠ADB = ∠ACB = ∠FCB =π−∠FMB,\nwhich means that the points F, M and P are collinear, therefore the lines AD, BC and\nFM meet in a point.\n2. Solution\nAssumeA lies betweenC andF (the case when C lies betweenA andF can be handled in\nthe same way). Using|MB|=|ME|,|BC|=|CE|and|ME|=|MF|we get\n∠MBP =π−∠MBE−∠EBC =π−∠BEM−∠CEB = ∠FEM = ∠MFE.\nTherefore ∠MFC + ∠CBM = ∠MFE +π−∠MBP = π, which implies that the points\nM, B, C and F are concyclic.\nUsing|ME|=|MD|and|AE|=|AD|we get\n∠AEM = ∠DEM−∠DEA = ∠EDM−∠EDA = ∠MDA,\nhence ∠MDA = ∠MFA and the quadrilateral MADF is cyclic.\nThe radical axes of circumcircles of cyclic quadrilaterals FMBC , BCDA and ADFM are\nlinesFM ,AD andBC, which meet in the radical center of the three circles. Thus, the lines\nFM , AD and BC meet in a point.\nSolution. Assume that A lies between C and F (the case when C lies between A and F\ncan be handled in the same way). Let the lines BC and AD meet in P . Using MB =ME ,\nBC =CE and ME =MF we get△MBC ∼=△MEC and therefore\n∠MBC = ∠MEC = 180◦− ∠MEF = 180◦− ∠MFC,\nwhich implies that the pointsM,B,C, andF are concyclic. Using ME =MD andAE =AD\n(which means△MEA∼=△MDA) we get ∠AEM = ∠ADM, hence ∠MDP = ∠MBP and\nthe quadrilateral MPBD is cyclic. This gives (using that quadrilaterals ABCD andFMBC\nare cyclic as well) that\n∠PMB = ∠PDB = ∠ADB = ∠ACB = ∠FCB = 180◦− ∠FMB,\nwhich means that the points F ,M andP are collinear, therefore the lines AD,BC andFM\nmeet in a point.\nSolution 2. Like in the first solution, FMBC is cyclic. Since the points M and A lie\non the perpendicular bisector of the segment DE, we have ∠MDA = ∠MEA . Moreover,\nME = MF , hence ∠MFA = ∠MFE = ∠MEF = ∠MEA . Therefore, the quadrilateral\nMADF is cyclic. Then the radical axes of circumcircles of cyclic quadrilaterals FMBC ,\nBCDA and ADFM are the lines FM , AD and BC, which meet in the radical center of the\nthree circles. Thus, the lines FM , AD and BC meet in a point.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2010-i4",
+      "year": 2010,
+      "problem_code": "I-4",
+      "statement_en": "Find all positive integers n which satisfy the following two conditions:\n(i) n has at least four different positive divisors;\n(ii) for any divisors a and b of n satisfying 1 < a < b < n , the number b− a divides n.",
+      "solution_text_en": "Solution. Clearly primes, squares of primes and the number 1 have the given property. We\nwill exclude these numbers from further considerations.\nFirst assume that n is even; thus n = 2x for some integer x. Then x− 2 divides n. Any\ndivisor of n smaller then x = n/2 is at most n/3. Therefore, x− 2≤ n/3, yielding x≤ 6.\nChecking all possibilities for x, we arrive to three new satisfactory values of n, namely, 6, 8,\nand 12.\nNext assume that n is odd. Let n =px, where p is the smallest divisor of n greater than\none. Obviously p is an odd prime. Note that p + 1 ∤n because p + 1 is even; thus x̸=p + 1.\nSince 1 <p<x<n , we have\nx−p|px.\nIf p ∤ x then x−p and x are coprime; hence x−p| p. Then x−p≤ p. On the other\nhand,x̸=p + 1; therefore,x−p≥p sincep is the smallest nontrivial divisor. Hence x = 2p,\ncontradicting the assumption that n is odd.\nIf p| x, then x = py for some integer y greater than one. The choice of p implies that\ny≥ p. Moreover, py−p| p2y; thus y− 1| py. Since y− 1 and y are coprime, y≤ p + 1.\nIf y = p + 1, then y is an even divisor of n; this contradicts the assumption that n is odd.\nOtherwise y =p since y≥p. This contradicts the condition y− 1|py.\nAll the solutions are primes, squares of primes and the numbers 1, 6, 8 and 12.\nSolution 2. If n = 1, n is prime or n is a square of a prime, there are no divisors a and b\nsatisfyingn>a>b> 1, thus the condition is trivially satisfied. Otherwise, for some integers\nk and l, n =l·k with l>k > 1. Then l−k also divides n =l·k.\nIf l and k are coprime, l−k is coprime to l and k, thus l−k = 1. Hence n =k(k + 1).\nLet p be a prime divisor of k. Since k + 1−p is coprime to p(k + 1), the condition implies\nthat k + 1−p divides k. But\nk + 1−p = (p− 1)\n(k\np− 1\n)\n+ k\np\ndividesk if and only if (p− 1)(k/p− 1) = 0; thus k =p andn =p(p + 1). Clearly p = 2 gives\na solution n = 6. Otherwise p + 1 =q·r for some prime q and integerr greater than 1. Since\np−q =qr− 1−q = (q− 1)(r− 1)− 2 +r\nis a divisor of r, we have (q− 1)(r− 1)≤ 2. This gives only three possibilities: q =r = 2 or\nq = 2, r = 3 or q = 3, r = 2. The first one yields a solution n = 12, while the other two give\nn = 30, which fails to satisfy the conditions: 6 − 2 ∤ 30.\nIt remains to consider the case when n cannot be written as a product of two coprime\nnumbers greater than 1. Thenn =pa, wherea≥ 3 (fora≤ 2, we obtain the solutions we have\nalready described). This implies that p andp2 are proper divisors ofn, hencep2−p =p(p−1)\ndivides n = pa. Since p and p− 1 are coprime, this is only possible when p− 1 = 1; thus\np = 2. However, 2 3− 2 = 6 is not a divisor of 2 a; hence there are no solutions for a≥ 4. Only\nthe number 8 satisfies the condition in this case.\nSolution 3. Clearly 1, p, p2 are solutions. For the other prime powers, n = pk is possible\nonly for p = 2 and k< 4 (p2−p is even for odd p, 8− 2 = 6 does not divide 16).\nNow,n is not a prime power, then it has two (or more) prime factors p,q. Then q−p|n.\nIf p, q are both odd, then 2 |n. (Otherwise also 2 |n.) Therefore, if n is not a prime power,\none of its factors is 2.\nLet p be the smallest divisor of n larger than 2; 1 < 2 < p < n. From p− 2| n follows\np = 3, so 6|n. Clearly, n = 6 is a solution.\nLet n = 6a, a> 1. Then 1 < 3< 3a< 6a =n, therefore\n(3a− 3) = 3(a− 1)|n = 6a,\na− 1| 2a.\nSince gcd(a,a− 1) = 1, we have a− 1| 2, hence a− 1 = 1 or a− 1 = 2, which yields n = 12\nor n = 18.\nIt is easy to check that n = 12 is a solution, and n = 18 is not (e. g., 7 = 9 − 2 is not a\ndivisor of 18).",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 6,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 6, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2010-t1",
+      "year": 2010,
+      "problem_code": "T-1",
+      "statement_en": "Three strictly increasing sequences\na1, a2, a3, . . . , b 1, b2, b3, . . . , c 1, c2, c3, . . .\nof positive integers are given. Every positive integer belongs to exactly one of the three se-\nquences. For every positive integer n, the following conditions hold:\n(i) can = bn + 1;\n(ii) an+1 > b n;\n(iii) the number cn+1cn − (n + 1)cn+1 − ncn is even.\nFind a2010, b2010, and c2010.",
+      "solution_text_en": "Solution. Since{cn} is a strictly increasing sequence of positive integers, it is clear that\ncn ≥ n, n∈ N. Hence, can ≥ an, n∈ N. However, the given sequences do not contain\nequal terms, so can > an and bn = can− 1 > an, n∈ N. Similarly, from (ii) and (iii),\nan+1>b n + 1 =can, n∈ N. It is also easy to see that bn<c an <b n+1. Let us for any n∈ N\ncount the number of terms in all three sequences that are less or equal to can. There are n\nsuch terms in the first sequence (that is, a1,a 2,...,a n), n such terms in the second sequence\n(b1,b 2,...,b n) and an such terms in the third sequence ( c1,c 2,...,c an). It is 2 n +an terms\nin total. By (i) any positive integer less or equal can must appear among these terms exactly\nonce; thus, the total number of these terms equals\n2n +an =can. (1)\nNow we take an instead of n in (iv):\ncan+1can− (an + 1)can+1−ancan =can+1(an + 2n)− (an + 1)can+1−an(an + 2n) =\n=can+1(2n− 1)−a2\nn− 2ann≡can+1−an− 2n≡can+1−can≡ 0 (mod 2) .\nThis means that can+1̸=can + 1 and the number can + 1 has to belong to either of the first\ntwo sequences. The inequalities an < bn < can < an+1 < bn+1 imply that can + 1 = an+1,\nn∈ N, and, by (1),\nan+1 =an + 2n + 1, n ∈ N. (2)\nNext we prove that a1 = 1. Indeed, number 1 has to belong to one of the given sequences,\nand if a1 > 1 then c1 = 1 or b1 = 1. The latter case is impossible because b1 >a 1. Then we\nmust have c1 = 1, and either c2 = 2, or a1 = 2 and ca1 =c2 =a1 + 2 = 4. In both cases we\nobtain a contradiction by setting n = 1 in (iv). This proves that a1 = 1, and, together with\n(2), defines a unique sequence {an}:\nan =an−1+(2n−1) =an−2+(2n−3)+(2n−1) =··· =a1+3+5+...+(2n−1) =n2, n ∈ N.\nHence,\na2010 = 20102,\nb2010 =ca2010− 1 =a2010 + 2· 2010− 1 = 20112− 2,\nc1936 =c442 =ca44 =a44 + 2· 44 = 442 + 88 = 2024,\na45 = 452 = 2025,\nand all the integers between a45 andb45 =ca45− 1 =a45 + 2· 45− 1 =a45 + 89 belong to the\nsequence{cn}. Hence, these integers have the form\nc1936+k =a45 +k, k = 1, 2,..., 88,\nand c2010 =c1936+74 =a45 + 74 = 2099.\nAnswer. a2010 = 20102, b2010 = 20112− 2, c2010 = 2099.\nSolution 2. Denote by (∗) the trivial fact an < can derived at the beginning of the first\nsolution. One can easily fill the sequences inductively. In fact, like in the first solution, we\nhavea1 = 1. Now we will find the place for number 2. If a2 = 2, then by (iii) 2 = a2 > b1,\nwhich is impossible. If c1 = 2, then by (ii) we have 2 = c1 =ca1 =b1 + 1, henceb1 = 1 which\nis also impossible. So the only way is to put b2 = 2. Then by (ii) c1 =ca1 =b1 + 1 = 3.\nn 1 2 3 4 5 . . .\nan 1\nbn 2\ncn 3\nNow, because of (iv), we have c2̸= 4. Also, b2̸= 4, because otherwise by ( ∗) and (ii)\na2 < ca2 = b2 + 1 = 5 and there is no number left for a2. So we have a2 = 4. Then by\n(iii) a3̸= 5. Also, b2̸= 5, because otherwise by (ii) c4 = ca2 = b2 + 1 = 6 and there are\nno numbers left for c2, c3. So we have c2 = 5. Using the same arguments we derive a3̸= 6\nand b2̸= 6, hence, c3 = 6. Now, a3̸= 7 (by (iii)). Also, c4̸= 7, because otherwise by (ii)\n7 = c4 = ca2 = b2 + 1, and this leads to b2 = 6, which is not true. Hence, b2 = 7. Then\nc4 =ca2 =b2 + 1 = 8.\nn 1 2 3 4 5 . . .\nan 1 4\nbn 2 7\ncn 3 5 6 8\nNow, we can repeat the arguments from the last paragraph: Because of (iv) we have\nc5̸= 9. By ( ∗) and (ii) we have b3̸= 9 (otherwise a3 < ca3 = b3 + 1 = 10 and there is no\nnumber left for a3). So we have a3 = 9. By (iii), a4̸= 10. By (ii), c9 =ca3 =b3 + 1, therefore\nb3̸= 10 (otherwise there are no numbers left for c5,...,c 8). So we have c5 = 10. Similarly\na4̸= 11, b3̸= 11 = ⇒ c6 = 11,\na4̸= 12, b3̸= 12 = ⇒ c7 = 12,\na4̸= 13, b3̸= 13 = ⇒ c8 = 13.\nFinally,a4̸= 14 (by (iii)), c9̸= 14 (otherwise by (ii) 14 = c9 =ca3 =b3 + 1, and this leads to\nb3 = 13, which is not true). Hence, b3 = 14 and c9 =ca3 =b3 + 1 = 15.\nn 1 2 3 4 5 6 7 8 9 . . .\nan 1 4 9\nbn 2 7 14\ncn 3 5 6 8 10 11 12 13 15\nWe formulate the claim which can be easily proved by induction. (We will skip the formal\nproof. However, it is just an obvious generalization of the last two paragraphs.) For k∈ N\nand i = 1, 2,..., 2k− 2, we have\nak =k2,\nbk =k2 + 2k− 1,\nc(k−1)2+i =k2 +i,\nck2 =k2 + 2k.\nThe rest is straightforward:\na2010 = 20102, b 2010 = 20102 + 2· 2010− 1, c 2010 =c442+74 = 452 + 74 = 2099.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2010-t2",
+      "year": 2010,
+      "problem_code": "T-2",
+      "statement_en": "For each integer n ≥ 2, determine the largest real constant Cn such that for all positive real\nnumbers a1, . . . ,an, we have\na2\n1 + · · · + a2\nn\nn ≥\n(a1 + · · · + an\nn\n)2\n+ Cn · (a1 − an)2.",
+      "solution_text_en": "Solution. Definexij =ai−aj for 1≤i<j ≤n. After multiplication with n2, the difference\nof the squares of quadratic and arithmetic mean equals\nn2(QM2− AM2) =n(a2\n1 +··· +a2\nn)− (a1 +··· +an)2 = (n− 1)\nn∑\ni=1\na2\ni−\n∑\ni<j\n2aiaj =\n=\n∑\ni<j\nx2\nij =x2\n1n +\nn−1∑\ni=2\n(x2\n1i +x2\nin) +\n∑\n1<i<j<n\nx2\nij.\nHere the last sum is clearly non-negative. By the AM-QM inequality the sum in the middle\nis at least\nn−1∑\ni=2\n(x2\n1i +x2\nin)≥ 1\n2\nn−1∑\ni=2\n(x1i +xin)2 = n− 2\n2 ·x2\n1n.\nHence we finally get\nn2(QM2− AM2)≥x2\n1n + n− 2\n2 ·x2\n1n = n\n2· (a1−an)2\nwith equality if and only if a2 =··· = an−1 = 1\n2(a1 +an). The largest such constant is\ntherefore\nC = 1\n2n.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2010-t3",
+      "year": 2010,
+      "problem_code": "T-3",
+      "statement_en": "In each vertex of a regular n-gon there is a fortress. At the same moment each fortress shoots\nat one of the two nearest fortresses and hits it. The result of the shooting is the set of the hit\nfortresses; we do not distinguish whether a fortress was hit once or twice. Let P (n) be the\nnumber of possible results of the shooting. Prove that for every positive integer k ≥ 3, P (k)\nand P (k + 1) are relatively prime.",
+      "solution_text_en": "Solution. Let us denote each hit fortress by a black dot and each undamaged one with a\nwhite dot. Then P (n) is the number of colourings ofn dots distributed on the circle with black\nand white colours in such a way, that no two white dots have exactly one dot in between them.\nThe proof of this bijectivity is straightforward: If there are two white dots with exactly one\ndot in between, then obviously the fortress in between can not shoot, which is not permitted.\nOn the other hand, if there are no such two white dots, then each fortress can shoot at least\none black dot and to ensure that every black dot will be hit, we can force the one in the\nclockwise direction to shoot at it.\nIf n is odd, then P (n) is equal to the number K(n) of colourings of n dots on a circle\nwith black and white colours in such a way, that no two neighbouring dots have white colour\n(we define the neighbouring dots to be the dots which have exactly one other dot in between\nthem). For n even, with the same definition of neighbours, the circle splits into two circles\nwith n/2 dots, and we have P (n) =K(n/2)2.\nFor K(n) it is easy to derive a recurrence formula K(n) = K(n− 1) +K(n− 2). In\nfact, the number of legal colourings with n-th dot being black is equal to the number of legal\ncolourings ofn−1 dots (just put the black dot in between the first dot and the (n−1)-th dot)\nplus the number of colourings of n− 1 dots with no two neighbouring white dots except for\nthe first and (n− 1)-th (we can put the black dot in between two white dots to obtain legal\ncolouring). The latter case gives the same number as the number of legal colouring with n−2\ndots having the first dot white (just span two white dots into one white). On the other hand,\nthe number of legal colourings with n-th dot being white is equal to the number of colourings\nofn− 1 dots with no two neighbouring white dots and with the first and (n− 1)-th dot black\n(we can put the white dot only in between to black dots), which is equal to the number of\nlegal colouring with n− 2 dots having the first dot black (again, span two black dots into one\nblack). Together, we have\nK(n) =K(n− 1) +Kw(n− 2) +Kb(n− 2) =K(n− 1) +K(n− 2),\nwhere Kw and Kb stands for the number of legal colourings with first dot white and black\nrespectively.\nMoreover we can directly count K(2) = 3, K(3) = 4, K(4) = 7, which suggests\nK(2) =F (4)−F (0), K (3) =F (5)−F (1), K (4) =F (6)−F (2)\nand we can easily prove by the induction K(n) = F (n + 2)−F (n− 2), where F (k) stands\nfor the k-th term of the Fibonacci sequence ( F (0) = 0, F (1) = F (2) = 1 ,... ). Further\n(K(2),K (3)) = 1, and for n≥ 3 we have\n(K(n),K (n− 1)) = (K(n)−K(n− 1),K (n− 1)) = (K(n− 2),K (n− 1)) =··· = 1.\nSimilarly we show that for each evenn = 2a the numberP (n) =K(a)2 is relatively prime\nboth to P (n + 1) =K(2a + 1) and P (n− 1) =K(2a− 1):\n(K(a),K (2a + 1)) = (K(a),F (2)K(2a) +F (1)K(2a− 1)) =\n= (K(a),F (3)K(2a− 1) +F (2)K(2a− 2)) =...\n··· = (K(a),F (a + 1)K(a + 1) +F (a)K(a)) = (K(a),F (a + 1)) =\n= (F (a + 2)−F (a− 2),F (a + 1)) =\n= (F (a + 2)−F (a + 1)−F (a− 2),F (a + 1)) =\n= (F (a)−F (a− 2),F (a + 1)) = (F (a− 1),F (a + 1)) =\n= (F (a− 1),F (a)) = 1\n(K(a),K (2a− 1)) = (K(a),F (2)K(2a− 2) +F (1)K(2a− 3)) =\n= (K(a),F (3)K(2a− 3) +F (2)K(2a− 4)) =...\n··· = (K(a),F (a)K(a) +F (a− 1)K(a− 1)) = (K(a),F (a− 1)) =\n= (F (a + 2)−F (a− 2),F (a− 1)) = (F (a + 2)−F (a),F (a− 1)) =\n= (F (a + 2)−F (a + 1),F (a− 1)) = (F (a),F (a− 1)) = 1,\nwhich finishes the proof.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "colour",
+        "vertex"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 1, 'combinatorics': 4}"
+    },
+    {
+      "id": "memo-2010-t4",
+      "year": 2010,
+      "problem_code": "T-4",
+      "statement_en": "Let n be a positive integer. A square ABCD is partitioned into n2 unit squares. Each of them\nis divided into two triangles by the diagonal parallel to BD. Some of the vertices of the unit\nsquares are colored red in such a way that each of these 2 n2 triangles contains at least one red\nvertex. Find the least number of red vertices.",
+      "solution_text_en": "Solution. The least number of red vertices is\n⌊(n + 1)2\n3\n⌋\n.\nFirst, we define a colouring and count the number of red vertices. In what follows it will be\nshown that the number of red vertices, obtained by this colouring, is indeed minimal.\nIt is convenient to replace the square by rhombus ABCD as in this case the isosceles\nrightangled triangles are equilateral. Cover the rhombus by regular unit hexagons in such a\nway, thatA lies in the vertex of a hexagon (figure 1). Colour the center of each hexagon red.\nClearly each equilateral unit triangle belongs to one of the hexagons and thus contains a red\npoint. Hence this colouring satisfies the required conditions.\nA B\nC D\nFigure 1: Covering with regular hexagons.\nDenote by an the number of vertices which are coloured red. Let A1, A2, . . . ,An−1 be\nthe points on AB such that AA1 =A1A2 =··· =An−2An−1 =An−1B = 1. Similarly define\npoints B1, . . . ,Bn−1 on BC, points C1, . . . ,Cn−1 on CD, and D1, . . . ,Dn−1 on DA.\nEach of then points on the lineA1Bn−1 is red (figure 1 and 2). The parallel lines A2Bn−2\nand A3Bn−3 have no red points while line A4Bn−4 contains 3 points less than A1Bn−1, that\nis n− 3. All of them are red. Similarly, red points lie on lines A7Bn−7, A10Bn−10 and so on.\nThe number of red points each time decreases by 3. On the other side of the diagonal AC,\nwe haven− 1 red points on the line C2Dn−2, n− 4 points on C5Dn−5 and so on. Hence the\nnumber of red points equals\nan =\n(\nn + (n− 3) + (n− 6) +...\n)\n+\n(\n(n− 1) + (n− 4) + (n− 7) +...\n)\n.\nWhenn is of the formn = 3k+1, we havean = 1\n3n(n+2), forn = 3k+2 we getan = 1\n3(n+1)2\nand n = 3k + 3 implies an = 1\n3n(n + 2). In general, an =⌊ 1\n3(n + 1)2⌋.\nA B\nC D\nA1 A2 A3 A4 An−1An−2\nB1\nBn−1\nBn−2\nFigure 2: The value of an.\nLetbn denote the least number of red points needed. Clearly, b1 = 1. Consider a triangle\nwith side length 2 (the first picture on figure 3). The four unit triangles do not have a\ncommon vertex, hence at least two vertices must be coloured. Each of the small marked\ndisjoint triangles in the second and third picture (figure 3) must contain at least one red\nvertex and the bigger marked triangle at least two. This implies that b2≥ 2 + 1 = 3 and\nb3≥ 1 + 1 + 1 + 2 = 5.\nA\nC\nB\nD\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\nA1 A2 A3\n. . . An− 2An− 1\nB1\nBn− 1\nBn− 2\nSlika 2: The value of an\nvertice and the bigger marked triangle at least two. This imp lies that b2 ≥ 2 + 1 = 3 and\nb3 ≥ 1 + 1 + 1 + 2 = 5.\nSlika 3: The minimum number of red vertices for n = 2 and n = 3\nIt has thus been shown that for n = 1 , 2 and 3, bn ≥ an, which means that bn = an.\nThe rest will follow by induction. The next step will show tha t if bn− 3 = an− 3, then\nbn = an.\nLet n = 3k + 2. As demonstrated in figure 4, at least bn− 3 + (2k + 1)b2 red vertices are\nneeded. That is, bn ≥ an− 3 + (2k + 1) · 3 =\n[\nn2− 4n+4\n3\n]\n+ 2n − 1 =\n[\nn2+2n+1\n3\n]\n= an, hence\nbn = an.\n/Bullet\n/Bullet\n/Bullet\n/Bullet /Bullet /Bullet\nSlika 4: Case n = 3k + 2\nIf n = 3 k + 3, we can estimate that bn ≥ bn− 3 + 2kb2 + 2 + 1 + 1 + 1 =\n[\nn2− 4n+4\n3\n]\n+\n6\nFigure 3: The minimum number of red vertices for n = 2 and n = 3.\nIt has thus been shown that for n = 1, 2, and 3, bn≥an, which means that bn =an. The\nrest will follow by induction. The next step will show that if bn−3 =an−3, then bn =an.\nLet n = 3k + 2. As demonstrated in figure 4, at least bn−3 + (2k + 1)b2 red vertices are\nneeded. That is,\nbn≥bn−3 + (2k + 1)· 3 =\n⌊(n− 2)2\n3\n⌋\n+ 2n− 1 =\n⌊(n + 1)2\n3\n⌋\n=an,\nhence bn =an.\nIf n = 3k + 3, we can estimate that\nbn≥bn−3 + 2kb2 + 2 + 1 + 1 + 1 =\n⌊(n− 2)2\n3\n⌋\n+ 2(n− 3) + 5 =\n⌊(n + 1)2\n3\n⌋\n=an.\nA\nC\nB\nD\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\n/Bullet\nA1 A2 A3\n. . . An− 2An− 1\nB1\nBn− 1\nBn− 2\nSlika 2: The value of an\nvertice and the bigger marked triangle at least two. This imp lies that b2 ≥ 2 + 1 = 3 and\nb3 ≥ 1 + 1 + 1 + 2 = 5.\nSlika 3: The minimum number of red vertices for n = 2 and n = 3\nIt has thus been shown that for n = 1 , 2 and 3, bn ≥ an, which means that bn = an.\nThe rest will follow by induction. The next step will show tha t if bn− 3 = an− 3, then\nbn = an.\nLet n = 3k + 2. As demonstrated in figure 4, at least bn− 3 + (2k + 1)b2 red vertices are\nneeded. That is, bn ≥ an− 3 + (2k + 1) · 3 =\n[\nn2− 4n+4\n3\n]\n+ 2n − 1 =\n[\nn2+2n+1\n3\n]\n= an, hence\nbn = an.\n/Bullet\n/Bullet\n/Bullet\n/Bullet /Bullet /Bullet\nSlika 4: Case n = 3k + 2\nIf n = 3 k + 3, we can estimate that bn ≥ bn− 3 + 2kb2 + 2 + 1 + 1 + 1 =\n[\nn2− 4n+4\n3\n]\n+\n6\nFigure 4: Case n = 3k + 2.\n2(n − 3) + 5 =\n[\nn2+2n+1\n3\n]\n. Finally, taking n = 3k + 1, the last picture demonstrates that\nbn ≥ bn− 3 + (2(k − 1) + 1)b2 + 1 + 1 + 1 + 1 =\n[\nn2− 4n+4\n3\n]\n+ 2n − 1 = an. In all the cases it\nfollows that bn = an.\n/Bullet\n/Bullet\n/Bullet\n/Bullet /Bullet /Bullet\nSlika 5: Case n = 3k + 3\n/Bullet\n/Bullet\n/Bullet\n/Bullet /Bullet /Bullet\nSlika 6: Case n = 3k + 1\n7\nFigure 5: Case n = 3k + 3.\nFinally, takingn = 3k + 1, the last picture demonstrates that\nbn≥bn−3 + (2(k− 1) + 1)b2 + 1 + 1 + 1 + 1 =\n⌊(n− 2)2\n3\n⌋\n+ 2n− 1 =\n⌊(n + 1)2\n3\n⌋\n=an.\nIn all the cases it follows that bn =an.\n2(n − 3) + 5 =\n[\nn2+2n+1\n3\n]\n. Finally, taking n = 3k + 1, the last picture demonstrates that\nbn ≥ bn− 3 + (2(k − 1) + 1)b2 + 1 + 1 + 1 + 1 =\n[\nn2− 4n+4\n3\n]\n+ 2n − 1 = an. In all the cases it\nfollows that bn = an.\n/Bullet\n/Bullet\n/Bullet\n/Bullet /Bullet /Bullet\nSlika 5: Case n = 3k + 3\n/Bullet\n/Bullet\n/Bullet\n/Bullet /Bullet /Bullet\nSlika 6: Case n = 3k + 1\n7\nFigure 6: Case n = 3k + 1.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 2,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "color",
+        "colour",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 2, 'algebra': 0, 'number_theory': 0, 'combinatorics': 4}"
+    },
+    {
+      "id": "memo-2010-t5",
+      "year": 2010,
+      "problem_code": "T-5",
+      "statement_en": "The incircle of the triangle ABC touches the sides BC, CA, and AB in the points D, E, and\nF , respectively. Let K be the point symmetric to D with respect to the incenter. The lines\nDE and F K intersect at S. Prove that AS is parallel to BC.",
+      "solution_text_en": "Solution. Let S′ be the intersection point of the line FK and the line parallel to BC\npassing through A. We need to show that S′, D and E are collinear. Let the tangent\nline to the given circle at the point K intersect AB at Q (it is parallel to BC). Then\n∠AS′F = ∠QKF = ∠QFK and from that follows that AS′ = AF = AE. But DC = EC\nand BC∥AS′. Thus ∠CDE = ∠CED = ∠AES′ = ∠AS′E = ∠AES and S′, D and E are\ncollinear.\nD\nA B\nC\nE\nF Q\nK\nS′\nSolution 2. Let α = ∠BAC, β = ∠ABC and let I be the center by the incircle. Then\n∠IDF = ∠IFD = β/2 = ∠AFS since ∠KFD = ∠AFI . Because ∠FDS = ∠FIE/ 2 =\n90◦−α/2 (AFIE is cyclic) and ∠AIF = 90◦−α/2 we have△AFI ∼△SFD . The ratio of\nsimilitude gives AF :SF =IF :DF and using ∠AFS = ∠IFD yields to△AFS ∼△IFD\nwhich means that AF =AS =AE. Finally △ASE∼△CDE gives ∠SAE = 180◦−α−β\nand consequently ∠BAS + ∠ABC = 180◦.\nSolution 3. Let α = ∠BAC, then ∠FIE = 180◦−α, ∠FDE = 90◦−α/2. Because\nKD is a diameter of the incircle we have ∠DSF = α/2 and ∠KED = 90◦. If γ = ∠BCA\nthen ∠KDE = γ/2. We want to prove that AE : EC = SE : ED because then ∠CDE =\n∠CED = ∠AES = ∠ASE which implies AS∥CD. Calculation of these length in terms of\nthe angles of the triangle ABC and its inradius gives\nAE =r cotα\n2\nEC =r cotγ\n2\nSE =EK cotα\n2 =ED tanγ\n2· cotα\n2\nand we are done.\nSolution 4. We will use complex coordinates. Let I = (0), and let the incircle be a unit\ncircle. Let D = (−i), E = (e), F = (f). Then K = (i). The tangents in E, F are (  ̄w is the\ncomplex conjugate of w)\nte : z +e2 ̄z = 2e,\ntf : z +f 2 ̄z = 2f\nand the coordinates of A (intersection of te, tf)\na = 2ef\ne +f,  ̄a = 2\ne +f.\nThe lines\nDE : z−ie ̄z =e−i,\nFK : z +if  ̄z =f +i\nintersect in S = (z),\n ̄z = (−i)(f−e + 2i)\ne +f , z = i(e−f− 2ief)\ne +f .\nTo proveAS∥BC, we calculate the slope 1 of AS:\nt =−a−z\n ̄a−  ̄z =··· =−1\nwhich indeed equals the slope of BC (=d2 = (−i)2 =−1).\n1Slope of the line with the equation z + t ̄z = s is t.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 1, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2010-t6",
+      "year": 2010,
+      "problem_code": "T-6",
+      "statement_en": "Let A, B, C, D, E be points such that ABCD is a cyclic quadrilateral and ABDE is a\nparallelogram. The diagonals AC and BD intersect at S and the rays AB and DC intersect\nat F . Prove that ∠AF S = ∠ECD .",
+      "solution_text_en": "Solution. Let M and N be the feet of perpendicular from S to AB and CD, respectively.\nThen SMFN is cyclic since it has two opposite right angles. Therefore ∠AFS = ∠MFS =\n∠MNS . We need to prove ∠MNS = ∠ECD . This will follow from similarity of triangles\nMSN and EDC . Since ABCD is cyclic, triangles ABS and DCS are similar. Lines SM\nand SN are the corresponding altitudes, so SM :SN =AB :CD =ED :CD. Also,\n∠MSN = 180◦− ∠AFD = ∠EDF = ∠EDC\nand therefore,△MSN ∼△EDC as claimed.\nAuthor: Adrian Satja Kurdija, Croatia\nProblem. Let ABCD be a cyclic quadrilateral. Point E is chosen so that ABDE is a\nparallelogram, F is the intersection of lines AB and DC (B is between A and F , C is\nbetween D and F ) and S is the intersection of the diagonals AC and BD. Prove that\n∢AF S = ∢ECD .\nSolution.\nLet M , N be feet of perpendiculars from S to AB and CD, respectively.\nThen SM F N is cyclic since it has two opposite right angles. Therefore ∢AF S =\n∢M F S = ∢M N S.\nWe need to prove ∢M N S = ∢ECD . This will follow from similarity of triangles M SN\nand EDC .\nSince ABCD is cyclic, triangles ABS and DCS are similar. SM and SN are correspond-\ning altitudes, so |SM |: |SN |= |AB|: |CD|= |ED|: |CD|.\nAlso,\n∢M SN = 180 ◦ − ∢M F N = 180 ◦ − ∢AF D = ∢EDF = ∢EDC\nand therefore, △ M SN ∼ △ EDC as claimed.\nSolution 2. Let FS intersect the lines AD and DE in the points X and Z respectively\nand denote α = ∠BAD, δ = ∠ADF , AB = a, and CD = c. It is sufficient to prove that\nthe triangles CDE and ZDF are similar, because then ∠ECD = ∠DZF = ∠AFS . These\ntriangles have a common angle, we have to prove that ZD :FD =c :a.\nA B\nC\nDE\nF\nSX\nZ\nThe sine law in the triangle BFC givesCF :BF = sinδ : sinα, since\n∠FBC = 180◦− ∠ABC = ∠CDA =δ and ∠FCB = 180◦− ∠BCD = ∠BAD =α.\nThe Ceva’s theorem for the triangle AFD and the point S then gives\n1 = DX\nAX· AB\nBF · CF\nDC = DX\nAX· a\nc· sinδ\nsinα. (1)\nFrom the similitude of triangles AFX andDZX we haveZD =AF·DX/AX, and from the\nsine law in the triangle AFD we have AF = FD· sinδ/ sinα. Therefore the desired ratio\nZD :FD equals\nZD\nFD = AF\nFD· DX\nAX = sinδ\nsinα· DX\nAX = c\na,\nwhere (1) is used in the last equality.\nSolution 3. Let G be the intersection of lines AE and CD and let T be such point on\nAG that ∠BFS = ∠TFD . Then we have to prove that FT ∥ CE or equivalently, that\n|CG|/|FG| =|EG|/|TG|.\nSince ABDE is a parallelogram, the triangles EDG and AFG are similar, therefore\n|EG| =|AG|·| ED|\n|AF| = (|BD| +|EG|)·|AB|\n|AF| ,\nso\n|EG| =|BD|·| AB|\n|BF| .\nSimilarly, since the triangles BFD and EDG are similar, we obtain\n|DG| =|FD|·| AB|\n|BF| .\nSinceABCD is cyclic, the trianglesBFC andDFA are similar, so|AF|·|BF| =|CF|·|DF|.\nNow we compute\n|CG| =|DG| +|CD| =|FD|·| AB|\n|BF| +|FD|−| FC| =\n=|FD|·| AF|\n|BF| −|AF|·| BF|\n|FD| =|FA|·\n(|DF|\n|BF|−|BF|\n|DF|\n)\nand\n|FG| =|DG| +|FD| =|FD|·| AF|\n|BF| ,\nso\n|CG|\n|FG| = 1−\n(|BF|\n|DF|\n)2\n.\nNow we will compute also the ratio|EG|/|TG|. By the construction ofT we have ∠AFT =\n∠SFC . Moreover, since ABCD is cyclic and AT∥BD, we have also\n∠TAF = ∠TAD + ∠DAF = ∠ADB + ∠BCF = ∠ACB + ∠BCF = ∠ACF,\nso the triangles AFT and CFS are similar. Since BFC and DFA are also similar, we get\n|BC|/|AD| =|CF|/|AF| =|CS|/|AT|. Since the angles ∠DAT and SCB are also equal,\nthe triangles ADT and CBS are similar. Then ∠TDA = ∠SBC = ∠DAC, so DT ∥ AS.\nThen ASDT is a parallelogram and the triangles TDE and SAB are congruent. Therefore\n|TG| =|EG| +|TE| =|EG| +|BS|. The triangles ABS and DCS are similar, therefore\n|BS|\n|AB| =|CS|\n|CD| =|AC|−| AS|\n|CD| and |AS| =|AC|− |BS|·| CD|\n|AB| .\nSince the triangles BFS and DFT are similar, we have\n|BS|\n|BF| =|DT|\n|DF| =|AS|\n|DF| =|AC|\n|DF|−|BS|·| CD|\n|AB|·| DF|,\nso\n|BS| = |AC|·| AB|·| BF|\n|AB|·| DF| +|BF|·| CD|.\nWe use also the similarities of AFC and DFB and of AFD and CFB and obtain\n|BS| = |BD|·| CF|·| AB|·| DF|\n|AB|·| DF|2 +|BF|·| DF|2−|BF|2·|AF| =|BD|·| AB|·| BF|\n|DF|2−|BF|2\nand\n|TG| =|EG| +|BS| = |BD|·| AB|·| DF|2\n|BF|· (|DF|2−|BF|2).\nFinally we can compute\n|EG|\n|TG| =|DF|2−|BF|2\n|DF|2 = 1−\n(|BF|\n|DF|\n)2\n=|CG|\n|FG|,\nwhich we had to prove.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 1, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2010-t7",
+      "year": 2010,
+      "problem_code": "T-7",
+      "statement_en": "For a nonnegative integer n, define an to be the positive integer with decimal representation\n1 0. . .0\nn\n2 0. . .0\nn\n2 0. . .0\nn\n1.\nProve that an/3 is always the sum of two positive perfect cubes but never the sum of two\nperfect squares.",
+      "solution_text_en": "Solution. First we prove thatan/3 is never the sum of two perfect squares. Note that perfect\nsquares give only remainders 0 and 1 when divided by four; therefore, integers expressible as\nthe sum of two squares give only remainders 0, 1, and 2. On the other hand, the number an/3\ngives remainder 3 because an gives remainder 1; hence it cannot be expressed as the sum of\ntwo perfect squares. 2\nAfter some experimentation, one finds the formula\nan\n3 =\n(10n+1 + 2\n3\n)3\n+\n(2· 10n+1 + 1\n3\n)3\n.\nThis follows from the fact that an = 103n+3 + 2· 102n+2 + 2· 10n+1 + 1. Both the numbers\nin brackets are integers since 10 n+1≡ 1 (mod 3). Thus an/3 can be expressed as the sum of\ntwo perfect cubes.\n2Another way to look at an/3 modulo 4 is to note that it always ends with 67.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2010-t8",
+      "year": 2010,
+      "problem_code": "T-8",
+      "statement_en": "We are given a positive integer n which is not a power of 2. Show that there exists a positive\ninteger m with the following two properties:\n(i) m is the product of two consecutive positive integers;\n(ii) the decimal representation of m consists of two identical blocks of n digits.",
+      "solution_text_en": "Solution. First we prove a lemma.\nLemma. Let x and k be integers greater than 2. If k is odd then the number xk + 1 is\nthe product of two coprime numbers.\nProof. Let m =gcd(x + 1,k ). There is a polynomial Q(x)∈ Z[x] such that\nxk + 1 = (x + 1)(xk−1−xk−2 +··· +x2−x + 1) = (x + 1)\n(\n(x + 1)Q(x) +k\n)\n.\nThen\nxk + 1 =\n(\n(x + 1)m\n)\n·\n((x + 1)Q(x)\nm + k\nm\n)\ngives the required product because\n(x + 1)Q(x)\nm + k\nm = xk + 1\n(x + 1)m≥ x3 + 1\n(x + 1)2 > 1.\nThe numbers 1 and 2 are powers of two, hence we may assume that n≥ 3. Since n is not\na power of two, it has an odd divisor greater than one; therefore, according to our lemma, 3\nthere are coprime numbers a and b such that\n10n + 1 =ab.\nOur task is to prove that there are numbers t and s such that\nm = (10n + 1)t =abt =s(s− 1).\nFirst, we show that there is a positive integer s divisible by a which satisfies s ≡ 1\n(mod b). Consider the numbers 0 ,a, 2a,..., (b− 1)a. These numbers give mutually different\nremainders modulo b since a and b are coprime. Therefore, one of them gives remainder 1\nand we take s to be this number.\nSimilarly we can pick a number s′ divisible by b which satisfies s′≡ 1 (mod a). The\nnumbers s and s′ are positive and smaller than 10 n. Therefore, s(s− 1) and s′(s′− 1) are\nboth divisible by ab and smaller than 10 2n. Moreover, s +s′≡ 1 (mod ab). The number\ns +s′ is greater than 1 and smaller than 2 · 10n. Hence s +s′ =ab + 1. Therefore, one of the\nnumberss and s′ is greater than 5· 10n−1. Then one of the numbers s(s− 1) or s′(s′− 1) is\ngreater than 25· 102n−2, thus it has 2n digits. This number has all the required properties.\nComment. Instead od using congruences we can also look at Diophantine equations ax =\nby + 1 and ax =by− 1. Both have solutions with 0 <x<b and 0 <y <a and xy >10n−1\nfor one of them.\n3We can avoid using the lemma by exploiting the Mihailescu’s theorem, first known as Catalan’s Conjecture;\nit was proved in 2002. It says that the only solution of the equation xa − yb = 1 in positive integers greater\nthan one is 3 2 − 23. This implies that if 10 n + 1 is a power of a prime then it is a prime. This cannot happen\nsince n has an odd divisor.",
+      "source": {
+        "page_url": "https://memo2010.skmo.sk/problems.php",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://memo2010.skmo.sk/docs/indiv_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://memo2010.skmo.sk/docs/team_english.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://memo2010.skmo.sk/docs/solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2010-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 5,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 5, 'combinatorics': 0}"
+    }
+  ]
+}

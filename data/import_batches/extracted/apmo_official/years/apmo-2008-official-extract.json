@@ -1,0 +1,152 @@
+{
+  "year": 2008,
+  "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2008_prb.pdf",
+  "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2008_sol.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 5,
+  "problems": [
+    {
+      "id": "apmo-2008-p1",
+      "year": 2008,
+      "problem_number": 1,
+      "statement_en": "LetABC be a triangle with∠A< 60◦. Let X andY be the points on the sides\nAB andAC, respectively, such that CA +AX =CB +BX andBA +AY =BC +CY . Let\nP be the point in the plane such that the lines PX and PY are perpendicular to AB and\nAC, respectively. Prove that∠BPC < 120◦.",
+      "solution_text_en": "Let ABC be a triangle with ∠A < 60◦. Let X and Y be the points on the sides\nAB and AC, respectively, such that CA + AX = CB + BX and BA + AY = BC + CY . Let\nP be the point in the plane such that the lines P X and P Y are perpendicular to AB and\nAC, respectively. Prove that ∠BP C < 120◦.\n(Solution) Let I be the incenter of △ABC , and let the feet of the perpendiculars from I\nto AB and to AC be D and E, respectively. (Without loss of generality, we may assume\nthat AC is the longest side. Then X lies on the line segment AD. Although P may or\nmay not lie inside △ABC , the proof below works for both cases. Note that P is on the line\nperpendicular to AB passing through X.) Let O be the midpoint of IP , and let the feet of\nthe perpendiculars from O to AB and to AC be M and N , respectively. Then M and N are\nthe midpoints of DX and EY , respectively.\n1\nThe conditions on the points X and Y yield the equations\nAX = AB + BC - CA\n2 and AY = BC + CA - AB\n2 .\nFrom AD = AE = CA + AB - BC\n2 , we obtain\nBD = AB - AD = AB - CA + AB - BC\n2 = AB + BC - CA\n2 = AX.\nSince M is the midpoint of DX , it follows that M is the midpoint of AB. Similarly, N is the\nmidpoint of AC. Therefore, the perpendicular bisectors of AB and AC meet at O, that is,\nO is the circumcenter of △ABC . Since ∠BAC < 60◦, O lies on the same side of BC as the\npoint A and\n∠BOC = 2∠BAC.\nWe can compute ∠BIC as follows :\n∠BIC = 180 ◦ - ∠IBC - ∠ICB = 180 ◦ - 1\n2 ∠ABC - 1\n2 ∠ACB\n= 180 ◦ - 1\n2 (∠ABC + ∠ACB ) = 180 ◦ - 1\n2 (180◦ - ∠BAC ) = 90 ◦ + 1\n2 ∠BAC\nIt follows from ∠BAC < 60◦ that\n2∠BAC < 90◦ + 1\n2 ∠BAC, i.e., ∠BOC < ∠BIC.\nFrom this it follows that I lies inside the circumcircle of the isosceles triangle BOC because\nO and I lie on the same side of BC . However, as O is the midpoint of IP , P must lie outside\nthe circumcircle of triangle BOC and on the same side of BC as O. Therefore\n∠BP C < ∠BOC = 2∠BAC < 120◦.\nRemark. If one assumes that ∠A is smaller than the other two, then it is clear that the\nline P X (or the line perpendicular to AB at X if P = X) runs through the excenter IC\nof the excircle tangent to the side AB. Since 2 ∠ACIC = ∠ACB and BC < AC , we have\n2∠P CB > ∠C. Similarly, 2 ∠P BC > ∠B. Therefore,\n∠BP C = 180 ◦ - (∠P BC + ∠P CB) < 180◦ -\n( ∠B + ∠C\n2\n)\n= 90 + ∠A\n2 < 120◦.\nIn this way, a special case of the problem can be easily proved.\n2",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2008_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2008_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 8,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 8, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2008-p2",
+      "year": 2008,
+      "problem_number": 2,
+      "statement_en": "Students in a class form groups each of which contains exactly three members\nsuch that any two distinct groups have at most one member in common. Prove that, when\nthe class size is 46, there is a set of 10 students in which no group is properly contained.",
+      "solution_text_en": "Students in a class form groups each of which contains exactly three members\nsuch that any two distinct groups have at most one member in common. Prove that, when\nthe class size is 46, there is a set of 10 students in which no group is properly contained.\n(Solution) We let C be the set of all 46 students in the class and let\ns := max{ | S| : S ⊆ C such that S contains no group properly } .\nThen it suffices to prove that s >= 10. (If | S| = s > 10, we may choose a subset of S consisting\nof 10 students.)\nSuppose that s <= 9 and let S be a set of size s in which no group is properly contained.\nTake any student, say v, from outside S. Because of the maximality of s, there should be a\ngroup containing the student v and two other students in S. The number of ways to choose\ntwo students from S is (s\n2\n)\n<=\n(9\n2\n)\n= 36.\nOn the other hand, there are at least 37 = 46 - 9 students outside of S. Thus, among those\n37 students outside, there is at least one student, say u, who does not belong to any group\ncontaining two students in S and one outside. This is because no two distinct groups have two\nmembers in common. But then, S can be enlarged by including u, which is a contradiction.\nRemark. One may choose a subset S of C that contains no group properly. Then, assuming\n| S| < 10, prove that there is a student outside S, say u, who does not belong to any group\ncontaining two students in S. After enlarging S by including u, prove that the enlarged S\nstill contains no group properly.\n3",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2008_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2008_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "apmo-2008-p3",
+      "year": 2008,
+      "problem_number": 3,
+      "statement_en": "Let Γ be the circumcircle of a triangle ABC. A circle passing through points\nA andC meets the sides BC andBA atD andE, respectively. The lines AD andCE meet\nΓ again at G and H, respectively. The tangent lines of Γ at A and C meet the line DE at L\nand M, respectively. Prove that the lines LH and MG meet at Γ.",
+      "solution_text_en": "Let Γ be the circumcircle of a triangle ABC . A circle passing through points\nA and C meets the sides BC and BA at D and E, respectively. The lines AD and CE meet\nΓ again at G and H, respectively. The tangent lines of Γ at A and C meet the line DE at L\nand M , respectively. Prove that the lines LH and M G meet at Γ.\n(Solution) Let M G meet Γ at P . Since ∠M CD = ∠CAE and ∠M DC = ∠CAE , we have\nM C = M D. Thus\nM D2 = M C2 = M G · M P\nand hence M D is tangent to the circumcircle of △DGP . Therefore ∠DGP = ∠EDP .\nLet Γ ′ be the circumcircle of △BDE . If B = P , then, since ∠BGD = ∠BDE , the tangent\nlines of Γ ′ and Γ at B should coincide, that is Γ ′ is tangent to Γ from inside. Let B ̸= P .\nIf P lies in the same side of the line BC as G, then we have\n∠EDP + ∠ABP = 180 ◦\nbecause ∠DGP + ∠ABP = 180 ◦. That is, the quadrilateral BP DE is cyclic, and hence P is\non the intersection of Γ ′ with Γ.\n4\nOtherwise,\n∠EDP = ∠DGP = ∠AGP = ∠ABP = ∠EBP.\nTherefore the quadrilateral P BDE is cyclic, and hence P again is on the intersection of Γ ′\nwith Γ.\nSimilarly, if LH meets Γ at Q, we either have Q = B, in which case Γ ′ is tangent to Γ\nfrom inside, or Q ̸= B. In the latter case, Q is on the intersection of Γ ′ with Γ. In either\ncase, we have P = Q.\n5",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2008_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2008_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 5,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 5, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2008-p4",
+      "year": 2008,
+      "problem_number": 4,
+      "statement_en": "Consider the function f : N0→ N0, where N0 is the set of all non-negative\nintegers, defined by the following conditions :\n(i) f(0) = 0, (ii) f(2n) = 2f(n) and (iii) f(2n + 1) =n + 2f(n) for all n>= 0.\n(a) Determine the three sets L :={n|f(n)<f (n + 1)}, E :={n|f(n) =f(n + 1)}, and\nG :={n|f(n)>f (n + 1)}.\n(b) For each k>= 0, find a formula for ak := max{f(n) : 0<=n<= 2k}in terms of k.",
+      "solution_text_en": "Consider the function f : N0 → N0, where N0 is the set of all non-negative\nintegers, defined by the following conditions :\n(i) f (0) = 0 , (ii) f (2n) = 2 f (n) and (iii) f (2n + 1) = n + 2f (n) for all n >= 0.\n(a) Determine the three sets L := { n | f (n) < f (n + 1) } , E := { n | f (n) = f (n + 1) } , and\nG := { n | f (n) > f (n + 1) } .\n(b) For each k >= 0, find a formula for ak := max{ f (n) : 0 <= n <= 2k} in terms of k.\n(Solution) (a) Let\nL1 := { 2k : k > 0} , E 1 := { 0} ∪ { 4k + 1 : k >= 0} , and G1 := { 4k + 3 : k >= 0} .\nWe will show that L1 = L, E1 = E, and G1 = G. It suffices to verify that L1 ⊆ E, E1 ⊆ E,\nand G1 ⊆ G because L1, E1, and G1 are mutually disjoint and L1 ∪ E1 ∪ G1 = N0.\nFirstly, if k > 0, then f (2k) - f (2k + 1) = -k < 0 and therefore L1 ⊆ L.\nSecondly, f (0) = 0 and\nf (4k + 1) = 2 k + 2f (2k) = 2 k + 4f (k)\nf (4k + 2) = 2 f (2k + 1) = 2( k + 2f (k)) = 2 k + 4f (k)\nfor all k >= 0. Thus, E1 ⊆ E.\nLastly, in order to prove G1 ⊂ G, we claim that f (n + 1) - f (n) <= n for all n. (In fact,\none can prove a stronger inequality : f (n + 1) - f (n) <= n/2.) This is clearly true for even n\nfrom the definition since for n = 2t,\nf (2t + 1) - f (2t) = t <= n.\nIf n = 2 t + 1 is odd, then (assuming inductively that the result holds for all nonnegative\nm < n ), we have\nf (n + 1) - f (n) = f (2t + 2) - f (2t + 1) = 2 f (t + 1) - t - 2f (t)\n= 2(f (t + 1) - f (t)) - t <= 2t - t = t < n.\nFor all k >= 0,\nf (4k + 4) - f (4k + 3) = f (2(2k + 2)) - f (2(2k + 1) + 1)\n= 4f (k + 1) - (2k + 1 + 2f (2k + 1)) = 4 f (k + 1) - (2k + 1 + 2k + 4f (k))\n= 4(f (k + 1) - f (k)) - (4k + 1) <= 4k - (4k + 1) < 0.\nThis proves G1 ⊆ G.\n(b) Note that a0 = a1 = f (1) = 0. Let k >= 2 and let Nk = { 0, 1, 2, . . . ,2k} . First we claim\nthat the maximum ak occurs at the largest number in G ∩ Nk, that is, ak = f (2k - 1). We\nuse mathematical induction on k to prove the claim. Note that a2 = f (3) = f (22 - 1).\nNow let k >= 3. For every even number 2 t with 2 k-1 + 1 < 2t <= 2k,\nf (2t) = 2 f (t) <= 2ak-1 = 2f (2k-1 - 1) (†)\nby induction hypothesis. For every odd number 2 t + 1 with 2 k-1 + 1 <= 2t + 1 < 2k,\nf (2t + 1) = t + 2f (t) <= 2k-1 - 1 + 2f (t)\n<= 2k-1 - 1 + 2ak-1 = 2 k-1 - 1 + 2f (2k-1 - 1) (‡)\n6\nagain by induction hypothesis. Combining ( †), ( ‡) and\nf (2k - 1) = f (2(2k-1 - 1) + 1) = 2 k-1 - 1 + 2f (2k-1 - 1),\nwe may conclude that ak = f (2k - 1) as desired.\nFurthermore, we obtain\nak = 2ak-1 + 2k-1 - 1\nfor all k >= 3. Note that this recursive formula for ak also holds for k >= 0, 1 and 2. Unwinding\nthis recursive formula, we finally get\nak = 2ak-1 + 2k-1 - 1 = 2(2 ak-2 + 2k-2 - 1) + 2k-1 - 1\n= 2 2ak-2 + 2 · 2k-1 - 2 - 1 = 2 2(2ak-3 + 2k-3 - 1) + 2 · 2k-1 - 2 - 1\n= 2 3ak-3 + 3 · 2k-1 - 22 - 2 - 1\n...\n= 2 ka0 + k2k-1 - 2k-1 - 2k-2 - ... - 2 - 1\n= k2k-1 - 2k + 1 for all k >= 0.\n7",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2008_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2008_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "apmo-2008-p5",
+      "year": 2008,
+      "problem_number": 5,
+      "statement_en": "Let a,b,c be integers satisfying 0 < a < c- 1 and 1 < b < c. For each k,\n0<=k<=a, let rk, 0 <=rk <c , be the remainder of kb when divided by c. Prove that the two\nsets{r0,r 1,r 2,...,r a}and{0, 1, 2,...,a }are different.",
+      "solution_text_en": "Let a, b, c be integers satisfying 0 < a < c - 1 and 1 < b < c . For each k,\n0 <= k <= a, let rk, 0 <= rk < c, be the remainder of kb when divided by c. Prove that the two\nsets { r0, r1, r2, . . . , ra} and { 0, 1, 2, . . . , a} are different.\n(Solution) Suppose that two sets are equal. Then gcd( b, c) = 1 and the polynomial\nf (x) := (1 + xb + x2b + · · · + xab) - (1 + x + x2 + · · · + xa-1 + xa)\nis divisible by xc - 1. (This is because : m = n + cq =⇒ xm - xn = xn+cq - xn = xn(xcq - 1)\nand ( xcq - 1) = ( xc - 1)((xc)q-1 + (xc)q-2 + · · · + 1).) From\nf (x) = x(a+1)b - 1\nxb - 1 - xa+1 - 1\nx - 1 = F (x)\n(x - 1)(xb - 1) ,\nwhere F (x) = xab+b+1 + xb + xa+1 - xab+b - xa+b+1 - x , we have\nF (x) ≡ 0 (mod xc - 1) .\nSince xc ≡ 1 (mod xc - 1), we may conclude that\n{ ab + b + 1, b, a + 1} ≡ { ab + b, a + b + 1, 1} (mod c). (†)\nThus,\nb ≡ ab + b, a + b + 1 or 1 (mod c).\nBut neither b ≡ 1 (mod c) nor b ≡ a + b + 1 (mod c) are possible by the given conditions.\nTherefore, b ≡ ab + b (mod c). But this is also impossible because gcd( b, c) = 1.\n8",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2008_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2008_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2008_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 1,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 1, 'combinatorics': 1}"
+    }
+  ]
+}

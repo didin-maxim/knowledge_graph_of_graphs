@@ -1,0 +1,141 @@
+{
+  "id": "imo-1996-c1-grid-knight-reachability",
+  "title": "Ходы на доске с заданной длиной и достижимость, IMO Shortlist 1996 C1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "move_graph",
+      "connected_components"
+    ],
+    "methods": [
+      "modular_coloring",
+      "explicit_path"
+    ],
+    "transformations": [
+      "board_moves_to_graph"
+    ],
+    "goal": [
+      "reachability"
+    ],
+    "auxiliary_graph_type": [
+      "finite_move_graph"
+    ],
+    "invariants": [
+      "residue_class"
+    ],
+    "keywords": [
+      "imo_1996_c1",
+      "secondary_shortlist",
+      "early_imo_shortlist"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Дан прямоугольник \\(20\\times12\\), разбитый на единичные клетки. Разрешено переходить из одной клетки в другую, если расстояние между центрами этих клеток равно \\(\\sqrt r\\). Нужно попасть из клетки у вершины \\(A\\) в клетку у вершины \\(B\\). Докажите, что это невозможно, если \\(r\\) делится на 2 или 3; докажите, что возможно при \\(r=73\\); решите вопрос для \\(r=97\\).",
+        "source_id": "src-secondary-imo-1996-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Построим граф, вершины которого — клетки доски, а ребро соединяет две клетки, если расстояние между их центрами равно \\(\\sqrt r\\). Задача спрашивает, лежат ли две угловые клетки в одной компоненте этого графа.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-residue-obstruction",
+      "title": "Инварианты по модулю",
+      "text": "При некоторых \\(r\\) все допустимые векторы хода сохраняют раскраску доски по модулю 2 или 3.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-explicit-path",
+      "title": "Явный путь в графе ходов",
+      "text": "Для конкретных \\(r\\) задача сводится к построению пути между двумя угловыми вершинами графа.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-secondary-sketch",
+      "title": "Сжатый графовый разбор",
+      "text": "Центры клеток можно считать целочисленными точками. Допустимый ход имеет вектор \\((a,b)\\) с \\(a^2+b^2=r\\), если обе конечные клетки остаются внутри прямоугольника. Если \\(r\\) делится на 2, то \\(a,b\\) одной чётности, и сохраняется чётность суммы координат; если \\(r\\) делится на 3, то квадратичные остатки показывают, что оба смещения делятся на 3 или сохраняется соответствующая модульная раскраска. В обоих случаях угловые клетки оказываются в разных классах. Для \\(r=73=8^2+3^2\\) строится явная цепочка ходов типа \\((\\pm8,\\pm3)\\), \\((\\pm3,\\pm8)\\), соединяющая нужные углы внутри доски. Для \\(r=97=9^2+4^2\\) аналогичная проверка компонент графа ходов показывает ответ через достижимость в конечном графе.",
+      "idea_ids": [
+        "idea-residue-obstruction",
+        "idea-explicit-path"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 11,
+    "comment": "IMO Shortlist 1996 C1; источник вторичный, карточка первого прохода.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "modular_coloring",
+        "explicit_path"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1996-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

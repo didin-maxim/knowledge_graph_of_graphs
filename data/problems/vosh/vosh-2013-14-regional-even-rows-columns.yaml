@@ -1,0 +1,144 @@
+{
+  "id": "vosh-2013-14-regional-even-rows-columns",
+  "title": "Добавить фишки до чётных строк и столбцов, Всероссийская олимпиада 2013/14",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "grid_rows_columns",
+      "degree_parity",
+      "free_cell_graph",
+      "forest"
+    ],
+    "methods": [
+      "complement_graph_transition",
+      "parity",
+      "tree_paths",
+      "forest_edge_bound"
+    ],
+    "transformations": [
+      "chips_to_bipartite_edges",
+      "free_cells_to_complement_graph",
+      "choose_t_join_in_tree"
+    ],
+    "goal": [
+      "make_all_degrees_even",
+      "bounded_edge_addition"
+    ],
+    "auxiliary_graph_type": [
+      "free_cell_bipartite_graph",
+      "spanning_forest"
+    ],
+    "invariants": [
+      "degree_parity",
+      "odd_vertices_per_component",
+      "forest_edge_count"
+    ],
+    "keywords": [
+      "even_rows_columns",
+      "t_join",
+      "bipartite_parity",
+      "free_cells"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Фишки на доске 50×50",
+        "text": "Петя поставил на доску 50×50 несколько фишек, в каждую клетку — не больше одной. Докажите, что Вася может поставить на свободные поля этой же доски не более 99 новых фишек, возможно ни одной, так, чтобы по-прежнему в каждой клетке стояло не больше одной фишки, а в каждой строке и каждом столбце оказалось чётное количество фишек.",
+        "source_id": "src-problems-64633",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В двудольном графе с долями R и C, где \\(|R|=|C|=50\\), некоторые рёбра уже выбраны. Докажите, что можно добавить не более 99 ещё не выбранных рёбер так, чтобы степень каждой вершины в получившемся выбранном подграфе была чётной.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-t-join-in-complement",
+      "title": "T-соединение в дополнительном двудольном графе",
+      "text": "Свободные клетки образуют дополнительный двудольный граф. Нужно выбрать в нём рёбра с заданным множеством нечётных вершин; это делается по деревьям компонент, а число выбранных рёбер не превосходит 99.",
+      "tags": [
+        "double_counting",
+        "trees"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-complement-forest-tjoin",
+      "title": "Лес в графе свободных клеток",
+      "text": "Построим двудольный граф: вершины одной доли — строки, другой — столбцы, а уже стоящие фишки — выбранные рёбра. Рассмотрим граф свободных клеток, то есть дополнение до полного двудольного графа \\(K_{50,50}\\). Так как степень каждой вершины в \\(K_{50,50}\\) равна 50, чётность степени вершины в графе свободных клеток совпадает с чётностью числа уже стоящих фишек в соответствующей строке или столбце. В каждой компоненте графа свободных клеток число вершин нечётной степени чётно. Возьмём в каждой нетривиальной компоненте остовное дерево и выберем в нём набор рёбер, у которого нечётные степени ровно в тех вершинах, где сейчас число фишек нечётно; это можно сделать, попарно соединяя такие вершины путями в дереве и беря симметрическую разность путей. Добавление соответствующих фишек исправит все чётности. Выбранных рёбер не больше, чем рёбер в лесу на 100 вершинах, то есть не больше 99.",
+      "idea_ids": [
+        "idea-t-join-in-complement"
+      ],
+      "standard_idea_ids": [
+        "complement_graph_transition",
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Региональный этап 2013/14, 10-11 класс, задача 8; на problems.ru сложность 4+.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "trees",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "parity_subgraph",
+        "complement_graph_transition",
+        "forest"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-64633",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

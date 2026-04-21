@@ -1,0 +1,146 @@
+{
+  "id": "imo-1994-c6-infinite-grid-pairing-strategy",
+  "title": "Бесконечные крестики-нолики и парная стратегия, IMO Shortlist 1994 C6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "infinite_grid",
+      "cell_matching",
+      "threat_lines"
+    ],
+    "methods": [
+      "pairing_strategy",
+      "periodic_construction"
+    ],
+    "transformations": [
+      "game_board_to_matching"
+    ],
+    "goal": [
+      "second_player_draw_strategy"
+    ],
+    "auxiliary_graph_type": [
+      "grid_matching"
+    ],
+    "invariants": [
+      "paired_response"
+    ],
+    "keywords": [
+      "imo-1994-c6-infinite-grid-pairing-strategy",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Два игрока по очереди играют на бесконечной квадратной решётке. Первый ставит \\(X\\) в пустую клетку, второй ставит \\(O\\) в пустую клетку. Первый выигрывает, если получает 11 подряд идущих \\(X\\) в одной строке, столбце или диагонали. Докажите, что второй может всегда помешать первому выиграть.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие",
+        "source_id": "src-secondary-imo-1994-shortlist",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Нужно построить паросочетание на части клеток бесконечного решётчатого графа так, чтобы каждый отрезок из 11 последовательных клеток по горизонтали, вертикали или диагонали содержал пару. Тогда второй отвечает в парную клетку.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-periodic-pairing",
+      "title": "Периодическое паросочетание клеток",
+      "text": "Повторяется блок \\(10\\times10\\), внутри которого отмечены пары клеток.",
+      "tags": [
+        "matching"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-threat-line-hit",
+      "title": "Каждая угроза длины 11 задевает пару",
+      "text": "Любая линия из 11 клеток в одном из четырёх направлений содержит две клетки одной пары.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-reviewed-secondary",
+      "title": "Сжатое решение после review",
+      "text": "Решение строит периодический шаблон пар клеток на бесконечной решётке. В блоке \\(10\\times10\\) клетки разбиты на специальные пары так, что в каждой строке, каждом столбце и каждой достаточно длинной диагонали блока встречается целая пара; затем блок повторяется по всей плоскости. Стратегия второго: если первый ставит \\(X\\) в клетку пары, второй немедленно ставит \\(O\\) в другую клетку этой пары; остальные клетки шаблона можно игнорировать или обрабатывать согласно той же таблице. Тогда любой потенциальный отрезок из 11 клеток содержит обе клетки некоторой пары, а значит после хода второго не может состоять только из \\(X\\).",
+      "idea_ids": [
+        "idea-periodic-pairing",
+        "idea-threat-line-hit"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "Ранний IMO Shortlist 1994; источник вторичный, решение сверено по secondary solution.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "matching",
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "pairing_strategy",
+        "periodic_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1994-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kalva-imo-1994-c6-solution",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

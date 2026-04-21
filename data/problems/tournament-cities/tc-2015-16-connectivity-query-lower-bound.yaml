@@ -1,0 +1,149 @@
+{
+  "id": "tc-2015-16-connectivity-query-lower-bound",
+  "title": "Проверка связности за вопросы о дорогах, Турнир городов 2015/16",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "unknown_graph",
+      "decision_tree",
+      "connectivity",
+      "complete_graph",
+      "tree"
+    ],
+    "methods": [
+      "adversary_strategy",
+      "delete_to_simplify",
+      "cycle_bridge_argument",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "queries_to_colored_edges",
+      "delete_cycle_edges",
+      "maintain_spanning_tree"
+    ],
+    "goal": [
+      "query_lower_bound",
+      "connectivity_decision_complexity"
+    ],
+    "auxiliary_graph_type": [
+      "colored_query_graph",
+      "spanning_tree_boundary"
+    ],
+    "invariants": [
+      "connectedness",
+      "acyclic_black_edges",
+      "remaining_white_edges"
+    ],
+    "keywords": [
+      "connectivity_queries",
+      "adversary",
+      "decision_tree",
+      "tree_boundary"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "64 города и вопросы о дорогах",
+        "text": "В стране 64 города, некоторые пары из них соединены дорогой, но нам неизвестно, какие именно. Можно выбрать любую пару городов и получить ответ на вопрос: есть ли дорога между ними? Нужно узнать, можно ли в этой стране добраться от любого города до любого другого, двигаясь по дорогам. Докажите, что не существует алгоритма, позволяющего сделать это менее чем за 2016 вопросов.",
+        "source_id": "src-problems-65735",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "complete_graph",
+          "tree",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Неизвестен простой граф на 64 вершинах. За один вопрос можно узнать, принадлежит ли выбранная пара вершин множеству рёбер. Нужно доказать, что любое детерминированное дерево решений, которое всегда правильно определяет связность графа, в худшем случае должно спросить обо всех \\(\\binom{64}{2}=2016\\) парах вершин.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "tree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-adversary-keeps-spanning-tree-possible",
+      "title": "Противник сохраняет дерево",
+      "text": "Ответы на вопросы выбираются так, чтобы перед последним неизвестным ребром оставшийся смешанный граф был деревом: последнее ребро может как сохранить связность, так и разрушить её.",
+      "tags": [
+        "connectivity",
+        "trees"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-adversary-cycle-bridge",
+      "title": "Стратегия противника через циклы и мосты",
+      "text": "Представим полный граф на 64 вершинах: непроверенные пары считаются белыми, положительные ответы — чёрными, отрицательные — удалёнными. Когда алгоритм спрашивает про белое ребро, противник удаляет его, если оно лежит на цикле текущего графа из чёрных и белых рёбер; иначе объявляет его чёрным. Такой ход сохраняет связность текущего графа, а чёрные рёбра никогда не образуют цикл. Перед последним вопросом остаётся одно белое ребро, циклов уже нет, значит весь текущий граф — дерево. Если последнее ребро удалить, связность нарушится; если сохранить, граф останется связным. Поэтому до последнего вопроса алгоритм не может знать правильный ответ.",
+      "idea_ids": [
+        "idea-adversary-keeps-spanning-tree-possible"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice",
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "Весенний сложный тур 2015/16, 10-11 класс, задача на 8 баллов.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "trees",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice",
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-65735",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

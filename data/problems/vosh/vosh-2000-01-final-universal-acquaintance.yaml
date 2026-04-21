@@ -1,0 +1,162 @@
+{
+  "id": "vosh-2000-01-final-universal-acquaintance",
+  "title": "Человек, знакомый со всеми, Всероссийская олимпиада 2000/01",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "social_graph",
+      "clique",
+      "universal_vertex",
+      "complement_graph",
+      "dominating_set"
+    ],
+    "methods": [
+      "clique_extension",
+      "complement_graph_transition",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "acquaintance_to_graph",
+      "nonacquaintance_to_complement",
+      "dominating_set_argument"
+    ],
+    "goal": [
+      "universal_vertex_existence"
+    ],
+    "auxiliary_graph_type": [
+      "acquaintance_graph",
+      "nonacquaintance_complement_graph"
+    ],
+    "invariants": [
+      "clique_size",
+      "dominating_set_size",
+      "number_of_vertices"
+    ],
+    "keywords": [
+      "universal_acquaintance",
+      "clique_extension",
+      "dominating_set"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Компания из 2n+1 человека",
+        "text": "В компании из \\(2n+1\\) человека для любых \\(n\\) человек найдётся отличный от них человек, знакомый с каждым из них. Докажите, что в этой компании есть человек, знающий всех.",
+        "source_id": "src-problems-109750",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть G — простой граф на \\(2n+1\\) вершине. Известно, что для любого множества S из \\(n\\) вершин существует вершина вне S, смежная со всеми вершинами S. Докажите, что в G есть вершина степени \\(2n\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-grow-large-clique",
+      "title": "Наращивание большой клики",
+      "text": "Если уже есть k попарно знакомых людей при k<=n, то по условию найдётся новый человек, знакомый со всеми ними. Так строится клика из n+1 человек, а затем один из них оказывается знаком со всеми остальными.",
+      "tags": [
+        "ramsey_theory"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-complement-dominating-set",
+      "title": "Доминирующее множество в дополнительном графе",
+      "text": "Если универсальной вершины нет, то в дополнительном графе нет изолированных вершин. Тогда можно выбрать не более половины вершин, которые доминируют весь дополнительный граф; это даёт запрещённый набор из n человек.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-clique-extension",
+      "title": "Опубликованное решение через попарно знакомых",
+      "text": "Сначала построим \\(n+1\\) попарно знакомых людей. Двое знакомых существуют: иначе для любых \\(n\\) человек не нашлось бы человека, знакомого со всеми ними. Если уже построены \\(k\\le n\\) попарно знакомых, то по условию найдётся человек вне этой группы, знакомый со всеми её членами, и группу можно увеличить. Получим \\(n+1\\) попарно знакомых людей \\(A_1,\\ldots,A_{n+1}\\). Остальных людей ровно n. По условию существует человек, отличный от этих n, знакомый со всеми ними; он принадлежит множеству \\(A_1,\\ldots,A_{n+1}\\). Но внутри этого множества все попарно знакомы, значит этот человек знаком вообще со всеми.",
+      "idea_ids": [
+        "idea-grow-large-clique"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "sol-complement-domination",
+      "title": "Через дополнительный граф",
+      "text": "Рассмотрим дополнительный граф H: две вершины соединены в H, если соответствующие люди незнакомы. Нужно доказать, что в H есть изолированная вершина. Предположим противное. В любом графе без изолированных вершин есть доминирующее множество размера не больше половины числа вершин: можно взять максимальное паросочетание, выбрать по одному концу каждого его ребра так, чтобы покрыть вершины, не вошедшие в паросочетание, а затем при необходимости добавить вершины до нужного размера. Для H получаем доминирующее множество D размера не больше n. Добавим к нему произвольные вершины до размера n. По условию для этого множества найдётся вершина x вне D, знакомая со всеми людьми из D; значит, в H у x нет соседей в D. Но D доминирует H, поэтому такая вершина x невозможна. Противоречие.",
+      "idea_ids": [
+        "idea-complement-dominating-set"
+      ],
+      "standard_idea_ids": [
+        "complement_graph_transition",
+        "extremal_choice"
+      ],
+      "status": "needs_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 4,
+    "comment": "Заключительный этап 2000/01, 9 класс, задача 6; на problems.ru сложность 4-.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "ramsey_theory",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "clique_extension",
+        "complement_graph_transition"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-109750",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

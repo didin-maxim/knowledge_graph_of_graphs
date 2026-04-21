@@ -1,0 +1,160 @@
+{
+  "id": "vosh-2025-26-final-regions-friendship-coloring",
+  "title": "Участники из регионов, дружба и раскраска графа, Всероссийская олимпиада 2025/26",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "vertex_coloring",
+      "simple_cycle",
+      "bichromatic_induced_subgraph"
+    ],
+    "methods": [
+      "local_recoloring",
+      "bipartite_subgraph_argument",
+      "cycle_injection"
+    ],
+    "transformations": [
+      "regions_to_vertex_colors",
+      "restrict_to_two_colors",
+      "recolor_bipartite_subgraph"
+    ],
+    "goal": [
+      "proper_n_coloring_existence"
+    ],
+    "auxiliary_graph_type": [
+      "friendship_graph",
+      "two_color_induced_subgraph"
+    ],
+    "invariants": [
+      "at_most_half_of_cycle_in_one_color",
+      "bipartiteness_of_two_color_subgraph",
+      "pleasant_coloring_preserved"
+    ],
+    "keywords": [
+      "vosh_2025_26_final",
+      "vmo_2026_11_3",
+      "vmo_2026_9_4",
+      "friendship_graph",
+      "cycle_condition_coloring"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "11.3 (9.4)",
+        "text": "На олимпиаду приехало несколько участников из n регионов, некоторые из них дружат (дружба всегда взаимна). Выяснилось, что для произвольной рассадки нескольких (хотя бы трёх) участников за круглым столом, при которой любые два соседа дружат, участников из каждого региона за столом окажется не более половины общего числа детей за столом. Докажите, что участников можно рассадить по n кабинетам так, чтобы любые два друга оказались в разных кабинетах.",
+        "source_id": "src-vosh-2025-26-final-day1-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Вершины простого графа G уже раскрашены в n цветов так, что в каждом простом цикле никакой цвет не занимает более половины вершин. Докажите, что вершины графа можно правильно раскрасить в те же n цветов.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-two-colors-give-bipartite-subgraph",
+      "title": "Два цвета образуют двудольный подграф",
+      "text": "Если смотреть только на вершины двух цветов A и B, то любой простой цикл в этом подграфе содержит не более половины вершин цвета A и не более половины вершин цвета B. Значит, на таком цикле цветов A и B поровну, так что цикл чётный. Следовательно, весь подграф двудолен.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-recolor-two-colors-and-preserve-cycle-condition",
+      "title": "Перекрашиваем два цвета и сохраняем условие на циклы",
+      "text": "Двудольный подграф на цветах A и B можно правильно раскрасить в цвета A и B. После этого оба цвета становятся правильными. Для любого простого цикла условие про не более чем половину одноцветных вершин сохраняется: вершине цвета A можно сопоставить следующую за ней вершину цикла, и это даёт инъекцию в вершины других цветов.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Рассмотрим граф дружбы G. Регионы дают исходную раскраску вершин в n цветов; условие задачи означает, что в каждом простом цикле никакой цвет не занимает более половины вершин. Назовём такую раскраску приятной. Нужно построить правильную n-раскраску. Достаточно показать, что для любых двух цветов A и B можно перекрасить все вершины этих цветов снова в A и B так, чтобы оба цвета стали правильными, а приятность сохранилась. Рассмотрим индуцированный подграф H на вершинах цветов A и B. Любой простой цикл в H имеет не более половины вершин цвета A и не более половины цвета B, значит цветов на нём поровну и цикл чётный. Следовательно, H двудолен и его вершины можно правильно раскрасить в A и B. После такой перекраски оба цвета становятся правильными. Остаётся проверить сохранение приятности. Для любого простого цикла C в исходном графе условие могло испортиться только для цветов A или B; скажем, для A. Но в новой раскраске вершины цвета A на цикле не соседствуют, поэтому каждой такой вершине можно сопоставить следующую за ней по циклу вершину. Эти сопоставленные вершины различны и не имеют цвета A, так что вершин цвета A не больше половины длины цикла. Повторяя процедуру для разных пар цветов, поочерёдно делаем каждый цвет правильным и получаем правильную n-раскраску.",
+      "idea_ids": [
+        "idea-two-colors-give-bipartite-subgraph",
+        "idea-recolor-two-colors-and-preserve-cycle-condition"
+      ],
+      "standard_idea_ids": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Заключительный этап 2025/26, задача 11.3 (она же 9.4); решение опирается на аккуратную попарную перекраску цветов через двудольность двухцветных подграфов.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_recoloring",
+        "bipartite_subgraph_argument"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-2025-26-final-day1-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-vosh-2025-26-final-sol1-official",
+      "role": "solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

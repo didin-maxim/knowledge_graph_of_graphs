@@ -1,0 +1,151 @@
+{
+  "id": "eulerian-graph-criterion",
+  "title": "Критерий эйлерова графа",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "euler_cycle",
+      "vertex_degree"
+    ],
+    "methods": [
+      "cycle_splicing",
+      "constructive_walk",
+      "parity"
+    ],
+    "transformations": [
+      "splice_cycles",
+      "remove_used_edges"
+    ],
+    "goal": [
+      "euler_cycle_criterion"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "even_degree",
+      "unused_edges",
+      "connectedness"
+    ],
+    "keywords": [
+      "eulerian_graph",
+      "hierholzer",
+      "even_degrees"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Связный конечный граф имеет эйлеров цикл, то есть замкнутый маршрут, проходящий по каждому ребру ровно один раз, тогда и только тогда, когда степени всех его вершин четны.",
+        "source_id": "src-wikipedia-eulerian-path",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "cycle",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-bridges-closed-walk",
+        "title": "Мосты и замкнутый обход",
+        "text": "Город состоит из участков суши, соединенных мостами. Нужно пройти по каждому мосту ровно один раз и вернуться туда, откуда начали. Если заменить участки суши вершинами, а мосты ребрами, то такой обход существует тогда и только тогда, когда получившийся граф связен и к каждой вершине подходит четное число ребер.",
+        "source_id": "src-wikipedia-seven-bridges",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree",
+          "cycle"
+        ]
+      },
+      {
+        "id": "stmt-pencil-drawing-closed",
+        "title": "Нарисовать фигуру одним росчерком",
+        "text": "Дана связная фигура из точек и линий. Нужно провести карандашом по каждой линии ровно один раз, не отрывая карандаш от бумаги, и закончить в той же точке, где начали. Это возможно тогда и только тогда, когда в каждой точке фигуры сходится четное число линий.",
+        "source_id": "src-wikipedia-eulerian-path",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree",
+          "cycle"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-cycle-splicing",
+      "title": "Склейка циклов",
+      "text": "В графе с четными степенями можно идти по неиспользованным ребрам, пока не вернешься в старт; оставшиеся циклы вклеиваются в уже построенный обход.",
+      "tags": [
+        "eulerian_graphs"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-cycle-splicing",
+      "title": "Алгоритм Хиерхольцера",
+      "text": "Если есть эйлеров цикл, при каждом входе в вершину есть выход, поэтому степень каждой вершины четна. Обратно начнем идти из любой вершины по неиспользованным ребрам. Застрять в другой вершине нельзя: там число использованных инцидентных ребер входами и выходами отличается на 1, что противоречит четности после исчерпания. Значит получим цикл. Если остались ребра, из связности есть вершина построенного цикла, инцидентная неиспользованному ребру; строим от нее еще один цикл и вклеиваем. Повторяем до использования всех ребер.",
+      "idea_ids": [
+        "idea-cycle-splicing"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "greedy_ordering"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Базовый критерий с конструктивным доказательством.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-eulerian-path",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-seven-bridges",
+      "role": "classic_reformulation",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "base_done"
+  }
+}

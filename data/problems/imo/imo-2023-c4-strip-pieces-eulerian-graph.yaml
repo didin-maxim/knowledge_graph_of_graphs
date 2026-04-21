@@ -1,0 +1,129 @@
+{
+  "id": "imo-2023-c4-strip-pieces-eulerian-graph",
+  "title": "Разрезание полоски и эйлеров граф, IMO Shortlist 2023 C4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "multigraph",
+      "eulerian_cycle",
+      "modular_residues"
+    ],
+    "methods": [
+      "eulerian_cycle",
+      "connectivity",
+      "lower_bound"
+    ],
+    "transformations": [
+      "strip_pieces_to_edges"
+    ],
+    "goal": [
+      "minimum_number_of_pieces"
+    ],
+    "auxiliary_graph_type": [
+      "residue_multigraph"
+    ],
+    "invariants": [
+      "connected_eulerian_graph"
+    ],
+    "keywords": [
+      "imo_2023_c4",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(n\\ge2\\). Полоска \\(1\\times n^2\\) состоит из клеток с метками \\(1,\\ldots,n^2\\). Нужно разрезать её на несколько отрезков из подряд идущих клеток и, не поворачивая и не отражая, перенести куски в квадрат \\(n\\times n\\) так, чтобы для метки \\(a_{ij}\\) в клетке строки \\(i\\), столбца \\(j\\), число \\(a_{ij}-(i+j-1)\\) делилось на \\(n\\). Найдите минимальное число кусков.",
+        "source_id": "src-imo-2023-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pieces-as-edges",
+      "title": "Куски как рёбра",
+      "text": "Каждый кусок с метками от \\(a\\) до \\(b-1\\) задаёт ребро из остатка \\(a\\) в остаток \\(b\\) по модулю \\(n\\).",
+      "tags": [
+        "eulerian_graphs"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-eulerian-cycle-lower-bound",
+      "title": "Эйлеров цикл и нижняя оценка",
+      "text": "Возможность собрать исходную полоску означает, что граф кусков имеет эйлеров цикл; связность и циклы дают нижнюю оценку на число рёбер.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Официальное решение разрезает задачу ещё раз: каждый получившийся кусок с метками \\(a,a+1,\\ldots,b-1\\) задаёт ребро в графе на вершинах \\(1,\\ldots,n\\), из остатка \\(a\\) в остаток \\(b\\) по модулю \\(n\\). Так как куски можно восстановить в одну исходную полоску, все рёбра графа допускают эйлеров цикл. Кроме того, куски, лежащие в строках квадрата, дают для каждого остатка специальный цикл. Связность эйлерова графа и необходимость покрыть все такие циклы заставляют иметь не меньше \\(2n-1\\) рёбер. Конструкция из \\(2n-1\\) кусков достигает этой границы, значит это минимум.",
+      "idea_ids": [
+        "idea-pieces-as-edges",
+        "idea-eulerian-cycle-lower-bound"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2023 C4, U.S.A.; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "eulerian_cycle",
+        "connectivity",
+        "lower_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2023-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая структура используется в официальном решении, но не является самостоятельной переформулировкой исходного условия.",
+    "relations_status": "deep_done"
+  }
+}

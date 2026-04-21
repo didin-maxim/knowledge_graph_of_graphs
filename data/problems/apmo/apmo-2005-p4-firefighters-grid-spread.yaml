@@ -1,0 +1,142 @@
+{
+  "id": "apmo-2005-p4-firefighters-grid-spread",
+  "title": "Пожарные на решётке домов, APMO 2005 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "fire_spread_process",
+      "defended_vertices"
+    ],
+    "methods": [
+      "layer_counting",
+      "frontier_bound"
+    ],
+    "transformations": [
+      "town_grid_to_graph_distance_levels"
+    ],
+    "goal": [
+      "maximize_saved_vertices"
+    ],
+    "auxiliary_graph_type": [
+      "grid_graph"
+    ],
+    "invariants": [
+      "distance_from_source",
+      "defended_per_time_step"
+    ],
+    "keywords": [
+      "apmo_2005_p4",
+      "apmo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В городе имеется таблица домов \\(n\\times n\\), дом в строке \\(i\\) и столбце \\(j\\) обозначается \\((i,j)\\). В момент \\(0\\) пожар начинается в доме \\((1,c)\\), где \\(c\\le n/2\\). За каждый следующий промежуток времени пожарные успевают защитить один ещё не горящий дом, а затем огонь распространяется на все незащищённые соседние дома каждого уже горящего дома. Соседними считаются дома на расстоянии 1 по Манхэттену. После защиты дом остаётся защищённым навсегда. Когда огонь больше не может распространяться, процесс заканчивается. Какое наибольшее число домов можно спасти?",
+        "source_id": "src-apmo-2005-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Дома образуют вершины прямоугольной решётки, пожар стартует из одной вершины, на каждом шаге можно удалить из распространения одну вершину, после чего огонь переходит по всем рёбрам к незащищённым соседям. Нужно максимизировать число вершин, не достигнутых пожаром.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-levels-from-source",
+      "title": "Уровни по расстоянию от очага",
+      "text": "Решение группирует дома по манхэттенскому расстоянию от начального пожара и отслеживает, сколько домов на данном уровне можно успеть защитить к нужному моменту.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-frontier-count",
+      "title": "Оценка через огненный фронт",
+      "text": "Считается, сколько вершин текущего уровня может остаться не сгоревшими к моменту прихода огня, используя ограничение «не более одной защиты за ход».",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Официальное решение строит явную стратегию защиты, образующую две расходящиеся границы вокруг фронта пожара, и получает число спасённых домов \\(n^2+c^2-nc-c\\). Для верхней оценки вводятся уровни по манхэттенскому расстоянию от стартового дома \\((1,c)\\). Пусть \\(d(t)\\) — число домов уровня \\(t\\), уже защищённых к моменту \\(t\\), а \\(p(t)\\) — число заранее защищённых домов на более высоких уровнях. з того, что за ход можно защитить не более одного дома, получаются рекуррентные неравенства на \\(d(t)\\) и \\(p(t)\\). Далее доказывается, что число не горящих домов уровня \\(t\\) не превосходит \\(t-p(t)\\), то есть фронт огня на каждом уровне почти полностью заполняет решётку. Суммирование этих оценок даёт ровно ту же величину, что и в конструкции, так что она оптимальна.",
+      "idea_ids": [
+        "idea-levels-from-source",
+        "idea-frontier-count"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "APMO 2005 P4; условие и решение естественно формулируются на графе решётки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "layer_counting",
+        "frontier_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-apmo-2005-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

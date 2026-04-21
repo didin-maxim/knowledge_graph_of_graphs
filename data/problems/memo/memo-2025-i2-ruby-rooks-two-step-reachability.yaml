@@ -1,0 +1,144 @@
+{
+  "id": "memo-2025-i2-ruby-rooks-two-step-reachability",
+  "title": "Рубиновые ладьи и двухшаговая достижимость, MEMO 2025 I-2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "red_grid_region",
+      "rook_positions",
+      "two_step_reachability"
+    ],
+    "methods": [
+      "common_neighbour_counting",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "rook_network_to_diameter_two_graph"
+    ],
+    "goal": [
+      "maximize_pairwise_two_step_set"
+    ],
+    "auxiliary_graph_type": [
+      "grid_reachability_graph"
+    ],
+    "invariants": [
+      "distinct_witness_cells"
+    ],
+    "keywords": [
+      "memo_2025_i2",
+      "memo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На бесконечной клетчатой решётке некоторые клетки покрашены в красный цвет. Рубиновая ладья за один ход может пройти любое число клеток по строке или столбцу, оставаясь всё время на красных клетках. После того как покрашено не более 2025 красных клеток, Алиса ставит на некоторые из них ладьи так, чтобы никакие две ладьи не достигали друг друга за один ход, но любые две достигали друг друга за два хода. Найдите максимальное возможное число ладей.",
+        "source_id": "src-memo-2025-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассматривается граф достижимости по одному ходу на красных клетках. Требуется выбрать множество вершин, которое независимо в этом графе, но имеет диаметр 2 в смысле графа достижимости через красные клетки.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-staircase-construction",
+      "title": "Лестница даёт 63 ладьи",
+      "text": "Оптимальная конструкция - красная фигура-лестница с длинами строк от 1 до 63 и ладьями на главной диагонали. Тогда в каждой строке и столбце по одной ладье, но любые две ладьи имеют общую промежуточную красную клетку.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-distinct-witness-squares",
+      "title": "Разным парам ладей нужны разные промежуточные клетки",
+      "text": "Для каждой пары ладей существует красная клетка, достижимая от обеих за один ход. Эти клетки для разных пар не могут совпадать, иначе три ладьи делили бы одну строку или столбец, и две из них били бы друг друга за один ход. Поэтому число красных клеток не меньше \\(n+\\binom n2\\).",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Конструкция на 63 ладьи получается из лестницы из 63 строк длины 1,2,...,63; на главной диагонали ставим 63 ладьи. Тогда в каждой строке и столбце не более одной ладьи, так что за один ход ладьи друг друга не достигают. Но любая пара ладей имеет общую красную клетку в прямоугольном углу своей лестничной области, поэтому достигается за два хода. Для верхней оценки пусть ладей \\(n\\). Для каждой пары ладей \\((i,j)\\) выберем красную клетку \\(S_{ij}\\), достижимую от обеих за один ход. Клетки \\(S_{ij}\\) для разных пар различны: если одна клетка служила бы двум разным парам, то какие-то две ладьи лежали бы в одной строке или одном столбце и били бы друг друга за один ход. Кроме того, ни одна из \\(S_{ij}\\) не совпадает с клеткой, где стоит ладья. Поэтому красных клеток не меньше \\(n+\\binom n2\\). Так как красных клеток не более 2025, получаем \\(n(n+1)/2\\le 2025\\), откуда \\(n\\le 63\\). Следовательно, максимум равен 63.",
+      "idea_ids": [
+        "idea-staircase-construction",
+        "idea-distinct-witness-squares"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "MEMO 2025 I-2; граф достижимости по ладейным ходам задаёт центральную структуру задачи и решения.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "common_neighbour_counting",
+        "extremal_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-memo-2025-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

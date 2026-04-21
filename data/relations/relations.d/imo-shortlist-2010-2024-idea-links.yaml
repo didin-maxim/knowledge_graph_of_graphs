@@ -1,0 +1,349 @@
+{
+  "relations": [
+    {
+      "id": "rel-imo-2010-c2-imo-2016-c8-matching-alternation",
+      "from": "imo-2010-c2-flags-diagonal-matching",
+      "to": "imo-2016-c8-domino-unique-tiling-cycles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions compare structured pairings: C2 uses Hall to choose one position per flag, while C8 compares two domino matchings through alternating cycles.",
+      "backward_text": "The domino uniqueness problem is not a Hall application, but its alternating-cycle obstruction is a close matching-theoretic neighbour of the flags problem.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-tournament-king-imo-2010-c5",
+      "from": "tournament-king-radius-two",
+      "to": "imo-2010-c5-bad-company-tournament",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both arguments use local degree information in a tournament to force global structure. The classical king lemma uses a maximum outdegree vertex; C5 controls a forbidden directed cycle in triples of opponents.",
+      "backward_text": "IMO 2010 C5 is a more quantitative tournament statement, but it lives in the same local-degree tournament toolkit.",
+      "anchors": {
+        "from_solution_id": "sol-max-outdegree",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-imo-2010-c5-imo-2021-c4-tournament-counting",
+      "from": "imo-2010-c5-bad-company-tournament",
+      "to": "imo-2021-c4-anisotropy-menger",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both are tournament problems where the solution studies degree imbalances across parts of the tournament. C5 uses win-loss degree sums; C4 evaluates directed cuts and path counts.",
+      "backward_text": "The 2021 problem uses Menger/cut language, while 2010 C5 uses induction and degree sums, but both exploit tournament orientation constraints.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-imo-2012-c7-flashlight-independent-set",
+      "from": "flashlight-batteries-tournament-cities-2015",
+      "to": "imo-2012-c7-equal-sum-chords-independent-set",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions seek a large independent set in an auxiliary graph after translating the olympiad statement into forbidden adjacency.",
+      "backward_text": "IMO 2012 C7 uses the Caro-Wei style bound on a chord-intersection graph, while the flashlight problem uses complement/Turan reasoning; the shared idea is independence via graph translation.",
+      "anchors": {
+        "from_solution_id": "sol-pile-construction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-imo-2012-c7-imo-1992-p3-extremal-independent",
+      "from": "imo-1992-p3-nine-points-partial-ramsey",
+      "to": "imo-2012-c7-equal-sum-chords-independent-set",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both convert a geometric-looking statement into an auxiliary graph and use extremal restrictions on crossings/triangles to force a large well-behaved subfamily.",
+      "backward_text": "C7's independent set of noncrossing chords is an intersection-graph analogue of the extremal subgraph reasoning in IMO 1992 P3.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.64
+    },
+    {
+      "id": "rel-brooks-imo-2013-c3-color-reduction",
+      "from": "brooks-theorem",
+      "to": "imo-2013-c3-imons-graph-coloring",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both proofs reduce the number of colours in a graph by modifying the graph/colouring while preserving enough structure to continue inductively.",
+      "backward_text": "IMO 2013 C3 is not a proper-colouring theorem like Brooks, but the colour-reduction induction is a close graph-colouring motif.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-imo-2013-c3-imo-2024-c8-inductive-parity",
+      "from": "imo-2013-c3-imons-graph-coloring",
+      "to": "imo-2024-c8-board-coloring-tree",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Both solutions repeatedly simplify a graph encoded by the operation and use parity/induction to reduce to a trivial terminal configuration.",
+      "backward_text": "C8's graph is a tree of board operations, while C3's graph records entanglements; both are operation-to-graph induction arguments.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-x-graph-halving"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-imo-2013-c6-imo-2021-c4-distance-cut-counting",
+      "from": "imo-2013-c6-flight-distance-layers",
+      "to": "imo-2021-c4-anisotropy-menger",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions count constrained paths through layers or cuts. C6 controls vertices at distance four by shortest-path layers; C4 controls path multiplicities by directed cuts.",
+      "backward_text": "The 2021 problem has an explicit Menger formulation, while 2013 C6 uses elementary layer counting, but both are connectivity-counting arguments.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-imo-2014-c9-imo-2019-c4-planar-region-graphs",
+      "from": "imo-2014-c9-snail-circles-tree",
+      "to": "imo-2019-c4-labyrinth-region-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions replace a planar arrangement by a graph of regions and then count components/acyclicity to get the sharp bound.",
+      "backward_text": "The labyrinth problem counts door components in a line arrangement; the snail problem turns odd regions of a circle arrangement into a tree.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-euler-planar-imo-2019-c4",
+      "from": "euler-formula-planar",
+      "to": "imo-2019-c4-labyrinth-region-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "The official region-counting argument uses the same planar graph bookkeeping spirit as Euler formula: count regions and doors/edges, then infer component bounds.",
+      "backward_text": "IMO 2019 C4 does not quote Euler's formula directly, but its solution is planar region graph accounting.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-imo-2015-c5-imo-2019-c3-functional-digraph",
+      "from": "imo-2015-c5-sequence-rays",
+      "to": "imo-2019-c3-coin-process-digraph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions build a directed graph with one outgoing edge per state/index and then analyse its components by rays, sinks, or recursive copies.",
+      "backward_text": "The coin process is finite with a sink and recursive self-similarity; the sequence problem is infinite and decomposes into rays. The functional-digraph idea is common.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-imo-2016-c6-imo-2019-c5-graph-dynamics",
+      "from": "imo-2016-c6-ferry-graph-dynamics",
+      "to": "imo-2019-c5-social-network-refriending",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions analyse a graph operation by choosing an extremal local parameter and proving the operation must improve it or reduce the graph.",
+      "backward_text": "The ferry problem increases common neighbourhoods until a universal vertex appears; the social-network problem decreases edges while preserving enough degree structure.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-imo-2016-c6-tc-universal-acquaintance",
+      "from": "vosh-2000-01-final-universal-acquaintance",
+      "to": "imo-2016-c6-ferry-graph-dynamics",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems look for a universal vertex in a social/route graph from local conditions and use extremal growth of a clique or common neighbourhood.",
+      "backward_text": "The ferry dynamics problem reaches a universal island by operations, while the VOSH acquaintance problem forces one directly from a local condition.",
+      "anchors": {
+        "from_solution_id": "sol-clique-extension",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-imo-2016-c8-imo-2020-c6-alternating-cycles",
+      "from": "imo-2016-c8-domino-unique-tiling-cycles",
+      "to": "imo-2020-c6-colored-coins-eulerian-multigraph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions decompose a two-coloured pairing/multigraph structure into alternating cycles and use those cycles as the obstruction or construction.",
+      "backward_text": "The coin problem alternates along Eulerian cycles to colour coins, while the domino problem uses alternating red-blue cycles to contradict uniqueness.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-augmenting-imo-2016-c8",
+      "from": "augmenting-path-matching-lemma",
+      "to": "imo-2016-c8-domino-unique-tiling-cycles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The lower-bound argument uses the same symmetric-difference decomposition of two matchings into alternating paths/cycles that underlies augmenting-path matching theory.",
+      "backward_text": "IMO 2016 C8 is a domino-tiling application of alternating matching structure.",
+      "anchors": {
+        "from_solution_id": "sol-symmetric-difference",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-tree-imo-2019-c3-functional-digraph",
+      "from": "tree-equivalent-properties",
+      "to": "imo-2019-c3-coin-process-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "After orienting every nonterminal state to its successor, the process graph behaves like a rooted directed tree/DAG toward a sink; the solution counts distances recursively.",
+      "backward_text": "The coin process is not an undirected tree theorem, but its state graph uses the same no-cycle-to-root accounting idea.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.64
+    },
+    {
+      "id": "rel-imo-2019-c5-imo-2004-c3-edge-deletion",
+      "from": "imo-2004-c3-delete-edge-from-4cycle",
+      "to": "imo-2019-c5-social-network-refriending",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems study a graph operation that deletes edges while preserving a crucial invariant until a target sparse structure is reached.",
+      "backward_text": "The social-network operation is degree-sensitive and reduces edge count by one; the 2004 operation deletes from 4-cycles and preserves connected non-bipartite structure.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-tree-imo-2020-c4",
+      "from": "tree-equivalent-properties",
+      "to": "imo-2020-c4-fibonacci-difference-forest",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "The lower bound constructs a graph whose selected Fibonacci-difference edges cannot contain a cycle, so the forest edge bound becomes the core graph fact.",
+      "backward_text": "IMO 2020 C4 is an olympiad application of forest acyclicity, with Fibonacci growth proving that a longest edge cannot be bypassed around a cycle.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-imo-2020-c4-imo-2024-c8-cycle-forest-obstruction",
+      "from": "imo-2020-c4-fibonacci-difference-forest",
+      "to": "imo-2024-c8-board-coloring-tree",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions build an auxiliary graph from chosen objects/actions and prove that any cycle contradicts the defining growth or colouring rule; the result is a forest/tree bound.",
+      "backward_text": "C8 encodes board operations as a tree, while C4 encodes selected differences as a forest; in both, cycles are the forbidden certificate.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-x-graph-halving"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-imo-2021-c4-imo-2023-c7-tournament-paths",
+      "from": "imo-2021-c4-anisotropy-menger",
+      "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems study paths in tournament-like complete directed structures: 2021 counts edge-disjoint directed paths through cuts, while 2023 controls Hamiltonian paths under colouring.",
+      "backward_text": "The 2023 problem is a colouring/hamiltonian-path obstruction, whereas 2021 is a Menger cut-counting problem; both use tournament path structure.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-dirac-imo-2023-c7-hamiltonian-paths",
+      "from": "dirac-theorem",
+      "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Both are Hamiltonian path/cycle problems where global traversal of all vertices is the main object, though C7 uses edge-colour closure rather than degree conditions.",
+      "backward_text": "IMO 2023 C7 is not a Dirac theorem application, but it belongs to the same Hamiltonian traversal cluster.",
+      "anchors": {
+        "from_solution_id": "sol-longest-path",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.62
+    },
+    {
+      "id": "rel-imo-2023-c4-imo-2019-c4-component-counting",
+      "from": "imo-2019-c4-labyrinth-region-graph",
+      "to": "imo-2023-c4-strip-pieces-eulerian-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions translate a geometric cutting problem into a graph and then use connectivity/component counting to prove the lower bound.",
+      "backward_text": "The strip problem uses an Eulerian graph on residues; the labyrinth problem uses a region graph of doors. The shared idea is graph connectivity forced by reconstruction.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-imo-2024-c3-imo-2016-c8-alternating-uncrossing",
+      "from": "imo-2016-c8-domino-unique-tiling-cycles",
+      "to": "imo-2024-c3-knights-chord-uncrossing",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions compare pairings by looking at the obstruction created by crossing or alternating structures and then remove/avoid one obstruction at a time.",
+      "backward_text": "The knight problem uncrosses chords by swaps; the domino problem uses alternating cycles of two matchings. Both are pairing-obstruction arguments.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-chord-uncrossing-induction"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    }
+  ]
+}

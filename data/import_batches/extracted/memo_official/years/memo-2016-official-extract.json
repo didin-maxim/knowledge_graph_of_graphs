@@ -1,0 +1,589 @@
+{
+  "year": 2016,
+  "page_url": "https://www.math.aau.at/MEMO2016/",
+  "download_count": 3,
+  "problem_count_extracted": 12,
+  "problems": [
+    {
+      "id": "memo-2016-i1",
+      "year": 2016,
+      "problem_code": "I-1",
+      "statement_en": "Let ně 2 be an integer andx1, x2, ..., xn be real numbers satisfying\n(a) xją ́ 1 for j“ 1, 2, ..., n and\n(b) x1` x2` ̈ ̈ ̈`xn“ n.\nProve the inequality\nnÿ\nj“1\n1\n1` xj\ně\nnÿ\nj“1\nxj\n1` x2\nj\nand determine when equality holds.",
+      "solution_text_en": "Solution. We have to prove\nnÿ\nj“1\n1\n1`xj\n ́\nnÿ\nj“1\nxj\n1`x2\nj\n“\nnÿ\nj“1\n1 ́xj\np1`xjqp1`x2\njqě 0.\nWe use the supporting line method and consider the functionf defined by\nfpxq“ 1 ́x\np1`xqp1`x2q\nfor allxą ́ 1. The tangent line off at x“ 1 is given byy“ 1 ́x\n4 . We claim that\nfpxq“ 1 ́x\np1`xqp1`x2qě 1 ́x\n4\nfor allxą ́ 1 with equality forx“ 1. Forxě 1 we get4ďp 1`xqp1`x2q and for ́1ăxď 1\nwe get 4ěp 1`xqp1`x2q. Both inequalities are obviously true.\nNow we conclude that nÿ\nj“1\n1 ́xj\np1`xjqp1`x2\njqě\nnÿ\nj“1\n1 ́xj\n4 “ 0,\nand we are done.\nEquality occurs if and only if alln numbers are equal to1.\nSolution. Since 1`xją 0 for j“ 1, 2,...,n , Cauchy-Schwarz inequality yields\nnÿ\nj“1\n1\n1`xj\n ̈\nnÿ\nj“1\np1`xjqě\n ̃\nnÿ\nj“1\n1\n ̧2\n,\n4\nMEMO 2016 Individual Competition I-1\nwhich is equivalent to\nnÿ\nj“1\n1\n1`xj\ně n\n2 .\nIt therefore suffices to prove that\nnÿ\nj“1\nxj\n1`x2\nj\nď n\n2 ,\nbut this last inequality is equivalent to the trivial one\nnÿ\nj“1\np1 ́xjq2\n1`x2\nj\ně 0 ,\nso the inequation is proven.\nIn the last equation, we have equality if and only ifxj “ 1 for j “ 1, 2,...,n , and one can\neasily see that this is indeed a case of equality, so it is the only case of equality.\nSolution The inequality is equivalent to\nnÿ\ni“1\n1 ́xi\np1`xiqp1`x2\niqě 0\nAs the functionsfpxq“ 1 ́x andgpxq“ 1\np1`xqp1`x2q are both strictly decreasing, we can apply\nthe Chebychev inequality to obtain:\nn ̈\nnÿ\ni“1\n1 ́xi\np1`xiqp1`x2\niqě\n ̃\nnÿ\ni“1\n1 ́xi\n ̧ ̃\nnÿ\ni“1\n1\np1`xiqp1`x2\niq\n ̧\n“ 0\nSo we’re done.\nSolution (via Lagrange multipliers) Let us writefpxq“ 1\n1`x ́ x\n1`x2. We want to show\nthat the expressionfpx1q` ... `fpxnq in the domain\nD :x1,...,x ną ́ 1, x1`... `xn“n\nattains its minimal value 0 exactly at the pointx1“... “xn“ 1.\nWe first consider the boundary ofD. This means that w. l. o. g. we may assume thatx1“ ́ 1,\nin which case the expression attains the value`8, which is not the minimum.\nWe now look for minima in the interior of the domain: The method of Lagrange multipliers\ngives the Langrange function\nFpx1,...,x n,λq“\nnÿ\nj“1\npfpxjq ́ λpxj ́ 1qq\n5\nMEMO 2016 Individual Competition I-1\nand results in the system of equations\nf1pxjq“ λ, j “ 1,...,n,\nnÿ\nj“1\nxj“n.\nNow note that\n• f1pxq“  ́1\np1`xq2` x2 ́ 1\np1`x2q2 “ 2px3 ́x2 ́x ́ 1q\np1`xq2p1`x2q2 .\n• f1pxqă 0 for ́1ăxď 1. This is obvious from the first expression forf1pxq.\n• f1pxq ą0 for x ą 2. This can be seen from the second expression forf1pxq, since for\nxą 2 we have1`x`x2ă x3\n8 ` x3\n4 ` x3\n2 ăx3.\n• f2pxq“ 2xp3 ́x2q\np1`x2q3 ` 2\np1`xq3.\n• f2pxqą 0 for ́1ăxă 2 can be shown by considering the following three cases:\n– For ́1ăxă 0, we have\n1\np1`xq3 “ 1\np1`xqp1` 2x`x2qą 1\np1`xqp1`x2q.\nThus we get\nf2pxqą 2xp3 ́x2q\np1`x2q3 ` 2\np1`xqp1`x2q“ 2xp3 ́x2qp1`xq` 2p1`x2q2\np1`xqp1`x2q3 “\n“p6x` 6x2 ́ 2x3 ́ 2x4q`p 2` 4x2` 2x4q\np1`xqp1`x2q3 “ 2` 6x` 10x2 ́ 2x3\np1`xqp1`x2q3 “\n“\n1\n2p2` 3xq2` 11\n2x2 ́ 2x3\np1`xqp1`x2q3 ą 0.\n– For 0ďxď\n?\n3, the assertion is obvious.\n– For\n?\n3ăxă 2, the assertion follows from\n2\np1`xq3 ą 2\n27, 2xp3 ́x2q\np1`x2q3 “ ́ 2xpx2 ́ 3q\np1`x2q3 ą ́ 2 ̈2p22 ́ 3q\np1`\n?\n3\n2\nq3\n“ ́ 1\n16ą ́ 2\n27.\n• Hence f1 is strictly increasing for ́1ăxď 2.\nSincex“ 1\nn\nřn\nj“1xj“ 1, we know thatxjď 1 for somej. Thereforeλă 0. This meansxjď 2\nfor everyj“ 1,...,n . From the monotonicity off1 in the domain ́1ăxď 2, we now conclude\nx1“... “xn. In view of the conditionx1`... `xn“n this meansx1“... “xn“ 1. Since\nfp1q“ 0, we are done.\n6\nMEMO 2016 Individual Competition I-2",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 1, 'algebra': 4, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2016-i2",
+      "year": 2016,
+      "problem_code": "I-2",
+      "statement_en": "There are n ě 3 positive integers written on a blackboard. A move consists of choosing three\nnumbers a, b, c on the blackboard such that they are the sides of a non-degenerate non-equilateral\ntriangle and replacing them bya` b ́ c, b` c ́ a and c` a ́ b.\nShow that an infinite sequence of moves cannot exist.",
+      "solution_text_en": "Solution 1. We will show that the product of all the numbers on the blackboard can never\nincrease. Indeed, for the three numbersa, b and c we have the inequalities\na2ěa2 ́pb ́cq2“pa`b ́cqpa`c ́bq\nb2ěb2 ́pa ́cq2“pb`a ́cqpb`c ́aq\nc2ěc2 ́pa ́bq2“pc`a ́bqpc`b ́aq\nSince by the conditions of the problem all factors on both sides are positive, we can multiply\nthese equations and obtain\na2b2c2ěpa`b ́cq2pb`c ́aq2pc`a ́bq2,\nwhich is equivalent to\nabcěpa`b ́cqpb`c ́aqpc`a ́bq. (1)\nSince every non-increasing sequence of positive integers is eventually constant, we see that\nthe product of the numbers on the blackboard cannot change after a finite number of moves.\nFurthermore, it is clear that we have equality in (1) if and only ifa“b“c, in which case the\nnumbers on the blackboard do not change. It is now clear that after a finite number of moves\nthe numbers on the blackboard will not change.\nSolution 2. Sincepa`b ́cq`p b`c ́aq`p a`c ́bq“ a`b`c, it is clear that the sum of\nthe numbers on the blackboard is invariant. On the other hand, we learn from\npa`b ́cq2`pb`c ́aq2`pc`a ́bq2“a2`b2`c2`pa ́bq2`pa ́cq2`pb ́cq2\nthat the sum of squares of the numbers increases in every move, except in the casea“b“c,\nwhen nothing at all changes. But in view of the inequalityřx2\ni ď přxiq2, it now becomes\nevident that the number of possible \"moves with effect\" is bounded by the constant right-hand\nside.\n7\nMEMO 2016 Individual Competition I-2\nSolution 3. Letm be the smallest integer on the blackboard andk the number of times that\nm is written on the blackboard. The numbern of numbers on the blackboard will stay fixed\nthroughout the process, whilem and k might change.\nWe first prove that any move involving a numberm will either decreasem or keepingm fixed\nand increasingk or change nothing on the blackboard:\n• Ifm“aďbăc, we havea`b ́căa“m, so the new minimum is clearly smaller than\nthe originalm.\n• If m“aăb“c, we havea`b ́c“c`a ́b“a“m, so the numberk has increased\nwhile m is fixed.\n• If m“a“b“c, nothing changes on the blackboard.\nNow, if there are only finitely many moves that change anything and involve a minimal number\nthen we can conclude by induction onn that we can only make finitely many moves that change\nanything. The most convenient base case isn “ 2 where nothing changes because no three\nnumbers can be chosen.\nHowever, if there are infinitely many moves involving a minimal number that change something\nthen we have seen above that eitherm decreases orm is fixed andk increases. Since k is at\nmost n and m is at least1 this is impossible, so the process has to terminate as desired.\n(The same argument works with the maximum because it is bounded by the constant sum of\nthe written integers.)\n8\nMEMO 2016 Individual Competition I-3",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2016-i3",
+      "year": 2016,
+      "problem_code": "I-3",
+      "statement_en": "G\nLet ABC be an acute-angled triangle with>BAC ą 45 ̋ and with circumcentreO. The point\nP lies in its interior such that the pointsA,P,O,B lie on a circle andBP is perpendicular to\nCP. The pointQ lies on the segmentBP such thatAQ is parallel toPO.\nProve that >QCB “ >PCO.\nA B\nC\nO\nP QQ1",
+      "solution_text_en": "Solution. Since >BAC ą 45 ̋, we have >BOC ą 90 ̋, and the pointsA, P, O, B lie on a\ncircle in this order.\nInstead of the equality>QCB “ >PCO, we show the equivalent statement that>OCB “\n>PCQ. We know that>OCB “ 90 ̋ ́ >BAC and >PCQ “ 90 ̋ ́ >CQP. So we just need\nto show that>BAC “ >CQP. By the construction ofP and Q, we have\n>AQP “ >QPO “ >BPO “ >BAO“ >OBA“ 180 ̋ ́ >APO “ >QAP,\nso the trianglePQA is isosceles withPA “ PQ. Thus if Q1 denotes the point obtained by\nreflecting Q about P, then >QAQ1“ 90 ̋.\nMoreover, reusing some part of the above calculation and exploiting thatO is the circumcentre\nof ABC, we find\n>AQ1B“ >AQ1Q“ 90 ̋ ́ >AQQ1“ 90 ̋ ́ >AQP “ 90 ̋ ́ >OBA“ >ACB,\nwhich proves that the quadrilateralABCQ1 is cyclic. Finally, since>QPC “ 90 ̋ and PQ “\nPQ1, the triangleCQQ1 is isosceles withCQ“CQ1, whence\n>CQP “ >CQQ1“ >QQ1C“ >BQ1C“ >BAC,\nas we wanted to show.\n9\nMEMO 2016 Individual Competition I-3\nAnother solution of the second part:\nLetQ1 be the point of intersection ofBP with the circumcircle of the traingleABC. Then we\nhave\n>AQ1B“ >ACB “ 90 ̋ ́ >OBA“ 90 ̋ ́ >AQQ1.\nSo we get>QAQ1“ 90 ̋. SincePA “PQ, the pointP is the midpoint ofQQ1.\nFinally, since >QPC “ 90 ̋ and PQ “ PQ1, the triangleCQQ1 is isosceles withCQ “ CQ1,\nwhence\n>CQP “ >CQQ1“ >QQ1C“ >BQ1C“ >BAC,\nas we wanted to show.\n10\nMEMO 2016 Individual Competition I-4",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2016-i4",
+      "year": 2016,
+      "problem_code": "I-4",
+      "statement_en": "Find all functionsf : NÑ N such that fpaq` fpbq divides 2pa` b ́ 1q for all a, bP N.",
+      "solution_text_en": "Remark: N“t 1, 2, 3,... u denotes the set of positive integers.\nAnswer. The only solutions are the constant functionfpaq“ 1 for allaP N and the function\nfpaq“ 2a ́ 1 for allaP N.\nSolution 1. We will first prove thatf is either injective or bounded.\nAssume that we havefpmq“ fpnq“ t for somem and n. If we plug inm and n as b, we get\nrespectively:\nfpaq` t| 2pa`m ́ 1q\nfpaq` t| 2pa`n ́ 1q.\nSince the divisor of two numbers must divide their difference, we getfpaq` t| 2m ́ 2n. That\nmeans that iff is not bounded, it is injective, because then we must havem“n.\nCase 1:f is injective\nIf we puta“b“ 1 in the given relation, we getfp1q“ 1. Puttinga“b gives usfpaq| 2a ́ 1.\nSince f is injective, we can now prove by induction thatfpaq“ 2a ́ 1 for a“ 2, 3, ... since\nall smaller divisors of2a ́ 1 are already attained by previous values off.\nCase 2:f is bounded\nIf f is bounded, the maximum off exists and for anyaP N we can choose a primep that is\ngreater thana and at least three times greater than this maximum. We can now choosebP N\nsuch thata`b ́ 1“ p and we getfpaq` fpbq| 2p. Clearly, fpaq` fpbqă p because of our\nchoice ofp. So we must havefpaq` fpbq“ 2, which gives usfpaq“ 1 for allaP N.\nIt is easily checked that the functionsfpnq“ 2n ́ 1 and fpnq“ 1 satisfy the condition of the\nproblem.\nSolution 2. Setting a“ b gives fpaq| 2a ́ 1, which implies thatfp1q“ 1 and thatfpaq is\nodd for alla. Settinga“ 2 and b“ 1 givesfp2q` 1| 4, thereforefp2q“ 1 or fp2q“ 3.\nCase 1:fp2q“ 1.\nWe chooseb“ 1 andb“ 2 to obtainfpaq` 1| 2a andfpaq` 1| 2a`2, which impliesfpaq` 1| 2\nand thereforefpaq“ 1 for alla. The constant functionfpaq“ 1 is clearly a solution.\nCase 2:fp2q“ 3.\n11\nMEMO 2016 Individual Competition I-4\nWe first show thatfpaq“ 2a ́ 1 for aą 1 implies fpa` 2q“ 2a` 3. Setting b“a` 2 gives\nfpa` 2q` 2a ́ 1| 2p2a` 1q. If fpa` 2q“ 1, thena| 2a` 1. This impliesa“ 1, which was\nexcluded. Therefore, the odd numberfpa` 2q is greater than 2, sofpa` 2q` 2a ́ 1 is a divisor\nof 2p2a` 1q that is greater than2a` 1 (half of 2p2a` 1q). Thus fpa` 2q` 2a ́ 1 must be\nequal to 2p2a` 1q, which givesfpa` 2q“ 2a` 3 as desired.\nTherefore, fp2q“ 3 implies fp4q“ 7. Now, settinga“ 3 and b“ 4 givesfp3q` 7| 12, which\nimplies fp3q“ 5.\nSince we now know thatfpaq“ 2a ́ 1 holds for 1, 2, 3, 4 and we can use induction in steps of\ntwo, we getfpaq“ 2a ́ 1 for alla, which is clearly a solution.\nThe two solutions arefpaq“ 1 for alla and fpaq“ 2a ́ 1 for alla.\nSolution. 3. We havefp1q“ 1 and fpaq|p 2a ́ 1q as in the previous solution.\nIf fp2q“ 1, thenfpaq“ 1 for alla as in the previous solution.\nTherefore, we only have to considerfp2q“ 3. We easily check thatfpaq“ 2a ́ 1 for alla is a\nsolution.\nChoose k maximally such thatfpaq“ 2a ́ 1 holds for all1ďaďk. Then settinga“k and\nb“k` 1 yields\n2k ́ 1`fpk` 1q“ fpkq` fpk` 1q| 4k,\nwhich by maximality ofk implies thatfpk` 1q“ 1.\nSetting a“k ́ 1 and b“k` 1 yields\n2k ́ 2“fpk ́ 1q` fpk` 1q| 2pk ́ 1`k` 1 ́ 1q“ 4k ́ 2,\nwhich also implies2k ́ 2|pp 4k ́ 2q ́ 2p2k ́ 2qq“ 2 and thusk“ 2.\nWe conclude thatfp3q“ 1 and fp4q| 7. Iffp4q“ 1, then\n4“fp2q` fp4q| 10,\na contradiction. Thusfp4q“ 7. This leads to the contradiction\n8“fp3q` fp4q| 12.\nThus there are only the constant solution and the solutionfpaq“ 2a ́ 1 for alla.\n12\nMEMO 2016 Individual Competition I-4\nSolution 4. We havefp1q“ 1 and fpaq|p 2a ́ 1q as in the previous solutions.\nIf fp2q“ 1, thenfpaq“ 1 for alla as in the previous solutions.\nTherefore, we only have to considerfp2q“ 3.\nLet p be a prime withp ”  ́1 pmod 4q. Since we already know thatfpaq |2a ́ 1, we get\nf\n`p`1\n2\n ̆\n|p which implies thatf\n`p`1\n2\n ̆\nis either 1 orp.\nIff\n`p`1\n2\n ̆\n“ 1 then we choosea“ 2 andb“ p`1\n2 in the original equation and get4|p` 3 which\nis impossible. Therefore,f\n`p`1\n2\n ̆\n“p for all such primesp.\nNow we chooseb“ p`1\n2 in the original equation and get\nfpaq` p| 2a ́ 1`p ùñ fpaq` p| 2a ́ 1 ́fpaq.\nSince there exist arbitrarily large primesp withp” ́ 1 pmod 4q, the right-hand side has to be\n0, sofpaq“ 2a ́ 1 which is indeed a solution.\n13\nMEMO 2016 T eam Competition T-1",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 4,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 4, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2016-t1",
+      "year": 2016,
+      "problem_code": "T-1",
+      "statement_en": "Determine all triplespa, b, cq of real numbers satisfying the system of equations\na2` ab` c“ 0,\nb2` bc` a“ 0,\nc2` ca` b“ 0.",
+      "solution_text_en": "Answer. The solutions are\npa,b,cqP\n\"\np0, 0, 0q,\nˆ\n ́ 1\n2, ́ 1\n2, ́ 1\n2\n ̇*\n.\nSolution. If one of the numbersa,b andc is equal to zero, it is easy to see that the other two\nnumbers also have to be equal to zero, which gives us the solutionp0, 0, 0q.\nNow assume thata, b, c‰ 0.\nIf all three numbers are positive, then the left-hand side of each equation is positive, while the\nright-hand sides are equal to zero, which is impossible.\nLet us assume that only one of the numbers is positive, and without loss of generality let it be\na. Sinceb, că 0, it follows thatb2`bc`aą 0, which is a contradiction.\nIt remains to consider the two following cases:\n(a) All three numbers are negative.\nWe substitutea “  ́x, b “  ́y and c “  ́z, where x, y, z ą 0. The original system\ntransforms into\nx2`xy“z (1)\ny2`yz“x (2)\nz2`zx“y.\nThe system is cyclic, so we can assume thatxďy and xďz. Now we have\nx2`xy“zěx ùñ x`yě 1,\ny2`yz“xďy ùñ y`zď 1.\nFrom the previous two inequalities we conclude that\nx`yě 1ěy`z, i.e. xěz.\n14\nMEMO 2016 T eam Competition T-1\nOn the other handxďz, so we getx“z.\nNow, from equation (1) it follows thatx`y“ 1, while from equation (2) it follows that\nx“y2`yz“y2`yx“ypy`xq“ y.\nThusx“y“z and fromx`y“ 1 we see thatx“y“z“ 1{2.\nWe easily verify thatpa,b,cq“\n`\n ́ 1\n2, ́ 1\n2, ́ 1\n2\n ̆\nis indeed a solution.\n(b) Exactly one of the numbers is negative.\nWithout loss of generality we can assume thatc is negative, whilea and b are positive.\nFrom the second equation we conclude thatbpb`cq“ ́ aă 0, thusb`că 0. The third\nequation yieldscpa`cq“ ́ bă 0, thusa`cą 0.\nAddinga`b to the first equation and cyclic permutation yields\na`b`c“p 1 ́aqpa`bq“p 1 ́bqpb`cq“p 1 ́cqpc`aq.\nThe last product is positive. This implies that1 ́a ą 0 and 1 ́b ă 0 by our above\nconsiderations. Therefore 0ăa`că 1`căb`că 0, a contradiction.\nSolution by symmetric functions. We set\np :“a`b`c, q :“ab`ac`bc, r “abc. (3)\nOur strategy will be to determinep, q and r by considering equations of the form\nÿ\ncyc\nfpa,b,cqpa2`ab`cq“ 0.\nBy settingfpa,b,cq“ 1, we findp2 ́q`p“ 0.\nBy settingfpa,b,cq“ b, we findpq ́ 3r`q“ 0.\n(Here we use the general identityř\ncycpa2b`ab2q“ pq ́ 3r.)\nBy settingfpa,b,cq“ c2, we findpq2 ́ 2prq` pr`pp3 ́ 3pq` 3rq“ 0.\nBy elimination ofq“p2`p and r“ pq`q\n3 “ ppp`1q2\n3 we find\npp2`pq2 ́p ̈ppp` 1q2\n3 `p3 ́ 3ppp2`pq` ppp` 1q2“ 0,\nwhich is equivalent to\n0“ 2p4`p3 ́p2` 3p“pp2p` 3qpp2 ́p` 1q.\n15\nMEMO 2016 T eam Competition T-1\nNow we see that eitherp“ 0 or p“ ́ 3\n2.\nIn the casep“ 0 we find that alsoq“ 0 andr“ 0, whencea“b“c“ 0. In the casep“ ́ 3\n2\nwe findq“ 3\n4 and r“ ́ 1\n8, hencea, b, c are the solutions to the cubic equation\n0“x3` 3\n2x2` 3\n4x` 1\n8“\nˆ\nx` 1\n2\n ̇3\n.\nThis givesa“b“c“ ́ 1\n2.\nSolution. As in the first solution, we prove that as soon as one of the variables is0, all three\nvariables have to be 0. Obviously, the triple p0, 0, 0q is a solution. From now on, we may\ntherefore assume that all three variables are non-zero.\nWe can rewrite the system of equations as\n ́c“apa`bq,\n ́a“bpb`cq,\n ́b“cpc`aq.\nMultiplying these equations and dividing byabc‰ 0 gives\npa`bqpb`cqpc`aq“ ́ 1. (4)\nOn the other hand by summing up the equations we get\n ́a ́b ́c“a2`b2`c2`ab`bc`ac. (5)\nNow we substitute\nx“a`b, y “b`c, z “c`a.\nwhich transforms equation (4) and (5) into\nxyz“ ́ 1,  ́x`y`z\n2 “ x2`y2`z2\n2 (6)\nNow we calculate\n3px2`y2`z2qěp| x|`| y|`| z|q2ě|x`y`z|2“px2`y2`z2q2ě 32 3\na\nx2y2z22\n“ 9,\nwhere the first inequality comes from Cauchy-Schwarz (or QM-AM), the second one from the\ntriangle inequality and the last one from AM-GM. The equalities come from (6).\nNow, if we denoteS“x2`y2`z2, we have the inequalities\n3SěS2ě 9,\n16\nMEMO 2016 T eam Competition T-1\nand because we trivially haveS ą 0 (note thatS “ 0 would implyx“ y“ z“ 0 and hence\na“ b“ c“ 0, which has already been excluded), we can split it into the inequalities3ě S\nand Sě 3, so we have equality and actually all the inequalities are equalities.\nThe case of equality for the triangle equality is when all nonzerox, y, z have the same sign\nand, in view of equations 6, the only possibility is thatx,y,z are all negative. Moreover, in the\nlast inequality, we have equality exactly whenx2“ y2“ z2 and, because they have the same\nsign, it meansx“y“z. Finally, in view ofxyz“ ́ 1, the only possibility isx“y“z“ ́ 1.\nBy definition ofx, y, z the values ofa, b, c are then\npa,b,cq“\nˆ ́1\n2 , ́1\n2 , ́1\n2\n ̇\nand this is indeed a solution.\n17\nMEMO 2016 T eam Competition T-2",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 4,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 1, 'algebra': 4, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2016-t2",
+      "year": 2016,
+      "problem_code": "T-2",
+      "statement_en": "A\nLet R denote the set of real numbers. Determine all functionsf : RÑ R such that\nfpxqfpyq“ xfpfpy ́xqq` xfp2xq` fpx2q\nholds for all real numbersx and y.",
+      "solution_text_en": "Answer. There are two solutions:\nf : RÑ R : xÞÑ 0, g : RÑ R : xÞÑ 3x.\nSolution. We setx“ 0 and getfp0qfpyq“ fp0q, sofp0q“ 0 orfpyq“ 1 for ally. The latter\nleads to a contradiction.\nWe sety“x`z and get\nfpxqfpx`zq“ xfpfpzqq` xfp2xq` fpx2q (1)\nfor allx and z. Settingz“ 0 yields\nfpxq2“xfp2xq` fpx2q. (2)\nWe setC “ fp1q. For x“ 1 and x“ 2, we getfp2q“ CpC ́ 1q and fp4q“ C 2pC ́ 1q2{3,\nrespectively.\nIfC“ 0, so (1) withx“ 1yieldsfpfpzqq“ fp2q“ 0, so (1) readsfpxqfpx`zq“ xfp2xq`fpx2q\nfor allz, which implies thatfpxq“ 0 for allx.\nSetting x“ 1 and x“ 2 in (1) leads to\nCfpz` 1q“ fpfpzqq` C 2,\nCpC ́ 1qfpz` 2q“ 2fpfpzqq` C 2pC ́ 1q2.\nEliminating fpfpzqq and division byC‰ 0 leads to\npC ́ 1qfpz` 2q ́ 2fpz` 1q“ CpC 2 ́ 2C ́ 1q (3)\nfor allz. Settingz“ ́ 1 leads toCpC ́ 1q“ CpC 2 ́ 2C ́ 1q. In view ofC‰ 0, this implies\nC“ 3. Inserting this in (3), dividing by2 and shiftingz leads to\nfpz` 1q ́ fpzq“ 3\nfor allz.\n18\nMEMO 2016 T eam Competition T-2\nWe setz“ 1 in (1) and get\nfpxqpfpxq` 3q“ 9x`xfp2xq` fpx2q.\nTogether with (2), we get3fpxq“ 9x, i.e.,fpxq“ 3x for allx.\nBoth fpxq“ 3x and fpxq“ 0 are solutions.\nAlternative Solution. Setting x “ 0 in the original equation gives fp0qfpyq “ fp0q. If\nfp0q‰ 0 thenfpxq“ 1, xP R, but this function does not satisfy the original equation. Hence,\nfp0q“ 0.\nSetting y“ 0 and y“x in the original equation we get\n0“xfpfp ́xqq` xfp2xq` fpx2q, f pxq2“xfp2xq` fpx2q. (4)\nIn combination this gives\n ́xfpfp ́xqq“ fpxq2 and xfpfpxqq“ fp ́xq2, xP R.\nMultiplying the original equation byy ́x gives\npy ́xqfpxqfpyq“ xpy ́xqfpfpy ́xqq`p y ́xqpxfp2xq` fpx2qq“ xfpx ́yq2`py ́xqfpxq2,\nwhich gives\nxfpx ́yq2“py ́xqfpxqpfpyq ́ fpxqq. (5)\nNow settingx“ 2y‰ 0 in (5) we get\n2yfpyq2“ ́yfp2yqpfpyq ́ fp2yqq\nand consequently\n0“fp2yq2 ́fpyqfp2yq ́ 2fpyq2“pfp2yq` fpyqqpfp2yq ́ 2fpyqq.\nThus, for anyy‰ 0 (and fory“ 0 as well) we havefp2yq“ ́ fpyq or fp2yq“ 2fpyq.\nSetting y“ 2x‰ 0 in (5) we get\nxfp ́xq2“xfpxqpfp2xq ́ fpxqq\nand consequently\nfp ́xq2`fpxq2“fpxqfp2xq.\n19\nMEMO 2016 T eam Competition T-2\nIffp2xq“ ́ fpxq holds for somexP R, thenfp ́xq2` 2fpxq2“ 0 impliesfp ́xq“ fpxq“ 0“\nfp2xq. Hence, the equalityfp2xq“ 2fpxq holds for allxP R.\nReplacing y byy`x in the original equation and using (4) gives\nfpxqfpx`yq“ xfpfpyqq` xfp2xq` fpx2q“ xfpfpyqq` fpxq2. (6)\nNow settingy“x gives 2fpxq2“xfpfpxqq` fpxq2, which meansfpxq2“xfpfpxqq. Multiply-\ning (6) byy yields\nyfpxqfpx`yq“ xfpyq2`yfpxq2 (7)\nHere we can deduce thatfpxq “ 0 implies x “ 0, unless f is identically 0. Now we can\ninterchange x and y and achieveyfpxqfpx`yq “xfpyqfpx`yq. Setting y “ 1 now gives\nfpxq“ xfp1q for allx‰ ́ 1. However, we also have\nfp ́1q“ 1\n2fp ́2q“ 1\n2 ̈p ́2qfp1q“ ́ fp1q,\nso fpxq“ xfp1q is valid for allx. Plugging in fpxq“ cx easily givesc“ 0 or c“ 3. Hence\nthese are the two solutions.\n20\nMEMO 2016 T eam Competition T-3",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2016-t3",
+      "year": 2016,
+      "problem_code": "T-3",
+      "statement_en": "A tract of land in the shape of an8ˆ 8 square, whose sides are oriented north–south and east–\nwest, consists of 64 smaller 1ˆ 1 square plots. There can be at most one house on each of the\nindividual plots. A house can only occupy a single1ˆ 1 square plot.\nA house is said to beblocked from sunlight if there are three houses on the plots immediately to\nits east, west and south.\nWhat is the maximum number of houses that can simultaneously exist, such that none of them\nis blocked from sunlight?",
+      "solution_text_en": "Remark: By definition, houses on the east, west and south borders are never blocked from\nsunlight.\nAnswer. The maximal number of houses is50.\nSolution. Let us represent the tract as an8ˆ 8-chessboard, with cells colored black if the\ncorresponding parcel is occupied, and white otherwise. We denote bypi,jq the cell in thei ́th\nrow andj ́th column (with the first row being the northernmost and the first column being the\nwesternmost). We start by showing that an optimal configuration can be obtained by coloring\nall the cells along the east, south, and west borders.\nAssume that there is an optimal configuration in which one of those cells, for examplepi, 1q,\nis left white. Since we have an optimal configuration, this cell cannot be colored black. This\nmeans that by coloringpi, 1q, we would block the cellpi, 2q. In other words, we know that the\ncellspi, 2q,pi, 3q andpi` 1, 2q are all colored black in this optimal configuration. However, we\nnow see that we can colorpi, 1q instead ofpi, 2q, keeping the same number of black cells and\ncoloringpi, 1q, without disturbing any of the other cells.\nWe can apply the same reasoning to any of the cellsp1, 1q ́p 8, 1q,p8, 1q ́p 8, 8q and, similarly,\ntop8, 8q ́p 1, 8q, thus showing that there is an optimal configuration in which all the cells along\nthe E, S, W borders are colored black.\nThose cells being colored, we are left with a7ˆ 6 area of the board. We can now show that no\nmore than 28 cells in this area can be colored black. In order to obtain28, the average number\nof black cells per row has to be4. However, if any row contains six black cells, the next row\ndown cannot contain any black cells, since such a black cell would block the cell immediately\nnorth of it. Similarly, if a row were to contain5 black cells, the next row down would be able\nto contain at most3 black cells (namely in the cell immediately below the single white one and\nthe two next to it). This shows that the average number of black cells per row in our7ˆ 6 area\ncannot be greater than4.\nThis gives us an upper bound on the total number of black cells: the22 border cells plus 28\ncells in the remaining7ˆ 6 area, i.e., 50 cells in total.\n21\nMEMO 2016 T eam Competition T-3\n(a) (b)\nFigure 1: Alternative Solution\nAn example to show that50 can indeed be achieved is the following. We color the columns\n1, 2, 4, 5, 7, 8 and row 8 black, leaving the other cells white. This coloring clearly satisfies the\nconditions and contains exactly50 black cells, completing the proof.\nAlternative Solution. By building a house on each dark grey plot in Figure 1(a), we see that\n50 houses can be built accordingly.\nWe will prove that no more than50 houses can be built, or, equivalently, that at least14 plots\nremain empty. Consider the14 4ˆ 1 rectangles in Figure 1(b) marked by their thick boundary.\nWe will uniquely assign one empty plot to each of these14 rectangles as follows:\n• if the rectangle contains at least one empty plot, assign to it the easternmost such plot;\n• if the rectangle contains no empty plots, assign to it the westernmost empty plot in the\nrectangle directly to the south of it.\nIn order to see that this assignment is feasible, note that if some rectangle contains no empty\nplots, then its two central houses are blocked from sunlight from the east and west. Therefore,\nthe two central plots of the rectangle directly to the south of it must be empty, showing that\nwe can indeed assign its westernmost empty plot to the original rectangle while leaving its\neasternmost empty plot unassigned. The above assignment is thus feasible and shows that\nthere are at least14 empty plots, concluding the proof.\n22\nMEMO 2016 T eam Competition T-4",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "color",
+        "oard"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "memo-2016-t4",
+      "year": 2016,
+      "problem_code": "T-4",
+      "statement_en": "C\nA class of high school students wrote a test. Every question was graded as either 1 point for\na correct answer or 0 points otherwise. It is known that each question was answered correctly\nby at least one student and the students did not all achieve the same total score.\nProve that there was a question on the test with the following property: The students who\nanswered the question correctly got a higher average test score than those who did not.",
+      "solution_text_en": "Solution. Letn be the number of the students in the class anda their average score. Denote\nby P and S the set of all problems, and the set of all students resp., and letSppq be the\nnon-empty set of students who solved problempPP. For any students, let scpsq be the score\nof s. For any propositionA, letrAs“ 1 if A is true and0 if A is false.\nWe will prove the assertion by contradiction. Assume that on all questions the average test\nscore of solvers was at most the general averagea, that is\naě 1\n|Sppq|\nÿ\nsPSppq\nscpsqô a|Sppq|ě\nÿ\nsPSppq\nscpsq.\nWe now sum these inequalities over all problemspPP to get\na\nÿ\npPP\n|Sppq|ě\nÿ\npPP\nÿ\nsPSppq\nscpsq\nô a\nÿ\npPP\nÿ\nsPS\nrs solvedpsě\nÿ\npPP\nÿ\nsPS\nrs solvedps\nÿ\nqPP\nrs solvedqs\nô a\nÿ\nsPS\nscpsqě\nÿ\nsPS\n ̃ÿ\npPP\nrs solvedps\n ̧\n ̈\n ̃ÿ\nqPP\nrs solvedqs\n ̧\nô 1\nn\n ̃ÿ\nsPS\nscpsq\n ̧2\ně\nÿ\nsPS\nscpsq2.\nHowever, this is the reverse of the inequality between the arithmetic and the quadratic mean.\nSince the case of equality, namely thatscpsq is the same for allsPS, is excluded by the problem\nstatement, we arrive at the desired contradiction.\n23\nMEMO 2016 T eam Competition T-5",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "memo-2016-t5",
+      "year": 2016,
+      "problem_code": "T-5",
+      "statement_en": "G\nLet ABC be an acute-angled triangle withAB‰AC, and letO be its circumcentre. The line\nAO intersects the circumcircleω of ABC a second time in pointD, and the lineBC in point\nE. The circumcircle ofCDE intersects the lineCA a second time in pointP. The line PE\nintersects the lineAB in pointQ. The line throughO parallel toPE intersects the altitude of\nthe triangleABC that passes throughA in pointF.\nProve thatFP “FQ.\nA\nC\nB\nω\nO\nDE\nP\nQ\nF “ F 1",
+      "solution_text_en": "Solution 1. Let us denote>ABC byβ and >BCA byγ. Without loss of generality,ABą\nAC, or equivalentlyβăγ, as in the figure.\nSegment AD is a diameter ofω, so by Thales’ theorem we have>DCA “ 90 ̋. Since the\nquadrilateralCEDP is cyclic, we get>PED “ 90 ̋, which immediately gives>AEQ“ 90 ̋.\nSince >EAQ“ >OAB “ 90 ̋ ́γ, we also get>AQP “ >AQE“γ. Since CEDP is cyclic,\nwe get >ADP “ >EDP “ 180 ̋ ́ >PCE “ >ACB “ γ. This means that the quadrilateral\nAQDP is cyclic.\nLet us denote the circumcentre ofAQDP byF1. We show thatF “F1.\nWe have>APQ “ 180 ̋ ́ >CAB ́ >AQP “β. Hence >F1AQ“ 90 ̋ ́β, which implies that\nF1 lies on the altitude ofABC that passes throughA.\nMoreover, by definitionF1 must lie on the perpendicular bisector ofAD, which is the line\nthrough O parallel toPE.\nSo we getF1“F, and consequentlyFP “FQ.\n24\nMEMO 2016 T eam Competition T-5\nA\nB\nC\nO\nD\nE\nF\nP 1\nQ1\nSolution 2. Let α, β and γ denote the angles ofABC in the natural way.\nPointF is defined as the intersection point of the perpendicular bisector of diameterAD with\nthe altitude of triangleABC throughA. We define pointsP1 andQ1 as the intersection points\nof the circle with centerF passing throughA (and therefore also throughD) with sidesAC\nand AB, respectively. First we showP “P1.\nWe calculate\n>EDP1“ >ADP1“ >AQ1P1“ >AQ1F` >FQ1P1“\n>AQ1F` 180 ̋ ́ >Q1FP1\n2 “ 90 ̋ ́β` 90 ̋ ́α“γ“ 180 ̋ ́ >ECP1.\nSo we have thatP1 is the intersection of the circumcircle of triangleEDC withAC and therefore\nwe haveP “P1.\nNow we proveQ“Q1. We have\n>ABC “ >ADC“ >EDC “ >EPC “ >Q1PA “ >Q1DA“β\nand therefore quadrilateralBDEQ1 is cyclic. Since>DBQ1“ 90 ̋ we getQ1EKAD. Together\nwith >DEP1“ >DEP “ 90 ̋ we have thatQ1 lies on the linePE and thusQ1“Q. Therefore\nwe have provenFP “FQ.\n25\nMEMO 2016 T eam Competition T-6",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 8,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 8, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2016-t6",
+      "year": 2016,
+      "problem_code": "T-6",
+      "statement_en": "G\nLet ABC be a triangle withAB ‰ AC. The points K, L, M are the midpoints of the sides\nBC, CA, AB, respectively. The inscribed circle ofABC with centreI touches the sideBC at\npoint D. The lineg, which passes through the midpoint of segmentID and is perpendicular\nto IK, intersects the lineLM at pointP.\nProve that >PIA “ 90 ̋.",
+      "solution_text_en": "Solution 1. Let pXYZq denote the circumcircle of a triangleXYZ . We use the following\nwell-known lemma:\nLemma. The centre of the circle pBICq is the midpoint of arc BC of circle pABCq and\ntherefore lies on the angle bisector of >BAC .\nB C\nA\nK\nLM\nI\nD\nH\nP\nY\nX\nk\ng\nNow assume without loss of generality thatABă AC, as in the figure. Let the circlepBICq\ncut AB and AC at X and Y respectively. From the lemma it follows thatX is symmetric to\nC, andY is symmetric toB with respect to the angle bisector of>BAC. We have\nMX ̈MB “pAX ́AMq ̈MB “pAC ́AMq ̈MB “p2AC ́ABq ̈AB\n4 “ AC 2\n4  ́\nˆAC ́AB\n2\n ̇2\n,\n26\nMEMO 2016 T eam Competition T-6\nand since AC\n2 “MK and\nAC ́AB\n2 “ BC\n2  ́ AB`BC ́AC\n2 “BK ́BD“DK,\nwe get\nMX  ̈MB “MK 2 ́DK 2.\nSo M lies on the radical axis of the circlepBICq and the circlek, which is the circle with\nmidpoint K and radiusDK. An analogous calculation shows thatL lies on it as well, so the\nline throughM and L is the radical axis of circlespBICq and k. Obviously g is the radical\naxis of circlek and pointI (regarded as a degenerate circle). ThusP is the radical centre of\npBICq, k, andI. It follows thatP also lies on the radical axis ofpBICq and I, which is the\nline perpendicular toAI passing throughI. This shows that>PIA “ 90 ̋.\nB C\nA\nK\nLM\nI\nD\nX\nP\nY\nS\nT\nSolution 2. Let X be the midpoint ofID, and letY be the midpoint ofAD (which is also\nthe intersection ofAD with LM). Clearly,XY is parallel toAI.\nNext we show thatIK passes throughY. To this end, letS be the intersection ofAI with\nBC, and letT be the intersection ofKI with the line throughA that is parallel toBC. Note\nthat trianglesATI and SKI are similar.\nBy the angle bisector theorem, we have\nAT\nKS “ AI\nIS “ AB\nBS,\n27\nMEMO 2016 T eam Competition T-6\nso\nAT “ AB ̈KS\nBS “ AB ̈pBK ́BSq\nBS “ AB ̈BK\nBS  ́AB.\nUsing the angle bisector theorem once again, we get\nAT “pAB`ACq ̈BK\nBC  ́AB“ AB`AC\n2  ́AB“ BC\n2  ́AB`BC ́AC\n2 “BK ́BD“DK.\nThus DKAT is a parallelogram, which means thatAD and KT meet atY, the midpoint of\nAD.\nNow we know thatKI passes throughY, and by definition it is perpendicular toXP. Hence\nit is an altitude inXYP . Moreover,DI is clearly also an altitude inXYP (it passes through\nX and is perpendicular toPY ). Thus I is the orthocentre ofXYP , which means thatPI is\nperpendicular toXY and thus also toAI. This proves the desired statement.\nA\nB\nC\nI\nD\nKL\nM\nY\nX\nP\nZ\nSolution 3. Let X, Y, Z be reflections ofD about I, K, P respectively.\nWe shall prove thatA,X,Y are collinear. SinceK is the midpoint of segmentsBC, DY , we\nhaveBD“CY . ThereforeY is the common point of segmentBC and theA-excircle. Consider\n28\nMEMO 2016 T eam Competition T-6\nhomothety centered atA mapping incircle toA-excircle. It’s easy to see that this homothety\nmaps X to Y. ThereforeA,X,Y are collinear.\nConsider homothety with centreD and ratio 2. We easily see thatAZ∥ LM. Since IX K\nBC∥LM, we have\nIX KAZ.\nMoreoverIZ∥gKKI∥XY . SinceA,X,Y are collinear, we have\nIZ KAX.\nThusX is the orthocentre of triangleAIZ. ThereforeZX KAI. SinceZX∥PI, we conclude\nthat PI KAI. In other words,\n=PIA “ 90 ̋.\nSolution 4. Let a,b,c be the sides of the triangle,s“ a`b`c\n2 the half-perimeter,ρ the radius\nof the inscribed circle,α,β,γ the angles andA the area of the triangle.\nIn the coordinate plane, letB“p 0, 0q be the origin andC“pa, 0q. ThenA“pc cosβ,c sinβq.\nWe get:\nI“ps ́b,ρq, D “ps ́b, 0q, H “\n ́\ns ́b,ρ\n2\n ̄\n(midpoint ofDI), K “\n ́a\n2, 0\n ̄\n.\nThe lineg that passes throughH and is perpendicular toIK has the following equation:\n ́\ns ́b ́ a\n2\n ̄\nx`ρy“\n ́\ns ́b ́ a\n2\n ̄\nps ́bq` ρ2\n2.\nThis is equivalent to\npc ́bqx` 2ρy“pc ́bqps ́bq` ρ2.\nOn the other hand, the lineh“LM that is parallel to thex-axis has the equation\ny“ c\n2 sinβ.\nWe deduce thatP (the intersection ofg and h) has the coordinates\nP “\n ́\ns ́b` ρ2 ́ρc sinβ\nc ́b ,c\n2 sinβ\n ̄\n.\nNow we have to prove that\nÝ ÑAI ̈Ý ÑIP “ 0,\n29\nMEMO 2016 T eam Competition T-6\nwhich is equivalent to\nps ́b ́c cosβq ̈ρ2 ́ρc sinβ\nc ́b `pρ ́c sinβq\n ́c\n2 sinβ ́ρ\n ̄\n“ 0.\nSince ρ ́c sinβ‰ 0, we can cancel the factorρ ́c sinβ to obtain the equation\nps ́b ́c cosβqρ`pc ́bq\n ́c\n2 sinβ ́ρ\n ̄\n“ 0,\nwhich is equivalent to\n2ρps ́cq ́ 2ρc cosβ`cpc ́bq sinβ“ 0.\nNow we use the well-known identitiesρ“ A\ns and ac sinβ“ 2A to end up with the equation\naps ́cq ́ ac cosβ`spc ́bq“ 0.\nSince this is equivalent to\nb2“a2`c2 ́ 2ac cosβ,\nwhich holds by the law of cosines, the proof is complete.\n30\nMEMO 2016 T eam Competition T-7",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 10,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 10, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2016-t7",
+      "year": 2016,
+      "problem_code": "T-7",
+      "statement_en": "N\nA positive integern is called aMozartian number if the numbers1, 2, ..., n together contain\nan even number of each digit (in base 10).\nProve:\n(a) All Mozartian numbers are even.\n(b) There are infinitely many Mozartian numbers.",
+      "solution_text_en": "Solution 1.\n(a) Note that we need an even number of digits alltogether if every digit occurs an even\nnumber of times. There is an odd number of numbers with one digit. Forką 1, there\nare 9 ̈10k ́1 numbers withk digits, which is an even number. Thus we need to end after\na segment of odd length of numbers with an odd number of digits, i.e., we end on an even\nnumber, so a Mozartian number is indeed even.\n(b) The numbersn“ 2... 2loomoon\n2l\n0 are Mozartian numbers for all natural numbersl: There are an\neven number of least significant digits0, 1, ..., 9; and all other digits at higher positions\nexcept for those inn are repeated 10 times in a row which does not change the parities\nof occurrences. The leading2l digits 2 of n do not change parities, either.\nSolution 2.\n(a) Letk be any integerě 0. In the pairingp2, 3q,p4, 5q, ...,p2k, 2k` 1q, the members of each\npair need the same number of digits, so each pair needs an even number of digits together,\nso alltogether the numbers from 1 to2k` 1 need an odd number of digits. Therefore,\nany Mozartian number has to be even because the total number of digits used up to a\nMozartian number has to be even.\n(b) We will show that102k` 22 are Mozartian numbers for all natural numbersk.\nWe first note that by the proof of the first part, we know that we need an odd number\nof digits up to102k` 21, and therefore an even number of digits up to102k` 22. So it is\nsufficient to check that the digits1, 2,..., 9 occur an even number of times because the\ncondition for 0 will be automatically satisfied.\nNow, we will consider the numbers from 0 to102k ́ 1 as numbers with2k` 1 digits with\nleading zeros where necessary. Clearly, each digit must occur equally often. Since the\nnumber of all digits in this list is divisible by 100, this quantity is still divisible by 10,\n31\nMEMO 2016 T eam Competition T-7\ntherefore even. This proves that nonzero digits occur an even number of times in this\ninterval.\nIt remains to consider the numbers102k, 102k` 1, ..., 102k` 22. Clearly, the leading\nones occur an odd number of times. Since the list1, 2,..., 22 contains an odd number of\nones and an even number of the other digits, the proof is finished.\nSolution 3. (only Part (b))\nWe will first show that for anykě 1 the numbers from0 to 20k ́ 1 together contain an even\nnumber of each digit from0 to 9.\nThe units digits clearly run from0 to 9 an even number of times, so they contribute an even\nnumber to each digit count. For any possible fixed choice of all digits except the units digits,\nthere are 10 numbers that satisfy this condition, so again, they contribute an even number to\neach digit count which proves the assertion.\nConsider now the numbers from1 to M “ 20k where M has a decimal representation that\ncontains an odd number of zeros and an even number of each digit from1 to 9. Since the odd\nnumber of zeros compensates for the missing zero that was counted in the above assertion, we\nfind thatM is a Mozartian number.\nThere are clearly infinitely many such numbers, for example all numbers of the form22... 20\nthat contain an even number of2s.\nComment. The argument of Solution 3 shows that Mozartian numbers that are multiples of 20\nare exactly those multiples that contain an odd number of 0s and an even number of all other\ndigits.\nBy an analogous argument, one can now find all Mozartian numbers. The following table lists\nthe parity restrictions on the digit counts for each possible even residue modulo20 where e\nstands for even and o stands for odd. The rows list the different possible residues and the\ncolumns lists the digits from0 to 9. For example,10198 is a Mozartian number because it has\nresidue 18 modulo 20 and the digits that occur an odd number of times are0, 8 and 9. These\nconditions are the only restrictions on Mozartian numbers.\n32\nMEMO 2016 T eam Competition T-7\n0 1 2 3 4 5 6 7 8 9\n0 o e e e e e e e e e\n2 e o e e e e e e e e\n4 e o o o e e e e e e\n6 e o o o o o e e e e\n8 e o o o o o o o e e\n10 e o o o o o o o o o\n12 o e o o o o o o o o\n14 o e e e o o o o o o\n16 o e e e e e o o o o\n18 o e e e e e e e o o\n33\nMEMO 2016 T eam Competition T-8",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 2, 'combinatorics': 3}"
+    },
+    {
+      "id": "memo-2016-t8",
+      "year": 2016,
+      "problem_code": "T-8",
+      "statement_en": "We consider the equationa2` b2` c2` n“ abc, where a, b, c are positive integers.\nProve:\n(a) There are no solutionspa, b, cq for n“ 2017.\n(b) Forn“ 2016, a must be divisible by 3 for every solutionpa, b, cq.\n(c) The equation has infinitely many solutionspa, b, cq for n“ 2016.",
+      "solution_text_en": "Solution 1.\n(a) We distinguish cases depending on the parity ofa,b,c :\n• If all three are odd, we havea2`b2`c2` 2017” 0 pmod 2q and abc” 1 pmod 2q.\n• If exactly one of them is even, we havea2`b2`c2` 2017” 1 pmod 2q andabc” 0\npmod 2q.\n• If exactly two of them are even, we havea2`b2`c2` 2017” 2 pmod 4q (recalling\nthat squares are either congruent to0 or 1 modulo 4) andabc” 0 pmod 4q.\n• If all three are even, we havea2`b2`c2` 2017” 1 pmod 2q andabc” 0 pmod 2q.\nIn each of the four cases, we see that the two sides of the equation cannot be equal.\n(b) Note thatm2” 0 pmod 3q ifm is divisible by3 andm2” 1 pmod 3q otherwise, and note\nalso that 2016 is divisible by3. We consider two cases:\n• If none of the three numbersa, b, c is divisible by 3, then neither isabc, while on\nthe other handa2`b2`c2` 2016” 1` 1` 1` 0” 0 pmod 3q. Hence we get a\ncontradiction.\n• Otherwise, abc is divisible by 3, soa2`b2`c2 must be divisible by3 as well. If\nexactly one of the three variables is divisible by3, we havea2`b2`c2” 2 pmod 3q,\nand if exactly two of them are divisible by3, we havea2`b2`c2 ” 1 pmod 3q.\nIn both cases, we see that there cannot be a solution. This leaves us with the only\npossibility thata,b,c are all divisible by3.\n(c) We know from the previous part that we must havea“ 3x, b“ 3y, c“ 3z for certain\npositive integersx,y,z . We plug these into the given equation and divide by9 to obtain\nx2`y2`z2` 224“ 3xyz.\n34\nMEMO 2016 T eam Competition T-8\nNote that 225“ 152 is a perfect square, so we try to find solutions withx“ 1:\ny2`z2` 225“ 3yz.\nIndeed, y “ z “ 15 is a solution, and we find further solutions by means of “Vieta\njumping”. Suppose thatpy0,z 0q is a solution, i.e.,\ny2\n0`z2\n0` 225“ 3y0z0,\nwhere y0ěz0. The second solution to the quadratic equation\nz2 ́ 3y0z`p 225`y2\n0q“ 0\nis z1“ 3y0 ́z0ě 2y0ąy0, giving us a new solution pairpz1,y 0q that has a greater first\ncomponent than the previous one. Repeating the procedure, we obtain infinitely many\nsolutions.\nSolution 2. The third part can also be solved by means of the theory of Pellian equations.\nLet us return to the equation\ny2`z2` 225“ 3yz.\nWe multiply by4 and complete the square:\n4y2 ́ 12yz` 4z2` 900“p 2y ́ 3zq2 ́ 5z2` 900“ 0.\nFor oddk, we have\np2`\n?\n5qk ̈p2 ́\n?\n5qk“ ́ 1.\nWe can writep2`\n?\n5qk as u`v\n?\n5 for certain positive integersu and v, so thatp2 ́\n?\n5qk“\nu ́v\n?\n5 and thus\nu2 ́ 5v2“ ́ 1.\nNow simply setz“ 30v and y“ 15u` 45v (so that 2y ́ 3z“ 30u) to obtain\np2y ́ 3zq2 ́ 5z2` 900“ 0,\nas desired. Since we obtain a solution for every oddk in this way, there must be infinitely\nmany.\n35",
+      "source": {
+        "page_url": "https://www.math.aau.at/MEMO2016/",
+        "downloads": [
+          {
+            "kind": "individual_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/IndividualEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-individual_problem.pdf"
+          },
+          {
+            "kind": "team_problem",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/TeamEnglish.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-team_problem.pdf"
+          },
+          {
+            "kind": "solution",
+            "url": "https://www.math.aau.at/MEMO2016/wp-content/uploads/2015/08/MEMO2016_Solutions-3.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2016-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 3,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "component"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 3, 'combinatorics': 0}"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "id": "tc-2023-24-coins-pairing-weighing-forest",
+  "title": "Разбить монеты на пары меньше чем за n взвешиваний, Турнир городов 2023/24",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "coin_pairs",
+      "comparison_graph",
+      "forest",
+      "weighing_algorithm"
+    ],
+    "methods": [
+      "forest_edge_bound",
+      "delete_to_simplify",
+      "algorithmic_accounting"
+    ],
+    "transformations": [
+      "weighings_to_edges",
+      "maintain_comparison_forest"
+    ],
+    "goal": [
+      "weighing_number_upper_bound",
+      "pairing_algorithm"
+    ],
+    "auxiliary_graph_type": [
+      "comparison_forest"
+    ],
+    "invariants": [
+      "acyclicity",
+      "component_merging",
+      "number_of_weighings"
+    ],
+    "keywords": [
+      "coins",
+      "weighings",
+      "forest_accounting",
+      "graph_in_solution"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Монеты весом 9 и 10 граммов",
+        "text": "На столе лежат \\(2n\\) неразличимых на вид монет. Известно, что \\(n\\) из них весят по 9 г, а остальные \\(n\\) — по 10 г. Требуется разбить их на \\(n\\) пар так, чтобы общий вес каждой пары равнялся 19 г. Докажите, что это можно сделать менее чем за \\(n\\) взвешиваний на чашечных весах без гирь, которые показывают, равны ли чаши, а если нет, то какая тяжелее.",
+        "source_id": "src-problems-67417",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-weighings-as-forest",
+      "title": "Взвешивания как рёбра леса",
+      "text": "Чтобы доказать ограничение на число взвешиваний, достаточно сопоставить каждому существенному взвешиванию ребро между исходными парами и проверить, что циклы не возникают.",
+      "tags": [
+        "trees"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-forest-accounting",
+      "title": "Контроль числа взвешиваний через лес",
+      "text": "Сначала монеты произвольно разбиваются на пары, веса которых могут быть 18, 19 или 20 г; пар весов 18 и 20 г поровну. Алгоритм сравнивает пары и группы пар так, чтобы в конце определить тип каждой пары, после чего лёгкие и тяжёлые пары склеиваются в правильные пары по 19 г. Для контроля числа сравнений строится граф на исходных парах: каждое сравнение добавляет ребро между парами, которые оно фактически связывает. В каждом случае алгоритма новое ребро соединяет разные компоненты этого графа, поэтому получается лес. Лес на \\(n\\) вершинах имеет не больше \\(n-1\\) рёбер, значит сделано меньше \\(n\\) взвешиваний.",
+      "idea_ids": [
+        "idea-weighings-as-forest"
+      ],
+      "standard_idea_ids": [
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 14,
+    "comment": "Осенний сложный тур 2023/24, 10-11 класс, задача 7 на 14 баллов; графовая часть отвечает за учёт числа взвешиваний в одном из решений.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "typical_olympiad_use": {
+      "value": "Граф появляется как бухгалтерия алгоритма: рёбра кодируют сравнения, а лес даёт верхнюю оценку их числа.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-67417",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_absent_reason": "Граф появляется только как часть одного решения для учёта числа взвешиваний; самостоятельной эквивалентной графовой постановки задачи здесь нет.",
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

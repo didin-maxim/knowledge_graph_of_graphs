@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Import batch",
+  "type": "object",
+  "required": ["id", "title", "status", "source_scope", "items"],
+  "properties": {
+    "id": {"type": "string"},
+    "title": {"type": "string"},
+    "status": {"type": "string"},
+    "created_at": {"type": "string"},
+    "updated_at": {"type": "string"},
+    "source_scope": {
+      "type": "object",
+      "required": ["source_ids"],
+      "properties": {
+        "source_ids": {"type": "array", "items": {"type": "string"}},
+        "latest_published_year": {"type": "integer"},
+        "verified_at": {"type": "string"},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "source_ids"],
+        "properties": {
+          "id": {"type": "string"},
+          "problem_id": {"type": "string"},
+          "status": {"type": "string"},
+          "source_ids": {"type": "array", "items": {"type": "string"}},
+          "decision_reason": {"type": "string"},
+          "problem_profile": {"type": "object"}
+        }
+      }
+    }
+  }
+}

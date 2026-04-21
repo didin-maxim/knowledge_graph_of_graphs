@@ -1,0 +1,144 @@
+{
+  "year": 2020,
+  "page_url": "https://memo2020.memo-official.org/",
+  "download_count": 1,
+  "problem_count_extracted": 4,
+  "problems": [
+    {
+      "id": "memo-2020-i1",
+      "year": 2020,
+      "problem_code": "I-1",
+      "statement_en": "Let N be the set of positive integers. Determine all positive integersk for which there exist\nfunctionsf : N→N andg : N→N such thatg assumes infinitely many values and such that\nf g(n)(n) = f (n) +k\nholds for every positive integern.\n(Remark. Here,f i denotesthefunction f applieditimes, i.e.,f i(j) = f (f (...f(f| {z }\ni times\n(j))...)).)",
+      "solution_text_en": "Answer. Such functions exist if and only ifk≥2.\nSolution 1. Suppose thatk = 1 and thatf and g satisfy the desired conditions.\nClaim. There exist no n and m≥1 with f m(n) = n.\nProof. Suppose thatf m(n) = n for somen andm≥1. Consider the orbit ofn, i.e. the setA =\n{f (n),f 2(n),...,f m−1(n),f m(n)}. Clearly,f r(n)∈Afor allr≥0. Lett =f s(n) = max Aand\ndenoteu =f s+m−1(n) so thatf (u) = t. Thent+1 = f (u)+1 = f g(u)(u) = f g(u)+s+m−1(n)∈A,\ncontradictingt = maxA.\nClaim. f (n)≥n + 1 for all n.\nProof. Suppose f (n)≤n.\nWe show inductively that for allr≥0 there existss≥1 withf s(n) = f (n) +r. Forr = 0 take\ns = 1. Induction step: suppose thatf s(n) = f (n) +r for somes≥1. Denotet =f s−1(n) and\nnote thatf (n)+r +1 = f s(n)+1 = f (t)+1 = f g(t)(t) = f g(t)+s−1(n), hences′=g(t)+s−1≥1\nworks forr + 1.\nIn particular, settingr =n−f (n)≥0 we see thatf s(n) = n for somes≥1. This contradicts\nthe previous claim.\nNow, for allm and n we obtain\nf m(n)≥f m−1(n) + 1≥...≥f (n) +m−1.\nSetm =g(n). We obtainf (n) + 1 =f g(n)(n)≥f (n) +g(n)−1, henceg(n)≤2 for alln. This\ncontradicts the assumption thatg is unbounded.\nNow, letk≥2. We constructf and g satisfying desired conditions.\n4\nMEMO 2020 Algebra I-1\nLet n1 < n2 < n3 < ...be the sequence consisting of all positive integers not divisible byk\n(i.e. ni(k−1)+j =ik +j for anyi≥0, j∈{1, 2,...,k−1}). Consider the sequence\nk,n 1, 2k,n 2,n 3,n 4, 3k,n 5,...,n 9, 4k,n 10,...,n 16, 5k,...,ik,n (i−1)2+1,...,n i2, (i + 1)k,...\nNote that every positive integer occurs in this sequence exactly once and for everyn the number\nn +k appears aftern. For everyn letf (n) be the successor ofn in this sequence and letg(n) be\nthe number of terms in this sequence betweenf (n) andf (n)+k (inclusive — we countf (n) and\nf (n) +k as well). By previous remarks,f andg are well defined and satisfyf g(n)(n) = f (n) +k.\nMoreover,g(ni2) = 2i + 3 for anyi, henceg is unbounded.\nSolution 2. We will prove that ifk = 1 then g is necessarily bounded.\nThe given equation implies that ifm = f (n) is in the image off then m + 1 = f (n) + 1 =\nf (f g(n)−1(n)) is in the image off as well. Letf (a) be the minimum of the image off. Then\nthe image off is equal to{f (a),f (a) + 1,...}.\nHowever, an easy inductive argument shows that for everym the numberf (a) +m is of the\nform f n(a). Hence the set{f (a),f 2(a),...}is also equal to the image off.\nIf f x(a) = f y(a) for somex > y, then the sequencean = f n(a) is eventually periodic with a\nperiod x−y, but then the set{f (a),f 2(a),...}is finite, which is a contradiction.\nTherefore, foreveryn∈N0, thereexistsauniquepositiveinteger xn suchthat f xn(a) = n+f (a),\nand conversely, for allx≥1 the numberf x(a) is of the formm +f (a) for somem≥0. In\nother words, the mapN0∋n↦→xn∈N is bijective.\nFurthermore,f xn+1(a) = (f (a)+n)+1 = f xn(a)+1 = f (f xn−1(a))+1 = f g(f xn−1(a))(f xn−1(a)) =\nf xn−1+g(f xn−1(a))(a), which impliesxn+1 =xn−1 +g(f xn−1(a))>x n, sinceg(t)> 1 for allt.\nTherefore, the mapn↦→xn is a strictly increasing bijection fromN0 to N which givesxn =n+1\nfor alln. Thus f n+1(a) = f (a) + n, which impliesf (f (n)) = f (n) + 1 for alln∈N, hence\ng(n) = 2 for alln∈N. Obviously, this meansg is bounded.\nSuppose now thatk≥2. We will give an explicit example of functionsf and g satisfying\nrequired properties.\nFor each positive integern, letf (kn) = nk + 1 and letf (nk + 1) = kn + 2.\nFor each positive integera which is not a power ofk, letf (ak) = ak + 2. For any other positive\ninteger x, let f (x) = x + 1. Define g(n) to be the smallestm such thatf m(n) = f (n) + k.\nNote thatg is well-defined. Now, g(nk + 1) is equal to the number of integersm such that\nkn + 2 ⩽m ⩽kn+1 andk doesn’t dividem−1. Forn large enough, the number of such integers\nis bigger thann. Therefore,g is also unbounded.\n5\nMEMO 2020 Combinatorics I-2",
+      "source": {
+        "page_url": "https://memo2020.memo-official.org/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2020.memo-official.org/wp-content/uploads/2020/11/2020-11-15-MEMO-2020-Problems-solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2020-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "memo-2020-i2",
+      "year": 2020,
+      "problem_code": "I-2",
+      "statement_en": "We call a positive integerN contagious if there exist 1000 consecutive non-negative integers\nsuch that the sum of all their digits isN. Find all contagious positive integers.",
+      "solution_text_en": "Answer. All N≥13500.\nAny solution naturally splits into two parts:\nPart 1: Showing that noN <13500 is contagious.\nPart 2: Showing that allN≥13500 are contagious.\nWe present one approach to Part 1 and three approaches to Part 2 (by direct construction, by\ninduction, and by discrete continuity).\nPart 1. We make the following observation:\n(T) Consider a block of 1000 consecutive non-negative integers. Then the last three digits of\nthose numbers (prepended by zeros if needed) form a set{000, 001,..., 999}.\nThus, given any such block, the sum of the last three digits alone equals3·100·(0+1+···+9) =\n13500 (since each of the digits0, 1,..., 9 occurs 100 times in each of the 3 positions). Therefore\nno integer less than13500 is contagious.\nPart 2, by direct construction. Fix N ≥13500 and write the “remaining” digit sum as\nN−13500 = d·1000 + r, where d≥0 and r ∈[0, 999] are non-negative integers. Write\nr =r2r1r0 as a 3-digit number (prepended by zeros if needed). Consider a number\nX = 11...1| {z }\nd times\nr2r1r0\nformed by concatenatingdcopies of the digit 1 and the digitsr2,r1,r0. (Ifd = 0 setX =r.) We\nclaimthatthetotaldigitsumofthe1000consecutivenon-negativeintegers X,X +1,...,X +999\nequals N. Note that:\n(a) Ignoring the last three digits, the 1000−r numbers X,...,X + (999−r) have digit\nsum d·1 = d each and the nextr numbersX + (1000−r),...,X + 999 have digit sum\n(d−1)·1 + 2 = d + 1 each.\n(b) As in Part 1, the last three digits of all the 1000 numbers add up to13500.\n6\nMEMO 2020 Combinatorics I-2\nTherefore, all in all, we obtain that the total digit sum ofX,X + 1,...,X + 999 equals\n(1000−r)·d +r·(d + 1) + 13500 = 1000d +r + 13500 = N,\nas required.\nPart 2, by induction. Given a non-negative integern, denote bysn the digit sum ofn and\nbyS(n) the total digit sum ofn,n + 1,...,n + 999, that is,\nS(n) = sn +sn+1 +···+sn+999.\nWeproceedbyinduction. Asafirststep, weshowthatthe1000numbers N∈{13500,..., 14499}\nare all contagious. As a second step, we show that ifN is contagious, thenN + 1000 is conta-\ngious. Combined, this implies that allN≥13500 are contagious.\nFor the first step, note that for any integern≥0 we have\nS(n + 1)−S(n) = (sn+1 +···+sn+1000)−(sn +···+sn+999) = sn+1000−sn.\nThus, for 0≤X≤999, we haveS(X + 1) = S(X) + 1, since the numberX + 1000 has an\nextra digit 1 in front of the (up to three-digit) numberX. Since S(0) = 13500 by Part 1, we\nget S(X) = 13500 + X for 0≤X≤999. Therefore all N ∈{13500,..., 14499}are indeed\ncontagious.\nFor the second step, suppose thatN is contagious, that is, there exist 1000 consecutive integers\nX,X + 1,...,X + 999 with total digit sumN. Take any integeri such that 10i > X+ 999.\nThen the 1000 consecutive integers\n10i +X, 10i +X + 1,..., 10i +X + 999\nhave a total digit sum equal toN + 1000 (since each number got an extra digit 1 and, possibly,\nseveral zeroes).\nPart 2, by discrete continuity. We make three observations:\n(A) For any integern≥0, we haveS(n + 1)−S(n)≤1.\n• Indeed, as before, we have\nS(n + 1)−S(n) = (sn+1 +···+sn+1000)−(sn +···+sn+999) = sn+1000−sn.\nNote that the numbersn+1000 andnhave the same last three digits. We distinguish\ntwo cases:\n7\nMEMO 2020 Combinatorics I-2\na) If the fourth digit ofn from the right is less than 9, then the digits ofn + 1000\nand n differ only in that position and we havesn+1000−sn = 1. (Ifn is 3-digit,\nthis is true too.)\nb) Otherwise, suppose that there ared≥1 consecutive digits 9 just in front of the\nlast three digits ofn. Then sn+1000−sn = 1−9d < 1, because the resulting\nnumber will haved zeroes in place of the nines, and the digit to the left of the\nnines increased by one.\n(B) We haveS(0) = 13500.\n• By the same argument as in Part 1 we getS(0) = 3·100·(0 + 1 +···+ 9) = 13500.\n(C) The sequenceS(n) is unbounded asn→∞.\n• For instance, settingn = 10 k−1 we getS(n)≥sn = 9k.\nIt remains to put the observations together. By (B), the numbern = 13500 is contagious. Now\nfixN≥13501. Since the sequence(S(n))∞\nn=0 is unbounded, there exists an integerk≥1 such\nthat S(k)≥N. Take the smallest suchk. By minimality of k we haveS(k−1)≤N−1.\nCombining this with (A) we now deduce\nN≤S(k)≤1 +S(k−1)≤1 + (N−1) = N,\nhence S(k) = N implying thatN is contagious.\n8\nMEMO 2020 Geometry I-3",
+      "source": {
+        "page_url": "https://memo2020.memo-official.org/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2020.memo-official.org/wp-content/uploads/2020/11/2020-11-15-MEMO-2020-Problems-solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2020-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "memo-2020-i3",
+      "year": 2020,
+      "problem_code": "I-3",
+      "statement_en": "Let ABC be an acute scalene triangle with circumcircleωand incenterI. Suppose the ortho-\ncenter H of BIC lies insideω. Let M be the midpoint of the longer arcBC of ω. Let N be\nthe midpoint of the shorter arcAM of ω.\nProve that there exists a circle tangent toωatN and tangent to the circumcircles ofBHI and\nCHI.",
+      "solution_text_en": "Solution 1. Denote the circumcircles ofBHI andCHI byω1 andω2 and their centers byO1\nand O2, respectively. LetO be the center ofω. LetR be the radius ofω.\nSinceH is the orthocenter of triangleBIC it follows thatI is the orthocenter of triangleBHC.\nTherefore\n∠HIB = 180◦−(∠BHI + ∠IBH ) = 180◦−(90◦−∠CBH + 90◦−∠BHC ) = 180◦−∠HCB,\nand analogously we get∠CIH = 180◦−∠CBH and ∠BIC = 180◦−∠BHC.\nDenote byr the radius of circleω1, then from sine law we get\n2r = HB\nsin ∠HIB = HB\nsin(180◦−∠HIB ) = HB\nsin ∠HCB =\n= diameter of circumcircle of the triangleBHC.\nUsing the same argument for trianglesCIH andBIC we see thatr is equal to radii ofω1,ω2,\ncircumcircles ofBIC and BHC.\nFrom the following angle chase it follows that\n∠BHC = 180◦−∠BIC = 180◦−\nÅ\n180◦−1\n2 ∠CBA−1\n2∠BCA\nã\n=\n= 1\n2(∠CBA + ∠BCA ) = 90◦−1\n2 ∠BAC.\nSince H lies insideωand ∠BAC is acute we conclude that\n∠BAC <∠BHC = 90◦−1\n2∠BAC <90◦\nso\n2r = diameter of circumcircle ofBHC = BC\nsin ∠BHC < BC\nsin ∠BAC = 2R,\nthusr <R.\n9\nMEMO 2020 Geometry I-3\nLet ∠BAC =α,∠CBA =β,∠ACB =γ. Then\n∠BO1I = 2∠BHI = 2(90◦−∠CBH ) = 2 ∠ICB =γ,\nso\n∠IBO 1 = 90◦−1\n2 ∠BO1I = 90◦−γ\n2 = α+β\n2 ,\nand finally\n∠ABO1 = ∠IBO 1−∠IBA = α+β\n2 −β\n2 = α\n2 = ∠BAI.\nThis shows thatBO1 ∥AI, and moreover, raysBO→\n1 , AI→determine opposite directions.\nSimilarly, raysCO→\n2 ,AI→are parallel and determine opposite directions. Therefore these rays\nare parallel andBO→\n1 , CO→\n2 determine the same direction. SinceBO1 = r = CO 2, it follows\nthat vectors−−→BO1,−−→CO 2 are equal. Denote this vector by− →v .\nA\nB C\nI\nH\nO\nO1\nO2\nX\nM\nN\nNote thatON⊥AM. Moreover\n∠IAM = ∠IAC + ∠CAM = ∠IAC + ∠CBM =\n= ∠IAC + 1\n2(180◦−∠BMC ) = ∠IAC + 1\n2(180◦−∠BAC ) = 90◦,\n10\nMEMO 2020 Geometry I-3\nso AM ⊥AI, hence ON ∥AI∥BO1∥− →v . Let X be a point such that−−→OX =− →v . Since\nON ∥− →v , X lies on lineON. It actually lies on rayON→since raysON→, AI→determine\nopposite directions.\nNote that translation by− →v maps triangleBCO to triangleO1O2X. ThereforeO1X =BO =R\nand O2X =CO =R.\nLet ω′be the circle centered atX with radiusR−r >0.\nObserve thatO1X =R =r + (R−r), soω′is tangent externally toω1. For similar reason it\nis tangent externally toω2. MoreoverOX =r =R−(R−r) = ON−XN, soω′is tangent to\nωinternally at pointN.\nSolution 2. Let β:= ∠ABI = ∠IBC and γ:= ∠BCI = ∠ICA. Without loss of generality,\nwe assume that β > γ. Furthermore, we define P to be the intersection of NB and the\ncircumcircle ofBHI and Q to be the intersection ofNC and the circumcircle ofCHI.\nA\nB C\nH\nI\nMN\nP QX\nY\nZ D\nOur goal is to prove that the circumcircle ofNPQ satisfies the desired conditions. To this end,\ndefine the tangenttN to ωthrough N, tangenttP to the circumcircle ofBHI through P and\ntangenttQ to the circumcircle ofCHI throughQ. LetX be the intersection oftP andtQ,Y the\nintersection oftN andtQ andZ the intersection oftN andtP. If we can prove thatPX =QX,\nNY =QY andNZ =PZ, it follows that the circumcircle ofNPQ is the incircle ofXYZ and\nN,P and Q are the contact points. By definition oftN,t P and tQ, this would imply that the\ncircumcircle ofNPQ satisfies the desired properties.\n11\nMEMO 2020 Geometry I-3\nUsing that the arcsMN andNA have the same lengths and the triangleBMC is isosceles, we\ncalculate some angles:\n∠ACN = ∠ABN = 1\n2∠ABM\n= 1\n2(∠ABC−∠MBC )\n= 1\n2\nÅ\n2β−180◦−∠CMB\n2\nã\n= 1\n2\nÅ\n2β−180◦−(180◦−2β−2γ)\n2\nã\n= 1\n2(β−γ).\nFurthermore, using thatH is the orthocenter ofBIC and has to lie outside of it but insideω,\nwe compute\n∠ICQ = ∠ICA + ∠ACN =γ+ 1\n2 (β−γ) = 1\n2(β+γ),\n∠PBI = ∠ABI−∠ABN =β−1\n2 (β−γ) = 1\n2 (β+γ),\n∠BCH = 90◦−∠IBC = 90◦−β\n∠HIQ = ∠HCQ\n= ∠BCI + ∠ICQ−∠BCH\n=γ+ 1\n2(β+γ)−(90◦−β)\n= 1\n2 (3β+ 3γ−180◦).\nBy an analogous computation, we find that\n∠PIH = 1\n2 (3β+ 3γ−180◦).\nIf we now defineX′as the intersection oftP and HI as well asX′′the intersection oftQ and\nHI, we obtain by tangency:\n∠X′PI = 1\n2 ∠PBI = 1\n2 (β+γ) = 1\n2∠ICQ = ∠IQX′′.\nSince also\n∠PIX′= ∠PIH = 1\n2 (3β+ 3γ−180◦) = ∠HIQ = ∠X′′IQ,\nwe get two similar trianglesX′PI and X′′QI. Also, sinceHI is the power line of the circum-\ncircles ofBHI and CHI, we have\nX′P 2 =X′H·X′I, X ′′Q2 =X′′H·X′′I,\n12\nMEMO 2020 Geometry I-3\nand hence\nX′H·X′I\nX′′H·X′′I =\nÅX′P\nX′′Q\nã2\n=\nÅX′I\nX′′I\nã2\n,\nusing similarity. By simplifying those terms, we get\nX′H\nX′′H = X′I\nX′′I = X′H +HI\nX′′H +HI,\nhence X′H·HI = X′′H·HI and thereforeX′H = X′′H, which implies thatX′= X′′= X.\nBy the power ofX toBHI andCHI, we finally getXP 2 =XQ 2, soXP =XQ as desired.\nTo see thatNY = QY, defineD as the second intersection of the circumcircles ofCHI and\nABC and letY′be the intersection ofCD andtN. We want to show thatY′=Y. Using that\n∠CQI = ∠CHI = 90◦−∠BCH = 90◦−(90◦−∠IBC ) = β, we compute\n∠QDY′= 180◦−∠CDQ\n= ∠QIC\n= 180◦−∠CQI−∠ICQ\n= 180◦−β−1\n2(β+γ).\nOn the other hand, the tangency toωat N yields\n∠Y′NQ = ∠Y′NC = ∠NBC = ∠IBC + ∠NBI =β+ 1\n2(β+γ).\nNow, since ∠QDY′+ ∠Y′NQ = 180◦, we conclude thatNQDY′is a cyclic quadrilateral. The\nsame is true forNQDY because of\n∠YND = ∠NCD = ∠QCD = ∠YQD,\nwhere we used tangency oftN to ωand oftQ to the circumcircle ofCHI. Since both Y and\nY′lie on tN, they have to be the same point. Since CD is the power line of circleωand\nthe circumcircle ofCHI, we obtainYQ 2 = YN 2, so QY = NY . We can find a completely\nanalogous argument forPZ =NZ to conclude.\n13\nMEMO 2020 Number Theory I-4",
+      "source": {
+        "page_url": "https://memo2020.memo-official.org/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2020.memo-official.org/wp-content/uploads/2020/11/2020-11-15-MEMO-2020-Problems-solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2020-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 9,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 9, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "memo-2020-i4",
+      "year": 2020,
+      "problem_code": "I-4",
+      "statement_en": "Find all positive integersn for which there exist positive integersx1, x2, ..., xn such that\n1\nx2\n1\n+ 2\nx2\n2\n+ 4\nx2\n3\n+···+ 2n−1\nx2\nn\n= 1.",
+      "solution_text_en": "Answer. Solutions exist for all positive integersn except forn = 2.\nSolution:\n• n = 1:\nHere, x1 := 1 provides a solution, since\n1\n12 = 1.\n• n = 2:\nHere, no solution exists. Indeed,x1 = 1 or x2 = 1 yields 1\nx2\n1\n+ 2\nx2\n2\n> 1, whilex1,x 2≥2\nleads to 1\nx2\n1\n+ 2\nx2\n2\n≤1\n4 + 2\n4 = 3\n4 < 1.\n• n = 4:\nHere, (x1,x 2,x 3,x 4) := (3, 3, 3, 6) provides a solution, since\n1\n32 + 2\n32 + 4\n32 + 8\n62 = 7\n9 + 8\n36 = 7\n9 + 2\n9 = 1.\n• Induction step fromn to (n + 2):\nLet (y1,y 2,...,y n) be a solution forn. I.e.,\n1\ny2\n1\n+ 2\ny2\n2\n+ 4\ny2\n3\n+···+ 2n−1\ny2\nn\n= 1.\nThen\n(x1,x 2,...,x n+2) := (2, 2, 4y1, 4y2,..., 4yn)\n14\nMEMO 2020 Number Theory I-4\nis a solution for(n + 2), since\n1\nx2\n1\n+ 2\nx2\n2\n+ 4\nx2\n3\n+···+ 2n+1\nx2\nn+2\n= 1\n22 + 2\n22 + 4\n(4y1)2 +···+ 2n+1\n(4yn)2\n= 1\n4 + 2\n4 + 4\n16\nï 1\n(y1)2 +···+ 2n−1\n(yn)2\nò\n= 3\n4 + 1\n4·1\n= 1.\nRemark. There are other induction steps possible. For example fromn to (n + 3):\nLet (y1,y 2,...,y n) be a solution forn. I.e.,\n1\ny2\n1\n+ 2\ny2\n2\n+ 4\ny2\n3\n+···+ 2n−1\ny2\nn\n= 1.\nThen\n(x1,x 2,...,x n+3) := (3, 3, 3, 6y1, 6y2,..., 6yn)\nis a solution for(n + 3), since\n1\nx2\n1\n+ 2\nx2\n2\n+ 4\nx2\n3\n+···+ 2n+2\nx2\nn+3\n= 1\n32 + 2\n32 + 4\n32 + 8\n(6y1)2 +···+ 2n+2\n(6yn)2\n= 1\n9 + 2\n9 + 4\n9 + 8\n36\nï 1\n(y1)2 +···+ 2n−1\n(yn)2\nò\n= 7\n9 + 2\n9·1\n= 1.\nIn order to complete this approach, of course, solutions have to be provided forn = 1 , 3,\nand 5.\nIn fact, every solution(z1,...,z k) fork yields an induction step fromn to (n +k−1). Indeed,\nif (y1,...,y n) is a solution then\n(z1,...,z k−1,z k·y1,...,z k·yn)\nis a solution, too. The two constructions presented above belong to(2, 2, 4) and (3, 3, 3, 6).\nSo it is conceivable that someone finds an induction fromnto, say,(n+6). In this case, solutions\nfor six suitable small values ofn would be necessary in order to complete the approach.\n15",
+      "source": {
+        "page_url": "https://memo2020.memo-official.org/",
+        "downloads": [
+          {
+            "kind": "solution",
+            "url": "https://memo2020.memo-official.org/wp-content/uploads/2020/11/2020-11-15-MEMO-2020-Problems-solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/memo_official/pdf/memo-2020-solution.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    }
+  ]
+}

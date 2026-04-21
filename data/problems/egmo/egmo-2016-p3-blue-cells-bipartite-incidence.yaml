@@ -1,0 +1,147 @@
+{
+  "id": "egmo-2016-p3-blue-cells-bipartite-incidence",
+  "title": "Синие клетки и двудольный граф строк и столбцов, EGMO 2016 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "grid_array",
+      "row_column_incidence",
+      "bipartite_graph"
+    ],
+    "methods": [
+      "degree_counting",
+      "connected_component_bound"
+    ],
+    "transformations": [
+      "blue_cells_to_bipartite_incidence_graph"
+    ],
+    "goal": [
+      "minimum_blue_cells"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_incidence_graph"
+    ],
+    "invariants": [
+      "sum_of_degrees",
+      "component_size_lower_bound"
+    ],
+    "keywords": [
+      "egmo_2016_p3",
+      "egmo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(m\\) — положительное целое. Рассматривается таблица \\(4m\\times 4m\\) из единичных клеток. Две разные клетки называются связанными, если они лежат в одной строке или в одном столбце. Некоторые клетки покрашены в синий цвет так, что каждая клетка связана хотя бы с двумя синими клетками. Найдите минимально возможное число синих клеток.",
+        "source_id": "src-egmo-2016-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Построим двудольный граф: слева вершины-строки, справа вершины-столбцы, а каждая синяя клетка даёт ребро между своей строкой и своим столбцом. Условие задачи превращается в локальное ограничение на суммы степеней концов каждого возможного пересечения строки и столбца.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-row-column-incidence",
+      "title": "Граф строк и столбцов",
+      "text": "Синяя клетка естественно становится ребром между её строкой и её столбцом; число синих клеток равно числу рёбер.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-component-at-least-four",
+      "title": "Компоненты не бывают слишком малы",
+      "text": "з условия на связанные клетки следует, что в графе нет изолированных вершин и что каждая связная компонента содержит как минимум четыре вершины.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Во втором официальном решении строится двудольный граф, где одна доля состоит из строк таблицы, другая — из столбцов, а каждая синяя клетка даёт ребро между своей строкой и своим столбцом. Тогда число синих клеток равно числу рёбер. Условие задачи переписывается как ограничение на суммы степеней концов для любой пары строка-столбец; отсюда сразу следует, что пустых строк и столбцов нет, а каждая связная компонента графа содержит хотя бы 4 вершины. Так как всего вершин \\(8m\\), компонент не больше \\(2m\\), а значит число рёбер не меньше \\(8m-2m=6m\\). Блочная конструкция из официального решения достигает этой оценки, так что минимум равен \\(6m\\).",
+      "idea_ids": [
+        "idea-row-column-incidence",
+        "idea-component-at-least-four"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "EGMO 2016 P3; двудольный граф строк и столбцов является центральной моделью официального решения.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "double_counting",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "degree_counting",
+        "connected_component_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-egmo-2016-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая модель используется в официальном решении, а не в исходной формулировке.",
+    "relations_status": "base_done"
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "year": 2023,
+  "edition_code": "rmm2023",
+  "problems_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=problems_math",
+  "solutions_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=solutions_math",
+  "problem_pdf_count": 2,
+  "solution_pdf_count": 2,
+  "problem_count_extracted": 6,
+  "problems": [
+    {
+      "id": "rmm-2023-p1",
+      "year": 2023,
+      "problem_number": 1,
+      "statement_en": "Determine all prime numbers p and all positive integers x\nand y satisfying\nx3 + y3 = p(xy + p).",
+      "solution_text_en": "Determine all prime numbers p and all positive integers x and y satisfying x3+y3 =\np(xy + p).\nSerbia, Dushan Djukitch\nSolution 1. Up to a swap of the first two en-\ntries, the only solutions are ( x, y, p) = (1 , 8, 19),\n(x, y, p) = (2 , 7, 13) and ( x, y, p) = (4 , 5, 7). The\nverification is routine.\nSet s = x + y. Rewrite the equation in the form\ns(s2 − 3xy) = p(p + xy), and express xy :\nxy = s3 − p2\n3s + p . (∗)\nIn particular,\ns2 ≥ 4xy = 4(s3 − p2)\n3s + p ,\nor\n(s − 2p)(s2 + sp + 2p2) ≤ p2 − p3 < 0,\nso s < 2p.\nIf p | s, then s = p and xy = p(p − 1)/4\nwhich is impossible for x + y = p (the equation\nt2 − pt + p(p − 1)/4 = 0 has no integer solutions).\nIf p ∤ s, rewrite ( ∗) in the form\n27xy = (9s2 − 3sp + p2) − p2(p + 27)\n3s + p .\nSince p ∤ s, this could be integer only if 3 s + p |\np + 27, and hence 3 s + p | 27 − s.\nIf s ̸= 9, then |3s − 27| ≥ 3s + p, so 27 − 3s ≥\n3s + p, or 27 − p ≥ 6s, whence s ≤ 4. These cases\nare ruled out by hand.\nIf s = x + y = 9, then ( ∗) yields xy = 27 − p.\nUp to a swap of x and y, all such triples ( x, y, p)\nare (1, 8, 19), (2, 7, 13), and (4 , 5, 7).\nSolution 2. Set again s = x + y. It is readily\nchecked that s ≤ 8 provides no solutions, so as-\nsume s ≥ 9. Notice that x3+y3 = s(x2 −xy+y2) ≥\n1\n4 s3 and xy ≤ 1\n4 s2. The condition in the statement\nthen implies s2(s − p) ≤ 4p2, so s < p + 4.\nNotice that p divides one of s and x2 − xy + y2.\nThe case p | s is easily ruled out by the con-\ndition s < p + 4: The latter forces s = p,\nso x2 − xy + y2 = xy + p, i. e., (x − y)2 = p, which\nis impossible.\nHence p | x2 − xy + y2, so x2 − xy + y2 = kp\nand xy + p = ks for some positive integer k, imply-\ning\ns2 + 3p = k(3s + p). (∗∗)\nRecall that p ∤ s to infer that 3k ≡ s (mod p). We\nnow present two approaches.\n1st Approach. Write 3 k = s + mp for some\ninteger m and plug k = 1\n3(s + mp) into ( ∗∗) to\nget s = (9 − mp)/(3m + 1). The condition s ≥ 9\nthen forces m = 0, so s = 9, in which case, up to a\nswap of the first two entries, the solutions turn out\nto be ( x, y, p) = (1 , 8, 19), ( x, y, p) = (2 , 7, 13) and\n(x, y, p) = (4, 5, 7).\n2nd Approach. Notice that k = s2+3p\n3s+p = 3 +\ns(s−9)\n3s+p ≤ 3+ 1\n3(s−9) = 1\n3 s ≤ 1\n3(p+3), since s < p +4.\nHence 3 k ≤ p + 3, and the congruence 3 k ≡ s\n(mod p) then forces either 3 k = s − p or 3k = s.\nThe case 3 k = s − p is easily ruled out: Other-\nwise, ( ∗∗) boils down to 2 s + p + 9 = 0, which is\nclearly impossible.\nFinally, if 3 k = s, then ( ∗∗) reduces to s = 9.\nIn this case, up to a swap of the first two en-\ntries, the only solutions are ( x, y, p) = (1 , 8, 19),\n(x, y, p) = (2, 7, 13) and ( x, y, p) = (4, 5, 7).\nRemark. The upper bound for k can equally\nwell be established by considering the variation\nof (s2 + 3p)/(3s + p) for 1 ≤ s ≤ p + 3. The maxi-\nmum is achieved at s = p + 3:\nmax\n1≤s≤p+3\ns2 + 3p\n3s + p = (p + 3)2 + 3p\n3(p + 3) + p = p2 + 9p + 9\n4p + 9\n< p + 4\n3 ,\nso the integer 3 k ≤ p + 3 < p + 9 ≤ p + s and the\nremainder of the proof now goes along the few final\nlines above.",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 3,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 3, 'combinatorics': 1}"
+    },
+    {
+      "id": "rmm-2023-p2",
+      "year": 2023,
+      "problem_number": 2,
+      "statement_en": "Fix an integer n ⩾ 3. Let S be a set of n points in the plane,\nno three of which are collinear. Given different points A, B, C in S, the\ntriangle ABC is nice for AB if Area( ABC) ⩽ Area(ABX) for all X in S\ndifferent from A and B. (Note that for a segment AB there could be several\nnice triangles.) A triangle is beautiful if its vertices are all in S and it is nice\nfor at least two of its sides.\nProve that there are at least 1\n2(n − 1) beautiful triangles.",
+      "solution_text_en": "Fix an integer n ⩾ 3. Let S be a set of n points in the plane, no three of\nwhich are collinear. Given different points A, B, C in S, the triangle ABC is nice for AB if\nArea(ABC) ⩽ Area(ABX) for all X in S different from A and B. (Note that for a segment AB\nthere could be several nice triangles.) A triangle is beautiful if its vertices are all in S and it is\nnice for at least two of its sides.\nProve that there are at least 1\n2(n − 1) beautiful triangles.\nBulgaria, Alexander Ivanov\nSolution. For convenience, a triangle whose\nvertices all lie in S will be referred to as a triangle\nin S. The argument hinges on the following obser-\nvation:\nGiven any partition of S, amongst all triangles\nin S with at least one vertex in each part, those of\nminimal area are all adequate.\nIndeed, amongst the triangles under considera-\ntion, one of minimal area is suitable for both sides\nwith endpoints in different parts.\nWe now present two approaches for the lower\nbound.\n1st Approach. By the above observation, the 3-\nuniform hypergraph of adequate triangles is con-\nnected. It is a well-known fact that such a hyper-\ngraph has at least 1\n2(n − 1) hyperedges, whence the\nrequired lower bound\n2nd Approach. For a partitionS = A⊔B, an area\nminimising triangle as above will be called ( A, B)-\nminimal. Thus, ( A, B)-minimal triangles are all ad-\nequate.\nConsider now a partition of S = A ⊔ B, where\n|A| = 1. Choose an ( A, B)-minimal triangle and\nadd to A its vertices from B to obtain a new par-\ntition also written S = A ⊔ B. Continuing, choose\nan ( A, B)-minimal triangle and add to A its ver-\ntices/vertex from B and so on and so forth all the\nway down for at least another 1\n2(n −5) steps — this\nworks at least as many times, since at each step, B\nloses at most two points. Clearly, each step provides\na new adequate triangle, so the overall number of\nadequate triangles is at least 1\n2(n − 1), as required.\nRemark. In fact, ⌊n/2⌋ is the smallest possible\nnumber of adequate triangles, as shown by the the\nconfigurations described below.\nLet first n = 2k − 1. Consider a regular n-gon\nP = A1A2 . . . An. Choose a point Bi on the perpen-\ndicular bisector of AiAi+1 outside P and sufficiently\nclose to the segment AiAi+1. We claim that there\nare exactly k − 1 = ⌊n/2⌋ adequate triangles in the\nset\nS = {A1, A2, . . . , Ak, B1, B2, . . . , Bk−1}.\nNotice here that the arcA1A2 . . . Ak is less than half\nof the circumcircle of P, so the angles ∠AuAvAw,\n1 ≤ u < v < w ≤ k, are all obtuse.\nAi\nBi\nAi+1 Aj\nBj\nAj+1\nTo prove the claim, list the suitable triangles for\neach segment.\nFor segments AiAi+1, AiBi, and BiAi+1, it is\nAiBiAi+1.\nFor segment AiAj+1, j ≥ i + 1, those are\nAiBiAj+1 and AiBjAj+1.\nFor segment AiBj, j ≥ i + 1, it is AiBiBj.\nFor segment BiAj+1, j ≥ i + 1, it is BiBjAj+1.\nFor segment BiBj, i < j , those are BiAi+1Bj\nand BiAjBj.\nIt is easily seen that the only triangles occur-\nring twice are AiBiAi+1, hence they are the only\nadequate triangles.\nFor n = 2 k − 2, just remove Ak from the\nabove example. This removes the adequate trian-\ngle Ak−1Bk−1Ak and provides only one new such in-\nstead, namely, Bk−2Ak−1Bk−1. Consequently, there\nare exactly k − 1 = ⌊n/2⌋ adequate triangles in the\nset\nS = {A1, A2, . . . , Ak−1, B1, B2, . . . , Bk−1}.",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 6
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "graph",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 6}"
+    },
+    {
+      "id": "rmm-2023-p3",
+      "year": 2023,
+      "problem_number": 3,
+      "statement_en": "Let n ⩾ 2 be an integer, and let f be a 4n-variable polynomial\nwith real coefficients. Assume that, for any 2n points (x1, y1), . . . , (x2n, y2n)\nin the Cartesian plane, f(x1, y1, . . . , x2n, y2n) = 0 if and only if the points\nform the vertices of a regular 2 n-gon in some order, or are all equal.\nDetermine the smallest possible degree of f.\n(Note, for example, that the degree of the polynomial\ng(x, y) = 4x3y4 + yx + x − 2\nis 7 because 7 = 3 + 4.)",
+      "solution_text_en": "Let n ⩾ 2 be an integer, and let f be a 4n-variable polynomial with real coefficients.\nAssume that, for any 2 n points (x1, y1), . . . , (x2n, y2n) in the plane, f(x1, y1, . . . , x2n, y2n) = 0 if\nand only if the points form the vertices of a regular 2 n-gon in some order, or are all equal.\nDetermine the smallest possible degree of f.\nUSA\nSolution. The smallest possible degree is 2 n.\nIn what follows, we will frequently write Ai =\n(xi, yi), and abbreviate P (x1, y1, . . . , x2n, y2n) to\nP (A1, . . . , A2n) or as a function of any 2 n points.\nSuppose that f is valid. First, we note a key\nproperty:\nClaim (Sign of f ). f attains wither only nonneg-\native values, or only nonpositive values.\nProof. This follows from the fact that the zero-set\nof f is very sparse: if f takes on a positive and a\nnegative value, we can move A1, . . . , A 2n from the\nnegative value to the positive value without ever\nhaving them form a regular 2 n-gon — a contradic-\ntion. □\nThe strategy for showing deg f ≥ 2n is the fol-\nlowing. We will animate the points A1, . . . , A 2n\nlinearly in a variable t; then g(t) = f(A1, . . . , A2n)\nwill have degree at most deg f (assuming it is not\nzero). The claim above then establishes that any\nroot of g must be a multiple root, so if we can show\nthat there are at least n roots, we will have shown\ndeg g ≥ 2n, and so deg f ≥ 2n.\nGeometrically, our goal is to exhibit 2 n linearly\nmoving points so that they form a regular 2 n-gon a\ntotal of n times, but not always form one.\nWe will do this as follows. Draw n mirrors\nthrough the origin, as lines making angles of π\nn with\neach other. Then, any point P has a total of 2 n\nreflections in the mirrors, as shown below for n = 5.\n(Some of these reflections may overlap.)\nDraw the n angle bisectors of adjacent mirrors.\nObserve that the reflections of P form a regular 2n-\ngon if and only if P lies on one of the bisectors.\nWe will animate P on any line l which intersects\nall n bisectors (but does not pass through the ori-\ngin), and let P1, . . . , P 2n be its reflections. Clearly,\nthese are also all linearly animated, and because of\nthe reasons above, they will form a regular 2 n-gon\nexactly n times, when l meets each bisector. So this\nestablishes deg f ≥ 2n for the reasons described pre-\nviously.\nNow we pass to constructing a polynomial f of\ndegree 2n having the desired property. First of all,\nwe will instead find a polynomial g which has this\nproperty, but only when points with sum zero are\ninput. This still solves the problem, because then\nwe can choose\nf(A1, A2, . . . , A2n) = g(A1 −  ̄A, . . . , A2n −  ̄A),\nwhere  ̄A is the centroid of A1, . . . , A 2n. This\nhas the upshot that we can now always assume\nA1 + · · · + A2n = 0, which will simplify the ensu-\ning discussion.\nl\nP = P1\nP2\nP3P4\nP5\nP6\nP7\nP8\nP9 P10\nP11\nP12\nWe will now construct a suitable g as a sum of\nsquares. This means that, if we write g = g2\n1 + g2\n2 +\n· · ·+g2\nm, then g = 0 if and only if g1 = · · · = gm = 0,\nand that if their degrees are d1, . . . , d m, then g has\ndegree at most 2 max(d1, . . . , dm).\nThus, it is sufficient to exhibit several polyno-\nmials, all of degree at most n, such that 2 n points\nwith zero sum are the vertices of a regular 2 n-gon\nif and only if the polynomials are all zero at those\npoints.\nFirst, we will impose the constraints that all\n|Ai|2 = x2\ni + y2\ni are equal. This uses multiple de-\ngree 2 constraints.\nNow, we may assume that the points\nA1, . . . , A 2n all lie on a circle with centre 0, and\nA1 + · · · + A2n = 0. If this circle has radius 0, then\nall Ai coincide, and we may ignore this case.\nOtherwise, the circle has positive radius. We\nwill use the following lemma.\nLemma. Suppose that a1, . . . , a 2n are complex\nnumbers of the same non-zero magnitude, and sup-\npose that ak\n1 + · · · + ak\n2n = 0, k = 1 , . . . , n. Then\na1, . . . , a 2n form a regular 2 n-gon centred at the\norigin. (Conversely, this is easily seen to be suffi-\ncient.)\nProof. Since all the hypotheses are homoge-\nnous, we may assume (mostly for convenience) that\na1, . . . , a 2n lie on the unit circle. By Newton’s\nsums, the k-th symmetric sums of a1, . . . , a 2n are\nall zero for k in the range 1, . . ., n.\nTaking conjugates yields a−k\n1 + · · · + a−k\n2n = 0,\nk = 1 , . . . , n. Thus, we can repeat the above\nlogic to obtain that the k-th symmetric sums of\na−1\n1 , . . . , a −1\n2n are also all zero for k = 1 , . . . , n.\nHowever, these are simply the (2 n − k)-th symmet-\nric sums of a1, . . . , a 2n (divided by a1 · · · a2n), so\nthe first 2n−1 symmetric sums of a1, . . . , a 2n are all\nzero. This implies that a1, . . . , a 2n form a regular\n2n-gon centred at the origin. □\nWe will encode all of these constraints into our\npolynomial. More explicitly, write ar = xr + yri;\nthen the constraint ak\n1 + · · · + ak\n2n = 0 can be ex-\npressed as pk + qki = 0, where pk and qk are real\npolynomials in the coordinates. To incorporate this,\nsimply impose the constraints pk = 0 and qk = 0;\nthese are conditions of degreek ≤ n, so their squares\nare all of degree at most 2 n.\nTo recap, taking the sum of squares of all of these\nconstraints gives a polynomial f of degree at most\n2n which works whenever A1 + · · · + A2n = 0. Fi-\nnally, the centroid-shifting trick gives a polynomial\nwhich works in general, as wanted.\nRemark 1. Here is a more detailed approach of the\nmirror-reflection argument. Let reiθ be the polar\nrepresentation of the point P . The polar represen-\ntations of its mirrored images are then\nreiθ, re −iθ, re i( 2π\nn +θ), re i( 2π\nn −θ),\n. . . , re i\n\u0010\n2(n−1)π\nn +θ\n\u0011\n, re i\n\u0010\n2(n−1)π\nn −θ\n\u0011\n.\nClearly, they are all linear with respect to P and lie\non the circle of radius r centred at the origin. As\nlisted above, the 2 n images are not necessarily in\ncircular order around the circle. For convenience,\nassume 0 ≤ θ ≤ π\nn, so the list now displays them\nin circular order. These images form the vertices of\na regular 2 n-gon if and only if the angle between\nevery two consecutive terms in the list (read circu-\nlarly) is π\nn. This is clearly the case if and only if\nθ = π\n2n. Consequently, the images are the vertices\nof a regular 2 n-gon if and only if P lies on the in-\nternal bisector of the angle formed by some pair of\nconsecutive mirrors.\nRemark 2. We sketch here some versions of the\narguments in the solution above.\nTo show that deg f ≥ 2n, we use the same con-\nstancy of sign claim and the convention that the\npolynomial is a function of points (= pairs of coor-\ndinates) A1, A2, . . . , A2n. Assume that the values of\nf are all non-negative.\nWrite B(φ) = (cos φ, sin φ). Choose a sub-\nstitution A2i−1 = B\n\u0000\n(2i − 1) π\nn + φ\n\u0001\nand A2i =\nB\n\u0000\n2i π\nn − φ\n\u0001\n, i = 1 , 2, . . . , n. Notice that the co-\nordinates of the points A1, A2, . . . , A2n are all linear\nfunctions in c = cos φ and s = sin φ, so, substituting\nthese expressions into f, we get a polynomial g(c, s)\nwith deg g ≤ deg f.\nNow, the values of g are all non-negative (each\nbeing one of f), and, on the circle c2 + s2 = 1,\nit vanishes at exactly 2 n points, namely, ( c, s) =\u0000\ncos π\nn k, sin π\nn k\n\u0001\n, k = 1, . . . ,2n. We show that these\nproperties already yield deg g ≥ 2n.\nObviously, if g(c, s) possesses the properties\nlisted above, then so does g(c, −s), and hence so\ndoes  ̄g(c, s) = g(c, s) + g(c, −s).\nThe polynomial  ̄g is even in s, so it in fact de-\npends only on s2, and we may plug s2 = 1 − c2 into\nit, to obtain a polynomial h(c) with deg h ≤ deg g\nwhich is non-negative on [−1, 1] and vanishes on this\nsegment exactly at c = cos π\nn k. These are n+1 such\npoints, and, except c = ±1, they should all be roots\nof h of even multiplicity, due to sign conservation.\nAll in all, this provides 2 n roots of h, counted with\nmultiplicity, hence deg f ≥ deg g ≥ deg h ≥ 2n, as\ndesired.\nFor a bit alternative construction of a suitablef,\none may notice that the Lemma in the above solu-\ntion can be changed to impose vanishing of the ele-\nmentary symmetric polynomials σi(a1, a2, . . . , a2n),\ni = 1, 2, . . . , n, instead of Newton sums. Indeed, if\nthe σi all vanish, then so do the polynomials\nσi( ̄a1, a2, . . . , ̄a2n) = |a1|2iσ2n−i(a1, a2, . . . , a2n)\n ̄a1 ̄a2 . . . ̄a2n\n,\nso σi(a1, . . . , a2n) also vanishes fori = n+1, . . . ,2n−\n1. Hence a1, a2, . . . , a2n are the roots of z2n − |a1|n,\nas desired.",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 3,
+        "algebra": 5,
+        "number_theory": 1,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "adjacent",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 3, 'algebra': 5, 'number_theory': 1, 'combinatorics': 3}"
+    },
+    {
+      "id": "rmm-2023-p4",
+      "year": 2023,
+      "problem_number": 4,
+      "statement_en": "Given an acute triangle ABC, let H and O be its ortho-\ncentre and circumcentre, respectively. Let K be the midpoint of the line\nsegment AH. Also let l be a line through O, and let P and Q be the\northogonal projections of B and C onto l, respectively.\nProve that KP + KQ ⩾ BC.",
+      "solution_text_en": "Given a triangle ABC, let H and O be its orthocentre and circumcentre, respectively.\nLet K be the midpoint of the line segment AH. Let further l be a line through O, and let P\nand Q be the orthogonal projections of B and C onto l, respectively. Prove that KP + KQ ≥ BC.\nRussia, V asily Mokin\nSolution 1. Fix the origin at O and the real axis\nalong l. A lower case letter denotes the complex\ncoordinate of the corresponding point in the config-\nuration. For convenience, let |a| = |b| = |c| = 1.\nClearly, k = a + 1\n2(b + c), p = a + 1\n2\n\u0000\nb + 1\nb\n\u0001\nand\nq = a + 1\n2\n\u0000\nc + 1\nc\n\u0001\n.\nThen |k − p| =\n\na + 1\n2\n\u0000\nc − 1\nb\n\u0001\n\n = 1\n2 |2ab + bc − 1|,\nsince |b| = 1.\nSimilarly, |k − q| = 1\n2 |2ac + bc − 1|, so, since\n|a| = 1,\n|k − p| + |k − q| = 1\n2 |2ab + bc − 1| + 1\n2 |2ac + bc − 1|\n≥ 1\n2 |2a(b − c)| = |b − c|,\nas required.\nSolution 2. Let M be the midpoint of BC, and\nlet R be the projection of M onto l. In other words,\nR is the midpoint of P Q. Since ∠BP O = ∠BM O =\n90◦, the points B, P , O, and M are concyclic, so\n∠(OM, OB) = ∠(P M, P B) = ∠(P M, M R), so the\nright triangles M RP and OM B are similar and have\ndifferent orientation. Similarly, the triangles M RQ\nand OM C are similar and have different orientation,\nhence so are the triangles OBC and M P Q.\nA\nB C\nP\nQ\nK\nH\nO\nM\nR\nL\nRecall that − − →AH = 2− − →OM, so − − →OM = − − →AK. Hence\nAOM K is a parallelogram, so M K = OA = OB =\nOC.\nConsider the rotation through ∠(− − →OC, − − →OB)\nabout M. It maps P to Q; let it map K to some\npoint L. Then M K = M L = OB = OC and\n∠LM K = ∠BOC , so the triangles OBC and M KL\nare congruent. Hence BC = KL ≤ KQ + LQ =\nKQ + KP , as required.\nSolution 3. Let α = ∠(P B, BC) = ∠(QC, BC).\nSince P lies on the circle of diameter OB,\n∠(OP, OM ) = α. Since also Q lies on the cir-\ncle of diameter OC, it immediately follows that\nM P = M Q = R sin α by sine theorem in triangles\n△OP M and △OQM.\nBecause P Q is the projection of BC on line l,\nit follows that P Q = BC sin α. Just like in the first\nsolution, KM = AO = R (the circumradius of tri-\nangle △ABC).\nNow apply Ptolemy’s inequality for the quadri-\nlateral KP M Q: KP · M Q+ KQ · M P ≥ P Q· KM ,\nand now substitute the relations from above, leading\nto\nR sin α(KP + KQ) ≥ R sin α · BC,\nwhich is precisely the conclusion whenever sinα ̸= 0.\nThe case when sin α = 0 can be treated either di-\nrectly, or via a limit argument.\nSolution 4. Denote by R and O the circumradius\nand the circumcentre of triangle ABC, respectively.\nAs in Solution 1, we see that M K = R.\nAssume now that l is fixed, while A moves along\nthe fixed circle ( ABC). Then K will move along\na cricle centred at M with radius R. We must\nshow that for each point K on this circle we have\nBC ≤ KP + KQ. In doing so, we prove that the\nafore-mentioned circle contains an ellipse with foci\nat Q and P with distance BC.\nLet S be the foot of the perpendicular from M\nto P Q, it is easy to verify that S is the center of\nthe ellipse. We shall then consider it as the origin.\nLet u = BC\n2 and t = P Q\n2 ; notice that u is the major\nsemi-axis of the ellipse and\n√\nu2 − t2 is the minor\none. Assume X(x, y) is a point on this ellipse. We\nnow need to prove M X ≤ R.\nSince X is on the ellipse, we can write ( x, y) =\n(u cos θ,\n√\nu2 − t2 sin θ), for some θ ∈ (0, 2π). Since\nM X2 = x2 + (y + M S)2, we can expand and obtain\nM X2 = u2+M S2 −t2 ·sin2 θ+2M S·\np\nu2 − t2 ·sin θ.\nAdd and subtract M S2(u2 − t2)/t2 in order to\nobtain a square on the right hand side: M X2 = u2+\nM S2 + M S2(u2−t2)\nt2 −\n\u0010\nt sin θ − M S\n√\nu2−t2\nt\n\u00112\n. It now\nsuffices to show that u2 + M S2 + M S2(u2 − t2)\nt2 =\nR2, since then it would immediately follow that\nM X2 ≤ R2.\nApplying Pythagorean theorem in triangles\nOBM and OSM , we obtain R2 = u2 + OM 2 and\nOM 2 = M S2 + OS 2, so it remains to prove that\nOS 2 = M S2(u2−t2)\nt2 . Let α = ∠(OP, BM ), then\nOS/M S = tan α and t/u = cos α, so OS 2 =\nM S2 tan2 α = M S2\n\u0010\n1−cos2 α\ncos2 α\n\u0011\n= M S2· u2−t2\nt2 , which\nis the desired result.",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 2,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 2, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "rmm-2023-p5",
+      "year": 2023,
+      "problem_number": 5,
+      "statement_en": "Let P (x), Q(x), R(x) and S(x) be non-constant polynomials\nwith real coefficients such thatP (Q(x)) = R(S(x)). Suppose that the degree\nof P (x) is divisible by the degree of R(x).\nProve that there is a polynomial T (x) with real coefficients such that\nP (x) = R(T (x)).",
+      "solution_text_en": "Let P (x), Q(x), R(x) and S(x) be non-constant polynomials with real coefficients\nsuch that P (Q(x)) = R(S(x)). Suppose that the degree of P (x) is divisible by the degree of R(x).\nProve that there is a polynomial T (x) with real coefficients such that P (x) = R(T (x)).\nIran, Navid Safaei\nSolution 1. Degree comparison of P (Q(x)) and\nR(S(x)) implies that q = deg Q | deg S = s. We\nwill show that S(x) = T (Q(x)) for some polynomial\nT . Then P (Q(x)) = R(S(x)) = R(T (Q(x))), so the\npolynomial P (t) − R(T (t)) vanishes upon substitu-\ntion t = S(x); it therefore vanishes identically, as\ndesired.\nChoose the polynomials T (x) and M(x) such\nthat\nS(x) = T (Q(x)) + M(x), (∗)\nwhere deg M is minimised; if M = 0, then we get\nthe desired result. For the sake of contradiction,\nsuppose M ̸= 0. Then q ∤ m = deg M; other-\nwise, M(x) = βQ(x)m/q + M1(x), where β is some\nnumber and deg M1 < deg M, contradicting the\nchoice of M. In particular, 0 < m < s and hence\ndeg T (Q(x)) = s.\nSubstitute now ( ∗) into R(S(x)) − P (Q(x)) =\n0; let α be the leading coefficient of R(x) and\nlet r = deg R(x). Expand the brackets to\nget a sum of powers of Q(x) and other terms\nincluding powers of M(x) as well. Amongst\nthe latter, the unique term of highest degree\nis αrM (x)T (Q(x))r−1. So, for some polyno-\nmial N(x), N(Q(x)) = αrM (x)T (Q(x))r−1 +\na polynomial of lower degree.\nThis is impossible, since q divides the degree of\nthe left-hand member, but not that of the right-\nhand member.\nSolution 2. All polynomials in the solution have\nreal coefficients. As usual, the degree of a polyno-\nmial f(x) is denoted deg f(x).\nOf all pairs of polynomials P (x), R (x), satis-\nfying the conditions in the statement, choose one,\nsay, P0(x), R 0(x), so that P0(Q(x)) = R0(S(x))\nhas a minimal (positive) degree. We will show\nthat deg R0(x) = 1, say, R0(x) = αx + β for some\nreal numbers α ̸= 0 and β, so P0(Q(x)) = αS(x)+β.\nHence S(x) = T (Q(x)) for some polynomial T (x).\nNow, if P (x) and R(x) are polynomials sat-\nisfying P (Q(x)) = R(S(x)), then P (Q(x)) =\nR(T (Q(x))). Since Q(x) is not constant, it takes\ninfinitely many values, so P (x) and R(T (x)) agree\nat infinitely many points, implying that P (x) =\nR(T (x)), as required.\nIt is therefore sufficient to solve the problem\nin the particular case where F (x) = P (Q(x)) =\nR(S(x)) has a minimal degree. Let d =\ngcd(deg Q(x), deg S(x)) to write deg Q(x) = ad\nand deg S(x) = bd, where gcd( a, b) = 1. Then\ndeg P (x) = bc, deg R(x) = ac and deg F (x) = abcd\nfor some positive integer c. We will show that mini-\nmality of deg F (x) forces c = 1, so deg P (x) = b,\ndeg R(x) = a and deg F (x) = abd. The condi-\ntions a = deg R(x) | deg P (x) = b and gcd(a, b) = 1\nthen force a = 1, as stated above.\nConsequently, the only thing we are left with is\nthe proof of the fact that c = 1. For convenience, we\nmay and will assume that P (x), Q(x), R (x), S (x)\nare all monic; hence so is F (x). The argument\nhinges on the lemma below.\nLemma. If f(x) is a monic polynomial of degree\nmn, then there exists a degree n monic polyno-\nmial g(x) such that deg\n\u0000\nf(x) − g(x)m\u0001\n< (m − 1)n.\n(If m = 0 or 1, or n = 0, the conclusion is still\nconsistent with the usual convention that the iden-\ntically zero polynomial has degree −∞.)\nProof. Write f(x) = Pmn\nk=0 αkxk, αmn = 1, and\nseek g(x) = Pn\nk=0 βkxk, βn = 1, so as to fit the\nbill. To this end, notice that, for each positive inte-\nger k ≤ n, the coefficient of xmn−k in the expansion\nof g(x)m is of the form mβn−k +φk(βn, . . . , βn−k+1),\nwhere φk(βn, . . . , βn−k+1) is an algebraic expression\nin βn, . . . , β n−k+1. Recall that βn = 1 to de-\ntermine the βn−k recursively by requiring βn−k =\n1\nm\n\u0000\namn−k − φk(βn, . . . , βn−k+1)\n\u0001\n, k = 1, . . . , n.\nThe outcome is then the desired polyno-\nmial g(x).\nWe are now in a position to prove that c =\n1. Suppose, if possible, that c > 1. By the\nlemma, there exist monic polynomials U(x) and\nV (x) of degree b and a, respectively, such that\ndeg\n\u0000\nP (x) − U(x)c\u0001\n< (c − 1)b and deg\n\u0000\nR(x) −\nV (x)c\u0001\n< (c − 1)a. Then deg\n\u0000\nF (x) − U(Q(x))c\u0001\n=\ndeg\n\u0000\nP (Q(x))−U(Q(x))c\u0001\n< (c−1)abd, deg\n\u0000\nF (x)−\nV (S(x))c\u0001\n= deg\n\u0000\nR(S(x))−V (S(x))c\u0001\n< (c−1)abd,\nso deg\n\u0000\nU(Q(x))c − V (S(x))c\u0001\n= deg\n\u0010\u0000\nF (x) −\nV (S(x))c\u0001\n−\n\u0000\nF (x) − U(Q(x))c\u0001\u0011\n< (c − 1)abd.\nOn the other hand, U(Q(x))c − V (S(x))c =\u0000\nU(Q(x)) − V (S(x))\n\u0001\u0000\nU(Q(x))c−1 + · · · +\nV (S(x))c−1\u0001\n.\nBy the preceding, the degree of the left-hand\nmember is (strictly) less than ( c − 1)abd which is\nprecisely the degree of the second factor in the right-\nhand member. This forces U(Q(x)) = V (S(x)),\nso U(Q(x)) = V (S(x)) has degree abd < abcd =\ndeg F (x) — a contradiction. Consequently, c = 1.\nThis completes the argument and concludes the\nproof.",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 4,
+        "number_theory": 2,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 4, 'number_theory': 2, 'combinatorics': 1}"
+    },
+    {
+      "id": "rmm-2023-p6",
+      "year": 2023,
+      "problem_number": 6,
+      "statement_en": "Let r, g, b be non-negative integers. Let Γ be a connected\ngraph on r + g + b + 1 vertices. The edges of Γ are each coloured red, green\nor blue. It turns out that Γ has\n a spanning tree in which exactly r of the edges are red,\n a spanning tree in which exactly g of the edges are green and\n a spanning tree in which exactly b of the edges are blue.\nProve that Γ has a spanning tree in which exactly r of the edges are red,\nexactly g of the edges are green and exactly b of the edges are blue.\n(A spanning tree of Γ is a graph which has the same vertices as Γ, with\nedges which are also edges of Γ, for which there is exactly one path between\neach pair of different vertices.)",
+      "solution_text_en": "Let r, g, b be non-negative integers. Let Γ be a connected graph on r + g + b + 1\nvertices. The edges of Γ are each coloured red, green or blue. It turns out that Γ has\n a spanning tree in which exactly r of the edges are red,\n a spanning tree in which exactly g of the edges are green and\n a spanning tree in which exactly b of the edges are blue.\nProve that Γ has a spanning tree in which exactly r of the edges are red, exactly g of the edges\nare green and exactly b of the edges are blue.\nRussia, V asily Mokin\nSolution 2. For a spanning tree T in Γ, denote by\nr(T ), g(T ), and b(T ) the number of red, green, and\nblue edges in T , respectively.\nAssume that C is some collection of spanning\ntrees in Γ. Write\nr(C) = min\nT ∈C\nr(T ), g (C) = min\nT ∈C\ng(T ),\nb(C) = min\nT ∈C\nb(T ), R (C) = max\nT ∈C\n(T ),\nG(C) = max\nT ∈C\ng(T ), B (C) = max\nT ∈C\nb(T ).\nSay that a collection C is good if r ∈ [r(C, R(C)],\ng ∈ [g(C, G(C)], and b ∈ [b(C, B(C)]. By the prob-\nlem conditions, the collection of all spanning trees\nin Γ is good.\nFor a good collection C, say that an edge e of Γ\nis suspicious if e belongs to some tree in C but not\nto all trees in C. Choose now a good collection C\nminimizing the number of suspicious edges. If C\ncontains a desired tree, we are done. Otherwise,\nwithout loss of generality, r(C) < r and G(C) > g.\nWe now distinguish two cases.\nCase 1: B(C) = b.\nLet T 0 be a tree in C with g(T 0) = g(C) ≤ g.\nSince G(C) > g , there exists a green edge e con-\ntained in some tree in C but not in T 0; clearly, e is\nsuspicious. Fix one such green edge e.\nNow, for every T in C, define a spanning tree\nT1 of Γ as follows. If T does not contain e, then\nT1 = T ; in particular, ( T 0)1 = T 0. Otherwise, the\ngraph T ∖ {e} falls into two components. The tree\nT0 contains some edge e′ joining those components;\nthis edge is necessarily suspicious. Choose one such\nedge and define T1 = T ∖ {e} ∪ {e′}.\nLet C1 = {T1 : T ∈ C} . All edges suspicious for\nC1 are also suspicious for C, but no tree in C1 con-\ntains e. So the number of suspicious edges for C1 is\nstrictly smaller than that for C.\nWe now show that C1 is good, reaching thereby\na contradiction with the choice of C. For every T\nin C, the tree T1 either coincides with T or is\nobtained from it by removing a green edge and\nadding an edge of some colour. This already shows\nthat g(C1) ≤ g(C) ≤ g, G(C1) ≥ G(C) − 1 ≥ g,\nR(C1) ≥ R(C) ≥ r, r(C1) ≤ r(C) + 1 ≤ r, and\nB(C1) ≥ B(C) ≥ b. Finally, we get b(T 0) ≤\nB(C) = b; since C1 contains T 0, it follows that\nb(C1) ≤ b(T 0) ≤ b, which concludes the proof.\nCase 2: B(C) > b.\nConsider a tree T 0 in C satisfying r(T 0) =\nR(C) ≥ r. Since r(C) < r , the tree T 0 contains\na suspicious red edge. Fix one such edge e.\nNow, for every T in C, define a spanning tree T2\nof Γ as follows. If T contains e, then T2 = T ; in par-\nticular, (T 0)2 = T 0. Otherwise, the graph T ∪ {e}\ncontains a cycle C through e. This cycle contains\nan edge e′ absent from T 0 (otherwise T 0 would con-\ntain the cycle C), so e′ is suspicious. Choose one\nsuch edge and define T2 = T ∖ {e′} ∪ {e}.\nLet C2 = {T2 : T ∈ C} . All edges suspicious\nfor C2 are also suspicious for C, but all trees in C2\ncontain e. So the number of suspicious edges for C2\nis strictly smaller than that for C.\nWe now show that C2 is good, reaching again a\ncontradiction. For every T in C, the tree T2 either\ncoincides with T or is obtained from it by remov-\ning some edge and adding a red edge. This shows\nthat r(C2) ≤ r(C) + 1 ≤ r, R(C2) ≥ R(C) ≥ r,\nG(C2) ≥ G(C) − 1 ≥ g, g(C2) ≤ g(C) ≤ g,\nb(C1) ≤ b(C) ≤ b and B(C2) ≥ B(C) − 1 ≥ b. This\nconcludes the proof.",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2023/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr1/RMM2023-Day1-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2023/pr2/RMM2023-Day2-English_Solutions.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2023/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 9
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "colour",
+        "connected",
+        "cycle",
+        "edge",
+        "edges",
+        "graph",
+        "path",
+        "tree",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 9}"
+    }
+  ]
+}

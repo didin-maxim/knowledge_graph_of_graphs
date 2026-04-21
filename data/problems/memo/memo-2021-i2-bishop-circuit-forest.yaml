@@ -1,0 +1,146 @@
+{
+  "id": "memo-2021-i2-bishop-circuit-forest",
+  "title": "Цепочки слонов и лес диагоналей, MEMO 2021 I-2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "colored_board",
+      "bishop_circuit",
+      "diagonal_incidence_graph"
+    ],
+    "methods": [
+      "bipartite_graph_model",
+      "forest_edge_bound"
+    ],
+    "transformations": [
+      "red_squares_to_diagonal_bigraph"
+    ],
+    "goal": [
+      "maximum_size_without_cycle"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "number_of_components",
+      "acyclicity"
+    ],
+    "keywords": [
+      "memo_2021_i2",
+      "memo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На доске \\(m\\times n\\) некоторые клетки покрашены в красный цвет. Последовательность попарно различных красных клеток \\(a_1,a_2,\\dots,a_{2r}\\) при \\(2r\\ge 4\\) называется слоновым циклом, если для каждого \\(k\\) клетки \\(a_k\\) и \\(a_{k+1}\\) лежат на одной диагонали, а клетки \\(a_k\\) и \\(a_{k+2}\\) не лежат на одной диагонали. Найдите максимальное число красных клеток, если слоновых циклов нет.",
+        "source_id": "src-memo-2021-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Официальное решение строит двудольный граф: одна доля - положительные диагонали, другая - отрицательные, а каждая красная клетка становится ребром между двумя диагоналями. Слонов цикл в точности соответствует циклу в этом графе.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-diagonal-bigraph",
+      "title": "Красные клетки как рёбра между диагоналями",
+      "text": "Каждая красная клетка однозначно задаётся парой диагоналей двух наклонов. Поэтому конфигурация красных клеток естественно кодируется двудольным графом на множествах диагоналей.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-no-cycle-forest",
+      "title": "Отсутствие слонового цикла значит лес",
+      "text": "Слонов цикл и цикл в двудольном графе эквивалентны. Если циклов нет, граф является лесом. Кроме того, он имеет как минимум две компоненты, потому что клетки двух шахматных цветов попадают в разные компоненты. Значит число рёбер не превосходит числа вершин минус два.",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Пусть вершины одной доли - все положительные диагонали доски, а другой доли - все отрицательные диагонали. Красной клетке ставим в соответствие ребро между её двумя диагоналями. Тогда слонов цикл и цикл в этом двудольном графе эквивалентны, так что при отсутствии слоновых циклов получается лес. Всего диагоналей \\(m+n-1\\) каждого типа, то есть вершин \\(2m+2n-2\\). Граф имеет хотя бы две компоненты: клетки двух шахматных цветов не соединяются путями слона. Следовательно, у леса не более \\(2m+2n-4\\) рёбер, а значит и красных клеток. Эта оценка достигается, если покрасить две крайние строки и два крайних столбца.",
+      "idea_ids": [
+        "idea-diagonal-bigraph",
+        "idea-no-cycle-forest"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "MEMO 2021 I-2; ключевой шаг официального решения - перевод в двудольный лес на диагоналях.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "trees",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bipartite_graph_model",
+        "forest_edge_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-memo-2021-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая модель появляется в официальном решении, а не в исходной формулировке.",
+    "relations_status": "base_done"
+  }
+}

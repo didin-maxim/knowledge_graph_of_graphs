@@ -1,0 +1,132 @@
+{
+  "year": 2023,
+  "page_url": "https://bmo2023.tubitak.gov.tr/problems",
+  "problem_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_English.pdf",
+  "solution_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_Solutions.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 4,
+  "problems": [
+    {
+      "id": "bmo-2023-p1",
+      "year": 2023,
+      "problem_number": 1,
+      "statement_en": "Find all functionsf : R→ R such that for allx, y∈ R,\nxf (x + f (y)) = ( y− x)f (f (x)).",
+      "solution_text_en": "Answer: For any real c, f (x) = c− x for all x∈ R and f (x) = 0 for all\nx∈ R.\nLet P (x, y) denote the proposition that x and y satisfy the given equation. P (0, 1)\ngives us f (f (0)) = 0.\nFrom P (x, x) we get thatxf (x+f (x)) = 0 for allx∈ R, which together withf (f (0)) =\n0 gives us f (x + f (x)) = 0 for all x.\nNow let t be any real number such thatf (t) = 0 . If y is any number, we have from\nP (t− f (y), y) the equality\n(y + f (y)− t)f (f (t− f (y))) = 0\nfor all y and all t such that f (t) = 0. So, by takingy = f (0) we obtain\n(f (0)− t)f (f (t)) = 0 and hence (f (0)− t)f (0) = 0 . (A1-1)\nRecall that ast with f (t) = 0 we can takex + f (x) for any real numberx. If for all\nreals x we havex + f (x) = f (0), then f (x) must be of the formf (x) = c− x for some real\nc. It is straightforward that all functions of this form are indeed solutions.\nOtherwise we can find somea̸= 0 so that a + f (a)̸= f (0). If t = a + f (a) in (A1-1),\nthen f (0) must be equal to0. Now P (x, 0) gives us f (f (x)) =−f (x) for all realx. From\nhere P (x, x + f (x)) gives usxf (x) =−f (x)2 for all realx, which means for everyx either\nf (x) = 0 or f (x) =−x.\nLet us assume that in this case there is someb̸= 0 so that f (b) =−b. For any y we\nget fromP (b, y) and f (f (b)) =−f (b) = b the equalitybf (b + f (y)) = ( y− b)b, which gives\nus f (b + f (y)) = y− b for all y. If y̸= b, then the right hand side in the previous equality\nis not zero, so we must havef (b + f (y)) =−b− f (y), which means that−b− f (y) = y− b,\nor that f (y) =−y for all realy. But we already covered this solution (takec = 0 above).\nIf there is no suchb, then f (x) = 0 for all x, which gives us the final solution.\nThus, all such functions are of the formc− x for real c or the zero function.",
+      "source": {
+        "page_url": "https://bmo2023.tubitak.gov.tr/problems",
+        "problem_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_English.pdf",
+        "solution_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_Solutions.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2023-problems.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2023-solutions.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "bmo-2023-p2",
+      "year": 2023,
+      "problem_number": 2,
+      "statement_en": "In triangleABC, the incircle touches sidesBC, CA, AB at D, E, F respec-\ntively. Assume there exists a pointX on the lineEF such that\n∠XBC = ∠XCB = 45 ◦.\nLet M be the midpoint of the arcBC on the circumcircle ofABC not containingA. Prove\nthat the lineM D passes through E or F.",
+      "solution_text_en": "We first state a well-known lemma.\nLemma: In triangle ABC, let D, E, F be the points of tangency of the incircle to the\nsides BC, CA, AB and let I be the incenter. Then the intersection ofEF and BI lies on\nthe circle of diameterBC.\nProof: Let S be the intersection ofEF and BI. ∠BIC = ∠EF C, hence S lies on the\ncircumcircle of F IC in which IC is a diameter. Thus∠ISC = 90 ◦, hence ∠BSC = 90 ◦.\nReturning to the problem, let I be the incenter. The lemma implies that the two\nintersection points of EF with the circle of diameter BC are precisely the intersection\npoints of EF with BI and CI. We have∠BXC = 90 ◦, therefore eitherBX or CX is an\ninternal angle bisector, which means either∠B = 90 ◦ or ∠C = 90 ◦.\nAssume, without loss of generality, that∠B = 90 ◦. Then we have∠AM C = 90 ◦, so\nM is the second intersection point ofAI with the circle of diameterAC, thus the lemma\nimplies that M lies on DF.\nSolution 2.\nLet I be the incenter of△ABC and let K be the foot of the perpendicular fromD to\nEF. We begin by proving thatBKXC is cyclic, which can be done in two ways:\nFirst W ay . Note that ∠KF D = 90 ◦− ∠C\n2 and ∠KED = 90 ◦− ∠B\n2 , so by using\nKD⊥ EF, we have F K\nED = tan ∠C\n2\ntan ∠B\n2\n. Similarly, since ∠IBD = ∠B\n2 and ∠ICD = ∠C\n2 ,\nby using ID⊥ BC, we have BF\nEC = BD\nDC = tan ∠C\n2\ntan ∠B\n2\n. Then, since ∠BF K = 90 ◦ + ∠A\n2 =\n∠KEC, we conclude that△BF K and△CEK are similar, so ∠F KB = ∠CKE which\nshows line EF is the external-angle bisector of∠BKC. Therefore, X lies on both the\nperpendicular bisector of the segmentBC and the external angle bisector of∠BKC (and\nthese lines are distinct) thus it lies on the circumcirle of△BKC (in particular the midpoint\nof arc BKC).\nSecond W ay .Let T be the intersection ofEF and BC, and N be the midpoint of\nthe segmentBC. It is well-known that(T, D; B, C) is harmonic andT B· T C = T D· T N.\nOn the other hand, sinceXB = XC, we have ∠XN D = 90 ◦ = ∠XKD, so XKDN is\ncyclic and T D· T N = T K· T X. Therefore, we haveT K· T X = T B· T C, which implies\nBKXC is cyclic.\nNow we will show that either∠B = 90 ◦ or ∠C = 90 ◦. Note that ∠BKC = ∠BXC =\n90◦ = ∠F KD = ∠EKD and ∠F KB = ∠EKC. Then we have\n∠F KB = ∠BKD = ∠DKC = ∠CKE = 45 ◦.\nHence BK bisects ∠F KD, butB also lies on the perpendicular bisector ofDF. Therefore,\neither F KDB is cyclic orKF = KD while the former implies that∠B = 180 ◦−∠F KD =\n90◦. In the latter case, we haveKB ⊥ F D, which gives 90◦− ∠C\n2 = ∠KF D = 90 ◦−\n∠F KB = 45 ◦ and so ∠C = 90 ◦ as desired.\nWe consider, without loss of generality, the case where∠B = 90 ◦. Observing that\nA, I, M are collinear we get:\n∠CDI = 90 ◦ = ∠CBA = ∠CM A = ∠CM I\nHence M DIC is cyclic so:\n∠M DC = ∠M IC = 180 ◦− ∠CIA = 180 ◦−\n(\n90◦ + ∠B\n2\n)\n= 45 ◦\nWe also have ∠F DB = 90 ◦− ∠B\n2 = 45 ◦ so ∠F DB = ∠M DC and thus M, D, F are\ncollinear as required.",
+      "source": {
+        "page_url": "https://bmo2023.tubitak.gov.tr/problems",
+        "problem_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_English.pdf",
+        "solution_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_Solutions.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2023-problems.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2023-solutions.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 10,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 10, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "bmo-2023-p3",
+      "year": 2023,
+      "problem_number": 3,
+      "statement_en": "For each positive integern, denote by ω(n) the number of distinct prime\ndivisors of n (for example, ω(1) = 0 and ω(12) = 2 ). Find all polynomials P (x) with\ninteger coefficients, such that whenevern is a positive integer satisfyingω(n) > 20232023,\nthen P (n) is also a positive integer with\nω(n)≥ ω(P (n)).",
+      "solution_text_en": "Answer: All polynomials of the form f (x) = xm for some m∈ Z+ and\nf (x) = c for some c∈ Z+ with ω(c)≤ 20232023 + 1.\nFirst of all we prove the following (well-known) Lemma.Lemma: Let f (x) be a non-\nconstant polynomial with integer coefficients. Then, the number of primesp such that\np|f (n) for some n is infinite.\nProof: If f (0) = 0, then the Lemma is obvious. Otherwise, define the polynomial\ng(x) = f (xf (0))\nf (0) ,\nwhich has integer coefficients. Observe thatg(0) = 1 and if g satisfies the property of the\nLemma, then so doesf. So, we need to prove that there are infinitely many primesp such\nthat p|g(n) for some n. Suppose, for the sake of contradiction that the number of such\nprimes is finite, and let those bep1, ..., pk. Then, set n = N p1··· pk for some large N,\nsuch that|g(n)| > 1. It is evident thatg(n) has a prime divisor, but it is none of thepi’s.\nThis is a contradiction and therefore the result follows.\nLet M = 2023 2023 + 1. Observe that constant polynomialsf (x) = c with c∈ N such\nthat ω(c)≤ M satisfy the conditions of the problem. On the other hand, iff (x) = c\nwith ω(c) > M, we can choose somen such that ω(n) = M to see that the condition of\nthe problem is not satisfied. Next, we look for non-constant polynomials that satisfy the\nconditions of the problem. Let f (x) = xmg(x), where m≥ 0 and g(x) is a polynomial\nwith g(0) ̸= 0 . We claim that g is a constant polynomial. Indeed, if it is not, then\n(due to the Lemma) there exist pairwise distinct primesq1, ..., qM +1 and non-zero integers\nn1, ..., nM +1 such that qi >|g(0)| and qi|g(ni) for i = 1, 2, ..., M + 1. Set n = p1p2··· pM,\nwhere p1, ..., pM are distinct primes such that\np1≡ ni (mod qi),∀i = 1, 2, ..., M + 1\nand\npj≡ 1 (mod qi),∀i = 1, 2, ..., M + 1,∀j = 2, 3, ..., M.\nObserve that sinceqi >|g(0)|, it is impossible to haveqi|ni, so the existence of such primes\nis guaranteed by the Chinese Remainder Theorem and the Dirichlet’s Theorem. Now, for\nevery i = 1, 2, ..., M + 1 we can see thatn = p1··· pM≡ ni (mod qi), which means that\ng(n)≡ g(ni)≡ 0 (mod qi)∀i = 1, 2, ..., M + 1.\nThus, ω(f (n))≥ ω(g(n))≥ M + 1 > M = ω(n), which gives the desired contradiction.\nTherefore, f (x) = cxm, for some m≥ 1 (since f was non-constant). If c < 0, take some\nn with ω(n) = M to see that f (n) is negative and so, does not satisfy the conditions of\nthe problem. If c > 1, choose some n with ω(n) = M and gcd(n, c) = 1 to observe that\nf cannot satisfy the conditions of the problem. This means thatf (x) = xm (which is\nfor sure a solution to the problem) for somem≥ 1 and f (x) = c for some c∈ Z+ with\nω(c)≤ M are the only polynomials that satisfy the conditions of the problem.",
+      "source": {
+        "page_url": "https://bmo2023.tubitak.gov.tr/problems",
+        "problem_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_English.pdf",
+        "solution_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_Solutions.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2023-problems.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2023-solutions.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 5,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 5, 'combinatorics': 2}"
+    },
+    {
+      "id": "bmo-2023-p4",
+      "year": 2023,
+      "problem_number": 4,
+      "statement_en": "Find the greatest integerk≤ 2023 for which the following holds: whenever\nAlice colours exactlyk numbers of the set{1, 2, . . . ,2023} in red, Bob can colour some of\nthe remaining uncoloured numbers in blue, such that the sum of the red numbers is the\nsame as the sum of the blue numbers.\nTime is 4 hours and 30 minutes",
+      "solution_text_en": "Answer: 592.\nFor k≥ 593, Alice can color the greatest593 numbers 1431, 1432, . . . ,2023 and any\nother (k− 593) numbers so that their sums would satisfy\ns≥ 2023· 2024\n2 − 1430· 1431\n2 > 1\n2·\n(2023· 2024\n2\n)\n,\nthus anyhow Bob chooses his numbers, the sum of his numbers will be less than Alice’s\nnumbers’ sum.\nWe now show thatk = 592 satisfies the condition. Let s be the sum of Alice’s 592\nnumbers; note that s < 1\n2·\n(\n2023·2024\n2\n)\n. Below is a strategy for Bob to find some of the\nremaining 1431 numbers so that their sum is\ns0 = min\n{\ns, 2023.2024\n2 − 2s\n}\n⩽ 1\n3·\n(2023· 2024\n2\n)\n,\n(Clearly, if Bob finds some numbers whose sum is2023.2024\n2 − 2s, then the sum of remaining\nnumbers will bes).\nCase 1. s0≥ 2024. Let s0 = 2024 a + b, where 0 ⩽ b ⩽ 2023. Bob finds two of the\nremaining numbers with sumb or 2024 + b, then he findsa (or a− 1) pairs among the\nremaining numbers with sum2024. Note that a≤ 337 since s0≤ 1\n3·\n(\n2023·2024\n2\n)\n.\nThe\n⌊\nb−1\n2\n⌋\npairs\n(1, b− 1), (2, b− 2), . . . ,\n(⌊b− 1\n2\n⌋\n, b−\n⌊ b− 1\n2\n⌋)\n,\nhave sum of their components equal tob and the\n⌊\n2023+b\n2\n⌋\n− b pairs\n(2023, b + 1), (2022, b + 2), . . . ,\n(\n2024 + b−\n⌊ 2023 + b\n2\n⌋\n,\n⌊ 2023 + b\n2\n⌋)\nhave sum of their components equal to2024 + b. The total number of these pairs is\n⌊ 2023 + b\n2\n⌋\n− b +\n⌊ b− 1\n2\n⌋\n≥ 2022 + b\n2 + b− 2\n2 − b = 2020\n2 = 1010 > 592,\nhence some of these pairs have no red-colored components, so Bob can choose one of these\npairs and color those two numbers in blue. Thus594 numbers are colored so far.\nFurther, the 1011 pairs\n(1, 2023), (2, 2022), . . . , (1011, 1013)\nhave sum of the components equal to2024. Among these, at least 1011− 594 = 417 >\n337≥ a pairs have no components colored, so Bob can choosea (or a− 1) uncolored pairs\nand color them all blue to achieve a collection of blue numbers with their sum equal tos0.\nCase 2. s0 ≤ 2023. Note that s≥ 1 + 2 + . . . + 592 > 2023, thus we have s0 =\n2023·2024\n2 − 2s, i.e. s = 2023·2024\n4 − s0\n2 .\nIf s0 > 2· 593, at least one of the 593 pairs\n(1, s0− 1), (2, s0− 2), . . . , (593, s0− 593)\nhave no red-colored components, so Bob can choose these two numbers and immediately\nachieve the sum ofs0. And if s0≤ 2· 593, then\ns = 2023· 2024\n4 − s0\n2 ≥ (1432 + 1433 +. . .+ 2023)− 593 = 839 + (1434 + 1435 +. . .+ 2023),\nhence Alice cannot have colored any of the numbers1, 2, . . . ,838. Then Bob can easily\nchoose one or two of these numbers having the sum ofs0.",
+      "source": {
+        "page_url": "https://bmo2023.tubitak.gov.tr/problems",
+        "problem_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_English.pdf",
+        "solution_pdf_url": "https://bmo2023.tubitak.gov.tr/assets/files/BMO_2023_Solutions.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2023-problems.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/bmo_official/pdf/bmo-2023-solutions.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "color",
+        "colour"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 4}"
+    }
+  ]
+}

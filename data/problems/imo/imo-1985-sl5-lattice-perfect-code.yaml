@@ -1,0 +1,148 @@
+{
+  "id": "imo-1985-sl5-lattice-perfect-code",
+  "title": "Совершенное независимое множество в кубической решётке, IMO Shortlist 1985",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "infinite_grid_graph",
+      "perfect_code",
+      "independent_set"
+    ],
+    "methods": [
+      "modular_coloring",
+      "construction"
+    ],
+    "transformations": [
+      "lattice_to_grid_graph"
+    ],
+    "goal": [
+      "construct_perfect_independent_dominating_set"
+    ],
+    "auxiliary_graph_type": [
+      "grid_graph"
+    ],
+    "invariants": [
+      "residue_class"
+    ],
+    "standard_idea_ids": [],
+    "local_score": 10,
+    "keywords": [
+      "imo-1985-sl5-lattice-perfect-code",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "В множестве всех целочисленных точек пространства две точки называются соседними, если две координаты совпадают, а третья отличается на 1. Докажите, что существует подмножество S, в котором никакие две соседние точки не лежат вместе, а каждая точка вне S имеет ровно одного соседа из S.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-kalva-imo-1985-shortlist"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это построение совершенного 1-кода в бесконечном 6-регулярном решёточном графе Z^3.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-mod-seven-label",
+      "title": "Метка по модулю 7",
+      "text": "Функция x+2y+3z mod 7 меняется на шесть разных ненулевых остатков при переходе к шести соседям.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-perfect-code",
+      "title": "Один сосед каждого внешнего узла",
+      "text": "Класс нулевого остатка независим, а у любой другой вершины ровно один сосед попадает в нулевой класс.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Положим S={(x,y,z): x+2y+3z ≡ 0 (mod 7)}. У шести соседей точки значение этой линейной формы отличается на ±1, ±2, ±3, то есть на все ненулевые остатки по модулю 7. Поэтому две соседние точки не могут обе лежать в S. Если же значение в точке равно r≠0, то среди шести изменений ±1,±2,±3 ровно одно равно -r mod 7; соответствующий сосед и только он лежит в S.",
+      "idea_ids": [
+        "idea-mod-seven-label",
+        "idea-perfect-code"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 10,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "modular_coloring",
+        "construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kalva-imo-1985-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

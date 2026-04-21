@@ -1,0 +1,145 @@
+{
+  "id": "apmo-2010-p3-common-acquaintance-extremal",
+  "title": "Незнакомые пары с общим знакомым, APMO 2010 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "nonedge_with_common_neighbor",
+      "connected_component"
+    ],
+    "methods": [
+      "extremal_construction",
+      "component_merging_argument"
+    ],
+    "transformations": [
+      "party_to_acquaintance_graph"
+    ],
+    "goal": [
+      "maximize_special_nonedges"
+    ],
+    "auxiliary_graph_type": [
+      "acquaintance_graph"
+    ],
+    "invariants": [
+      "component_structure",
+      "count_of_special_nonedges"
+    ],
+    "keywords": [
+      "apmo_2010_p3",
+      "apmo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На вечеринке присутствуют \\(n\\) человек. Для каждой пары либо эти люди знакомы, либо нет. Каково максимально возможное число пар людей, которые не знакомы друг с другом, но имеют общего знакомого среди участников вечеринки?",
+        "source_id": "src-apmo-2010-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассматривается граф знакомств на \\(n\\) вершинах. Нужно максимизировать число не-рёбер, концы которых имеют общего соседа, то есть число пар вершин на расстоянии 2.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-star-construction",
+      "title": "Звезда как экстремальная конструкция",
+      "text": "Одна вершина, смежная со всеми остальными, даёт \\(\\binom{n-1}{2}\\) подходящих пар и служит кандидатом на экстремум.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-merge-components",
+      "title": "Можно склеить компоненты ребром",
+      "text": "Если граф распадается на две непустые части без рёбер между ними, добавление подходящего ребра между ними не уменьшает число хороших не-рёбер, поэтому экстремальный граф можно считать связным.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Официальное решение рассматривает граф знакомств. Звезда с центром в вершине \\(A\\), знакомой со всеми остальными, уже даёт \\(\\binom{n-1}{2}=\\frac{(n-1)(n-2)}2\\) подходящих не-рёбер: любые две разные листья не соединены, но имеют общего соседа \\(A\\). Для верхней оценки доказывается, что в экстремальном графе можно считать каждую компоненту связности непустой и между любыми двумя непустыми частями можно добавить ребро, не уменьшая искомое число; значит, достаточно изучать связный граф. Далее анализируется структура связной компоненты и показывается, что любой дополнительный внутренний рёберный «излишек» лишь уменьшает число подходящих не-рёбер по сравнению со звездой. Отсюда максимум равен \\(\\frac{(n-1)(n-2)}2\\).",
+      "idea_ids": [
+        "idea-star-construction",
+        "idea-merge-components"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 9,
+    "comment": "APMO 2010 P3; граф знакомств является прямой формой условия и решения.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_construction",
+        "component_merging_argument"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-apmo-2010-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

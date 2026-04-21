@@ -1,0 +1,131 @@
+{
+  "id": "imo-2020-c4-fibonacci-difference-forest",
+  "title": "Разности Фибоначчи и лес, IMO Shortlist 2020 C4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "integer_set",
+      "edge_lengths",
+      "forest"
+    ],
+    "methods": [
+      "acyclicity",
+      "longest_edge",
+      "fibonacci_estimate"
+    ],
+    "transformations": [
+      "differences_to_graph"
+    ],
+    "goal": [
+      "minimum_set_size"
+    ],
+    "auxiliary_graph_type": [
+      "forest"
+    ],
+    "invariants": [
+      "edge_length_order"
+    ],
+    "keywords": [
+      "imo_2020_c4",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Числа Фибоначчи заданы \\(F_0=0,F_1=1,F_{n+1}=F_n+F_{n-1}\\). Для \\(n\\ge2\\) найдите наименьший размер множества целых чисел \\(S\\), такого что для каждого \\(k=2,3,\\ldots,n\\) существуют \\(x,y\\in S\\) с \\(x-y=F_k\\).",
+        "source_id": "src-imo-2020-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-fibonacci-edges",
+      "title": "Рёбра заданных длин",
+      "text": "Для выбранных разностей Фибоначчи строится граф на элементах \\(S\\), где длины рёбер различны.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-longest-edge-cycle",
+      "title": "Цикл запрещён самым длинным ребром",
+      "text": "В любом цикле самое длинное ребро не может быть компенсировано суммой остальных из-за свойств чисел Фибоначчи.",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Для нижней оценки выбираем примерно половину требуемых разностей, например нечётные индексы, и строим граф на вершинах \\(S\\): для каждой выбранной разности добавляем ребро между соответствующими \\(x,y\\). Длины рёбер различны и равны числам Фибоначчи. Если бы возник цикл, взяли бы в нём самое длинное ребро. Сумма всех меньших выбранных чисел Фибоначчи строго меньше его длины, поэтому пройти от одного конца этого ребра к другому по остальным рёбрам невозможно. Значит, построенный граф — лес, и число его рёбер не превосходит \\(|S|-1\\). Это даёт нижнюю оценку. Верхняя конструкция берёт подходящие начальные суммы чисел Фибоначчи и достигает той же величины.",
+      "idea_ids": [
+        "idea-fibonacci-edges",
+        "idea-longest-edge-cycle"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2020 C4, Croatia; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "trees",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "acyclicity",
+        "longest_edge",
+        "fibonacci_estimate"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2020-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая структура используется в официальном решении, но не является самостоятельной переформулировкой исходного условия.",
+    "relations_status": "deep_done"
+  }
+}

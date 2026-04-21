@@ -1,0 +1,139 @@
+{
+  "id": "imo-2005-c2-dynastic-vertices-forest",
+  "title": "Династические вершины в бинарном лесу, IMO Shortlist 2005 C2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "rooted_forest",
+      "binary_tree",
+      "descendants"
+    ],
+    "methods": [
+      "induction",
+      "charging_argument"
+    ],
+    "transformations": [],
+    "goal": [
+      "bound_special_vertices"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "subtree_size"
+    ],
+    "keywords": [
+      "imo_2005_c2",
+      "secondary_shortlist",
+      "early_imo_shortlist"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Лес состоит из корневых деревьев. Каждая вершина либо лист, либо имеет ровно двух сыновей. Вершина \\(v\\) называется потомком вершины \\(u\\), если от \\(u\\) к \\(v\\) ведёт цепочка сыновей. Вершина называется династической, если у неё два сына и у каждого из этих сыновей есть хотя бы \\(k\\) потомков. Докажите, что если в лесу \\(n\\) вершин, то династических вершин не больше \\(n/(k+2)\\).",
+        "source_id": "src-secondary-imo-2005-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это задача о корневом бинарном лесе: нужно оценить число внутренних вершин, оба поддерева которых достаточно велики.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-charge-subtrees",
+      "title": "Заряд на большие поддеревья",
+      "text": "Каждая династическая вершина требует по крайней мере \\(k+2\\) вершин в контролируемой части дерева.",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-pruning-induction",
+      "title": "Обрезание дерева",
+      "text": "Индукция по лесу удаляет листья или минимальные династические поддеревья, сохраняя требуемую оценку.",
+      "tags": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-secondary-sketch",
+      "title": "Сжатый графовый разбор",
+      "text": "Рассмотрим минимальную по включению династическую вершину, то есть такую, ниже которой нет другой династической вершины. У каждого из двух её сыновей есть не меньше \\(k\\) потомков, значит вместе с самой вершиной и двумя сыновьями в соответствующем фрагменте дерева находится не меньше \\(k+2\\) вершин, которые можно списать на эту династическую вершину так, чтобы они не понадобились для других минимальных династических вершин. Удаляя такие фрагменты или проводя эквивалентную индукцию по числу вершин леса, получаем, что каждому династическому узлу соответствует по крайней мере \\(k+2\\) различных вершин. Поэтому их число не превосходит \\(n/(k+2)\\).",
+      "idea_ids": [
+        "idea-charge-subtrees",
+        "idea-pruning-induction"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p2_p5",
+    "local_score": 11,
+    "comment": "IMO Shortlist 2005 C2; источник вторичный, карточка первого прохода.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "trees",
+    "induction",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "charging_argument"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-2005-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

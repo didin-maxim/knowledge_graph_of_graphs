@@ -1,0 +1,138 @@
+{
+  "id": "imo-2010-c2-flags-diagonal-matching",
+  "title": "Флаги и диагональ одного цвета, IMO Shortlist 2010 C2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "binary_flags",
+      "bipartite_graph",
+      "matching"
+    ],
+    "methods": [
+      "hall_condition",
+      "extremal_example"
+    ],
+    "transformations": [
+      "flags_to_bipartite_matching"
+    ],
+    "goal": [
+      "minimum_for_guaranteed_matching"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [],
+    "keywords": [
+      "imo_2010_c2",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На планете есть \\(2^N\\) стран, и у каждой страны свой флаг из \\(N\\) клеток в ряд, каждая клетка жёлтая или синяя. Множество из \\(N\\) флагов называется разнообразным, если эти флаги можно расположить строками квадрата \\(N\\times N\\) так, чтобы все клетки главной диагонали имели один цвет. Найдите наименьшее \\(M\\), при котором среди любых \\(M\\) различных флагов найдётся разнообразное множество.",
+        "source_id": "src-imo-2010-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим двудольный граф между выбранными флагами и позициями \\(1,\\ldots,N\\); флаг соединён с позицией, если в этой позиции стоит нужный цвет. Разнообразное множество соответствует паросочетанию, покрывающему все позиции.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-hall",
+      "title": "Паросочетание диагональных позиций",
+      "text": "Для фиксированного цвета задача сводится к поиску системы различных представителей позиций у выбранных флагов.",
+      "tags": [
+        "matching"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-extremal-family",
+      "title": "Экстремальное семейство флагов",
+      "text": "Нижний пример строится из всех флагов, кроме двух противоположных, и показывает точность оценки.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Ответ: \\(2^N-1\\). Нижняя оценка получается удалением пары противоположных флагов: оставшееся семейство из \\(2^N-2\\) флагов не обязано содержать нужную диагональ. Для верхней оценки фиксируем цвет и строим двудольный граф: слева флаги, справа позиции, ребро означает, что в этой позиции флаг имеет данный цвет. Если для какого-то цвета выполнено условие Холла, то соответствующее паросочетание даёт \\(N\\) флагов и перестановку строк с одноцветной диагональю. Если условие Холла нарушено для обоих цветов, то две запрещающие группы позиций и флагов дают слишком мало различных флагов, что противоречит наличию \\(2^N-1\\) флагов.",
+      "idea_ids": [
+        "idea-hall",
+        "idea-extremal-family"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2010 C2, Croatia; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "matching",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "hall_condition",
+        "extremal_example"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2010-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

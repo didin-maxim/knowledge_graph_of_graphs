@@ -1,0 +1,146 @@
+{
+  "id": "egmo-2022-p5-domino-parity-bipartite-matching",
+  "title": "Чётность домино-разбиений и двудольные паросочетания, EGMO 2022 P5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "domino_tiling",
+      "grid_board",
+      "bipartite_graph",
+      "perfect_matching"
+    ],
+    "methods": [
+      "symmetry_pairing",
+      "matching_parity"
+    ],
+    "transformations": [
+      "domino_tiling_to_bipartite_matching"
+    ],
+    "goal": [
+      "parity_classification"
+    ],
+    "auxiliary_graph_type": [
+      "grid_bipartite_graph"
+    ],
+    "invariants": [
+      "parity_of_matchings"
+    ],
+    "keywords": [
+      "egmo_2022_p5",
+      "egmo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Для положительных целых \\(n,k\\) обозначим через \\(f(n,2k)\\) число способов полностью покрыть доску \\(n\\times 2k\\) доминошками \\(2\\times 1\\). Найдите все положительные \\(n\\), для которых для любого положительного \\(k\\) число \\(f(n,2k)\\) нечётно.",
+        "source_id": "src-egmo-2022-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Домино-разбиение доски эквивалентно совершенному паросочетанию в двудольном графе клеток шахматной раскраски; вопрос задачи — когда число таких паросочетаний в графе решётки \\(n\\times 2k\\) всегда нечётно.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-symmetry-parity",
+      "title": "Симметрия убирает разбиения попарно",
+      "text": "Отражение относительно средней линии разбивает несимметричные разбиения на пары; по модулю 2 остаются только неподвижные точки симметрии.",
+      "tags": [
+        "symmetrization"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-bipartite-matching-parity",
+      "title": "Паросочетания в двудольном графе",
+      "text": "Во втором официальном решении разбиения переводятся в совершенные паросочетания двудольного графа решётки, а чётность их числа изучается через матрицу смежности над \\(\\mathbf F_2\\).",
+      "tags": [
+        "matching"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Ответ: подходят ровно числа вида \\(2^t-1\\). В первом официальном решении используется парность под отражениями: для чётного \\(m\\) число разбиений \\(m\\times(2n+1)\\) сравнивается по модулю 2 с числом разбиений \\(m\\times n\\), поскольку неподвижные конфигурации должны целиком заполнять центральный столбец вертикальными домино. Кроме того, при чётном \\(n\\ge 2\\) число разбиений квадрата \\(n\\times n\\) чётно благодаря отражению по диагонали без неподвижных точек. Отсюда рекурсией получается классификация \\(n=2^t-1\\). Во втором официальном решении клетки двух цветов образуют двудольный граф, а домино-разбиения становятся его совершенными паросочетаниями. По модулю 2 число паросочетаний равно определителю матрицы смежности, и задача сводится к проверке её вырожденности над \\(\\mathbf F_2\\). Для чётных \\(n\\) строится ненулевой вектор ядра, а переход между \\(n\\) и \\(2n+1\\) реализуется зеркальным удвоением конструкции.",
+      "idea_ids": [
+        "idea-symmetry-parity",
+        "idea-bipartite-matching-parity"
+      ],
+      "standard_idea_ids": [
+        "symmetrization"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 11,
+    "comment": "EGMO 2022 P5; двудольный граф и совершенные паросочетания играют центральную роль во втором официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "matching",
+    "graph_symmetry",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "matching_parity",
+        "symmetry_pairing"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-egmo-2022-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая модель появляется в официальном решении, а не в исходной формулировке.",
+    "relations_status": "base_done"
+  }
+}

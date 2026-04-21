@@ -1,0 +1,135 @@
+{
+  "id": "vosh-2008-regional-bureaucrats-common-neighborhood",
+  "title": "Бюрократы и общие знакомые, Всероссийская олимпиада 2008",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "tripartite_social_graph",
+      "common_neighborhood",
+      "common_non_neighborhood",
+      "two_colored_triples"
+    ],
+    "methods": [
+      "double_counting",
+      "pigeonhole_principle"
+    ],
+    "transformations": [
+      "people_to_tripartite_graph",
+      "count_similar_triples"
+    ],
+    "goal": [
+      "large_common_neighborhood_existence"
+    ],
+    "auxiliary_graph_type": [
+      "tripartite_acquaintance_graph"
+    ],
+    "invariants": [
+      "triple_count",
+      "pair_average",
+      "two_type_split"
+    ],
+    "keywords": [
+      "bureaucrats",
+      "common_neighbors",
+      "tripartite_graph",
+      "double_counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Три комиссии по 100 человек",
+        "text": "300 бюрократов разбиты на три комиссии по 100 человек. Каждые два бюрократа либо знакомы друг с другом, либо незнакомы. Докажите, что найдутся два бюрократа из разных комиссий такие, что в третьей комиссии есть либо 17 человек, знакомых с обоими, либо 17 человек, незнакомых с обоими.",
+        "source_id": "src-problems-111817",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Вершины простого графа разбиты на три доли A, B, C по 100 вершин. Докажите, что найдутся две вершины из разных долей такие, что в третьей доле у них есть либо не меньше 17 общих соседей, либо не меньше 17 общих несоседей.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-similar-pairs-in-triples",
+      "title": "Счёт похожих пар в тройках",
+      "text": "В каждой тройке из разных комиссий найдётся пара, которая для третьего участника выглядит одинаково: он либо знаком с обоими, либо незнаком с обоими. Двойной счёт таких вкладов даёт большую общую окрестность или общую неокрестность.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-double-counting-triples",
+      "title": "Двойной счёт троек",
+      "text": "Для пары бюрократов из двух комиссий и бюрократа из третьей скажем, что пара похожа для третьего, если он знаком с обоими членами пары или незнаком с обоими. Просуммируем по всем парам из разных комиссий число людей из третьей комиссии, для которых эта пара похожа. В каждой тройке из трёх разных комиссий есть либо две связи знакомства, либо две связи незнакомства, поэтому хотя бы одна пара в этой тройке похожа для третьего участника. Значит, сумма не меньше \\(100^3\\). Всего пар комиссий и пар людей в них \\(3\\cdot100^2\\), поэтому для какой-то пары число похожих людей в третьей комиссии не меньше \\(100^3/(3\\cdot100^2)>33\\), то есть хотя бы 34. Среди этих 34 людей хотя бы 17 относятся к одному из двух типов: знакомы с обоими или незнакомы с обоими.",
+      "idea_ids": [
+        "idea-count-similar-pairs-in-triples"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Региональный этап 2008, 9 класс, задача 8; на problems.ru сложность 4.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "common_neighborhood"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-111817",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

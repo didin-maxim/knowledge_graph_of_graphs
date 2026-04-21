@@ -1,0 +1,157 @@
+{
+  "id": "imo-1991-p4-connected-graph-gcd-edge-labels",
+  "title": "Разметка рёбер связного графа взаимно простыми метками, IMO 1991 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "edge_labeling",
+      "spanning_tree"
+    ],
+    "methods": [
+      "spanning_tree",
+      "induction",
+      "greedy_labeling"
+    ],
+    "transformations": [
+      "connected_graph_to_spanning_tree"
+    ],
+    "goal": [
+      "edge_label_gcd_condition"
+    ],
+    "auxiliary_graph_type": [
+      "tree"
+    ],
+    "invariants": [
+      "connectedness"
+    ],
+    "standard_idea_ids": [
+      "induction",
+      "delete_to_simplify"
+    ],
+    "local_score": 14,
+    "keywords": [
+      "imo-1991-p4-connected-graph-gcd-edge-labels",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть G — связный граф с n рёбрами. Докажите, что можно пометить рёбра числами 1,2,...,n так, чтобы в каждой вершине степени хотя бы 2 у меток инцидентных ей рёбер не было общего делителя больше 1.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-imomath-imo-1991"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это задача о специальной нумерации рёбер связного графа; решение использует остовное дерево и размещение меток так, чтобы в каждой нелистовой вершине появлялись взаимно простые инцидентные числа.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-spanning-tree-reduction",
+      "title": "Свести к остовному дереву",
+      "text": "Достаточно контролировать метки на рёбрах остовного дерева; остальные рёбра можно пронумеровать после этого.",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-label-by-prime-obstruction",
+      "title": "Разрушить общий делитель",
+      "text": "У каждой вершины степени хотя бы 2 надо обеспечить две инцидентные метки с НОД 1.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Берём остовное дерево T графа G. Рёбра вне T получают часть меток произвольно; они не мешают, потому что добавляют новые инцидентные метки. Дальше нумеруем рёбра дерева от листьев к корню так, чтобы у каждой внутренней вершины среди инцидентных рёбер оказалась пара меток без общего простого делителя; это делается жадно, используя соседние свободные числа и то, что одно ребро ведёт к родителю, а остальные уже можно упорядочить в поддеревьях. В стандартном решении эту идею оформляют через удаление листьев/индукцию по дереву: после возврата удалённого листового блока выбирают метку, взаимно простую с уже закреплённой меткой у его опорной вершины. Поэтому ни в одной вершине степени хотя бы 2 общий делитель всех инцидентных меток не превосходит 1.",
+      "idea_ids": [
+        "idea-spanning-tree-reduction",
+        "idea-label-by-prime-obstruction"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 14,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "trees",
+    "induction",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "spanning_tree",
+        "induction",
+        "greedy_labeling"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imomath-imo-1991",
+      "role": "statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

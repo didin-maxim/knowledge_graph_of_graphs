@@ -1,0 +1,343 @@
+{
+  "year": 2023,
+  "egmo_number": 12,
+  "official_page_url": "https://www.egmo.org/egmos/egmo12/",
+  "problem_count_declared": 6,
+  "problem_count_extracted": 6,
+  "papers": [
+    {
+      "label": "English",
+      "url": "https://www.egmo.org/egmos/egmo12/paper-day1-English.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-1.pdf",
+      "ok": true,
+      "error": null
+    },
+    {
+      "label": "English",
+      "url": "https://www.egmo.org/egmos/egmo12/paper-day2-English.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-2.pdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "solution_files": [
+    {
+      "url": "https://www.egmo.org/egmos/egmo12/solutions.pdf",
+      "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/solutions-1.pdf",
+      "ok": true,
+      "error": null
+    }
+  ],
+  "problems": [
+    {
+      "id": "egmo-2023-p1",
+      "year": 2023,
+      "egmo_number": 12,
+      "problem_number": 1,
+      "statement_en": "There are n ⩾ 3 positive real numbers a1, a2, . . . , an. For each 1 ⩽ i ⩽ n we let\nbi = ai-1+ai+1\nai\n(here we definea0 to be an and an+1 to be a1). Assume that for alli and j in the range\n1 to n, we haveai ⩽ aj if and only ifbi ⩽ bj.\nProve that a1 = a2 =···= an.",
+      "solution_text_en": "There aren ⩾ 3 positive real numbersa1,a 2,...,an. For each1 ⩽i ⩽n we\nlet bi = ai-1+ai+1\nai\n(here we definea0 to bean and an+1 to bea1). Assume that for alli\nand j in the range1 to n, we haveai ⩽aj if and only ifbi ⩽bj.\nProve thata1 =a2 =···=an.\nSolution 1.Suppose that not allai are equal. Consider an indexisuch thatai is maximal\nand ai+1 <a i. Then\nbi = ai-1 +ai+1\nai\n< 2ai\nai\n= 2.\nBut sinceai is maximal,bi is also maximal, so we must havebj < 2for allj in {1, 2,...,n}.\nHowever, consider the productb1b2...bn. We have\nb1b2...bn = an +a2\na1\n·a1 +a3\na2\n·...·an-1 +a1\nan\n⩾ 2n\n√ana2\n√a1a3...√an-1a1\na1a2...an\n= 2n,\nwhere we used the inequalityx +y ⩾ 2√xy for x =ai-1,y =ai+1 for alli in {1, 2,...,n}\nin the second row.\nSince the product of allbi is at least 2n, at least one of them must be greater than2,\nwhich is a contradiction with the previous conclusion.\nThus, allai must be equal.\nSolution 2.This is a version of Solution 1 without use of proof by contradiction.\nTakingai such that it is maximal amonga1,...,an, we obtainbi ⩽ 2. Thusbi ⩽ 2 for all\nj in {1, 2,...,n}.\nThe second part of Solution 1 then gives2n ⩾b1···bn ⩾ 2n, which together withbi ⩽ 2\nfor allj in {1, 2,...,n}implies thatbj = 2 for allj in {1, 2,...,n}. Since we haveb1 =\nb2 =···=bn, the condition thatai ⩽aj ⇐⇒bi ⩽bj gives thata1 =a2 =···=an.\nSolution 3.We first show thatbj ⩽ 2 for allj as in Solution 2. Then\n2n ⩾b1 +···+bn = an\na1\n+ a2\na1\n+ a1\na2\n+ a3\na2\n+···+ an-1\nan\n+ a1\nan\n⩾2n n\n√\nan\na1\n·a2\na1\n·a1\na2\n·a3\na2\n···an-1\nan\n·a1\nan\n= 2n·1 = 2n,\nwhere we used the AM-GM inequality.\nIt follows that allbj’s are equal which as in Solution 2 givesa1 =a2 =···=an.\n3\nEGMO 2023, Portorož Problems & Solutions\nSolution 4.By assumptionaibi =ai-1 +ai+1 for i ={1, 2,...,n}, hence,\nn∑\ni=1\naibi = 2\nn∑\ni=1\nai.\nSince ai ⩽aj if and only ifbi ⩽bj, the Chebyshev’s inequality implies\n( n∑\ni=1\nai\n)\n·\n( n∑\ni=1\nbi\n)\n⩽n·\nn∑\ni=1\naibi = 2n·\nn∑\ni=1\nai\nand so ∑n\ni=1bi ⩽ 2n. On the other hand, we have\nn∑\ni=1\nbi =\nn∑\ni=1\nai-1\nai\n+\nn∑\ni=1\nai+1\nai\n=\nn∑\ni=1\nai-1\nai\n+\nn∑\ni=1\nai\nai-1\n=\nn∑\ni=1\n(\nai-1\nai\n+ ai\nai-1\n)\n,\nso we can use the AM-GM inequality to estimate\nn∑\ni=1\nbi ⩾\nn∑\ni=1\n2\n√\nai-1\nai\n·ai\nai-1\n= 2n.\nWe conclude that we must have equalities in all the above, which impliesai-1\nai\n= ai\nai-1\nand\nconsequentlyai =ai-1 for all positive integersi. Hence, alla’s are equal.\nSolution 5. As in Solution 4 we show that∑n\ni=1bi ⩽ 2n and as in Solution 1 we show\nthat\n∏n\ni=1bi ⩾ 2n. We now use the AM-GM inequality and the first inequality to get\nn∏\ni=1\nbi ⩽\n(\n1\nn\nn∑\ni=1\nbi\n)n\n⩽\n(1\nn·2n\n)n\n= 2n.\nThis implies that we must have equalities in all the above. In particular, we have equality\nin theAM-GM inequality, soallb’s areequaland as inSolution2 thenalla’s areequal.\nSolution 6.Let ai to be minimal andaj maximal among alla’s. Then\nbj = aj-1 +aj+1\naj\n⩽ 2aj\naj\n= 2 = 2ai\nai\n⩽ ai-1 +ai+1\nai\n=bi\nand by assumptionbi ⩽ bj. Hence, we have equalities in the above sobj = 2 so aj-1 +\naj+1 = 2aj and thereforeaj-1 =aj =aj+1. We have thus shown that the two neighbors\nof a maximala are also maximal. By an inductive argument alla’s are maximal, hence\nequal.\nSolution 7. Choose an arbitrary index i and assume without loss of generality that\nai ⩽ ai+1. (If the opposite inequality holds, reverse all the inequalities below.) By\ninduction we will show that for eachk in N0 the following two inequalities hold\nai+1+k ⩾ai-k (1)\nai+1+kai+1-k ⩾ai-kai+k (2)\n4\nEGMO 2023, Portorož Problems & Solutions\n(where all indices are cyclic modulon). Both inequalities trivially hold fork = 0.\nAssume now that both inequalities hold for somek ⩾ 0. The inequality ai+1+k ⩾ ai-k\nimplies bi+1+k ⩾bi-k, so\nai+k +ai+2+k\nai+1+k\n⩾ ai-1-k +ai+1-k\nai-k\n.\nWe may rearrange this inequality by makingai+2+k the subject so\nai+2+k ⩾ ai+1+kai-1-k\nai-k\n+ ai+1-kai+1+k-ai+kai-k\nai-k\n⩾ ai+1+kai-1-k\nai-k\n,\nwhere the last inequality holds by (2). It follows that\na(i+1)+(k+1)a(i+1)-(k+1) ⩾ai+(k+1)ai-(k+1),\ni.e. the inequality (2) holds also fork + 1. Using (1) we now get\na(i+1)+(k+1) ⩾ ai+k+1\nai-k\nai-(k+1) ⩾ai-(k+1),\ni.e. (1) holds fork + 1.\nNow we use the inequality (1) fork =n-1. We getai ⩾ai+1, and since at the beginning\nwe assumedai ⩽ ai+1, we get that any two consecutivea’s are equal, so all of them are\nequal.\nSolution 8.We first prove the following claim by induction:\nClaim 1: If akak+2 <a 2\nk+1 and ak <a k+1, thenajaj+2 <a 2\nj+1 and aj <a j+1 for allj.\nWe assume thataiai+2 < a2\ni+1 and ai < ai+1, and then show thatai-1ai+1 < a2\ni and\nai-1 <a i.\nSince ai<=ai+1 we have thatbi<=bi+1. By plugging in the definition ofbi and bi+1 we\nhave that\nai+1ai-1 +a2\ni+1<=a2\ni +ai+2ai. (3)\nUsing aiai+2 <a 2\ni+1 we get that\nai+1ai-1 <a 2\ni. (4)\nSince ai < ai+1 we have thatai-1 < ai, which concludes the induction step and hence\nproves the claim.\nWe cannot have thataj < aj+1 for all indicesj. Similar as in the above claim, one can\nprove that ifakak+2 < a2\nk+1 and ak+2 < ak+1, thenaj+1 < aj for allj, which also cannot\nbe the case. Thus we have thatakak+2>=a2\nk+1 for all indicesk.\nNext observe (e.g. by taking the product over all indices) that this impliesakak+2 =a2\nk+1\nfor all indicesk, which is equivalent tobk = bk+1 for allk and henceak+1 = ak for all\nk.\n5\nEGMO 2023, Portorož Problems & Solutions\nSolution 9. Defineci := ai\nai+1\n, thenbi =ci-1 + 1/ci. Assume that not allci are equal to\n1. Since, ∏n\ni=1ci = 1 there exists ak such thatck ⩾ 1. From the condition given in the\nproblem statement for(i,j ) = (k,k + 1) we have\nck ⩾ 1⇐⇒ck-1 + 1\nck\n⩾ck + 1\nck+1\n⇐⇒ck-1ckck+1 +ck+1 ⩾c2\nkck+1 +ck. (5)\nNow sinceck+1 ⩽c2\nkck+1, it follows that\nci-1cici+1 ⩾ci =⇒(ci-1 ⩾ 1 or ci+1 ⩾ 1). (6)\nSo there exist a set of at least2 consecutive integers, such that the correspondingci are\ngreater or equal to one. By the innitial assumption there must exist an indexl, such that\ncl-1,cl⩾ 1 and cl+1 < 1. We distinguish two cases:\nCase 1:cl>c l-1 ⩾ 1\nFromcl-1clcl+1 < c2\nlcl+1 and the inequality (5), we get thatcl+1 > cl⩾ 1, which is a\ncontradiction to our choice ofl.\nCase 2:cl-1 ⩾cl⩾ 1\nOnce again looking at the inequality (5) we can find that\ncl-2cl-1cl⩾c2\nl-1cl=⇒cl-2 ⩾cl-1. (7)\nNote that we only neededcl-1 ⩾cl⩾ 1 to showcl-2 ⩾cl-1 ⩾ 1. So using induction we\ncan easily showcl-s-1 ⩾cl-s for alls.\nSo\nc1 ⩽c2 ⩽···⩽cn ⩽c1 (8)\na contradiction to our innitial assumption.\nSo our innitial assumtion must have been wrong, which implies that all theai must\nhave been equal from the start.\n6\nEGMO 2023, Portorož Problems & Solutions",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo12/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo12/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 2}",
+      "statement_preview": "There are n ⩾ 3 positive real numbers a1, a2, . . . , an. For each 1 ⩽ i ⩽ n we let bi = ai-1+ai+1 ai (here we definea0 to be an and an+1 to be a1). Assume that for alli and j in the range 1 to n, we haveai ⩽ aj if and o"
+    },
+    {
+      "id": "egmo-2023-p2",
+      "year": 2023,
+      "egmo_number": 12,
+      "problem_number": 2,
+      "statement_en": "We are given an acute triangleABC. Let D be the point on its circumcircle such that\nAD is a diameter. Suppose that pointsK and L lie on segmentsAB and AC, respectively, and that\nDK and DL are tangent to circleAKL.\nShow that lineKL passes through the orthocentre ofABC.\nThe orthocentre of a triangle is the point of intersection of its altitudes.",
+      "solution_text_en": "We are given an acute triangleABC. LetD be the point on its circumcircle\nsuch thatAD is a diameter. Suppose that pointsK and L lie on segmentsAB and AC,\nrespectively, and thatDK and DL are tangent to circleAKL.\nShow that lineKL passes through the orthocentre ofABC.\nThe altitudes of a triangle meet at its orthocentre.\nA\nB C\nD\nM\nK\nL\nFigure 1: Diagram to solution 1\nSolution 1. Let M be the midpoint ofKL. We will prove thatM is the orthocentre\nof ABC. Since DK and DL are tangent to the same circle,|DK|=|DL|and hence\nDM⊥KL. The theorem of Thales in circleABC also givesDB⊥BA and DC⊥CA.\nThe right angles then give that quadrilateralsBDMK and DMLC are cyclic.\nIf ∠BAC =α, then clearly∠DKM = ∠MLD =αby angle in the alternate segment of\ncircle AKL, and so ∠MDK = ∠LDM = π\n2-α, which thanks to cyclic quadrilaterals\ngives ∠MBK = ∠LCM = π\n2-α. From this, we haveBM⊥AC and CM ⊥AB, and\nso M indeed is the orthocentre ofABC.\nSolution 2. Preliminaries\nLet ABC be a triangle with circumcircleΓ. Let X be a point in the plane. The Simson\nline (Wallace-Simson line) is defined via the following theorem. Drop perpendiculars from\nX to each of the three side lines ofABC. The feet of these perpendiculars are collinear (on\n7\nEGMO 2023, Portorož Problems & Solutions\nthe Simson line ofX) if and only ifX lies ofΓ. The Simson line ofX in the circumcircle\nbisects the line segmentXH where H is the orthocentre of triangleABC. See Figure 2\nA\nB C\nH\nF\nU\nV\nW\nU ′\nV ′\nW ′\nH ′\nDoubled Simson line\nSimson line\nFigure 2: The Wallace-Simson configuration\nWhen X is on Γ, we can enlarge from X with scale factor 2 (a homothety) to take\nthe Simson line to thedoubled Simson line which passes through the orthocentreH and\ncontains the reflections ofX in each of the three sides ofABC.\nSolution of the problem\nA\nB C\nD\nH\nK\nL\nO\nF\nT G\nFigure 3: Three circles do the work\nLet Γ be the circleABC, Σ be the circleAKL with centreO, and Ω be the circle on\ndiameter OD so K and L are on this circle by converse of Thales. LetΩ and Γ meet at\nD andF. By Thales in both circles,∠AFD and ∠OFD are both right angles soAOF is\na line. LetAF meet Σ again atT so AT (containingO) is a diameter of this circle and\nby Thales,TL⊥AC.\nLet G (on Σ) be the reflection ofK in AF. Now AT is the internal angle bisector of\n∠GAK so, by an upmarket use of angles in the same segment (ofΣ), TL is the internal\n8\nEGMO 2023, Portorož Problems & Solutions\nangle bisector of∠GLK. Thus the lineGL is the reflection of the lineKL inTL, and so\nalso the reflection ofKL in the lineAC (internal and external angle bisectors).\nOur next project is to show thatLGF are collinear. Well∠FLK = ∠FOK (angles in the\nsame segment ofΩ) and ∠GLK = ∠GAK (angles in the same segment ofΣ) = 2∠OAK\n(AKG is isosceles with apexA) = ∠TOK (sinceOAK is isosceles with apexO, and this\nis an external angle atO). The point T lies in the interior of the line segmentFO so\n∠TOK = ∠FOK. Therefore ∠FLK = ∠GLK so LGF is a line.\nNow from the second paragraph,F is on the reflection ofKL in AC. By symmetry,F\nis also on the reflection ofKL in AB. Therefore the reflections ofF in AB and AC are\nboth onKL which must therefore be the doubled Wallace-Simson line ofF. Therefore\nthe orthocentre ofABC lies onKL.\nSolution 3. Let H be the orthocentre of triangleABC and Σ the circumcircle ofAKL\nwith centreO. Let Ω be the circle with diameterOD, which containsK andL by Thales,\nand let Γ be the circumcircle ofABC containingD. Denote the second intersection ofΩ\nand Γ byF. SinceOD andAD are diameters ofΩ and Γ we have∠OFD = π\n2 = ∠AFD,\nso the pointsA,O,F are collinear. LetM and N be the second intersections ofCH and\nBH with Γ, respectively. It is well-known thatM and N are the reflections ofH in AB\nand AC, respectively (because ∠NCA = ∠NBA = ∠ACM = ∠ABM). By collinearity\nof A,O,F and the angles inΓ we have\n∠NFO = ∠NFA = ∠NBA = π\n2-∠BAC = π\n2-∠KAL.\nSince DL is tangent toΣ we obtain\n∠NFO = π\n2-∠KLD = ∠LDO,\nwhere the last equality follows from the fact thatOD is bisector of ∠LDK since LD\nA\nB C\nD\nH\nK\nL\nO\nF\nN\nM\nFigure 4: Diagram to Solution 3\n9\nEGMO 2023, Portorož Problems & Solutions\nand KD are tangent to Σ. Furthermore, ∠LDO = ∠LFO since these are angles inΩ.\nHence, ∠NFO = ∠LFO, which implies that pointsN,L,F are collinear. Similarly points\nM,K,F are collinear. SinceN and M are reflections ofH in AC and AB we have\n∠LHN = ∠HNL = ∠BNF = ∠BMF = ∠BMK = ∠KHB.\nHence,\n∠LHK = ∠LHN + ∠NHK = ∠KHB + ∠NHK =π\nand the pointsL,H,K are collinear.\nSolution 4. As in Solution 3 letM and N be the reflections of the orthocentre inAB\nand AC. Let ∠BAC =α. Then ∠NDM =π-∠MAN =π-2α.\nLet MK and NL intersect atF. See Figure 3.\nClaim. ∠NFM =π-2α, soF lies on the circumcircle.\nProof. Since KD and LD are tangents to circle AKL, we have |DK|= |DL|and\n∠DKL = ∠KLD =α, so ∠LDK =π-2α.\nBy definition ofM, N and D, ∠MND = ∠AND-∠ANM = π\n2-(π\n2-α) = αand\nanalogously ∠DMN =α. Hence|DM|=|DN|.\nFrom ∠NDM = ∠LDK =π-2αif follows that∠LDN = ∠KDM. Since|DK|=|DL|\nand|DM|=|DN|, trianglesMDK andNDL are related by a rotation aboutD through\nangle π-2α, and hence the angle betweenMK and NL is π-2α, which proved the\nclaim.\nWe now finish as in Solution 3:\n∠MHK = ∠KMH = ∠FMC = ∠FAC,\n∠LHN = ∠HNL = ∠BNF = ∠BAF.\nAs ∠BAF + ∠FAC =α, we have∠LHK =α+ ∠NHM =α+π-α=π, soH lies on\nKL.\nSolution 5. Since AD is a diameter, it is well known thatDBHC is a parallelogram\n(indeed, both BD and CH are perpendicular to AB, hence parallel, and similarly for\nDC ∥BH). Let B′,C′be the reflections ofD in lines AKB and ALC, respectively;\nsince ABD and ACD are right angles, these are also the factor-2 homotheties ofB and\nC with respect toD, henceH is the midpoint ofB′C′. We will prove thatB′KC′L is\na parallelogram: it will then follow that the midpoint ofB′C′, which isH, is also the\nmidpoint ofKL, and in particular is on the line, as we wanted to show.\nWe will proveB′KC′L is a parallelogram by showing thatB′K and C′L are the same\nlength and direction. Indeed, for lengths we haveKB′= KD = LD = LC′, where the\nfirst and last equalities arise from the reflections definingB′and C′, and the middle one\n10\nEGMO 2023, Portorož Problems & Solutions\nis equality of tangents. For directions, let α,β,γdenote the angles of triangleAKL.\nImmediate angle chasing in the circleAKL, and the properties of the reflections, yield\n∠C′LC = ∠CLD = ∠AKL =β\n∠BKB′= ∠DKB = ∠KLA =γ\n∠LDK = 2α-π\nand therefore in directed angles (mod2π) we have\n∠(C′L,B′K) = ∠C′LC + ∠CLD + ∠LDK + ∠DKB + ∠BKB′= 2α+ 2β+ 2γ-π=π\nand henceC′L and B′K are parallel and in opposite directions, i.e.C′L and KB′are in\nthe same direction, as claimed.\nComment. While not necessary for the final solution, the following related observation\nmotivates how the fact thatH is the midpoint ofKL (and thereforeB′KC′L is a paral-\nlelogram) was first conjectured. We haveAB′=AD =AC′by the reflections, i.e.B′AC′\nis an isosceles triangle withH being the midpoint of the base. ThusAH is the median,\naltitude and angle bisector inB′AC′, thus ∠B′AK + ∠KAH = ∠HAL + ∠LAC′. Since\nfrom the reflections we also have∠B′AK = ∠KAD and ∠DAL = ∠LAC′it follows that\n∠HAL = ∠KAD and ∠KAH = ∠DAL. Since D is the symmedian point inAKL, the\nangle conjugation impliesAH is the median line ofKL. Thus, ifH is indeed onKL (as\nthe problem assures us), it can only be the midpoint ofKL.\nSolution 6.There are a number of “phantom point” arguments which defineK′and L′\nin terms of angles and then deduce that these points are actuallyK and L.\nNote: In these solutions it is necessary to show thatK andL are uniquely determined by\nthe conditions of the problem. One example of doing this is the following:\nTo prove uniqueness ofK andL, let us consider that there exist two other pointsK′and\nL′that satisfy the same properties (K′onAB andL′onAC such thatDK′andDL′are\ntangent to the circleAK′L′).\nThen, we have thatDK =DL andDK′=DL′. We also have that∠KDL = ∠K′DL′=\nπ-2∠A. Hence, we deduce∠KDK′= ∠KDL-∠K′DL = ∠K′DL′-∠K′DL = ∠LDL′\nThus we have that△KDK′≡△LDL′, so we deduce∠DKA = ∠DKK′= ∠DLL′=\nπ-∠ALD. This implies thatAKDL is concyclic, which is clearly a contradiction since\n∠KAL + ∠KDL =π-∠BAC.\nSolution 7.We will use the usual complex number notation, where we will use a capital\nletter (like Z) to denote the point associated to a complex number (likez). Consider\n△AKL on the unit circle. So, we have a· ̄a = k· ̄k = l· ̄l = 1 As point D is the\nintersection of the tangents to the unit circle atK and L, we have that\nd = 2kl\nk +l and  ̄d = 2\nk +l\nDefiningB as the foot of the perpendicular fromD on the lineAK, andC as the foot of\nthe perpendicular fromD on the lineAL , we have the formulas:\nb = 1\n2\n(\nd + (a-k)  ̄d +  ̄ak-a ̄k\n ̄a- ̄k\n)\n11\nEGMO 2023, Portorož Problems & Solutions\nc = 1\n2\n(\nd + (a-l)  ̄d +  ̄al-a ̄l\n ̄a- ̄l\n)\nSimplyfing these formulas, we get:\nb = 1\n2\n(\nd + (a-k) 2\nk+l + k\na-a\nk\n1\na-1\nk\n)\n= 1\n2\n\nd +\n2(a-k)\nk+l + k2-a2\nak\nk-a\nak\n\n\nb = 1\n2\n(\n2kl\nk +l-2ak\nk +l + (a +k)\n)\n= k(l-a)\nk +l + 1\n2(k +a)\nc = 1\n2\n(\nd + (a-l) 2\nk+l + l\na-a\nl\n1\na-1\nl\n)\n= 1\n2\n\nd +\n2(a-l)\nk+l + l2-a2\nal\nl-a\nal\n\n\nc = 1\n2\n(\n2kl\nk +l-2al\nk +l + (a +l)\n)\n= l(k-a)\nk +l + 1\n2(l +a)\nLet O be the the circumcenter of triangle△ABC. As AD is the diameter of this circle,\nwe have that:\no = a +d\n2\nDefiningH as the orthocentre of the△ABC, we get that:\nh =a +b +c-2·o =a +\n(\nk(l-a)\nk +l + 1\n2(k +a)\n)\n+\n(\nl(k-a)\nk +l + 1\n2(l +a)\n)\n-(a +d)\nh =a + 2kl\nk +l-a(k +l)\nk +l + 1\n2k + +1\n2l + +a-\n(\na + 2kl\nk +l\n)\nh = 1\n2(k +l)\nHence, we conclude thatH is the midpoint ofKL, soH,K,L are collinear.\nSolution8. Letusemploythebarycentriccoordinates. Set A(1, 0, 0),K(0, 1, 0),L(0, 0, 1).\nThe tangent at K of (AKL) is a2z +c2x = 0, and the tangent of ofL at (AKL) is\na2y +b2x = 0. Their intersection is\nD(-a2 :b2 :c2).\nSince B in AK, we can letB(1-t,t, 0). Solving for-→AB·--→BD = 0 gives\nt = 3b2 +c2-a2\n2(b2 +c2-a2) =⇒B =\n(\n-a2-b2 +c2\n2(b2 +c2-a2),-a2 + 3b2 +c2\n2(b2 +c2-a2), 0\n)\n.\nLikewise,C has the coordinate\nC =\n(\n-a2 +b2-c2\n2(b2 +c2-a2), 0,-a2 +b2 + 3c2\n2(b2 +c2-a2)\n)\n.\n12\nEGMO 2023, Portorož Problems & Solutions\nThe altitude fromB for triangleABC is\n-b2\n(\nx-z--a2-b2 +c2\n2(b2 +c2-a2)\n)\n+ (c2-a2)\n(\ny--a2 + 3b2 +c2\n2(b2 +c2-a2)\n)\n= 0.\nAlso the altitude fromC for triangleABC is\n-c2\n(\nx-y--a2 +b2-c2\n2(b2 +c2-a2)\n)\n+ (a2-b2)\n(\nz--a2 +b2 + 3c2\n2(b2 +c2-a2)\n)\n= 0.\nThe intersection of these two altitudes, which is the orthocenter of triangleABC, has the\nbarycentric coordinate\nH = (0, 1/2, 1/2),\nwhich is the midpoint of the segmentKL.\n13\nEGMO 2023, Portorož Problems & Solutions",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo12/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo12/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 12,
+        "algebra": 1,
+        "number_theory": 1,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 12, 'algebra': 1, 'number_theory': 1, 'combinatorics': 1}",
+      "statement_preview": "We are given an acute triangleABC. Let D be the point on its circumcircle such that AD is a diameter. Suppose that pointsK and L lie on segmentsAB and AC, respectively, and that DK and DL are tangent to circleAKL. Show t"
+    },
+    {
+      "id": "egmo-2023-p3",
+      "year": 2023,
+      "egmo_number": 12,
+      "problem_number": 3,
+      "statement_en": "Let k be a positive integer. Lexi has a dictionaryD consisting of somek-letter strings\ncontaining only the lettersA and B. Lexi would like to write either the letterA or the letter B in\neach cell of ak×k grid so that each column contains a string fromD when read from top-to-bottom\nand each row contains a string fromD when read from left-to-right.\nWhat is the smallest integerm such that ifD contains at leastm different strings, then Lexi can fill\nher grid in this manner, no matter what strings are inD?",
+      "solution_text_en": "Let k be a positive integer. Lexi has a dictionaryD consisting of some\nk-letter strings containing only the lettersA and B. Lexi would like to write either the\nletter A or the letterB in each cell of ak×k grid so that each column contains a string\nfromD when read from top-to-bottom and each row contains a string fromD when read\nfrom left-to-right.\nWhat is the smallest integerm such that ifD contains at leastm different strings, then\nLexi can fill her grid in this manner, no matter what strings are inD?\nSolution. We claim the minimum value ofm is 2k-1.\nFirstly, we provide a setS of size 2k-1-1 for which Lexi cannot fill her grid. Consider\nthe set of all length-k strings containing onlyAs andBs which end with aB, and remove\nthe string consisting ofk Bs. Clearly there are2 independent choices for each of the first\nk-1 letters and1 for the last letter, and since exactly one string is excluded, there must\nbe exactly 2k-1-1 strings in this set.\nSuppose Lexi tries to fill her grid. For each row to have a valid string, it must end in aB.\nBut then the right column would necessarily containk Bs, and not be in our set. Thus,\nLexi cannot fill her grid with our set, and we must havem ⩾ 2k-1.\nNow, consider any setS with at least 2k-1 strings. Clearly, if S contained either the\nuniform string withk As or the string withk Bs, then Lexi could fill her grid with all of\nthe relevant letters and each row and column would contain that string.\nConsider the case whereS contains neither of those strings. Among all2k possible length-\nk strings withAs andBs, each has a complement which corresponds to the string with\nBs in every position where first string hadAs and vice-versa. Clearly, the string with all\nAs is paired with the string with allBs. We may assume that we do not take the two\nuniform strings and thus applying the pigeonhole principle to the remaining set of strings,\nwe must have two strings which are complementary.\nLet this pair of strings bel,l′ in Sin some order. Define the set of indicesJ corresponding\nto theAs inland thus theBs inl′, and all other indices (not inJ) correspond toBs in\nl(and thusAs inl′). Then, we claim that Lexi puts anA in the cell in rowr, columnc\nif r,c in Jor r,c / in J, and aB otherwise, each row and column contains a string inS.\nWe illustrate this with a simple example: Ifk = 6 and we have thatAAABAB and\nBBBABA are both in the dictionary, then Lexi could fill the table as follows:\nA A A B A B\nA A A B A B\nA A A B A B\nB B B A B A\nA A A B A B\nB B B A B A\nSuppose we are looking at rowi or columni for i in J. Then by construction the string\nin this row/column containsAs at indicesk with k in Jand Bs elsewhere, and thus is\nprecisely l. Suppose instead we are looking at rowi or columni for i / in J. Then again\n14\nEGMO 2023, Portorož Problems & Solutions\nby construction the string in this row/column containsAs at indicesk with k / in Jand\nBs elsewhere, and thus is preciselyl′. So each row and column indeed contains a string\ninS.\nThus, for anyS with|S|⩾ 2k-1, Lexi can definitely fill the grid appropriately. Since we\nknowm ⩾ 2k-1, 2k-1 is the minimum possible value ofm as claimed.\n15\nEGMO 2023, Portorož Problems & Solutions",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo12/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo12/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.75,
+      "graph_terms": [
+        "grid"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 3}; manual_override=candidate",
+      "statement_preview": "Let k be a positive integer. Lexi has a dictionaryD consisting of somek-letter strings containing only the lettersA and B. Lexi would like to write either the letterA or the letter B in each cell of ak×k grid so that eac"
+    },
+    {
+      "id": "egmo-2023-p4",
+      "year": 2023,
+      "egmo_number": 12,
+      "problem_number": 4,
+      "statement_en": "Turbo the snail sits on a point on a circle with circumference 1. Given an infinite\nsequence of positive real numbersc1, c2, c3, . . ., Turbo successively crawls distancesc1, c2, c3, . . .around\nthe circle, each time choosing to crawl either clockwise or counterclockwise.\nFor example, if the sequencec1, c2, c3, . . .is 0.4, 0.6, 0.3, . . ., then Turbo may start crawling as follows:\n0.4\n0.6\n0.3\nDetermine the largest constantC > 0 with the following property: for every sequence of positive real\nnumbers c1, c2, c3, . . .with ci < C for all i, Turbo can (after studying the sequence) ensure that there\nis some point on the circle that it will never visit or crawl across.",
+      "solution_text_en": "Turbo the snail sits on a point on a circle with circumference 1. Given an\ninfinite sequence of positive real numbersc1,c 2,c 3,..., Turbo successively crawls distances\nc1,c 2,c 3,... around the circle, each time choosing to crawl either clockwise or counter-\nclockwise.\nFor example, if the sequencec1,c 2,c 3,...is 0.4, 0.6, 0.3,..., then Turbo may start crawling\nas follows:\n0.4\n0.6\n0.3\nDetermine the largest constantC >0 with the following property: for every sequence of\npositive real numbersc1,c 2,c 3,... with ci < C for alli, Turbo can (after studying the\nsequence) ensure that there is some point on the circle that it will never visit or crawl\nacross.\nSolution 1.The largest possibleC is C = 1\n2.\nFor 0<C ⩽ 1\n2, Turbo can simply choose an arbitrary pointP (different from its starting\npoint) to avoid. When Turbo is at an arbitrary pointA different fromP, the two arcs\nAP have total length1; therefore, the larger of the two the arcs (or either arc in caseA\nis diametrically opposite toP) must have length⩾ 1\n2. By always choosing this larger arc\n(or either arc in caseA is diametrically opposite toP), Turbo will manage to avoid the\npoint P forever.\nForC > 1\n2, we writeC = 1\n2 +a with a> 0, and we choose the sequence\n1\n2, 1 +a\n2 , 1\n2, 1 +a\n2 , 1\n2, ...\nIn other words,ci = 1\n2 ifi is odd andci = 1+a\n2 <C wheni is even. We claim Turbo must\neventually visit all points on the circle. This is clear when it crawls in the same direction\ntwo times in a row; after all, we haveci +ci+1 > 1 for alli. Therefore, we are left with\nthe case that Turbo alternates crawling clockwise and crawling counterclockwise. If it,\nwithout loss of generality, starts by going clockwise, then it will always crawl a distance\n1\n2 clockwise followed by a distance1+a\n2 counterclockwise. The net effect is that it crawls a\ndistance a\n2 counterclockwise. Because a\n2 is positive, there exists a positive integerN such\nthat a\n2·N >1. After 2N crawls, Turbo will have crawled a distancea\n2 counterclockwise\nN times, therefore having covered a total distance ofa\n2·N > 1, meaning that it must\nhave crawled over all points on the circle.\nNote: Every sequence of the formci = x if i is odd, and ci = y if i is even, where\n0 < x,y < C, such thatx +y ⩾ 1, and x̸= y satisfies the conditions with the same\nargument. There might be even more possible examples.\n16\nEGMO 2023, Portorož Problems & Solutions\nSolution 2.Alternative solution (to show thatC ⩽ 1\n2)\nWe consider the following related problem:\nWe assume instead that the snail Chet is moving left and right on the real line. Find the\nsizeM of the smallest (closed) interval, that we cannot force Chet out of, using a sequence\nof real numbers di with 0<d i < 1 for all i.\nThen C = 1/M. Indeed if for every sequencec1,c 2,..., withci < Cthere exists a point\nthat Turbo can avoid, then the circle can be cut open at the avoided point and mapped\nto an interval of sizeM such that Chet can stay inside this interval for any sequence\nof the fromc1/C,c 2/C,..., see Figure 5. However, all sequencesd1,d 2,... with di < 1\ncan be written in this form. Similarly if for every sequenced1,d 2,..., there exists an\ninterval of length smaller or equalM that we cannot force Chet out of, this projects to\na subset of the circle, that we cannot force Turbo out of using any sequence of the form\nd1/M,d 2/M,.... These are again exactly all the sequences with elements in[0,C ).\nFigure 5: Chet and Turbo equivalence\nClaim: M ⩾ 2.\nProof. Suppose not, soM <2. SayM = 2-2εfor someε>0 and let[-1 +ε,1-ε] be a\nminimal interval, that Chet cannot be forced out of. Then we can force Chet arbitrarily\nclose to±(1-ε). In partiular, we can force Chet out of[-1 + 4\n3ε,1-4\n3ε] by minimality\nof M. This means that there exists a sequenced1,d 2,... for which Chet has to leave\n[-1 + 4\n3ε,1-4\n3ε], which means he ends up either in the interval[-1 +ε,-1 + 4\n3ε) or in\nthe interval(1-4\n3ε,1-ε].\nNow consider the sequence,\nd1, 1-7\n6ε,1-2\n3ε,1-2\n3ε,1-7\n6ε, d2, 1-7\n6ε,1-2\n3ε,1-2\n3ε,1-7\n6ε, d3, ...\nobtained by adding the sequence1-7\n6ε,1-2\n3ε,1-2\n3ε,1-7\n6εin between every two\nsteps. We claim that this sequence forces Chet to leave the larger interval[-1 +ε,1-ε].\nIndeed no two consecutive elements in the sequence1-7\n6ε,1-2\n3ε,1-2\n3ε,1-7\n6εcan\n17\nEGMO 2023, Portorož Problems & Solutions\nhave the same sign, because the sum of any two consecutive terms is larger than2-2ε\nand Chet would leave the interval[-1 +ε,1-ε]. It follows that the(1-7\n6ε)’s and the\n(1-2\n3ε)’s cancel out, so the position afterdk is the same as beforedk+1. Hence, the\npositions after eachdk remain the same as in the original sequence. Thus, Chet is also\nforced to the boundary in the new sequence.\nIf Chet is outside the interval[-1 + 4\n3ε,1-4\n3ε], then Chet has to move1-7\n6εtowards\n0, and ends in[-1\n6ε,1\n6ε]. Chet then has to move by1-2\n3ε, which means that he has to\nleave the interval[-1 +ε,1-ε]. Indeed the absolute value of the final position is at least\n1-5\n6ε. This contradicts the assumption, that we cannot force Chet out of[-1 +ε,1-ε].\nHence M ⩾ 2 as needed.\n18\nEGMO 2023, Portorož Problems & Solutions",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo12/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo12/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 3,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.75,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 3, 'algebra': 2, 'number_theory': 0, 'combinatorics': 4}; manual_override=candidate",
+      "statement_preview": "Turbo the snail sits on a point on a circle with circumference 1. Given an infinite sequence of positive real numbersc1, c2, c3, . . ., Turbo successively crawls distancesc1, c2, c3, . . .around the circle, each time cho"
+    },
+    {
+      "id": "egmo-2023-p5",
+      "year": 2023,
+      "egmo_number": 12,
+      "problem_number": 5,
+      "statement_en": "We are given a positive integers ⩾ 2. For each positive integerk, we define itstwist\nk′ as follows: write k as as + b, where a, b are non-negative integers andb < s, then k′ = bs + a. For\nthe positive integern, consider the infinite sequenced1, d2, . . .where d1 = n and di+1 is the twist of\ndi for each positive integeri.\nProve that this sequence contains1 if and only if the remainder whenn is divided bys2 - 1 is either\n1 or s.",
+      "solution_text_en": "We are given a positive integers ⩾ 2. For each positive integerk, we define\nits twist k′as follows: writek as as +b, wherea,b are non-negative integers andb < s,\nthenk′=bs+a. For the positive integern, consider the infinite sequenced1,d 2,...where\nd1 =n and di+1 is the twist ofdi for each positive integeri.\nProve that this sequence contains1 if and only if the remainder whenn is divided by\ns2-1 is either 1 or s.\nSolution 1. First, we consider the differencek-k′′. If k = as +b as in the problem\nstatement, thenk′= bs +a. We writea = ls +m with m,l non-negative numbers and\nm<=s-1. This givesk′′=ms + (b +l) and hencek-k′′= (a-m)s-l =l(s2-1).\nWe conclude\nFact 1.1.k>=k′′for every everyk>=1\nFact 1.2.s2-1 divides the differencek-k′′.\nFact 1.2 implies that the sequencesd1,d 3,d 5,... and d2,d 4,d 6,... are constant modulo\ns2-1. Moreover, Fact 1.1 says that the sequences are (weakly) decreasing and hence\neventually constant. In other words, the sequenced1,d 2,d 3,...is 2-periodic modulos2-1\n(from the start) and is eventually 2-periodic.\nNow, assume that some term in the sequence is equal to1. The next term is equal to\n1′=s and since the sequence is 2-periodic from the start modulos2-1, we conclude that\nd1 is either equal to1 or s modulo s2-1. This proves the first implication.\nTo prove the other direction, assume thatd1 is congruent to1 or s modulo s2-1. We\nneed the observation that once one of the sequencesd1,d 3,d 5,...ord2,d 4,d 6,...stabilises,\nthen their value is less thans2. This is implied by the following fact.\nFact 1.3.If k =k′′, thenk =k′′<s 2.\nProof. We use the expression fork-k′′found before. If k = k′′, then l = 0, and so\nk′′=ms +b. Both m and b are reminders after division bys, so they are both<=s-1.\nThis givesk′′<=(s-1)s + (s-1)<s 2.\nUsing Fact 1.2, it follows that the sequenced1,d 3,d 5,... is constant to 1 or s modulo\ns2-1 and stabilises to1 or s by Fact 1.3. Sinces′= 1, we conclude that the sequence\ncontains a1.\nSolution 2.We make a number of initial observations. Letk be a positive integer.\nFact 2.1.If k>=s2, thenk′<k .\nProof. Write k = as +b, as in the problem statement. Ifk>=s2, then a>=s because\nb < s. So, k′= bs +a<=(s-1)s +a<=as<=as +b = k. Moreover, we cannot have\nequality since that would implys-1 =b = 0.\nFact 2.2.If k<=s2-1, thenk′<=s2-1 and k′′=k.\n19\nEGMO 2023, Portorož Problems & Solutions\nProof. Write k = as +b, as in the problem statement. If k < s2, then it must hold\n1<=a,b<s , hencek′=bs +a<s 2 and k′′= (bs +a)′=as +b =k.\nFact 2.3.We havek′≡sk (mod s2-1) (or equivalentlyk≡sk′(mod s2-1)).\nProof. We writek =as +b, as in the problem statement. Now,\nsk-k′=s(as +b)-(bs +a) =a(s2-1)≡0 (mod s2-1),\nas desired.\nCombining Facts 2.1 and 2.2, we find that the sequenced1,d 2,d 3...is eventually periodic\nwith period 2, starting at the first value less thans2. From Fact 2.3, it follows that\nk′′≡sk′≡s2k≡k (mod s2-1)\nand hence the sequence is periodic modulos2-1 from the start with period2.\nNow, if the sequence contains1, the sequence eventually alternates between1 ands since\nthe twist of1 iss and vice versa. Using periodicity modulos2-1, we must haven≡1,s\n(mod s2-1). Conversely, ifn≡1,s (mod s2-1) then the eventual period must contain\nat least one value congruent to either1 ors modulos2-1. Since these values must be less\nthan s2, this implies that the sequence eventually alternates between1 and s, showing\nthat it contains a1.\nSolution 3.We give an alternate proof of the direct implication: if the sequence contains\na 1, then the first term is 1 ors modulo s2-1. We prove the following fact, which is a\ncombination of Facts 2.1 and 2.3.\nFact 3.1.For allk>=s2, we have(k-s2 + 1)′ in {k′,k′-s2 + 1}.\nProof. We writek = as +b, as in the problem statement. Sincek>=s2, we havea>=s.\nIf b<s -1, then\n(k-s2 + 1)′=\n(\n(a-s)s + (b + 1)\n)′\n= (b + 1)s + (a-s) =bs +a =k′.\nOn the other hand, ifb =s-1, then\n(k-s2 + 1)′=\n(\n(a-s + 1)s + 0\n)′\n= 0s + (a-s + 1) =a-s + 1 =k′-s2 + 1.\nNow assumen>=s2 and the sequenced1,d 2,... contains a 1. Denote by e1,e 2,... the\nsequence constructed as in the problem statement, but with initial valuee1 =n-s2 + 1.\nUsing the above fact, we deduce thatei≡di (mod s2-1) and ei<=di for alli>=1 by\ninduction oni. Hence, the sequencee1,e 2,... also contains a1.\nSince the conclusion we are trying to reach only depends on the residue ofd1 modulo\ns2-1, we conclude that without loss of generality we can assumen<s 2.\n20\nEGMO 2023, Portorož Problems & Solutions\nUsing Fact 2.2, it now follows that the sequenced1,d 2,... is periodic with period two.\nSince 1 ands are twists of each other, it follows that if this sequence contains a1, it must\nbe alternating between1 and s. Hence,d1≡1,s (mod s2-1) as desired.\nFor the other direction we can make a similar argument, observing that the second of the\ntwo cases in the proof of Fact 3.1 can only apply to finitely many terms of the sequence\nd1,d 2,d 3,..., allowing us to also go the other way.\nSolution 4. First assume thatdk = 1 for somek. Let k be the smallest such index. If\nk = 1 then n = 1, so we may assumek ⩾ 2.\nThen dk-1 = as +b for some non-negative integersa,b satisfying b < sand bs +a = 1.\nThe only solution isb = 0,a = 1, sodk-1 =s. So, ifk = 2, thenn =s, so we may assume\nk ⩾ 3.\nThen there exist non-negative integersc,d satisfyingdk-2 =cs +d,d<s andds +c =s.\nWe have two solutions:d = 0,c = s and d = 1,c = 0. However, in the second case we\nget dk-2 = 1, which contradicts the minimality ofk. Hence, dk-2 = s2. If k = 3, then\nn =d1 =s2, which gives remainder 1 when divided bys2-1.\nAssume now thatk ⩾ 4. We will show that for eachm in {3, 4,...,k-1}there exist\nb1,b 2,...,bm-2 in {0, 1,...,s-1}such that\ndk-m =sm-\nm-2∑\ni=1\nbi\n(\nsm-i-sm-i-2\n)\n. (9)\nWe will prove this equality by induction onm. If m = 3, thendk-3 =a1s +b1 for some\nnon-negative integersa1,b 1 satisfyingb1 <s andb1s+a1 =dk-2 =s2. Thena1 =s2-b1s,\nso dk-3 =s3-b1(s2-1), which proves (9) form = 3.\nAssumethat(9)holdsforsome mandconsider dk-(m+1). Thereexistnon-negativeintegers\nam-1,bm-1 such thatdk-(m+1) =am-1s+bm-1,bm-1 <s anddk-m =bm-1s+am-1. Using\nthe inductive assumption we get\nam-1 =dk-m-bm-1s =sm-\nm-2∑\ni=1\nbi\n(\nsm-i-sm-i-2\n)\n-bm-1s,\ntherefore\ndk-(m+1) =am-1s +bm-1 =sm+1-\nm-2∑\ni=1\nbi\n(\nsm-i-sm-i-2\n)\ns-bm-1s2 +bm-1\n=sm+1-\nm-1∑\ni=1\nbi\n(\nsm+1-i-sm-i-1\n)\n,\nwhich completes the proof of (9). In particular, form =k-1 we get\nd1 =sk-1-\nk-3∑\ni=1\nbi\n(\nsk-i-1-sk-i-3\n)\n.\nThe above sum is clearly divisible bys2-1, and it is clear that the remainder ofsk-1\nwhen divided bys2-1 is 1 whenk is odd, ands when k is even. It follows that the\nremainder whenn =d1 is divided bys2-1 is either 1 ors.\n21\nEGMO 2023, Portorož Problems & Solutions\nTo prove the other implication, assume thatn gives remainder 1 ors when divided by\ns2-1. Ifn in {1,s,s 2}, then one of the numbersd1, d2 and d3 is 1. We therefore assume\nthat n > s2. Since the reminder when a power ofs is divided bys2-1 is either 1 ors,\nthere exists a positive integerm such thatsm-n is non-negative and divisible bys2-1.\nBy our assumptionm ⩾ 3. We also take the smallest suchm, so thatn > sm-2. The\nquotient sm-n\ns2-1 is therefore smaller thansm-2, so there existb1,...,bm-2 in {0, 1,...,s-1}\nsuch that sm-n\ns2-1 = ∑m-2\ni=1 bisi-1. It follows that\nn =sm-\nm-2∑\ni=1\nbi\n(\nsi+1-si-1\n)\n.\nWe now show that\ndj =sm+1-j-\nm-1-j∑\ni=1\nbi\n(\nsi+1-si-1\n)\n(10)\nfor j = 1, 2,...,m-2 by induction onj. For j = 1 this follows fromd1 = n. Assume\nnow that (10) holds for somej <m-2. Then\ndj =\n\nsm-j-\nm-1-j∑\ni=2\nbi\n(\nsi-si-2\n)\n-b1s\n\ns +b1.\nAsdj is positive andb1 in {0, 1,...,s-1}, the expressionsm-j-∑m-1-j\ni=2 bi (si-si-2)-b1s\nhas to be non-negative, so we can compute the twist ofdj as\ndj+1 =b1s +sm-j-\nm-1-j∑\ni=2\nbi\n(\nsi-si-2\n)\n-b1s =sm-j-\nm-2-j∑\ni=1\nbi\n(\nsi+1-si-1\n)\n,\nwhich finishes the induction.\nNow we use (10) forj = m-2 and getdm-2 = s3-b1(s2-1) = (s2-b1s) +b1. Then\ndm-1 =b1s+s2-b1s =s2 =s·s+0,dm = 0·s+s =s = 1·s+0 anddm+1 = 0·s+1 = 1.\n22\nEGMO 2023, Portorož Problems & Solutions",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo12/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo12/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 4,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.64,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 4, 'combinatorics': 2}; manual_override=not_combinatorics",
+      "statement_preview": "We are given a positive integers ⩾ 2. For each positive integerk, we define itstwist k′ as follows: write k as as + b, where a, b are non-negative integers andb < s, then k′ = bs + a. For the positive integern, consider "
+    },
+    {
+      "id": "egmo-2023-p6",
+      "year": 2023,
+      "egmo_number": 12,
+      "problem_number": 6,
+      "statement_en": "Let ABC be a triangle with circumcircle Ω. Let Sb and Sc respectively denote the\nmidpoints of the arcsAC and AB that do not contain the third vertex. LetNa denote the midpoint\nof arc BAC (the arc BC containing A). Let I be the incentre ofABC. Let ωb be the circle that is\ntangent to AB and internally tangent toΩ at Sb, and letωc be the circle that is tangent toAC and\ninternally tangent toΩ at Sc. Show that the line IN a, and the line through the intersections ofωb\nand ωc, meet onΩ.\nThe incentre of a triangle is the centre of its incircle, the circle inside the triangle that is tangent to\nall three sides.",
+      "solution_text_en": "Let ABC be a triangle with circumcircle Ω. Let Sb and Sc respectively\ndenote the midpoints of the arcsAC and AB that do not contain the third vertex. Let\nNa denote the midpoint of arcBAC (the arcBC containingA). LetI be the incentre of\nABC. Letωb be the circle that is tangent toAB and internally tangent toΩ at Sb, and\nlet ωc be the circle that is tangent toAC and internally tangent toΩ at Sc. Show that\nthe lineINa, and the line through the intersections ofωb and ωc, meet onΩ.\nThe incentre of a triangle is the centre of its incircle, the circle inside the triangle that is\ntangent to all three sides.\nΩ\nSc\nSb\nM\nT\nA B\nC\nU\nV\nωc\nωb\nINa\nX\nPc\nPb\nY\nFigure 6: Diagram to Solution 1\nSolution 1.Part I: First we show that A lies on the radical axis ofωb and ωc.\nWe first note that the line through the intersections of two circles is the radical line of the\ntwo circles. Let the tangents toΩ atSb andSc intersect atT. ClearlyT is on the radical\naxis ofωb and ωc (and in fact is the radical centre ofωb,ωc and Ω).\nWe next show thatA lies on the radical axis ofωb andωc. LetPb denote the point of tan-\ngency ofωb andAB, and letPc denote the point of tangency ofωc andAC. Furthermore,\nlet U be the intersection of the tangent toΩ at Sb with the lineAB, and letV be the\nintersection of the tangent toΩ at Sc with the lineAC. Then TVAU is parallelogram.\nMorover, due to equality of tangent segments we have|USb|=|UPb|,|VPc|=|VSc|and\n|TSb|=|TSc|. It follows that\n|APb|= |UPb|-|UA|=|USb|-|TV|=|TSb|-|TU|-|TV| (11)\n= |TSs|-|TV|-|TU|=|VSc|-|AV|=|VPc|-|VA|=|APc|.\n23\nEGMO 2023, Portorož Problems & Solutions\nBut|APb|,|APc|are exactly the square roots of powers ofA with respect toωb and ωc,\nhence A is indeed on their radical axis.\nThus, the radical axis ofωb,ωc is AT.\nPart II: Consider the triangleASbSc. Note that sinceT is the intersection of the tangents\nat Sb and Sc to the circumcircle ofASbSc, it follows thatAT is the symmedian ofA in\nthis triangle. Let X denote the second intersection of the symmedianAT with Ω. We\nwish to show thatX is also onINa.\nNote thatANa is the external angle bisector of angleA, and therefore it is parallel to\nSbSc. Let M denote the midpoint ofSbSc, and letY be the second intersection ofAM\nwith Ω. Since inASbSc,AXT is the symmedian andAMY is the median, it follows that\nXY is also parallel toSbSc. Thus, reflecting in the perpendicular bisector ofSbSc sends\nthe lineAMY to lineNaMX.\nNext, consider the quadrilateralASbISc. From the trillium theorem we have|SbA|=|SbI|\nand|ScA|=|ScI|, thus the quadrilateral is a kite, from which it follows that the reflection\nof the lineAM in SbSc is the lineIM. But previously we have seen that this is also the\nline NaMX. ThusM,I,N a and X are collinear, as we wanted to show.\nSolution 2. This is a variation of Solution 1 which avoids the theory of the symmedian\npoint.\nWe begin by showing that the radical axis ofωb,ωc is AT as in Solution 1.\nPart II: We introduce the pointSa with the obvious meaning. Observe that the incentre\nI of ABC is the orthocentre ofSaSbSc either because this is well-known, or because of\nan angle argument thatA reflects inSbSc to I (and similar results by cyclic change of\nletters). ThereforeASa is perpendicular toSbSc.\nA\nAB\nBC\nCS\nSc cS\nSb bN\nNa aS\nSa aI\nIX\nXM\nMY\nYT\nT\nFigure 7: A reflections argument for Solution 2\nLetM denote the midpoint ofSbSc. ThenA is the reflection ofSa in the diameter parallel\nto SbSc, so the reflection ofA in the diameter perpendicular toSbSc is Na, the antipode\n24\nEGMO 2023, Portorož Problems & Solutions\nofSa. Let the reflection ofX inTM be Y, soTY passes throughNa and is the reflection\nof TX in TM.\nNowSbSc is the polar line ofT with respect toΩ, soAY andNaX meet on this line, and\nby symmetry at its midpointM. The line NaMX is therefore the reflection of the line\nYMA in SbSc, and soNaMX passes throughI (the reflection ofA in SbSc).\nThe triangle AScSb can be taken as generic, and from the argument above we can extract\nthe fact that the symmedian point and the centroid are isogonal conjugates in that triangle.\nSolution 3.Assume the notation from Solution 1, part I of Solution 1, and letO be the\ncentre ofΩ.\nO\nΩ\nSc\nSb\nM\nT\nA B\nC\nωc\nωb\nINa\nX\nPc\nPb\nFigure 8: Diagram to Solution 3\nPart II: As in Solution 1, by the trillelium theorem,ScSb bisectsAI, and sinceNaA∥SbSc,\nthen OT is a bisector ofANa. This implies |MNa|=|MA|=|MI|, since M is the\nmidpoint ofScSb and lies also onOT. Hence, M is the circumcentre of triangleIANa.\nBut this triangle has a right angle atA (sinceAI andANa are the inner and outer angle\nbisector atA), henceM lies onINa.\nAgain, letX be the second intersection ofTA and Ω. By the above, it suffices to prove\nthat X lies on the line NaM. From the power of point T with respect to Ω we get\n|TA|·|TX|=|TSc|2. SinceM is the foot of the altitude of right triangleTScO, we obtain\n25\nEGMO 2023, Portorož Problems & Solutions\n|TSc|2 =|TM|·|TO|. Hence, |TA|·|TX|=|TM|·|TO|so the pointsO,M,A,X are\nconcyclic. It follows that ∠MXA = ∠MOA = 1\n2∠NaOA = ∠NaXA. Hence, X lies on\nthe lineNaM.\nRemark. To show that OMAX is cyclic, one can also invert the line TAX in the\ncircumcircle of the triangleABC.\nSolution 4.Part I is done as in solution 1.\nO\nΩ\nSc\nSb\nT\nA B\nC\nωc\nωb\nINa\nSa\nQ\nPc\nPb\nFigure 9: Diagram to Solution 4\nPart II: as in Solution 1 we show thatANa||SbSc. In particular, ∠NaOT = ∠TOA. The\nconclusion of the problem trivially holds if|AB|=|AC|, therefore we assume without\nloss of generality that|AC|>|AB|. Let Sa be the midpoint of the arcBC which does\nnot containA. Then NaSa is a diameter, so∠SaBNa = π\n2 = ∠OScT. We also compute\n∠BNaSa = ∠BASa = 1\n2∠BAC = 1\n2∠ScTSb = ∠ScTO. It follows that the trianglesTScO\nand NaBSa are similar. In particular,\n|NaB|\n|TSc|=|SaB|\n|OSc|. (12)\nNext we compute\n∠ISaB = ∠NaSaB-∠NaSaI = ∠TOSc-1\n2∠NaOA = ∠TOSc-∠TOA = ∠AOSc (13)\n26\nEGMO 2023, Portorož Problems & Solutions\nand\n∠IBNa = ∠CBNa-∠CBI = 1\n2(π-∠BNaC)-1\n2∠CBA = 1\n2∠ACB = ∠ACSc = ∠AScT,\n(14)\nhence\n∠SaBI = π\n2-∠IBNa = π\n2-∠AScT = ∠OScA.\nTogether with (13) it follows that the trianglesIBSa and AScO are similar, so|SaB|\n|OSc|=\n|IB|\n|ASc|, and (12) implies|NaB|\n|TS c|= |IB|\n|ASc|. Consequently, by (14) the trianglesTScA andNaBI\nare similar and therefore∠ScTA = ∠BNaI. Now letQ be the second intersection ofNaI\nwith Ω. Then ∠BNaI = ∠BNaQ = ∠BAQ, so ∠ScTA = ∠BAQ. Since AB is parallel\nto TSc, we getAQ||TA, i.e.A, T, Q are collinear.\nRemark. After proving similarity of triangles TScO and NaBSa one can use spiral\nsymmetry to show similarity of trianglesTScA and NaBI.\nSolution 5.Part I: First we show thatA lies on the radical axis betweenωb and ωc.\nLetT be the radical center of the circumcircle,ωb andωc; thenTSb andTSc are common\ntangents of the circles, as shown in Figure 5a. Moreover, letPb = AB∩SbSc and Pc =\nAC∩SbSc. The triangleTScSb is isosceles:AB∥TSc and AC∥TSb so\n∠APbPc = ∠TScSb = ∠ScSbT = ∠PbPcA.\nFrom these angles we can see thatωb passes throughPb,ωc passes throughPc, and finally\nAPb and APc are equal tangents toωb and ωc, soA lies on the radical axis.\nFigure 5a\n Figure 5b\n27\nEGMO 2023, Portorož Problems & Solutions\nPart II. Let the radical axisTA meet the circumcircle again atX, letSa be the midpoint\nof the arcBC opposite toA, and letXI meet the circumcirlce again atN. (See Figure 2.)\nFor solving the problem, we have prove thatNa =N.\nThe triples of pointsA,I,S a; B,I,S b and C,I,S c are collinear because they lie on the\nangle bisectors of the triangleABC.\nNotice that the quadrilateralAScXSb is harmonic, because the tangents atSb and Sc,\nand the lineAX are concurrent atT. This quadrilateral can be projected (or inverted) to\nthe quadrilateralSaCNB through I. So, SaCNB also is a harmonic quadrilateral. Due\nto SaB =SaC, this impliesNB =NC, soN =Na. Done.\nRemark. Instead of mentioning inversion and harmonic quadrilaterals, from the similar\ntriangles△TScA∼△TXSc and△TASb∼△TSbX we can get\nASc\nScX = ASb\nSbX.\nThen, we can apply the trigonometric form of Ceva’s theorem to triangleBCX\nsin ∠BXNa\nsin ∠NaXC·sin ∠CBSb\nsin ∠SbBX·sin ∠XCSc\nsin ∠ScCB = BNa\nNaC·-CSb\nSbX ·XSc\n-ScB = 1·SbA\nSbNa\n·NaSc\nScB = 1,\nso the CeviansBSb, CSc and XNa are concurrent.\nSolution 6. Part I: First let’s show that this is equivalent to proving thatTA and NaI\nintersect inΩ.\nLemma: Let’s recall that if we have two circlesω1 andω2 which are internally tangent at\npoint X and if we have a lineAB tangent toω2 at Y. LetM be the midpoint of the arc\nAB not containingZ. We have thatZ,Y,M are collinear.\nSolution 6: Lemma\nLetPb =AB∩ωb andPc =AC∩ωc. We can notice by the lemma thatSb,Pb andSc are\ncollinear, and similarlySc,Pc and Sb are also collinear. ThereforeSc,Pb, Pc, andSb are\ncollinear, and since∠APbPc = ∠ABC\n2 + ∠ACB\n2 = ∠APcPb then APb = APc so A is on the\nradical axis ofωb and ωc. Let T be the intersection of the tangent lines ofΩ through Sc\nand Sb. SinceTSc =TSb then AT is the radical axis betweenωb and ωc.\nPart II:TA and NaI intersect inΩ.\n28\nEGMO 2023, Portorož Problems & Solutions\nLet ωa the A-mixtilinear incircle (that is, the circle internally tangent toΩ, and tangent\nto bothAB and AC), and letX = Ω∩ωa. It is known thatNa,I,X are collinear.\nLet Mc and Mb be the tangent points ofωA to AB and AC respectively, then by the\nlemma X,Mc,Sc are collinear andX,Mb,Sb are collinear. We can see thatScTSb and\nMcAMb are homothetic with respect toX; thereforeT andA are homothetic with respect\nto X, impying thatT,A,X are collinear.\nFigure 10: Diagram to Solution 6\n29",
+      "source": {
+        "official_page_url": "https://www.egmo.org/egmos/egmo12/",
+        "paper_files": [
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day1-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-1.pdf",
+            "ok": true,
+            "error": null
+          },
+          {
+            "label": "English",
+            "url": "https://www.egmo.org/egmos/egmo12/paper-day2-English.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/paper-2.pdf",
+            "ok": true,
+            "error": null
+          }
+        ],
+        "solution_files": [
+          {
+            "url": "https://www.egmo.org/egmos/egmo12/solutions.pdf",
+            "local_pdf": "data/import_batches/extracted/egmo_official/pdf/egmo-2023/solutions-1.pdf",
+            "ok": true,
+            "error": null
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 15,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "vertex"
+      ],
+      "reason": "scores={'geometry': 15, 'algebra': 0, 'number_theory': 0, 'combinatorics': 1}; graph-like signal present",
+      "statement_preview": "Let ABC be a triangle with circumcircle Ω. Let Sb and Sc respectively denote the midpoints of the arcsAC and AB that do not contain the third vertex. LetNa denote the midpoint of arc BAC (the arc BC containing A). Let I "
+    }
+  ]
+}

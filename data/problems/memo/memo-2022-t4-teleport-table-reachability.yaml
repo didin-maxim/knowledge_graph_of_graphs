@@ -1,0 +1,143 @@
+{
+  "id": "memo-2022-t4-teleport-table-reachability",
+  "title": "Телепорты на доске и паритет достижимости, MEMO 2022 T-4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "colored_table",
+      "partner_cells",
+      "alternating_reachability"
+    ],
+    "methods": [
+      "state_partition",
+      "domino_pairing_argument"
+    ],
+    "transformations": [
+      "alternating_moves_to_reachability_states"
+    ],
+    "goal": [
+      "prove_universal_reachability"
+    ],
+    "auxiliary_graph_type": [
+      "state_graph"
+    ],
+    "invariants": [
+      "teleport_vs_adjacent_balance"
+    ],
+    "keywords": [
+      "memo_2022_t4",
+      "memo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Дана таблица \\(2n\\times 2n\\). Каждая клетка имеет один из \\(2n^2\\) цветов, причём каждый цвет встречается ровно дважды. Яна стоит в одной клетке, а шоколадка лежит в другой. За ход она либо идёт в соседнюю по стороне клетку, либо телепортируется в другую клетку того же цвета, причём типы ходов должны строго чередоваться и первым должен быть телепорт. Нужно определить, может ли Яна гарантированно дойти до шоколадки при любой раскраске и любых начальных клетках.",
+        "source_id": "src-memo-2022-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Официальное решение не строит один явный граф клеток, но делит клетки на четыре класса достижимости в ориентированном графе состояний: достижимые с последним телепортом, с последним обычным шагом, обоими способами и недостижимые. Дальше используется инвариант попарной балансировки и домино-разбиение.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-four-reachability-types",
+      "title": "Четыре типа достижимости",
+      "text": "Каждая клетка классифицируется по тому, каким типом последнего хода она достижима: только телепортом, только обычным шагом, обоими способами или вовсе недостижима. Это превращает задачу в анализ достижимости в состоянии с чередованием ходов.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-domino-balance",
+      "title": "Домино и баланс классов",
+      "text": "Клетки одного цвета образуют пары-партнёры. з чередования ходов следует, что число клеток, достижимых только телепортом, равно числу клеток, достижимых только обычным шагом. Если недостижимые клетки существуют, можно выбрать границу между достижимой и недостижимой клеткой и продолжить её до разбиения доски доминошками. Тогда одна из доминошек нарушает этот баланс, что даёт противоречие.",
+      "tags": [
+        "matching"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Фиксируем раскраску и стартовую клетку. Каждую клетку относим к одному из четырёх классов: достижима только легальной последовательностью, оканчивающейся телепортом; только последовательностью, оканчивающейся обычным шагом; обоими способами; недостижима. Пары клеток одного цвета попарно переводят тип 'телепорт достижима' в тип 'обычный шаг достижима', поэтому этих клеток поровну. Сосед любой 'телепорт достижимой' клетки обязан быть 'обычно достижимым', а сосед легко достижимой клетки не может быть недостижим. Предположим, что недостижимая клетка есть. Тогда рядом с ней найдётся клетка, достижимая только обычным шагом. Покрываем всю доску доминошками так, чтобы эта пара попала в одну доминошку. В каждой доминошке, содержащей клетку типа 'только телепорт', есть клетка типа 'только обычный шаг', но выбранная доминошка даёт клетку второго типа без первой. Это противоречит равенству чисел двух типов. Значит недостижимых клеток нет, и Яна всегда может попасть в любую клетку, в частности к шоколадке.",
+      "idea_ids": [
+        "idea-four-reachability-types",
+        "idea-domino-balance"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "MEMO 2022 T-4; официальное решение держится на графе состояний достижимости и домино-паритете.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "matching",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "state_partition",
+        "domino_pairing_argument"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-memo-2022-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая структура выражена через классы достижимости, а не через явную формулировку на графе.",
+    "relations_status": "base_done"
+  }
+}

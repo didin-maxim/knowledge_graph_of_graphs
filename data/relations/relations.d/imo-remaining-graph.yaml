@@ -1,0 +1,229 @@
+{
+  "relations": [
+    {
+      "id": "rel-ramsey-r33-imo-1964-p4",
+      "from": "ramsey-r33",
+      "to": "imo-1964-p4-three-topic-ramsey",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "IMO 1964 P4 is the three-colour party version of the same Ramsey move: choose one vertex, pigeonhole many same-colour neighbours, then invoke the two-colour triangle lemma on six vertices.",
+      "backward_text": "The problem is an olympiad application of R(3,3)=6 inside a 3-colour edge-colouring of K_17.",
+      "anchors": {
+        "from_solution_id": "sol-pigeonhole",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-imo-1964-p4-imo-1998-c6-ramsey-edge-colouring",
+      "from": "imo-1964-p4-three-topic-ramsey",
+      "to": "imo-1998-c6-complete-graph-rainbow-edges",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems turn the statement into an edge-colouring of a complete graph and use local colour-degree constraints plus R(3,3)-style triangle forcing.",
+      "backward_text": "IMO 1998 C6 is a more delicate edge-colouring problem, but the obstruction for four colours has the same Ramsey triangle core as IMO 1964 P4.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-reviewed-web"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-imo-1979-p6-cycle-walks-graph-symmetry",
+      "from": "eulerian-graph-criterion",
+      "to": "imo-1979-p6-octagon-walks-cycle-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "The counter's motion is exactly a walk on the cycle graph C_8; the same cycle-graph parity that underlies Eulerian graph reasoning explains why odd lengths are impossible.",
+      "backward_text": "IMO 1979 P6 is not an Eulerian-trail problem, but it is a basic cycle-graph walk example sharing the parity and cycle-structure motif.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-imo-1985-sl5-imo-1999-c5-grid-domination",
+      "from": "imo-1985-sl5-lattice-perfect-code",
+      "to": "imo-1999-c5-grid-total-domination",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both are domination-type problems in grid graphs: the 1985 shortlist problem constructs a perfect independent dominating set, while 1999 IMO P3 minimizes a total dominating set on a finite square grid.",
+      "backward_text": "The finite-board lower-bound/construction in 1999 is a boundary-sensitive cousin of the residue-class perfect-code construction in the infinite lattice.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-reviewed-web"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-imo-1985-sl5-imo-1994-c6-periodic-grid",
+      "from": "imo-1985-sl5-lattice-perfect-code",
+      "to": "imo-1994-c6-infinite-grid-pairing-strategy",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both published constructions use a periodic pattern on an infinite grid/lattice to enforce a local neighbourhood condition everywhere.",
+      "backward_text": "The 1994 pairing strategy is not a domination code, but it shares the same periodic-grid construction philosophy as the 1985 lattice perfect code.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-reviewed-secondary"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-eulerian-imo-1986-p6",
+      "from": "eulerian-graph-criterion",
+      "to": "imo-1986-p6-axis-line-balanced-coloring",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The standard graph solution converts points into edges of a row-column bipartite graph and alternates colours along Eulerian circuits after parity adjustment.",
+      "backward_text": "IMO 1986 P6 is a clean olympiad application of Eulerian decomposition to balanced two-colouring of incidences.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-imo-1986-p6-imo-2020-c6-alternating-euler",
+      "from": "imo-1986-p6-axis-line-balanced-coloring",
+      "to": "imo-2020-c6-colored-coins-eulerian-multigraph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions obtain a balanced colouring by decomposing an even-degree graph/multigraph into Eulerian cycles and alternating along the cycles.",
+      "backward_text": "IMO 2020 C6 is a more elaborate multigraph version of the Eulerian alternating-colouring idea already visible in IMO 1986 P6.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-imo-1986-p6-imo-2023-c4-eulerian-reconstruction",
+      "from": "imo-1986-p6-axis-line-balanced-coloring",
+      "to": "imo-2023-c4-strip-pieces-eulerian-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "In both problems an incidence object is encoded as a graph whose Eulerian structure gives the desired global arrangement.",
+      "backward_text": "IMO 2023 C4 uses Eulerian traversal for reconstruction, whereas IMO 1986 P6 uses it for alternating colour balance; the graph mechanism is closely related.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-mantel-imo-1989-sl14",
+      "from": "mantel-theorem",
+      "to": "imo-1989-sl14-seven-points-triangle-cover",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The minimum number of drawn segments is found by passing to the complement and applying Mantel's bound to a triangle-free graph on seven vertices.",
+      "backward_text": "The 1989 shortlist problem is a small exact application of Mantel's theorem via complement graphs.",
+      "anchors": {
+        "from_solution_id": "sol-degree-sum",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-imo-1989-sl14-imo-1992-p3-triangle-free-colours",
+      "from": "imo-1989-sl14-seven-points-triangle-cover",
+      "to": "imo-1992-p3-nine-points-partial-ramsey",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both reduce to forbidding triangles in auxiliary graphs: 1989 uses the complement graph, while 1992 uses the two colour classes of a partial K_9 edge-colouring.",
+      "backward_text": "The 1992 problem can be seen as a coloured strengthening of the triangle-free extremal reasoning used in the 1989 seven-point problem.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-turan-imo-1991-sl9",
+      "from": "turan-theorem",
+      "to": "imo-1991-sl9-min-degree-for-k6",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The published solution is Turan-type: a graph on 1991 vertices with no K_6 is bounded by the complete five-partite extremal construction.",
+      "backward_text": "IMO Shortlist 1991 problem 9 is a direct minimum-degree formulation of the K_6 case of Turan extremal graph theory.",
+      "anchors": {
+        "from_solution_id": "sol-symmetrization",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-imo-1991-sl9-imo-1989-sl14-extremal-complement",
+      "from": "imo-1989-sl14-seven-points-triangle-cover",
+      "to": "imo-1991-sl9-min-degree-for-k6",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both are small olympiad faces of extremal clique/independent-set theory: complementing and comparing with a complete multipartite graph gives the sharp example.",
+      "backward_text": "The 1991 K_6 threshold is the higher-clique analogue of the 1989 triangle-free complement argument.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-tree-imo-1991-p4",
+      "from": "tree-equivalent-properties",
+      "to": "imo-1991-p4-connected-graph-gcd-edge-labels",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "The standard solution first reduces a connected graph to a spanning tree and then labels by an induction/leaf-removal argument.",
+      "backward_text": "IMO 1991 P4 uses the tree reduction as the combinatorial skeleton behind the edge-labelling construction.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-ramsey-imo-1992-p3",
+      "from": "ramsey-theorem",
+      "to": "imo-1992-p3-nine-points-partial-ramsey",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "The problem asks for the edge threshold forcing a monochromatic triangle in a partial two-colouring of K_9, so Ramsey theory is the organising principle.",
+      "backward_text": "IMO 1992 P3 is a finite extremal Ramsey threshold problem rather than the complete-graph R(3,3) statement.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-imo-1992-p3-imo-1998-c6-edge-colouring",
+      "from": "imo-1992-p3-nine-points-partial-ramsey",
+      "to": "imo-1998-c6-complete-graph-rainbow-edges",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems are complete-graph edge-colouring questions where the key obstruction is the forced existence or absence of special coloured triangles.",
+      "backward_text": "The 1998 rainbow-edge condition is not the same Ramsey threshold, but its proof uses the same local colour-degree and triangle-forcing toolkit as IMO 1992 P3.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-reviewed-web"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.8
+    }
+  ]
+}

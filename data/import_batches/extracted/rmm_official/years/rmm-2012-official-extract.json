@@ -1,0 +1,341 @@
+{
+  "year": 2012,
+  "edition_code": "rmm2012",
+  "problems_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=problems_math",
+  "solutions_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=solutions_math",
+  "problem_pdf_count": 2,
+  "solution_pdf_count": 2,
+  "problem_count_extracted": 6,
+  "problems": [
+    {
+      "id": "rmm-2012-p1",
+      "year": 2012,
+      "problem_number": 1,
+      "statement_en": "Given a finite number of boys and girls, a sociable set of boys\nis a set of boys such that every girl knows at least one boy in that set; and a\nsociable set of girls is a set of girls such that every boy knows at least one girl\nin that set. Prove that the number of sociable sets of boys and the number\nof sociable sets of girls have the same parity. (Acquaintance is assumed to\nbe mutual.)\n(Poland) Marek Cygan",
+      "solution_text_en": "Given a finite group of boys and girls, a covering set of boys is a set of boys such\nthat every girl knows at least one boy in that set; and a covering set of girls is a set of girls such\nthat every boy knows at least one girl in that set. Prove that the number of covering sets of boys\nand the number of covering sets of girls have the same parity. (Acquaintance is assumed to be\nmutual.)\n(Poland) Marek Cygan\nSolution 1. A set X of boys is separated from a set Y of girls if no boy in X is an acquaintance\nof a girl in Y . Similarly, a set Y of girls is separated from a set X of boys if no girl in Y is an\nacquaintance of a boy in X. Since acquaintance is assumed mutual, separation is symmetric: X\nis separated from Y if and only if Y is separated from X.\nThis enables doubly counting the number n of ordered pairs ( X; Y ) of separated sets X,\nof boys, and Y , of girls, and thereby showing that it is congruent modulo 2 to both numbers in\nquestion.\nGiven a set X of boys, let YX be the largest set of girls separated from X, to deduce that\nX is separated from exactly 2 |YX | sets of girls. Consequently, n = ∑\nX 2|YX | which is clearly\ncongruent modulo 2 to the number of covering sets of boys.\nMutatis mutandis, the argument applies to show n congruent modulo 2 to the number of\ncovering sets of girls.\nRemark. The argument in this solution translates verbatim in terms of the adjancency matrix\nof the associated acquaintance graph.\nSolution 2. (Ilya Bogdanov) Let B denote the set of boys, let G denote the set of girls and\ninduct on |B| + |G|. The assertion is vacuously true if either set is empty.\nNext, fix a boy b, let B′ = B \\ {b}, and let G′ be the set of all girls who do not know b.\nNotice that:\n(1) a covering set of boys in B′ ∪ G is still one in B ∪ G; and\n(2) a covering set of boys in B ∪ G which is no longer one in B′ ∪ G is precisely the union of a\ncovering set of boys in B′ ∪ G′ and {b},\nso the number of covering sets of boys in B ∪ G is the sum of those in B′ ∪ G and B′ ∪ G′.\nOn the other hand,\n(1′) a covering set of girls in B ∪ G is still one in B′ ∪ G; and\n(2′) a covering set of girls in B′ ∪ G which is no longer one in B ∪ G is precisely a covering set\nof girls in B′ ∪ G′,\nso the number of covering sets of girls in B ∪ G is the difference of those in B′ ∪ G and B′ ∪ G′.\nSince the assertion is true for both B′ ∪ G and B′ ∪ G′ by the induction hypothesis, the\nconclusion follows.\n1\nSolution 3. (G ́ eza K ́ os) LetB and G denote the sets of boys and girls, respectively. For every\npair ( b; g) ∈ B × G, write f (b; g) = 0 if they know each other, and f (b; g) = 1 otherwise. A set\nX of boys is covering if and only if\n∏\ng∈G\n(\n1 −\n∏\nb∈X\nf (b; g)\n)\n= 1:\nHence the number of covering sets of boys is\n∑\nX⊆B\n∏\ng∈G\n(\n1 −\n∏\nb∈X\nf (b; g)\n)\n≡\n∑\nX⊆B\n∏\ng∈G\n(\n1 +\n∏\nb∈X\nf (b; g)\n)\n=\n∑\nX⊆B\n∑\nY ⊆G\n∏\nb∈X\n∏\ng∈Y\nf (b; g) (mod 2) :\nBy symmetry, the same is valid for the number of covering sets of girls.\n2",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D1-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D2-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-solutions.pdf"
+          },
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "graph"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 2, 'combinatorics': 3}"
+    },
+    {
+      "id": "rmm-2012-p2",
+      "year": 2012,
+      "problem_number": 2,
+      "statement_en": "Given a non-isosceles triangle ABC, let D, E, and F denote\nthe midpoints of the sides BC, CA, and AB respectively. The circle BCF\nand the line BE meet again at P , and the circle ABE and the line AD\nmeet again at Q. Finally, the lines DP and F Q meet at R. Prove that the\ncentroid G of the triangle ABC lies on the circle P QR.\n(United Kingdom) David Monk",
+      "solution_text_en": "Given a triangle ABC , let D, E, and F respectively denote the midpoints of the\nsides BC , CA, and AB. The circle BCF and the line BE meet again at P , and the circle ABE\nand the line AD meet again at Q. Finally, the lines DP and F Q meet at R. Prove that the\ncentroid G of the triangle ABC lies on the circle P QR.\n(United Kingdom) David Monk\nSolution 1. We will use the following lemma.\nLemma. Let AD be a median in triangle ABC . Then cot \\BAD = 2 cot A + cot B and\ncot \\ADC = 1\n2 (cot B − cot C).\nProof. Let CC 1 and DD1 be the perpendiculars from C and D to AB. Using the signed\nlengths we write\ncot BAD = AD1\nDD1\n= (AC1 + AB)=2\nCC1=2 = CC 1 cot A + CC1(cot A + cot B)\nCC1\n= 2 cot A + cot B:\nSimilarly, denoting by A1 the projection of A onto BC , we get\ncot ADC = DA1\nAA1\n= BC=2 − A1C\nAA1\n= (AA1 cot B + AA1 cot C)=2 − AA1 cot C\nAA1\n= cot B − cot C\n2 :\nThe Lemma is proved.\nTurning to the solution, by the Lemma we get\ncot \\BP D = 2 cot \\BP C + cot \\P BC = 2 cot \\BF C + cot \\P BC (from circle BF P C)\n= 2 · 1\n2 (cot A − cot B) + 2 cot B + cot C = cot A + cot B + cot C:\nSimilarly, cot \\GQF = cot A + cot B + cot C, so \\GP R = \\GQF and GP RQ is cyclic.\nRemark. The angle \\GP R = \\GQF is the Brocard angle.\nSolution 2. (Ilya Bogdanov and Marian Andronache) We also prove that \\(RP; P G) = \\(RQ; QG),\nor \\(DP; P G) = \\(F Q; QG).\nLet S be the point on ray GD such that AG · GS = CG · GF (so the points A, S, C, F\nare concyclic). Then GP · GE = GP · 1\n2 GB = 1\n2 CG · GF = 1\n2 AG · GS = GD · GS, hence the\npoints E, P , D, S are also concyclic, and \\(DP; P G) = \\(GS; SE). The problem may therefore\nbe rephrased as follows:\nGiven a triangle ABC , let D, E and F respectively denote the midpoints of the sides BC , CA\nand AB. The circle ABE , respectively, ACF , and the line AD meet again at Q, respectively, S.\nProve that \\AQF = \\ASE (and ES = F Q).\nA\nB C\nDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\nEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEF\nG\nP\nQR\nS\n3\nUpon inversion of pole A, the problem reads:\nGiven a triangle AE′F ′, let the symmedian from A meet the medians from E′ and F ′ at K = Q′\nand L = S′, respectively. Prove that the angles AE′L and AF ′K are congruent.\nA\nX\nYKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK\nLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL\nMN\nV\nTo prove this, denote E′ = X, F ′ = Y . Let the symmedian from A meet the side XY at\nV and let the lines XL and Y K meet the sides AY and AX at M and N , respectively. Since\nthe points K and L lie on the medians, we have V M ∥ AX, V N ∥ AY . Hence AM V N is\na parallelogram, the symmedian AV of triangle AXY supports the median of triangle AM N,\nwhich implies that the triangles AM N and AXY are similar. Hence the points M , N , X, Y are\nconcyclic, and \\AXM = \\AY N , QED.\nRemark 1. We know that the points X, Y , M , N are concyclic. Invert back from A and\nconsider the circles AF Q and AES : the former meets AC again at M ′ and the latter meets AB\nagain at N ′. Then the points E, F , M ′, N ′ are concyclic.\nRemark 2. The inversion at pole A also allows one to show that \\AQF is the Brocard angle,\nthus providing one more solution. In our notation, it is equivalent to the fact that the points Y ,\nK, and Z are collinear, where Z is the Brocard point (so \\ZAX = \\ZY A = \\ZXY ). This is\nvalid because the lines AV , XK , and Y Z are the radical axes of the following circles: (i) passing\nthrough X and tangent to AY at A; (ii) passing through Y and tangent to AX at A; and (iii)\npassing through X and tangent to AY at Y . The point K is the radical center of these three\ncircles.\nSolution 3. (Ilya Bogdanov) Again, we will prove that \\(DP; P G) = \\(F Q; QG). Mark a point\nT on the ray GF such that GF · GT = GQ · GD; then the points F , Q, D, T are concyclic, and\n\\(F Q; QG) = \\(T G; T D) = \\(T C; T D).\nA\nB C\nDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\nEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEF\nG\nP\nQ\nT\nP ′\nK\n4\nShift the point P by the vector − − →BD to obtain point P ′. Then \\(DP; P G) = \\(CP ′; P ′D),\nand we need to prove that \\(CP ′; P ′D) = \\(CT; T D). This is precisely the condition that the\npoints T , D, C, P ′ be concyclic.\nDenote GE = x, GF = y. Then GP · GB = GC · GF , so GP = y2=x. On the other\nhand, GB · GE = GQ · GA = 2GQ · GD = 2GT · GF , so GT = x2=y. Denote by K the point of\nintersection of DP ′ and CT ; we need to prove that T K · KC = DK · KP ′.\nNow, DP ′ = BP = BG +GP = 2x+y2=x, CT = CG +GT = 2y +x2=y, DK = BG=2 = x,\nCK = CG=2 = y. Hence the desired equality reads x(x + y2=x) = y(y + x2=y) which is obvious.\nRemark. The points B, T , E, and C are concyclic, hence the point T is also of the same\nkind as P and Q.\n5",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D1-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D2-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-solutions.pdf"
+          },
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 5,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 5, 'algebra': 0, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "rmm-2012-p3",
+      "year": 2012,
+      "problem_number": 3,
+      "statement_en": "Each positive integer is coloured red or blue. A function f\nfrom the set of positive integers to itself has the following two properties:\n(a) if x ≤ y, then f(x) ≤ f(y); and\n(b) if x, y and z are (not necessarily distinct) positive integers of the same\ncolour and x + y = z, then f(x) + f(y) = f(z).\nProve that there exists a positive number a such that f(x) ≤ ax for all\npositive integers x.\n(United Kingdom) Ben Elliott\nEach of the three problems is worth 7 points.",
+      "solution_text_en": "Each positive integer number is coloured red or blue. A function f from the set of\npositive integer numbers into itself has the following two properties:\n(a) if x ≤ y, then f (x) ≤ f (y); and\n(b) if x, y and z are all (not necessarily distinct) positive integer numbers of the same colour\nand x + y = z, then f (x) + f (y) = f (z).\nProve that there exists a positive number a such that f (x) ≤ ax for all positive integer numbers x.\n(United Kingdom) Ben Elliott\nSolution. For integer x, y, by a segment [ x; y] we always mean the set of all integers t such that\nx ≤ t ≤ y; the length of this segment is y − x.\nIf for every two positive integers x, y sharing the same colour we have f (x)=x = f (y)=y,\nthen one can choose a = max{f (r)=r; f(b)=b}, where r and b are arbitrary red and blue numbers,\nrespectively. So we can assume that there are two red numbers x, y such that f (x)=x ̸= f (y)=y.\nSet m = xy. Then each segment of length m contains a blue number. Indeed, assume that\nall the numbers on the segment [ k; k + m] are red. Then\nf (k + m) = f (k + xy) = f (k + x(y − 1)) + f (x) = · · · = f (k) + yf (x);\nf (k + m) = f (k + xy) = f (k + (x − 1)y) + f (y) = · · · = f (k) + xf (y);\nso yf (x) = xf (y) — a contradiction. Now we consider two cases.\nCase 1. Assume that there exists a segment [ k; k + m] of length m consisting of blue\nnumbers. Define D = max {f (k); : : : ; f(k + m)}. We claim that f (z) − f (z − 1) ≤ D, whatever\nz > k , and the conclusion follows. Consider the largest blue number b1 not exceeding z, so\nz − b1 ≤ m, and some blue number b2 on the segment [ b1 + k; b1 + k + m], so b2 > z . Write\nf (b2) = f (b1) + f (b2 − b1) ≤ f (b1) + D to deduce that f (z + 1) − f (z) ≤ f (b2) − f (b1) ≤ D, as\nclaimed.\nCase 2. Each segment of length m contains numbers of both colours. Fix any red number\nR ≥ 2m such that R + 1 is blue and set D = max {f (R); f(R + 1) }. Now we claim that\nf (z + 1) − f (z) ≤ D, whatever z > 2m. Consider the largest red number r not exceeding z and\nthe largest blue number b smaller than r ; then 0 < z − b = (z − r) + (r − b) ≤ 2m, and b + 1 is\nred. Let t = b + R + 1; then t > z . If t is blue, then f (t) = f (b) + f (R + 1) ≤ f (b) + D, and\nf (z + 1) − f (z) ≤ f (t) − f (b) ≤ D. Otherwise, f (t) = f (b + 1) + f (R) ≤ f (b + 1) + D, hence\nf (z + 1) − f (z) ≤ f (t) − f (b + 1) ≤ D, as claimed.\n6",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D1-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D2-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-solutions.pdf"
+          },
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "colour"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 1, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "rmm-2012-p4",
+      "year": 2012,
+      "problem_number": 4,
+      "statement_en": "Prove that there are infinitely many positive integers n such\nthat 22n+1 + 1 is divisible by n but 2n + 1 is not.\n(Russia) V alery Senderov",
+      "solution_text_en": "Prove that there are infinitely many positive integer numbers n such that 2 2n+1 + 1\nbe divisible by n, but 2 n + 1 be not.\nSolution 1. Throughout the solution n stands for a positive integer. By Euler’s theorem,\n(23n\n+ 1)(23n\n− 1) = 2 2·3n\n− 1 ≡ 0 (mod 3 n+1). Since 2 3n\n− 1 ≡ 1 (mod 3), it follows that 2 3n\n+ 1\nis divisible by 3 n+1.\nThe number (2 3n+1\n+ 1)/(23n\n+ 1) = 2 2·3n\n− 23n\n+ 1 is greater than 3 and congruent to 3\nmodulo 9, so it has a prime factor pn > 3 that does not divide 2 3n\n+ 1 (otherwise, 2 3n\n≡ −1 (mod\npn), so 2 2·3n\n− 23n\n+ 1 ≡ 3 (mod pn), contradicting the fact that pn is a factor greater than 3 of\n22·3n\n− 23n\n+ 1).\nWe now show that an = 3 npn satisfies the conditions in the statement. Since 2 an + 1 ≡\n23n\n+ 1 ̸≡ 0 (mod pn), it follows that an does not divide 2 an + 1.\nOn the other hand, 3 n+1 divides 2 3n\n+ 1 which in turn divides 2 an + 1, so 2 3n+1\n+ 1 divides\n22an +1 + 1. Finally, both 3 n and pn divide 2 3n+1\n+ 1, so an divides 2 2an +1 + 1.\nAs n runs through the positive integers, the an are clearly pairwise distinct and the con-\nclusion follows.\nSolution 2. (G ́ eza K ́ os) We show that the numbers an = (2 3n\n+ 1) /9, n ≥ 2, satisfy the\nconditions in the statement. To this end, recall the following well-known facts:\n(1) If N is an odd positive integer, then ν3(2N + 1) = ν3(N ) + 1, where ν3(a) is the exponent\nof 3 in the decomposition of the integer a into prime factors; and\n(2) If M and N are odd positive integers, then (2 M + 1, 2N + 1) = 2 (M;N ) + 1, where ( a, b) is\nthe greatest common divisor of the integers a and b.\nBy (1), an = 3 n−1m, where m is an odd positive integer not divisible by 3, and by (2),\n(m, 2an + 1)\n\n (23n\n+ 1, 2an + 1) = 2 (3n;an) + 1 = 2 3n\u00001\n+ 1 < 23n\n+ 1\n3n+1 = m,\nso m cannot divide 2 an + 1.\nOn the other hand, 3 n−1\n\n 22an +1 + 1, for ν3(22an +1 + 1) > ν 3(2an + 1) > ν 3(an) = n − 1,\nand m\n\n 22an +1 + 1, for 3 n−1\n\n an, so 3 n\n\n 2an + 1 whence m\n\n 23n\n+ 1\n\n 22an +1 + 1. Since 3 n−1 and\nm are coprime, the conclusion follows.\nRemarks. There are several variations of these solutions. For instance, let b1 = 3 and bn+1 =\n2bn + 1, n ≥ 1, and notice that bn divides bn+1. It can be shown that there are infinitely many\nindices n such that some prime factor pn of bn+1 does not divide bn. One checks that for these\nn’s the an = pnbn−1 satisfy the required conditions.\nFinally, the numbers 3 n · 571, n ≥ 2, form yet another infinite set of positive integers\nfulfilling the conditions in the statement — the details are omitted.\nSolution 3. (Duˇ san Djuki ́ c) Assume thatn satisfies the conditions of the problem. We\nclaim that the number N = 2 n + 1 > n also satisfies these conditions.\nFirstly, since n ̸\n\n N , the fact (2) from Solution 2 allows to conclude that 2 n + 1 ̸\n\n 2N + 1,\nor N ̸\n\n 2N + 1. Next, since n\n\n 22n+1 + 1 = 2 N + 1, we obtain from the same fact that\nN = 2 n + 1\n\n 22N +1 + 1, thus confirming our claim.\nHence, it suffices to provide only one example, hence obtaining an infinite series by the\nclaim. For instance, one may easily check that the number n = 57 fits.\n1",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D1-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D2-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-solutions.pdf"
+          },
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 5,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 5, 'combinatorics': 1}"
+    },
+    {
+      "id": "rmm-2012-p5",
+      "year": 2012,
+      "problem_number": 5,
+      "statement_en": "Given a positive integer n≥ 3, colour each cell of an n× n\nsquare array with one of⌊(n+2) 2/3⌋ colours, each colour being used at least\nonce. Prove that there is some 1 × 3 or 3× 1 rectangular subarray whose\nthree cells are coloured with three different colours.\n(Russia) Ilya Bogdanov, Grigory Chelnokov, Dmitry Khramtsov",
+      "solution_text_en": "Given a positive integer number n ≥ 3, colour each cell of an n × n square array\none of [( n + 2)2/3] colours, each colour being used at least once. Prove that the cells of some\n1 × 3 or 3 × 1 rectangular subarray have pairwise distinct colours.\n(Russia) Ilya Bogdanov, Grigory Chelnokov, Dmitry Khramtsov\nSolution. For more convenience, say that a subarray of the n × n square array bears a colour if\nat least two of its cells share that colour.\nWe shall prove that the number of 1 × 3 and 3 × 1 rectangular subarrays, which is 2 n(n − 2),\nexceeds the number of such subarrays, each of which bears some colour. The key ingredient is\nthe estimate in the lemma below.\nLemma. If a colour is used exactly p times, then the number of 1 × 3 and 3 × 1 rectangular\nsubarrays bearing that colour does not exceed 3(p − 1).\nAssume the lemma for the moment, let N = [(n + 2)2/3] and let ni be the number of cells\ncoloured the ith colour, i = 1, . . . , N, to deduce that the number of 1 × 3 and 3 × 1 rectangular\nsubarrays, each of which bears some colour, is at most\nN∑\ni=1\n3(ni − 1) = 3\nN∑\ni=1\nni − 3N = 3n2 − 3N < 3n2 − (n2 + 4n) = 2 n(n − 2)\nand thereby conclude the proof.\nBack to the lemma, the assertion is clear if p = 1, so let p > 1.\nWe begin by showing that if a row contains exactly q cells coloured C, then the number r\nof 3 × 1 rectangular subarrays bearing C does not exceed 3 q/2 − 1; of course, a similar estimate\nholds for a column. To this end, notice first that the case q = 1 is trivial, so we assume that\nq > 1. Consider the incidence of a cell c coloured C and a 3 ×1 rectangular subarray R bearing C:\n⟨c, R⟩ =\n{ 1 if c ⊂ R,\n0 otherwise .\nNotice that, given R, ∑\nc⟨c, R⟩ ≥ 2, and, given c, ∑\nR⟨c, R⟩ ≤ 3; moreover, if c is the leftmost or\nrightmost cell, then ∑\nR⟨c, R⟩ ≤ 2. Consequently,\n2r ≤\n∑\nR\n∑\nc\n⟨c, R⟩ =\n∑\nc\n∑\nR\n⟨c, R⟩ ≤ 2 + 3(q − 2) + 2 = 3 q − 2,\nwhence the conclusion.\nFinally, let the p cells coloured C lie on k rows and l columns and notice that k + l ≥ 3,\nfor p > 1. By the preceding, the total number of 3 × 1 rectangular subarrays bearing C does not\nexceed 3 p/2 − k, and the total number of 1 × 3 rectangular subarrays bearing C does not exceed\n3p/2 − l, so the total number of 1 × 3 and 3 × 1 rectangular subarrays bearing C does not exceed\n(3p/2 − k) + (3p/2 − l) = 3 p − (k + l) ≤ 3p − 3 = 3( p − 1). This completes the proof.\nRemarks. In terms of the total number of cells, the number N = [( n + 2) 2/3] of colours\nis asymptotically close to the minimum number of colours required for some 1 × 3 or 3 × 1\nrectangular subarray to have all cells of pairwise distinct colours, whatever the colouring. To see\nthis, colour the cells with the coordinates ( i, j), where i+j ≡ 0 (mod 3) and i, j ∈ {0, 1, . . . , n−1},\none colour each, and use one additional colour C to colour the remaining cells. Then each 1 × 3\nand each 3 × 1 rectangular subarray has exactly two cells coloured C, and the number of colours\nis ⌈n2/3⌉ + 1 if n ≡ 1 or 2 (mod 3), and ⌈n2/3⌉ if n ≡ 0 (mod 3). Consequently, the minimum\nnumber of colours is n2/3 + O(n).\n2",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D1-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D2-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-solutions.pdf"
+          },
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "colour"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "rmm-2012-p6",
+      "year": 2012,
+      "problem_number": 6,
+      "statement_en": "Let ABC be a triangle and let I and O denote its incentre\nand circumcentre respectively. Let ωA be the circle through B and C which\nis tangent to the incircle of the triangle ABC; the circles ωB and ωC are\ndefined similarly. The circles ωB and ωC meet at a point A′ distinct from A;\nthe points B′ and C′ are defined similarly. Prove that the lines AA′, BB ′\nand CC ′ are concurrent at a point on the line IO.\n(Russia) Fedor Ivlev\nEach of the three problems is worth 7 points.",
+      "solution_text_en": "Let ABC be a triangle and let I and O respectively denote its incentre and\ncircumcentre. Let ωA be the circle through B and C and tangent to the incircle of the triangle\nABC ; the circles ωB and ωC are defined similarly. The circles ωB and ωC through A meet again\nat A′; the points B′ and C′ are defined similarly. Prove that the lines AA′, BB ′ and CC ′ are\nconcurrent at a point on the line IO .\n(Russia) Fedor Ivlev\nSolution. Let γ be the incircle of the triangle ABC and let A1, B1, C1 be its contact points\nwith the sides BC , CA, AB, respectively. Let further XA be the point of contact of the circles\nγ and ωA. The latter circle is the image of the former under a homothety centred at XA. This\nhomothety sends A1 to a point MA on ωA such that the tangent to ωA at MA is parallel to BC .\nConsequently, MA is the midpoint of the arc BC of ωA not containing XA. It follows that the\nangles MAXAB and MABC are congruent, so the triangles MABA1 and MAXAB are similar:\nMAB/MAXA = MAA1/MAB. Rewrite the latter MAB2 = MAA1 · MAXA to deduce that MA\nlies on the radical axis lB of B and γ. Similarly, MA lies on the radical axis lC of C and γ.\nDefine the points XB, XC, MB, MC and the line lA in a similar way and notice that\nthe lines lA, lB, lC support the sides of the triangle MAMBMC. The lines lA and B1C1 are\nboth perpendicular to AI, so they are parallel. Similarly, the lines lB and lC are parallel to\nC1A1 and A1B1, respectively. Consequently, the triangle MAMBMC is the image of the triangle\nA1B1C1 under a homothety Θ. Let K be the centre of Θ and let k = MAK/A1K = MBK/B1K =\nMCK/C1K be the similitude ratio. Notice that the lines MAA1, MBB1 and MCC1 are concurrent\nat K.\nSince the points A1, B1, XA, XB are concyclic, A1K · KXA = B1K · KXB. Multiply both\nsides by k to get MAK · KXA = MBK · KXB and deduce thereby that K lies on the radical axis\nCC ′ of ωA and ωB. Similarly, both lines AA′ and BB ′ pass through K.\nA\nB CA1\nB1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1\nC1\nMA\nMB\nMC\nXA\nXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXB\nIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO K\nlA\nlB\nlC\nγ\nωA\nFinally, consider the image O′ of I under Θ. It lies on the line through MA parallel to A1I\n(and hence perpendicular to BC ); since MA is the midpoint of the arc BC , this line must be\nMAO. Similarly, O′ lies on the line MBO, so O′ = O. Consequently, the points I, K and O are\ncollinear.\nRemark 1. Many steps in this solution allow different reasonings. For instance, one may\n3\nsee that the lines A1XA and B1XB are concurrent at point K on the radical axis CC ′ of the\ncircles ωA and ωB by applying Newton’s theorem to the quadrilateral XAXBA1B1 (since the\ncommon tangents at XA and XB intersect on CC ′). Then one can conclude that KA1/KB1 =\nKMA/KMB, thus obtaining that the triangles MAMBMC and A1B1C1 are homothetical at K\n(and therefore K is the radical center of ωA, ωB, and ωC). Finally, considering the inversion\nwith the pole K and the power equal to KX1 · KMA followed by the reflection at P we see\nthat the circles ωA, ωB, and ωC are invariant under this transform; next, the image of γ is the\ncircumcircle of MAMBMC and it is tangent to all the circles ωA, ωB, and ωC, hence its center\nis O, and thus O, I, and K are collinear.\nRemark 2. Here is an outline of an alternative approach to the first part of the solution.\nLet JA be the excentre of the triangle ABC opposite A. The line JAA1 meets γ again at\nYA; let ZA and NA be the midpoints of the segments A1YA and JAA1, respectively. Since the\nsegment IJ A is a diameter in the circle BCZ A, it follows that BA1 · CA1 = ZAA1 · JAA1, so\nBA1 · CA1 = NAA1 · YAA1. Consequently, the points B, C, NA and YA lie on some circle ω′\nA.\nIt is well known that NA lies on the perpendicular bisector of the segment BC , so the\ntangents to ω′\nA and γ at NA and A1 are parallel. It follows that the tangents to these circles at\nYA coincide, so ω′\nA is in fact ωA, whence XA = YA and MA = NA. It is also well known that the\nmidpoint SA of the segment IJ A lies both on the circumcircle ABC and on the perpendicular\nbisector of BC . Since SAMA is a midline in the triangle A1IJ A, it follows that SAMA = r/2,\nwhere r is the radius of γ (the inradius of the triangle ABC ). Consequently, each of the points\nMA, MB and MC is at distance R + r/2 from O (here R is the circumradius). Now proceed as\nabove.\nA\nB CA1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1\nB1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1\nC1\nNA = MA\nMB\nMC\nYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XAYA = XA\nXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXBXB\nI\nOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\nKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK\nJA\nSASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASASA\nZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZA\nγ\nωA\n4",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2012/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D1-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2012/Probs2012-D2-Eng.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day1-solutions.pdf"
+          },
+          {
+            "url": "http://rmms.lbi.ro/rmm2012/Solutions2012-2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2012/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 14,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 14, 'algebra': 0, 'number_theory': 1, 'combinatorics': 0}"
+    }
+  ]
+}

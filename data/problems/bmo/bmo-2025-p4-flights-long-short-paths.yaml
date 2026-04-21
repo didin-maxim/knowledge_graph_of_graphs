@@ -1,0 +1,144 @@
+{
+  "id": "bmo-2025-p4-flights-long-short-paths",
+  "title": "Авиалинии, длинные и короткие пути, BMO 2025 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "simple_path",
+      "hamiltonian_cycle"
+    ],
+    "methods": [
+      "longest_path_argument",
+      "distance_set_classification"
+    ],
+    "transformations": [
+      "flight_network_to_graph"
+    ],
+    "goal": [
+      "classify_extremal_graphs"
+    ],
+    "auxiliary_graph_type": [
+      "cycle_with_chords"
+    ],
+    "invariants": [
+      "set_of_edge_distances"
+    ],
+    "keywords": [
+      "bmo_2025_p4",
+      "bmo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В стране есть \\(n\\ge 100\\) городов; некоторые пары соединены двусторонними прямыми авиарейсами. Для двух городов \\(A,B\\) путь - это последовательность различных городов от \\(A\\) до \\(B\\), в которой соседние города соединены рейсом. Длинным путём называется путь между \\(A\\) и \\(B\\), содержащий максимально возможное число городов, а коротким - путь с минимально возможным числом городов. Предполагается, что для любой пары \\(A,B\\) существуют длинный и короткий пути, не имеющие общих внутренних городов. Пусть \\(F\\) - число авиалиний. Найдите все возможные значения \\(F\\) в зависимости от \\(n\\).",
+        "source_id": "src-bmo-2025-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это задача о связном неориентированном графе, в котором для любых двух вершин существуют кратчайший и наидлиннейший простые пути без общих внутренних вершин. Официальное решение классифицирует все такие графы.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-longest-path-cycle",
+      "title": "Наидлиннейший путь замыкается в гамильтонов цикл",
+      "text": "Берём наидлиннейший путь между двумя вершинами и сравниваем его с непересекающимся коротким путём. Это вынуждает наличие ребра между концами длинного пути; затем любой внешний сосед дал бы более длинный путь, значит найденный цикл уже проходит через все вершины графа.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-distance-set-closure",
+      "title": "Множество допустимых расстояний по циклу замкнуто",
+      "text": "После гамильтонова цикла все хорды классифицируются по циклическому расстоянию. з специальных длинных путей следует, что вместе с двумя из чисел \\(a,b,a+b-1\\) в множество допустимых расстояний попадает и третье; это замыкание приводит только к трём вариантам: цикл, полный граф или при чётном \\(n\\) полный двудольный граф.",
+      "tags": [
+        "hamiltonian_cycles"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "нтерпретируем сеть авиарейсов как связный граф. Сначала проверяется, что \\(K_n\\), цикл \\(C_n\\) и при чётном \\(n\\) граф \\(K_{n/2,n/2}\\) действительно удовлетворяют условию. Для обратного направления берётся наидлиннейший путь \\(V_1V_2\\dots V_p\\). Поскольку для его концов существует внутренне непересекающийся короткий путь, этот короткий путь вместе с длинным вынуждает ребро \\(V_1V_p\\); иначе можно было бы удлинить путь. Затем любой сосед вершины цикла вне самого цикла снова дал бы путь большей длины, поэтому полученный цикл уже гамильтонов. После этого перенумеровываем вершины по циклу и рассматриваем множество расстояний \\(S\\), для которых в графе есть все хорды данного циклического расстояния. з специальной перестановки вершин в длинном пути получается правило замыкания: если два из чисел \\(a,b,a+b-1\\) лежат в \\(S\\), то и третье тоже. Если \\(2\\in S\\), то по индукции в \\(S\\) попадают все расстояния, и граф полон. Если \\(2\\notin S\\), то соседние расстояния одновременно встречаться не могут. Тогда либо \\(S=\\{1,n-1\\}\\), что даёт цикл, либо в \\(S\\) есть некоторое \\(t\\in[3,n-3]\\), откуда тем же правилом следуют все нечётные расстояния; значит \\(n\\) чётно и граф есть \\(K_{n/2,n/2}\\). Поэтому возможны ровно \\(F=n\\), \\(F=n(n-1)/2\\) и при чётном \\(n\\) ещё \\(F=n^2/4\\).",
+      "idea_ids": [
+        "idea-longest-path-cycle",
+        "idea-distance-set-closure"
+      ],
+      "standard_idea_ids": [
+        "longest_path"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 11,
+    "comment": "BMO 2025 P4; официальное решение полностью графовое и классифицирует допустимые графы.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "hamiltonian_cycles",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "longest_path_argument",
+        "distance_set_classification"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-bmo-2025-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

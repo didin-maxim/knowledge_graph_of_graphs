@@ -1,0 +1,120 @@
+{
+  "id": "augmenting-path-matching-lemma",
+  "title": "Лемма об увеличивающем пути",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "matching",
+      "alternating_path",
+      "augmenting_path",
+      "symmetric_difference_graph"
+    ],
+    "methods": [
+      "augmenting_path_method",
+      "alternating_paths",
+      "symmetric_difference"
+    ],
+    "transformations": [
+      "compare_two_matchings",
+      "symmetric_difference_decomposition"
+    ],
+    "goal": [
+      "optimality_criterion",
+      "increase_matching_size"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "matching_size",
+      "path_parity",
+      "vertex_degree_at_most_two"
+    ],
+    "keywords": [
+      "maximum_matching",
+      "augmenting_path",
+      "alternating_path",
+      "symmetric_difference"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть M — паросочетание в конечном графе. Путь называется увеличивающим относительно M, если его ребра попеременно не принадлежат и принадлежат M, а первая и последняя вершины не покрыты M. Тогда M максимально по числу ребер тогда и только тогда, когда увеличивающего пути относительно M не существует.",
+        "source_id": "src-wikipedia-matching",
+        "status": "needs_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-symmetric-difference",
+      "title": "Симметрическая разность",
+      "text": "Сравнение двух паросочетаний раскладывается на чередующиеся циклы и пути; больший размер проявляется как увеличивающий путь.",
+      "tags": [
+        "matching",
+        "augmenting_path"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-symmetric-difference",
+      "title": "Доказательство через симметрическую разность",
+      "text": "Если есть увеличивающий путь, меняем на нем статус всех ребер: не входившие в M добавляем, входившие удаляем. Размер паросочетания увеличивается на 1. Обратно, пусть N — паросочетание большего размера. В графе из ребер симметрической разности M и N степени вершин не больше 2, поэтому компоненты — чередующиеся циклы и пути. Так как |N|>|M|, в одной компоненте ребер N больше, чем ребер M; это чередующийся путь, начинающийся и заканчивающийся ребрами N, то есть увеличивающий путь для M.",
+      "idea_ids": [
+        "idea-symmetric-difference"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "augmenting_path_method",
+        "alternating_paths"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Ключевой алгоритмический и олимпиадный инструмент.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "augmenting_path",
+    "classical_theorem",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-matching",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "base_done"
+  }
+}

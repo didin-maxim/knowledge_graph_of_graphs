@@ -1,0 +1,156 @@
+{
+  "id": "tc-2018-19-simple-complex-state-game",
+  "title": "Простое и сложное государство, Турнир городов 2018/19",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "tree",
+      "cycle",
+      "orientation_game"
+    ],
+    "methods": [
+      "induction",
+      "strategy_argument",
+      "delete_to_simplify",
+      "cycle_strategy"
+    ],
+    "transformations": [
+      "orient_edges_to_root",
+      "reduce_graph_with_cycle"
+    ],
+    "goal": [
+      "determine_winning_strategy",
+      "tree_cycle_dichotomy"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectedness",
+      "acyclicity",
+      "cycle_presence",
+      "edge_orientation"
+    ],
+    "keywords": [
+      "orientation_game",
+      "tree_vs_cycle",
+      "simple_complex_state"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Игра с туристом и направлениями дорог",
+        "text": "В виртуальном компьютерном государстве не менее двух городов. Некоторые пары городов соединены дорогой, причём из каждого города можно добраться по дорогам до любого другого. Если можно, начав движение из какого-то города и не проходя дважды по одной и той же дороге, вернуться в этот город, государство называется сложным, иначе простым. Петя и Вася играют так: сначала Петя задаёт направление на каждой дороге и помещает туриста в один из городов; затем за ход Петя перемещает туриста по дороге в разрешённом направлении в соседний город, а Вася меняет направление одной дороги, входящей или выходящей из нового города туриста. Вася выигрывает, если Петя в какой-то момент не сможет сделать ход. Докажите, что в простом государстве Петя может не проиграть, а в сложном государстве Вася может гарантировать победу.",
+        "source_id": "src-problems-66727",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "directed_graph",
+          "cycle",
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Дан связный неориентированный граф. Петя сначала ориентирует все рёбра и выбирает начальную вершину фишки. На каждом ходе фишка обязана пройти по исходящему ребру, после чего Вася разворачивает одно ребро, инцидентное новой вершине. Если граф является деревом, Петя имеет бесконечную стратегию; если граф содержит цикл, Вася имеет выигрышную стратегию.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "directed_graph",
+          "cycle",
+          "tree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-tree-root-orientation",
+      "title": "Ориентация дерева к корню",
+      "text": "В дереве можно выбрать корень и ориентировать каждое ребро к текущему положению туриста; после разворота одного инцидентного ребра турист идёт именно по нему, и инвариант восстанавливается.",
+      "tags": [
+        "trees"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-cycle-winning-core",
+      "title": "Цикл как выигрышное ядро",
+      "text": "Если в графе есть цикл, Вася удерживает игру внутри подграфа с циклом или заставляет туриста постепенно исчерпать выходы из удаляемой вершины.",
+      "tags": [
+        "connectivity",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-tree-cycle",
+      "title": "Дерево и индукция по графу с циклом",
+      "text": "В простом государстве граф связен и не содержит циклов, то есть это дерево. Петя выбирает корень и ориентирует все рёбра к нему; после каждого разворота ребра около туриста тот идёт по развёрнутому ребру, и все пути снова направлены к его новой вершине. В сложном государстве граф содержит цикл. Для простого цикла Вася разворачивает ребро перед туристом, не давая вернуться назад без исчерпания хода. Для общего графа берётся минимальный цикл и удаляется вершина максимального расстояния от него; по индукции Вася выигрывает в меньшем связном графе с циклом. Если турист вынужден зайти в удалённую вершину, Вася разворачивает входящее ребро и возвращает игру в меньший граф, уменьшая число оставшихся входов.",
+      "idea_ids": [
+        "idea-tree-root-orientation",
+        "idea-cycle-winning-core"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 12,
+    "comment": "Осенний сложный тур 2018/19, 8-9 класс, задача 7: два пункта на 5+7 баллов.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "connectivity",
+    "induction",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-66727",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

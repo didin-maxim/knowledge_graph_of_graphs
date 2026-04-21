@@ -1,0 +1,153 @@
+{
+  "id": "imo-1989-sl14-seven-points-triangle-cover",
+  "title": "Минимум отрезков, пересекающих каждую тройку точек, IMO Shortlist 1989",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "graph",
+      "independence_number",
+      "complement_graph",
+      "triangle_free_graph"
+    ],
+    "methods": [
+      "complement_graph",
+      "mantel_theorem",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "segments_to_graph_edges"
+    ],
+    "goal": [
+      "minimum_edges"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "alpha_at_most_two"
+    ],
+    "standard_idea_ids": [
+      "complement_graph_transition"
+    ],
+    "local_score": 9,
+    "keywords": [
+      "imo-1989-sl14-seven-points-triangle-cover",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Даны 7 точек. Сколько отрезков, соединяющих пары точек, нужно провести, чтобы среди любых трёх точек хотя бы две были соединены отрезком?",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-kalva-imo-1989-shortlist"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это задача о минимальном числе рёбер в графе на 7 вершинах с числом независимости не больше 2.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-complement-triangle-free",
+      "title": "Перейти к дополнению",
+      "text": "Если каждая тройка содержит ребро, то в дополнении нет треугольника.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-mantel-seven",
+      "title": "Оценка Мантеля",
+      "text": "Треугольник-свободный граф на 7 вершинах имеет не больше floor(7^2/4)=12 рёбер.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Пусть проведённые отрезки — рёбра графа G на 7 вершинах. Условие означает, что в G нет независимой тройки. В дополнении H это значит, что H не содержит треугольников. По теореме Мантеля e(H)≤floor(7^2/4)=12, поэтому e(G)≥21-12=9. Достижимость: взять H=K_{3,4}; тогда дополнение состоит из двух клик K_3 и K_4 и имеет 3+6=9 рёбер. В любой тройке вершин дополнения K_{3,4} не может быть треугольника, значит в исходном графе каждая тройка содержит ребро.",
+      "idea_ids": [
+        "idea-complement-triangle-free",
+        "idea-mantel-seven"
+      ],
+      "standard_idea_ids": [
+        "complement_graph_transition"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 9,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "forbidden_triangle",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "complement_graph",
+        "mantel_theorem",
+        "extremal_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kalva-imo-1989-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

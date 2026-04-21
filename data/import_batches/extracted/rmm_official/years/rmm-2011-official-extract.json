@@ -1,0 +1,343 @@
+{
+  "year": 2011,
+  "edition_code": "rmm2011",
+  "problems_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=problems_math",
+  "solutions_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=solutions_math",
+  "problem_pdf_count": 2,
+  "solution_pdf_count": 2,
+  "problem_count_extracted": 6,
+  "problems": [
+    {
+      "id": "rmm-2011-p1",
+      "year": 2011,
+      "problem_number": 1,
+      "statement_en": "Prove that there exist two functions f , g : R → R, such that f ◦ g is\nstrictly decreasing and g ◦ f is strictly increasing.\n(P OLAND ) A NDRZEJ KOMISARSKI & M ARCIN KUCZMA",
+      "solution_text_en": "Prove that there exist two functions\nf , g : R → R,\nsuch that f ◦ g is strictly decreasing, while g ◦ f is strictly\nincreasing.\n(P OLAND ) A NDRZEJ KOMISARSKI & M ARCIN KUCZMA\nSolution. Let\n• A =\n⋃\nk∈Z\n([\n− 22k+ 1, − 22k\n) ⋃ (\n22k , 22k+ 1\n])\n;\n• B =\n⋃\nk∈Z\n([\n− 22k , − 22k− 1\n) ⋃ (\n22k− 1, 22k\n])\n.\nThus A = 2B , B = 2A, A = − A, B = − B , A ∩ B = /emptysetstress , and finally\nA ∪ B ∪ {0} = R. Let us take\nf (x) =\n\n\n\n\n\nx for x ∈ A;\n− x for x ∈ B ;\n0 for x = 0.\nT ake g (x) = 2 f (x). Thus f (g (x)) = f (2 f (x)) = − 2x and\ng ( f (x)) = 2 f ( f (x)) = 2x. ■",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "rmm-2011-p2",
+      "year": 2011,
+      "problem_number": 2,
+      "statement_en": "Determine all positive integers n for which there exists a polynomial\nf (x) with real coefficients, with the following properties:\n(1) for each integer k, the number f (k) is an integer if and only if k is not divisi-\nble by n;\n(2) the degree of f is less than n.\n(H UNGARY ) G ÉZA KÓS",
+      "solution_text_en": "Determine all positive integers n for which\nthere exists a polynomial f (x) with real coefficients, with the\nfollowing properties:\n(1) for each integer k, the number f (k) is an integer if and\nonly if k is not divisible by n;\n(2) the degree of f is less than n.\n(H UNGARY ) G ÉZA KÓS\nSolution. We will show that such polynomial exists if and\nonly if n = 1 or n is a power of a prime.\nWe will use two known facts stated in Lemmata 1 and 2.\nLEMMA 1. If p a is a power of a prime and k is an integer,\nthen (k − 1)(k − 2) . . . (k − p a + 1)\n(p a − 1)! is divisible by p if and only\nif k is not divisible by p a.\nProof. First suppose that p a | k and consider\n(k − 1)(k − 2) ≤ ≤ ≤(k − p a + 1)\n(p a − 1)! = k − 1\np a − 1 ≤ k − 2\np a − 2 ≤ ≤ ≤k − p a + 1\n1 .\nIn every fraction on the right-hand side, p has the same\nmaximal exponent in the numerator as in the denominator.\nTherefore, the product (which is an integer) is not divisible\nby p.\nNow suppose that p a ∤ k. We have\n(k − 1)(k − 2) ≤ ≤ ≤(k − p a + 1)\n(p a − 1)! = p a\nk ≤k(k − 1) ≤ ≤ ≤(k − p a + 1)\n(p a)! .\nThe last fraction is an integer. In the fraction p a\nk , the denom-\ninator k is not divisible by p a. □\nLEMMA 2. If g (x) is a polynomial with degree less than n\nthen\nn∑\nl= 0\n(− 1)l\n(\nn\nl\n)\ng (x + n − l) = 0.\nProof. Apply induction on n. For n = 1 then g (x) is a con-\nstant and\n(\n1\n0\n)\ng (x + 1) −\n(\n1\n1\n)\ng (x) = g (x + 1) − g (x) = 0.\nNow assume thatn > 1 and the Lemma holds for n− 1. Let\nh(x) = g (x + 1) − g (x); the degree of h is less than the degree\nof g , so the induction hypothesis applies for g and n − 1:\nn− 1∑\nl= 0\n(− 1)l\n(\nn − 1\nl\n)\nh(x + n − 1 − l) = 0\nn− 1∑\nl= 0\n(− 1)l\n(\nn − 1\nl\n)\n(\ng (x + n − l) − g (x + n − 1 − l)\n)\n= 0\n(\nn − 1\n0\n)\ng (x + n) +\nn− 1∑\nl= 1\n(− 1)l\n((\nn − 1\nl− 1\n)\n+\n(\nn − 1\nl\n))\ng (x + n − l) − (− 1)n− 1\n(\nn − 1\nn − 1\n)\ng (x) = 0\nn∑\nl= 0\n(− 1)l\n(\nn\nl\n)\ng (x + n − l) = 0.\n□\nLEMMA 3. If n has at least two distinct prime divisors then\nthe greatest common divisor of\n(n\n1\n)\n,\n(n\n2\n)\n, . . . ,\n( n\nn− 1\n)\nis 1.\nProof. Suppose to the contrary that p is a common prime\ndivisor of\n(n\n1\n)\n, . . . ,\n( n\nn− 1\n)\n. In particular, p |\n(n\n1\n)\n= n. Let a be the\nexponent of p in the prime factorization of n. Since n has at\nleast two prime divisors, we have 1 < p a < n. Hence,\n( n\np a − 1\n)\nand\n( n\np a\n)\nare listed among\n(n\n1\n)\n, . . . ,\n( n\nn− 1\n)\nand thus p |\n( n\np a\n)\nand\np |\n( n\np a − 1\n)\n. But then p divides\n( n\np a\n)\n−\n( n\np a − 1\n)\n=\n( n− 1\np a − 1\n)\n, which\ncontradicts Lemma 1. □\n2\nNext we construct the polynomial f (x) when n = 1 or n is\na power of a prime.\nFor n = 1, f (x) = 1\n2 is such a polynomial.\nIf n = p a where p is a prime and a is a positive integer\nthen let\nf (x) = 1\np\n(\nx − 1\np a − 1\n)\n= 1\np ≤(x − 1)(x − 2) ≤ ≤ ≤(x − p a + 1)\n(p a − 1)! .\nThe degree of this polynomial is p a − 1 = n − 1.\nThe number (k− 1)(k− 2)≤≤≤(k− p a + 1)\n(p a − 1)! is an integer for any inte-\nger k, and, by Lemma 1, it is divisible by p if and only if k is\nnot divisible by p a = n.\nFinally we prove that if n has at least two prime divisors\nthen no polynomial f (x) satisfies (1, 2). Suppose that some\npolynomial f (x) satisfies (1,2), and apply Lemma 2 for g = f\nand x = − k where 1 ≤ k ≤ n − 1. We get that\n(\nn\nk\n)\nf (0) =\n∑\n0≤ l≤ n, l̸= k\n(− 1)k− l\n(\nn\nl\n)\nf (− k + l).\nSince f (− k), . . . ,f (− 1) and f (1), . . . ,f (n − k) are all integers,\nwe conclude that\n(n\nk\n)\nf (0) is an integer for every 1 ≤ k ≤ n − 1.\nBy dint of Lemma 3, the greatest common divisor of(n\n1\n)\n,\n(n\n2\n)\n, . . . ,\n( n\nn− 1\n)\nis 1. Hence, there will exist some integers\nu1, u2, . . . ,un− 1 for which u1\n(n\n1\n)\n+ ≤ ≤ ≤ + un− 1\n( n\nn− 1\n)\n= 1. Then\nf (0) =\n(\nn− 1∑\nk= 1\nuk\n(\nn\nk\n))\nf (0) =\nn− 1∑\nk= 1\nuk\n(\nn\nk\n)\nf (0)\nis a sum of integers. This contradicts the fact that f (0) is not\nan integer. So such polynomial f (x) does not exist. ■\nAlternative Solution. (I. Bogdanov) We claim the answer\nis n = pα for some prime p and nonnegative α.\nLEMMA . For every integers a1, . . . ,an there exists an integer-\nvalued polynomial P (x) of degree < n such that P (k) = ak\nfor all 1 ≤ k ≤ n.\nProof. Induction on n. For the base case n = 1 one may set\nP (x) = a1. For the induction step, suppose that the polyno-\nmial P1(x) satisfies the desired property for all 1 ≤ k ≤ n − 1.\nThen set P (x) = P1(x) + (an − P1(n))\n(x− 1\nn− 1\n)\n; since\n(k− 1\nn− 1\n)\n= 0 for\n1 ≤ k ≤ n − 1 and\n(n− 1\nn− 1\n)\n= 1, the polynomial P (x) is a sought\none. □\nNow, if for some n there exists some polynomial f (x)\nsatisfying the problem conditions, one may choose some\ninteger-valued polynomial P (x) (of degree < n − 1) coincid-\ning with f (x) at points 1, . . . , n − 1. The difference f1(x) =\nf (x) − P (x) also satisfies the problem conditions, therefore\nwe may restrict ourselves to the polynomials vanishing at\npoints 1, . . . ,n − 1 — that are, the polynomials of the form\nf (x) = c ∏n− 1\ni = 1 (x − i ) for some (surely rational) constant c.\nLet c = p/q be its irreducible form, and q = ∏d\nj = 1 p\nα j\nj be the\nprime decomposition of the denominator.\n1. Assume that a desired polynomial f (x) exists. Since\nf (0) is not an integer, we have q ∤ (− 1)n− 1(n − 1)! and hence\np\nα j\nj ∤ (− 1)n− 1(n − 1)! for some j . Hence\nn− 1∏\ni = 1\n(p\nα j\nj − i ) ≡ (− 1)n− 1(n − 1)! ̸≡ 0 (mod p\nα j\nj ),\ntherefore f (pαi\ni ) is not integer, too. By the condition (i), this\nmeans that n | pαi\ni , and hence n should be a power of a\nprime.\nNow let us construct a desired polynomial f (x) for any\npower of a prime n = p α . We claim that the polynomial\nf (x) = 1\np\n(\nx − 1\nn − 1\n)\n= n\np x\n(\nx\nn\n)\nfits. Actually, consider some integer x. From the first repre-\nsentation, the denominator of the irreducible form of f (x)\nmay be 1 or p only. If p α ∤ x, then the prime decomposition\nof the fraction n/(p x) contains p with a nonnegative expo-\nnent; hence f (x) is integer. On the other hand, if n = p α | x,\nthen the numbers x − 1, x − 2, . . . ,x − (n − 1) contain the same\nexponents of primes as the numbers n − 1, n − 2, . . . , 1 respec-\ntively; hence the number\n(\nx − 1\nn − 1\n)\n=\n∏n− 1\ni = 1 (x − i )\n∏n− 1\ni = 1 (n − i )\nis not divisible by p. Thus f (x) is not an integer. ■",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 5,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 5, 'combinatorics': 2}"
+    },
+    {
+      "id": "rmm-2011-p3",
+      "year": 2011,
+      "problem_number": 3,
+      "statement_en": "A triangle ABC is inscribed in a circle ω. A variable line l chosen\nparallel to BC meets segments AB , AC at points D, E respectively, and meets\nω at points K , L (where D lies between K and E). Circle γ1 is tangent to the\nsegments K D and B D and also tangent to ω, while circle γ2 is tangent to the\nsegments LE and C E and also tangent to ω. Determine the locus, as l varies, of\nthe meeting point of the common inner tangents to γ1 and γ2.\n(RUSSIA ) VASILY MOKIN & F EDOR IVLEV\nEach of the three problems is worth 7 points.",
+      "solution_text_en": "A triangle ABC is inscribed in a circle ω. A\nvariable line l chosen parallel to BC meets segments AB ,\nAC at points D, E respectively, and meets ω at points K , L\n(where D lies between K and E ). Circle γ1 is tangent to the\nsegments K D and B D and also tangent to ω, while circle γ2\nis tangent to the segments LE and C E and also tangent to ω.\nDetermine the locus, as l varies, of the meeting point of the\ncommon inner tangents to γ1 and γ2.\n(R USSIA ) VASILY MOKIN & F EDOR IVLEV\nSolution. Let P be the meeting point of the common in-\nner tangents to γ1 and γ2. Also, let b be the angle bisec-\ntor of ∠ B AC. Since K L ∥ BC , b is also the angle bisector\nof ∠ K AL .\nLet H be the composition of the symmetry S with respect\nto b and the inversion I of centre A and ratio\n/radicallow\nAK ≤AL (it is\nreadily seen that S and I commute, so since S2 = I2 = id,\nthen also H2 = id, the identical transformation). The ele-\nments of the configuration interchanged by H are summa-\nrized in T able I.\nLet O1 and O2 be the centres of circles γ1 and γ2. Since\nthe circles γ1 and γ2 are determined by their construc-\ntion (in a unique way), they are interchanged by H, there-\nfore the rays AO1 and AO2 are symmetrical with respect\n3\nto b. Denote by ρ1 and ρ2 the radii of γ1 and γ2. Since\n∠ O1 AB = ∠ O2 AC, we have ρ1/ρ2 = AO1/AO2. On the\nother hand, from the definition of P we have O1P /O2P =\nρ1/ρ2 = AO1/AO2; this means that AP is the angle bisector\nof ∠ O1 AO2 and therefore of ∠ B AC.\nThe limiting, degenerated, cases are when the parallel\nline passes through A – when P coincides with A; respec-\ntively when the parallel line is BC – when P coincides with\nthe foot A′ ∈ BC of the angle bisector of ∠ B AC (or any\nother point on BC ). By continuity, any point P on the open\nsegment A A′ is obtained for some position of the parallel,\ntherefore the locus is the open segment A A′ of the angle bi-\nsector b of ∠ B AC. ■\npoint K ← → point L\nline K L ← → circle ω\nray AB ← → ray AC\npoint B ← → point E\npoint C ← → point D\nsegment B D ← → segment EC\narc B K ← → segment E L\narc C L ← → segment DK\nTABLE I: Elements interchanged by H.\nA\nB C\nD EK L\nO1\nO2P\nb\nl\nω",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 7,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 7, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "rmm-2011-p4",
+      "year": 2011,
+      "problem_number": 4,
+      "statement_en": "Given a positive integer n =\ns∏\ni =1\np αi\ni , we write Ω(n) for the total num-\nber\ns∑\ni =1\nαi of prime factors of n, counted with multiplicity. Let λ(n) = (−1)Ω(n)\n(so, for example, λ(12) = λ(22 · 31) = (−1)2+1 = −1).\nProve the following two claims:\ni) There are infinitely many positive integers n such that λ(n) = λ(n + 1) = +1;\nii) There are infinitely many positive integers n such that λ(n) = λ(n + 1) = −1.\n(ROMANIA ) D AN SCHWARZ",
+      "solution_text_en": "Given a positive integer n =\ns∏\ni =1\np αi\ni , we\nwrite Ω(n) for the total number\ns∑\ni =1\nαi of prime factors of n,\ncounted with multiplicity. Let λ(n) = (−1)Ω(n) (so, for exam-\nple, λ(12) = λ(22 · 31) = (−1)2+1 = −1).\nProve the following two claims:\ni) There are infinitely many positive integersn such that\nλ(n) = λ(n + 1) = +1;\nii) There are infinitely many positive integersn such that\nλ(n) = λ(n + 1) = −1.\n(ROMANIA ) D AN SCHWARZ\nSolution. Notice that we have Ω(mn) = Ω(m) + Ω(n) for\nall positive integers m, n (Ω is a completely additive arith-\nmetic function), translating into λ(mn) = λ(m) · λ(n) (so λ\nis a completely multiplicative arithmetic function), hence\nλ(p) = −1 for any prime p, and λ(k2) = λ(k)2 = +1 for all\npositive integers k.[1]\nThe start (first 100 terms) of the sequenceS = (λ(n))n≥1 is\n+1, −1, −1, +1, −1, +1, −1, −1, +1, +1, −1, −1, −1, +1, +1, +1, −1, −1, −1, −1,\n+1, +1, −1, +1, +1, +1, −1, −1, −1, −1, −1, −1, +1, +1, +1, +1, −1, +1, +1, +1,\n−1, −1, −1, −1, −1, +1, −1, −1, +1, −1, +1, −1, −1, +1, +1, +1, +1, +1, −1, +1,\n−1, +1, −1, +1, +1, −1, −1, −1, +1, −1, −1, −1, −1, +1, −1, −1, +1, −1, −1, −1,\n+1, +1, −1, +1, +1, +1, +1, +1, −1, +1, +1, −1, +1, +1, +1, +1, −1, −1, −1, +1.\ni) The Pell equation x2 − 6y 2 = 1 has infinitely many solu-\ntions in positive integers; all solutions are given by ( xn, yn),\nwhere xn + yn\np\n6 = (5 + 2\np\n6)n. Since λ(6y 2) = 1 and also\nλ(6y 2 + 1) = λ(x2) = 1, the thesis is proven.\nAlternative Solution. Take any existing pair with λ(n) =\nλ(n +1) = 1. Then λ((2n +1)2 −1) = λ(4n2 +4n) = λ(4)·λ(n)·\nλ(n+1) = 1, and also λ((2n+1)2) = λ(2n+1)2 = 1, so we have\nbuilt a larger (1, 1) pair.\nii) The equation 3 x2 − 2y 2 = 1 (again Pell theory) has\nalso infinitely many solutions in positive integers, given by\n(xn, yn), where xn\np\n3+yn\np\n2 = (\np\n3+\np\n2)2n+1. Since λ(2y 2) =\n−1 and λ(2y 2 + 1) = λ(3x2) = −1, the thesis is proven.\nAlternative Solution. Assume (λ(n −1), λ(n)) is the largest\n(−1, −1) pair, therefore λ(n + 1) = 1 and λ(n2 + n) = λ(n) ·\nλ(n + 1) = −1, therefore again λ(n2 + n + 1) = 1. But then\nλ(n3 − 1) = λ(n − 1) · λ(n2 + n + 1) = − 1, and also λ(n3) =\nλ(n)3 = −1, so we found yet a larger such pair than the one\nwe started with, contradiction.\nAlternative Solution. Assume the pairs of consecutive\nterms (−1, −1) in S are finitely many. Then from some rank\non we only have subsequences (1, −1, 1, 1, .. ., 1,−1, 1). By\n\"doubling\" such a subsequence (like at point ii)), we will\nproduce\n(−1, ?, 1, ?,−1, ?,−1, ?, .. ., ?,−1, ?, 1,?,−1).\nAccording with our assumption, all ?-terms ought to be 1,\nhence the produced subsequence is\n(−1, 1, 1, 1,−1, 1,−1, 1, .. ., 1,−1, 1, 1, 1,−1),\nand so the \"separating packets\" of 1’ s contain either one\nor three terms. Now assume some far enough (1, 1, 1, 1)\nor ( −1, 1, 1,−1) subsequence of S were to exist. Since it\nlies within some \"doubled\" subsequence, it contradicts the\nstructure described above, which thus is the only prevalent\nfrom some rank on. But then all the positions of the ( −1)-\nterms will have the same parity. However though, we have\nλ(p) = λ(2p2) = −1 for all odd primes p, and these terms\nhave different parity of their positions. A contradiction has\nbeen reached.[2]\nAlternative Solution for both i) and ii). (I. Bogdanov)\nTakeε ∈ {−1, 1}. There obviously exist infinitely manyn such\nthat λ(2n +1) = ε (just take 2n +1 to be the product of an ap-\npropriate number of odd primes). Now, if either λ(2n) = ε\nor λ(2n + 2) = ε, we are done; otherwise λ(n) = − λ(2n) =\n−λ(2n + 2) = λ(n + 1) = ε. Therefore, for such an n, one of\nthe three pairs (n, n +1), (2n, 2n +1) or (2n +1, 2n +2) fits the\nbill.\nWe have thus proved the existence inS of infinitely many\noccurrences of all possible subsequences of length 1, viz.\n(+1) and ( −1), and of length 2, viz. ( +1, −1), ( −1, +1),\n(+1, +1) and (−1, −1).[3] ■",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 1,
+        "number_theory": 2,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 1, 'number_theory': 2, 'combinatorics': 1}"
+    },
+    {
+      "id": "rmm-2011-p5",
+      "year": 2011,
+      "problem_number": 5,
+      "statement_en": "For every n ≥ 3, determine all the configurations of n distinct points\nX1, X2,. .. , Xn in the plane, with the property that for any pair of distinct points\nXi , X j there exists a permutationσ of the integers {1, .. .,n}, such that d(Xi , Xk) =\nd(X j , Xσ(k)) for all 1 ≤ k ≤ n.\n(We write d(X , Y ) to denote the distance between points X and Y .)\n(U NITED KINGDOM ) LUKE BETTS",
+      "solution_text_en": "For every n ≥ 3, determine all the configu-\nrations of n distinct points X1, X2, .. ., Xn in the plane, with\nthe property that for any pair of distinct points Xi , X j there\nexists a permutation σ of the integers {1,. .. , n}, such that\nd(Xi , Xk) = d(X j , Xσ(k)) for all 1 ≤ k ≤ n.\n(We write d( X , Y ) to denote the distance between points X\nand Y .)\n(U NITED KINGDOM ) LUKE BETTS\nSolution. Let us first prove that the points must be con-\ncyclic. Assign to each point Xk the vector xk in a system of\northogonal coordinates whose origin is the point of mass of\nthe configuration, thus 1\nn\nn∑\nk=1\nxk = 0.\nThen d 2(Xi , Xk) = ||xi − xk ||2 = 〈xi − xk, xi − xk 〉 =\n||xi ||2 − 2 〈xi , xk 〉 + ||xk ||2, hence\nn∑\nk=1\nd2(Xi , Xk) = n||xi ||2 −\n2\n2 〈xi ,\nn∑\nk=1\nxk 〉 +\nn∑\nk=1\n||xk ||2 = n||xi ||2 +\nn∑\nk=1\n||xk ||2 = n||x j ||2 +\nn∑\nk=1\n||xσ(k)||2 =\nn∑\nk=1\nd2(X j , Xσ(k)), therefore ||xi || = ||x j ||for all\npairs (i , j ). The points are thus concyclic (lying on a circle\ncentred at O(0, 0)).\nLet now m be the least angular distance between any two\npoints. Two points situated at angular distance m must be\nadjacent on the circle. Let us connect each pair of such two\npoints with an edge. The graph G obtained must be regular,\nof degree deg( G) = 1 or 2. If n is odd, since\nn∑\nk=1\ndeg(Xk) =\nn deg(G) = 2|E |, we must have deg(G) = 2, hence the config-\nuration is a regular n-gon.\nIf n is even, we may have the configuration of a regular\nn-gon, but we also may have deg(G) = 1. In that case, let M\nbe the next least angular distance between any two points;\nsuch points must also be adjacent on the circle. Let us con-\nnect each pair of such two points with an edge, in order to\nget a graph G ′. A similar reasoning yields deg( G ′) = 1, thus\nthe configuration is that of an equiangular n-gon (with al-\nternating equal side-lengths). ■",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 3
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "adjacent",
+        "edge",
+        "graph"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 0, 'combinatorics': 3}"
+    },
+    {
+      "id": "rmm-2011-p6",
+      "year": 2011,
+      "problem_number": 6,
+      "statement_en": "The cells of a square 2011 × 2011 array are labelled with the inte-\ngers 1, 2, .. ., 20112, in such a way that every label is used exactly once. We then\nidentify the left-hand and right-hand edges, and then the top and bottom, in the\nnormal way to form a torus (the surface of a doughnut).\nDetermine the largest positive integer M such that, no matter which la-\nbelling we choose, there exist two neighbouring cells with the difference of their\nlabels at least M.∗\n(ROMANIA ) D AN SCHWARZ\nEach of the three problems is worth 7 points.",
+      "solution_text_en": "The cells of a square 2011 × 2011 array are\nlabelled with the integers 1,2,. .., 2011 2, in such a way that\nevery label is used exactly once. We then identify the left-\nhand and right-hand edges, and then the top and bottom, in\nthe normal way to form a torus (the surface of a doughnut).\nDetermine the largest positive integer M such that, no\nmatter which labelling we choose, there exist two neigh-\nbouring cells with the difference of their labels at leastM.[4]\n(ROMANIA ) D AN SCHWARZ\nPreamble. For a planar N × N array, it is folklore that this\nvalue is M = N , with some easy models shown below. As\nsuch, the problem is mentioned in [B ÉLA BOLLOBÁS - The\nArt of Mathematics], 21. Neighbours in a Matrix.\nThis is not necessarily a flaw on the actual problem,\nwhich is presented in a brand novel setting; on the contrary,\nsome general previous knowledge on such type of prob-\nlems (which we think must be encouraged) is beneficial in\nsearching for the right ideas of a proof.\nThe idea for a proof goes along the lines of finding a mo-\nment in the consecutive filling with numbers of the array,\nwhen there are at leastN pairs of adjacent filled/yet-unfilled\ncells (with either distinct filled cells or distinct yet-unfilled\ncells). Then, when the cell next to that bearing the least label\nis filled, the difference between its label and the one being\nfilled will be at leastN . □\n1 2 . . . N\nN+1 N+2 . . . 2N\n...\n... ... ...\n(N-1)N+1 (N-1)N+2 . . . N2\nA planar parallel N × N model array.\n1 2 4 . . . N(N-1)/2 + 1\n3 5 . . . N(N-1)/2 + 2\n6 . . .\n...\n...\n... ... ...\n...\nN(N+1)/2 - 1 . . . N2 - 2\nN(N+1)/2 . . . N2 - 1 N2\nA planar diagonal N × N model array.\nSolution. For the toroidal case, it is clear the statement\nof the problem is referring to the cells of a ZN × ZN lat-\ntice on the surface of the torus, labeled with the numbers\n1, 2, .. .,N 2, where one has to determine the least possible\nmaximal absolute value M of the difference of labels as-\nsigned to orthogonally adjacent cells.\nThe toroidal N = 2 case is trivially seen to be M = 2 (thus\ncoinciding with the planar case).\n1 2\n3 4\nThe unique 2 × 2 toroidal array.\nFor N ≥ 3 we will prove that value to be at least M ≥\n2N − 1. Consider such a configuration, and color all cells\nof the square in white. Go along the cells labeled 1, 2, etc.\ncoloring them in black, stopping just on the cell bearing\nthe least label k which, after assigned and colored in black,\nmakes that all lines of a same orientation (rows, or columns,\nor both) contain at least two black cells (that is, before col-\noring in black the cell labeled k, at least one row and at least\none column contained at most one black cell). Wlog assume\nthis happens for rows. Then at most one row is all black,\nsince if two were then the stopping condition would have\nbeen fulfilled before cell labeledk (if the cell labeled k were\nto be on one of these rows, then all rows would have con-\ntained at least two black cells before, while if not, then all\ncolumns would have contained at least two black cells be-\nfore).\nNow color in red all those black cells adjacent to a white\ncell. Since each row, except the potential all black one, con-\ntained at least two black and one white cell, it will now con-\ntain at least two red cells. For the potential all black row, any\nof the neighbouring rows contains at least one white cell,\nand so the cell adjacent to it has been colored red. In total\nwe have therefore colored red at least 2( N − 1) + 1 = 2N − 1\ncells.\nThe least label of the red cells has therefore at most the\nvalue k + 1 − (2N − 1). When the white cell adjacent to it will\neventually be labeled, its label will be at leastk +1, therefore\ntheir difference is at least (k +1) −(k +1 −(2N −1)) = 2N −1.\n3\nd d\nt d d t\nt t d d t t\nt t t d t t t\nt t d d t t\nt d d t\nd k\nExample of coloring the array.\nThe models are kind of hard to find, due to the fact that\nthe direct proof offers little as to their structure (it is difficult\nto determine the equality case during the argument involv-\ning the inequality with the bound, and then, even this is not\nsure to be prone to being prolonged to a full labeling of the\narray).\nThe weaker fact the value M is not larger than 2 N is\nproved by the general model exhibited below (presented so\nthat partial credits may be awarded).\nN+1 N+2 . . . 2N\n3N+1 3N+2 . . . 4N\n...\n... ... ...\n(2l-1)N+1 (2l-1)N+2 . . . 2lN\n...\n... ... ...\n2kN+1 2kN+2 . . . (2k+1)N\n...\n... ... ...\n2N+1 2N+2 . . . 3N\n1 2 . . . N\nA general model for M = 2N in a N × N array.\nBy examining some small N > 2 cases, one comes up with\nthe idea of spiral models for the true value M = 2N − 1 .\nThe models presented are for odd N (since 2011 is odd);\nsimilar models exist for even N (but are less symmetric).\nThe color red (preceded by green) marks the moment where\nthe largest difference M = 2N − 1 first appears. ■\n7 2 6\n3 1 5\n8 4 9\nTABLE I: The spiral 3× 3 array.\n16 14 7 13 16\n12 8 2 6 12\n9 3 1 5 9\n15 10 4 11 15\n16 14 7 13\nTABLE II: The spiral 4× 4 array.\n23 16 7 15 22\n17 8 2 6 14\n9 3 1 5 13\n18 10 4 12 21\n24 19 11 20 25\nTABLE III: The spiral 5× 5 array.\n47 40 29 16 28 39 46\n41 30 17 7 15 27 38\n31 18 8 2 6 14 26\n19 9 3 1 5 13 25\n32 20 10 4 12 24 37\n42 33 21 11 23 36 45\n48 43 34 22 35 44 49\nTABLE IV: The spiral 7× 7 array.\n(2n+1)2-2 (2n+1)2-9 . . . n(2n-1)+1 . . . (2n+1)2-10 (2n+1)2-3\n(2n+1)2-8 . . . n(2n-1)+2 n(2n-1) . . . (2n+1)2-11\n...\n...\n...\n...\n...\n...\n... 2n(n+1)+3\n...\n2n2 . . . 8 2 6 . . . 2n(n-1)+2 2n(n+1)+2\n2n2 + 1 . . . 3 1 5 . . . 2n(n+1)+1\n2n2+2 . . . 10 4 12 . . . 2n(n+1)\n...\n...\n...\n...\n...\n...\n...\n...\n...\n(2n+1)2-7 . . . n(2n+1) n(2+1)+2 . . . (2n+1)2-4\n(2n+1)2-1 (2n+1)2-6 . . . n(2n+1)+1 . . . (2n+1)2-5 (2n+1)2\nTABLE V: The general spiral N × N array for N = 2n + 1 ≥ 5.\n[1] Also see Sloane’ s Online Encyclopædia of Integer Sequences\n(OEIS), sequence A001222 for Ω and sequence A008836 for\nλ, which is called Liouville’ s function. Its summatory function∑\nd |n\nλ(d) is equal to 1 for a perfect square n, and 0 otherwise.\nPólya conjectured that L(n) :=\nn∑\nk=1\nλ(k) ≤ 0 for all n, but this\nhas been proven false by Minoru Tanaka, who in 1980 com-\nputed that for n = 906, 151, 257 its value was positive. Turán\nshowed that if T (n) :=\nn∑\nk=1\nλ(k)\nk ≥ 0 for all large enough n, that\nwill imply Riemann’ s Hypothesis; however, Haselgrove proved\nit is negative infinitely often.\n[2] Using the same procedure for point i), we only need notice that\nλ((2k + 1)2) = λ((2k)2) = 1, and these terms again are of differ-\nent parity of their position.\n[3] Is this true for subsequences of all lengths l = 3, 4, etc.? If no,\nup to which length l ≥ 2?\n[4] Cells with coordinates ( x, y) and ( x′, y ′) are considered to be\nneighbours if x = x′ and y − y ′ ≡ ± 1 (mod 2011), or if y = y ′\nand x − x′ ≡ ± 1 (mod 2011).",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2011/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Probs2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D1.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2011/_dwl/Sols2011D2.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2011/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 2,
+        "number_theory": 1,
+        "combinatorics": 8
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "adjacent",
+        "color",
+        "edges"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 2, 'number_theory': 1, 'combinatorics': 8}"
+    }
+  ]
+}

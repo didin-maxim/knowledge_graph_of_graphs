@@ -1,0 +1,154 @@
+{
+  "year": 2007,
+  "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2007_prb.pdf",
+  "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2007_sol.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 5,
+  "problems": [
+    {
+      "id": "apmo-2007-p1",
+      "year": 2007,
+      "problem_number": 1,
+      "statement_en": "LetS be a set of 9 distinct integers all of whose prime factors are at most 3.\nProve that S contains 3 distinct integers such that their product is a perfect cube.",
+      "solution_text_en": "Let S be a set of 9 distinct integers all of whose prime factors are at most 3.\nProve that S contains 3 distinct integers such that their product is a perfect cube.\nSolution. Without loss of generality, we may assume that S contains only positive integers.\nLet\nS = {2ai3bi |ai, bi  in Z, a i, bi >= 0, 1 <= i <= 9}.\nIt suffices to show that there are 1 <= i1, i2, i3 <= 9 such that\nai1 + ai2 + ai3 ≡ bi1 + bi2 + bi3 ≡ 0 (mod 3) . (†)\nFor n = 2 a3b  in  S, let’s call ( a (mod 3) , b (mod 3)) the type of n. Then there are 9 possible\ntypes :\n(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2).\nLet N (i, j) be the number of integers in S of type ( i, j). We obtain 3 distinct integers\nwhose product is a perfect cube when\n(1) N (i, j) >= 3 for some i, j, or\n(2) N (i, 0)N (i, 1)N (i, 2) ̸= 0 for some i = 0, 1, 2, or\n(3) N (0, j)N (1, j)N (2, j) ̸= 0 for some j = 0, 1, 2, or\n(4) N (i1, j1)N (i2, j2)N (i3, j3) ̸= 0, where {i1, i2, i3}= {j1, j2, j3}= {0, 1, 2}.\nAssume that none of the conditions (1) ∼(3) holds. Since N (i, j) <= 2 for all ( i, j), there\nare at least five N (i, j)’s that are nonzero. Furthermore, among those nonzero N (i, j)’s, no\nthree have the same i nor the same j. Using these facts, one may easily conclude that the\ncondition (4) should hold. (For example, if one places each nonzero N (i, j) in the ( i, j)-th\nbox of a regular 3 × 3 array of boxes whose rows and columns are indexed by 0,1 and 2,\nthen one can always find three boxes, occupied by at least one nonzero N (i, j), whose rows\nand columns are all distinct. This implies (4).)\nSecond solution. Up to ( †), we do the same as above and get 9 possible types :\n(a (mod 3) , b (mod 3)) = (0 , 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)\nfor n = 2 a3b  in  S.\nNote that (i) among any 5 integers, there exist 3 whose sum is 0 (mod 3), and that (ii)\nif i, j, k  in  {0, 1, 2}, then i + j + k ≡ 0 (mod 3) if and only if i = j = k or {i, j, k}= {0, 1, 2}.\nLet’s define\nT : the set of types of the integers in S ;\nN (i) : the number of integers in S of the type ( i, ·) ;\nM (i) : the number of integers j  in  {0, 1, 2}such that ( i, j)  in  T .\nIf N (i) >= 5 for some i, the result follows from (i). Otherwise, for some permutation ( i, j, k)\nof (0 , 1, 2),\nN (i) >= 3, N (j) >= 3, N (k) >= 1.\nIf M (i) or M (j) is 1 or 3, the result follows from (ii). Otherwise M (i) = M (j) = 2. Then\neither\n(i, x), (i, y), (j, x), (j, y)  in  T or ( i, x), (i, y), (j, x), (j, z)  in  T\nfor some permutation ( x, y, z) of (0 , 1, 2). Since N (k) >= 1, at least one of ( k, x), (k, y) and\n(k, z) contained in T . Therefore, in any case, the result follows from (ii). (For example, if\n(k, y)  in  T , then take ( i, y), (j, y), (k, y) or ( i, x), (j, z), (k, y) from T .)",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2007_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2007_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 4
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 1, 'combinatorics': 4}"
+    },
+    {
+      "id": "apmo-2007-p2",
+      "year": 2007,
+      "problem_number": 2,
+      "statement_en": "LetABC be an acute angled triangle with∠BAC = 60◦ andAB >AC. Let\nI be the incenter, and H the orthocenter of the triangle ABC. Prove that\n2∠AHI = 3∠ABC.",
+      "solution_text_en": "Let ABC be an acute angled triangle with ∠BAC = 60 ◦ and AB > AC . Let\nI be the incenter, and H the orthocenter of the triangle ABC . Prove that\n2∠AHI = 3∠ABC.\nSolution. Let D be the intersection point of the lines AH and BC . Let K be the\nintersection point of the circumcircle O of the triangle ABC and the line AH. Let the line\nthrough I perpendicular to BC meet BC and the minor arc BC of the circumcircle O at\nE and N , respectively. We have\n∠BIC = 180 ◦ - (∠IBC + ∠ICB ) = 180 ◦ - 1\n2 (∠ABC + ∠ACB ) = 90 ◦ + 1\n2 ∠BAC = 120 ◦\nand also ∠BN C = 180 ◦ - ∠BAC = 120 ◦ = ∠BIC . Since IN ⊥ BC , the quadrilateral\nBICN is a kite and thus IE = EN .\nNow, since H is the orthocenter of the triangle ABC , HD = DK . Also because\nED ⊥ IN and ED ⊥ HK , we conclude that IHKN is an isosceles trapezoid with\nIH = N K.\nHence\n∠AHI = 180 ◦ - ∠IHK = 180 ◦ - ∠AKN = ∠ABN.\nSince IE = EN and BE ⊥ IN , the triangles IBE and N BE are congruent. Therefore\n∠N BE = ∠IBE = ∠IBC = ∠IBA = 1\n2 ∠ABC\nand thus\n∠AHI = ∠ABN = 3\n2 ∠ABC.\nSecond solution. Let P, Q and R be the intersection points of BH, CH and AH with\nAC, AB and BC , respectively. Then we have ∠IBH = ∠ICH . Indeed,\n∠IBH = ∠ABP - ∠ABI = 30 ◦ - 1\n2 ∠ABC\nand\n∠ICH = ∠ACI - ∠ACH = 1\n2 ∠ACB - 30◦ = 30 ◦ - 1\n2 ∠ABC,\nbecause ∠ABH = ∠ACH = 30 ◦ and ∠ACB +∠ABC = 120 ◦. (Note that ∠ABP > ∠ABI\nand ∠ACI > ∠ACH because AB is the longest side of the triangle ABC under the given\nconditions.) Therefore BIHC is a cyclic quadrilateral and thus\n∠BHI = ∠BCI = 1\n2 ∠ACB.\nOn the other hand,\n∠BHR = 90 ◦ - ∠HBR = 90 ◦ - (∠ABC - ∠ABH ) = 120 ◦ - ∠ABC.\nTherefore,\n∠AHI = 180 ◦ - ∠BHI - ∠BHR = 60 ◦ - 1\n2 ∠ACB + ∠ABC\n= 60 ◦ - 1\n2 (120◦ - ∠ABC ) + ∠ABC = 3\n2 ∠ABC.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2007_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2007_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 6,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 6, 'algebra': 0, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2007-p3",
+      "year": 2007,
+      "problem_number": 3,
+      "statement_en": "Consider n disks C1,C 2,...,C n in a plane such that for each 1 <=i<n , the\ncenter of Ci is on the circumference of Ci+1, and the center of Cn is on the circumference\nof C1. Define the score of such an arrangement of n disks to be the number of pairs ( i,j )\nfor which Ci properly contains Cj. Determine the maximum possible score.",
+      "solution_text_en": "Consider n disks C1, C2, . . . , Cn in a plane such that for each 1 <= i < n , the\ncenter of Ci is on the circumference of Ci+1, and the center of Cn is on the circumference\nof C1. Define the score of such an arrangement of n disks to be the number of pairs ( i, j)\nfor which Ci properly contains Cj. Determine the maximum possible score.\nSolution. The answer is ( n - 1)(n - 2)/2.\nLet’s call a set of n disks satisfying the given conditions an n-configuration. For an n-\nconfiguration C = {C1, . . . , Cn}, let SC = {(i, j) |Ci properly contains Cj }. So, the score\nof an n-configuration C is |SC|.\nWe’ll show that (i) there is an n-configuration C for which |SC|= (n - 1)(n - 2)/2, and\nthat (ii) |SC| <=(n - 1)(n - 2)/2 for any n-configuration C.\nLet C1 be any disk. Then for i = 2 , . . . , n - 1, take Ci inside Ci-1 so that the cir-\ncumference of Ci contains the center of Ci-1. Finally, let Cn be a disk whose center is on\nthe circumference of C1 and whose circumference contains the center of Cn-1. This gives\nSC = {(i, j) |1 <= i < j <= n - 1}of size ( n - 1)(n - 2)/2, which proves (i).\nFor any n-configuration C, SC must satisfy the following properties:\n(1) (i, i) ̸ in  SC ,\n(2) (i + 1, i) ̸ in  SC, (1 , n) ̸ in  SC ,\n(3) if ( i, j), (j, k)  in  SC, then ( i, k)  in  SC ,\n(4) if ( i, j)  in  SC, then ( j, i) ̸ in  SC .\nNow we show that a set G of ordered pairs of integers between 1 and n, satisfying the\nconditions (1) ∼(4), can have no more than ( n - 1)(n - 2)/2 elements. Suppose that there\nexists a set G that satisfies the conditions (1) ∼(4), and has more than ( n - 1)(n - 2)/2\nelements. Let n be the least positive integer with which there exists such a set G. Note\nthat G must have ( i, i + 1) for some 1 <= i <= n or ( n, 1), since otherwise G can have at\nmost (n\n2\n)\n- n = n(n - 3)\n2 < (n - 1)(n - 2)\n2\nelements. Without loss of generality we may assume that ( n, 1)  in  G. Then (1 , n - 1) ̸ in  G,\nsince otherwise the condition (3) yields ( n, n-1)  in  G contradicting the condition (2). Now\nlet G′ = {(i, j)  in  G |1 <= i, j <= n - 1}, then G′ satisfies the conditions (1) ∼(4), with n - 1.\nWe now claim that |G - G′| <=n - 2 :\nSuppose that |G - G′|> n - 2, then |G - G′|= n - 1 and hence for each 1 <= i <= n - 1,\neither ( i, n) or ( n, i) must be in G. We already know that ( n, 1)  in  G and ( n - 1, n)  in  G\n(because ( n, n - 1) ̸ in  G) and this implies that ( n, n - 2) ̸ in  G and ( n - 2, n)  in  G. If we\nkeep doing this process, we obtain (1 , n)  in  G, which is a contradiction.\nSince |G - G′| <=n - 2, we obtain\n|G′| >=(n - 1)(n - 2)\n2 - (n - 2) = (n - 2)(n - 3)\n2 .\nThis, however, contradicts the minimality of n, and hence proves (ii).",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2007_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2007_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "apmo-2007-p4",
+      "year": 2007,
+      "problem_number": 4,
+      "statement_en": "Letx,y andz be positive real numbers such that√x +√y +√z = 1. Prove\nthat\nx2 +yz√\n2x2(y +z)\n+ y2 +zx√\n2y2(z +x)\n+ z2 +xy√\n2z2(x +y)\n>= 1.",
+      "solution_text_en": "Let x, y and z be positive real numbers such that √x + √y + √z = 1. Prove\nthat\nx2 + yz√\n2x2(y + z)\n+ y2 + zx√\n2y2(z + x)\n+ z2 + xy√\n2z2(x + y)\n>= 1.\nSolution. We first note that\nx2 + yz√\n2x2(y + z)\n= x2 - x(y + z) + yz√\n2x2(y + z)\n+ x(y + z)√\n2x2(y + z)\n= (x - y)(x - z)√\n2x2(y + z)\n+\n√\ny + z\n2\n>= (x - y)(x - z)√\n2x2(y + z)\n+\n√y + √z\n2 . (1)\nSimilarly, we have\ny2 + zx√\n2y2(z + x)\n>= (y - z)(y - x)√\n2y2(z + x)\n+\n√z + √x\n2 , (2)\nz2 + xy√\n2z2(x + y)\n>= (z - x)(z - y)√\n2z2(x + y)\n+\n√x + √y\n2 . (3)\nWe now add (1) ∼(3) to get\nx2 + yz√\n2x2(y + z)\n+ y2 + zx√\n2y2(z + x)\n+ z2 + xy√\n2z2(x + y)\n>= (x - y)(x - z)√\n2x2(y + z)\n+ (y - z)(y - x)√\n2y2(z + x)\n+ (z - x)(z - y)√\n2z2(x + y)\n+ √x + √y + √z\n= (x - y)(x - z)√\n2x2(y + z)\n+ (y - z)(y - x)√\n2y2(z + x)\n+ (z - x)(z - y)√\n2z2(x + y)\n+ 1.\nThus, it suffices to show that\n(x - y)(x - z)√\n2x2(y + z)\n+ (y - z)(y - x)√\n2y2(z + x)\n+ (z - x)(z - y)√\n2z2(x + y)\n>= 0. (4)\nNow, assume without loss of generality, that x >= y >= z. Then we have\n(x - y)(x - z)√\n2x2(y + z)\n>= 0\nand\n(z - x)(z - y)√\n2z2(x + y)\n+ (y - z)(y - x)√\n2y2(z + x)\n= (y - z)(x - z)√\n2z2(x + y)\n- (y - z)(x - y)√\n2y2(z + x)\n>= (y - z)(x - y)√\n2z2(x + y)\n- (y - z)(x - y)√\n2y2(z + x)\n= (y - z)(x - y)\n(\n1√\n2z2(x + y)\n- 1√\n2y2(z + x)\n)\n.\nThe last quantity is non-negative due to the fact that\ny2(z + x) = y2z + y2x >= yz 2 + z2x = z2(x + y).\nThis completes the proof.\nSecond solution . By Cauchy-Schwarz inequality,\n(\nx2\n√\n2x2(y + z)\n+ y2\n√\n2y2(z + x)\n+ z2\n√\n2z2(x + y)\n)\n(5)\n× (\n√\n2(y + z) +\n√\n2(z + x) +\n√\n2(x + y)) >= (√x + √y + √z)2 = 1,\nand\n(\nyz√\n2x2(y + z)\n+ zx√\n2y2(z + x)\n+ xy√\n2z2(x + y)\n)\n(6)\n× (\n√\n2(y + z) +\n√\n2(z + x) +\n√\n2(x + y)) >=\n(√ yz\nx +\n√ zx\ny +\n√ xy\nz\n)2\n.\nWe now combine (5) and (6) to find\n(\nx2 + yz√\n2x2(y + z)\n+ y2 + zx√\n2y2(z + x)\n+ z2 + xy√\n2z2(x + y)\n)\n× (\n√\n2(x + y) +\n√\n2(y + z) +\n√\n2(z + x))\n>= 1 +\n(√ yz\nx +\n√ zx\ny +\n√xy\nz\n)2\n>= 2\n(√ yz\nx +\n√ zx\ny +\n√ xy\nz\n)\n.\nThus, it suffices to show that\n2\n(√ yz\nx +\n√ zx\ny +\n√xy\nz\n)\n>=\n√\n2(y + z) +\n√\n2(z + x) +\n√\n2(x + y) . (7)\nConsider the following inequality using AM-GM inequality\n[√ yz\nx +\n(1\n2\n√ zx\ny + 1\n2\n√ xy\nz\n)]2\n>= 4\n√ yz\nx\n(1\n2\n√ zx\ny + 1\n2\n√xy\nz\n)\n= 2(y + z),\nor equivalently √ yz\nx +\n(1\n2\n√ zx\ny + 1\n2\n√ xy\nz\n)\n>=\n√\n2(y + z) .\nSimilarly, we have\n√ zx\ny +\n(1\n2\n√ xy\nz + 1\n2\n√ yz\nx\n)\n>=\n√\n2(z + x) ,\n√ xy\nz +\n(1\n2\n√ yz\nx + 1\n2\n√zx\ny\n)\n>=\n√\n2(x + y) .\nAdding the last three inequalities, we get\n2\n(√ yz\nx +\n√ zx\ny +\n√xy\nz\n)\n>=\n√\n2(y + z) +\n√\n2(z + x) +\n√\n2(x + y) .\nThis completes the proof.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2007_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2007_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2007-p5",
+      "year": 2007,
+      "problem_number": 5,
+      "statement_en": "A regular (5× 5)-array of lights is defective, so that toggling the switch for\none light causes each adjacent light in the same row and in the same column as well as\nthe light itself to change state, from on to off, or from off to on. Initially all the lights are\nswitched off. After a certain number of toggles, exactly one light is switched on. Find all\nthe possible positions of this light.\n1",
+      "solution_text_en": "A regular (5 × 5)-array of lights is defective, so that toggling the switch for\none light causes each adjacent light in the same row and in the same column as well as\nthe light itself to change state, from on to off, or from off to on. Initially all the lights are\nswitched off. After a certain number of toggles, exactly one light is switched on. Find all\nthe possible positions of this light.\nSolution. We assign the following first labels to the 25 positions of the lights:\n1 1 0 1 1\n0 0 0 0 0\n1 1 0 1 1\n0 0 0 0 0\n1 1 0 1 1\nFor each on-off combination of lights in the array, define its first value to be the sum\nof the first labels of those positions at which the lights are switched on. It is easy to\ncheck that toggling any switch always leads to an on-off combination of lights whose first\nvalue has the same parity(the remainder when divided by 2) as that of the previous on-off\ncombination.\nThe 90 ◦ rotation of the first labels gives us another labels (let us call it the second\nlabels) which also makes the parity of the second value (the sum of the second labels of\nthose positions at which the lights are switched on) invariant under toggling.\n1 0 1 0 1\n1 0 1 0 1\n0 0 0 0 0\n1 0 1 0 1\n1 0 1 0 1\nSince the parity of the first and the second values of the initial status is 0, after certain\nnumber of toggles the parity must remain unchanged with respect to the first labels and\nthe second labels as well. Therefore, if exactly one light is on after some number of toggles,\nthe label of that position must be 0 with respect to both labels. Hence according to the\nabove pictures, the possible positions are the ones marked with ∗i’s in the following picture:\n∗2 ∗1\n∗0\n∗3 ∗4\nNow we demonstrate that all five positions are possible :\nToggling the positions checked by t (the order of toggling is irrelevant) in the first\npicture makes the center( ∗0) the only position with light on and the second picture makes\nthe position ∗1 the only position with light on. The other ∗i’s can be obtained by rotating\nthe second picture appropriately.\nt t\nt\nt t t\nt t\nt t t\nt t\nt t t t\nt\nt t t\nt",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2007_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2007_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2007_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "adjacent"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    }
+  ]
+}

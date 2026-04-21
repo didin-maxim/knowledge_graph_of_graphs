@@ -1,0 +1,145 @@
+{
+  "id": "imo-1995-nc5-greetings-regular-codegree-graph",
+  "title": "Рукопожатия с постоянным числом общих знакомых, IMO Shortlist 1995 NC5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "regular_graph",
+      "constant_codegree"
+    ],
+    "methods": [
+      "double_counting",
+      "divisibility"
+    ],
+    "transformations": [
+      "greetings_to_graph"
+    ],
+    "goal": [
+      "determine_number_of_vertices"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree",
+      "codegree"
+    ],
+    "keywords": [
+      "imo-1995-nc5-greetings-regular-codegree-graph",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "На встрече \\(12k\\) человек. Каждый обменялся приветствиями ровно с \\(3k+6\\) другими. Для любых двух людей число людей, обменявшихся приветствиями с ними обоими, одно и то же. Сколько людей было на встрече?",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие",
+        "source_id": "src-secondary-imo-1995-shortlist",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Построим регулярный граф на людях; ребро означает приветствие. У любых двух вершин одинаковое число общих соседей. Нужно определить число вершин.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-codegree-count",
+      "title": "Подсчёт общих соседей",
+      "text": "Считаются тройки: центральная вершина знакома с двумя выбранными людьми.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-divisibility",
+      "title": "Делимость параметров графа",
+      "text": "Полученная формула для общего кодегри должна быть целым числом, что резко ограничивает \\(k\\).",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-reviewed-secondary",
+      "title": "Сжатое решение после review",
+      "text": "Пусть общий кодегри любых двух вершин равен \\(\\lambda\\). Считаем тройки \\((a,b,c)\\), где \\(a\\) приветствовал и \\(b\\), и \\(c\\), а \\(b\\ne c\\). С одной стороны, для каждого из \\(12k\\) людей можно выбрать пару его \\(3k+6\\) соседей. С другой стороны, каждая пара людей имеет ровно \\(\\lambda\\) общих соседей. Поэтому \\(12k\\binom{3k+6}{2}=\\lambda\\binom{12k}{2}\\), откуда \\(\\lambda=(3k+5)(3k+6)/(12k-1)\\). Целочисленность даёт, что \\(12k-1\\) делит 525; совместимость с видом \\(12k-1\\) оставляет \\(12k-1=35\\), то есть \\(k=3\\). Значит, людей было \\(36\\).",
+      "idea_ids": [
+        "idea-codegree-count",
+        "idea-divisibility"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "Ранний IMO Shortlist 1995; источник вторичный, решение сверено по secondary solution.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "divisibility"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1995-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-jpsaha-count-two-diff-1995-nc5",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

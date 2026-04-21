@@ -1,0 +1,154 @@
+{
+  "year": 2006,
+  "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2006_prb.pdf",
+  "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2006_sol.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 5,
+  "problems": [
+    {
+      "id": "apmo-2006-p1",
+      "year": 2006,
+      "problem_number": 1,
+      "statement_en": "Let n be a positive integer. Find the largest nonnegative real number f (n)\n(depending on n) with the following property: whenever a1, a2, . . . , an are real numbers\nsuch that a1 + a2 + · · ·+ an is an integer, there exists some i such that |ai - 1\n2 | >=f (n).",
+      "solution_text_en": "Let n be a positive integer. Find the largest nonnegative real number f (n)\n(depending on n) with the following property: whenever a1, a2, . . . , an are real numbers\nsuch that a1 + a2 + · · · + an is an integer, there exists some i such that |ai - 1\n2 | >=f (n).\n(Solution) The answer is\nf (n) =\n{ 0 if n is even,\n1\n2n if n is odd.\nFirst, assume that n is even. If ai = 1\n2 for all i, then the sum a1 + a2 + · · · + an is an\ninteger. Since |ai - 1\n2 |= 0 for all i, we may conclude f (n) = 0 for any even n.\nNow assume that n is odd. Suppose that |ai - 1\n2 |< 1\n2n for all 1 <= i <= n. Then, since∑n\ni=1 ai is an integer,\n1\n2 <=\n⏐⏐⏐⏐⏐\nn∑\ni=1\nai - n\n2\n⏐⏐⏐⏐⏐ <=\nn∑\ni=1\n⏐⏐⏐⏐ai - 1\n2\n⏐⏐⏐⏐ < 1\n2n · n = 1\n2 ,\na contradiction. Thus |ai - 1\n2 | >= 1\n2n for some i, as required. On the other hand, putting\nn = 2m + 1 and ai = m\n2m+1 for all i gives ∑ai = m, while\n⏐⏐⏐⏐ai - 1\n2\n⏐⏐⏐⏐ = 1\n2 - m\n2m + 1 = 1\n2(2m + 1) = 1\n2n\nfor all i. Therefore, f (n) = 1\n2n is the best possible for any odd n.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2006_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2006_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2006-p2",
+      "year": 2006,
+      "problem_number": 2,
+      "statement_en": "Prove that every positive integer can be written as a finite sum of distinct\nintegral powers of the golden mean τ = 1+\n√\n5\n2 . Here, an integral power of τ is of the form\nτ i, where i is an integer (not necessarily positive).",
+      "solution_text_en": "Prove that every positive integer can be written as a finite sum of distinct\nintegral powers of the golden mean τ = 1+\n√\n5\n2 . Here, an integral power of τ is of the form\nτ i, where i is an integer (not necessarily positive).\n(Solution) We will prove this statement by induction using the equality\nτ 2 = τ + 1.\nIf n = 1, then 1 = τ 0. Suppose that n - 1 can be written as a finite sum of integral powers\nof τ , say\nn - 1 =\nk∑\ni=-k\naiτ i, (1)\nwhere ai  in  {0, 1}and n >= 2. We will write (1) as\nn - 1 = ak · · · a1a0.a-1a-2 · · · a-k. (2)\nFor example,\n1 = 1 .0 = 0 .11 = 0 .1011 = 0 .101011.\nFirstly, we will prove that we may assume that in (2) we have aiai+1 = 0 for all i with\n-k <= i <= k - 1. Indeed, if we have several occurrences of 11, then we take the leftmost\nsuch occurrence. Since we may assume that it is preceded by a 0, we can replace 011\nwith 100 using the identity τ i+1 + τ i = τ i+2. By doing so repeatedly, if necessary, we will\neliminate all occurrences of two 1’s standing together. Now we have the representation\nn - 1 =\nK∑\ni=-K\nbiτ i, (3)\nwhere bi  in  {0, 1}and bibi+1 = 0.\nIf b0 = 0 in (3), then we just add 1 = τ 0 to both sides of (3) and we are done.\nSuppose now that there is 1 in the unit position of (3), that is b0 = 1. If there are two\n0’s to the right of it, i.e.\nn - 1 = · · · 1.00 · · · ,\nthen we can replace 1.00 with 0.11 because 1 = τ -1 + τ -2, and we are done because we\nobtain 0 in the unit position. Thus we may assume that\nn - 1 = · · · 1.010 · · · .\nAgain, if we have n - 1 = · · · 1.0100 · · · , we may rewrite it as\nn - 1 = · · · 1.0100 · · · = · · · 1.0011 · · · = · · · 0.1111 · · ·\nand obtain 0 in the unit position. Therefore, we may assume that\nn - 1 = · · · 1.01010 · · · .\nSince the number of 1’s is finite, eventually we will obtain an occurrence of 100 at the end,\ni.e.\nn - 1 = · · · 1.01010 · · · 100.\nThen we can shift all 1’s to the right to obtain 0 in the unit position, i.e.\nn - 1 = · · · 0.11 · · · 11,\nand we are done.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2006_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2006_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2006-p3",
+      "year": 2006,
+      "problem_number": 3,
+      "statement_en": "Let p >= 5 be a prime and let r be the number of ways of placing p checkers\non a p × p checkerboard so that not all checkers are in the same row (but they may all be\nin the same column). Show that r is divisible by p 5. Here, we assume that all the checkers\nare identical.",
+      "solution_text_en": "Let p >= 5 be a prime and let r be the number of ways of placing p checkers\non a p × p checkerboard so that not all checkers are in the same row (but they may all be\nin the same column). Show that r is divisible by p 5. Here, we assume that all the checkers\nare identical.\n(Solution) Note that r =\n(p 2\np\n)\n- p . Hence, it suffices to show that\n(p 2 - 1)(p 2 - 2) · · · (p 2 - (p - 1)) - (p - 1)! ≡ 0 (mod p 4). (1)\nNow, let\nf (x) := ( x - 1)(x - 2) · · · (x - (p - 1)) = xp-1 + sp-2xp-2 + · · · + s1x + s0. (2)\nThen the congruence equation (1) is same as f (p 2)-s0 ≡ 0 (mod p 4). Therefore, it suffices\nto show that s1p 2 ≡ 0 (mod p 4) or s1 ≡ 0 (mod p 2).\nSince ap-1 ≡ 1 (mod p) for all 1 <= a <= p - 1, we can factor\nxp-1 - 1 ≡ (x - 1)(x - 2) · · · (x - (p - 1)) (mod p). (3)\nComparing the coefficients of the left hand side of (3) with those of the right hand side\nof (2), we obtain p |si for all 1 <= i <= p - 2 and s0 ≡ - 1 (mod p). On the other hand,\nplugging p for x in (2), we get\nf (p) = ( p - 1)! = s0 = p p-1 + sp-2p p-2 + · · · + s1p + s0,\nwhich implies\np p-1 + sp-2p p-2 + · · · + s2p 2 = -s1p.\nSince p >= 5, p |s2 and hence s1 ≡ 0 (mod p 2) as desired.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2006_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2006_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 2,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 2, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2006-p4",
+      "year": 2006,
+      "problem_number": 4,
+      "statement_en": "Let A, B be two distinct points on a given circle O and let P be the midpoint\nof the line segment AB. Let O1 be the circle tangent to the line AB at P and tangent to\nthe circle O. Let l be the tangent line, different from the line AB, to O1 passing through\nA. Let C be the intersection point, different from A, of l and O. Let Q be the midpoint\nof the line segment BC and O2 be the circle tangent to the line BC at Q and tangent to\nthe line segment AC. Prove that the circle O2 is tangent to the circle O.",
+      "solution_text_en": "Let A, B be two distinct points on a given circle O and let P be the midpoint\nof the line segment AB. Let O1 be the circle tangent to the line AB at P and tangent to\nthe circle O. Let l be the tangent line, different from the line AB, to O1 passing through\nA. Let C be the intersection point, different from A, of l and O. Let Q be the midpoint\nof the line segment BC and O2 be the circle tangent to the line BC at Q and tangent to\nthe line segment AC. Prove that the circle O2 is tangent to the circle O.\n(Solution) Let S be the tangent point of the circles O and O1 and let T be the intersection\npoint, different from S, of the circle O and the line SP . Let X be the tangent point of\nl to O1 and let M be the midpoint of the line segment XP . Since ∠T BP = ∠ASP , the\ntriangle T BP is similar to the triangle ASP . Therefore,\nP T\nP B = P A\nP S .\nSince the line l is tangent to the circle O1 at X, we have\n∠SP X = 90 ◦ - ∠XSP = 90 ◦ - ∠AP M = ∠P AM\nwhich implies that the triangle P AM is similar to the triangle SP X. Consequently,\nXS\nXP = M P\nM A = XP\n2M A and XP\nP S = M A\nAP .\nFrom this and the above observation follows\nXS\nXP · P T\nP B = XP\n2M A · P A\nP S = XP\n2M A · M A\nXP = 1\n2 . (1)\nLet A′ be the intersection point of the circle O and the perpendicular bisector of the chord\nBC such that A, A′ are on the same side of the line BC , and N be the intersection point\nof the lines A′Q and CT . Since\n∠N CQ = ∠T CB = ∠T CA = ∠T BA = ∠T BP\nand\n∠CA ′Q = ∠CAB\n2 = ∠XAP\n2 = ∠P AM = ∠SP X,\nthe triangle N CQ is similar to the triangle T BP and the triangle CA ′Q is similar to the\ntriangle SP X. Therefore\nQN\nQC = P T\nP B and QC\nQA′ = XS\nXP .\nand hence QA′ = 2 QN by (1). This implies that N is the midpoint of the line segment\nQA′. Let the circle O2 touch the line segment AC at Y . Since\n∠ACN = ∠ACT = ∠BCT = ∠QCN\nand |CY |= |CQ|, the triangles Y CN and QCN are congruent and hence N Y ⊥ AC and\nN Y = N Q = N A′. Therefore, N is the center of the circle O2, which completes the proof.\nRemark : Analytic solutions are possible : For example, one can prove for a triangle ABC\ninscribed in a circle O that AB = k(2 + 2 t), AC = k(1 + 2 t), BC = k(1 + 4 t) for some\npositive numbers k, t if and only if there exists a circle O1 such that O1 is tangent to the\nside AB at its midpoint, the side AC and the circle O.\nOne obtains AB = k′(1 + 4 t′), AC = k′(1 + 2 t′), BC = k′(2 + 2 t′) by substituting\nt = 1/4t′ and k = 2k′t′. So, there exists a circle O2 such that O2 is tangent to the side BC\nat its midpoint, the side AC and the circle O.\nIn the above, t = tan 2 α and k = 4R tan α\n(1+tan2 α)(1+4 tan2 α) , where R is the radius of O and\n∠A = 2α. Furthermore, t′ = tan 2 γ and k′ = 4R tan γ\n(1+tan2 γ)(1+4 tan2 γ) , where ∠C = 2γ. Observe\nthat\n√\ntt′ = tan α · tan γ = XS\nXP · P T\nP B = 1\n2 , which implies tt′ = 1\n4 . It is now routine easy to\ncheck that k = 2k′t′.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2006_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2006_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 6,
+        "algebra": 0,
+        "number_theory": 1,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 6, 'algebra': 0, 'number_theory': 1, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2006-p5",
+      "year": 2006,
+      "problem_number": 5,
+      "statement_en": "In a circus, there are n clowns who dress and paint themselves up using a\nselection of 12 distinct colours. Each clown is required to use at least five different colours.\nOne day, the ringmaster of the circus orders that no two clowns have exactly the same set\nof colours and no more than 20 clowns may use any one particular colour. Find the largest\nnumber n of clowns so as to make the ringmaster’s order possible.",
+      "solution_text_en": "In a circus, there are n clowns who dress and paint themselves up using a\nselection of 12 distinct colours. Each clown is required to use at least five different colours.\nOne day, the ringmaster of the circus orders that no two clowns have exactly the same set\nof colours and no more than 20 clowns may use any one particular colour. Find the largest\nnumber n of clowns so as to make the ringmaster’s order possible.\n(Solution) Let C be the set of n clowns. Label the colours 1 , 2, 3, . . . ,12. For each\ni = 1 , 2, . . . ,12, let Ei denote the set of clowns who use colour i. For each subset S of\n{1, 2, . . . ,12}, let ES be the set of clowns who use exactly those colours in S. Since S ̸= S′\nimplies ES ∩ ES′ = ∅, we have ∑\nS\n|ES|= |C|= n,\nwhere S runs over all subsets of {1, 2, . . . ,12}. Now for each i,\nES ⊆ Ei if and only if i  in  S,\nand hence\n|Ei|=\n∑\ni in S\n|ES|.\nBy assumption, we know that |Ei| <=20 and that if ES ̸= ∅, then |S| >=5. From this we\nobtain\n20 × 12 >=\n12∑\ni=1\n|Ei|=\n12∑\ni=1\n(∑\ni in S\n|ES|\n)\n>= 5\n∑\nS\n|ES|= 5n.\nTherefore n <= 48.\nNow, define a sequence {ci}52\ni=1 of colours in the following way:\n1 2 3 4 |5 6 7 8 |9 10 11 12 |\n4 1 2 3 |8 5 6 7 |12 9 10 11 |\n3 4 1 2 |7 8 5 6 |11 12 9 10 |\n2 3 4 1 |6 7 8 5 |10 11 12 9 |1 2 3 4\nThe first row lists c1, . . . , c12 in order, the second row lists c13, . . . , c24 in order, the third\nrow lists c25, . . . , c36 in order, and finally the last row lists c37, . . . , c52 in order. For each\nj, 1 <= j <= 48, assign colours cj, cj+1, cj+2, cj+3, cj+4 to the j-th clown. It is easy to check\nthat this assignment satisfies all conditions given above. So, 48 is the largest for n.\nRemark : The fact that n <= 48 can be obtained in a much simpler observation that\n5n <= 12 × 20 = 240 .\nThere are many other ways of constructing 48 distinct sets consisting of 5 colours. For\nexample, consider the sets\n{1, 2, 3, 4, 5, 6}, {3, 4, 5, 6, 7, 8}, {5, 6, 7, 8, 9, 10}, {7, 8, 9, 10, 11, 12},\n{9, 10, 11, 12, 1, 2}, {11, 12, 1, 2, 3, 4}, {1, 2, 5, 6, 9, 10}, {3, 4, 7, 8, 11, 12}.\nEach of the above 8 sets has 6 distinct subsets consisting of exactly 5 colours. It is easy to\ncheck that the 48 subsets obtained in this manner are all distinct.",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2006_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2006_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2006_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 6
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "colour"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 0, 'combinatorics': 6}"
+    }
+  ]
+}

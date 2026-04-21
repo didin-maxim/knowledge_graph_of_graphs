@@ -1,0 +1,134 @@
+{
+  "id": "tc-2009-10-acquaintances-even-cycle",
+  "title": "Чётный круг знакомых, Турнир городов 2009/10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "minimum_degree",
+      "longest_path",
+      "even_cycle"
+    ],
+    "methods": [
+      "longest_path",
+      "parity",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "close_path_to_cycle"
+    ],
+    "goal": [
+      "even_cycle_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "minimum_degree",
+      "path_indices_parity",
+      "cycle_length_parity"
+    ],
+    "keywords": [
+      "even_cycle",
+      "minimum_degree_three",
+      "longest_path"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Участники олимпиады и круглый стол",
+        "text": "Среди участников олимпиады каждый знаком не менее чем с тремя другими. Докажите, что можно выбрать группу из чётного числа участников, причём больше двух человек, и посадить их за круглый стол так, чтобы каждый был знаком с обоими соседями.",
+        "source_id": "src-problems-116409",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть G — конечный простой граф, в котором степень каждой вершины не меньше 3. Докажите, что в G есть цикл чётной длины, причём эта длина больше 2.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-longest-path-parity-neighbors",
+      "title": "Соседи конца длиннейшего пути дают чётный цикл",
+      "text": "Берём длиннейший путь. Все соседи его конца лежат на этом пути; среди трёх соседей два находятся на позициях одной чётности, и соответствующие циклы от конца пути имеют одинаковую чётность. Один из них даёт чётный цикл.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-longest-path-parity",
+      "title": "Длиннейший путь и чётность",
+      "text": "Выберем в графе длиннейший простой путь \\(v_0,v_1,\\ldots,v_k\\). Все соседи вершины \\(v_0\\) лежат среди вершин этого пути, иначе путь можно было бы продлить. У вершины \\(v_0\\) есть хотя бы три соседа на пути. Если среди них есть \\(v_i\\) с нечётным i, то вершины \\(v_0,v_1,\\ldots,v_i\\) образуют цикл чётной длины \\(i+1\\). Если же все три соседа имеют чётные номера, то берём двух из них, например \\(v_i\\) и \\(v_j\\), где i<j; тогда отрезок пути от \\(v_i\\) до \\(v_j\\) вместе с двумя рёбрами к \\(v_0\\) образует цикл длины \\(j-i+2\\), а это чётное число.",
+      "idea_ids": [
+        "idea-longest-path-parity-neighbors"
+      ],
+      "standard_idea_ids": [
+        "longest_path",
+        "extremal_choice",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Весенний базовый тур 2009/10, 8-9 класс, задача 4; на problems.ru сложность 3+.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "longest_path",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-116409",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

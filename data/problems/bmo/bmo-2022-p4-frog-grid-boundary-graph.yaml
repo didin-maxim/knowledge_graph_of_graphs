@@ -1,0 +1,147 @@
+{
+  "id": "bmo-2022-p4-frog-grid-boundary-graph",
+  "title": "Лягушки на раскрашенной решётке и граф границ, BMO 2022 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "grid_coloring",
+      "monochromatic_regions",
+      "boundary_graph"
+    ],
+    "methods": [
+      "boundary_graph_construction",
+      "component_counting"
+    ],
+    "transformations": [
+      "colored_grid_to_boundary_graph"
+    ],
+    "goal": [
+      "maximize_required_region_representatives"
+    ],
+    "auxiliary_graph_type": [
+      "grid_boundary_graph"
+    ],
+    "invariants": [
+      "number_of_boundary_components",
+      "local_degree_constraints"
+    ],
+    "keywords": [
+      "bmo_2022_p4",
+      "bmo",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Дана доска \\(n\\times n\\) из единичных клеток, где \\(n\\ge 3\\) нечётно. Каждая клетка окрашена в красный или синий цвет. Лягушка может перепрыгнуть из клетки в клетку тогда и только тогда, когда клетки одного цвета и имеют общую вершину. После раскраски нужно поставить \\(k\\) лягушек так, чтобы из клеток с лягушками по разрешённым прыжкам можно было добраться до любой клетки доски. Найдите наименьшее \\(k\\), которое гарантированно достаточно при любой раскраске.",
+        "source_id": "src-bmo-2022-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Официальное решение строит граф на вершинах решётки: ребро проводится вдоль стороны клетки тогда и только тогда, когда по разные стороны от неё стоят клетки разных цветов. Компоненты этого графа кодируют границы монохроматических областей, а число нужных лягушек равно числу таких компонент плюс один.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-boundary-components",
+      "title": "Граф границ считает монохроматические области",
+      "text": "Границы между красными и синими клетками образуют граф на вершинах решётки. Каждая его нетривиальная компонента добавляет одну новую монохроматическую область, поэтому число областей равно числу нетривиальных компонент плюс один.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-degree-bounding",
+      "title": "Оценка числа компонент по степеням вершин",
+      "text": "У угловых вершин степень 0, у граничных - 0 или 1, у внутренних - 0, 2 или 4. Отсюда каждая нетривиальная компонента содержит как минимум четыре вершины, кроме не более чем четырёх угловых исключений, и получается оценка на число компонент.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Строим граф \\(G\\) на всех \\((n+1)^2\\) вершинах решётки. Две вершины соединяем, если они соседни по решётке и разделяют две клетки разных цветов. Тогда нетривиальные компоненты \\(G\\) в точности являются границами между монохроматическими областями, а каждая такая компонента при добавлении увеличивает число областей на 1. Значит число областей, а значит и минимальное число лягушек, равно \\(N+1\\), где \\(N\\) - число нетривиальных компонент \\(G\\). По локальному анализу степеней: углы имеют степень 0, вершины на границе - 0 или 1, внутренние - 0, 2 или 4; каждая нетривиальная компонента содержит не менее четырёх вершин, кроме не более чем четырёх компонент вокруг углов, которые могут содержать по три. Отсюда \\(4N-4+4\\le (n+1)^2\\), то есть \\(N\\le (n+1)^2/4\\). Следовательно, всегда достаточно \\((n+1)^2/4+1\\) лягушек. Равенство достигается шахматно-подобной конструкцией: красными делаются клетки с обеими чётными координатами, остальные синие.",
+      "idea_ids": [
+        "idea-boundary-components",
+        "idea-degree-bounding"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "BMO 2022 P4; граф границ является центральным объектом официального решения.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "coloring",
+    "planar_graphs",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "boundary_graph_construction",
+        "component_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-bmo-2022-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Граф появляется в официальном решении, а не в исходной формулировке.",
+    "relations_status": "base_done"
+  }
+}

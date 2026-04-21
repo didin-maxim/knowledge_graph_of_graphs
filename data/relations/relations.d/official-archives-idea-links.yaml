@@ -1,0 +1,229 @@
+{
+  "relations": [
+    {
+      "id": "rel-apmo-2005-p4-imo-2013-c6-layer-frontier",
+      "from": "apmo-2005-p4-firefighters-grid-spread",
+      "to": "imo-2013-c6-flight-distance-layers",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both official solutions organize the graph by distance layers from a source and bound how quickly a frontier can expand under local constraints.",
+      "backward_text": "The flight problem is an extremal distance argument in an abstract graph, while the firefighters problem is a grid process, but both rely on layer counting and controlled frontier growth.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.75
+    },
+    {
+      "id": "rel-apmo-2010-p3-memo-2025-i2-common-neighbor",
+      "from": "apmo-2010-p3-common-acquaintance-extremal",
+      "to": "memo-2025-i2-ruby-rooks-two-step-reachability",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems count unordered pairs joined by a common neighbour in an auxiliary graph and compare that count with an extremal construction.",
+      "backward_text": "APMO 2010 maximizes nonedges at distance 2 in an acquaintance graph, while MEMO 2025 counts pairs of squares with a common rook move, but the shared graph idea is the same common-neighbour accounting.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-vosh-2000-apmo-2010-universal-acquaintance",
+      "from": "vosh-2000-01-final-universal-acquaintance",
+      "to": "apmo-2010-p3-common-acquaintance-extremal",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions study an acquaintance graph and show that a star-like structure is extremal or forced once common-neighbour information becomes strong enough.",
+      "backward_text": "APMO 2010 is an extremal counting problem rather than a direct existence statement, but its extremal graph is again the universal-acquaintance star.",
+      "anchors": {
+        "from_solution_id": "sol-clique-extension",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.73
+    },
+    {
+      "id": "rel-brooks-apmo-2016-color-reduction",
+      "from": "brooks-theorem",
+      "to": "apmo-2016-p4-dreamland-28-step-coloring",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both proofs color an auxiliary graph by reducing the problem to a controlled colouring step and then extending the colouring inductively.",
+      "backward_text": "Dreamland is a bespoke reachability graph rather than a degree-bound colouring theorem, but its official solution uses the same graph-colouring reduction mindset.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.71
+    },
+    {
+      "id": "rel-bmo-2022-p4-imo-2019-c4-boundary-regions",
+      "from": "bmo-2022-p4-frog-grid-boundary-graph",
+      "to": "imo-2019-c4-labyrinth-region-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both official solutions turn a planar-looking configuration into a graph of boundary pieces or regions and then count components to force the target bound.",
+      "backward_text": "The labyrinth problem uses line arrangements and doors, while BMO 2022 uses colored-grid boundaries, but both are planar component-counting arguments through an auxiliary graph.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-tc-2022-23-bmo-2022-p4-grid-boundary",
+      "from": "tc-2022-23-blue-red-cells-connectivity",
+      "to": "bmo-2022-p4-frog-grid-boundary-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions encode a coloured grid by a boundary or adjacency graph and use component/edge bounds instead of cell-by-cell analysis.",
+      "backward_text": "The Tournament of Cities problem is more counting-heavy, while BMO 2022 packages the geometry into a boundary graph, but both rely on the same grid-to-graph translation.",
+      "anchors": {
+        "from_solution_id": "sol-bound-boundary",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-dirac-bmo-2025-longest-path",
+      "from": "dirac-theorem",
+      "to": "bmo-2025-p4-flights-long-short-paths",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both arguments choose a longest path and then use the impossibility of extending it to deduce strong restrictions on neighbours of its endpoints.",
+      "backward_text": "BMO 2025 is not a Hamiltonicity criterion, but its official proof is built from the same longest-path extremal toolkit as Dirac-style arguments.",
+      "anchors": {
+        "from_solution_id": "sol-longest-path",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-egmo-2016-p3-memo-2021-i2-incidence-forest",
+      "from": "egmo-2016-p3-blue-cells-bipartite-incidence",
+      "to": "memo-2021-i2-bishop-circuit-forest",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both official solutions replace a board configuration by a bipartite incidence graph and then bound the number of marked cells by a component or forest estimate.",
+      "backward_text": "EGMO 2016 counts edges through component sizes in a row-column graph, while MEMO 2021 proves acyclicity in a diagonal graph, but the core board-to-bipartite-graph move is shared.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-egmo-2022-p5-imo-2016-c8-domino-matchings",
+      "from": "egmo-2022-p5-domino-parity-bipartite-matching",
+      "to": "imo-2016-c8-domino-unique-tiling-cycles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both domino problems are solved by translating tilings into bipartite matchings and then studying how structured changes of matchings constrain the board.",
+      "backward_text": "IMO 2016 focuses on alternating cycles between tilings, while EGMO 2022 uses parity and symmetry of domino matchings, but both live squarely in the matching model of domino tilings.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-imo-1979-p6-egmo-2025-p5-cycle-encoding",
+      "from": "imo-1979-p6-octagon-walks-cycle-graph",
+      "to": "egmo-2025-p5-rotating-arrows-dynamic-cycle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions encode a repeated move process as motion on a cyclic graph and then use parity or periodicity of that graph walk to bound the possible starts.",
+      "backward_text": "EGMO 2025 works on a board-wide cycle through all cells, while IMO 1979 analyzes walks on a fixed cycle graph, but the same cycle-encoding viewpoint drives both.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-egmo-2022-p5-memo-2022-t4-domino-parity",
+      "from": "egmo-2022-p5-domino-parity-bipartite-matching",
+      "to": "memo-2022-t4-teleport-table-reachability",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both official solutions partition board states into classes and then use a domino pairing of cells to force a parity balance between those classes.",
+      "backward_text": "EGMO 2022 counts domino tilings via a matching involution, while MEMO 2022 compares reachability classes through a domino partition, but both use domino pairing as the decisive parity device.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-rmm-2012-p1-hall-cover-parity",
+      "from": "hall-marriage-theorem",
+      "to": "rmm-2012-p1-sociable-sets-bipartite-parity",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both arguments study covering behaviour in a bipartite acquaintance graph and reason about how subsets on one side control the opposite side.",
+      "backward_text": "RMM 2012 is a parity statement rather than a full existence theorem, but its official solution uses the same subset-neighbourhood viewpoint as Hall-type arguments.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-hall-rmm-2017-p5-grid-matching",
+      "from": "hall-marriage-theorem",
+      "to": "rmm-2017-p5-sieve-sticks-bipartite-matching",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The official solution is an explicit Hall-style translation of a geometric covering problem into a bipartite matching statement.",
+      "backward_text": "RMM 2017 P5 is essentially a clean olympiad application of Hall's theorem on a grid incidence graph.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-rmm-2017-p5-egmo-2016-p3-grid-incidence",
+      "from": "egmo-2016-p3-blue-cells-bipartite-incidence",
+      "to": "rmm-2017-p5-sieve-sticks-bipartite-matching",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions convert a grid configuration into a bipartite incidence graph whose left and right parts are natural row/column-type objects.",
+      "backward_text": "EGMO 2016 uses the incidence graph for counting and component bounds, while RMM 2017 uses it for Hall matching, but the modelling step is nearly identical.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.89
+    },
+    {
+      "id": "rel-handshaking-memo-2025-t4-weighted-complete",
+      "from": "handshaking-lemma",
+      "to": "memo-2025-t4-toll-complete-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both arguments aggregate local vertex contributions over the whole graph to get a global bound; MEMO 2025 does this in a weighted complete graph setting.",
+      "backward_text": "The toll problem is not the plain handshaking lemma, but its official solution has the same degree-sum flavour lifted to weighted partitions of a complete graph.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    }
+  ]
+}

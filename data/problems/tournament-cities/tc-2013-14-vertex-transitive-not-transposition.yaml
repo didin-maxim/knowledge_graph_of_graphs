@@ -1,0 +1,132 @@
+{
+  "id": "tc-2013-14-vertex-transitive-not-transposition",
+  "title": "Перенумерация городов без произвольной перестановки пары, Турнир городов 2013/14",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "vertex_transitive_graph",
+      "automorphism",
+      "counterexample_graph",
+      "common_neighbors"
+    ],
+    "methods": [
+      "counterexample",
+      "symmetry_argument",
+      "forced_fixing"
+    ],
+    "transformations": [
+      "permutation_to_graph_automorphism"
+    ],
+    "goal": [
+      "disprove_transposition_property",
+      "graph_automorphism_counterexample"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "vertex_transitivity",
+      "common_neighbor_counts",
+      "automorphism_constraints"
+    ],
+    "keywords": [
+      "vertex_transitive",
+      "automorphism",
+      "transposition",
+      "counterexample"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Список железных дорог и перенумерации",
+        "text": "Каждому городу в некоторой стране присвоен индивидуальный номер. Имеется список, в котором для каждой пары номеров указано, соединены города с данными номерами железной дорогой или нет. Оказалось, что, какие ни взять два номера M и N из списка, можно так перенумеровать города, что город с номером M получит номер N, но список по-прежнему будет верным. Верно ли, что, какие ни взять два номера M и N из списка, можно так перенумеровать города, что город с номером M получит номер N, город с номером N получит номер M, но список по-прежнему будет верным?",
+        "source_id": "src-problems-64663",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Для конечного простого графа G назовём перенумерацию вершин допустимой, если после неё любые две новые вершины соединены ребром тогда и только тогда, когда до перенумерации были соединены соответствующие старые вершины. Известно, что для любых двух вершин u и v графа G существует допустимая перенумерация, переводящая u в v. Обязательно ли для любых u и v существует допустимая перенумерация, меняющая u и v местами?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-vertex-transitive-counterexample",
+      "title": "Транзитивность не обязана содержать транспозиции",
+      "text": "Условие говорит, что группа симметрий графа действует транзитивно на вершинах, но из этого не следует, что в ней есть симметрия, переставляющая любые две заданные вершины.",
+      "tags": [
+        "graph_symmetry"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-counterexample-from-source",
+      "title": "Контрпример с 12 городами",
+      "text": "Ответ отрицательный. В опубликованном решении на problems.ru приведён граф на 12 городах с симметриями, позволяющими перевести любой номер в любой другой. Однако если попытаться поменять местами две специальные вершины, например 1 и 3 в нумерации источника, то их единственный общий сосед 2 должен остаться на месте; затем вынужденно фиксируется ещё один сосед, после чего сравнение числа общих соседей для пар вершин даёт противоречие. Полная проверка контрпримера зависит от рисунка графа в источнике.",
+      "idea_ids": [
+        "idea-vertex-transitive-counterexample"
+      ],
+      "standard_idea_ids": [
+        "minimal_counterexample"
+      ],
+      "status": "needs_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 9,
+    "comment": "Весенний сложный тур 2013/14, 10-11 класс, задача 6; на problems.ru указано 9 баллов и сложность 4+.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_symmetry",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "counterexample",
+        "graph_symmetry"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-64663",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

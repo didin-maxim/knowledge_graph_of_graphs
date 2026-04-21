@@ -1,0 +1,140 @@
+{
+  "id": "imo-2021-c4-anisotropy-menger",
+  "title": "Королевство Анизотропии и непересекающиеся пути, IMO Shortlist 2021 C4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "edge_disjoint_paths",
+      "directed_cut"
+    ],
+    "methods": [
+      "menger_theorem",
+      "cut_counting"
+    ],
+    "transformations": [
+      "roads_to_tournament"
+    ],
+    "goal": [
+      "compare_path_packings"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "outdegree",
+      "minimum_cut"
+    ],
+    "keywords": [
+      "imo_2021_c4",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В королевстве \\(n\\) городов, и между каждой парой городов есть ровно одна направленная дорога. Путь не возвращается в уже посещённый город. Коллекция путей называется разнообразной, если ни одна дорога не входит в два пути. Для городов \\(A,B\\) пусть \\(N_{AB}\\) — максимальное число попарно различных по рёбрам путей из \\(A\\) в \\(B\\), а \\(N_{BA}\\) определяется аналогично. Докажите, что \\(N_{AB}=N_{BA}\\) тогда и только тогда, когда исходящая степень \\(A\\) равна исходящей степени \\(B\\).",
+        "source_id": "src-imo-2021-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это задача о турнире и максимальном числе рёберно-непересекающихся направленных путей; официальное решение использует частный случай теоремы Менгера / max-flow min-cut.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-menger-cut",
+      "title": "Пути и разрезы",
+      "text": "Максимальное число рёберно-непересекающихся путей равно минимальному размеру направленного разреза.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-tournament-degree",
+      "title": "Степени в турнире",
+      "text": "В турнире размеры специальных разрезов выражаются через исходящие степени двух выбранных вершин.",
+      "tags": [
+        "tournaments"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Первое решение строит пути явно, второе формулирует графовый механизм. Рассматриваем ориентированный полный граф. По теореме Менгера в рёберной форме максимальное число рёберно-непересекающихся путей из \\(s\\) в \\(t\\) равно минимуму числа рёбер, идущих из части \\(S\\) в часть \\(T\\), среди разрезов \\(s\\in S,t\\in T\\). Для турнира такой минимум можно оценить через исходящие степени \\(A\\) и \\(B\\). Анализ разрезов показывает, что разность \\(N_{AB}-N_{BA}\\) имеет тот же знак, что разность исходящих степеней. Поэтому равенство максимумов путей эквивалентно равенству исходящих степеней.",
+      "idea_ids": [
+        "idea-menger-cut",
+        "idea-tournament-degree"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2021 C4, unknown; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "tournaments",
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "menger_theorem",
+        "cut_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2021-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

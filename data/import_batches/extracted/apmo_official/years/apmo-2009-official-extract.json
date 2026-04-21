@@ -1,0 +1,154 @@
+{
+  "year": 2009,
+  "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2009_prb.pdf",
+  "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2009_sol.pdf",
+  "problem_pdf_ok": true,
+  "solution_pdf_ok": true,
+  "problem_pdf_error": null,
+  "solution_pdf_error": null,
+  "problem_count_extracted": 5,
+  "problems": [
+    {
+      "id": "apmo-2009-p1",
+      "year": 2009,
+      "problem_number": 1,
+      "statement_en": "Consider the following operation on positive real numbers written on a black-\nboard: Choose a number r written on the blackboard, erase that number, and then write a\npair of positive real numbers a and b satisfying the condition 2r2 = ab on the board.\nAssume that you start out with just one positive real number r on the blackboard, and\napply this operation k2 - 1 times to end up with k2 positive real numbers, not necessarily\ndistinct. Show that there exists a number on the board which does not exceed kr.",
+      "solution_text_en": "Consider the following operation on positive real numbers written on a black-\nboard:\nChoose a number r written on the blackboard, erase that number, and then write a\npair of positive real numbers a and b satisfying the condition 2 r2 = ab on the board.\nAssume that you start out with just one positive real number r on the blackboard, and apply\nthis operation k2 - 1 times to end up with k2 positive real numbers, not necessarily distinct.\nShow that there exists a number on the board which does not exceed kr.\n(Solution) Using AM-GM inequality, we obtain\n1\nr2 = 2\nab = 2ab\na2b2 <= a2 + b2\na2b2 <= 1\na2 + 1\nb2 . (∗)\nConsequently, if we let Sl be the sum of the squares of the reciprocals of the numbers written\non the board after l operations, then Sl increases as l increases, that is,\nS0 <= S1 <= · · · <= Sk2-1. (∗∗)\nTherefore if we let s be the smallest real number written on the board after k2 - 1 operations,\nthen 1\ns2 >= 1\nt2 for any number t among k2 numbers on the board and hence\nk2 × 1\ns2 >= Sk2-1 >= S0 = 1\nr2 ,\nwhich implies that s <= kr as desired.\nRemark. The nature of the problem does not change at all if the numbers on the board\nare restricted to be positive integers. But that may mislead some contestants to think the\nproblem is a number theoretic problem rather than a combinatorial problem.\n1",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2009_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2009_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "needs_review",
+      "confidence": 0.62,
+      "graph_terms": [
+        "oard"
+      ],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 2}"
+    },
+    {
+      "id": "apmo-2009-p2",
+      "year": 2009,
+      "problem_number": 2,
+      "statement_en": "Let a1, a2, a3, a4, a5 be real numbers satisfying the following equations:\na1\nk2 + 1 + a2\nk2 + 2 + a3\nk2 + 3 + a4\nk2 + 4 + a5\nk2 + 5 = 1\nk2 for k = 1, 2, 3, 4, 5.\nFind the value of a1\n37 + a2\n38 + a3\n39 + a4\n40 + a5\n41 . (Express the value in a single fraction.)",
+      "solution_text_en": "Let a1, a2, a3, a4, a5 be real numbers satisfying the following equations:\na1\nk2 + 1 + a2\nk2 + 2 + a3\nk2 + 3 + a4\nk2 + 4 + a5\nk2 + 5 = 1\nk2 for k = 1, 2, 3, 4, 5.\nFind the value of a1\n37 + a2\n38 + a3\n39 + a4\n40 + a5\n41 . (Express the value in a single fraction.)\n(Solution) Let R(x) := a1\nx2 + 1 + a2\nx2 + 2 + a3\nx2 + 3 + a4\nx2 + 4 + a5\nx2 + 5 . Then R(±1) = 1,\nR(±2) = 1\n4 , R (±3) = 1\n9 , R (±4) = 1\n16 , R (±5) = 1\n25 and R(6) is the value to be found.\nLet's put P (x) := ( x2 + 1)(x2 + 2)(x2 + 3)(x2 + 4)(x2 + 5) and Q(x) := R(x)P (x). Then for\nk = ±1, ±2, ±3, ±4, ±5, we get Q(k) = R(k)P (k) = P (k)\nk2 , that is, P (k) - k2Q(k) = 0. Since\nP (x) - x2Q(x) is a polynomial of degree 10 with roots ±1, ±2, ±3, ±4, ±5, we get\nP (x) - x2Q(x) = A(x2 - 1)(x2 - 4)(x2 - 9)(x2 - 16)(x2 - 25). (∗)\nPutting x = 0, we get A = P (0)\n(-1)(-4)(-9)(-16)(-25) = - 1\n120 . Finally, dividing both sides\nof ( ∗) by P (x) yields\n1 - x2R(x) = 1 - x2 Q(x)\nP (x) = - 1\n120 · (x2 - 1)(x2 - 4)(x2 - 9)(x2 - 16)(x2 - 25)\n(x2 + 1)(x2 + 2)(x2 + 3)(x2 + 4)(x2 + 5)\nand hence that\n1 - 36R(6) = - 35 × 32 × 27 × 20 × 11\n120 × 37 × 38 × 39 × 40 × 41 = - 3 × 7 × 11\n13 × 19 × 37 × 41 = - 231\n374699 ,\nwhich implies R(6) = 187465\n6744582 .\nRemark. We can get a1 = 1105\n72 , a2 = - 2673\n40 , a3 = 1862\n15 , a4 = - 1885\n18 , a5 = 1323\n40 by solving\nthe given system of linear equations, which is extremely messy and takes a lot of time.\n2",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2009_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2009_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 3,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 3, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2009-p3",
+      "year": 2009,
+      "problem_number": 3,
+      "statement_en": "Let three circles Γ 1, Γ2, Γ3, which are non-overlapping and mutually external,\nbe given in the plane. For each point P in the plane, outside the three circles, construct\nsix points A1, B1, A2, B2, A3, B3 as follows: For each i = 1 , 2, 3, Ai, Bi are distinct points on\nthe circle Γ i such that the lines P Ai and P Bi are both tangents to Γ i. Call the point P\nexceptional if, from the construction, three lines A1B1, A2B2, A3B3 are concurrent. Show\nthat every exceptional point of the plane, if exists, lies on the same circle.",
+      "solution_text_en": "Let three circles \u0000 1, \u00002, \u00003, which are non-overlapping and mutually external,\nbe given in the plane. For each point P in the plane, outside the three circles, construct\nsix points A1, B1, A2, B2, A3, B3 as follows: For each i = 1 , 2, 3, Ai, Bi are distinct points\non the circle \u0000 i such that the lines P Ai and P Bi are both tangents to \u0000 i. Call the point\nP exceptional if, from the construction, three lines A1B1, A2B2, A3B3 are concurrent. Show\nthat every exceptional point of the plane, if exists, lies on the same circle.\n(Solution) Let Oi be the center and ri the radius of circle \u0000 i for each i = 1 , 2, 3. Let P be\nan exceptional point, and let the three corresponding lines A1B1, A2B2,A3B3 concur at Q.\nConstruct the circle with diameter P Q. Call the circle \u0000, its center O and its radius r. We\nnow claim that all exceptional points lie on \u0000.\n3\nLet P O1 intersect A1B1 in X1. As P O1 ⊥ A1B1, we see that X1 lies on \u0000. As P A1 is a\ntangent to \u0000 1, triangle P A1O1 is right-angled and similar to triangle A1X1O1. It follows that\nO1X1\nO1A1\n= O1A1\nO1P , i.e., O1X1 · O1P = O1A12 = r12.\nOn the other hand, O1X1 · O1P is also the power of O1 with respect to \u0000, so that\nr2\n1 = O1X1 · O1P = (O1O - r)(O1O + r) = O1O2 - r2, (∗)\nand hence\nr2 = OO2\n1 - r2\n1 = (OO1 - r1)(OO1 + r1).\nThus, r2 is the power of O with respect to \u0000 1. By the same token, r2 is also the power of\nO with respect to \u0000 2 and \u0000 3. Hence O must be the radical center of the three given circles.\nSince r, as the square root of the power of O with respect to the three given circles, does not\ndepend on P , it follows that all exceptional points lie on \u0000.\nRemark. In the event of the radical point being at in\nnity (and hence the three radical\naxes being parallel), there are no exceptional points in the plane, which is consistent with the\nstatement of the problem.\n4",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2009_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2009_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    },
+    {
+      "id": "apmo-2009-p4",
+      "year": 2009,
+      "problem_number": 4,
+      "statement_en": "Prove that for any positive integer k, there exists an arithmetic sequence\na1\nb1\n, a2\nb2\n, . . . , ak\nbk\nof rational numbers, where ai, bi are relatively prime positive integers for each i = 1, 2, . . . , k,\nsuch that the positive integers a1, b1, a2, b2, . . . , ak, bk are all distinct.",
+      "solution_text_en": "Prove that for any positive integer k, there exists an arithmetic sequence\na1\nb1\n, a2\nb2\n, . . . , ak\nbk\nof rational numbers, where ai, bi are relatively prime positive integers for each i = 1, 2, . . . , k,\nsuch that the positive integers a1, b1, a2, b2, . . . , ak, bk are all distinct.\n(Solution) For k = 1, there is nothing to prove. Henceforth assume k >= 2.\nLet p1, p2, . . . , pk be k distinct primes such that\nk < p k < · · · < p 2 < p 1\nand let N = p1p2 · · ·pk. By Chinese Remainder Theorem, there exists a positive integer x\nsatisfying\nx ≡ - i (mod pi)\nfor all i = 1, 2, . . . , k and x > N 2. Consider the following sequence :\nx + 1\nN , x + 2\nN , , . . . , x + k\nN .\nThis sequence is obviously an arithmetic sequence of positive rational numbers of length k.\nFor each i = 1 , 2, . . . , k, the numerator x + i is divisible by pi but not by pj for j ̸= i, for\notherwise pj divides |i - j|, which is not possible because pj > k > |i - j|. Let\nai := x + i\npi\n, b i := N\npi\nfor all i = 1, 2, . . . , k.\nThen\nx + i\nN = ai\nbi\n, gcd(ai, bi) = 1 for all i = 1, 2, . . . , k,\nand all bi's are distinct from each other. Moreover, x > N 2 implies\nai = x + i\npi\n> N 2\npi\n> N > N\npj\n= bj for all i, j = 1, 2, . . . , k\nand hence all ai's are distinct from bi's. It only remains to show that all ai's are distinct from\neach other. This follows from\naj = x + j\npj\n> x + i\npj\n> x + i\npi\n= ai for all i < j\nby our choice of p1, p2, . . . , pk. Thus, the arithmetic sequence\na1\nb1\n, a2\nb2\n, . . . , ak\nbk\nof positive rational numbers satis\nes the conditions of the problem.\n5\nRemark. Here is a much easier solution :\nFor any positive integer k >= 2, consider the sequence\n(k!)2 + 1\nk! , (k!)2 + 2\nk! , . . . , (k!)2 + k\nk! .\nNote that gcd( k!, (k!)2 + i) = i for all i = 1, 2, . . . , k. So, taking\nai := (k!)2 + i\ni , b i := k!\ni for all i = 1, 2, . . . , k,\nwe have gcd( ai, bi) = 1 and\nai = (k!)2 + i\ni > a j = (k!)2 + j\nj > b i = k!\ni > b j = k!\nj\nfor any 1 <= i < j <= k. Therefore this sequence satis\nes every condition given in the problem.\n6",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2009_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2009_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 4,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 4, 'combinatorics': 1}"
+    },
+    {
+      "id": "apmo-2009-p5",
+      "year": 2009,
+      "problem_number": 5,
+      "statement_en": "Larry and Rob are two robots travelling in one car from Argovia to Zillis. Both\nrobots have control over the steering and steer according to the following algorithm: Larry\nmakes a 90 ◦ left turn after every l kilometer driving from start; Rob makes a 90 ◦ right turn\nafter every r kilometer driving from start, where l and r are relatively prime positive integers.\nIn the event of both turns occurring simultaneously, the car will keep going without changing\ndirection. Assume that the ground is flat and the car can move in any direction.\nLet the car start from Argovia facing towards Zillis. For which choices of the pair ( l, r) is\nthe car guaranteed to reach Zillis, regardless of how far it is from Argovia?",
+      "solution_text_en": "Larry and Rob are two robots travelling in one car from Argovia to Zillis. Both\nrobots have control over the steering and steer according to the following algorithm: Larry\nmakes a 90 ◦ left turn after every l kilometer driving from start; Rob makes a 90 ◦ right turn\nafter every r kilometer driving from start, where l and r are relatively prime positive integers.\nIn the event of both turns occurring simultaneously, the car will keep going without changing\ndirection. Assume that the ground is \rat and the car can move in any direction.\nLet the car start from Argovia facing towards Zillis. For which choices of the pair ( l, r) is the\ncar guaranteed to reach Zillis, regardless of how far it is from Argovia?\n(Solution) Let Zillis be d kilometers away from Argovia, where d is a positive real number.\nFor simplicity, we will position Argovia at (0 , 0) and Zillis at ( d, 0), so that the car starts\nout facing east. We will investigate how the car moves around in the period of travelling the\n\nrst lr kilometers, the second lr kilometers, . . ., and so on. We call each period of travelling\nlr kilometers a section. It is clear that the car will have identical behavior in every section\nexcept the direction of the car at the beginning.\nCase 1: l - r ≡ 2 (mod 4) . After the\nrst section, the car has made l - 1 right turns and\nr - 1 left turns, which is a net of 2( ≡ l - r (mod 4)) right turns. Let the displacement vector\nfor the\nrst section be ( x, y). Since the car has rotated 180 ◦, the displacement vector for\nthe second section will be ( -x, -y), which will take the car back to (0 , 0) facing east again.\nWe now have our original situation, and the car has certainly never travelled further than lr\nkilometers from Argovia. So, the car cannot reach Zillis if it is further apart from Argovia.\nCase 2: l - r ≡ 1 (mod 4) . After the\nrst section, the car has made a net of 1 right turn.\nLet the displacement vector for the\nrst section again be ( x, y). This time the car has rotated\n90◦ clockwise. We can see that the displacements for the second, third and fourth section\nwill be ( y, -x), ( -x, -y) and ( -y, x), respectively, so after four sections the car is back at\n(0, 0) facing east. Since the car has certainly never travelled further than 2 lr kilometers from\nArgovia, the car cannot reach Zillis if it is further apart from Argovia.\nCase 3: l - r ≡ 3 (mod 4) . An argument similar to that in Case 2 (switching the roles of\nleft and right) shows that the car cannot reach Zillis if it is further apart from Argovia.\nCase 4: l ≡ r (mod 4) . The car makes a net turn of 0 ◦ after each section, so it must be\nfacing east. We are going to show that, after traversing the\nrst section, the car will be at\n(1, 0). It will be useful to interpret the Cartesian plane as the complex plane, i.e. writing\nx + iy for ( x, y), where i = √-1. We will denote the k-th kilometer of movement by mk-1,\n7\nwhich takes values from the set {1, i, -1, -i}, depending on the direction. We then just have\nto show that\nl r-1∑\nk=0\nmk = 1,\nwhich implies that the car will get to Zillis no matter how far it is apart from Argovia.\nCase 4a: l ≡ r ≡ 1 (mod 4) . First note that for k = 0, 1, . . . , lr- 1,\nmk = i⌊k/l⌋(-i)⌊k/r⌋\nsince ⌊k/l⌋ and ⌊k/r⌋ are the exact numbers of left and right turns before the ( k + 1)st\nkilometer, respectively. Let ak(≡ k (mod l)) and bk(≡ k (mod r)) be the remainders of k\nwhen divided by l and r, respectively. Then, since\nak = k -\n⌊ k\nl\n⌋\nl ≡ k -\n⌊ k\nl\n⌋\n(mod 4) and bk = k -\n⌊ k\nr\n⌋\nr ≡ k -\n⌊ k\nr\n⌋\n(mod 4) ,\nwe have ⌊k/l⌋ ≡ k - ak (mod 4) and ⌊k/r⌋ ≡ k - bk (mod 4). We therefore have\nmk = ik-ak (-i)k-bk = (-i2)ki-ak (-i)-bk = (-i)ak ibk .\nAs l and r are relatively prime, by Chinese Remainder Theorem, there is a bijection between\npairs ( ak, bk) = ( k(mod l), k(mod r)) and the numbers k = 0, 1, 2, . . . , lr- 1. Hence\nl r-1∑\nk=0\nmk =\nl r-1∑\nk=0\n(-i)ak ibk =\n( l-1∑\nk=0\n(-i)ak\n) ( r-1∑\nk=0\nibk\n)\n= 1 × 1 = 1\nas required because l ≡ r ≡ 1 (mod 4).\nCase 4b: l ≡ r ≡ 3 (mod 4) . In this case, we get\nmk = iak (-i)bk ,\nwhere ak(≡ k (mod l)) and bk(≡ k (mod r)) for k = 0 , 1, . . . , lr - 1. Then we can proceed\nanalogously to Case 4a to obtain\nl r-1∑\nk=0\nmk =\nl r-1∑\nk=0\n(-i)ak ibk =\n( l-1∑\nk=0\n(-i)ak\n) ( r-1∑\nk=0\nibk\n)\n= i × (-i) = 1\nas required because l ≡ r ≡ 3 (mod 4).\nNow clearly the car traverses through all points between (0 , 0) and (1 , 0) during the\nrst\nsection and, in fact, covers all points between ( n - 1, 0) and ( n, 0) during the n-th section.\nHence it will eventually reach ( d, 0) for any positive d.\n8\nTo summarize: ( l, r) satis\nes the required conditions if and only if\nl ≡ r ≡ 1 or l ≡ r ≡ 3 (mod 4) .\nRemark. In case gcd( l, r) = d ̸= 1, the answer is :\nl\nd ≡ r\nd ≡ 1 or l\nd ≡ r\nd ≡ 3 (mod 4) .\n9",
+      "source": {
+        "problem_pdf_url": "https://apmo-official.org/static/problems/apmo2009_prb.pdf",
+        "solution_pdf_url": "https://apmo-official.org/static/solutions/apmo2009_sol.pdf",
+        "problem_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_prb.pdf",
+        "solution_local_pdf": "data/import_batches/extracted/apmo_official/pdf/apmo2009_sol.pdf"
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": true
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 2,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 2, 'combinatorics': 1}"
+    }
+  ]
+}

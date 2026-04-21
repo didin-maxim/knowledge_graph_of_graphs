@@ -1,0 +1,229 @@
+{
+  "year": 2016,
+  "source_ids": [
+    "src-imo-2016-shortlist"
+  ],
+  "availability": {
+    "official_shortlist_pdf": true
+  },
+  "problems": [
+    {
+      "id": "imo-2016-sl-c1",
+      "year": 2016,
+      "shortlist_id": "C1",
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "country": "in terms ofn andk",
+      "statement_en": "The leader of an IMO team chooses positive integersn andk withn>k , and announces\nthem to the deputy leader and a contestant. The leader then secretly tells the deputy leader\nan n-digit binary string, and the deputy leader writes down all n-digit binary strings which\ndiffer from the leader's in exactly k positions. (For example, if n = 3 and k = 1, and if the\nleader chooses 101, the deputy leader would write down 001, 111 and 100.) The contestant\nis allowed to look at the strings written by the deputy leader and guess the leader's string.\nWhat is the minimum number of guesses (in terms ofn andk) needed to guarantee the correct\nanswer?",
+      "solution_text_en": "The leader of an IMO team chooses positive integersn andk withn>k , and announces\nthem to the deputy leader and a contestant. The leader then secretly tells the deputy leader\nan n-digit binary string, and the deputy leader writes down all n-digit binary strings which\ndiffer from the leader's in exactly k positions. (For example, if n = 3 and k = 1, and if the\nleader chooses 101, the deputy leader would write down 001, 111 and 100.) The contestant\nis allowed to look at the strings written by the deputy leader and guess the leader's string.\nWhat is the minimum number of guesses (in terms ofn andk) needed to guarantee the correct\nanswer?\nAnswer. The minimum number of guesses is 2 if n = 2k and 1 if n̸= 2k.\nSolution 1. LetX be the binary string chosen by the leader and let X′ be the binary string\nof lengthn every digit of which is different from that ofX. The strings written by the deputy\nleader are the same as those in the case when the leader's string is X′ and k is changed to\nn−k. In view of this, we may assume k ⩾ n\n2 . Also, for the particular case k = n\n2 , this\nargument shows that the strings X and X′ cannot be distinguished, and hence in that case\nthe contestant has to guess at least twice.\nIt remains to show that the number of guesses claimed suffices. Consider any string Y\nwhich differs from X in m digits where 0 < m <2k. Without loss of generality, assume\nthe first m digits of X and Y are distinct. Let Z be the binary string obtained from X by\nchanging its firstk digits. Then Z is written by the deputy leader. Note thatZ differs fromY\nby|m−k| digits where|m−k|<k since 0<m< 2k. From this observation, the contestant\nmust know that Y is not the desired string.\nAs we have assumed k ⩾ n\n2 , when n <2k, every string Y ̸= X differs from X in fewer\nthan 2k digits. When n = 2k, every string except X and X′ differs from X in fewer than 2k\ndigits. Hence, the answer is as claimed.\nSolution 2. Firstly, assume n̸= 2k. Without loss of generality suppose the first digit of\nthe leader's string is 1. Then among the\nÄn\nk\nä\nstrings written by the deputy leader,\nÄn−1\nk\nä\nwill\nbegin with 1 and\nÄn−1\nk−1\nä\nwill begin with 0. Since n̸= 2k, we have k + (k− 1)̸= n− 1 and\nso\nÄn−1\nk\nä\n̸=\nÄn−1\nk−1\nä\n. Thus, by counting the number of strings written by the deputy leader that\nstart with 0 and 1, the contestant can tell the first digit of the leader's string. The same can\nbe done on the other digits, so 1 guess suffices when n̸= 2k.\nSecondly, for the case n = 2 and k = 1, the answer is clearly 2. For the remaining cases\nwheren = 2k >2, the deputy leader would write down the same strings if the leader's string\nX is replaced by X′ obtained by changing each digit of X. This shows at least 2 guesses\nare needed. We shall show that 2 guesses suffice in this case. Suppose the first two digits of\nthe leader's string are the same. Then among the strings written by the deputy leader, the\nprefices 01 and 10 will occur\nÄ2k−2\nk−1\nä\ntimes each, while the prefices 00 and 11 will occur\nÄ2k−2\nk\nä\ntimes each. The two numbers are interchanged if the first two digits of the leader's string\nare different. Since\nÄ2k−2\nk−1\nä\n̸=\nÄ2k−2\nk\nä\n, the contestant can tell whether the first two digits of the\nleader's string are the same or not. He can work out the relation of the first digit and the\n\n[[PAGE 33]]\n30 IMO 2016 Hong Kong\nother digits in the same way and reduce the leader's string to only 2 possibilities. The proof\nis complete.\n\n[[PAGE 34]]\nShortlisted problems 31",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2016-sl-c2",
+      "year": 2016,
+      "shortlist_id": "C2",
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Find all positive integers n for which all positive divisors of n can be put into the cells\nof a rectangular table under the following constraints:\n• each cell contains a distinct divisor;\n• the sums of all rows are equal; and\n• the sums of all columns are equal.",
+      "solution_text_en": "Find all positive integers n for which all positive divisors of n can be put into the cells\nof a rectangular table under the following constraints:\n• each cell contains a distinct divisor;\n• the sums of all rows are equal; and\n• the sums of all columns are equal.\nAnswer. 1.\nSolution 1. Suppose all positive divisors of n can be arranged into a rectangular table of\nsize k×l where the number of rows k does not exceed the number of columns l. Let the\nsum of numbers in each column be s. Since n belongs to one of the columns, we have s ⩾n,\nwhere equality holds only when n = 1.\nFor j = 1, 2,...,l , let dj be the largest number in the j-th column. Without loss of\ngenerality, assumed1 >d 2 >··· >d l. Since these are divisors of n, we have\ndl ⩽ n\nl. (1)\nAs dl is the maximum entry of the l-th column, we must have\ndl ⩾ s\nk ⩾ n\nk. (2)\nThe relations (1) and (2) combine to give n\nl ⩾ n\nk , that is, k ⩾l. Together with k ⩽l, we\nconclude that k =l. Then all inequalities in (1) and (2) are equalities. In particular, s =n\nand so n = 1, in which case the conditions are clearly satisfied.\nSolution 2. Clearly n = 1 works. Then we assume n> 1 and let its prime factorization be\nn =pr1\n1 pr2\n2 ··· prt\nt . Suppose the table has k rows andl columns with 1<k ⩽l. Note that kl is\nthe number of positive divisors of n and the sum of all entries is the sum of positive divisors\nof n, which we denote by σ(n). Consider the column containing n. Since the column sum is\nσ(n)\nl , we must have σ(n)\nl >n . Therefore, we have\n(r1 + 1)(r2 + 1)··· (rt + 1) =kl ⩽l2 <\nÇσ(n)\nn\nå2\n=\nÇ\n1 + 1\np1\n+··· + 1\npr1\n1\nå2\n···\nÇ\n1 + 1\npt\n+··· + 1\nprt\nt\nå2\n.\nThis can be rewritten as\nf(p1,r 1)f(p2,r 2)··· f(pt,rt)< 1 (3)\nwhere\nf(p,r ) = r + 1\n(\n1 + 1\np +··· + 1\npr\n)2 =\n(r + 1)\n(\n1− 1\np\n)2\n(\n1− 1\npr+1\n)2 .\n\n[[PAGE 35]]\n32 IMO 2016 Hong Kong\nDirect computation yields\nf(2, 1) = 8\n9, f (2, 2) = 48\n49, f (3, 1) = 9\n8.\nAlso, we find that\nf(2,r ) ⩾\nÇ\n1− 1\n2r+1\nå−2\n> 1 for r ⩾ 3,\nf(3,r ) ⩾ 4\n3\nÇ\n1− 1\n3r+1\nå−2\n> 4\n3 > 9\n8 for r ⩾ 2, and\nf(p,r ) ⩾ 32\n25\nÇ\n1− 1\npr+1\nå−2\n> 32\n25 > 9\n8 for p ⩾ 5.\nFrom these values and bounds, it is clear that (3) holds only when n = 2 or 4. In both cases,\nit is easy to see that the conditions are not satisfied. Hence, the only possible n is 1.\n\n[[PAGE 36]]\nShortlisted problems 33",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2016-sl-c3",
+      "year": 2016,
+      "shortlist_id": "C3",
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Let n be a positive integer relatively prime to 6. We paint the vertices of a regular\nn-gon with three colours so that there is an odd number of vertices of each colour. Show that\nthere exists an isosceles triangle whose three vertices are of different colours.",
+      "solution_text_en": "Let n be a positive integer relatively prime to 6. We paint the vertices of a regular\nn-gon with three colours so that there is an odd number of vertices of each colour. Show that\nthere exists an isosceles triangle whose three vertices are of different colours.\nSolution. Fork = 1, 2, 3, let ak be the number of isosceles triangles whose vertices contain\nexactly k colours. Suppose on the contrary that a3 = 0. Let b,c,d be the number of vertices\nof the three different colours respectively. We now count the number of pairs ( △,E ) where\n△ is an isosceles triangle and E is a side of△ whose endpoints are of different colours.\nOn the one hand, since we have assumed a3 = 0, each triangle in the pair must contain\nexactly two colours, and hence each triangle contributes twice. Thus the number of pairs is\n2a2.\nOn the other hand, if we pick any two vertices A,B of distinct colours, then there are\nthree isosceles triangles having these as vertices, two when AB is not the base and one when\nAB is the base since n is odd. Note that the three triangles are all distinct as ( n, 3) = 1. In\nthis way, we count the number of pairs to be 3(bc +cd +db). However, note that 2a2 is even\nwhile 3(bc +cd +db) is odd, as each of b,c,d is. This yields a contradiction and hence a3 ⩾ 1.\nComment. A slightly stronger version of this problem is to replace the condition ( n, 6) = 1\nbyn being odd (where equilateral triangles are regarded as isosceles triangles). In that case,\nthe only difference in the proof is that by fixing any two vertices A,B , one can find exactly\none or three isosceles triangles having these as vertices. But since only parity is concerned in\nthe solution, the proof goes the same way.\nThe condition that there is an odd number of vertices of each colour is necessary, as can be\nseen from the following example. Consider n = 25 and we label the vertices A0,A 1,...,A 24.\nSuppose colour 1 is used for A0, colour 2 is used for A5,A 10,A 15,A 20, while colour 3 is used\nfor the remaining vertices. Then any isosceles triangle having colours 1 and 2 must contain\nA0 and one of A5,A 10,A 15,A 20. Clearly, the third vertex must have index which is a multiple\nof 5 so it is not of colour 3.\n\n[[PAGE 37]]\n34 IMO 2016 Hong Kong",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "coloring",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, vertex"
+      },
+      "evidence": [
+        "Let n be a positive integer relatively prime to 6. We paint the vertices of a regular n-gon with three colours so that there is an odd number of vertices of each colour. Show that there exi",
+        "Let n be a positive integer relatively prime to 6. We paint the vertices of a regular n-gon with three colours so that there is an odd number of vertices of each colour. Show that there exists an isosce"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c4",
+      "year": 2016,
+      "shortlist_id": "C4",
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Find all positive integers n for which we can fill in the entries of an n×n table with\nthe following properties:\n• each entry can be one of I, M and O;\n• in each row and each column, the letters I, M and O occur the same number of times;\nand\n• in any diagonal whose number of entries is a multiple of three, the letters I, M and O\noccur the same number of times.",
+      "solution_text_en": "Find all positive integers n for which we can fill in the entries of an n×n table with\nthe following properties:\n• each entry can be one of I, M and O;\n• in each row and each column, the letters I, M and O occur the same number of times;\nand\n• in any diagonal whose number of entries is a multiple of three, the letters I, M and O\noccur the same number of times.\nAnswer. n can be any multiple of 9.\nSolution. We first show that such a table exists when n is a multiple of 9. Consider the\nfollowing 9× 9 table.\n\n\nI I I M M M O O O\nM M M O O O I I I\nO O O I I I M M M\nI I I M M M O O O\nM M M O O O I I I\nO O O I I I M M M\nI I I M M M O O O\nM M M O O O I I I\nO O O I I I M M M\n\n\n(1)\nIt is a direct checking that the table (1) satisfies the requirements. For n = 9k where k is\na positive integer, we form an n×n table using k×k copies of (1). For each row and each\ncolumn of the table of size n, since there are three I's, three M's and three O's for any nine\nconsecutive entries, the numbers of I,M andO are equal. In addition, every diagonal of the\nlarge table whose number of entries is divisible by 3 intersects each copy of (1) at a diagonal\nwith number of entries divisible by 3 (possibly zero). Therefore, every such diagonal also\ncontains the same number of I, M and O.\nNext, consider any n×n table for which the requirements can be met. As the number of\nentries of each row should be a multiple of 3, we let n = 3k wherek is a positive integer. We\ndivide the whole table into k×k copies of 3× 3 blocks. We call the entry at the centre of\nsuch a 3× 3 square a vital entry . We also call any row, column or diagonal that contains at\nleast one vital entry a vital line. We compute the number of pairs (l,c ) where l is a vital line\nand c is an entry belonging to l that contains the letter M. We let this number be N.\nOn the one hand, since each vital line contains the same number of I, M and O, it is\nobvious that each vital row and each vital column contain k occurrences of M. For vital\ndiagonals in either direction, we count there are exactly\n1 + 2 +··· + (k− 1) +k + (k− 1) +··· + 2 + 1 =k2\noccurrences of M. Therefore, we have N = 4k2.\n\n[[PAGE 38]]\nShortlisted problems 35\nOn the other hand, there are 3 k2 occurrences of M in the whole table. Note that each\nentry belongs to exactly 1 or 4 vital lines. Therefore, N must be congruent to 3k2 mod 3.\nFrom the double counting, we get 4k2≡ 3k2 (mod 3), which forces k to be a multiple of\n3. Therefore, n has to be a multiple of 9 and the proof is complete.\n\n[[PAGE 39]]\n36 IMO 2016 Hong Kong",
+      "decision": "skipped",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": false,
+        "strength": "none",
+        "matched_terms": [],
+        "reason": "No graph or graph-like terms matched."
+      },
+      "evidence": []
+    },
+    {
+      "id": "imo-2016-sl-c5",
+      "year": 2016,
+      "shortlist_id": "C5",
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Let n ⩾ 3 be a positive integer. Find the maximum number of diagonals of a regular\nn-gon one can select, so that any two of them do not intersect in the interior or they are\nperpendicular to each other.\n\n[[PAGE 9]]\n6 IMO 2016 Hong Kong",
+      "solution_text_en": "Let n ⩾ 3 be a positive integer. Find the maximum number of diagonals of a regular\nn-gon one can select, so that any two of them do not intersect in the interior or they are\nperpendicular to each other.\nAnswer. n− 2 if n is even and n− 3 if n is odd.\nSolution 1. We consider two cases according to the parity of n.\n• Case 1. n is odd.\nWe first claim that no pair of diagonals is perpendicular. Suppose A,B,C,D are vertices\nwhere AB and CD are perpendicular, and let E be the vertex lying on the perpendicular\nbisector of AB. Let E′ be the opposite point of E on the circumcircle of the regular polygon.\nSince EC = E′D and C,D,E are vertices of the regular polygon, E′ should also belong to\nthe polygon. This contradicts the fact that a regular polygon with an odd number of vertices\ndoes not contain opposite points on the circumcircle.\nA B\nC\nD\nE\nE′\nTherefore in the odd case we can only select diagonals which do not intersect. In the\nmaximal case these diagonals should divide the regular n-gon into n− 2 triangles, so we can\nselect at most n− 3 diagonals. This can be done, for example, by selecting all diagonals\nemanated from a particular vertex.\n• Case 2. n is even.\nIf there is no intersection, then the proof in the odd case works. Suppose there are two\nperpendicular diagonals selected. We consider the set S of all selected diagonals parallel to\none of them which intersect with some selected diagonals. Suppose S contains k diagonals\nand the number of distinct endpoints of the k diagonals is l.\nFirstly, consider the longest diagonal in one of the two directions in S. No other diagonal\nin S can start from either endpoint of that diagonal, since otherwise it has to meet another\nlonger diagonal in S. The same holds true for the other direction. Ignoring these two longest\ndiagonals and their four endpoints, the remaining k− 2 diagonals sharel− 4 endpoints where\neach endpoint can belong to at most two diagonals. This gives 2( l− 4) ⩾ 2(k− 2), so that\nk ⩽l− 2.\n\n[[PAGE 40]]\nShortlisted problems 37\nd1\nd2\nd\nd1\nd2\nd\nConsider a group of consecutive vertices of the regular n-gon so that each of the two\noutermost vertices is an endpoint of a diagonal in S, while the interior points are not. There\nare l such groups. We label these groups P1,P 2,...,P l in this order. We claim that each\nselected diagonal outsideS must connect vertices of the same groupPi. Consider any diagonal\nd joining vertices from distinct groups Pi and Pj. Let d1 and d2 be two diagonals in S each\nhaving one of the outermost points of Pi as endpoint. Then d must meet either d1, d2 or a\ndiagonal in S which is perpendicular to both d1 andd2. In any case d should belong to S by\ndefinition, which is a contradiction.\nWithin the same group Pi, there are no perpendicular diagonals since the vertices belong\nto the same side of a diameter of the circumcircle. Hence there can be at most|Pi|− 2 selected\ndiagonals within Pi, including the one joining the two outermost points of Pi when|Pi|> 2.\nTherefore, the maximum number of diagonals selected is\nl∑\ni=1\n(|Pi|− 2) +k =\nl∑\ni=1\n|Pi|− 2l +k = (n +l)− 2l +k =n−l +k ⩽n− 2.\nThis upper bound can be attained as follows. We take any vertex A and let A′ be the\nvertex for which AA′ is a diameter of the circumcircle. If we select all diagonals emanated\nfrom A together with the diagonal d′ joining the two neighbouring vertices of A′, then the\nonly pair of diagonals that meet each other is AA′ and d′, which are perpendicular to each\nother. In total we can take n− 2 diagonals.\nd′\nA\nA′\nSolution 2. The constructions and the odd case are the same as Solution 1. Instead of\ndealing separately with the case where n is even, we shall prove by induction more generally\nthat we can select at most n− 2 diagonals for any cyclic n-gon with circumcircle Γ.\n\n[[PAGE 41]]\n38 IMO 2016 Hong Kong\nThe base case n = 3 is trivial since there is no diagonal at all. Suppose the upper bound\nholds for any cyclic polygon with fewer than n sides. For a cyclic n-gon, if there is a selected\ndiagonal which does not intersect any other selected diagonal, then this diagonal divides the\nn-gon into anm-gon and anl-gon (withm +l =n + 2) so that each selected diagonal belongs\nto one of them. Without loss of generality, we may assume the m-gon lies on the same side\nof a diameter of Γ. Then no two selected diagonals of the m-gon can intersect, and hence we\ncan select at most m− 3 diagonals. Also, we can apply the inductive hypothesis to the l-gon.\nThis shows the maximum number of selected diagonals is ( m− 3) + (l− 2) + 1 =n− 2.\nIt remains to consider the case when all selected diagonals meet at least one other selected\ndiagonal. Consider a pair of selected perpendicular diagonals d1,d 2. They divide the circum-\nference of Γ into four arcs, each of which lies on the same side of a diameter of Γ. If there\nare two selected diagonals intersecting each other and neither is parallel to d1 or d2, then\ntheir endpoints must belong to the same arc determined by d1,d 2, and hence they cannot be\nperpendicular. This violates the condition, and hence all selected diagonals must have the\nsame direction as one of d1,d 2.\nd1\nd2\nTake the longest selected diagonal in one of the two directions. We argue as in Solution\n1 that its endpoints do not belong to any other selected diagonal. The same holds true for\nthe longest diagonal in the other direction. Apart from these four endpoints, each of the\nremainingn− 4 vertices can belong to at most two selected diagonals. Thus we can select at\nmost 1\n2(2(n− 4) + 4) =n− 2 diagonals. Then the proof follows by induction.\n\n[[PAGE 42]]\nShortlisted problems 39",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, vertex"
+      },
+      "evidence": [
+        "h AA′ is a diameter of the circumcircle. If we select all diagonals emanated from A together with the diagonal d′ joining the two neighbouring vertices of A′, then the only pair of diagonals that meet each other is AA′ and d′, which are perpendicular to each other. In tot",
+        "according to the parity of n. • Case 1. n is odd. We first claim that no pair of diagonals is perpendicular. Suppose A,B,C,D are vertices where AB and CD are perpendicular, and let E be the vertex lying on the perpendicular bisector of AB. Let E′ be the opposite poin"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c6",
+      "year": 2016,
+      "shortlist_id": "C6",
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "country": null,
+      "statement_en": "There aren ⩾ 3 islands in a city. Initially, the ferry company offers some routes between\nsome pairs of islands so that it is impossible to divide the islands into two groups such that\nno two islands in different groups are connected by a ferry route.\nAfter each year, the ferry company will close a ferry route between some two islands X\nandY . At the same time, in order to maintain its service, the company will open new routes\naccording to the following rule: for any island which is connected by a ferry route to exactly\none of X and Y , a new route between this island and the other of X and Y is added.\nSuppose at any moment, if we partition all islands into two nonempty groups in any way,\nthen it is known that the ferry company will close a certain route connecting two islands from\nthe two groups after some years. Prove that after some years there will be an island which is\nconnected to all other islands by ferry routes.",
+      "solution_text_en": "There aren ⩾ 3 islands in a city. Initially, the ferry company offers some routes between\nsome pairs of islands so that it is impossible to divide the islands into two groups such that\nno two islands in different groups are connected by a ferry route.\nAfter each year, the ferry company will close a ferry route between some two islands X\nandY . At the same time, in order to maintain its service, the company will open new routes\naccording to the following rule: for any island which is connected by a ferry route to exactly\none of X and Y , a new route between this island and the other of X and Y is added.\nSuppose at any moment, if we partition all islands into two nonempty groups in any way,\nthen it is known that the ferry company will close a certain route connecting two islands from\nthe two groups after some years. Prove that after some years there will be an island which is\nconnected to all other islands by ferry routes.\nSolution. Initially, we pick any pair of islandsA andB which are connected by a ferry route\nand putA in setA andB in setB. From the condition, without loss of generality there must\nbe another island which is connected to A. We put such an island C in setB. We say that\ntwo sets of islands form a network if each island in one set is connected to each island in the\nother set.\nNext, we shall included all islands to A∪B one by one. Suppose we have two sets A and\nB which form a network where 3 ⩽|A∪B| < n. This relation no longer holds only when a\nferry route between islands A∈A andB∈B is closed. In that case, we define A′ ={A,B},\nandB′ = (A∪B )−{A,B}. Note that B′ is nonempty. Consider any island C∈A−{ A}.\nFrom the relation ofA andB, we know that C is connected to B. If C was not connected to\nA before the route between A andB closes, then there will be a route added between C and\nA afterwards. Hence, C must now be connected to both A and B. The same holds true for\nany island in B−{ B}. Therefore, A′ andB′ form a network, and A′∪B′ =A∪B . Hence\nthese islands can always be partitioned into sets A andB which form a network.\nAs|A∪B| < n, there are some islands which are not included in A∪B . From the\ncondition, after some years there must be a ferry route between an island A inA∪B and an\nisland D outsideA∪B which closes. Without loss of generality assume A∈A . Then each\nisland in B must then be connected to D, no matter it was or not before. Hence, we can\nput D in setA so that the new sets A andB still form a network and the size of A∪B is\nincreased by 1. The same process can be done to increase the size of A∪B . Eventually, all\nislands are included in this way so we may now assume |A∪B| =n.\nSuppose a ferry route between A∈A and B∈B is closed after some years. We put A\nand B in setA′ and all remaining islands in set B′. Then A′ andB′ form a network. This\nrelation no longer holds only when a route between A, without loss of generality, and C∈B′\nis closed. Since this must eventually occur, at that time island B will be connected to all\nother islands and the result follows.\n\n[[PAGE 43]]\n40 IMO 2016 Hong Kong",
+      "decision": "candidate",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "connected",
+          "island_ferry",
+          "network",
+          "route"
+        ],
+        "reason": "Matched graph terms: connected, island_ferry, network, route"
+      },
+      "evidence": [
+        "pairs of islands so that it is impossible to divide the islands into two groups such that no two islands in different groups are connected by a ferry route. After each year, the ferry company will close a ferry route between some two islands X andY . At the same time,",
+        "There aren ⩾ 3 islands in a city. Initially, the ferry company offers some routes between some pairs of islands so that it is impossible to divide the i",
+        "ity there must be another island which is connected to A. We put such an island C in setB. We say that two sets of islands form a network if each island in one set is connected to each island in the other set. Next, we shall included all islands to A∪B one by one. Su",
+        "There aren ⩾ 3 islands in a city. Initially, the ferry company offers some routes between some pairs of islands so that it is impossible to divide the islands into two groups such that no two islands in differen"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c7",
+      "year": 2016,
+      "shortlist_id": "C7",
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Let n ⩾ 2 be an integer. In the plane, there are n segments given in such a way that\nany two segments have an intersection point in the interior, and no three segments intersect\nat a single point. Jeff places a snail at one of the endpoints of each of the segments and claps\nhis handsn−1 times. Each time when he claps his hands, all the snails move along their own\nsegments and stay at the next intersection points until the next clap. Since there are n− 1\nintersection points on each segment, all snails will reach the furthest intersection points from\ntheir starting points after n− 1 claps.\n(a) Prove that if n is odd then Jeff can always place the snails so that no two of them ever\noccupy the same intersection point.\n(b) Prove that if n is even then there must be a moment when some two snails occupy the\nsame intersection point no matter how Jeff places the snails.",
+      "solution_text_en": "Let n ⩾ 2 be an integer. In the plane, there are n segments given in such a way that\nany two segments have an intersection point in the interior, and no three segments intersect\nat a single point. Jeff places a snail at one of the endpoints of each of the segments and claps\nhis handsn−1 times. Each time when he claps his hands, all the snails move along their own\nsegments and stay at the next intersection points until the next clap. Since there are n− 1\nintersection points on each segment, all snails will reach the furthest intersection points from\ntheir starting points after n− 1 claps.\n(a) Prove that if n is odd then Jeff can always place the snails so that no two of them ever\noccupy the same intersection point.\n(b) Prove that if n is even then there must be a moment when some two snails occupy the\nsame intersection point no matter how Jeff places the snails.\nSolution. We consider a big disk which contains all the segments. We extend each segment\nto a line li so that each of them cuts the disk at two distinct points Ai,Bi.\n(a) For odd n, we travel along the circumference of the disk and mark each of the points Ai\nor Bi 'in' and 'out' alternately. Since every pair of lines intersect in the disk, there are\nexactly n− 1 points between Ai and Bi for any fixed 1 ⩽i ⩽n. As n is odd, this means\none of Ai and Bi is marked 'in' and the other is marked 'out'. Then Jeff can put a snail\non the endpoint of each segment which is closer to the 'in' side of the corresponding line.\nWe claim that the snails on li and lj do not meet for any pairs i,j , hence proving part\n(a).\nAi\nAj\nP\nAi Aj\nP\nWithout loss of generality, we may assume the snails start at Ai and Aj respectively.\nLet li intersect lj at P . Note that there is an odd number of points between arc AiAj.\nEach of these points belongs to a line lk. Such a line lk must intersect exactly one of\n\n[[PAGE 44]]\nShortlisted problems 41\nthe segments AiP andAjP , making an odd number of intersections. For the other lines,\nthey may intersect both segments AiP and AjP , or meet none of them. Therefore, the\ntotal number of intersection points on segments AiP and AjP (not counting P ) is odd.\nHowever, if the snails arrive atP at the same time, then there should be the same number\nof intersections on AiP and AjP , which gives an even number of intersections. This is a\ncontradiction so the snails do not meet each other.\n(b) For even n, we consider any way that Jeff places the snails and mark each of the points\nAi or Bi 'in' and 'out' according to the directions travelled by the snails. In this case\nthere must be two neighbouring points Ai and Aj both of which are marked 'in'. Let\nP be the intersection of the segments AiBi and AjBj. Then any other segment meeting\none of the segments AiP and AjP must also meet the other one, and so the number of\nintersections on AiP and AjP are the same. This shows the snails starting from Ai and\nAj will meet at P .\nComment. The conclusions do not hold for pseudosegments, as can be seen from the follow-\ning examples.\n\n[[PAGE 45]]\n42 IMO 2016 Hong Kong",
+      "decision": "needs_review",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "graph_like_or_weak_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "complete_graph_language"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, complete_graph_language"
+      },
+      "evidence": [
+        "rk each of the points Ai or Bi 'in' and 'out' according to the directions travelled by the snails. In this case there must be two neighbouring points Ai and Aj both of which are marked 'in'. Let P be the intersection of the segments AiBi and AjBj. Then any other segment m",
+        ") For odd n, we travel along the circumference of the disk and mark each of the points Ai or Bi 'in' and 'out' alternately. Since every pair of lines intersect in the disk, there are exactly n− 1 points between Ai and Bi for any fixed 1 ⩽i ⩽n. As n is odd, this means on"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c8",
+      "year": 2016,
+      "shortlist_id": "C8",
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "country": null,
+      "statement_en": "Letn be a positive integer. Determine the smallest positive integer k with the following\nproperty: it is possible to mark k cells on a 2 n× 2n board so that there exists a unique\npartition of the board into 1 × 2 and 2 × 1 dominoes, none of which contains two marked\ncells.\n\n[[PAGE 10]]\nShortlisted problems 7",
+      "solution_text_en": "Letn be a positive integer. Determine the smallest positive integer k with the following\nproperty: it is possible to mark k cells on a 2 n× 2n board so that there exists a unique\npartition of the board into 1 × 2 and 2 × 1 dominoes, none of which contains two marked\ncells.\nAnswer. 2n.\nSolution. We first construct an example of marking 2 n cells satisfying the requirement.\nLabel the rows and columns 1, 2,..., 2n and label the cell in thei-th row and thej-th column\n(i,j ).\nFor i = 1, 2,...,n , we mark the cells ( i,i ) and ( i,i + 1). We claim that the required\npartition exists and is unique. The two diagonals of the board divide the board into four\nregions. Note that the domino covering cell (1 , 1) must be vertical. This in turn shows that\neach domino covering (2, 2), (3, 3),..., (n,n ) is vertical. By induction, the dominoes in the\nleft region are all vertical. By rotational symmetry, the dominoes in the bottom region are\nhorizontal, and so on. This shows that the partition exists and is unique.\nIt remains to show that this value of k is the smallest possible. Assume that only k <2n\ncells are marked, and there exists a partition P satisfying the requirement. It suffices to show\nthere exists another desirable partition distinct from P . Let d be the main diagonal of the\nboard.\nConstruct the following graph with edges of two colours. Its vertices are the cells of the\nboard. Connect two vertices with a red edge if they belong to the same domino ofP . Connect\ntwo vertices with a blue edge if their reflections ind are connected by a red edge. It is possible\nthat two vertices are connected by edges of both colours. Clearly, each vertex has both red\nand blue degrees equal to 1. Thus the graph splits into cycles where the colours of edges in\neach cycle alternate (a cycle may have length 2).\nConsider any cell c lying on the diagonal d. Its two edges are symmetrical with respect\ntod. Thus they connect c to different cells. This shows c belongs to a cycle C(c) of length at\nleast 4. Consider a part of this cycle c0,c 1,...,c m where c0 = c and m is the least positive\ninteger such thatcm lies on d. Clearly, cm is distinct from c. From the construction, the path\nsymmetrical to this with respect to d also lies in the graph, and so these paths together form\nC(c). Hence, C(c) contains exactly two cells from d. Then all 2n cells in d belong to n cycles\nC1,C 2,...,C n, each has length at least 4.\nBy the Pigeonhole Principle, there exists a cycleCi containing at most one of thek marked\ncells. We modify P as follows. We remove all dominoes containing the vertices of Ci, which\n\n[[PAGE 46]]\nShortlisted problems 43\ncorrespond to the red edges ofCi. Then we put the dominoes corresponding to the blue edges\nof Ci. Since Ci has at least 4 vertices, the resultant partition P′ is different from P . Clearly,\nno domino in P′ contains two marked cells as Ci contains at most one marked cell. This\nshows the partition is not unique and hence k cannot be less than 2n.\n\n[[PAGE 47]]\n44 IMO 2016 Hong Kong",
+      "decision": "candidate",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "connected",
+          "cycle",
+          "domino_polyomino",
+          "edge",
+          "graph",
+          "grid",
+          "path",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: connected, cycle, domino_polyomino, edge, graph, grid, path, vertex"
+      },
+      "evidence": [
+        "rtices with a red edge if they belong to the same domino ofP . Connect two vertices with a blue edge if their reflections ind are connected by a red edge. It is possible that two vertices are connected by edges of both colours. Clearly, each vertex has both red and blu",
+        "are connected by edges of both colours. Clearly, each vertex has both red and blue degrees equal to 1. Thus the graph splits into cycles where the colours of edges in each cycle alternate (a cycle may have length 2). Consider any cell c lying on the diagonal d. Its",
+        "erty: it is possible to mark k cells on a 2 n× 2n board so that there exists a unique partition of the board into 1 × 2 and 2 × 1 dominoes, none of which contains two marked cells. [[PAGE 10]] Shortlisted problems 7 Letn be a positive integer. Determine the smallest",
+        "exists another desirable partition distinct from P . Let d be the main diagonal of the board. Construct the following graph with edges of two colours. Its vertices are the cells of the board. Connect two vertices with a red edge if they belong to the same domino o"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "relations": [
+    {
+      "id": "rel-five-color-brooks-local-recoloring",
+      "from": "brooks-theorem",
+      "to": "five-color-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both proofs reduce colouring by deleting a vertex and then repair the colouring through a carefully controlled local recolouring step.",
+      "backward_text": "The five-colour theorem is the planar version with Kempe chains, while Brooks works in general graphs, but both use the same extend-a-colouring after a local obstruction appears.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-planar-edge-bound-five-color-low-degree",
+      "from": "planar-edge-bound",
+      "to": "five-color-theorem",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "The five-colour induction starts from the planar fact that some vertex has degree at most five, which is exactly the standard consequence of the planar edge bound.",
+      "backward_text": "The theorem on five-colouring uses the edge bound as the low-degree input before the Kempe-chain recolouring step.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-konig-augmenting-lemma-alternating-reachability",
+      "from": "augmenting-path-matching-lemma",
+      "to": "konig-vertex-cover-theorem",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "König's theorem is built on the same alternating-path structure as the augmenting-path lemma: once no augmenting path exists, alternating reachability becomes a minimax certificate.",
+      "backward_text": "The vertex-cover equality theorem is the canonical next step after the augmenting-path decomposition of a matching problem.",
+      "anchors": {
+        "from_solution_id": "sol-symmetric-difference",
+        "to_solution_id": "sol-alternating"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-ore-dirac-hamiltonian-degree",
+      "from": "dirac-theorem",
+      "to": "ore-theorem",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Both classical Hamiltonicity criteria close a longest path using degree information at its endpoints; Ore is the degree-sum refinement of the Dirac paradigm.",
+      "backward_text": "Ore's theorem generalizes Dirac's theorem by replacing a minimum-degree condition with a condition on every nonedge.",
+      "anchors": {
+        "from_solution_id": "sol-longest-path",
+        "to_solution_id": "sol-closure-sketch"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-imo-1986-sl12-dirac-longest-path",
+      "from": "dirac-theorem",
+      "to": "imo-1986-sl12-increasing-edge-trail",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both arguments choose a longest path and then exploit the impossibility of extending it to force structural information on the endpoints and their incident edges.",
+      "backward_text": "The shortlist problem concerns increasing edge labels rather than Hamiltonicity, but its official graph review still runs on the same longest-path extremal template as Dirac-style proofs.",
+      "anchors": {
+        "from_solution_id": "sol-longest-path",
+        "to_solution_id": "sol-graph-review"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-tc-2009-dirac-even-cycle-longest-path",
+      "from": "dirac-theorem",
+      "to": "tc-2009-10-acquaintances-even-cycle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both proofs start from a longest path and deduce constraints on how its endpoints can connect back into the graph.",
+      "backward_text": "The Tournament of Cities problem uses longest-path parity to force an even cycle, while Dirac uses the same extremal path viewpoint to force a Hamiltonian cycle.",
+      "anchors": {
+        "from_solution_id": "sol-longest-path",
+        "to_solution_id": "sol-longest-path-parity"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.83
+    },
+    {
+      "id": "rel-tc-2010-eulerian-parity-subgraph",
+      "from": "eulerian-graph-criterion",
+      "to": "tc-2010-11-odd-main-roads",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both results are parity subgraph statements: one characterizes when every degree can be made even, the other constructs a spanning subgraph where every degree is odd.",
+      "backward_text": "The main-roads problem is not an Euler tour criterion, but its solution uses the same mod-2 language of paths and edge sets with prescribed degree parity.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-path-parity"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-tc-2013-rmm-2013-graph-rigidity",
+      "from": "tc-2013-14-vertex-transitive-not-transposition",
+      "to": "rmm-2013-p2-tester-pair-endomorphism-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems study how much symmetry a graph-like structure can have and force rigidity by showing that a seemingly plausible permutation would have to fix more and more structure.",
+      "backward_text": "The RMM problem is about endomorphisms of a coloured digraph, while the Tournament of Cities problem is about automorphisms of a vertex-transitive graph, but both arguments are symmetry-to-rigidity reductions.",
+      "anchors": {
+        "from_solution_id": "sol-counterexample-from-source",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-tc-2017-handshaking-parity",
+      "from": "handshaking-lemma",
+      "to": "tc-2017-18-polyhedron-three-colors-parity",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "The polyhedron colouring argument begins with the same degree-parity bookkeeping as the handshaking lemma: odd-degree counts and path pairings are controlled by counting edge incidences.",
+      "backward_text": "The Tournament of Cities problem is a coloured polyhedral application of the handshaking-parity principle.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-handshaking"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-vosh-2008-apmo-2010-common-neighbor-counting",
+      "from": "apmo-2010-p3-common-acquaintance-extremal",
+      "to": "vosh-2008-regional-bureaucrats-common-neighborhood",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions count pairs with a large common-neighbour structure inside an acquaintance graph and then isolate an extremal pair by averaging.",
+      "backward_text": "APMO 2010 maximizes nonadjacent pairs with a common acquaintance, while the VOSH problem forces one pair with many common neighbours or non-neighbours, but both are common-neighbour counting problems.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-double-counting-triples"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-vosh-2010-brooks-minimal-odd-cycle",
+      "from": "brooks-theorem",
+      "to": "vosh-2010-11-final-nonbreakable-company",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both proofs attack a colouring obstruction by choosing a minimal bad configuration and then showing that local structure forces a recolouring contradiction.",
+      "backward_text": "The VOSH problem uses a minimal odd cycle in a K4-free non-3-colourable graph, while Brooks uses a minimal non-colourable counterexample, but the local recolouring philosophy is closely related.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-minimal-odd-cycle"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.79
+    }
+  ]
+}

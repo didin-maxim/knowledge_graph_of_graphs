@@ -1,0 +1,139 @@
+{
+  "id": "rmm-2016-p6-ab-tree-termination-semiinvariant",
+  "title": "Остановка преобразований AB-деревьев по строгому полуинварианту, RMM 2016 P6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "bipartite_tree",
+      "edge_exchange_process",
+      "weighted_tree"
+    ],
+    "methods": [
+      "strict_semi_invariant",
+      "edge_cut_weighting"
+    ],
+    "transformations": [
+      "geometric_ab_tree_to_weighted_bipartite_tree"
+    ],
+    "goal": [
+      "prove_termination"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_tree"
+    ],
+    "invariants": [
+      "weighted_cut_potential"
+    ],
+    "keywords": [
+      "rmm_2016_p6",
+      "rmm",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Множество точек в пространстве разбито на две доли \\(A\\) и \\(B\\). AB-дерево состоит из \\(n-1\\) отрезков, каждый соединяет точку из \\(A\\) с точкой из \\(B\\), и замкнутых ломаных нет. Разрешено локально заменять ребро \\(A_1B_1\\) на \\(A_1B_2\\), если вдоль пути \\(A_1B_1A_2B_2\\) выполняется неравенство длин. Докажите, что любой процесс таких преобразований конечен.",
+        "source_id": "src-rmm-2016-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Дано двудольное дерево с долями \\(A\\) и \\(B\\) и локальная операция замены ребра вдоль пути \\(A_1-B_1-A_2-B_2\\). Нужно доказать, что любой допустимый процесс таких обменов на конечном множестве вершин обязательно остановится.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cut-weight-potential",
+      "title": "Вес ребра умножается на размер своей A-стороны",
+      "text": "Для каждого ребра \\(e\\) после его удаления смотрим на компоненту, содержащую его конец из \\(A\\), и считаем число вершин \\(A\\) в этой компоненте. Сумма \\(\\sum p_T(e)\\,|e|\\) по всем рёбрам оказывается естественным потенциалом.",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-local-exchange-decreases",
+      "title": "Локальная замена уменьшает потенциал",
+      "text": "При замене \\(A_1B_1\\to A_1B_2\\) изменяются только коэффициенты у трёх рёбер локальной конфигурации. После подстановки получается множитель \\(p_T(A_1B_1)\\bigl(|A_1B_2|+|A_2B_1|-|A_1B_1|-|A_2B_2|\\bigr)<0\\).",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Официальное решение забывает почти всю геометрию и рассматривает конфигурацию как двудольное дерево. Для ребра \\(e\\) обозначим через \\(p_T(e)\\) число вершин доли \\(A\\) в компоненте дерева \\(T-e\\), содержащей конец ребра из \\(A\\). Вводится потенциал \\(f(T)=\\sum_e p_T(e)|e|\\). При одном разрешённом преобразовании меняются только три локальных коэффициента, и прямой расчёт даёт \\(f(T')-f(T)=p_T(A_1B_1)(|A_1B_2|+|A_2B_1|-|A_1B_1|-|A_2B_2|)<0\\). Значит, каждый шаг строго уменьшает потенциал. Поскольку двудольных деревьев на данном конечном множестве вершин лишь конечное число, бесконечный процесс невозможен.",
+      "idea_ids": [
+        "idea-cut-weight-potential",
+        "idea-local-exchange-decreases"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "RMM 2016 P6; графы даны прямо в условии, а официальное решение почти полностью является теорией взвешенных двудольных деревьев.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "trees",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "strict_semi_invariant",
+        "edge_cut_weighting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-rmm-2016-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "reviewed_no_links"
+  }
+}

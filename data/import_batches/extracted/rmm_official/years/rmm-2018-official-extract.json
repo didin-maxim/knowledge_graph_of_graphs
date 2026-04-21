@@ -1,0 +1,347 @@
+{
+  "year": 2018,
+  "edition_code": "rmm2018",
+  "problems_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=problems_math",
+  "solutions_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=solutions_math",
+  "problem_pdf_count": 2,
+  "solution_pdf_count": 2,
+  "problem_count_extracted": 6,
+  "problems": [
+    {
+      "id": "rmm-2018-p1",
+      "year": 2018,
+      "problem_number": 1,
+      "statement_en": "Let ABCD be a cyclic quadrangle and let P be a point on the side AB. The\ndiagonalAC crosses the segment DP atQ. The parallel through P toCD crosses the extension\nof the sideBC beyondB atK, and the parallel throughQ toBD crosses the extension of the side\nBC beyond B at L. Prove that the circumcircles of the triangles BKP and CLQ are tangent.\nAleksandr Kuznetsov, Russia\nSolution. We show that the circles BKP and CLQ are tangent at the point T where the line\nDP crosses the circle ABCD again.\nSinceBCDT is cyclic, we have ∠KBT = ∠CDT . Since KP∥CD, we get ∠CDT = ∠KPT .\nThus, ∠KBT = ∠CDT = ∠KPT , which shows that T lies on the circle BKP . Similarly, the\nequalities ∠LCT = ∠BDT = ∠LQT show that T also lies on the circle CLQ.\nIt remains to prove that these circles are indeed tangent at T . This follows from the fact that\nthe chords TP and TQ in the circles BKTP and CLTQ , respectively, both lie along the same\nline and subtend equal angles ∠TBP = ∠TBA = ∠TCA = ∠TCQ .\nA\nB C\nD\nPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP\nQ\nKL\nT\nRemarks. The point T may alternatively be defined as the Miquel point of (any four of) the\nfive lines AB, BC, AC, KP , and LQ.\nOf course, the result still holds if P is chosen on the line AB, and the other points lie on the\ncorresponding lines rather than segments/rays. The current formulation was chosen in order to\navoid case distinction based on the possible configurations of points.\n1",
+      "solution_text_en": "",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr/RMM2018-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr2/RMM2018-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-1.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-2.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 1}"
+    },
+    {
+      "id": "rmm-2018-p2",
+      "year": 2018,
+      "problem_number": 2,
+      "statement_en": "Determine whether there exist non-constant polynomials P (x) and Q(x) with real\ncoefficients satisfying\nP (x)10 +P (x)9 =Q(x)21 +Q(x)20. (∗)\nIlya Bogdanov, Russia\nSolution 1. The answer is in the negative. Comparing the degrees of both sides in ( ∗) we get\ndegP = 21n and degQ = 10n for some positive integer n. Take the derivative of (∗) to obtain\nP′P 8(10P + 9) =Q′Q19(21Q + 20). (∗∗)\nSince gcd(10P + 9,P ) = gcd(10P + 9,P + 1) = 1, it follows that gcd(10P + 9,P 9(P + 1)) = 1, so\ngcd(10P + 9,Q ) = 1, by (∗). Thus (∗∗) yields 10P + 9|Q′(21Q + 20), which is impossible since\n0< deg(Q′(21Q + 20)) = 20n− 1< 21n = deg(10P + 9). A contradiction.\nRemark. A similar argument shows that there are no non-constant solutions of P m +P m−1 =\nQk +Qk−1, where k and m are positive integers with k≥ 2m. A critical case is k = 2m; but\nin this case there exist more routine ways of solving the problem. Thus, we decided to choose\nk = 2m + 1.\nSolution 2. Lettingr ands be integers such thatr≥ 2 ands≥ 2r, we show that ifP r +P r−1 =\nQs +Qs−1, then Q is constant.\nLetm = degP andn = degQ. A degree inspection in the given relation shows that m≥ 2n.\nWe will prove that P (P + 1) has at least m + 1 distinct complex roots. Assuming this for\nthe moment, notice that Q takes on one of the values 0 or −1 at each of those roots. Since\nm + 1≥ 2n + 1, it follows that Q takes on one of the values 0 and −1 at more than n distinct\npoints, so Q must be constant.\nFinally, we prove thatP (P + 1) has at least m + 1 distinct complex roots. This can be done\neither by referring to the Mason–Stothers theorem or directly, in terms of multiplicities of the\nroots in question.\nSinceP andP + 1 are relatively prime, the Mason–Stothers theorem implies that the number\nof distinct roots of P (P + 1) is greater than m, hence at least m + 1.\nFor a direct proof, let z1, ... , zt be the distinct complex roots of P (P + 1), and let zk have\nmultiplicityαk, k = 1,...,t . Since P and P + 1 have no roots in common, and P′ = (P + 1)′,\nit follows that P′ has a root of multiplicity αk− 1 at zk. Consequently, m− 1 = deg P′ ≥∑t\nk=1(αk− 1) = ∑t\nk=1αk−t = 2m−t ; that is, t≥m + 1. This completes the prof.\nRemark. The Mason–Stothers theorem (in a particular case over the complex field) claims\nthat, given coprime complex polynomials P (x), Q(x), and R(x), not all constant, such that\nP (x) +Q(x) = R(x), the total number of their complex roots ( not regarding multiplicities) is\nat least max{degP, degQ, degR} + 1. This theorem was a part of motivation for the famous\nabc-conjecture.\n2",
+      "solution_text_en": "",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr/RMM2018-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr2/RMM2018-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-1.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-2.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "algebra",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 2,
+        "number_theory": 2,
+        "combinatorics": 1
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 2, 'number_theory': 2, 'combinatorics': 1}"
+    },
+    {
+      "id": "rmm-2018-p3",
+      "year": 2018,
+      "problem_number": 3,
+      "statement_en": "Ann and Bob play a game on an infinite checkered plane making moves in turn;\nAnn makes the first move. A move consists in orienting any unit grid-segment that has not been\noriented before. If at some stage some oriented segments form an oriented cycle, Bob wins. Does\nBob have a strategy that guarantees him to win?\nMaxim Didin, Russia\nSolution. The answer is in the negative: Ann has a strategy allowing her to prevent Bob’s\nvictory.\nWe say that two unit grid-segments form a low-left corner (or LL-corner) if they share an\nendpoint which is the lowest point of one and the leftmost point of the other. An up-right corner\n(or UR-corner) is defined similarly. The common endpoint of two unit grid-segments at a corner\nis the joint of that corner.\nFix a vertical line on the grid and call it the midline; the unit grid-segments along the\nmidline are called middle segments. The unit grid-segments lying to the left/right of the midline\nare called left/right segments. Partition all left segments into LL-corners, and all right segments\ninto UR-corners.\nWe now describe Ann’s strategy. Her first move consists in orienting some middle segment\narbitrarily. Assume that at some stage, Bob orients some segment s. If s is a middle segment,\nAnn orients any free middle segment arbitrarily. Otherwise, s forms a corner in the partition\nwith some other segmentt. Then Ann orients t so that the joint of the corner is either the source\nof both arrows, or the target of both. Notice that after any move of Ann’s, each corner in the\npartition is either completely oriented or completely not oriented. This means that Ann can\nalways make a required move.\nAssume that Bob wins at some stage, i.e., an oriented cycle C occurs. Let X be the lowest\nof the leftmost points of C, and let Y be the topmost of the rightmost points of C. If X lies\n(strictly) to the left of the midline, then X is the joint of some corner whose segments are both\noriented. But, according to Ann’s strategy, they are oriented so that they cannot occur in a\ncycle — a contradiction. Otherwise, Y lies to the right of the midline, and a similar argument\napplies. Thus, Bob will never win, as desired.\nRemarks. (1) There are several variations of the argument in the solution above. For instance,\ninstead of the midline, Ann may choose any infinite in both directions down going polyline along\nthe grid (i.e., consisting of steps to the right and steps-down alone). Alternatively, she may split\nthe plane into four quadrants, use their borders as “trash bin” (as the midline was used in the\nsolution above), partition all segments in the upper-right quadrant into UR-corners, all segments\nin the lower-right quadrant into LR-corners, and so on.\n(2) The problem becomes easier if Bob makes the first move. In this case, his opponent just\npartitions the whole grid into LL-corners. In particular, one may change the problem to say that\nthe first player to achieve an oriented cycle wins (in this case, the result is a draw).\nOn the other hand, this version is closer to known problems. In particular, the following\nproblem is known:\nAnn and Bob play the game on an infinite checkered plane making moves in turn\n(Ann makes the first move). A move consists in painting any unit grid segment that\nhas not been painted before (Ann paints in blue, Bob paints in red). If a player creates\na cycle of her/his color, (s)he wins. Does any of the players have a winning strategy?\nAgain, the solution is pairing strategy with corners of a fixed orientation (with a little twist\nfor Ann’s strategy — in this problem, it is clear that Ann has better chances).\n3",
+      "solution_text_en": "",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr/RMM2018-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr2/RMM2018-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-1.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-2.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 1,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 6
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "color",
+        "cycle",
+        "grid"
+      ],
+      "reason": "scores={'geometry': 1, 'algebra': 0, 'number_theory': 0, 'combinatorics': 6}"
+    },
+    {
+      "id": "rmm-2018-p4",
+      "year": 2018,
+      "problem_number": 4,
+      "statement_en": "Let a, b, c, d be positive integers such that ad̸= bc and gcd(a,b,c,d ) = 1. Prove\nthat, as n runs through the positive integers, the values gcd(an +b,cn +d) may achieve form the\nset of all positive divisors of some integer.\nRaul Alcantara, Peru\nSolution 1. We extend the problem statement by allowing a and c take non-negative integer\nvalues, and allowing b and d to take arbitrary integer values. (As usual, the greatest common\ndivisor of two integers is non-negative.) Without loss of generality, we assume 0 ≤ a≤ c. Let\nS(a,b,c,d ) ={gcd (an +b,cn +d): n∈ Z>0}.\nNow we induct on a. We first deal with the inductive step, leaving the base case a = 0 to\nthe end of the solution. So, assume that a> 0; we intend to find a 4-tuple (a′,b′,c′,d′) satisfying\nthe requirements of the extended problem, such that S(a′,b′,c′,d′) =S(a,b,c,d ) and 0≤a′<a ,\nwhich will allow us to apply the induction hypothesis.\nThe construction of this 4-tuple is provided by the step of the Euclidean algorithm. Write\nc =aq +r, where q and r are both integers and 0 ≤r<a . Then for every n we have\ngcd(an +b,cn +d) = gcd\n(\nan +b,q (an +b) +rn +d−qb\n)\n= gcd\n(\nan +b,rn + (d−qb)\n)\n,\nso a natural intention is to define a′ =r,b′ =d−qb,c′ =a, and d′ =b (which are already shown\nto satisfyS(a′,b′,c′,d′) =S(a,b,c,d )). The check of the problem requirements is straightforward:\nindeed,\na′d′−b′c′ = (c−qa)b− (d−qb)a =−(ad−bc)̸= 0\nand\ngcd(a′,b′,c′,d′) = gcd(c−qa,b−qd,a,b ) = gcd(c,d,a,b ) = 1.\nThus the step is verified.\nIt remains to deal with the base casea = 0, i.e., to examine the setS(0,b,c,d ) withbc̸= 0 and\ngcd(b,c,d ) = 1. Let b′ be the integer obtained from b by ignoring all primes b and c share (none\nof them divides cn +d for any integer n, otherwise gcd(b,c,d ) > 1). We thus get gcd( b′,c ) = 1\nand S(0,b′,c,d ) =S(0,b,c,d ).\nFinally, it is easily seen that S(0,b′,c,d ) is the set of all positive divisors of b′. Each member\nofS(0,b′,c,d ) is clearly a divisor of b′. Conversely, if δ is a positive divisor of b′, then cn +d≡δ\n(mod b′) for some n, since b′ and c are coprime, so δ is indeed a member of S(0,b′,c,d ).\nSolution 2. (Alexander Betts ) For positive integers s and t and prime p, we will denote by\ngcdp(s,t ) the greatest common p-power divisor of s and t.\nClaim 1. For any positive integer n, gcd(an +b,cn +d)|ad−bc.\nProof. This is clear from the identity\na(cn +d)−c(an +b) =ad−bc. (†)\nClaim 2. The set of values taken by gcd(an +b,cn +d) is exactly the set of values taken by the\nproduct ∏\np|ad−bc\ngcdp(anp +b,cn p +d)\nas the (np)p|ad−bc each range over positive integers.\n1\nProof. From the identity\ngcd(an +b,cn +d) =\n∏\np|ad−bc\ngcdp(an +b,cn +d),\nit is clear that every value taken by gcd(an +b,cn +d) is also a value taken by the product (with\nall np =n). Conversely, it suffices to show that, given any positive integers ( np)p|ad−bc, there is\na positive integer n such that gcd p(an +b,cn +d) = gcdp(anp +b,cn p +d) for each p|ad−bc.\nThis can be achieved by requiring that n be congruent to np modulo a sufficiently large 1 power\nof p (using the Chinese Remainder Theorem).\nUsing Claim 2, it suffices to determine the sets of values taken by gcd p(an +b,cn +d) as n\nranges over all positive integers. There are two cases.\nClaim 3. If p|a,c , then gcd p(an +b,cn +d) = 1 for all n.\nProof. If p|an +b,cn +d, then we would have p|a,b,c,d , which is not the case.\nClaim 4. If p ∤a or p ∤c, then the values taken by gcd p(an +b,cn +d) are exactly the p-power\ndivisors of ad−bc.\nProof. Assume without loss of generality that p ∤a. Then from identity (†) we have gcd p(an +\nb,cn +d) = gcd p(an +b,ad−bc). But since p ∤ a, the arithmetic progression an +b takes all\npossible values modulo the highest p-power divisor of ad−bc, and in particular the values taken\nby gcdp(an +b,ad−bc) are exactly the p-power divisors of ad−bc.\nConclusion. Using claims 2, 3 and 4, we see that the set of values taken by gcd(an+b,cn +d) is\nequal to the set of products of p-power divisors ofad−bc, where we only consider those primes p\nnot dividing gcd(a,c ). Thus the set of values of gcd( an +b,cn +d) is equal to the set of divisors\nof the largest factor of ad−bc coprime to gcd(a,c ).\nRemarks. (1) If S(a,b,c,d ) is the set of all positive divisors of some integer, then necessarily\nad̸=bc and gcd (a,b,c,d ) = 1: finiteness of S(a,b,c,d ) forces the former, and membership of 1\nforces the latter.\n(2) One may modify the problem statement according to the first paragraph of the solution.\nHowever, it seems that in this case one needs to include a clarification of the agreement on gcd\nbeing necessarily non-negative.\n1For example, n ≡ np modulo the largest p-power divisor of ad − bc.\n2",
+      "solution_text_en": "",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr/RMM2018-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr2/RMM2018-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-1.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-2.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "number_theory",
+      "subject_scores": {
+        "geometry": 0,
+        "algebra": 0,
+        "number_theory": 8,
+        "combinatorics": 2
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.63,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 0, 'algebra': 0, 'number_theory': 8, 'combinatorics': 2}"
+    },
+    {
+      "id": "rmm-2018-p5",
+      "year": 2018,
+      "problem_number": 5,
+      "statement_en": "Letn be a positive integer and fix 2n distinct points on a circumference. Split these\npoints into n pairs and join the points in each pair by an arrow (i.e., an oriented line segment).\nThe resulting configuration is good if no two arrows cross, and there are no arrows − − →AB and−−→CD\nsuch that ABCD is a convex quadrangle oriented clockwise. Determine the number of good\nconfigurations.\nFedor Petrov, Russia\nSolution 1. The required number is\n(2n\nn\n)\n. To prove this, trace the circumference counterclockwise\nto label the points a1, a2, ... , a2n.\nLetC be any good configuration and let O(C) be the set of all points from which arrows\nemerge. We claim that every n-element subsetS of{a1,...,a 2n} is anO-image of a unique good\nconfiguration; clearly, this provides the answer.\nTo prove the claim induct on n. The base case n = 1 is clear. For the induction step,\nconsider any n-element subset S of{a1,...,a 2n}, and assume that S = O(C) for some good\nconfigurationC. Take any index k such that ak∈ S and ak+1 /∈ S (assume throughout that\nindices are cyclic modulo 2n, i.e., a2n+1 =a1 etc.).\nIf the arrow from ak points to some al,k + 1<l (< 2n +k), then the arrow pointing to ak+1\nemerges from some am, m in the range k + 2 throughl− 1, since these two arrows do not cross.\nThen the arrows ak→ al and am→ ak+1 form a prohibited quadrangle. Hence, C contains an\narrowak→ak+1.\nOn the other hand, if any configuration C contains the arrow ak→ ak+1, then this arrow\ncannot cross other arrows, neither can it occur in prohibited quadrangles.\nThus, removing the pointsak,ak+1 from{a1,...,a 2n} and the pointak fromS, we may apply\nthe induction hypothesis to find a unique good configuration C′ on 2n− 2 points compatible with\nthe new set of sources (i.e., points from which arrows emerge). Adjunction of the arrowak→ak+1\ntoC′ yields a unique good configuration on 2 n points, as required.\nSolution 2. Use the counterclockwise labelling a1, a2, ... , a2n in the solution above.\nLetting Dn be the number of good configurations on 2 n points, we establish a recurrence\nrelation for the Dn. To this end, let Cn = (2n)!\nn!(n+1)! thenth Catalan number; it is well-known that\nCn is the number of ways to connect 2n given points on the circumference by n pairwise disjoint\nchords.\nSince no two arrows cross, in any good configuration the vertex a1 is connected to some a2k.\nFixk in the range 1 throughn and count the number of good configurations containing the arrow\na1→a2k. Let C be any such configuration.\nInC, the vertices a2, ... , a2k−1 are paired off with one other, each arrow pointing from the\nsmaller to the larger index, for otherwise it would form a prohibited quadrangle with a1→a2k.\nConsequently, there are Ck−1 ways of drawing such arrows between a2, ... , a2k−1.\nOn the other hand, the arrows between a2k+1,... ,a2n also form a good configuration, which\ncan be chosen in Dn−k ways. Finally, it is easily seen that any configuration of the first kind and\nany configuration of the second kind combine together to yield an overall good configuration.\nThus the number of good configurations containing the arrowa1→a2k isCk−1Dn−k. Clearly,\nthis is also the number of good configurations containing the arrow a2(n−k+1)→a1, so\nDn = 2\nn∑\nk=1\nCk−1Dn−k. (∗)\nTo find an explicit formula for Dn, let d(x) = ∑∞\nn=0Dnxn and let c(x) = ∑∞\nn=0Cnxn =\n1−√1−4x\n2x be the generating functions of theDn and theCn, respectively. SinceD0 = 1, relation (∗)\n3\nyields d(x) = 2xc(x)d(x) + 1, so\nd(x) = 1\n1− 2xc(x) = (1− 4x)−1/2 =\n∑\nn≥0\n(\n−1\n2\n)(\n−3\n2\n)\n...\n(\n−2n− 1\n2\n) (−4x)n\nn!\n=\n∑\nn≥0\n2n(2n− 1)!!\nn! xn =\n∑\nn≥0\n(2n\nn\n)\nxn.\nConsequently,Dn =\n(2n\nn\n)\n.\nSolution 3. LetCn = 1\nn+1\n(2n\nn\n)\ndenote the nth Catalan number and recall that there are exactly\nCn ways to join 2 n distinct points on a circumference by n pairwise disjoint chords. Such a\nconfiguration of chords will be referred to as a Catalan n-configuration. An orientation of the\nchords in a Catalan configuration C making it into a good configuration (in the sense defined in\nthe statement of the problem) will be referred to as a good orientation forC.\nWe show by induction on n that there are exactly n + 1 good orientations for any Catalan\nn-configuration, so there are exactly ( n + 1)Cn =\n(2n\nn\n)\ngood configurations on 2 n points. The\nbase case n = 1 is clear.\nFor the induction step, let n> 1, letC be a Catalan n-configuration, and let ab be a chord of\nminimal length in C. By minimality, the endpoints of the other chords in C all lie on the major\narc ab of the circumference.\nLabel the 2n endpoints 1, 2, ... , 2n counterclockwise so that{a,b} ={1, 2}, and notice that\nthe good orientations for C fall into two disjoint classes: Those containing the arrow 1 → 2, and\nthose containing the opposite arrow.\nSince the arrow 1→ 2 cannot be involved in a prohibited quadrangle, the induction hypothesis\napplies to the Catalan ( n− 1)-configuration formed by the other chords to show that the first\nclass contains exactly n good orientations.\nFinally, the second class consists of a single orientation, namely, 2 → 1, every other arrow\nemerging from the smaller endpoint of the respective chord; a routine verification shows that this\nis indeed a good orientation. This completes the induction step and ends the proof.\nRemark. Combining the arguments from Solutions 1 and 3 one gets a way (though not the\neasiest) to compute the Catalan number Cn.\nSolution 4, sketch. (Sang-il Oum ) As in the previous solution, we intend to count the number\nof good orientations of a Catalan n-configuration.\nFor each such configuration, we consider its dual graph T whose vertices are finite regions\nbounded by chords and the circle, and an edge connects two regions sharing a boundary segment.\nThis graph T is a plane tree with n edges and n + 1 vertices.\nThere is a canonical bijection between orientations of chords and orientations of edges of T\nin such a way that each chord crosses an edge of T from the right to the left of the arrow on that\nedge. A good orientation of chords corresponds to an orientation of the tree containing no two\nedges oriented towards each other. Such an orientation is defined uniquely by its source vertex,\ni.e., the unique vertex having no in-arrows.\nTherefore, for each tree T on n + 1 vertices, there are exactly n + 1 ways to orient it so that\nthe source vertex is unique — one for each choice of the source. Thus, the answer is obtained in\nthe same way as above.\n4",
+      "solution_text_en": "",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr/RMM2018-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr2/RMM2018-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-1.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-2.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "combinatorics",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 1,
+        "number_theory": 1,
+        "combinatorics": 10
+      },
+      "combinatorics_decision": "candidate",
+      "confidence": 0.72,
+      "graph_terms": [
+        "connected",
+        "edge",
+        "edges",
+        "graph",
+        "tree",
+        "vertex",
+        "vertices"
+      ],
+      "reason": "scores={'geometry': 4, 'algebra': 1, 'number_theory': 1, 'combinatorics': 10}"
+    },
+    {
+      "id": "rmm-2018-p6",
+      "year": 2018,
+      "problem_number": 6,
+      "statement_en": "Fix a circle Γ, a linel tangent to Γ, and another circle Ω disjoint froml such that Γ\nand Ω lie on opposite sides of l. The tangents to Γ from a variable point X on Ω cross l at Y\nand Z. Prove that, as X traces Ω, the circle XYZ is tangent to two fixed circles.\nRussia, Ivan Frolov\nSolution. Assume Γ of unit radius and invert with respect to Γ. No reference will be made to\nthe original configuration, so images will be denoted by the same letters. Letting Γ be centred\natG, notice that inversion in Γ maps tangents to Γ to circles of unit diameter through G (hence\ninternally tangent to Γ). Under inversion, the statement reads as follows:\nFix a circle Γ of unit radius centred at G, a circle l of unit diameter through G, and\na circle Ω inside l disjoint from l. The circles η and ζ of unit diameter, through G\nand a variable point X on Ω, cross l again at Y and Z, respectively. Prove that, as\nX traces Ω, the circle XYZ is tangent to two fixed circles.\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\nOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\nLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL\nRN\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\nX ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′X ′\nYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\nZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ\nΓ\nl\nΩ\nη\nζ\nξ\nSince η and ζ are the reflections of the circumcircle l of the triangle GYZ in its sidelines\nGY and GZ, respectively, they pass through the orthocentre of this triangle. And since η and ζ\ncross again at X, the latter is the orthocentre of the triangle GYZ . Hence the circle ξ through\nX, Y , Z is the reflection of l in the line YZ ; in particular, ξ is also of unit diameter.\nLetO andL be the centres of Ω andl, respectively, and letR be the (variable) centre ofξ. Let\nGX crossξ again at X′; then G andX′ are reflections of one another in the line YZ , so GLRX′\nis an isosceles trapezoid. Then LR∥ GX and ∠(LG,GX ) = ∠(GX′,X′R) = ∠(RX,XG ), i.e.,\nLG∥RX; this means that GLRX is a parallelogram, so −−→XR =−→GL is constant.\nFinally, consider the fixed point N defined by−−→ON =−→GL. Then XRNO is a parallelogram,\nso the distance RN = OX is constant. Consequently, ξ is tangent to the fixed circles centred\nat N of radii|1/2−OX| and 1/2 +OX.\nOne last check is needed to show that the inverse images of the two obtained circles are\nindeed circles and not lines. This might happen if one of them contained G; we show that this is\n5\nimpossible. Indeed, since Ω lies inside l, we have OL< 1/2−OX, so\nNG =\n⏐⏐−→GL +−→LO +−−→ON\n⏐⏐ =\n⏐⏐2−→GL +−→LO\n⏐⏐≥ 2\n⏐⏐−→GL\n⏐⏐−\n⏐⏐−→LO\n⏐⏐> 1− (1/2−OX) = 1/2 +OX;\nthis shows that G is necessarily outside the obtained circles.\nRemarks. (1) The last check could be omitted, if we allowed in the problem statement to regard\na line as a particular case of a circle. On the other hand, the Problem Selection Committee\nsuggests not to punish students who have not performed this check.\n(2) Notice that the required fixed circles are also tangent to Ω.\n6",
+      "solution_text_en": "",
+      "source": {
+        "problems_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=problems_math",
+        "solutions_page_url": "https://rmms.lbi.ro/rmm2018/index.php?id=solutions_math",
+        "problem_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr/RMM2018-Day1-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-problems.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/pr2/RMM2018-Day2-English.pdf",
+            "ok": true,
+            "error": null,
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-problems.pdf"
+          }
+        ],
+        "solution_pdfs": [
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-1.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day1-solutions.pdf"
+          },
+          {
+            "url": "https://rmms.lbi.ro/rmm2018/_dwl/Solutions_RMM2018-2.pdf",
+            "ok": false,
+            "error": "HTTP Error 404: Not Found",
+            "local_pdf": "data/import_batches/extracted/rmm_official/pdf/rmm-2018/day2-solutions.pdf"
+          }
+        ]
+      },
+      "availability": {
+        "official_statement": true,
+        "official_solution": false
+      },
+      "subject_guess": "geometry",
+      "subject_scores": {
+        "geometry": 4,
+        "algebra": 0,
+        "number_theory": 0,
+        "combinatorics": 0
+      },
+      "combinatorics_decision": "not_combinatorics",
+      "confidence": 0.55,
+      "graph_terms": [],
+      "reason": "scores={'geometry': 4, 'algebra': 0, 'number_theory': 0, 'combinatorics': 0}"
+    }
+  ]
+}

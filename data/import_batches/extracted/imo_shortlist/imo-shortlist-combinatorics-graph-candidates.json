@@ -1,0 +1,1477 @@
+{
+  "created_at": "2026-04-20",
+  "scope": "IMO Shortlist C-problems with strong graph signals",
+  "count": 47,
+  "problems": [
+    {
+      "id": "imo-2006-sl-c4",
+      "year": 2006,
+      "shortlist_id": "C4",
+      "country": "some of P, U, R can coincide",
+      "source": {
+        "source_id": "src-imo-2006-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2006SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2006SL.pdf"
+      },
+      "statement_en": "A cake has the form of an n × n square composed of n2 unit squares. Strawberries lie\non some of the unit squares so that each row or column contains exactly one strawberry; call\nthis arrangement A.\nLet B be another such arrangement. Suppose that every grid rectan gle with one vertex\nat the top left corner of the cake contains no fewer strawberr ies of arrangement B than of\narrangement A. Prove that arrangement B can be obtained from A by performing a number\nof switches, defined as follows:\nA switch consists in selecting a grid rectangle with only two strawbe rries, situated at its\ntop right corner and bottom left corner, and moving these two strawberries to the other two\ncorners of that rectangle.\n(Taiwan)\nSolution. We use capital letters to denote unit squares; O is the top left corner square. For\nany two squares X and Y let [XY ] be the smallest grid rectangle containing these two square s.\nStrawberries lie on some squares in arrangement A. Put a plum on each square of the target\nconfiguration B. For a square X denote by a(X) and b(X) respectively the number of straw-\nberries and the number of plums in [ OX ]. By hypothesis a(X) ≤ b(X) for each X, with strict\ninequality for some X (otherwise the two arrangements coincide and there is nothi ng to prove).\nThe idea is to show that by a legitimate switch one can obtain a n arrangement A′ such that\na(X) ≤ a′(X) ≤ b(X) for each X;\n∑\nX\na(X) <\n∑\nX\na′(X) (1)\n(with a′(X) defined analogously to a(X); the sums range over all unit squares X). This will be\nenough because the same reasoning then applies to A′, giving rise to a new arrangement A′′,\nand so on (induction). Since ∑a(X) < ∑a′(X) < ∑a′′(X) < . . . and all these sums do not\nexceed ∑b(X), we eventually obtain a sum with all summands equal to the re spective b(X)s;\nall strawberries will meet with plums.\nConsider the uppermost row in which the plum and the strawber ry lie on different squares\nP and S (respectively); clearly P must be situated left to S. In the column passing through P ,\nlet T be the top square and B the bottom square. The strawberry in that column lies below\nthe plum (because there is no plum in that column above P , and the positions of strawberries\nand plums coincide everywhere above the row of P ). Hence there is at least one strawberry in\nthe region [ BS ] below [ P S]. Let V be the position of the uppermost strawberry in that region.\nR\nWV\nO T\nP U S\nX\nB\n\n[[PAGE 27]]\n26\nDenote by W the square at the intersection of the row through V with the column through S\nand let R be the square vertex-adjacent to W up-left. We claim that\na(X) < b(X) for all X ∈ [P R]. (2)\nThis is so because if X ∈ [P R] then the portion of [ OX ] left to column [ T B] contains at least\nas many plums as strawberries (the hypothesis of the problem ); in the portion above the row\nthrough P and S we have perfect balance; and in the remaining portion, i.e. r ectangle [ P X]\nwe have a plum on square P and no strawberry at all.\nNow we are able to perform the required switch. Let U be the square at the intersection\nof the row through P with the column through V (some of P, U, R can coincide). We move\nstrawberries from squares S and V to squares U and W . Then\na′(X) = a(X) + 1 for X ∈ [U R]; a′(X) = a(X) for other X.\nAnd since the rectangle [ U R] is contained in [ P R], we still have a′(X) ≤ b(X) for all S, in view\nof (2); conditions (1) are satisfied and the proof is complete .\n\n[[PAGE 28]]\n27",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_statement",
+        "matched_terms": [
+          "cell_adjacency",
+          "grid",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, grid, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "27]] 26 Denote by W the square at the intersection of the row through V with the column through S and let R be the square vertex-adjacent to W up-left. We claim that a(X) < b(X) for all X ∈ [P R]. (2) This is so because if X ∈ [P R] then the portion of [ OX ] left to",
+        "ach row or column contains exactly one strawberry; call this arrangement A. Let B be another such arrangement. Suppose that every grid rectan gle with one vertex at the top left corner of the cake contains no fewer strawberr ies of arrangement B than of arrangemen",
+        "s exactly one strawberry; call this arrangement A. Let B be another such arrangement. Suppose that every grid rectan gle with one vertex at the top left corner of the cake contains no fewer strawberr ies of arrangement B than of arrangement A. Prove that arrangement"
+      ]
+    },
+    {
+      "id": "imo-2006-sl-c5",
+      "year": 2006,
+      "shortlist_id": "C5",
+      "country": "ii",
+      "source": {
+        "source_id": "src-imo-2006-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2006SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2006SL.pdf"
+      },
+      "statement_en": "An ( n, k)-tournament is a contest with n players held in k rounds such that:\n(i) Each player plays in each round, and every two players mee t at most once.\n(ii) If player A meets player B in round i, player C meets player D in round i, and player A\nmeets player C in round j, then player B meets player D in round j.\nDetermine all pairs ( n, k) for which there exists an ( n, k)-tournament.\n(Argentina)\nSolution. For each k, denote by tk the unique integer such that 2 tk−1 < k + 1 ≤ 2tk . We show\nthat an ( n, k)-tournament exists if and only if 2 tk divides n.\nFirst we prove that if n = 2 t for some t then there is an ( n, k)-tournament for all k ≤ 2t − 1.\nLet S be the set of 0 −1 sequences with length t. We label the 2 t players with the elements of S\nin an arbitrary fashion (which is possible as there are exact ly 2 t sequences in S). Players are\nidentified with their labels in the construction below. If α, β ∈ S, let α + β ∈ S be the result\nof the modulo 2 term-by-term addition of α and β (with rules 0 + 0 = 0, 0 + 1 = 1 + 0 = 1,\n1 + 1 = 0; there is no carryover). For each i = 1, . . . ,2t − 1 let ω(i) ∈ S be the sequence of\nbase 2 digits of i, completed with leading zeros if necessary to achieve lengt h t.\nNow define a tournament with n = 2 t players in k ≤ 2t − 1 rounds as follows: For all\ni = 1, . . . , k, let player α meet player α + ω(i) in round i. The tournament is well-defined as\nα + ω(i) ∈ S and α + ω(i) = β + ω(i) implies α = β; also [ α + ω(i)] + ω(i) = α for each α ∈ S\n(meaning that player α + ω(i) meets player α in round i, as needed). Each player plays in each\nround. Next, every two players meet at most once (exactly onc e if k = 2 t − 1), since ω(i) ̸= ω(j)\nif i ̸= j. Thus condition (i) holds true, and condition (ii) is also ea sy to check.\nLet player α meet player β in round i, player γ meet player δ in round i, and player α meet\nplayer γ in round j. Then β = α + ω(i), δ = γ + ω(i) and γ = α + ω(j). By definition, β will\nplay in round j with\nβ + ω(j) = [ α + ω(i)] + ω(j) = [ α + ω(j)] + ω(i) = γ + ω(i) = δ,\nas required by (ii).\nSo there exists an ( n, k)-tournament for pairs ( n, k) such that n = 2 t and k ≤ 2t − 1. The\nsame conclusion is straightforward for n of the form n = 2 ts and k ≤ 2t − 1. Indeed, consider\ns different (2 t, k)-tournaments T1, . . . , Ts, no two of them having players in common. Their\nunion can be regarded as a (2 ts, k)-tournament T where each round is the union of the respective\nrounds in T1, . . . , Ts.\nIn summary, the condition that 2 tk divides n is sufficient for an ( n, k)-tournament to exist.\nWe prove that it is also necessary.\nConsider an arbitrary ( n, k)-tournament. Represent each player by a point and after eac h\nround, join by an edge every two players who played in this rou nd. Thus to a round i = 1, . . . , k\nthere corresponds a graph Gi. We say that player Q is an i-neighbour of player P if there is a\npath of edges in Gi from P to Q; in other words, if there are players P = X1, X2, . . . , Xm = Q\nsuch that player Xj meets player Xj+1 in one of the first i rounds, j = 1, 2 . . . , m−1. The set\nof i-neighbours of a player will be called its i-component. Clearly two i-components are either\ndisjoint or coincide.\nHence after each round i the set of players is partitioned into pairwise disjoint i-components.\nSo, to achieve our goal, it suffices to show that all k-components have size divisible by 2 tk .\nTo this end, let us see how the i-component Γ of a player A changes after round i+1.\nSuppose that A meets player B with i-component ∆ in round i+1 (components Γ and ∆ are\n\n[[PAGE 29]]\n28\nnot necessarily distinct). We claim that then in round i+1 each player from Γ meets a player\nfrom ∆, and vice versa .\nIndeed, let C be any player in Γ, and let C meet D in round i+1. Since C is an i-neighbour\nof A, there is a sequence of players A = X1, X2, . . . , Xm = C such that Xj meets Xj+1 in one\nof the first i rounds, j = 1, 2 . . . , m−1. Let Xj meet Yj in round i+1, for j = 1, 2 . . . , m; in\nparticular Y1 = B and Ym = D. Players Yj exists in view of condition (i). Suppose that Xj\nand Xj+1 met in round r, where r ≤ i. Then condition (ii) implies that and Yj and Yj+1 met\nin round r, too. Hence B = Y1, Y2, . . . , Ym = D is a path in Gi from B to D. This is to say, D\nis in the i-component ∆ of B, as claimed. By symmetry, each player from ∆ meets a player\nfrom Γ in round i+1. It follows in particular that Γ and ∆ have the same cardina lity.\nIt is straightforward now that the ( i+1)-component of A is Γ ∪ ∆, the union of two sets\nwith the same size. Since Γ and ∆ are either disjoint or coinci de, we have either |Γ ∪ ∆| = 2|Γ|\nor |Γ ∪ ∆| = |Γ|; as usual, |· · ·| denotes the cardinality of a finite set.\nLet Γ 1, . . . ,Γk be the consecutive components of a given player A. We obtained that either\n|Γi+1| = 2|Γi| or |Γi+1| = |Γi| for i = 1, . . . , k−1. Because |Γ1| = 2, each |Γi| is a power of 2,\ni = 1, . . . , k−1. In particular |Γk| = 2 u for some u.\nOn the other hand, player A has played with k different opponents by (i). All of them\nbelong to Γ k, therefore |Γk| ≥ k+1.\nThus 2 u ≥ k+1, and since tk is the least integer satisfying 2 tk ≥ k+1, we conclude that\nu ≥ tk. So the size of each k-component is divisible by 2 tk, which completes the argument.\n\n[[PAGE 30]]\n29",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "component",
+          "edge",
+          "graph",
+          "path",
+          "tournament"
+        ],
+        "reason": "Matched graph terms: component, edge, graph, path, tournament"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "Xj meets player Xj+1 in one of the first i rounds, j = 1, 2 . . . , m−1. The set of i-neighbours of a player will be called its i-component. Clearly two i-components are either disjoint or coincide. Hence after each round i the set of players is partitioned into pairwi",
+        "t is also necessary. Consider an arbitrary ( n, k)-tournament. Represent each player by a point and after eac h round, join by an edge every two players who played in this rou nd. Thus to a round i = 1, . . . , k there corresponds a graph Gi. We say that player Q",
+        "er eac h round, join by an edge every two players who played in this rou nd. Thus to a round i = 1, . . . , k there corresponds a graph Gi. We say that player Q is an i-neighbour of player P if there is a path of edges in Gi from P to Q; in other words, if there ar",
+        ". Thus to a round i = 1, . . . , k there corresponds a graph Gi. We say that player Q is an i-neighbour of player P if there is a path of edges in Gi from P to Q; in other words, if there are players P = X1, X2, . . . , Xm = Q such that player Xj meets player Xj+1"
+      ]
+    },
+    {
+      "id": "imo-2006-sl-c7",
+      "year": 2006,
+      "shortlist_id": "C7",
+      "country": "number of sides",
+      "source": {
+        "source_id": "src-imo-2006-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2006SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2006SL.pdf"
+      },
+      "statement_en": "Consider a convex polyhedron without parallel edges and wit hout an edge parallel to\nany face other than the two faces adjacent to it.\nCall a pair of points of the polyhedron antipodal if there exist two parallel planes passing\nthrough these points and such that the polyhedron is contain ed between these planes.\nLet A be the number of antipodal pairs of vertices, and let B be the number of antipodal\npairs of midpoints of edges. Determine the difference A − B in terms of the numbers of vertices,\nedges and faces.\n(Japan)\nSolution 1. Denote the polyhedron by Γ; let its vertices, edges and faces be V1, V2, . . . , Vn,\nE1, E2, . . . , Em and F1, F2, . . . , Fl, respectively. Denote by Qi the midpoint of edge Ei.\nLet S be the unit sphere, the set of all unit vectors in three-dimen sional space. Map the\nboundary elements of Γ to some objects on S as follows.\nFor a face Fi, let S+(Fi) and S−(Fi) be the unit normal vectors of face Fi, pointing outwards\nfrom Γ and inwards to Γ, respectively. These points are diame trically opposite.\nFor an edge Ej, with neighbouring faces Fi1 and Fi2, take all support planes of Γ (planes\nwhich have a common point with Γ but do not intersect it) conta ining edge Ej, and let S+(Ej)\nbe the set of their outward normal vectors. The set S+(Ej) is an arc of a great circle on S.\nArc S+(Ej) is perpendicular to edge Ej and it connects points S+(Fi1) and S+(Fi2).\nDefine also the set of inward normal vectors S−(Ei) which is the reflection of S+(Ei) across\nthe origin.\nFor a vertex Vk, which is the common endpoint of edges Ej1, . . . , Ejh and shared by faces\nFi1, . . . , Fih, take all support planes of Γ through point Vk and let S+(Vk) be the set of their out-\nward normal vectors. This is a region on S, a spherical polygon with vertices S+(Fi1), . . . , S+(Fih)\nbounded by arcs S+(Ej1), . . . , S+(Ejh). Let S−(Vk) be the reflection of S+(Vk), the set of inward\nnormal vectors.\nNote that region S+(Vk) is convex in the sense that it is the intersection of several half\nspheres.\nSΓ\nVk\nFi\nEj\nS+(Vk)\nS+(Fi) S+(Ej)\nNow translate the conditions on Γ to the language of these obj ects.\n(a) Polyhedron Γ has no parallel edges — the great circles of a rcs S+(Ei) and S−(Ej) are\ndifferent for all i ̸= j.\n(b) If an edge Ei does not belong to a face Fj then they are not parallel — the great circle\nwhich contains arcs S+(Ei) and S−(Ei) does not pass through points S+(Fj) and S−(Fj).\n(c) Polyhedron Γ has no parallel faces — points S+(Fi) and S−(Fj) are pairwise distinct.\nThe regions S+(Vk), arcs S+(Ej) and points S+(Fi) provide a decomposition of the surface\nof the sphere. Regions S−(Vk), arcs S−(Ej) and points S−(Fi) provide the reflection of this\ndecomposition. These decompositions are closely related t o the problem.\n\n[[PAGE 33]]\n32\nLemma 1. For any 1 ≤ i, j ≤ n, regions S−(Vi) and S+(Vj) overlap if and only if vertices Vi\nand Vj are antipodal.\nLemma 2. For any 1 ≤ i, j ≤ m, arcs S−(Ei) and S+(Ej) intersect if and only if the midpoints\nQi and Qj of edges Ei and Ej are antipodal.\nProof of lemma 1. First note that by properties (a,b,c) above, the two regions cannot share\nonly a single point or an arc. They are either disjoint or they overlap.\nAssume that the two regions have a common interior point u. Let P1 and P2 be two parallel\nsupport planes of Γ through points Vi and Vj, respectively, with normal vector u. By the\ndefinition of regions S−(Vi) and S+(Vj), u is the inward normal vector of P1 and the outward\nnormal vector of P2. Therefore polyhedron Γ lies between the two planes; vertic es Vi and Vj\nare antipodal.\nTo prove the opposite direction, assume that Vi and Vj are antipodal. Then there exist two\nparallel support planes P1 and P2 through Vi and Vj, respectively, such that Γ is between them.\nLet u be the inward normal vector of P1; then u is the outward normal vector of P2, therefore\nu ∈ S−(Vi) ∩ S+(Vj). The two regions have a common point, so they overlap. □\nProof of lemma 2. Again, by properties (a,b) above, the endpoints of arc S−(Ei) cannot belong\nto S+(Ej) and vice versa. The two arcs are either disjoint or intersec ting.\nAssume that arcs S−(Ei) and S+(Ej) intersect at point u. Let P1 and P2 be the two\nsupport planes through edges Ei and Ej, respectively, with normal vector u. By the definition\nof arcs S−(Ei) and S+(Ej), vector u points inwards from P1 and outwards from P2. Therefore\nΓ is between the planes. Since planes P1 and P2 pass through Qi and Qj, these points are\nantipodal.\nFor the opposite direction, assume that points Qi and Qj are antipodal. Let P1 and P2\nbe two support planes through these points, respectively. A n edge cannot intersect a support\nplane, therefore Ei and Ej lie in the planes P1 and P2, respectively. Let u be the inward normal\nvector of P1, which is also the outward normal vector of P2. Then u ∈ S−(Ei) ∩ S+(Ej). So\nthe two arcs are not disjoint; they therefore intersect. □\nNow create a new decomposition of sphere S. Draw all arcs S+(Ei) and S−(Ej) on sphere S\nand put a knot at each point where two arcs meet. We have l knots at points S+(Fi) and\nanother l knots at points S−(Fi), corresponding to the faces of Γ; by property (c) they are\ndifferent. We also have some pairs 1 ≤ i, j ≤ m where arcs S−(Ei) and S+(Ej) intersect. By\nLemma 2, each antipodal pair ( Qi, Qj) gives rise to two such intersections; hence, the number\nof all intersections is 2 B and we have 2 l + 2B knots in all.\nEach intersection knot splits two arcs, increasing the numb er of arcs by 2. Since we started\nwith 2 m arcs, corresponding the edges of Γ, the number of the resulti ng curve segments is\n2m + 4B.\nThe network of these curve segments divides the sphere into s ome \"new\" regions. Each new\nregion is the intersection of some overlapping sets S−(Vi) and S+(Vj). Due to the convexity,\nthe intersection of two overlapping regions is convex and th us contiguous. By Lemma 1, each\npair of overlapping regions corresponds to an antipodal ver tex pair and each antipodal vertex\npair gives rise to two different overlaps, which are symmetri c with respect to the origin. So the\nnumber of new regions is 2 A.\nThe result now follows from Euler's polyhedron theorem. We h ave n + l = m + 2 and\n(2l + 2B) + 2A = (2m + 4B) + 2,\ntherefore\nA − B = m − l + 1 = n − 1.\nTherefore A − B is by one less than the number of vertices of Γ.\n\n[[PAGE 34]]\n33\nSolution 2. Use the same notations for the polyhedron and its vertices, e dges and faces as\nin Solution 1. We regard points as vectors starting from the o rigin. Polyhedron Γ is regarded\nas a closed convex set, including its interior. In some cases the edges and faces of Γ are also\nregarded as sets of points. The symbol ∂ denotes the boundary of the certain set; e.g. ∂Γ is\nthe surface of Γ.\nLet ∆ = Γ − Γ = {U − V : U, V ∈ Γ} be the set of vectors between arbitrary points of\nΓ. Then ∆, being the sum of two bounded convex sets, is also a bo unded convex set and, by\nconstruction, it is also centrally symmetric with respect t o the origin. We will prove that ∆ is\nalso a polyhedron and express the numbers of its faces, edges and vertices in terms n, m, l, A\nand B.\nLemma 1. For points U, V ∈ Γ, point W = U − V is a boundary point of ∆ if and only if U\nand V are antipodal. Moreover, for each boundary point W ∈ ∂∆ there exists exactly one pair\nof points U, V ∈ Γ such that W = U − V .\nProof. Assume first that U and V are antipodal points of Γ. Let parallel support planes\nP1 and P2 pass through them such that Γ is in between. Consider plane P = P1 − U =\nP2 − V . This plane separates the interiors of Γ − U and Γ − V . After reflecting one of the\nsets, e.g. Γ − V , the sets Γ − U and −Γ + V lie in the same half space bounded by P . Then\n(Γ − U) + (−Γ + V ) = ∆ − W lies in that half space, so 0 ∈ P is a boundary point of the set\n∆ − W . Translating by W we obtain that W is a boundary point of ∆.\nTo prove the opposite direction, let W = U − V be a boundary point of ∆, and let Ψ =\n(Γ − U) ∩ (Γ − V ). We claim that Ψ = {0}. Clearly Ψ is a bounded convex set and 0 ∈ Ψ. For\nany two points X, Y ∈ Ψ, we have U +X, V +Y ∈ Γ and W +(X −Y ) = ( U +X)−(V +Y ) ∈ ∆.\nSince W is a boundary point of ∆, the vector X −Y cannot have the same direction as W . This\nimplies that the interior of Ψ is empty. Now suppose that Ψ con tains a line segment S. Then\nS + U and S + V are subsets of some faces or edges of Γ and these faces/edges a re parallel to S.\nIn all cases, we find two faces, two edges, or a face and an edge w hich are parallel, contradicting\nthe conditions of the problem. Therefore, Ψ = {0} indeed.\nSince Ψ = (Γ −U)∩(Γ−V ) consists of a single point, the interiors of bodies Γ −U and Γ −V\nare disjoint and there exists a plane P which separates them. Let u be the normal vector of P\npointing into that half space bounded by P which contains Γ − U. Consider the planes P + U\nand P + V ; they are support planes of Γ, passing through U and V , respectively. From plane\nP + U, the vector u points into that half space which contains Γ. From plane P + V , vector\nu points into the opposite half space containing Γ. Therefore , we found two proper support\nthrough points U and V such that Γ is in between.\nFor the uniqueness part, assume that there exist points U1, V1 ∈ Γ such that U1−V1 = U −V .\nThe points U1 − U and V1 − V lie in the sets Γ − U and Γ − V separated by P . Since\nU1 − U = V1 − V , this can happen only if both are in P ; but the only such point is 0. Therefore,\nU1 − V1 = U − V implies U1 = U and V1 = V . The lemma is complete. □\nLemma 2. Let U and V be two antipodal points and assume that plane P , passing through\n0, separates the interiors of Γ − U and Γ − V . Let Ψ 1 = (Γ − U) ∩ P and Ψ 2 = (Γ − V ) ∩ P .\nThen ∆ ∩ (P + U − V ) = Ψ 1 − Ψ2 + U − V .\nProof. The sets Γ − U and −Γ + V lie in the same closed half space bounded by P . Therefore,\nfor any points X ∈ (Γ − U) and Y ∈ (−Γ + V ), we have X + Y ∈ P if and only if X, Y ∈ P .\nThen\n(∆ − (U − V )) ∩ P =\n(\n(Γ − U) + (−Γ + V )\n)\n∩ P =\n(\n(Γ − U) ∩ P\n)\n+\n(\n(−Γ + V ) ∩ P\n)\n= Ψ 1 − Ψ2.\nNow a translation by ( U − V ) completes the lemma. □\n\n[[PAGE 35]]\n34\nNow classify the boundary points W = U − V of ∆, according to the types of points U and\nV . In all cases we choose a plane P through 0 which separates the interiors of Γ − U and Γ − V .\nWe will use the notation Ψ 1 = (Γ − U) ∩ P and Ψ 2 = (Γ − V ) ∩ P as well.\nCase 1: Both U and V are vertices of Γ. Bodies Γ − U and Γ − V have a common vertex\nwhich is 0. Choose plane P in such a way that Ψ 1 = Ψ 2 = {0}. Then Lemma 2 yields\n∆ ∩ (P + W ) = {W }. Therefore P + W is a support plane of ∆ such that they have only one\ncommon point so no line segment exists on ∂∆ which would contain W in its interior.\nSince this case occurs for antipodal vertex pairs and each pa ir is counted twice, the number\nof such boundary points on ∆ is 2 A.\nCase 2: Point U is an interior point of an edge Ei and V is a vertex of Γ. Choose plane\nP such that Ψ 1 = Ei − U and Ψ 2 = {0}. By Lemma 2, ∆ ∩ (P + W ) = Ei − V . Hence there\nexists a line segment in ∂∆ which contains W in its interior, but there is no planar region in\n∂∆ with the same property.\nWe obtain a similar result if V belongs to an edge of Γ and U is a vertex.\nCase 3: Points U and V are interior points of edges Ei and Ej, respectively. Let P be the\nplane of Ei − U and Ej − V . Then Ψ 1 = Ei − U, Ψ 2 = Ej − V and ∆ ∩ (P + W ) = Ei − Ej.\nTherefore point W belongs to a parallelogram face on ∂∆.\nThe centre of the parallelogram is Qi − Qj, the vector between the midpoints. Therefore an\nedge pair ( Ei, Ej) occurs if and only if Qi and Qj are antipodal which happens 2 B times.\nCase 4: Point U lies in the interior of a face Fi and V is a vertex of Γ. The only choice for\nP is the plane of Fi − U. Then we have Ψ 1 = Fi − U, Ψ 2 = {0} and ∆ ∩ (P + W ) = Fi − V .\nThis is a planar face of ∂∆ which is congruent to Fi.\nFor each face Fi, the only possible vertex V is the farthest one from the plane of Fi.\nIf U is a vertex and V belongs to face Fi then we obtain the same way that W belongs to\na face −Fi + U which is also congruent to Fi. Therefore, each face of Γ has two copies on ∂∆,\na translated and a reflected copy.\nCase 5: Point U belongs to a face Fi of Γ and point V belongs to an edge or a face G. In\nthis case objects Fi and G must be parallel which is not allowed.\nP P P P\nΓ − UΓ − UΓ − UΓ − U\nΓ − VΓ − VΓ − V Γ − V\ncase 1 case 2 case 3 case 4\n0000\nNow all points in ∂∆ belong to some planar polygons (cases 3 and 4), finitely many line\nsegments (case 2) and points (case 1). Therefore ∆ is indeed a polyhedron. Now compute the\nnumbers of its vertices, edges and faces.\nThe vertices are obtained in case 1, their number is 2 A.\nFaces are obtained in cases 3 and 4. Case 3 generates 2 B parallelogram faces. Case 4\ngenerates 2 l faces.\nWe compute the number of edges of ∆ from the degrees (number of sides) of faces of Γ. Let\ndi be the the degree of face Fi. The sum of degrees is twice as much as the number of edges, so\nd1 +d2+. . .+dl = 2m. The sum of degrees of faces of ∆ is 2 B ·4+2( d1+d2 +· · ·+dl) = 8 B +4m,\nso the number of edges on ∆ is 4 B + 2m.\nApplying Euler's polyhedron theorem on Γ and ∆, we have n+l = m+2 and 2A+(2B+2l) =\n(4B + 2m) + 2. Then the conclusion follows:\nA − B = m − l + 1 = n − 1.\n\n[[PAGE 36]]",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "edge",
+          "map",
+          "network",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, edge, map, network, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "Consider a convex polyhedron without parallel edges and wit hout an edge parallel to any face other than the two faces adjacent to it. Call a pair of points of the polyhedron antipodal if there exist two parallel planes passing through these points and such",
+        "Consider a convex polyhedron without parallel edges and wit hout an edge parallel to any face other than the two faces adjacent to it. Call a pair of points of the polyhedron antipo",
+        "ctively. Denote by Qi the midpoint of edge Ei. Let S be the unit sphere, the set of all unit vectors in three-dimen sional space. Map the boundary elements of Γ to some objects on S as follows. For a face Fi, let S+(Fi) and S−(Fi) be the unit normal vectors of fa",
+        "s by 2. Since we started with 2 m arcs, corresponding the edges of Γ, the number of the resulti ng curve segments is 2m + 4B. The network of these curve segments divides the sphere into s ome \"new\" regions. Each new region is the intersection of some overlapping sets"
+      ]
+    },
+    {
+      "id": "imo-2009-sl-c4",
+      "year": 2009,
+      "shortlist_id": "C4",
+      "country": "Netherlands",
+      "source": {
+        "source_id": "src-imo-2009-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2009SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2009SL.pdf"
+      },
+      "statement_en": "For an integer m≥ 1, we consider partitions of a 2m× 2m chessboard into rectangles consisting\nof cells of the chessboard, in which each of the 2 m cells along one diagonal forms a separate\nrectangle of side length 1. Determine the smallest possible sum of rectangle perimeters in such\na partition.\nSolution 1. For a k×k chessboard, we introduce in a standard way coordinates of the vertices\nof the cells and assume that the cell Cij in row i and column j has vertices ( i− 1, j− 1), (i−\n1, j), (i, j−1), (i, j), where i, j∈{ 1, . . . , k}. Without loss of generality assume that the cells Cii,\ni = 1, . . . , k, form a separate rectangle. Then we may consider the boards Bk = ⋃\n1≤i<j≤k Cij\nbelow that diagonal and the congruent board B′\nk = ⋃\n1≤j<i≤k Cij above that diagonal separately\nbecause no rectangle can simultaneously cover cells from Bk and B′\nk. We will show that for\nk = 2m the smallest total perimeter of a rectangular partition of Bk is m2m+1. Then the overall\nanswer to the problem is 2· m2m+1 + 4· 2m = (m + 1)2m+2.\nFirst we inductively construct for m≥ 1 a partition of B2m with total perimeter m2m+1. If\nm = 0, the board B2m is empty and the total perimeter is 0. Form≥ 0, the board B2m+1 consists\nof a 2 m× 2m square in the lower right corner with vertices (2 m, 2m), (2m, 2m+1), (2m+1, 2m),\n(2m+1, 2m+1) to which two boards congruent to B2m are glued along the left and the upper\nmargin. The square together with the inductive partitions of these two boards yield a partition\nwith total perimeter 4· 2m + 2· m2m+1 = (m + 1)2m+2 and the induction step is complete.\nLet\nDk = 2k log2 k.\nNote that Dk = m2m+1 if k = 2m. Now we show by induction on k that the total perimeter of\na rectangular partition of Bk is at least Dk. The case k = 1 is trivial (see m = 0 from above).\nLet the assertion be true for all positive integers less than k. We investigate a fixed rectangular\npartition of Bk that attains the minimal total perimeter. Let R be the rectangle that covers the\ncell C1k in the lower right corner. Let ( i, j) be the upper left corner of R. First we show that\ni = j. Assume that i < j . Then the line from ( i, j) to (i + 1, j) or from ( i, j) to (i, j− 1) must\nbelong to the boundary of some rectangle in the partition. Without loss of generality assume\nthat this is the case for the line from ( i, j) to ( i + 1, j).\nCase 1. No line from ( i, l) to ( i + 1, l) where j < l < k belongs to the boundary of some\nrectangle of the partition.\nThen there is some rectangle R′ of the partition that has with R the common side from ( i, j)\nto (i, k). If we join these two rectangles to one rectangle we get a partition with smaller total\nperimeter, a contradiction.\nCase 2. There is some l such that j < l < k and the line from ( i, l) to ( i + 1, l) belongs to the\nboundary of some rectangle of the partition.\nThen we replace the upper side of R by the line ( i + 1, j) to ( i + 1, k) and for the rectangles\nwhose lower side belongs to the line from ( i, j) to (i, k) we shift the lower side upwards so that\nthe new lower side belongs to the line from ( i + 1, j) to ( i + 1, k). In such a way we obtain a\nrectangular partition of Bk with smaller total perimeter, a contradiction.\nNow the fact that the upper left corner of R has the coordinates ( i, i) is established. Conse-\nquently, the partition consists of R, of rectangles of a partition of a board congruent to Bi and\nof rectangles of a partition of a board congruent to Bk−i. By the induction hypothesis, its total\n31\n\n[[PAGE 34]]\nC4 Combinatorics 50th IMO 2009\nperimeter is at least\n2(k− i) + 2i + Di + Dk−i≥ 2k + 2i log2 i + 2(k− i) log2(k− i). (1)\nSince the function f(x) = 2x log2 x is convex for x > 0, Jensen's inequality immediately shows\nthat the minimum of the right hand sight of (1) is attained for i = k/2. Hence the total\nperimeter of the optimal partition of Bk is at least 2 k + 2k/2 log2 k/2 + 2(k/2) log2(k/2) = Dk.\nSolution 2. We start as in Solution 1 and present another proof that m2m+1 is a lower bound\nfor the total perimeter of a partition of B2m into n rectangles. Let briefly M = 2m. For\n1≤ i≤ M, let ri denote the number of rectangles in the partition that cover some cell from\nrow i and let cj be the number of rectangles that cover some cell from column j. Note that the\ntotal perimeter p of all rectangles in the partition is\np = 2\n( M∑\ni=1\nri +\nM∑\ni=1\nci\n)\n.\nNo rectangle can simultaneously cover cells from row i and from column i since otherwise it\nwould also cover the cell Cii. We classify subsets S of rectangles of the partition as follows.\nWe say that S is of type i, 1≤ i≤ M, if S contains all ri rectangles that cover some cell from\nrow i, but none of the ci rectangles that cover some cell from column i. Altogether there are\n2n−ri−ci subsets of type i. Now we show that no subset S can be simultaneously of type i and of\ntype j if i̸= j. Assume the contrary and let without loss of generality i < j . The cell Cij must\nbe covered by some rectangle R. The subset S is of type i, hence R is contained in S. S is of\ntype j, thus R does not belong to S, a contradiction. Since there are 2 n subsets of rectangles\nof the partition, we infer\n2n≥\nM∑\ni=1\n2n−ri−ci = 2n\nM∑\ni=1\n2−(ri+ci). (2)\nBy applying Jensen's inequality to the convex function f(x) = 2−x we derive\n1\nM\nM∑\ni=1\n2−(ri+ci)≥ 2− 1\nM\n∑M\ni=1(ri+ci) = 2− p\n2M . (3)\nFrom (2) and (3) we obtain\n1≥ M2− p\n2M\nand equivalently\np≥ m2m+1.\n32\n\n[[PAGE 35]]\n50th IMO 2009 Combinatorics C5",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_statement",
+        "matched_terms": [
+          "cell_adjacency",
+          "grid",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, grid, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "belongs to the boundary of some rectangle of the partition. Then there is some rectangle R′ of the partition that has with R the common side from ( i, j) to (i, k). If we join these two rectangles to one rectangle we get a partition with smaller total perimeter, a contr",
+        "For an integer m≥ 1, we consider partitions of a 2m× 2m chessboard into rectangles consisting of cells of the chessboard, in which each of the 2 m cells along one diagonal forms a separate rectang",
+        "of rectangle perimeters in such a partition. Solution 1. For a k×k chessboard, we introduce in a standard way coordinates of the vertices of the cells and assume that the cell Cij in row i and column j has vertices ( i− 1, j− 1), (i− 1, j), (i, j−1), (i, j), where i,"
+      ]
+    },
+    {
+      "id": "imo-2009-sl-c6",
+      "year": 2009,
+      "shortlist_id": "C6",
+      "country": "Bulgaria",
+      "source": {
+        "source_id": "src-imo-2009-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2009SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2009SL.pdf"
+      },
+      "statement_en": "On a 999× 999 board a limp rook can move in the following way: From any square it can move\nto any of its adjacent squares, i.e. a square having a common side with it, and every move\nmust be a turn, i.e. the directions of any two consecutive moves must be perpendicular. A non-\nintersecting route of the limp rook consists of a sequence of pairwise different squares that the\nlimp rook can visit in that order by an admissible sequence of moves. Such a non-intersecting\nroute is called cyclic, if the limp rook can, after reaching the last square of the route, move\ndirectly to the first square of the route and start over.\nHow many squares does the longest possible cyclic, non-intersecting route of a limp rook\nvisit?\nSolution. The answer is 998 2− 4 = 4· (4992− 1) squares.\nFirst we show that this number is an upper bound for the number of cells a limp rook can\nvisit. To do this we color the cells with four colors A, B, C and D in the following way: for\n(i, j)≡ (0, 0) mod 2 use A, for (i, j)≡ (0, 1) mod 2 use B, for (i, j)≡ (1, 0) mod 2 use C and\nfor (i, j)≡ (1, 1) mod 2 use D. From an A-cell the rook has to move to a B-cell or a C-cell. In\nthe first case, the order of the colors of the cells visited is given by A, B, D, C, A, B, D, C, A, . . .,\nin the second case it is A, C, D, B, A, C, D, B, A, . . .. Since the route is closed it must contain\nthe same number of cells of each color. There are only 499 2 A-cells. In the following we will\nshow that the rook cannot visit all the A-cells on its route and hence the maximum possible\nnumber of cells in a route is 4 · (4992− 1).\nAssume that the route passes through every single A-cell. Color the A-cells in black and white\nin a chessboard manner, i.e. color any two A-cells at distance 2 in different color. Since the\nnumber of A-cells is odd the rook cannot always alternate between visiting black and white\nA-cells along its route. Hence there are two A-cells of the same color which are four rook-steps\napart that are visited directly one after the other. Let these two A-cells have row and column\nnumbers (a, b) and ( a + 2, b + 2) respectively.\nThere is up to reflection only one way the rook can take from ( a, b) to ( a + 2, b + 2). Let this\nway be ( a, b)→ (a, b + 1)→ (a + 1, b + 1)→ (a + 1, b + 2)→ (a + 2, b + 2). Also let without\nloss of generality the color of the cell (a, b+ 1) be B (otherwise change the roles of columns and\nrows).\nNow consider the A-cell (a, b+2). The only way the rook can pass through it is via (a−1, b+2)→\n(a, b + 2)→ (a, b + 3) in this order, since according to our assumption after every A-cell the\nrook passes through a B-cell. Hence, to connect these two parts of the path, there must be\n36\n\n[[PAGE 39]]\n50th IMO 2009 Combinatorics C6\na path connecting the cell ( a, b + 3) and ( a, b) and also a path connecting ( a + 2, b + 2) and\n(a− 1, b + 2).\nBut these four cells are opposite vertices of a convex quadrilateral and the paths are outside of\nthat quadrilateral and hence they must intersect. This is due to the following fact:\nThe path from ( a, b) to ( a, b + 3) together with the line segment joining these two cells form a\nclosed loop that has one of the cells ( a− 1, b + 2) and (a + 2, b + 2) in its inside and the other\none on the outside. Thus the path between these two points must cross the previous path.\nBut an intersection is only possible if a cell is visited twice. This is a contradiction.\nHence the number of cells visited is at most 4 · (4992− 1).\nThe following picture indicates a recursive construction for all n× n-chessboards with n≡ 3\nmod 4 which clearly yields a path that misses exactly one A-cell (marked with a dot, the center\ncell of the 15× 15-chessboard) and hence, in the case of n = 999 crosses exactly 4· (4992− 1)\ncells.\n37\n\n[[PAGE 40]]\nC7 Combinatorics 50th IMO 2009",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring",
+          "grid",
+          "path",
+          "route",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring, grid, path, route, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "On a 999× 999 board a limp rook can move in the following way: From any square it can move to any of its adjacent squares, i.e. a square having a common side with it, and every move must be a turn, i.e. the directions of any two consecutive mo",
+        "(4992− 1) squares. First we show that this number is an upper bound for the number of cells a limp rook can visit. To do this we color the cells with four colors A, B, C and D in the following way: for (i, j)≡ (0, 0) mod 2 use A, for (i, j)≡ (0, 1) mod 2 use B, fo",
+        "On a 999× 999 board a limp rook can move in the following way: From any square it can move to any of its adjacent squares, i.e. a square having a com",
+        ", since according to our assumption after every A-cell the rook passes through a B-cell. Hence, to connect these two parts of the path, there must be 36 [[PAGE 39]] 50th IMO 2009 Combinatorics C6 a path connecting the cell ( a, b + 3) and ( a, b) and also a path"
+      ]
+    },
+    {
+      "id": "imo-2010-sl-c1",
+      "year": 2010,
+      "shortlist_id": "C1",
+      "country": "with some wishes among them",
+      "source": {
+        "source_id": "src-imo-2010-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2010SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2010SL.pdf"
+      },
+      "statement_en": "In a concert, 20 singers will perform. For each singer, there is a (possibly empty) set of\nother singers such that he wishes to perform later than all the singers from that set. Can it\nhappen that there are exactly 2010 orders of the singers such that all their wishes are satisfied?\n(Austria)\nAnswer. Yes, such an example exists.\nSolution. We say that an order of singers is good if it satisfied all their wishes. Next, we\nsay that a number N is realizable by k singers (or k-realizable) if for some set of wishes of\nthese singers there are exactly N good orders. Thus, we have to prove that a number 2010 is\n20-realizable.\nWe start with the following simple\nLemma. Suppose that numbers n1, n2 are realizable by respectively k1 and k2 singers. Then\nthe number n1n2 is\npk1\n\u0000 k2\nq-realizable.\nProof. Let the singers A1, . . ., Ak1 (with some wishes among them) realize n1, and the singers B1,\n. . . , Bk2 (with some wishes among them) realize n2. Add to each singer Bi the wish to perform\nlater than all the singers Aj. Then, each good order of the obtained set of singers has the form\npAi1, . . . , Aik1, Bj1, . . . , Bjk2\nq, where\npAi1, . . . , Aik1\nq is a good order for Ai's and\npBj1, . . . , Bjk2\nq\nis a good order for Bj's. Conversely, each order of this form is obviously good. Hence, the\nnumber of good orders is n1n2.\nl\nIn view of Lemma, we show how to construct sets of singers containing 4, 3 and 13 singers\nand realizing the numbers 5, 6 and 67, respectively. Thus the number 2010\n\u0010 6\n\u0004 5\n\u0004 67 will be\nrealizable by 4\n\u0000 3\n\u0000 13\n\u0010 20 singers. These companies of singers are shown in Figs. 1–3; the\nwishes are denoted by arrows, and the number of good orders for each Figure stands below in\nthe brackets.\na\nb\nc\nd\n(5)\nFig. 1\n(3)\nFig. 2\na1\na2\na3\na4\na5\na6\na7\na8\na9\na10\na11\nx\ny\n(67)\nFig. 3\nFor Fig. 1, there are exactly 5 good orders\npa, b, c, d q,\npa, b, d, cq,\npb, a, c, d q,\npb, a, d, cq,\npb, d, a, cq. For Fig. 2, each of 6 orders is good since there are no wishes.\n\n[[PAGE 25]]\n24\nFinally, for Fig. 3, the order of a1, . . . , a11 is fixed; in this line, singer x can stand before\neach of ai (i\n ̈ 9), and singer y can stand after each of aj (j\n© 5), thus resulting in 9\n\u0004 7\n\u0010 63\ncases. Further, the positions of x and y in this line determine the whole order uniquely unless\nboth of them come between the same pair\npai, ai\u00001\nq (thus 5\n ̈ i\n ̈ 8); in the latter cases, there\nare two orders instead of 1 due to the order of x and y. Hence, the total number of good orders\nis 63\n\u0000 4\n\u0010 67, as desired.\nComment. The number 20 in the problem statement is not sharp and is put there to respect the\noriginal formulation. So, if necessary, the difficulty level of this problem may be adjusted by replac-\ning 20 by a smaller number. Here we present some improvements of the example leading to a smaller\nnumber of singers.\nSurely, each example with\n  20 singers can be filled with some \"super-stars\" who should perform\nat the very end in a fixed order. Hence each of these improvements provides a different solution for\nthe problem. Moreover, the large variety of ideas standing behind these examples allows to suggest\nthat there are many other examples.\n1. Instead of building the examples realizing 5 and 6, it is more economic to make an example\nrealizing 30; it may seem even simpler. Two possible examples consisting of 5 and 6 singers are shown\nin Fig. 4; hence the number 20 can be decreased to 19 or 18.\nFor Fig. 4a, the order of a1, . . . , a4 is fixed, there are 5 ways to add x into this order, and there\nare 6 ways to add y into the resulting order of a1, . . . , a4, x. Hence there are 5\n\u0004 6\n\u0010 30 good orders.\nOn Fig. 4b, for 5 singers a, b1, b2, c1, c2 there are 5!\n\u0010 120 orders at all. Obviously, exactly one half\nof them satisfies the wish b1\nÐ b2, and exactly one half of these orders satisfies another wish c1\nÐ c2;\nhence, there are exactly 5!{4\n\u0010 30 good orders.\na4\na3\na2\na1\nx\ny\n(30)\nb2\nb1\nc2\nc1\na\n(30)\na)\nb)\nb1\nb2\nb3\nb4\nb5\na6\na7\na8\na9\na10\na11\nx\ny\n(2010)\nb1\nb2\nb3\nb4\na5\na6\na7\na8\nc9\nc10\nc11\nx\ny\n(2010)\nFig. 4\nFig. 5\nFig. 6\n2. One can merge the examples for 30 and 67 shown in Figs. 4b and 3 in a smarter way, obtaining\na set of 13 singers representing 2010.\nThis example is shown in Fig. 5; an arrow from/to group\ntb1, . . . , b5\nu means that there exists such arrow from each member of this group.\nHere, as in Fig. 4b, one can see that there are exactly 30 orders of b1, . . . , b5, a6, . . . , a11 satisfying\nall their wishes among themselves. Moreover, one can prove in the same way as for Fig. 3 that each\nof these orders can be complemented by x and y in exactly 67 ways, hence obtaining 30\n\u0004 67\n\u0010 2010\ngood orders at all.\nAnalogously, one can merge the examples in Figs. 1–3 to represent 2010 by 13 singers as is shown\nin Fig. 6.\n\n[[PAGE 26]]\n25\nb3\nb2\nb1\nb6\nb5\nb4\na4\na3\na2\na1\n(67)\na6\na5\na4\na3\na2\na1\nb4\nb3\nb2\nb1\n(2010)\nFig. 7\nFig. 8\n3. Finally, we will present two other improvements; the proofs are left to the reader. The graph in\nFig. 7 shows how 10 singers can represent 67. Moreover, even a company of 10 singers representing 2010\ncan be found; this company is shown in Fig. 8.\n\n[[PAGE 27]]\n26",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "graph"
+        ],
+        "reason": "Matched graph terms: graph"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "a2 a1 b4 b3 b2 b1 (2010) Fig. 7 Fig. 8 3. Finally, we will present two other improvements; the proofs are left to the reader. The graph in Fig. 7 shows how 10 singers can represent 67. Moreover, even a company of 10 singers representing 2010 can be found; this comp"
+      ]
+    },
+    {
+      "id": "imo-2010-sl-c2",
+      "year": 2010,
+      "shortlist_id": "C2",
+      "country": "say, blue",
+      "source": {
+        "source_id": "src-imo-2010-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2010SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2010SL.pdf"
+      },
+      "statement_en": "On some planet, there are 2N countries (N\n© 4). Each country has a flag N units wide\nand one unit high composed of N fields of size 1\n\u0002 1, each field being either yellow or blue. No\ntwo countries have the same flag.\nWe say that a set of N flags is diverse if these flags can be arranged into an N\n\u0002N square so\nthat all N fields on its main diagonal will have the same color. Determine the smallest positive\ninteger M such that among any M distinct flags, there exist N flags forming a diverse set.\n(Croatia)\nAnswer. M\n\u0010 2N\n\u00012\n\u0000 1.\nSolution. When speaking about the diagonal of a square, we will always mean the main\ndiagonal.\nLet MN be the smallest positive integer satisfying the problem condition. First, we show\nthat MN\n¡ 2N\n\u00012. Consider the collection of all 2N\n\u00012 flags having yellow first squares and blue\nsecond ones. Obviously, both colors appear on the diagonal of each N\n\u0002 N square formed by\nthese flags.\nWe are left to show that MN\n ̈ 2N\n\u00012\n\u0000 1, thus obtaining the desired answer. We start with\nestablishing this statement for N\n\u0010 4.\nSuppose that we have 5 flags of length 4. We decompose each flag into two parts of 2 squares\neach; thereby, we denote each flag as LR, where the 2\n\u0002 1 flags L, R\nP S\n\u0010\ntBB, BY, YB, YY\nu\nare its left and right parts, respectively. First, we make two easy observations on the flags 2\n\u00021\nwhich can be checked manually.\n(i) For each A\nP S, there exists only one 2\n\u0002 1 flag C\nP S (possibly C\n\u0010 A) such that A\nand C cannot form a 2\n\u0002 2 square with monochrome diagonal (for part BB, that is YY, and\nfor BY that is YB).\n(ii) Let A1, A2, A3\nP S be three distinct elements; then two of them can form a 2\n\u0002 2 square\nwith yellow diagonal, and two of them can form a 2\n\u0002 2 square with blue diagonal (for all parts\nbut BB, a pair (BY, YB) fits for both statements, while for all parts but BY, these pairs are\n(YB, YY) and (BB, YB)).\nNow, let land r be the numbers of distinct left and right parts of our 5 flags, respectively.\nThe total number of flags is 5\n ̈ rl, hence one of the factors (say, r) should be at least 3. On\nthe other hand, l, r\n ̈ 4, so there are two flags with coinciding right part; let them be L1R1\nand L2R1 (L1\n\u0018 L2).\nNext, since r\n© 3, there exist some flags L3R3 and L4R4 such that R1, R3, R4 are distinct.\nLet L\n1R\n1 be the remaining flag.\nBy (i), one of the pairs\npL\n1, L1\nq and\npL\n1, L2\nq can form a\n2\n\u0002 2 square with monochrome diagonal; we can assume that L\n1, L2 form a square with a blue\ndiagonal. Finally, the right parts of two of the flags L1R1, L3R3, L4R4 can also form a 2\n\u0002 2\nsquare with a blue diagonal by (ii). Putting these 2\n\u0002 2 squares on the diagonal of a 4\n\u0002 4\nsquare, we find a desired arrangement of four flags.\nWe are ready to prove the problem statement by induction on N; actually, above we have\nproved the base case N\n\u0010 4. For the induction step, assume that N\n¡ 4, consider any 2N\n\u00012\n\u0000 1\nflags of length N, and arrange them into a large flag of size\np2N\n\u00012\n\u0000 1 q\n\u0002 N. This flag contains\na non-monochrome column since the flags are distinct; we may assume that this column is the\nfirst one. By the pigeonhole principle, this column contains at least\nR2N\n\u00012\n\u0000 1\n2\nV\n\u0010 2N\n\u00013\n\u0000 1\nsquares of one color (say, blue). We call the flags with a blue first square good.\nConsider all the good flags and remove the first square from each of them. We obtain at\nleast 2N\n\u00013\n\u0000 1\n© MN\n\u00011 flags of length N\n\u0001 1; by the induction hypothesis, N\n\u0001 1 of them\n\n[[PAGE 28]]\n27\ncan form a square Q with the monochrome diagonal. Now, returning the removed squares, we\nobtain a rectangle\npN\n\u0001 1 q\n\u0002 N, and our aim is to supplement it on the top by one more flag.\nIf Q has a yellow diagonal, then we can take each flag with a yellow first square (it exists\nby a choice of the first column; moreover, it is not used in Q). Conversely, if the diagonal of Q\nis blue then we can take any of the\n© 2N\n\u00013\n\u0000 1\n\u0001\npN\n\u0001 1 q\n¡ 0 remaining good flags. So, in both\ncases we get a desired N\n\u0002 N square.\nSolution 2. We present a different proof of the estimate MN\n ̈ 2N\n\u00012\n\u0000 1. We do not use the\ninduction, involving Hall's lemma on matchings instead.\nConsider arbitrary 2N\n\u00012\n\u0000 1 distinct flags and arrange them into a large\np2N\n\u00012\n\u0000 1 q\n\u0002 N\nflag.\nConstruct two bipartite graphs Gy\n\u0010\npV\nY V\n1, Ey\nq and Gb\n\u0010\npV\nY V\n1, Eb\nq with the\ncommon set of vertices as follows. Let V and V\n1 be the set of columns and the set of flags\nunder consideration, respectively. Next, let the edge\npc, f\nq appear in Ey if the intersection of\ncolumn c and flag f is yellow, and\npc, f\nq\nP Eb otherwise. Then we have to prove exactly that\none of the graphs Gy and Gb contains a matching with all the vertices of V involved.\nAssume that these matchings do not exist. By Hall's lemma, it means that there exist\ntwo sets of columns Sy, Sb\n V such that\n|Ey\npSy\nq|\n ̈\n|Sy\n|\n\u0001 1 and\n|Eb\npSb\nq|\n ̈\n|Sb\n|\n\u0001 1 (in the\nleft-hand sides, Ey\npSy\nq and Eb\npSb\nq denote respectively the sets of all vertices connected to Sy\nand Sb in the corresponding graphs). Our aim is to prove that this is impossible. Note that\nSy, Sb\n\u0018 V since N\n ̈ 2N\n\u00012\n\u0000 1.\nFirst, suppose that Sy\nX Sb\n\u0018 ∅, so there exists some c\nP Sy\nX Sb.\nNote that each\nflag is connected to c either in Gy or in Gb, hence Ey\npSy\nq\nY Eb\npSb\nq\n\u0010 V\n1. Hence we have\n2N\n\u00012\n\u0000 1\n\u0010\n|V\n1\n|\n ̈\n|Ey\npSy\nq|\n\u0000|Eb\npSb\nq|\n ̈\n|Sy\n|\n\u0000|Sb\n|\n\u0001 2\n ̈ 2N\n\u0001 4; this is impossible for N\n© 4.\nSo, we have Sy\nX Sb\n\u0010 ∅. Let y\n\u0010\n|Sy\n|, b\n\u0010\n|Sb\n|. From the construction of our graph,\nwe have that all the flags in the set V\n2\n\u0010 V\n1\nz\n\u0000Ey\npSy\nq\nY Eb\npSb\nq\n\b\nhave blue squares in the\ncolumns of Sy and yellow squares in the columns of Sb. Hence the only undetermined positions\nin these flags are the remaining N\n\u0001y\n\u0001b ones, so 2N\n\u0001y\n\u0001b\n©\n|V\n2\n|\n©\n|V\n1\n|\n\u0001\n|Ey\npSy\nq|\n\u0001\n|Eb\npSb\nq|\n©\n2N\n\u00012\n\u0000 1\n\u0001\npy\n\u0001 1 q\n\u0001\npb\n\u0001 1 q, or, denoting c\n\u0010 y\n\u0000 b, 2N\n\u0001c\n\u0000 c\n¡ 2N\n\u00012\n\u0000 2. This is impossible\nsince N\n© c\n© 2.\n\n[[PAGE 29]]\n28",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "connected",
+          "edge",
+          "graph",
+          "matching",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, connected, edge, graph, matching, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "flags is diverse if these flags can be arranged into an N \u0002N square so that all N fields on its main diagonal will have the same color. Determine the smallest positive integer M such that among any M distinct flags, there exist N flags forming a diverse set. (Croa",
+        "|Sy | \u0001 1 and |Eb pSb q| ̈ |Sb | \u0001 1 (in the left-hand sides, Ey pSy q and Eb pSb q denote respectively the sets of all vertices connected to Sy and Sb in the corresponding graphs). Our aim is to prove that this is impossible. Note that Sy, Sb \u0018 V since N ̈ 2N \u00012 \u0000 1",
+        "of vertices as follows. Let V and V 1 be the set of columns and the set of flags under consideration, respectively. Next, let the edge pc, f q appear in Ey if the intersection of column c and flag f is yellow, and pc, f q P Eb otherwise. Then we have to prove exac",
+        "instead. Consider arbitrary 2N \u00012 \u0000 1 distinct flags and arrange them into a large p2N \u00012 \u0000 1 q \u0002 N flag. Construct two bipartite graphs Gy \u0010 pV Y V 1, Ey q and Gb \u0010 pV Y V 1, Eb q with the common set of vertices as follows. Let V and V 1 be the set of columns and t"
+      ]
+    },
+    {
+      "id": "imo-2010-sl-c3",
+      "year": 2010,
+      "shortlist_id": "C3",
+      "country": "and all other columns are T-columns",
+      "source": {
+        "source_id": "src-imo-2010-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2010SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2010SL.pdf"
+      },
+      "statement_en": "2500 chess kings have to be placed on a 100\n\u0002 100 chessboard so that\n(i) no king can capture any other one (i.e. no two kings are placed in two squares sharing\na common vertex);\n(ii) each row and each column contains exactly 25 kings.\nFind the number of such arrangements. (Two arrangements differing by rotation or sym-\nmetry are supposed to be different.)\n(Russia)\nAnswer. There are two such arrangements.\nSolution. Suppose that we have an arrangement satisfying the problem conditions. Divide the\nboard into 2\n\u0002 2 pieces; we call these pieces blocks. Each block can contain not more than one\nking (otherwise these two kings would attack each other); hence, by the pigeonhole principle\neach block must contain exactly one king.\nNow assign to each block a letter T or B if a king is placed in its top or bottom half,\nrespectively. Similarly, assign to each block a letter L or R if a king stands in its left or right\nhalf. So we define T-blocks, B-blocks, L-blocks, and R-blocks. We also combine the letters; we call\na block a TL-block if it is simultaneously T-block and L-block. Similarly we define TR-blocks,\nBL-blocks, and BR-blocks. The arrangement of blocks determines uniquely the arrangement of\nkings; so in the rest of the solution we consider the 50\n\u0002 50 system of blocks (see Fig. 1). We\nidentify the blocks by their coordinate pairs; the pair\npi, j\nq, where 1\n ̈ i, j\n ̈ 50, refers to the\njth block in the ith row (or the ith block in the jth column). The upper-left block is\np1, 1 q.\nThe system of blocks has the following properties..\n(i\n1) If\npi, j\nq is a B-block then\npi\n\u0000 1, j\nq is a B-block: otherwise the kings in these two blocks\ncan take each other. Similarly: if\npi, j\nq is a T-block then\npi\n\u0001 1, j\nq is a T-block; if\npi, j\nq is an\nL-block then\npi, j\n\u0001 1 q is an L-block; if\npi, j\nq is an R-block then\npi, j\n\u0000 1 q is an R-block.\n(ii\n1) Each column contains exactly 25 L-blocks and 25 R-blocks, and each row contains\nexactly 25 T-blocks and 25 B-blocks. In particular, the total number of L-blocks (or R-blocks,\nor T-blocks, or B-blocks) is equal to 25\n\u0004 50\n\u0010 1250.\nConsider any B-block of the form\np1, j\nq. By (i\n1), all blocks in the jth column are B-blocks;\nso we call such a column B-column. By (ii\n1), we have 25 B-blocks in the first row, so we obtain\n25 B-columns. These 25 B-columns contain 1250 B-blocks, hence all blocks in the remaining\ncolumns are T-blocks, and we obtain 25 T-columns. Similarly, there are exactly 25 L-rows and\nexactly 25 R-rows.\nNow consider an arbitrary pair of a T-column and a neighboring B-column (columns with\nnumbers j and j\n\u0000 1).\nk\nk\nk\nk\nk\nk\nk\nk\nk\nBL\nTL\nTL\n1\n1\nBL\nBR\nBL\n2\n2\nTR\nTR\nTL\n3\n3\nk\ni\ni+1\nj\nj+1\nL\nT\nB\nFig. 1\nFig. 2\nCase 1. Suppose that the jth column is a T-column, and the\npj\n\u0000 1 qth column is a B-\ncolumn. Consider some index i such that the ith row is an L-row; then\npi, j\n\u0000 1 q is a BL-block.\nTherefore,\npi\n\u0000 1, j\nq cannot be a TR-block (see Fig. 2), hence\npi\n\u0000 1, j\nq is a TL-block, thus the\n\n[[PAGE 30]]\n29\npi\n\u0000 1 qth row is an L-row. Now, choosing the ith row to be the topmost L-row, we successively\nobtain that all rows from the ith to the 50th are L-rows. Since we have exactly 25 L-rows, it\nfollows that the rows from the 1st to the 25th are R-rows, and the rows from the 26th to the\n50th are L-rows.\nNow consider the neighboring R-row and L-row (that are the rows with numbers 25 and\n26). Replacing in the previous reasoning rows by columns and vice versa, the columns from the\n1st to the 25th are T-columns, and the columns from the 26th to the 50th are B-columns. So\nwe have a unique arrangement of blocks that leads to the arrangement of kings satisfying the\ncondition of the problem (see Fig. 3).\nBR\nBL\nTL\nTR\nBR\nBL\nTL\nTR\nBR\nBL\nTL\nTR\nBR\nBL\nTL\nTR\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nk\nFig. 3\nFig. 4\nCase 2. Suppose that the jth column is a B-column, and the\npj\n\u00001 qth column is a T-column.\nRepeating the arguments from Case 1, we obtain that the rows from the 1st to the 25th are\nL-rows (and all other rows are R-rows), the columns from the 1st to the 25th are B-columns\n(and all other columns are T-columns), so we find exactly one more arrangement of kings (see\nFig. 4).\n\n[[PAGE 31]]\n30",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_statement",
+        "matched_terms": [
+          "cell_adjacency",
+          "grid",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, grid, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "in 25 T-columns. Similarly, there are exactly 25 L-rows and exactly 25 R-rows. Now consider an arbitrary pair of a T-column and a neighboring B-column (columns with numbers j and j \u0000 1). k k k k k k k k k BL TL TL 1 1 BL BR BL 2 2 TR TR TL 3 3 k i i+1 j j+1 L T B Fig. 1",
+        "2500 chess kings have to be placed on a 100 \u0002 100 chessboard so that (i) no king can capture any other one (i.e. no two kings are placed in two squares sharing a common vertex); (ii) each ro",
+        "100 \u0002 100 chessboard so that (i) no king can capture any other one (i.e. no two kings are placed in two squares sharing a common vertex); (ii) each row and each column contains exactly 25 kings. Find the number of such arrangements. (Two arrangements differing by r"
+      ]
+    },
+    {
+      "id": "imo-2010-sl-c5",
+      "year": 2010,
+      "shortlist_id": "C5",
+      "country": "South Korea",
+      "source": {
+        "source_id": "src-imo-2010-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2010SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2010SL.pdf"
+      },
+      "statement_en": "n\n© 4 players participated in a tennis tournament. Any two players have played exactly\none game, and there was no tie game. We call a company of four players bad if one player\nwas defeated by the other three players, and each of these three players won a game and lost\nanother game among themselves. Suppose that there is no bad company in this tournament.\nLet wi and li be respectively the number of wins and losses of the ith player. Prove that\nn\n ̧\ni\u00101\npwi\n\u0001 li\nq3\n© 0.\n(1)\n(South Korea)\nSolution. For any tournament T satisfying the problem condition, denote by S\npT\nq sum under\nconsideration, namely\nS\npT\nq\n\u0010\nn\n ̧\ni\u00101\npwi\n\u0001 li\nq3.\nFirst, we show that the statement holds if a tournament T has only 4 players. Actually, let\nA\n\u0010\npa1, a2, a3, a4\nq be the number of wins of the players; we may assume that a1\n© a2\n© a3\n© a4.\nWe have a1\n\u0000 a2\n\u0000 a3\n\u0000 a4\n\u0010\n\u00004\n2\n\b\n\u0010 6, hence a4\n ̈ 1.\nIf a4\n\u0010 0, then we cannot have\na1\n\u0010 a2\n\u0010 a3\n\u0010 2, otherwise the company of all players is bad.\nHence we should have\nA\n\u0010\np3, 2, 1, 0 q, and S\npT\nq\n\u0010 33\n\u0000 13\n\u0000p\u00011 q3\n\u0000p\u00013 q3\n\u0010 0. On the other hand, if a4\n\u0010 1, then\nonly two possibilities, A\n\u0010\np3, 1, 1, 1 q and A\n\u0010\np2, 2, 1, 1 q can take place. In the former case we\nhave S\npT\nq\n\u0010 33\n\u0000 3\n\u0004\np\u00012 q3\n¡ 0, while in the latter one S\npT\nq\n\u0010 13\n\u0000 13\n\u0000p\u00011 q3\n\u0000p\u00011 q3\n\u0010 0, as\ndesired.\nNow we turn to the general problem. Consider a tournament T with no bad companies and\nenumerate the players by the numbers from 1 to n. For every 4 players i1, i2, i3, i4 consider a\n\"sub-tournament\" Ti1i2i3i4 consisting of only these players and the games which they performed\nwith each other. By the abovementioned, we have S\npTi1i2i3i4\nq\n© 0. Our aim is to prove that\nS\npT\nq\n\u0010\n ̧\ni1,i2,i3,i4\nS\npTi1i2i3i4\nq,\n(2)\nwhere the sum is taken over all 4-tuples of distinct numbers from the set\nt1, . . . , nu. This way\nthe problem statement will be established.\nWe interpret the number\npwi\n\u0001 li\nq3 as following. For i\n\u0018 j, let εij\n\u0010 1 if the ith player wins\nagainst the jth one, and εij\n\u0010\n\u00011 otherwise. Then\npwi\n\u0001 li\nq3\n\u0010\n\u0003\n ̧\nj\n\u0018i\nεij\n\u000b3\n\u0010\n ̧\nj1,j2,j3\n\u0018i\nεij1εij2εij3.\nHence,\nS\npT\nq\n\u0010\n ̧\niRtj1,j2,j3\nu\nεij1εij2εij3.\nTo simplify this expression, consider all the terms in this sum where two indices are equal.\nIf, for instance, j1\n\u0010 j2, then the term contains ε2\nij1\n\u0010 1, so we can replace this term by εij3.\nMake such replacements for each such term; obviously, after this change each term of the form\nεij3 will appear P\npT\nq times, hence\nS\npT\nq\n\u0010\n ̧\n|ti,j1,j2,j3\nu|\u00104\nεij1εij2εij3\n\u0000 P\npT\nq\n ̧\ni\u0018j\nεij\n\u0010 S1\npT\nq\n\u0000 P\npT\nqS2\npT\nq.\n\n[[PAGE 34]]\n33\nWe show that S2\npT\nq\n\u0010 0 and hence S\npT\nq\n\u0010 S1\npT\nq for each tournament. Actually, note that\nεij\n\u0010\n\u0001εji, and the whole sum can be split into such pairs. Since the sum in each pair is 0, so\nis S2\npT\nq.\nThus the desired equality (2) rewrites as\nS1\npT\nq\n\u0010\n ̧\ni1,i2,i3,i4\nS1\npTi1i2i3i4\nq.\n(3)\nNow, if all the numbers j1, j2, j3 are distinct, then the set\nti, j1, j2, j3\nu is contained in exactly\none 4-tuple, hence the term εij1εij2εij3 appears in the right-hand part of (3) exactly once, as\nwell as in the left-hand part. Clearly, there are no other terms in both parts, so the equality is\nestablished.\nSolution 2.\nSimilarly to the first solution, we call the subsets of players as companies, and\nthe k-element subsets will be called as k-companies.\nIn any company of the players, call a player the local champion of the company if he defeated\nall other members of the company. Similarly, if a player lost all his games against the others\nin the company then call him the local loser of the company. Obviously every company has\nat most one local champion and at most one local loser. By the condition of the problem,\nwhenever a 4-company has a local loser, then this company has a local champion as well.\nSuppose that k is some positive integer, and let us count all cases when a player is the local\nchampion of some k-company. The ith player won against wi other player. To be the local\nchampion of a k-company, he must be a member of the company, and the other k\n\u0001 1 members\nmust be chosen from those whom he defeated. Therefore, the ith player is the local champion\nof\n\u0002 wi\nk\n\u0001 1\n\nk-companies. Hence, the total number of local champions of all k-companies is\nn\n ̧\ni\u00101\n\u0002 wi\nk\n\u0001 1\n\n.\nSimilarly, the total number of local losers of the k-companies is\nn\n ̧\ni\u00101\n\u0002 li\nk\n\u0001 1\n\n.\nNow apply this for k\n\u0010 2, 3 and 4.\nSince every game has a winner and a loser, we have\nn\n ̧\ni\u00101\nwi\n\u0010\nn\n ̧\ni\u00101\nli\n\u0010\n\u0002n\n2\n\n, and hence\nn\n ̧\ni\u00101\n\u0000wi\n\u0001 li\n\b\n\u0010 0.\n(4)\nIn every 3-company, either the players defeated one another in a cycle or the company has\nboth a local champion and a local loser. Therefore, the total number of local champions and\nlocal losers in the 3-companies is the same,\nn\n ̧\ni\u00101\n\u0002wi\n2\n\n\u0010\nn\n ̧\ni\u00101\n\u0002li\n2\n\n. So we have\nn\n ̧\ni\u00101\n\u0003\n\u0002wi\n2\n\n\u0001\n\u0002li\n2\n\n\u000b\n\u0010 0.\n(5)\nIn every 4-company, by the problem's condition, the number of local losers is less than or\nequal to the number of local champions. Then the same holds for the total numbers of local\n\n[[PAGE 35]]\n34\nchampions and local losers in all 4-companies, so\nn\n ̧\ni\u00101\n\u0002wi\n3\n\n©\nn\n ̧\ni\u00101\n\u0002li\n3\n\n. Hence,\nn\n ̧\ni\u00101\n\u0003\n\u0002wi\n3\n\n\u0001\n\u0002li\n3\n\n\u000b\n© 0.\n(6)\nNow we establish the problem statement (1) as a linear combination of (4), (5) and (6). It\nis easy check that\npx\n\u0001 y\nq3\n\u0010 24\n\u0003\n\u0002x\n3\n\n\u0001\n\u0002y\n3\n\n\u000b\n\u0000 24\n\u0003\n\u0002x\n2\n\n\u0001\n\u0002y\n2\n\n\u000b\n\u0001\n\u00003 px\n\u0000 y\nq2\n\u0001 4\n\b\npx\n\u0001 y\nq.\nApply this identity to x\n\u0010 w1 and y\n\u0010 li. Since every player played n\n\u0001 1 games, we have\nwi\n\u0000 li\n\u0010 n\n\u0001 1, and thus\npwi\n\u0001 li\nq3\n\u0010 24\n\u0003\n\u0002wi\n3\n\n\u0001\n\u0002li\n3\n\n\u000b\n\u0000 24\n\u0003\n\u0002wi\n2\n\n\u0001\n\u0002li\n2\n\n\u000b\n\u0001\n\u00003 pn\n\u0001 1 q2\n\u0001 4\n\b\n\u0001\nwi\n\u0001 li\n\n.\nThen\nn\n ̧\ni\u00101\npwi\n\u0001 li\nq3\n\u0010 24\nn\n ̧\ni\u00101\n\u0003\n\u0002wi\n3\n\n\u0001\n\u0002li\n3\n\n\u000b\nlo\noo\nooooo\nomo\no\noooooo\non\n©0\n\u000024\nn\n ̧\ni\u00101\n\u0003\n\u0002wi\n2\n\n\u0001\n\u0002li\n2\n\n\u000b\nlo\no\noooooo\nomo\no\nooo\nooo\non\n0\n\u0001\n\u00003 pn\n\u0001 1 q2\n\u0001 4\n\b n\n ̧\ni\u00101\n\u0001\nwi\n\u0001li\n\nlo\nooo\nomo\no\noo\non\n0\n© 0.\n\n[[PAGE 36]]\n35",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "complete_graph_language",
+          "cycle",
+          "tournament"
+        ],
+        "reason": "Matched graph terms: complete_graph_language, cycle, tournament"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "q \u0010 S1 pT q for each tournament. Actually, note that εij \u0010 \u0001εji, and the whole sum can be split into such pairs. Since the sum in each pair is 0, so is S2 pT q. Thus the desired equality (2) rewrites as S1 pT q \u0010 ̧ i1,i2,i3,i4 S1 pTi1i2i3i4 q. (3) Now, if all the numb",
+        "i \u0010 n ̧ i\u00101 li \u0010 \u0002n 2 , and hence n ̧ i\u00101 \u0000wi \u0001 li \b \u0010 0. (4) In every 3-company, either the players defeated one another in a cycle or the company has both a local champion and a local loser. Therefore, the total number of local champions and local losers in th",
+        "n © 4 players participated in a tennis tournament. Any two players have played exactly one game, and there was no tie game. We call a company of four players bad if one player was"
+      ]
+    },
+    {
+      "id": "imo-2010-sl-c7",
+      "year": 2010,
+      "shortlist_id": "C7",
+      "country": "iii",
+      "source": {
+        "source_id": "src-imo-2010-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2010SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2010SL.pdf"
+      },
+      "statement_en": "Let P1, . . . , Ps be arithmetic progressions of integers, the following conditions being\nsatisfied:\n(i) each integer belongs to at least one of them;\n(ii) each progression contains a number which does not belong to other progressions.\nDenote by n the least common multiple of steps of these progressions; let n\n\u0010 pα1\n1 . . . pαk\nk\nbe\nits prime factorization. Prove that\ns\n© 1\n\u0000k\n ̧\ni\u00101\nαi\nppi\n\u0001 1 q.\n(Germany)\nSolution 1.\nFirst, we prove the key lemma, and then we show how to apply it to finish the\nsolution.\nLet n1, . . . , nk be positive integers. By an n1\n\u0002 n2\n\u0002\n\u0004\n\u0004\n\u0004\n\u0002 nk grid we mean the set N\n\u0010\ntpa1, . . ., ak\nq : ai\nP Z, 0\n ̈ ai\n ̈ ni\n\u0001 1 u; the elements of N will be referred to as points. In this\ngrid, we define a subgrid as a subset of the form\nL\n\u0010\ntpb1, . . . , bk\nq\nP N : bi1\n\u0010 xi1, . . . , bit\n\u0010 xit\nu,\n(1)\nwhere I\n\u0010\nti1, . . . , it\nu is an arbitrary nonempty set of indices, and xij\nP\nr0, nij\n\u0001 1 s (1\n ̈ j\n ̈ t)\nare fixed integer numbers. Further, we say that a subgrid (1) is orthogonal to the ith coordinate\naxis if i\nP I, and that it is parallel to the ith coordinate axis otherwise.\nLemma. Assume that the grid N is covered by subgrids L1, L2, . . . , Ls (this means N\n\u0010\ns\ni\u00101 Li)\nso that\n(ii\n1) each subgrid contains a point which is not covered by other subgrids;\n(iii) for each coordinate axis, there exists a subgrid Li orthogonal to this axis.\nThen\ns\n© 1\n\u0000k\n ̧\ni\u00101\npni\n\u0001 1 q.\nProof. Assume to the contrary that s\n ̈\n°\ni\npni\n\u0001 1 q\n\u0010 s\n1. Our aim is to find a point that is not\ncovered by L1, . . ., Ls.\nThe idea of the proof is the following. Imagine that we expand each subgrid to some maximal\nsubgrid so that for the ith axis, there will be at most ni\n\u0001 1 maximal subgrids orthogonal to\nthis axis. Then the desired point can be found easily: its ith coordinate should be that not\ncovered by the maximal subgrids orthogonal to the ith axis. Surely, the conditions for existence\nof such expansion are provided by Hall's lemma on matchings. So, we will follow this direction,\nalthough we will apply Hall's lemma to some subgraph instead of the whole graph.\nConstruct a bipartite graph G\n\u0010\npV\nY V\n1, E\nq as follows. Let V\n\u0010\ntL1, . . . , Ls\nu, and let\nV\n1\n\u0010\ntvij : 1\n ̈ i\n ̈ s, 1\n ̈ j\n ̈ ni\n\u0001 1 u be some set of s\n1 elements. Further, let the edge\npLm, vij\nq\nappear iffLm is orthogonal to the ith axis.\nFor each subset W\n V , denote\nf\npW\nq\n\u0010\ntv\nP V\n1 :\npL, v\nq\nP E for some L\nP W\nu.\nNotice that f\npV\nq\n\u0010 V\n1 by (iii).\nNow, consider the set W\n V containing the maximal number of elements such that\n|W\n|\n¡\n|f\npW\nq|; if there is no such set then we set W\n\u0010 ∅. Denote W\n1\n\u0010 f\npW\nq, U\n\u0010 V\nzW, U\n1\n\u0010 V\n1\nzW\n1.\n\n[[PAGE 40]]\n39\nBy our assumption and the Lemma condition,\n|f\npV\nq|\n\u0010\n|V\n1\n|\n©\n|V\n|, hence W\n\u0018 V and U\n\u0018 ∅.\nPermuting the coordinates, we can assume that U\n1\n\u0010\ntvij : 1\n ̈ i\n ̈ lu, W\n1\n\u0010\ntvij : l\n\u00001\n ̈ i\n ̈ k\nu.\nConsider the induced subgraph G\n1 of G on the vertices U\nY U\n1. We claim that for every\nX\n U, we get\n|f\npX\nq\nX U\n1\n|\n©\n|X\n| (so G\n1 satisfies the conditions of Hall's lemma). Actually, we\nhave\n|W\n|\n©\n|f\npW\nq|, so if\n|X\n|\n¡\n|f\npX\nq\nX U\n1\n| for some X\n U, then we have\n|W\nY X\n|\n\u0010\n|W\n|\n\u0000|X\n|\n¡\n|f\npW\nq|\n\u0000|f\npX\nq\nX U\n1\n|\n\u0010\n|f\npW\nq\nY\npf\npX\nq\nX U\n1\nq|\n\u0010\n|f\npW\nY X\nq|.\nThis contradicts the maximality of\n|W\n|.\nThus, applying Hall's lemma, we can assign to each L\nP U some vertex vij\nP U\n1 so that to\ndistinct elements of U, distinct vertices of U\n1 are assigned. In this situation, we say that L\nP U\ncorresponds to the ith axis, and write g\npLq\n\u0010 i. Since there are ni\n\u0001 1 vertices of the form vij,\nwe get that for each 1\n ̈ i\n ̈ l, not more than ni\n\u0001 1 subgrids correspond to the ith axis.\nFinally, we are ready to present the desired point.\nSince W\n\u0018 V , there exists a point\nb\n\u0010\npb1, b2, . . . , bk\nq\nP N\nzpYLPWLq. On the other hand, for every 1\n ̈ i\n ̈ l, consider any subgrid\nL\nP U with g\npLq\n\u0010 i. This means exactly that L is orthogonal to the ith axis, and hence all\nits elements have the same ith coordinate cL. Since there are at most ni\n\u0001 1 such subgrids,\nthere exists a number 0\n ̈ ai\n ̈ ni\n\u0001 1 which is not contained in a set\ntcL : g\npLq\n\u0010 iu. Choose\nsuch number for every 1\n ̈ i\n ̈ l. Now we claim that point a\n\u0010\npa1, . . . , al, bl\u00001, . . . , bk\nq is not\ncovered, hence contradicting the Lemma condition.\nSurely, point a cannot lie in some L\nP U, since all the points in L have g\npLqth coordinate\ncL\n\u0018 ag\npLq. On the other hand, suppose that a\nP L for some L\nP W; recall that b\nR L. But the\npoints a and b differ only at first lcoordinates, so L should be orthogonal to at least one of\nthe first laxes, and hence our graph contains some edge\npL, vij\nq for i\n ̈ l. It contradicts the\ndefinition of W\n1. The Lemma is proved.\nl\nNow we turn to the problem. Let dj be the step of the progression Pj. Note that since\nn\n\u0010 l.c.m.\npd1, . . . , ds\nq, for each 1\n ̈ i\n ̈ k there exists an index j\npiq such that pαi\ni\n\u0007\n\u0007 dj\npiq. We\nassume that n\n¡ 1; otherwise the problem statement is trivial.\nFor each 0\n ̈ m\n ̈ n\n\u0001 1 and 1\n ̈ i\n ̈ k, let mi be the residue of m modulo pαi\ni , and let\nmi\n\u0010 riαi . . . ri1 be the base pi representation of mi (possibly, with some leading zeroes). Now,\nwe put into correspondence to m the sequence r\npmq\n\u0010\npr11, . . . , r1α1, r21, . . . , rkαk\nq. Hence r\npmq\nlies in a p1\n\u0002\n\u0004\n\u0004\n\u0004\n\u0002 p1\nlo\no\nooo\nomo\no\noo\no\non\nα1 times\n\u0002\n\u0004\n\u0004\n\u0004\n\u0002 pk\n\u0002\n\u0004\n\u0004\n\u0004\n\u0002 pk\nlo\noooo\nomo\nooo\no\non\nαk times\ngrid N.\nSurely, if r\npmq\n\u0010 r\npm\n1\nq then pαi\ni\n\u0007\n\u0007 mi\n\u0001 m\n1\ni, which follows pαi\ni\n\u0007\n\u0007 m\n\u0001 m\n1 for all 1\n ̈ i\n ̈ k;\nconsequently, n\n\u0007\n\u0007 m\n\u0001 m\n1. So, when m runs over the set\nt0, . . . , n\n\u0001 1 u, the sequences r\npmq do\nnot repeat; since\n|N\n|\n\u0010 n, this means that r is a bijection between\nt0, . . ., n\n\u0001 1 u and N. Now\nwe will show that for each 1\n ̈ i\n ̈ s, the set Li\n\u0010\ntr\npmq : m\nP Pi\nu is a subgrid, and that for\neach axis there exists a subgrid orthogonal to this axis. Obviously, these subgrids cover N, and\nthe condition (ii\n1) follows directly from (ii). Hence the Lemma provides exactly the estimate\nwe need.\nConsider some 1\n ̈ j\n ̈ s and let dj\n\u0010 pγ1\n1 . . . pγk\nk . Consider some q\nP Pj and let r\npq\nq\n\u0010\npr11, . . ., rkαk\nq. Then for an arbitrary q\n1, setting r\npq\n1\nq\n\u0010\npr\n1\n11, . . . , r\n1\nkαk\nq we have\nq\n1\nP Pj\nð\nñ\npγi\ni\n\u0007\n\u0007 q\n\u0001 q\n1 for each 1\n ̈ i\n ̈ k\nð\nñ\nri,t\n\u0010 r\n1\ni,t for all t\n ̈ γi.\nHence Lj\n\u0010\ntpr\n1\n11, . . . , r\n1\nkαk\nq\nP N : ri,t\n\u0010 r\n1\ni,t for all t\n ̈ γi\nu which means that Lj is a subgrid\ncontaining r\npq\nq. Moreover, in Lj\npiq, all the coordinates corresponding to pi are fixed, so it is\northogonal to all of their axes, as desired.\n\n[[PAGE 41]]\n40\nComment 1. The estimate in the problem is sharp for every n. One of the possible examples is the\nfollowing one. For each 1\n ̈ i\n ̈ k, 0\n ̈ j\n ̈ αi\n\u0001 1, 1\n ̈ k\n ̈ p\n\u0001 1, let\nPi,j,k\n\u0010 kpj\ni\n\u0000 pj\n\u00001\ni\nZ,\nand add the progression P0\n\u0010 nZ. One can easily check that this set satisfies all the problem conditions.\nThere also exist other examples.\nOn the other hand, the estimate can be adjusted in the following sense. For every 1\n ̈ i\n ̈ k, let\n0\n\u0010 αi0, αi1, . . . , αihi be all the numbers of the form ordpi\npdj\nq in an increasing order (we delete the\nrepeating occurences of a number, and add a number 0\n\u0010 αi0 if it does not occur). Then, repeating\nthe arguments from the solution one can obtain that\ns\n© 1\n\u0000k\n ̧\ni\u00101\nhi\n ̧\nj\n\u00101\nppαj\n\u0001αj\n\u00011\n\u0001 1q.\nNote that pα\n\u0001 1\n© αpp\n\u0001 1q, and the equality is achieved only for α\n\u0010 1. Hence, for reaching the\nminimal number of the progressions, one should have αi,j\n\u0010 j for all i, j. In other words, for each\n1\n ̈ j\n ̈ αi, there should be an index t such that ordpi\npdt\nq\n\u0010 j.\nSolution 2.\nWe start with introducing some notation. For positive integer r, we denote\nrr\ns\n\u0010\nt1, 2, . . . , r\nu. Next, we say that a set of progressions P\n\u0010\ntP1, . . . , Ps\nu cover Z if each\ninteger belongs to some of them; we say that this covering is minimal if no proper subset of P\ncovers Z. Obviously, each covering contains a minimal subcovering.\nNext, for a minimal covering\ntP1, . . . , Ps\nu and for every 1\n ̈ i\n ̈ s, let di be the step of\nprogression Pi, and hi be some number which is contained in Pi but in none of the other\nprogressions. We assume that n\n¡ 1, otherwise the problem is trivial. This implies di\n¡ 1,\notherwise the progression Pi covers all the numbers, and n\n\u0010 1.\nWe will prove a more general statement, namely the following\nClaim. Assume that the progressions P1, . . . , Ps and number n\n\u0010 pα1\n1 . . . pαk\nk\n¡ 1 are chosen as\nin the problem statement. Moreover, choose some nonempty set of indices I\n\u0010\nti1, . . . , it\nu\n\nrk\ns\nand some positive integer βi\n ̈ αi for every i\nP I. Consider the set of indices\nT\n\u0010\n!\nj : 1\n ̈ j\n ̈ s, and pαi\n\u0001βi\n\u00001\ni\n\u0007\n\u0007 dj for some i\nP I\n)\n.\nThen\n|T\n|\n© 1\n\u0000 ̧\niPI\nβi\nppi\n\u0001 1 q.\n(2)\nObserve that the Claim for I\n\u0010\nrk\ns and βi\n\u0010 αi implies the problem statement, since the\nleft-hand side in (2) is not greater than s. Hence, it suffices to prove the Claim.\n1. First, we prove the Claim assuming that all dj's are prime numbers. If for some 1\n ̈ i\n ̈ k\nwe have at least pi progressions with the step pi, then they do not intersect and hence cover all\nthe integers; it means that there are no other progressions, and n\n\u0010 pi; the Claim is trivial in\nthis case.\nNow assume that for every 1\n ̈ i\n ̈ k, there are not more than pi\n\u0001 1 progressions with\nstep pi; each such progression covers the numbers with a fixed residue modulo pi, therefore\nthere exists a residue qi mod pi which is not touched by these progressions. By the Chinese\nRemainder Theorem, there exists a number q such that q\n\u0011 qi\npmod pi\nq for all 1\n ̈ i\n ̈ k; this\nnumber cannot be covered by any progression with step pi, hence it is not covered at all. A\ncontradiction.\n\n[[PAGE 42]]\n41\n2. Now, we assume that the general Claim is not valid, and hence we consider a counterex-\nample\ntP1, . . . , Ps\nu for the Claim; we can choose it to be minimal in the following sense:\n\r the number n is minimal possible among all the counterexamples;\n\r the sum\n°\ni di is minimal possible among all the counterexamples having the chosen value\nof n.\nAs was mentioned above, not all numbers di are primes; hence we can assume that d1 is\ncomposite, say p1\n\u0007\n\u0007 d1 and d\n1\n1\n\u0010 d1\np1\n¡ 1. Consider a progression P\n1\n1 having the step d\n1\n1, and\ncontaining P1. We will focus on two coverings constructed as follows.\n(i) Surely, the progressions P\n1\n1, P2, . . . , Ps cover Z, though this covering in not necessarily\nminimal. So, choose some minimal subcovering P\n1 in it; surely P\n1\n1\nP P\n1 since h1 is not covered\nby P2, . . . , Ps, so we may assume that P\n1\n\u0010\ntP\n1\n1, P2, . . ., Ps\n1\nu for some s\n1\n ̈ s. Furthermore, the\nperiod of the covering P\n1 can appear to be less than n; so we denote this period by\nn\n1\n\u0010 pα1\n\u0001σ1\n1\n. . . pαk\n\u0001σk\nk\n\u0010 l.c.m.\n\u0000d\n1\n1, d2, . . ., ds\n1\n\b\n.\nObserve that for each Pj\nR P\n1, we have hj\nP P\n1\n1, otherwise hj would not be covered by P.\n(ii) On the other hand, each nonempty set of the form Ri\n\u0010 Pi\nX P\n1\n1 (1\n ̈ i\n ̈ s) is also a\nprogression with a step ri\n\u0010 l.c.m.\npdi, d\n1\n1\nq, and such sets cover P\n1\n1. Scaling these progressions\nwith the ratio 1{d\n1\n1, we obtain the progressions Qi with steps qi\n\u0010 ri\n{d\n1\n1 which cover Z. Now we\nchoose a minimal subcovering Q of this covering; again we should have Q1\nP Q by the reasons\nof h1. Now, denote the period of Q by\nn\n2\n\u0010 l.c.m.\ntqi : Qi\nP Qu\n\u0010 l.c.m.\ntri : Qi\nP Qu\nd\n1\n1\n\u0010 pγ1\n1 . . . pγk\nk\nd\n1\n1\n.\nNote that if hj\nP P\n1\n1, then the image of hj under the scaling can be covered by Qj only; so, in\nthis case we have Qj\nP Q.\nOur aim is to find the desired number of progressions in coverings P and Q. First, we have\nn\n© n\n1, and the sum of the steps in P\n1 is less than that in P; hence the Claim is valid for P\n1.\nWe apply it to the set of indices I\n1\n\u0010\nti\nP I : βi\n¡ σi\nu and the exponents β\n1\ni\n\u0010 βi\n\u0001 σi; hence\nthe set under consideration is\nT\n1\n\u0010\n!\nj : 1\n ̈ j\n ̈ s\n1, and p\npαi\n\u0001σi\nq\u0001β\n1\ni\n\u00001\ni\n\u0010 pαi\n\u0001βi\n\u00001\ni\n\u0007\n\u0007 dj for some i\nP I\n1\n)\n T\nX\nrs\n1\ns,\nand we obtain that\n|T\nX\nrs\n1\ns|\n©\n|T\n1\n|\n© 1\n\u0000 ̧\niPI\n1\npβi\n\u0001 σi\nqppi\n\u0001 1 q\n\u0010 1\n\u0000 ̧\niPI\npβi\n\u0001 σi\nq\n\u0000ppi\n\u0001 1 q,\nwhere\npxq\n\u0000\u0010 max tx, 0 u; the latter equality holds as for i\nR I\n1 we have βi\n ̈ σi.\nObserve that x\n\u0010\npx\n\u0001 y\nq\n\u0000\u0000 mintx, y\nu for all x, y. So, if we find at least\nG\n\u0010\n ̧\niPI\nmintβi, σi\nuppi\n\u0001 1 q\nindices in T\nX\nts\n1\n\u0000 1, . . ., su, then we would have\n|T\n|\n\u0010\n|T\nX\nrs\n1\ns|\n\u0000|T\nX\nts\n1\n\u00001, . . ., su|\n© 1\n\u0000 ̧\niPI\n\u0000pβi\n\u0001σi\nq\n\u0000\u0000min tβi, σi\nu\n\b\nppi\n\u00011 q\n\u0010 1\n\u0000 ̧\niPI\nβi\nppi\n\u00011 q,\nthus leading to a contradiction with the choice of P. We will find those indices among the\nindices of progressions in Q.\n\n[[PAGE 43]]\n42\n3. Now denote I\n2\n\u0010\nti\nP I : σi\n¡ 0 u and consider some i\nP I\n2; then pαi\ni\n\n\u0007\n\u0007 n\n1. On the\nother hand, there exists an index j\npiq such that pαi\ni\n\u0007\n\u0007 dj\npiq; this means that dj\npiq\n\n\u0007\n\u0007 n\n1 and hence\nPj\npiq cannot appear in P\n1, so j\npiq\n¡ s\n1. Moreover, we have observed before that in this case\nhj\npiq\nP P\n1\n1, hence Qj\npiq\nP Q. This means that qj\npiq\n\u0007\n\u0007 n\n2, therefore γi\n\u0010 αi for each i\nP I\n2 (recall\nhere that qi\n\u0010 ri\n{d\n1\n1 and hence dj\npiq\n\u0007\n\u0007 rj\npiq\n\u0007\n\u0007 d\n1\n1n\n2).\nLet d\n1\n1\n\u0010 pτ1\n1 . . . pτk\nk . Then n\n2\n\u0010 pγ1\n\u0001τ1\n1\n. . . pγi\n\u0001τi\nk\n. Now, if i\nP I\n2, then for every β the condition\np\npγi\n\u0001τi\nq\u0001β\n\u00001\ni\n\u0007\n\u0007 qj is equivalent to pαi\n\u0001β\n\u00001\ni\n\u0007\n\u0007 rj.\nNote that n\n2\n ̈ n{d\n1\n1\n  n, hence we can apply the Claim to the covering Q. We perform\nthis with the set of indices I\n2 and the exponents β\n2\ni\n\u0010 min tβi, σi\nu\n¡ 0. So, the set under\nconsideration is\nT\n2\n\u0010\n!\nj : Qj\nP Q, and p\npγi\n\u0001τi\nq\u0001mintβi,σi\nu\u00001\ni\n\u0007\n\u0007 qj for some i\nP I\n2\n)\n\u0010\n!\nj : Qj\nP Q, and pαi\n\u0001min\ntβi,σi\nu\u00001\ni\n\u0007\n\u0007 rj for some i\nP I\n2\n)\n,\nand we obtain\n|T\n2\n|\n© 1\n\u0000 G. Finally, we claim that T\n2\n T\nX\n\u0000t1 u\nY\nts\n1\n\u0000 1, . . . , su\n\b\n; then we\nwill obtain\n|T\nX\nts\n1\n\u0000 1, . . . , su|\n© G, which is exactly what we need.\nTo prove this, consider any j\nP T\n2. Observe first that αi\n\u0001 min tβi, σi\nu\n\u0000 1\n¡ αi\n\u0001 σi\n© τi,\nhence from pαi\n\u0001mintβi,σi\nu\u00001\ni\n\u0007\n\u0007 rj\n\u0010 l.c.m.\npd\n1\n1, dj\nq we have pαi\n\u0001mintβi,σi\nu\u00001\ni\n\u0007\n\u0007 dj, which means that\nj\nP T. Next, the exponent of pi in dj is greater than that in n\n1, which means that Pj\nR P\n1. This\nmay appear only if j\n\u0010 1 or j\n¡ s\n1, as desired. This completes the proof.\nComment 2. A grid analogue of the Claim is also valid. It reads as following.\nClaim. Assume that the grid N is covered by subgrids L1, L2, . . . , Ls so that\n(ii\n1) each subgrid contains a point which is not covered by other subgrids;\n(iii) for each coordinate axis, there exists a subgrid Li orthogonal to this axis.\nChoose some set of indices I\n\u0010\nti1, . . . , it\nu\n\nrk\ns, and consider the set of indices\nT\n\u0010\ntj : 1\n ̈ j\n ̈ s, and Lj is orthogonal to the ith axis for some i\nP I\nu .\nThen\n|T\n|\n© 1\n\u0000 ̧\niPI\npni\n\u0001 1q.\nThis Claim may be proved almost in the same way as in Solution 1.\n\n[[PAGE 44]]\n43\n\n[[PAGE 45]]",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "edge",
+          "graph",
+          "grid",
+          "matching",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: edge, graph, grid, matching, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "ws. Let V \u0010 tL1, . . . , Ls u, and let V 1 \u0010 tvij : 1 ̈ i ̈ s, 1 ̈ j ̈ ni \u0001 1 u be some set of s 1 elements. Further, let the edge pLm, vij q appear iffLm is orthogonal to the ith axis. For each subset W  V , denote f pW q \u0010 tv P V 1 : pL, v q P E for some L",
+        "lemma on matchings. So, we will follow this direction, although we will apply Hall's lemma to some subgraph instead of the whole graph. Construct a bipartite graph G \u0010 pV Y V 1, E q as follows. Let V \u0010 tL1, . . . , Ls u, and let V 1 \u0010 tvij : 1 ̈ i ̈ s, 1 ̈ j ̈",
+        "mma, and then we show how to apply it to finish the solution. Let n1, . . . , nk be positive integers. By an n1 \u0002 n2 \u0002 \u0004 \u0004 \u0004 \u0002 nk grid we mean the set N \u0010 tpa1, . . ., ak q : ai P Z, 0 ̈ ai ̈ ni \u0001 1 u; the elements of N will be referred to as points. In this gri",
+        "ximal subgrids orthogonal to the ith axis. Surely, the conditions for existence of such expansion are provided by Hall's lemma on matchings. So, we will follow this direction, although we will apply Hall's lemma to some subgraph instead of the whole graph. Construct a"
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c5",
+      "year": 2012,
+      "shortlist_id": "C5",
+      "country": "Ti",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "statement_en": "The columns and the rows of a 3 n × 3n square board are numbered 1 , 2, . . . , 3n. Every\nsquare ( x, y ) with 1 ≤ x, y ≤ 3n is colored asparagus, byzantium or citrine according as the\nmodulo 3 remainder of x + y is 0, 1 or 2 respectively. One token colored asparagus, byzantium\nor citrine is placed on each square, so that there are 3 n2 tokens of each color.\nSuppose that one can permute the tokens so that each token is mo ved to a distance of\nat most d from its original position, each asparagus token replaces a byzant ium token, each\nbyzantium token replaces a citrine token, and each citrine token re places an asparagus token.\nProve that it is possible to permute the tokens so that each token is moved to a distance of at\nmost d + 2 from its original position, and each square contains a token with t he same color as\nthe square.\nSolution. Without loss of generality it suffices to prove that the A-tokens can be moved to\ndistinct A-squares in such a way that each A-token is moved to a dist ance at most d + 2 from\nits original place. This means we need a perfect matching between th e 3 n2 A-squares and the\n3n2 A-tokens such that the distance in each pair of the matching is at mo st d + 2.\nTo find the matching, we construct a bipartite graph. The A-squar es will be the vertices in\none class of the graph; the vertices in the other class will be the A-t okens.\nSplit the board into 3 × 1 horizontal triminos; then each trimino contains exactly one A-\nsquare. Take a permutation π of the tokens which moves A-tokens to B-tokens, B-tokens to\nC-tokens, and C-tokens to A-tokens, in each case to a distance a t most d. For each A-square S,\nand for each A-token T , connect S and T by an edge if T , π(T ) or π − 1(T ) is on the trimino\ncontaining S. We allow multiple edges; it is even possible that the same square and th e same\ntoken are connected with three edges. Obviously the lengths of th e edges in the graph do not\nexceed d + 2. By length of an edge we mean the distance between the A-squar e and the A-token\nit connects.\nEach A-token T is connected with the three A-squares whose triminos contain T , π(T )\nand π − 1(T ). Therefore in the graph all tokens are of degree 3. We show that the same is true\nfor the A-squares. Let S be an arbitrary A-square, and let T1, T 2, T 3 be the three tokens on\nthe trimino containing S. For i = 1, 2, 3, if Ti is an A-token, then S is connected with Ti; if Ti\nis a B-token then S is connected with π − 1(Ti); finally, if Ti is a C-token then S is connected\nwith π(Ti). Hence in the graph the A-squares also are of degree 3.\nSince the A-squares are of degree 3, from every set S of A-squares exactly 3 |S|edges start.\nThese edges end in at least |S|tokens because the A-tokens also are of degree 3. Hence every\nset S of A-squares has at least |S|neighbors among the A-tokens.\nTherefore, by Hall's marriage theorem, the graph contains a perfect matching betwe en\nthe two vertex classes. So there is a perfect matching between th e A-squares and A-tokens\nwith edges no longer than d + 2. It follows that the tokens can be permuted as specified in the\nproblem statement.\nComment 1. In the original problem proposal the board was infinite and th ere were only two colors.\nHaving n colors for some positive integer n was an option; we chose n = 3. Moreover, we changed\nthe board to a finite one to avoid dealing with infinite graphs ( although Hall's theorem works in the\ninfinite case as well).\nWith only two colors Hall's theorem is not needed. In this cas e we split the board into 2 × 1\ndominos, and in the resulting graph all vertices are of degre e 2. The graph consists of disjoint cycles\nwith even length and infinite paths, so the existence of the ma tching is trivial.\nHaving more than three colors would make the problem stateme nt more complicated, because we\nneed a matching between every two color classes of tokens. Ho wever, this would not mean a significant\nincrease in difficulty.\n\n[[PAGE 25]]\n25\nComment 2. According to Wikipedia, the color asparagus (hexadecimal code #87A96B) is a tone\nof green that is named after the vegetable. Crayola created t his color in 1993 as one of the 16 to\nbe named in the Name The Color Contest. Byzantium (#702963) is a dark tone of purple. Its first\nrecorded use as a color name in English was in 1926. Citrine (#E4D00A) is variously described as\nyellow, greenish-yellow, brownish-yellow or orange. The fi rst known use of citrine as a color name in\nEnglish was in the 14th century.\n\n[[PAGE 26]]\n26",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "complete_graph_language",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "grid",
+          "matching",
+          "path",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, complete_graph_language, connected, cycle, edge, graph, grid, matching, path, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "The columns and the rows of a 3 n × 3n square board are numbered 1 , 2, . . . , 3n. Every square ( x, y ) with 1 ≤ x, y ≤ 3n is colored asparagus, byzantium or citrine according as the modulo 3 remainder of x + y is 0, 1 or 2 respectively. One token colored asparag",
+        "original place. This means we need a perfect matching between th e 3 n2 A-squares and the 3n2 A-tokens such that the distance in each pair of the matching is at mo st d + 2. To find the matching, we construct a bipartite graph. The A-squar es will be the vertices in o",
+        "− 1(T ) is on the trimino containing S. We allow multiple edges; it is even possible that the same square and th e same token are connected with three edges. Obviously the lengths of th e edges in the graph do not exceed d + 2. By length of an edge we mean the distance",
+        "e we split the board into 2 × 1 dominos, and in the resulting graph all vertices are of degre e 2. The graph consists of disjoint cycles with even length and infinite paths, so the existence of the ma tching is trivial. Having more than three colors would make the p"
+      ]
+    },
+    {
+      "id": "imo-2012-sl-c7",
+      "year": 2012,
+      "shortlist_id": "C7",
+      "country": "Gc",
+      "source": {
+        "source_id": "src-imo-2012-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2012SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2012SL.pdf"
+      },
+      "statement_en": "There are given 2 500 points on a circle labeled 1 , 2, . . . , 2500 in some order. Prove that\none can choose 100 pairwise disjoint chords joining some of these po ints so that the 100 sums\nof the pairs of numbers at the endpoints of the chosen chords are equal.\nSolution. The proof is based on the following general fact.\nLemma. In a graph G each vertex v has degree dv. Then G contains an independent set S of\nvertices such that |S| ≥ f (G) where\nf (G) =\n∑\nv∈ G\n1\ndv + 1 .\nProof. Induction on n = |G|. The base n = 1 is clear. For the inductive step choose a vertex v0\nin G of minimum degree d. Delete v0 and all of its neighbors v1, . . . , v d and also all edges with\nendpoints v0, v 1, . . . , v d. This gives a new graph G′. By the inductive assumption G′ contains\nan independent set S′ of vertices such that |S′| ≥ f (G′). Since no vertex in S′ is a neighbor\nof v0 in G, the set S = S′ ∪ { v0} is independent in G.\nLet d′\nv be the degree of a vertex v in G′. Clearly d′\nv ≤ dv for every such vertex v, and also\ndvi ≥ d for all i = 0, 1, . . . , d by the minimal choice of v0. Therefore\nf (G′) =\n∑\nv∈ G′\n1\nd′\nv + 1 ≥\n∑\nv∈ G′\n1\ndv + 1 = f (G) −\nd∑\ni=0\n1\ndvi + 1 ≥ f (G) − d + 1\nd + 1 = f (G) − 1.\nHence |S|= |S′|+ 1 ≥ f (G′) + 1 ≥ f (G), and the induction is complete. □\nWe pass on to our problem. For clarity denote n = 2 499 and draw all chords determined by\nthe given 2 n points. Color each chord with one of the colors 3 , 4, . . . , 4n − 1 according to the\nsum of the numbers at its endpoints. Chords with a common endpoint have different colors.\nFor each color c consider the following graph Gc. Its vertices are the chords of color c, and two\nchords are neighbors in Gc if they intersect. Let f (Gc) have the same meaning as in the lemma\nfor all graphs Gc.\nEvery chord l divides the circle into two arcs, and one of them contains m(l) ≤ n − 1 given\npoints. (In particular m(l) = 0 if l joins two consecutive points.) For each i = 0 , 1, . . . , n − 2\nthere are 2 n chords l with m(l) = i. Such a chord has degree at most i in the respective graph.\nIndeed let A1, . . . , A i be all points on either arc determined by a chord l with m(l) = i and\ncolor c. Every Aj is an endpoint of at most 1 chord colored c, j = 1 , . . . , i . Hence at most\ni chords of color c intersect l.\nIt follows that for each i = 0 , 1, . . . , n − 2 the 2 n chords l with m(l) = i contribute at\nleast 2n\ni+1 to the sum ∑\nc f (Gc). Summation over i = 0, 1, . . . , n − 2 gives\n∑\nc\nf (Gc) ≥ 2n\nn− 1∑\ni=1\n1\ni .\nBecause there are 4 n − 3 colors in all, averaging yields a color c such that\nf (Gc) ≥ 2n\n4n − 3\nn− 1∑\ni=1\n1\ni > 1\n2\nn− 1∑\ni=1\n1\ni .\nBy the lemma there are at least 1\n2\n∑n− 1\ni=1\n1\ni pairwise disjoint chords of color c, i. e. with the same\nsum c of the pairs of numbers at their endpoints. It remains to show that 1\n2\n∑n− 1\ni=1\n1\ni ≥ 100 for\nn = 2 499. Indeed we have\nn− 1∑\ni=1\n1\ni >\n2400\n∑\ni=1\n1\ni = 1 +\n400∑\nk=1\n2k\n∑\ni=2k− 1+1\n1\ni > 1 +\n400∑\nk=1\n2k− 1\n2k = 201 > 200.\nThis completes the solution.\n\n[[PAGE 29]]\n29",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "edge",
+          "graph",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, edge, graph, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "on is complete. □ We pass on to our problem. For clarity denote n = 2 499 and draw all chords determined by the given 2 n points. Color each chord with one of the colors 3 , 4, . . . , 4n − 1 according to the sum of the numbers at its endpoints. Chords with a commo",
+        "r the inductive step choose a vertex v0 in G of minimum degree d. Delete v0 and all of its neighbors v1, . . . , v d and also all edges with endpoints v0, v 1, . . . , v d. This gives a new graph G′. By the inductive assumption G′ contains an independent set S′ of",
+        "numbers at the endpoints of the chosen chords are equal. Solution. The proof is based on the following general fact. Lemma. In a graph G each vertex v has degree dv. Then G contains an independent set S of vertices such that |S| ≥ f (G) where f (G) = ∑ v∈ G 1 dv +",
+        "he endpoints of the chosen chords are equal. Solution. The proof is based on the following general fact. Lemma. In a graph G each vertex v has degree dv. Then G contains an independent set S of vertices such that |S| ≥ f (G) where f (G) = ∑ v∈ G 1 dv + 1 . Proof. In"
+      ]
+    },
+    {
+      "id": "imo-2013-sl-c3",
+      "year": 2013,
+      "shortlist_id": "C3",
+      "country": "Japan",
+      "source": {
+        "source_id": "src-imo-2013-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2013SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2013SL.pdf"
+      },
+      "statement_en": "A crazy physicist discovered a new kind of particle which he called an imon, after some of\nthem mysteriously appeared in his lab. Some pairs of imons in the lab can be entangled, and each\nimon can participate in many entanglement relations. The physicist ha s found a way to perform\nthe following two kinds of operations with these particles, one opera tion at a time.\npiq If some imon is entangled with an odd number of other imons in the lab, t hen the physicist\ncan destroy it.\npiiq At any moment, he may double the whole family of imons in his lab by creat ing a copy I 1\nof each imon I. During this procedure, the two copies I 1 and J 1 become entangled if and only if\nthe original imons I and J are entangled, and each copy I 1 becomes entangled with its original\nimon I; no other entanglements occur or disappear at this moment.\nProve that the physicist may apply a sequence of such operations r esulting in a family of imons,\nno two of which are entangled.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring",
+          "connected",
+          "edge",
+          "graph",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring, connected, edge, graph, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "igits of j is odd). If its degree is odd, then we simply delete it. Otherwise, since Aj n is not isolated, we consider any vertex adjacent to it. It has the form Aj k for some k < n (otherwise it would have the form Al n, where l has an even digit sum; but any such ve",
+        "nsider a graph with the imons as vertices, and two imons bein g connected if and only if they are entangled. Recall that a proper coloring of a graph G is a coloring of its vertices in several colors so that every two connected vertices h ave different colors. Lemma.",
+        "mons, no two of which are entangled. (Japan) Solution 1. Let us consider a graph with the imons as vertices, and two imons bein g connected if and only if they are entangled. Recall that a proper coloring of a graph G is a coloring of its vertices in several colors so",
+        "o on e may apply operation piq to delete consecutively all the vertices of color n one by one; no two of them are connected by an edge, so their degrees do not change during the process. Thus , we obtain a graph admitting a proper coloring in n ́ 1 colors, as req"
+      ]
+    },
+    {
+      "id": "imo-2013-sl-c6",
+      "year": 2013,
+      "shortlist_id": "C6",
+      "country": "Russia",
+      "source": {
+        "source_id": "src-imo-2013-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2013SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2013SL.pdf"
+      },
+      "statement_en": "In some country several pairs of cities are connected by direct tw o-way flights. It is possible\nto go from any city to any other by a sequence of flights. The distance between two cities is defined\nto be the least possible number of flights required to go from one of t hem to the other. It is known\nthat for any city there are at most 100 cities at distance exactly th ree from it. Prove that there is\nno city such that more than 2550 other cities have distance exactly four from it.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "connected",
+          "path"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, connected, path"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "3. Moreover, dpa,d yq ‰ 3 by the choice of dy; thus dpa,d yq > 3. Finally, in the sequence dpa,y q,dpa,b yq,dpa,c yq,dpa,d yq the neighboring terms differ by at most 1, the first term is less than 3, and the last one is greater than 3; thus there exists one which is equa",
+        "In some country several pairs of cities are connected by direct tw o-way flights. It is possible to go from any city to any other by a sequence of flights. The distance between two ci",
+        "ere is a way to get from x to dy alongx–y–by–cy–dy for some cities by andcy; notice that dpx,b yq \" 2 and dpx,c yq \" 3 since this path has the minimal possible length. Now we claim that all 2 pm ́ 1q cities of the form by, cy with y P Aa are distinct. Indeed, no"
+      ]
+    },
+    {
+      "id": "imo-2014-sl-c4",
+      "year": 2014,
+      "shortlist_id": "C4",
+      "country": "Hungary",
+      "source": {
+        "source_id": "src-imo-2014-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2014SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2014SL.pdf"
+      },
+      "statement_en": "Construct a tetromino by attaching two 2 x 1 dominoes along their longer sides such\nthat the midpoint of the longer side of one domino is a corner of the ot her domino. This\nconstruction yields two kinds of tetrominoes with opposite orientat ions. Let us call them S-\nand Z-tetrominoes, respectively.\nS-tetrominoes Z-tetrominoes\nAssume that a lattice polygon P can be tiled with S-tetrominoes. Prove than no matter\nhow we tile P using only S- and Z-tetrominoes, we always use an even number of Z- tetrominoes.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_statement",
+        "matched_terms": [
+          "coloring",
+          "domino_polyomino",
+          "grid"
+        ],
+        "reason": "Matched graph terms: coloring, domino_polyomino, grid"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "ber of Z- tetrominoes. (Hungary) Solution 1. We may assume that polygon P is the union of some squares of an infinite chessboard. Colour the squares of the chessboard with two colou rs as the figure below illustrates. Observe that no matter how we tile P , any S-tet",
+        "Construct a tetromino by attaching two 2 x 1 dominoes along their longer sides such that the midpoint of the longer side of one domino is a corner of the ot her domino. This construct",
+        "inoes with opposite orientat ions. Let us call them S- and Z-tetrominoes, respectively. S-tetrominoes Z-tetrominoes Assume that a lattice polygon P can be tiled with S-tetrominoes. Prove than no matter how we tile P using only S- and Z-tetrominoes, we always use an e"
+      ]
+    },
+    {
+      "id": "imo-2014-sl-c8",
+      "year": 2014,
+      "shortlist_id": "C8",
+      "country": "Russia",
+      "source": {
+        "source_id": "src-imo-2014-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2014SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2014SL.pdf"
+      },
+      "statement_en": "A card deck consists of 1024 cards. On each card, a set of distinct decimal digits is\nwritten in such a way that no two of these sets coincide (thus, one o f the cards is empty). Two\nplayers alternately take cards from the deck, one card per turn. After the deck is empty, each\nplayer checks if he can throw out one of his cards so that each of th e ten digits occurs on an\neven number of his remaining cards. If one player can do this but the other one cannot, the\none who can is the winner; otherwise a draw is declared.\nDetermine all possible first moves of the first player after which he h as a winning strategy.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "complete_graph_language",
+          "cycle"
+        ],
+        "reason": "Matched graph terms: complete_graph_language, cycle"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "at is important for the solution. Lemma. Let B ‰ ∅ be some card. Let us choose 512 cards so that exactly one card is c hosen from every pair pX, X △ Bq. Then the sum of all chosen cards is either ∅ or B. Proof. Let b be some element of B. Enumerate the pairs; let Xi be",
+        "but with roles reversed. Now, if some cards remain in the decks, F takes an arbitrary card from the first deck starting a similar cycle. At the end of the game, player F's cards in the first game are exactly player S's cards in the second game, and vice versa. Thus"
+      ]
+    },
+    {
+      "id": "imo-2014-sl-c9",
+      "year": 2014,
+      "shortlist_id": "C9",
+      "country": "India",
+      "source": {
+        "source_id": "src-imo-2014-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2014SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2014SL.pdf"
+      },
+      "statement_en": "There are n circles drawn on a piece of paper in such a way that any two circles\nintersect in two points, and no three circles pass through the same point. Turbo the snail slides\nalong the circles in the following fashion. Initially he moves on one of the circles in clockwise\ndirection. Turbo always keeps sliding along the current circle until he reaches an intersection\nwith another circle. Then he continues his journey on this new circle a nd also changes the\ndirection of moving, i.e. from clockwise to anticlockwise or vice versa .\nSuppose that Turbo's path entirely covers all circles. Prove that n must be odd.\n(India)\n\n[[PAGE 9]]\n8 IMO 2014 South Africa",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "complete_graph_language",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "path",
+          "tree",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, complete_graph_language, connected, cycle, edge, graph, path, tree, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "airs are connected t o each other. See Figure 9. a b c e f a b c e f a b c e f a b c e f d d d d Figure 9 We can see that if only neighbouring points are connected, then the number of orbits is changed by ` 2 or ́ 2. If two opposite points are connected ( a and d in the",
+        "ry flipping decreases or increases the number o f orbits by one, thus changes its parity. Now flip every cross, one by one. Since every pair of circles has 0 or 2 intersections, the number of crosses is even. Therefore, when all crosses have bee n flipped, the original",
+        "a, b, c, and d the four arcs that meet at the cross such that a and b belong to the same circle. Before the flipping a and b were connected to c and d, respectively, and after the flipping a and b are connected to d and c, respectively. The orbits passing through the c",
+        "lishes an edge that connects two vertices (see Figure 12). As b is a single closed curve, this graph is connected and contains no cycle, so the graph is a tree. Then the number of vertic es must be by one greater than the number of edges, so |Rodd| ́ | Podd| \" 1."
+      ]
+    },
+    {
+      "id": "imo-2015-sl-c2",
+      "year": 2015,
+      "shortlist_id": "C2",
+      "country": "Netherlands",
+      "source": {
+        "source_id": "src-imo-2015-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2015SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2015SL.pdf"
+      },
+      "statement_en": "Let V be a finite set of points in the plane. We say that V is balanced if for any two\ndistinct points A,B P V, there exists a point C P V such that AC \" BC . We say that V is\ncenter-free if for any distinct points A,B,C P V, there does not exist a point P P V such that\nPA \" PB \" PC .\n(a) Show that for all n >= 3, there exists a balanced set consisting of n points.\n(b) For which n >= 3 does there exist a balanced, center-free set consisting of n points?",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "edge",
+          "graph",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: edge, graph, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "er-free set consisting of n points. For any pair of distinct vertices A,B P V and for any C P V such that AC \" BC , draw directed edges A ->C and B ->C. Then all pairs of vertices generate altogether at least npn ́ 1q directed edges; since the set is center-free, t",
+        "hese two pairs b e tA,B u and tA,C u. Then PA \" PB \" PC , which is a contradiction. Comment ( b). We can rephrase the argument in graph theoretic terms as foll ows. Let V be a balanced, center-free set consisting of n points. For any pair of distinct vertices A,B P",
+        "ds) Answer for part ( b). All odd integers n >= 3. Solution. Part ( a). Assume that n is odd. Consider a regular n-gon. Label the vertices of the n-gon as A1,A 2,...,A n in counter-clockwise order, and set V \" t A1,...,A nu. We check that V is balanced. For any two di"
+      ]
+    },
+    {
+      "id": "imo-2015-sl-c5",
+      "year": 2015,
+      "shortlist_id": "C5",
+      "country": "Australia",
+      "source": {
+        "source_id": "src-imo-2015-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2015SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2015SL.pdf"
+      },
+      "statement_en": "Consider an infinite sequence a1,a 2,... of positive integers with ai <= 2015 for all i >= 1.\nSuppose that for any two distinct indices i and j we have i ` ai ‰ j ` aj.\nProve that there exist two positive integers b and N such that\nˇ\nˇ\nˇ\nˇ\nˇ\nnÿ\ni\" m` 1\npai  ́ bq\nˇ\nˇ\nˇ\nˇ\nˇ <= 10072\nwhenevern > m >= N.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "path"
+        ],
+        "reason": "Matched graph terms: path"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "ng points in the sequel. When one starts at any of the starting points and kee ps following the arrows, one is led to an infinite path, called its ray, that visits a strictly increasing sequence of positive integers. Since the length of any arrow is at most 2015,"
+      ]
+    },
+    {
+      "id": "imo-2015-sl-c7",
+      "year": 2015,
+      "shortlist_id": "C7",
+      "country": "Russia",
+      "source": {
+        "source_id": "src-imo-2015-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2015SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2015SL.pdf"
+      },
+      "statement_en": "In a company of people some pairs are enemies. A group of people is ca lled unsociable\nif the number of members in the group is odd and at least 3, and it is pos sible to arrange all\nits members around a round table so that every two neighbors are e nemies. Given that there\nare at most 2015 unsociable groups, prove that it is possible to part ition the company into 11\nparts so that no two enemies are in the same part.\n(Russia)\n\n[[PAGE 7]]\n6 IMO 2015 Thailand",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring",
+          "component",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "path",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring, component, connected, cycle, edge, graph, path, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "At the end we have a path t hat starts at v1 PN1 and ends at some v2l PN2l. Moreover, all edges in this path connect vertices in neighboring cla sses: if a vertex of the path lies in Ui, then the next vertex lies in Ui` 1 orUi ́ 1. Notice that the path is not necessary",
+        "t of the enemy pairs — the edges of the graph. In this langua ge, partitioning into 11 disjoint enemy-free subsets means properly coloring the vertices of this graph with 11 colors. We will prove the following more general statement. Claim. Let G be a graph with chrom",
+        "in Ni` 1. For the sake of contradiction, suppose that no such path exists. Let S be the set of vertices that lie in the connected component ofx in the subgraph induced by Ui YUi` 1, and let P \" Ui XS, and Q \" Ui` 1 XS (see Figure 3). Since x is separated from Ni` 1, th",
+        "at by the rules of our process, in the final state, marked vertices in Vi cannot have unmarked neighbors in Vi` 1. Moreover, v is connected to all marked vertices by directed paths. Now move each marked vertex to the next color class in circular orde r (see an example"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c6",
+      "year": 2016,
+      "shortlist_id": "C6",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "statement_en": "There aren ⩾ 3 islands in a city. Initially, the ferry company offers some routes between\nsome pairs of islands so that it is impossible to divide the islands into two groups such that\nno two islands in different groups are connected by a ferry route.\nAfter each year, the ferry company will close a ferry route between some two islands X\nandY . At the same time, in order to maintain its service, the company will open new routes\naccording to the following rule: for any island which is connected by a ferry route to exactly\none of X and Y , a new route between this island and the other of X and Y is added.\nSuppose at any moment, if we partition all islands into two nonempty groups in any way,\nthen it is known that the ferry company will close a certain route connecting two islands from\nthe two groups after some years. Prove that after some years there will be an island which is\nconnected to all other islands by ferry routes.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "connected",
+          "island_ferry",
+          "network",
+          "route"
+        ],
+        "reason": "Matched graph terms: connected, island_ferry, network, route"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "pairs of islands so that it is impossible to divide the islands into two groups such that no two islands in different groups are connected by a ferry route. After each year, the ferry company will close a ferry route between some two islands X andY . At the same time,",
+        "There aren ⩾ 3 islands in a city. Initially, the ferry company offers some routes between some pairs of islands so that it is impossible to divide the i",
+        "ity there must be another island which is connected to A. We put such an island C in setB. We say that two sets of islands form a network if each island in one set is connected to each island in the other set. Next, we shall included all islands to A∪B one by one. Su",
+        "There aren ⩾ 3 islands in a city. Initially, the ferry company offers some routes between some pairs of islands so that it is impossible to divide the islands into two groups such that no two islands in differen"
+      ]
+    },
+    {
+      "id": "imo-2016-sl-c8",
+      "year": 2016,
+      "shortlist_id": "C8",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2016-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2016SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2016SL.pdf"
+      },
+      "statement_en": "Letn be a positive integer. Determine the smallest positive integer k with the following\nproperty: it is possible to mark k cells on a 2 n× 2n board so that there exists a unique\npartition of the board into 1 × 2 and 2 × 1 dominoes, none of which contains two marked\ncells.\n\n[[PAGE 10]]\nShortlisted problems 7",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "connected",
+          "cycle",
+          "domino_polyomino",
+          "edge",
+          "graph",
+          "grid",
+          "path",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: connected, cycle, domino_polyomino, edge, graph, grid, path, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "rtices with a red edge if they belong to the same domino ofP . Connect two vertices with a blue edge if their reflections ind are connected by a red edge. It is possible that two vertices are connected by edges of both colours. Clearly, each vertex has both red and blu",
+        "are connected by edges of both colours. Clearly, each vertex has both red and blue degrees equal to 1. Thus the graph splits into cycles where the colours of edges in each cycle alternate (a cycle may have length 2). Consider any cell c lying on the diagonal d. Its",
+        "erty: it is possible to mark k cells on a 2 n× 2n board so that there exists a unique partition of the board into 1 × 2 and 2 × 1 dominoes, none of which contains two marked cells. [[PAGE 10]] Shortlisted problems 7 Letn be a positive integer. Determine the smallest",
+        "exists another desirable partition distinct from P . Let d be the main diagonal of the board. Construct the following graph with edges of two colours. Its vertices are the cells of the board. Connect two vertices with a red edge if they belong to the same domino o"
+      ]
+    },
+    {
+      "id": "imo-2017-sl-c2",
+      "year": 2017,
+      "shortlist_id": "C2",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2017-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2017SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2017SL.pdf"
+      },
+      "statement_en": "Let n\nb\ne\na\np\nositiv\ne\nin\nteger.\nDe\u001cne\na\n hamele\non\nto\nb\ne\nan\ny\nsequen e\nof 3n\nletters,\nwith\nexa tly n\no\n  urren es\nof\nea\nh\nof\nthe\nletters a, b,\nand c.\nDe\u001cne\na\nswap\nto\nb\ne\nthe\ntransp\nosition\nof\nt\nw\no\nadja en\nt\nletters\nin\na\n\nhameleon.\nPro\nv\ne\nthat\nfor\nan\ny\n\nhameleon X\n,\nthere\nexists\na\n\nhameleon Y\nsu\nh\nthat X\n annot\nb\ne\n\nhanged\nto Y\nusing\nfew\ner\nthan 3n2{2\nsw\naps.\n(A\nustr\nalia)",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "edge",
+          "graph"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, edge, graph"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "e of 3n letters, with exa tly n o urren es of ea h of the letters a, b, and c. De ne a swap to b e the transp osition of t w o adja en t letters in a hameleon. Pro v e that for an y hameleon X , there exists a hameleon Y su h that X annot b e hanged to Y using",
+        "reform ulated in a graph language. Constru t a graph G with the hameleons as v erti es, t w o v erti es b eing onne ted with an edge if and only if these hameleons di\u001ber b y a single sw ap. Then dpX, Y q is the usual distan e b et w een the v erti es X and Y in",
+        ", maxtdpX, Pq, dpX, Qqu >= 3n2 2 , whi h establishes the problem statemen t. Commen t 1. The problem ma y b e reform ulated in a graph language. Constru t a graph G with the hameleons as v erti es, t w o v erti es b eing onne ted with an edge if and only if thes"
+      ]
+    },
+    {
+      "id": "imo-2018-sl-c2",
+      "year": 2018,
+      "shortlist_id": "C2",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2018-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2018SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2018SL.pdf"
+      },
+      "statement_en": "Queenie\nand\nHorst\npla\ny\na\ngame\non\na 20 x 20\n\nhessb\noard.\nIn\nthe\nb\neginning\nthe\nb\noard\nis\nempt\ny\n.\nIn\nev\nery\nturn,\nHorst\npla es\na\nbla\nk\nknigh\nt\non\nan\nempt\ny\nsquare\nin\nsu\nh\na\nw\na\ny\nthat\nhis\nnew\nknigh\nt\ndo\nes\nnot\natta\nk\nan\ny\nprevious\nknigh\nts.\nThen\nQueenie\npla es\na\nwhite\nqueen\non\nan\nempt\ny\nsquare.\nThe\ngame\ngets\n\u001cnished\nwhen\nsomeb\no\ndy\n annot\nmo\nv\ne.\nFind\nthe\nmaximal\np\nositiv\ne K\nsu\nh\nthat,\nregardless\nof\nthe\nstrategy\nof\nQueenie,\nHorst\n an\nput\nat\nleast K\nknigh\nts\non\nthe\nb\noard.\n(A\nrmenia)",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": false,
+        "strength": "graph_like_statement",
+        "matched_terms": [
+          "grid",
+          "knight"
+        ],
+        "reason": "Matched graph terms: grid, knight"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "Queenie and Horst pla y a game on a 20 x 20 hessb oard. In the b eginning the b oard is empt y . In ev ery turn, Horst pla es a bla k knigh t on an empt y square in su h a w a y that his new knigh t do es not atta",
+        "ie and Horst pla y a game on a 20 x 20 hessb oard. In the b eginning the b oard is empt y . In ev ery turn, Horst pla es a bla k knigh t on an empt y square in su h a w a y that his new knigh t do es not atta k an y previous knigh ts. Then Queenie pla es a white que"
+      ]
+    },
+    {
+      "id": "imo-2019-sl-c3",
+      "year": 2019,
+      "shortlist_id": "C3",
+      "country": "USA",
+      "source": {
+        "source_id": "src-imo-2019-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2019SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2019SL.pdf"
+      },
+      "statement_en": "Let n be a positive integer. Harry has n coins lined up on his desk, each showing\nheads or tails. He repeatedly does the following operation: if there are k coins showing heads\nand k > 0, then he flips the kth coin over; otherwise he stops the process. (For example, the\nprocess starting with THT would be THT -> HHT -> HTT -> TTT , which takes three\nsteps.)\nLettingC denote the initial configuration (a sequence of n H's and T 's), write lpCq for the\nnumber of steps needed before all coins show T . Show that this number lpCq is finite, and\ndetermine its average value over all 2n possible initial configurations C.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "edge",
+          "graph",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: edge, graph, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "We represent the problem using a directed graph Gn whose vertices are the length-n strings of H's and T 's. The graph features an edge from each string to its success or (except for TT ̈ ̈ ̈ TT , which has no successor). We will also write ̄H \" T and ̄T \" H.",
+        "roughout all these solutions, we let Epnq denote the desired average value. Solution 1. We represent the problem using a directed graph Gn whose vertices are the length-n strings of H's and T 's. The graph features an edge from each string to its success or (except",
+        "ese solutions, we let Epnq denote the desired average value. Solution 1. We represent the problem using a directed graph Gn whose vertices are the length-n strings of H's and T 's. The graph features an edge from each string to its success or (except for TT ̈ ̈ ̈ T"
+      ]
+    },
+    {
+      "id": "imo-2019-sl-c4",
+      "year": 2019,
+      "shortlist_id": "C4",
+      "country": "Canada",
+      "source": {
+        "source_id": "src-imo-2019-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2019SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2019SL.pdf"
+      },
+      "statement_en": "On a flat plane in Camelot, King Arthur builds a labyrinth L consisting of n walls,\neach of which is an infinite straight line. No two walls are par allel, and no three walls have a\ncommon point. Merlin then paints one side of each wall entire ly red and the other side entirely\nblue.\nAt the intersection of two walls there are four corners: two d iagonally opposite corners\nwhere a red side and a blue side meet, one corner where two red s ides meet, and one corner\nwhere two blue sides meet. At each such intersection, there i s a two-way door connecting the\ntwo diagonally opposite corners at which sides of different c olours meet.\nAfter Merlin paints the walls, Morgana then places some knig hts in the labyrinth. The\nknights can walk through doors, but cannot walk through wall s.\nLet kpLq be the largest number k such that, no matter how Merlin paints the labyrinth L,\nMorgana can always place at least k knights such that no two of them can ever meet. For\neachn, what are all possible values for kpLq, where L is a labyrinth with n walls?",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "component",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "knight",
+          "vertex",
+          "walk"
+        ],
+        "reason": "Matched graph terms: coloring, component, connected, cycle, edge, graph, knight, vertex, walk"
+      },
+      "decision": "candidate",
+      "evidence": [
+        ". We now show that no matter how Merlin paints the n walls, Morgana can place at least n ` 1 knights. No matter how the walls are painted, there are exact ly ` n 2 ̆ intersection points, each of which corresponds to a single edge in G. Consider adding the edges of G",
+        "equentially and note that each edge reduces the number of connected componen ts by at most one. Therefore the number of connected components of G is at least ` n` 1 2 ̆ ` 1 ́ ` n 2 ̆ \" n ` 1. If Morgana places a knight in regions corresponding to different connected",
+        "̆ ` 1 regions, proving the claim. Now let G be the graph with vertices given by the ` n` 1 2 ̆ ` 1 regions, and with two regions connected by an edge if there is a door between them. We now show that no matter how Merlin paints the n walls, Morgana can place at least",
+        "umbering. For example, it can be shown that the unbounded regions are nu mbered 0, 1, . . . , n ́ 1, n, n ́ 1, . . . , 1 as one cycles around them, that the regions labelled 0 and n are the only regions in their connected components, and that each other connected"
+      ]
+    },
+    {
+      "id": "imo-2019-sl-c5",
+      "year": 2019,
+      "shortlist_id": "C5",
+      "country": "Croatia",
+      "source": {
+        "source_id": "src-imo-2019-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2019SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2019SL.pdf"
+      },
+      "statement_en": "On a certain social network, there are 2019 users, some pairs of which are friends,\nwhere friendship is a symmetric relation. Initially, there are 1010 people with 1009 friends each\nand 1009 people with 1010 friends each. However, the friendships are rather unstable , so events\nof the following kind may happen repeatedly, one at a time:\nLetA,B, and C be people such that A is friends with both B andC, but B andC\nare not friends; then B andC become friends, but A is no longer friends with them.\nProve that, regardless of the initial friendships, there ex ists a sequence of such events after\nwhich each user is friends with at most one other user.\n(Croatia)\n\n[[PAGE 9]]\nShortlisted problems 7",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "component",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "hamiltonian",
+          "network",
+          "tree",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, component, connected, cycle, edge, graph, hamiltonian, network, tree, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "009 and 1009 of which have degree 1010. One is allowed to perform operations on G of the following kind: Suppose that vertex A is adjacent to two distinct vertices B and C which are not adjacent to each other. Then one may remove the edges AB and AC from G and add the",
+        "ther adjacent or have at least one neighb our in common. Hence the given graph satisfies the following condition: Every connected component of G with at least three vertices is not complete and has a vertex of odd degree. (1) We will show that if a graph G satisfies co",
+        "e edges and vertices. All of the solutions presented below will use this reformula tion. Solution 1. Note that the given graph is connected, since the total degre e of any two vertices is at least 2018 and hence they are either adjacent or have at least one neighb our",
+        ". But in this case, G1 would be a complete graph minus the single edge BC , and hence has at least 4 vertices since G1 is not a 4-cycle. If we let D be a third vertex of G1, then removing edges BA and BD and adding in edge AD does not disconnect G1. We are then don"
+      ]
+    },
+    {
+      "id": "imo-2019-sl-c6",
+      "year": 2019,
+      "shortlist_id": "C6",
+      "country": "USA",
+      "source": {
+        "source_id": "src-imo-2019-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2019SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2019SL.pdf"
+      },
+      "statement_en": "Let n > 1 be an integer. Suppose we are given 2n points in a plane such that\nno three of them are collinear. The points are to be labelled A1, A2, . . . , A2n in some order.\nWe then consider the 2n angles =A1A2A3, =A2A3A4, . . . , =A2n ́ 2A2n ́ 1A2n, =A2n ́ 1A2nA1,\n=A2nA1A2. We measure each angle in the way that gives the smallest posi tive value (i.e.\nbetween 0 ̋ and 180 ̋ ). Prove that there exists an ordering of the given points suc h that the\nresulting 2n angles can be separated into two groups with the sum of one gro up of angles equal\nto the sum of the other group.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "connected",
+          "path",
+          "vertex",
+          "walk"
+        ],
+        "reason": "Matched graph terms: connected, path, vertex, walk"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "we connect Pi andQj with a line segment, the line segment will intersect with the linel. Denote the intersection as Iij. If Pi is connected to Qj and Qk, where j < k, then Iij and Iik are two different points, because Pi, Qj and Qk are not collinear. Now we define a \"s",
+        "ins to partition all the 2n angles into those where s is rotated anticlockwise, and the others. Solution 2. When tracing a cyclic path through the Ai in order, with straight line segments between consecutive points, let θi be the exterior angle at Ai, with a sign",
+        "te the proof. We prove the claim by induction. For brevity, we use the notat ion =Pi to denote whichever of the 2n angles has its vertex at Pi, and =Qi similarly. First let n \" 2. If the four points can be arranged to form a convex quadrilat eral, then the four line",
+        "all the angles is zero. Given an ordering A1,...,A 2n of the points, we shall assign weights according to the fol- lowing recipe: walk in order from point to point, and assign t he left turns ` 1 and the right turns ́ 1. This is the same weighting as in Solution"
+      ]
+    },
+    {
+      "id": "imo-2019-sl-c8",
+      "year": 2019,
+      "shortlist_id": "C8",
+      "country": "Thailand",
+      "source": {
+        "source_id": "src-imo-2019-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2019SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2019SL.pdf"
+      },
+      "statement_en": "Alice has a map of Wonderland, a country consisting of n >= 2 towns. For every\npair of towns, there is a narrow road going from one town to the other. One day, all the roads\nare declared to be \"one way\" only. Alice has no information on the direction of the roads, but\nthe King of Hearts has offered to help her. She is allowed to ask him a number of questions.\nFor each question in turn, Alice chooses a pair of towns and th e King of Hearts tells her the\ndirection of the road connecting those two towns.\nAlice wants to know whether there is at least one town in Wonde rland with at most one\noutgoing road. Prove that she can always find out by asking at m ost 4n questions.\nComment. This problem could be posed with an explicit statement about points being awarded for\nweaker bounds cn for some c > 4, in the style of IMO 2014 Problem 6.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "component",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "map",
+          "tree",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, component, connected, cycle, edge, graph, map, tree, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "at least n ́ 8 questions having been asked. Note that each tree component contains at least one vertex wi th no outgoing edges. Colour one such vertex in each tree component red. Phase 2. Let V1, V2 and V3 be the three of the red vertices whose components are smal",
+        "onsider the undirected graph formed by edg es whose directions are known. The phase terminates when there are exactly 8 connected components whose undirected graphs are trees. The following invariant is maintained: in a compo nent with k vertices whose undirected graph",
+        "hase, we consider the undirected graph formed by edg es whose directions are known. The phase terminates when there are exactly 8 connected components whose undirected graphs are trees. The following invariant is maintained: in a compo nent with k vertices whose undire",
+        "n ` k ́ 1 questions have been asked. Furthermore, the undirected graph of roads within S whose directions are known contains no cycles (as T is no longer a member of S, all questions asked in this phase involvedT and the graph was a tree before this phase started)"
+      ]
+    },
+    {
+      "id": "imo-2019-sl-c9",
+      "year": 2019,
+      "shortlist_id": "C9",
+      "country": "Italy",
+      "source": {
+        "source_id": "src-imo-2019-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2019SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2019SL.pdf"
+      },
+      "statement_en": "For any two different real numbers x and y, we define Dpx,y q to be the unique\nintegerd satisfying 2d <= | x  ́ y| < 2d` 1. Given a set of reals F , and an element x P F , we say\nthat the scales of x in F are the values of Dpx,y q for y P F with x ‰ y.\nLetk be a given positive integer. Suppose that each member x of F has at most k different\nscales in F (note that these scales may depend on x). What is the maximum possible size of F ?\n(Italy)\n\n[[PAGE 10]]\n8 Bath — UK, 11th–22nd July 2019",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "graph",
+          "tree"
+        ],
+        "reason": "Matched graph terms: graph, tree"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "ht k, allocating a real number to each leaf, and trying to make the scale between the values of two leaves dependent only on the (graph) distance between them. The following construction makes this more precise. We build up sets Fk recursively. Let F0 \" t 0u, and t",
+        "is then the same as in Sol ution 1. Comment 2. Another possible set F containing 2k members could arise from considering a binary tree of height k, allocating a real number to each leaf, and trying to make the scale between the values of two leaves dependent only"
+      ]
+    },
+    {
+      "id": "imo-2020-sl-c4",
+      "year": 2020,
+      "shortlist_id": "C4",
+      "country": "Croatia",
+      "source": {
+        "source_id": "src-imo-2020-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2020SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2020SL.pdf"
+      },
+      "statement_en": "The Fibonacci numbers F0,F 1,F 2,... are defined inductively by F0 \" 0,F1 \" 1, and\nFn` 1 \" Fn ` Fn ́ 1 for n >= 1. Given an integer n >= 2, determine the smallest size of a set S of\nintegers such that for every k \" 2, 3,...,n there exist some x,y PS such that x  ́ y \" Fk.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "cycle",
+          "edge",
+          "graph",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cycle, edge, graph, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "a pair with x ́ y \" F1 as well.) We will say that the length of the edge px,y q is |x ́ y|. We claim that the graph contains no cycle. For the sake of cont radiction, suppose that the graph contains a cycle px1,...,x lq, and let the longest edge in the cycle be p",
+        "lements of S. For each 1 <= k <= d, choose two elementsx,y PS such that x ́ y \" F2k ́ 1, and add the pair px,y q to the graph as edge. (Note that by the problem's constraints, there must be a pair px,y q with x ́ y \" F2k ́ 1 for every 3 <= 2k ́ 1 <= 2d ́ 1 <=",
+        "atisfies the conditions then |S| >= n 2 ` 1. Let d \" rn{2s, so n <= 2d <= n ` 1. In order to prove that |S| >= d ` 1, construct a graph as follows. Let the vertices of the graph be the elements of S. For each 1 <= k <= d, choose two elementsx,y PS such that x ́ y",
+        "en |S| >= n 2 ` 1. Let d \" rn{2s, so n <= 2d <= n ` 1. In order to prove that |S| >= d ` 1, construct a graph as follows. Let the vertices of the graph be the elements of S. For each 1 <= k <= d, choose two elementsx,y PS such that x ́ y \" F2k ́ 1, and add the pair p"
+      ]
+    },
+    {
+      "id": "imo-2020-sl-c6",
+      "year": 2020,
+      "shortlist_id": "C6",
+      "country": "Hungary",
+      "source": {
+        "source_id": "src-imo-2020-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2020SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2020SL.pdf"
+      },
+      "statement_en": "4n coins of weights 1, 2, 3,..., 4n are given. Each coin is colored in one of n colors\nand there are four coins of each color. Show that all these coi ns can be partitioned into two\nsets with the same total weight, such that each set contains t wo coins of each color.\n(Hungary)\n\n[[PAGE 9]]\nShortlisted problems 7",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring",
+          "complete_graph_language",
+          "component",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "matching",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring, complete_graph_language, component, connected, cycle, edge, graph, matching, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "n C is even (it equals twice the number of vertices in G1). Hence all the edges can be colored red and blue so that any two edges adjacent in C have different colors (one may move along C and color the edges one by one alternating red and blue colors). Thus in G1 each",
+        "4n coins of weights 1, 2, 3,..., 4n are given. Each coin is colored in one of n colors and there are four coins of each color. Show that all these coi ns can be partitioned into two sets with the s",
+        "multi-graphG (i.e., a graph with loops and multiple edges allowed) on n vertices, so that each vertex corresponds to a color. For each pair of co ins fromS, we add an edge between the vertices corresponding to the colors of those coins. Not e that each vertex has degre",
+        "or (i.e., each vertex has equal red and blue degrees). To complete the solution, it suffices to provide such a colorin g for each component G1 ofG. Since all degrees of the vertices are even, in G1 there exists an Euler circuit C (i.e., a circuit passing through each e"
+      ]
+    },
+    {
+      "id": "imo-2021-sl-c1",
+      "year": 2021,
+      "shortlist_id": "C1",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2021-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2021SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2021SL.pdf"
+      },
+      "statement_en": "Let S be an infinite set of positive integers, such that there exist four pairwise distinct\na, b, c, d P S with gcdp a, b q ‰ gcdp c, d q . Prove that there exist three pairwise distinct x, y, z P S\nsuch that gcdp x, y q \" gcdp y, z q ‰ gcdp z, x q .",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "coloring",
+          "edge",
+          "graph",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: coloring, edge, graph, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "β 2q ‰ d1 . Comment. The situation can be modelled as a complete graph on the infinite vertex set S, where every edge t s, t u is colored by cp s, t q :\" gcdp s, t q . For every vertex the incident edges carry only finitely many different colors, and by the problem s",
+        "d1 and gcdp β1, β 2q ‰ d1 . Comment. The situation can be modelled as a complete graph on the infinite vertex set S, where every edge t s, t u is colored by cp s, t q :\" gcdp s, t q . For every vertex the incident edges carry only finitely many different colors,",
+        "dp β1, β 2q ‰ d or gcdp γ, β 1q \" gcdp γ, β 2q \" d1 and gcdp β1, β 2q ‰ d1 . Comment. The situation can be modelled as a complete graph on the infinite vertex set S, where every edge t s, t u is colored by cp s, t q :\" gcdp s, t q . For every vertex the incident ed",
+        "p γ, β 1q \" gcdp γ, β 2q \" d1 and gcdp β1, β 2q ‰ d1 . Comment. The situation can be modelled as a complete graph on the infinite vertex set S, where every edge t s, t u is colored by cp s, t q :\" gcdp s, t q . For every vertex the incident edges carry only finitely"
+      ]
+    },
+    {
+      "id": "imo-2021-sl-c4",
+      "year": 2021,
+      "shortlist_id": "C4",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2021-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2021SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2021SL.pdf"
+      },
+      "statement_en": "The kingdom of Anisotropy consists of n cities. For every two cities there exists exactly\none direct one-way road between them. We say that a path from X to Y is a sequence of roads\nsuch that one can move from X to Y along this sequence without returning to an already\nvisited city. A collection of paths is called diverse if no road belongs to two or more paths in\nthe collection.\nLet A and B be two distinct cities in Anisotropy. Let NAB denote the maximal number of\npaths in a diverse collection of paths from A to B. Similarly, let NBA denote the maximal num-\nber of paths in a diverse collection of paths from B to A. Prove that the equality NAB \" NBA\nholds if and only if the number of roads going out from A is the same as the number of roads\ngoing out from B.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cycle",
+          "edge",
+          "graph",
+          "path",
+          "route",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cycle, edge, graph, path, route, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "passing through some cities more than once), then there is a path from X to Y consisting of some roads in the route. Indeed, any cycle in the route may be removed harmlessly; after some removals one obtains a path. Say that a path is short if it consists of one or",
+        "C /axisshort/axisshort/arrowaxisrightB and A /axisshort/axisshort/arrowaxisrightC are some paths. In this case, we recombine the edges to form two new paths A -> C -> B and A /axisshort/axisshort/arrowaxisrightC /axisshort/axisshort/arrowaxisrightB (removing cycle",
+        "short paths from B to A, we infer | Q| \" | P 1 | ́ p| A| ` 1q ` | B| >= NAB ` p b ́ aq , as desired. Solution 2. We recall some graph-theoretical notions. Let G be a finite graph, and let V be the set of its vertices; fix two distinct vertices s, t P V . An p s,",
+        "of Anisotropy consists of n cities. For every two cities there exists exactly one direct one-way road between them. We say that a path from X to Y is a sequence of roads such that one can move from X to Y along this sequence without returning to an already visited"
+      ]
+    },
+    {
+      "id": "imo-2021-sl-c5",
+      "year": 2021,
+      "shortlist_id": "C5",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2021-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2021SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2021SL.pdf"
+      },
+      "statement_en": "Let n and k be two integers with n > k >= 1. There are 2n ` 1 students standing in\na circle. Each student S has 2k neighbours — namely, the k students closest to S on the right,\nand the k students closest to S on the left.\nSuppose that n ` 1 of the students are girls, and the other n are boys. Prove that there is\na girl with at least k girls among her neighbours.",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "cycle",
+          "graph",
+          "route"
+        ],
+        "reason": "Matched graph terms: cycle, graph, route"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "entire graph can be contained between two lines of slope 1{ m. In general these bounding lines touch the graph just once in each cycle of m points, since lines of slope 1{ m hit points with integer coordinates only once per m units. The unique (in one cycle) lower",
+        "f of Raney's lemma different from the one used above. If we plot the partial sums sn \" x1 ` ̈ ̈ ̈ ` xn as a function of n, the graph of sn has an average slope of 1{ m, because sm` n \" sn ` 1. The entire graph can be contained between two lines of slope 1{ m. In",
+        "lve the problem, is the following Claim (Gas stations problem). Assume that there are several fuel stations located on a circular route which together contain just enough gas to make one trip around. Then one can make it all the way around, starting at the right st"
+      ]
+    },
+    {
+      "id": "imo-2021-sl-c6",
+      "year": 2021,
+      "shortlist_id": "C6",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2021-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2021SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2021SL.pdf"
+      },
+      "statement_en": "A hunter and an invisible rabbit play a game on an infinite square grid. First the\nhunter fixes a colouring of the cells with finitely many colours. The rabbit then secretly chooses\na cell to start in. Every minute, the rabbit reports the colour of its current cell to the hunter,\nand then secretly moves to an adjacent cell that it has not visited before (two cells are adjacent\nif they share a side). The hunter wins if after some finite time either\n• the rabbit cannot move; or\n• the hunter can determine the cell in which the rabbit started.\nDecide whether there exists a winning strategy for the hunter.\n\n[[PAGE 7]]\nShortlisted problems 7",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_statement",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring",
+          "grid"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring, grid"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "a cell to start in. Every minute, the rabbit reports the colour of its current cell to the hunter, and then secretly moves to an adjacent cell that it has not visited before (two cells are adjacent if they share a side). The hunter wins if after some finite time eith",
+        "A hunter and an invisible rabbit play a game on an infinite square grid. First the hunter fixes a colouring of the cells with finitely many colours. The rabbit then secretly chooses a cell to start in. Every minute, the rabbit reports th",
+        "A hunter and an invisible rabbit play a game on an infinite square grid. First the hunter fixes a colouring of the cells with finitely many colours. The rabbit then secretly chooses a cell to start in."
+      ]
+    },
+    {
+      "id": "imo-2021-sl-c7",
+      "year": 2021,
+      "shortlist_id": "C7",
+      "country": null,
+      "source": {
+        "source_id": "src-imo-2021-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2021SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2021SL.pdf"
+      },
+      "statement_en": "Consider a checkered 3m x 3m square, where m is an integer greater than 1. A frog\nsits on the lower left corner cell S and wants to get to the upper right corner cell F . The frog\ncan hop from any cell to either the next cell to the right or the next cell upwards.\nSome cells can be sticky, and the frog gets trapped once it hops on such a cell. A set X of\ncells is called blocking if the frog cannot reach F from S when all the cells of X are sticky. A\nblocking set is minimal if it does not contain a smaller blocking set.\n(a) Prove that there exists a minimal blocking set containing at least 3m2  ́ 3m cells.\n(b) Prove that every minimal blocking set contains at most 3m2 cells.\nNote. An example of a minimal blocking set for m \" 2 is shown below. Cells of the set X are marked\nby letters x.\nS\nF\nx\nx\nx\nx\nxx",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring",
+          "connected",
+          "grid",
+          "path"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring, connected, grid, path"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "o directions in order to have sufficiently large area. Note that for any two consecutive cells in the chain the colouring of some neighbouring cells is uniquely defined (see Figure 5). In particular, this observation gives a corresponding rectangle for the chains of heigh",
+        "ering set X. One can regard the blue cells as those reachable from F by anti-hops , i.e. moves downwards and to the left. We also colour all cells in X green . It follows from the definition of the blocking set that no cell will be coloured twice. In Figure 2 we sho",
+        "ured correctly. If they were expanded along different axes (see Figure 11(b)) then the two chains have a common point and must be connected in one chain. (These arguments work for 2 x 3 and 1 x 3 rectangles in a similar manner.) Comment 1. We do not a priori know wheth",
+        "such hops. Hence 2R >= G ` p R ́ 1q , or equivalently G <= R ` 1. In order to prove the inequality G <= B ` 1, we turn over the board and apply the similar arguments. Therefore we get 9m2 >= B ` R ` G >= 3G ́ 2, so G <= 3m2. [[PAGE 36]] 36 Saint-Petersburg — Ru"
+      ]
+    },
+    {
+      "id": "imo-2022-sl-c3",
+      "year": 2022,
+      "shortlist_id": "C3",
+      "country": "Colombia",
+      "source": {
+        "source_id": "src-imo-2022-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2022SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2022SL.pdf"
+      },
+      "statement_en": "In each square of a garden shaped like a2022x 2022 board, there is initially a tree\nof height 0. A gardener and a lumberjack alternate turns playing the following game, with the\ngardener taking the first turn:\n• The gardener chooses a square in the garden. Each tree on that square and all the\nsurrounding squares (of which there are at most eight) then becomes one unit taller.\n• The lumberjack then chooses four different squares on the board. Each tree of positive\nheight on those squares then becomes one unit shorter.\nWe say that a tree ismajestic if its height is at least106. Determine the largest numberK\nsuch that the gardener can ensure there are eventuallyK majestic trees on the board, no matter\nhow the lumberjack plays.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "grid",
+          "map",
+          "tree"
+        ],
+        "reason": "Matched graph terms: coloring, grid, map, tree"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "rategy to ensure there are never more than5N 2 majestic trees. Giving the squares of the board coordinates in the natural manner, colour each square where at least one of its coordinates are divisible by3, shown below for a9x 9 board: Then, as each 3x 3 square on th",
+        "In each square of a garden shaped like a2022x 2022 board, there is initially a tree of height 0. A gardener and a lumberjack alternate turns playing the following game, with the gardener",
+        "5 squares on a 3x 3 board. In the modified game, after the gardener chooses a3x 3 subboard on the board, the lumberjack chooses a map in this subboard, and the total result of the two moves is that each tree marked on the map increases its height by 1, each tree",
+        "In each square of a garden shaped like a2022x 2022 board, there is initially a tree of height 0. A gardener and a lumberjack alternate turns playing the following game, with the gardener taking the first turn: • T"
+      ]
+    },
+    {
+      "id": "imo-2022-sl-c8",
+      "year": 2022,
+      "shortlist_id": "C8",
+      "country": "Serbia",
+      "source": {
+        "source_id": "src-imo-2022-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2022SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2022SL.pdf"
+      },
+      "statement_en": "Alice fills the fields of annxn board with numbers from1 to n2, each number being used\nexactly once. She then counts the total number of good paths on the board.A good pathis a\nsequence of fields of arbitrary length (including1) such that:\n(i) The first field in the sequence is one that is only adjacent to fields with larger numbers,\n(ii) Each subsequent field in the sequence is adjacent to the previous field,\n(iii) The numbers written on the fields in the sequence are in increasing order.\nTwo fields are considered adjacent if they share a common side. Find the smallest possible\nnumber of good paths Alice can obtain, as a function ofn.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "complete_graph_language",
+          "connected",
+          "cycle",
+          "grid",
+          "path",
+          "tree"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, complete_graph_language, connected, cycle, grid, path, tree"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "d pathis a sequence of fields of arbitrary length (including1) such that: (i) The first field in the sequence is one that is only adjacent to fields with larger numbers, (ii) Each subsequent field in the sequence is adjacent to the previous field, (iii) The numbers wr",
+        "imize the sum of the non-well entries, i.e. of the entries inB corresponding to the non-wells inA. We note that we can ascribe to each pair of adjacent fields the value of the lower assigned number and that the sum of non-well entries will then equal to the sum of the",
+        "t of squares, those that have a value of1 in B, such that no two unmarked squares are adjacent and that the marked squares form a connected tree with respect to adjacency. Forn\" 1 and n\" 2 the markings are respectively the lone field and the L-trimino. Now, forn> 2, le",
+        "e will mark all squares of the formpl,jq forl>i andpi` 2k,j ̆ 1q. One can easily see that no set of marked fields will produce a cycle, that the only fields of the unmarked form p1, 6k`sq,p2` 2l` 1, 6k`s ̆ 1q andp2` 2l, 6k`s` 3 ̆ 1q and that no two are adjacent, s"
+      ]
+    },
+    {
+      "id": "imo-2023-sl-c1",
+      "year": 2023,
+      "shortlist_id": "C1",
+      "country": "Thailand",
+      "source": {
+        "source_id": "src-imo-2023-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2023SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2023SL.pdf"
+      },
+      "statement_en": "Letm andn be positive integers greater than1. In each unit square of anmxn grid\nlies a coin with its tail-side up. Amove consists of the following steps:\n1. select a 2x 2 square in the grid;\n2. flip the coins in the top-left and bottom-right unit squares;\n3. flip the coin in either the top-right or bottom-left unit square.\nDetermine all pairspm,nq for which it is possible that every coin shows head-side up after a\nfinite number of moves.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "graph_like_statement",
+        "matched_terms": [
+          "domino_polyomino",
+          "grid"
+        ],
+        "reason": "Matched graph terms: domino_polyomino, grid"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "can flip all coins in any2x 3 (or 3x 2) by using a minimum of two moves. Furthermore, whenmn is odd with3|mn, it is impossible to tile anmxn table with one type of L-tromino and its180 ̋-rotated L-tromino (disallowing rotations and reflections). The only known pro",
+        "Letm andn be positive integers greater than1. In each unit square of anmxn grid lies a coin with its tail-side up. Amove consists of the following steps: 1. select a 2x 2 square in the grid; 2. flip the coins"
+      ]
+    },
+    {
+      "id": "imo-2023-sl-c3",
+      "year": 2023,
+      "shortlist_id": "C3",
+      "country": "Netherlands",
+      "source": {
+        "source_id": "src-imo-2023-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2023SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2023SL.pdf"
+      },
+      "statement_en": "Let n be a positive integer. We arrange1` 2` ̈ ̈ ̈`n circles in a triangle withn\nrows, such that theith row contains exactlyi circles. The following figure shows the casen\" 6.\nn\" 6\nIn this triangle, aninja-path is a sequence of circles obtained by repeatedly going from a\ncircle to one of the two circles directly below it. In terms ofn, find the largest value ofk such\nthat if one circle from every row is coloured red, we can always find a ninja-path in which at\nleast k of the circles are red.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "path"
+        ],
+        "reason": "Matched graph terms: coloring, path"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "e to one of the two circles directly below it. In terms ofn, find the largest value ofk such that if one circle from every row is coloured red, we can always find a ninja-path in which at least k of the circles are red. Let n be a positive integer. We arrange1` 2` ̈ ̈",
+        "ithn rows, such that theith row contains exactlyi circles. The following figure shows the casen\" 6. n\" 6 In this triangle, aninja-path is a sequence of circles obtained by repeatedly going from a circle to one of the two circles directly below it. In terms ofn, fi"
+      ]
+    },
+    {
+      "id": "imo-2023-sl-c4",
+      "year": 2023,
+      "shortlist_id": "C4",
+      "country": "U.S.A.",
+      "source": {
+        "source_id": "src-imo-2023-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2023SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2023SL.pdf"
+      },
+      "statement_en": "Let n>= 2 be a positive integer. Paul has a1xn2 rectangular strip consisting ofn2\nunit squares, where theith square is labelled withi for all 1<= i<= n2. He wishes to cut the\nstrip into several pieces, where each piece consists of a number of consecutive unit squares, and\nthen translate (without rotating or flipping) the pieces to obtain annxn square satisfying the\nfollowing property: if the unit square in theith row andjth column is labelled withaij, then\naij ́pi`j ́ 1q is divisible byn.\nDetermine the smallest number of pieces Paul needs to make in order to accomplish this.\n(U.S.A.)\n\n[[PAGE 8]]\n6 Chiba, Japan, 2nd–13th July 2023",
+      "graph_signal": {
+        "in_statement": false,
+        "in_solution": true,
+        "strength": "central_solution_possible",
+        "matched_terms": [
+          "cell_adjacency",
+          "connected",
+          "cycle",
+          "edge",
+          "graph",
+          "vertex"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, connected, cycle, edge, graph, vertex"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "riginal circular strips, with the aim of removing the seam. • If the two squaresS and T come from the same circular strip and are adjacent, then the cut was unnecessary and we can simply remove the seam and reduce the number of required cuts by 1. The circular strips",
+        "qual to the total number of cut pieces. The goal is to prove thatΓ has at least2n ́ 1 edges. Since Γ has an Eulerian cycle, it is connected. For every1<=k<=n, pick one edge fromγk, delete it fromΓ to obtain a new graph Γ1. Since no two cyclesγi and γj share a common ed",
+        "ma to b. We make the following observations. • The cut pieces came from thekth initial piecek,k ` 1,...,k `n ́ 1 corresponds to a cycle γk (possibly of length1) containing the vertexk. • Since it is possible to rearrange the pieces into one single1xn2 strip, the gr",
+        "t not necessarily simple) graphΓ with vertices labelled by1,...,n , where a piece of the forma,a ` 1,...,b ́ 1 corresponds to an edge froma to b. We make the following observations. • The cut pieces came from thekth initial piecek,k ` 1,...,k `n ́ 1 corresponds t"
+      ]
+    },
+    {
+      "id": "imo-2023-sl-c6",
+      "year": 2023,
+      "shortlist_id": "C6",
+      "country": "Canada",
+      "source": {
+        "source_id": "src-imo-2023-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2023SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2023SL.pdf"
+      },
+      "statement_en": "Let N be a positive integer, and consider anNxN grid. A right-down path is a\nsequence of grid cells such that each cell is either one cell to the right of or one cell below the\nprevious cell in the sequence. Aright-up path is a sequence of grid cells such that each cell is\neither one cell to the right of or one cell above the previous cell in the sequence.\nProve that the cells of theNxN grid cannot be partitioned into less thanN right-down\nor right-up paths. For example, the following partition of the5x 5 grid uses 5 paths.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "edge",
+          "grid",
+          "path"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, edge, grid, path"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "emains a right-up path after removal ofQ. If the intersection ofQ and R occurs in casep5q, then this intersection has exactly two adjacent cells. After the removal of these two cells (as we remove Q), R is divided into two parts that are glued into a right-up path. Th",
+        "ersect any of the good parallelograms. Now, view these segments as mirrors, and consider a laser entering each of the 4N boundary edges (with starting direction being perpendicular to the edge), bouncing along these mirrors until it exits at some other edge. When a",
+        "Let N be a positive integer, and consider anNxN grid. A right-down path is a sequence of grid cells such that each cell is either one cell to the right of or one cell below the previ",
+        "Let N be a positive integer, and consider anNxN grid. A right-down path is a sequence of grid cells such that each cell is either one cell to the right of or one cell below the previous cell in the seq"
+      ]
+    },
+    {
+      "id": "imo-2023-sl-c7",
+      "year": 2023,
+      "shortlist_id": "C7",
+      "country": "Ukraine",
+      "source": {
+        "source_id": "src-imo-2023-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2023SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2023SL.pdf"
+      },
+      "statement_en": "The Imomi archipelago consists ofn>= 2 islands. Between each pair of distinct islands\nis a unique ferry line that runs in both directions, and each ferry line is operated by one of\nk companies. It is known that if any one of thek companies closes all its ferry lines, then\nit becomes impossible for a traveller, no matter where the traveller starts at, to visit all the\nislands exactly once (in particular, not returning to the island the traveller started at).\nDetermine the maximal possible value ofk in terms ofn.\n(Ukraine)\n\n[[PAGE 9]]\nShortlisted problems 7",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "coloring",
+          "complete_graph_language",
+          "edge",
+          "graph",
+          "hamiltonian",
+          "island_ferry",
+          "path"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, coloring, complete_graph_language, edge, graph, hamiltonian, island_ferry, path"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "olouri. Suppose the contrary, that some Hamiltonian path does not contain an edge of colouri. Then nodes with colouri can only be adjacent to nodes with colour less thani inside the Hamiltonian path. Since there are2i ́1 nodes with colouri and 2i ́1 ́ 1 nodes with col",
+        ". We reformulate the problem using graph theory. We have a complete graphKn on n nodes (corresponding to islands), and we want to colour the edges (corresponding to ferry lines) withk colours (corresponding to companies), so that every Hamiltonian path contains allk",
+        "The Imomi archipelago consists ofn>= 2 islands. Between each pair of distinct islands is a unique ferry line that runs in both directions, and each ferry line is operated by one of k companies. I",
+        "ulate the problem using graph theory. We have a complete graphKn on n nodes (corresponding to islands), and we want to colour the edges (corresponding to ferry lines) withk colours (corresponding to companies), so that every Hamiltonian path contains allk different"
+      ]
+    },
+    {
+      "id": "imo-2024-sl-c3",
+      "year": 2024,
+      "shortlist_id": "C3",
+      "country": "Belarus",
+      "source": {
+        "source_id": "src-imo-2024-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2024SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2024SL.pdf"
+      },
+      "statement_en": "Let n be a positive integer. There are 2n knights sitting at a round table. They\nconsist ofn pairs of partners, each pair of which wishes to shake hands. A pair can shake hands\nonly when next to each other. Every minute, one pair of adjacent knights swaps places.\nFind the minimum number of exchanges of adjacent knights such that, regardless of the\ninitial arrangement, every knight can meet her partner and shake hands at some time.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "complete_graph_language",
+          "knight",
+          "walk"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, complete_graph_language, knight, walk"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "artners, each pair of which wishes to shake hands. A pair can shake hands only when next to each other. Every minute, one pair of adjacent knights swaps places. Find the minimum number of exchanges of adjacent knights such that, regardless of the initial arrangement,",
+        "Let n be a positive integer. There are 2n knights sitting at a round table. They consist ofn pairs of partners, each pair of which wishes to shake hands. A pair can shake hands only when next to each other. Every minute, one pair of adjacent knights s",
+        "Let n be a positive integer. There are 2n knights sitting at a round table. They consist ofn pairs of partners, each pair of which wishes to shake hands. A pair can shake hands on",
+        "a chain containing the pillar, so no chains ever cross the pillar. l Proof 2. We begin by ignoring the seats, and let each knight walk freely to a predetermined destination. Each pair of knights will walk around the table to one of the two points on the circumfere"
+      ]
+    },
+    {
+      "id": "imo-2024-sl-c4",
+      "year": 2024,
+      "shortlist_id": "C4",
+      "country": "Hong Kong",
+      "source": {
+        "source_id": "src-imo-2024-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2024SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2024SL.pdf"
+      },
+      "statement_en": "On a board with2024 rows and 2023 columns, Turbo the snail tries to move from\nthe first row to the last row. On each attempt, he chooses to start on any cell in the first row,\nthen moves one step at a time to an adjacent cell sharing a common side. He wins if he reaches\nany cell in the last row. However, there are2022 predetermined, hidden monsters in2022 of\nthe cells, one in each row except the first and last rows, such that no two monsters share the\nsame column. If Turbo unfortunately reaches a cell with a monster, his attempt ends and he\nis transported back to the first row to start a new attempt. The monsters do not move.\nSuppose Turbo is allowed to taken attempts. Determine the minimum value ofn for which\nhe has a strategy that guarantees reaching the last row, regardless of the locations of the\nmonsters.",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "cell_adjacency",
+          "edge",
+          "grid",
+          "path"
+        ],
+        "reason": "Matched graph terms: cell_adjacency, edge, grid, path"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "first row to the last row. On each attempt, he chooses to start on any cell in the first row, then moves one step at a time to an adjacent cell sharing a common side. He wins if he reaches any cell in the last row. However, there are2022 predetermined, hidden monsters",
+        "n the second row, so Turbo will find the monster in row2 and his attempt will end. If the monster in the second row is not on the edge of the board (that is, it is in cellp2, iq with 2 <= i <= 2022), then Turbo takes the following two paths in his second and third",
+        "On a board with2024 rows and 2023 columns, Turbo the snail tries to move from the first row to the last row. On each attempt, he chooses to",
+        "guarantee to reach the last row in2 attempts. Next, we exhibit a strategy forn \" 3. On the first attempt, Turbo travels along the path p1, 1q -> p 2, 1q -> p 2, 2q -> ̈ ̈ ̈ -> p 2, 2023q. This path meets every cell in the second row, so Turbo will find the mons"
+      ]
+    },
+    {
+      "id": "imo-2024-sl-c8",
+      "year": 2024,
+      "shortlist_id": "C8",
+      "country": "Peru",
+      "source": {
+        "source_id": "src-imo-2024-shortlist",
+        "pdf_url": "https://www.imo-official.org/problems/IMO2024SL.pdf",
+        "local_pdf": "data/import_batches/extracted/imo_shortlist/pdf/IMO2024SL.pdf"
+      },
+      "statement_en": "Let n be a positive integer. Given ann x n board, the unit cell in the top left corner\nis initially coloured black, and the other cells are coloured white. We then apply a series of\ncolouring operations to the board. In each operation, we choose a2 x 2 square with exactly\none cell coloured black and we colour the remaining three cells of that2 x 2 square black.\nDetermine all values ofn such that we can colour the whole board black.\n(Peru)\n\n[[PAGE 9]]\nShortlisted problems 7",
+      "graph_signal": {
+        "in_statement": true,
+        "in_solution": true,
+        "strength": "statement_or_explicit_graph_signal",
+        "matched_terms": [
+          "coloring",
+          "connected",
+          "cycle",
+          "domino_polyomino",
+          "edge",
+          "graph",
+          "grid",
+          "tree"
+        ],
+        "reason": "Matched graph terms: coloring, connected, cycle, domino_polyomino, edge, graph, grid, tree"
+      },
+      "decision": "candidate",
+      "evidence": [
+        "Let n be a positive integer. Given ann x n board, the unit cell in the top left corner is initially coloured black, and the other cells are coloured white. We then apply a series of colouring operations to the board. In each operation, we",
+        "i, jq. The first operation implies there's anX at p1, 1q. Since the whole board is eventually coloured, every cell centre must be connected to at least one X. The collection of allXs forms a graphG. Figure 4: L-trominoes placements corresponding to colouring operations",
+        "t from the first must connect to an existingX. So allXs are connected to the firstX and G must be connected. Now, suppose G has a cycle. Consider the newestX involved in the cycle, it must connect to previousXs at at least two points. But this implies the correspon",
+        "s eventually coloured, every cell centre must be connected to at least one X. The collection of allXs forms a graphG. Figure 4: L-trominoes placements corresponding to colouring operations (left) and the corre- sponding X diagram (right). Claim 1. The graph G is a tree"
+      ]
+    }
+  ]
+}

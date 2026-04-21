@@ -1,0 +1,150 @@
+{
+  "id": "imo-1964-p4-three-topic-ramsey",
+  "title": "Три темы разговора и одноцветный треугольник, IMO 1964 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "monochromatic_triangle"
+    ],
+    "methods": [
+      "ramsey_theory",
+      "pigeonhole"
+    ],
+    "transformations": [
+      "students_to_complete_graph"
+    ],
+    "goal": [
+      "force_monochromatic_triangle"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "color_degree"
+    ],
+    "standard_idea_ids": [
+      "pigeonhole_principle"
+    ],
+    "local_score": 8,
+    "keywords": [
+      "imo-1964-p4-three-topic-ramsey",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Каждая пара из 17 учеников поговорила ровно на одну из трёх тем. Докажите, что найдутся трое учеников, которые попарно говорили между собой на одну и ту же тему.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-imomath-imo-1964"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это раскраска рёбер полного графа K_17 в три цвета; нужно найти одноцветный K_3.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-ramsey-from-one-vertex",
+      "title": "Одна вершина даёт шесть рёбер одного цвета",
+      "text": "Из выбранной вершины выходит 16 рёбер трёх цветов, значит хотя бы 6 из них одного цвета.",
+      "tags": [
+        "ramsey_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-close-or-complement",
+      "title": "Либо замыкаем треугольник, либо остаётся двухцветный K_6",
+      "text": "Если среди шести соседей есть ребро того же цвета, всё готово; иначе их полный граф раскрашен двумя цветами и содержит одноцветный треугольник.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Выберем ученика A. Среди 16 разговоров от A хотя бы 6 имеют одну тему, скажем первую; пусть это множество B. Если две вершины из B также говорили на первую тему, вместе с A они дают нужную тройку. Если нет, то все рёбра внутри B окрашены только двумя оставшимися цветами. По R(3,3)=6 в K_6 найдётся одноцветный треугольник. Значит в любом случае есть трое учеников, попарно говоривших на одну тему.",
+      "idea_ids": [
+        "idea-ramsey-from-one-vertex",
+        "idea-close-or-complement"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 8,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "ramsey_theory",
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "ramsey_theory",
+        "pigeonhole"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imomath-imo-1964",
+      "role": "statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

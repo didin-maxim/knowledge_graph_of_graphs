@@ -1,0 +1,128 @@
+{
+  "id": "imo-2019-c3-coin-process-digraph",
+  "title": "Процесс с монетами как ориентированный граф состояний, IMO Shortlist 2019 C3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "state_digraph",
+      "functional_graph",
+      "sink"
+    ],
+    "methods": [
+      "induction",
+      "recurrence"
+    ],
+    "transformations": [
+      "coin_process_to_state_graph"
+    ],
+    "goal": [
+      "average_stopping_time"
+    ],
+    "auxiliary_graph_type": [
+      "directed_state_graph"
+    ],
+    "invariants": [
+      "distance_to_sink"
+    ],
+    "keywords": [
+      "imo_2019_c3",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В ряд лежат \\(n\\) монет, каждая орлом или решкой вверх. Если сейчас ровно \\(k>0\\) монет орлом вверх, Гарри переворачивает \\(k\\)-ю монету; если орлов нет, процесс останавливается. Для начальной конфигурации \\(C\\) пусть \\(l(C)\\) — число шагов до остановки. Найдите среднее значение \\(l(C)\\) по всем \\(2^n\\) конфигурациям.",
+        "source_id": "src-imo-2019-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-state-digraph",
+      "title": "Ориентированный граф состояний",
+      "text": "Каждая конфигурация имеет единственного преемника, кроме финальной; средняя длина равна сумме расстояний до стока.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-recursive-copies",
+      "title": "Две копии графа меньшей длины",
+      "text": "Граф состояний для \\(n\\) монет строится из двух преобразованных копий графа для \\(n-1\\) монеты и одного соединяющего ребра.",
+      "tags": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Строим ориентированный граф \\(G_n\\), вершины которого — строки из \\(H,T\\) длины \\(n\\), а ребро ведёт из каждой нефинальной строки к её следующему состоянию. Тогда \\(l(C)\\) — расстояние от вершины \\(C\\) до стока \\(TT\\ldots T\\). Главная рекурсия официального решения описывает \\(G_n\\) через две копии \\(G_{n-1}\\): в одной к строкам приписывается \\(T\\), в другой строки переворачиваются, разворачиваются и получают \\(H\\); затем добавляется одно соединяющее ребро. Это даёт рекуррентную формулу для суммы всех расстояний до стока, а значит и для среднего значения.",
+      "idea_ids": [
+        "idea-state-digraph",
+        "idea-recursive-copies"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2019 C3, USA; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "induction",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "recurrence"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2019-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая структура используется в официальном решении, но не является самостоятельной переформулировкой исходного условия.",
+    "relations_status": "deep_done"
+  }
+}

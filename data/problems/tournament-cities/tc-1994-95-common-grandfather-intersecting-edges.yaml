@@ -1,0 +1,161 @@
+{
+  "id": "tc-1994-95-common-grandfather-intersecting-edges",
+  "title": "Общий дед и пересекающиеся рёбра, Турнир городов 1994/95",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "intersecting_edge_family",
+      "simple_graph",
+      "star",
+      "triangle"
+    ],
+    "methods": [
+      "case_analysis",
+      "double_counting",
+      "extremal_structure"
+    ],
+    "transformations": [
+      "children_to_edges_between_grandfathers"
+    ],
+    "goal": [
+      "large_common_vertex",
+      "degree_lower_bound"
+    ],
+    "auxiliary_graph_type": [
+      "grandfather_graph"
+    ],
+    "invariants": [
+      "pairwise_edge_intersection",
+      "degree_sum",
+      "edge_multiplicity"
+    ],
+    "keywords": [
+      "intersecting_edges",
+      "common_grandfather",
+      "star_or_triangle"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "20 детей в Простоквашино",
+        "text": "В Простоквашинской начальной школе учится всего 20 детей. У каждых двух из них есть общий дед. Докажите, что у одного из дедов в этой школе учится не менее 14 внуков и внучек.",
+        "source_id": "src-problems-98230",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В простом графе H выбрано 20 рёбер, причём любые два выбранных ребра имеют общую вершину. Докажите, что найдётся вершина, инцидентная хотя бы 14 выбранным рёбрам.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pairwise-intersecting-edges-star-or-triangle",
+      "title": "Попарно пересекающиеся рёбра — звезда или треугольник",
+      "text": "Если все выбранные рёбра не имеют общей вершины, то три из них образуют треугольник, а любое другое ребро должно пересекать все три стороны треугольника, что невозможно для ребра простого графа, если оно не является одной из этих сторон.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-three-grandfathers",
+      "title": "Три деда контролируют всех детей",
+      "text": "Если ни один из двух дедов выбранного ребёнка не является общим дедом для всех, то находятся ещё два ребёнка, которые вынуждают появление третьего деда. После этого любой другой дед нарушил бы условие общего деда с одним из трёх выбранных детей.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-star-or-triangle",
+      "title": "Звезда или треугольник",
+      "text": "Построим граф, вершины которого — деды, а каждый ребёнок задаёт ребро между двумя своими дедами. По условию любые два таких ребра имеют общий конец. Если все 20 рёбер имеют общий конец, то соответствующий дед имеет 20 внуков, и всё доказано. Иначе найдутся два ребра с общим концом X, скажем XY и XZ, и есть ребро, не проходящее через X. Чтобы пересечь и XY, и XZ, оно обязано быть YZ. Теперь любое выбранное ребро должно пересекать все три стороны треугольника XYZ. В простом графе это возможно только для одной из сторон этого треугольника. Значит, все 20 детей имеют дедов среди X,Y,Z. Сумма чисел внуков у X,Y,Z равна 40, потому что каждый ребёнок посчитан у двух дедов. Поэтому у одного из трёх дедов не меньше \\(\\lceil 40/3\\rceil=14\\) внуков.",
+      "idea_ids": [
+        "idea-pairwise-intersecting-edges-star-or-triangle"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "sol-three-grandfathers",
+      "title": "Опубликованное решение через трёх дедов",
+      "text": "Возьмём школьника A и двух его дедов X и Y. Если все школьники являются внуками X или все являются внуками Y, то всё доказано. Иначе найдётся школьник B, который не является внуком X; тогда его общий дед с A — это Y. Аналогично найдётся школьник C, который не является внуком Y; его общий дед с A — это X. У B и C есть общий дед Z. Теперь другого деда быть не может: его внук не имел бы общего деда с одним из детей A, B, C. Значит, все дети приходятся внуками только дедам X, Y, Z. Всего у них 40 внуков с учётом повторения, поэтому у одного из трёх дедов не меньше \\(\\lceil 40/3\\rceil=14\\) внуков.",
+      "idea_ids": [
+        "idea-three-grandfathers"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Осенний тренировочный вариант 1994/95, 8-9 класс, задача 4; на problems.ru указано 5 баллов и сложность 4-.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "intersecting_edges",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-98230",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-turgor-archive-1-25",
+      "role": "official_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "reviewed_no_links"
+  }
+}

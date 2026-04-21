@@ -1,0 +1,140 @@
+{
+  "id": "tc-1980-distinct-rows-delete-column",
+  "title": "Удаление столбца при различных строках, Олимпиада трёх городов 1980",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "binary_table",
+      "rows_as_vertices",
+      "essential_columns",
+      "forest"
+    ],
+    "methods": [
+      "delete_to_simplify",
+      "cycle_contradiction",
+      "forest_edge_bound"
+    ],
+    "transformations": [
+      "columns_to_edges",
+      "auxiliary_forest"
+    ],
+    "goal": [
+      "delete_redundant_feature",
+      "existence_of_safe_column"
+    ],
+    "auxiliary_graph_type": [
+      "essential_column_graph",
+      "forest"
+    ],
+    "invariants": [
+      "acyclicity",
+      "row_distinguishability",
+      "edge_count"
+    ],
+    "keywords": [
+      "distinct_rows",
+      "delete_column",
+      "essential_column_forest"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Таблица с различными строками",
+        "text": "В таблице N×N, заполненной числами, все строки различны: любые две строки отличаются хотя бы в одном элементе. Докажите, что можно вычеркнуть некоторый столбец так, что в оставшейся таблице снова все строки будут различны.",
+        "source_id": "src-problems-97761",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Есть N объектов и N признаков. Любые два объекта различаются хотя бы по одному признаку. Докажите, что существует признак, удаление которого не склеивает никакую пару объектов: после удаления этого признака любые два объекта всё ещё различаются хотя бы по одному из оставшихся признаков.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-essential-columns-form-forest",
+      "title": "Существенные столбцы образуют граф без циклов",
+      "text": "Если каждый столбец необходим, выберем для него пару строк, различающихся только в этом столбце. Эти пары становятся рёбрами графа на строках. Цикл невозможен: вдоль остальных рёбер значение в фиксированном столбце сохраняется, а на выбранном ребре должно измениться.",
+      "tags": [
+        "trees",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-essential-column-forest",
+      "title": "Граф существенных столбцов",
+      "text": "Назовём столбец существенным, если после его удаления какие-то две строки становятся одинаковыми. Тогда для такого столбца можно выбрать пару строк, которые отличаются ровно в этом столбце. Предположим, что все N столбцов существенны, и построим граф: вершины — строки, а для каждого столбца проведём ребро между выбранной для него парой строк. Если в этом графе есть цикл, возьмём на нём ребро, соответствующее столбцу c. На всех остальных рёбрах цикла строки имеют одинаковые значения в столбце c, потому что эти пары отличаются только в своих столбцах, не равных c. Значит, двигаясь по циклу от одного конца выбранного ребра к другому без этого ребра, получаем равенство значений в столбце c. Но выбранная пара должна отличаться в столбце c — противоречие. Значит, граф без циклов, а в графе на N вершинах без циклов не больше N-1 рёбер. Поэтому не все N столбцов существенны; несущественный столбец можно вычеркнуть.",
+      "idea_ids": [
+        "idea-essential-columns-form-forest"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Весна 1980, задача 2 для 8-10 классов; на problems.ru сложность 5.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "auxiliary_graph",
+        "forest"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-97761",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-turgor-archive-1-25",
+      "role": "official_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "id": "imo-2020-c6-colored-coins-eulerian-multigraph",
+  "title": "Цветные монеты и эйлеровы циклы в мультиграфе, IMO Shortlist 2020 C6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "multigraph",
+      "eulerian_components",
+      "colored_edges"
+    ],
+    "methods": [
+      "eulerian_cycle",
+      "alternating_coloring"
+    ],
+    "transformations": [
+      "coin_pairs_to_multigraph"
+    ],
+    "goal": [
+      "balanced_partition"
+    ],
+    "auxiliary_graph_type": [
+      "color_multigraph"
+    ],
+    "invariants": [
+      "even_degrees",
+      "equal_pair_sum"
+    ],
+    "keywords": [
+      "imo_2020_c6",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Даны \\(4n\\) монет весов \\(1,2,\\ldots,4n\\). Каждая монета окрашена в один из \\(n\\) цветов, причём каждого цвета ровно четыре монеты. Докажите, что монеты можно разбить на два набора равного суммарного веса так, чтобы в каждом наборе было по две монеты каждого цвета.",
+        "source_id": "src-imo-2020-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-complementary-pairs",
+      "title": "Пары с одинаковой суммой",
+      "text": "Монеты разбиваются на пары весов \\(1+4n,2+(4n-1),\\ldots\\), каждая пара имеет одну и ту же сумму.",
+      "tags": [
+        "matching"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-eulerian-multigraph",
+      "title": "Мультиграф цветов",
+      "text": "Цвета — вершины, пары монет — рёбра; все степени чётны, поэтому компоненты раскладываются на циклы.",
+      "tags": [
+        "eulerian_graphs"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Сначала разбиваем монеты на \\(2n\\) пар с суммой \\(4n+1\\). Теперь достаточно разделить эти пары на две группы по \\(n\\) пар так, чтобы каждый цвет встретился по два раза в каждой группе. Строим мультиграф: вершины — цвета, а каждая пара монет даёт ребро между цветами этих двух монет, петля разрешена. У каждой вершины степень 4, потому что монет каждого цвета четыре. Значит, каждая компонента эйлерова и её рёбра можно пройти по циклам. Раскрашивая рёбра каждого цикла попеременно в два цвета, получаем разбиение пар на две группы; в каждой вершине поровну инцидентных рёбер каждого цвета. Поэтому каждая итоговая группа содержит по две монеты каждого цвета и имеет одинаковый вес.",
+      "idea_ids": [
+        "idea-complementary-pairs",
+        "idea-eulerian-multigraph"
+      ],
+      "standard_idea_ids": [
+        "alternating_paths"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2020 C6, Hungary; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "matching",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "eulerian_cycle",
+        "alternating_coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2020-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_absent_reason": "Графовая структура используется в официальном решении, но не является самостоятельной переформулировкой исходного условия.",
+    "relations_status": "deep_done"
+  }
+}

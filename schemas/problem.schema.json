@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Problem",
+  "type": "object",
+  "required": ["id", "title", "statements", "ideas", "solutions", "difficulty", "tags", "sources", "editorial"],
+  "properties": {
+    "problem_profile": {
+      "type": "object",
+      "description": "Optional navigation profile used for relation suggestions and import review.",
+      "properties": {
+        "objects": {"type": "array", "items": {"type": "string"}},
+        "methods": {"type": "array", "items": {"type": "string"}},
+        "transformations": {"type": "array", "items": {"type": "string"}},
+        "goal": {"type": "array", "items": {"type": "string"}},
+        "auxiliary_graph_type": {"type": "array", "items": {"type": "string"}},
+        "invariants": {"type": "array", "items": {"type": "string"}},
+        "keywords": {"type": "array", "items": {"type": "string"}},
+        "status": {"type": "string"}
+      }
+    }
+  }
+}

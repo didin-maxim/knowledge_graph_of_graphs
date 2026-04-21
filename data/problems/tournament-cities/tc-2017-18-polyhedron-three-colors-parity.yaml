@@ -1,0 +1,157 @@
+{
+  "id": "tc-2017-18-polyhedron-three-colors-parity",
+  "title": "Трёхцветные вершины многогранника, Турнир городов 2017/18",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "polyhedron_graph",
+      "face_coloring",
+      "degree_three_vertices",
+      "subgraph"
+    ],
+    "methods": [
+      "handshaking_lemma",
+      "parity",
+      "path_pairing"
+    ],
+    "transformations": [
+      "delete_same_color_face_edges",
+      "two_color_boundary_subgraph"
+    ],
+    "goal": [
+      "even_number_of_three_color_vertices"
+    ],
+    "auxiliary_graph_type": [
+      "color_boundary_subgraph"
+    ],
+    "invariants": [
+      "degree_parity",
+      "cubic_polyhedron_graph",
+      "face_color_boundaries"
+    ],
+    "keywords": [
+      "polyhedron",
+      "three_colors",
+      "handshaking",
+      "odd_degree_vertices"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Раскраска граней многогранника",
+        "text": "В каждой вершине выпуклого многогранника сходятся три грани. Каждая грань покрашена в красный, жёлтый или синий цвет. Докажите, что число вершин, в которых сходятся грани трёх разных цветов, чётно.",
+        "source_id": "src-problems-66699",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В графе выпуклого многогранника каждая вершина имеет степень \\(3\\). Рёбра, у которых две прилегающие грани имеют одинаковый цвет, удаляются. Тогда вершины, около которых встречаются три цвета, становятся вершинами степени \\(3\\), вершины с двумя цветами — степени \\(2\\), а одноцветные — степени \\(0\\). Нужно доказать, что число вершин нечётной степени чётно.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-delete-monochromatic-edges",
+      "title": "Удалить одноцветные рёбра",
+      "text": "После удаления рёбер между гранями одного цвета нужные вершины становятся ровно нечётными вершинами полученного графа.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-bicolor-paths-pairing",
+      "title": "Парные концы двухцветных путей",
+      "text": "Если идти по рёбрам между двумя фиксированными цветами граней, трёхцветные вершины оказываются концами непересекающихся путей и разбиваются на пары.",
+      "tags": [
+        "eulerian_graphs"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-handshaking",
+      "title": "Лемма о рукопожатиях",
+      "text": "Рассмотрим граф многогранника и удалим все рёбра, по обе стороны от которых лежат грани одного цвета. В полученном графе трёхцветная вершина имеет степень \\(3\\), вершина с двумя цветами имеет степень \\(2\\), а одноцветная вершина имеет степень \\(0\\). По лемме о рукопожатиях в любом графе число вершин нечётной степени чётно. Значит, чётно и число трёхцветных вершин.",
+      "idea_ids": [
+        "idea-delete-monochromatic-edges"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "sol-bicolor-paths",
+      "title": "Пути между красно-жёлтыми рёбрами",
+      "text": "Можно зафиксировать пару цветов, например красный и жёлтый. Из каждой трёхцветной вершины выходит ровно одно ребро, разделяющее красную и жёлтую грани. Продолжая путь по таким рёбрам, мы приходим к другой трёхцветной вершине; промежуточные вершины имеют ровно два таких ребра. Поэтому трёхцветные вершины разбиваются на пары.",
+      "idea_ids": [
+        "idea-bicolor-paths-pairing"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 5,
+    "comment": "Весенний базовый тур 2017/18, 10-11 класс, задача 5.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-66699",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

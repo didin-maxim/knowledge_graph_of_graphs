@@ -1,0 +1,589 @@
+{
+  "relations": [
+    {
+      "id": "rel-turan-mantel",
+      "from": "turan-theorem",
+      "to": "mantel-theorem",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Теорема Мантеля получается из теоремы Турана при r=2: запрет K_3 дает максимум на полном почти равном двудольном графе.",
+      "backward_text": "Теорема Турана обобщает теорему Мантеля с запрета треугольника на запрет клики K_{r+1}.",
+      "anchors": {
+        "from_solution_id": "sol-symmetrization",
+        "to_solution_id": "sol-degree-sum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-euler-planar-bound",
+      "from": "euler-formula-planar",
+      "to": "planar-edge-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Оценка e<=3v-6 выводится из формулы Эйлера двойным счетом длин граней.",
+      "backward_text": "Формула Эйлера является главным инструментом доказательства стандартной оценки числа ребер в простом планарном графе.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-face-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-planar-bound-five-color",
+      "from": "planar-edge-bound",
+      "to": "five-color-theorem",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Оценка числа ребер в планарном графе дает существование вершины степени не больше 5, с чего начинается индукционное доказательство пятицветной теоремы.",
+      "backward_text": "Пятицветная теорема использует планарную оценку ребер как способ найти вершину малой степени.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-ramsey-r33",
+      "from": "ramsey-theorem",
+      "to": "ramsey-r33",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "R(3,3)=6 — первый нетривиальный частный случай графовой теоремы Рамсея.",
+      "backward_text": "Общая теорема Рамсея обобщает задачу о шести людях с параметров (3,3) на произвольные размеры одноцветных клик.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-pigeonhole"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-dirac-ore",
+      "from": "ore-theorem",
+      "to": "dirac-theorem",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Теорема Дирака следует из теоремы Оре: если delta(G)>=n/2, то для любых несмежных u,v сумма степеней не меньше n.",
+      "backward_text": "Теорема Оре усиливает критерий Дирака, заменяя нижнюю оценку каждой степени условием на суммы степеней несмежных пар.",
+      "anchors": {
+        "from_solution_id": "sol-closure-sketch",
+        "to_solution_id": "sol-longest-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-hall-konig",
+      "from": "hall-marriage-theorem",
+      "to": "konig-vertex-cover-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе теоремы описывают точное условие оптимальности в двудольных графах; стандартные доказательства связаны через чередующиеся пути и дуальность покрытий и паросочетаний.",
+      "backward_text": "Теорема Кёнига является более глобальной минимакс-формой той же двудольной matching-идеологии, к которой относится теорема Холла.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-alternating"
+      },
+      "status": "ai_draft",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-augmenting-konig",
+      "from": "augmenting-path-matching-lemma",
+      "to": "konig-vertex-cover-theorem",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Доказательство теоремы Кёнига через достижимость чередующимися путями опирается на логику леммы об увеличивающем пути.",
+      "backward_text": "Теорема Кёнига использует чередующиеся пути не только для поиска большего паросочетания, но и для построения минимального вершинного покрытия.",
+      "anchors": {
+        "from_solution_id": "sol-symmetric-difference",
+        "to_solution_id": "sol-alternating"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-hall-augmenting",
+      "from": "augmenting-path-matching-lemma",
+      "to": "hall-marriage-theorem",
+      "type": "solution_transfer",
+      "distance": 2,
+      "forward_text": "Теорему Холла можно доказывать алгоритмически: если максимальное паросочетание не покрывает X, отсутствие увеличивающего пути приводит к нарушающему множеству Холла.",
+      "backward_text": "Условие Холла объясняет, когда увеличивающие пути могут довести паросочетание до покрытия всей левой доли.",
+      "anchors": {
+        "from_solution_id": "sol-symmetric-difference",
+        "to_solution_id": "sol-induction"
+      },
+      "status": "ai_draft",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-handshaking-eulerian",
+      "from": "handshaking-lemma",
+      "to": "eulerian-graph-criterion",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Необходимость четных степеней в эйлеровом графе является локальным вариантом счета входов и выходов, близким к лемме о рукопожатиях.",
+      "backward_text": "Критерий эйлерова графа усиливает простую четность степеней до конструктивного обхода всех ребер.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-cycle-splicing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-tree-euler-formula",
+      "from": "tree-equivalent-properties",
+      "to": "euler-formula-planar",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Доказательство формулы Эйлера удалением ребер из циклов сводит плоский граф к дереву и использует равенство e=v-1 для деревьев.",
+      "backward_text": "Формула Эйлера для деревьев дает базовый случай f=1 и e=v-1.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-reduce-to-tree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-tournament-path-king",
+      "from": "tournament-hamiltonian-path",
+      "to": "tournament-king-radius-two",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи используют жесткость турнира: между каждой парой есть ровно одно направление, что позволяет строить глобальный объект из локальных сравнений.",
+      "backward_text": "Лемма о короле радиуса 2 и гамильтонов путь в турнире оба часто решаются экстремальным или индуктивным использованием полной ориентированности.",
+      "anchors": {
+        "from_solution_id": "sol-insertion",
+        "to_solution_id": "sol-max-outdegree"
+      },
+      "status": "ai_draft",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-dirac-tournament-path",
+      "from": "dirac-theorem",
+      "to": "tournament-hamiltonian-path",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "В обеих задачах центральный объект — путь через много вершин; но в теореме Дирака путь замыкается за счет степеней, а в турнире строится вставкой вершины.",
+      "backward_text": "Гамильтонов путь в турнире является более простой моделью работы с длинными путями, которая тематически соседствует с гамильтоновыми критериями.",
+      "anchors": {
+        "from_solution_id": "sol-longest-path",
+        "to_solution_id": "sol-insertion"
+      },
+      "status": "ai_draft",
+      "confidence": 0.65
+    },
+    {
+      "id": "rel-brooks-five-color",
+      "from": "brooks-theorem",
+      "to": "five-color-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе теоремы ищут раскраску через жадный порядок и контроль последней вершины; в пятицветной теореме дополнительную работу делают планарность и цепи Кемпе.",
+      "backward_text": "Пятицветная теорема является планарным раскрасочным инструментом, родственным Бруксу по идее жадной раскраски с исключительными конфигурациями.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "ai_draft",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-turan-flashlight-batteries-2015",
+      "from": "turan-theorem",
+      "to": "flashlight-batteries-tournament-cities-2015",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Задача Турнира городов про фонарик является конкретным случаем формы теоремы Турана через число независимости: батарейки — вершины, проверки — ребра, а гарантия успеха означает отсутствие независимого множества возможных хороших батареек нужного размера.",
+      "backward_text": "Эта задача является олимпиадной специализацией теоремы Турана: ее графовая модель требует минимизировать число ребер при запрете независимого множества размера n+1 или n, что получается из Турана переходом к дополнительному графу.",
+      "anchors": {
+        "from_solution_id": "sol-symmetrization",
+        "to_solution_id": "sol-pile-construction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-tree-red-cells-2022",
+      "from": "tree-equivalent-properties",
+      "to": "tc-2022-23-blue-red-cells-connectivity",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "В задаче про красные и синие клетки используется стандартное следствие из свойств деревьев: связный граф на r вершинах содержит не меньше r-1 рёбер.",
+      "backward_text": "Граф красных клеток даёт олимпиадное применение нижней оценки числа рёбер связного графа: общие стороны красных клеток считаются как рёбра связного графа.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-bound-boundary"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-tree-coins-forest-2023",
+      "from": "tree-equivalent-properties",
+      "to": "tc-2023-24-coins-pairing-weighing-forest",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "В задаче о монетах используется простое свойство леса: граф сравнений на n исходных парах не содержит циклов, поэтому в нём не больше n-1 рёбер.",
+      "backward_text": "Задача о монетах показывает типичное неграфовое применение деревьев: граф строится только для учёта количества операций алгоритма.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-forest-accounting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-handshaking-gnomes-2020",
+      "from": "handshaking-lemma",
+      "to": "tc-2020-21-gnomes-two-cycles",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Чётный случай в задаче про гномов использует тот же мотив суммы степеней: среди четырёх цветовых классов находится класс с малой суммарной степенью по добавленным рёбрам.",
+      "backward_text": "Задача про гномов является более игровой и гамильтоновой вариацией идеи подсчёта степеней, лежащей в лемме о рукопожатиях.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-odd-even"
+      },
+      "status": "ai_draft",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-tree-state-game-2018",
+      "from": "tree-equivalent-properties",
+      "to": "tc-2018-19-simple-complex-state-game",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Первый пункт задачи про государство ровно использует характеризацию дерева как связного графа без циклов и единственность пути между вершинами.",
+      "backward_text": "Игра с туристом превращает базовую дихотомию дерево/цикл в стратегическую задачу: в дереве Петя поддерживает ориентацию к текущей вершине, а наличие цикла даёт выигрышное ядро Васе.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-tree-cycle"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-handshaking-polyhedron-2017",
+      "from": "handshaking-lemma",
+      "to": "tc-2017-18-polyhedron-three-colors-parity",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "После удаления одноцветных рёбер трёхцветные вершины многогранника становятся ровно вершинами нечётной степени, поэтому утверждение напрямую следует из леммы о рукопожатиях.",
+      "backward_text": "Задача о раскраске граней — короткая олимпиадная маскировка леммы о чётности числа вершин нечётной степени.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-handshaking"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-tree-connectivity-query-2015",
+      "from": "tree-equivalent-properties",
+      "to": "tc-2015-16-connectivity-query-lower-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Стратегия противника доводит оставшийся граф до дерева: связность сохраняется, а циклы уничтожаются, поэтому последнее неизвестное ребро становится мостом.",
+      "backward_text": "Задача о проверке связности использует дерево как пограничный объект между связным и несвязным графом при удалении одного ребра.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-adversary-cycle-bridge"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-state-game-connectivity-query",
+      "from": "tc-2018-19-simple-complex-state-game",
+      "to": "tc-2015-16-connectivity-query-lower-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи используют резкое различие между деревом и графом с циклом: в одной это определяет выигрышную стратегию в игре с ориентациями, в другой — стратегию противника при запросах о связности.",
+      "backward_text": "В обеих задачах цикл является ресурсом, который можно постепенно уничтожать или использовать как выигрышное ядро, а дерево оказывается предельной конфигурацией.",
+      "anchors": {
+        "from_solution_id": "sol-tree-cycle",
+        "to_solution_id": "sol-adversary-cycle-bridge"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-dirac-even-cycle-2009",
+      "from": "dirac-theorem",
+      "to": "tc-2009-10-acquaintances-even-cycle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих задачах длиннейший путь заставляет соседей его конца лежать на самом пути; затем из расположения этих соседей извлекается цикл.",
+      "backward_text": "Задача Турнира городов является короткой олимпиадной вариацией метода длиннейшего пути: вместо гамильтонова цикла нужно найти хотя бы один чётный цикл.",
+      "anchors": {
+        "from_solution_id": "sol-longest-path",
+        "to_solution_id": "sol-longest-path-parity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-handshaking-odd-main-roads-2010",
+      "from": "handshaking-lemma",
+      "to": "tc-2010-11-odd-main-roads",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих задачах ключевым объектом является чётность степеней: в задаче про дороги нужно сконструировать подграф, у которого все степени нечётны.",
+      "backward_text": "Задача Турнира городов усиливает базовую чётностную интуицию леммы о рукопожатиях до конструктивного выбора рёбер в связном графе с чётным числом вершин.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-path-parity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-tree-distinct-rows-1980",
+      "from": "tree-equivalent-properties",
+      "to": "tc-1980-distinct-rows-delete-column",
+      "type": "solution_transfer",
+      "distance": 1,
+      "forward_text": "Задача о таблице напрямую использует критерий леса: если каждому столбцу сопоставить пару строк, которую склеит только его удаление, то невозможность цикла даёт не больше N-1 существенных столбцов.",
+      "backward_text": "Это очень чистое применение свойства леса: граф без циклов на N вершинах имеет не больше N-1 рёбер.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-essential-column-forest"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-konig-common-grandfather-1994",
+      "from": "konig-vertex-cover-theorem",
+      "to": "tc-1994-95-common-grandfather-intersecting-edges",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи смотрят на рёбра через вершины, которые их покрывают. В задаче про дедов условие 'любые два ребра пересекаются' фактически оставляет звезду или треугольник, после чего работает покрытие малым числом вершин.",
+      "backward_text": "Задача про общего деда является элементарной небипартитной миниатюрой идеи 'рёбра контролируются вершинами': здесь не нужна теорема Кёнига, но язык покрытий помогает быстро увидеть структуру.",
+      "anchors": {
+        "from_solution_id": "sol-alternating",
+        "to_solution_id": "sol-star-or-triangle"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-handshaking-rooks-2001",
+      "from": "handshaking-lemma",
+      "to": "tc-2001-02-rooks-odd-attacks",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих задачах важна чётность числа соседей. У ладей это локальная чётность степени новой вершины в динамическом графе видимости.",
+      "backward_text": "Задача про ладей превращает простую чётность степеней в процесс построения: каждый новый ход требует нечётной текущей степени, а верхняя оценка ловит неизбежную чётную степень в углу.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-construct-63"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-vosh-universal-common-grandfather",
+      "from": "vosh-2000-01-final-universal-acquaintance",
+      "to": "tc-1994-95-common-grandfather-intersecting-edges",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи формулируются как утверждения о компании и ищут сильную глобальную вершину из локальных условий на знакомства. В ВСОШ-задаче это универсальная вершина, в задаче про дедов — вершина, покрывающая много рёбер.",
+      "backward_text": "Задача про общего деда является более локальной extremal-версией той же социальной графовой интуиции: сильное условие на пары заставляет появиться почти универсальный объект.",
+      "anchors": {
+        "from_solution_id": "sol-clique-extension",
+        "to_solution_id": "sol-three-grandfathers"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-vosh-bureaucrats-ramsey-r33",
+      "from": "ramsey-r33",
+      "to": "vosh-2008-regional-bureaucrats-common-neighborhood",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих задачах знакомство/незнакомство рассматривается как двухцветная раскраска рёбер. В задаче про бюрократов вместо монохромного треугольника ищется большая общая окрестность или общая неокрестность.",
+      "backward_text": "Задача регионального этапа является счётной, долевой вариацией рамсеевского мотива: в каждой тройке из разных долей неизбежно появляется одноцветный угол.",
+      "anchors": {
+        "from_solution_id": "sol-pigeonhole",
+        "to_solution_id": "sol-double-counting-triples"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-vosh-bureaucrats-common-grandfather",
+      "from": "vosh-2008-regional-bureaucrats-common-neighborhood",
+      "to": "tc-1994-95-common-grandfather-intersecting-edges",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи ищут большую общую структуру по условию о парах людей: у бюрократов — много общих знакомых или незнакомых в третьей доле, у школьников — общий дед для каждой пары.",
+      "backward_text": "Задача про общего деда является более жёсткой пересекающейся моделью, а задача про бюрократов — усреднённой моделью через двойной счёт троек.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting-triples",
+        "to_solution_id": "sol-star-or-triangle"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-vosh-nonbreakable-brooks",
+      "from": "brooks-theorem",
+      "to": "vosh-2010-11-final-nonbreakable-company",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи управляют раскраской графа через запрещённые локальные конфигурации. В задаче ВСОШ минимальный нечётный цикл играет роль контролируемого ядра, вокруг которого строится 3-раскраска от противного.",
+      "backward_text": "Задача о неразбиваемой компании является олимпиадной раскрасочной вариацией: вместо общей теоремы о максимальной степени используется отсутствие K_4 и минимальный нечётный цикл.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-minimal-odd-cycle"
+      },
+      "status": "ai_checked",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-vosh-even-board-odd-main-roads",
+      "from": "tc-2010-11-odd-main-roads",
+      "to": "vosh-2013-14-regional-even-rows-columns",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе задачи требуют выбрать рёбра с заданной чётностью степеней. В задаче про дороги выбирается нечётный подграф в связном графе, а в задаче ВСОШ выбирается корректирующий подграф в графе свободных клеток.",
+      "backward_text": "Задача о фишках является более технической версией того же parity-subgraph мотива: нужно не только исправить чётности, но и уложиться в 99 добавленных рёбер, поэтому используется лес в дополнительном двудольном графе.",
+      "anchors": {
+        "from_solution_id": "sol-path-parity",
+        "to_solution_id": "sol-complement-forest-tjoin"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-vosh-even-board-tree-properties",
+      "from": "tree-equivalent-properties",
+      "to": "vosh-2013-14-regional-even-rows-columns",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Оценка 99 появляется из остовного леса на 100 вершинах: в лесу на 100 вершинах не больше 99 рёбер.",
+      "backward_text": "Задача о чётных строках и столбцах — прямое применение подсчёта рёбер в лесу после перехода к графу свободных клеток.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-complement-forest-tjoin"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-ramsey-universal-acquaintance-2000",
+      "from": "ramsey-theorem",
+      "to": "vosh-2000-01-final-universal-acquaintance",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Опубликованное решение ВСОШ-задачи наращивает клику: если уже есть k попарно знакомых при k<=n, условие добавляет новую вершину, смежную со всеми ними. Это тот же язык роста клики, что и в индуктивных доказательствах Рамсея.",
+      "backward_text": "Задача ВСОШ является не рамсеевской теоремой, а короткой кликовой конструкцией: локальное условие сразу позволяет вырастить клику размера n+1, после чего появляется универсальная вершина.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-clique-extension"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-ore-even-cycle-2009",
+      "from": "ore-theorem",
+      "to": "tc-2009-10-acquaintances-even-cycle",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обоих решениях берётся экстремальный путь, после чего соседи его концов на самом пути заставляют появиться нужный цикл. У Оре это гамильтонов цикл, в задаче Турнира городов — любой чётный цикл.",
+      "backward_text": "Задача про знакомых является младшей тренировочной моделью того же приёма с длиннейшим путём: требование минимальной степени 3 заменяет сильное условие Оре, а цель ослабляется до чётного цикла.",
+      "anchors": {
+        "from_solution_id": "sol-closure-sketch",
+        "to_solution_id": "sol-longest-path-parity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-forest-columns-coins-2023",
+      "from": "tc-1980-distinct-rows-delete-column",
+      "to": "tc-2023-24-coins-pairing-weighing-forest",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "В обеих задачах вспомогательные рёбра не могут образовать цикл, поэтому их число ограничивается числом вершин минус один. В таблице рёбра — существенные столбцы, в задаче о монетах — информативные сравнения между начальными парами.",
+      "backward_text": "Задача о монетах использует тот же лесной счёт в более алгоритмическом виде: если сравнения образуют лес на n исходных парах, то их меньше n.",
+      "anchors": {
+        "from_solution_id": "sol-essential-column-forest",
+        "to_solution_id": "sol-forest-accounting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-cycles-redundancy-1980-2015",
+      "from": "tc-1980-distinct-rows-delete-column",
+      "to": "tc-2015-16-connectivity-query-lower-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих задачах цикл означает избыточность. В таблице цикл среди выбранных пар строк даёт противоречие существенности столбца; в задаче о запросах противник удаляет рёбра, лежащие на циклах, пока не останется дерево.",
+      "backward_text": "Задача о связности превращает тот же мотив 'цикл = лишнее ребро' в стратегию противника: уничтожая циклы, он доводит неопределённый граф до дерева перед последним вопросом.",
+      "anchors": {
+        "from_solution_id": "sol-essential-column-forest",
+        "to_solution_id": "sol-adversary-cycle-bridge"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-vosh-bureaucrats-gnomes-2020",
+      "from": "vosh-2008-regional-bureaucrats-common-neighborhood",
+      "to": "tc-2020-21-gnomes-two-cycles",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи используют двойной счёт с последующим принципом Дирихле. У бюрократов усредняются похожие пары в тройках комиссий, а у гномов в чётном случае усредняется сумма степеней по четырём цветовым классам.",
+      "backward_text": "Задача про гномов является игровой и гамильтоновой, но её чётный случай близок к задаче про бюрократов по чистой счётной механике: большая суммарная величина распределяется по нескольким классам, один класс оказывается малым или большим.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting-triples",
+        "to_solution_id": "sol-odd-even"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-grid-forest-red-cells-even-board",
+      "from": "tc-2022-23-blue-red-cells-connectivity",
+      "to": "vosh-2013-14-regional-even-rows-columns",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи переводят клеточную таблицу в граф и используют связность/лес для численной оценки. В задаче про красные клетки нужен связный граф красных клеток с минимум r-1 рёбрами; в задаче ВСОШ нужен лес в графе свободных клеток с максимум 99 рёбрами.",
+      "backward_text": "Задача о чётных строках и столбцах — другая клеточная модель того же навигационного мотива: таблицу удобно читать как граф, а затем считать рёбра дерева или леса.",
+      "anchors": {
+        "from_solution_id": "sol-bound-boundary",
+        "to_solution_id": "sol-complement-forest-tjoin"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-forest-coins-even-board",
+      "from": "tc-2023-24-coins-pairing-weighing-forest",
+      "to": "vosh-2013-14-regional-even-rows-columns",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих задачах финальная оценка приходит из леса: число полезных взвешиваний меньше n, а число добавляемых фишек не больше 99. В обоих случаях лес возникает как вспомогательная структура, а не как часть условия.",
+      "backward_text": "Задача ВСОШ использует лес конструктивно для исправления чётностей, а задача о монетах — для учёта числа сравнений; это близкие примеры вспомогательного графа, появляющегося только в решении.",
+      "anchors": {
+        "from_solution_id": "sol-forest-accounting",
+        "to_solution_id": "sol-complement-forest-tjoin"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

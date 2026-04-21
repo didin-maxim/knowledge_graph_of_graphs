@@ -1,0 +1,152 @@
+{
+  "id": "imo-1991-sl9-min-degree-for-k6",
+  "title": "Минимальная степень, гарантирующая K6, IMO Shortlist 1991",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "graph",
+      "minimum_degree",
+      "clique",
+      "turan_graph"
+    ],
+    "methods": [
+      "turan_theorem",
+      "symmetrization",
+      "extremal_construction"
+    ],
+    "transformations": [],
+    "goal": [
+      "force_clique_k6"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "minimum_degree"
+    ],
+    "standard_idea_ids": [
+      "symmetrization"
+    ],
+    "local_score": 11,
+    "keywords": [
+      "imo-1991-sl9-min-degree-for-k6",
+      "early_imo_remaining",
+      "graph_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "В графе 1991 вершина, степень каждой вершины не меньше 1593. Докажите, что найдутся шесть попарно соединённых вершин. Является ли 1593 наилучшей возможной границей?",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ],
+        "title": "Условие",
+        "source_id": "src-kalva-imo-1991-shortlist"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Это прямое применение экстремальной теории графов: большая минимальная степень должна породить клику K_6.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-turan-min-degree",
+      "title": "Порог Турана через пятидольный граф",
+      "text": "Граф без K_6 сравнивается с полным 5-дольным графом.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-balanced-construction",
+      "title": "Точность границы",
+      "text": "Полный 5-дольный граф с частями 399,398,398,398,398 имеет минимальную степень 1592 и не содержит K_6.",
+      "tags": [
+        "symmetrization"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-graph-review",
+      "title": "Сжатое графовое решение",
+      "text": "Если граф не содержит K_6, то по теореме Турана его плотность не превосходит плотность полного 5-дольного графа. В минимально-степенной форме удобно рассуждать так: в K_6-свободном экстремальном графе можно симметризовать несмежные вершины и прийти к полному 5-дольному графу; при 1991 вершине одна часть имеет размер не меньше ceil(1991/5)=399, поэтому в таком графе есть вершина степени не больше 1991-399=1592. Значит δ≥1593 гарантирует K_6. Граница точна: полный 5-дольный граф с размерами 399,398,398,398,398 имеет минимальную степень 1592 и не содержит шести попарно смежных вершин.",
+      "idea_ids": [
+        "idea-turan-min-degree",
+        "idea-balanced-construction"
+      ],
+      "standard_idea_ids": [
+        "symmetrization"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 11,
+    "comment": "Добавлено из оставшегося early IMO/shortlist extraction после проверки существенности графовой модели.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "forbidden_clique",
+    "symmetrization",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "turan_theorem",
+        "symmetrization",
+        "extremal_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kalva-imo-1991-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

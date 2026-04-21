@@ -1,0 +1,144 @@
+{
+  "id": "imo-2014-c9-snail-circles-tree",
+  "title": "Улитка на окружностях и дерево областей, IMO Shortlist 2014 C9",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "problem_profile": {
+    "objects": [
+      "circle_arrangement",
+      "plane_regions",
+      "auxiliary_tree"
+    ],
+    "methods": [
+      "tree_counting",
+      "parity",
+      "planar_arrangement"
+    ],
+    "transformations": [
+      "regions_to_graph"
+    ],
+    "goal": [
+      "prove_odd_number_of_circles"
+    ],
+    "auxiliary_graph_type": [
+      "region_tree"
+    ],
+    "invariants": [
+      "parity_of_regions",
+      "acyclicity"
+    ],
+    "keywords": [
+      "imo_2014_c9",
+      "imo_shortlist",
+      "official_solution_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На листе нарисованы \\(n\\) окружностей: любые две пересекаются в двух точках, и никакие три не проходят через одну точку. Улитка движется по окружностям: на пересечении переходит на другую окружность и меняет направление. Если её путь полностью покрывает все окружности, докажите, что \\(n\\) нечётно.",
+        "source_id": "src-imo-2014-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В официальном решении строится граф областей: вершины — области одного типа, рёбра соответствуют специальным точкам пересечения; этот граф оказывается деревом.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-region-parity",
+      "title": "Чётность областей",
+      "text": "Области раскладываются на чётные и нечётные по числу окружающих окружностей.",
+      "tags": [
+        "planar_graphs"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-odd-region-tree",
+      "title": "Дерево нечётных областей",
+      "text": "Точки пересечения соединяют нечётные области в связный ациклический граф.",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Сжатое официальное решение",
+      "text": "Официальное решение рассматривает плоскую картину окружностей и области дополнения. Области классифицируются по чётности числа окружностей, внутри которых они лежат, а точки пересечения также делятся на два типа. Из условия, что траектория улитки одна и покрывает все дуги, следует связность специального графа нечётных областей: вершины — нечётные области, рёбра — нечётные точки пересечения, через которые области соединяются. Цикл в этом графе дал бы отдельную замкнутую часть траектории, поэтому граф является деревом. Тогда число его вершин на единицу больше числа рёбер. Сравнение этой формулы с подсчётом областей и пересечений окружностей даёт, что \\(n\\) нечётно.",
+      "idea_ids": [
+        "idea-region-parity",
+        "idea-odd-region-tree"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "IMO Shortlist 2014 C9, India; графовый слой существенен в официальном решении.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "trees",
+    "planar_graphs",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "tree_counting",
+        "parity",
+        "planar_arrangement"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2014-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}
