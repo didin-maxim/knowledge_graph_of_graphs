@@ -8,6 +8,12 @@
     ]
   },
   "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
   "problem_profile": {
     "objects": [
       "tournament",
@@ -56,12 +62,16 @@
     "graph_theory": [
       {
         "id": "stmt-graph",
-        "text": "Это утверждение о турнире как ориентированном полном графе: плохая четвёрка запрещает локальную конфигурацию, а величина \\(w_i-l_i\\) есть разность исходящей и входящей степеней вершины.",
+        "text": "Пусть \\(T\\) — турнир на \\(n\\ge4\\) вершинах. Назовём плохой четвёркой множество из четырёх вершин, в котором одна вершина проигрывает трём остальным, а эти три вершины между собой образуют ориентированный цикл длины 3. Если в \\(T\\) нет плохих четвёрок, то докажите, что \\(\\sum_{v\\in V(T)} (d^+(v)-d^-(v))^3\\ge0\\).",
         "status": "needs_human_review",
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": [],
+        "definition_ids": [
+          "tournament",
+          "directed_graph",
+          "degree"
+        ],
         "distinct_from": [
           "stmt-original"
         ]

@@ -8,6 +8,12 @@
     ]
   },
   "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
   "problem_profile": {
     "objects": [
       "tournament",
@@ -56,12 +62,17 @@
     "graph_theory": [
       {
         "id": "stmt-graph",
-        "text": "Это задача о турнире и максимальном числе рёберно-непересекающихся направленных путей; официальное решение использует частный случай теоремы Менгера / max-flow min-cut.",
+        "text": "Пусть \\(T\\) — турнир на \\(n\\) вершинах. Для вершин \\(A,B\\) обозначим через \\(N_{AB}\\) максимальное число попарно рёберно-непересекающихся направленных путей из \\(A\\) в \\(B\\). Докажите, что \\(N_{AB}=N_{BA}\\) тогда и только тогда, когда \\(d^+(A)=d^+(B)\\).",
         "status": "needs_human_review",
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": [],
+        "definition_ids": [
+          "tournament",
+          "directed_graph",
+          "path",
+          "degree"
+        ],
         "distinct_from": [
           "stmt-original"
         ]
