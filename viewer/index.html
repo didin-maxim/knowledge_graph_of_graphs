@@ -649,7 +649,10 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "connected_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -801,7 +804,13 @@
           "standard_idea_ids": [
             "induction"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "directed_graph",
+            "degree",
+            "cycle",
+            "outdegree"
+          ]
         }
       ],
       "difficulty": {
@@ -828,6 +837,11 @@
         {
           "source_id": "src-apmo-2016-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-apmo-2016-p4",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -901,7 +915,8 @@
             },
             "definition_ids": [],
             "distinct_from": [
-              "stmt-graph"
+              "stmt-graph",
+              "stmt-graph-boundary"
             ]
           }
         ],
@@ -915,7 +930,21 @@
             },
             "definition_ids": [],
             "distinct_from": [
-              "stmt-original"
+              "stmt-original",
+              "stmt-graph-boundary"
+            ]
+          },
+          {
+            "id": "stmt-graph-boundary",
+            "text": "Пусть \\(n\\ge 3\\) нечётно. Клетки доски \\(n\\times n\\) окрашены в красный и синий цвета. Рассмотрим граф \\(B\\) на всех \\((n+1)^2\\) вершинах решётки, образующих углы клеток. Две соседние по решётке вершины соединены ребром тогда и только тогда, когда общая сторона между ними разделяет две клетки разных цветов. Нетривиальной компонентой графа \\(B\\) назовём компоненту, содержащую хотя бы одно ребро. Найдите наибольшее возможное число нетривиальных компонент графа \\(B\\), а значит и наибольшее возможное число \\(k\\), для которого в любой раскраске достаточно поставить по одной лягушке в каждую монохроматическую область.",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [],
+            "distinct_from": [
+              "stmt-original",
+              "stmt-graph"
             ]
           }
         ],
@@ -953,7 +982,10 @@
           "standard_idea_ids": [
             "double_counting"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "degree"
+          ]
         }
       ],
       "difficulty": {
@@ -981,6 +1013,11 @@
         {
           "source_id": "src-bmo-2022-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-molympiad-bmo-2022",
+          "role": "problem_and_solution_archive",
           "status": "source_verified"
         }
       ],
@@ -1105,7 +1142,13 @@
           "standard_idea_ids": [
             "longest_path"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "connected_graph",
+            "path",
+            "cycle",
+            "complete_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -1238,6 +1281,13 @@
           "standard_idea_ids": [
             "augmenting_path_method",
             "alternating_paths"
+          ],
+          "definition_ids": [
+            "matching",
+            "path",
+            "cycle",
+            "alternating_path",
+            "augmenting_path"
           ]
         }
       ],
@@ -1388,6 +1438,11 @@
           "standard_idea_ids": [
             "greedy_ordering",
             "local_recoloring"
+          ],
+          "definition_ids": [
+            "connected_graph",
+            "clique",
+            "cycle"
           ]
         }
       ],
@@ -1508,7 +1563,10 @@
             "idea-even-core-then-delete-one-color-class"
           ],
           "standard_idea_ids": [],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "degree"
+          ]
         }
       ],
       "difficulty": {
@@ -1631,6 +1689,11 @@
           "standard_idea_ids": [
             "longest_path",
             "extremal_choice"
+          ],
+          "definition_ids": [
+            "connected_graph",
+            "path",
+            "cycle"
           ]
         }
       ],
@@ -1755,6 +1818,11 @@
           "standard_idea_ids": [
             "delete_to_simplify",
             "induction"
+          ],
+          "definition_ids": [
+            "connected_graph",
+            "cycle",
+            "tree"
           ]
         }
       ],
@@ -1914,6 +1982,12 @@
           "status": "ai_checked",
           "standard_idea_ids": [
             "greedy_ordering"
+          ],
+          "definition_ids": [
+            "connected_graph",
+            "degree",
+            "cycle",
+            "eulerian_cycle"
           ]
         }
       ],
@@ -2077,6 +2151,11 @@
             "induction",
             "kempe_chains",
             "local_recoloring"
+          ],
+          "definition_ids": [
+            "path",
+            "cycle",
+            "planar_graph"
           ]
         }
       ],
@@ -2567,6 +2646,9 @@
           "status": "ai_checked",
           "standard_idea_ids": [
             "double_counting"
+          ],
+          "definition_ids": [
+            "degree"
           ]
         }
       ],
@@ -2611,7 +2693,7 @@
       "language": "ru",
       "authors": [
         {
-          "name": "D?nes K?nig",
+          "name": "Dénes Kőnig",
           "status": "source_verified"
         }
       ],
@@ -2707,6 +2789,13 @@
           "standard_idea_ids": [
             "alternating_paths",
             "augmenting_path_method"
+          ],
+          "definition_ids": [
+            "bipartite_graph",
+            "matching",
+            "path",
+            "alternating_path",
+            "augmenting_path"
           ]
         }
       ],
@@ -2826,7 +2915,11 @@
             "idea-two_endpoint_paths_make_longer_cycle"
           ],
           "standard_idea_ids": [],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "path",
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -2923,6 +3016,10 @@
               "clique",
               "complete_graph",
               "bipartite_graph"
+            ],
+            "distinct_from": [
+              "stmt-graph-1",
+              "stmt-graph-complement"
             ]
           }
         ],
@@ -2939,6 +3036,29 @@
               "clique",
               "complete_graph",
               "bipartite_graph"
+            ],
+            "distinct_from": [
+              "stmt-original-1",
+              "stmt-graph-complement"
+            ]
+          },
+          {
+            "id": "stmt-graph-complement",
+            "text": "Пусть \\(G\\) — простой граф на \\(n\\) вершинах, в котором нет независимого множества размера 3. Тогда \\(e(G)\\ge \\binom n2-\\lfloor n^2/4\\rfloor\\). Равенство достигается тогда и только тогда, когда вершины \\(G\\) можно разбить на две клики с мощностями, отличающимися не более чем на 1; эквивалентно, дополнительный граф \\(\\overline G\\) является полным двудольным графом с почти равными долями.",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "simple_graph",
+              "independent_set",
+              "clique",
+              "complement_graph",
+              "bipartite_graph"
+            ],
+            "distinct_from": [
+              "stmt-original-1",
+              "stmt-graph-1"
             ]
           }
         ],
@@ -3114,7 +3234,10 @@
             "idea-min-cut-max-path"
           ],
           "status": "ai_draft",
-          "standard_idea_ids": []
+          "standard_idea_ids": [],
+          "definition_ids": [
+            "path"
+          ]
         }
       ],
       "difficulty": {
@@ -3165,7 +3288,7 @@
       "language": "ru",
       "authors": [
         {
-          "name": "?ystein Ore",
+          "name": "Øystein Ore",
           "status": "source_verified"
         }
       ],
@@ -3246,6 +3369,13 @@
           "standard_idea_ids": [
             "minimal_counterexample",
             "longest_path"
+          ],
+          "definition_ids": [
+            "degree",
+            "path",
+            "cycle",
+            "hamiltonian_path",
+            "hamiltonian_cycle"
           ]
         }
       ],
@@ -3363,7 +3493,10 @@
             "idea-third-edge-forces-triangle"
           ],
           "standard_idea_ids": [],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "simple_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -3501,6 +3634,9 @@
           "standard_idea_ids": [
             "double_counting",
             "face_counting"
+          ],
+          "definition_ids": [
+            "planar_graph"
           ]
         }
       ],
@@ -3656,6 +3792,9 @@
           "standard_idea_ids": [
             "pigeonhole_principle",
             "complement_graph_transition"
+          ],
+          "definition_ids": [
+            "cycle"
           ]
         }
       ],
@@ -3748,6 +3887,10 @@
               "clique",
               "independent_set",
               "simple_graph"
+            ],
+            "distinct_from": [
+              "stmt-graph-1",
+              "stmt-graph-complement"
             ]
           }
         ],
@@ -3764,6 +3907,28 @@
               "clique",
               "independent_set",
               "simple_graph"
+            ],
+            "distinct_from": [
+              "stmt-original-1",
+              "stmt-graph-complement"
+            ]
+          },
+          {
+            "id": "stmt-graph-complement",
+            "text": "Для любых натуральных \\(r\\) и \\(s\\) существует такое \\(N\\), что любой простой граф на \\(N\\) вершинах содержит либо клику размера \\(r\\), либо его дополнительный граф содержит клику размера \\(s\\).",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "simple_graph",
+              "clique",
+              "complement_graph",
+              "complete_graph"
+            ],
+            "distinct_from": [
+              "stmt-original-1",
+              "stmt-graph-1"
             ]
           }
         ],
@@ -3912,7 +4077,11 @@
             "idea-three_neighbors_split_odd_cycle"
           ],
           "standard_idea_ids": [],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "clique",
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -3957,7 +4126,7 @@
       "language": "ru",
       "authors": [
         {
-          "name": "L?szl? R?dei",
+          "name": "László Rédei",
           "status": "source_verified"
         }
       ],
@@ -4045,6 +4214,10 @@
           "status": "ai_checked",
           "standard_idea_ids": [
             "induction"
+          ],
+          "definition_ids": [
+            "path",
+            "tournament"
           ]
         }
       ],
@@ -4182,6 +4355,10 @@
           "status": "ai_checked",
           "standard_idea_ids": [
             "extremal_choice"
+          ],
+          "definition_ids": [
+            "degree",
+            "outdegree"
           ]
         }
       ],
@@ -4327,6 +4504,12 @@
           "standard_idea_ids": [
             "induction",
             "delete_to_simplify"
+          ],
+          "definition_ids": [
+            "connected_graph",
+            "path",
+            "cycle",
+            "tree"
           ]
         }
       ],
@@ -4372,7 +4555,7 @@
       "language": "ru",
       "authors": [
         {
-          "name": "P?l Tur?n",
+          "name": "Pál Turán",
           "status": "source_verified"
         }
       ],
@@ -4423,6 +4606,10 @@
               "clique",
               "complete_graph",
               "independent_set"
+            ],
+            "distinct_from": [
+              "stmt-graph-1",
+              "stmt-graph-complement"
             ]
           }
         ],
@@ -4439,6 +4626,28 @@
               "clique",
               "complete_graph",
               "independent_set"
+            ],
+            "distinct_from": [
+              "stmt-original-1",
+              "stmt-graph-complement"
+            ]
+          },
+          {
+            "id": "stmt-graph-complement",
+            "text": "Пусть \\(G\\) — простой граф на \\(n\\) вершинах, в котором число независимости не превосходит \\(r\\). Тогда \\(e(G)\\) не меньше числа рёбер в графе, состоящем из \\(r\\) попарно несвязанных клик с мощностями, отличающимися не более чем на 1. Равенство достигается именно на таком графе; эквивалентно, дополнительный граф \\(\\overline G\\) является графом Турана \\(T_r(n)\\).",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "simple_graph",
+              "independent_set",
+              "clique",
+              "complement_graph"
+            ],
+            "distinct_from": [
+              "stmt-original-1",
+              "stmt-graph-1"
             ]
           }
         ],
@@ -4518,6 +4727,9 @@
           "standard_idea_ids": [
             "symmetrization",
             "extremal_choice"
+          ],
+          "definition_ids": [
+            "clique"
           ]
         }
       ],
@@ -4689,7 +4901,11 @@
           "standard_idea_ids": [
             "double_counting"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "bipartite_graph",
+            "degree"
+          ]
         }
       ],
       "difficulty": {
@@ -4717,6 +4933,11 @@
         {
           "source_id": "src-egmo-2016-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-egmo-2016-problems",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -4842,7 +5063,11 @@
           "standard_idea_ids": [
             "symmetrization"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "bipartite_graph",
+            "matching"
+          ]
         }
       ],
       "difficulty": {
@@ -4869,6 +5094,11 @@
         {
           "source_id": "src-egmo-2022-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-egmo-2022-problems",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -4980,7 +5210,11 @@
             "idea-step-four-cycle-shift"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "directed_graph",
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -5166,6 +5400,11 @@
           "source_id": "src-imo-compendium-solutions-1959-2004",
           "role": "secondary_solution_crosscheck",
           "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-1964-p4",
+          "role": "community_wiki",
+          "status": "source_verified"
         }
       ],
       "editorial": {
@@ -5288,7 +5527,11 @@
             "idea-characteristic-roots"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "path",
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -5320,6 +5563,11 @@
         {
           "source_id": "src-imo-compendium-solutions-1959-2004",
           "role": "secondary_solution_crosscheck",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-1979-p6",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -5603,7 +5851,12 @@
           "standard_idea_ids": [
             "alternating_paths"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "bipartite_graph",
+            "cycle",
+            "eulerian_cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -5636,6 +5889,11 @@
         {
           "source_id": "src-imo-compendium-solutions-1959-2004",
           "role": "secondary_solution_crosscheck",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-1986-p6",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -5764,7 +6022,11 @@
           "standard_idea_ids": [
             "longest_path"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "path",
+            "line_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -5923,7 +6185,10 @@
           "standard_idea_ids": [
             "complement_graph_transition"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "complete_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -6086,7 +6351,11 @@
             "induction",
             "delete_to_simplify"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "tree",
+            "spanning_tree"
+          ]
         }
       ],
       "difficulty": {
@@ -6120,6 +6389,11 @@
         {
           "source_id": "src-imo-compendium-solutions-1959-2004",
           "role": "secondary_solution_crosscheck",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-1991-p4",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -6245,7 +6519,10 @@
           "standard_idea_ids": [
             "symmetrization"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "degree"
+          ]
         }
       ],
       "difficulty": {
@@ -6405,7 +6682,10 @@
           "standard_idea_ids": [
             "complement_graph_transition"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -6439,6 +6719,11 @@
         {
           "source_id": "src-imo-compendium-solutions-1959-2004",
           "role": "secondary_solution_crosscheck",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-1992-p3",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -6560,7 +6845,10 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "connected_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -7311,7 +7599,10 @@
             "idea-even-construction"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -7344,6 +7635,11 @@
         {
           "source_id": "src-imo-compendium-solutions-1959-2004",
           "role": "secondary_solution_crosscheck",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-1997-p4",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -7471,7 +7767,10 @@
           "standard_idea_ids": [
             "pigeonhole_principle"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "clique"
+          ]
         }
       ],
       "difficulty": {
@@ -7504,6 +7803,11 @@
         {
           "source_id": "src-kalva-imo-1998-c6-solution",
           "role": "secondary_solution",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-1998-shortlist",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -7785,7 +8089,13 @@
             "extremal_choice",
             "induction"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "connected_graph",
+            "path",
+            "cycle",
+            "tree"
+          ]
         }
       ],
       "difficulty": {
@@ -7938,7 +8248,10 @@
           "standard_idea_ids": [
             "double_counting"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "complete_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -7966,6 +8279,11 @@
         {
           "source_id": "src-secondary-imo-2004-shortlist",
           "role": "secondary_shortlist_statement",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2004-shortlist",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -8113,6 +8431,11 @@
           "source_id": "src-secondary-imo-2005-shortlist",
           "role": "secondary_shortlist_statement",
           "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2005-c2",
+          "role": "community_wiki",
+          "status": "source_verified"
         }
       ],
       "editorial": {
@@ -8233,7 +8556,10 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "path"
+          ]
         }
       ],
       "difficulty": {
@@ -8264,6 +8590,11 @@
         {
           "source_id": "src-problem-solving-methods-combinatorics-2005-c3",
           "role": "secondary_solution",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2005-c3",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -8427,6 +8758,11 @@
           "source_id": "src-imomath-compendium-2005-c8-solution",
           "role": "published_solution",
           "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2005-shortlist",
+          "role": "community_wiki",
+          "status": "source_verified"
         }
       ],
       "editorial": {
@@ -8545,7 +8881,11 @@
             "idea-extremal-family"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "bipartite_graph",
+            "matching"
+          ]
         }
       ],
       "difficulty": {
@@ -8571,6 +8911,11 @@
         {
           "source_id": "src-imo-2010-shortlist",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2010-shortlist",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -8697,7 +9042,12 @@
           "standard_idea_ids": [
             "induction"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "cycle",
+            "complete_graph",
+            "tournament"
+          ]
         }
       ],
       "difficulty": {
@@ -8725,6 +9075,11 @@
         {
           "source_id": "src-imo-2010-shortlist",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2010-shortlist",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -8797,7 +9152,8 @@
             },
             "definition_ids": [],
             "distinct_from": [
-              "stmt-graph"
+              "stmt-graph",
+              "stmt-graph-intersection"
             ]
           }
         ],
@@ -8811,7 +9167,23 @@
             },
             "definition_ids": [],
             "distinct_from": [
-              "stmt-original"
+              "stmt-original",
+              "stmt-graph-intersection"
+            ]
+          },
+          {
+            "id": "stmt-graph-intersection",
+            "text": "Для каждого числа \\(s\\in\\{3,4,\\ldots,4999\\}\\) рассмотрим все хорды \\(ij\\) окружности, где вершины помечены числами \\(1,2,\\ldots,2500\\) по кругу и \\(i+j=s\\). Построим граф \\(H_s\\), вершинами которого являются эти хорды, а две вершины смежны тогда и только тогда, когда соответствующие хорды пересекаются. Докажите, что найдётся такое \\(s\\), для которого граф \\(H_s\\) содержит независимое множество размера не меньше 100.",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "independent_set"
+            ],
+            "distinct_from": [
+              "stmt-original",
+              "stmt-graph"
             ]
           }
         ],
@@ -8849,7 +9221,10 @@
           "standard_idea_ids": [
             "induction"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "independent_set"
+          ]
         }
       ],
       "difficulty": {
@@ -9148,7 +9523,10 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "path"
+          ]
         }
       ],
       "difficulty": {
@@ -9285,7 +9663,12 @@
             "idea-odd-region-tree"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "connected_graph",
+            "cycle",
+            "tree"
+          ]
         }
       ],
       "difficulty": {
@@ -9313,6 +9696,11 @@
         {
           "source_id": "src-imo-2014-shortlist",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2014-shortlist",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -9422,7 +9810,11 @@
           "standard_idea_ids": [
             "pigeonhole_principle"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "directed_graph",
+            "degree"
+          ]
         }
       ],
       "difficulty": {
@@ -9718,7 +10110,12 @@
             "alternating_paths",
             "symmetrization"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "degree",
+            "cycle",
+            "alternating_path"
+          ]
         }
       ],
       "difficulty": {
@@ -9854,7 +10251,10 @@
           "standard_idea_ids": [
             "induction"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "directed_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -10160,7 +10560,12 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "connected_graph",
+            "degree",
+            "path"
+          ]
         }
       ],
       "difficulty": {
@@ -10186,6 +10591,11 @@
         {
           "source_id": "src-imo-2019-shortlist",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2019-p3",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -10295,7 +10705,10 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -10323,6 +10736,11 @@
         {
           "source_id": "src-imo-2020-shortlist",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2020-shortlist",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -10433,7 +10851,13 @@
           "standard_idea_ids": [
             "alternating_paths"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "degree",
+            "cycle",
+            "eulerian_cycle",
+            "multigraph"
+          ]
         }
       ],
       "difficulty": {
@@ -10460,6 +10884,11 @@
         {
           "source_id": "src-imo-2020-shortlist",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2020-shortlist",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -10586,7 +11015,13 @@
             "idea-tournament-degree"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "degree",
+            "path",
+            "complete_graph",
+            "tournament"
+          ]
         }
       ],
       "difficulty": {
@@ -10613,6 +11048,11 @@
         {
           "source_id": "src-imo-2021-shortlist",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2021-shortlist",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -10720,7 +11160,12 @@
             "idea-eulerian-cycle-lower-bound"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "connected_graph",
+            "cycle",
+            "eulerian_cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -10870,7 +11315,12 @@
           "standard_idea_ids": [
             "induction"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "path",
+            "complete_graph",
+            "hamiltonian_path"
+          ]
         }
       ],
       "difficulty": {
@@ -11231,7 +11681,10 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "path"
+          ]
         }
       ],
       "difficulty": {
@@ -11262,6 +11715,11 @@
         {
           "source_id": "src-imo-2024-shortlist",
           "role": "official_solution",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-aops-imo-2024-p5",
+          "role": "community_wiki",
           "status": "source_verified"
         }
       ],
@@ -11391,7 +11849,13 @@
           "standard_idea_ids": [
             "induction"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "connected_graph",
+            "degree",
+            "cycle",
+            "tree"
+          ]
         },
         {
           "id": "sol-directed-tromino-tree",
@@ -11404,7 +11868,13 @@
           "standard_idea_ids": [
             "induction"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "directed_graph",
+            "degree",
+            "cycle",
+            "tree"
+          ]
         }
       ],
       "difficulty": {
@@ -11558,7 +12028,11 @@
           "standard_idea_ids": [
             "double_counting"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "bipartite_graph",
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -11585,6 +12059,11 @@
         {
           "source_id": "src-memo-2021-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-molympiad-memo-2021",
+          "role": "problem_and_solution_archive",
           "status": "source_verified"
         }
       ],
@@ -11731,6 +12210,11 @@
         {
           "source_id": "src-memo-2022-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-molympiad-memo-2022",
+          "role": "problem_and_solution_archive",
           "status": "source_verified"
         }
       ],
@@ -12008,7 +12492,10 @@
             "double_counting",
             "extremal_choice"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "complete_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -12159,7 +12646,10 @@
           "standard_idea_ids": [
             "double_counting"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "bipartite_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -12185,6 +12675,11 @@
         {
           "source_id": "src-rmm-2012-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-molympiad-rmm-2012",
+          "role": "problem_and_solution_archive",
           "status": "source_verified"
         }
       ],
@@ -12308,7 +12803,10 @@
             "idea-rigid-components"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "directed_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -12334,6 +12832,11 @@
         {
           "source_id": "src-rmm-2013-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-molympiad-rmm-2013",
+          "role": "problem_and_solution_archive",
           "status": "source_verified"
         }
       ],
@@ -12455,7 +12958,10 @@
             "idea-local-exchange-decreases"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "tree"
+          ]
         }
       ],
       "difficulty": {
@@ -12481,6 +12987,11 @@
         {
           "source_id": "src-rmm-2016-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-molympiad-rmm-2016",
+          "role": "problem_and_solution_archive",
           "status": "source_verified"
         }
       ],
@@ -12604,7 +13115,10 @@
             "idea-hall-cells"
           ],
           "standard_idea_ids": [],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "matching"
+          ]
         }
       ],
       "difficulty": {
@@ -12630,6 +13144,11 @@
         {
           "source_id": "src-rmm-2017-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-molympiad-rmm-2017",
+          "role": "problem_and_solution_archive",
           "status": "source_verified"
         }
       ],
@@ -12754,7 +13273,11 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "cycle",
+            "spanning_tree"
+          ]
         }
       ],
       "difficulty": {
@@ -12781,6 +13304,11 @@
         {
           "source_id": "src-rmm-2023-official",
           "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-molympiad-rmm-2023",
+          "role": "problem_and_solution_archive",
           "status": "source_verified"
         }
       ],
@@ -12887,7 +13415,10 @@
           "standard_idea_ids": [
             "extremal_choice"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -13044,7 +13575,10 @@
             "double_counting",
             "pigeonhole_principle"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "simple_graph"
+          ]
         },
         {
           "id": "sol-three-grandfathers",
@@ -13349,7 +13883,11 @@
             "extremal_choice",
             "pigeonhole_principle"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "path",
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -13791,7 +14329,13 @@
             "extremal_choice",
             "delete_to_simplify"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "connected_graph",
+            "cycle",
+            "tree",
+            "complete_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -13952,7 +14496,10 @@
           "standard_idea_ids": [
             "double_counting"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "degree"
+          ]
         },
         {
           "id": "sol-bicolor-paths",
@@ -13964,7 +14511,10 @@
           "standard_idea_ids": [
             "double_counting"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "path"
+          ]
         }
       ],
       "difficulty": {
@@ -14125,7 +14675,13 @@
             "induction",
             "delete_to_simplify"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "connected_graph",
+            "path",
+            "cycle",
+            "tree"
+          ]
         }
       ],
       "difficulty": {
@@ -14283,7 +14839,12 @@
             "pigeonhole_principle",
             "double_counting"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "degree",
+            "cycle",
+            "hamiltonian_cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -14428,7 +14989,10 @@
           "standard_idea_ids": [
             "double_counting"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "connected_graph"
+          ]
         }
       ],
       "difficulty": {
@@ -14569,7 +15133,10 @@
           "standard_idea_ids": [
             "delete_to_simplify"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -14734,7 +15301,12 @@
             "complement_graph_transition",
             "extremal_choice"
           ],
-          "status": "needs_review"
+          "status": "needs_review",
+          "definition_ids": [
+            "matching",
+            "complement_graph",
+            "dominating_set"
+          ]
         }
       ],
       "difficulty": {
@@ -15027,7 +15599,11 @@
             "minimal_counterexample",
             "local_recoloring"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "clique",
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -15134,7 +15710,11 @@
             "self_contained": {
               "status": "ai_checked"
             },
-            "definition_ids": []
+            "definition_ids": [],
+            "distinct_from": [
+              "stmt-graph",
+              "stmt-graph-complement"
+            ]
           }
         ],
         "graph_theory": [
@@ -15148,6 +15728,27 @@
             "definition_ids": [
               "bipartite_graph",
               "degree"
+            ],
+            "distinct_from": [
+              "stmt-original",
+              "stmt-graph-complement"
+            ]
+          },
+          {
+            "id": "stmt-graph-complement",
+            "text": "Пусть \\(G\\) — двудольный граф с долями \\(R\\) и \\(C\\), где \\(|R|=|C|=50\\). Обозначим через \\(H\\) его дополнение в полном двудольном графе \\(K_{50,50}\\). Пусть \\(T\\) — множество вершин, имеющих нечётную степень в \\(G\\); так как степень каждой вершины в \\(K_{50,50}\\) равна 50, это то же самое множество вершин нечётной степени и в \\(H\\). Докажите, что в графе \\(H\\) существует подграф не более чем с 99 рёбрами, множество вершин нечётной степени которого равно \\(T\\).",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "bipartite_graph",
+              "degree",
+              "complement_graph"
+            ],
+            "distinct_from": [
+              "stmt-original",
+              "stmt-graph"
             ]
           }
         ],
@@ -15177,7 +15778,14 @@
             "complement_graph_transition",
             "delete_to_simplify"
           ],
-          "status": "ai_checked"
+          "status": "ai_checked",
+          "definition_ids": [
+            "bipartite_graph",
+            "degree",
+            "path",
+            "tree",
+            "spanning_tree"
+          ]
         }
       ],
       "difficulty": {
@@ -15341,7 +15949,10 @@
           "standard_idea_ids": [
             "local_recoloring"
           ],
-          "status": "needs_human_review"
+          "status": "needs_human_review",
+          "definition_ids": [
+            "cycle"
+          ]
         }
       ],
       "difficulty": {
@@ -18793,6 +19404,294 @@
       "official": true,
       "status": "source_verified",
       "preference_note": "Официальный PDF с решениями первого дня заключительного этапа ВсОШ по математике 2025–2026; задача 9.4 совпадает с 11.3."
+    },
+    "src-aops-apmo-2016-p4": {
+      "id": "src-aops-apmo-2016-p4",
+      "type": "statement",
+      "title": "AoPS Wiki, 2016 APMO Problems/Problem 4",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2016_APMO_Problems/Problem_4",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-egmo-2016-problems": {
+      "id": "src-aops-egmo-2016-problems",
+      "type": "statement",
+      "title": "AoPS Wiki, 2016 EGMO Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2016_EGMO_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-egmo-2022-problems": {
+      "id": "src-aops-egmo-2022-problems",
+      "type": "statement",
+      "title": "AoPS Wiki, 2022 EGMO Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2022_EGMO_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-1964-p4": {
+      "id": "src-aops-imo-1964-p4",
+      "type": "statement",
+      "title": "AoPS Wiki, 1964 IMO Problems/Problem 4",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/1964_IMO_Problems/Problem_4",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-1979-p6": {
+      "id": "src-aops-imo-1979-p6",
+      "type": "statement",
+      "title": "AoPS Wiki, 1979 IMO Problems/Problem 6",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/1979_IMO_Problems/Problem_6",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-1986-p6": {
+      "id": "src-aops-imo-1986-p6",
+      "type": "statement",
+      "title": "AoPS Wiki, 1986 IMO Problems/Problem 6",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/1986_IMO_Problems/Problem_6",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-1991-p4": {
+      "id": "src-aops-imo-1991-p4",
+      "type": "statement",
+      "title": "AoPS Wiki, 1991 IMO Problems/Problem 4",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/1991_IMO_Problems/Problem_4",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-1992-p3": {
+      "id": "src-aops-imo-1992-p3",
+      "type": "statement",
+      "title": "AoPS Wiki, 1992 IMO Problems/Problem 3",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/1992_IMO_Problems/Problem_3",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-1997-p4": {
+      "id": "src-aops-imo-1997-p4",
+      "type": "statement",
+      "title": "AoPS Wiki, 1997 IMO Problems/Problem 4",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/1997_IMO_Problems/Problem_4",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-1998-shortlist": {
+      "id": "src-aops-imo-1998-shortlist",
+      "type": "statement",
+      "title": "AoPS Wiki, 1998 IMO Shortlist Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/1998_IMO_Shortlist_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2004-shortlist": {
+      "id": "src-aops-imo-2004-shortlist",
+      "type": "statement",
+      "title": "AoPS Wiki, 2004 IMO Shortlist Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2004_IMO_Shortlist_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2005-c2": {
+      "id": "src-aops-imo-2005-c2",
+      "type": "statement",
+      "title": "AoPS Wiki, 2005 IMO Shortlist Problems/C2",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2005_IMO_Shortlist_Problems/C2",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2005-c3": {
+      "id": "src-aops-imo-2005-c3",
+      "type": "statement",
+      "title": "AoPS Wiki, 2005 IMO Shortlist Problems/C3",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2005_IMO_Shortlist_Problems/C3",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2005-shortlist": {
+      "id": "src-aops-imo-2005-shortlist",
+      "type": "statement",
+      "title": "AoPS Wiki, 2005 IMO Shortlist Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2005_IMO_Shortlist_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2010-shortlist": {
+      "id": "src-aops-imo-2010-shortlist",
+      "type": "statement",
+      "title": "AoPS Wiki, 2010 IMO Shortlist Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2010_IMO_Shortlist_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2014-shortlist": {
+      "id": "src-aops-imo-2014-shortlist",
+      "type": "statement",
+      "title": "AoPS Wiki, 2014 IMO Shortlist Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2014_IMO_Shortlist_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2019-p3": {
+      "id": "src-aops-imo-2019-p3",
+      "type": "statement",
+      "title": "AoPS Wiki, 2019 IMO Problems/Problem 3",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2019_IMO_Problems/Problem_3",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2020-shortlist": {
+      "id": "src-aops-imo-2020-shortlist",
+      "type": "statement",
+      "title": "AoPS Wiki, 2020 IMO Shortlist Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2020_IMO_Shortlist_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2021-shortlist": {
+      "id": "src-aops-imo-2021-shortlist",
+      "type": "statement",
+      "title": "AoPS Wiki, 2021 IMO Shortlist Problems",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2021_IMO_Shortlist_Problems",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-aops-imo-2024-p5": {
+      "id": "src-aops-imo-2024-p5",
+      "type": "statement",
+      "title": "AoPS Wiki, 2024 IMO Problems/Problem 5",
+      "url": "https://wiki.artofproblemsolving.com/wiki/index.php/2024_IMO_Problems/Problem_5",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified"
+    },
+    "src-molympiad-rmm-2012": {
+      "id": "src-molympiad-rmm-2012",
+      "type": "olympiad_archive",
+      "title": "MOlympiad.NET, Romanian Masters Mathematics 2012 solutions",
+      "url": "https://www.molympiad.net/2017/06/romanian-masters-mathematics-2012.html",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified",
+      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2012."
+    },
+    "src-molympiad-rmm-2013": {
+      "id": "src-molympiad-rmm-2013",
+      "type": "olympiad_archive",
+      "title": "MOlympiad.NET, Romanian Masters Mathematics 2013 solutions",
+      "url": "https://www.molympiad.net/2017/06/romanian-masters-mathematics-2013.html",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified",
+      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2013."
+    },
+    "src-molympiad-rmm-2016": {
+      "id": "src-molympiad-rmm-2016",
+      "type": "olympiad_archive",
+      "title": "MOlympiad.NET, Romanian Masters Mathematics 2016 solutions",
+      "url": "https://www.molympiad.net/2017/06/romanian-masters-mathematics-2016.html",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified",
+      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2016."
+    },
+    "src-molympiad-rmm-2017": {
+      "id": "src-molympiad-rmm-2017",
+      "type": "olympiad_archive",
+      "title": "MOlympiad.NET, Romanian Masters Mathematics 2017 solutions",
+      "url": "https://www.molympiad.net/2017/06/romanian-masters-mathematics-2017.html",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified",
+      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2017."
+    },
+    "src-molympiad-rmm-2023": {
+      "id": "src-molympiad-rmm-2023",
+      "type": "olympiad_archive",
+      "title": "MOlympiad.NET, Romanian Masters Mathematics 2023 solutions",
+      "url": "https://www.molympiad.net/2023/03/romanian-masters-mathematics-2023.html",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified",
+      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2023."
+    },
+    "src-molympiad-memo-2021": {
+      "id": "src-molympiad-memo-2021",
+      "type": "olympiad_archive",
+      "title": "MOlympiad.NET, Middle European Mathematical Olympiad 2021 solutions",
+      "url": "https://www.molympiad.net/2022/04/middle-european-mathematical-olympiad-memo-2021.html",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified",
+      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? MEMO 2021."
+    },
+    "src-molympiad-memo-2022": {
+      "id": "src-molympiad-memo-2022",
+      "type": "olympiad_archive",
+      "title": "MOlympiad.NET, Middle European Mathematical Olympiad 2022 solutions",
+      "url": "https://www.molympiad.net/2023/03/blog-post.html",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified",
+      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? MEMO 2022."
+    },
+    "src-molympiad-bmo-2022": {
+      "id": "src-molympiad-bmo-2022",
+      "type": "olympiad_archive",
+      "title": "MOlympiad.NET, Balkan Mathematical Olympiad 2022 solutions",
+      "url": "https://www.molympiad.net/2022/05/balkan-mathematical-olympiad-2022.html",
+      "browser_openable": true,
+      "language": "en",
+      "official": false,
+      "status": "source_verified",
+      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Balkan Mathematical Olympiad 2022."
     }
   },
   "definitions": {
@@ -19088,6 +19987,177 @@
       "examples": [
         "Результаты игр кругового турнира без ничьих образуют турнир.",
         "Если между двумя вершинами нет стрелки, это не турнир."
+      ],
+      "status": "ai_checked"
+    },
+    "hamiltonian_path": {
+      "id": "hamiltonian_path",
+      "title": "Гамильтонов путь",
+      "aliases": [
+        "гамильтонов путь",
+        "гамильтонова пути",
+        "гамильтоновым путем",
+        "гамильтоновы пути"
+      ],
+      "text": "Гамильтонов путь — это путь, проходящий через все вершины графа ровно по одному разу.",
+      "examples": [
+        "В пути из n вершин весь граф сам является гамильтоновым путем.",
+        "Если в графе есть гамильтонов путь, то его вершины можно упорядочить в одну цепочку без повторений."
+      ],
+      "status": "ai_checked"
+    },
+    "hamiltonian_cycle": {
+      "id": "hamiltonian_cycle",
+      "title": "Гамильтонов цикл",
+      "aliases": [
+        "гамильтонов цикл",
+        "гамильтонова цикла",
+        "гамильтоновым циклом",
+        "гамильтоновы циклы",
+        "негамильтонов",
+        "гамильтоновость"
+      ],
+      "text": "Гамильтонов цикл — это цикл, проходящий через все вершины графа ровно по одному разу.",
+      "examples": [
+        "В цикле C_n весь граф является гамильтоновым циклом.",
+        "Если граф содержит гамильтонов цикл, то он, в частности, содержит и гамильтонов путь."
+      ],
+      "status": "ai_checked"
+    },
+    "eulerian_cycle": {
+      "id": "eulerian_cycle",
+      "title": "Эйлеров цикл",
+      "aliases": [
+        "эйлеров цикл",
+        "эйлерова цикла",
+        "эйлеровы циклы",
+        "эйлеров граф",
+        "эйлерова графа",
+        "эйлеровом графе",
+        "эйлерова"
+      ],
+      "text": "Эйлеров цикл — это замкнутый маршрут по графу, проходящий по каждому ребру ровно один раз.",
+      "examples": [
+        "В цикле C_n можно пройти по каждому ребру ровно один раз и вернуться в стартовую вершину.",
+        "Связный граф с эйлеровым циклом имеет четные степени всех вершин."
+      ],
+      "status": "ai_checked"
+    },
+    "spanning_tree": {
+      "id": "spanning_tree",
+      "title": "Остовное дерево",
+      "aliases": [
+        "остовное дерево",
+        "остовного дерева",
+        "остовным деревом",
+        "остов",
+        "остова",
+        "остове",
+        "остовов"
+      ],
+      "text": "Остовное дерево связного графа — это подграф, содержащий все вершины исходного графа и являющийся деревом.",
+      "examples": [
+        "Если из связного графа удалить лишние рёбра, не разрушая связность, получится остовное дерево.",
+        "У любого остовного дерева на n вершинах ровно n-1 ребро."
+      ],
+      "status": "ai_checked"
+    },
+    "line_graph": {
+      "id": "line_graph",
+      "title": "Линейный граф",
+      "aliases": [
+        "линейный граф",
+        "линейного графа",
+        "линейном графе"
+      ],
+      "text": "Линейный граф L(G) строится по графу G так: его вершины соответствуют ребрам графа G, а две вершины в L(G) соединены тогда и только тогда, когда соответствующие ребра в G имеют общий конец.",
+      "examples": [
+        "Если G — путь из двух рёбер, то L(G) состоит из двух смежных вершин.",
+        "Если G — треугольник, то и L(G) тоже треугольник."
+      ],
+      "status": "ai_checked"
+    },
+    "dominating_set": {
+      "id": "dominating_set",
+      "title": "Доминирующее множество",
+      "aliases": [
+        "доминирующее множество",
+        "доминирующего множества",
+        "доминирующим множеством",
+        "доминирующие множества",
+        "доминирует"
+      ],
+      "text": "Доминирующее множество в графе — это множество вершин D, такое что каждая вершина графа либо лежит в D, либо смежна хотя бы с одной вершиной из D.",
+      "examples": [
+        "В звезде одна центральная вершина образует доминирующее множество.",
+        "Если вершина смежна со всеми остальными, то она одна уже доминирует граф."
+      ],
+      "status": "ai_checked"
+    },
+    "alternating_path": {
+      "id": "alternating_path",
+      "title": "Чередующийся путь",
+      "aliases": [
+        "чередующийся путь",
+        "чередующегося пути",
+        "чередующимся путям",
+        "чередующимися путями",
+        "чередующиеся циклы",
+        "чередующиеся пути"
+      ],
+      "text": "Пусть в графе фиксировано паросочетание M. Путь называется чередующимся относительно M, если его ребра по очереди принадлежат и не принадлежат M.",
+      "examples": [
+        "Если вдоль пути рёбра идут в порядке «из M, не из M, из M, не из M», то это чередующийся путь.",
+        "Компоненты симметрической разности двух паросочетаний распадаются на чередующиеся пути и циклы."
+      ],
+      "status": "ai_checked"
+    },
+    "augmenting_path": {
+      "id": "augmenting_path",
+      "title": "Увеличивающий путь",
+      "aliases": [
+        "увеличивающий путь",
+        "увеличивающего пути",
+        "увеличивающим путем",
+        "увеличивающий",
+        "увеличивающего"
+      ],
+      "text": "Пусть в графе фиксировано паросочетание M. Увеличивающим путем называется чередующийся путь, обе концевые вершины которого не покрыты паросочетанием M.",
+      "examples": [
+        "Если перевернуть принадлежность рёбер на увеличивающем пути, размер паросочетания увеличится на 1.",
+        "Отсутствие увеличивающих путей эквивалентно максимальности паросочетания."
+      ],
+      "status": "ai_checked"
+    },
+    "outdegree": {
+      "id": "outdegree",
+      "title": "Исходящая степень",
+      "aliases": [
+        "исходящая степень",
+        "исходящей степени",
+        "исходящую степень",
+        "исходящими соседями",
+        "исходящий сосед"
+      ],
+      "text": "Исходящая степень вершины в ориентированном графе — это число стрелок, выходящих из этой вершины.",
+      "examples": [
+        "В турнире вершина максимальной исходящей степени побеждает как можно больше соперников напрямую.",
+        "Сумма исходящих степеней всех вершин ориентированного графа равна числу его дуг."
+      ],
+      "status": "ai_checked"
+    },
+    "multigraph": {
+      "id": "multigraph",
+      "title": "Мультиграф",
+      "aliases": [
+        "мультиграф",
+        "мультиграфа",
+        "мультиграфе"
+      ],
+      "text": "Мультиграф — это граф, в котором между одной и той же парой вершин может быть несколько различных рёбер; в некоторых соглашениях также разрешаются петли.",
+      "examples": [
+        "Если две вершины соединены двумя разными рёбрами, это уже мультиграф, а не простой граф.",
+        "При сведении задачи о парах объектов к рёбрам между цветами часто естественно возникает мультиграф."
       ],
       "status": "ai_checked"
     }
@@ -19728,6 +20798,26 @@
       return standardIdeas[id] ? `<a class="pill" href="#stdidea-${encodeURIComponent(id)}">${esc(standardIdeas[id].title)}</a>` : '';
     }
 
+    function renderAuthors(problem) {
+      const authors = problem.authors || [];
+      if (!authors.length) return '';
+      const items = authors.map(author => {
+        const name = esc(author.name || '?');
+        const review = author.status && author.status !== 'source_verified'
+          ? `<span class="pill">${esc(label(taxonomy.statuses, author.status) || author.status)}</span>`
+          : '';
+        return `<span class="author-entry"><span>${name}</span>${review}</span>`;
+      }).join('');
+      return `
+        <div class="section">
+          <h3>Авторы</h3>
+          <div class="card">
+            <div class="pill-row">${items}</div>
+          </div>
+        </div>
+      `;
+    }
+
     function sortedProblems() {
       return Object.values(problems).sort((a, b) => a.title.localeCompare(b.title, 'ru'));
     }
@@ -19822,9 +20912,13 @@
     }
 
     function problemUsesDefinition(problem, definitionId) {
-      return Object.values(problem.statements || {}).some(group =>
+      const statementsUse = Object.values(problem.statements || {}).some(group =>
         (group || []).some(statement => (statement.definition_ids || []).includes(definitionId))
       );
+      const solutionsUse = (problem.solutions || []).some(solution =>
+        (solution.definition_ids || []).includes(definitionId)
+      );
+      return statementsUse || solutionsUse;
     }
 
     function definitionUsage(definitionId) {
@@ -19994,9 +21088,10 @@
             <span>${esc(solution.title || solution.id)}</span>
             ${statusPill(solution.status)}
           </div>
-          ${textBlock(solution.text, [], solution.standard_idea_ids || [])}
-          ${renderExamples(solution.examples || [], [], solution.standard_idea_ids || [])}
+          ${textBlock(solution.text, solution.definition_ids || [], solution.standard_idea_ids || [])}
+          ${renderExamples(solution.examples || [], solution.definition_ids || [], solution.standard_idea_ids || [])}
           <div class="pill-row">
+            ${(solution.definition_ids || []).map(definitionPill).join('')}
             ${(solution.idea_ids || []).map(id => `<span class="pill code">${esc(id)}</span>`).join('')}
             ${(solution.standard_idea_ids || []).map(standardIdeaPill).join('')}
           </div>
@@ -20189,6 +21284,8 @@
         <h2>${esc(problem.title)}</h2>
         <div class="subtle">${esc(problem.difficulty?.comment || '')}</div>
         <div class="pill-row">${(problem.tags || []).map(tagPill).join('')}</div>
+
+        ${renderAuthors(problem)}
 
         <div class="section">
           <h3>Формулировки</h3>

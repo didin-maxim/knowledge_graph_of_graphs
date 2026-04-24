@@ -58,6 +58,10 @@
           "clique",
           "independent_set",
           "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph-1",
+          "stmt-graph-complement"
         ]
       }
     ],
@@ -74,6 +78,28 @@
           "clique",
           "independent_set",
           "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-original-1",
+          "stmt-graph-complement"
+        ]
+      },
+      {
+        "id": "stmt-graph-complement",
+        "text": "Для любых натуральных \\(r\\) и \\(s\\) существует такое \\(N\\), что любой простой граф на \\(N\\) вершинах содержит либо клику размера \\(r\\), либо его дополнительный граф содержит клику размера \\(s\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique",
+          "complement_graph",
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original-1",
+          "stmt-graph-1"
         ]
       }
     ],

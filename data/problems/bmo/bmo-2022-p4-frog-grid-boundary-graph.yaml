@@ -58,7 +58,8 @@
         },
         "definition_ids": [],
         "distinct_from": [
-          "stmt-graph"
+          "stmt-graph",
+          "stmt-graph-boundary"
         ]
       }
     ],
@@ -72,7 +73,21 @@
         },
         "definition_ids": [],
         "distinct_from": [
-          "stmt-original"
+          "stmt-original",
+          "stmt-graph-boundary"
+        ]
+      },
+      {
+        "id": "stmt-graph-boundary",
+        "text": "Пусть \\(n\\ge 3\\) нечётно. Клетки доски \\(n\\times n\\) окрашены в красный и синий цвета. Рассмотрим граф \\(B\\) на всех \\((n+1)^2\\) вершинах решётки, образующих углы клеток. Две соседние по решётке вершины соединены ребром тогда и только тогда, когда общая сторона между ними разделяет две клетки разных цветов. Нетривиальной компонентой графа \\(B\\) назовём компоненту, содержащую хотя бы одно ребро. Найдите наибольшее возможное число нетривиальных компонент графа \\(B\\), а значит и наибольшее возможное число \\(k\\), для которого в любой раскраске достаточно поставить по одной лягушке в каждую монохроматическую область.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
         ]
       }
     ],
@@ -110,7 +125,10 @@
       "standard_idea_ids": [
         "double_counting"
       ],
-      "status": "needs_human_review"
+      "status": "needs_human_review",
+      "definition_ids": [
+        "degree"
+      ]
     }
   ],
   "difficulty": {
@@ -138,6 +156,11 @@
     {
       "source_id": "src-bmo-2022-official",
       "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-molympiad-bmo-2022",
+      "role": "problem_and_solution_archive",
       "status": "source_verified"
     }
   ],

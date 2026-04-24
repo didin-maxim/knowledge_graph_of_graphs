@@ -65,7 +65,11 @@
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": []
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph",
+          "stmt-graph-complement"
+        ]
       }
     ],
     "graph_theory": [
@@ -79,6 +83,27 @@
         "definition_ids": [
           "bipartite_graph",
           "degree"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph-complement"
+        ]
+      },
+      {
+        "id": "stmt-graph-complement",
+        "text": "Пусть \\(G\\) — двудольный граф с долями \\(R\\) и \\(C\\), где \\(|R|=|C|=50\\). Обозначим через \\(H\\) его дополнение в полном двудольном графе \\(K_{50,50}\\). Пусть \\(T\\) — множество вершин, имеющих нечётную степень в \\(G\\); так как степень каждой вершины в \\(K_{50,50}\\) равна 50, это то же самое множество вершин нечётной степени и в \\(H\\). Докажите, что в графе \\(H\\) существует подграф не более чем с 99 рёбрами, множество вершин нечётной степени которого равно \\(T\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "degree",
+          "complement_graph"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
         ]
       }
     ],
@@ -108,7 +133,14 @@
         "complement_graph_transition",
         "delete_to_simplify"
       ],
-      "status": "ai_checked"
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "degree",
+        "path",
+        "tree",
+        "spanning_tree"
+      ]
     }
   ],
   "difficulty": {

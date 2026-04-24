@@ -10,7 +10,7 @@
   "language": "ru",
   "authors": [
     {
-      "name": "P?l Tur?n",
+      "name": "Pál Turán",
       "status": "source_verified"
     }
   ],
@@ -61,6 +61,10 @@
           "clique",
           "complete_graph",
           "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-graph-1",
+          "stmt-graph-complement"
         ]
       }
     ],
@@ -77,6 +81,28 @@
           "clique",
           "complete_graph",
           "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original-1",
+          "stmt-graph-complement"
+        ]
+      },
+      {
+        "id": "stmt-graph-complement",
+        "text": "Пусть \\(G\\) — простой граф на \\(n\\) вершинах, в котором число независимости не превосходит \\(r\\). Тогда \\(e(G)\\) не меньше числа рёбер в графе, состоящем из \\(r\\) попарно несвязанных клик с мощностями, отличающимися не более чем на 1. Равенство достигается именно на таком графе; эквивалентно, дополнительный граф \\(\\overline G\\) является графом Турана \\(T_r(n)\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "independent_set",
+          "clique",
+          "complement_graph"
+        ],
+        "distinct_from": [
+          "stmt-original-1",
+          "stmt-graph-1"
         ]
       }
     ],
@@ -156,6 +182,9 @@
       "standard_idea_ids": [
         "symmetrization",
         "extremal_choice"
+      ],
+      "definition_ids": [
+        "clique"
       ]
     }
   ],

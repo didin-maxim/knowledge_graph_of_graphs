@@ -57,7 +57,8 @@
         },
         "definition_ids": [],
         "distinct_from": [
-          "stmt-graph"
+          "stmt-graph",
+          "stmt-graph-intersection"
         ]
       }
     ],
@@ -71,7 +72,23 @@
         },
         "definition_ids": [],
         "distinct_from": [
-          "stmt-original"
+          "stmt-original",
+          "stmt-graph-intersection"
+        ]
+      },
+      {
+        "id": "stmt-graph-intersection",
+        "text": "Для каждого числа \\(s\\in\\{3,4,\\ldots,4999\\}\\) рассмотрим все хорды \\(ij\\) окружности, где вершины помечены числами \\(1,2,\\ldots,2500\\) по кругу и \\(i+j=s\\). Построим граф \\(H_s\\), вершинами которого являются эти хорды, а две вершины смежны тогда и только тогда, когда соответствующие хорды пересекаются. Докажите, что найдётся такое \\(s\\), для которого граф \\(H_s\\) содержит независимое множество размера не меньше 100.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
         ]
       }
     ],
@@ -109,7 +126,10 @@
       "standard_idea_ids": [
         "induction"
       ],
-      "status": "needs_human_review"
+      "status": "needs_human_review",
+      "definition_ids": [
+        "independent_set"
+      ]
     }
   ],
   "difficulty": {

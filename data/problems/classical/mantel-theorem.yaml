@@ -62,6 +62,10 @@
           "clique",
           "complete_graph",
           "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph-1",
+          "stmt-graph-complement"
         ]
       }
     ],
@@ -78,6 +82,29 @@
           "clique",
           "complete_graph",
           "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-original-1",
+          "stmt-graph-complement"
+        ]
+      },
+      {
+        "id": "stmt-graph-complement",
+        "text": "Пусть \\(G\\) — простой граф на \\(n\\) вершинах, в котором нет независимого множества размера 3. Тогда \\(e(G)\\ge \\binom n2-\\lfloor n^2/4\\rfloor\\). Равенство достигается тогда и только тогда, когда вершины \\(G\\) можно разбить на две клики с мощностями, отличающимися не более чем на 1; эквивалентно, дополнительный граф \\(\\overline G\\) является полным двудольным графом с почти равными долями.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "independent_set",
+          "clique",
+          "complement_graph",
+          "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-original-1",
+          "stmt-graph-1"
         ]
       }
     ],
