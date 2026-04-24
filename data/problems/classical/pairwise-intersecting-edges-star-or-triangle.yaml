@@ -1,0 +1,114 @@
+{
+  "id": "pairwise-intersecting-edges-star-or-triangle",
+  "title": "Попарно пересекающиеся рёбра: звезда или треугольник",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Шаповалов А.В.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "edge_family",
+      "triangle",
+      "star"
+    ],
+    "methods": [
+      "case_analysis",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "choose_two_edges_and_third_obstruction"
+    ],
+    "goal": [
+      "classify_pairwise_intersecting_edge_families"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "pairwise_edge_intersection"
+    ],
+    "keywords": [
+      "pairwise_intersecting_edges",
+      "star",
+      "triangle"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть \\(F\\) — конечное множество рёбер простого графа. Предположим, что любые два ребра из \\(F\\) имеют общую вершину. Докажите, что либо все рёбра из \\(F\\) инцидентны одной и той же вершине, либо существует треугольник \\(xyz\\) такой, что каждое ребро из \\(F\\) является одним из рёбер \\(xy,xz,yz\\).",
+        "source_id": "src-problems-98230",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-third-edge-forces-triangle",
+      "title": "Третье ребро вне звезды замыкает треугольник",
+      "text": "Если семейство не является звездой, то, выбрав два ребра с общим концом и третье ребро без этого конца, мы вынуждаем треугольник; после этого любое новое ребро обязано быть одной из его сторон.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-star-or-triangle",
+      "title": "Либо звезда, либо треугольник",
+      "text": "Если все рёбра из \\(F\\) имеют общий конец, то утверждение доказано. Иначе найдутся два ребра \\(xy\\) и \\(xz\\) из \\(F\\) и третье ребро \\(e\\in F\\), не инцидентное вершине \\(x\\). Так как \\(e\\) должно пересекать и \\(xy\\), и \\(xz\\), в простом графе это возможно только при \\(e=yz\\). Значит, в \\(F\\) уже содержатся три стороны треугольника \\(xyz\\). Теперь любое ребро из \\(F\\) обязано пересекать все три рёбра \\(xy,xz,yz\\). В простом графе это возможно только для самих рёбер \\(xy,xz,yz\\). Следовательно, все рёбра из \\(F\\) являются сторонами одного треугольника.",
+      "idea_ids": [
+        "idea-third-edge-forces-triangle"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 3,
+    "comment": "Короткая структурная лемма, часто возникающая в задачах о попарных пересечениях.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-problems-98230",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "base_done"
+  }
+}

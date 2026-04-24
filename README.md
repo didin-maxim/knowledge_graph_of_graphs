@@ -15,6 +15,7 @@
 - `data/import_batches/` — журналы массовых импортов
 - `tools/` — проверка, поиск, сборка индекса и viewer
 - `viewer/index.html` — статическая сборка для чтения базы
+- `data/assets/` — исходные рисунки и другие ассеты для карточек
 
 Источник истины — YAML-файлы в `data/`. Файлы сейчас записаны в JSON-совместимом подмножестве YAML, чтобы инструменты работали без внешних Python-зависимостей.
 
@@ -31,6 +32,7 @@ python tools/comments.py --status open
 ```
 
 После сборки viewer можно открыть файл `viewer/index.html` в браузере.
+Если в карточках есть рисунки-примеры, `python tools/build_viewer.py` одновременно обновит и `viewer/assets/`, и `docs/assets/`.
 
 ## Текущее состояние
 
@@ -55,6 +57,7 @@ python tools/comments.py --status open
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — актуальная схема репозитория
 - [docs/IMPORT_WORKFLOW.md](docs/IMPORT_WORKFLOW.md) — как устроен массовый импорт
 - [docs/REVIEW_GUIDE.md](docs/REVIEW_GUIDE.md) — что именно смотреть в этой черновой публикации
+- [docs/HANDOFF_FOR_NEW_CHAT.md](docs/HANDOFF_FOR_NEW_CHAT.md) — короткая точка входа для нового чата
 - [CONTRIBUTING.md](CONTRIBUTING.md) — правила правок
 
 Рабочие исторические планы вынесены в `docs/archive/working-plans/`, чтобы не мешать чтению актуальной документации.

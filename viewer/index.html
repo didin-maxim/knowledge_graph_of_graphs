@@ -235,6 +235,53 @@
       overflow-wrap: anywhere;
     }
 
+    .example-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .example-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fcfbf8;
+    }
+
+    .example-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-weight: 650;
+    }
+
+    .example-optional {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .example-figure {
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .example-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .example-caption {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     a {
       color: var(--accent);
       text-decoration-thickness: 1px;
@@ -861,7 +908,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Официальное решение строит граф на вершинах решётки: ребро проводится вдоль стороны клетки тогда и только тогда, когда по разные стороны от неё стоят клетки разных цветов. Компоненты этого графа кодируют границы монохроматических областей, а число нужных лягушек равно числу таких компонент плюс один.",
+            "text": "Пусть \\(n\\ge 3\\) нечётно. Вершинами графа \\(G\\) являются клетки доски \\(n\\times n\\), а две вершины соединены ребром тогда и только тогда, когда соответствующие клетки имеют один цвет и соприкасаются хотя бы в одной вершине. Найдите наибольшее возможное число компонент связности графа \\(G\\) по всем раскраскам клеток доски в красный и синий цвета.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -943,7 +990,6 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "graph_theory_absent_reason": "Граф появляется в официальном решении, а не в исходной формулировке.",
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\bmo\\bmo-2022-p4-frog-grid-boundary-graph.yaml"
@@ -1014,7 +1060,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это задача о связном неориентированном графе, в котором для любых двух вершин существуют кратчайший и наидлиннейший простые пути без общих внутренних вершин. Официальное решение классифицирует все такие графы.",
+            "text": "Пусть \\(G\\) — связный простой неориентированный граф на \\(n\\ge 100\\) вершинах. Для любых двух различных вершин \\(u,v\\) существует кратчайший \\(u\\)-\\(v\\)-путь и существует простой \\(u\\)-\\(v\\)-путь максимальной возможной длины, причём эти два пути не имеют общих внутренних вершин. Найдите все возможные значения числа рёбер \\(e(G)\\) в зависимости от \\(n\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -1373,6 +1419,127 @@
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\classical\\brooks-theorem.yaml"
+    },
+    "color-reduction-by-odd-deletion-and-doubling": {
+      "id": "color-reduction-by-odd-deletion-and-doubling",
+      "title": "Понижение числа цветов удалением нечётных вершин и удвоением",
+      "kind": {
+        "primary": "lemma",
+        "secondary": [
+          "classical_tool"
+        ]
+      },
+      "language": "ru",
+      "authors": [
+        {
+          "name": "?",
+          "status": "needs_human_review"
+        }
+      ],
+      "problem_profile": {
+        "objects": [
+          "simple_graph",
+          "proper_coloring",
+          "odd_degree_vertex",
+          "graph_doubling"
+        ],
+        "methods": [
+          "parity",
+          "color_class_elimination"
+        ],
+        "transformations": [
+          "delete_odd_vertex",
+          "double_graph_with_matching"
+        ],
+        "goal": [
+          "reduce_chromatic_number_upper_bound"
+        ],
+        "auxiliary_graph_type": [],
+        "invariants": [
+          "proper_coloring",
+          "degree_parity"
+        ],
+        "keywords": [
+          "graph_coloring",
+          "odd_degree",
+          "doubling_operation",
+          "color_reduction"
+        ],
+        "status": "ai_checked"
+      },
+      "statements": {
+        "original": [
+          {
+            "id": "stmt-original-1",
+            "text": "Дан конечный простой граф, правильно раскрашенный в \\(n>1\\) цветов. Разрешены две операции: 1) удалить вершину нечётной степени вместе со всеми инцидентными ей рёбрами; 2) заменить текущий граф двумя непересекающимися копиями и добавить ребро между каждой вершиной одной копии и соответствующей вершиной другой. Докажите, что после конечного числа таких операций можно получить граф, правильно раскрашиваемый в \\(n-1\\) цветов.",
+            "source_id": "src-imo-2013-shortlist",
+            "status": "needs_human_review",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "simple_graph",
+              "chromatic_number",
+              "degree"
+            ]
+          }
+        ],
+        "graph_theory": [],
+        "olympiad_reformulations": []
+      },
+      "ideas": [
+        {
+          "id": "idea-even-core-then-delete-one-color-class",
+          "title": "Сначала делаем все степени чётными, потом уничтожаем один цвет",
+          "text": "После удаления всех доступных вершин нечётной степени остаётся граф, в котором все степени чётны. После удвоения степень каждой вершины становится нечётной, и любую фиксированную цветовую долю можно удалить целиком, потому что она остаётся независимой.",
+          "tags": [
+            "coloring",
+            "induction"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "solutions": [
+        {
+          "id": "sol-even-core-and-double",
+          "title": "Чётное ядро и удаление цветовой доли",
+          "text": "Рассмотрим данный \\(n\\)-раскрашенный граф \\(G\\). Пока в нём есть вершина нечётной степени, удаляем её. Корректность раскраски при этом не нарушается. Через конечное число шагов получим подграф \\(H\\), в котором каждая вершина имеет чётную степень. Если \\(H\\) уже раскрашивается в \\(n-1\\) цветов, то всё доказано. Иначе зафиксируем в \\(H\\) правильную раскраску в цвета \\(1,\\dots,n\\) с непустой долей цвета \\(n\\). Теперь выполним операцию удвоения. В новом графе \\(D\\) каждая вершина \\(v\\) имеет степень \\(\\deg_H(v)+1\\), следовательно, нечётную. Кроме того, множество всех вершин цвета \\(n\\) в обеих копиях остаётся независимым. Поэтому эти вершины можно удалять одну за другой: удаление одной такой вершины меняет чётность степеней только её соседей, но не затрагивает степени остальных вершин цвета \\(n\\), так как между ними нет рёбер. После удаления всей цветовой доли \\(n\\) остаётся граф, правильно раскрашенный в цвета \\(1,\\dots,n-1\\).",
+          "idea_ids": [
+            "idea-even-core-then-delete-one-color-class"
+          ],
+          "standard_idea_ids": [],
+          "status": "ai_checked"
+        }
+      ],
+      "difficulty": {
+        "main": "national_final_medium",
+        "local_score": 7,
+        "comment": "Нестандартная лемма-оператор для задач о раскрасках и паритетных операциях над графом.",
+        "status": "ai_checked"
+      },
+      "tags": [
+        "coloring",
+        "induction",
+        "olympiad_tool"
+      ],
+      "properties": {},
+      "sources": [
+        {
+          "source_id": "src-imo-2013-shortlist",
+          "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        }
+      ],
+      "editorial": {
+        "created_by": "ai",
+        "created_at": "2026-04-24",
+        "review_status": "needs_human_review",
+        "public_ready": false,
+        "notes": [],
+        "graph_theory_duplicate_removed": true,
+        "relations_status": "base_done"
+      },
+      "_path": "data\\problems\\classical\\color-reduction-by-odd-deletion-and-doubling.yaml"
     },
     "dirac-theorem": {
       "id": "dirac-theorem",
@@ -2573,6 +2740,125 @@
       },
       "_path": "data\\problems\\classical\\konig-vertex-cover-theorem.yaml"
     },
+    "longest-path-endpoints-shortest-detour": {
+      "id": "longest-path-endpoints-shortest-detour",
+      "title": "Кратчайший обход между концами максимального пути",
+      "kind": {
+        "primary": "lemma",
+        "secondary": [
+          "classical_tool"
+        ]
+      },
+      "language": "ru",
+      "authors": [
+        {
+          "name": "?",
+          "status": "needs_human_review"
+        }
+      ],
+      "problem_profile": {
+        "objects": [
+          "connected_graph",
+          "longest_path",
+          "shortest_path",
+          "cycle"
+        ],
+        "methods": [
+          "extremal_choice",
+          "path_cycle_conversion"
+        ],
+        "transformations": [
+          "union_of_two_paths"
+        ],
+        "goal": [
+          "force_endpoint_edge"
+        ],
+        "auxiliary_graph_type": [],
+        "invariants": [
+          "path_length"
+        ],
+        "keywords": [
+          "longest_path",
+          "shortest_path",
+          "hamiltonian_motif",
+          "endpoint_edge"
+        ],
+        "status": "ai_checked"
+      },
+      "statements": {
+        "original": [
+          {
+            "id": "stmt-original-1",
+            "text": "Пусть \\(G\\) — связный простой граф, а \\(P=v_1v_2\\dots v_p\\) — простой путь максимальной длины в \\(G\\). Предположим, что существует кратчайший путь \\(Q\\) из \\(v_1\\) в \\(v_p\\), все внутренние вершины которого не лежат на \\(P\\). Докажите, что путь \\(Q\\) состоит из одного ребра, то есть \\(v_1v_p\\in E(G)\\).",
+            "source_id": "src-bmo-2025-official",
+            "status": "needs_human_review",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "simple_graph",
+              "connected_graph",
+              "path",
+              "cycle"
+            ]
+          }
+        ],
+        "graph_theory": [],
+        "olympiad_reformulations": []
+      },
+      "ideas": [
+        {
+          "id": "idea-two_endpoint_paths_make_longer_cycle",
+          "title": "Два непересекающихся пути между концами дают слишком длинный цикл",
+          "text": "Если обход между концами максимального пути имеет хотя бы одну внутреннюю вершину, объединение двух путей образует цикл, содержащий больше вершин, чем исходный путь; из такого цикла извлекается более длинный путь.",
+          "tags": [
+            "hamiltonian_cycles"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "solutions": [
+        {
+          "id": "sol-cycle-longer-than-path",
+          "title": "Цикл длиннее максимального пути",
+          "text": "Пусть кратчайший путь \\(Q\\) имеет хотя бы одну внутреннюю вершину. Так как внутренние вершины \\(Q\\) не лежат на \\(P\\), объединение \\(P\\cup Q\\) содержит цикл, проходящий по всем вершинам \\(P\\) и по внутренним вершинам \\(Q\\). Число вершин этого цикла равно \\(|V(P)|+|V(Q)|-2>|V(P)|\\). Удалив из цикла любое ребро, получаем простой путь с большим числом вершин, чем у \\(P\\). Это противоречит максимальности \\(P\\). Следовательно, у \\(Q\\) нет внутренних вершин, и потому \\(Q\\) является ребром \\(v_1v_p\\).",
+          "idea_ids": [
+            "idea-two_endpoint_paths_make_longer_cycle"
+          ],
+          "standard_idea_ids": [],
+          "status": "ai_checked"
+        }
+      ],
+      "difficulty": {
+        "main": "regional",
+        "local_score": 4,
+        "comment": "Короткая, но полезная лемма для задач о длиннейших путях и гамильтоновых циклах.",
+        "status": "ai_checked"
+      },
+      "tags": [
+        "hamiltonian_cycles",
+        "extremal_graph_theory",
+        "olympiad_tool"
+      ],
+      "properties": {},
+      "sources": [
+        {
+          "source_id": "src-bmo-2025-official",
+          "role": "problem_and_solutions_official",
+          "status": "source_verified"
+        }
+      ],
+      "editorial": {
+        "created_by": "ai",
+        "created_at": "2026-04-24",
+        "review_status": "needs_human_review",
+        "public_ready": false,
+        "notes": [],
+        "graph_theory_duplicate_removed": true,
+        "relations_status": "base_done"
+      },
+      "_path": "data\\problems\\classical\\longest-path-endpoints-shortest-detour.yaml"
+    },
     "mantel-theorem": {
       "id": "mantel-theorem",
       "title": "Теорема Мантеля",
@@ -2993,6 +3279,121 @@
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\classical\\ore-theorem.yaml"
+    },
+    "pairwise-intersecting-edges-star-or-triangle": {
+      "id": "pairwise-intersecting-edges-star-or-triangle",
+      "title": "Попарно пересекающиеся рёбра: звезда или треугольник",
+      "kind": {
+        "primary": "lemma",
+        "secondary": [
+          "classical_tool"
+        ]
+      },
+      "language": "ru",
+      "authors": [
+        {
+          "name": "Шаповалов А.В.",
+          "status": "source_verified"
+        }
+      ],
+      "problem_profile": {
+        "objects": [
+          "simple_graph",
+          "edge_family",
+          "triangle",
+          "star"
+        ],
+        "methods": [
+          "case_analysis",
+          "extremal_choice"
+        ],
+        "transformations": [
+          "choose_two_edges_and_third_obstruction"
+        ],
+        "goal": [
+          "classify_pairwise_intersecting_edge_families"
+        ],
+        "auxiliary_graph_type": [],
+        "invariants": [
+          "pairwise_edge_intersection"
+        ],
+        "keywords": [
+          "pairwise_intersecting_edges",
+          "star",
+          "triangle"
+        ],
+        "status": "ai_checked"
+      },
+      "statements": {
+        "original": [
+          {
+            "id": "stmt-original-1",
+            "text": "Пусть \\(F\\) — конечное множество рёбер простого графа. Предположим, что любые два ребра из \\(F\\) имеют общую вершину. Докажите, что либо все рёбра из \\(F\\) инцидентны одной и той же вершине, либо существует треугольник \\(xyz\\) такой, что каждое ребро из \\(F\\) является одним из рёбер \\(xy,xz,yz\\).",
+            "source_id": "src-problems-98230",
+            "status": "needs_human_review",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "simple_graph",
+              "clique"
+            ]
+          }
+        ],
+        "graph_theory": [],
+        "olympiad_reformulations": []
+      },
+      "ideas": [
+        {
+          "id": "idea-third-edge-forces-triangle",
+          "title": "Третье ребро вне звезды замыкает треугольник",
+          "text": "Если семейство не является звездой, то, выбрав два ребра с общим концом и третье ребро без этого конца, мы вынуждаем треугольник; после этого любое новое ребро обязано быть одной из его сторон.",
+          "tags": [
+            "extremal_choice"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "solutions": [
+        {
+          "id": "sol-star-or-triangle",
+          "title": "Либо звезда, либо треугольник",
+          "text": "Если все рёбра из \\(F\\) имеют общий конец, то утверждение доказано. Иначе найдутся два ребра \\(xy\\) и \\(xz\\) из \\(F\\) и третье ребро \\(e\\in F\\), не инцидентное вершине \\(x\\). Так как \\(e\\) должно пересекать и \\(xy\\), и \\(xz\\), в простом графе это возможно только при \\(e=yz\\). Значит, в \\(F\\) уже содержатся три стороны треугольника \\(xyz\\). Теперь любое ребро из \\(F\\) обязано пересекать все три рёбра \\(xy,xz,yz\\). В простом графе это возможно только для самих рёбер \\(xy,xz,yz\\). Следовательно, все рёбра из \\(F\\) являются сторонами одного треугольника.",
+          "idea_ids": [
+            "idea-third-edge-forces-triangle"
+          ],
+          "standard_idea_ids": [],
+          "status": "ai_checked"
+        }
+      ],
+      "difficulty": {
+        "main": "exercise",
+        "local_score": 3,
+        "comment": "Короткая структурная лемма, часто возникающая в задачах о попарных пересечениях.",
+        "status": "ai_checked"
+      },
+      "tags": [
+        "extremal_graph_theory",
+        "olympiad_tool"
+      ],
+      "properties": {},
+      "sources": [
+        {
+          "source_id": "src-problems-98230",
+          "role": "problem_and_solution_archive",
+          "status": "source_verified"
+        }
+      ],
+      "editorial": {
+        "created_by": "ai",
+        "created_at": "2026-04-24",
+        "review_status": "needs_human_review",
+        "public_ready": false,
+        "notes": [],
+        "graph_theory_duplicate_removed": true,
+        "relations_status": "base_done"
+      },
+      "_path": "data\\problems\\classical\\pairwise-intersecting-edges-star-or-triangle.yaml"
     },
     "planar-edge-bound": {
       "id": "planar-edge-bound",
@@ -3424,6 +3825,125 @@
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\classical\\ramsey-theorem.yaml"
+    },
+    "shortest-odd-cycle-external-neighbor-bound": {
+      "id": "shortest-odd-cycle-external-neighbor-bound",
+      "title": "Внешняя вершина кратчайшего нечётного цикла",
+      "kind": {
+        "primary": "lemma",
+        "secondary": [
+          "classical_tool"
+        ]
+      },
+      "language": "ru",
+      "authors": [
+        {
+          "name": "Дольников В.Л.",
+          "status": "source_verified"
+        }
+      ],
+      "problem_profile": {
+        "objects": [
+          "simple_graph",
+          "odd_cycle",
+          "shortest_odd_cycle",
+          "clique_free_graph"
+        ],
+        "methods": [
+          "minimal_counterexample",
+          "cycle_chord_analysis"
+        ],
+        "transformations": [
+          "outside_vertex_to_shorter_cycle"
+        ],
+        "goal": [
+          "bound_neighbors_on_shortest_odd_cycle"
+        ],
+        "auxiliary_graph_type": [],
+        "invariants": [
+          "odd_cycle_length",
+          "clique_number"
+        ],
+        "keywords": [
+          "shortest_odd_cycle",
+          "k4_free",
+          "neighbor_bound"
+        ],
+        "status": "ai_checked"
+      },
+      "statements": {
+        "original": [
+          {
+            "id": "stmt-original-1",
+            "text": "Пусть \\(G\\) — простой граф без клики \\(K_4\\), а \\(C\\) — нечётный цикл минимальной длины в \\(G\\). Докажите, что любая вершина графа \\(G\\), не принадлежащая циклу \\(C\\), смежна не более чем с двумя вершинами цикла \\(C\\).",
+            "source_id": "src-problems-116640",
+            "status": "needs_human_review",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "simple_graph",
+              "cycle",
+              "clique"
+            ]
+          }
+        ],
+        "graph_theory": [],
+        "olympiad_reformulations": []
+      },
+      "ideas": [
+        {
+          "id": "idea-three_neighbors_split_odd_cycle",
+          "title": "Три соседа разбивают цикл на дуги",
+          "text": "Если внешняя вершина имеет на кратчайшем нечётном цикле три соседа, то одна из дуг между соседями даёт меньший нечётный цикл; исключение возможно только для треугольника, но тогда возникает \\(K_4\\).",
+          "tags": [
+            "minimal_counterexample",
+            "forbidden_clique"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "solutions": [
+        {
+          "id": "sol-odd-arc-or-k4",
+          "title": "Нечётная дуга или \\(K_4\\)",
+          "text": "Пусть вершина \\(x\\notin V(C)\\) смежна с тремя различными вершинами \\(a,b,c\\) цикла \\(C\\). Эти вершины разбивают цикл \\(C\\) на три дуги; так как длина \\(C\\) нечётна, хотя бы одна из дуг имеет нечётную длину. Если длина этой дуги больше 1, то вместе с рёбрами от \\(x\\) к её концам она образует нечётный цикл меньшей длины, чем \\(C\\), что невозможно. Следовательно, единственный оставшийся случай — выбранная нечётная дуга имеет длину 1. Тогда \\(C\\) является треугольником, и вершина \\(x\\) смежна со всеми тремя его вершинами. Но это даёт клику \\(K_4\\), запрещённую по условию. Противоречие.",
+          "idea_ids": [
+            "idea-three_neighbors_split_odd_cycle"
+          ],
+          "standard_idea_ids": [],
+          "status": "ai_checked"
+        }
+      ],
+      "difficulty": {
+        "main": "regional",
+        "local_score": 4,
+        "comment": "Типичная лемма про минимальный нечётный цикл в \\(K_4\\)-free графе.",
+        "status": "ai_checked"
+      },
+      "tags": [
+        "coloring",
+        "forbidden_clique",
+        "olympiad_tool"
+      ],
+      "properties": {},
+      "sources": [
+        {
+          "source_id": "src-problems-116640",
+          "role": "problem_and_solution_archive",
+          "status": "source_verified"
+        }
+      ],
+      "editorial": {
+        "created_by": "ai",
+        "created_at": "2026-04-24",
+        "review_status": "needs_human_review",
+        "public_ready": false,
+        "notes": [],
+        "graph_theory_duplicate_removed": true,
+        "relations_status": "base_done"
+      },
+      "_path": "data\\problems\\classical\\shortest-odd-cycle-external-neighbor-bound.yaml"
     },
     "tournament-hamiltonian-path": {
       "id": "tournament-hamiltonian-path",
@@ -4114,7 +4634,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Построим двудольный граф: слева вершины-строки, справа вершины-столбцы, а каждая синяя клетка даёт ребро между своей строкой и своим столбцом. Условие задачи превращается в локальное ограничение на суммы степеней концов каждого возможного пересечения строки и столбца.",
+            "text": "Пусть \\(m\\) — положительное целое, а \\(G=(R,C,E)\\) — двудольный граф, в котором \\(|R|=|C|=4m\\). Для любых \\(r\\in R\\) и \\(c\\in C\\) выполнено неравенство \\(\\deg(r)+\\deg(c)-2\\mathbf 1_{rc\\in E}\\ge 2\\). Найдите минимально возможное число рёбер \\(|E|\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -4152,6 +4672,16 @@
           "id": "sol-official-compressed",
           "title": "Сжатое официальное решение",
           "text": "Во втором официальном решении строится двудольный граф, где одна доля состоит из строк таблицы, другая — из столбцов, а каждая синяя клетка даёт ребро между своей строкой и своим столбцом. Тогда число синих клеток равно числу рёбер. Условие задачи переписывается как ограничение на суммы степеней концов для любой пары строка-столбец; отсюда сразу следует, что пустых строк и столбцов нет, а каждая связная компонента графа содержит хотя бы 4 вершины. Так как всего вершин \\(8m\\), компонент не больше \\(2m\\), а значит число рёбер не меньше \\(8m-2m=6m\\). Блочная конструкция из официального решения достигает этой оценки, так что минимум равен \\(6m\\).",
+          "examples": [
+            {
+              "type": "image",
+              "title": "Как синие клетки становятся рёбрами",
+              "path": "assets/examples/egmo-2016-p3/grid-to-incidence-graph.png",
+              "caption": "Слева маленький фрагмент таблицы, справа соответствующий двудольный граф: вершины одной доли — строки, другой — столбцы, а каждая синяя клетка даёт одно ребро между своей строкой и своим столбцом.",
+              "alt": "Слева маленькая таблица с синими клетками, справа двудольный граф строк и столбцов с соответствующими рёбрами.",
+              "optional": true
+            }
+          ],
           "idea_ids": [
             "idea-row-column-incidence",
             "idea-component-at-least-four"
@@ -4196,7 +4726,6 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "graph_theory_absent_reason": "Графовая модель используется в официальном решении, а не в исходной формулировке.",
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\egmo\\egmo-2016-p3-blue-cells-bipartite-incidence.yaml"
@@ -4268,7 +4797,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Домино-разбиение доски эквивалентно совершенному паросочетанию в двудольном графе клеток шахматной раскраски; вопрос задачи — когда число таких паросочетаний в графе решётки \\(n\\times 2k\\) всегда нечётно.",
+            "text": "Для положительных целых \\(n\\) и \\(k\\) рассмотрим двудольный граф \\(G_{n,2k}\\), вершинами которого являются клетки доски \\(n\\times 2k\\) шахматной раскраски, а ребро соединяет две клетки разных цветов тогда и только тогда, когда они имеют общую сторону. Обозначим через \\(m(n,2k)\\) число совершенных паросочетаний в \\(G_{n,2k}\\). Найдите все положительные \\(n\\), для которых число \\(m(n,2k)\\) нечётно при любом положительном \\(k\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -4349,7 +4878,6 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "graph_theory_absent_reason": "Графовая модель появляется в официальном решении, а не в исходной формулировке.",
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\egmo\\egmo-2022-p5-domino-parity-bipartite-matching.yaml"
@@ -4419,20 +4947,7 @@
             ]
           }
         ],
-        "graph_theory": [
-          {
-            "id": "stmt-graph",
-            "text": "Для хорошего старта траектория улитки задаёт ориентированный цикл длины \\(n^2\\), проходящий через все клетки ровно по одному разу; задача спрашивает, сколько вершин такого динамически согласованного гамильтонова цикла могут быть стартами одновременно.",
-            "status": "needs_human_review",
-            "self_contained": {
-              "status": "ai_checked"
-            },
-            "definition_ids": [],
-            "distinct_from": [
-              "stmt-original"
-            ]
-          }
-        ],
+        "graph_theory": [],
         "olympiad_reformulations": []
       },
       "ideas": [
@@ -4501,7 +5016,7 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "graph_theory_absent_reason": "Графовая интерпретация возникает как кодирование динамического обхода в официальном решении.",
+        "graph_theory_absent_reason": "Графовая интерпретация возникает как кодирование динамического обхода в официальном решении, а не как самостоятельная переформулировка условия.",
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\egmo\\egmo-2025-p5-rotating-arrows-dynamic-cycle.yaml"
@@ -4573,7 +5088,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это раскраска рёбер полного графа K_17 в три цвета; нужно найти одноцветный K_3.",
+            "text": "Рёбра полного графа \\(K_{17}\\) раскрашены в три цвета. Докажите, что найдётся одноцветный треугольник.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -4730,7 +5245,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это подсчёт числа прогулок длины n между противоположными вершинами в цикле C_8.",
+            "text": "В цикле \\(C_8\\) выбраны две противоположные вершины \\(S\\) и \\(F\\). Для каждого \\(n\\ge 0\\) обозначим через \\(a_n\\) число маршрутов длины \\(n\\) из \\(S\\) в \\(F\\), то есть число последовательностей из \\(n\\) рёбер, по которым можно пройти из \\(S\\) в \\(F\\). Докажите указанную в задаче формулу для \\(a_n\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -4885,7 +5400,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это построение совершенного 1-кода в бесконечном 6-регулярном решёточном графе Z^3.",
+            "text": "Рассмотрим бесконечный граф с множеством вершин \\(\\mathbb Z^3\\), в котором две вершины соединены ребром тогда и только тогда, когда они отличаются ровно в одной координате на 1. Докажите, что существует множество вершин \\(S\\), являющееся совершенным кодом радиуса 1: никакие две вершины из \\(S\\) не смежны, и каждая вершина вне \\(S\\) имеет ровно одного соседа в \\(S\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -5204,7 +5719,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Нужно найти длинный ориентированный путь в линейном графе L(G), где рёбра исходного графа стали вершинами, упорядоченными по меткам.",
+            "text": "Пусть \\(G\\) — граф с \\(n\\) вершинами и \\(q\\) рёбрами, причём его рёбра помечены числами \\(1,2,\\ldots,q\\). Докажите, что в \\(G\\) существует последовательность не менее чем из \\(2q/n\\) различных рёбер, в которой метки строго возрастают и любые два соседних ребра последовательности имеют общую вершину.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -5363,7 +5878,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это задача о минимальном числе рёбер в графе на 7 вершинах с числом независимости не больше 2.",
+            "text": "Найдите минимальное число рёбер в простом графе на 7 вершинах, в котором среди любых трёх вершин хотя бы две смежны.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -5525,7 +6040,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это задача о специальной нумерации рёбер связного графа; решение использует остовное дерево и размещение меток так, чтобы в каждой нелистовой вершине появлялись взаимно простые инцидентные числа.",
+            "text": "Пусть \\(G\\) — связный граф с \\(n\\) рёбрами. Докажите, что рёбра графа можно занумеровать числами \\(1,2,\\ldots,n\\) так, что для каждой вершины степени не меньше 2 наибольший общий делитель меток всех инцидентных ей рёбер равен 1.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -5685,7 +6200,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это прямое применение экстремальной теории графов: большая минимальная степень должна породить клику K_6.",
+            "text": "Пусть \\(G\\) — простой граф на 1991 вершине, у которого степень каждой вершины не меньше 1593. Докажите, что \\(G\\) содержит клику \\(K_6\\). Верно ли, что число 1593 нельзя уменьшить?",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -5845,7 +6360,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Геометрия несущественна: это задача о максимальном числе рёбер в подграфе K_9, допускающем 2-раскраску рёбер без одноцветного треугольника.",
+            "text": "Найдите наименьшее число \\(m\\) со следующим свойством: для любого подграфа \\(H\\) полного графа \\(K_9\\) с \\(m\\) рёбрами и для любой раскраски рёбер \\(H\\) в красный и синий цвета в \\(H\\) найдётся одноцветный треугольник.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -6693,6 +7208,7 @@
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
+          "graph_in_solution",
           "application"
         ]
       },
@@ -6752,20 +7268,7 @@
             "source_id": "src-imomath-imo-1997"
           }
         ],
-        "graph_theory": [
-          {
-            "id": "stmt-graph",
-            "text": "Можно рассматривать появление символа в клетке \\((i,j)\\) как покрытие индексов \\(i\\) и \\(j\\), но опубликованные решения в основном используют паритетный подсчёт появлений символов, а не полноценную теорию паросочетаний.",
-            "status": "needs_human_review",
-            "self_contained": {
-              "status": "ai_checked"
-            },
-            "definition_ids": [],
-            "distinct_from": [
-              "stmt-original"
-            ]
-          }
-        ],
+        "graph_theory": [],
         "olympiad_reformulations": []
       },
       "ideas": [
@@ -6850,7 +7353,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "relations_status": "reviewed_no_links"
+        "relations_status": "reviewed_no_links",
+        "graph_theory_absent_reason": "Графовая модель здесь не является самостоятельной постановкой: в известных решениях используются прежде всего паритетные подсчёты по таблице."
       },
       "_path": "data\\problems\\imo\\imo-1997-p4-silver-matrix-factorization-graph.yaml"
     },
@@ -6922,7 +7426,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это задача о раскраске рёбер полного графа K10. Для каждого k нужно, чтобы любой индуцированный K_k содержал k рёбер разных цветов; существенная часть решения для k=4 использует локальные степени цвета и R(3,3)=6.",
+            "text": "Рёбра полного графа \\(K_{10}\\) раскрашены в \\(k\\) цветов. Требуется, чтобы для любых \\(k\\) вершин среди рёбер индуцированного ими подграфа нашлись \\(k\\) рёбер попарно различных цветов. Найдите все \\(k\\), \\(1\\le k\\le 10\\), для которых это возможно.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -7078,7 +7582,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это точное вычисление total domination number для решёточного графа n x n: вершины — клетки, рёбра соединяют клетки с общей стороной, и каждая вершина должна иметь отмеченного соседа.",
+            "text": "Пусть \\(n\\) — чётное положительное число. Рассмотрим решёточный граф \\(P_n\\square P_n\\). Найдите минимальное число вершин в множестве \\(S\\subseteq V(P_n\\square P_n)\\), обладающем тем свойством, что каждая вершина графа имеет соседа в \\(S\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -7235,7 +7739,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это чистая задача о графовой операции: из \\(K_n\\) удаляются только рёбра, лежащие в текущем 4-цикле.",
+            "text": "Пусть \\(n\\ge 4\\). Исходно дан полный граф \\(K_n\\). Разрешена следующая операция: выбрать в текущем графе цикл длины 4 и удалить из него одно ребро. Найдите наименьшее число рёбер, которое может остаться после конечного числа таких операций.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -7389,7 +7893,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это экстремальная задача о числе копий \\(K_3\\) и \\(K_4\\) в конечном графе.",
+            "text": "Для конечного графа \\(G\\) обозначим через \\(f(G)\\) число его треугольников, а через \\(g(G)\\) — число его подграфов, изоморфных \\(K_4\\). Найдите наименьшую константу \\(c\\), для которой неравенство \\(g(G)^3\\le c\\,f(G)^4\\) выполняется для любого конечного графа \\(G\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -7536,7 +8040,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это задача о корневом бинарном лесе: нужно оценить число внутренних вершин, оба поддерева которых достаточно велики.",
+            "text": "Рассмотрим лес корневых деревьев, в котором каждая вершина либо является листом, либо имеет ровно двух сыновей. Вершина \\(u\\) называется \\(k\\)-династической, если у неё есть два сына и у каждого из этих сыновей имеется не менее \\(k\\) потомков. Докажите, что если во всём лесе \\(n\\) вершин, то число \\(k\\)-династических вершин не превосходит \\(n/(k+2)\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -7843,7 +8347,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Каждый цвет задаёт максимальное непересекающееся множество диагоналей, то есть триангуляцию. Задача ищет максимальное число пересечений между двумя плоскими диагональными графами на одних и тех же вершинах.",
+            "text": "Вершины выпуклого \\(n\\)-угольника считаются вершинами циклически упорядоченного множества. Выбраны два максимальных плоских графа на этом множестве вершин, каждый из которых содержит все стороны многоугольника и все его внутренние области являются треугольниками. Найдите максимально возможное число точек внутреннего пересечения между рёбрами первого графа и рёбрами второго графа, не являющимися сторонами многоугольника.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -8300,7 +8804,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Для фиксированной суммы строится граф возможных хорд; нужно найти большое независимое множество вершин-хорд в графе пересечений.",
+            "text": "Вершины полного графа \\(K_{2500}\\) расположены на окружности и помечены числами \\(1,2,\\ldots,2500\\). Докажите, что найдётся такое число \\(s\\), что среди хорд \\(ij\\) с условием \\(i+j=s\\) можно выбрать 100 попарно непересекающихся.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -8451,7 +8955,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это задача о графе: имоны — вершины, запутанности — рёбра; операция удаления разрешена для вершины нечётной степени, а удвоение заменяет граф двумя копиями и совершенным паросочетанием между соответствующими вершинами.",
+            "text": "Дан конечный простой граф. Разрешены две операции: удалить вершину нечётной степени вместе со всеми инцидентными ей рёбрами; заменить граф двумя его непересекающимися копиями и добавить ребро между каждой вершиной первой копии и соответствующей вершиной второй. Докажите, что после конечного числа таких операций можно получить граф без рёбер.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -8599,7 +9103,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это задача о связном неориентированном графе и слоях расстояний от вершины.",
+            "text": "Пусть \\(G\\) — связный неориентированный граф. Известно, что для любой вершины \\(x\\) число вершин, находящихся от \\(x\\) на расстоянии ровно 3, не превосходит 100. Докажите, что не существует вершины \\(x\\), от которой на расстоянии ровно 4 находится более 2550 вершин.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -8689,6 +9193,7 @@
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
+          "graph_in_solution",
           "application"
         ]
       },
@@ -8747,20 +9252,7 @@
             ]
           }
         ],
-        "graph_theory": [
-          {
-            "id": "stmt-graph",
-            "text": "В официальном решении строится граф областей: вершины — области одного типа, рёбра соответствуют специальным точкам пересечения; этот граф оказывается деревом.",
-            "status": "needs_human_review",
-            "self_contained": {
-              "status": "ai_checked"
-            },
-            "definition_ids": [],
-            "distinct_from": [
-              "stmt-original"
-            ]
-          }
-        ],
+        "graph_theory": [],
         "olympiad_reformulations": []
       },
       "ideas": [
@@ -8830,7 +9322,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "relations_status": "deep_done"
+        "relations_status": "deep_done",
+        "graph_theory_absent_reason": "Граф областей строится в решении; самостоятельная графовая постановка без пересказа этого построения здесь не выделена."
       },
       "_path": "data\\problems\\imo\\imo-2014-c9-snail-circles-tree.yaml"
     },
@@ -9032,7 +9525,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это динамическая задача о связном графе: операция над ребром \\(XY\\) заменяет окрестности концов симметрической разностью.",
+            "text": "Пусть \\(G\\) — связный простой граф на \\(n\\ge 3\\) вершинах. Разрешена следующая операция над ребром \\(xy\\): удалить ребро \\(xy\\), а затем для каждой вершины, смежной ровно с одной из вершин \\(x,y\\), изменить инцидентность к этим вершинам так, чтобы после операции она стала смежна с другой из вершин \\(x,y\\) и не смежна с прежней. Известно, что для любого разбиения множества вершин на две непустые части в некоторый момент процесса применяется операция к ребру, соединяющему эти части. Докажите, что через конечное число шагов появится вершина степени \\(n-1\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -9070,6 +9563,16 @@
           "id": "sol-official-compressed",
           "title": "Сжатое официальное решение",
           "text": "Рассмотрим граф маршрутов. Операция закрытия ребра \\(XY\\) фактически переносит различия в окрестностях \\(X\\) и \\(Y\\): вершины, смежные ровно с одним концом, становятся смежными с обоими. Официальное решение выбирает пару вершин с максимальным числом общих соседей и показывает, что если ни одна вершина ещё не универсальна, то условие о будущих закрытиях рёбер через любой разрез позволит найти операцию, увеличивающую этот максимум. Так как максимум ограничен \\(n-2\\), процесс не может продолжаться без появления вершины, смежной со всеми остальными.",
+          "examples": [
+            {
+              "type": "image",
+              "title": "Локальная операция на ребре \\(XY\\)",
+              "path": "assets/examples/imo-2016-c6/ferry-operation-before-after.png",
+              "caption": "Слева показан фрагмент до операции: ребро \\(XY\\), соседи только вершины \\(X\\), только вершины \\(Y\\) и общий сосед. Справа после удаления \\(XY\\) все вершины, смежные ровно с одним из \\(X,Y\\), переключаются на другой конец; общие соседи не меняются.",
+              "alt": "Два графа до и после операции на ребре XY с переключением эксклюзивных соседей.",
+              "optional": true
+            }
+          ],
           "idea_ids": [
             "idea-common-neighborhood",
             "idea-cut-condition"
@@ -9122,6 +9625,7 @@
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
+          "graph_in_solution",
           "application"
         ]
       },
@@ -9178,20 +9682,7 @@
             ]
           }
         ],
-        "graph_theory": [
-          {
-            "id": "stmt-graph",
-            "text": "В доказательстве неединственности строится граф на клетках с красными рёбрами выбранного разбиения и синими рёбрами отражённого разбиения; каждая компонента является чередующимся циклом.",
-            "status": "needs_human_review",
-            "self_contained": {
-              "status": "ai_checked"
-            },
-            "definition_ids": [],
-            "distinct_from": [
-              "stmt-original"
-            ]
-          }
-        ],
+        "graph_theory": [],
         "olympiad_reformulations": []
       },
       "ideas": [
@@ -9263,7 +9754,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "relations_status": "deep_done"
+        "relations_status": "deep_done",
+        "graph_theory_absent_reason": "Граф возникает только в доказательстве через чередующиеся циклы двух разбиений, а не в самой постановке."
       },
       "_path": "data\\problems\\imo\\imo-2016-c8-domino-unique-tiling-cycles.yaml"
     },
@@ -9468,7 +9960,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Области разбиения плоскости становятся вершинами графа, а двери — рёбрами; нужно оценить число компонент этого графа.",
+            "text": "На плоскости проведены \\(n\\) прямых, никакие две не параллельны и никакие три не проходят через одну точку. Для каждой прямой каждая из двух полуплоскостей по разные стороны от неё окрашена в один из двух цветов. Рассмотрим граф, вершинами которого являются области разбиения плоскости этими прямыми, а две области соединены ребром тогда и только тогда, когда они имеют общую сторону и цвета по разные стороны соответствующей прямой различны. Найдите наибольшее возможное число компонент связности этого графа.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -10333,7 +10825,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Это раскраска рёбер полного графа \\(K_n\\): требуется, чтобы каждый гамильтонов путь содержал рёбра всех \\(k\\) цветов.",
+            "text": "Рёбра полного графа \\(K_n\\) раскрашены в \\(k\\) цветов. Известно, что после удаления рёбер любого одного цвета в оставшемся графе нет гамильтонова пути. Найдите максимально возможное \\(k\\).",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -10546,6 +11038,16 @@
           "id": "sol-chord-uncrossing-induction",
           "title": "Пересечения хорд и индукция по потенциалу",
           "text": "Ответ: \\(\\frac{n(n-1)}2\\). Нижняя оценка достигается на рассадке, где каждый рыцарь сидит ровно напротив партнёра. Соединим партнёров хордами. Тогда любые две хорды пересекаются, а чтобы партнёры одной пары стали соседями, их хорда должна не пересекать ни одну другую. Один обмен соседних рыцарей может распутать не более одной пары пересекающихся хорд, поэтому нужно хотя бы \\(\\binom n2\\) обменов. Докажем достаточность. Поставим в центр стола точку-столб и для каждой хорды выберем сторону, на которой находится столб, если хорда проходит через центр. Хорда проходит перед рыцарем, если отделяет его от столба; длина хорды — число таких рыцарей. Для двух хорд есть три типа отношений: одна охватывает другую, они пересекаются, или они раздельны. Пусть \\(k,l,m\\) — числа пар этих трёх типов; тогда \\(k+l+m=\\binom n2\\). Лемма: за \\(2k+l\\) обменов можно посадить все пары рядом. Действительно, пока есть хорда положительной длины, смотрим на первого рыцаря перед ней. Либо обмен сразу уменьшает число пересечений, либо переводит вложенную пару в пересекающуюся и уменьшает \\(2k+l\\), либо мы продвигаемся дальше вдоль хорды и в конце снова находим уменьшающий обмен. Индукция по \\(2k+l\\) завершает лемму. Остаётся доказать \\(k\\le m\\). Возьмём хорду максимальной длины; если её пересекают \\(x\\) хорд и внутри неё лежат \\(y\\) хорд, то её длина равна \\(x+2y\\le n-1\\), поэтому хорд, раздельных с ней, не меньше \\(y\\). Удалив эту пару и применив индукцию к оставшимся хордам, получаем \\(k\\le m\\). Тогда \\(2k+l\\le k+l+m=\\binom n2\\), что и даёт нужное число обменов.",
+          "examples": [
+            {
+              "type": "image",
+              "title": "Три типа пары хорд",
+              "path": "assets/examples/imo-2024-c3/chord-types.png",
+              "caption": "Слева направо показаны три случая для одной пары хорд относительно выбранного столба: вложенная пара, пересекающаяся пара и раздельная пара. Именно эти три типа считаются в параметрах \\(k,l,m\\).",
+              "alt": "Три панели с двумя хордами на окружности: вложенные, пересекающиеся и раздельные.",
+              "optional": true
+            }
+          ],
           "idea_ids": [
             "idea-crossing-chords-lower-bound",
             "idea-pillar-chain-potential"
@@ -11011,7 +11513,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Официальное решение строит двудольный граф: одна доля - положительные диагонали, другая - отрицательные, а каждая красная клетка становится ребром между двумя диагоналями. Слонов цикл в точности соответствует циклу в этом графе.",
+            "text": "Рассмотрим двудольный граф, одна доля которого состоит из всех диагоналей доски с наклоном \\(1\\), а другая — из всех диагоналей с наклоном \\(-1\\). Каждая красная клетка задаёт ребро между двумя диагоналями, проходящими через эту клетку. Известно, что в этом графе нет циклов. Найдите наибольшее возможное число рёбер такого графа.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -11092,7 +11594,6 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "graph_theory_absent_reason": "Графовая модель появляется в официальном решении, а не в исходной формулировке.",
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\memo\\memo-2021-i2-bishop-circuit-forest.yaml"
@@ -11160,20 +11661,7 @@
             ]
           }
         ],
-        "graph_theory": [
-          {
-            "id": "stmt-graph",
-            "text": "Официальное решение не строит один явный граф клеток, но делит клетки на четыре класса достижимости в ориентированном графе состояний: достижимые с последним телепортом, с последним обычным шагом, обоими способами и недостижимые. Дальше используется инвариант попарной балансировки и домино-разбиение.",
-            "status": "needs_human_review",
-            "self_contained": {
-              "status": "ai_checked"
-            },
-            "definition_ids": [],
-            "distinct_from": [
-              "stmt-original"
-            ]
-          }
-        ],
+        "graph_theory": [],
         "olympiad_reformulations": []
       },
       "ideas": [
@@ -11201,6 +11689,16 @@
           "id": "sol-official-compressed",
           "title": "Сжатое официальное решение",
           "text": "Фиксируем раскраску и стартовую клетку. Каждую клетку относим к одному из четырёх классов: достижима только легальной последовательностью, оканчивающейся телепортом; только последовательностью, оканчивающейся обычным шагом; обоими способами; недостижима. Пары клеток одного цвета попарно переводят тип 'телепорт достижима' в тип 'обычный шаг достижима', поэтому этих клеток поровну. Сосед любой 'телепорт достижимой' клетки обязан быть 'обычно достижимым', а сосед легко достижимой клетки не может быть недостижим. Предположим, что недостижимая клетка есть. Тогда рядом с ней найдётся клетка, достижимая только обычным шагом. Покрываем всю доску доминошками так, чтобы эта пара попала в одну доминошку. В каждой доминошке, содержащей клетку типа 'только телепорт', есть клетка типа 'только обычный шаг', но выбранная доминошка даёт клетку второго типа без первой. Это противоречит равенству чисел двух типов. Значит недостижимых клеток нет, и Яна всегда может попасть в любую клетку, в частности к шоколадке.",
+          "examples": [
+            {
+              "type": "image",
+              "title": "Четыре класса достижимости и домино на границе",
+              "path": "assets/examples/memo-2022-t4/reachability-classes-board.png",
+              "caption": "Игрушечная схема: зелёные клетки достижимы обоими типами последнего хода, синие — только телепортом, оранжевые — только обычным шагом, серые — недостижимы. Красной рамкой выделена доминошка, в которой клетка типа 'только шаг' соседствует с недостижимой клеткой; именно такой локальный рисунок запускает противоречие в домино-аргументе.",
+              "alt": "Квадратная доска, раскрашенная в четыре класса достижимости, с выделенной доминошкой на границе достижимой области.",
+              "optional": true
+            }
+          ],
           "idea_ids": [
             "idea-four-reachability-types",
             "idea-domino-balance"
@@ -11242,7 +11740,7 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "graph_theory_absent_reason": "Графовая структура выражена через классы достижимости, а не через явную формулировку на графе.",
+        "graph_theory_absent_reason": "Графовые состояния используются только как техническое кодирование процесса в решении.",
         "relations_status": "base_done"
       },
       "_path": "data\\problems\\memo\\memo-2022-t4-teleport-table-reachability.yaml"
@@ -11313,7 +11811,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Рассматривается граф достижимости по одному ходу на красных клетках. Требуется выбрать множество вершин, которое независимо в этом графе, но имеет диаметр 2 в смысле графа достижимости через красные клетки.",
+            "text": "Дан конечный граф \\(G\\). Требуется найти наибольший возможный размер множества вершин \\(S\\subseteq V(G)\\), которое является независимым в \\(G\\), но для любых двух различных вершин \\(u,v\\in S\\) существует вершина \\(w\\in V(G)\\), смежная и с \\(u\\), и с \\(v\\). Известно, что граф \\(G\\) можно получить как граф достижимости ладьи по одному ходу на некотором множестве не более 2025 красных клеток бесконечной решётки.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -11464,7 +11962,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Официальное решение прямо переводит задачу во взвешенный полный граф на \\(100n\\) вершинах: вес ребра - доход, получаемый каждым концом дороги. Требуется удалить как можно больше рёбер, не потеряв более 1% суммарного веса у каждой вершины.",
+            "text": "Пусть дан взвешенный полный граф на \\(100n\\) вершинах; все веса рёбер положительны. Требуется удалить как можно больше рёбер так, чтобы для каждой вершины сумма весов оставшихся инцидентных ей рёбер была не меньше \\(99\\%\\) от суммы весов всех исходных инцидентных ей рёбер. Найдите наибольшее число рёбер, которое можно гарантированно удалить при любых положительных весах.",
             "status": "needs_human_review",
             "self_contained": {
               "status": "ai_checked"
@@ -12302,6 +12800,7 @@
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
+          "graph_in_solution",
           "application"
         ]
       },
@@ -12362,17 +12861,7 @@
             "definition_ids": []
           }
         ],
-        "graph_theory": [
-          {
-            "id": "stmt-graph",
-            "text": "Есть N объектов и N признаков. Любые два объекта различаются хотя бы по одному признаку. Докажите, что существует признак, удаление которого не склеивает никакую пару объектов: после удаления этого признака любые два объекта всё ещё различаются хотя бы по одному из оставшихся признаков.",
-            "status": "ai_checked",
-            "self_contained": {
-              "status": "ai_checked"
-            },
-            "definition_ids": []
-          }
-        ],
+        "graph_theory": [],
         "olympiad_reformulations": []
       },
       "ideas": [
@@ -12439,7 +12928,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [],
-        "relations_status": "base_done"
+        "relations_status": "base_done",
+        "graph_theory_absent_reason": "Самостоятельной переформулировки на языке теории графов здесь нет; текущая задача естественно остаётся табличной."
       },
       "_path": "data\\problems\\tournament-cities\\tc-1980-distinct-rows-delete-column.yaml"
     },
@@ -14063,6 +14553,16 @@
           "id": "sol-forest-accounting",
           "title": "Контроль числа взвешиваний через лес",
           "text": "Сначала монеты произвольно разбиваются на пары, веса которых могут быть 18, 19 или 20 г; пар весов 18 и 20 г поровну. Алгоритм сравнивает пары и группы пар так, чтобы в конце определить тип каждой пары, после чего лёгкие и тяжёлые пары склеиваются в правильные пары по 19 г. Для контроля числа сравнений строится граф на исходных парах: каждое сравнение добавляет ребро между парами, которые оно фактически связывает. В каждом случае алгоритма новое ребро соединяет разные компоненты этого графа, поэтому получается лес. Лес на \\(n\\) вершинах имеет не больше \\(n-1\\) рёбер, значит сделано меньше \\(n\\) взвешиваний.",
+          "examples": [
+            {
+              "type": "image",
+              "title": "Граф сравнений остаётся лесом",
+              "path": "assets/examples/tc-2023-24/comparison-forest-growth.png",
+              "caption": "Три последовательных состояния бухгалтерского графа на исходных парах. Каждое существенное взвешивание добавляет ребро только между разными компонентами уже построенного графа, поэтому цикл не появляется и число взвешиваний ограничивается числом рёбер в лесе.",
+              "alt": "Три панели с постепенным добавлением рёбер в лес без образования цикла.",
+              "optional": true
+            }
+          ],
           "idea_ids": [
             "idea-weighings-as-forest"
           ],
@@ -15510,6 +16010,70 @@
       "status": "ai_checked",
       "confidence": 0.86,
       "_path": "data\\relations\\relations.yaml"
+    },
+    {
+      "id": "rel-pairwise-intersecting-edges-tc-1994-95",
+      "from": "pairwise-intersecting-edges-star-or-triangle",
+      "to": "tc-1994-95-common-grandfather-intersecting-edges",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Решение задачи Турнира городов сначала доказывает структурную лемму: попарно пересекающееся семейство рёбер в простом графе обязательно является звездой или треугольником.",
+      "backward_text": "Задача о дедах является прямым применением леммы «звезда или треугольник» к графу дедов и детей.",
+      "anchors": {
+        "from_solution_id": "sol-star-or-triangle",
+        "to_solution_id": "sol-star-or-triangle"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\extracted-graph-lemmas.yaml"
+    },
+    {
+      "id": "rel-longest-path-detour-bmo-2025-p4",
+      "from": "longest-path-endpoints-shortest-detour",
+      "to": "bmo-2025-p4-flights-long-short-paths",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В задаче BMO 2025 P4 первое ключевое наблюдение состоит в том, что кратчайший путь между концами максимального пути должен быть одним ребром.",
+      "backward_text": "Классификация графов в BMO 2025 P4 начинается с применения леммы о кратчайшем обходе между концами максимального пути.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-longer-than-path",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97,
+      "_path": "data\\relations\\relations.d\\extracted-graph-lemmas.yaml"
+    },
+    {
+      "id": "rel-shortest-odd-cycle-neighbor-vosh-2010-11",
+      "from": "shortest-odd-cycle-external-neighbor-bound",
+      "to": "vosh-2010-11-final-nonbreakable-company",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В решении всероссийской задачи минимальный нечётный цикл даёт разбиение вершин, потому что внешняя вершина не может иметь на нём слишком много соседей.",
+      "backward_text": "Ключевая лемма решения всероссийской задачи — ограничение на число соседей внешней вершины на кратчайшем нечётном цикле в \\(K_4\\)-free графе.",
+      "anchors": {
+        "from_solution_id": "sol-odd-arc-or-k4",
+        "to_solution_id": "sol-minimal-odd-cycle"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98,
+      "_path": "data\\relations\\relations.d\\extracted-graph-lemmas.yaml"
+    },
+    {
+      "id": "rel-color-reduction-imo-2013-c3",
+      "from": "color-reduction-by-odd-deletion-and-doubling",
+      "to": "imo-2013-c3-imons-graph-coloring",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Сжатое решение IMO Shortlist 2013 C3 опирается на отдельную лемму о том, что специальные операции позволяют понизить число цветов на 1.",
+      "backward_text": "Основной шаг решения IMO Shortlist 2013 C3 — итеративное применение леммы о понижении числа цветов удалением нечётных вершин и удвоением графа.",
+      "anchors": {
+        "from_solution_id": "sol-even-core-and-double",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96,
+      "_path": "data\\relations\\relations.d\\extracted-graph-lemmas.yaml"
     },
     {
       "id": "rel-tree-imo-2024-c8",
@@ -19099,6 +19663,49 @@
       return `<div class="text">${html}</div>`;
     }
 
+    function renderExample(example, definitionIds = [], standardIdeaIds = []) {
+      if (typeof example === 'string') {
+        return `<div class="example-card">${textBlock(example, definitionIds, standardIdeaIds)}</div>`;
+      }
+      if (!example || typeof example !== 'object') return '';
+      const title = example.title || 'Пример';
+      const optional = example.optional ? `<span class="example-optional">необязательный блок</span>` : '';
+      if (example.type === 'image') {
+        const alt = example.alt || title;
+        const caption = example.caption ? `<figcaption class="example-caption">${textBlock(example.caption, definitionIds, standardIdeaIds)}</figcaption>` : '';
+        return `
+          <div class="example-card">
+            <div class="example-label">
+              <span>${esc(title)}</span>
+              ${optional}
+            </div>
+            <figure class="example-figure">
+              <img class="example-image" src="${esc(example.path)}" alt="${esc(alt)}">
+              ${caption}
+            </figure>
+          </div>
+        `;
+      }
+      return `
+        <div class="example-card">
+          <div class="example-label">
+            <span>${esc(title)}</span>
+            ${optional}
+          </div>
+          ${textBlock(example.text || '', definitionIds, standardIdeaIds)}
+        </div>
+      `;
+    }
+
+    function renderExamples(examples, definitionIds = [], standardIdeaIds = []) {
+      if (!examples || !examples.length) return '';
+      return `
+        <div class="example-stack">
+          ${examples.map(example => renderExample(example, definitionIds, standardIdeaIds)).join('')}
+        </div>
+      `;
+    }
+
     function statusPill(status) {
       if (!status) return '';
       return `<span class="pill status-${esc(status)}">${esc(label(taxonomy.statuses, status))}</span>`;
@@ -19388,6 +19995,7 @@
             ${statusPill(solution.status)}
           </div>
           ${textBlock(solution.text, [], solution.standard_idea_ids || [])}
+          ${renderExamples(solution.examples || [], [], solution.standard_idea_ids || [])}
           <div class="pill-row">
             ${(solution.idea_ids || []).map(id => `<span class="pill code">${esc(id)}</span>`).join('')}
             ${(solution.standard_idea_ids || []).map(standardIdeaPill).join('')}

@@ -1,0 +1,118 @@
+{
+  "id": "shortest-odd-cycle-external-neighbor-bound",
+  "title": "Внешняя вершина кратчайшего нечётного цикла",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Дольников В.Л.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "odd_cycle",
+      "shortest_odd_cycle",
+      "clique_free_graph"
+    ],
+    "methods": [
+      "minimal_counterexample",
+      "cycle_chord_analysis"
+    ],
+    "transformations": [
+      "outside_vertex_to_shorter_cycle"
+    ],
+    "goal": [
+      "bound_neighbors_on_shortest_odd_cycle"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "odd_cycle_length",
+      "clique_number"
+    ],
+    "keywords": [
+      "shortest_odd_cycle",
+      "k4_free",
+      "neighbor_bound"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть \\(G\\) — простой граф без клики \\(K_4\\), а \\(C\\) — нечётный цикл минимальной длины в \\(G\\). Докажите, что любая вершина графа \\(G\\), не принадлежащая циклу \\(C\\), смежна не более чем с двумя вершинами цикла \\(C\\).",
+        "source_id": "src-problems-116640",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle",
+          "clique"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-three_neighbors_split_odd_cycle",
+      "title": "Три соседа разбивают цикл на дуги",
+      "text": "Если внешняя вершина имеет на кратчайшем нечётном цикле три соседа, то одна из дуг между соседями даёт меньший нечётный цикл; исключение возможно только для треугольника, но тогда возникает \\(K_4\\).",
+      "tags": [
+        "minimal_counterexample",
+        "forbidden_clique"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-odd-arc-or-k4",
+      "title": "Нечётная дуга или \\(K_4\\)",
+      "text": "Пусть вершина \\(x\\notin V(C)\\) смежна с тремя различными вершинами \\(a,b,c\\) цикла \\(C\\). Эти вершины разбивают цикл \\(C\\) на три дуги; так как длина \\(C\\) нечётна, хотя бы одна из дуг имеет нечётную длину. Если длина этой дуги больше 1, то вместе с рёбрами от \\(x\\) к её концам она образует нечётный цикл меньшей длины, чем \\(C\\), что невозможно. Следовательно, единственный оставшийся случай — выбранная нечётная дуга имеет длину 1. Тогда \\(C\\) является треугольником, и вершина \\(x\\) смежна со всеми тремя его вершинами. Но это даёт клику \\(K_4\\), запрещённую по условию. Противоречие.",
+      "idea_ids": [
+        "idea-three_neighbors_split_odd_cycle"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Типичная лемма про минимальный нечётный цикл в \\(K_4\\)-free графе.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "forbidden_clique",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-problems-116640",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "base_done"
+  }
+}

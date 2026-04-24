@@ -1,4 +1,5 @@
 import json
+import shutil
 
 from lib import (
     ROOT,
@@ -30,6 +31,17 @@ def load_viewer_data():
             "comment_statuses": load_taxonomy("comment-statuses.yaml", "comment_statuses"),
         },
     }
+
+
+def copy_example_assets():
+    source = ROOT / "data" / "assets"
+    if not source.exists():
+        return
+    for target_root in (ROOT / "viewer", ROOT / "docs"):
+        target = target_root / "assets"
+        if target.exists():
+            shutil.rmtree(target)
+        shutil.copytree(source, target)
 
 
 def build_html(data):
@@ -271,6 +283,53 @@ def build_html(data):
       overflow-wrap: anywhere;
     }}
 
+    .example-stack {{
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }}
+
+    .example-card {{
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fcfbf8;
+    }}
+
+    .example-label {{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-weight: 650;
+    }}
+
+    .example-optional {{
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+    }}
+
+    .example-figure {{
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }}
+
+    .example-image {{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }}
+
+    .example-caption {{
+      color: var(--muted);
+      font-size: 14px;
+    }}
+
     a {{
       color: var(--accent);
       text-decoration-thickness: 1px;
@@ -459,6 +518,49 @@ def build_html(data):
       html = linkDefinitions(html, definitionIds);
       html = linkStandardIdeas(html, standardIdeaIds);
       return `<div class="text">${{html}}</div>`;
+    }}
+
+    function renderExample(example, definitionIds = [], standardIdeaIds = []) {{
+      if (typeof example === 'string') {{
+        return `<div class="example-card">${{textBlock(example, definitionIds, standardIdeaIds)}}</div>`;
+      }}
+      if (!example || typeof example !== 'object') return '';
+      const title = example.title || 'Пример';
+      const optional = example.optional ? `<span class="example-optional">необязательный блок</span>` : '';
+      if (example.type === 'image') {{
+        const alt = example.alt || title;
+        const caption = example.caption ? `<figcaption class="example-caption">${{textBlock(example.caption, definitionIds, standardIdeaIds)}}</figcaption>` : '';
+        return `
+          <div class="example-card">
+            <div class="example-label">
+              <span>${{esc(title)}}</span>
+              ${{optional}}
+            </div>
+            <figure class="example-figure">
+              <img class="example-image" src="${{esc(example.path)}}" alt="${{esc(alt)}}">
+              ${{caption}}
+            </figure>
+          </div>
+        `;
+      }}
+      return `
+        <div class="example-card">
+          <div class="example-label">
+            <span>${{esc(title)}}</span>
+            ${{optional}}
+          </div>
+          ${{textBlock(example.text || '', definitionIds, standardIdeaIds)}}
+        </div>
+      `;
+    }}
+
+    function renderExamples(examples, definitionIds = [], standardIdeaIds = []) {{
+      if (!examples || !examples.length) return '';
+      return `
+        <div class="example-stack">
+          ${{examples.map(example => renderExample(example, definitionIds, standardIdeaIds)).join('')}}
+        </div>
+      `;
     }}
 
     function statusPill(status) {{
@@ -750,6 +852,7 @@ def build_html(data):
             ${{statusPill(solution.status)}}
           </div>
           ${{textBlock(solution.text, [], solution.standard_idea_ids || [])}}
+          ${{renderExamples(solution.examples || [], [], solution.standard_idea_ids || [])}}
           <div class="pill-row">
             ${{(solution.idea_ids || []).map(id => `<span class="pill code">${{esc(id)}}</span>`).join('')}}
             ${{(solution.standard_idea_ids || []).map(standardIdeaPill).join('')}}
@@ -1142,6 +1245,7 @@ def build_html(data):
 def main():
     viewer_dir = ROOT / "viewer"
     viewer_dir.mkdir(exist_ok=True)
+    copy_example_assets()
     html = build_html(load_viewer_data())
     target = viewer_dir / "index.html"
     target.write_text(html, encoding="utf-8")
