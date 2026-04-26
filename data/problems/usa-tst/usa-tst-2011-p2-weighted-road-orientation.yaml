@@ -1,0 +1,166 @@
+{
+  "id": "usa-tst-2011-p2-weighted-road-orientation",
+  "title": "Ориентация дорог с весами 1 и 2, USA TST 2011 P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Zuming Feng",
+      "status": "source_verified"
+    },
+    {
+      "name": "Yufei Zhao",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "weighted_graph",
+      "edge_orientation",
+      "odd_weighted_degree",
+      "eulerian_augmentation"
+    ],
+    "methods": [
+      "parity",
+      "graph_transformation",
+      "eulerian_decomposition",
+      "cycle_orientation"
+    ],
+    "transformations": [
+      "subdivide_weight_two_edge",
+      "add_balancing_vertex"
+    ],
+    "goal": [
+      "orientation_with_unit_imbalance"
+    ],
+    "auxiliary_graph_type": [
+      "eulerian_graph"
+    ],
+    "invariants": [
+      "weighted_degree_parity",
+      "in_out_balance_on_cycles"
+    ],
+    "keywords": [
+      "usa_tst_2011_p2",
+      "weighted_orientation",
+      "odd_weighted_degree"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Дороги в стране Onewaynia",
+        "text": "Некоторые пары городов соединены дорогами. Каждая дорога имеет пропускную способность `1` или `2`. Известно, что для каждого города сумма пропускных способностей всех дорог, инцидентных этому городу, нечётна. Докажите, что можно выбрать направление на каждой дороге так, чтобы для каждого города абсолютная величина разности между суммарной пропускной способностью входящих и выходящих дорог была равна `1`.",
+        "source_id": "src-usa-tst-2011-aops-community",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть дан конечный неориентированный граф, в котором каждое ребро имеет вес `1` или `2`, а у каждой вершины сумма весов инцидентных рёбер нечётна. Докажите, что рёбра можно ориентировать так, чтобы для каждой вершины абсолютная величина `|in(v)-out(v)|` была равна `1`, где `in(v)` и `out(v)` — суммы весов входящих и выходящих рёбер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-make-everything-even",
+      "title": "Довести задачу до эйлерова случая",
+      "text": "Рёбра веса `2` удобно разбить на два последовательных ребра веса `1`, а затем добавить новую вершину, соединённую со всеми исходными вершинами. После этого все степени становятся чётными, и граф можно ориентировать по циклам.",
+      "tags": [
+        "eulerian_graphs"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-eulerian-augmentation",
+      "title": "Подразбиение и эйлеровы циклы",
+      "text": "Сначала заменим каждое ребро веса `2` путём из двух рёбер веса `1`, добавив новую промежуточную вершину степени `2`. Для исходных вершин сумма инцидентных весов была нечётной, а для новых промежуточных вершин степень равна `2`, то есть чётна. Теперь добавим ещё одну вершину `s` и соединим её одним новым ребром веса `1` с каждой исходной вершиной. После этого степени всех вершин в полученном неориентированном графе чётны, значит каждая компонента раскладывается на циклы. Ориентируем каждый цикл по обходу. Тогда у каждой вершины, отличной от `s`, среди старых рёбер суммарный вход равен суммарному выходу; единственный возможный дисбаланс создаёт лишь добавленное ребро из `s`, поэтому абсолютная величина разности равна `1`. У промежуточной вершины одно ребро входит и одно выходит, так что после стягивания её обратно получаем корректную ориентацию исходного ребра веса `2`. Удаляя вершину `s` и стягивая все подразделённые рёбра, получаем требуемую ориентацию исходного взвешенного графа.",
+      "idea_ids": [
+        "idea-make-everything-even"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "cycle",
+        "directed_graph"
+      ]
+    },
+    {
+      "id": "sol-mse-auxiliary-vertex-euler-tour",
+      "title": "MSE: вспомогательная вершина и эйлеров обход",
+      "text": "Форумная версия удобно формулирует более общий принцип: в любом мультиграфе можно ориентировать рёбра так, чтобы у каждой вершины модуль разности между outdegree и indegree не превосходил `1`. Для нашей задачи сначала заменим каждое ребро веса `2` двумя параллельными рёбрами веса `1` между теми же вершинами. Тогда взвешенная степень каждой исходной вершины становится обычной степенью в мультиграфе и по условию остаётся нечётной. Далее добавим новую вершину `x` и соединим её с каждой вершиной графа одним ребром. Все степени станут чётными, значит в каждой компоненте есть эйлеров цикл; ориентируем рёбра вдоль этих обходов. После удаления вершины `x` у каждой старой вершины баланс по старым рёбрам нарушается только за счёт единственного ребра, инцидентного `x`, поэтому модуль дисбаланса равен `1`. Наконец, каждую пару параллельных рёбер, возникшую из ребра веса `2`, можно снова считать одним ребром веса `2`: его вклад в вход или выход равен сумме вкладов двух копий. Так получается требуемая ориентация исходного взвешенного графа.",
+      "idea_ids": [
+        "idea-make-everything-even"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "cycle",
+        "directed_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Сильная графовая задача на чётность и эйлерово доведение.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "graph_transformation",
+        "eulerian_decomposition"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usa-tst-2011-aops-community",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-mse-multigraph-net-degree-shil-b",
+      "role": "community_alternative_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

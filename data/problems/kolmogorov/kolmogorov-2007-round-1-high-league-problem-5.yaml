@@ -1,0 +1,127 @@
+{
+  "id": "kolmogorov-2007-round-1-high-league-problem-5",
+  "title": "????? ??????????? 2007: Round 1, High League Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "degree"
+    ],
+    "methods": [],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree",
+      "parity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2007",
+      "eulerian-graph",
+      "forest",
+      "road-network",
+      "degree-parity"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране некоторые города соединены дорогами. Известно, что существует замкнутый маршрут, проходящий по каждой дороге ровно один раз. Турист выехал из города Центральный и проехал по некоторому пути без повторения дорог. Докажите, что он всегда может продолжить путь до полного эйлерова обхода тогда и только тогда, когда любой циклический маршрут проходит через Центральный.",
+        "source_id": "src-kolmogorov-2007-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2007-round-1-high-league-problem-5",
+      "text": "В условии явно присутствует дорожный граф, а официальное решение существенно использует эйлеровы циклы, леса, четность степеней и подграфы.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение сразу переводит задачу на язык графов. Граф дорог эйлеров: он связен и все степени его вершин четны.\n\nТребуется доказать, что любой путь, начинающийся в вершине `Центральный`, продолжается до эйлерова цикла тогда и только тогда, когда подграф, образованный ребрами, не проходящими через `Центральный`, является лесом.\n\nЕсли в периферийной части есть цикл, его можно удалить и обойти только оставшуюся эйлерову компоненту с центральной вершиной, после чего удаленный цикл останется необойденным. Если же периферийный подграф ацикличен, то после любого начального пути необойденные периферийные ребра образуют лес с четными степенями, а значит пусты.\n\nОтсюда и получается эквивалентность из условия.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "eulerian_graphs",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2007-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2007_round_1_high_league_problem_5.md.",
+      "Source file noted by card: work/kolm/text/2007/tur1_11sol.txt.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 1, High League, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

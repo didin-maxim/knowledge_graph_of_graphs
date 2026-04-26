@@ -1,0 +1,114 @@
+{
+  "id": "utyum-2012_komol39_5_republic_in_complete_graph",
+  "title": "UTYUM 2012, Team Mathematical Olympiad, juniors, 5. Republic separated from a 100-city country",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "degree_counting"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2012_komol39_5_republic_in_complete_graph",
+      "utyum_2012"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В некоторой стране 100 городов. Любые два города этой страны соединены дорогой.\n\nОт этой страны отделилась независимая республика, причем количество дорог, соединяющих города этой республики, равно\nколичеству дорог, ведущих из республики в остальные города этой страны.\n\nСколько городов в отделившейся республике? Приведите все варианты и докажите, что других нет.",
+        "source_id": "src-utyum-2012_komol39_5_republic_in_complete_graph-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "В полном графе K_100 выделено множество вершин S. Число рёбер внутри S равно числу рёбер между S и дополнением V \\ S. Найдите все возможные значения |S|.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Пусть в отделившейся республике x городов.\n\nТогда число дорог между ее городами равно x(x - 1) / 2, поскольку внутри республики получаем полный граф на x вершинах.\nЧисло дорог из республики во внешнюю часть равно x(100 - x).\n\nПо условию\n\nx(x - 1) / 2 = x(100 - x).\n\nТак как x > 0, сокращаем на x:\n\n(x - 1) / 2 = 100 - x.\n\nОтсюда 3x = 201, следовательно, x = 67.\n\nИтак, возможен только один ответ: 67 городов.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Mathematical Olympiad, juniors.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "extremal_graph_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2012_komol39_5_republic_in_complete_graph-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2012_komol39_5_republic_in_complete_graph.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Граф явно присутствует уже в условии: города и дороги образуют полный граф, а официальное решение целиком сводится к подсчету ребер внутри подграфа и на его границе."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

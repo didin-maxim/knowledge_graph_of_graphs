@@ -65,14 +65,34 @@
     "graph_theory": [
       {
         "id": "stmt-graph",
-        "text": "Дан ориентированный граф на 2016 вершинах, в котором у каждой вершины исходящая степень равна 1. Нужно покрасить вершины в минимальное число цветов так, чтобы вершины одного цвета не были достижимы друг из друга путём длины не более 28; эквивалентно, покрасить граф 28-шаговой достижимости.",
+        "text": "Пусть \\(N\\ge 57\\). Дан ориентированный граф \\(D\\) на \\(N\\) вершинах, в котором исходящая степень каждой вершины равна 1. Требуется разбить множество вершин на минимальное число классов так, чтобы никакие две вершины одного класса не были достижимы одна из другой ориентированным путём длины не более 28. Эквивалентно, требуется правильно раскрасить вспомогательный граф 28-шаговой достижимости, в котором две вершины соединены, если одна достижима из другой не более чем за 28 шагов.",
         "status": "needs_human_review",
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": [],
+        "definition_ids": [
+          "directed_graph",
+          "degree"
+        ],
         "distinct_from": [
           "stmt-original"
+        ]
+      },
+      {
+        "id": "stmt-graph-conflict",
+        "text": "Let $N\\ge 57$. For a directed graph $D$ on $N$ vertices with outdegree 1 at every vertex, define an undirected graph $R_{28}(D)$ on the same vertex set by joining $u$ and $v$ whenever $D$ contains a directed path from $u$ to $v$ or from $v$ to $u$ of length at most 28. Determine the least $k$ such that $\\chi(R_{28}(D))\\le k$ for every such $D$.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "outdegree",
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
         ]
       }
     ],
@@ -157,6 +177,6 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [],
-    "relations_status": "base_done"
+    "relations_status": "deep_done"
   }
 }

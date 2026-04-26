@@ -1,0 +1,121 @@
+{
+  "id": "utyum-2019_komol_8_complete_graph_weights_2019",
+  "title": "UTYUM 2019, Team Olympiad, grade 8, 8. Minimum total weight in a complete graph on 2019 vertices",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_construction",
+      "local_replacement",
+      "extremal_choice"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2019_komol_8_complete_graph_weights_2019",
+      "utyum_2019"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "На каждом ребре полного графа с 2019 вершинами написано число 1, 2 или 3 так, что сумма чисел на рёбрах\nкаждого треугольника не меньше 5.\n\nКакова наименьшая возможная сумма всех чисел на рёбрах?",
+        "source_id": "src-utyum-2019_komol_8_complete_graph_weights_2019-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "На рёбрах полного графа K_2019 записаны числа 1, 2 или 3. Для каждого треугольника сумма чисел на его рёбрах не меньше 5. Найдите минимально возможную сумму чисел на всех рёбрах графа.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Ответ: 4073333.\n\nОфициальное решение полностью повторяет идею задачи для 2000 вершин. Пример достигается, если выбрать\n1009 попарно непересекающихся рёбер, поставить на них 1, а на все остальные рёбра — 2.\n\nДля нижней оценки снова вводятся плохие вершины — вершины, из которых выходит больше одного ребра веса 1.\nЕсли их нет, то единичных рёбер не больше 1009, и отсюда сразу следует нужная оценка.\n\nЕсли плохая вершина есть, то рассматривается ребро AB веса 1. В любом треугольнике ABC наличие ещё одного\nребра веса 1 вынуждает третье ребро иметь вес 3. Поэтому пару рёбер весов 1 и 3 заменяют двумя рёбрами веса 2,\nсохраняя общую сумму и условие на все треугольники, но уменьшая число плохих вершин. После конечного числа таких\nшагов приходят к случаю без плохих вершин и получают минимальную сумму 4073333.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "matching",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "extremal_graph_theory",
+    "matching"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2019_komol_8_complete_graph_weights_2019-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2019_komol_8_complete_graph_weights_2019.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Это явная задача о полном графе с весами на рёбрах и треугольных ограничениях; официальное решение использует графовые преобразования рёбер и учёт плохих вершин."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

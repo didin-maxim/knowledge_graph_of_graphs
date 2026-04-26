@@ -144,7 +144,7 @@
       "forward_text": "Доказательство формулы Эйлера удалением ребер из циклов сводит плоский граф к дереву и использует равенство e=v-1 для деревьев.",
       "backward_text": "Формула Эйлера для деревьев дает базовый случай f=1 и e=v-1.",
       "anchors": {
-        "from_solution_id": "sol-leaf-induction",
+        "from_solution_id": "sol-minimal-connected-subgraph",
         "to_solution_id": "sol-reduce-to-tree"
       },
       "status": "ai_checked",
@@ -156,14 +156,44 @@
       "to": "tournament-king-radius-two",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Обе задачи используют жесткость турнира: между каждой парой есть ровно одно направление, что позволяет строить глобальный объект из локальных сравнений.",
-      "backward_text": "Лемма о короле радиуса 2 и гамильтонов путь в турнире оба часто решаются экстремальным или индуктивным использованием полной ориентированности.",
+      "forward_text": "Обе задачи используют жесткость турнира через экстремальный выбор: либо берётся вершина максимальной исходящей степени, либо порядок, максимизирующий число рёбер слева направо.",
+      "backward_text": "Лемма о короле радиуса 2 и гамильтонов путь в турнире особенно близки в экстремальных доказательствах: локальное улучшение конфигурации невозможно именно в оптимальном объекте.",
       "anchors": {
-        "from_solution_id": "sol-insertion",
+        "from_solution_id": "sol-max-forward-edges",
         "to_solution_id": "sol-max-outdegree"
       },
       "status": "ai_draft",
-      "confidence": 0.78
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-ramsey-r33-imo-1992-p3",
+      "from": "ramsey-r33",
+      "to": "imo-1992-p3-nine-points-partial-ramsey",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В альтернативном решении IMO 1992 P3 после выбора по одной вершине на каждом из трёх неокрашенных рёбер остаётся полный граф K6, и дальше сразу применяется R(3,3)=6.",
+      "backward_text": "Задача IMO 1992 P3 даёт естественное олимпиадное применение теоремы R(3,3)=6: достаточно выделить шесть вершин, между которыми все рёбра уже окрашены.",
+      "anchors": {
+        "from_solution_id": "sol-pigeonhole",
+        "to_solution_id": "sol-aops-six-vertex-ramsey"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-color-reduction-imons",
+      "from": "color-reduction-by-odd-deletion-and-doubling",
+      "to": "imo-2013-c3-imons-graph-coloring",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о понижении числа цветов удалением нечётных вершин и удвоением является стандартным шагом к IMO Shortlist 2013 C3: повторяя её, граф последовательно сводят к 1-раскрашиваемому, то есть безрёберному.",
+      "backward_text": "Задача IMO Shortlist 2013 C3 разворачивает эту лемму в полное решение: шаг уменьшения числа цветов повторяется, пока не останется 1-раскрашиваемый, то есть безрёберный граф.",
+      "anchors": {
+        "from_solution_id": "sol-even-core-and-double",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
     },
     {
       "id": "rel-dirac-tournament-path",
@@ -584,6 +614,442 @@
       },
       "status": "ai_checked",
       "confidence": 0.86
+    },
+    {
+      "id": "rel-usa-tst-2011-odd-main-roads",
+      "from": "tc-2010-11-odd-main-roads",
+      "to": "usa-tst-2011-p2-weighted-road-orientation",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи управляют чётностью степеней и добиваются локального дисбаланса через вспомогательный подграф. В USA TST 2011 к паритетной задаче добавляются веса 2 и ориентация, поэтому решение проходит через эйлерово доведение.",
+      "backward_text": "Задача USA TST 2011 усиливает классический мотив нечётных степеней: вместо выбора подграфа нужно ориентировать взвешенные рёбра так, чтобы в каждой вершине остался дисбаланс ровно 1.",
+      "anchors": {
+        "from_solution_id": "sol-path-parity",
+        "to_solution_id": "sol-eulerian-augmentation"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-eulerian-criterion-usa-tst-2011",
+      "from": "eulerian-graph-criterion",
+      "to": "usa-tst-2011-p2-weighted-road-orientation",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В USA TST 2011 основное преобразование специально доводит задачу до эйлерова случая: после разбиения рёбер веса 2 и добавления вспомогательной вершины все степени становятся чётными, и дальше работает стандартная идея ориентирования по эйлеровым обходам.",
+      "backward_text": "Задача USA TST 2011 использует критерий эйлерова графа не как финальную цель, а как промежуточный инструмент для построения ориентации с локальным дисбалансом 1.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-eulerian-augmentation"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-tournament-path-usa-tst-2009-p6",
+      "from": "tournament-hamiltonian-path",
+      "to": "usa-tst-2009-p6-tournament-gap-ordering",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "В задаче USA TST 2009 удобно мыслить компоненту турнира через длинный ориентированный обход; существование гамильтонова пути и, в сильном случае, гамильтонова цикла становится базовым структурным инструментом.",
+      "backward_text": "Задача USA TST 2009 использует более тонкую структуру турнира, но опирается на те же базовые идеи упорядочивания и обхода вершин, что и теорема о гамильтоновом пути в турнире.",
+      "anchors": {
+        "from_solution_id": "sol-insertion",
+        "to_solution_id": "sol-components-hamiltonian-cycle"
+      },
+      "status": "ai_checked",
+      "confidence": 0.89
+    },
+    {
+      "id": "rel-regular-codegree-usa-tst-2005",
+      "from": "imo-1995-nc5-greetings-regular-codegree-graph",
+      "to": "usa-tst-2005-p1-set-system-incidence-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи переводят неграфовое условие в жёстко структурированный простой регулярный граф. В IMO Shortlist 1995 затем идёт двойной счёт общих соседей, а в USA TST 2005 вся задача схлопывается в экстремальную оценку `m<=2n-1` и её достижение на полном графе.",
+      "backward_text": "Задача USA TST 2005 — более чистая экстремальная версия того же языка: вместо дополнительных кодегричных условий достаточно заметить, что семейство множеств уже эквивалентно простому `m`-регулярному графу на `2n` вершинах.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-regular-graph-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-usa-tst-2013-ramsey",
+      "from": "ramsey-theorem",
+      "to": "usa-tst-2013-dec-p1-language-club-rainbow-triangles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи изучают раскраски рёбер полного графа с запретом одноцветных клик. В USA TST 2013 вместо простого существования нужно точно оценить максимум радужных треугольников при запрете одноцветных треугольников.",
+      "backward_text": "Задача USA TST 2013 является экстремальной вариацией рамсеевского языка: условие «нет одноцветного треугольника» задаёт класс допустимых раскрасок, а затем внутри него максимизируется число радужных треугольников.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-count-local-repeats"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-king-usa-tst-2009-p6",
+      "from": "tournament-king-radius-two",
+      "to": "usa-tst-2009-p6-tournament-gap-ordering",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи извлекают глобальный порядок из локального турнирного ограничения на пути. У короля радиуса 2 локальная информация ограничивает достижимость до двух шагов, а в USA TST 2009 M-шаговое условие контролирует всю конденсацию турнира.",
+      "backward_text": "Задача USA TST 2009 — более жёсткая турнирная структура: вместо существования одной хорошей вершины она требует целой нумерации, совместимой с длинными путями и сильными компонентами.",
+      "anchors": {
+        "from_solution_id": "sol-max-outdegree",
+        "to_solution_id": "sol-components-hamiltonian-cycle"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+    ,
+    {
+      "id": "rel-hall-usamo-2022-p1",
+      "from": "hall-marriage-theorem",
+      "to": "usamo-2022-p1-amber-bronze-transversal",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В USAMO 2022 P1 строки и столбцы естественно образуют доли двудольного графа, а выбор клеток без общих строк и столбцов становится задачей о disjoint matchings; теорема Холла даёт существование больших одноцветных matchings.",
+      "backward_text": "Карточка USAMO 2022 P1 показывает типичное олимпиадное применение теоремы Холла: табличная задача переводится в язык рёбер между строками и столбцами.",
+      "anchors": {
+        "from_solution_id": "sol-tight-set-splitting",
+        "to_solution_id": "sol-hall-matchings-and-uncrossing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-planar-bound-usamo-2025-p3",
+      "from": "planar-edge-bound",
+      "to": "usamo-2025-p3-gabriel-graph-road-network",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "После распознавания Gabriel graph задача USAMO 2025 P3 сводится к стандартной оценке средней степени в планарном графе через `e <= 3v-6`.",
+      "backward_text": "USAMO 2025 P3 — типичное применение планарной оценки на число рёбер: она превращает геометрическую конструкцию в утверждение о вершине степени не больше 5.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-gabriel-planar-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-planar-usamo-2021-p2",
+      "from": "euler-formula-planar",
+      "to": "usamo-2021-p2-planar-national-park-turning-walk",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки работают с планарным графом как с embedded объектом. В формуле Эйлера планарность даёт глобальный контроль числа граней, а в USAMO 2021 P2 — локальный cyclic order рёбер, определяющий left/right walk.",
+      "backward_text": "USAMO 2021 P2 не использует формулу Эйлера напрямую, но показывает другую сторону планарности: важна не только оценка `v-e+f`, а и сама rotation system у вершины.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-local-state-bound-and-prism"
+      },
+      "status": "ai_checked",
+      "confidence": 0.73
+    },
+    {
+      "id": "rel-usamo-2024-p3-outerplanar",
+      "from": "planar-edge-bound",
+      "to": "usamo-2024-p3-balanced-regular-polygon-triangulation",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Триангуляция правильного многоугольника — стандартный outerplanar объект. Хотя ключевая техника USAMO 2024 P3 алгебраическая, постановка живёт в том же классе плоских графов, что и обычные planar bounds.",
+      "backward_text": "Карточка USAMO 2024 P3 полезна как напоминание, что не всякая planar-looking задача решается чисто графовыми средствами: иногда графовая структура только задаёт сцену для алгебры.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-fan-and-integrality"
+      },
+      "status": "ai_checked",
+      "confidence": 0.61
+    },
+    {
+      "id": "rel-usamo-2008-p6-usamo-2022-p6",
+      "from": "usamo-2008-p6-even-friends-two-rooms",
+      "to": "usamo-2022-p6-mathbook-two-common-friends-closure",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи формулируются на социальном графе, но используют разные графовые механики: в 2008 это паритет соседей и линейная алгебра над `F_2`, а в 2022 — closure-процесс по двум общим друзьям, то есть по `C_4`.",
+      "backward_text": "USAMO 2022 P6 хорошо сочетается с USAMO 2008 P6 как пара задач на один и тот же narrative object — friendship graph — но с совершенно разными инструментами.",
+      "anchors": {
+        "from_solution_id": "sol-adjacency-matrix-over-f2",
+        "to_solution_id": "sol-c4-closure-extremal"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-usamo-1999-p1-imo-1999-c5",
+      "from": "usamo-1999-p1-checkers-board-graph-rank",
+      "to": "imo-1999-c5-grid-total-domination",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи переводят доску в решёточный граф и дальше считают не клетки как таковые, а локальное соседство в графе. В USAMO 1999 используется связное множество занятых клеток, доминирующее всю доску, а в IMO 1999 C5 требуется минимальное тотально доминирующее множество.",
+      "backward_text": "IMO 1999 C5 можно рассматривать как более чистую экстремальную версию того же board-to-grid-graph языка, который в USAMO 1999 возникает вместе с дополнительным условием связности.",
+      "anchors": {
+        "from_solution_id": "sol-john-scholes-connected-induction",
+        "to_solution_id": "sol-reviewed-web"
+      },
+      "status": "ai_checked",
+      "confidence": 0.89
+    },
+    {
+      "id": "rel-usamo-2004-p4-imo-2005-c3",
+      "from": "usamo-2004-p4-black-path-grid-game",
+      "to": "imo-2005-c3-black-paths-injection",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи живут на клеточном графе и смотрят на существование чёрного пути через доску. В USAMO 2004 это game-theoretic барьер сверху вниз, а в IMO 2005 C3 — счёт раскрасок с одним или двумя левоправыми чёрными путями.",
+      "backward_text": "IMO 2005 C3 развивает тот же grid-path мотив в более счётную сторону: вместо выигрышной стратегии нужно контролировать множество раскрасок через выделение специального пути.",
+      "anchors": {
+        "from_solution_id": "sol-bob-useless-squares",
+        "to_solution_id": "sol-reviewed-secondary"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-usamo-2022-p1-imo-2010-c2",
+      "from": "usamo-2022-p1-amber-bronze-transversal",
+      "to": "imo-2010-c2-flags-diagonal-matching",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе задачи сводятся к двудольному графу «объекты против позиций» и существованию большого matching. В USAMO 2022 нужно развести amber- и bronze-matchings, а в IMO Shortlist 2010 C2 — выбрать флаги так, чтобы диагональ стала одноцветной.",
+      "backward_text": "IMO Shortlist 2010 C2 — очень близкий hall/matching родственник USAMO 2022 P1: табличная или бинарная постановка прячут одну и ту же двудольную логику SDR и паросочетаний.",
+      "anchors": {
+        "from_solution_id": "sol-hall-matchings-and-uncrossing",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-usamo-2024-p3-imo-2005-c8",
+      "from": "usamo-2024-p3-balanced-regular-polygon-triangulation",
+      "to": "imo-2005-c8-noncrossing-diagonals-crossings",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи используют триангуляции выпуклого многоугольника как maximal outerplanar graph. В USAMO 2024 на этой структуре раскрашивают faces по сумме площадей, а в IMO 2005 C8 сравнивают две такие outerplanar структуры по числу пересечений.",
+      "backward_text": "IMO 2005 C8 полезно как structural neighbour для USAMO 2024 P3: хотя основная техника там другая, сама graph-in-statement среда у них одна и та же — triangulation/outerplanar graph.",
+      "anchors": {
+        "from_solution_id": "sol-fan-and-integrality",
+        "to_solution_id": "sol-reviewed-web"
+      },
+      "status": "ai_checked",
+      "confidence": 0.83
+    },
+    {
+      "id": "rel-konig-usamo-2022-p1",
+      "from": "konig-vertex-cover-theorem",
+      "to": "usamo-2022-p1-amber-bronze-transversal",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В USAMO 2022 P1 оценка на число amber- и bronze-клеток сначала превращается в существование больших одноцветных matchings через двудольную версию теоремы Кёнига о равенстве matching/vertex-cover.",
+      "backward_text": "USAMO 2022 P1 — хороший пример того, как теорема Кёнига работает не как финальная цель, а как технический шаг: из невозможности большого matching выводится слишком маленькое vertex cover и затем противоречие по подсчёту рёбер.",
+      "anchors": {
+        "from_solution_id": "sol-alternating",
+        "to_solution_id": "sol-hall-matchings-and-uncrossing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-tree-usamo-1999-p1",
+      "from": "tree-equivalent-properties",
+      "to": "usamo-1999-p1-checkers-board-graph-rank",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Подсчёт в USAMO 1999 P1 фактически идёт по связному графу занятых клеток в tree-like порядке добавления вершин: первая вершина даёт до пяти хороших клеток, каждая следующая — не более трёх новых.",
+      "backward_text": "USAMO 1999 P1 полезна как board-graph применение той же интуиции, что и у деревьев: связный объект удобно раскрывать или стягивать в порядке, где каждая новая вершина цепляется к уже построенной части.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-good-squares-in-connected-order"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-menger-usamo-2004-p4",
+      "from": "menger-theorem",
+      "to": "usamo-2004-p4-black-path-grid-game",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Хотя USAMO 2004 P4 не использует Менгера буквально, вся задача живёт в той же дихотомии path vs separator: Алиса хочет верхне-нижний путь, а Боб строит разрезающий барьер.",
+      "backward_text": "USAMO 2004 P4 можно читать как игровую и дискретную тень теоремы Менгера: вместо абстрактного минимума разделителей здесь явно конструируется набор клеток, перерезающий все допустимые top-bottom пути.",
+      "anchors": {
+        "from_solution_id": "sol-flow-sketch",
+        "to_solution_id": "sol-bob-useless-squares"
+      },
+      "status": "ai_checked",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-imo-1994-c6-usamo-2004-p4",
+      "from": "imo-1994-c6-infinite-grid-pairing-strategy",
+      "to": "usamo-2004-p4-black-path-grid-game",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи — grid games, где второй игрок побеждает не счётом, а заранее организованным pairing/barrier pattern, который убивает все опасные линии или пути.",
+      "backward_text": "USAMO 2004 P4 близка к IMO Shortlist 1994 C6 по стилю защиты: вместо реакции на конкретную угрозу строится периодический или структурный инвариант, после которого нужная конфигурация просто не может появиться.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-bob-shifted-row-pairing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-tree-usamo-2023-p3",
+      "from": "tree-equivalent-properties",
+      "to": "usamo-2023-p3-domino-slides-special-square-digraph",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В решении USAMO 2023 P3 критично используется переход «связная ацикличная компонента special squares есть дерево», а затем `k(C)` считается по числу вершин этого дерева.",
+      "backward_text": "Задача про слайды домино даёт содержательное применение базового критерия дерева: ацикличность компоненты пустой клетки приходится доказывать нетривиально через геометрию доски и паритет.",
+      "anchors": {
+        "from_solution_id": "sol-minimal-connected-subgraph",
+        "to_solution_id": "sol-special-square-digraph"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-imo-2024-c8-usamo-2023-p3",
+      "from": "imo-2024-c8-board-coloring-tree",
+      "to": "usamo-2023-p3-domino-slides-special-square-digraph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи начинаются как клеточные процессы, но решаются через построение вспомогательного ориентированного/tree-объекта на локальных фигурах и последующий подсчёт по дереву.",
+      "backward_text": "USAMO 2023 P3 близка к IMO 2024 C8 по стилю: граф не виден в условии, но именно дерево, построенное из локальных ходов, становится центральным инвариантом решения.",
+      "anchors": {
+        "from_solution_id": "sol-directed-tromino-tree",
+        "to_solution_id": "sol-special-square-digraph"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-imo-2016-c8-usamo-2023-p3",
+      "from": "imo-2016-c8-domino-unique-tiling-cycles",
+      "to": "usamo-2023-p3-domino-slides-special-square-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи начинаются как задачи о домино на клетчатой доске, а затем переходят к вспомогательному графу, который кодирует не сами клетки, а структуру допустимых конфигураций. В IMO 2016 C8 это alternating-cycle graph двух разбиений, а в USAMO 2023 P3 — ориентированный граф reachable special squares.",
+      "backward_text": "USAMO 2023 P3 хорошо рифмуется с IMO 2016 C8 как другой способ графизовать domino world: не через сравнение двух укладок и alternating cycles, а через динамику ходов и tree-компоненту пустой клетки.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-special-square-digraph"
+      },
+      "status": "ai_checked",
+      "confidence": 0.79
+    },
+    {
+      "id": "rel-egmo-2022-p5-usamo-2023-p3",
+      "from": "egmo-2022-p5-domino-parity-bipartite-matching",
+      "to": "usamo-2023-p3-domino-slides-special-square-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки показывают, что domino-задача на доске часто по-настоящему решается только после перевода в графовый язык. В EGMO 2022 P5 это двудольный граф и паросочетания, а в USAMO 2023 P3 — ориентированный граф и дерево reachable holes.",
+      "backward_text": "USAMO 2023 P3 полезно держать рядом с EGMO 2022 P5 как соседний пример board-to-graph перевода для домино: объект один и тот же, но графовый инструмент уже совсем другой — не matching parity, а tree-динамика ходов.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-special-square-digraph"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-imo-2016-c8-usamo-2009-p3",
+      "from": "imo-2016-c8-domino-unique-tiling-cycles",
+      "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи о domino tilings решаются через сравнение двух укладок и анализ симметрической разности как объединения чередующихся циклов. В IMO 2016 C8 это даёт неединственность допустимого matching, а в USAMO 2009 P3 — невозможность второй tasteful-укладки.",
+      "backward_text": "USAMO 2009 P3 стоит держать рядом с IMO 2016 C8 как почти канонический пример того, как uniqueness в domino-задаче извлекается из alternating-cycle decomposition двух perfect matchings.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-induction-plus-alternating-cycles"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-egmo-2022-p5-usamo-2009-p3",
+      "from": "egmo-2022-p5-domino-parity-bipartite-matching",
+      "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки показывают один и тот же перевод domino world в язык графов и паросочетаний. EGMO 2022 P5 смотрит на чётность числа perfect matchings, а USAMO 2009 P3 — на uniqueness tasteful matching через отсутствие alternating cycles.",
+      "backward_text": "USAMO 2009 P3 хорошо соседствует с EGMO 2022 P5 как ещё один board-to-bipartite-graph сюжет: меняется вопрос, но базовый объект тот же — domino tilings как perfect matchings grid-графа.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-induction-plus-alternating-cycles"
+      },
+      "status": "ai_checked",
+      "confidence": 0.77
+    },
+    {
+      "id": "rel-usamo-2009-p3-usamo-2023-p3",
+      "from": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
+      "to": "usamo-2023-p3-domino-slides-special-square-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе USAMO-задачи начинаются как клеточные сюжеты про домино, но становятся graph-core только после явного перевода на граф. В 2009 это overlay двух tilings и alternating cycles, в 2023 — digraph special squares и дерево достижимых пустых клеток.",
+      "backward_text": "USAMO 2023 P3 полезно сравнивать с USAMO 2009 P3: обе задачи про домино действительно графовые, но одна идёт через perfect matchings и симметрическую разность, а другая — через ориентированный граф ходов.",
+      "anchors": {
+        "from_solution_id": "sol-induction-plus-alternating-cycles",
+        "to_solution_id": "sol-special-square-digraph"
+      },
+      "status": "ai_checked",
+      "confidence": 0.81
+    },
+    {
+      "id": "rel-tree-usajmo-2023-p3",
+      "from": "tree-equivalent-properties",
+      "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В USAJMO 2023 P3 ключевой шаг состоит в том, что weakly connected component пустой клетки в digraph special squares ациклична, а значит является деревом; после этого `k(C)` просто считается по числу вершин.",
+      "backward_text": "USAJMO 2023 P3 — компактное и очень чистое применение критерия дерева: board-конфигурация сначала переводится в ориентированный граф, а затем всё решение сводится к tree-структуре компоненты пустой клетки.",
+      "anchors": {
+        "from_solution_id": "sol-minimal-connected-subgraph",
+        "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-usamo-2023-p3-usajmo-2023-p3",
+      "from": "usamo-2023-p3-domino-slides-special-square-digraph",
+      "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Это фактически старшая и младшая версии одного и того же сюжета. В обеих задачах строится один и тот же digraph special squares, а разница только в финальной цели: в USAMO классифицируются все возможные `k(C)`, а в USAJMO требуется лишь найти максимум.",
+      "backward_text": "USAJMO 2023 P3 удобно читать рядом с USAMO 2023 P3 как сокращённую версию той же graph-core идеи: тот же ориентированный граф, то же дерево reachable holes, но более лёгкая конечная классификация.",
+      "anchors": {
+        "from_solution_id": "sol-special-square-digraph",
+        "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-imo-2016-c8-usajmo-2023-p3",
+      "from": "imo-2016-c8-domino-unique-tiling-cycles",
+      "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи о domino world становятся graph-core только после явного auxiliary graph. В IMO 2016 C8 это alternating-cycle graph двух tilings, а в USAJMO 2023 P3 — digraph special squares и дерево достижимых дырок.",
+      "backward_text": "USAJMO 2023 P3 полезно держать рядом с IMO 2016 C8 как другой способ графизовать domino-задачу: не через сравнение двух укладок, а через динамику ходов и tree-компоненту пустой клетки.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.76
     }
   ]
 }

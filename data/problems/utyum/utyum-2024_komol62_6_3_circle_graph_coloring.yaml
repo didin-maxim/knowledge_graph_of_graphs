@@ -1,0 +1,141 @@
+{
+  "id": "utyum-2024_komol62_6_3_circle_graph_coloring",
+  "title": "UTYUM 2024, Team Olympiad, grade 6, 3. Points on a circle and 5-coloring",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "explicit_counterexample",
+      "complement_graph_transition"
+    ],
+    "transformations": [
+      "pass_to_complement"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2024_komol62_6_3_circle_graph_coloring",
+      "utyum_2024"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "На окружности выбрано 11 точек. Некоторые пары точек соединены отрезками.\n\nИзвестно, что среди любых шести точек найдутся две, не соединённые отрезком.\n\nВерно ли, что эти 11 точек всегда можно окрасить в 5 цветов так, чтобы никакой отрезок не соединял точки одного цвета?",
+        "source_id": "src-utyum-2024_komol62_6_3_circle_graph_coloring-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number",
+          "cycle",
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф на 11 вершинах. Известно, что среди любых шести вершин найдутся две несмежные. Обязательно ли хроматическое число этого графа не превосходит 5?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number",
+          "cycle",
+          "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      },
+      {
+        "id": "stmt-graph-complement",
+        "title": "Complement-graph formulation",
+        "text": "Let \\(H\\) be a graph on 11 vertices with no independent set of size 6. Must the chromatic number of the complement graph \\(\\overline H\\) be at most 5?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number",
+          "simple_graph",
+          "complement_graph"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Официальное решение строит контрпример.\n\nСоединяются все пары точек, кроме соседних на окружности. Тогда среди любых шести точек действительно найдутся две соседние, а значит не соединённые.\n\nНо правильная раскраска в 5 цветов невозможна: по принципу Дирихле найдутся три точки одного цвета, а в построенном графе нет трёх попарно несмежных вершин.\n\nЗначит, ответ отрицательный.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "chromatic_number",
+        "cycle",
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 6.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "coloring"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2024_komol62_6_3_circle_graph_coloring-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2024_komol62_6_3_circle_graph_coloring.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Условие напрямую задаёт граф на 11 вершинах, а решение использует его дополнение и вопрос о 5-раскраске."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

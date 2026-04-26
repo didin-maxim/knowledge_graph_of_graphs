@@ -1,0 +1,109 @@
+{
+  "id": "fyum-2011-tur1a-p5",
+  "title": "FYUM 2011, First tour (a), Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "edge_colored_graph",
+      "rainbow_paths"
+    ],
+    "methods": [
+      "explicit_counterexample"
+    ],
+    "transformations": [
+      "construct_three_level_graph"
+    ],
+    "goal": [
+      "disprove_four_color_rainbow_connectivity"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "counterexample",
+      "edge_coloring",
+      "fyum",
+      "fyum-2011-tur1a-p5",
+      "rainbow_path",
+      "rainbow_path_counterexample"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Дан связный граф, который остается связным при удалении любого ребра,\n\nи в котором любые две вершины либо соединены ребром, либо имеют общего соседа.\n\nВерно ли, что ребра этого графа можно покрасить в четыре цвета так, чтобы \n\nмежду любыми двумя вершинами нашелся путь, все ребра в котором разного цвета?",
+        "source_id": "src-fyum-2011-tur1a-p5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Контрпример с 35 вершинами",
+      "text": "Ответ отрицательный. Построим граф с вершинами \\(A\\), \\(B_1,\\dots,B_{17}\\) и \\(C_1,\\dots,C_{17}\\). Соединим \\(A\\) со всеми \\(B_i\\), каждую \\(B_i\\) соединим с \\(C_i\\), а вершины \\(C_1,\\dots,C_{17}\\) сделаем попарно смежными. Граф связен. Удаление ребра \\(AB_i\\) не отделяет \\(B_i\\), потому что остаётся путь \\(B_iC_iC_jB_jA\\) при \\(j\\ne i\\); удаление ребра \\(B_iC_i\\) не отделяет \\(B_i\\), потому что остаётся путь через \\(A\\); удаление ребра между двумя \\(C\\)-вершинами не нарушает связность клики \\(C_1,\\dots,C_{17}\\). Кроме того, любые две несмежные вершины имеют общего соседа: \\(A\\) и \\(C_i\\) имеют общего соседа \\(B_i\\), две вершины \\(B_i,B_j\\) имеют общего соседа \\(A\\), а \\(B_i\\) и \\(C_j\\) при \\(i\\ne j\\) имеют общего соседа \\(C_i\\). Теперь покрасим рёбра произвольно в четыре цвета. У каждой вершины \\(B_i\\) есть пара цветов \\((\\operatorname{col}(AB_i),\\operatorname{col}(B_iC_i))\\). Таких пар не больше \\(16\\), а индексов \\(17\\), поэтому найдутся \\(i\\ne j\\) с одинаковой парой цветов. Любой путь из \\(B_i\\) в \\(B_j\\), начинающийся через \\(A\\) и сразу заканчивающийся через \\(A\\), содержит два ребра \\(AB_i,AB_j\\) одного цвета. Любой путь, начинающийся через \\(C_i\\) и заканчивающийся через \\(C_j\\), содержит два ребра \\(B_iC_i,B_jC_j\\) одного цвета. А смешанный путь, который у одного конца идёт через \\(A\\), а у другого через соответствующую \\(C\\)-вершину, вынужден пройти как минимум пять рёбер: например \\(B_i-A-B_t-C_t-C_j-B_j\\). При четырёх цветах такой путь не может быть rainbow-путём. Значит между \\(B_i\\) и \\(B_j\\) нет пути с попарно различными цветами рёбер, и требуемая раскраска не всегда существует.",
+      "idea_ids": [],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Imported from the checked FYUM archive card 2011_tur1a_problem5.md; stage First tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2011-tur1a-p5-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a graph and edge colors."
+    ],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "id": "kolmogorov-2021-individual-olympiad-seniors-problem-1",
+  "title": "????? ??????????? 2021: Individual Olympiad, Seniors Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph"
+    ],
+    "methods": [
+      "handshake_lemma"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "parity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2021"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "`999` команд сыграли двухкруговой турнир по волейболу: каждая сыграла с каждой матч дома и матч в гостях.\n\nКаждая команда выиграла ровно половину своих домашних матчей и ровно половину гостевых.\n\nДокажите, что какая-то из команд дважды обыграла какую-то другую.",
+        "source_id": "src-kolmogorov-2021-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2021-individual-olympiad-seniors-problem-1",
+      "text": "В условии турнир не сформулирован языком графов, но официальное решение существенно вводит граф на командах и завершает доказательство через лемму о рукопожатиях.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "Предположим противное: ни одна команда не обыграла другую дважды.\n\nТогда для каждой пары команд возможны только два типа поведения:\nлибо обе команды выиграли домашние матчи,\nлибо обе команды выиграли гостевые матчи.\n\nСоединим ребром те пары команд, в которых обе команды победили друг друга дома.\n\nПолучим граф на `999` вершинах. Так как каждая команда выиграла ровно половину домашних матчей, степень каждой вершины этого графа равна `499`.\n\nНо сумма степеней графа должна быть четной, а здесь она равна `999 * 499`, что нечетно. Это противоречит лемме о рукопожатиях.\n\nСледовательно, найдется пара команд, одна из которых выиграла у другой оба матча.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2021-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2021_individual_olympiad_seniors_problem_1.md.",
+      "Source file noted by card: work/kolm/archive/2021/extracted_seniors/5lichol-sen-sol.tex.",
+      "Source page noted by card: individual olympiad seniors, problem 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
+  }
+}

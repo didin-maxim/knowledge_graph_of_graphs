@@ -1,0 +1,131 @@
+{
+  "id": "kolmogorov-2012-individual-olympiad-seniors-problem-1",
+  "title": "????? ??????????? 2012: Individual Olympiad, Seniors Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_choice"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectivity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2012",
+      "graph",
+      "connectivity",
+      "triangle",
+      "extremal-graph-theory"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В графе на `n` вершинах при добавлении любого ребра между несоединенными вершинами появляется треугольник, содержащий добавленное ребро.\n\nНайдите наименьшее возможное число ребер в таком графе.",
+        "source_id": "src-kolmogorov-2012-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2012-individual-olympiad-seniors-problem-1",
+      "text": "Граф прямо задан в условии: вершины, ребра и треугольники являются объектами задачи. Официальное решение использует связность графа и пример со звездой.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: `n - 1`.\n\nПример дает звезда: одна вершина соединена со всеми остальными, а других ребер нет. Тогда при добавлении любого недостающего ребра между двумя листьями возникает треугольник с центром звезды.\n\nПокажем, что меньше `n - 1` ребер быть не может. Если в графе на `n` вершинах меньше `n - 1` ребра, то он несвязен. Тогда можно добавить ребро между вершинами из разных компонент связности, и никакого треугольника не появится. Противоречие.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2012-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2012_individual_olympiad_seniors_problem_1.md.",
+      "Source file noted by card: work/kolm/archive/2012/extracted/kolm16/lichol16.doc.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

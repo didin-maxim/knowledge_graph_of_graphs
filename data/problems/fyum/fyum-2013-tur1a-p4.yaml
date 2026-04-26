@@ -1,0 +1,137 @@
+{
+  "id": "fyum-2013-tur1a-p4",
+  "title": "FYUM 2013, Round 1, League of Strategies, Problem 4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph_with_edge_weights",
+      "simple_cycles"
+    ],
+    "methods": [
+      "extremal_choice",
+      "modular_argument"
+    ],
+    "transformations": [
+      "maximal_family_of_path_sums"
+    ],
+    "goal": [
+      "find_cycle_with_zero_sum_mod_n"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "distinct_path_sum_residues"
+    ],
+    "keywords": [
+      "complete-graph",
+      "cycle_sum_mod_n",
+      "fyum",
+      "fyum-2013-tur1a-p4",
+      "graph-structure",
+      "modular-weights",
+      "simple-cycle",
+      "weighted_complete_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Дано натуральное число `n`. На каждом ребре полного графа на `1000n` вершинах написали целое число. Докажите, что найдется простой цикл, сумма чисел на ребрах которого делится на `n`.",
+        "source_id": "src-fyum-2013-tur1a-p4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-maximal-path-residue-family",
+      "title": "Максимальная система путей с разными остатками",
+      "text": "Выбирается максимальная цепочка вершин, между концами которой уже реализовано несколько простых путей с попарно различными суммами по модулю n. Если реализованы все n остатков, внешняя вершина сразу замыкает один из этих путей в цикл с нулевой суммой.",
+      "tags": [
+        "extremal_choice",
+        "olympiad_tool"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-period-reduction",
+      "title": "Период множества остатков ведет к меньшему модулю",
+      "text": "Если добавить новую тройку вершин нельзя, множество уже полученных остатков замкнуто относительно сдвигов, выраженных через веса внешних ребер. Минимальный период этого множества заставляет внешние ребра делиться на нетривиальный делитель модуля, после чего задача сводится к меньшему модулю.",
+      "tags": [
+        "extremal_choice",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Максимальная система путей и сведение к меньшему модулю",
+      "text": "Докажем утверждение индукцией по `n`; при `n=1` любой треугольник подходит. Все веса далее рассматриваются по модулю `n`, вес ребра `uv` обозначим `m(uv)`. Выберем максимальное `k` и последовательность различных вершин `S=(a_1,...,a_{3k})` такую, что между `a_1` и `a_{3k}` есть `k` простых путей по вершинам `S`, суммы которых дают попарно различные остатки. Множество этих остатков обозначим `A`. Если существует треугольник, у которого сумма двух ребер и вес третьего ребра имеют разную четность, начинаем построение с такого треугольника; это понадобится только в случае периода `2`. Если `k=n`, берем вершину `b` вне `S` и замыкаем каждый из `n` путей ребрами `ba_1` и `a_{3k}b`; добавленная сумма фиксирована, поэтому один из циклов имеет сумму `0 mod n`. Пусть теперь `k<n`. Возьмем любые три вершины `x,y,z` вне `S`. Если продолжить каждый старый путь ребром `a_{3k}x` и затем либо двумя ребрами `xy,yz`, либо одним ребром `xz`, то мы получим пути к `z`; их новые остатки отличаются на `m(xy)+m(yz)-m(xz)`. Максимальность `k` значит, что такое добавление не может дать `k+1` различных остатков, следовательно, `A` замкнуто относительно прибавления этого числа. Переставляя вершины тройки, аналогично получаем замкнутость относительно `m(xy)-m(yz)+m(xz)`, а значит и относительно `2m(xy)`. Пусть `t` — наименьший положительный период множества `A`: вместе с каждым `r in A` в `A` лежит `r+t`. Тогда `t` делит `n`, `t>1`, множество `A` является объединением классов по модулю `t`, и так как `A` не все `Z/nZ`, имеем `k<=n-n/t`. Кроме того, для любых внешних `x,y` число `2m(xy)` делится на `t`. Если `t` нечетно, то все ребра между вершинами вне `S` имеют веса, кратные `t`. Вне `S` осталось не меньше `1000n-3(n-n/t)>1000(n/t)` вершин; делим все эти веса на `t` и по индукции для модуля `n/t` получаем цикл, сумма которого в исходных весах делится на `n`. Если `t` четно и `t>2`, то все внешние ребра имеют веса, кратные `t/2`; поскольку `t>=4`, вне `S` осталось больше `1000(n/(t/2))` вершин. Деление весов на `t/2` и индукция для модуля `n/(t/2)` снова дают нужный цикл. Остался случай `t=2`. Тогда все остатки из `A` одной четности; по начальному выбору это возможно только если ни в одном треугольнике сумма двух ребер не отличается по четности от третьего, то есть сумма весов каждого треугольника четна. Зафиксируем вершину `v` и разобьем остальные вершины по четности `m(vu)`. Из четности треугольника `vxy` следует `m(xy)=m(vx)+m(vy) mod 2`, поэтому внутри каждого класса все ребра четные. Один из двух классов вместе, при необходимости, с `v` содержит хотя бы `500n=1000(n/2)` вершин. Ограничиваемся этой кликой, делим все ее веса на `2` и применяем индукцию к модулю `n/2`. Во всех случаях найден простой цикл с суммой, делящейся на `n`.",
+      "idea_ids": [
+        "idea-maximal-path-residue-family",
+        "idea-period-reduction"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "cycle",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Imported from the checked FYUM archive card 2013_tur1a_problem4.md; stage Round 1, League of Strategies.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2013-tur1a-p4-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: Граф не просто упоминается, а является самим объектом задачи: полный граф, пути, циклы, клики и разбиение по четности составляют содержание и условия, и решения.",
+      "Original-source candidate: USA Team Selection Test for the Selection Team of 55th IMO, Day II, Problem 5, June 23, 2013 — https://web.evanchen.cc/exams/TSTST-2013.pdf. Author note: not identified from the accessible primary source; the published TSTST problem PDF lists the AMC Committee, but does not give per-problem authors"
+    ],
+    "relations_status": "deep_done"
+  }
+}

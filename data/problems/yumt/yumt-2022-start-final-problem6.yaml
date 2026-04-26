@@ -1,0 +1,110 @@
+{
+  "id": "yumt-2022-start-final-problem6",
+  "title": "YUMT 2022, Старт-лига, финал, 6. Большое независимое множество",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2022_start_final_problem6",
+      "yumt_2022"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В графе со 100 вершинами среди любых трёх вершин есть две несмежных, а среди любых десяти рёбер есть два имеющих общую вершину.\nДокажите, что в этом графе можно выбрать 83 попарно не смежных вершины.",
+        "source_id": "src-yumt-2022-start-final-problem6-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-maximal-matching-leaves-independent-set",
+      "title": "Максимальное паросочетание оставляет независимое множество",
+      "text": "Если в графе нет десяти попарно несмежных рёбер, максимальное паросочетание покрывает не больше 18 вершин. Все непокрытые вершины независимы; при размере паросочетания 9 отсутствие треугольников позволяет добавить к ним ещё один конец ребра паросочетания.",
+      "tags": [
+        "matching",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-maximal-matching-independent-set",
+      "title": "Через максимальное паросочетание",
+      "text": "Условие «среди любых трёх вершин есть две несмежных» означает, что в графе нет треугольников. Условие «среди любых десяти рёбер есть два с общим концом» означает, что в графе нет паросочетания из 10 рёбер.\n\nВозьмём максимальное по числу рёбер паросочетание M. Тогда |M| <= 9. Пусть U — множество вершин, не покрытых M. Так как M максимально, между двумя вершинами из U нет ребра: иначе это ребро можно было бы добавить к M. Значит U — независимое множество.\n\nЕсли |M| <= 8, то |U| >= 100 - 16 = 84, и тем более можно выбрать 83 попарно несмежные вершины. Остался случай |M| = 9. Тогда |U| = 82. Покажем, что к U можно добавить ещё одну вершину. Рассмотрим любое ребро xy из M. Не могут обе вершины x и y иметь соседей в U. Действительно, если x смежна с u из U, а y смежна с v из U, то u != v, иначе uxy был бы треугольником. Тогда вместо ребра xy в паросочетании можно взять два рёбра xu и yv; они не имеют общих концов и вместе с остальными рёбрами M дают паросочетание большего размера, противоречие.\n\nЗначит у каждого ребра M хотя бы один конец не имеет соседей в U. Выберем такой конец у одного ребра. Он не смежен ни с одной вершиной из U, поэтому вместе с U образует независимое множество размера 83.",
+      "idea_ids": [
+        "idea-maximal-matching-leaves-independent-set"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching",
+        "independent_set",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2022_start_final_problem6.md; stage Старт-лига, финал.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "matching",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2022-start-final-problem6-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2022_start_final_problem6.md.",
+      "2026-04-26: добавлено самодостаточное решение через максимальное паросочетание и отсутствие треугольников."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

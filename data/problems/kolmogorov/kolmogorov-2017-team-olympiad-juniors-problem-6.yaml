@@ -1,0 +1,121 @@
+{
+  "id": "kolmogorov-2017-team-olympiad-juniors-problem-6",
+  "title": "????? ??????????? 2017: Team Olympiad, Juniors Problem 6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "weighted_graph"
+    ],
+    "methods": [
+      "connectivity_argument"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2017"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране 100 городов, каждые два из которых соединены дорогой с положительной стоимостью проезда. Власти закрыли `k` дорог на ремонт, и после этого для любой пары городов самый дешевый маршрут между ними либо подорожал, либо вовсе исчез.\n\nПри каком наименьшем `k` это возможно?",
+        "source_id": "src-kolmogorov-2017-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2017-team-olympiad-juniors-problem-6",
+      "text": "В условии граф не назван явно, но официальное решение целиком переводит задачу на язык графов: строится граф закрытых дорог и используется факт его несвязности при числе ребер меньше `n-1`.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "Ответ: `99`.\n\nПример на достижимость: выберем столицу, присвоим всем дорогам из столицы цену 1, а всем дорогам между двумя нестоличными городами — цену 1000. Тогда до закрытия дорог любой самый дешевый путь стоит не более 2. Если закрыть все 99 дорог, выходящих из столицы, то из столицы пути исчезают, а между двумя нестоличными городами минимальная цена возрастает до 1000.\n\nОценка снизу: предположим, что закрыто меньше 99 дорог. Рассмотрим граф, вершины которого — города, а ребра — закрытые дороги. Такой граф с 100 вершинами и менее чем 99 ребрами не может быть связным. Значит, вершины можно разбить на два непустых множества `A` и `B` так, что ни одно ребро между `A` и `B` не закрыто.\n\nПусть `ab` — самая дешевая из дорог между `A` и `B`. Любой маршрут из `a` в `b` обязан хотя бы один раз пересечь границу между `A` и `B`, то есть содержать некоторую дорогу между этими частями. Но по выбору `ab` никакая такая дорога не дешевле прямой дороги `ab`. Следовательно, и до, и после закрытия дорог кратчайший путь из `a` в `b` — это сама дорога `ab`, так что его цена не изменилась. Противоречие.\n\nЗначит, требуется как минимум 99 закрытых дорог, и это значение достигается.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2017-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2017_team_olympiad_juniors_problem_6.md.",
+      "Source file noted by card: work/kolm/archive/2017/extracted/komol21.pdf.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Team Olympiad, Juniors, Problem 6."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
+  }
+}

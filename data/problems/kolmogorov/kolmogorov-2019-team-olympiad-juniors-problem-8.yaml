@@ -1,0 +1,115 @@
+{
+  "id": "kolmogorov-2019-team-olympiad-juniors-problem-8",
+  "title": "????? ??????????? 2019: Team Olympiad, Juniors Problem 8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph"
+    ],
+    "methods": [],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2019"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В ориентированном графе исходящая степень каждой вершины равна 3. Петли и встречные ребра разрешены и считаются циклами; между любыми двумя вершинами может быть не более одного ребра каждого направления. Докажите, что в таком графе существуют два ориентированных цикла, не пересекающихся по вершинам.",
+        "source_id": "src-kolmogorov-2019-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2019-team-olympiad-juniors-problem-8",
+      "text": "Граф фигурирует прямо в условии: речь идет об ориентированном графе, степенях вершин и ориентированных циклах. Официальное решение целиком опирается на графовые операции и понятия: встречные ребра, стягивание ребра, входящие степени и поиск циклов.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "Решение проводится индукцией по числу вершин.\n\n1. Если в графе есть встречные ребра `v -> w` и `w -> v`, то они уже образуют цикл длины 2. В графе без вершин `v, w` из каждой вершины по-прежнему выходит хотя бы одно ребро, значит там существует еще один цикл. Поэтому в минимальном контрпримере встречных ребер нет.\n\n2. Если существует ребро `u -> v`, у которого нет \"предка\" (то есть вершины, из которой выходят ребра и в `u`, и в `v`), то ребро можно стянуть: удалить `u` и `v`, заменить их новой вершиной и получить ориентированный граф на `n-1` вершинах, в котором у каждой вершины исходящая степень снова равна 3. По предположению индукции в стянутом графе есть два непересекающихся цикла; каждый цикл, проходящий через новую вершину, легко поднимается обратно в исходный граф. Значит, такой контрпример тоже невозможен.\n\n3. Остается случай, когда у каждого ребра есть предок. Берется вершина минимальной входящей степени. Степени 0, 1 и 2 невозможны: в каждом из этих случаев находится ребро без предка или встречная пара ребер, что уже исключено. Значит, минимальная входящая степень равна 3, и тогда все вершины имеют входящую степень 3.\n\n4. Пусть в вершину `x` входят ребра из `u, v, w`. Предки этих трех ребер лежат среди `u, v, w`, поэтому в индуцированном подграфе на `u, v, w` в каждую вершину входит хотя бы одно ребро. Так как встречных ребер нет, вершины `u, v, w` образуют ориентированный 3-цикл. Аналогично, вершины, в которые ведут ребра из `x`, тоже образуют ориентированный 3-цикл. Эти два цикла не пересекаются, поскольку встречные ребра запрещены. Получаем противоречие.\n\nСледовательно, в исходном графе обязательно существуют два непересекающихся ориентированных цикла.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2019-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2019_team_olympiad_juniors_problem_8.md.",
+      "Source file noted by card: work/kolm/archive/2019/2019_team_olympiad_tasks_solutions.docx.",
+      "Source page noted by card: n/a.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Juniors, Problem 8."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass.",
+    "graph_theory_duplicate_removed": true
+  }
+}

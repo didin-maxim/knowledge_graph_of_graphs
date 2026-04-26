@@ -1,0 +1,131 @@
+{
+  "id": "fyum-2012-tur1a-p10",
+  "title": "FYUM 2012, First tour (a), Problem 10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "en",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "graph_with_maximum_degree_11",
+      "strong_edge_coloring"
+    ],
+    "methods": [
+      "greedy_coloring"
+    ],
+    "transformations": [
+      "forbid_colors_within_distance_two"
+    ],
+    "goal": [
+      "construct_strong_edge_coloring"
+    ],
+    "auxiliary_graph_type": [
+      "distance_two_edge_conflict_graph"
+    ],
+    "invariants": [
+      "at_most_220_forbidden_colors_per_edge"
+    ],
+    "keywords": [
+      "bounded_degree",
+      "fyum",
+      "fyum-2012-tur1a-p10",
+      "strong_chromatic_index",
+      "strong_edge_coloring",
+      "trivial_bound"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "A graph has maximum degree at most 11. Prove that its edges can be colored with 221 colors so that any two edges of the same color are disjoint and no edge is adjacent to both of them.",
+        "source_id": "src-fyum-2012-tur1a-p10-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-parameterized",
+        "text": "For every graph G with maximum degree at most Delta, one can color E(G) with at most 2Delta^2-2Delta+1 colors so that any two edges of the same color are disjoint and no edge is adjacent to both of them. The FYUM statement is the case Delta=11.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-greedy-distance-two-bound",
+      "title": "Standard greedy bound for strong edge-coloring",
+      "text": "Color the edges one by one in an arbitrary order. When we come to an edge e = uv, the only forbidden colors are those already used on edges at distance at most 2 from e, because exactly those edges cannot share a color with e. There are at most 2*11 - 2 = 20 edges adjacent to e. Also, from the u-side there are at most 10 other edges incident with u, and each of their far endpoints contributes at most 10 further edges; this gives at most 10*10 edges at distance 2 from e on the u-side. The same bound holds on the v-side. Hence the number of edges at distance exactly 2 from e is at most 2*10*10 = 200, so in total at most 20 + 200 = 220 colors are forbidden. With 221 available colors there is always a free color for e. Continuing greedily, we color every edge. By construction, each color class is an induced matching, which is exactly the required condition.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "definition_ids": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "FYUM 2012, First tour (a), Problem 10. The accessible archive preserves the official statement; the solution here is the standard greedy distance-two bound for strong edge-coloring at Delta = 11.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2012-tur1a-p10-official",
+      "role": "official_problem_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-ntu-strong-edge-coloring-trivial-bound",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "The FYUM archive card for 2012 preserved the official statement but not an official solution.",
+      "The proof added here is the standard greedy bound for strong edge-coloring: every graph of maximum degree Delta admits a strong edge-coloring with at most 2Delta^2 - 2Delta + 1 colors.",
+      "This is a direct theorem-level transfer to the olympiad statement with Delta = 11."
+    ],
+    "relations_status": "deep_done"
+  }
+}

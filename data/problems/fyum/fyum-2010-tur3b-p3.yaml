@@ -1,0 +1,123 @@
+{
+  "id": "fyum-2010-tur3b-p3",
+  "title": "FYUM 2010, Third tour (b), Problem 3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "regular_graph",
+      "three_coloring_of_vertices"
+    ],
+    "methods": [
+      "forest_counting"
+    ],
+    "transformations": [
+      "delete_one_color_class"
+    ],
+    "goal": [
+      "rule_out_regular_counterexample"
+    ],
+    "auxiliary_graph_type": [
+      "two_color_subgraph"
+    ],
+    "invariants": [
+      "each_two_color_subgraph_is_a_forest"
+    ],
+    "keywords": [
+      "cycle_coloring",
+      "forest",
+      "fyum",
+      "fyum-2010-tur3b-p3",
+      "regular_graph",
+      "regular_graph_three_colors"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Существует ли такой граф, что степени всех его вершин равны 6, и \n\nего вершины можно покрасить в три цвета так, что любой простой цикл\n\nсодержит вершины всех трех цветов?",
+        "source_id": "src-fyum-2010-tur3b-p3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-parameterized",
+        "text": "Let G be a graph whose vertices are colored with three colors. If every cycle of G contains vertices of all three colors, then |E(G)| <= 3(|V(G)|-1). In particular, no 6-regular graph has such a 3-coloring.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Assume such a graph exists. Remove all vertices of one color; the remaining two-color graph has no cycles, hence it is a forest. Do this for each of the three colors. Each of the three resulting graphs has at most n-1 edges, so the original graph has at most 3n-3 edges. But a 6-regular graph on n vertices has exactly 3n edges. Contradiction.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Imported from the checked FYUM archive card 2010_tur3b_problem3.md; stage Third tour (b).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2010-tur3b-p3-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a graph."
+    ],
+    "relations_status": "deep_done"
+  }
+}

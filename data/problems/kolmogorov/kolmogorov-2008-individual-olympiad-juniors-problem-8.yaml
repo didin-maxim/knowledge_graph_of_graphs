@@ -1,0 +1,136 @@
+{
+  "id": "kolmogorov-2008-individual-olympiad-juniors-problem-8",
+  "title": "????? ??????????? 2008: Individual Olympiad, Juniors Problem 8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "spanning_tree"
+    ],
+    "methods": [
+      "local_recoloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "coloring"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "regular-graph",
+      "edge-partition",
+      "bipartite-graph",
+      "vertex-coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране каждый аэропорт соединен прямыми рейсами ровно с тремя другими. Требуется разделить все рейсы между двумя авиакомпаниями так, чтобы у каждой компании в ее сети не было нечетных циклов.",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "spanning_tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-individual-olympiad-juniors-problem-8",
+      "text": "Граф явно задан в условии: аэропорты — вершины, рейсы — ребра, причем граф 3-регулярен. Официальное решение использует раскраску вершин и двудольность подграфов.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение сначала правильно раскрашивает вершины графа в 4 цвета. Это можно сделать, поскольку граф 3-регулярен и имеет максимальную степень 3.\n\nЗатем одну авиакомпанию наделяют ребрами типов `1-2`, `2-3`, `3-4`, `4-1`, а вторую — ребрами типов `1-3` и `2-4`. В каждом из этих двух подграфов вершины естественно разбиваются на две доли, поэтому оба подграфа двудольны.\n\nСледовательно, ни у одной компании не может возникнуть нечетный цикл.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "bipartite_graph",
+        "spanning_tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "matching",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_individual_olympiad_juniors_problem_8.md.",
+      "Source file noted by card: work/kolm/text/2008/lichol12.txt.",
+      "Source page noted by card: 7.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Individual Olympiad, Juniors, Problem 8."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "id": "yumt-2019-start-high-round1-problem7",
+  "title": "YUMT 2019, Старт-лига высшая, бой 1, 7. Степени вершин связного графа",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2019_start_high_round1_problem7",
+      "yumt_2019"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Вова задумал 2019 натуральных чисел с суммой K.\nДля каких натуральных K гарантированно существует связный граф с 2019 вершинами, степени которых равны задуманным числам?",
+        "source_id": "src-yumt-2019-start-high-round1-problem7-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "connected_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-degree-sequence-parity-and-connectivity",
+      "title": "Чётность суммы степеней и минимальная связность",
+      "text": "Нужно совместить стандартное условие графичности по сумме степеней с тем, что связный граф на n вершинах имеет не меньше n-1 рёбер.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Решение",
+      "text": "Ответ: только K = 4036.\nВо-первых, сумма степеней любого графа должна быть чётной. Кроме того, в связном графе на 2019 вершинах не меньше 2018 рёбер, поэтому сумма степеней не меньше 2·2018 = 4036. Значит, если нужное K существует для любых задуманных чисел, то K должно быть чётным и не меньше 4036.\nПокажем теперь, что при K > 4036 гарантии уже нет. Действительно, можно задумать числа\nK - 2018, 1, 1, ..., 1.\nИх сумма равна K. Если бы существовал граф с такими степенями, то степень первой вершины была бы равна K - 2018. Но в простом графе на 2019 вершинах степень любой вершины не превосходит 2018. Поэтому при K > 4036 получаем невозможность.\nОстаётся случай K = 4036. Тогда нужно показать, что любые 2019 натуральных чисел с такой суммой являются степенями некоторого связного графа. Но сумма степеней дерева на 2019 вершинах равна 2·2018 = 4036, и наоборот: любая последовательность из 2019 положительных целых чисел с суммой 4036 является последовательностью степеней некоторого дерева. Это стандартный критерий для степеней деревьев.\nСледовательно, при K = 4036 связный граф существует всегда, а при других K такой гарантии нет.",
+      "idea_ids": [
+        "idea-degree-sequence-parity-and-connectivity"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree",
+        "connected_graph",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2019_start_high_round1_problem7.md; stage Старт-лига высшая, бой 1.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2019-start-high-round1-problem7-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2019_start_high_round1_problem7.md."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

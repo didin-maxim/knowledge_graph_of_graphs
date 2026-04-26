@@ -1,0 +1,115 @@
+{
+  "id": "utyum-2023_komol61_8_5_yozhgorod_registry",
+  "title": "UTYUM 2023, Team Olympiad, grade 8, 5. Registry of squares and streets in Yozhgorod",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "induction",
+      "explicit_construction"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2023_komol61_8_5_yozhgorod_registry",
+      "utyum_2023"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В Ёжгороде есть центральная площадь, n периферийных площадей и n улиц, каждая из которых соединяет центральную площадь с одной из периферийных.\n\nМэр хочет записать в строку названия всех площадей и улиц так, чтобы название каждой улицы стояло правее названий обеих площадей, которые она соединяет.\n\nСколькими способами можно составить такой реестр?",
+        "source_id": "src-utyum-2023_komol61_8_5_yozhgorod_registry-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Рассматривается звезда K_{1,n}: центральная вершина соответствует центральной площади, листья — периферийным площадям, а рёбра — улицам. Нужно упорядочить все вершины и рёбра так, чтобы каждое ребро стояло правее обеих своих концов. Сколькими способами это можно сделать?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "В официальном решении рассматривается звезда: центральная вершина, n листьев и n рёбер.\n\nОтвет доказывается индукцией по n. Для n + 1 последняя запись обязана быть названием некоторой улицы.\n\nЕсли удалить эту последнюю улицу и соответствующую периферийную площадь, то остаётся корректный реестр для случая n.\n\nДальше независимо выбираются:\nпериферийная площадь, которую считаем выделенной;\nреестр меньшего города;\nместо вставки выделенной площади;\nи в конец добавляется улица.\n\nЭто даёт формулу 2^n (n!)^2.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "trees"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2023_komol61_8_5_yozhgorod_registry-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2023_komol61_8_5_yozhgorod_registry.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: medium.",
+      "В условии явно задана дорожная структура, то есть звезда, а официальный разбор по сути считает линейные расширения частичного порядка, порождённого рёбрами этого графа."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

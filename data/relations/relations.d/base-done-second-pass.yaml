@@ -1,0 +1,274 @@
+{
+  "relations": [
+    {
+      "id": "rel-fyum-2010-tur3a-tur3b-two-color-forest-counting",
+      "from": "fyum-2010-tur3a-p7",
+      "to": "fyum-2010-tur3b-p3",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Both FYUM 2010 third-tour problems rule out a coloring by looking at every two-color induced subgraph. The key observation is identical: if a two-color subgraph contained a cycle, that cycle would violate the condition, so all such subgraphs are forests and edge counting gives a contradiction.",
+      "backward_text": "The three-color 6-regular problem is the small-parameter version of the five-color 100-regular problem: both are solved by the same two-color forest count.",
+      "anchors": {
+        "from_solution_id": "sol-official-archive",
+        "to_solution_id": "sol-official-archive"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-fyum-2010-dominating-sets-2011-hamilton-cycles-aux-parity",
+      "from": "fyum-2010-tur2a-p1",
+      "to": "fyum-2011-tur2a-p9",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions build an auxiliary graph whose parity is controlled by the handshaking lemma. In FYUM 2010 the auxiliary vertices are non-dominating sets; in FYUM 2011 they are Hamiltonian paths through a fixed edge.",
+      "backward_text": "The Hamilton-cycle parity problem is a close methodological relative of the dominating-set parity problem: both hide the desired parity statement in the odd-degree vertices of a purpose-built auxiliary graph.",
+      "anchors": {
+        "from_solution_id": "sol-official-archive",
+        "to_solution_id": "sol-official-archive"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-fyum-2012-2013-strong-edge-coloring-distance-two",
+      "from": "fyum-2012-tur1a-p10",
+      "to": "fyum-2013-tur2a-p1",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems ask for a strong edge coloring: edges at distance at most two must receive distinct colors. FYUM 2012 proves a greedy bound for maximum degree 11, while FYUM 2013 uses a sharp planar-large-girth theorem to reach 2d-1 colors.",
+      "backward_text": "The planar FYUM 2013 problem is a refined structural version of the same distance-two edge-coloring task that appears in FYUM 2012.",
+      "anchors": {
+        "from_solution_id": "sol-greedy-distance-two-bound",
+        "to_solution_id": "sol-official-archive"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-kolm-2005-junior-senior-spanning-tree-parity",
+      "from": "kolmogorov-2005-team-olympiad-juniors-problem-8",
+      "to": "kolmogorov-2005-team-olympiad-seniors-problem-9",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Both 2005 team problems prove that the number of spanning trees is even. The junior proof builds an exchange graph on spanning trees; the senior proof counts tree-plus-one-cycle subgraphs, but both arguments are parity counts around spanning trees.",
+      "backward_text": "The senior problem is the nearby bipartite/even-edge version of the junior spanning-tree parity problem, with the same parity-of-exchanges flavor.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-kolm-2006-2007-color-class-recoloring-connectivity",
+      "from": "kolmogorov-2006-round-3-super-league-problem-3",
+      "to": "kolmogorov-2007-round-3-high-and-first-league-problem-3",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Both KOLM coloring proofs examine the subgraph induced by two color classes and use component swaps. In 2006 local recoloring increases the number of colors seen by a fixed neighborhood; in 2007 the same swap would break uniqueness unless every two-color subgraph is connected.",
+      "backward_text": "The 2007 unique-coloring lower bound is a clean companion to the 2006 neighborhood-coloring problem: both turn Kempe-style two-color component swaps into structural information.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.87
+    },
+    {
+      "id": "rel-kolm-2003-2004-critical-strong-digraphs",
+      "from": "kolmogorov-2003-team-olympiad-seniors-problem-8",
+      "to": "kolmogorov-2004-round3-higher-league-problem-10",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems study strong connectivity under deletion in directed graphs. The 2003 task asks for a maximum-size strongly connected digraph in which every edge is essential; the 2004 task proves that under outdegree at least two some vertex can be deleted while preserving strong connectivity.",
+      "backward_text": "The 2004 vertex-deletion theorem is a structural neighbor of the 2003 edge-critical strong-connectivity extremal problem: both analyze how strong components behave after a deletion.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-usamo-1976-vosh-2008-common-neighbor-double-counting",
+      "from": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+      "to": "vosh-2008-regional-bureaucrats-common-neighborhood",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems force a monochromatic or common-neighborhood configuration by double-counting pairs of neighbors. The USAMO rectangle proof counts same-colored column pairs, while the VOSH graph problem counts common neighbors or common non-neighbors across parts.",
+      "backward_text": "The VOSH common-neighborhood problem is a graph-theoretic relative of the monochromatic-rectangle count: both are Ramsey-flavored double counts of shared neighborhoods.",
+      "anchors": {
+        "from_solution_id": "sol-column-pair-double-counting",
+        "to_solution_id": "sol-double-counting-triples"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-ramsey-r33-vosh-universal-acquaintance",
+      "from": "ramsey-r33",
+      "to": "vosh-2000-01-final-universal-acquaintance",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The VOSH universal-acquaintance problem uses the same clique/independent-set complement viewpoint as the classical R(3,3) theorem: a condition on every n-set is converted into a forced universal adjacency conclusion.",
+      "backward_text": "R(3,3) is the small classical model for the complement-graph and pigeonhole style that appears in the VOSH acquaintance problem.",
+      "anchors": {
+        "from_solution_id": "sol-pigeonhole",
+        "to_solution_id": "sol-complement-domination"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-egmo-2022-rmm-2017-bipartite-matching-model",
+      "from": "egmo-2022-p5-domino-parity-bipartite-matching",
+      "to": "rmm-2017-p5-sieve-sticks-bipartite-matching",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions turn the original geometric/grid setting into a bipartite matching problem. EGMO 2022 uses domino tilings as perfect matchings; RMM 2017 uses the same bipartite-incidence language for sticks and selected intersections.",
+      "backward_text": "The RMM sticks problem is a natural matching-model neighbor of the EGMO domino problem: in both, Hall-style bipartite structure is the graph-theoretic core.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-kolm-2009-pancyclic-dirac-hamiltonian-density",
+      "from": "kolmogorov-2009-round1-high-dense-hamiltonian-pancyclic",
+      "to": "dirac-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "The KOLM problem is a dense Hamiltonian-graph strengthening: a Hamiltonian graph with more than n^2/4 edges is asked to contain cycles of all intermediate lengths. Dirac's theorem is not the same result, but it is a nearby classical model for forcing Hamiltonian structure from density-type hypotheses.",
+      "backward_text": "Dirac's theorem gives the basic longest-path/density language for Hamiltonian-cycle forcing; the KOLM card asks a sharper pancyclic conclusion after Hamiltonicity is already assumed.",
+      "anchors": {
+        "from_solution_id": "sol-import-note",
+        "to_solution_id": "sol-longest-path"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.62
+    },
+    {
+      "id": "rel-kolm-2009-regular-tournament-hamiltonian-paths-redei",
+      "from": "kolmogorov-2009-round4-high-regular-tournament-hamiltonian-paths",
+      "to": "tournament-hamiltonian-path",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The KOLM problem is a quantitative tournament-Hamiltonian-path question: instead of proving that one Hamiltonian path exists in every tournament, it asks for many Hamiltonian paths under the regularity assumption.",
+      "backward_text": "Redei's theorem supplies the baseline tournament path motif behind the KOLM card; the olympiad problem strengthens the theme from existence to a lower bound for regular tournaments.",
+      "anchors": {
+        "from_solution_id": "sol-import-note",
+        "to_solution_id": "sol-insertion"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-kolm-2009-2022-hamiltonian-path-counts",
+      "from": "kolmogorov-2009-round4-high-regular-tournament-hamiltonian-paths",
+      "to": "kolmogorov-2022-round2-juniors-hamiltonian-path-parity",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both cards are about counting Hamiltonian paths in a complete-graph environment. The 2009 problem counts directed Hamiltonian paths in a regular tournament; the 2022 junior problem compares the numbers of red and blue monochromatic Hamiltonian paths in an edge-colored complete graph.",
+      "backward_text": "The 2022 parity problem is a colored-complete-graph companion to the 2009 regular-tournament path count: in both, Hamiltonian paths are the central counted object rather than only an existence target.",
+      "anchors": {
+        "from_solution_id": "sol-import-note",
+        "to_solution_id": "sol-import-note"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-kolm-2014-triangle-routes-four-regular-cycles",
+      "from": "kolmogorov-2014-round3-city-triangle-routes",
+      "to": "kolmogorov-2014-round3-four-regular-two-100-cycles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both 2014 Round 3 cards impose a strong local triangle condition: every edge lies in a triangle. The city-route problem combines this with 8-regularity to force many triangles through a vertex, while the 4-regular problem adds high connectivity and asks for two disjoint long cycles.",
+      "backward_text": "The 4-regular cycle problem is a structural companion to the triangle-route counting problem: both use the local condition that every edge participates in a triangle, but drive it toward different global conclusions.",
+      "anchors": {
+        "from_solution_id": "sol-import-note",
+        "to_solution_id": "sol-import-note"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-kolm-2014-diameter-cycle-bmo-2025-longest-path",
+      "from": "kolmogorov-2014-round4-diameter-cycle-length",
+      "to": "bmo-2025-p4-flights-long-short-paths",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems force a large cycle from distance or path-extremal information. The KOLM card uses diameter and eccentricity to force a cycle of length at least 2d, while the BMO solution begins by closing a longest path with a short internally disjoint path to obtain a Hamiltonian cycle.",
+      "backward_text": "BMO 2025 P4 is a fuller classification problem, but its opening longest-path-to-cycle step is a useful neighbor for the KOLM diameter problem's cycle-forcing theme.",
+      "anchors": {
+        "from_solution_id": "sol-import-note",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-kolm-2022-binary-pairing-egmo-2022-matching",
+      "from": "kolmogorov-2022-round1-third-binary-strings-pairing-graph",
+      "to": "egmo-2022-p5-domino-parity-bipartite-matching",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions translate the original combinatorial object into a matching problem. In the KOLM card, chosen bit positions define a perfect matching on binary strings and the proof compares same-color and mixed-color matching edges; in EGMO 2022, domino tilings become perfect matchings in a grid graph and parity is the main invariant.",
+      "backward_text": "EGMO 2022 P5 is a board-graph matching-parity neighbor of the KOLM binary-string pairing problem: the concrete objects differ, but both use perfect matchings as the graph core of the solution.",
+      "anchors": {
+        "from_solution_id": "sol-import-note",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-kolm-2022-airport-even-degree-odd-walks",
+      "from": "kolmogorov-2022-round4-high-airport-walk-parity",
+      "to": "kolmogorov-2022-round4-second-third-even-degree-odd-walks",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Both 2022 Round 4 cards ask whether all fixed-length walk counts between every pair of vertices can be odd modulo 2. The higher-league airport problem allows an arbitrary graph, while the second/third-league version adds the even-degree constraint.",
+      "backward_text": "The even-degree problem is the constrained companion to the airport-walk parity problem: it asks the same all-pairs odd walk-count question with an extra parity condition on degrees.",
+      "anchors": {
+        "from_solution_id": "sol-import-note",
+        "to_solution_id": "sol-import-note"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-kolm-2022-max-length-tree-tree-basics",
+      "from": "kolmogorov-2022-round4-high-maximum-length-tree-diameter-circles",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 3,
+      "forward_text": "The KOLM geometry problem uses a spanning tree as its central graph object. Basic tree language such as unique paths, leaves, and edge exchange is prerequisite vocabulary, even though the hard part of the problem is geometric.",
+      "backward_text": "The tree-equivalence card supplies the standard tree facts needed to read the maximum-length tree problem; the olympiad card then adds metric geometry on top of that graph skeleton.",
+      "anchors": {
+        "from_solution_id": "sol-import-note",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-utyum-2007-rectangle-tc-2022-grid-boundary-count",
+      "from": "utyum-2007_lichol30_4_rectangle_coloring",
+      "to": "tc-2022-23-blue-red-cells-connectivity",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems solve a colored-grid question by counting cell adjacencies and boundary contributions. The UTYUM solution balances same-color internal sides after adding the outside boundary, while the Tournament of Cities solution bounds red-blue boundary sides using the connected red-cell graph.",
+      "backward_text": "The Tournament of Cities cell-counting problem is a close grid-adjacency neighbor of the UTYUM rectangle coloring problem: both turn color conditions into a double count of sides in a cell-adjacency graph.",
+      "anchors": {
+        "from_solution_id": "sol-official",
+        "to_solution_id": "sol-bound-boundary"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    }
+  ]
+}

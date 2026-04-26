@@ -1,0 +1,119 @@
+{
+  "id": "utyum-2025_komol65_7_6_airlines_degree_sum",
+  "title": "UTYUM 2025, Team Olympiad, grade 7, 6. 2025 cities and degree sums of nonadjacent pairs",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "parity_argument",
+      "extremal_construction",
+      "degree_counting"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2025_komol65_7_6_airlines_degree_sum",
+      "utyum_2025"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В стране 2025 городов. Некоторые пары городов, но не все, соединены двусторонними авиалиниями.\n\nОказалось, что для любых двух городов без прямого авиасообщения сумма количеств исходящих из них авиалиний равна одному и тому же числу k.\n\nКакие значения может принимать k?",
+        "source_id": "src-utyum-2025_komol65_7_6_airlines_degree_sum-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф на 2025 вершинах, не являющийся полным. Для любых двух несмежных вершин сумма их степеней равна одному и тому же числу k. Какие значения может принимать k?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "В официальном решении вводится граф авиалиний, а k выражается через суммы степеней несмежных вершин.\n\nСначала доказывается, что нечётное k меньше 2023 невозможно: у двух несмежных вершин тогда найдётся третья вершина, тоже несмежная с ними, и по чётности возникнет противоречие.\n\nДальше для всех допустимых значений строятся примеры:\nдля чётных k от 0 до 4046 — специальный граф со столицей и двумя долями;\nдля нечётных k от 2023 до 4045 — почти полный граф, в котором одна вершина не соединена с заранее выбранным набором городов.\n\nВ итоге получаются все чётные k от 0 до 4046 и все нечётные k от 2023 до 4045.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 7.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "extremal_graph_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2025_komol65_7_6_airlines_degree_sum-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2025_komol65_7_6_airlines_degree_sum.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Условие явно формулируется на графе авиалиний, а решение сводится к анализу степеней несмежных вершин и конструкциям графов."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

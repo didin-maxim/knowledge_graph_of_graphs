@@ -96,6 +96,16 @@
         "induction"
       ],
       "status": "ai_checked"
+    },
+    {
+      "id": "idea-minimal-connected-subgraph",
+      "title": "Минимальный связный подграф уже дерево",
+      "text": "Если в связном подграфе нельзя удалить ни одного ребра без потери связности, то цикла в нём быть не может: ребро цикла всегда можно выбросить.",
+      "tags": [
+        "trees",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
     }
   ],
   "solutions": [
@@ -109,6 +119,27 @@
       "status": "ai_checked",
       "standard_idea_ids": [
         "induction",
+        "delete_to_simplify"
+      ],
+      "definition_ids": [
+        "connected_graph",
+        "path",
+        "cycle",
+        "tree"
+      ]
+    },
+    {
+      "id": "sol-minimal-connected-subgraph",
+      "title": "Доказательство через минимальный связный подграф",
+      "text": "Пусть G — связный граф на n вершинах с n-1 ребром. Рассмотрим среди его связных остовных подграфов подграф H с минимальным числом рёбер. Тогда H минимально связен: удаление любого ребра разрушает связность. Но минимально связный граф не содержит циклов, потому что из цикла можно удалить одно ребро и связность сохранится. Значит H — дерево. Для дерева на n вершинах по обычной индукции имеем ровно n-1 ребро. Так как H остовен и H⊆G, но у G уже ровно n-1 ребро, получаем H=G. Следовательно, G само является деревом. В обратную сторону дерево имеет n-1 ребро по удалению листа, а единственность простого пути между любыми двумя вершинами немедленно следует из отсутствия циклов и связности.",
+      "idea_ids": [
+        "idea-leaf-induction",
+        "idea-minimal-connected-subgraph"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction",
+        "extremal_choice",
         "delete_to_simplify"
       ],
       "definition_ids": [
@@ -137,6 +168,11 @@
       "source_id": "src-wikipedia-tree",
       "role": "standard_reference",
       "status": "source_verified"
+    },
+    {
+      "source_id": "src-mse-tree-minimal-connected",
+      "role": "community_alternative_solution",
+      "status": "source_verified"
     }
   ],
   "editorial": {
@@ -145,6 +181,6 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [],
-    "relations_status": "base_done"
+    "relations_status": "deep_done"
   }
 }

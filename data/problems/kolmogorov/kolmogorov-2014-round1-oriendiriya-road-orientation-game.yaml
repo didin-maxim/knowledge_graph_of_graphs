@@ -1,0 +1,155 @@
+{
+  "id": "kolmogorov-2014-round1-oriendiriya-road-orientation-game",
+  "title": "Kolmogorov Cup 2014, Round 1, Second League, 7. Oriendiriya road-orientation game",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Жюри",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "directed_graph",
+      "tournament",
+      "cycle"
+    ],
+    "methods": [
+      "strategy",
+      "invariant"
+    ],
+    "transformations": [
+      "ordered_partition"
+    ],
+    "goal": [
+      "winning_strategy"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "acyclic_orientation",
+      "ordered_blocks"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2014",
+      "round_1_second_league",
+      "round_1_first_junior_league",
+      "oriendiriya",
+      "road_orientation_game"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране Ориентирия 100 городов, каждые два города соединены дорогой с двусторонним движением. Два министра играют в игру. Первый каждым своим ходом вводит одностороннее движение на любой еще не ориентированной дороге. Второй каждым своим ходом вводит одностороннее движение на любом количестве от 0 до 98 еще не ориентированных дорог. Игра заканчивается, когда все дороги ориентированы. Первый министр выигрывает, если найдется такой город, что из него можно выехать по какой-нибудь дороге и, соблюдая правила движения, вернуться обратно. Иначе выигрывает второй министр. Какой министр выигрывает при правильной игре? (Жюри)",
+        "source_id": "src-kolmogorov-2014-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "directed_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "На ребрах полного графа \\(K_{100}\\) играют два игрока. Первый за ход ориентирует одно еще не ориентированное ребро, второй за ход ориентирует от 0 до 98 еще не ориентированных ребер. Первый выигрывает, если после ориентации всех ребер итоговый турнир содержит ориентированный цикл; второй выигрывает, если итоговый турнир ацикличен. Определить победителя при правильной игре.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "directed_graph",
+          "cycle",
+          "tournament"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-ordered-blocks",
+      "title": "Ordered block invariant",
+      "text": "Второй игрок может поддерживать упорядоченное разбиение городов на блоки: все дороги между разными блоками уже ориентированы от более раннего блока к более позднему, а внутри блоков дорог с направлением нет. После хода первого внутри блока второй отделяет конец новой стрелки в отдельный следующий блок.",
+      "tags": [
+        "tournaments"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-second-player-block-strategy",
+      "title": "Стратегия второго через упорядоченные блоки",
+      "text": "Выигрывает второй министр.\n\nПосле каждого своего хода он будет поддерживать такой инвариант. Все города разбиты на упорядоченные блоки \\(B_1,\\ldots,B_s\\). Если города лежат в разных блоках, то дорога между ними уже ориентирована из более раннего блока в более поздний. Если города лежат в одном блоке, то дорога между ними еще не ориентирована.\n\nВ начале есть один блок из всех 100 городов, поэтому инвариант выполнен.\n\nПусть перед ходом первого инвариант выполнен. Все дороги между разными блоками уже ориентированы, значит первый может выбрать только дорогу внутри некоторого блока \\(B\\). Пусть он ориентировал дорогу \\(x\\to y\\), где \\(x,y\\in B\\) и \\(|B|=m\\). Эта стрелка сама по себе не создает ориентированного цикла: внутри \\(B\\) до нее не было ориентированных дорог, а все дороги из внешних блоков идут относительно всего блока \\(B\\) в одном направлении.\n\nОтвет второго такой. Он заменяет блок \\(B\\) двумя соседними блоками \\(B\\setminus\\{y\\}\\) и \\(\\{y\\}\\), оставляя их на месте старого блока в этом порядке. Дорога \\(x\\to y\\) уже ориентирована первым. Второй дополнительно ориентирует все дороги \\(z y\\), где \\(z\\in B\\setminus\\{x,y\\}\\), в направлении \\(z\\to y\\). Таких дорог ровно \\(m-2\\), а так как \\(m\\le 100\\), их не больше 98; если \\(m=2\\), второму достаточно ориентировать 0 дорог, что разрешено условием.\n\nПосле этого все дороги между новыми блоками снова направлены слева направо, внутри каждого блока ориентированных дорог нет, а остальные блоки не менялись. Инвариант восстановлен.\n\nПока есть неориентированная дорога, она лежит внутри какого-то блока, и первый делает очередной ход именно там. Когда игра закончится, внутри блоков уже не останется неориентированных дорог, значит все блоки одноэлементны. Итоговая ориентация тогда идет по одному линейному порядку городов и не содержит ориентированных циклов. Поэтому при правильной игре выигрывает второй министр.",
+      "idea_ids": [
+        "idea-ordered-blocks"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "directed_graph",
+        "cycle",
+        "tournament"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Round 1 second-league / junior variant; short invariant strategy on an ordered partition.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "tournaments"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2014-official",
+      "role": "problem_statement_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Recovered from the official KOLM 2014 archive packet `kolm18.zip`, file `work/kolm/archive/2014/extracted/kolm18/tur1_18.doc`.",
+      "The saved text extraction `work/kolm/text/2014/tur1_18.txt` is damaged inside this item, but the beginning and ending fragments of the statement are readable; the missing phrase `ходом` in the first player's sentence is restored by the parallel wording of the second player's sentence.",
+      "Candidate audit listed this as Round 1 second league problem 7 and Round 1 first junior league problem 9.",
+      "Graph role: explicit_in_statement."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

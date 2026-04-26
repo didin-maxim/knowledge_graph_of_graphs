@@ -1,0 +1,139 @@
+{
+  "id": "kolmogorov-2011-team-olympiad-seniors-problem-4",
+  "title": "????? ??????????? 2011: Team Olympiad, Seniors Problem 4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "path"
+    ],
+    "methods": [
+      "greedy_ordering"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "construction"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "parity",
+      "connectivity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2011",
+      "graph-construction",
+      "parity",
+      "connected-components",
+      "path",
+      "grid-on-cube"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Поверхность куба `11 x 11 x 11` разбита на клетки `1 x 1`. Муравей бегает по диагоналям клеток, нигде не поворачивая назад. Он не может бывать внутри одной клетки более одного раза, но может несколько раз проходить одну вершину.\n\nМожет ли он посетить центры `720` клеток?",
+        "source_id": "src-kolmogorov-2011-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2011-team-olympiad-seniors-problem-4",
+      "text": "Хотя в условии граф не назван напрямую, официальное решение существенно строит граф белых вершин, анализирует степени вершин, компоненты связности и пути в этом графе. Без этой графовой конструкции решение не работает.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: нет.\n\nВ официальном решении вершины клеток красят в шахматном порядке. Тогда каждая диагональ соединяет две вершины одного цвета, и весь маршрут муравья можно рассматривать внутри графа белых вершин, где диагонали клеток становятся ребрами.\n\nРассматривают максимальный маршрут муравья и стирают все использованные им ребра. В оставшемся белом графе по крайней мере у двух белых вершин остается нечетная степень, причем две такие вершины лежат в одной компоненте связности. Соединяющий их путь в этой компоненте имеет длину не менее `11`, значит, остается как минимум `11` непосещенных центров клеток.\n\nСледовательно, муравей может посетить не более `6(11^2) - 11 = 715` центров клеток, и число `720` недостижимо.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2011-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2011_team_olympiad_seniors_problem_4.md.",
+      "Source file noted by card: work/kolm/archive/2011/extracted/komol15.doc.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Team Olympiad, Seniors, Problem 4."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "usamo-2024-p3-balanced-regular-polygon-triangulation",
+  "title": "m-сбалансированная триангуляция правильного многоугольника, USAMO 2024 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Krit Boonsiriseth",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "polygon_triangulation",
+      "outerplanar_graph",
+      "triangle_areas",
+      "color_classes"
+    ],
+    "methods": [
+      "fan_triangulation_construction",
+      "complex_numbers",
+      "algebraic_integrality"
+    ],
+    "transformations": [
+      "triangulation_to_outerplanar_structure"
+    ],
+    "goal": [
+      "classify_balanced_color_counts"
+    ],
+    "auxiliary_graph_type": [
+      "outerplanar_graph"
+    ],
+    "invariants": [
+      "equal_area_sum_per_color",
+      "n_divisible_by_m"
+    ],
+    "keywords": [
+      "usamo_2024_p3",
+      "triangulation",
+      "outerplanar"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Balanced Triangulation",
+        "text": "Для положительного целого `m` триангуляция правильного `n`-угольника называется `m`-balanced, если её `n-2` треугольников можно раскрасить в `m` цветов так, чтобы суммы площадей треугольников каждого цвета были одинаковы. Для каких `n >= 3` такая триангуляция существует?",
+        "source_id": "src-usamo-2024-p3-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Триангуляция выпуклого `n`-угольника задаёт maximal outerplanar graph на его вершинах. Требуется понять, когда треугольные faces этого outerplanar graph можно разбить на `m` классов с одинаковой суммой площадей.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-fan-triangulation-when-m-divides-n",
+      "title": "Если `m | n`, достаточно веерной triagulation",
+      "text": "В fan triangulation от одной вершины длины и площади треугольников периодичны по модулю `n`; при `m | n` можно разбить их на `m` циклических классов с одинаковой суммой площадей.",
+      "tags": [
+        "extremal_choice",
+        "planar_graphs"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-necessity-via-algebraic-integrality",
+      "title": "Необходимость оказывается не графовой, а алгебраической",
+      "text": "После записи площадей через корни из единицы условие balanced сводится к тому, что `n/m` должно быть algebraic integer; для рационального числа это эквивалентно делимости `m | n`.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-fan-and-integrality",
+      "title": "Веерная конструкция и критерий `m | n`",
+      "text": "Ответ: такие триангуляции существуют тогда и только тогда, когда `m` делит `n`. Достаточность проще всего получить на веерной triagulation правильного `n`-угольника из одной вершины. Её `n-2` треугольников удобно индексировать шагами по дуге, и при `m | n` можно раскрасить их по классам остатков так, что суммарные площади каждого цвета совпадут. Необходимость в решении Evan Chen уже почти не использует графовую структуру триангуляции как таковую: площади всех возможных треугольников выражаются через корни из единицы, и из equality-of-color-sums выводится, что рациональное число `n/m` обязано быть algebraic integer. Это возможно только при `m | n`. Поэтому графовая роль здесь существенна для постановки и для удобной модели triangulation/outerplanar graph, но центральная техника решения в действительности алгебраическая.",
+      "idea_ids": [
+        "idea-fan-triangulation-when-m-divides-n",
+        "idea-necessity-via-algebraic-integrality"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Постановка графовая через triangulations, но основное доказательство необходимости идёт через комплексные числа.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "fan_triangulation_construction",
+        "complex_numbers"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2024-p3-aops-wiki",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2024-evan-chen-notes",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "После перепроверки задача оставлена в strong core как graph-in-statement карточка, но в явном виде помечено, что ключевая техника решения не графовая."
+    ],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "id": "kolmogorov-2021-t1-critical-strong-orientation",
+  "title": "Критическая сильная ориентация без хорд в циклах, Кубок Колмогорова 2021 1 тур seniors 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Herbert Robbins",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "strong_orientation",
+      "chordless_cycle"
+    ],
+    "methods": [
+      "robbins_theorem",
+      "bridge_obstruction"
+    ],
+    "transformations": [],
+    "goal": [
+      "construct_edge_critical_strong_orientation"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "bridge_freeness",
+      "unique_cycle_containment"
+    ],
+    "keywords": [
+      "kolmogorov_2021_t1_seniors_5",
+      "strong_orientation",
+      "robbins"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Let G be a connected graph such that deleting any vertex leaves the graph connected, and every simple cycle is chordless. Prove that the edges of G can be oriented so that the resulting digraph is strongly connected, but deleting any edge destroys strong connectivity.",
+        "source_id": "src-kolmogorov-2021-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-robbins-plus-minimal-bridgeless",
+      "title": "Сначала сильная ориентация, потом минимальность по мостам",
+      "text": "По теореме Роббинса достаточно доказать, что в графе нет мостов. После этого нужно заметить, что условие об отсутствии хорд в циклах делает каждый цикл «единственным» носителем своих рёбер, поэтому удаление любого ребра создаёт мост и сильная связность становится невозможной.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-robbins-critical",
+      "title": "Роббинс и мост после удаления ребра",
+      "text": "Если бы ребро \\(e=ab\\) было мостом, то после удаления вершины \\(a\\) граф распался бы на как минимум две компоненты: одна содержит \\(b\\), другая — вершины по другую сторону моста. Это противоречит условию. Значит, мостов нет, и по теореме Роббинса граф допускает сильную ориентацию. Остаётся показать критичность по каждому ребру. Возьмём ребро \\(e\\). Так как мостов нет, ребро \\(e\\) лежит на некотором цикле \\(C\\). Условие задачи запрещает хорды у любого простого цикла, а потому никакое другое ребро вне \\(C\\) не может соединять две вершины \\(C\\). Из этого следует, что любое ребро цикла \\(C\\), в частности \\(e\\), лежит только на этом цикле. После удаления \\(e\\) остальные рёбра цикла \\(C\\) уже не лежат ни на каком цикле, то есть становятся мостами графа \\(G-e\\). Следовательно, граф \\(G-e\\) имеет мост и потому не допускает сильной ориентации. Значит, в выбранной по Роббинсу сильной ориентации удаление любого ребра разрушает сильную связность.",
+      "idea_ids": [
+        "idea-robbins-plus-minimal-bridgeless"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "cycle",
+        "bridge"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "Задача склеивает классическую теорему Роббинса с аккуратным анализом графа без хорд в циклах.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2021-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done"
+  }
+}

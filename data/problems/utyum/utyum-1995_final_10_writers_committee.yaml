@@ -1,0 +1,121 @@
+{
+  "id": "utyum-1995_final_10_writers_committee",
+  "title": "UTYUM 1995, Final Math Battle, 10. Комиссия из четырёх писателей",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "directed_graph_modeling",
+      "pigeonhole_principle",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "party_to_acquaintance_graph"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "1995_final_10_writers_committee",
+      "utyum_1995"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "22 школьника участвовали в съезде юных писателей. После съезда каждый из них прочитал произведения трёх юных писателей, побывавших на съезде.\n\nДокажите, что из делегатов съезда можно составить комиссию из 4 человек так, что в комиссии никто не читал произведения остальных её членов.",
+        "source_id": "src-utyum-1995_final_10_writers_committee-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-directed",
+        "title": "Directed-graph formulation",
+        "text": "Let \\(D\\) be a directed graph on 22 vertices in which every vertex has outdegree exactly 3. Prove that \\(D\\) contains an independent set of 4 vertices, that is, a set of 4 vertices with no directed edge between any two of them in either direction.",
+        "source_id": "src-utyum-1995_final_10_writers_committee-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "independent_set",
+          "outdegree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Рассмотрим ориентированный граф: вершины соответствуют школьникам, а стрелка из A в B означает, что A прочитал произведения B. Тогда из каждой вершины выходит ровно 3 ребра.\n\nВсего прочтений 22 * 3 = 66. Поэтому по принципу Дирихле найдётся школьник A, в которого входит не более 3 рёбер, то есть его произведения прочитали не более трёх других участников.\n\nВключим A в комиссию и удалим из рассмотрения:\n- тех, кого читал A;\n- тех, кто читал A.\n\nТаких участников не более 6, значит после удаления вместе с A остаётся не менее 15 человек.\n\nВ оставшемся подграфе снова средняя полустепень исхода равна 3, поэтому найдётся школьник B, которого среди оставшихся читали не более 3 человек. Добавим B в комиссию и снова удалим всех, кто связан с ним чтением в любую сторону. После этого останется не менее 8 человек.\n\nПовторяем тот же шаг и выбираем C. После удаления всех его соседей останется хотя бы один участник D.\n\nПо построению между любыми двумя выбранными вершинами A, B, C, D нет рёбер ни в одном направлении. Значит, никто из членов комиссии не читал произведения остальных её членов.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree",
+        "directed_graph",
+        "independent_set",
+        "outdegree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Final Math Battle.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_choice",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-1995_final_10_writers_committee-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 1995_final_10_writers_committee.yaml.",
+      "Graph role: essential_in_official_solution.",
+      "Confidence: high.",
+      "В официальном решении задача переводится в ориентированный граф с полустепенью исхода 3, после чего применяется графовый жадный отбор независимого множества в орграфе."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "graph_theory_absent_reason": ""
+  }
+}

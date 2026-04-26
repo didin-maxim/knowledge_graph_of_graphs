@@ -1,0 +1,122 @@
+{
+  "id": "fyum-2010-tur3a-p7",
+  "title": "FYUM 2010, Third tour (a), Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "five_coloring_of_vertices",
+      "two_color_subgraphs"
+    ],
+    "methods": [
+      "forest_counting"
+    ],
+    "transformations": [
+      "restrict_to_two_colors"
+    ],
+    "goal": [
+      "rule_out_all_cycles_using_many_colors"
+    ],
+    "auxiliary_graph_type": [
+      "two_color_subgraph"
+    ],
+    "invariants": [
+      "two_color_subgraphs_are_forests"
+    ],
+    "keywords": [
+      "cycle_coloring",
+      "extremal_graph",
+      "forest",
+      "fyum",
+      "fyum-2010-tur3a-p7",
+      "pairwise_color_forests"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В графе $G$ все вершины имеют степень 100. Вершины $G$ окрашены в\n\nпять цветов. Может ли так оказаться, что в каждом цикле встречаются\n\nвершины не менее, чем трех цветов?",
+        "source_id": "src-fyum-2010-tur3a-p7-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-parameterized",
+        "text": "Let G be a graph on n vertices whose vertices are colored with r colors. Suppose every cycle of G uses at least three different colors. Then |E(G)| <= C(r,2)(n-1). In particular, for r=5 such a coloring cannot exist in a 100-regular graph.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Look at the subgraph induced by any pair of colors. If it contained a cycle, that cycle would use only two colors, contradicting the hypothesis. So every two-color subgraph is a forest. Counting edges in these forests gives an upper bound incompatible with every vertex having degree 100. Therefore such a coloring does not exist.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Imported from the checked FYUM archive card 2010_tur3a_problem7.md; stage Third tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2010-tur3a-p7-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a graph and vertex colors."
+    ],
+    "relations_status": "deep_done"
+  }
+}

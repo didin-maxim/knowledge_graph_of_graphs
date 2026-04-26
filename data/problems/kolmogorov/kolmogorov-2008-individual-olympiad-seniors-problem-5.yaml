@@ -1,0 +1,139 @@
+{
+  "id": "kolmogorov-2008-individual-olympiad-seniors-problem-5",
+  "title": "????? ??????????? 2008: Individual Olympiad, Seniors Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "cycle"
+    ],
+    "methods": [
+      "local_recoloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "coloring"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "graph",
+      "edge-coloring",
+      "odd-cycle",
+      "bipartite-graph",
+      "vertex-coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Ребра графа максимальной степени 1000 нужно покрасить в 10 цветов так, чтобы в каждом цвете не было нечетного цикла. Докажите, что это всегда можно сделать.",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "bipartite_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-individual-olympiad-seniors-problem-5",
+      "text": "Граф прямо присутствует в условии, и официальное решение целиком использует графовые идеи: двудольность, отсутствие нечетных циклов, раскраску вершин и перенос раскраски ребер.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "В официальном решении сначала доказывается вспомогательный факт: существует раскраска ребер полного графа на `2^n` вершинах в `n` цветов так, что подграф каждого цвета двудолен.\n\nЗатем вершины исходного графа правильно красят в `1024` цвета, что возможно по теореме о жадной раскраске, так как максимальная степень равна 1000. После этого каждому ребру исходного графа присваивают цвет ребра между соответствующими цветами вершин в заранее построенном полном графе на 1024 вершинах.\n\nТак как в каждом цвете в вспомогательном полном графе нет нечетных циклов, то и в исходном графе одноцветный нечетный цикл возникнуть не может.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "bipartite_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "matching",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_individual_olympiad_seniors_problem_5.md.",
+      "Source file noted by card: work/kolm/text/2008/lichol12.txt.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

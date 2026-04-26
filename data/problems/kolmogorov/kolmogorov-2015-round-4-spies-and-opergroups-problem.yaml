@@ -1,0 +1,117 @@
+{
+  "id": "kolmogorov-2015-round-4-spies-and-opergroups-problem",
+  "title": "????? ??????????? 2015: Round 4 (High League / First League) Problem 6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2015"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В некоторой стране есть несколько шпионов, некоторые пары соединены секретными каналами связи. Непустая группа A называется опергруппой, если любой шпион из A может передать сообщение любому другому, возможно через посредников из A. Две опергруппы считаются связанными, если они не пересекаются, а их объединение тоже является опергруппой. Резидент составил схему связей между опергруппами, но без указания их составов. Нужно доказать, что по этой схеме контрразведка может восстановить исходную схему связей между шпионами.",
+        "source_id": "src-kolmogorov-2015-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2015-round-4-spies-and-opergroups-problem",
+      "text": "Официальное решение целиком сформулировано как реконструкция одного графа из другого: вводятся графы G и H, используются компоненты связности, точки сочленения, степени и индуцированный подграф.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "В решении вводятся два графа: G — граф связей между шпионами и H — граф связей между опергруппами. Изолированные вершины H соответствуют компонентам связности G из одной вершины, а остальные компоненты H отвечают неодноэлементным компонентам G. Поэтому задачу сводят к случаю, когда G связен. Далее вершины H отождествляют с соответствующими подмножествами вершин G. Одноэлементные опергруппы рассматриваются как специальные вершины-уникумы, и задача сводится к тому, чтобы распознать их в графе H. Показывается, что вершина степени 1 в H соответствует множеству G\\\\{v}, где v не является точкой сочленения в G; таким образом можно найти один уникум. После этого по соседству и расстоянию 2 в H разбивают все опергруппы на несколько классов в зависимости от того, содержат ли они v и его соседей в G, и по этим классам восстанавливают соседство в G. Удаляя найденную вершину и повторяя процедуру, восстанавливают весь граф шпионских связей.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2015-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2015_round_4_spies_and_opergroups_problem.md.",
+      "Source file noted by card: work/kolm/archive/2015/extracted/kolm19/tur4_19.pdf; work/kolm/archive/2015/extracted/kolm19/tur4_19sol.pdf.",
+      "Source page noted by card: statement p. 1; official solution p. 4.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Round 4 spies and_opergroups_problem."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "id": "fyum-2013-tur2b-p7",
+  "title": "FYUM 2013, Round 2, League of Tactics, Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "3_regular_graph",
+      "4_cycles"
+    ],
+    "methods": [
+      "double_counting"
+    ],
+    "transformations": [
+      "count_incident_edge_pairs_at_each_vertex"
+    ],
+    "goal": [
+      "maximize_number_of_4_cycles"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "at_most_two_4_cycles_per_edge_pair"
+    ],
+    "keywords": [
+      "extremal-graph-theory",
+      "extremal_4_cycles",
+      "four-cycles",
+      "fyum",
+      "fyum-2013-tur2b-p7",
+      "k33",
+      "k33_construction",
+      "regular-graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "A graph has 300 vertices, and every vertex has degree 3. What is the largest possible number of cycles of length 4 in this graph?",
+        "source_id": "src-fyum-2013-tur2b-p7-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-parameterized",
+        "text": "Let G be a 3-regular graph on 6m vertices. Then the number of 4-cycles in G is at most 9m. Equality is attained by the disjoint union of m copies of K_{3,3}. The FYUM problem is the case m=50.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "cycle",
+          "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Fix a vertex and any two edges incident to it. Those two edges can belong together to at most two distinct 4-cycles. Since every vertex has degree 3, there are only three unordered pairs of incident edges, so at most six 4-cycles pass through a given vertex. Summing over all 300 vertices and dividing by 4, because each 4-cycle is counted once at each of its four vertices, we get an upper bound 300*6/4 = 450. This bound is attained by the disjoint union of 50 copies of K_{3,3}: each copy contains exactly 9 cycles of length 4, hence the total number is 50*9 = 450.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Imported from the checked FYUM archive card 2013_tur2b_problem7.md; stage Round 2, League of Tactics.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2013-tur2b-p7-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: This is a direct extremal graph-theory problem about 3-regular graphs and the maximum number of 4-cycles.",
+      "Original-source candidate: no earlier external source was securely identified; the current verified primary source is the FYUM 2013 official archive.",
+      "Original-source note: A standard general upper bound is that a d-regular graph has at most nd(d-1)^2/8 cycles of length 4, with equality for disjoint unions of K_{d,d}; here d=3 and n=300."
+    ],
+    "relations_status": "deep_done"
+  }
+}

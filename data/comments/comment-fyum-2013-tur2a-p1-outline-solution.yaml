@@ -1,0 +1,23 @@
+{
+  "id": "comment-fyum-2013-tur2a-p1-outline-solution",
+  "target": {
+    "type": "problem",
+    "problem_id": "fyum-2013-tur2a-p1"
+  },
+  "kind": "bug_report",
+  "title": "Минимальный контрпример не развёрнут",
+  "text": "Текущий текст перечисляет этапы доказательства: лемма Эйлера, достройка листьями, стягивание вершин степени 2, удаление пути и докраска. Но не выписаны сами проверки, особенно отсутствие висячих вершин и контроль запрещённых цветов при возврате пути. Повторная проверка показала, что задача является прямым следствием Theorem 5 из preprint https://www.math.ntu.edu.tw/~mathlib/preprint/2013-09.pdf : планарный граф с максимальной степенью Delta и обхватом хотя бы 10Delta+46 имеет strong (2Delta-1)-edge-coloring. Условие FYUM даёт 10d+100, то есть запас есть. Полное самодостаточное восстановление означало бы перенос длинного доказательства этой теоремы; пока не сделано. Листок FYUM с условием: https://www.guas.info/competit/fest/fest24/tur2a.tex .",
+  "author": "Codex",
+  "created_at": "2026-04-26",
+  "status": "resolved",
+  "response": {
+    "status": "resolved",
+    "notes": "Набросок минимального контрпримера заменён на точное ссылочное решение: задача является немедленным следствием Theorem 5 Chang--Montassier--Pecher--Raspaud при Delta=d, поскольку 10d+100 >= 10d+46."
+  },
+  "editorial": {
+    "created_by": "ai",
+    "notes": [
+      "solution_self_containment_audit"
+    ]
+  }
+}

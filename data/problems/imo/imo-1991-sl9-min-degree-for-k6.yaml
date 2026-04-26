@@ -65,12 +65,16 @@
     "graph_theory": [
       {
         "id": "stmt-graph",
-        "text": "Пусть \\(G\\) — простой граф на 1991 вершине, у которого степень каждой вершины не меньше 1593. Докажите, что \\(G\\) содержит клику \\(K_6\\). Верно ли, что число 1593 нельзя уменьшить?",
+        "text": "Пусть \\(N\\) — натуральное число. Найдите наименьшее число \\(d_6(N)\\) со свойством: любой простой граф \\(G\\) на \\(N\\) вершинах с минимальной степенью \\(\\delta(G)\\ge d_6(N)\\) содержит клику \\(K_6\\). Для случая \\(N=1991\\) вычислите \\(d_6(1991)\\) и покажите, что эта граница точна.",
         "status": "needs_human_review",
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": [],
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "complete_graph"
+        ],
         "distinct_from": [
           "stmt-original"
         ]
@@ -110,9 +114,10 @@
       "standard_idea_ids": [
         "symmetrization"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
-        "degree"
+        "degree",
+        "complete_graph"
       ]
     }
   ],

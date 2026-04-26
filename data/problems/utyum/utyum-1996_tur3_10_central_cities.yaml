@@ -1,0 +1,124 @@
+{
+  "id": "utyum-1996_tur3_10_central_cities",
+  "title": "UTYUM 1996, Math Battle 3, Higher League, 10. Центральные города в древовидной сети дорог",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "delete_to_simplify",
+      "longest_path_argument"
+    ],
+    "transformations": [
+      "leaf_deletion"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "1996_tur3_10_central_cities",
+      "utyum_1996"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В некотором государстве города связаны между собой дорогами одинаковой длины так, что из любого города можно попасть в любой другой, но только одним путем.\n\nДля каждого города правительственная комиссия измерила все пути, ведущие из него в другие города, и длину самого протяженного из них назвала показателем провинциальности этого города.\n\nГорода с наименьшим показателем провинциальности были объявлены центральными. Таких городов оказалось три.\n\nДокажите, что комиссия ошиблась.",
+        "source_id": "src-utyum-1996_tur3_10_central_cities-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "path",
+          "connected_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дано дерево, все рёбра которого имеют одинаковую длину. Вершина называется центральной, если сумма расстояний от неё до всех остальных вершин минимальна. Сколько центральных вершин может быть в таком дереве?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "path",
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Схема дорог образует дерево: сеть связна, и между любыми двумя городами существует ровно один путь.\n\nЗаметим, что если город A наиболее удалён от города B, то в A ведёт ровно одна дорога. Иначе, придя в A из B, можно было бы пройти ещё дальше по другой дороге, не возвращаясь назад, что противоречит максимальности расстояния от B до A. Такие города назовём окраинными.\n\nУдалим из схемы все окраинные города вместе с инцидентными им дорогами. Ни один центральный город при этом не исчезнет: окраинный город может быть центральным только в вырожденном случае из двух городов, а тогда трёх центральных городов быть не может.\n\nПосле удаления окраинных вершин оставшаяся сеть по-прежнему является деревом, а показатели провинциальности всех оставшихся городов уменьшаются на 1. Следовательно, множество центральных городов не меняется.\n\nПовторяя эту операцию, мы в конце концов сотрем все нецентральные города и получим дерево, состоящее только из центральных. Если бы центральных городов было три, то осталось бы дерево из трёх вершин, то есть путь длины 2. Но у такого дерева центральная вершина только одна, а две крайние являются окраинными.\n\nПолучено противоречие. Значит, трёх центральных городов быть не может.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree",
+        "path",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Math Battle 3, Higher League.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "trees",
+    "connectivity"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-1996_tur3_10_central_cities-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 1996_tur3_10_central_cities.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "В условии явно задан связный граф без циклов, то есть дерево дорог; официальное решение работает через последовательное удаление листьев дерева и свойство центра дерева."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

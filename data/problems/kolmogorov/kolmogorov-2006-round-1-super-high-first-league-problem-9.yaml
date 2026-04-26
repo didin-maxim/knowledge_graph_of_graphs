@@ -1,0 +1,141 @@
+{
+  "id": "kolmogorov-2006-round-1-super-high-first-league-problem-9",
+  "title": "????? ??????????? 2006: Round 1, Super League / High League / First League Problem 9",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "planar_graph",
+      "degree"
+    ],
+    "methods": [
+      "face_counting"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "degree"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2006",
+      "planar-graph",
+      "euler-formula",
+      "degree",
+      "geometric-graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Внутри квадрата отмечено несколько точек, вместе с вершинами квадрата. Некоторые пары отмеченных точек соединены непересекающимися отрезками так, что квадрат разбился на `n` выпуклых многоугольников без отмеченных точек внутри. Найдите максимальное возможное количество проведенных отрезков.",
+        "source_id": "src-kolmogorov-2006-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2006-round-1-super-high-first-league-problem-9",
+      "text": "В условии граф не назван напрямую, но официальное решение существенно строит планарный граф разбиения и применяет степени вершин и формулу Эйлера.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: `0` при `n = 1`, `1` при `n = 2`, `3n - 6` при `n >= 3`.\n\nВ официальном решении строят граф из проведенных отрезков и сторон квадрата. Все внутренние вершины этого графа имеют степень не меньше 3. Для вершин самого квадрата также получают почти ту же нижнюю оценку на степени: иначе при `n > 2` возник бы невыпуклый многоугольник или слишком малое число частей.\n\nПосле этого для числа вершин `V`, ребер `E` и граней `F = n` используют неравенство `2E >= 3V - 1` и формулу Эйлера `1 = V - E + F`. Из них выводится оценка `E <= 3n - 2`, а затем вычитаются 4 стороны квадрата. Получается верхняя граница `3n - 6`.\n\nПример на `3n - 6` строится по индукции, добавляя треугольник вместо внутренней вершины степени 3.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "face_counting"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "planar_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool",
+    "planar_graphs"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "face_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2006-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2006_round_1_super_high_first_league_problem_9.md.",
+      "Source file noted by card: work/kolm/text/2006/tur1_10sol.txt.",
+      "Source page noted by card: 2.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Round 1, Super League / High League / First League, Problem 9."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

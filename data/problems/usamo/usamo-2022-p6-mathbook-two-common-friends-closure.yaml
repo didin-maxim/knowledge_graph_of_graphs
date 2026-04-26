@@ -1,0 +1,161 @@
+{
+  "id": "usamo-2022-p6-mathbook-two-common-friends-closure",
+  "title": "Mathbook и замыкание по двум общим друзьям, USAMO 2022 P6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Yannick Yao",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "social_graph",
+      "c4_closure",
+      "clique_completion",
+      "edge_count"
+    ],
+    "methods": [
+      "graph_closure_process",
+      "extremal_construction",
+      "component_merging"
+    ],
+    "transformations": [
+      "social_network_to_graph_process"
+    ],
+    "goal": [
+      "minimum_initial_edges_for_complete_closure"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [
+      "two_common_neighbors_rule",
+      "c4_to_k4_completion"
+    ],
+    "keywords": [
+      "usamo_2022_p6",
+      "social_network_closure",
+      "c4_completion"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Mathbook",
+        "text": "На социальной сети Mathbook есть `2022` пользователя, некоторые пары уже дружат. В дальнейшем новая дружба может появиться только между двумя пользователями, у которых уже есть по крайней мере два общих друга. Каково наименьшее число исходных дружб, которое гарантирует, что в конце все пользователи смогут стать попарно друзьями?",
+        "source_id": "src-usamo-2022-p6-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Для графа `G` на `n` вершинах разрешено добавлять ребро `uv`, если вершины `u,v` имеют по крайней мере двух общих соседей. Эквивалентно: если в `G` есть цикл `C_4`, можно дополнить его до `K_4`. Требуется минимальное `e(G)`, при котором таким процессом можно получить `K_n`.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-shared-edge-c4-construction",
+      "title": "Конструкция из `C_4`, делящих общее ребро",
+      "text": "Для чётного `n` можно взять ребро `ab` и `n/2-1` циклов `C_4`, каждый из которых использует `ab` как общее ребро. После последовательного дополнения этих `C_4` до `K_4` граф начинает быстро схлопываться в полный.",
+      "tags": [
+        "extremal_choice",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-minimal-saturated-pieces",
+      "title": "В минимальном насыщенном примере куски должны быть почти `K_4`-типовыми",
+      "text": "Если граф уже может дозамкнуться до полного, то полезно смотреть на этапы, где появляется новая связь. Такое ребро рождается только из `C_4`, то есть процесс всегда работает через четырёхвершинные куски. Это заставляет минимальную конфигурацию иметь не меньше `ceil(3n/2)-2` рёбер.",
+      "tags": [
+        "extremal_choice",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-c4-closure-extremal",
+      "title": "Замыкание по `C_4` и экстремальная конструкция",
+      "text": "Для общего `n` ответ равен `ceil(3n/2)-2`, а значит при `n=2022` получаем `3031`. Разрешённая операция — это завершение `C_4` до `K_4`, потому что две несмежные вершины цикла длины 4 имеют двух общих соседей. Для верхней границы при чётном `n` берём вершины `a,b` и строим `n/2-1` копий `C_4`, имеющих общее ребро `ab`; число рёбер равно `1+3(n/2-1)=3n/2-2`. Последовательно дополняя каждую такую четвёрку до `K_4`, мы сначала делаем кликами все четырёхвершинные блоки, затем быстро соединяем новые вершины с уже построенной плотной частью и в итоге получаем `K_n`. Для нечётного `n` добавляем ещё одну вершину, смежную с `a,b`, и получаем `ceil(3n/2)-2`. Нижняя граница в заметках Evan Chen идёт через анализ минимального графа, который ещё способен дозамкнуться: любая первая полезная операция использует `C_4`, а значит новые вершины можно присоединять лишь блоками, стоящими не дешевле чем в конструкции выше; это даёт ту же оценку снизу `ceil(3n/2)-2`.",
+      "idea_ids": [
+        "idea-shared-edge-c4-construction",
+        "idea-minimal-saturated-pieces"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Содержательная графовая экстремальная задача: операция closure формулируется через `C_4 -> K_4`.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "graph_closure_process",
+        "extremal_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2022-p6-aops-wiki",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2022-evan-chen-notes",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

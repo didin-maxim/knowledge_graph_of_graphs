@@ -1,0 +1,119 @@
+{
+  "id": "utyum-2023_komol60_6_7_company_departures",
+  "title": "UTYUM 2023, Team Olympiad, grade 6, 7. Departures from a company by maximum acquaintance count",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_choice",
+      "degree_counting",
+      "case_analysis"
+    ],
+    "transformations": [
+      "delete_vertex"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2023_komol60_6_7_company_departures",
+      "utyum_2023"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В компании из 100 человек некоторые знакомы друг с другом.\n\nКаждую минуту из компании уходит человек, который имеет знакомых строго больше, чем любой из оставшихся.\n\nЧерез несколько минут такого человека не нашлось. Какое наименьшее количество людей могло остаться к этому моменту?",
+        "source_id": "src-utyum-2023_komol60_6_7_company_departures-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф на 100 вершинах. Пока существует вершина, степень которой строго больше степени любой другой вершины текущего графа, её удаляют. Какое наименьшее число вершин может остаться после завершения процесса?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "В официальном решении рассматривается граф знакомств.\n\nПредположим, что могло остаться не более двух человек. Рассмотрим момент, когда осталось ровно три человека A, B, C, и пусть A имеет больше всех знакомых.\n\nЕсли у A только один знакомый, то кто-то из B и C тоже имеет одного знакомого, и A уже не выделяется. Значит, у A два знакомых.\n\nПусть D ушёл непосредственно перед A. Тогда у D на момент ухода должно быть не меньше трёх знакомых, в частности A, B и C. Но тогда и у A было как минимум три знакомых, противоречие.\n\nСледовательно, меньше трёх человек остаться не может. Пример на три человека строится явным графом знакомств.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 6.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_choice",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2023_komol60_6_7_company_departures-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2023_komol60_6_7_company_departures.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "В условии явно задан граф знакомств, а официальное решение использует вершины, рёбра и степени вершин."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

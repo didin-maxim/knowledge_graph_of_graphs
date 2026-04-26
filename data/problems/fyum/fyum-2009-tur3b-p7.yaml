@@ -1,0 +1,105 @@
+{
+  "id": "fyum-2009-tur3b-p7",
+  "title": "FYUM 2009, Third tour (b), Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "rooted_tree",
+      "subtree_sizes"
+    ],
+    "methods": [
+      "induction"
+    ],
+    "transformations": [
+      "leaf_or_branch_removal"
+    ],
+    "goal": [
+      "reconstruct_tree_from_labels"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "subtree_size_labels"
+    ],
+    "keywords": [
+      "fyum",
+      "fyum-2009-tur3b-p7",
+      "induction",
+      "rooted_tree",
+      "rooted_tree_labels",
+      "tree"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Дано дерево с $n\\geq 3$ вершинами. (Напомним, что деревом называется \n\nсвязный граф без циклов). Одну из вершин назовем корнем дерева, а все ребра \n\nориентируем от корня. В каждой вершине напишем количество вершин, \n\nв которые из нее можно попасть (не считая саму эту вершину). Докажите, что \n\nсреди написанных чисел четных будет не меньше, чем нечетных.",
+        "source_id": "src-fyum-2009-tur3b-p7-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "directed_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Полное решение через размеры поддеревьев",
+      "text": "Для вершины v обозначим через s(v) число вершин в поддереве с корнем v, считая саму v. Тогда в вершине v написано число s(v)-1. Значит написанное число чётно ровно тогда, когда s(v) нечётно, а написанное число нечётно ровно тогда, когда s(v) чётно. Осталось доказать, что вершин с нечётным s(v) не меньше, чем вершин с чётным s(v). Для каждой вершины v с чётным s(v) выберем одного её сына u, у которого s(u) нечётно. Такой сын существует: сумма размеров поддеревьев всех сыновей равна s(v)-1, то есть нечётна, поэтому среди слагаемых есть нечётное. Разным вершинам v соответствуют разные выбранные сыновья, потому что у вершины дерева только один отец. Получилась инъекция из множества вершин с чётным s(v) в множество вершин с нечётным s(v). Следовательно, вершин с нечётным s(v) не меньше, чем с чётным s(v), то есть чётных написанных чисел не меньше, чем нечётных.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Imported from the checked FYUM archive card 2009_tur3b_problem7.md; stage Third tour (b).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "trees"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2009-tur3b-p7-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a rooted tree."
+    ],
+    "relations_status": "deep_done"
+  }
+}

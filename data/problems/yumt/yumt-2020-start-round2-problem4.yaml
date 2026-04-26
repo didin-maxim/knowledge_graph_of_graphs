@@ -1,0 +1,113 @@
+{
+  "id": "yumt-2020-start-round2-problem4",
+  "title": "YUMT 2020, Старт-лига, второй тур, 4. Двухцветная раскраска рёбер связного графа",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2020_start_round2_problem4",
+      "yumt_2020"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Докажите, что рёбра связного графа можно окрасить в два цвета так, что в каждой вершине количества выходящих из неё рёбер первого и второго цвета отличаются не более чем на 1.",
+        "source_id": "src-yumt-2020-start-round2-problem4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-eulerize-and-alternate",
+      "title": "Добалансировать нечётные степени и пройти эйлеровым маршрутом",
+      "text": "После добавления фиктивных рёбер между вершинами нечётной степени получается эйлеров граф. Попеременная раскраска рёбер вдоль эйлерова обхода даёт почти равный баланс цветов в каждой вершине.",
+      "tags": [
+        "coloring",
+        "connectivity"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Решение",
+      "text": "Выберем все вершины нечётной степени. Их число чётно. Разобьём их на пары и к каждой паре добавим фиктивное ребро. Если между двумя вершинами уже было ребро, допускаем кратное ребро; получится связный мультиграф.\nПосле этого степени всех вершин станут чётными, а граф останется связным. Значит, в нём существует эйлеров цикл.\nПройдём по рёбрам этого эйлерова цикла по порядку и раскрасим их попеременно в два цвета: первое ребро в красный, второе в синий, третье в красный и так далее. Так как цикл замкнутый и в каждой вершине каждый приход по одному ребру сразу сопровождается уходом по следующему ребру, у каждой вершины числа красных и синих инцидентных рёбер в полученном мультиграфе совпадают.\nТеперь удалим все фиктивные рёбра. У вершины исходно чётной степени ничего не изменится: фиктивных рёбер в неё не входило, поэтому числа рёбер двух цветов останутся равными. У вершины исходно нечётной степени было ровно одно фиктивное ребро, значит после его удаления разность между числами красных и синих рёбер станет ровно 1.\nСледовательно, после удаления фиктивных рёбер мы получаем раскраску исходного графа в два цвета, в которой в каждой вершине количества рёбер двух цветов отличаются не более чем на 1.",
+      "idea_ids": [
+        "idea-eulerize-and-alternate"
+      ],
+      "standard_idea_ids": [
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "degree",
+        "eulerian_cycle",
+        "multigraph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2020_start_round2_problem4.md; stage Старт-лига, второй тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2020-start-round2-problem4-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2020_start_round2_problem4.md."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

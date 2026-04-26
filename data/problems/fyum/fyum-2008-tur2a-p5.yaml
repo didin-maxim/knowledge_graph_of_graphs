@@ -1,0 +1,102 @@
+{
+  "id": "fyum-2008-tur2a-p5",
+  "title": "FYUM 2008, Second tour (a), Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "vertex_labels"
+    ],
+    "methods": [
+      "probabilistic_method"
+    ],
+    "transformations": [
+      "random_side_assignment"
+    ],
+    "goal": [
+      "choose_distinguishing_labels"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "bipartite_graph",
+      "fyum",
+      "fyum-2008-tur2a-p5",
+      "local_list_choice",
+      "probabilistic_method",
+      "random_labels",
+      "vertex_labeling"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В двудольном графе $2^n-1$ вершин, в каждой написано $n$\n\nразличных чисел. Докажите, что можно оставить в каждой вершине одно\n\nчисло так, чтобы в концах каждого ребра стояли различные числа.",
+        "source_id": "src-fyum-2008-tur2a-p5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Let the two parts be A and B. Assign to every number the letter A or B independently with probability 1/2. We want each vertex to contain at least one number whose letter matches the side of the bipartition. For a fixed vertex the failure probability is 2^{-n}; since the total number of vertices is less than 2^n, the total failure probability is less than 1. So a good assignment exists. Keep one suitable number in every vertex.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Imported from the checked FYUM archive card 2008_tur2a_problem5.md; stage Second tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2008-tur2a-p5-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a bipartite graph."
+    ],
+    "relations_status": "deep_done"
+  }
+}

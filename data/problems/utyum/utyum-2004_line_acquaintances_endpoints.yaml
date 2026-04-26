@@ -1,0 +1,119 @@
+{
+  "id": "utyum-2004_line_acquaintances_endpoints",
+  "title": "UTYUM 2004, Source packet with local solutions, 3. Школьники в шеренге и знакомства слева и справа",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "double_counting"
+    ],
+    "transformations": [
+      "count_left_right_acquaintance_payments"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2004_line_acquaintances_endpoints",
+      "utyum_2004"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Несколько школьников построились в шеренгу. Оказалось, что у каждого школьника, кроме двух крайних, поровну знакомых слева и справа от него. Докажите, что у двух крайних школьников поровну знакомых.",
+        "source_id": "src-utyum-2004_line_acquaintances_endpoints-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф, вершины которого упорядочены в ряд. Для каждой внутренней вершины число соседей слева равно числу соседей справа. Докажите, что степени двух крайних вершин равны.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Пусть каждый школьник даст по рублю каждому своему знакомому, стоящему слева от него.\n\nТогда крайний слева школьник получит столько рублей, сколько у него знакомых, потому что все его знакомые стоят справа. Крайний справа, наоборот, отдаст столько рублей, сколько у него знакомых, потому что все его знакомые стоят слева.\n\nРассмотрим любого внутреннего школьника. По условию у него поровну знакомых слева и справа, значит, он отдаст столько же рублей, сколько получит. Следовательно, суммарный баланс всех внутренних школьников равен нулю.\n\nНо сумма всех денежных потоков по всей шеренге тоже равна нулю. Значит, выигрыш крайнего слева равен по модулю проигрышу крайнего справа. Иными словами, число знакомых у двух крайних школьников одинаково.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Source packet with local solutions.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2004_line_acquaintances_endpoints-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2004_line_acquaintances_endpoints.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: medium.",
+      "Отношение знакомства задаёт неориентированный граф на вершинах, упорядоченных в шеренге; условие и доказательство работают через подсчёт рёбер, идущих влево и вправо от каждой вершины."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

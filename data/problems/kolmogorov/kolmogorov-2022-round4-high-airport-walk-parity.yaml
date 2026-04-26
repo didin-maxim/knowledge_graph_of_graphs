@@ -1,0 +1,140 @@
+{
+  "id": "kolmogorov-2022-round4-high-airport-walk-parity",
+  "title": "Kolmogorov Cup 2022, Round 4, Higher League, 9. Odd number of walks between all airport pairs",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "path"
+    ],
+    "methods": [
+      "parity_argument"
+    ],
+    "transformations": [
+      "official_solution_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2022",
+      "round_4_higher_league"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "A country has several airports, with two-way flights between some pairs. A travel company offers all tours consisting of d consecutive flights, where a tour may visit a city or use a flight several times. The company claims that for any two, not necessarily distinct, cities the number of tours starting at the first and ending at the second is odd. Can this be true for some d?",
+        "source_id": "src-kolmogorov-2022-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "In an undirected graph, ask whether all entries of the length-d walk-count matrix can be odd modulo 2.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph role",
+      "text": "The 2022 candidate audit confirms the graph role: official solution introduces the airport graph and studies parity of walk counts.",
+      "tags": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-import-note",
+      "title": "Решение пока не найдено",
+      "text": "Решение пока не найдено.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from missed KOLM 2022 graph pass; source file 4 tur__4tur-sen.txt.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool",
+    "eulerian_graphs"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2022-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from missed KOLM graph task audit after final/candidates files showed year 2022 was not converted into database cards.",
+      "Source file: work/kolm/text/2022/4 tur__4tur-sen.txt.",
+      "Graph role: essential_in_official_solution."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

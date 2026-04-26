@@ -1,0 +1,118 @@
+{
+  "id": "kolmogorov-2023-lichol-large-monochromatic-bipartite-component",
+  "title": "Большая одноцветная компонента в полном двудольном графе, Кубок Колмогорова 2023 личная juniors 6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Dragomir Grozev",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_bipartite_graph",
+      "edge_coloring",
+      "connected_component"
+    ],
+    "methods": [
+      "pigeonhole_principle",
+      "double_counting",
+      "cauchy_schwarz"
+    ],
+    "transformations": [],
+    "goal": [
+      "find_large_monochromatic_component"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "sum_of_squared_degrees"
+    ],
+    "keywords": [
+      "kolmogorov_2023_lichol_juniors_6",
+      "complete_bipartite_graph",
+      "monochromatic_component"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "The edges of the complete bipartite graph with part sizes km and kn are colored in k colors. Prove that some monochromatic connected component contains at least m+n vertices.",
+        "source_id": "src-kolmogorov-2023-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-densest-color-degree-sum",
+      "title": "Выбрать самый плотный цвет и посмотреть на ребро",
+      "text": "По принципу Дирихле один цвет встречается хотя бы \\(kmn\\) раз. В графе этого цвета либо уже есть ребро с суммой степеней хотя бы \\(m+n\\), либо сумма \\(\\deg(a)+\\deg(b)\\) по всем рёбрам оказывается одновременно строго меньше и не меньше \\(|E|(m+n)\\).",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-degree-sum-component",
+      "title": "Одноцветный подграф максимальной плотности",
+      "text": "По принципу Дирихле существует цвет, встречающийся не менее чем на \\(km\\cdot kn/k = kmn\\) рёбрах. Оставим только рёбра этого цвета и обозначим полученный двудольный граф через \\(G\\), его доли — через \\(A\\) и \\(B\\). Если найдётся ребро \\(ab\\in E(G)\\) такое, что \\(\\deg(a)+\\deg(b)\\ge m+n\\), то компонента связности, содержащая \\(a\\) и \\(b\\), уже имеет хотя бы \\(m+n\\) вершин. Предположим противное: для каждого ребра \\(ab\\) выполнено \\(\\deg(a)+\\deg(b)<m+n\\). Тогда, суммируя по всем рёбрам, получаем \\(\\sum_{ab\\in E(G)}(\\deg(a)+\\deg(b))<|E(G)|(m+n)\\). С другой стороны, эта же сумма равна \\(\\sum_{a\\in A}\\deg(a)^2+\\sum_{b\\in B}\\deg(b)^2\\), а по неравенству Коши это не меньше \\(|E(G)|^2/(km)+|E(G)|^2/(kn)\\). Так как \\(|E(G)|\\ge kmn\\), отсюда следует нижняя оценка \\(|E(G)|(m+n)\\), противоречащая предыдущему строгому неравенству. Следовательно, нужное ребро, а значит и нужная компонента, существуют.",
+      "idea_ids": [
+        "idea-densest-color-degree-sum"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Красивая короткая задача на самый плотный цвет и сумму квадратов степеней.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "matching",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2023-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done"
+  }
+}

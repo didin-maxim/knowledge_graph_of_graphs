@@ -1,0 +1,199 @@
+{
+  "id": "usamo-1999-p1-checkers-board-graph-rank",
+  "title": "Шашки на доске и граф занятых клеток, USAMO 1999 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "checkerboard",
+      "occupied_cells_graph",
+      "connected_graph",
+      "circuit_rank"
+    ],
+    "methods": [
+      "graph_modeling",
+      "count_good_squares",
+      "connected_ordering"
+    ],
+    "transformations": [
+      "occupied_cells_to_grid_graph"
+    ],
+    "goal": [
+      "lower_bound_on_number_of_checkers"
+    ],
+    "auxiliary_graph_type": [
+      "grid_subgraph"
+    ],
+    "invariants": [
+      "all_squares_are_good",
+      "connectedness_of_occupied_graph"
+    ],
+    "keywords": [
+      "usamo_1999_p1",
+      "checkers_graph",
+      "circuit_rank"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Связная доминирующая конфигурация шашек",
+        "text": "На доске `n x n` расставлены шашки так, что: а) каждая пустая клетка имеет общую сторону с занятой; б) любые две занятые клетки можно соединить цепочкой занятых клеток, в которой соседние клетки имеют общую сторону. Докажите, что шашек не меньше `(n^2-2)/3`.",
+        "source_id": "src-usamo-1999-p1-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим граф, вершины которого — занятые клетки, а рёбра соединяют клетки с общей стороной. Условие б) означает связность этого графа, а условие а) говорит, что каждая клетка доски либо является вершиной, либо соседствует с вершиной.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-reinsert-checkers-in-connected-order",
+      "title": "Возвращать шашки в связном порядке",
+      "text": "Если упорядочить занятые клетки так, чтобы каждая, кроме первой, соседствовала с одной из предыдущих, то первая шашка делает хорошими не более 5 клеток, а каждая следующая — не более 3 новых клеток.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-circuit-rank-version",
+      "title": "Можно усилить оценку через circuit rank",
+      "text": "В графовой версии сумма степеней равна `2V-2+2R`, где `R` — circuit rank; это даёт даже более сильную оценку `x >= (n^2-2+2R)/3`.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-delete-leaflike-checker",
+      "title": "Удалять шашку, сохраняя связность",
+      "text": "Можно индуктивно снимать одну занятую клетку так, чтобы оставшиеся занятые клетки всё ещё были связны; тогда каждый новый шаг добавляет не более трёх новых хороших клеток.",
+      "tags": [
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-good-squares-in-connected-order",
+      "title": "Подсчёт хороших клеток",
+      "text": "Назовём клетку хорошей, если она либо занята, либо имеет общую сторону с занятой. По условию все `n^2` клеток хорошие. Обозначим число шашек через `k`. Из связности графа занятых клеток можно упорядочить их так, что каждая шашка, кроме первой, соседствует с уже поставленной. Если мысленно ставить шашки в этом порядке, первая делает хорошими не более 5 клеток: себя и максимум четырёх соседей. Каждая следующая шашка сама уже хорошая и имеет хотя бы одного занятого соседа, поэтому может сделать хорошими не более трёх новых клеток. Значит после постановки всех шашек число хороших клеток не превосходит `5+3(k-1)=3k+2`. Следовательно, `n^2 <= 3k+2`, откуда `k >= (n^2-2)/3`.",
+      "idea_ids": [
+        "idea-reinsert-checkers-in-connected-order"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph"
+      ]
+    },
+    {
+      "id": "sol-circuit-rank-bound",
+      "title": "AoPS-версия через circuit rank",
+      "text": "Пусть `x` — число шашек, а `G` — граф занятых клеток. Каждая вершина теоретически могла бы отвечать за 5 клеток доски, но если у вершины есть занятые соседи, то соответствующие стороны уже не дают новых пустых клеток. Поэтому число покрытых или соседних клеток не превосходит `5x - sum deg(v)`. Так как граф связен, `sum deg(v)=2|E|=2x-2+2R`, где `R` — circuit rank. Получаем `n^2 <= 5x-(2x-2+2R)=3x+2-2R`, значит `x >= (n^2-2+2R)/3 >= (n^2-2)/3`.",
+      "idea_ids": [
+        "idea-circuit-rank-version"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "degree"
+      ]
+    },
+    {
+      "id": "sol-john-scholes-connected-induction",
+      "title": "John Scholes: индукция по связному множеству клеток",
+      "text": "Архивное решение John Scholes строит прямую индукцию по числу занятых клеток `k`. Утверждается, что если `k` чёрных клеток образуют связное множество, то чёрных или соседних с чёрными клеток не больше `3k+2`. База `k=1` очевидна. Для перехода нужно удалить одну чёрную клетку так, чтобы остальные `k-1` клеток остались связны; в графовом языке это выбор вершины, удаление которой не разрушает связность. Scholes предлагает взять две клетки `A,B` на максимальном расстоянии в графе занятых клеток и заметить, что удаление любой из них не может разорвать связность: иначе нашлась бы клетка, путь к которой из другой крайней вершины обязан проходить через удалённую, что дало бы путь длиннее диаметрального. После удаления такой клетки по предположению индукции остаётся не более `3(k-1)+2` хороших клеток, а возвращённая клетка добавляет не более трёх новых. Значит всего не больше `3k+2`, откуда снова следует `k >= (n^2-2)/3`.",
+      "idea_ids": [
+        "idea-delete-leaflike-checker"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Хорошая задача на вспомогательный граф занятых клеток и счёт по связному порядку.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "graph_modeling",
+        "count_good_squares"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-1999-p1-aops-wiki",
+      "role": "community_wiki_statement_and_solutions",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-1999-john-scholes-archive",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

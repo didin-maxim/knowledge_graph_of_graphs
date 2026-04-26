@@ -1,0 +1,119 @@
+{
+  "id": "kolmogorov-2017-team-olympiad-seniors-problem-5",
+  "title": "????? ??????????? 2017: Team Olympiad, Seniors Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "weighted_graph"
+    ],
+    "methods": [],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2017"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране `N` городов некоторые пары соединены двусторонними авиарейсами с ценой более 1000 рублей, причем из любого города можно добраться до любого другого. Для каждой пары городов компания публикует минимальную цену пути между ними и суммирует все эти значения.\n\nПосле уменьшения цены одного рейса на 1000 рублей нужно доказать, что итоговая сумма всех попарных минимальных цен изменится не более чем на `250N^2`.",
+        "source_id": "src-kolmogorov-2017-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2017-team-olympiad-seniors-problem-5",
+      "text": "Официальное решение существенно использует модель взвешенного графа: вершины — города, ребра — авиарейсы, а опубликованные значения — это кратчайшие расстояния. Ключевой шаг — разбиение множества вершин по отношению к концам измененного ребра и анализ кратчайших путей.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "Пусть удешевлен рейс `XY`. Разобьем все города на два множества:\n\n- `A` — города, из которых после изменения дешевле добраться до `X`, чем до `Y` (включая `X`);\n- `B` — города, из которых добраться до `Y` не дороже, чем до `X` (включая `Y`).\n\nСначала заметим, что кратчайший путь между двумя городами из одного множества не может использовать ребро `XY`. Например, если `U, V` лежат в `A` и кратчайший путь из `U` в `V` идет через `X -> Y`, то выгоднее было бы из `X` сразу лететь к `V` кратчайшим путем без захода в `Y`, потому что цена ребра `XY` все еще положительна. Аналогично для двух городов из `B`.\n\nЗначит, уменьшиться могли только расстояния между парами городов из разных множеств. Если `|A| = a`, то таких пар ровно `a(N-a)`, а это не больше `N^2/4`.\n\nДля любой пары из разных множеств новый кратчайший путь использует удешевленное ребро `XY` не более одного раза, поэтому цена такой пары могла уменьшиться не более чем на 1000 рублей.\n\nИтак, полное изменение суммы не превосходит\n\n`1000 * N^2 / 4 = 250N^2`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2017-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2017_team_olympiad_seniors_problem_5.md.",
+      "Source file noted by card: work/kolm/archive/2017/extracted/komol21.pdf.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Team Olympiad, Seniors, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
+  }
+}

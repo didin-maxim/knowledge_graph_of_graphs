@@ -1,0 +1,118 @@
+{
+  "id": "kolmogorov-2021-round1-second-league-problem-8",
+  "title": "????? ??????????? 2021: Round 1, Second League Problem 8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph"
+    ],
+    "methods": [
+      "coloring",
+      "connectivity_argument"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2021"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Дан полный двудольный граф, в каждой доле которого по `n` вершин. Каждое ребро этого графа покрашено в один из `n^2 - 2n + 2` цветов, причем в каждый цвет покрашено хотя бы одно ребро.\n\nДокажите, что найдутся две вершины графа, между которыми существует не более одного одноцветного простого пути.",
+        "source_id": "src-kolmogorov-2021-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2021-round1-second-league-problem-8",
+      "text": "Граф прямо фигурирует в условии: это полный двудольный граф с раскраской ребер.\nОфициальное решение работает через компоненты связности цветовых подграфов, деревья, циклы и подсчет избытка ребер.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "Для каждого цвета рассматривают подграф, состоящий из ребер этого цвета, и разбивают его на компоненты связности. Учитываются только компоненты, содержащие более одной вершины.\n\nПусть всего получилось `m` таких цветовых компонент `G_1, ..., G_m`. Для компоненты `G_i` обозначим через `v_i` число ее вершин, через `e_i` — число ребер, а через `c_i = e_i - v_i + 1` ее цикломатический избыток.\n\nТак как цветов не меньше `n^2 - 2n + 2`, а всего ребер в полном двудольном графе `n^2`, получаем\n`sum c_i <= 2n - 2`.\n\nТеперь фиксируют вершину `p` и предполагают противное: для любой другой вершины `q` существует как минимум два одноцветных простых пути из `p` в `q`.\n\nЦветовые компоненты, содержащие `p`, делят на деревья и недеревья. Все остальные вершины классифицируют по тому, в скольких таких компонентах они лежат: в двух деревьях, в одном дереве и одном недереве, или только в недеревьях.\n\nИз этого получается нижняя оценка на `sum c_i`, которая оказывается не меньше `2n - 1`, что противоречит предыдущей верхней оценке `2n - 2`.\n\nЗначит, существует пара вершин, между которыми не более одного одноцветного простого пути.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2021-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2021_round1_second_league_problem_8.md.",
+      "Source file noted by card: work/kolm/text/2021/2_liga_1_tur_resheniya_pdf.txt.",
+      "Source page noted by card: 3.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 1, Second League, Problem 8."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass.",
+    "graph_theory_duplicate_removed": true
+  }
+}

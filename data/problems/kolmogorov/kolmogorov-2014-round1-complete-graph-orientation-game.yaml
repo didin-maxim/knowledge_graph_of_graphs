@@ -1,0 +1,146 @@
+{
+  "id": "kolmogorov-2014-round1-complete-graph-orientation-game",
+  "title": "Kolmogorov Cup 2014, Round 1, Higher League, 7. Orientation game on a complete graph",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "directed_graph",
+      "cycle"
+    ],
+    "methods": [
+      "strategy"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2014",
+      "round_1_higher_league"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "There is a complete undirected graph on 2014 vertices. Two players alternately orient previously unoriented edges. On each move the first player orients one edge, and the second player orients from 1 to 1000 edges. When all edges are oriented, the first player wins if the resulting directed graph contains a simple directed cycle; otherwise the second player wins. Determine the winner with best play.",
+        "source_id": "src-kolmogorov-2014-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complete_graph",
+          "directed_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "This is a game on orienting the edges of a complete graph; the first player aims to force a directed cycle.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complete_graph",
+          "directed_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph role",
+      "text": "Curated 2014 final notes identify an exact external reuse from Turkey JBMO TST 2014 and a saved Russian reconstruction; the local statement is explicit graph theory.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-import-note",
+      "title": "Решение пока не найдено",
+      "text": "Решение пока не найдено.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "complete_graph",
+        "directed_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from missed KOLM 2014 graph pass; source file tur1_18.txt.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool",
+    "tournaments",
+    "coloring"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2014-official",
+      "role": "problem_statement_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from missed KOLM graph task audit after final/candidates files showed year 2014 was not converted into database cards.",
+      "Source file: work/kolm/text/2014/tur1_18.txt.",
+      "Graph role: explicit_in_statement."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

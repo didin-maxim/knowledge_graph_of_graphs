@@ -1,0 +1,110 @@
+{
+  "id": "fyum-2011-tur2a-p9",
+  "title": "FYUM 2011, Second tour (a), Problem 9",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "hamiltonian_cycles",
+      "fixed_edge",
+      "auxiliary_graph_on_paths"
+    ],
+    "methods": [
+      "parity_argument"
+    ],
+    "transformations": [
+      "switching_graph_on_hamiltonian_paths"
+    ],
+    "goal": [
+      "count_hamiltonian_cycles_through_edge_mod_2"
+    ],
+    "auxiliary_graph_type": [
+      "auxiliary_graph"
+    ],
+    "invariants": [
+      "odd_degree_vertices_pairing"
+    ],
+    "keywords": [
+      "auxiliary_graph",
+      "fyum",
+      "fyum-2011-tur2a-p9",
+      "hamiltonian_cycle",
+      "parity",
+      "smith_thomason_parity"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Степени всех вершин графа нечетны. Докажите, что через любое его ребро \n\nпроходит четное число гамильтоновых циклов.",
+        "source_id": "src-fyum-2011-tur2a-p9-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Fix an edge uv and consider all Hamiltonian paths that start at u and use uv first. These paths become the vertices of an auxiliary graph. Two paths are joined when one can be obtained from the other by a standard local exchange. The odd-degree vertices of the auxiliary graph correspond exactly to Hamiltonian cycles through uv. By the handshake lemma, the number of odd-degree vertices is even. Therefore the number of Hamiltonian cycles through uv is even.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Imported from the checked FYUM archive card 2011_tur2a_problem9.md; stage Second tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2011-tur2a-p9-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a graph and Hamiltonian cycles.",
+      "Original-source candidate: Smith-Thomason parity theorem family for Hamiltonian cycles through a fixed edge. Author note: Henry John Stephen Smith; Andrew Thomason. Link: https://math.stackexchange.com/questions/287856/edges-on-an-even-number-of-hamilton-cycles",
+      "Original-source note: The FYUM solution is the standard parity proof from the Smith-Thomason theorem family: build the auxiliary graph on Hamiltonian paths starting with the fixed edge, identify its odd-degree vertices with Hamiltonian cycles through that edge, and conclude evenness by the handshake lemma. The transfer is direct."
+    ],
+    "relations_status": "deep_done"
+  }
+}

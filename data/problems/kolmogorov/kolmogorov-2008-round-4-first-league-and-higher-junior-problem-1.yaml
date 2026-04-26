@@ -1,0 +1,146 @@
+{
+  "id": "kolmogorov-2008-round-4-first-league-and-higher-junior-problem-1",
+  "title": "????? ??????????? 2008: Round 4, First League / Higher Junior League Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "bipartite_graph",
+      "degree"
+    ],
+    "methods": [
+      "double_counting",
+      "induction",
+      "delete_to_simplify"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "tree",
+      "bipartite-graph",
+      "degree-sum",
+      "leaf"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Вершины дерева покрашены в красный и синий цвета, причем красных вершин не меньше, чем синих. Докажите, что в дереве найдется красный лист.",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "bipartite_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-round-4-first-league-and-higher-junior-problem-1",
+      "text": "В условии явно стоит дерево. Официальное решение существенно использует двудольность дерева, суммы степеней и свойства листьев.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "В официальном решении дерево рассматривают как двудольный граф по раскраске вершин. Пусть, вопреки утверждению, каждый красный вершина имеет степень не меньше 2. Тогда сумма степеней красных вершин не меньше удвоенного числа красных вершин.\n\nНо в двудольном графе сумма степеней красных вершин равна сумме степеней синих, а в дереве она равна числу ребер, то есть `R + B - 1`, где `R` и `B` — числа красных и синих вершин. Из предположения `R >= B` и неравенства для степеней получается противоречие.\n\nСледовательно, среди красных вершин обязательно есть лист.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree",
+        "bipartite_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "matching",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_round_4_first_league_and_higher_junior_problem_1.md.",
+      "Source file noted by card: work/kolm/text/2008/tur4_12sol.txt.",
+      "Source page noted by card: 4.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 4, First League / Higher Junior League, Problem 1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

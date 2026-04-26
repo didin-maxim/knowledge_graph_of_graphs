@@ -1,0 +1,146 @@
+{
+  "id": "kolmogorov-2008-round-4-second-league-problem-7",
+  "title": "????? ??????????? 2008: Round 4, Second League Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "bipartite_graph",
+      "degree"
+    ],
+    "methods": [
+      "double_counting",
+      "induction",
+      "delete_to_simplify"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "tree",
+      "bipartite-graph",
+      "degree-sum",
+      "leaf"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране 1000 городов соединены 999 дорогами, причем из любого города можно добраться в любой другой. Все города разбиты на две республики, причем в одной республике городов не меньше, чем в другой, и каждая дорога соединяет города разных республик. Докажите, что в большей республике есть город, из которого выходит только одна дорога.",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "bipartite_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-round-4-second-league-problem-7",
+      "text": "В условии явно задан связный граф дорог, который по числу ребер сразу распознается как дерево; официальное решение опирается на двудольность, степени вершин и листы дерева.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Так как граф связен и имеет 999 ребер при 1000 вершинах, он является деревом. Пусть в большей республике `R` городов, а в меньшей `B` городов, где `R >= B`.\n\nПредположим, что в большей республике нет листьев. Тогда каждая вершина этой доли имеет степень не меньше 2, и сумма степеней вершин большей доли не меньше `2R`.\n\nНо граф двудолен, поэтому сумма степеней вершин каждой доли равна числу ребер, то есть `999`. С другой стороны, `999 = R + B - 1`, а из `R >= B` следует `999 < 2R`, что дает противоречие. Значит, в большей республике есть вершина степени 1.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree",
+        "bipartite_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "matching",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_round_4_second_league_problem_7.md.",
+      "Source file noted by card: work/kolm/text/2008/tur4_12sol.txt.",
+      "Source page noted by card: 7.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 4, Second League, Problem 7."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

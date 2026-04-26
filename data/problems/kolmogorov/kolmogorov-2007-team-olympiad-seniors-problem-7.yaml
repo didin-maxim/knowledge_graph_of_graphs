@@ -1,0 +1,130 @@
+{
+  "id": "kolmogorov-2007-team-olympiad-seniors-problem-7",
+  "title": "????? ??????????? 2007: Team Olympiad, Seniors Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "degree"
+    ],
+    "methods": [],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "degree"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2007",
+      "acquaintance-graph",
+      "degree",
+      "induced-subgraph",
+      "complete-graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Пусть `1 < m < n-1`. В компании из `n` человек некоторые знакомы друг с другом, причем среди любых `m` человек одно и то же количество пар знакомых. Сколько пар знакомых может быть среди всех `n` человек?",
+        "source_id": "src-kolmogorov-2007-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2007-team-olympiad-seniors-problem-7",
+      "text": "В условии граф не назван напрямую, но официальное решение существенно переводит задачу в граф знакомств и рассуждает через степени вершин в индуцированных подгруппах.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: `n(n-1)/2`, то есть знакомы должны быть все со всеми.\n\nВ официальном решении рассматривают произвольную группу из `m+1` человек и замечают, что каждый ее участник имеет одно и то же число знакомых внутри этой группы: иначе после удаления разных людей число пар знакомых среди оставшихся `m` менялось бы.\n\nПредположим теперь, что существуют двое незнакомых. Тогда можно выбрать группу `L` из `m+1` человек, где есть и такая незнакомая пара, и какая-то знакомая пара. Замена одного человека на внешнего человека `C` приводит к новой группе `M`; сравнение степеней внутри `L` и `M` показывает, что `C` должен иметь те же знакомства внутри `L`, что и замененный человек.\n\nПовторяя рассуждение с другой заменой, получают невозможное изменение суммарных степеней. Значит, незнакомых пар нет, и весь граф знакомств полный.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "complete_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool",
+    "ramsey_theory"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2007-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2007_team_olympiad_seniors_problem_7.md.",
+      "Source file noted by card: work/kolm/text/2007/komol11.txt.",
+      "Source page noted by card: 2.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Team Olympiad, Seniors, Problem 7."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

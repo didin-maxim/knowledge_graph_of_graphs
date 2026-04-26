@@ -1,0 +1,119 @@
+{
+  "id": "utyum-1993_ii_8kl_5",
+  "title": "UTYUM 1993, Olympiad, 8th grade, 5. Города и дороги",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "connectivity",
+      "extremal_construction"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "1993_ii_8kl_5",
+      "utyum_1993"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В некоторой стране N > 1 городов. Между некоторыми из них проложены дороги.\nИзвестно, что если два города не соединены между собой, то найдётся город, который соединён дорогой с ними обоими.\nКакое минимальное количество дорог может быть в этой стране?",
+        "source_id": "src-utyum-1993_ii_8kl_5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф на N > 1 вершинах. Для любых двух несмежных вершин существует вершина, смежная с обеими. Найдите минимально возможное число рёбер такого графа.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Граф дорог связен, поэтому дорог не меньше N - 1.\nЭтот минимум достижим: достаточно взять один город, соединённый дорогой со всеми остальными.\nТогда условие выполнено, а всего дорог ровно N - 1.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Olympiad, 8th grade.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "connectivity",
+    "extremal_graph_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-1993_ii_8kl_5-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 1993_ii_8kl_5.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "И условие, и официальное решение естественно формулируются на языке графов: города — вершины, дороги — рёбра."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

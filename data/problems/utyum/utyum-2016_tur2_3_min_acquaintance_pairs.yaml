@@ -1,0 +1,140 @@
+{
+  "id": "utyum-2016_tur2_3_min_acquaintance_pairs",
+  "title": "UTYUM 2016, Senior group, higher league, tour 2, 3. Minimum number of acquaintance pairs among 25 schoolchildren",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_choice",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "pass_to_complement"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2016_tur2_3_min_acquaintance_pairs",
+      "utyum_2016"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В первый класс пришли 25 школьников. Некоторые дети знакомы друг с другом, а некоторые нет.\n\nИзвестно, что среди любых четырех школьников есть две непересекающиеся пары знакомых между собой.\n\nКакое наименьшее число пар знакомых школьников могло быть среди пришедших?",
+        "source_id": "src-utyum-2016_tur2_3_min_acquaintance_pairs-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "matching"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф на 25 вершинах. Среди любых четырёх вершин можно выбрать две непересекающиеся смежные пары, то есть в каждом четырёхвершинном индуцированном подграфе есть паросочетание размера 2. Найдите минимально возможное число рёбер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      },
+      {
+        "id": "stmt-graph-complement",
+        "title": "Complement-graph formulation",
+        "text": "Let \\(H\\) be the graph of unfamiliar pairs on 25 vertices. Assume that in every 4-vertex subset, the complement graph of \\(H\\) contains a matching of size 2. Prove that \\(H\\) has at most 25 edges.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "matching",
+          "complement_graph"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Ответ: 275.\n\nВ официальном решении сначала выводится оценка снизу. Если бы какой-то школьник был незнаком хотя бы с тремя другими,\nто в четверке из него и этих троих не было бы двух непересекающихся знакомых пар. Значит, каждый школьник незнаком не\nболее чем с двумя другими. Тогда пар незнакомых не более 25, а всего пар школьников C(25,2) = 300, поэтому знакомых пар\nне меньше 300 - 25 = 275.\n\nЗатем приводится пример, достигающий этой оценки: 25 школьников сажают по кругу и знакомят всех, кроме соседей по\nкругу. Тогда у каждого ровно два незнакомых, а среди любых четырех школьников действительно найдутся две\nнепересекающиеся пары знакомых.\n\nСледовательно, минимальное число пар знакомых равно 275.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "matching",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Senior group, higher league, tour 2.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "extremal_graph_theory",
+    "matching"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2016_tur2_3_min_acquaintance_pairs-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2016_tur2_3_min_acquaintance_pairs.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Условие прямо задает граф знакомств, а официальное решение считает ребра и строит экстремальный пример через дополнение к циклическому графу."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

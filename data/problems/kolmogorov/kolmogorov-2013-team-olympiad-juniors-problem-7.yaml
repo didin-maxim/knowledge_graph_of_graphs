@@ -1,0 +1,132 @@
+{
+  "id": "kolmogorov-2013-team-olympiad-juniors-problem-7",
+  "title": "????? ??????????? 2013: Team Olympiad, Juniors Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "chromatic_number"
+    ],
+    "methods": [
+      "local_recoloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "counting",
+      "coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "coloring"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2013",
+      "graph-coloring",
+      "vertex-partition",
+      "chromatic-number"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Вершины графа разбиты на три множества `A`, `B`, `C` так, что вершины из `A` не связаны рёбрами с вершинами из `C`.\n\nИзвестно, что `A ∪ B` можно правильно раскрасить в `k` цветов, а `B ∪ C` — в `n` цветов. Докажите, что весь граф можно правильно раскрасить в `k+n-1` цвет.",
+        "source_id": "src-kolmogorov-2013-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2013-team-olympiad-juniors-problem-7",
+      "text": "Граф явно присутствует в условии: вершины, рёбра и правильная раскраска графа названы напрямую. Официальное решение целиком работает с раскраской подграфов и разбиением множества вершин.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Раскрасим `B ∪ C` в `n` цветов и назовём один из этих цветов первым. Пусть `D` — множество всех вершин из `B`, покрашенных в первый цвет.\n\nТеперь раскрасим `A ∪ D` в `k` цветов, использовав в качестве одного из них тот же первый цвет, а остальные `k-1` цветов взяв отличными от уже использованных в раскраске `B ∪ C`.\n\nУ вершин, не входящих в `A ∪ D`, сохраним прежнюю раскраску. Полученная раскраска корректна: вершины из `A ∪ D` не соединены рёбрами с вершинами из `C`, покрашенными в первый цвет. Для вершин из `D` это следует из правильности исходной раскраски `B ∪ C`, а для вершин из `A` — из условия, что между `A` и `C` нет рёбер.\n\nЗначит, весь граф удалось правильно раскрасить в `k+n-1` цвет.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2013-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2013_team_olympiad_juniors_problem_7.md.",
+      "Source file noted by card: work/kolm/archive/2013/extracted/komol17.doc.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Juniors, Problem 7."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

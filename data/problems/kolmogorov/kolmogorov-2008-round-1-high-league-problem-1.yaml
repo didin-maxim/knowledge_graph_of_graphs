@@ -1,0 +1,145 @@
+{
+  "id": "kolmogorov-2008-round-1-high-league-problem-1",
+  "title": "????? ??????????? 2008: Round 1, High League Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "cycle",
+      "degree"
+    ],
+    "methods": [
+      "induction",
+      "delete_to_simplify"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree",
+      "connectivity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "graph",
+      "cycles",
+      "degree",
+      "connectivity",
+      "cut-vertex",
+      "induction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Дан граф, никакие два цикла которого не имеют ровно одного общего ребра. Докажите, что в этом графе есть вершина степени не больше 2.",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-round-1-high-league-problem-1",
+      "text": "Граф прямо дан в условии, а официальное решение существенно использует базовые графовые понятия: связность, точки сочленения, степени вершин, пути и циклы.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение идет по индукции по числу вершин графа.\n\nЕсли граф несвязен, утверждение доказывают отдельно для каждой компоненты. Если граф имеет точку сочленения, то индукцию применяют к блокам, в одном из них находится вершина степени не больше 2, и ее степень в исходном графе также не превосходит 2.\n\nОстается случай, когда граф связен и не имеет точек сочленения. Предположим противное: степени всех вершин хотя бы 3. Рассмотрим максимальный простой путь `v_1...v_k`. Так как конец `v_k` не является точкой сочленения, после удаления `v_k` граф остается связным, поэтому у `v_k` есть как минимум два соседа на этом пути. Отсюда возникают два цикла, проходящие по разным хордам к пути и имеющие ровно одно общее ребро, что противоречит условию.\n\nЗначит, вершина степени не больше 2 существует.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "cycle",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "double_counting",
+    "induction",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_round_1_high_league_problem_1.md.",
+      "Source file noted by card: work/kolm/text/2008/tur1_12sol.txt.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 1, High League, Problem 1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

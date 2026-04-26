@@ -1,0 +1,145 @@
+{
+  "id": "kolmogorov-2008-round-2-second-league-problem-2",
+  "title": "????? ??????????? 2008: Round 2, Second League Problem 2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "spanning_tree"
+    ],
+    "methods": [
+      "double_counting",
+      "local_recoloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "counting",
+      "coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectivity",
+      "coloring",
+      "edge_count"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "wheel-graph",
+      "edge-coloring",
+      "connectivity",
+      "spanning-tree",
+      "counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране 100 городов расположены по кругу, а столица соединена дорогами со всеми этими городами. Каждую дорогу нужно передать одной из двух фирм так, чтобы дороги каждой фирмы позволяли проехать между любыми двумя городами. Сколькими способами это можно сделать?",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "spanning_tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-round-2-second-league-problem-2",
+      "text": "В условии явно задана дорожная сеть, которая в точности является графом-колесом, а официальное решение непосредственно переводит задачу к связным подграфам этого колеса.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение замечает, что дорожная сеть есть колесо: 100 городов на ободе и столица в центре. Поэтому задача эквивалентна раскраске ребер колеса в два цвета так, чтобы оба цветных подграфа были связны.\n\nКак и в общей задаче про колесо, раскраска полностью определяется выбором цветов у спиц. Нельзя покрасить все спицы в один цвет, иначе второй цвет не будет связным. Для любого другого выбора ребра обода раскрашиваются единственным образом.\n\nПоэтому число способов равно `2(2^100 - 2)`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree",
+        "spanning_tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "connectivity",
+    "double_counting",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_round_2_second_league_problem_2.md.",
+      "Source file noted by card: work/kolm/text/2008/tur2_12sol.txt.",
+      "Source page noted by card: 7.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 2, Second League, Problem 2."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "id": "utyum-2025_komol64_7_5_important_cities_tree",
+  "title": "UTYUM 2025, Team Olympiad, grade 7, 5. Important cities and preserving connectivity",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "important_vertices",
+      "spanning_tree"
+    ],
+    "methods": [
+      "delete_to_simplify",
+      "cycle_invariant"
+    ],
+    "transformations": [
+      "delete_cycle_edge",
+      "reduce_to_tree"
+    ],
+    "goal": [
+      "minimum_edges_preserving_invariant"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectedness",
+      "important_neighbor_property"
+    ],
+    "keywords": [
+      "utyum",
+      "2025_komol64_7_5_important_cities_tree",
+      "utyum_2025",
+      "delete_cycle_edge",
+      "reduce_to_tree"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В стране n городов некоторые пары соединены дорогами с двусторонним движением. Некоторые города названы важными.\n\nИзвестно, что:\n1. из каждого города можно добраться до любого другого;\n2. каждый неважный город соединён дорогой с важным.\n\nДля какого наименьшего k всегда можно закрыть все дороги, кроме некоторых k, на ремонт так, чтобы оба условия сохранились?",
+        "source_id": "src-utyum-2025_komol64_7_5_important_cities_tree-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "cycle",
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан связный граф, в котором некоторые вершины объявлены важными, и каждая неважная вершина смежна хотя бы с одной важной. Нужно оставить как можно меньше рёбер так, чтобы граф остался связным и второе свойство тоже сохранилось. Найдите минимальное гарантированное число оставляемых рёбер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "cycle",
+          "tree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Рассматривается граф городов и дорог.\n\nОчевидно, нужно оставить как минимум n - 1 дорог, иначе граф не будет связным.\n\nОстаётся показать, что всегда можно дойти до n - 1. Для этого последовательно удаляются рёбра из циклов.\n\nЕсли какое-то ребро цикла нельзя удалить, то один его конец важный, а другой неважный. Если нельзя удалить ни одно ребро цикла, то важные и неважные вершины на цикле чередуются, и тогда удаление любого ребра всё равно сохраняет свойство: каждый неважный город остаётся соединён с важным.\n\nПосле последовательного удаления циклов получается дерево на n вершинах, то есть остаётся ровно n - 1 дорог.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "cycle",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 7.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "trees",
+    "connectivity"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2025_komol64_7_5_important_cities_tree-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2025_komol64_7_5_important_cities_tree.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "И условие, и официальный разбор полностью графовые: связность, циклы, удаление рёбер и остовное дерево."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

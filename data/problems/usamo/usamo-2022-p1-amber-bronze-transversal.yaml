@@ -1,0 +1,162 @@
+{
+  "id": "usamo-2022-p1-amber-bronze-transversal",
+  "title": "Янтарные и бронзовые клетки без общих строк и столбцов, USAMO 2022 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Ankan Bhattacharya",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid",
+      "row_column_bipartite_graph",
+      "matching",
+      "transversal"
+    ],
+    "methods": [
+      "bipartite_matching",
+      "hall_theorem",
+      "uncrossing"
+    ],
+    "transformations": [
+      "cells_to_bipartite_edges"
+    ],
+    "goal": [
+      "choose_disjoint_colored_cells"
+    ],
+    "auxiliary_graph_type": [
+      "complete_bipartite_graph"
+    ],
+    "invariants": [
+      "one_cell_per_row_and_column",
+      "color_quota"
+    ],
+    "keywords": [
+      "usamo_2022_p1",
+      "bipartite_matching",
+      "colored_transversal"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Amber and Bronze",
+        "text": "Пусть `a,b` — положительные целые. Клетки доски `(a+b+1) x (a+b+1)` окрашены в amber и bronze так, что amber-клеток не меньше `a^2+ab-b`, а bronze-клеток не меньше `b^2+ab-a`. Докажите, что можно выбрать `a` amber-клеток и `b` bronze-клеток так, чтобы никакие две из выбранных `a+b` клеток не лежали в одной строке или одном столбце.",
+        "source_id": "src-usamo-2022-p1-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим двудольный граф `K_{n,n}`, где `n=a+b+1`, а строки и столбцы являются двумя долями. Amber-клетка — amber-ребро между соответствующей строкой и столбцом, bronze-клетка — bronze-ребро. Требуется найти набор из `a` amber-рёбер и `b` bronze-рёбер, которые попарно не имеют общих концов.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-each-color-has-large-matching",
+      "title": "У каждого цвета отдельно есть большое matching",
+      "text": "Если в amber-графе не было бы matching размера `a`, то по Кёнигу существовало бы vertex cover размера `a-1`, а значит amber-рёбер было бы не больше `(a-1)(a+b+1)=a^2+ab-b-1`, что противоречит условию. Аналогично bronze-граф содержит matching размера `b`.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-resolve-conflicts-by-empty-row-column",
+      "title": "Конфликты между двумя matchings можно выдавливать через пустые строку и столбец",
+      "text": "После выбора amber-matching размера `a` и bronze-matching размера `b` конфликтующие клетки можно последовательно устранять: пока есть общая строка или столбец двух разных цветов, остаются пустые строка и столбец, а клетка на их пересечении позволяет сделать обмен и уменьшить число конфликтов.",
+      "tags": [
+        "matching",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-hall-matchings-and-uncrossing",
+      "title": "Два больших matchings и их разведение",
+      "text": "Положим `n=a+b+1`. Сначала работаем с amber-клетками. В двудольном графе строк и столбцов amber-клетки образуют подграф `G_A`. Если бы максимальное matching в `G_A` имело размер не больше `a-1`, то по теореме Кёнига все amber-рёбра покрывались бы `a-1` вершинами. Каждая вершина покрывает не больше `n` amber-рёбер, значит всего amber-клеток было бы не больше `(a-1)n=(a-1)(a+b+1)=a^2+ab-b-1`, противоречие. Значит `G_A` имеет matching `M_A` размера `a`. Аналогично bronze-подграф `G_B` имеет matching `M_B` размера `b`. Теперь выберем такую пару `(M_A,M_B)`, у которой число конфликтов — общих строк или столбцов между amber- и bronze-рёбрами — минимально. Если конфликтов нет, задача решена. Иначе, поскольку суммарно используется только `a+b=n-1` строк и `a+b=n-1` столбцов, существуют пустые строка и столбец. Клетка на их пересечении имеет некоторый цвет, скажем amber. Тогда её можно добавить в `M_A`, а из `M_A` удалить amber-ребро, которое конфликтовало с каким-то bronze-ребром; размер amber-matching сохранится, а число конфликтов уменьшится. Если пустое пересечение bronze, делаем симметричный шаг в `M_B`. Это противоречит минимальности числа конфликтов. Следовательно, существует пара disjoint matchings: `a` amber-рёбер и `b` bronze-рёбер без общих концов.",
+      "idea_ids": [
+        "idea-each-color-has-large-matching",
+        "idea-resolve-conflicts-by-empty-row-column"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Сильная комбинаторная задача, естественно переводимая в язык colored matchings в двудольном графе.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bipartite_matching",
+        "hall_theorem"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2022-p1-aops-wiki",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2022-evan-chen-notes",
+      "role": "proposer_metadata",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "AoPS содержит и неграфовые решения; в карточке сохранена matching-реформулировка как главная graph-relevant версия."
+    ],
+    "relations_status": "deep_done"
+  }
+}

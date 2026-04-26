@@ -1,0 +1,124 @@
+{
+  "id": "utyum-2018_lichol_8_tree_cities",
+  "title": "UTYUM 2018, Personal Olympiad, grade 8, 5. 1500 villages, unique paths, and 1000 cities",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "induction",
+      "delete_to_simplify"
+    ],
+    "transformations": [
+      "leaf_deletion"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2018_lichol_8_tree_cities",
+      "utyum_2018"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В стране 1500 деревень, некоторые пары деревень соединены дорогами. Известно, что между любыми двумя\nдеревнями существует единственный путь по этим дорогам.\n\nДокажите, что 1000 деревень можно назвать городами так, чтобы из любого населённого пункта\nвыходила хотя бы одна дорога в город.",
+        "source_id": "src-utyum-2018_lichol_8_tree_cities-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "path",
+          "connected_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дано дерево на 1500 вершинах. Докажите, что можно выбрать 1000 вершин так, чтобы каждая вершина дерева имела соседа среди выбранных.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "path",
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "В официальном решении граф деревень и дорог сразу рассматривается как дерево.\n\nДалее доказывается более общий шаг: в дереве с n >= 3 вершинами можно выделить связный фрагмент так,\nчтобы среди выделенных вершин доля объявленных городами была не больше 2/3, каждая выделенная вершина\nбыла смежна с городом, а после удаления выделенных вершин оставшийся граф оставался связным.\n\nДля этого берут самый длинный путь A...B и анализируют вершины возле листа B. Если предпоследняя вершина X\nимеет несколько висячих соседей, то выделяют X вместе с этими листьями и объявляют городами X и B. В противном\nслучае переходят на шаг выше по диаметральному пути и разбирают ещё один локальный случай.\n\nПовторяя такую процедуру, получают, что суммарно городами можно объявить не более 2*1500/3 = 1000 вершин.\nЕсли городов получилось меньше 1000, их дополняют произвольными деревнями.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree",
+        "path",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Personal Olympiad, grade 8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "trees",
+    "connectivity"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2018_lichol_8_tree_cities-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2018_lichol_8_tree_cities.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Условие задаёт дерево, а официальное решение напрямую работает с деревом, его листьями, диаметром и индуктивным удалением поддеревьев."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

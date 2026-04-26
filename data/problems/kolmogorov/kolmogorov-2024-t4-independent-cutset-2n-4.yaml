@@ -1,0 +1,132 @@
+{
+  "id": "kolmogorov-2024-t4-independent-cutset-2n-4",
+  "title": "Независимый вершинный разрез в графе с 2n-4 рёбрами, Кубок Колмогорова 2024 4 тур seniors 3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Guantao Chen",
+      "status": "source_verified"
+    },
+    {
+      "name": "Xingxing Yu",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "independent_set",
+      "vertex_cut"
+    ],
+    "methods": [
+      "extremal_graph_theorem",
+      "sparse_graph_counting"
+    ],
+    "transformations": [],
+    "goal": [
+      "find_independent_vertex_cut"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "edge_count_bound_2n_minus_4"
+    ],
+    "keywords": [
+      "kolmogorov_2024_t4_seniors_3",
+      "fragile_graph",
+      "independent_cutset"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Let G be a connected graph with n vertices and at most 2n-4 edges. Prove that G has an independent set of vertices whose deletion disconnects the graph.",
+        "source_id": "src-kolmogorov-2024-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "independent_set"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-fragile-graph-bound",
+      "title": "Это ровно порог теоремы о fragile graphs",
+      "text": "Графы с не более чем \\(2n-4\\) рёбрами обязаны иметь независимый вершинный разрез. Эта граница точна и в литературе известна как порог теоремы Chen--Yu о fragile graphs.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-chen-yu",
+      "title": "Сведение к теореме Chen--Yu",
+      "text": "Нужное утверждение в точности совпадает с теоремой Chen--Yu о fragile graphs: всякий связный граф порядка \\(n\\) и размера не более \\(2n-4\\) имеет независимый вершинный разрез. Именно этот результат и процитирован в колмогоровском листке как источник задачи. Поэтому любой такой граф уже обладает искомым множеством вершин. В терминах базы данных это хороший пример задачи-теоремы, где турнирная карточка и исходная статья описывают одно и то же экстремальное утверждение.",
+      "idea_ids": [
+        "idea-fragile-graph-bound"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Фактически это турнирная формулировка точной теоремы Chen--Yu о fragile graphs.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2024-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-chen-yu-fragile-graphs",
+      "role": "original_source",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Сюжет совпадает с опубликованной экстремальной теоремой; карточка добавлена как олимпиадная републикация точного утверждения."
+    ],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "id": "fyum-2008-tur3b-p7",
+  "title": "FYUM 2008, Third tour (b), Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "regular_graph",
+      "orientation"
+    ],
+    "methods": [
+      "coloring_construction"
+    ],
+    "transformations": [
+      "orient_along_vertex_coloring"
+    ],
+    "goal": [
+      "bound_longest_directed_path"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "strict_color_increase_on_directed_paths"
+    ],
+    "keywords": [
+      "directed_path",
+      "fyum",
+      "fyum-2008-tur3b-p7",
+      "ghrv_family",
+      "graph_coloring",
+      "orientation"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В графе степень каждой вершины равна 10. Докажите, что на его ребрах\n\nможно расставить стрелочки так, чтобы максимальный ориентированный \n\nпуть имел длину не более, чем 10 ребер.",
+        "source_id": "src-fyum-2008-tur3b-p7-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "directed_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-parameterized",
+        "text": "For every graph G with maximum degree at most Delta, there exists an orientation of its edges such that every directed path has length at most Delta.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "directed_graph",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Properly color the graph with 11 colors; this is possible because the maximum degree is 10. Orient every edge from the endpoint of smaller color to the endpoint of larger color. Along every directed path the colors strictly increase, so its length is at most 10.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Imported from the checked FYUM archive card 2008_tur3b_problem7.md; stage Third tour (b).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2008-tur3b-p7-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly asks for an orientation of a graph.",
+      "Original-source candidate: Gallai-Hasse-Roy-Vitaver theorem family. Author note: theorem family of Tibor Gallai, Helmut Hasse, Bernard Roy, and L. M. Vitaver. Link: https://en.wikipedia.org/wiki/Gallai%E2%80%93Hasse%E2%80%93Roy%E2%80%93Vitaver_theorem",
+      "Original-source note: The FYUM construction is the easy coloring-to-orientation half of the same theorem family. A proper 11-coloring immediately yields an orientation in which every directed path has length at most 10 by orienting each edge toward the larger color."
+    ],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "id": "fyum-2009-tur4a-p2",
+  "title": "FYUM 2009, Fourth tour (a), Problem 2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "acyclic_orientation"
+    ],
+    "methods": [
+      "maximal_acyclic_subgraph"
+    ],
+    "transformations": [
+      "reverse_edges_outside_maximal_acyclic_subgraph"
+    ],
+    "goal": [
+      "preserve_reachability_in_dag"
+    ],
+    "auxiliary_graph_type": [
+      "maximal_acyclic_subgraph"
+    ],
+    "invariants": [],
+    "keywords": [
+      "acyclic_orientation",
+      "digraph",
+      "fyum",
+      "fyum-2009-tur4a-p2",
+      "longest_path",
+      "reachability_preserving_acyclic_orientation"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Пусть $G$ --- ориентированный граф. Докажите, что существует такой\n\nациклический граф $G'$, отличающийся от $G$ только ориентацией\n\nнекоторых рёбер, что для любых двух вершин $a$ и $b$, если в $G'$ \n\nсуществует путь, соединяющий $a$ и $b$, то такой путь существует и в $G$, \n\nи длина максимального простого пути от $a$ до $b$ в графе $G'$ не\n\nпревосходит длины максимального простого пути от $a$ до $b$ в графе\n\n$G$.",
+        "source_id": "src-fyum-2009-tur4a-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Take a maximal acyclic subgraph H. Keep the orientation of the edges of H and reverse all other edges, obtaining G-prime. This new graph is acyclic because every reversed edge originally closed a directed cycle together with edges of H. Also every reversed edge can be replaced by a directed path in H, so the longest directed path between any two vertices does not become longer. That is exactly what was needed.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked FYUM archive card 2009_tur4a_problem2.md; stage Fourth tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2009-tur4a-p2-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a directed graph."
+    ],
+    "relations_status": "deep_done"
+  }
+}

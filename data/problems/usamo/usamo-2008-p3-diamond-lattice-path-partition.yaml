@@ -1,0 +1,169 @@
+{
+  "id": "usamo-2008-p3-diamond-lattice-path-partition",
+  "title": "Разбиение ромбовидной решётки на пути, USAMO 2008 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Gabriel Carroll",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "lattice_graph",
+      "path_partition",
+      "diamond_region",
+      "checkerboard_coloring"
+    ],
+    "methods": [
+      "parity_coloring",
+      "alternating_paths",
+      "counting_difference"
+    ],
+    "transformations": [
+      "diamond_region_to_grid_graph"
+    ],
+    "goal": [
+      "lower_bound_for_path_cover"
+    ],
+    "auxiliary_graph_type": [
+      "grid_graph"
+    ],
+    "invariants": [
+      "red_black_imbalance",
+      "alternating_path_excess"
+    ],
+    "keywords": [
+      "usamo_2008_p3",
+      "path_partition",
+      "diamond_grid"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Пути в множестве S_n",
+        "text": "Пусть `S_n` — множество всех целочисленных точек `(x,y)`, для которых `|x| + |y+1/2| < n`. Путём называется последовательность различных точек из `S_n`, в которой соседние точки имеют расстояние `1`. Докажите, что точки `S_n` нельзя разбить менее чем на `n` путей.",
+        "source_id": "src-usamo-2008-p3-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим решётчатый граф на вершинах `S_n`, где рёбра соединяют точки на расстоянии `1`. Требуется показать, что path cover этого графа имеет размер не меньше `n`.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-checkerboard-with-middle-defect",
+      "title": "Шахматная раскраска с дефектом посередине",
+      "text": "Если окрасить точки по строкам попеременно, начиная и заканчивая красным, то получится раскраска, в которой красных на `2n` больше, чем чёрных, а нарушения обычного чередования возникают только в `n` специальных парах посередине.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-complement-subgraph-trimming",
+      "title": "Смотреть на дополнение path cover внутри полного решётчатого графа",
+      "text": "Если бы путей было слишком мало, то соответствующий подграф степени не выше `2` занимал бы слишком много рёбер; удобнее перейти к дополнению и вырезать внешнюю оболочку, сохраняя достаточно много рёбер во внутреннем ромбе.",
+      "tags": [
+        "induction",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-red-black-imbalance",
+      "title": "Красно-чёрный дисбаланс",
+      "text": "Окрасим точки `S_n` красным и чёрным по строкам: каждая строка начинается и заканчивается красной, а цвета внутри строки чередуются. Тогда красных точек ровно на `2n` больше, чем чёрных. Единственное место, где две соседние точки могут оказаться обе красными, — это `n` специальных пар в двух средних строках. Предположим, что существует разбиение на `m<n` путей. Разрежем каждый путь везде, где подряд идут две красные точки; таких разрезов не больше `n`, так что получится не более `m+n` путей, на каждом из которых цвета уже строго чередуются. В любом чередующемся пути красных не больше чем на 1 больше, чем чёрных. Следовательно, общий избыток красных над чёрными не превосходит `m+n`. Но этот избыток равен `2n`, значит `2n <= m+n`, откуда `m >= n`, противоречие.",
+      "idea_ids": [
+        "idea-checkerboard-with-middle-defect"
+      ],
+      "standard_idea_ids": [
+        "alternating_paths"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path"
+      ]
+    },
+    {
+      "id": "sol-complement-trim-induction",
+      "title": "AoPS-альтернатива через дополнение и стягивание к `S_{n-1}`",
+      "text": "Альтернативное AoPS-решение формулирует разбиение на `m` путей как подграф `H_n` решёточного графа на `S_n`, в котором каждая вершина имеет степень не больше `2`, а число рёбер равно `|S_n|-m`. Если бы существовало разбиение `S_{n+1}` меньше чем на `n+1` путей, то такой подграф `H_{n+1}` имел бы слишком много рёбер. Тогда удобно рассмотреть дополнение `F_{n+1}` внутри полного решёточного графа `G_{n+1}`. У внутренних вершин в `F_{n+1}` остаётся степень как минимум `2`, а внешняя ромбическая оболочка даёт лишь ограниченное число внешне-внутренних рёбер. Удаляя внешние вершины и затем ещё небольшое число рёбер, можно получить на внутреннем ромбе ровно подграф типа `H_n`, который снова задаёт разбиение `S_n` на слишком малое число путей. Это запускает индукцию вниз по `n` и приводит к невозможному случаю `S_1`. По сути, решение использует уже не цветовой дисбаланс, а контроль над тем, сколько рёбер должен содержать path cover и как этот счёт ведёт себя при переходе от `S_{n+1}` к `S_n`.",
+      "idea_ids": [
+        "idea-complement-subgraph-trimming"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Очень чистая графовая задача на path cover и цветовой дисбаланс.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "induction",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "parity_coloring",
+        "counting_difference"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2008-p3-aops-wiki",
+      "role": "community_wiki_statement_and_solutions",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

@@ -65,7 +65,7 @@
     "graph_theory": [
       {
         "id": "stmt-graph",
-        "text": "Дома образуют вершины прямоугольной решётки, пожар стартует из одной вершины, на каждом шаге можно удалить из распространения одну вершину, после чего огонь переходит по всем рёбрам к незащищённым соседям. Нужно максимизировать число вершин, не достигнутых пожаром.",
+        "text": "Пусть \\(G=P_n\\square P_n\\) — решёточный граф на вершинах \\((i,j)\\), где \\(1\\le i,j\\le n\\), и начально заражена вершина \\((1,c)\\), где \\(c\\le n/2\\). На каждом шаге сначала разрешается выбрать одну ещё не заражённую вершину и удалить её из графа навсегда, после чего заражение распространяется из всех уже заражённых вершин на всех их соседей, не удалённых ранее. Когда заражение больше не может расширяться, процесс останавливается. Каково наибольшее возможное число вершин, которые так и не будут заражены?",
         "status": "needs_human_review",
         "self_contained": {
           "status": "ai_checked"
@@ -73,6 +73,20 @@
         "definition_ids": [],
         "distinct_from": [
           "stmt-original"
+        ]
+      },
+      {
+        "id": "stmt-graph-distance-layers",
+        "title": "Distance-layer formulation",
+        "text": "In the grid graph \\(P_n\\square P_n\\), fix a start vertex \\((1,c)\\) with \\(c\\le n/2\\). At time \\(t\\), the infected set consists of all vertices reached from the start in at most \\(t\\) steps unless they were deleted earlier. Before each new infection round, one still uninfected vertex may be deleted permanently. Determine the maximum possible number of vertices that can avoid infection forever.",
+        "source_id": "src-apmo-2005-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
         ]
       }
     ],
@@ -143,6 +157,6 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [],
-    "relations_status": "base_done"
+    "relations_status": "deep_done"
   }
 }

@@ -1,0 +1,145 @@
+{
+  "id": "kolmogorov-2008-round-2-high-league-problem-1",
+  "title": "????? ??????????? 2008: Round 2, High League Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "complete_graph",
+      "tournament"
+    ],
+    "methods": [
+      "double_counting"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "counting"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "edge_count"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "tournament-graph",
+      "directed-graph",
+      "graph-labeling",
+      "counting",
+      "information-theory"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В круговом теннисном турнире участвуют `n` игроков. Нужно по таблице результатов однозначно определить, какой игрок занял какое место. За один вопрос разрешается спросить про сравнение мест двух игроков. Сколько вопросов достаточно в худшем случае?",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "complete_graph",
+          "tournament"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-round-2-high-league-problem-1",
+      "text": "Хотя в условии граф не упоминается, официальное решение явно и существенно переводит задачу в полный ориентированный граф турнира и далее рассуждает о нумерациях его вершин.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "В официальном решении результаты турнира переводятся на язык ориентированного графа: игроки становятся вершинами, а для каждой пары проводится ориентированное ребро от победителя к проигравшему. Получается полный ориентированный граф с помеченными вершинами.\n\nОдин вопрос сравнения двух мест делит множество возможных нумераций вершин не более чем пополам. Изначально возможны все `n!` нумераций, поэтому после `k` вопросов можно различить не более `2^k` вариантов.\n\nОтсюда достаточно взять `k`, для которого `2^k >= n!`, то есть `k >= ceil(log_2(n!))`. Далее в решении используется оценка `log_2(n!) <= n log_2 n`, так что числа вопросов порядка `n log_2 n` хватает.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "directed_graph",
+        "complete_graph",
+        "tournament"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool",
+    "tournaments"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_round_2_high_league_problem_1.md.",
+      "Source file noted by card: work/kolm/text/2008/tur2_12sol.txt.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Round 2, High League, Problem 1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "utyum-2002_carousel_senior_8x8_polyline",
+  "title": "UTYUM 2002, Math Carousel, older league, credit problem, 8. Максимальная длина замкнутой несамопересекающейся ломаной на сетке 8x8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "graph_modeling",
+      "parity"
+    ],
+    "transformations": [
+      "board_to_grid_graph"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2002_carousel_senior_8x8_polyline",
+      "utyum_2002"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Какую наибольшую длину может иметь замкнутая самонепересекающаяся ломаная, идущая по линиям сетки квадрата 8x8, в том числе по краю?",
+        "source_id": "src-utyum-2002_carousel_senior_8x8_polyline-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-bipartite-grid",
+        "title": "Bipartite-grid formulation",
+        "text": "Consider the \\(9\\times 9\\) grid graph whose vertices are the lattice points of the square grid and whose edges join neighboring lattice points. What is the largest possible number of vertices in a simple cycle of this graph?",
+        "source_id": "src-utyum-2002_carousel_senior_8x8_polyline-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Ответ: 80.\n\nРассмотрим граф вершин сетки 9x9 и раскрасим его вершины в шахматном порядке в два цвета. Тогда вершин одного цвета 41, другого 40.\n\nЛюбая ломаная, идущая по линиям сетки, проходит по рёбрам этого двудольного графа, поэтому её последовательные вершины чередуют цвета. Так как ломаная замкнута и не самопересекается, каждая её вершина используется не более одного раза, а число вершин каждого цвета на ней одинаково.\n\nСледовательно, на ломаной можно использовать не более 40 вершин каждого цвета, то есть не более 80 вершин всего. Значит, длина не превосходит 80.\n\nПример ломаной длины 80 существует, следовательно, искомый максимум равен 80.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "path",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Math Carousel, older league, credit problem.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "planar_graphs"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2002_carousel_senior_8x8_polyline-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2002_carousel_senior_8x8_polyline.yaml.",
+      "Graph role: essential_in_official_solution.",
+      "Confidence: high.",
+      "В официальном решении задача сводится к двудольному графу вершин квадратной сетки; ключевой аргумент — чередование цветов в замкнутом пути и подсчёт вершин долей."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "graph_theory_absent_reason": ""
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "fyum-2008-tur2b-p5",
+  "title": "FYUM 2008, Second tour (b), Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "graph_with_bounded_degree",
+      "edge_coloring"
+    ],
+    "methods": [
+      "pigeonhole_principle"
+    ],
+    "transformations": [],
+    "goal": [
+      "prove_many_colors_needed"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "edge_coloring",
+      "fyum",
+      "fyum-2008-tur2b-p5",
+      "large_matching_obstruction",
+      "matching",
+      "pigeonhole"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Пусть в графе 2009 вершин, из которых 2008 имеют степень 200 и одна \n\nвершина степень 2. Докажите, что ребра этого графа нельзя раскрасить \n\nв 200 цветов так, чтобы одноцветные ребра не имели общих концов.",
+        "source_id": "src-fyum-2008-tur2b-p5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-parameterized",
+        "text": "Let m,d be positive integers. Any graph on 2m+1 vertices with more than md edges cannot have its edges colored with d colors in such a way that each color class is a matching. In particular, if a graph on 2m+1 vertices has 2m vertices of degree d and one vertex of degree 2, then such a coloring is impossible.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "The graph has 1004*200+1 edges, so by the pigeonhole principle one color is used on at least 1005 edges. If edges of one color do not share endpoints, they form a matching of size 1005 and require 2010 endpoints. But the graph has only 2009 vertices. Contradiction.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Imported from the checked FYUM archive card 2008_tur2b_problem5.md; stage Second tour (b).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2008-tur2b-p5-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly asks about edge coloring in a graph.",
+      "Original-source candidate: Standard lower bound for the chromatic index via matching size. Author note: standard edge-coloring principle; each color class is a matching. Link: https://en.wikipedia.org/wiki/Edge_coloring",
+      "Original-source note: The FYUM problem is a concrete extremal instance of the general fact that every proper edge-coloring partitions the edge set into matchings, so the chromatic index is at least |E(G)| divided by the maximum matching size. The official solution is exactly that lower-bound argument."
+    ],
+    "relations_status": "deep_done"
+  }
+}

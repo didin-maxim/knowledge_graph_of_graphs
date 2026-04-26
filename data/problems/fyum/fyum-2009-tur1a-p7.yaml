@@ -1,0 +1,108 @@
+{
+  "id": "fyum-2009-tur1a-p7",
+  "title": "FYUM 2009, First tour (a), Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "cycle_lengths"
+    ],
+    "methods": [
+      "scc_decomposition"
+    ],
+    "transformations": [
+      "topological_order_of_components"
+    ],
+    "goal": [
+      "build_gap_ordering"
+    ],
+    "auxiliary_graph_type": [
+      "condensation_dag"
+    ],
+    "invariants": [],
+    "keywords": [
+      "component_ordering",
+      "cycle_lengths",
+      "fyum",
+      "fyum-2009-tur1a-p7",
+      "strong_tournament_cycles",
+      "strongly_connected_components",
+      "tournament"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Даны натуральные числа $n>m>1$. \n\nВ полном $n$-вершинном ориентированном графе нет циклов из $m+1$ вершины.\n\nДокажите, что вершины этого графа можно так занумеровать числами от 1 до \n\n$n$, что при любых $i$ и $k$, удовлетворяющих условию $i\\geq k+m-1$, \n\nребро направлено из $i$-ой вершины в $k$-ю.",
+        "source_id": "src-fyum-2009-tur1a-p7-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Decompose the tournament into strongly connected components and order them topologically. Two lemmas are used: a strongly connected tournament has a cycle through all its vertices, and from a cycle of length k one can get a cycle of length k-1. Therefore no component may have more than m vertices, otherwise there would be a cycle of length m+1. Number the vertices block by block according to the component order. Then the required edge directions follow from this ordering.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Imported from the checked FYUM archive card 2009_tur1a_problem7.md; stage First tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "tournaments"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2009-tur1a-p7-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a complete directed graph.",
+      "Original-source candidate: Cycle structure of strong tournaments. Author note: Myron Goldberg and John W. Moon; building on Camion's theorem. Link: https://msp.org/pjm/1972/40-1/pjm-v40-n1-p11-s.pdf",
+      "Original-source note: The FYUM proof uses the standard tournament package: decompose into strongly connected components, then use the fact that a strong tournament contains cycles of every length up to its order. The cited source proves a stronger k-strong version, so the transfer is direct."
+    ],
+    "relations_status": "deep_done"
+  }
+}

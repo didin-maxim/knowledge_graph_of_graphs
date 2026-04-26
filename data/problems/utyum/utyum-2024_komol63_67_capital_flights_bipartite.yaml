@@ -1,0 +1,125 @@
+{
+  "id": "utyum-2024_komol63_67_capital_flights_bipartite",
+  "title": "UTYUM 2024, Team Olympiad, grades 6-7, Capital, flight distances, and absence of odd cycles",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "parity_argument",
+      "layer_counting"
+    ],
+    "transformations": [
+      "town_grid_to_graph_distance_levels"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2024_komol63_67_capital_flights_bipartite",
+      "utyum_2024"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В стране n городов, один из которых является столицей. Между некоторыми парами городов налажено авиасообщение.\n\nРасстояние между городами — это минимальное число перелётов, нужное для пути между ними.\n\nПравительство хочет закрыть часть авиалиний так, чтобы расстояние от столицы до любого города не изменилось. Известно, что число способов сделать это нечётно.\n\nДокажите, что нельзя стартовать из какого-то города, совершить нечётное число перелётов и вернуться в него.",
+        "source_id": "src-utyum-2024_komol63_67_capital_flights_bipartite-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан связный граф с выделенной вершиной-столицей. Рассматриваются подграфы, в которых расстояние от столицы до каждой вершины совпадает с расстоянием в исходном графе. Известно, что число таких подграфов нечётно. Докажите, что в исходном графе нет цикла нечётной длины.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "В официальном решении вводится граф авиалиний с выделенной вершиной-столицей.\n\nВершины разбиваются на ярусы по расстоянию от столицы. Рёбра могут идти либо внутри одного яруса, либо между соседними ярусами.\n\nЕсли бы существовало ребро внутри яруса, то включение или исключение этого ребра не влияло бы на сохранение расстояний от столицы. Тогда допустимые множества удаляемых рёбер разбивались бы на пары, и их число было бы чётным — противоречие.\n\nЗначит, рёбер внутри одного яруса нет. Тогда все рёбра идут между ярусами разной чётности, то есть граф двудольный и нечётных циклов в нём нет.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "path",
+        "cycle",
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grades 6-7.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2024_komol63_67_capital_flights_bipartite-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2024_komol63_67_capital_flights_bipartite.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "В условии явно есть граф городов и авиалиний, а официальное решение целиком строится на ярусах BFS и двудольности."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

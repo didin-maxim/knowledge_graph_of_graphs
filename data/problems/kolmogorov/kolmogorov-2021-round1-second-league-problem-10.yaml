@@ -1,0 +1,115 @@
+{
+  "id": "kolmogorov-2021-round1-second-league-problem-10",
+  "title": "????? ??????????? 2021: Round 1, Second League Problem 10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph"
+    ],
+    "methods": [],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2021"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Триангуляцией выпуклого `n`-угольника называется разбиение его на треугольники непересекающимися диагоналями.\n\nАнтикликой триангуляции назовем подмножество вершин многоугольника, никакие две из которых не соединены стороной или диагональю.\n\nСаша подсчитал, что в любой триангуляции `100`-угольника хотя бы `M` антиклик, причем есть триангуляции, в которых их ровно `M`.\n\nСколько триангуляций содержат ровно `M` антиклик?",
+        "source_id": "src-kolmogorov-2021-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2021-round1-second-league-problem-10",
+      "text": "В условии явно вводится антиклика триангуляции: это независимое множество в графе, образованном сторонами и диагоналями триангуляции.\nОфициальное решение минимизирует число таких независимых множеств по классам триангуляций.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "Ответ: `100`.\n\nВ официальном решении доказывают по индукции, что минимальное число антиклик достигается ровно на триангуляциях типа «зигзаг».\n\nПусть `z_n` — число антиклик в зигзагообразной триангуляции `n`-угольника. В произвольной триангуляции выбирают треугольник, прилегающий к двум сторонам многоугольника.\n\nТогда антиклики делятся на два типа:\n1. не содержащие выделенную вершину;\n2. содержащие ее.\n\nПервых не меньше `z_{n-1}`, а вторых не меньше `z_{n-3}`. Отсюда получается рекуррентная оценка снизу `z_n >= z_{n-1} + z_{n-3}`.\n\nРавенство возможно только если соответствующие меньшие многоугольники сами триангулированы зигзагообразно и нужная диагональ присутствует. Значит, минимум достигается только на зигзагах.\n\nОстается посчитать число зигзагообразных триангуляций `100`-угольника. Такая триангуляция однозначно задается выбором вершины, с которой начинается ломаная зигзага, и выбором первого направления. После учета двойного счета получается `100`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2021-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2021_round1_second_league_problem_10.md.",
+      "Source file noted by card: work/kolm/text/2021/2_liga_1_tur_resheniya_pdf.txt.",
+      "Source page noted by card: 4.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 1, Second League, Problem 10."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass.",
+    "graph_theory_duplicate_removed": true
+  }
+}

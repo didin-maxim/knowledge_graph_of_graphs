@@ -1,0 +1,101 @@
+{
+  "id": "utyum-1993_ii_7kl_1",
+  "title": "UTYUM 1993, Olympiad, 7th grade, 1. Шеф секретной службы",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "directed_graph_modeling",
+      "cycle_decomposition"
+    ],
+    "transformations": [
+      "instruction_to_directed_graph"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "1993_ii_7kl_1",
+      "utyum_1993"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Шеф секретной службы составил следующую инструкцию взаимодействия слежки для своих семи главных агентов:\n001 следит за тем, кто следит за 002, 002 — за тем, кто следит за 003, ..., 007 следит за тем, кто следит за 001.\nНо вдруг пришёл приказ взять на службу ещё агента 008. Сможет ли шеф составить аналогичную инструкцию и для восьми агентов?",
+        "source_id": "src-utyum-1993_ii_7kl_1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Рассмотрим соответствующий ориентированный граф. Так как каждый следит ровно за одним, граф распадается на циклы.\nПо условию граф связный, значит цикл один, то есть получаем восьмиугольник, в вершинах которого должны стоять числа 1, ..., 8 через одну.\nЭто невозможно, следовательно, для восьми агентов аналогичную инструкцию составить нельзя.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph",
+        "cycle",
+        "outdegree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Olympiad, 7th grade.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-1993_ii_7kl_1-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 1993_ii_7kl_1.yaml.",
+      "Graph role: essential_in_official_solution.",
+      "Confidence: high.",
+      "Официальное указание напрямую переводит задачу в ориентированный граф и решает её через разложение на циклы."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "graph_theory_absent_reason": "Graph language is essential in the official solution, but no separate self-contained graph-theory reformulation has been added yet."
+  }
+}

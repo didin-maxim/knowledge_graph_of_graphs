@@ -1,0 +1,105 @@
+{
+  "id": "yumt-2016-start-high-round1-problem7",
+  "title": "YUMT 2016, Старт-лига, высшая лига, первый тур, 7. Расстановки 31 коня",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2016_start_high_round1_problem7",
+      "yumt_2016"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Сколькими способами на шахматную доску можно поставить 31 коня, не бьющих друг друга?",
+        "source_id": "src-yumt-2016-start-high-round1-problem7-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-knight-move-graph",
+      "title": "Граф ходов коня",
+      "text": "Клетки доски рассматриваются как вершины графа ходов коня. Связность и наличие длинного цикла в этом графе позволяют контролировать размещения почти максимального числа непересекающихся коней.",
+      "tags": [
+        "hamiltonian_cycles",
+        "connectivity"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Официальное решение",
+      "text": "Ответ: 68 способов.\nРазобьём доску на 32 пары клеток, соединённых ходом коня; такое разбиение получается, если разбить доску на прямоугольники 2×4 и в каждом из них соединить клетки ходами коня. В каждой такой паре может стоять не более одного коня, поэтому при расстановке 31 коня ровно одна пара остаётся пустой.\nТеперь разобьём доску на четыре квадрата 4×4. Тогда три из них содержат по 8 коней, а один содержит 7 коней. Если в квадрате 4×4 стоят 8 не бьющих друг друга коней, то они занимают клетки только одного цвета. Рассматривая соседние квадраты, получаем, что в трёх полных квадратах цвет занятых клеток согласован, и возникают ровно два глобальных типа расположения, показанные в официальном разборе.\nДальнейший разбор четвёртого квадрата даёт следующее. В первом типе все 7 оставшихся коней тоже обязаны стоять на клетках того же цвета, и тогда можно выбрать любую из 32 клеток этого цвета, которую оставим пустой. Получаем 64 расстановки: два выбора цвета и 32 выбора пустой клетки этого цвета.\nВо втором типе, кроме конфигураций с одной пустой клеткой выбранного цвета, возможны ещё ровно 4 расстановки, когда 30 коней стоят на клетках одного цвета, а единственный конь другого цвета расположен в угловой клетке доски.\nИтак, всего получаем 64 + 4 = 68 способов.",
+      "idea_ids": [
+        "idea-knight-move-graph"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2016_start_high_round1_problem7.md; stage Старт-лига, высшая лига, первый тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "hamiltonian_cycles",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2016-start-high-round1-problem7-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2016_start_high_round1_problem7.md."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Графовая сущность этой задачи проявляется прежде всего в официальном решении; отдельная самодостаточная graph_theory-формулировка пока не вынесена."
+  }
+}

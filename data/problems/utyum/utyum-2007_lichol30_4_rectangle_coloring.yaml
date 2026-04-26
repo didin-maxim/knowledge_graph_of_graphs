@@ -1,0 +1,142 @@
+{
+  "id": "utyum-2007_lichol30_4_rectangle_coloring",
+  "title": "UTYUM 2007, Personal Olympiad, Grade 8, 4. Rectangle cell coloring and equal monochromatic adjacencies",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "two_coloring"
+    ],
+    "methods": [
+      "double_counting",
+      "boundary_counting",
+      "edge_counting"
+    ],
+    "transformations": [
+      "cell_adjacency_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "grid_graph"
+    ],
+    "invariants": [
+      "number_of_uncolored_sides_incident_to_each_color_class"
+    ],
+    "keywords": [
+      "utyum",
+      "2007_lichol30_4_rectangle_coloring",
+      "utyum_2007",
+      "monochromatic_edges"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Клетки прямоугольника раскрашены в белый и голубой цвета, причём белых и голубых клеток поровну. Среди клеток, примыкающих к сторонам прямоугольника, белых и голубых поровну, среди угловых клеток прямоугольника тоже поровну. Докажите, что сторон клеток, разделяющих два белых квадрата, столько же, сколько сторон клеток, разделяющих два голубых квадрата.",
+        "source_id": "src-utyum-2007_lichol30_4_rectangle_coloring-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-grid-graph",
+        "title": "Grid-graph formulation",
+        "text": "Рассмотрим граф смежности клеток прямоугольной решётки: вершины соответствуют клеткам, а ребро соединяет две клетки с общей стороной. Вершины раскрашены в два цвета, причём вершин каждого цвета поровну; среди граничных вершин и среди угловых вершин каждого цвета тоже поровну. Докажите, что число рёбер, соединяющих две белые вершины, равно числу рёбер, соединяющих две голубые вершины.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-boundary-adjusted-degree-count",
+      "title": "Boundary-adjusted degree count",
+      "text": "If the outside boundary sides are added to the count, the total number of incident sides over white cells equals the corresponding total over blue cells. Since the two color classes have equal size, subtracting the common cell-degree contribution leaves equal totals for internal same-color edges.",
+      "tags": [
+        "double_counting",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Покрасим стороны внешней границы прямоугольника. Тогда у угловых клеток окажется по две окрашенные стороны, а у остальных приграничных клеток по одной.\n\nПо условию и среди угловых, и среди прочих приграничных клеток белых и голубых поровну. Значит, суммарное число окрашенных сторон у белых клеток равно суммарному числу окрашенных сторон у голубых клеток. Так как белых и голубых клеток поровну, то и число неокрашенных сторон у белых клеток равно числу неокрашенных сторон у голубых.\n\nКаждая внутренняя сторона между двумя белыми клетками учитывается дважды среди неокрашенных сторон белых клеток, каждая сторона между белой и голубой клеткой учитывается один раз; сторона между двумя голубыми клетками не учитывается. Аналогично для голубых клеток.\n\nТак как общее число неокрашенных сторон у белых и голубых клеток одинаково, количество сторон между двумя белыми клетками равно количеству сторон между двумя голубыми клетками.",
+      "idea_ids": [
+        "idea-boundary-adjusted-degree-count"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Imported from UTYUM package; stage Personal Olympiad, Grade 8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "coloring",
+    "double_counting"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2007_lichol30_4_rectangle_coloring-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2007_lichol30_4_rectangle_coloring.yaml.",
+      "Source file noted by card: work/utyum/text/2007/lichol30_extracted.txt.",
+      "Graph role: essential_in_official_solution; the official solution compares same-color adjacency edges in the rectangular grid graph.",
+      "Previous import batch marked this item as skipped; restored because the graph model is material to the edge-counting interpretation."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

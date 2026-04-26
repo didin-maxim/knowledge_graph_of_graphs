@@ -1,0 +1,125 @@
+{
+  "id": "fyum-2013-tur1b-p10",
+  "title": "FYUM 2013, Round 1, League of Tactics, Problem 10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph_with_edge_weights",
+      "simple_cycles"
+    ],
+    "methods": [
+      "extremal_choice",
+      "modular_argument"
+    ],
+    "transformations": [
+      "reuse_strategy_league_solution"
+    ],
+    "goal": [
+      "find_cycle_with_zero_sum_mod_p"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "distinct_path_sum_residues"
+    ],
+    "keywords": [
+      "complete-graph",
+      "fyum",
+      "fyum-2013-tur1b-p10",
+      "modular-weights",
+      "prime-modulus",
+      "prime_modulus",
+      "simple-cycle",
+      "weighted_complete_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Дано простое число `p`. На каждом ребре полного графа на `1000p` вершинах написали целое число. Докажите, что найдется простой цикл, сумма чисел на ребрах которого делится на `p`.",
+        "source_id": "src-fyum-2013-tur1b-p10-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-two-choices-per-triangle",
+      "title": "Каждый треугольник дает два варианта суммы участка",
+      "text": "Для треугольника с ненулевой суммой по модулю p можно выбрать две вершины-концы так, что прямое ребро и путь через третью вершину имеют разные суммы. Несколько непересекающихся треугольников превращают задачу в выбор по одному элементу из двухэлементных множеств в Z/pZ.",
+      "tags": [
+        "extremal_choice",
+        "olympiad_tool"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Самодостаточное решение через непересекающиеся треугольники",
+      "text": "Работаем по модулю `p`. Случай `p=2` разберем отдельно. Если есть треугольник с четной суммой весов, он и есть нужный цикл. Если все треугольники имеют нечетную сумму, то любые четыре вершины `a,b,c,d` дают четный цикл `abcd`: его сумма равна сумме треугольников `abc` и `acd` минус удвоенный вес диагонали `ac`, значит равна `0 mod 2`. Теперь пусть `p` нечетно. Выберем `p-1` попарно непересекающихся треугольников; вершин для этого достаточно. Если какой-то из них имеет сумму `0 mod p`, мы уже нашли цикл. Иначе в каждом выбранном треугольнике можно назвать вершины `u_i,x_i,v_i` так, что `m(u_ix_i)+m(x_iv_i) != m(u_iv_i)`. Действительно, если это равенство выполнялось бы для всех трех выборов средней вершины, то из трех равенств следовало бы, что все три веса равны `0 mod p`, а тогда сумма треугольника была бы нулевой. Для каждого `i` положим `A_i={m(u_ix_i)+m(x_iv_i), m(u_iv_i)}`; это двухэлементное подмножество поля `Z/pZ`. Используем простую лемму: если `B` — собственное подмножество `Z/pZ`, а `a!=b`, то `|B+{a,b}|>=|B|+1`. После вычитания `a` и деления на `b-a` это сводится к тому, что `B union (B+1)` больше `B`, иначе из `B=B+1` следовало бы `B=Z/pZ`. Поэтому последовательное сложение множеств `A_1,...,A_{p-1}` дает все поле `Z/pZ`. Соединим треугольники в один большой цикл фиксированными ребрами `v_i u_{i+1}` и `v_{p-1}u_1`. Сумма этих соединительных ребер равна некоторому фиксированному `C`. Так как `A_1+...+A_{p-1}=Z/pZ`, можно в каждом треугольнике выбрать либо прямое ребро `u_iv_i`, либо путь `u_i x_i v_i` так, чтобы сумма выбранных участков была `-C`. Вместе с соединительными ребрами они образуют простой цикл с суммой `0 mod p`.",
+      "idea_ids": [
+        "idea-two-choices-per-triangle"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Imported from the checked FYUM archive card 2013_tur1b_problem10.md; stage Round 1, League of Tactics.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2013-tur1b-p10-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: Графовая структура прямо присутствует в условии и полностью определяет ход официального решения: используются полный граф, пути, треугольники, циклы и клики.",
+      "Original-source candidate: USA Team Selection Test for the Selection Team of 55th IMO, Day II, Problem 5, June 23, 2013 — https://web.evanchen.cc/exams/TSTST-2013.pdf. Author note: not identified from the accessible primary source; the published TSTST problem PDF lists the AMC Committee, but does not give per-problem authors"
+    ],
+    "relations_status": "deep_done"
+  }
+}

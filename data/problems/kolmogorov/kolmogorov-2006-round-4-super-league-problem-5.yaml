@@ -1,0 +1,146 @@
+{
+  "id": "kolmogorov-2006-round-4-super-league-problem-5",
+  "title": "????? ??????????? 2006: Round 4, Super League Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "planar_graph"
+    ],
+    "methods": [
+      "double_counting",
+      "face_counting"
+    ],
+    "transformations": [
+      "dual_graph",
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "counting"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "edge_count"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2006",
+      "tree",
+      "triangulation",
+      "dual-graph",
+      "counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В правильном `n`-угольнике проведены `n-3` непересекающихся диагонали, разбивающие его на треугольники. Найдите максимальное возможное число попарно различных треугольников в таком разбиении.",
+        "source_id": "src-kolmogorov-2006-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "planar_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2006-round-4-super-league-problem-5",
+      "text": "В условии граф не упомянут, но официальное решение существенно заменяет триангуляцию деревом смежности треугольников и считает типы вершин этого дерева.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение сопоставляет любой триангуляции дерево: вершины этого дерева соответствуют треугольникам, а ребра — парам соседних треугольников. Степени всех вершин такого дерева не превосходят 3.\n\nДлины сторон каждого треугольника однозначно определяются размерами компонент связности, возникающих после удаления соответствующей вершины дерева. Поэтому число различных треугольников оценивается через возможные типы вершин в этом дереве.\n\nЗатем отдельно оценивают вклад висячих вершин, вершин степени 2 и степени 3. Полученная верхняя оценка достигается на явной конструкции, так что максимум найден.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "face_counting"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree",
+        "planar_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool",
+    "planar_graphs",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "face_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2006-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2006_round_4_super_league_problem_5.md.",
+      "Source file noted by card: work/kolm/text/2006/tur4_10sol.txt.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Round 4, Super League, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

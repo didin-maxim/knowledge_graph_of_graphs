@@ -1,0 +1,181 @@
+{
+  "id": "usamo-2023-p3-domino-slides-special-square-digraph",
+  "title": "Слайды домино и ориентированный граф особых клеток, USAMO 2023 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Holden Mui",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "domino_tiling",
+      "odd_board",
+      "empty_square",
+      "special_square_digraph",
+      "tree_component"
+    ],
+    "methods": [
+      "directed_graph_modeling",
+      "parity_invariant",
+      "acyclicity_via_enclosed_region",
+      "tree_counting",
+      "explicit_construction"
+    ],
+    "transformations": [
+      "domino_configuration_to_special_square_digraph"
+    ],
+    "goal": [
+      "classify_possible_values_of_kc"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph",
+      "tree"
+    ],
+    "invariants": [
+      "parity_class_of_empty_square",
+      "component_of_empty_square_is_tree"
+    ],
+    "keywords": [
+      "usamo_2023_p3",
+      "domino_sliding",
+      "special_squares",
+      "tree_component"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Maximal Grid-Aligned Configuration",
+        "text": "Рассмотрим доску `n x n` для нечётного положительного `n`. Максимальной конфигурацией домино назовём набор из `(n^2-1)/2` неперекрывающихся домино `1x2` или `2x1`, покрывающий все клетки, кроме одной. Разрешено сдвинуть домино в пустую клетку, не поворачивая его; после этого снова получается максимальная конфигурация с другой пустой клеткой. Пусть `k(C)` — число различных максимальных конфигураций, которые можно получить из `C` последовательностью таких ходов. Найдите все возможные значения `k(C)` в зависимости от `n`.",
+        "source_id": "src-usamo-2023-p3-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Зафиксируем parity class пустой клетки и назовём special squares клетки той же чётности координат, что и пустая. Для каждой special square `s`, занятой домино, проведём ориентированное ребро из `s` в special square, куда это домино «указывает». Тогда конфигурация задаёт ориентированный граф на множестве special squares; компонент, содержащий пустую клетку, оказывается деревом, а `k(C)` равно числу его вершин.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "tree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-special-squares-parity-class",
+      "title": "Двигаться может только пустая клетка в фиксированном классе чётности",
+      "text": "После каждого сдвига новая пустая клетка находится на расстоянии `2` по строке или столбцу от старой, поэтому её чётности координат не меняются. Значит существенными являются только special squares той же parity class, что и исходная пустая клетка.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-empty-component-is-tree",
+      "title": "Компонента пустой клетки ациклична",
+      "text": "Если в ориентированном графе special squares возник бы цикл, не отделяющий пустую клетку, то он окружал бы область с нечётным числом клеток, что противоречит паритетному/Pick-type анализу домино внутри цикла. Поэтому компонента пустой клетки не содержит циклов и является деревом.",
+      "tags": [
+        "trees"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-kc-counts-tree-vertices",
+      "title": "`k(C)` — это число возможных выборов корня дерева",
+      "text": "Когда компонентa пустой клетки уже распознана как дерево, любое достижимое положение соответствует выбору вершины, которая становится sink, то есть новой пустой клеткой, а все стрелки ориентируются к ней.",
+      "tags": [
+        "trees"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-special-square-digraph",
+      "title": "Частично восстановленное графовое решение",
+      "text": "Ответ должен быть таким: `k(C)` может принимать все значения из множества `{1,2,...,((n-1)/2)^2} U {((n+1)/2)^2}`. Зафиксируем конфигурацию `C` и пустую клетку. Назовём special squares клетки той же чётности координат, что и пустая клетка. Каждое домино, лежащее на special square, покрывает ещё одну клетку и тем самым естественно «указывает» на следующую special square; это задаёт ориентированный граф `G(C)` на множестве special squares. В случае odd-odd для всех special squares, кроме пустой, есть ровно одно исходящее ребро. Ключевое утверждение из notes Evan Chen: любая связная компонента `G`, не содержащая пустую клетку внутри цикла, ациклична; для цикла это доказывается анализом области, которую он ограничивает, через паритет и Pick's theorem. Поэтому компонента `T`, содержащая пустую клетку, является деревом. Дальше ход домино просто переворачивает одно ребро вдоль этого дерева, а достижимые конфигурации получаются ровно выбором вершины дерева, которая играет роль sink, то есть пустой клетки. Следовательно, `k(C)=|V(T)|`. Если пустая клетка имеет odd-odd coordinates, то максимум достигается, когда `T` охватывает все special squares, и тогда `k(C)=((n+1)/2)^2`; явная row-snake конструкция такого spanning tree записана в карточке USAJMO 2023 P3. Если `T` не является spanning tree, циклы зажимают её внутрь и получается более сильная оценка `k(C)<=((n-3)/2)^2`. Во втором случае, когда special squares имеют even-even coordinates, аналогичный граф всё ещё даёт дерево `T`, но полная реализация каждого размера `|V(T)|` от `1` до `((n-1)/2)^2` в доступных источниках дана через snake-картинки и локальные модификации без полного текстового алгоритма. Поэтому верхняя оценка и идея классификации восстановлены, но конструктивная часть всех малых значений пока не самодостаточна.",
+      "idea_ids": [
+        "idea-special-squares-parity-class",
+        "idea-empty-component-is-tree",
+        "idea-kc-counts-tree-vertices"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "directed_graph",
+        "cycle",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Задача про домино выглядит клеточной, но в содержательном решении всё держится на ориентированном графе special squares и дереве компоненты пустой клетки.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "directed_graph_modeling",
+        "tree_counting",
+        "explicit_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2023-p3-aops-wiki",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2023-evan-chen-notes",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2023-p3-proposer-holden-mui",
+      "role": "proposer_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "AoPS problem page presently содержит только неполную community-рыбу; основная graph-core версия карточки опирается на solution notes Evan Chen."
+    ],
+    "relations_status": "deep_done"
+  }
+}

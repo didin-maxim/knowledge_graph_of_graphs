@@ -1,0 +1,124 @@
+{
+  "id": "utyum-2018_lichol_6_strategic_cities",
+  "title": "UTYUM 2018, Personal Olympiad, grade 6, 5. Strategic cities reachable in one flight",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_construction",
+      "delete_to_simplify"
+    ],
+    "transformations": [
+      "reduce_to_tree"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2018_lichol_6_strategic_cities",
+      "utyum_2018"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Некоторые из 2017 городов страны соединены прямыми двусторонними авиарейсами так, что из каждого города\nможно добраться до любого другого. Нужно выбрать k стратегически значимых городов так, чтобы из любого города,\nвключая стратегически значимые, ровно за один перелёт можно было попасть в стратегически значимый город.\n\nПри каком наименьшем k это наверняка можно сделать?",
+        "source_id": "src-utyum-2018_lichol_6_strategic_cities-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "tree",
+          "dominating_set"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан связный граф на 2017 вершинах. Нужно выбрать k вершин так, чтобы каждая вершина графа либо сама вошла в этот набор, либо была смежна с одной из выбранных. При каком наименьшем k это всегда возможно?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "tree",
+          "dominating_set"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Ответ: k = 1344.\n\nВ официальном решении вводится граф городов и авиарейсов. Сначала строится пример на 2017 вершинах,\nгде меньше чем 1344 вершинами не обойтись: берётся центральная вершина A и 672 цепочки длины 3 вида\nA-B_k-C_k-D_k. В каждой тройке B_k, C_k, D_k хотя бы две вершины должны быть стратегическими, откуда\nполучается нижняя оценка 1344.\n\nДля верхней оценки доказывается, что достаточно рассматривать дерево, натянутое на все вершины связного графа.\nЗатем повторяется та же локальная процедура, что и в задаче про деревни и города: из дерева последовательно\nудаляются небольшие куски, в которых доля стратегических вершин не превышает 2/3, а каждая удаляемая вершина\nимеет соседа среди выбранных стратегических.\n\nВ результате для n = 2017 достаточно не более 2*2017/3 = 1344 стратегических вершин, и эта оценка точна.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "tree",
+        "dominating_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Personal Olympiad, grade 6.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "trees",
+    "connectivity"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2018_lichol_6_strategic_cities-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2018_lichol_6_strategic_cities.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Задача прямо формулируется на графе городов и авиарейсов, а официальное решение строит экстремальный пример и затем сводит общий случай к дереву."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

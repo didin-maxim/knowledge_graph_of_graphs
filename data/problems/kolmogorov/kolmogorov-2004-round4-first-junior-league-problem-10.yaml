@@ -1,0 +1,140 @@
+{
+  "id": "kolmogorov-2004-round4-first-junior-league-problem-10",
+  "title": "????? ??????????? 2004: Round 4, First Junior League Problem 10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "cycle"
+    ],
+    "methods": [
+      "greedy_ordering"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "construction"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2004",
+      "graph",
+      "directed graph",
+      "automaton graph",
+      "cycle",
+      "constructive proof"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Существует ли иррациональное число от `0` до `1`, в десятичной записи которого нет цифры\n`1`, и такое, что любые три последовательные цифры образуют простое число?",
+        "source_id": "src-kolmogorov-2004-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "directed_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2004-round4-first-junior-league-problem-10",
+      "text": "В условии графа нет, но официальное решение существенно строит граф Уфнаровского и сводит\nзадачу к поиску и непериодическому чередованию циклов в этом графе.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "В официальном решении выписываются допустимые трехзначные простые блоки:\n`337, 373, 379, 733, 739, 773, 797, 937, 977, 997`.\n\nПосле этого строится граф Уфнаровского на двузначных состояниях: вершина задает две\nпоследние цифры, а ребро означает, что к ним можно приписать следующую цифру так, чтобы\nполучился допустимый трехзначный простой блок.\n\nВ этом графе находятся два ориентированных цикла, например\n`33 -> 37 -> 73 -> 33` и `33 -> 37 -> 79 -> 97 -> 77 -> 73 -> 33`.\nЕсли обходить эти циклы непериодически, получается бесконечная десятичная запись без\nединиц, в которой каждый блок из трех подряд идущих цифр прост. Непериодичность гарантирует\nиррациональность числа.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "directed_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2004-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2004_round4_first_junior_league_problem_10.md.",
+      "Source file noted by card: work/kolm/text/2004/tur4.txt.",
+      "Source page noted by card: round 4 first junior league, problem 10.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Round 4, First Junior League, Problem 10."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

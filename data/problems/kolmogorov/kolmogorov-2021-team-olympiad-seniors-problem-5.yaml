@@ -1,0 +1,117 @@
+{
+  "id": "kolmogorov-2021-team-olympiad-seniors-problem-5",
+  "title": "????? ??????????? 2021: Team Olympiad, Seniors Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph"
+    ],
+    "methods": [
+      "connectivity_argument"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2021"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране несколько городов, один из которых — Москва. Некоторые пары городов соединены двусторонними дорогами.\n\nМэр хочет объединить Москву еще с `n` городами в большую Москву так, чтобы:\n1. между любыми двумя городами большой Москвы можно было проехать по дорогам, не попадая в города вне нее;\n2. было ровно `k` городов вне большой Москвы, соединенных хотя бы одной дорогой с большой Москвой.\n\nДокажите, что есть не более `C_{n+k}^k` способов совершить такое объединение.",
+        "source_id": "src-kolmogorov-2021-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2021-team-olympiad-seniors-problem-5",
+      "text": "В условии явно задан неориентированный граф дорог с требованием связности выбранного подмножества вершин и контроля его внешней границы.\nОфициальное решение полностью графовое: работает с вершинами, соседями, стягиванием вершины и инъективной кодировкой связных подграфов с фиксированной границей.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "В официальном решении даны два разных графовых доказательства.\n\nВ первом решении все города большой Москвы красят в красный цвет, а все внешние соседние города — в зеленый. После этого строится инъективное отображение из допустимых выборов большой Москвы в последовательности из `n` красных и `k` зеленых символов.\n\nДля этого вершины, соседние с Москвой, последовательно выписываются в порядке номеров, а затем по очереди раскрываются соседи уже выписанных красных вершин. Полученная цветная последовательность однозначно восстанавливает исходный выбор, так что число вариантов не превосходит числа таких последовательностей, то есть `C_{n+k}^k`.\n\nВо втором решении проводится индукция по `n + k`. Рассматривается сосед Москвы `X`.\n\nЕсли `X` включают в большую Москву, то `X` и Москву стягивают в одну вершину и переходят к задаче с `n - 1` красной вершиной и тем же числом внешних соседей.\n\nЕсли `X` не включают, то вершину `X` удаляют, и число внешних соседей уменьшается на `1`.\n\nПо индукционному предположению получается оценка\n`C_{n+k-1}^k + C_{n+k-1}^{k-1} = C_{n+k}^k`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2021-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2021_team_olympiad_seniors_problem_5.md.",
+      "Source file noted by card: work/kolm/archive/2021/extracted_seniors/0komol-sen-sol.tex.",
+      "Source page noted by card: team olympiad seniors, problem 5.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Seniors, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass.",
+    "graph_theory_duplicate_removed": true
+  }
+}

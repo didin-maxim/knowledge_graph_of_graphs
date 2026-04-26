@@ -1,0 +1,140 @@
+{
+  "id": "utyum-2006_ural27_8_acquaintance_pairs",
+  "title": "UTYUM 2006, XXVII UTYUM, source packet with local solutions, 8. 100 участников турнира и минимум 4850 пар знакомых",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_choice",
+      "component_counting",
+      "case_analysis"
+    ],
+    "transformations": [
+      "pass_to_complement"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2006_ural27_8_acquaintance_pairs",
+      "utyum_2006"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "На турнир приехало 100 человек. Из любых пяти из них можно по крайней мере двумя способами выбрать трёх попарно знакомых. Докажите, что среди них есть по крайней мере 4850 пар знакомых.",
+        "source_id": "src-utyum-2006_ural27_8_acquaintance_pairs-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф на 100 вершинах. В любом множестве из пяти вершин можно по крайней мере двумя способами выбрать тройку вершин, образующую клику. Докажите, что в графе не менее 4850 рёбер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      },
+      {
+        "id": "stmt-graph-complement",
+        "title": "Complement-graph formulation",
+        "text": "Let \\(H\\) be the graph of unfamiliar pairs on 100 vertices. Assume that in every 5-vertex subset, the complement graph of \\(H\\) contains at least two different triangles. Prove that \\(H\\) has at most 100 edges.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique",
+          "complement_graph"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Рассмотрим граф незнакомства: вершины соответствуют участникам турнира, а рёбра соединяют пары незнакомых.\n\nЕсли в этом графе есть треугольник ABC, то для любых ещё двух участников D и E в пятёрке ABCDE рёбра DE и по крайней мере четыре рёбра между {D,E} и {A,B,C} отсутствуют, иначе нельзя было бы получить две тройки попарно знакомых. Отсюда число пар знакомых уже не меньше 97*96/2 + 2*97 = 4850.\n\nПоэтому можно считать, что треугольников в графе незнакомства нет. Покажем также, что в нём нет пути длины 4: иначе пять вершин такого пути дали бы пятёрку, в которой нельзя выбрать две тройки попарно знакомых. Аналогично цикл длины 4 образует отдельную компоненту связности.\n\nЗначит, каждая компонента графа незнакомства либо является деревом, либо циклом длины 4. В обоих случаях число рёбер в компоненте не превосходит числа её вершин, поэтому всего рёбер не больше 100.\n\nТогда пар знакомых не меньше, чем C(100,2) - 100 = 4950 - 100 = 4850.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "clique",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage XXVII UTYUM, source packet with local solutions.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "extremal_graph_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2006_ural27_8_acquaintance_pairs-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2006_ural27_8_acquaintance_pairs.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: medium.",
+      "Задача целиком формулируется через граф знакомств, а официальное решение переходит к дополнительному графу незнакомства и оценивает число его рёбер по структуре компонент связности."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "id": "kolmogorov-2011-team-olympiad-juniors-problem-6",
+  "title": "????? ??????????? 2011: Team Olympiad, Juniors Problem 6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "greedy_ordering"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "construction"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "parity",
+      "connectivity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2011",
+      "graph-construction",
+      "eulerian-trail",
+      "parity",
+      "connected-components",
+      "grid-on-cube"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Поверхность куба `15 x 15 x 15` разбита на клетки `1 x 1`. Муравей бегает по диагоналям клеток, нигде не поворачивая назад. Он не может бывать внутри одной клетки более одного раза, но может несколько раз проходить одну вершину.\n\nКакое наибольшее число центров клеток он может посетить?",
+        "source_id": "src-kolmogorov-2011-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2011-team-olympiad-juniors-problem-6",
+      "text": "Существенная часть официального решения — построение графа белых вершин и применение графовых идей: степени вершин, связность компоненты и существование эйлерова маршрута.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: `1335`.\n\nКак и в старшей задаче, официальное решение строит граф белых вершин: вершины клеток красят в шахматном порядке, и каждая допустимая диагональ становится ребром между белыми вершинами. Максимальный маршрут муравья интерпретируется как маршрут по ребрам этого графа.\n\nДля оценки сверху стирают ребра максимального маршрута. В оставшемся белом графе появляются вершины нечетной степени; две из них лежат в одной компоненте связности, а соединяющий их путь имеет длину не менее `15`. Значит, хотя бы `15` ребер белого графа не используются, поэтому посещено не более `6(15^2) - 15 = 1335` центров клеток.\n\nДля достижения оценки удаляют по одной диагонали на каждой грани так, чтобы оставшийся белый граф был связен и имел ровно две вершины нечетной степени. Тогда в нем существует эйлеров маршрут, проходящий по всем оставшимся ребрам, то есть через `1335` центров клеток.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "eulerian_graphs",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2011-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2011_team_olympiad_juniors_problem_6.md.",
+      "Source file noted by card: work/kolm/archive/2011/extracted/komol15.doc.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Team Olympiad, Juniors, Problem 6."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

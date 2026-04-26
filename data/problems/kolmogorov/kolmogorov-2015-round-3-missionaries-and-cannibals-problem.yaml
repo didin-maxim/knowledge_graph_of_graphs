@@ -1,0 +1,117 @@
+{
+  "id": "kolmogorov-2015-round-3-missionaries-and-cannibals-problem",
+  "title": "????? ??????????? 2015: Round 3, Second Junior League Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2015"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "На лодке, вмещающей только двух человек, через реку переправилась группа миссионеров и каннибалов, причем миссионеров было на одного больше. Каждый раз туда плыли двое, обратно один. Ни на одном берегу миссионеров никогда не было меньше, чем каннибалов, и каннибалы не оставались без присмотра миссионеров. Могло ли получиться, что каждые двое, которые когда-либо переправлялись вместе, в итоге совершили одинаковое число рейсов?",
+        "source_id": "src-kolmogorov-2015-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2015-round-3-missionaries-and-cannibals-problem",
+      "text": "В официальном решении строится двудольный граф совместных рейсов, и именно через свойства его компонент связности выводится противоречие.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: не могло. Сначала показывается, что вдвоем могут плыть только миссионер и каннибал: два миссионера или два каннибала приводят к нарушению условий на одном из берегов. Если персонажи совершают одинаковое число рейсов вообще, то и число рейсов туда у них одинаково. После этого официальное решение объявляет персонажей вершинами, а совместные рейсы туда — ребрами графа. Получается двудольный граф с долями \"миссионеры\" и \"каннибалы\", возможно с кратными ребрами. В каждой компоненте связности степени всех вершин одинаковы, причем в компоненте есть хотя бы одно ребро. Тогда суммы степеней в обеих долях совпадают, а потому кратны числу вершин в каждой доле. Отсюда в каждой компоненте число миссионеров равно числу каннибалов, значит и во всей группе их поровну, что противоречит условию, что миссионеров было на одного больше.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2015-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2015_round_3_missionaries_and_cannibals_problem.md.",
+      "Source file noted by card: work/kolm/archive/2015/extracted/kolm19/tur3_19.pdf; work/kolm/archive/2015/extracted/kolm19/tur3_19sol.pdf.",
+      "Source page noted by card: statement p. 5; official solution p. 20.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Round 3 missionaries and cannibals problem."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

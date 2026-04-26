@@ -1,0 +1,190 @@
+{
+  "id": "usamo-2008-p6-even-friends-two-rooms",
+  "title": "Две комнаты и чётное число друзей, USAMO 2008 P6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Sam Vandervelde",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "social_graph",
+      "vertex_partition",
+      "adjacency_matrix_over_f2",
+      "kernel_dimension"
+    ],
+    "methods": [
+      "linear_algebra_over_f2",
+      "graph_modeling",
+      "parity_constraints"
+    ],
+    "transformations": [
+      "conference_to_friendship_graph"
+    ],
+    "goal": [
+      "count_valid_partitions"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [
+      "even_friends_in_room",
+      "solution_space_affine_over_f2"
+    ],
+    "keywords": [
+      "usamo_2008_p6",
+      "friendship_graph",
+      "f2_linear_algebra"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Конференция и две столовые",
+        "text": "На конференции любые два математика либо друзья, либо нет. Во время еды каждый участник выбирает одну из двух больших столовых, причём хочет сидеть в комнате, где число его друзей чётно. Докажите, что число способов разбить участников между двумя комнатами является степенью двойки.",
+        "source_id": "src-usamo-2008-p6-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть дан граф дружбы `G`. Требуется посчитать число разбиений `V(G)=V_0 \\sqcup V_1`, для которых у каждой вершины число соседей в её собственной доле чётно. Докажите, что это число равно `2^k` для некоторого `k`.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-affine-solution-space-over-f2",
+      "title": "Допустимые разбиения образуют аффинное пространство",
+      "text": "Если кодировать выбор комнаты функцией `f:V->F_2`, то условие чётности на каждой вершине становится линейным уравнением над `F_2`.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-orders-form-abelian-group",
+      "title": "Переходы между хорошими разбиениями образуют `F_2`-группу",
+      "text": "Если фиксировать одно хорошее разбиение, то набор людей, которых надо «переключить комнату», чтобы получить другое хорошее разбиение, замкнут по сложению по модулю `2`.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-delete-odd-vertex-and-switch-neighborhood",
+      "title": "Удалять вершину нечётной степени и переключать рёбра в её окружении",
+      "text": "Индуктивно можно удалять вершину нечётной степени и заменять граф её Seidel-переключением на соседях; существование хотя бы одного хорошего разбиения сохраняется.",
+      "tags": [
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-adjacency-matrix-over-f2",
+      "title": "Линейная алгебра над F_2",
+      "text": "Рассмотрим граф дружбы `G` и обозначим через `f(v) in F_2` номер комнаты вершины `v`. Для вершины `v` число друзей в той же комнате равно по модулю 2 сумме `sum_{u~v} (1+f(u)+f(v))`. Значит требование «это число чётно» превращается в линейное уравнение вида `Af = b` над `F_2`, где `A` строится из матрицы смежности графа и, при необходимости, диагональных поправок от степеней. Следовательно, множество допустимых разбиений либо пусто, либо является аффинным подпространством пространства `F_2^{V}`. Но пустым оно не является: AoPS-решение показывает это, при необходимости добавляя лист и используя симметричность матрицы, чтобы убедиться, что правая часть лежит в столбцовом пространстве. Поэтому число решений равно `2^k` для некоторого `k`.",
+      "idea_ids": [
+        "idea-affine-solution-space-over-f2"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    },
+    {
+      "id": "sol-good-configurations-as-group",
+      "title": "AoPS-альтернатива: хорошие конфигурации образуют `2`-группу",
+      "text": "Зафиксируем одно хорошее разбиение участников по двум комнатам. Для любого другого хорошего разбиения запишем приказ каждому участнику: остаться или перейти в другую комнату. Такие приказы можно складывать по модулю `2`, то есть выполнять один за другим. AoPS-наблюдение состоит в том, что множество приказов, переводящих хорошую конфигурацию снова в хорошую, замкнуто относительно этого сложения: для каждой вершины условие чётности на числе друзей, которые переключаются относительно неё, ведёт себя линейно по модулю `2`. Значит все допустимые переходы образуют абелеву `2`-группу, а потому их число равно `2^k`. Это то же явление, что и в линейно-алгебраическом решении, но выраженное более комбинаторно: пространство решений не выписывается как ядро матрицы, а распознаётся как группа симметрий одной хорошей конфигурации.",
+      "idea_ids": [
+        "idea-orders-form-abelian-group"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    },
+    {
+      "id": "sol-existence-by-switching-odd-vertex",
+      "title": "AoPS-альтернатива на существование: индукция с переключением соседей",
+      "text": "Ещё одна AoPS-идея доказывает хотя бы существование хорошего разбиения индукцией по числу вершин. Если в графе все степени чётны, то подходит разбиение, где все сидят вместе. Иначе выбирают вершину `v` нечётной степени, удаляют её и у всех пар соседей `v` переключают наличие ребра. Для полученного меньшего графа по предположению индукции есть хорошее разбиение. Затем вершину `v` возвращают в ту комнату, где у неё получается чётное число соседей. Проверка показывает, что и для остальных вершин чётности сохраняются именно из-за произведённого переключения на множестве `N(v)`. Хотя это решение не считает число всех конфигураций, оно хорошо подчёркивает графовую природу задачи: само существование правильного разбиения можно получить чисто комбинаторным преобразованием графа.",
+      "idea_ids": [
+        "idea-delete-odd-vertex-and-switch-neighborhood"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Социальный граф с нетривиальным линейно-алгебраическим решением над F_2.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "linear_algebra_over_f2",
+        "parity_constraints"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2008-p6-aops-wiki",
+      "role": "community_wiki_statement_and_solutions",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

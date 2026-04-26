@@ -1,0 +1,122 @@
+{
+  "id": "utyum-2010_tur4_36_4_islands_bridges",
+  "title": "UTYUM 2010, Senior group, first league, Math Battle 4, 4. Islands in a circle and double bridges",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "eulerian_cycle",
+      "case_analysis",
+      "explicit_construction"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2010_tur4_36_4_islands_bridges",
+      "utyum_2010"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "По кругу расположены n (n > 2) островов, на одном из них стоит замок. Между любыми двумя соседними\nостровами построены два моста.\n\nНайдите количество маршрутов, начинающихся и заканчивающихся на острове с замком и проходящих по\nкаждому мосту ровно один раз.",
+        "source_id": "src-utyum-2010_tur4_36_4_islands_bridges-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "cycle",
+          "eulerian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Рассматривается циклический мультиграф на n вершинах, в котором каждая пара соседних вершин соединена двумя параллельными рёбрами. Одна вершина выделена. Сколько существует эйлеровых циклов, начинающихся и заканчивающихся в выделенной вершине?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "cycle",
+          "eulerian_cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Официальное решение разбивает все искомые эйлеровы обходы на два типа.\n\nПервый тип: маршрут дважды обходит весь круг в одном и том же направлении. Для каждого из двух\nнаправлений при первом переходе между соседними островами можно независимо выбрать один из двух мостов,\nпоэтому таких маршрутов получается по 2^n в каждом направлении, всего 2^(n+1).\n\nВторой тип: маршрут в некоторой вершине разворачивается, затем делает полный круг с другой стороны,\nснова разворачивается и возвращается в замок. Для каждого фиксированного острова разворота и каждого\nнаправления снова остается по 2^n выборов мостов, то есть получается n * 2^(n+1) маршрутов.\n\nСкладывая оба случая, получаем общее число маршрутов:\n\n2^(n+1) + n * 2^(n+1) = 2^(n+1)(n + 1).",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "multigraph",
+        "cycle",
+        "eulerian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Senior group, first league, Math Battle 4.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "eulerian_graphs"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2010_tur4_36_4_islands_bridges-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2010_tur4_36_4_islands_bridges.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Условие в точности описывает мультиграф на цикле, а требуемые маршруты являются эйлеровыми циклами; официальное решение целиком считает такие обходы графа."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

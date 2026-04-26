@@ -1,0 +1,146 @@
+{
+  "id": "kolmogorov-2008-team-olympiad-seniors-problem-7",
+  "title": "????? ??????????? 2008: Team Olympiad, Seniors Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "cycle"
+    ],
+    "methods": [
+      "double_counting",
+      "pigeonhole_principle",
+      "local_recoloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "counting",
+      "coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "coloring",
+      "edge_count"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "complete-graph",
+      "edge-coloring",
+      "monochromatic-cycle",
+      "ramsey-type",
+      "counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Некоторые из 21 города соединены авиалиниями четырех компаний так, что каждые два города соединены ровно одной авиалинией. Докажите, что найдутся четыре города, которые можно облететь по циклу одной и той же компанией.",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-team-olympiad-seniors-problem-7",
+      "text": "Условие прямо задает полный граф с раскраской ребер. Официальное решение полностью графовое: используется цветной полный граф, одноцветные пути и циклы.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение рассматривает полный граф на 21 вершине с раскраской ребер в 4 цвета. Из одной вершины выходит 20 ребер, значит хотя бы 5 из них имеют один цвет; рассматривают соответствующие 5 соседей.\n\nЕсли среди этих 5 вершин есть ребро того же цвета, то вместе с исходной вершиной получается одноцветный треугольник, из которого затем извлекают нужную конфигурацию. Если же такого ребра нет, то между 5 вершинами остаются только три цвета, и подсчет одноцветных двушаговых путей показывает, что среди них возникает одноцветный цикл длины 4.\n\nСледовательно, в любой 4-раскраске ребер полного графа `K_21` обязательно есть одноцветный цикл из четырех вершин.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "pigeonhole_principle",
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "complete_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "double_counting",
+    "olympiad_tool",
+    "ramsey_theory"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "pigeonhole_principle",
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_team_olympiad_seniors_problem_7.md.",
+      "Source file noted by card: work/kolm/text/2008/komol12.txt.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Seniors, Problem 7."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "id": "kolmogorov-2006-team-olympiad-seniors-problem-9",
+  "title": "????? ??????????? 2006: Team Olympiad, Seniors Problem 9",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "spanning_tree"
+    ],
+    "methods": [
+      "double_counting"
+    ],
+    "transformations": [],
+    "goal": [
+      "counting"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "edge_count"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2006",
+      "wheel-graph",
+      "spanning-tree",
+      "counting",
+      "fibonacci"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "По окружности расположены `n` площадей, каждая соединена дорогой с двумя соседними. В центре расположена еще одна площадь, соединенная дорогами со всеми остальными. Нужно выбрать `n` дорог так, чтобы между любыми двумя площадями можно было пройти по выбранным дорогам. Докажите, что число таких проектов равно `F_{2n+1} + F_{2n-1} - 2`.",
+        "source_id": "src-kolmogorov-2006-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "spanning_tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2006-team-olympiad-seniors-problem-9",
+      "text": "В условии явно задан граф дорог, а официальное решение непосредственно считает остовные деревья графа-колеса с помощью вспомогательного графа.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение прямо переводит задачу на граф «колесо» `W_n`. Искомые проекты — это остовные деревья этого графа.\n\nДля подсчета вводят вспомогательный граф «лапа» `L_n`, получаемый из пути длины `n` добавлением вершины, соединенной со всеми вершинами пути. Доказывается лемма: число остовных деревьев в `L_n` равно `F_{2n}`.\n\nПосле этого колесо разбивают на два естественных случая и выражают число его остовных деревьев через соседние значения для «лапы». В итоге получается формула\n`F_{2n+1} + F_{2n-1} - 2`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree",
+        "spanning_tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2006-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2006_team_olympiad_seniors_problem_9.md.",
+      "Source file noted by card: work/kolm/text/2006/KOMOL10.txt.",
+      "Source page noted by card: 2.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Seniors, Problem 9."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

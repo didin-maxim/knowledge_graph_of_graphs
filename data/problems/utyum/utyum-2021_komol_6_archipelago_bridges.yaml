@@ -1,0 +1,135 @@
+{
+  "id": "utyum-2021_komol_6_archipelago_bridges",
+  "title": "UTYUM 2021, Team Olympiad, grade 6, 6. Archipelago, bridges, and a universal island",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "universal_vertex",
+      "maximum_degree_vertex"
+    ],
+    "methods": [
+      "extremal_choice",
+      "maximum_degree"
+    ],
+    "transformations": [
+      "choose_maximum_degree_vertex",
+      "apply_local_condition_to_path"
+    ],
+    "goal": [
+      "universal_vertex_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "vertex_degree"
+    ],
+    "keywords": [
+      "utyum",
+      "2021_komol_6_archipelago_bridges",
+      "utyum_2021",
+      "maximum_degree_vertex",
+      "universal_vertex"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Архипелаг состоит из 1000 островов, некоторые пары которых соединены мостами, причём от любого острова\nможно добраться по мостам до любого другого.\n\nИзвестно, что для любых четырёх островов A, B, C, D таких, что есть мосты AB, BC, CD,\nтакже существует мост AC или мост BD.\n\nДокажите, что найдётся остров, соединённый мостами со всеми остальными.",
+        "source_id": "src-utyum-2021_komol_6_archipelago_bridges-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан связный граф на 1000 вершинах. Известно, что для любых четырёх вершин A, B, C, D, если рёбра AB, BC и CD существуют, то существует и хотя бы одно из рёбер AC, BD. Докажите, что в графе есть вершина, смежная со всеми остальными.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "В официальном решении рассматривается граф, вершинами которого являются острова, а рёбрами — мосты.\n\nВыбирается вершина B наибольшей степени. Предположим, что она соединена не со всеми вершинами графа.\nТак как граф связен, существует путь B-C-D, где B соединена с C, C соединена с D, но B не соединена с D.\n\nТеперь для любой вершины A, соединённой с B, можно применить условие задачи к пути A-B-C-D.\nПоскольку ребра BD нет, условие вынуждает существование ребра AC. Значит, C соединена со всеми соседями B,\nа кроме того ещё и с D. Это делает степень C строго больше степени B, что противоречит выбору B.\n\nСледовательно, вершина наибольшей степени обязана быть соединена со всеми остальными вершинами.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "degree",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 6.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "connectivity",
+    "extremal_graph_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2021_komol_6_archipelago_bridges-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2021_komol_6_archipelago_bridges.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "В условии явно задан связный граф мостов на островах, а официальное решение целиком работает с вершинами, рёбрами и степенями вершин."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "yumt-2013-start-round4-problem8",
+  "title": "YUMT 2013, Старт-лига, четвёртый тур, 8. Коты и псы в дачном посёлке",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2013_start_round4_problem8",
+      "yumt_2013"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В дачном посёлке из животных есть только псы и коты.\nУ кота в среднем втрое больше знакомых среди котов, чем среди псов. У пса в среднем впятеро больше знакомых среди псов, чем среди котов.\nУ пса среднее число знакомых животных вдвое больше, чем у кота.\nКого в посёлке больше: котов или псов, и во сколько раз?",
+        "source_id": "src-yumt-2013-start-round4-problem8-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-double-count-acquaintances-by-species",
+      "title": "Двойной подсчёт знакомств по типам животных",
+      "text": "Вводятся четыре суммы: знакомства кот-кот, кот-пёс, пёс-пёс и общее число знакомств; данные о средних значениях превращаются в линейные соотношения между ними.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Официальное решение",
+      "text": "Рассмотрим граф знакомств: вершины этого графа — животные, а рёбра — знакомства.\nПусть a — число рёбер между котами, b — число рёбер между псами, c — число рёбер между котами и псами. Обозначим через k число котов, а через p число псов.\nТогда среднее число знакомых кота среди котов равно 2a / k, среди псов равно c / k. По условию первое в три раза больше второго, значит,\n2a / k = 3c / k,\nоткуда 2a = 3c.\nАналогично у пса среднее число знакомых среди псов равно 2b / p, среди котов равно c / p. По условию\n2b / p = 5c / p,\nоткуда 2b = 5c.\nСреднее число знакомых животных у кота равно (2a + c) / k, а у пса равно (2b + c) / p. По условию у пса это число вдвое больше, чем у кота:\n(2b + c) / p = 2(2a + c) / k.\nПодставляя 2a = 3c и 2b = 5c, получаем\n6c / p = 8c / k.\nТак как c > 0, отсюда следует k / p = 4 / 3.\nЗначит, котов в посёлке больше в 4/3 раза.",
+      "idea_ids": [
+        "idea-double-count-acquaintances-by-species"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2013_start_round4_problem8.md; stage Старт-лига, четвёртый тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2013-start-round4-problem8-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2013_start_round4_problem8.md."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Графовая сущность этой задачи проявляется прежде всего в официальном решении; отдельная самодостаточная graph_theory-формулировка пока не вынесена."
+  }
+}

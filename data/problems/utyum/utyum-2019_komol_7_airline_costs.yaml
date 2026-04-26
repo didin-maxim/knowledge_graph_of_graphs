@@ -1,0 +1,117 @@
+{
+  "id": "utyum-2019_komol_7_airline_costs",
+  "title": "UTYUM 2019, Team Olympiad, grade 7, 6. Airline costs on 20 cities",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_choice",
+      "double_counting",
+      "local_replacement"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2019_komol_7_airline_costs",
+      "utyum_2019"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В стране 20 городов, и любые два города соединены прямой авиалинией. Стоимость каждого перелёта равна\n10, 20 или 30 тугриков, причём все три цены реально встречаются.\n\nИзвестно, что если вылететь из любого города и после трёх перелётов вернуться в него, то суммарно\nпридётся потратить не меньше 60 тугриков. Докажите, что сумма цен на всех авиалиниях не меньше 3970.",
+        "source_id": "src-utyum-2019_komol_7_airline_costs-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "На рёбрах полного графа K_20 стоят веса 10, 20 или 30, причём все три значения встречаются. Для любого треугольника сумма весов его рёбер не меньше 60. Докажите, что сумма весов всех рёбер графа не меньше 3970.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Официальное решение рассматривает полный граф городов с весами 10, 20, 30 на рёбрах.\n\nЕсли ребро AB имеет вес 10, то для любого третьего города C сумма весов AC и BC не меньше 50,\nиначе треугольник ABC дал бы цикл суммарной стоимости не более 50. Поэтому суммарный вклад всех\nтреугольников, содержащих AB, уже даёт сильную нижнюю оценку.\n\nЗатем вершины A и B удаляются. Если в оставшемся подграфе из 18 вершин больше нет рёбер веса 10,\nто нужная оценка получается сразу. Если ребро веса 10 ещё есть, то из условия на треугольники следует,\nчто рядом с ним возникает много рёбер веса 30; кроме того, из одной вершины не может выходить более одного\nребра веса 10. Эти ограничения снова дают суммарную стоимость больше 3970.\n\nТаким образом, сумма весов всех рёбер полного графа не меньше 3970.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 7.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "extremal_graph_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2019_komol_7_airline_costs-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2019_komol_7_airline_costs.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Условие явно задаёт полный взвешенный граф на городах, а решение полностью опирается на анализ треугольников и весов рёбер."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

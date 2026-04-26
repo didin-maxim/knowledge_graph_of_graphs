@@ -1,0 +1,124 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm-2002-rainbow-triangle-two-criteria",
+      "from": "kolmogorov-2002-individual-olympiad-10-11-output-problem-5",
+      "to": "kolmogorov-2002-individual-olympiad-8-9-output-problem-5",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Both 2002 individual problems ask for a rainbow triangle in an edge-colored complete graph; the hypotheses differ, but the common core is to assume no rainbow triangle and force a global color-structure contradiction.",
+      "backward_text": "The 8-9 class version is a close companion to the 10-11 class version: it uses the same rainbow-triangle target, with a many-colors condition instead of a per-color edge bound.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-kolm-2002-blocks-hall-lemma",
+      "from": "kolmogorov-2002-team-olympiad-seniors-problem-8",
+      "to": "hall-marriage-theorem",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "The official KOLM solution proves its clique-intersection lemma by passing to an auxiliary graph and applying Hall's theorem to a minimal obstruction.",
+      "backward_text": "Hall's theorem supplies the matching-deficiency language behind the auxiliary lemma used in the KOLM block-intersection problem.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-tight-set-splitting"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-kolm-2017-weighted-shortest-path-cuts",
+      "from": "kolmogorov-2017-team-olympiad-juniors-problem-6",
+      "to": "kolmogorov-2017-team-olympiad-seniors-problem-5",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both 2017 team problems are weighted transportation-graph questions about shortest paths. In each solution a cut or partition isolates the pairs whose shortest-path values can change.",
+      "backward_text": "The senior problem is a softer weighted-shortest-path companion to the junior road-closing problem: both control all-pairs distances by finding a partition across which the critical edge behavior is forced.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-kolm-2018-mobility-junior-senior",
+      "from": "kolmogorov-2018-team-olympiad-juniors-problem-6",
+      "to": "kolmogorov-2018-team-olympiad-seniors-problem-5",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "The junior problem is the same bus/rail mobility statement with 20 cities and regions of size at most 10; the senior problem repeats the argument at scale 2018 and 1009.",
+      "backward_text": "The senior mobility problem is the direct large-N version of the junior one. Both proofs use the same four-part decomposition of the two extremal regions and the same extremal construction.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-kolm-2021-volleyball-handshaking",
+      "from": "kolmogorov-2021-individual-olympiad-seniors-problem-1",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The volleyball proof assumes no team beats another twice, builds a graph whose vertices are teams, and contradicts the handshaking lemma because all 999 degrees would equal 499.",
+      "backward_text": "The handshaking lemma is exactly the parity obstruction used in the KOLM tournament-schedule problem.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-double-counting"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-kolm-2021-gadgets-top-cycle",
+      "from": "kolmogorov-2021-individual-olympiad-seniors-problem-5",
+      "to": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions use directed cycles or Hamiltonian paths as the organizing object for a global ordering problem. The gadget-allocation proof repeatedly removes a preferred directed cycle, while the 2010 problem merges Hamiltonian paths in a tournament-like digraph.",
+      "backward_text": "The 2010 Hamiltonian-path merging problem is a distant directed-ordering relative of the KOLM gadget-allocation proof: in both, the graph model converts individual choices into a controlled global permutation.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.62
+    },
+    {
+      "id": "rel-kolm-2021-triangulation-anticliques-dual-tree",
+      "from": "kolmogorov-2021-round1-second-league-problem-10",
+      "to": "kolmogorov-2006-round-4-super-league-problem-5",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems study triangulations of a convex polygon through the combinatorics of ears and the tree-like structure behind the triangulation. The 2021 problem minimizes independent vertex sets, while the 2006 problem maximizes the number of triangle types.",
+      "backward_text": "The 2006 triangulation problem is a natural structural neighbor of the 2021 anticlique-counting problem: both reduce geometric triangulations to recursive/tree-like constraints on adjacent triangles.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.81
+    },
+    {
+      "id": "rel-kolm-2021-bipartite-color-components-rainbow-cycle",
+      "from": "kolmogorov-2021-round1-second-league-problem-8",
+      "to": "kolmogorov-2002-individual-olympiad-8-9-output-problem-5",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both are edge-colored complete or complete bipartite graph problems where many colors force a useful cycle/component structure. The 2002 proof keeps one edge of each color to find a rainbow cycle; the 2021 proof counts color components and their cyclomatic surplus.",
+      "backward_text": "The 2002 rainbow-cycle argument is a compact ancestor of the same many-colors-versus-cycles motif that appears in the 2021 bipartite color-component proof.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.74
+    }
+  ]
+}

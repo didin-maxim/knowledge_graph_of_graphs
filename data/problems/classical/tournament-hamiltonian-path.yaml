@@ -85,6 +85,16 @@
         "induction"
       ],
       "status": "ai_checked"
+    },
+    {
+      "id": "idea-max-forward-edges-order",
+      "title": "Порядок с максимумом рёбер слева направо",
+      "text": "Если упорядочить вершины так, чтобы число рёбер, направленных слева направо, было максимальным, то соседние вершины уже обязаны быть ориентированы слева направо, иначе перестановка увеличила бы этот максимум.",
+      "tags": [
+        "tournaments",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
     }
   ],
   "solutions": [
@@ -98,6 +108,22 @@
       "status": "ai_checked",
       "standard_idea_ids": [
         "induction"
+      ],
+      "definition_ids": [
+        "path",
+        "tournament"
+      ]
+    },
+    {
+      "id": "sol-max-forward-edges",
+      "title": "Доказательство через максимум прямых рёбер",
+      "text": "Рассмотрим все линейные порядки вершин турнира и выберем такой, в котором число рёбер, направленных слева направо, максимально. Пусть это порядок v_1,...,v_n. Если для некоторого i ребро между соседними вершинами направлено назад, то есть v_{i+1}->v_i, то перестановка этих двух соседей не меняет ориентацию остальных пар, а для самой пары (v_i,v_{i+1}) превращает одно «плохое» ребро в «хорошее». Число рёбер слева направо увеличится, что противоречит максимальности выбранного порядка. Значит для каждого i выполнено v_i->v_{i+1}, и сам порядок уже задаёт гамильтонов путь.",
+      "idea_ids": [
+        "idea-max-forward-edges-order"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "extremal_choice"
       ],
       "definition_ids": [
         "path",
@@ -124,6 +150,11 @@
       "source_id": "src-wikipedia-tournament",
       "role": "standard_reference",
       "status": "source_verified"
+    },
+    {
+      "source_id": "src-mse-tournament-hamiltonian-forward-edges",
+      "role": "community_alternative_solution",
+      "status": "source_verified"
     }
   ],
   "editorial": {
@@ -132,6 +163,6 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [],
-    "relations_status": "base_done"
+    "relations_status": "deep_done"
   }
 }

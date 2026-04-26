@@ -1,0 +1,101 @@
+{
+  "id": "utyum-2024_komol62_8_5_average_degree_friends",
+  "title": "UTYUM 2024, Team Olympiad, grade 8, 5. Average number of friends on friends' shirts",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "double_counting",
+      "degree_counting"
+    ],
+    "transformations": [
+      "sum_over_edges"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2024_komol62_8_5_average_degree_friends",
+      "utyum_2024"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Некоторые участники турнира дружат между собой, причём у каждого есть хотя бы один друг.\n\nНа футболке каждого написано число его друзей.\n\nДокажите, что найдётся участник, для которого среднее арифметическое чисел на футболках его друзей не меньше, чем среднее арифметическое чисел на всех футболках.",
+        "source_id": "src-utyum-2024_komol62_8_5_average_degree_friends-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Пусть у i-го участника ni друзей, а si — среднее число друзей у его друзей.\n\nПредположим, что у каждого si строго меньше общего среднего. Тогда сумма всех таких средних, взятых с весами ni, должна быть меньше удвоенного числа рёбер графа дружбы.\n\nНо если перегруппировать сумму по рёбрам, то каждое ребро i-t даёт вклад nt/ni + ni/nt, а он не меньше 2.\n\nПоэтому суммарный вклад не меньше удвоенного числа рёбер. Получаем противоречие.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2024_komol62_8_5_average_degree_friends-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2024_komol62_8_5_average_degree_friends.yaml.",
+      "Graph role: essential_in_official_solution.",
+      "Confidence: high.",
+      "Граф неявен в формулировке, но официальное решение существенно опирается на граф дружбы и суммирование по рёбрам."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "graph_theory_absent_reason": "Graph language is essential in the official solution, but no separate self-contained graph-theory reformulation has been added yet."
+  }
+}

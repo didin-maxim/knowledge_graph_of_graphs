@@ -1,0 +1,163 @@
+{
+  "id": "usamo-2004-p4-black-path-grid-game",
+  "title": "Чёрный путь на сетке 6x6 после игры, USAMO 2004 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Melanie Wood",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_board",
+      "cell_adjacency_graph",
+      "top_bottom_path",
+      "maker_breaker_strategy"
+    ],
+    "methods": [
+      "invariant_strategy",
+      "pairing_strategy",
+      "separator_construction"
+    ],
+    "transformations": [
+      "black_cells_to_grid_path_problem"
+    ],
+    "goal": [
+      "winning_strategy"
+    ],
+    "auxiliary_graph_type": [
+      "grid_graph"
+    ],
+    "invariants": [
+      "useless_cells_never_black",
+      "top_bottom_separation"
+    ],
+    "keywords": [
+      "usamo_2004_p4",
+      "grid_path_game",
+      "separator_strategy"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Игра на таблице 6x6",
+        "text": "Алиса и Боб по очереди вписывают в пустые клетки таблицы `6 x 6` попарно различные рациональные числа. После заполнения таблицы в каждой строке закрашивается в чёрный цвет клетка с максимальным числом. Алиса выигрывает, если затем может провести путь из чёрных клеток от верхней стороны таблицы до нижней, переходя между клетками, имеющими общую сторону или вершину. Докажите, у кого есть выигрышная стратегия.",
+        "source_id": "src-usamo-2004-p4-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "После завершения игры шесть чёрных клеток образуют множество вершин на графе клеточной смежности (разрешены и касания по вершине). Алиса хочет получить путь между верхней и нижней границей этого графа, а Боб пытается построить разделяющий барьер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-useless-squares",
+      "title": "Назначить в каждой строке бесполезные клетки",
+      "text": "Если Боб умеет гарантировать, что некоторые заранее выбранные клетки никогда не станут чёрными, то достаточно выбрать их так, чтобы любой путь сверху вниз был перерезан.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-pair-rows-with-shift",
+      "title": "Попарно синхронизировать две строки со сдвигом",
+      "text": "Можно связать первые две строки с циклическим сдвигом на 3 столбца: если максимум в одной строке попадает в столбец `c`, то максимум в другой будет в столбце `c+3`, и эти клетки не соприкасаются.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-bob-useless-squares",
+      "title": "Стратегия Боба через бесполезные клетки",
+      "text": "Боб заранее выбирает в каждой строке по три бесполезные клетки. Если Алиса пишет число в бесполезной клетке, Боб на следующем ходу пишет большее число в небесполезной клетке той же строки; если Алиса играет в небесполезную клетку, Боб пишет меньшее число в бесполезной клетке той же строки. Поэтому никакая бесполезная клетка не сможет стать максимумом своей строки. Теперь Боб выбирает бесполезные клетки зигзагообразным барьером, например `(1,1),(2,1),(2,2),(3,2),(3,3),(4,3),(4,4),(5,4),(5,5),(6,5),(6,6)`. Так как все эти клетки гарантированно не чёрные, чёрные клетки не могут образовать связный путь от верхней стороны к нижней. Значит выигрывает Боб.",
+      "idea_ids": [
+        "idea-useless-squares"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path"
+      ]
+    },
+    {
+      "id": "sol-bob-shifted-row-pairing",
+      "title": "Вторая AoPS-стратегия: парные строки со сдвигом",
+      "text": "Ещё одна community-стратегия Боба из AoPS не строит общий барьер заранее, а жёстко связывает ходы в двух строках. Если Алиса пишет число в одной из первых двух строк, Боб отвечает в другой строке, но в столбце, сдвинутом на `3` по модулю `6`; если ход Алисы оказался максимумом своей строки, то и ответ Боба станет максимумом своей строки, а если нет, то оба хода не дадут чёрную клетку. Значит чёрные клетки в строках `1` и `2` обязательно окажутся на расстоянии двух столбцов друг от друга и не смогут соприкасаться даже по вершине. Для строк `3,4,5,6` Боб просто отвечает внутри того же блока строк, так что никакой путь сверху вниз не сможет пройти через разрыв между первыми двумя строками. Это другая графовая перспектива той же победы Боба: вместо явного separator set строится инвариант, запрещающий локальное соединение между двумя верхними слоями.",
+      "idea_ids": [
+        "idea-pair-rows-with-shift"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Игровая задача, где графовый путь стоит уже в условии, а решение строит разделяющий узор.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "invariant_strategy",
+        "separator_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2004-p4-aops-wiki",
+      "role": "community_wiki_statement_and_solutions",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

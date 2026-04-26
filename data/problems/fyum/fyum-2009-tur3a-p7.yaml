@@ -1,0 +1,131 @@
+{
+  "id": "fyum-2009-tur3a-p7",
+  "title": "FYUM 2009, Third tour (a), Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "periodic_vertex_coloring",
+      "theta_graph"
+    ],
+    "methods": [
+      "extremal_choice",
+      "longest_path_argument"
+    ],
+    "transformations": [
+      "delete_low_degree_vertices"
+    ],
+    "goal": [
+      "force_color_collision"
+    ],
+    "auxiliary_graph_type": [
+      "theta_subgraph"
+    ],
+    "invariants": [
+      "minimum_degree_after_pruning"
+    ],
+    "keywords": [
+      "extremal_graph",
+      "fyum",
+      "fyum-2009-tur3a-p7",
+      "graph_coloring",
+      "t_periodic_coloring",
+      "theta_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Раскраска вершин связного графа $G$ в несколько цветов называется {\\it\n\n$t$-периодической} ($t>2$), если для любого простого пути,\n\nсостоящего из $t$ ребер, его концы -- вершины одного цвета. В графе\n\n$n$ вершин и более, чем $2tn$ ребер. Докажите, что в любой\n\n$t$-периодической раскраске его вершин используется не более двух\n\nцветов.",
+        "source_id": "src-fyum-2009-tur3a-p7-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-bondy-simonovits-periodic-coloring-lemma",
+      "title": "Это точная лемма Bondy--Simonovits о t-периодических раскрасках",
+      "text": "Лемма Bondy--Simonovits утверждает: если связный граф G удовлетворяет e(G)>2t|V(G)|, то любая t-периодическая раскраска его вершин использует не более двух цветов. Условие FYUM дословно имеет тот же численный вид.",
+      "tags": [
+        "coloring",
+        "extremal_graph_theory"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Следствие из леммы Bondy--Simonovits",
+      "text": "В статье Bondy--Simonovits `Cycles of Even Length in Graphs` дана следующая лемма: если `t` — положительное целое число, а `G` — связный граф, для которого `e(G)>2t v(G)`, то любая `t`-периодическая раскраска вершин `G` использует не более двух цветов. В нашей задаче граф связен, имеет `n` вершин и больше чем `2tn` рёбер, то есть ровно удовлетворяет неравенству `e(G)>2t v(G)`. Поэтому по этой лемме в любой `t`-периодической раскраске используется не более двух цветов.",
+      "idea_ids": [
+        "idea-bondy-simonovits-periodic-coloring-lemma"
+      ],
+      "standard_idea_ids": [],
+      "status": "source_verified",
+      "definition_ids": [
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Imported from the checked FYUM archive card 2009_tur3a_problem7.md; stage Third tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2009-tur3a-p7-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-bondy-simonovits-cycles-even-length-1974",
+      "role": "reference_theorem",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly asks about a coloring of graph vertices."
+    ],
+    "relations_status": "deep_done"
+  }
+}

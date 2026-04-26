@@ -1,0 +1,139 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm-deep-2007-unique-coloring-2007-chromatic",
+      "from": "kolmogorov-2007-round-3-high-and-first-league-problem-3",
+      "to": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions treat a proper coloring as a partition into independent sets and then modify color classes. The round 3 problem uses a Kempe-style swap inside a two-color induced component to force connectedness; the chromatic-number problem recolors whole color classes to remove singleton colors.",
+      "backward_text": "The chromatic-number recoloring problem is a useful neighbor for the unique-coloring edge-count problem: both are driven by controlled changes of independent color classes rather than by a structural theorem.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-kolm-deep-2007-unique-coloring-2008-wheel",
+      "from": "kolmogorov-2007-round-3-high-and-first-league-problem-3",
+      "to": "kolmogorov-2008-round-2-first-league-and-higher-junior-problem-1",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The common mechanism is not the object but the proof move: a coloring or edge-coloring is forced by connectedness. In the unique 5-coloring problem, every two-color induced subgraph must be connected, otherwise one can swap colors in a component; in the wheel problem, the connectedness of both color classes forces the rim colors after the spokes are chosen.",
+      "backward_text": "The wheel-coloring card gives a concrete version of the same connectedness-forces-coloring idea that appears abstractly in the unique-coloring lower bound.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-kolm-deep-2007-chromatic-2013-team-junior",
+      "from": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
+      "to": "kolmogorov-2013-team-olympiad-juniors-problem-7",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Both proofs manipulate an existing coloring by selecting a color class and reusing it in a new coloring. The 2007 card removes singleton colors; the 2013 junior card glues two partial colorings by taking one color class inside the overlap.",
+      "backward_text": "The 2013 junior coloring-gluing proof is a close methodological neighbor of the 2007 recoloring argument: in both, the key object is a chosen color class that can be absorbed into another proper coloring.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-kolm-deep-2007-chromatic-2013-team-senior",
+      "from": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
+      "to": "kolmogorov-2013-team-olympiad-seniors-problem-8",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The shared upper-bound method is local recoloring through a selected color class. The senior 2013 problem adds an extremal construction for sharpness, so the relation is weaker than the junior version but still useful for the recoloring idea.",
+      "backward_text": "The 2007 chromatic-number card isolates the recoloring component that appears as the upper-bound half of the 2013 senior problem.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-kolm-deep-2008-low-degree-tree-leaf",
+      "from": "kolmogorov-2008-round-1-high-league-problem-1",
+      "to": "kolmogorov-2008-round-4-first-league-and-higher-junior-problem-1",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems prove the existence of a low-degree vertex from a global graph condition. The round 1 card uses induction, cut vertices, and a longest-path contradiction to find degree at most 2; the tree card uses degree sums in a bipartition to force a leaf in the larger part.",
+      "backward_text": "The tree leaf card is a cleaner degree-sum companion to the round 1 low-degree argument. The shared lesson is to turn a global restriction into a forced small-degree vertex.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.64
+    },
+    {
+      "id": "rel-kolm-deep-2008-tree-transform-2013-leaf-cycle-coloring",
+      "from": "kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
+      "to": "kolmogorov-2013-individual-olympiad-seniors-problem-5",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions are organized around leaves of a tree and a simplification step. The 2008 problem moves leaves to transform a tree; the 2013 problem deletes a chosen internal vertex and adjacent leaves, colors the remaining tree, and then restores the leaves along a cycle.",
+      "backward_text": "The 2013 tree-plus-leaf-cycle coloring proof is a natural method neighbor for the 2008 tree transformation card: both use leaves as the movable or removable part of the tree.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.63
+    },
+    {
+      "id": "rel-kolm-deep-2008-hamiltonian-2010-tour",
+      "from": "kolmogorov-2008-round-3-high-league-problem-1",
+      "to": "kolmogorov-2010-individual-olympiad-juniors-problem-5",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both cards convert a travel question into a Hamiltonian traversal problem. The 2008 card optimizes the number of edges under Hamiltonian paths with prescribed endpoints; the 2010 card uses bounded shortest paths to guarantee a Hamiltonian tour length after ordering the cities.",
+      "backward_text": "The 2010 travel card is a softer Hamiltonian-ordering companion to the 2008 extremal Hamiltonian-path problem: both are about arranging all vertices in one long traversal under graph constraints.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-kolm-deep-2006-planar-subdivision-triangulation",
+      "from": "kolmogorov-2006-round-1-super-high-first-league-problem-9",
+      "to": "kolmogorov-2006-round-4-super-league-problem-5",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both cards replace a geometric dissection by a planar graph and count through faces or the associated adjacency structure. The square-dissection problem uses Euler's formula and degree bounds; the triangulation problem uses the dual tree of triangles and degree constraints in that tree.",
+      "backward_text": "The triangulation card is a dual-tree companion to the square-dissection face-counting card: both turn noncrossing segments into a graph whose degrees control the answer.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.71
+    },
+    {
+      "id": "rel-kolm-deep-2010-directed-paths-2012-directed-grid",
+      "from": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
+      "to": "kolmogorov-2012-individual-olympiad-seniors-problem-6",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both solutions build an auxiliary directed graph and control a long directed route by order constraints. The 2010 card merges two ordered Hamiltonian paths in a tournament-like setting; the 2012 grid card bounds an Euler-style directed trail by counting unavoidable crossings of directed cuts.",
+      "backward_text": "The 2012 directed-grid route problem is a distant method neighbor of the 2010 path-merging problem: both are useful examples of turning the original story into directed paths plus counting constraints.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.6
+    }
+  ]
+}

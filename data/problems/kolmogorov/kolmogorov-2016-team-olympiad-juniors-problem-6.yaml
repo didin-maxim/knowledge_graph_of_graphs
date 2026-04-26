@@ -1,0 +1,117 @@
+{
+  "id": "kolmogorov-2016-team-olympiad-juniors-problem-6",
+  "title": "????? ??????????? 2016: Team Olympiad, Juniors Problem 6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2016"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Петя занумеровал вершины правильного 2017-угольника числами от 1 до 2017. Вася сначала ставит фишку в одну из вершин. После этого он может ходить из вершины A в вершину B, если между ними в многоугольнике не больше 9 других вершин и число в B больше числа в A. Требуется найти наибольшее количество вершин, которое Вася гарантированно сможет посетить при любой нумерации.",
+        "source_id": "src-kolmogorov-2016-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2016-team-olympiad-juniors-problem-6",
+      "text": "Официальное решение явно строит граф на вершинах 2017-угольника и использует правильную раскраску и свойства смежных вершин.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: 12. В официальном решении для верхней оценки вводится граф G на вершинах 2017-угольника: две вершины соединяются ребром, если между ними не больше 9 промежуточных вершин. Затем показывается, что этот граф можно правильно раскрасить в 12 цветов, и Петя может расставить числа по цветам так, чтобы Вася никогда не возвращался к меньшему цвету; значит, он посетит не более 12 вершин. Для нижней оценки каждой вершине сопоставляют максимальную длину возрастающей цепочки, начинающейся в ней. Соседние в графе вершины не могут получить одно и то же значение, иначе из одной цепочки можно было бы удлинить другую. Если бы все значения были не больше 11, по принципу Дирихле нашлись бы две близкие вершины с одинаковым значением, что невозможно. Значит, существует вершина, из которой достижима цепочка длины не меньше 12.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2016-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2016_team_olympiad_juniors_problem_6.md.",
+      "Source file noted by card: work/kolm/archive/2016/extracted/komol20.pdf.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Team Olympiad, Juniors, Problem 6."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

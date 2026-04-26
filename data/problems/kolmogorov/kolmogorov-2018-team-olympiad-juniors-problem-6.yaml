@@ -1,0 +1,117 @@
+{
+  "id": "kolmogorov-2018-team-olympiad-juniors-problem-6",
+  "title": "????? ??????????? 2018: Team Olympiad, Juniors Problem 6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph"
+    ],
+    "methods": [
+      "coloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2018"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В государстве 20 городов, каждые два из которых соединены либо автобусным, либо железнодорожным маршрутом. Регион — любое непустое множество не более чем из 10 городов.\n\nАвтобусная мобильность региона — это число автобусных маршрутов, ведущих из региона наружу, деленное на число городов в регионе. Железнодорожная мобильность определяется аналогично.\n\nПусть `A` — наименьшая автобусная мобильность среди всех регионов, а `B` — наименьшая железнодорожная мобильность. Найдите наименьшее возможное значение `A + B`.",
+        "source_id": "src-kolmogorov-2018-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2018-team-olympiad-juniors-problem-6",
+      "text": "Условие напрямую задает полный граф на городах с двуцветной раскраской ребер. Официальное решение работает через разрезы по подмножествам вершин (`M`, `N`, `X`, `Y`, `Z`, `T`) и подсчет числа ребер двух цветов, пересекающих эти разрезы.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "Ответ: `1`.\n\nПусть регион `M` дает минимум автобусной мобильности, а регион `N` — минимум железнодорожной. Разобьем множество городов на четыре части:\n\n- `X = M ∩ N`,\n- `Y = M \\\\ X`,\n- `Z = N \\\\ X`,\n- `T` — города вне `M ∪ N`.\n\nОбозначим мощности этих частей через `a, b, c, d`. Тогда маршруты между `T` и `X`, а также между `Y` и `Z`, обязательно учитываются хотя бы в одной из двух мобильностей. Поэтому в сумме учитывается не меньше `ad + bc` маршрутов, и\n\n`A + B >= (ad + bc) / 10`,\n\nтак как в `M` и `N` не более 10 городов.\n\nДальше разбираются случаи по нулевым и ненулевым значениям `a, b, c, d`.\n\n1. Если все `a, b, c, d` ненулевые, то `ad + bc >= (a + d - 1) + (b + c - 1) >= 18`, откуда `A + B > 1`.\n\n2. Если `c = 0` или `b = 0`, то из ограничения на размер региона получается `d >= 10`, и снова `A + B >= 1`.\n\n3. Если `bc != 0`, но `ad = 0`, то один из наборов пуст, и маршруты между `Y` и `Z` дают вклад не меньше `min(b, c) >= 1`, значит `A + B >= 1`.\n\nПример на достижимость: взять город `X`, соединенный со всеми только железнодорожными маршрутами, и город `Y`, соединенный со всеми, кроме `X`, только автобусными. Тогда автобусная мобильность одноэлементного региона `{X}` равна `0`, а железнодорожная мобильность региона `{Y}` равна `1`. Значит, `A + B = 1`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2018-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2018_team_olympiad_juniors_problem_6.md.",
+      "Source file noted by card: work/kolm/archive/2018/extracted/kolm22/komol22.pdf.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Juniors, Problem 6."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass.",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "id": "kolmogorov-2008-team-olympiad-juniors-problem-5",
+  "title": "????? ??????????? 2008: Team Olympiad, Juniors Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "cycle"
+    ],
+    "methods": [
+      "minimal_counterexample",
+      "local_recoloring"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "coloring"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "coloring"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "graph-coloring",
+      "regular-graph",
+      "cycles",
+      "friendship-graph",
+      "contradiction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В парламенте 2008 депутатов. Каждый состоит ровно в одной из трех фракций, и у каждого есть ровно два друга. Если два депутата дружат, то они состоят в разных фракциях. Докажите, что найдутся две фракции, суммарное число депутатов в которых не меньше числа депутатов в третьей.",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-team-olympiad-juniors-problem-5",
+      "text": "В условии граф не назван напрямую, но официальное решение существенно переводит задачу в 3-раскрашенный граф дружбы, использует 2-регулярность и разложение на циклы.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "В официальном решении депутаты становятся вершинами графа, дружбы — ребрами, а принадлежность к фракциям — 3-раскраской вершин. Так как у каждого ровно два друга, граф 2-регулярен, то есть состоит из циклов.\n\nПоскольку соседние вершины имеют разные цвета, каждый цикл должен быть раскрашен в три цвета по кругу. Значит, длина каждого цикла делится на 3. Тогда общее число вершин графа также должно делиться на 3.\n\nНо `2008` на 3 не делится. Полученное противоречие показывает, что исходная конфигурация невозможна, а значит требуемое утверждение верно.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "minimal_counterexample",
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "complete_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "minimal_counterexample",
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_team_olympiad_juniors_problem_5.md.",
+      "Source file noted by card: work/kolm/text/2008/komol12.txt.",
+      "Source page noted by card: 6.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Team Olympiad, Juniors, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

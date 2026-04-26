@@ -1,0 +1,132 @@
+{
+  "id": "kolmogorov-2005-team-olympiad-juniors-problem-8",
+  "title": "????? ??????????? 2005: Team Olympiad, Juniors Problem 8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "spanning_tree",
+      "degree"
+    ],
+    "methods": [],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree",
+      "parity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2005",
+      "graph",
+      "spanning tree",
+      "parity",
+      "even degree",
+      "exchange graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Известно, что каждая вершина графа с четным числом вершин имеет четную степень. Докажите, что количество остовных деревьев в этом графе четно.\n\nОстовное дерево понимается как подграф, содержащий все вершины исходного графа и являющийся деревом.",
+        "source_id": "src-kolmogorov-2005-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "tree",
+          "spanning_tree",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2005-team-olympiad-juniors-problem-8",
+      "text": "Граф прямо присутствует в условии, а официальное решение строит еще один граф на множестве остовных деревьев и использует четность степеней и обмен ребер между деревьями.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Пусть у графа `G` ровно `2k` вершин. Построим вспомогательный граф `H`, вершинами которого будут все остовные деревья графа `G`. Два остовных дерева `T1` и `T2` соединим ребром тогда и только тогда, когда они отличаются заменой одного ребра.\n\nРассмотрим фиксированное остовное дерево `T` и ребро `e` этого дерева. После удаления `e` дерево распадается на две компоненты `U` и `V`. Так как степени всех вершин графа `G` четны, число ребер графа `G`, соединяющих `U` и `V`, четно. Одним из них является `e`, поэтому других ребер между `U` и `V` нечетное число. Заменяя `e` на любое из этих ребер, получаем остовные деревья, соседние с `T` в графе `H`.\n\nТо же верно для каждого ребра дерева `T`. В самом дереве `T` число ребер равно `2k-1`, то есть оно нечетно. Значит, степень вершины `T` в графе `H` тоже нечетна.\n\nСледовательно, в графе `H` каждая вершина имеет нечетную степень. По лемме о рукопожатиях число вершин такого графа четно. Но вершины `H` и есть остовные деревья графа `G`, поэтому их количество четно.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "tree",
+        "spanning_tree",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2005-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2005_team_olympiad_juniors_problem_8.md.",
+      "Source file noted by card: work/kolm/text/2005/komolsol.txt.",
+      "Source page noted by card: junior team solutions, problem 8.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Juniors, Problem 8."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "id": "kolmogorov-2004-round1-higher-league-problem-3",
+  "title": "????? ??????????? 2004: Round 1, Higher League Problem 3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree"
+    ],
+    "methods": [
+      "delete_to_simplify",
+      "greedy_ordering"
+    ],
+    "transformations": [],
+    "goal": [
+      "construction"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectivity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2004",
+      "graph",
+      "tree",
+      "reconstruction",
+      "connectivity"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Саша нарисовал дерево, в котором нет вершин степени 2. Для каждой вершины он отдельно\nнарисовал граф, получающийся после удаления этой вершины вместе со всеми инцидентными ей\nребрами, и передал все эти рисунки Игорю.\n\nДокажите, что по этим рисункам Игорь может восстановить исходное дерево.",
+        "source_id": "src-kolmogorov-2004-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2004-round1-higher-league-problem-3",
+      "text": "В условии явно дано дерево и операции удаления вершины из графа; официальное решение\nиспользует структурные свойства деревьев, листьев и компонент связности.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "В решении выделяются рисунки, на которых получился связный граф. Это в точности те случаи,\nкогда была удалена висячая вершина. Их общая часть восстанавливает дерево после удаления\nвсех листьев.\n\nЗатем вводится периферийная вершина: вершина исходного дерева, у которой все соседи,\nкроме одного, висячие. Такие вершины распознаются по рисункам однозначно, а число\nприкрепленных к ним листьев читается из набора компонент.\n\nПосле этого дерево восстанавливается рекурсивно: по восстановленному \"скелету\" без листьев\nпоследовательно возвращаются все периферийные вершины и их висячие соседи. Так Игорь\nоднозначно восстанавливает исходное дерево.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "delete_to_simplify",
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "delete_to_simplify",
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2004-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2004_round1_higher_league_problem_3.md.",
+      "Source file noted by card: work/kolm/text/2004/tur1sol.txt.",
+      "Source page noted by card: round 1 higher league, problem 3.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 1, Higher League, Problem 3."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

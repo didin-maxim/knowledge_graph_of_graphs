@@ -1,0 +1,156 @@
+{
+  "id": "benjamini-tzalik-shortest-paths-bound",
+  "title": "Benjamini--Tzalik bound on the number of shortest paths",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "en",
+  "authors": [
+    {
+      "name": "Itai Benjamini",
+      "status": "source_verified"
+    },
+    {
+      "name": "Elad Tzalik",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "multigraph",
+      "shortest_path",
+      "layered_graph",
+      "degree"
+    ],
+    "methods": [
+      "bfs_layering",
+      "cauchy_schwarz",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "prune_to_shortest_path_subgraph"
+    ],
+    "goal": [
+      "upper_bound_number_of_shortest_paths"
+    ],
+    "auxiliary_graph_type": [
+      "layered_multigraph"
+    ],
+    "invariants": [
+      "maximum_degree",
+      "distance",
+      "path_count"
+    ],
+    "keywords": [
+      "benjamini_tzalik",
+      "shortest_paths",
+      "bounded_degree",
+      "2_delta_over_2_power_t"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Let two vertices of a graph have distance t, and suppose all degrees are bounded by Delta. Then the number of shortest paths between the two vertices is at most 2*(Delta/2)^t.",
+        "source_id": "src-benjamini-tzalik-shortest-paths",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Let two vertices of a graph have distance t, and suppose all degrees are bounded by Delta. Then the number of shortest paths between the two vertices is at most 2*(Delta/2)^t.",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-layered-cauchy-schwarz",
+      "title": "Layer shortest paths and apply Cauchy--Schwarz",
+      "text": "Keep only edges that lie on shortest paths, split the graph into distance layers, and propagate a weighted square-sum bound across consecutive layers.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-paper-bound",
+      "title": "Compressed paper proof",
+      "text": "After deleting all edges and vertices outside shortest x-y paths, the graph becomes layered by distance from x. If p(v) is the number of shortest paths from x to v, each transition between two consecutive layers is bounded by Cauchy--Schwarz and by the degree constraint. Iterating the layer inequality gives at most 2*(Delta/2)^t shortest x-y paths. The extremal construction uses two internally disjoint length-t chains with Delta/2 parallel choices at each step.",
+      "idea_ids": [
+        "idea-layered-cauchy-schwarz"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree",
+        "path",
+        "multigraph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 8,
+    "comment": "Research theorem used as the exact source of a Kolmogorov Cup problem.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bfs_layering",
+        "cauchy_schwarz"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-benjamini-tzalik-shortest-paths",
+      "role": "original_source",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Added to make the original source cited by the Kolmogorov Cup 2024 problem searchable as a theorem card."
+    ],
+    "relations_status": "deep_done"
+  }
+}

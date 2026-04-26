@@ -1,0 +1,125 @@
+{
+  "id": "fyum-2009-tur4b-p2",
+  "title": "FYUM 2009, Fourth tour (b), Problem 2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "transitive_tournament",
+      "two_edge_coloring"
+    ],
+    "methods": [
+      "longest_path_argument",
+      "pigeonhole_principle"
+    ],
+    "transformations": [
+      "encode_vertex_by_two_path_lengths"
+    ],
+    "goal": [
+      "force_monochromatic_directed_path"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "distinct_length_pairs"
+    ],
+    "keywords": [
+      "acyclic_tournament",
+      "edge_coloring",
+      "fyum",
+      "fyum-2009-tur4b-p2",
+      "ghrv_style_colored_tournament",
+      "monochromatic_path"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Пусть $G$ -- полный ориентированный граф без циклов на $n^2+1$ вершине. \n\nЕго ребра раскрашены в два цвета. Докажите, что найдется одноцветный путь,\n\nпроходящий по $n$ ребрам.",
+        "source_id": "src-fyum-2009-tur4b-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-transitive-tournament",
+        "text": "Let T be an acyclic tournament on n^2+1 vertices. If every edge of T is colored red or blue, then T contains a monochromatic directed path with n edges.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "After ordering the vertices linearly, assign to each vertex the lengths of the longest red and blue directed paths starting there. Two vertices cannot have the same pair of values, otherwise one of the paths could be extended. Since there are n^2+1 vertices, one of the parameters must reach n, giving a monochromatic directed path of length n.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked FYUM archive card 2009_tur4b_problem2.md; stage Fourth tour (b).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool",
+    "tournaments"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2009-tur4b-p2-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a complete acyclic directed graph with a 2-color edge coloring.",
+      "Original-source candidate: Gallai-Hasse-Roy-Vitaver style longest-path argument for colored transitive tournaments. Author note: theorem family of Tibor Gallai, Magnus Hasse, Bernard Roy, and Leslie G. Valiant/Vitaver tradition. Link: https://en.wikipedia.org/wiki/Gallai%E2%80%93Hasse%E2%80%93Roy%E2%80%93Vitaver_theorem",
+      "Original-source note: The FYUM proof is the standard pair-labeling argument: each vertex gets the lengths of the longest red and blue directed paths starting there, and equal labels are impossible. This is the same method as the classical Gallai-Roy type proof and also an Erdos-Szekeres style monotone-sequence argument in disguise, so the transfer is direct in method."
+    ],
+    "relations_status": "deep_done"
+  }
+}

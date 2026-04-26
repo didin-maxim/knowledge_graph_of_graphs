@@ -1,0 +1,166 @@
+{
+  "id": "usamo-2021-p2-planar-national-park-turning-walk",
+  "title": "Прогулка по 3-регулярному планарному графу, USAMO 2021 P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "planar_graph",
+      "cubic_graph",
+      "closed_walk",
+      "rotation_system"
+    ],
+    "methods": [
+      "local_transition_rule",
+      "state_counting",
+      "explicit_construction"
+    ],
+    "transformations": [
+      "trails_to_planar_cubic_graph"
+    ],
+    "goal": [
+      "maximize_visits_to_vertex"
+    ],
+    "auxiliary_graph_type": [
+      "cubic_planar_graph"
+    ],
+    "invariants": [
+      "alternating_left_right_rule",
+      "deterministic_local_behavior"
+    ],
+    "keywords": [
+      "usamo_2021_p2",
+      "cubic_planar_walk",
+      "alternating_turns"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Planar National Park",
+        "text": "Парк состоит из нескольких троп, пересекающихся только в junctions. Каждая тропа соединяет две разные junctions, в каждой junction сходятся ровно три тропы, и кратных троп между двумя junctions нет. Посетительница выбирает стартовую junction и первую тропу, а затем в каждой следующей junction поочерёдно поворачивает налево, направо, налево, направо и так далее, пока не вернётся в стартовую junction. Какое наибольшее число раз она может войти в одну и ту же junction?",
+        "source_id": "src-usamo-2021-p2-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть дан простой связный кубический планарный граф с фиксированным cyclic order рёбер вокруг каждой вершины. Рассматривается замкнутый обход, который после стартового ребра в каждой вершине использует правило чередующихся поворотов left, right, left, .... Требуется найти максимальное число входов в одну вершину.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree",
+          "connected_graph",
+          "path"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-three-local-states-at-a-cubic-vertex",
+      "title": "У кубической вершины слишком мало локальных состояний",
+      "text": "Правило обхода полностью задаётся локальным выбором пары соседних полурёбер в вершине. В вершине степени 3 таких конфигураций только три, поэтому четвёртый вход заставил бы повторить уже встречавшееся локальное состояние.",
+      "tags": [
+        "planar_graphs"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-pentagonal-prism-construction",
+      "title": "Пятиугольная призма достигает оценки",
+      "text": "В графе пятиугольной призмы можно выбрать старт и первое ребро так, чтобы alternating-turn walk трижды входил в одну и ту же вершину; это показывает точность верхней оценки.",
+      "tags": [
+        "extremal_choice",
+        "planar_graphs"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-local-state-bound-and-prism",
+      "title": "Локальная детерминированность и пятиугольная призма",
+      "text": "Ответ равен `3`. Верхняя оценка идёт из локальной структуры кубической вершины. Когда обход входит в вершину, он использует один из трёх incident trails как входной, а затем по правилу left/right обязан выйти по одной из двух остальных. Для фиксированной planar embedding это эквивалентно выбору одного из трёх локальных переходов через вершину; после повторения такого локального состояния дальнейшее движение уже периодически повторяет тот же участок обхода, так что четвёртый существенно новый вход невозможен. Поэтому ни в одну вершину нельзя войти более трёх раз. Точность достигается на pentagonal prism: Eric Shen explicitly records that this construction gives a closed alternating-turn walk with a vertex visited three times.",
+      "idea_ids": [
+        "idea-three-local-states-at-a-cubic-vertex",
+        "idea-pentagonal-prism-construction"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph",
+        "degree",
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Короткая, но нетривиальная задача на planarity и детерминированный обход по локальному правилу.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_transition_rule",
+        "explicit_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2021-p2-aops-wiki",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2021-eric-shen-pdf",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Верхняя оценка в Eric Shen записана очень кратко; в карточке зафиксирована естественная локально-графовая интерпретация."
+    ],
+    "relations_status": "deep_done"
+  }
+}

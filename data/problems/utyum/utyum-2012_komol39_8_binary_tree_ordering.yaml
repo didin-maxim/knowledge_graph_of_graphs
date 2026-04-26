@@ -1,0 +1,115 @@
+{
+  "id": "utyum-2012_komol39_8_binary_tree_ordering",
+  "title": "UTYUM 2012, Team Mathematical Olympiad, start group, 8. Can a bounded-degree acquaintance graph be arranged in a row?",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "explicit_counterexample",
+      "tree_counting"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2012_komol39_8_binary_tree_ordering",
+      "utyum_2012"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В лагере 20122012 детей, у каждого не более трех друзей.\n\nВсегда ли можно их построить в ряд так, чтобы между любыми двумя друзьями стояло не более чем 2012 человек?",
+        "source_id": "src-utyum-2012_komol39_8_binary_tree_ordering-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан граф на 20122012 вершинах, степень каждой вершины не превосходит 3. Можно ли упорядочить его вершины в ряд так, чтобы между любыми двумя смежными вершинами стояло не более 2012 других вершин?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Ответ: не всегда.\n\nВ официальном решении строится контрпример. Берется граф знакомств в виде большого двоичного дерева:\nодин ребенок знаком с двумя, каждый из них — еще с двумя новыми, и так далее, пока не будут охвачены все дети.\nУ каждого ребенка в таком примере не более трех друзей, так что условие выполнено.\n\nОднако на k-м уровне такого дерева уже 2^k детей. Если пытаться расположить всех в ряд так, чтобы любые друзья были\nна расстоянии не более 2012, то каждый следующий уровень должен располагаться сравнительно близко к предыдущему.\nПри достаточно большом числе уровней это невозможно: крайние ветви разрастаются слишком быстро, и хотя бы одна пара\nсоседних по дереву вершин неизбежно окажется в ряду слишком далеко друг от друга.\n\nЗначит, требуемое расположение существует не всегда.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Mathematical Olympiad, start group.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "trees"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2012_komol39_8_binary_tree_ordering-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2012_komol39_8_binary_tree_ordering.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: medium.",
+      "Задача графовая уже по формулировке, а официальное решение строит специальный граф знакомств — двоичное дерево — как контрпример к требуемому расположению."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

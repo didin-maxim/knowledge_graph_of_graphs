@@ -1,0 +1,99 @@
+{
+  "id": "utyum-2001_olymp8_6_countries_route",
+  "title": "UTYUM 2001, Personal Olympiad, 8th grade, 6. Маршрут по 19 странам",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "graph_modeling",
+      "parity_argument"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2001_olymp8_6_countries_route",
+      "utyum_2001"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Квадратный материк разделен на 19 стран в форме выпуклых многоугольников, причем нет точек, в которых сходились бы границы четырех или больше стран.\n\nИз всяких трех границ, сходящихся в одной точке, одна закрыта, а две открыты для проезда.\n\nДокажите, что невозможно объехать все эти страны, побывав в каждой по одному разу и вернуться в исходную страну.",
+        "source_id": "src-utyum-2001_olymp8_6_countries_route-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Назовем вершиной точку, где сходятся границы трех стран. По условию из каждой вершины выходит ровно одна закрытая граница.\n\nПредположим, что требуемый замкнутый маршрут существует. Он не пересекает закрытых границ, поэтому каждая закрытая граница либо целиком лежит внутри маршрута, либо целиком снаружи.\n\nТогда все вершины, находящиеся внутри маршрута, разбиваются на пары вершин, соединенных закрытыми границами. Значит, число внутренних вершин четно; обозначим его через k.\n\nМысленно заменим участки границ между вершинами нитями и разрежем каждую такую нить пополам. Из внутренних вершин выходит 3k половинок нитей. Из них ровно 19 ведут наружу, по одной в каждую из 19 стран, через которые маршрут проходит по одному разу.\n\nСледовательно, половинок нитей, получившихся из нитей, целиком лежащих внутри маршрута, будет 3k - 19. Но это число нечетно, тогда как такие половинки должны возникать парами.\n\nПолученное противоречие показывает, что описанный маршрут невозможен.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Personal Olympiad, 8th grade.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "planar_graphs"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2001_olymp8_6_countries_route-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2001_olymp8_6_countries_route.yaml.",
+      "Graph role: essential_in_official_solution.",
+      "Confidence: high.",
+      "В официальном решении существенна графовая модель разбиения материка: вершины — точки встречи трех границ, ребра — участки границ между вершинами. Дальше используется четность в плоском графе после разрезания ребер."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "graph_theory_absent_reason": "Graph language is essential in the official solution, but no separate self-contained graph-theory reformulation has been added yet."
+  }
+}

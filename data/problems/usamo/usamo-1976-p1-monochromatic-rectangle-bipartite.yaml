@@ -1,0 +1,145 @@
+{
+  "id": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+  "title": "Монохроматический прямоугольник на доске 4x7, USAMO 1976 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_coloring",
+      "complete_bipartite_graph",
+      "monochromatic_rectangle",
+      "four_cycle"
+    ],
+    "methods": [
+      "double_counting",
+      "pigeonhole_principle",
+      "bipartite_graph_modeling"
+    ],
+    "transformations": [
+      "board_to_edge_coloring_of_bipartite_graph"
+    ],
+    "goal": [
+      "force_monochromatic_c4"
+    ],
+    "auxiliary_graph_type": [
+      "complete_bipartite_graph"
+    ],
+    "invariants": [
+      "same_color_column_pairs"
+    ],
+    "keywords": [
+      "usamo_1976_p1",
+      "monochromatic_rectangle",
+      "bipartite_coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Прямоугольник одного цвета",
+        "text": "а) Каждая клетка доски `4x7` окрашена в чёрный или белый цвет. Докажите, что найдётся прямоугольник, стороны которого идут по линиям сетки, а четыре угловые клетки имеют один и тот же цвет. б) Постройте раскраску доски `4x6`, для которой такого прямоугольника нет.",
+        "source_id": "src-usamo-1976-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим двухцветную раскраску рёбер полного двудольного графа `K_{4,7}`, где левая доля — строки, правая — столбцы, а цвет ребра задаётся цветом клетки. Тогда монохроматический прямоугольник на доске — это одноцветный цикл `C_4`.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-same-color-column-pairs",
+      "title": "Считать одноцветные пары столбцов по строкам",
+      "text": "В каждой строке из 7 клеток хотя бы 4 имеют один цвет, значит в этой строке есть хотя бы `C(4,2)=6` одноцветных пар столбцов. Если суммарно таких пар слишком много, две строки дадут одну и ту же пару столбцов в одном цвете.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-column-pair-double-counting",
+      "title": "Подсчёт по парам столбцов",
+      "text": "Для каждой строки посмотрим на пары столбцов, в которых клетки этой строки имеют одинаковый цвет. В строке длины `7` хотя бы 4 клетки одного цвета, поэтому таких пар не меньше `C(4,2)=6`. На четырёх строках получаем не меньше `24` одноцветных пар вида `(строка, пара столбцов, цвет)`. Но самих пар столбцов всего `C(7,2)=21`. Значит найдутся две разные строки и одна и та же пара столбцов, в которых цвет совпадает. Четыре соответствующие клетки образуют искомый прямоугольник. Для части б) достаточно взять стандартную раскраску `4x6` без одноцветного `C_4`; в языке графов это двухцветная раскраска рёбер `K_{4,6}` без одноцветного 4-цикла.",
+      "idea_ids": [
+        "idea-count-same-color-column-pairs"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 5,
+    "comment": "Ранняя USAMO-задача с очень чистым двудольным графовым переводом.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "coloring",
+    "ramsey_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "bipartite_graph_modeling"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-1976-aops-wiki",
+      "role": "community_wiki_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "id": "fyum-2010-tur2a-p1",
+  "title": "FYUM 2010, Second tour (a), Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "dominating_sets",
+      "auxiliary_graph"
+    ],
+    "methods": [
+      "parity_argument"
+    ],
+    "transformations": [
+      "build_auxiliary_graph_on_nondominating_sets"
+    ],
+    "goal": [
+      "prove_odd_count_of_dominating_sets"
+    ],
+    "auxiliary_graph_type": [
+      "auxiliary_graph"
+    ],
+    "invariants": [
+      "odd_degrees_in_auxiliary_graph"
+    ],
+    "keywords": [
+      "auxiliary_graph",
+      "dominating_set",
+      "dominating_sets_are_odd",
+      "fyum",
+      "fyum-2010-tur2a-p1",
+      "parity"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Множество $S$ вершин графа называется {\\it доминирующим}, если\n\nлюбая вершина графа, не входящая в $S$, смежна с какой-то вершиной\n\nиз $S$. Существует ли граф с четным числом доминирующих множеств?",
+        "source_id": "src-fyum-2010-tur2a-p1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "dominating_set"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Consider all nonempty non-dominating vertex sets and build an auxiliary graph on them. Two such sets are adjacent when they are disjoint and there are no edges between them in the original graph. For every vertex of this auxiliary graph the degree is odd; this is checked directly from the neighborhood closure of the corresponding set. Hence the auxiliary graph has an even number of vertices, so the number of nonempty non-dominating sets is even. Therefore the number of dominating sets cannot be even.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Imported from the checked FYUM archive card 2010_tur2a_problem1.md; stage Second tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2010-tur2a-p1-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses dominating sets in a graph.",
+      "Original-source candidate: The number of dominating sets of a finite graph is odd. Author note: Andries Brouwer; later proofs by Peter Csorba and Lex Schrijver are also noted in the source. Link: https://aeb.win.tue.nl/preprints/domin2.pdf",
+      "Original-source note: The FYUM problem is essentially the contradiction form of Brouwer's oddness theorem for dominating sets. The auxiliary-graph parity argument transfers directly, without any serious modification."
+    ],
+    "relations_status": "deep_done"
+  }
+}

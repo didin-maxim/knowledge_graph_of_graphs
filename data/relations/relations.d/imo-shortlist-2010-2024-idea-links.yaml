@@ -69,7 +69,7 @@
       "forward_text": "Both convert a geometric-looking statement into an auxiliary graph and use extremal restrictions on crossings/triangles to force a large well-behaved subfamily.",
       "backward_text": "C7's independent set of noncrossing chords is an intersection-graph analogue of the extremal subgraph reasoning in IMO 1992 P3.",
       "anchors": {
-        "from_solution_id": "sol-graph-review",
+        "from_solution_id": "sol-aops-six-vertex-ramsey",
         "to_solution_id": "sol-official-compressed"
       },
       "status": "needs_human_review",
@@ -156,8 +156,8 @@
       "to": "imo-2019-c3-coin-process-digraph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions build a directed graph with one outgoing edge per state/index and then analyse its components by rays, sinks, or recursive copies.",
-      "backward_text": "The coin process is finite with a sink and recursive self-similarity; the sequence problem is infinite and decomposes into rays. The functional-digraph idea is common.",
+      "forward_text": "Both solutions begin by encoding the process as a one-out directed graph on states or indices. In IMO 2015 C5 this graph is then summarised by a bounded pool/potential, while IMO 2019 C3 exploits recursive copies of the finite state digraph.",
+      "backward_text": "The 2019 coin process is solved by explicit recursion on the state digraph, whereas IMO 2015 C5 compresses the same one-successor structure into an invariant on crossing arrows; the functional-digraph viewpoint is common.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -166,13 +166,28 @@
       "confidence": 0.82
     },
     {
+      "id": "rel-ferry-network-lemma-imo-2016-c6",
+      "from": "ferry-network-repartition-lemma",
+      "to": "imo-2016-c6-ferry-graph-dynamics",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The key local move in IMO 2016 C6 is exactly this lemma: when a cross-edge of a complete bipartite network is closed, the same vertices can be repartitioned so that the network survives.",
+      "backward_text": "The shortlist problem repeatedly applies this repartition lemma while enlarging the covered vertex set, and finally uses the cut condition once more to create a universal vertex.",
+      "anchors": {
+        "from_solution_id": "sol-repartition-network",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.95
+    },
+    {
       "id": "rel-imo-2016-c6-imo-2019-c5-graph-dynamics",
       "from": "imo-2016-c6-ferry-graph-dynamics",
       "to": "imo-2019-c5-social-network-refriending",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions analyse a graph operation by choosing an extremal local parameter and proving the operation must improve it or reduce the graph.",
-      "backward_text": "The ferry problem increases common neighbourhoods until a universal vertex appears; the social-network problem decreases edges while preserving enough degree structure.",
+      "forward_text": "Both solutions study a local graph operation through a preserved structural invariant rather than by brute force. IMO 2016 C6 maintains a complete bipartite network under edge updates, while IMO 2019 C5 keeps enough connectivity/degree structure while reducing the edge set.",
+      "backward_text": "The ferry problem is about growing a robust network until a universal vertex appears; the social-network problem is about shrinking the graph safely. The shared motif is dynamic graph control by a well-chosen invariant.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -186,8 +201,8 @@
       "to": "imo-2016-c6-ferry-graph-dynamics",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems look for a universal vertex in a social/route graph from local conditions and use extremal growth of a clique or common neighbourhood.",
-      "backward_text": "The ferry dynamics problem reaches a universal island by operations, while the VOSH acquaintance problem forces one directly from a local condition.",
+      "forward_text": "Both problems force a universal vertex from a purely local hypothesis on how every cut or every medium-sized set is seen by the graph. The VOSH problem grows a clique, while IMO 2016 C6 grows a complete bipartite network and then converts it into a universal vertex.",
+      "backward_text": "The acquaintance problem proves universality statically; the ferry problem reaches it dynamically through repeated edge updates. In both cases the hidden engine is a robust highly connected core that can be enlarged.",
       "anchors": {
         "from_solution_id": "sol-clique-extension",
         "to_solution_id": "sol-official-compressed"

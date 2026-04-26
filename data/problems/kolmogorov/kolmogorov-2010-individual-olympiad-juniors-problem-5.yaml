@@ -1,0 +1,143 @@
+{
+  "id": "kolmogorov-2010-individual-olympiad-juniors-problem-5",
+  "title": "????? ??????????? 2010: Individual Olympiad, Juniors Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "cycle",
+      "path",
+      "hamiltonian_cycle"
+    ],
+    "methods": [
+      "extremal_choice",
+      "greedy_ordering"
+    ],
+    "transformations": [],
+    "goal": [
+      "construction"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2010",
+      "graph",
+      "road-graph",
+      "shortest-path",
+      "hamiltonian-cycle",
+      "extremal-construction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране 100 городов и 1000 дорог; каждая дорога соединяет ровно два города. Известно, что из любого города можно добраться в любой другой не более чем за 8 часов.\n\nПремьер-министр хочет объехать все города и вернуться в исходный. За какое минимальное время он гарантированно может это сделать?",
+        "source_id": "src-kolmogorov-2010-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle",
+          "path",
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2010-individual-olympiad-juniors-problem-5",
+      "text": "В условии прямо задан дорожный граф на городах, а официальное решение использует именно граф городов и дорог, кратчайшие пути и цикл обхода по вершинам.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: `99 * 8 = 792` часа.\n\nРассматривается граф городов и дорог. Поскольку граф на 100 вершинах и 1000 ребрах не является полным, найдутся два города, кратчайший путь между которыми проходит через промежуточный город. Пусть, например, кратчайший путь от `x1` к `x3` идет через `x2`.\n\nТогда можно построить цикл `x1 -> x2 -> x3 -> ... -> x100`, в котором каждый переход требует не более 8 часов. Всего таких переходов 99, значит, весь объезд можно гарантировать за `99 * 8` часов.\n\nОценка точна: если все города соединены с одним центральным городом дорогами по 4 часа, а между остальными парами дорог либо нет, либо они имеют длину 8 часов, то лучше гарантированно сделать нельзя.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice",
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "cycle",
+        "path",
+        "hamiltonian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "hamiltonian_cycles",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice",
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2010-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2010_individual_olympiad_juniors_problem_5.md.",
+      "Source file noted by card: work/kolm/archive/2010/extracted/lichol14.doc.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Individual Olympiad, Juniors, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

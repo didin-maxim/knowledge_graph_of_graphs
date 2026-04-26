@@ -1,0 +1,109 @@
+{
+  "id": "fyum-2009-tur2a-p4",
+  "title": "FYUM 2009, Second tour (a), Problem 4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "layered_clique_graph",
+      "proper_coloring"
+    ],
+    "methods": [
+      "minimal_counterexample",
+      "two_color_subgraph_analysis"
+    ],
+    "transformations": [
+      "recoloring"
+    ],
+    "goal": [
+      "color_layers_consistently"
+    ],
+    "auxiliary_graph_type": [
+      "two_color_subgraph"
+    ],
+    "invariants": [
+      "minimum_bad_interlayer_edges"
+    ],
+    "keywords": [
+      "fyum",
+      "fyum-2009-tur2a-p4",
+      "graph_coloring",
+      "important_cycles",
+      "layered_cliques",
+      "layers",
+      "odd_cycle"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Вершины графа $G$ разбиты на несколько $n$-клик, называемых {\\it\n\nслоями}. Простой цикл этого графа будем называть {\\it важным}, если\n\nэтот цикл содержит не более двух вершин из каждого слоя. Оказалось,\n\nчто каждое ребро, соединяющее вершины из разных слоев, покрыто не\n\nболее, чем $n-2$ важными нечетными циклами. Докажите, что вершины\n\nэтого графа можно раскрасить в $n$ цветов правильным образом.",
+        "source_id": "src-fyum-2009-tur2a-p4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "clique",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "Choose a proper coloring with the minimum possible number of bad inter-layer edges. If a bad edge remains, look at the two-color subgraph relevant to its endpoints. Every cycle in that subgraph is important. The hypothesis implies that cycles through the chosen bad edge cannot be odd, so the subgraph is bipartite. Swapping the two colors on one component decreases the number of bad edges, a contradiction. Hence no bad edges remain and the graph is properly colored with n colors.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Imported from the checked FYUM archive card 2009_tur2a_problem4.md; stage Second tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2009-tur2a-p4-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a graph whose vertices are split into layers."
+    ],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "id": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
+  "title": "????? ??????????? 2010: Individual Olympiad, Seniors Problem 4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "path",
+      "tournament"
+    ],
+    "methods": [
+      "double_counting",
+      "longest_path"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "counting"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "edge_count"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2010",
+      "directed-graph",
+      "tournament",
+      "hamiltonian-path",
+      "path-merging",
+      "counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Каждые два города страны Гельвии соединены односторонним авиарейсом. Страна разбита на две республики с общей столицей: каждый город, кроме столицы, принадлежит ровно одной из республик, а столица принадлежит обеим.\n\nПусть `N` — число маршрутов, проходящих по всем городам всей страны ровно по одному разу и не возвращающихся в исходный город. Аналогично определены числа `N1` и `N2` для двух республик.\n\nДокажите, что `N <= N1 * N2`.",
+        "source_id": "src-kolmogorov-2010-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "path",
+          "tournament"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2010-individual-olympiad-seniors-problem-4",
+      "text": "В официальном решении задача целиком переводится на язык ориентированных графов, гамильтоновых путей и склейки путей в турнире. Эта графовая модель является основной, а не факультативной.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение строит ориентированный граф `T`, вершины которого соответствуют городам, а дуги — авиарейсам. Пусть `w` — столица, а `A` и `B` — подграфы, соответствующие двум республикам.\n\nДоказывается лемма о склейке двух непересекающихся ориентированных путей `P` и `Q` в полном ориентированном графе: можно построить путь `R` на вершинах этих двух путей, в котором вершины `P` и `Q` сохраняют свой порядок.\n\nТеперь берутся любые гамильтоновы пути `P` в графе `A` и `Q` в графе `B`. Каждый из них проходит через столицу `w`, поэтому их можно записать в виде `P = P1 w P2` и `Q = Q1 w Q2`. По лемме существуют склейки `R1` для `P1` и `Q1` и `R2` для `P2` и `Q2`, после чего путь `R = R1 w R2` становится гамильтоновым путем во всей стране.\n\nЗначит, каждому гамильтонову пути во всей стране соответствует пара гамильтоновых путей в республиках, и число глобальных маршрутов не превосходит `N1 * N2`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "longest_path"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "directed_graph",
+        "path",
+        "tournament"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "hamiltonian_cycles",
+    "olympiad_tool",
+    "tournaments"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "longest_path"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2010-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2010_individual_olympiad_seniors_problem_4.md.",
+      "Source file noted by card: work/kolm/archive/2010/extracted/lichol14.doc.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 4."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

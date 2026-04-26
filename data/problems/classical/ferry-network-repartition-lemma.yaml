@@ -1,0 +1,143 @@
+{
+  "id": "ferry-network-repartition-lemma",
+  "title": "Переразбиение полной двудольной сети после закрытия поперечного ребра",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "bipartite_graph",
+      "local_edge_operation"
+    ],
+    "methods": [
+      "invariant_maintenance",
+      "repartition_argument"
+    ],
+    "transformations": [
+      "close_cross_edge",
+      "swap_bipartition"
+    ],
+    "goal": [
+      "preserve_complete_bipartite_structure"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "complete_bipartite_network"
+    ],
+    "keywords": [
+      "ferry_operation",
+      "complete_bipartite_invariant",
+      "repartition"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть вершины простого графа разбиты на две непустые доли \\(A\\) и \\(B\\), причём каждая вершина из \\(A\\) соединена с каждой вершиной из \\(B\\). Выберем ребро \\(ab\\) с \\(a\\in A\\), \\(b\\in B\\), удалим его и затем для каждой вершины, смежной ровно с одной из вершин \\(a,b\\), добавим ребро к другой из них. Докажите, что после этой операции те же вершины можно снова разбить на две непустые доли так, чтобы все поперечные рёбра присутствовали.",
+        "source_id": "src-imo-2016-shortlist",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "text": "Пусть в простом графе выбраны две непустые доли \\(A\\) и \\(B\\), причём каждое ребро между вершиной из \\(A\\) и вершиной из \\(B\\) присутствует. Выбирается поперечное ребро \\(ab\\) с \\(a\\in A\\), \\(b\\in B\\); оно удаляется, а затем каждая вершина, смежная ровно с одной из \\(a,b\\), соединяется и с другой. Докажите, что после операции те же вершины можно разбить на две непустые доли, между которыми снова присутствуют все поперечные рёбра.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-original-1"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pair-vs-rest",
+      "title": "Новые доли: закрытая пара против остальных",
+      "text": "После закрытия поперечного ребра \\(ab\\) естественно объявить одной долей пару \\(\\{a,b\\}\\), а второй долей — все остальные вершины. Остаётся проверить, что каждая из них стала смежной с обоими концами закрытого ребра.",
+      "tags": [
+        "connectivity",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-repartition-network",
+      "title": "Пара закрытого ребра и остальные вершины",
+      "text": "После операции положим\n\\[\nA'=\\{a,b\\},\\qquad B'=(A\\cup B)\\setminus\\{a,b\\}.\n\\]\nНужно доказать, что каждая вершина из \\(B'\\) смежна и с \\(a\\), и с \\(b\\).\n\nПусть сначала \\(x\\in A\\setminus\\{a\\}\\). До операции вершина \\(x\\) была смежна с \\(b\\), потому что все поперечные рёбра между \\(A\\) и \\(B\\) присутствовали. Если \\(x\\) уже была смежна с \\(a\\), то ничего доказывать не нужно. Если же нет, то до операции \\(x\\) была смежна ровно с одной из вершин \\(a,b\\), а именно с \\(b\\); по правилу операции после удаления ребра \\(ab\\) добавляется ребро \\(xa\\). Значит, после операции \\(x\\) смежна и с \\(a\\), и с \\(b\\).\n\nСовершенно так же для любой вершины \\(y\\in B\\setminus\\{b\\}\\): до операции она была смежна с \\(a\\), а если не была смежна с \\(b\\), то после операции ребро \\(yb\\) добавляется. Поэтому и \\(y\\) после операции смежна с обоими вершинами \\(a\\) и \\(b\\).\n\nИтак, каждая вершина из \\(B'\\) смежна с обеими вершинами из \\(A'\\). Следовательно, новые доли \\(A'\\) и \\(B'\\) снова образуют полную двудольную сеть.",
+      "idea_ids": [
+        "idea-pair-vs-rest"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Короткая, но нетривиальная динамическая лемма: локальная операция сохраняет полную двудольную структуру после правильного переразбиения вершин.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "invariant_maintenance",
+        "repartition_argument"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2016-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

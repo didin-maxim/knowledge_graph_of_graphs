@@ -1,0 +1,140 @@
+{
+  "id": "kolmogorov-2006-round-2-first-junior-league-problem-8",
+  "title": "????? ??????????? 2006: Round 2, First Junior League Problem 8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "bipartite_graph"
+    ],
+    "methods": [
+      "extremal_choice"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2006",
+      "tree",
+      "grid-graph",
+      "bipartite-graph",
+      "extremal"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Из бесконечной шахматной доски по границам клеток вырезана связная фигура. В ней `n` черных клеток. Каково максимальное возможное количество белых клеток?",
+        "source_id": "src-kolmogorov-2006-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2006-round-2-first-junior-league-problem-8",
+      "text": "Граф не дан явно, но официальное решение строит дерево соседства клеток и именно через свойства этого дерева получает верхнюю оценку.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: `3n + 1`.\n\nВ официальном решении на клетках строят дерево: выбирают белую клетку в качестве корня, на следующий ярус помещают соседние с ней черные, затем соседние с ними белые клетки и так далее.\n\nИз корня может выходить не более 4 ребер, а из любой другой вершины дерева — не более 3. Так как цвета по ярусам чередуются, при `n` черных клетках число белых клеток не превосходит `3n + 1`.\n\nЭта оценка достигается на подходящей ветвящейся конструкции, поэтому максимум равен `3n + 1`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree",
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "matching",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2006-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2006_round_2_first_junior_league_problem_8.md.",
+      "Source file noted by card: work/kolm/text/2006/tur2_10sol.txt.",
+      "Source page noted by card: 4.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Round 2, First Junior League, Problem 8."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

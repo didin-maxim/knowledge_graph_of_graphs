@@ -1,0 +1,132 @@
+{
+  "id": "kolmogorov-2006-round-3-super-league-problem-3",
+  "title": "????? ??????????? 2006: Round 3, Super League Problem 3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "local_recoloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectivity",
+      "coloring"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2006",
+      "graph-coloring",
+      "induced-subgraph",
+      "recoloring",
+      "connectivity"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Пусть `A` — вершина графа, все вершины которого имеют степень 1000. Известно, что вершины графа можно правильно раскрасить в 1000 цветов. Докажите, что это можно сделать так, чтобы соседи вершины `A` были окрашены хотя бы в 500 различных цветов.",
+        "source_id": "src-kolmogorov-2006-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2006-round-3-super-league-problem-3",
+      "text": "Граф прямо присутствует в условии, а официальное решение основано на правильной раскраске, индуцированных подграфах, компонентах связности и перекраске по компонентам.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение идет от противного. Предполагают, что у соседей вершины `A` использовано не более 499 цветов, и фиксируют одну такую раскраску.\n\nДалее рассматривают индуцированные подграфы на двух выбранных цветах и анализируют их компоненты связности. Если компоненту можно локально перекрасить, не ухудшая правильность раскраски, то число цветов в окрестности `A` удается увеличить, что противоречит выбранности.\n\nВ итоге получается сильно ограниченная структура соответствующей компоненты: она должна быть объединением путей, и эти пути вынуждены проходить через слишком много специально выбранных соседей `A`. Подсчет и анализ степеней приводят к противоречию.\n\nСледовательно, существует правильная раскраска, в которой среди соседей `A` не менее 500 различных цветов.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2006-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2006_round_3_super_league_problem_3.md.",
+      "Source file noted by card: work/kolm/text/2006/tur3_10sol.txt.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 3, Super League, Problem 3."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

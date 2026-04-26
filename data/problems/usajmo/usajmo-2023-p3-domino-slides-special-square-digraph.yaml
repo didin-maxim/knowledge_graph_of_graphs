@@ -1,0 +1,180 @@
+{
+  "id": "usajmo-2023-p3-domino-slides-special-square-digraph",
+  "title": "Слайды домино и ориентированный граф особых клеток, USAJMO 2023 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Holden Mui",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "domino_tiling",
+      "odd_board",
+      "empty_square",
+      "special_square_digraph",
+      "tree_component"
+    ],
+    "methods": [
+      "directed_graph_modeling",
+      "parity_invariant",
+      "tree_counting",
+      "explicit_construction"
+    ],
+    "transformations": [
+      "domino_configuration_to_special_square_digraph"
+    ],
+    "goal": [
+      "maximize_kc"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph",
+      "tree"
+    ],
+    "invariants": [
+      "parity_class_of_empty_square",
+      "component_of_empty_square_is_tree"
+    ],
+    "keywords": [
+      "usajmo_2023_p3",
+      "domino_sliding",
+      "special_squares",
+      "tree_component"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Maximum Reachability of Domino Slides",
+        "text": "Рассмотрим доску `n x n` для нечётного положительного `n`. Максимальная grid-aligned configuration состоит из `(n^2-1)/2` домино `1x2` или `2x1`, покрывающих все клетки, кроме одной. Разрешено сдвинуть домино в пустую клетку, не поворачивая его; после этого снова получается максимальная конфигурация с другой пустой клеткой. Пусть `k(C)` — число различных максимальных конфигураций, достижимых из `C` последовательностью таких ходов. Найдите максимальное возможное значение `k(C)` в зависимости от `n`.",
+        "source_id": "src-usajmo-2023-p3-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Зафиксируем parity class пустой клетки и назовём special squares клетки той же чётности координат. Для каждой special square `s`, занятой домино, проведём ориентированное ребро из `s` в следующую special square, куда это домино указывает. Тогда конфигурация задаёт ориентированный граф на множестве special squares; компонента, содержащая пустую клетку, оказывается деревом, а `k(C)` равно числу его вершин. Следовательно, нужно максимизировать размер этого дерева.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "tree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-fixed-parity-class-of-hole",
+      "title": "Пустая клетка всё время остаётся в одном классе чётности",
+      "text": "После каждого сдвига новая пустая клетка отстоит от старой на `2` по строке или столбцу, так что имеет ту же parity class. Поэтому рассматривать нужно только special squares этого класса.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-empty-component-is-tree",
+      "title": "Компонента пустой клетки образует дерево",
+      "text": "В построенном digraph каждая special square имеет outdegree не больше `1`, а пустая клетка имеет outdegree `0`. Любой цикл был бы directed cycle, но тогда он не мог бы лежать в компоненте пустой клетки. Значит соответствующая weakly connected component ациклична и потому является деревом.",
+      "tags": [
+        "trees"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-kc-equals-number-of-tree-vertices",
+      "title": "`k(C)` равно числу вершин дерева достижимых special squares",
+      "text": "Перемещение домино просто меняет sink дерева: любой достижимый выбор пустой клетки соответствует выбору вершины дерева, после чего все стрелки ориентируются к ней. Поэтому число достижимых конфигураций совпадает с числом вершин компоненты.",
+      "tags": [
+        "trees"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-directed-graph-and-spanning-tree-bound",
+      "title": "Ориентированный граф special squares и максимум по spanning tree",
+      "text": "Рассмотрим special squares той же чётности координат, что и пустая клетка. Каждое домино, лежащее на такой клетке, естественно указывает на следующую special square в своём направлении; это задаёт ориентированный граф `G(C)`. Пусть `T` — weakly connected component, содержащая пустую клетку. Так как у каждой вершины outdegree не больше `1`, любой undirected cycle в `T` превращается в directed cycle: на цикле ровно столько рёбер, сколько вершин, и у каждой вершины может быть не более одного исходящего ребра. В компоненте с пустой клеткой такого directed cycle быть не может, поскольку пустая клетка имеет outdegree `0`, а в конечном функциональном графе слабая компонента содержит либо sink, либо directed cycle. Следовательно, `T` — дерево. Теперь любой ход домино соответствует изменению положения sink внутри этого дерева, а достижимые конфигурации получаются ровно выбором вершины `T` в качестве новой пустой клетки; значит `k(C)=|V(T)|`. Поэтому максимум `k(C)` не превосходит общего числа special squares, то есть `((n+1)/2)^2`. Осталось самодостаточно построить конфигурацию, где `T` проходит через все такие клетки. Пусть `n=2m+1` и special squares — клетки с нечётными координатами. Обозначим их `R_{i,j}=(2i-1,2j-1)`, где `1<=i,j<=m+1`. Проведём через все `R_{i,j}` змейку: в первой строке слева направо, затем вниз по правому краю, во второй строке справа налево, затем вниз по левому краю, и так далее. Конечную клетку змейки оставим пустой. Для каждой другой клетки `R_{i,j}` поставим домино из неё в сторону следующей клетки змейки; оно покрывает `R_{i,j}` и промежуточную клетку между двумя соседними special squares. После этого в каждой нечётной строке уже покрыты все клетки, кроме конечной пустой special square. В каждой чётной строке один крайний промежуточный квадрат покрыт вертикальным домино змейки; остальные нечётные клетки этой строки попарно покрываем горизонтальными домино с соседними чётно-чётными клетками: если вертикальный переход змейки стоит справа, кладём такие домино вправо, а если слева — влево. Так покрываются все оставшиеся клетки без пересечений. В полученной конфигурации граф `T` является путём через все `((n+1)/2)^2` special squares, поэтому `k(C)=((n+1)/2)^2`. Значит максимальное возможное значение равно `((n+1)/2)^2`.",
+      "idea_ids": [
+        "idea-fixed-parity-class-of-hole",
+        "idea-empty-component-is-tree",
+        "idea-kc-equals-number-of-tree-vertices"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph",
+        "tree",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Младшая версия USAMO 2023 P3; графовый слой остаётся центральным, хотя цель задачи только максимизировать `k(C)`.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "directed_graph_modeling",
+        "tree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usajmo-2023-p3-aops-wiki",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-jmo-2023-evan-chen-notes",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2023-p3-proposer-holden-mui",
+      "role": "proposer_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Импортирована как единственная уверенная graph-core задача первого прохода по USAJMO.",
+      "Это по сути младшая версия USAMO 2023 P3: тот же digraph special squares, но цель задачи только максимизировать `k(C)`."
+    ],
+    "relations_status": "deep_done"
+  }
+}

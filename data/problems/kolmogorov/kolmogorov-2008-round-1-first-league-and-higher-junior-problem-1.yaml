@@ -1,0 +1,134 @@
+{
+  "id": "kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
+  "title": "????? ??????????? 2008: Round 1, First League / Higher Junior League Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree"
+    ],
+    "methods": [
+      "extremal_choice",
+      "delete_to_simplify"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "tree",
+      "leaves",
+      "tree-transformation",
+      "extremal"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "За один ход разрешается выбрать лист дерева, удалить ребро, которым он был присоединен, и присоединить этот лист к другой вершине. Каково наибольшее возможное число ходов, необходимое, чтобы из одного дерева на `n` вершинах получить другое дерево на тех же вершинах?",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
+      "text": "В условии явно фигурирует дерево, то есть специальный вид графа. Официальное решение опирается на структуру деревьев, листья и операции переподвешивания.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: `n - 3`.\n\nНижняя оценка получается на примере пути и звезды: чтобы превратить путь в звезду, нужно переподвесить все внутренние вершины пути, кроме двух крайних и будущего центра, то есть требуется `n - 3` ходов.\n\nДля верхней оценки в официальном решении выбирают в первом дереве путь длины 2 и показывают, что можно последовательно переставлять листья так, чтобы сохранить этот общий фрагмент и постепенно привести дерево к нужному виду. Иначе говоря, любое дерево можно за не более чем `n - 3` операций превратить в звезду, а из звезды — в любое другое дерево.\n\nСледовательно, максимальное необходимое число ходов равно `n - 3`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice",
+        "delete_to_simplify"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_round_1_first_league_and_higher_junior_problem_1.md.",
+      "Source file noted by card: work/kolm/text/2008/tur1_12sol.txt.",
+      "Source page noted by card: 4.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 1, First League / Higher Junior League, Problem 1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

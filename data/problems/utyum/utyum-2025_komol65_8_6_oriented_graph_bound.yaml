@@ -1,0 +1,138 @@
+{
+  "id": "utyum-2025_komol65_8_6_oriented_graph_bound",
+  "title": "UTYUM 2025, Team Olympiad, grade 8, 6. Oriented graph with a dominating vertex outside every k-set",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "outneighborhood",
+      "dominating_vertex_for_ksets"
+    ],
+    "methods": [
+      "induction",
+      "extremal_choice",
+      "maximum_outdegree"
+    ],
+    "transformations": [
+      "complete_graph_completion",
+      "choose_maximum_outdegree_vertex",
+      "restrict_to_inneighborhood"
+    ],
+    "goal": [
+      "lower_bound_on_number_of_vertices"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "outdegree",
+      "kset_domination_property"
+    ],
+    "keywords": [
+      "utyum",
+      "2025_komol65_8_6_oriented_graph_bound",
+      "utyum_2025",
+      "maximum_outdegree",
+      "induction_on_k"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Дан граф G на n вершинах и натуральное число k < n.\n\nРёбра графа ориентированы так, что для любого набора A из k вершин найдётся вершина v вне A, из которой во все вершины набора A идут ориентированные рёбра.\n\nДокажите, что n >= 2^(k+1) - 1.",
+        "source_id": "src-utyum-2025_komol65_8_6_oriented_graph_bound-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "outdegree",
+          "complete_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан граф G на n вершинах и число k < n. Рёбра графа ориентированы так, что для любого множества A из k вершин найдётся вершина v вне A, из которой ведут ориентированные рёбра во все вершины множества A. Докажите, что n ≥ 2^(k+1) - 1.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "outdegree",
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "В официальном решении можно считать граф полным: добавление ориентированных рёбер условие не портит.\n\nДалее проводится индукция по k.\n\nВыбирается вершина v с максимальной исходящей степенью. Множество остальных вершин разбивается на A — вершины, из которых рёбра идут в v, и B — вершины, в которые рёбра идут из v.\n\nПоказывается, что |A| > k - 1 и что множество A само удовлетворяет аналогичному условию уже для параметра k - 1.\n\nПо предположению индукции |A| >= 2^k - 1, а из максимальности степени также |B| >= (n - 1)/2. В итоге получается оценка n >= 2^(k+1) - 1.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph",
+        "outdegree",
+        "complete_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "extremal_graph_theory",
+    "induction"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2025_komol65_8_6_oriented_graph_bound-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2025_komol65_8_6_oriented_graph_bound.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Задача явно про ориентированный граф, а официальное решение основано на индукции по подграфам и анализе исходящих степеней."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "id": "utyum-2018_komol_7_red_blue_cycle_game",
+  "title": "UTYUM 2018, Team Olympiad, grade 7, 7. Red-blue points and the first 4-cycle",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "graph_modeling",
+      "forest_edge_bound"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2018_komol_7_red_blue_cycle_game",
+      "utyum_2018"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "По кругу расставлено 100 красных и 100 синих точек. Петя и Вася ходят по очереди, начинает Петя.\nЗа ход можно соединить отрезком красную точку с синей, если они ещё не соединены.\n\nВыигрывает тот, кто первым получит цикл длины 4. Кто может обеспечить себе победу независимо от действий соперника?",
+        "source_id": "src-utyum-2018_komol_7_red_blue_cycle_game-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан полный двудольный граф K_{100,100}, вершины долей расположены на окружности и раскрашены в два цвета. Игроки по очереди добавляют рёбра между вершинами разных долей, не повторяя уже выбранные рёбра. Выигрывает тот, кто первым создаст цикл длины 4. Кто имеет выигрышную стратегию?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Ответ: Вася.\n\nВ официальном решении рассматривается двудольный граф, вершинами которого служат красные и синие точки,\nа проведённые отрезки являются рёбрами. Цикл длины 4 может появиться только тогда, когда игрок соединяет\nконцы уже существующей цепи длины 3. Значит, игрок, после хода которого возникает цепь длины 3, фактически\nпроиграл.\n\nПоэтому нельзя присоединять новые рёбра к концам цепи длины 2. Стратегия Васи такова: после каждого хода Пети\nон соединяет ту же красную точку с некоторой синей точкой, которая до этого ни с чем не была соединена.\nПосле каждой пары ходов число изолированных синих точек уменьшается на 2, и после 50 ходов Васи каждая синяя\nточка оказывается концом цепи длины 2. Следующим ходом Петя неизбежно создаёт цепь длины 3 и проигрывает.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 7.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "coloring"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2018_komol_7_red_blue_cycle_game-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2018_komol_7_red_blue_cycle_game.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "И условие, и решение целиком формулируются на языке двудольного графа; ключевой объект решения — запрет на образование 4-цикла и анализ путей длины 2 и 3."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

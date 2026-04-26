@@ -1,0 +1,118 @@
+{
+  "id": "kolmogorov-2002-individual-olympiad-10-11-output-problem-5",
+  "title": "????? ??????????? 2002: Individual Olympiad, 10-11 Classes, Output Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph"
+    ],
+    "methods": [
+      "coloring",
+      "connectivity_argument"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2002"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Ребра полного графа с `n` вершинами покрашены в несколько цветов так, что каждый цвет встречается не более `n - 2` раз.\n\nДокажите, что есть три вершины, все ребра между которыми покрашены в различные цвета.",
+        "source_id": "src-kolmogorov-2002-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2002-individual-olympiad-10-11-output-problem-5",
+      "text": "В условии явно фигурирует полный граф и раскраска его ребер.\nОфициальные решения используют свойства цветных подграфов, компонент связности и треугольников, так что графовая структура здесь существенна.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "В официальном тексте приведены два математически разных решения.\n\nРешение 1.\nПредполагают противное: в каждом треугольнике есть два одноцветных ребра.\nВыбирают вершину `A`, из которой выходит максимальное число ребер одного цвета, скажем цвета 1.\nПусть это ребра к вершинам `B_1, ..., B_k`.\nДля любой другой вершины `C_i`, соединенной с `A` ребром цвета `i`, каждое ребро от `C_i` к вершинам `B_j` должно иметь цвет 1 или `i`, иначе возник бы разноцветный треугольник.\nЕсли все такие ребра цвета `i`, то из `C_i` выходит еще больше ребер цвета `i`, чем из `A` цвета 1, что невозможно.\nЗначит, из каждой такой вершины выходит хотя бы одно ребро цвета 1, и в сумме получается не меньше `n - 1` ребер цвета 1, противоречие.\n\nРешение 2.\nСнова предполагают, что разноцветного треугольника нет.\nТогда для каждого цвета одноцветные ребра образуют несвязный граф: иначе было бы слишком много ребер этого цвета.\nСреди всех компонент связности всех цветов выбирают максимальную компоненту `F`.\nБерут вершину `A` вне `F`.\nАнализ цветов ребер между `A` и вершинами из `F` показывает, что существует компонентa другого цвета, строго большая, чем `F`, что противоречит максимальности.\n\nСледовательно, разноцветный треугольник существует.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2002-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2002_individual_olympiad_10_11_output_problem_5.md.",
+      "Source file noted by card: work/kolm/text/2002/OLYMPVI_from_tex.txt.",
+      "Source page noted by card: individual olympiad 10-11 output, problem 5.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Individual Olympiad, 10-11 Classes, Output, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass.",
+    "graph_theory_duplicate_removed": true
+  }
+}

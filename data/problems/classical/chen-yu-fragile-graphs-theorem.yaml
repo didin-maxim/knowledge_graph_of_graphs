@@ -1,0 +1,151 @@
+{
+  "id": "chen-yu-fragile-graphs-theorem",
+  "title": "Chen--Yu theorem on fragile graphs",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "en",
+  "authors": [
+    {
+      "name": "Guantao Chen",
+      "status": "source_verified"
+    },
+    {
+      "name": "Xingxing Yu",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "independent_set",
+      "vertex_cut",
+      "edge_count"
+    ],
+    "methods": [
+      "extremal_graph_theorem",
+      "sparse_graph_counting"
+    ],
+    "transformations": [],
+    "goal": [
+      "find_independent_vertex_cut"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "edge_count_bound_2n_minus_4",
+      "connectivity"
+    ],
+    "keywords": [
+      "chen_yu",
+      "fragile_graph",
+      "stable_cutset",
+      "independent_vertex_cut"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Every connected graph on n vertices with at most 2n-4 edges has a vertex cut which is also an independent set.",
+        "source_id": "src-chen-yu-fragile-graphs",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "independent_set"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Every connected graph on n vertices with at most 2n-4 edges has a vertex cut which is also an independent set.",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-sparse-graphs-have-stable-cutset",
+      "title": "Sparse connected graphs force a stable cutset",
+      "text": "The theorem identifies 2n-4 as a sharp sparse threshold at which a connected graph must contain an independent separating set.",
+      "tags": [
+        "connectivity",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-paper-theorem",
+      "title": "Paper theorem",
+      "text": "This card records the theorem proved by Chen and Yu. The proof in the original paper establishes that a graph with no independent vertex cut must have at least 2n-3 edges; equivalently, every connected graph with at most 2n-4 edges is fragile.",
+      "idea_ids": [
+        "idea-sparse-graphs-have-stable-cutset"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 8,
+    "comment": "Research theorem cited directly by a Kolmogorov Cup problem.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_graph_theorem",
+        "sparse_graph_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-chen-yu-fragile-graphs",
+      "role": "original_source",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Added to make the exact original source cited by the Kolmogorov Cup 2024 problem discoverable as a duplicate/reformulation candidate."
+    ],
+    "relations_status": "deep_done"
+  }
+}

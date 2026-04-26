@@ -1,0 +1,148 @@
+{
+  "id": "usa-tst-2005-p1-set-system-incidence-graph",
+  "title": "Система из 2n подмножеств и граф пересечений, USA TST 2005 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "set_system",
+      "incidence_graph",
+      "simple_graph",
+      "regular_graph",
+      "complete_graph"
+    ],
+    "methods": [
+      "graph_modeling",
+      "degree_bound",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "elements_to_edges",
+      "subsets_to_vertices"
+    ],
+    "goal": [
+      "maximum_parameter"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [
+      "vertex_count_2n",
+      "regular_degree_m",
+      "pairwise_intersection_at_most_one"
+    ],
+    "keywords": [
+      "usa_tst_2005_p1",
+      "set_system_to_graph",
+      "regular_graph_bound"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Система подмножеств",
+        "text": "Пусть `n>1`. Для положительного `m` обозначим через `S_m` множество `{1,2,...,mn}`. Предположим, что существует семейство `T` из `2n` различных `m`-элементных подмножеств множества `S_m` со свойствами: любые два множества из `T` пересекаются не более чем по одному элементу, а каждый элемент из `S_m` содержится ровно в двух множествах семейства `T`. Найдите наибольшее возможное значение `m` в зависимости от `n`.",
+        "source_id": "src-usa-tst-2005-aops-community",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим простой граф на `2n` вершинах, где вершины соответствуют множествам из `T`, а каждый элемент из `S_m` даёт ребро между двумя множествами, в которые он входит. Тогда задача эквивалентна вопросу о наибольшей возможной степени `m` простого `m`-регулярного графа на `2n` вершинах.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "complete_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-elements-become-edges",
+      "title": "Каждый элемент становится ребром",
+      "text": "Так как каждый элемент встречается ровно в двух множествах, его удобно считать ребром между этими двумя множествами. Ограничение на пересечения означает, что кратных рёбер нет.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-regular-graph-bound",
+      "title": "Через простой регулярный граф",
+      "text": "Построим граф `G` на `2n` вершинах: вершины соответствуют множествам семейства `T`, а каждому элементу `x` из `S_m` сопоставим ребро между двумя множествами, содержащими `x`. Условие «каждый элемент содержится ровно в двух множествах» гарантирует, что такое ребро определено корректно. Условие «любые два множества пересекаются не более чем по одному элементу» означает, что между двумя вершинами не может появиться более одного ребра, то есть граф простой. Каждое множество содержит ровно `m` элементов, значит степень каждой вершины равна `m`; следовательно, `G` — простой `m`-регулярный граф на `2n` вершинах. В простом графе на `2n` вершинах степень любой вершины не превосходит `2n-1`, поэтому `m<=2n-1`. Оценка точна: берём полный граф `K_{2n}`. Его `n(2n-1)` рёбер можно занумеровать числами `1,2,...,n(2n-1)` и каждой вершине сопоставить множество номеров инцидентных ей рёбер. Получаем ровно `2n` множеств размера `2n-1`; каждый номер входит ровно в два множества, а любые два множества пересекаются ровно по одному номеру. Значит, максимум равен `2n-1`.",
+      "idea_ids": [
+        "idea-elements-become-edges"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree",
+        "complete_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Красивая задача на перевод системы множеств в простой регулярный граф и точную экстремальную конструкцию.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "graph_modeling",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usa-tst-2005-aops-community",
+      "role": "problem_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

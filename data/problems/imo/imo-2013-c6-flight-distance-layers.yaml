@@ -66,9 +66,26 @@
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": [],
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ],
         "distinct_from": [
           "stmt-original"
+        ]
+      },
+      {
+        "id": "stmt-graph-distance-layers",
+        "title": "Distance-layer formulation",
+        "text": "Let \\(G\\) be a connected graph, and for a vertex \\(x\\) let \\(L_i(x)\\) be the set of vertices at graph distance exactly \\(i\\) from \\(x\\). Assume that \\(|L_3(x)|\\le 100\\) for every vertex \\(x\\). Prove that \\(|L_4(x)|\\le 2550\\) for every vertex \\(x\\).",
+        "source_id": "src-imo-2013-shortlist",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
         ]
       }
     ],
@@ -92,6 +109,15 @@
         "extremal_choice"
       ],
       "status": "needs_human_review"
+    },
+    {
+      "id": "idea-assign-fourth-layer-to-first-neighbors",
+      "title": "Разбить четвёртый слой по соседям старта",
+      "text": "Каждую вершину четвёртого слоя можно впервые приписать одному из соседей стартовой вершины, через которого проходит некоторый путь длины 4; дальше для этих групп получается квадратичная оценка.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
     }
   ],
   "solutions": [
@@ -108,6 +134,24 @@
       ],
       "status": "needs_human_review",
       "definition_ids": [
+        "path"
+      ]
+    },
+    {
+      "id": "sol-mse-neighbor-partition",
+      "title": "MSE: подсчёт через разбиение по соседям стартовой вершины",
+      "text": "Зафиксируем вершину \\(v\\) и обозначим её соседей через \\(v_1,\\dots,v_p\\). Для каждого \\(i\\) рассмотрим множество \\(V_i\\) вершин \\(w\\) на расстоянии 4 от \\(v\\), которые ещё не попали в более ранние группы и для которых существует путь длины 3 от \\(v_i\\) до \\(w\\), не проходящий через \\(v\\). Тогда каждая вершина четвёртого слоя попадает хотя бы в одну такую группу, так что \\(d_4(v)\\le \\sum_i |V_i|\\). Оставим только непустые группы, их число пусть равно \\(q\\), а размеры равны \\(n_1,\\dots,n_q\\). Для фиксированного \\(i\\) все вершины из \\(V_i\\) лежат на расстоянии 3 от \\(v_i\\). Кроме того, для каждого другого непустого класса \\(V_j\\) существует по крайней мере ещё одна вершина на расстоянии 3 от \\(v_i\\), отвечающая переходу к классу \\(V_j\\); поэтому \\(n_i+q-1\\le100\\). Значит \\(n_i\\le101-q\\) для всех \\(i\\), и потому \\(d_4(v)\\le\\sum_{i=1}^q n_i\\le q(101-q)\\). Квадратичная функция достигает максимума при \\(q=50\\) или \\(51\\), откуда \\(d_4(v)\\le2550\\). Следовательно, вершины с более чем 2550 вершинами на расстоянии 4 не существует.",
+      "idea_ids": [
+        "idea-distance-layers",
+        "idea-assign-fourth-layer-to-first-neighbors"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice",
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
         "path"
       ]
     }
@@ -135,6 +179,11 @@
     {
       "source_id": "src-imo-2013-shortlist",
       "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-mse-imo-2013-c6-layer-counting",
+      "role": "community_alternative_solution",
       "status": "source_verified"
     }
   ],

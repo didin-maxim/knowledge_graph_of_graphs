@@ -1,0 +1,134 @@
+{
+  "id": "kolmogorov-2005-team-olympiad-seniors-problem-9",
+  "title": "????? ??????????? 2005: Team Olympiad, Seniors Problem 9",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "bipartite_graph",
+      "cycle",
+      "spanning_tree"
+    ],
+    "methods": [],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "parity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2005",
+      "graph",
+      "bipartite graph",
+      "spanning tree",
+      "parity",
+      "cycle"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Докажите, что у двудольного графа с четным числом вершин и четным числом ребер количество остовных деревьев четно.\n\nОстовным деревом называется подграф исходного графа, содержащий все его вершины и являющийся деревом.",
+        "source_id": "src-kolmogorov-2005-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "tree",
+          "bipartite_graph",
+          "cycle",
+          "spanning_tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2005-team-olympiad-seniors-problem-9",
+      "text": "Граф прямо присутствует в условии, а официальное решение целиком построено на графовых объектах: двудольности, остовных деревьях, остовных одноцикловых подграфах и четности длины циклов.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Обозначим через `T(G)` множество остовных деревьев графа `G`, а через `M(G)` множество его остовных подграфов, имеющих ровно один цикл.\n\nВозьмем любое остовное дерево `T`. Так как число вершин четно, у дерева нечетное число ребер. Поскольку общее число ребер графа тоже четно, вне `T` остается нечетное число ребер. Если добавить к `T` любое из этих ребер, получится остовный подграф с единственным циклом, то есть элемент множества `M(G)`. Значит, каждому дереву соответствует нечетное число элементов из `M(G)`.\n\nТеперь возьмем любой граф `H` из `M(G)` и рассмотрим его единственный цикл `Z`. Удаляя из `Z` одно ребро, мы получаем остовные деревья, из которых мог получиться `H`. Так как исходный граф двудолен, цикл `Z` имеет четную длину, следовательно, у `H` четное число таких \"предков\".\n\nПодсчитав число пар вида `(остовное дерево, одноцикловый остовный граф)`, где второй получается добавлением одного ребра к первому, двумя способами, получаем, что число остовных деревьев должно быть четным.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "tree",
+        "bipartite_graph",
+        "cycle",
+        "spanning_tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "matching",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2005-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2005_team_olympiad_seniors_problem_9.md.",
+      "Source file noted by card: work/kolm/text/2005/komolsol.txt.",
+      "Source page noted by card: senior team solutions, problem 9.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Seniors, Problem 9."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

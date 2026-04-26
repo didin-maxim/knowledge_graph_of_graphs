@@ -1,0 +1,124 @@
+{
+  "id": "usamo-graph-curation-initial",
+  "title": "USAMO, начальный графовый слой",
+  "status": "ai_checked",
+  "created_at": "2026-04-24",
+  "updated_at": "2026-04-24",
+  "source_scope": {
+    "source_ids": [
+      "src-usamo-1976-aops-wiki",
+      "src-usamo-1999-p1-aops-wiki",
+      "src-usamo-2004-p4-aops-wiki",
+      "src-usamo-2008-p3-aops-wiki",
+      "src-usamo-2008-p6-aops-wiki",
+      "src-usamo-2021-p2-aops-wiki",
+      "src-usamo-2021-eric-shen-pdf",
+      "src-usamo-2022-aops-wiki",
+      "src-usamo-2022-p1-aops-wiki",
+      "src-usamo-2022-p6-aops-wiki",
+      "src-usamo-2024-p3-aops-wiki",
+      "src-usamo-2025-p3-aops-wiki"
+    ],
+    "latest_published_year": 2025,
+    "verified_at": "2026-04-24",
+    "notes": [
+      "Первичный проход по USAMO с отбором задач, где граф либо явно стоит в условии, либо нетривиально несёт решение.",
+      "Пограничные задачи 2008 P4, 2009 P3 и 2023 P3 пока оставлены вне import batch и описаны только в архивном реестре."
+    ]
+  },
+  "items": [
+    {
+      "id": "usamo-1976-p1",
+      "problem_id": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-1976-aops-wiki"
+      ],
+      "decision_reason": "Задача естественно переводится в двухцветную раскраску рёбер двудольного графа и поиск одноцветного 4-цикла."
+    },
+    {
+      "id": "usamo-1999-p1",
+      "problem_id": "usamo-1999-p1-checkers-board-graph-rank",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-1999-p1-aops-wiki"
+      ],
+      "decision_reason": "В одном из опубликованных решений явно используется граф шашек, связность и circuit rank."
+    },
+    {
+      "id": "usamo-2004-p4",
+      "problem_id": "usamo-2004-p4-black-path-grid-game",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-2004-p4-aops-wiki"
+      ],
+      "decision_reason": "Условие уже является задачей на существование связного черного пути в клеточном графе."
+    },
+    {
+      "id": "usamo-2008-p3",
+      "problem_id": "usamo-2008-p3-diamond-lattice-path-partition",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-2008-p3-aops-wiki"
+      ],
+      "decision_reason": "Граф в условии: пути по решётчатому соседству на ромбовидном множестве точек."
+    },
+    {
+      "id": "usamo-2008-p6",
+      "problem_id": "usamo-2008-p6-even-friends-two-rooms",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-2008-p6-aops-wiki"
+      ],
+      "decision_reason": "Задача прямо формулируется на графе дружбы и имеет содержательное линейно-алгебраическое графовое решение."
+    },
+    {
+      "id": "usamo-2021-p2",
+      "problem_id": "usamo-2021-p2-planar-national-park-turning-walk",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-2021-p2-aops-wiki",
+        "src-usamo-2021-eric-shen-pdf"
+      ],
+      "decision_reason": "Условие полностью графовое: 3-регулярный планарный граф, локальные правила поворота и ограничение на число входов в вершину."
+    },
+    {
+      "id": "usamo-2022-p1",
+      "problem_id": "usamo-2022-p1-amber-bronze-transversal",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-2022-aops-wiki",
+        "src-usamo-2022-p1-aops-wiki"
+      ],
+      "decision_reason": "Естественная двудольная модель через строки, столбцы и клетки как рёбра; отбор клеток — это частичное паросочетание."
+    },
+    {
+      "id": "usamo-2022-p6",
+      "problem_id": "usamo-2022-p6-mathbook-two-common-friends-closure",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-2022-aops-wiki",
+        "src-usamo-2022-p6-aops-wiki"
+      ],
+      "decision_reason": "Задача прямо задаёт процесс насыщения графа дружбы по двум общим соседям."
+    },
+    {
+      "id": "usamo-2024-p3",
+      "problem_id": "usamo-2024-p3-balanced-regular-polygon-triangulation",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-2024-p3-aops-wiki"
+      ],
+      "decision_reason": "Триангуляция правильного многоугольника — содержательный outerplanar/dual-tree объект, а конструкция идёт через веерную триангуляцию."
+    },
+    {
+      "id": "usamo-2025-p3",
+      "problem_id": "usamo-2025-p3-gabriel-graph-road-network",
+      "status": "added",
+      "source_ids": [
+        "src-usamo-2025-p3-aops-wiki"
+      ],
+      "decision_reason": "AoPS-решение прямо распознаёт граф дорог как Gabriel graph и использует его планарность и связность."
+    }
+  ]
+}

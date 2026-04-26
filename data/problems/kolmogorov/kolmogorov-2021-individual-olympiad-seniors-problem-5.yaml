@@ -1,0 +1,119 @@
+{
+  "id": "kolmogorov-2021-individual-olympiad-seniors-problem-5",
+  "title": "????? ??????????? 2021: Individual Olympiad, Seniors Problem 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph"
+    ],
+    "methods": [],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2021"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Дети привезли в лагерь по гаджету. Гаджет, привезенный ребенком `i`, получил номер `i`.\n\nКаждый ребенок упорядочил все гаджеты от более желанного к менее желанному. Воспитатель хочет предложить перестановку `sigma`, по которой ребенку `i` достанется гаджет `sigma(i)`.\n\nГруппа детей `A` может заблокировать предложение, если дети из `A` могут перераспределить между собой гаджеты, привезенные ими самими, так, чтобы каждый получил гаджет не хуже, чем в предложении `sigma`, и хотя бы один ребенок получил бы другой гаджет, чем в `sigma`.\n\nДокажите, что существует не более одного предложения воспитателя, которое не может заблокировать ни одна группа детей.",
+        "source_id": "src-kolmogorov-2021-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "Graph-theory role in kolmogorov-2021-individual-olympiad-seniors-problem-5",
+      "text": "Граф не фигурирует в формулировке явно, но официальное решение принципиально строит ориентированный граф предпочтений и использует его циклы.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Official solution, compressed",
+      "text": "В официальном решении строится ориентированный граф на детях.\n\nИз вершины `i` проводят ребро в вершину `j`, если гаджет `j` нравится ребенку `i` больше всего среди всех доступных.\n\nВ любом конечном ориентированном графе есть цикл; выберем такой цикл `C_1` и предложим каждому ребенку из него гаджет следующего по циклу ребенка. После этого детей цикла убирают и повторяют ту же процедуру на оставшихся детях. Так получается последовательность циклов `C_1, C_2, ...` и предложение `sigma`.\n\nРассмотрим любое другое предложение `sigma'`. Пусть `B` — множество детей, для которых `sigma(i) != sigma'(i)`. Выберем ребенка из `B`, принадлежащего циклу с минимальным номером `C_k`.\n\nТогда все более ранние циклы получили в `sigma` и `sigma'` те же гаджеты, а дети из `C_k` в `sigma` уже получили свои лучшие оставшиеся гаджеты. Значит, дети цикла `C_k` могут внутри себя организовать перераспределение не хуже, чем `sigma'`, причем хотя бы для одного ребенка оно будет отличаться от `sigma'`.\n\nСледовательно, цикл `C_k` блокирует `sigma'`. Значит, никакое предложение, отличное от `sigma`, не может быть неблокируемым. Поэтому такое предложение не более чем одно.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2021-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2021_individual_olympiad_seniors_problem_5.md.",
+      "Source file noted by card: work/kolm/archive/2021/extracted_seniors/5lichol-sen-sol.tex.",
+      "Source page noted by card: individual olympiad seniors, problem 5.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
+  }
+}

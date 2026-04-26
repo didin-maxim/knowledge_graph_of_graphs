@@ -1,0 +1,132 @@
+{
+  "id": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
+  "title": "????? ??????????? 2007: Round 2, High League / First League Chromatic-number problem",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "chromatic_number"
+    ],
+    "methods": [
+      "local_recoloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "counting",
+      "coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "coloring"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2007",
+      "graph-coloring",
+      "chromatic-number",
+      "recoloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Хроматическое число графа `G` равно `k`. Известно, что существует правильная раскраска вершин графа `G`, в которой вершин каждого цвета хотя бы две. Докажите, что существует такая раскраска и в `k` цветов.",
+        "source_id": "src-kolmogorov-2007-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
+      "text": "Граф и его хроматическое число прямо даны в условии, а официальное решение целиком работает с правильными раскрасками вершин.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Официальное решение фиксирует базовую правильную раскраску, где каждый цвет встречается хотя бы дважды, и отдельно рассматривает произвольную правильную раскраску в `k` цветов.\n\nЕсли в этой `k`-раскраске есть цвет, представленный одной вершиной, то всю соответствующую цветовую группу из базовой раскраски перекрашивают в этот цвет. После этого полученный цвет уже не станет одноэлементным на следующих шагах.\n\nПовторяя процесс, последовательно устраняют все «плохие» цвета, состоящие из одной вершины. В конце получается правильная раскраска в `k` цветов, где каждый цвет используется не менее двух раз.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2007-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2007_round_2_high_and_first_league_chromatic_number_problem.md.",
+      "Source file noted by card: work/kolm/text/2007/tur2_11sol.txt.",
+      "Source page noted by card: 2.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 2, High League / First League, chromatic-number problem."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

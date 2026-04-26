@@ -1,0 +1,124 @@
+{
+  "id": "kolmogorov-2007-round-4-first-league-problem-1",
+  "title": "????? ??????????? 2007: Round 4, First League Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "cycle"
+    ],
+    "methods": [],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectivity"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2007",
+      "directed-graph",
+      "strong-connectivity",
+      "odd-cycle",
+      "orientation"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Неориентированный граф `G` имеет нечетный цикл. Его ребра ориентировали так, что из любой вершины можно попасть в любую другую по направлению ребер. Докажите, что в полученном орграфе есть ориентированный цикл нечетной длины.",
+        "source_id": "src-kolmogorov-2007-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2007-round-4-first-league-problem-1",
+      "text": "Граф прямо присутствует в условии, а официальное решение полностью опирается на сильную связность орграфа, ориентированные пути и нечетные циклы.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "В официальном решении берут простой нечетный цикл `C = a_1...a_n` исходного графа и работают в сильно связной ориентации этого графа.\n\nПроходя по циклу `C`, для каждого ребра `a_i a_{i+1}` смотрят, совпадает ли его ориентация с направлением обхода. Если да, его просто включают в строящуюся цепь. Если нет, то по сильной связности существует ориентированный путь из `a_i` в `a_{i+1}`.\n\nЕсли такой путь имеет четную длину, то вместе с обратным ребром цикла он сразу дает ориентированный цикл нечетной длины. Если же путь нечетный, его присоединяют к текущей конструкции и переходят к следующей вершине цикла. В итоге после обхода всего `C` получается ориентированный цикл нечетной длины.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "directed_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2007-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2007_round_4_first_league_problem_1.md.",
+      "Source file noted by card: work/kolm/text/2007/tur4_11sol.txt.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 4, First League, Problem 1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

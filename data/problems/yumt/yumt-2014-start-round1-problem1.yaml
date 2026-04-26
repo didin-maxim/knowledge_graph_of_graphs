@@ -1,0 +1,88 @@
+{
+  "id": "yumt-2014-start-round1-problem1",
+  "title": "YUMT 2014, Старт-лига, 1 тур, 1. Пауки на каркасе тетраэдра",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2014_start_round1_problem1",
+      "yumt_2014"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Из палок длиной 1 собран каркас тетраэдра. Баба Яга сажает на каркас 7 пауков.\nИз расстояний между парами пауков, измеряемых кратчайшим путём по рёбрам тетраэдра, Кащей выбирает наименьшее расстояние R и платит Яге R килограммов золота.\nКакое наибольшее количество золота может обеспечить себе Яга?",
+        "source_id": "src-yumt-2014-start-round1-problem1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Официальное решение",
+      "text": "Ответ: 3/4.\nКаждый паук лежит хотя бы на двух гранях тетраэдра: если он находится внутри ребра, то принадлежит двум граням, а если в вершине, то трём. Поэтому на четырёх граничных треугольниках тетраэдра, если считать пауков с повторениями, отмечено не менее 14 точек.\nПо принципу Дирихле найдётся грань, на границе которой лежат хотя бы 4 паука. Периметр этой грани равен 3, следовательно, он разбит этими четырьмя пауками как минимум на четыре дуги. Снова по принципу Дирихле две соседние точки на этом контуре находятся на расстоянии не более 3/4.\nЗначит, минимальное расстояние между некоторыми двумя пауками не превосходит 3/4, так что Яга не может гарантировать больше 3/4 килограмма золота.\nОценка достигается так. Посадим одного паука в вершину A тетраэдра ABCD. Ещё трёх пауков посадим на рёбра AB, AC, AD на расстоянии 3/4 от вершины A. Оставшихся трёх пауков посадим в середины рёбер BC, CD, DB. Тогда расстояние между любыми двумя ближайшими пауками равно 3/4. Следовательно, максимальный выигрыш действительно равен 3/4.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2014_start_round1_problem1.md; stage Старт-лига, 1 тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2014-start-round1-problem1-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2014_start_round1_problem1.md."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

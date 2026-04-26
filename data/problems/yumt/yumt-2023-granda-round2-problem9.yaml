@@ -1,0 +1,125 @@
+{
+  "id": "yumt-2023-granda-round2-problem9",
+  "title": "YUMT 2023, Гранд-лига A, второй тур, 9. Выбор вершин по граням плоского двудольного графа",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2023_granda_round2_problem9",
+      "yumt_2023"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Всегда ли в плоском двудольном графе G можно выбрать по вершине в каждой грани так, чтобы все выбранные вершины были различны?\nГрани — это области, включая бесконечную область, на которые разрезают плоскость рёбра графа.",
+        "source_id": "src-yumt-2023-granda-round2-problem9-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-face-vertex-incidence-hall",
+      "title": "Граф инцидентности граней и вершин",
+      "text": "Выбор по одной различной вершины в каждой грани естественно переводится в задачу о системе различных представителей для граней в двудольном графе инцидентности.",
+      "tags": [
+        "matching",
+        "planar_graphs"
+      ],
+      "status": "ai_draft"
+    },
+    {
+      "id": "idea-hall-by-euler-face-counting",
+      "title": "Условие Холла из формулы Эйлера",
+      "text": "Для любого набора граней нужно доказать, что число инцидентных им вершин не меньше числа этих граней. Это следует из эйлеровой оценки для плоского двудольного подграфа, образованного границами выбранных граней.",
+      "tags": [
+        "matching",
+        "planar_graphs"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-hall-euler-face-counting",
+      "title": "Теорема Холла и подсчёт граней",
+      "text": "Для каждой грани рассмотрим множество вершин, лежащих на её границе. Нужно выбрать для всех граней различные представители из этих множеств. По теореме Холла достаточно проверить, что для любого набора S граней число вершин, инцидентных хотя бы одной грани из S, не меньше |S|.\n\nВозьмём произвольный набор S граней. Пусть H — плоский подграф исходного графа, состоящий из всех вершин и всех рёбер, лежащих на границах граней из S. Обозначим через v, e, c соответственно число вершин, рёбер и компонент связности графа H. Все выбранные грани остаются гранями рисунка H, поэтому |S| не превосходит полного числа граней H. По формуле Эйлера для c компонент это число равно e - v + c + 1.\n\nОценим e. Граф H двудолен. В каждой его компоненте с одной вершиной нет рёбер; в компоненте с двумя вершинами не больше одного ребра; в компоненте хотя бы с тремя вершинами стандартная планарная двудольная оценка даёт e_i <= 2v_i - 4. Во всех случаях e_i <= 2v_i - 2, значит e <= 2v - 2c. Тогда число граней H не больше (2v - 2c) - v + c + 1 = v - c + 1 <= v. Следовательно, |S| <= v, то есть условие Холла выполнено.\n\nЗначит существует система различных представителей: для каждой грани можно выбрать одну вершину на её границе, причём все выбранные вершины будут различны.",
+      "idea_ids": [
+        "idea-face-vertex-incidence-hall",
+        "idea-hall-by-euler-face-counting"
+      ],
+      "standard_idea_ids": [
+        "face_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "matching",
+        "planar_graph",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2023_granda_round2_problem9.md; stage Гранд-лига A, второй тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "olympiad_tool",
+    "planar_graphs"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2023-granda-round2-problem9-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2023_granda_round2_problem9.md.",
+      "2026-04-26: добавлено самодостаточное решение через теорему Холла и эйлерову оценку для выбранных граней."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

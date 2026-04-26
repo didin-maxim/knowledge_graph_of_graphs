@@ -1,0 +1,138 @@
+{
+  "id": "kolmogorov-2008-round-2-first-junior-league-problem-1",
+  "title": "????? ??????????? 2008: Round 2, First Junior League Problem 1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "double_counting",
+      "local_recoloring"
+    ],
+    "transformations": [],
+    "goal": [
+      "counting",
+      "coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectivity",
+      "coloring",
+      "edge_count"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2008",
+      "wheel-graph",
+      "edge-coloring",
+      "connectivity",
+      "counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "В стране 10 городов расположены по кругу, а столица соединена дорогами со всеми этими городами. Каждую дорогу нужно передать одной из двух фирм так, чтобы дороги каждой фирмы позволяли проехать между любыми двумя городами. Сколькими способами это можно сделать?",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2008-round-2-first-junior-league-problem-1",
+      "text": "Граф явно присутствует в условии в виде дорожной сети-колеса, а официальное решение полностью опирается на структуру колеса и связность цветных подграфов.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Это тот же граф-колесо, только с 10 вершинами на ободе. Официальное решение повторяет рассуждение общей задачи: каждая фирма должна получить связный остов, поэтому все определяется выбором цветов у спиц, кроме двух одноцветных вариантов.\n\nПосле выбора цветов спиц ребра на внешнем цикле должны быть раскрашены единственным возможным образом, иначе один из цветных подграфов потеряет связность.\n\nВ итоге число способов равно `2(2^10 - 2)`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "local_recoloring"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "connectivity",
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "local_recoloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2008_round_2_first_junior_league_problem_1.md.",
+      "Source file noted by card: work/kolm/text/2008/tur2_12sol.txt.",
+      "Source page noted by card: 10.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Round 2, First Junior League, Problem 1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

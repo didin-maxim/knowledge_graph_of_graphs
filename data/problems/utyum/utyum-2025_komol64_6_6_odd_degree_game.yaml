@@ -1,0 +1,119 @@
+{
+  "id": "utyum-2025_komol64_6_6_odd_degree_game",
+  "title": "UTYUM 2025, Team Olympiad, grade 6, 6. Deleting segments to maximize odd degrees",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "parity_argument",
+      "extremal_construction",
+      "component_counting"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2025_komol64_6_6_odd_degree_game",
+      "utyum_2025"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Петя отмечает 99 точек на окружности и соединяет некоторые пары точек отрезками так, чтобы из каждой точки выходил хотя бы один отрезок.\n\nПосле этого Вася может стереть несколько проведённых отрезков.\n\nЗатем Петя платит Васе по одному рублю за каждую точку, из которой выходит нечётное число оставшихся отрезков.\n\nКакую наибольшую сумму Вася может гарантированно заработать независимо от действий Пети?",
+        "source_id": "src-utyum-2025_komol64_6_6_odd_degree_game-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан граф на 99 вершинах без изолированных вершин. После построения графа разрешается удалить некоторые рёбра. За каждую вершину нечётной степени в оставшемся графе выплачивается 1 рубль. Какую наибольшую сумму можно гарантированно получить независимо от исходного графа?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Официальное решение рассматривает граф на 99 вершинах.\n\nВерхняя оценка: Петя может разбить вершины на 33 тройки и в каждой сделать маленькую звезду из двух рёбер. Тогда в каждой тройке при любом удалении останется хотя бы одна вершина чётной степени, так что нечётных степеней будет не более 66.\n\nНижняя оценка: Вася удаляет рёбра, которые не являются единственными ни у одного из своих концов. Когда таких рёбер не останется, каждой вершине степени больше 1 можно сопоставить хотя бы две листовые вершины. Значит, вершин степени больше 1 не более трети, а вершин степени 1 — не менее 66.\n\nСледовательно, Вася всегда может гарантировать 66 рублей.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 6.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "extremal_graph_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2025_komol64_6_6_odd_degree_game-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2025_komol64_6_6_odd_degree_game.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Условие явно задаёт граф из точек и отрезков, а решение целиком выражено через чётность степеней вершин и структуру леса."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

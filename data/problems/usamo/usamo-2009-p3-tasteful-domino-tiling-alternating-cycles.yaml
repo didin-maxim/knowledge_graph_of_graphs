@@ -1,0 +1,204 @@
+{
+  "id": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
+  "title": "Вкусное домино-разбиение и чередующиеся циклы, USAMO 2009 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Sam Vandervelde",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "chessboard_polygon",
+      "domino_tiling",
+      "tasteful_tiling",
+      "tiling_overlay_graph",
+      "alternating_cycle"
+    ],
+    "methods": [
+      "alternating_cycle_argument",
+      "induction_on_area",
+      "symmetric_difference_of_tilings",
+      "boundary_analysis"
+    ],
+    "transformations": [
+      "domino_tilings_to_2_regular_overlay_graph"
+    ],
+    "goal": [
+      "existence_and_uniqueness_of_tasteful_tiling"
+    ],
+    "auxiliary_graph_type": [
+      "2_colored_2_regular_graph",
+      "cycle_decomposition"
+    ],
+    "invariants": [
+      "symmetric_difference_splits_into_cycles",
+      "tasteful_local_constraint_blocks_cycle_switching"
+    ],
+    "keywords": [
+      "usamo_2009_p3",
+      "domino_tiling",
+      "alternating_cycles",
+      "unique_tasteful_tiling"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Chessboard Polygon and Tasteful Tiling",
+        "text": "Шахматным многоугольником назовём многоугольник, стороны которого лежат на прямых `x=a` или `y=b`, где `a,b` — целые; его внутренность разбивается этими прямыми на единичные клетки шахматной раскраски. Домино-разбиение такого многоугольника — это точное покрытие неперекрывающимися прямоугольниками `1x2` и `2x1`. Назовём разбиение tasteful, если в нём не встречаются два запрещённых локальных рисунка из условия. Докажите: a) если шахматный многоугольник можно замостить домино, то это можно сделать tasteful-образом; b) такое tasteful-разбиение единственно.",
+        "source_id": "src-usamo-2009-p3-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим двудольный grid-граф клеток шахматного многоугольника; каждое домино-разбиение задаёт совершенное паросочетание. Для tasteful-разбиения `T` и любого другого разбиения `M` симметрическая разность `T Δ M` распадается на попарно непересекающиеся чётные чередующиеся циклы. Докажите, что существует ровно одно совершенное паросочетание, для которого запрещённые локальные конфигурации не возникают.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-peel-corner-domino-inductively",
+      "title": "Tasteful-разбиение строится снятием вынужденного углового домино",
+      "text": "У шахматного многоугольника всегда найдётся крайняя клетка, возле которой любое tasteful-разбиение обязано содержать конкретное домино. Удалив его, мы уменьшаем площадь и продолжаем индукцию.",
+      "tags": [
+        "induction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-symmetric-difference-gives-alternating-cycles",
+      "title": "Наложение двух разбиений даёт чередующиеся циклы",
+      "text": "Если сравнить tasteful-разбиение с любым другим, то в каждой клетке участвует ровно одно домино каждого цвета, так что симметрическая разность образует `2`-регулярный двуцветный граф и потому распадается на чётные alternating cycles.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-boundary-forces-distasteful-corner-on-cycle",
+      "title": "Каждый такой цикл порождает запрещённый локальный рисунок",
+      "text": "Рассматривая самую левую или нижнюю точку компоненты симметрической разности, получаем вынужденный локальный поворот. Он неизбежно реализует один из запрещённых паттернов, значит при tasteful-разбиении ни одного чередующегося цикла быть не может.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-induction-plus-alternating-cycles",
+      "title": "Индукция для существования и alternating cycles для единственности",
+      "text": "Докажем сначала существование tasteful-разбиения индукцией по числу клеток. Возьмём клетку на верхней границе с максимальной абсциссой. Если её нельзя покрыть единственным домино, не создающим немедленно запрещённый узор, то около неё уже возникает один из distasteful паттернов, чего tasteful-разбиение допустить не может. Значит крайнее домино фактически вынуждено; удаляем его и применяем индукцию к оставшемуся шахматному многоугольнику. Для единственности пусть `T` — tasteful-разбиение, а `M` — любое другое. Смотрим на симметрическую разность двух наборов домино. Каждая клетка, где разбиения различаются, принадлежит ровно одному домино из `T` и одному из `M`, поэтому объединение таких домино образует `2`-регулярный граф на клетках, состоящий из попарно непересекающихся чётных чередующихся циклов. Если хотя бы один цикл есть, рассмотрим его крайнюю левую нижнюю клетку. Локальная геометрия цикла в этой точке вынуждает один из двух запрещённых рисунков: либо два параллельных домино в квадрате `2x2`, либо соответствующий `3x2`-паттерн. Это противоречит tasteful-свойству `T`. Следовательно, симметрическая разность пуста и `M=T`. Значит tasteful-разбиение существует и единственно.",
+      "idea_ids": [
+        "idea-peel-corner-domino-inductively",
+        "idea-symmetric-difference-gives-alternating-cycles",
+        "idea-boundary-forces-distasteful-corner-on-cycle"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "extremal_choice",
+        "alternating_paths"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching",
+        "cycle",
+        "alternating_path"
+      ]
+    },
+    {
+      "id": "sol-community-overlay-boundary",
+      "title": "Community-версия: overlay двух tilings и крайний цикл",
+      "text": "В community-разборе Shen-Fu Tsai часть (b) формулируется почти целиком на языке overlay-графа двух domino tilings. Предполагая существование двух tasteful-разбиений, автор раскрашивает домино двух разбиений в разные цвета и рассматривает компоненты их объединения. Так как в каждой внутренней клетке встречается по одному домино каждого цвета, каждая компонента является циклом. Дальше берётся крайняя компонента и анализируется её граничный угол; именно он заставляет цикл сделать локальный поворот, несовместимый с tasteful-ограничениями. Это даёт ту же уникальность, но в более явно графовой форме: ключевой объект — не просто плиточная картинка, а alternating-cycle decomposition симметрической разности двух perfect matchings.",
+      "idea_ids": [
+        "idea-symmetric-difference-gives-alternating-cycles",
+        "idea-boundary-forces-distasteful-corner-on-cycle"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice",
+        "alternating_paths"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching",
+        "cycle",
+        "alternating_path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Формулировка выглядит как tiling-задача, но существенная часть уникальности реально держится на overlay двух perfect matchings и alternating cycles.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "graph_symmetry",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "alternating_cycle_argument",
+        "symmetric_difference_of_tilings"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2009-p3-aops-wiki",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2009-evan-chen-notes",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2009-p3-shen-fu-tsai",
+      "role": "community_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Задача была оставлена как пограничная при первом проходе по USAMO.",
+      "После повторной проверки переведена в graph-core, потому что в части (b) ключевой шаг — alternating-cycle decomposition симметрической разности двух domino tilings."
+    ],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "id": "kolmogorov-2011-individual-olympiad-seniors-problem-7",
+  "title": "????? ??????????? 2011: Individual Olympiad, Seniors Problem 7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "cycle",
+      "hamiltonian_cycle"
+    ],
+    "methods": [
+      "induction"
+    ],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2011",
+      "graph",
+      "graph-power",
+      "hamiltonian-cycle",
+      "tree",
+      "induction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Пусть `G` — связный граф, имеющий хотя бы три вершины. Определим `G^3` как граф на тех же вершинах, в котором соединены ребрами вершины, находящиеся в `G` на расстоянии не более трех.\n\nДокажите, что в графе `G^3` есть гамильтонов цикл.",
+        "source_id": "src-kolmogorov-2011-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "tree",
+          "cycle",
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2011-individual-olympiad-seniors-problem-7",
+      "text": "Граф полностью задан уже в условии: связный граф, расстояние между вершинами и гамильтонов цикл. Официальное решение целиком построено на графовых операциях с деревом и степенями вершин.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Достаточно рассмотреть случай, когда `G` — дерево: если утверждение верно для остовного дерева, то оно верно и для исходного графа.\n\nДоказательство ведется индукцией по числу вершин. В графе `G^3` длиной ребра называют расстояние между его концами в исходном дереве, так что возможны ребра длин `1`, `2` и `3`.\n\nЕсли в дереве есть вершина, смежная хотя бы с двумя листьями, то одну новую висячую вершину можно вставить в уже построенный гамильтонов цикл меньшего дерева, заменив участок `u-v1-u'` на `u-v1-v2-u'`.\n\nВ противном случае берут вершину степени не меньше `3`, у которой висит путь `v1, ..., vk`, удаляют этот путь и по предположению индукции получают гамильтонов цикл в `T^3`. В этом цикле находится ребро, соединяющее разные компоненты графа `T - w`; его заменяют на специальный проход через вершины удаленного пути. Все новые ребра имеют длину не более `3`, значит, действительно принадлежат `G^3`.\n\nТак индуктивно строится гамильтонов цикл в `G^3`.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "tree",
+        "cycle",
+        "hamiltonian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "induction",
+    "olympiad_tool",
+    "trees"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2011-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2011_individual_olympiad_seniors_problem_7.md.",
+      "Source file noted by card: work/kolm/archive/2011/extracted/lichol15.doc.",
+      "Source page noted by card: 1.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 7."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

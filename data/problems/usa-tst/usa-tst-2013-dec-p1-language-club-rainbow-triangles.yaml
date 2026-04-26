@@ -1,0 +1,146 @@
+{
+  "id": "usa-tst-2013-dec-p1-language-club-rainbow-triangles",
+  "title": "Языки в клубе и радужные тройки, USA TST 2013 December P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "edge_colored_complete_graph",
+      "monochromatic_triangle",
+      "rainbow_triangle",
+      "hamiltonian_cycle_decomposition"
+    ],
+    "methods": [
+      "double_counting",
+      "convexity",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "languages_to_edge_colors"
+    ],
+    "goal": [
+      "maximum_rainbow_triangle_count"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "color_degrees_at_vertex",
+      "no_monochromatic_triangle"
+    ],
+    "keywords": [
+      "usa_tst_2013_dec_p1",
+      "rainbow_triangles",
+      "edge_coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Клуб и языки",
+        "text": "В клубе `2k+1` человек, и каждый владеет одними и теми же `k` языками. Каждая пара участников разговаривает ровно на одном из этих языков. Предположим, что не существует трёх участников, которые между собой всегда говорят на одном и том же языке. Обозначим через `A` число троек участников, у которых три попарных разговора идут на трёх разных языках. Найдите максимально возможное значение `A`.",
+        "source_id": "src-usa-tst-2013-aops-community",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим `k`-раскраску рёбер полного графа `K_{2k+1}`. Предположим, что одноцветных треугольников нет. Обозначим через `A` число радужных треугольников, то есть треугольников, у которых три ребра имеют три разных цвета. Найдите максимум `A`.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-two-color-triangles",
+      "title": "Нерадужные треугольники считаются по вершинам",
+      "text": "Если одноцветных треугольников нет, то любой нерадужный треугольник использует ровно два цвета и единственным образом отмечается вершиной, в которой сходятся два ребра одного цвета.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-count-local-repeats",
+      "title": "Локальный счёт и разложение на гамильтоновы циклы",
+      "text": "Переведём задачу в язык раскраски рёбер `K_{2k+1}`. Общее число треугольников равно `C(2k+1,3)`. Пусть для вершины `v` число рёбер цвета `c`, выходящих из `v`, равно `d_c(v)`. Так как одноцветных треугольников нет, каждый нерадужный треугольник использует ровно два цвета и единственным образом считается в сумме `Σ_v Σ_c C(d_c(v),2)`: он отмечается вершиной, в которой два инцидентных ребра имеют одинаковый цвет. Следовательно, `A = C(2k+1,3) - Σ_v Σ_c C(d_c(v),2)`. Для фиксированной вершины `v` выполнено `Σ_c d_c(v)=2k`. По выпуклости функции `x -> C(x,2)` эта сумма минимальна тогда и только тогда, когда все `d_c(v)` равны `2`; минимальное значение равно `k`. Поэтому `A <= C(2k+1,3) - (2k+1)k = 2k(2k+1)(k-2)/3`. Осталось показать достижимость. Полный граф `K_{2k+1}` можно разложить на `k` гамильтоновых циклов; окрасим каждый цикл в свой цвет. Тогда у каждой вершины в каждом цвете степень `2`, одноцветных треугольников нет, и во всех предыдущих неравенствах достигается равенство. Значит максимум равен `2k(2k+1)(k-2)/3`.",
+      "idea_ids": [
+        "idea-count-two-color-triangles"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "degree",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Точная экстремальная задача про раскраску рёбер полного графа без одноцветных треугольников.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "ramsey_theory",
+    "extremal_choice",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "extremal_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usa-tst-2013-aops-community",
+      "role": "problem_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

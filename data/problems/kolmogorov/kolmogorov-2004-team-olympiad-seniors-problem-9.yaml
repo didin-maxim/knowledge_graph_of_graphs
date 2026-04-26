@@ -1,0 +1,127 @@
+{
+  "id": "kolmogorov-2004-team-olympiad-seniors-problem-9",
+  "title": "????? ??????????? 2004: Team Olympiad, Seniors Problem 9",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "cycle",
+      "independent_set"
+    ],
+    "methods": [],
+    "transformations": [],
+    "goal": [
+      "proof"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2004",
+      "graph",
+      "independent set",
+      "bipartite graph",
+      "odd cycle"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Назовем ребро графа важным, если при его удалении увеличивается размер\nмаксимального пустого подграфа. Докажите, что если два важных ребра имеют\nобщую вершину, то в графе есть нечетный цикл.",
+        "source_id": "src-kolmogorov-2004-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "bipartite_graph",
+          "cycle",
+          "independent_set"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2004-team-olympiad-seniors-problem-9",
+      "text": "Граф явно присутствует в условии, а официальное решение целиком опирается на\nнезависимые множества, двудольность и нечетные циклы.",
+      "tags": [],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Пусть данные важные ребра равны `ab` и `ac`, а максимальный размер пустого\nподграфа исходного графа равен `k`. Так как `ab` важно, существует множество\nвершин `B` мощности `k+1`, в котором ребро `ab` является единственным. Аналогично,\nтак как `ac` важно, существует множество `C` мощности `k+1`, в котором ребро `ac`\nявляется единственным.\n\nОставим в графе только вершины из `B ∪ C`. После этого свойства множеств `B`\nи `C` не исчезнут, а все вершины из `(B ∩ C) \\\\ {a}` станут изолированными,\nпотому что в `B` и в `C` у них не было соседей. Такие вершины можно удалить,\nодновременно уменьшая и `k`, и размеры `B`, `C` на одну и ту же величину.\n\nВ итоге получаем граф на `2k+1` вершинах, разбитых на два пустых множества\n`B \\\\ {a}` и `C \\\\ {a}` мощности `k` и общую вершину `a`, причем единственные\nвнутренние ребра в множествах `B` и `C` уже устранены.\n\nЕсли бы в этом графе не было нечетного цикла, он был бы двудольным. Но любой\nдвудольный граф на `2k+1` вершинах содержит независимое множество мощности\n`k+1` (берем большую долю двудольного разбиения). Это противоречит определению\n`k` как максимального размера пустого подграфа.\n\nСледовательно, в графе обязательно существует нечетный цикл.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "bipartite_graph",
+        "cycle",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "matching",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2004-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2004_team_olympiad_seniors_problem_9.md.",
+      "Source file noted by card: work/kolm/text/2004/Љ®¬ ­¤­ п ®«Ё¬ЇЁ ¤ .txt.",
+      "Source page noted by card: team olympiad seniors, problem 9.",
+      "Graph role: explicit_in_statement.",
+      "Original final-selection name: Team Olympiad, Seniors, Problem 9."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

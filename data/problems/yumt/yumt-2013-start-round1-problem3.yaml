@@ -1,0 +1,88 @@
+{
+  "id": "yumt-2013-start-round1-problem3",
+  "title": "YUMT 2013, Старт-лига, первый тур, 3. Хорды по делимости на окружности",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2013_start_round1_problem3",
+      "yumt_2013"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "24 точки на окружности занумерованы, возможно в беспорядке, нечётными числами 3, 5, 7, ..., 49.\nЕсли один номер делится на другой, то соответствующие точки соединяются хордой.\nДокажите, что найдутся хорды, пересекающиеся внутри круга.",
+        "source_id": "src-yumt-2013-start-round1-problem3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Официальное решение",
+      "text": "Рассмотрим шесть чисел 3, 21, 7, 35, 5, 15. Каждое следующее делится на предыдущее или наоборот, поэтому на окружности получаем хорды 3-21, 21-7, 7-35, 35-5, 5-15, 15-3.\nЭти шесть хорд образуют цикл 3-21-7-35-5-15-3. Если бы никакие две хорды не пересекались внутри круга, то вершины любого такого цикла обязаны были бы располагаться на окружности именно в циклическом порядке 3, 21, 7, 35, 5, 15.\nТеперь рассмотрим число 45. Оно соединяется хордой с 3 и с 5, потому что делится и на 3, и на 5. Какую бы из шести дуг между соседними вершинами указанного цикла ни заняла точка 45, одна из хорд 3-45 или 5-45 обязательно пересечёт одну из сторон цикла внутри круга.\nСледовательно, пересекающиеся хорды существуют.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2013_start_round1_problem3.md; stage Старт-лига, первый тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2013-start-round1-problem3-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2013_start_round1_problem3.md."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "Графовая сущность этой задачи проявляется прежде всего в официальном решении; отдельная самодостаточная graph_theory-формулировка пока не вынесена."
+  }
+}

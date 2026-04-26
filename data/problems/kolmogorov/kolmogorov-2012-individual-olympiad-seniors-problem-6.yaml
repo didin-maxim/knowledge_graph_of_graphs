@@ -1,0 +1,149 @@
+{
+  "id": "kolmogorov-2012-individual-olympiad-seniors-problem-6",
+  "title": "????? ??????????? 2012: Individual Olympiad, Seniors Problem 6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "path",
+      "degree"
+    ],
+    "methods": [
+      "double_counting",
+      "greedy_ordering"
+    ],
+    "transformations": [
+      "auxiliary_graph_model"
+    ],
+    "goal": [
+      "construction"
+    ],
+    "auxiliary_graph_type": [
+      "official_solution_graph_model"
+    ],
+    "invariants": [
+      "degree"
+    ],
+    "keywords": [
+      "kolmogorov",
+      "kolmogorov_2012",
+      "directed-graph",
+      "grid-graph",
+      "eulerian-trail",
+      "degree-balance",
+      "path-construction"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Original statement",
+        "text": "Город Сугробск представляет собой квадрат со стороной `100n`, разбитый прямыми улицами на `n^2` одинаковых кварталов, где `n` — четное натуральное число, большее `2`.\n\nНа каждой из `2n + 2` улиц, идущих по сторонам кварталов от края до края города, введено одностороннее движение, причем на соседних параллельных улицах направления противоположны. В одном из углов города расположен автопарк, и обе выходящие из него улицы направлены от автопарка. Снегоуборочная машина выезжает из автопарка и едет по разрешенным направлениям, очищая каждую пройденную сторону квартала не более одного раза, пока впервые не попадет в противоположный угол города.\n\nКакое наибольшее расстояние она может проехать?",
+        "source_id": "src-kolmogorov-2012-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "path",
+          "degree"
+        ],
+        "review_notes": "Prepared card confidence was below high; statement should be checked against the official source before publication."
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-graph-role",
+      "title": "???????? ???? ???????? kolmogorov-2012-individual-olympiad-seniors-problem-6",
+      "text": "В официальном решении задача переводится в ориентированный граф на узлах уличной сетки. Существенны именно графовые понятия: ориентированные ребра, входящие и исходящие степени, удаление ребер и существование маршрута через все оставшиеся ребра.",
+      "tags": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "??????????? ???????, ?????? ???????",
+      "text": "Ответ: `100(2n^2 - 2n + 4)`.\n\nРассмотрим сетку единичных отрезков и ориентируем каждый отрезок по направлению движения на соответствующей улице. Тогда задача превращается в задачу об ориентированном графе: нужно найти максимальную длину допустимого маршрута из стартовой вершины в финишную, не проходя по одному ребру дважды.\n\nВ официальном решении сначала оценивают снизу число непройденных ребер. Для этого рассматривают семейства диагональных прямых `x + y = k + 1/2` и подсчитывают, сколько ориентированных единичных отрезков их пересекает. Из-за чередования направлений на соседних улицах и условий входа-выхода через такие сечения получается, что хотя бы `4n - 4` ребер неизбежно останутся непройденными.\n\nЗатем приводится конструкция, где удаляют ровно `4n - 4` ориентированных ребра и коротких ориентированных пути так, что у внутренних вершин сохраняется баланс входящих и исходящих ребер, а на границе остаются нужные степени для существования требуемого маршрута. Значит, можно пройти по всем остальным ребрам, то есть по `2n(n + 1) - (4n - 4) = 2n^2 - 2n + 4` единичным отрезкам, что и дает искомое расстояние.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "directed_graph",
+        "path",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "double_counting",
+    "eulerian_graphs",
+    "olympiad_tool"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2012-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-26",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from prepared card cards/kolm/2012_individual_olympiad_seniors_problem_6.md.",
+      "Source file noted by card: work/kolm/archive/2012/extracted/kolm16/lichol16.doc.",
+      "Source page noted by card: 1.",
+      "Graph role: essential_in_official_solution.",
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 6."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+  }
+}

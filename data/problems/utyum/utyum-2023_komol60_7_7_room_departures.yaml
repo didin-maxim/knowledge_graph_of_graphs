@@ -1,0 +1,119 @@
+{
+  "id": "utyum-2023_komol60_7_7_room_departures",
+  "title": "UTYUM 2023, Team Olympiad, grade 7, 7. Room departures with a degree gap of at least two",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_choice",
+      "degree_counting",
+      "explicit_construction"
+    ],
+    "transformations": [
+      "delete_vertex"
+    ],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2023_komol60_7_7_room_departures",
+      "utyum_2023"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В комнате находятся 99 человек, и знакомства взаимны.\n\nКаждую минуту из комнаты выходит человек, у которого число знакомых среди присутствующих хотя бы на 2 больше, чем у каждого из остальных.\n\nЧерез несколько минут такого человека не нашлось. Какое минимальное количество людей могло остаться к этому моменту?",
+        "source_id": "src-utyum-2023_komol60_7_7_room_departures-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф на 99 вершинах. Пока существует вершина, степень которой хотя бы на 2 больше степени любой другой вершины текущего графа, её удаляют. Какое наименьшее число вершин может остаться после завершения процесса?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Официальное решение рассматривает граф знакомств на 99 вершинах.\n\nПри удалении вершины степени остальных вершин не увеличиваются, поэтому степени последовательно выходящих людей убывают как минимум на 2. Значит, возможные степени выходящих не превосходят 98, 96, 94, ..., 2.\n\nУдалить вершину степени 2 на последнем таком шаге невозможно: если ещё есть рёбра, то найдутся вершины степени не меньше 1, и требуемый разрыв по степеням уже не выполнится.\n\nОтсюда выходит, что удалить можно не более 48 человек, значит остаться должно не менее 51 человека.\n\nПример на 51 человека строится явным графом.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 7.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_choice",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2023_komol60_7_7_room_departures-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2023_komol60_7_7_room_departures.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "И условие, и официальное решение сформулированы на графе знакомств и степенях вершин."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

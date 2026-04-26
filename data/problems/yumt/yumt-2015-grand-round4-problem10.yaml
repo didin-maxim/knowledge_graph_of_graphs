@@ -1,0 +1,115 @@
+{
+  "id": "yumt-2015-grand-round4-problem10",
+  "title": "YUMT 2015, Гранд-лига, четвёртый тур, полуфинал, 10. Пять авиакомпаний и связное подмножество аэропортов",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2015_grand_round4_problem10",
+      "yumt_2015"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Дано натуральное n. В республике 5 областей, в каждой области ровно 5n аэропортов.\nУ каждой из 5 авиакомпаний несколько двусторонних рейсов, каждый рейс соединяет два города из разных областей.\nДля любой пары городов из разных областей найдётся рейс одной из авиакомпаний, который соединяет города из этой пары.\nНайдите наибольшее целое D такое, что при данных условиях всегда можно выбрать одну авиакомпанию и D аэропортов так, чтобы из любого выбранного города можно было добраться до любого другого выбранного города только рейсами выбранной авиакомпании.",
+        "source_id": "src-yumt-2015-grand-round4-problem10-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "complete_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-large-monochromatic-component-in-complete-multipartite",
+      "title": "Крупная одноцветная компонента в полном многодольном графе",
+      "text": "Задача является частным случаем общей оценки для наибольшей гарантированной одноцветной связной компоненты в полном k-дольном графе.",
+      "tags": [
+        "coloring",
+        "ramsey_theory"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Внешнее переносимое решение",
+      "text": "Во внешнем источнике доказано общее утверждение: если k — простое число, то в любом k-раскрашивании рёбер полного k-дольного графа K_{kn,kn,...,kn} существует одноцветная связная компонента не менее чем из kn вершин; кроме того, эта оценка точна. Задача ЮМТ в точности соответствует случаю k=5, поскольку имеется 5 долей по 5n аэропортов и 5 цветов-авиакомпаний. Применяя внешний результат при k=5, сразу получаем, что для некоторой компании найдётся связное множество из не менее чем 5n аэропортов. Следовательно, искомая величина D равна 5n.",
+      "idea_ids": [
+        "idea-large-monochromatic-component-in-complete-multipartite"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_draft",
+      "definition_ids": [
+        "connected_graph",
+        "complete_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2015_grand_round4_problem10.md; stage Гранд-лига, четвёртый тур, полуфинал.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool",
+    "ramsey_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2015-grand-round4-problem10-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-mse-yumt-2015-grand-r4-p10",
+      "role": "related_external_source",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2015_grand_round4_problem10.md.",
+      "Есть внешний общий результат, дающий точный ответ для k=5."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

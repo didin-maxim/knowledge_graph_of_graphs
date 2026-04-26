@@ -1,0 +1,117 @@
+{
+  "id": "kolmogorov-2021-komol-chip-firing-edge-discrepancy",
+  "title": "Фишки, выстрелы и соседнее ребро, Кубок Колмогорова 2021 КомОл seniors 8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "G. Tardos",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "chip_firing_process",
+      "adjacent_vertices"
+    ],
+    "methods": [
+      "cut_argument",
+      "counting_net_transfer"
+    ],
+    "transformations": [],
+    "goal": [
+      "bound_firing_discrepancy_on_adjacent_vertices"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "net_chip_flow_across_cut"
+    ],
+    "keywords": [
+      "kolmogorov_2021_komol_seniors_8",
+      "chip_firing",
+      "edge_discrepancy"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "A loopless simple graph has adjacent vertices u and v, and N chips are placed on its vertices. A vertex may fire whenever it has at least as many chips as its degree, sending one chip to each neighbor; at most one vertex fires at a time. Prove that at every moment the numbers of firings made by u and v differ by at most N.",
+        "source_id": "src-kolmogorov-2021-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cut-by-firing-threshold",
+      "title": "Разделить вершины по числу выстрелов",
+      "text": "Если одна из вершин ребра стреляла чаще другой, разбиваем вершины на две части по порогу этого меньшего числа выстрелов. Тогда через каждое ребро между частями в более активную часть должен был перейти положительный чистый поток фишек.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-cut-flow",
+      "title": "Чистый перенос через разрез",
+      "text": "Зафиксируем момент времени и обозначим через \\(f(x)\\) число выстрелов вершины \\(x\\). Если \\(f(u)=f(v)\\), то доказывать нечего; пусть \\(f(u)<f(v)\\). Разобьём вершины на две части: \\(U=\\{x\\colon f(x)\\le f(u)\\}\\) и \\(V=\\{x\\colon f(x)>f(u)\\}\\). Тогда \\(u\\in U\\), \\(v\\in V\\), так что ребро \\(uv\\) пересекает этот разрез. Рассмотрим любое ребро \\(ab\\) с \\(a\\in U\\), \\(b\\in V\\). По нему из \\(a\\) в \\(b\\) было отправлено \\(f(a)\\) фишек, а из \\(b\\) в \\(a\\) — \\(f(b)\\) фишек; так как \\(f(a)\\le f(u)<f(b)\\), чистый перенос по этому ребру идёт из \\(V\\) в \\(U\\), то есть в \\(V\\) в итоге прибыло \\(f(b)-f(a)>0\\) фишек меньше, чем ушло. Эквивалентно, если считать переносы со знаком в сторону \\(V\\), то каждое ребро разреза даёт в \\(V\\) положительный вклад. Суммарный чистый приток в \\(V\\) по всем рёбрам разреза не может превышать \\(N\\), потому что во всём графе изначально всего \\(N\\) фишек. Значит, и по одному ребру \\(uv\\) этот вклад не превосходит \\(N\\). Но вклад по ребру \\(uv\\) равен \\(f(v)-f(u)\\), откуда \\(f(v)-f(u)\\le N\\).",
+      "idea_ids": [
+        "idea-cut-by-firing-threshold"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Короткая, но нетривиальная задача на локальный chip-firing и разрез по числу ходов.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2021-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done"
+  }
+}

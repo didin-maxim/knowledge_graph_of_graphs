@@ -1,0 +1,140 @@
+{
+  "id": "yumt-2014-start-round4-problem2",
+  "title": "YUMT 2014, Старт-лига, четвёртый тур, 2. Ферзи с ограничением на число побитых ранее",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2014_start_round4_problem2",
+      "yumt_2014"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "На шахматную доску 8×8 по одному выставляют ферзей.\nОчередной ферзь бьёт не более одного из ранее поставленных.\nКакое наибольшее число ферзей можно выставить на доску?",
+        "source_id": "src-yumt-2014-start-round4-problem2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-row-column-forest",
+        "title": "Bipartite row-column formulation",
+        "text": "Consider a bipartite graph with 8 row-vertices and 8 column-vertices. Edges are added one by one, and after each step the current graph remains acyclic. What is the largest possible total number of edges?",
+        "source_id": "src-yumt-2014-start-round4-problem2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle",
+          "tree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-row-column-forest",
+      "title": "Двудольный граф строк и столбцов",
+      "text": "Каждой занятой клетке сопоставляется ребро между её строкой и столбцом. Условие «новый ферзь бьёт не более одного старого» запрещает циклы, поэтому получается лес с ограниченным числом рёбер.",
+      "tags": [
+        "matching",
+        "trees"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Официальное решение",
+      "text": "Ответ: 14.\nРассмотрим двудольный граф, в котором вершины одной доли — 8 строк доски, вершины другой доли — 8 столбцов, а каждый выставленный ферзь задаёт ребро между своей строкой и своим столбцом.\nВ этом графе не может быть цикла. Действительно, если бы цикл был, то последний по времени ферзь из этого цикла бил бы по крайней мере двух ранее поставленных ферзей: одного по строке и одного по столбцу. Это противоречит условию. Значит, полученный граф является лесом, а потому число его рёбер не больше чем 16 - 1 = 15.\nПредположим, что удалось поставить 15 ферзей. Тогда соответствующий двудольный граф является деревом. Следовательно, между любыми двумя ферзями существует путь, идущий по занятым клеткам горизонтальными и вертикальными ходами.\nРазобьём все диагонали двух направлений на 14 классов: по 7 диагоналей каждого цвета. По принципу Дирихле среди 15 ферзей найдутся два, стоящие на одной такой диагонали. Диагональный ход между ними вместе с уже существующим путём по занятым клеткам образует цикл в графе ходов ферзя. Тогда последний поставленный ферзь на этом цикле в момент постановки бил бы хотя бы двух ферзей, что невозможно.\nИтак, 15 ферзей поставить нельзя, значит, максимум равен 14.\nНижняя оценка достигается явной расстановкой на 14 ферзей, приведённой в официальном разборе методом «пропеллера». Следовательно, ответ равен 14.",
+      "idea_ids": [
+        "idea-row-column-forest"
+      ],
+      "standard_idea_ids": [
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2014_start_round4_problem2.md; stage Старт-лига, четвёртый тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "olympiad_tool",
+    "trees"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2014-start-round4-problem2-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-circassiandeer-domino-full-ans2",
+      "role": "related_external_source",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-adygmath-penalti-star-resh",
+      "role": "related_external_source",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-adygmath-penalti-mlad-resh",
+      "role": "related_external_source",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2014_start_round4_problem2.md.",
+      "Есть семейство близких задач с тем же двудольным-лесным методом."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_absent_reason": ""
+  }
+}

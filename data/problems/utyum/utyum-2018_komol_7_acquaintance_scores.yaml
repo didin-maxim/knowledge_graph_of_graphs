@@ -1,0 +1,114 @@
+{
+  "id": "utyum-2018_komol_7_acquaintance_scores",
+  "title": "UTYUM 2018, Team Olympiad, grade 7, 3. Boys, girls, acquaintances, and average scores",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "explicit_construction"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2018_komol_7_acquaintance_scores",
+      "utyum_2018"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Группа из пяти мальчиков и пяти девочек сдавала тест, за который каждому ставилась оценка от 1 до 10.\nУ каждой девочки есть хотя бы два знакомых мальчика, а у каждого мальчика есть хотя бы две знакомых девочки.\nКаждый мальчик получил оценку ниже, чем каждая из знакомых ему девочек.\n\nМожет ли средняя оценка мальчиков оказаться выше, чем средняя оценка девочек?",
+        "source_id": "src-utyum-2018_komol_7_acquaintance_scores-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан двудольный граф между пятью мальчиками и пятью девочками; степень каждой вершины не меньше 2. Каждому участнику приписана оценка от 1 до 10, причём оценка каждого мальчика меньше оценки каждой смежной с ним девочки. Может ли средняя оценка мальчиков быть больше средней оценки девочек?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Ответ: может.\n\nВ официальном решении приводится явная конструкция графа знакомств. Три мальчика с оценками 9 знакомы\nтолько с двумя девочками с оценками 10, а два мальчика с оценками 1 знакомы только с тремя девочками\nс оценками 2. Тогда у каждой девочки есть хотя бы два знакомых мальчика, у каждого мальчика — хотя бы\nдве знакомых девочки, и при этом каждый мальчик имеет оценку ниже оценок всех знакомых ему девочек.\n\nСредняя оценка мальчиков равна 5.8, а средняя оценка девочек равна 5.2, так что требуемая ситуация\nдействительно возможна.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 7.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2018_komol_7_acquaintance_scores-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2018_komol_7_acquaintance_scores.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Задача явно задаёт двудольный граф знакомств между мальчиками и девочками; официальное решение строит конкретный граф с нужными степенями и весами на вершинах."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

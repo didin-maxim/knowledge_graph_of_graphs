@@ -1,0 +1,115 @@
+{
+  "id": "yumt-2014-junior-round1-problem1",
+  "title": "YUMT 2014, Юниор-лига, первый тур, 1. Два простых цикла одинаковой длины",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2014_junior_round1_problem1",
+      "yumt_2014"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В графе 100 вершин и 200 рёбер.\nДокажите, что в нём есть два простых цикла одинаковой длины.",
+        "source_id": "src-yumt-2014-junior-round1-problem1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-spanning-forest-extra-edges-equal-cycles",
+      "title": "Остовный лес и классификация фундаментальных циклов",
+      "text": "Сильнейший внешний родственник решается через остовный лес: каждое неостовное ребро задаёт фундаментальный цикл, а плотность графа заставляет две длины совпасть.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Переносимое внешнее решение",
+      "text": "Во внешнем источнике доказано более сильное утверждение: любой простой граф на n вершинах с не менее чем 2n-3 рёбрами содержит два простых цикла одинаковой длины. Задача ЮМТ является его прямым частным случаем, потому что при n=100 имеем 200 > 2·100 - 3 = 197. Следовательно, нужные два цикла одинаковой длины существуют и в графе из условия ЮМТ.",
+      "idea_ids": [
+        "idea-spanning-forest-extra-edges-equal-cycles"
+      ],
+      "standard_idea_ids": [
+        "delete_to_simplify"
+      ],
+      "status": "ai_draft",
+      "definition_ids": [
+        "cycle",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2014_junior_round1_problem1.md; stage Юниор-лига, первый тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2014-junior-round1-problem1-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-mse-yumt-2014-junior-r1-p1",
+      "role": "related_external_source",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2014_junior_round1_problem1.md.",
+      "Есть внешний разбор более сильного утверждения про граф с не менее 2n-3 рёбрами."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

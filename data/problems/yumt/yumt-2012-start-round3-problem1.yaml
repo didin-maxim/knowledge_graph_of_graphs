@@ -1,0 +1,116 @@
+{
+  "id": "yumt-2012-start-round3-problem1",
+  "title": "YUMT 2012, Старт-лига, третий тур, 1. Авиалинии между 20 городами и четыре компании",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "yumt",
+      "2012_start_round3_problem1",
+      "yumt_2012"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В стране 20 городов. Между любыми двумя городами есть двусторонние авиалинии.\nПо антимонопольному закону, если авиакомпания владеет двумя смежными линиями, то она не может владеть линией между крайними городами этого пути длины 2.\nМогут ли все авиалинии принадлежать четырём компаниям?",
+        "source_id": "src-yumt-2012-start-round3-problem1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-multicolor-ramsey-bound",
+      "title": "Многокрасочная рамсеевская постановка",
+      "text": "Условие переводится в раскраску рёбер полного графа K_20 в 4 цвета без одноцветного треугольника; это частный вопрос о числе Рамсея R(3,3,3,3).",
+      "tags": [
+        "ramsey_theory"
+      ],
+      "status": "ai_draft"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-archive-card",
+      "title": "Решение пока не найдено",
+      "text": "Решение пока не найдено.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from the checked YUMT archive card 2012_start_round3_problem1.md; stage Старт-лига, третий тур.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool",
+    "ramsey_theory"
+  ],
+  "sources": [
+    {
+      "source_id": "src-yumt-2012-start-round3-problem1-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-oeis-a343607",
+      "role": "related_external_source",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-small-ramsey-ds1",
+      "role": "related_external_source",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from checked YUMT workspace card 2012_start_round3_problem1.md.",
+      "Официальное решение ЮМТ пока не найдено.",
+      "Внешний теоретический фон привязан через источники по малым числам Рамсея.",
+      "Близкие внешние источники просмотрены; они подтверждают правильный рамсеевский сюжет, но не дают короткого самодостаточного переноса в решение ЮМТ."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

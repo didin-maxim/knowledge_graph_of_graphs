@@ -1,0 +1,124 @@
+{
+  "id": "utyum-2025_komol64_8_7_tree_matchings_path",
+  "title": "UTYUM 2025, Team Olympiad, grade 8, 7. Thick matchings in a tree on 80 vertices",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "induction",
+      "tree_counting",
+      "extremal_choice"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2025_komol64_8_7_tree_matchings_path",
+      "utyum_2025"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В дереве T 80 вершин.\n\nНабор из 39 независимых рёбер назовём толстым паросочетанием.\n\nИзвестно, что дерево T имеет 820 различных толстых паросочетаний.\n\nДокажите, что T является путём.",
+        "source_id": "src-utyum-2025_komol64_8_7_tree_matchings_path-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "matching",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дано дерево T на 80 вершинах. Назовём толстым паросочетанием набор из 39 попарно непересекающихся рёбер. Известно, что в T ровно 820 различных толстых паросочетаний. Докажите, что T является путём.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "matching",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Официальное решение проводит индукцию по числу вершин и оценивает максимальное число толстых паросочетаний.\n\nИспользуется двудольность дерева: вершины разбиваются на две доли, и каждое толстое паросочетание занимает по n - 1 вершине в каждой доле.\n\nДалее анализируются возможные размеры долей и висячие вершины. В каждом случае число толстых паросочетаний не превосходит нужной биномиальной оценки.\n\nСлучай равенства приводит к крайне жёсткой структуре, и оказывается, что единственным деревом, достигающим оценки, является путь.\n\nДля 80 вершин это даёт требуемый вывод.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree",
+        "matching",
+        "path",
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "olympiad_tool",
+    "trees",
+    "matching"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2025_komol64_8_7_tree_matchings_path-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2025_komol64_8_7_tree_matchings_path.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "В условии прямо задано дерево и паросочетания, а официальное решение основано на двудольности дерева и подсчёте matchings."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

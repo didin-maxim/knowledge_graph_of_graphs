@@ -1,0 +1,108 @@
+{
+  "id": "fyum-2010-tur1a-p8",
+  "title": "FYUM 2010, First tour (a), Problem 8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "edge_coloring"
+    ],
+    "methods": [
+      "induction",
+      "cycle_decomposition"
+    ],
+    "transformations": [
+      "remove_cycle_or_leaf_edge"
+    ],
+    "goal": [
+      "balance_incident_color_counts"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "local_color_balance"
+    ],
+    "keywords": [
+      "balanced_bipartite_edge_coloring",
+      "balancing",
+      "bipartite_graph",
+      "edge_coloring",
+      "fyum",
+      "fyum-2010-tur1a-p8",
+      "k_colors"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "Дан двудольный граф $G$ и натуральное число $k$. Докажите, что ребра\n\n$G$ можно окрасить в $k$ цветов таким образом, чтобы для любых двух\n\nцветов и любой вершины количество ребер этих двух цветов, выходящих\n\nиз этой вершины, отличались не более, чем на 1.",
+        "source_id": "src-fyum-2010-tur1a-p8-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official-archive",
+      "title": "Archive solution",
+      "text": "First prove the claim for k=2 by induction on the number of edges. If the graph has a cycle, remove it, color the rest inductively, and color the even cycle alternately. If the graph is a tree, remove an edge leading to a leaf and then choose its color at the end. For general k, choose a coloring minimizing the number of same-color edge pairs at a vertex and show that then all color counts differ by at most 1.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Imported from the checked FYUM archive card 2010_tur1a_problem8.md; stage First tour (a).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2010-tur1a-p8-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Archive rationale: The statement explicitly uses a bipartite graph.",
+      "Original-source candidate: Balanced edge-coloring theory for bipartite graphs and multigraphs. Author note: Dominique de Werra and subsequent balanced edge-coloring literature. Link: https://bilmuh.gtu.edu.tr/~dgozupek/cimpa2023/lectures/AminBahmanian-EdgeColoringsDecompositionsAndEmbeddings.pdf",
+      "Original-source note: The FYUM problem is a clean olympiad-sized specialization of the balanced edge-coloring line for bipartite graphs. The k=2 case is handled by the same alternating-cycle and leaf-removal mechanism, and the general k case is the same balancing principle, so the transfer is direct."
+    ],
+    "relations_status": "deep_done"
+  }
+}

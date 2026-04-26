@@ -1,0 +1,142 @@
+{
+  "id": "kolmogorov-2021-t2-circulant-rainbow-reachability",
+  "title": "Радужная достижимость в циркулянтном орграфе, Кубок Колмогорова 2021 2 тур seniors 10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "circulant_digraph",
+      "edge_coloring",
+      "rainbow_path"
+    ],
+    "methods": [
+      "modular_arithmetic",
+      "explicit_coloring",
+      "extremal_bound"
+    ],
+    "transformations": [
+      "cyclic_order_to_residue_classes"
+    ],
+    "goal": [
+      "minimize_number_of_colors_for_rainbow_reachability"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "maximum_jump_101"
+    ],
+    "keywords": [
+      "kolmogorov_2021_t2_seniors_10",
+      "rainbow_reachability",
+      "circulant_digraph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "The vertices of a directed graph are 0,1,...,2020 on a circle. From each vertex i there are directed edges to i+1,i+2,...,i+101 modulo 2021. Color the edges with as few colors as possible so that for every ordered pair of vertices there is a directed path whose edges have pairwise distinct colors. Find the minimum number of colors.",
+        "source_id": "src-kolmogorov-2021-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-2020-needs-20-jumps",
+      "title": "Чтобы пройти на 2020 вперёд, нужно хотя бы 20 ребер",
+      "text": "Любой ориентированный путь состоит не более чем из стольких рёбер, сколько использовано цветов, а каждое ребро прибавляет по кругу не более 101. Чтобы попасть из вершины в предыдущую, суммарный прирост должен быть не меньше 2020.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-color-by-tail-mod-20",
+      "title": "Красить по остатку хвоста по модулю 20",
+      "text": "Если нумеровать вершины остатками по модулю 2021 и красить любое исходящее ребро из вершины \\(i\\) цветом \\(i \\bmod 20\\), то последовательные прыжки на 101 сдвигают цвет на 1 по модулю 20. Разложение \\(d=101q+r\\) даёт радужный путь длины \\(q\\) или \\(q+1\\).",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-mod-20-coloring",
+      "title": "Ответ 20",
+      "text": "Ответ равен \\(20\\). Нижняя оценка: рассмотрим две соседние по кругу вершины так, чтобы из первой во вторую надо было пройти суммарный сдвиг \\(2020\\) против часовой стрелки. Любой радужный путь использует не более одного ребра каждого цвета, то есть если цветов \\(k\\), то в таком пути не более \\(k\\) рёбер. Каждое ребро сдвигает не более чем на \\(101\\), поэтому суммарный сдвиг не превосходит \\(101k\\). Чтобы получить сдвиг \\(2020\\), необходимо \\(101k\\ge 2020\\), откуда \\(k\\ge 20\\). Верхняя оценка: занумеруем вершины числами \\(0,1,\\dots,2020\\) по кругу и покрасим каждое ребро \\(i\\to i+d\\), где \\(1\\le d\\le 101\\), цветом \\(i \\bmod 20\\). Для любой пары вершин нужно получить нужный сдвиг \\(s\\in\\{0,1,\\dots,2020\\}\\). Представим \\(s=101q+r\\), где \\(0\\le q\\le 19\\) и \\(0\\le r\\le 100\\). Если \\(r=0\\), идём \\(q\\) раз по ребру длины \\(101\\). Если \\(r>0\\), идём \\(q\\) раз по ребру длины \\(101\\), а затем один раз по ребру длины \\(r\\). Такой путь существует, потому что все длины от 1 до 101 разрешены. Цвета его рёбер равны \\(i,i+1,\\dots,i+q\\pmod{20}\\), то есть попарно различны, поскольку используется не более 20 рёбер. Значит, 20 цветов достаточно.",
+      "idea_ids": [
+        "idea-2020-needs-20-jumps",
+        "idea-color-by-tail-mod-20"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Аккуратная задача на радужную достижимость, где нижняя и верхняя оценки встречаются в точном ответе 20.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "olympiad_tool"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2021-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-baltic-way-2021-shortlist-cited-by-kolm",
+      "role": "original_source",
+      "status": "needs_human_review"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-24",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "В официальном колмогоровском листке указан источник 'Baltic Way 2021 Short List', но отдельный открытый shortlist-пакет в этом проходе не был надёжно найден.",
+      "Original source normalized from the official Kolmogorov source line: Baltic Way 2021 Short List."
+    ],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done"
+  }
+}

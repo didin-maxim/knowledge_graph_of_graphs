@@ -1,0 +1,115 @@
+{
+  "id": "utyum-2023_komol61_6_2_common_acquaintances",
+  "title": "UTYUM 2023, Team Olympiad, grade 6, 2. Ten people with a common acquaintance",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [],
+    "methods": [
+      "extremal_choice"
+    ],
+    "transformations": [],
+    "goal": [],
+    "auxiliary_graph_type": [],
+    "invariants": [],
+    "keywords": [
+      "utyum",
+      "2023_komol61_6_2_common_acquaintances",
+      "utyum_2023"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Statement",
+        "text": "В компании из 100 человек любые десять человек имеют общего знакомого среди остальных.\n\nДокажите, что любые пять человек из этой компании имеют не менее шести общих знакомых среди остальных.",
+        "source_id": "src-utyum-2023_komol61_6_2_common_acquaintances-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Graph-theoretic formulation",
+        "text": "Дан простой граф на 100 вершинах. Для любых десяти вершин существует общая соседняя им вершина вне этой десятки. Докажите, что любые пять вершин имеют не менее шести общих соседей вне этой пятёрки.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-official",
+      "title": "Official solution",
+      "text": "Предположим противное: найдутся пять человек, у которых не более пяти общих знакомых.\n\nТогда можно рассмотреть десятку, состоящую из этих пяти человек и всех их общих знакомых.\n\nПо условию у этой десятки есть ещё один общий знакомый среди остальных. Но тогда у исходных пяти человек нашёлся бы ещё один общий знакомый, сверх перечисленных.\n\nПолучается противоречие, значит у любых пяти человек действительно есть не менее шести общих знакомых.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Imported from UTYUM package; stage Team Olympiad, grade 6.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_choice",
+    "extremal_graph_theory",
+    "olympiad_tool"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2023_komol61_6_2_common_acquaintances-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-25",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Imported from UTYUM package card 2023_komol61_6_2_common_acquaintances.yaml.",
+      "Graph role: explicit_in_statement.",
+      "Confidence: high.",
+      "Условие естественно формулируется на графе знакомств, и вся логика решения идёт через общих соседей выбранных вершин."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false
+  }
+}
