@@ -1174,8 +1174,8 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "Сжатое официальное решение",
-          "text": "Интерпретируем сеть авиарейсов как связный граф. Сначала проверяется, что \\(K_n\\), цикл \\(C_n\\) и при чётном \\(n\\) граф \\(K_{n/2,n/2}\\) действительно удовлетворяют условию. Для обратного направления берётся наидлиннейший путь \\(V_1V_2\\dots V_p\\). Поскольку для его концов существует внутренне непересекающийся короткий путь, этот короткий путь вместе с длинным вынуждает ребро \\(V_1V_p\\); иначе можно было бы удлинить путь. Затем любой сосед вершины цикла вне самого цикла снова дал бы путь большей длины, поэтому полученный цикл уже гамильтонов. После этого перенумеровываем вершины по циклу и рассматриваем множество расстояний \\(S\\), для которых в графе есть все хорды данного циклического расстояния. Из специальной перестановки вершин в длинном пути получается правило замыкания: если два из чисел \\(a,b,a+b-1\\) лежат в \\(S\\), то и третье тоже. Если \\(2\\in S\\), то по индукции в \\(S\\) попадают все расстояния, и граф полон. Если \\(2\\notin S\\), то соседние расстояния одновременно встречаться не могут. Тогда либо \\(S=\\{1,n-1\\}\\), что даёт цикл, либо в \\(S\\) есть некоторое \\(t\\in[3,n-3]\\), откуда тем же правилом следуют все нечётные расстояния; значит \\(n\\) чётно и граф есть \\(K_{n/2,n/2}\\). Поэтому возможны ровно \\(F=n\\), \\(F=n(n-1)/2\\) и при чётном \\(n\\) ещё \\(F=n^2/4\\).",
+          "title": "Развёрнутое официальное решение",
+          "text": "Интерпретируем сеть авиарейсов как простой неориентированный граф \\(G\\). Сначала проверим три семейства. В \\(K_n\\) коротким путём между двумя вершинами служит ребро, а длинный путь можно выбрать любым гамильтоновым путём с теми же концами. В цикле \\(C_n\\) между двумя вершинами есть два пути по двум дугам цикла; более короткая и более длинная дуга не имеют общих внутренних вершин. В \\(K_{m,m}\\), где \\(n=2m\\), для вершин из разных долей короткий путь - ребро, а длинный путь можно взять гамильтоновым. Для вершин из одной доли длинный путь имеет \\(2m-1\\) вершин и пропускает некоторую вершину другой доли; короткий путь через эту пропущенную вершину внутренне не пересекается с длинным. Значит эти графы подходят. Докажем обратное. Граф связен, потому что между любой парой вершин есть путь. Возьмём путь \\(P=V_1V_2\\dots V_p\\) максимальной длины среди всех простых путей графа. Для пары \\(V_1,V_p\\) этот путь является длинным. По условию существует короткий \\(V_1\\)-\\(V_p\\)-путь, внутренне не пересекающийся с \\(P\\). Если ребра \\(V_1V_p\\) нет, то короткий путь содержит внутреннюю вершину \\(X\\), не лежащую на \\(P\\), и начинается ребром \\(V_1X\\); тогда \\(XV_1V_2\\dots V_p\\) длиннее \\(P\\), противоречие. Поэтому \\(V_1V_p\\in E(G)\\), и \\(V_1\\dots V_pV_1\\) - цикл. Если вне этого цикла есть вершина \\(A\\), то из связности у неё есть сосед \\(V_i\\) на цикле; обход \\(A,V_i,V_{i+1},\\dots,V_{i-1}\\) даёт путь длины \\(p+1\\), снова противоречие. Значит цикл гамильтонов, и далее пишем его вершины как \\(V_1,\\dots,V_n\\) по модулю \\(n\\). Если в графе есть ребро \\(V_iV_j\\), то есть и ребро \\(V_{i+1}V_{j+1}\\): действительно, путь \\(V_{i+1}V_{i+2}\\dots V_jV_iV_{i-1}\\dots V_{j+1}\\) проходит через все \\(n\\) вершин, а значит является длинным между концами; внутренне непересекающийся короткий путь между этими концами не может иметь внутренних вершин, поэтому обязан быть ребром. Повторяя сдвиг, получаем, что если есть одно ребро данного циклического расстояния, то есть все рёбра этого расстояния. Пусть \\(S\\subseteq\\{1,\\dots,n-1\\}\\) - множество расстояний, для которых все такие рёбра есть в графе. Тогда \\(1,n-1\\in S\\). Для положительных \\(a,b\\) с \\(a+b\\le n-1\\) рассмотрим гамильтонов порядок \\(V_1,V_{a+b},V_{a+b-1},\\dots,V_{a+1},V_{a+b+1},V_{a+b+2},\\dots,V_n,V_a,V_{a-1},\\dots,V_2\\). Расстояния между соседними вершинами в нём равны только \\(1,a,b,a+b-1\\). Если любые два из чисел \\(a,b,a+b-1\\) лежат в \\(S\\), то все соседние пары этого порядка соединены рёбрами, кроме, возможно, пары концов. Получается гамильтонов путь; как выше, условие задачи заставляет соединить его концы, а их расстояние равно третьему числу. Поэтому вместе с любыми двумя из \\(a,b,a+b-1\\) в \\(S\\) лежит и третье. Если \\(2\\in S\\), то из \\(1,2\\in S\\) и правила с \\((a,b)=(r,2)\\) индуктивно получаем \\(3,4,\\dots,n-1\\in S\\); граф полный. Пусть теперь \\(2\\notin S\\). Тогда \\(n-2\\notin S\\) тоже. Если бы два соседних числа \\(r,r+1\\) из диапазона \\(1,\\dots,n-2\\) лежали в \\(S\\), то правило с \\((a,b)=(r,2)\\) дало бы \\(2\\in S\\), противоречие; значит в \\(S\\) нет соседних чисел. Если \\(S=\\{1,n-1\\}\\), граф есть \\(C_n\\). Иначе возьмём \\(t\\in S\\), \\(3\\le t\\le n-3\\). Порядок \\(V_t,V_{t-1},\\dots,V_2,V_{t+2},V_{t+1},V_1,V_n,\\dots,V_{t+3}\\) снова является гамильтоновым путём, потому что его соседние расстояния равны \\(1\\) или \\(t\\). Поэтому его концы должны быть соединены, то есть \\(3\\in S\\). Теперь из \\(1,3\\in S\\) правило с \\((a,b)=(r,3)\\) даёт по индукции все нечётные расстояния. Так как соседних чисел в \\(S\\) нет, чётных расстояний в \\(S\\) быть не может; кроме того \\(n-1\\in S\\), значит \\(n\\) чётно. Тогда \\(S\\) состоит ровно из нечётных расстояний, а это полный двудольный граф с долями вершин чётной и нечётной нумерации, то есть \\(K_{n/2,n/2}\\). Следовательно, возможны только \\(F=n\\), \\(F=n(n-1)/2\\), а при чётном \\(n\\) ещё \\(F=n^2/4\\), и все эти значения уже реализованы.",
           "idea_ids": [
             "idea-longest-path-cycle",
             "idea-distance-set-closure"
@@ -1183,12 +1183,13 @@
           "standard_idea_ids": [
             "longest_path"
           ],
-          "status": "needs_human_review",
+          "status": "ai_checked",
           "definition_ids": [
             "connected_graph",
             "path",
             "cycle",
-            "complete_graph"
+            "complete_graph",
+            "bipartite_graph"
           ]
         }
       ],
@@ -45088,7 +45089,7 @@
       "type": "same_motif",
       "distance": 2,
       "forward_text": "Обе теоремы описывают точное условие оптимальности в двудольных графах; стандартные доказательства связаны через чередующиеся пути и дуальность покрытий и паросочетаний.",
-      "backward_text": "Теорема Кёнига является более глобальной минимакс-формой той же двудольной matching-идеологии, к которой относится теорема Холла.",
+      "backward_text": "Теорема Кёнига представляет собой более широкую минимакс-форму той же двудольной идеологии соответствия, к которой относится последователь Холла.",
       "anchors": {
         "from_solution_id": "sol-induction",
         "to_solution_id": "sol-alternating"
@@ -45775,7 +45776,7 @@
       "to": "usamo-2025-p3-gabriel-graph-road-network",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "После распознавания Gabriel graph задача USAMO 2025 P3 сводится к стандартной оценке средней степени в планарном графе через `e <= 3v-6`.",
+      "forward_text": "После получения графа Габриэля задача USAMO 2025 P3 сводится к определению уровня сложности в планарном графе через `e <= 3v-6`.",
       "backward_text": "USAMO 2025 P3 — типичное применение планарной оценки на число рёбер: она превращает геометрическую конструкцию в утверждение о вершине степени не больше 5.",
       "anchors": {
         "from_solution_id": "sol-face-counting",
@@ -45824,7 +45825,7 @@
       "type": "same_motif",
       "distance": 2,
       "forward_text": "Обе задачи формулируются на социальном графе, но используют разные графовые механики: в 2008 это паритет соседей и линейная алгебра над `F_2`, а в 2022 — closure-процесс по двум общим друзьям, то есть по `C_4`.",
-      "backward_text": "USAMO 2022 P6 хорошо сочетается с USAMO 2008 P6 как пара задач на один и тот же narrative object — friendship graph — но с совершенно разными инструментами.",
+      "backward_text": "USAMO 2022 P6 хорошо сочетается с USAMO 2008 P6 как пара задач на один и тот же повествовательный объект — граф дружбы — но с совершенно разными инструментами.",
       "anchors": {
         "from_solution_id": "sol-adjacency-matrix-over-f2",
         "to_solution_id": "sol-c4-closure-extremal"
@@ -45840,7 +45841,7 @@
       "type": "same_motif",
       "distance": 2,
       "forward_text": "Обе задачи переводят доску в решёточный граф и дальше считают не клетки как таковые, а локальное соседство в графе. В USAMO 1999 используется связное множество занятых клеток, доминирующее всю доску, а в IMO 1999 C5 требуется минимальное тотально доминирующее множество.",
-      "backward_text": "IMO 1999 C5 можно рассматривать как более чистую экстремальную версию того же board-to-grid-graph языка, который в USAMO 1999 возникает вместе с дополнительным условием связности.",
+      "backward_text": "IMO 1999 C5 можно рассматривать как более чистую экстремальную версию того же языка графов доски и сетки, которая в USAMO 1999 возникает вместе с дополнительными условиями связности.",
       "anchors": {
         "from_solution_id": "sol-john-scholes-connected-induction",
         "to_solution_id": "sol-reviewed-web"
@@ -45856,7 +45857,7 @@
       "type": "same_motif",
       "distance": 2,
       "forward_text": "Обе задачи живут на клеточном графе и смотрят на существование чёрного пути через доску. В USAMO 2004 это game-theoretic барьер сверху вниз, а в IMO 2005 C3 — счёт раскрасок с одним или двумя левоправыми чёрными путями.",
-      "backward_text": "IMO 2005 C3 развивает тот же grid-path мотив в более счётную сторону: вместо выигрышной стратегии нужно контролировать множество раскрасок через выделение специального пути.",
+      "backward_text": "IMO 2005 C3 разрабатывает тот же путь сетки в более узкую сторону: вместо мотива выигрышной стратегии необходимо контролировать множество раскрасок через выделение специального пути.",
       "anchors": {
         "from_solution_id": "sol-bob-useless-squares",
         "to_solution_id": "sol-reviewed-secondary"
@@ -45871,8 +45872,8 @@
       "to": "imo-2010-c2-flags-diagonal-matching",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Обе задачи сводятся к двудольному графу «объекты против позиций» и существованию большого matching. В USAMO 2022 нужно развести amber- и bronze-matchings, а в IMO Shortlist 2010 C2 — выбрать флаги так, чтобы диагональ стала одноцветной.",
-      "backward_text": "IMO Shortlist 2010 C2 — очень близкий hall/matching родственник USAMO 2022 P1: табличная или бинарная постановка прячут одну и ту же двудольную логику SDR и паросочетаний.",
+      "forward_text": "Обе задачи созданы к двудольному графу «объекты против позиций» и существованию большого количества совпадений. В USAMO 2022 нужно развести янтарные и бронзовые соответствия, а в шорт-листе IMO 2010 C2 — выбрать флаги так, чтобы расстояние стало одноцветным.",
+      "backward_text": "Shortlist IMO 2010 C2 — очень близкий зал/соответствующий родственникам USAMO 2022 P1: табличная или бинарная постановка прячута одна и ту же двудольную логику SDR и паросочетаний.",
       "anchors": {
         "from_solution_id": "sol-hall-matchings-and-uncrossing",
         "to_solution_id": "sol-official-compressed"
@@ -45887,8 +45888,8 @@
       "to": "imo-2005-c8-noncrossing-diagonals-crossings",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Обе задачи используют триангуляции выпуклого многоугольника как maximal outerplanar graph. В USAMO 2024 на этой структуре раскрашивают faces по сумме площадей, а в IMO 2005 C8 сравнивают две такие outerplanar структуры по числу пересечений.",
-      "backward_text": "IMO 2005 C8 полезно как structural neighbour для USAMO 2024 P3: хотя основная техника там другая, сама graph-in-statement среда у них одна и та же — triangulation/outerplanar graph.",
+      "forward_text": "Обещаем использовать триангуляцию выпуклого многоугольника как максимальный внешнепланарный граф. В USAMO 2024 на этом этапе раскрашивают лица по сумме площадей, а в IMO 2005 C8 сравнивают две такие внешнепланарные структуры в пределах пересечений.",
+      "backward_text": "IMO 2005 C8 полезен в качестве структурного соседа для USAMO 2024 P3: хотя основная техника там другая, сама среда графа в операторе у них одна и та же — триангуляция/внепланарный граф.",
       "anchors": {
         "from_solution_id": "sol-fan-and-integrality",
         "to_solution_id": "sol-reviewed-web"
@@ -45903,8 +45904,8 @@
       "to": "usamo-2022-p1-amber-bronze-transversal",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "В USAMO 2022 P1 оценка на число amber- и bronze-клеток сначала превращается в существование больших одноцветных matchings через двудольную версию теоремы Кёнига о равенстве matching/vertex-cover.",
-      "backward_text": "USAMO 2022 P1 — хороший пример того, как теорема Кёнига работает не как финальная цель, а как технический шаг: из невозможности большого matching выводится слишком маленькое vertex cover и затем противоречие по подсчёту рёбер.",
+      "forward_text": "В USAMO 2022 P1 показатель числа янтарных и бронзовых клеток сначала превращается в существование больших одноцветных совпадений посредством двудольной версии последовательностей Кёнига о равенстве сопоставления/вершинного покрытия.",
+      "backward_text": "USAMO 2022 P1 — хороший пример того, как приведение Кёнига работает не как финальная цель, а как технический шаг: из невозможности большого сопоставления выводится слишком маленькое покрытие вершин, а затем противоречие по подсчету рёбера.",
       "anchors": {
         "from_solution_id": "sol-alternating",
         "to_solution_id": "sol-hall-matchings-and-uncrossing"
@@ -45919,8 +45920,8 @@
       "to": "usamo-1999-p1-checkers-board-graph-rank",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Подсчёт в USAMO 1999 P1 фактически идёт по связному графу занятых клеток в tree-like порядке добавления вершин: первая вершина даёт до пяти хороших клеток, каждая следующая — не более трёх новых.",
-      "backward_text": "USAMO 1999 P1 полезна как board-graph применение той же интуиции, что и у деревьев: связный объект удобно раскрывать или стягивать в порядке, где каждая новая вершина цепляется к уже построенной части.",
+      "forward_text": "Подсчёт в USAMO 1999 P1 фактически идёт по связному графу занятых клеток в древовидном порядке добавления вершин: первая вершина даёт до пяти хороших клеток, следующая — не более трёх новых.",
+      "backward_text": "USAMO 1999 P1 полезен в качестве применения графической доски для тех же предположений, что и на деревьях: связный объект удобно раскрывать или стягивать в порядке, где новая вершина цепляется к уже построенной части.",
       "anchors": {
         "from_solution_id": "sol-leaf-induction",
         "to_solution_id": "sol-good-squares-in-connected-order"
@@ -45935,7 +45936,7 @@
       "to": "usamo-2004-p4-black-path-grid-game",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Хотя USAMO 2004 P4 не использует Менгера буквально, вся задача живёт в той же дихотомии path vs separator: Алиса хочет верхне-нижний путь, а Боб строит разрезающий барьер.",
+      "forward_text": "Хотя USAMO 2004 P4 не использует Менгера буквально, вся задача решается в той же дихотомии путь против сепаратора: Алиса хочет верхне-нижний путь, а Боб строит разрезающий барьер.",
       "backward_text": "USAMO 2004 P4 можно читать как игровую и дискретную тень теоремы Менгера: вместо абстрактного минимума разделителей здесь явно конструируется набор клеток, перерезающий все допустимые top-bottom пути.",
       "anchors": {
         "from_solution_id": "sol-flow-sketch",
@@ -45983,7 +45984,7 @@
       "to": "usamo-2023-p3-domino-slides-special-square-digraph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Обе задачи начинаются как клеточные процессы, но решаются через построение вспомогательного ориентированного/tree-объекта на локальных фигурах и последующий подсчёт по дереву.",
+      "forward_text": "Обе задачи начинаются как клеточные процессы, решаются через построение вспомогательного ориентированного/дерево-объекта на локальных фигурах и последующий подсчёт по дереву.",
       "backward_text": "USAMO 2023 P3 близка к IMO 2024 C8 по стилю: граф не виден в условии, но именно дерево, построенное из локальных ходов, становится центральным инвариантом решения.",
       "anchors": {
         "from_solution_id": "sol-directed-tromino-tree",
@@ -45999,8 +46000,8 @@
       "to": "usamo-2023-p3-domino-slides-special-square-digraph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Обе задачи начинаются как задачи о домино на клетчатой доске, а затем переходят к вспомогательному графу, который кодирует не сами клетки, а структуру допустимых конфигураций. В IMO 2016 C8 это alternating-cycle graph двух разбиений, а в USAMO 2023 P3 — ориентированный граф reachable special squares.",
-      "backward_text": "USAMO 2023 P3 хорошо рифмуется с IMO 2016 C8 как другой способ графизовать domino world: не через сравнение двух укладок и alternating cycles, а через динамику ходов и tree-компоненту пустой клетки.",
+      "forward_text": "Обе задачи начинаются как задачи по доске клетчатки, а затем переходят к вспомогательному графу, который кодирует не сами клетки, а схему допустимых конфигураций. В IMO 2016 C8 — это граф чередующегося цикла из двух разбиений, а в USAMO 2023 P3 — ориентированный граф достижимых специальных квадратов.",
+      "backward_text": "USAMO 2023 P3 хорошо рифмуется с IMO 2016 C8 как другой способ графизировать мир домино: не через сравнение двух укладок и чередующихся циклов, а через динамику ходов и древовидную структуру пустой клетки.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-special-square-digraph"
@@ -46016,7 +46017,7 @@
       "type": "same_motif",
       "distance": 3,
       "forward_text": "Обе карточки показывают, что domino-задача на доске часто по-настоящему решается только после перевода в графовый язык. В EGMO 2022 P5 это двудольный граф и паросочетания, а в USAMO 2023 P3 — ориентированный граф и дерево reachable holes.",
-      "backward_text": "USAMO 2023 P3 полезно держать рядом с EGMO 2022 P5 как соседний пример board-to-graph перевода для домино: объект один и тот же, но графовый инструмент уже совсем другой — не matching parity, а tree-динамика ходов.",
+      "backward_text": "USAMO 2023 P3 полезно держать рядом с EGMO 2022 P5 как соседний пример преобразования доски в граф для домино: объект один и тот же, но графический инструмент уже совсем другой — не соответствующая четность, ходы древовидной динамики.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-special-square-digraph"
@@ -46031,8 +46032,8 @@
       "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Обе задачи о domino tilings решаются через сравнение двух укладок и анализ симметрической разности как объединения чередующихся циклов. В IMO 2016 C8 это даёт неединственность допустимого matching, а в USAMO 2009 P3 — невозможность второй tasteful-укладки.",
-      "backward_text": "USAMO 2009 P3 стоит держать рядом с IMO 2016 C8 как почти канонический пример того, как uniqueness в domino-задаче извлекается из alternating-cycle decomposition двух perfect matchings.",
+      "forward_text": "Обе задачи по разбиению домино решаются путем сравнения двух укладок и анализа симметричной разности как объединения чередующихся циклов. В IMO 2016 C8 это даёт неединственность допустимого сопоставления, а в USAMO 2009 P3 — невозможность второй вкусовой укладки.",
+      "backward_text": "USAMO 2009 P3 стоит держать рядом с IMO 2016 C8 как почти канонический пример того, как уникальность в задаче домино получается из разложения попеременного цикла двух идеальных паросочетаний.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-induction-plus-alternating-cycles"
@@ -46047,8 +46048,8 @@
       "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Обе карточки показывают один и тот же перевод domino world в язык графов и паросочетаний. EGMO 2022 P5 смотрит на чётность числа perfect matchings, а USAMO 2009 P3 — на uniqueness tasteful matching через отсутствие alternating cycles.",
-      "backward_text": "USAMO 2009 P3 хорошо соседствует с EGMO 2022 P5 как ещё один board-to-bipartite-graph сюжет: меняется вопрос, но базовый объект тот же — domino tilings как perfect matchings grid-графа.",
+      "forward_text": "Обе карточки показывают один и тот же перевод мира домино на языке графов и паросочетаний. EGMO 2022 P5 показывает чётность чисел идеальных совпадений, а USAMO 2009 P3 — уникальность со вкусом подобранных совпадений через отсутствие чередующихся циклов.",
+      "backward_text": "USAMO 2009 P3 хорошо соседствует с EGMO 2022 P5 как ещё один сюжет доски-двудольного графа: меняется вопрос, но базовый объект тот же — мозаика домино как идеальные соответствия грида-графа.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-induction-plus-alternating-cycles"
@@ -46063,7 +46064,7 @@
       "to": "usamo-2023-p3-domino-slides-special-square-digraph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Обе USAMO-задачи начинаются как клеточные сюжеты про домино, но становятся graph-core только после явного перевода на граф. В 2009 это overlay двух tilings и alternating cycles, в 2023 — digraph special squares и дерево достижимых пустых клеток.",
+      "forward_text": "Обе задачи USAMO начинаются как клеточные сюжеты про домино, но ядро ​​графа становится только после явного преобразования в граф. В 2009 году это наложение двух мозаик и чередующихся циклов, в 2023 году — специальные квадраты орграфа и дерево достижимых пустых клеток.",
       "backward_text": "USAMO 2023 P3 полезно сравнивать с USAMO 2009 P3: обе задачи про домино действительно графовые, но одна идёт через perfect matchings и симметрическую разность, а другая — через ориентированный граф ходов.",
       "anchors": {
         "from_solution_id": "sol-induction-plus-alternating-cycles",
@@ -46080,7 +46081,7 @@
       "type": "prerequisite",
       "distance": 1,
       "forward_text": "В USAJMO 2023 P3 ключевой шаг состоит в том, что weakly connected component пустой клетки в digraph special squares ациклична, а значит является деревом; после этого `k(C)` просто считается по числу вершин.",
-      "backward_text": "USAJMO 2023 P3 — компактное и очень чистое применение критерия дерева: board-конфигурация сначала переводится в ориентированный граф, а затем всё решение сводится к tree-структуре компоненты пустой клетки.",
+      "backward_text": "USAJMO 2023 P3 — компактный и очень чистый критерий применения дерева: конфигурация платы сначала переводится в ориентированный граф, а затем все решение сводится к древовидной структуре компонентов пустой клетки.",
       "anchors": {
         "from_solution_id": "sol-minimal-connected-subgraph",
         "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
@@ -46096,7 +46097,7 @@
       "type": "same_motif",
       "distance": 1,
       "forward_text": "Это фактически старшая и младшая версии одного и того же сюжета. В обеих задачах строится один и тот же digraph special squares, а разница только в финальной цели: в USAMO классифицируются все возможные `k(C)`, а в USAJMO требуется лишь найти максимум.",
-      "backward_text": "USAJMO 2023 P3 удобно читать рядом с USAMO 2023 P3 как сокращённую версию той же graph-core идеи: тот же ориентированный граф, то же дерево reachable holes, но более лёгкая конечная классификация.",
+      "backward_text": "USAJMO 2023 P3 читайте рядом с USAMO 2023 P3 как сокращённую версию с теми же идеями графического ядра: тот же ориентированный граф, то же самое дерево достижимых отверстий, но более лёгкая конечная классификация.",
       "anchors": {
         "from_solution_id": "sol-special-square-digraph",
         "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
@@ -46111,8 +46112,8 @@
       "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Обе задачи о domino world становятся graph-core только после явного auxiliary graph. В IMO 2016 C8 это alternating-cycle graph двух tilings, а в USAJMO 2023 P3 — digraph special squares и дерево достижимых дырок.",
-      "backward_text": "USAJMO 2023 P3 полезно держать рядом с IMO 2016 C8 как другой способ графизовать domino-задачу: не через сравнение двух укладок, а через динамику ходов и tree-компоненту пустой клетки.",
+      "forward_text": "Обещаем, что мир домино станет ядром графа только после явного вспомогательного графа. В IMO 2016 C8 — это граф чередующегося цикла из двух мозаик, а в USAJMO 2023 P3 — специальные квадраты орграфа и дерево достижимых дырок.",
+      "backward_text": "USAJMO 2023 P3 полезно держать рядом с IMO 2016 C8 как другой способ графизировать задачу домино: не через сравнение двух укладок, а через динамик ходов и древовидную составляющую пустой клетки.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
@@ -46127,8 +46128,8 @@
       "to": "fyum-2010-tur3b-p3",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both FYUM 2010 third-tour problems rule out a coloring by looking at every two-color induced subgraph. The key observation is identical: if a two-color subgraph contained a cycle, that cycle would violate the condition, so all such subgraphs are forests and edge counting gives a contradiction.",
-      "backward_text": "The three-color 6-regular problem is the small-parameter version of the five-color 100-regular problem: both are solved by the same two-color forest count.",
+      "forward_text": "Обе задачи третьего тура FYUM 2010 исключают раскраску, рассматривая каждый двухцветный подграф, индуцированный. Ключевое наблюдение идентично: если бы двухцветный подграф содержал цикл, этот цикл нарушил бы условие, поэтому все такие подграфы являются лесами, и подсчет ребер дает противоречие.",
+      "backward_text": "Трехцветная 6-регулярная задача — это версия с малым параметром пятицветной 100-регулярной задачи: обе решаются одним и тем же двухцветным подсчетом леса.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-official-archive"
@@ -46143,8 +46144,8 @@
       "to": "fyum-2011-tur2a-p9",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions build an auxiliary graph whose parity is controlled by the handshaking lemma. In FYUM 2010 the auxiliary vertices are non-dominating sets; in FYUM 2011 they are Hamiltonian paths through a fixed edge.",
-      "backward_text": "The Hamilton-cycle parity problem is a close methodological relative of the dominating-set parity problem: both hide the desired parity statement in the odd-degree vertices of a purpose-built auxiliary graph.",
+      "forward_text": "Оба решения создают вспомогательный граф, четность которого контролируется леммой о подтверждении связи. В ??? 2010 вспомогательные вершины являются недоминирующими множествами; в ??? 2011 это гамильтоновы пути через фиксированное ребро.",
+      "backward_text": "Задача четности гамильтонового цикла является близким методологическим родственником задачи четности доминирующего множества: обе скрывают желаемое утверждение четности в вершинах нечетной степени специально построенного вспомогательного графа.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-official-archive"
@@ -46159,8 +46160,8 @@
       "to": "fyum-2013-tur2a-p1",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems ask for a strong edge coloring: edges at distance at most two must receive distinct colors. FYUM 2012 proves a greedy bound for maximum degree 11, while FYUM 2013 uses a sharp planar-large-girth theorem to reach 2d-1 colors.",
-      "backward_text": "The planar FYUM 2013 problem is a refined structural version of the same distance-two edge-coloring task that appears in FYUM 2012.",
+      "forward_text": "Обе задачи требуют яркой раскраски ребер: ребра на расстоянии не более двух должны иметь разные цвета. FYUM 2012 доказывает жадную границу для максимальной степени 11, а FYUM 2013 использует точную плоскостную теорему большого обхвата для достижения цветов 2d-1.",
+      "backward_text": "Плоская задача FYUM 2013 — это усовершенствованная структурная версия той же задачи раскраски ребер на расстоянии два, которая появляется в FYUM 2012.",
       "anchors": {
         "from_solution_id": "sol-greedy-distance-two-bound",
         "to_solution_id": "sol-official-archive"
@@ -46175,8 +46176,8 @@
       "to": "kolmogorov-2005-team-olympiad-seniors-problem-9",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both 2005 team problems prove that the number of spanning trees is even. The junior proof builds an exchange graph on spanning trees; the senior proof counts tree-plus-one-cycle subgraphs, but both arguments are parity counts around spanning trees.",
-      "backward_text": "The senior problem is the nearby bipartite/even-edge version of the junior spanning-tree parity problem, with the same parity-of-exchanges flavor.",
+      "forward_text": "Обе задачи команды 2005 года доказывают, что число связующих деревьев четное. Младшее доказательство строит граф обмена на остовных деревьях; старшее доказательство учитывает подграфы «дерево плюс один цикл», но оба аргумента являются подсчетами четности вокруг остовных деревьев.",
+      "backward_text": "Старшая задача — это близкая к двудольной/четной версии младшей задачи четности связующего дерева с той же разновидностью паритета обмена.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -46191,8 +46192,8 @@
       "to": "kolmogorov-2007-round-3-high-and-first-league-problem-3",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both KOLM coloring proofs examine the subgraph induced by two color classes and use component swaps. In 2006 local recoloring increases the number of colors seen by a fixed neighborhood; in 2007 the same swap would break uniqueness unless every two-color subgraph is connected.",
-      "backward_text": "The 2007 unique-coloring lower bound is a clean companion to the 2006 neighborhood-coloring problem: both turn Kempe-style two-color component swaps into structural information.",
+      "forward_text": "Оба доказательства раскраски KOLM исследуют подграф, индуцированный двумя классами цветов, и используют замену компонентов. В 2006 году локальное перекрашивание увеличило количество цветов, видимых в фиксированном районе; в 2007 году тот же обмен нарушил бы уникальность, если бы каждый двухцветный подграф не был связан.",
+      "backward_text": "Нижняя граница уникальной раскраски 2007 года является прямым дополнением к задаче раскраски окрестностей 2006 года: обе превращают двухцветные замены компонентов в стиле Кемпе в структурную информацию.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -46207,8 +46208,8 @@
       "to": "kolmogorov-2004-round3-higher-league-problem-10",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems study strong connectivity under deletion in directed graphs. The 2003 task asks for a maximum-size strongly connected digraph in which every edge is essential; the 2004 task proves that under outdegree at least two some vertex can be deleted while preserving strong connectivity.",
-      "backward_text": "The 2004 vertex-deletion theorem is a structural neighbor of the 2003 edge-critical strong-connectivity extremal problem: both analyze how strong components behave after a deletion.",
+      "forward_text": "Обе задачи изучают сильную связность при удалении в ориентированных графах. Задача 2003 года требует создания сильно связного орграфа максимального размера, в котором каждое ребро существенно; задача 2004 года доказывает, что при исходящей степени хотя бы две некоторые вершины могут быть удалены с сохранением сильной связности.",
+      "backward_text": "Теорема об удалении вершин 2004 года является структурным соседом экстремальной задачи сильной связности 2003 года, критической по краям: обе анализируют, как сильные компоненты ведут себя после удаления.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -46223,8 +46224,8 @@
       "to": "vosh-2008-regional-bureaucrats-common-neighborhood",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems force a monochromatic or common-neighborhood configuration by double-counting pairs of neighbors. The USAMO rectangle proof counts same-colored column pairs, while the VOSH graph problem counts common neighbors or common non-neighbors across parts.",
-      "backward_text": "The VOSH common-neighborhood problem is a graph-theoretic relative of the monochromatic-rectangle count: both are Ramsey-flavored double counts of shared neighborhoods.",
+      "forward_text": "Обе задачи вынуждают использовать монохроматическую конфигурацию или конфигурацию общего соседства путем двойного подсчета пар соседей. Доказательство прямоугольника USAMO подсчитывает пары столбцов одного цвета, а задача графа VOSH подсчитывает общих соседей или общих несоседей в частях.",
+      "backward_text": "Задача общего соседства VOSH является теоретико-графовым родственником подсчета монохроматических прямоугольников: обе задачи представляют собой двойной подсчет общих окрестностей в стиле Рэмси.",
       "anchors": {
         "from_solution_id": "sol-column-pair-double-counting",
         "to_solution_id": "sol-double-counting-triples"
@@ -46239,8 +46240,8 @@
       "to": "vosh-2000-01-final-universal-acquaintance",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The VOSH universal-acquaintance problem uses the same clique/independent-set complement viewpoint as the classical R(3,3) theorem: a condition on every n-set is converted into a forced universal adjacency conclusion.",
-      "backward_text": "R(3,3) is the small classical model for the complement-graph and pigeonhole style that appears in the VOSH acquaintance problem.",
+      "forward_text": "Задача универсального знакомства VOSH использует ту же точку зрения на дополнение клики/независимого множества, что и классическая теорема R (3,3): условие на каждом n-множестве преобразуется в вывод о принудительной универсальной смежности.",
+      "backward_text": "R(3,3) — это небольшая классическая модель графа-дополнения и стиля «ячейка», которая появляется в задаче знакомства с VOSH.",
       "anchors": {
         "from_solution_id": "sol-pigeonhole",
         "to_solution_id": "sol-complement-domination"
@@ -46255,8 +46256,8 @@
       "to": "rmm-2017-p5-sieve-sticks-bipartite-matching",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions turn the original geometric/grid setting into a bipartite matching problem. EGMO 2022 uses domino tilings as perfect matchings; RMM 2017 uses the same bipartite-incidence language for sticks and selected intersections.",
-      "backward_text": "The RMM sticks problem is a natural matching-model neighbor of the EGMO domino problem: in both, Hall-style bipartite structure is the graph-theoretic core.",
+      "forward_text": "Оба решения превращают исходную геометрическую/сеточную настройку в задачу двустороннего сопоставления. В EGMO 2022 в качестве идеальных совпадений используются плитки домино; RMM 2017 использует один и тот же язык двудольной инцидентности для палочек и выбранных пересечений.",
+      "backward_text": "Задача палочек RMM является естественным соседом задачи домино EGMO в модели сопоставления: в обеих двухчастная структура в стиле Холла является теоретико-графовым ядром.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -46271,8 +46272,8 @@
       "to": "dirac-theorem",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "The KOLM problem is a dense Hamiltonian-graph strengthening: a Hamiltonian graph with more than n^2/4 edges is asked to contain cycles of all intermediate lengths. Dirac's theorem is not the same result, but it is a nearby classical model for forcing Hamiltonian structure from density-type hypotheses.",
-      "backward_text": "Dirac's theorem gives the basic longest-path/density language for Hamiltonian-cycle forcing; the KOLM card asks a sharper pancyclic conclusion after Hamiltonicity is already assumed.",
+      "forward_text": "Задача KOLM представляет собой усиление плотного гамильтонового графа: гамильтонов граф с более чем n^2/4 ребрами должен содержать циклы всех промежуточных длин. Теорема Дирака — это не тот же результат, но это близкая классическая модель для выведения гамильтоновой структуры из гипотез типа плотности.",
+      "backward_text": "Теорема Дирака дает основной язык наибольшего пути/плотности для воздействия гамильтонового цикла; карта KOLM требует более четкого панциклического вывода после того, как уже предполагается гамильтоновость.",
       "anchors": {
         "from_solution_id": "sol-import-note",
         "to_solution_id": "sol-longest-path"
@@ -46287,8 +46288,8 @@
       "to": "tournament-hamiltonian-path",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The KOLM problem is a quantitative tournament-Hamiltonian-path question: instead of proving that one Hamiltonian path exists in every tournament, it asks for many Hamiltonian paths under the regularity assumption.",
-      "backward_text": "Redei's theorem supplies the baseline tournament path motif behind the KOLM card; the olympiad problem strengthens the theme from existence to a lower bound for regular tournaments.",
+      "forward_text": "Задача KOLM представляет собой количественный вопрос о турнирном гамильтоновом пути: вместо того, чтобы доказывать, что один гамильтонов путь существует в каждом турнире, она требует множества гамильтоновых путей в предположении регулярности.",
+      "backward_text": "Теорема Редеи представляет собой основной мотив турнирного пути, лежащий в основе карты KOLM; задача олимпиады усиливает тему от существования до нижней границы для регулярных турниров.",
       "anchors": {
         "from_solution_id": "sol-import-note",
         "to_solution_id": "sol-insertion"
@@ -46303,8 +46304,8 @@
       "to": "kolmogorov-2022-round2-juniors-hamiltonian-path-parity",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both cards are about counting Hamiltonian paths in a complete-graph environment. The 2009 problem counts directed Hamiltonian paths in a regular tournament; the 2022 junior problem compares the numbers of red and blue monochromatic Hamiltonian paths in an edge-colored complete graph.",
-      "backward_text": "The 2022 parity problem is a colored-complete-graph companion to the 2009 regular-tournament path count: in both, Hamiltonian paths are the central counted object rather than only an existence target.",
+      "forward_text": "Обе карты посвящены подсчету гамильтоновых путей в среде полного графа. Задача 2009 года учитывает направленные гамильтоновы пути в обычном турнире; младшая задача 2022 года сравнивает количество красных и синих монохроматических гамильтоновых путей в полном графе с раскрашенными ребрами.",
+      "backward_text": "Задача четности 2022 года является дополнением к подсчету путей в регулярных турнирах 2009 года с цветным полным графом: в обоих случаях гамильтоновы пути являются центральным подсчитываемым объектом, а не только целью существования.",
       "anchors": {
         "from_solution_id": "sol-import-note",
         "to_solution_id": "sol-import-note"
@@ -46319,8 +46320,8 @@
       "to": "kolmogorov-2014-round3-four-regular-two-100-cycles",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both 2014 Round 3 cards impose a strong local triangle condition: every edge lies in a triangle. The city-route problem combines this with 8-regularity to force many triangles through a vertex, while the 4-regular problem adds high connectivity and asks for two disjoint long cycles.",
-      "backward_text": "The 4-regular cycle problem is a structural companion to the triangle-route counting problem: both use the local condition that every edge participates in a triangle, but drive it toward different global conclusions.",
+      "forward_text": "Обе карты третьего раунда 2014 года налагают строгое условие локального треугольника: каждое ребро лежит в треугольнике. Задача городского маршрута сочетает это с 8-регулярностью, чтобы заставить множество треугольников проходить через вершину, в то время как 4-регулярная задача добавляет высокую связность и требует двух непересекающихся длинных циклов.",
+      "backward_text": "Задача 4-регулярного цикла является структурным дополнением задачи подсчета маршрутов в треугольнике: обе используют локальное условие, согласно которому каждое ребро участвует в треугольнике, но приводят к разным глобальным выводам.",
       "anchors": {
         "from_solution_id": "sol-import-note",
         "to_solution_id": "sol-import-note"
@@ -46335,8 +46336,8 @@
       "to": "bmo-2025-p4-flights-long-short-paths",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems force a large cycle from distance or path-extremal information. The KOLM card uses diameter and eccentricity to force a cycle of length at least 2d, while the BMO solution begins by closing a longest path with a short internally disjoint path to obtain a Hamiltonian cycle.",
-      "backward_text": "BMO 2025 P4 is a fuller classification problem, but its opening longest-path-to-cycle step is a useful neighbor for the KOLM diameter problem's cycle-forcing theme.",
+      "forward_text": "Обе задачи вынуждают использовать большой цикл на основе информации о расстоянии или экстремальных путях. Карта KOLM использует диаметр и эксцентриситет, чтобы обеспечить цикл длиной не менее 2d, в то время как решение BMO начинается с закрытия самого длинного пути коротким внутренне непересекающимся путем для получения гамильтонова цикла.",
+      "backward_text": "BMO 2025 P4 — это более полная задача классификации, но ее первый шаг наибольшего пути к циклу является полезным соседом для темы, связанной с цикличностью задачи диаметра KOLM.",
       "anchors": {
         "from_solution_id": "sol-import-note",
         "to_solution_id": "sol-official-compressed"
@@ -46351,8 +46352,8 @@
       "to": "egmo-2022-p5-domino-parity-bipartite-matching",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions translate the original combinatorial object into a matching problem. In the KOLM card, chosen bit positions define a perfect matching on binary strings and the proof compares same-color and mixed-color matching edges; in EGMO 2022, domino tilings become perfect matchings in a grid graph and parity is the main invariant.",
-      "backward_text": "EGMO 2022 P5 is a board-graph matching-parity neighbor of the KOLM binary-string pairing problem: the concrete objects differ, but both use perfect matchings as the graph core of the solution.",
+      "forward_text": "Оба решения переводят исходный комбинаторный объект в задачу сопоставления. В карте KOLM выбранные позиции битов определяют идеальное совпадение двоичных строк, а доказательство сравнивает совпадающие края одного и смешанного цвета; в EGMO 2022 мозаика домино становится идеальным паросочетанием в сеточном графе, а четность является основным инвариантом.",
+      "backward_text": "EGMO 2022 P5 — это сосед задачи спаривания двоичных строк KOLM с проверкой четности графа доски: конкретные объекты различаются, но оба используют идеальные сопоставления в качестве ядра графа решения.",
       "anchors": {
         "from_solution_id": "sol-import-note",
         "to_solution_id": "sol-official-compressed"
@@ -46367,8 +46368,8 @@
       "to": "kolmogorov-2022-round4-second-third-even-degree-odd-walks",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both 2022 Round 4 cards ask whether all fixed-length walk counts between every pair of vertices can be odd modulo 2. The higher-league airport problem allows an arbitrary graph, while the second/third-league version adds the even-degree constraint.",
-      "backward_text": "The even-degree problem is the constrained companion to the airport-walk parity problem: it asks the same all-pairs odd walk-count question with an extra parity condition on degrees.",
+      "forward_text": "В обеих карточках четвертого раунда 2022 года задается вопрос, могут ли все счетчики прогулок фиксированной длины между каждой парой вершин быть нечетными по модулю 2. Задача аэропорта более высокой лиги допускает произвольный граф, а версия второй/третьей лиги добавляет ограничение четной степени.",
+      "backward_text": "Задача четной степени является ограниченным дополнением к задаче четности обхода аэропорта: она задает тот же вопрос о подсчете нечетных обходов всех пар с дополнительным условием четности для градусов.",
       "anchors": {
         "from_solution_id": "sol-import-note",
         "to_solution_id": "sol-import-note"
@@ -46383,8 +46384,8 @@
       "to": "tree-equivalent-properties",
       "type": "prerequisite",
       "distance": 3,
-      "forward_text": "The KOLM geometry problem uses a spanning tree as its central graph object. Basic tree language such as unique paths, leaves, and edge exchange is prerequisite vocabulary, even though the hard part of the problem is geometric.",
-      "backward_text": "The tree-equivalence card supplies the standard tree facts needed to read the maximum-length tree problem; the olympiad card then adds metric geometry on top of that graph skeleton.",
+      "forward_text": "Задача геометрии KOLM использует связующее дерево в качестве центрального объекта графа. Базовый язык деревьев, такой как уникальные пути, листья и обмен ребрами, является обязательным словарным запасом, хотя самая сложная часть задачи — геометрическая.",
+      "backward_text": "Карта эквивалентности дерева предоставляет стандартные факты о дереве, необходимые для решения задачи о дереве максимальной длины; затем олимпийская карта добавляет метрическую геометрию поверх скелета графа.",
       "anchors": {
         "from_solution_id": "sol-import-note",
         "to_solution_id": "sol-leaf-induction"
@@ -46399,8 +46400,8 @@
       "to": "tc-2022-23-blue-red-cells-connectivity",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems solve a colored-grid question by counting cell adjacencies and boundary contributions. The UTYUM solution balances same-color internal sides after adding the outside boundary, while the Tournament of Cities solution bounds red-blue boundary sides using the connected red-cell graph.",
-      "backward_text": "The Tournament of Cities cell-counting problem is a close grid-adjacency neighbor of the UTYUM rectangle coloring problem: both turn color conditions into a double count of sides in a cell-adjacency graph.",
+      "forward_text": "Задача решить вопрос о цветной сетке путем подсчета соответствия ячеек и границ вкладок. Решение УТИУМ уравновешивает добавление основного одного цвета после внешней границы, решение Турнира городов ограничивает красно-синие границы границ с помощью связанного графа красных ячеек.",
+      "backward_text": "Задача подсчета ячеек «Турнира городов» является близким соседом по соседству с сеткой задачи раскраски прямоугольника UTYUM: обе превращают условия цвета в двойной подсчет сторон в графе смежности ячеек.",
       "anchors": {
         "from_solution_id": "sol-official",
         "to_solution_id": "sol-bound-boundary"
@@ -46479,8 +46480,8 @@
       "to": "hall-marriage-theorem",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The FYUM solution passes to the complement and then forces matchings between the three parts by the same neighbourhood-deficiency logic as Hall-type arguments.",
-      "backward_text": "Hall is not quoted literally, but the complement-tripartite proof is an olympiad application of the same matching-obstruction viewpoint.",
+      "forward_text": "Решение FYUM переходит к дополнению, а затем вызывает сопоставление между тремя частями с помощью той же логики дефицита окрестности, что и аргументы типа Холла.",
+      "backward_text": "Холл не цитируется буквально, но доказательство с дополнением и тремя сторонами представляет собой олимпиадное применение той же точки зрения на сопоставление и препятствие.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-tight-set-splitting"
@@ -46495,8 +46496,8 @@
       "to": "tournament-hamiltonian-path",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "This FYUM problem is a parity-strengthening of the basic theorem that every tournament has a Hamiltonian path.",
-      "backward_text": "The classical existence theorem is the zeroth-order version of the FYUM statement counting Hamiltonian paths modulo 2.",
+      "forward_text": "Эта задача FYUM представляет собой усиление четности основной теоремы о том, что каждый турнир имеет гамильтонов путь.",
+      "backward_text": "Классическая теорема существования представляет собой версию утверждения FYUM нулевого порядка, подсчитывающую гамильтоновы пути по модулю 2.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-insertion"
@@ -46511,8 +46512,8 @@
       "to": "ramsey-theorem",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The stronger statement proved in the official solution is a tree-versus-independent-set Ramsey statement.",
-      "backward_text": "Ramsey theory for graphs supplies the right umbrella viewpoint for the FYUM induction embedding a fixed tree unless a large independent set appears.",
+      "forward_text": "Более сильное утверждение, доказанное в официальном решении, — это утверждение Рамсея о дереве и независимом множестве.",
+      "backward_text": "Теория Рамсея для графов обеспечивает правильную общую точку зрения для индукции FYUM, включающей фиксированное дерево, если только не появляется большое независимое множество.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-recursive-bound"
@@ -46527,8 +46528,8 @@
       "to": "ore-theorem",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "The official proof is explicitly a closure argument of Ore type: add every non-edge whose endpoint degree sum is large enough until Hamiltonicity becomes transparent.",
-      "backward_text": "Ore?s theorem is the clean classical prototype for the FYUM closure method.",
+      "forward_text": "Официальное доказательство представляет собой явно аргумент замыкания типа Оре: добавлять все неребра, сумма степеней конечных точек которых достаточно велика, пока гамильтоновость не станет прозрачной.",
+      "backward_text": "Теорема Оре является чистым классическим прототипом метода замыкания FYUM.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-closure-sketch"
@@ -46543,8 +46544,8 @@
       "to": "ramsey-theorem",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "The search for many monochromatic odd cycles in a 2-colored complete graph sits in the same large-monochromatic-subgraph tradition as Ramsey arguments.",
-      "backward_text": "Ramsey theory does not by itself produce the full FYUM conclusion, but it is the natural classical family for this monochromatic complete-graph problem.",
+      "forward_text": "Поиск множества монохроматических нечетных циклов в двухцветном полном графе соответствует той же традиции больших монохроматических подграфов, что и аргументы Рэмси.",
+      "backward_text": "Теория Рамсея сама по себе не дает полного заключения FYUM, но она является естественным классическим семейством для этой монохроматической задачи полного графа.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-recursive-bound"
@@ -46559,8 +46560,8 @@
       "to": "usa-tst-2009-p6-tournament-gap-ordering",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both solutions decompose a tournament into strongly connected components and use forbidden cycle lengths to derive a rigid linear ordering of the vertices.",
-      "backward_text": "USA TST 2009 is a cleaner high-level relative of the FYUM tournament-ordering problem.",
+      "forward_text": "Оба решения разлагают турнир на сильно связанные компоненты и используют запрещенные длины циклов для получения жесткого линейного порядка вершин.",
+      "backward_text": "USA TST 2009 — это более чистая высокоуровневая версия задачи с упорядочением турниров FYUM.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-components-hamiltonian-cycle"
@@ -46575,8 +46576,8 @@
       "to": "handshaking-lemma",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The official proof builds an auxiliary graph on non-dominating sets and wins because every vertex there has odd degree, contradicting the handshaking parity law.",
-      "backward_text": "The FYUM problem is a nontrivial parity application of the handshaking lemma inside a purpose-built auxiliary graph.",
+      "forward_text": "Официальное доказательство строит вспомогательный граф на недоминирующих множествах и побеждает, поскольку каждая вершина там имеет нечетную степень, что противоречит закону четности квитирования.",
+      "backward_text": "Задача FYUM — это нетривиальное применение леммы о четности внутри специально созданного вспомогательного графа.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-double-counting"
@@ -46591,8 +46592,8 @@
       "to": "fyum-2010-tur1b-p8",
       "type": "specialization",
       "distance": 1,
-      "forward_text": "The first-tour A problem is the k-color balanced edge-coloring statement for bipartite graphs, and the first-tour B problem is exactly its k=2 specialization.",
-      "backward_text": "The two-color FYUM problem is the base case of the k-color version: its alternating-cycle and leaf-removal proof is the first step of the general balanced coloring argument.",
+      "forward_text": "Задача первого тура A — это утверждение сбалансированной раскраски ребер в k-цвет для двудольных графов, а задача первого тура B — это именно его специализация k = 2.",
+      "backward_text": "Задача FYUM с двумя цветами является базовым случаем версии k-цвета: ее доказательство с чередующимся циклом и удалением листьев является первым шагом общего аргумента о сбалансированной раскраске.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-official-archive"
@@ -46607,8 +46608,8 @@
       "to": "fyum-2010-tur1b-p8",
       "type": "solution_transfer",
       "distance": 1,
-      "forward_text": "After translating points to the row-column bipartite graph, IMO 1986 P6 becomes the same task as FYUM 2010 1B P8: 2-color the edges of a bipartite graph so that the two incident color counts differ by at most one at every vertex.",
-      "backward_text": "FYUM 2010 1B P8 supplies the clean graph-theoretic core of IMO 1986 P6; the IMO problem adds only the row-column modelling step before applying the same balanced two-coloring.",
+      "forward_text": "После перевода точек в двудольный граф строка-столбец IMO 1986 P6 становится той же задачей, что и FYUM 2010 1B P8: раскрасить ребра двудольного графа в два цвета так, чтобы два счетчика входящих цветов отличались не более чем на один в каждой вершине.",
+      "backward_text": "FYUM 2010 1B P8 представляет собой чистое теоретико-графовое ядро ​​IMO 1986 P6; задача IMO добавляет только этап моделирования строк и столбцов перед применением той же сбалансированной двухцветной раскраски.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-official-archive"
@@ -46623,8 +46624,8 @@
       "to": "fyum-2011-tur1b-p5",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "These are near-identical FYUM variants: both disprove four-color rainbow connectivity with the same three-level graph A, B_i, C_i and the same pigeonhole argument on color pairs.",
-      "backward_text": "The B-version is best read together with the A-version: it uses the same 35-vertex counterexample and differs only in wording of the rainbow-path condition.",
+      "forward_text": "Это почти идентичные варианты FYUM: оба опровергают связность четырехцветной радуги с одним и тем же трехуровневым графом A, B_i, C_i и одним и тем же аргументом в отношении цветовых пар.",
+      "backward_text": "B-версию лучше всего читать вместе с A-версией: она использует тот же контрпример с 35 вершинами и отличается только формулировкой условия радуги.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-official-archive"
@@ -46639,8 +46640,8 @@
       "to": "tournament-hamiltonian-path",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The FYUM problem asks for a Hamiltonian path in a tournament with a prescribed two-block orientation pattern, so it directly refines the basic tournament Hamiltonian-path theorem.",
-      "backward_text": "The classical theorem provides the ambient Hamiltonian-path language, while FYUM 2011 adds a delicate counting constraint on the orientation pattern.",
+      "forward_text": "Задача FYUM требует наличия гамильтонова пути в турнире с заданной схемой ориентации из двух блоков, поэтому она напрямую уточняет основную теорему о гамильтоновом пути турнира.",
+      "backward_text": "Классическая теорема обеспечивает окружающий язык гамильтоновых путей, а FYUM 2011 добавляет тонкое ограничение счета на шаблон ориентации.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-max-forward-edges"
@@ -46655,8 +46656,8 @@
       "to": "fyum-2013-tur1b-p10",
       "type": "specialization",
       "distance": 2,
-      "forward_text": "The strategy-league problem proves the weighted complete-graph cycle theorem for an arbitrary modulus n; the tactics-league problem is the prime-modulus case, with a shorter additive-combinatorial construction.",
-      "backward_text": "The prime-modulus problem is a close special case of the general FYUM modular-cycle theorem: both seek a simple cycle of zero edge-weight sum in a large complete graph.",
+      "forward_text": "Задача стратегической лиги доказывает теорему о взвешенном цикле полного графа для произвольного модуля n; задача тактической лиги - это случай простого модуля с более короткой аддитивно-комбинаторной конструкцией.",
+      "backward_text": "Задача простого модуля является близким частным случаем общей теоремы FYUM о модульном цикле: обе они ищут простой цикл с нулевой суммой ребер в большом полном графе.",
       "anchors": {
         "from_solution_id": "sol-official-archive",
         "to_solution_id": "sol-official-archive"
@@ -46671,8 +46672,8 @@
       "to": "fyum-2013-tur2a-p1",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The official FYUM proof begins with the standard Euler-formula consequence that a planar graph of minimum degree at least 3 contains a short cycle.",
-      "backward_text": "The strong edge-coloring problem uses Euler?s formula only as an entry lemma, but that short-cycle bound is the crucial graph-theoretic prerequisite.",
+      "forward_text": "Официальное доказательство ??? начинается со стандартного следствия формулы Эйлера о том, что планарный граф минимальной степени не ниже 3 содержит короткий цикл.",
+      "backward_text": "Задача сильной раскраски ребер использует формулу Эйлера только в качестве входной леммы, но эта граница короткого цикла является важнейшей предпосылкой теории графов.",
       "anchors": {
         "from_solution_id": "sol-reduce-to-tree",
         "to_solution_id": "sol-official-archive"
@@ -46767,7 +46768,7 @@
       "to": "imo-2024-c3-knights-chord-uncrossing",
       "type": "same_motif",
       "distance": 4,
-      "forward_text": "C3 не ищет паросочетание, а начинает с уже заданного совершенного паросочетания партнёров; тем не менее язык паросочетаний помогает увидеть, что задача изучает фиксированное matching-ребро под меняющимся циклическим порядком.",
+      "forward_text": "C3 не ищет паросочетания, а начинает с уже заданного совершенного паросочетания партнеров; тем не менее язык паросочетаний помогает увидеть, что задача изучает фиксированное сопоставление-ребро под меняющимся циклическим порядком.",
       "backward_text": "Теорема Холла является задачей о существовании паросочетания, тогда как C3 изучает геометрию уже заданного паросочетания на окружности и пересечения его хорд.",
       "anchors": {
         "from_solution_id": "sol-induction",
@@ -46831,8 +46832,8 @@
       "to": "imo-1964-p4-three-topic-ramsey",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "IMO 1964 P4 is the three-colour party version of the same Ramsey move: choose one vertex, pigeonhole many same-colour neighbours, then invoke the two-colour triangle lemma on six vertices.",
-      "backward_text": "The problem is an olympiad application of R(3,3)=6 inside a 3-colour edge-colouring of K_17.",
+      "forward_text": "IMO 1964 P4 — это трехцветная партийная версия того же хода Рэмси: выберите одну вершину, распределите множество соседей того же цвета, затем вызовите лемму о двухцветном треугольнике для шести вершин.",
+      "backward_text": "Задача заключается в олимпиадном применении R(3,3)=6 внутри трёхцветной раскраски ребер K_17.",
       "anchors": {
         "from_solution_id": "sol-pigeonhole",
         "to_solution_id": "sol-graph-review"
@@ -46847,8 +46848,8 @@
       "to": "imo-1998-c6-complete-graph-rainbow-edges",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems turn the statement into an edge-colouring of a complete graph and use local colour-degree constraints plus R(3,3)-style triangle forcing.",
-      "backward_text": "IMO 1998 C6 is a more delicate edge-colouring problem, but the obstruction for four colours has the same Ramsey triangle core as IMO 1964 P4.",
+      "forward_text": "Обе задачи превращают утверждение в раскраску ребер полного графа и используют локальные ограничения степени цвета плюс форсирование треугольника в стиле R(3,3).",
+      "backward_text": "IMO 1998 C6 представляет собой более тонкую задачу раскраски краев, но препятствие для четырех цветов имеет то же ядро ​​треугольника Рамсея, что и IMO 1964 P4.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-reviewed-web"
@@ -46863,8 +46864,8 @@
       "to": "imo-1979-p6-octagon-walks-cycle-graph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "The counter's motion is exactly a walk on the cycle graph C_8; the same cycle-graph parity that underlies Eulerian graph reasoning explains why odd lengths are impossible.",
-      "backward_text": "IMO 1979 P6 is not an Eulerian-trail problem, but it is a basic cycle-graph walk example sharing the parity and cycle-structure motif.",
+      "forward_text": "Движение счетчика представляет собой в точности прогулку по графу циклов C_8; та же четность циклического графа, которая лежит в основе рассуждений об эйлеровых графах, объясняет, почему нечетные длины невозможны.",
+      "backward_text": "IMO 1979 P6 - это не задача Эйлера, а простой пример обхода циклического графа, разделяющий мотивы четности и циклической структуры.",
       "anchors": {
         "from_solution_id": "sol-cycle-splicing",
         "to_solution_id": "sol-graph-review"
@@ -46879,8 +46880,8 @@
       "to": "imo-1999-c5-grid-total-domination",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both are domination-type problems in grid graphs: the 1985 shortlist problem constructs a perfect independent dominating set, while 1999 IMO P3 minimizes a total dominating set on a finite square grid.",
-      "backward_text": "The finite-board lower-bound/construction in 1999 is a boundary-sensitive cousin of the residue-class perfect-code construction in the infinite lattice.",
+      "forward_text": "Обе задачи относятся к типу доминирования в сеточных графах: задача короткого списка 1985 года создает идеальный независимый доминирующий набор, а IMO P3 1999 года минимизирует общий доминирующий набор на конечной квадратной сетке.",
+      "backward_text": "Нижняя граница/конструкция конечной доски в 1999 году является чувствительным к границам двоюродным братом конструкции совершенного кода вычетного класса в бесконечной решетке.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-reviewed-web"
@@ -46895,8 +46896,8 @@
       "to": "imo-1994-c6-infinite-grid-pairing-strategy",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both published constructions use a periodic pattern on an infinite grid/lattice to enforce a local neighbourhood condition everywhere.",
-      "backward_text": "The 1994 pairing strategy is not a domination code, but it shares the same periodic-grid construction philosophy as the 1985 lattice perfect code.",
+      "forward_text": "Обе опубликованные конструкции используют периодический шаблон на бесконечной сетке/решетке для обеспечения соблюдения условий локальной окрестности повсюду.",
+      "backward_text": "Стратегия спаривания 1994 года не является кодом доминирования, но она разделяет ту же философию построения периодической сетки, что и идеальный код решетки 1985 года.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-reviewed-secondary"
@@ -46911,8 +46912,8 @@
       "to": "imo-1986-p6-axis-line-balanced-coloring",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The standard graph solution converts points into edges of a row-column bipartite graph and alternates colours along Eulerian circuits after parity adjustment.",
-      "backward_text": "IMO 1986 P6 is a clean olympiad application of Eulerian decomposition to balanced two-colouring of incidences.",
+      "forward_text": "Стандартное графическое решение преобразует точки в ребра двудольного графа, состоящего из строк и столбцов, и меняет цвета по эйлеровым схемам после настройки четности.",
+      "backward_text": "IMO 1986 P6 — это чистое олимпиадное применение эйлерова разложения для сбалансированной двухцветной раскраски инцидентов.",
       "anchors": {
         "from_solution_id": "sol-cycle-splicing",
         "to_solution_id": "sol-graph-review"
@@ -46927,8 +46928,8 @@
       "to": "imo-2020-c6-colored-coins-eulerian-multigraph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions obtain a balanced colouring by decomposing an even-degree graph/multigraph into Eulerian cycles and alternating along the cycles.",
-      "backward_text": "IMO 2020 C6 is a more elaborate multigraph version of the Eulerian alternating-colouring idea already visible in IMO 1986 P6.",
+      "forward_text": "Оба решения получают сбалансированную раскраску за счет разложения графа/мультиграфа четной степени на эйлеровы циклы и чередования циклов.",
+      "backward_text": "IMO 2020 C6 — это более сложная мультиграфовая версия эйлеровой идеи чередующейся раскраски, уже видимой в IMO 1986 P6.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-official-compressed"
@@ -46943,8 +46944,8 @@
       "to": "imo-2023-c4-strip-pieces-eulerian-graph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "In both problems an incidence object is encoded as a graph whose Eulerian structure gives the desired global arrangement.",
-      "backward_text": "IMO 2023 C4 uses Eulerian traversal for reconstruction, whereas IMO 1986 P6 uses it for alternating colour balance; the graph mechanism is closely related.",
+      "forward_text": "В обеих задачах объект инцидентности кодируется как граф, эйлерова структура которого обеспечивает желаемое глобальное расположение.",
+      "backward_text": "IMO 2023 C4 использует эйлеров обход для реконструкции, тогда как IMO 1986 P6 использует его для переменного цветового баланса; графовый механизм тесно связан.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-official-compressed"
@@ -46959,8 +46960,8 @@
       "to": "imo-1989-sl14-seven-points-triangle-cover",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The minimum number of drawn segments is found by passing to the complement and applying Mantel's bound to a triangle-free graph on seven vertices.",
-      "backward_text": "The 1989 shortlist problem is a small exact application of Mantel's theorem via complement graphs.",
+      "forward_text": "Минимальное количество нарисованных сегментов находится путем перехода к дополнению и применения границы Мантеля к графу без треугольников на семи вершинах.",
+      "backward_text": "Задача короткого списка 1989 года представляет собой небольшое точное применение теоремы Мантеля с помощью графов дополнений.",
       "anchors": {
         "from_solution_id": "sol-degree-sum",
         "to_solution_id": "sol-graph-review"
@@ -46975,8 +46976,8 @@
       "to": "imo-1992-p3-nine-points-partial-ramsey",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both reduce to forbidding triangles in auxiliary graphs: 1989 uses the complement graph, while 1992 uses the two colour classes of a partial K_9 edge-colouring.",
-      "backward_text": "The 1992 problem can be seen as a coloured strengthening of the triangle-free extremal reasoning used in the 1989 seven-point problem.",
+      "forward_text": "Оба сводятся к запрещению треугольников во вспомогательных графах: в 1989 году используется граф дополнений, а в 1992 году используются два цветовых класса частичной раскраски ребер K_9.",
+      "backward_text": "Задачу 1992 года можно рассматривать как цветное усиление экстремальных рассуждений без треугольников, использованных в задаче семи пунктов 1989 года.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-aops-six-vertex-ramsey"
@@ -46991,8 +46992,8 @@
       "to": "imo-1991-sl9-min-degree-for-k6",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The published solution is Turan-type: a graph on 1991 vertices with no K_6 is bounded by the complete five-partite extremal construction.",
-      "backward_text": "IMO Shortlist 1991 problem 9 is a direct minimum-degree formulation of the K_6 case of Turan extremal graph theory.",
+      "forward_text": "Опубликованное решение типа Turan: граф на 1991 вершине без K_6 ограничен полной пятичастной экстремальной конструкцией.",
+      "backward_text": "Задача 9 из короткого списка IMO 1991 года представляет собой прямую формулировку в минимальной степени случая K_6 экстремальной теории графов Турана.",
       "anchors": {
         "from_solution_id": "sol-symmetrization",
         "to_solution_id": "sol-graph-review"
@@ -47007,8 +47008,8 @@
       "to": "imo-1991-sl9-min-degree-for-k6",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both are small olympiad faces of extremal clique/independent-set theory: complementing and comparing with a complete multipartite graph gives the sharp example.",
-      "backward_text": "The 1991 K_6 threshold is the higher-clique analogue of the 1989 triangle-free complement argument.",
+      "forward_text": "Оба являются маленькими олимпиадными гранями экстремальной теории клик/независимых множеств: дополнение и сравнение с полным многодольным графом дает яркий пример.",
+      "backward_text": "Порог K_6 1991 года является аналогом аргумента дополнения без треугольников 1989 года для высшей клики.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-graph-review"
@@ -47023,8 +47024,8 @@
       "to": "imo-1992-p3-nine-points-partial-ramsey",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The problem asks for the edge threshold forcing a monochromatic triangle in a partial two-colouring of K_9, so Ramsey theory is the organising principle.",
-      "backward_text": "IMO 1992 P3 is a finite extremal Ramsey threshold problem rather than the complete-graph R(3,3) statement.",
+      "forward_text": "Задача требует порогового значения края, вызывающего одноцветный треугольник в частичной двухцветной раскраске K_9, поэтому теория Рэмси является организующим принципом.",
+      "backward_text": "IMO 1992 P3 — это конечная экстремальная пороговая задача Рамсея, а не формулировка R(3,3) для полного графа.",
       "anchors": {
         "from_solution_id": "sol-recursive-bound",
         "to_solution_id": "sol-aops-six-vertex-ramsey"
@@ -47039,8 +47040,8 @@
       "to": "imo-1998-c6-complete-graph-rainbow-edges",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems are complete-graph edge-colouring questions where the key obstruction is the forced existence or absence of special coloured triangles.",
-      "backward_text": "The 1998 rainbow-edge condition is not the same Ramsey threshold, but its proof uses the same local colour-degree and triangle-forcing toolkit as IMO 1992 P3.",
+      "forward_text": "Обе задачи представляют собой вопросы о раскраске ребер полного графа, где ключевым препятствием является принудительное существование или отсутствие треугольников особого цвета.",
+      "backward_text": "Условие края радуги 1998 года не является тем же порогом Рэмси, но его доказательство использует тот же набор инструментов локальной степени цвета и формирования треугольников, что и IMO 1992 P3.",
       "anchors": {
         "from_solution_id": "sol-aops-six-vertex-ramsey",
         "to_solution_id": "sol-reviewed-web"
@@ -47055,8 +47056,8 @@
       "to": "imo-2016-c8-domino-unique-tiling-cycles",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions compare structured pairings: C2 uses Hall to choose one position per flag, while C8 compares two domino matchings through alternating cycles.",
-      "backward_text": "The domino uniqueness problem is not a Hall application, but its alternating-cycle obstruction is a close matching-theoretic neighbour of the flags problem.",
+      "forward_text": "Оба решения сравнивают структурированные пары: C2 использует Холла для выбора одной позиции для каждого флага, а C8 сравнивает два совпадения домино посредством чередующихся циклов.",
+      "backward_text": "Задача уникальности домино не является приложением Холла, но ее препятствие чередующегося цикла является близким соседом задачи флагов в теории сопоставления.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47071,8 +47072,8 @@
       "to": "imo-2010-c5-bad-company-tournament",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both arguments use local degree information in a tournament to force global structure. The classical king lemma uses a maximum outdegree vertex; C5 controls a forbidden directed cycle in triples of opponents.",
-      "backward_text": "IMO 2010 C5 is a more quantitative tournament statement, but it lives in the same local-degree tournament toolkit.",
+      "forward_text": "Оба аргумента используют локальную информацию о степени турнира для усиления глобальной структуры. Классическая лемма о короле использует вершину максимальной исходящей степени; С5 управляет запрещенным направленным циклом в тройках противников.",
+      "backward_text": "IMO 2010 C5 — это более количественный турнирный отчет, но он живет в том же наборе инструментов для турниров местного уровня.",
       "anchors": {
         "from_solution_id": "sol-max-outdegree",
         "to_solution_id": "sol-official-compressed"
@@ -47087,8 +47088,8 @@
       "to": "imo-2021-c4-anisotropy-menger",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both are tournament problems where the solution studies degree imbalances across parts of the tournament. C5 uses win-loss degree sums; C4 evaluates directed cuts and path counts.",
-      "backward_text": "The 2021 problem uses Menger/cut language, while 2010 C5 uses induction and degree sums, but both exploit tournament orientation constraints.",
+      "forward_text": "Обе задачи представляют собой турнирные задачи, решение которых изучает дисбаланс степеней в разных частях турнира. C5 использует суммы степеней выигрыша-проигрыша; C4 оценивает направленные разрезы и количество путей.",
+      "backward_text": "В задаче 2021 года используется язык Менгера/сокращения, а в задаче C5 2010 года используются индукция и суммы степеней, но обе используют ограничения турнирной ориентации.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47103,8 +47104,8 @@
       "to": "imo-2012-c7-equal-sum-chords-independent-set",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions seek a large independent set in an auxiliary graph after translating the olympiad statement into forbidden adjacency.",
-      "backward_text": "IMO 2012 C7 uses the Caro-Wei style bound on a chord-intersection graph, while the flashlight problem uses complement/Turan reasoning; the shared idea is independence via graph translation.",
+      "forward_text": "Оба решения ищут большое независимое множество во вспомогательном графе после перевода утверждения олимпиады в запрещенную смежность.",
+      "backward_text": "IMO 2012 C7 использует стиль Каро-Вэя, привязанный к графу пересечения хорд, в то время как задача фонарика использует рассуждения о дополнении/Туране; общая идея — независимость посредством трансляции графа.",
       "anchors": {
         "from_solution_id": "sol-pile-construction",
         "to_solution_id": "sol-official-compressed"
@@ -47119,8 +47120,8 @@
       "to": "imo-2012-c7-equal-sum-chords-independent-set",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both convert a geometric-looking statement into an auxiliary graph and use extremal restrictions on crossings/triangles to force a large well-behaved subfamily.",
-      "backward_text": "C7's independent set of noncrossing chords is an intersection-graph analogue of the extremal subgraph reasoning in IMO 1992 P3.",
+      "forward_text": "Оба преобразуют геометрически выглядящее утверждение во вспомогательный граф и используют экстремальные ограничения на пересечения/треугольники, чтобы создать большое подсемейство с хорошим поведением.",
+      "backward_text": "Независимый набор непересекающихся хорд C7 представляет собой аналог графа пересечений рассуждений об экстремальных подграфах в IMO 1992 P3.",
       "anchors": {
         "from_solution_id": "sol-aops-six-vertex-ramsey",
         "to_solution_id": "sol-official-compressed"
@@ -47135,8 +47136,8 @@
       "to": "imo-2013-c3-imons-graph-coloring",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both proofs reduce the number of colours in a graph by modifying the graph/colouring while preserving enough structure to continue inductively.",
-      "backward_text": "IMO 2013 C3 is not a proper-colouring theorem like Brooks, but the colour-reduction induction is a close graph-colouring motif.",
+      "forward_text": "Оба доказательства уменьшают количество цветов в графе за счет изменения графа/раскраски, сохраняя при этом достаточную структуру для продолжения индуктивного процесса.",
+      "backward_text": "IMO 2013 C3 не является теоремой о правильной раскраске, как Брукс, но индукция уменьшения цвета является близким мотивом раскраски графов.",
       "anchors": {
         "from_solution_id": "sol-sketch",
         "to_solution_id": "sol-official-compressed"
@@ -47151,8 +47152,8 @@
       "to": "imo-2024-c8-board-coloring-tree",
       "type": "same_motif",
       "distance": 4,
-      "forward_text": "Both solutions repeatedly simplify a graph encoded by the operation and use parity/induction to reduce to a trivial terminal configuration.",
-      "backward_text": "C8's graph is a tree of board operations, while C3's graph records entanglements; both are operation-to-graph induction arguments.",
+      "forward_text": "Оба решения многократно упрощают граф, закодированный этой операцией, и используют четность/индукцию для сведения к тривиальной терминальной конфигурации.",
+      "backward_text": "Граф C8 представляет собой дерево операций с доской, а граф C3 записывает запутанности; оба являются аргументами индукции операции над графиком.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-x-graph-halving"
@@ -47167,8 +47168,8 @@
       "to": "imo-2021-c4-anisotropy-menger",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions count constrained paths through layers or cuts. C6 controls vertices at distance four by shortest-path layers; C4 controls path multiplicities by directed cuts.",
-      "backward_text": "The 2021 problem has an explicit Menger formulation, while 2013 C6 uses elementary layer counting, but both are connectivity-counting arguments.",
+      "forward_text": "Оба решения учитывают ограниченные пути через слои или разрезы. C6 управляет вершинами на расстоянии четыре слоями кратчайшего пути; C4 управляет кратностью путей путем направленных разрезов.",
+      "backward_text": "Задача 2021 года имеет явную формулировку Менгера, а задача C6 2013 года использует подсчет элементарных слоев, но обе являются аргументами подсчета связности.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47183,8 +47184,8 @@
       "to": "imo-2019-c4-labyrinth-region-graph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions replace a planar arrangement by a graph of regions and then count components/acyclicity to get the sharp bound.",
-      "backward_text": "The labyrinth problem counts door components in a line arrangement; the snail problem turns odd regions of a circle arrangement into a tree.",
+      "forward_text": "Оба решения заменяют плоское расположение графом регионов, а затем подсчитывают компоненты/ацикличность, чтобы получить точную границу.",
+      "backward_text": "В задаче о лабиринте компоненты дверей подсчитываются в виде линии; задача об улитке превращает нечетные области круга в дерево.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47199,8 +47200,8 @@
       "to": "imo-2019-c4-labyrinth-region-graph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "The official region-counting argument uses the same planar graph bookkeeping spirit as Euler formula: count regions and doors/edges, then infer component bounds.",
-      "backward_text": "IMO 2019 C4 does not quote Euler's formula directly, but its solution is planar region graph accounting.",
+      "forward_text": "Официальный аргумент подсчета регионов использует тот же принцип бухгалтерского учета на планарных графах, что и формула Эйлера: подсчитывать регионы и двери/ребра, а затем выводить границы компонентов.",
+      "backward_text": "IMO 2019 C4 не цитирует формулу Эйлера напрямую, но ее решением является учет графов плоских областей.",
       "anchors": {
         "from_solution_id": "sol-reduce-to-tree",
         "to_solution_id": "sol-official-compressed"
@@ -47215,8 +47216,8 @@
       "to": "imo-2019-c3-coin-process-digraph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions begin by encoding the process as a one-out directed graph on states or indices. In IMO 2015 C5 this graph is then summarised by a bounded pool/potential, while IMO 2019 C3 exploits recursive copies of the finite state digraph.",
-      "backward_text": "The 2019 coin process is solved by explicit recursion on the state digraph, whereas IMO 2015 C5 compresses the same one-successor structure into an invariant on crossing arrows; the functional-digraph viewpoint is common.",
+      "forward_text": "Оба решения начинаются с кодирования процесса в виде однонаправленного графа состояний или индексов. В IMO 2015 C5 этот граф затем суммируется с помощью ограниченного пула/потенциала, а в IMO 2019 C3 используются рекурсивные копии орграфа конечных состояний.",
+      "backward_text": "Процесс монеты 2019 года решается путем явной рекурсии на орграфе состояний, тогда как IMO 2015 C5 сжимает ту же структуру с одним преемником в инвариант при пересечении стрелок; Точка зрения функционального орграфа является распространенной.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47231,8 +47232,8 @@
       "to": "imo-2016-c6-ferry-graph-dynamics",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The key local move in IMO 2016 C6 is exactly this lemma: when a cross-edge of a complete bipartite network is closed, the same vertices can be repartitioned so that the network survives.",
-      "backward_text": "The shortlist problem repeatedly applies this repartition lemma while enlarging the covered vertex set, and finally uses the cut condition once more to create a universal vertex.",
+      "forward_text": "Ключевым локальным ходом в IMO 2016 C6 является именно эта лемма: когда перекрестное ребро полной двудольной сети закрыто, одни и те же вершины могут быть перераспределены, чтобы сеть выжила.",
+      "backward_text": "Задача о коротком списке неоднократно применяет эту лемму о перераспределении при увеличении покрытого набора вершин и, наконец, еще раз использует условие вырезания для создания универсальной вершины.",
       "anchors": {
         "from_solution_id": "sol-repartition-network",
         "to_solution_id": "sol-official-compressed"
@@ -47247,8 +47248,8 @@
       "to": "imo-2019-c5-social-network-refriending",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions study a local graph operation through a preserved structural invariant rather than by brute force. IMO 2016 C6 maintains a complete bipartite network under edge updates, while IMO 2019 C5 keeps enough connectivity/degree structure while reducing the edge set.",
-      "backward_text": "The ferry problem is about growing a robust network until a universal vertex appears; the social-network problem is about shrinking the graph safely. The shared motif is dynamic graph control by a well-chosen invariant.",
+      "forward_text": "Оба решения изучают операцию локального графа посредством сохраненного структурного инварианта, а не методом грубой силы. IMO 2016 C6 поддерживает полную двустороннюю сеть при обновлении границ, в то время как IMO 2019 C5 сохраняет достаточную структуру связности/уровня при одновременном уменьшении набора ребер.",
+      "backward_text": "Задача переправы заключается в развитии устойчивой сети до тех пор, пока не появится универсальная вершина; задача социальных сетей заключается в безопасном сжатии графа. Общий мотив — динамическое управление графом с помощью хорошо выбранного инварианта.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47263,8 +47264,8 @@
       "to": "imo-2016-c6-ferry-graph-dynamics",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems force a universal vertex from a purely local hypothesis on how every cut or every medium-sized set is seen by the graph. The VOSH problem grows a clique, while IMO 2016 C6 grows a complete bipartite network and then converts it into a universal vertex.",
-      "backward_text": "The acquaintance problem proves universality statically; the ferry problem reaches it dynamically through repeated edge updates. In both cases the hidden engine is a robust highly connected core that can be enlarged.",
+      "forward_text": "Обе задачи вынуждают универсальную вершину исходить из чисто локальной гипотезы о том, как граф видит каждый разрез или каждое множество среднего размера. Задача VOSH увеличивает клику, в то время как IMO 2016 C6 выращивает полную двустороннюю сеть, а затем преобразует ее в универсальную вершину.",
+      "backward_text": "Задача о знакомстве доказывает универсальность статически, а задача о паромах достигает её динамически через повторяющиеся обновления рёбер. В обоих случаях скрытый механизм — устойчивое высокосвязное ядро, которое можно расширять.",
       "anchors": {
         "from_solution_id": "sol-clique-extension",
         "to_solution_id": "sol-official-compressed"
@@ -47279,8 +47280,8 @@
       "to": "imo-2020-c6-colored-coins-eulerian-multigraph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions decompose a two-coloured pairing/multigraph structure into alternating cycles and use those cycles as the obstruction or construction.",
-      "backward_text": "The coin problem alternates along Eulerian cycles to colour coins, while the domino problem uses alternating red-blue cycles to contradict uniqueness.",
+      "forward_text": "Оба решения разлагают двухцветную структуру спаривания/мультиграфа на чередующиеся циклы и используют эти циклы в качестве препятствия или конструкции.",
+      "backward_text": "В задаче о монетах для окраски монет используются чередующиеся циклы Эйлера, а в задаче о домино используются чередующиеся красно-синие циклы, что противоречит уникальности.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47295,8 +47296,8 @@
       "to": "imo-2016-c8-domino-unique-tiling-cycles",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The lower-bound argument uses the same symmetric-difference decomposition of two matchings into alternating paths/cycles that underlies augmenting-path matching theory.",
-      "backward_text": "IMO 2016 C8 is a domino-tiling application of alternating matching structure.",
+      "forward_text": "Аргумент нижней границы использует то же самое симметрично-разностное разложение двух паросочетаний на чередующиеся пути/циклы, которое лежит в основе теории сопоставления увеличивающихся путей.",
+      "backward_text": "IMO 2016 C8 — это приложение для построения домино с чередующейся структурой соответствия.",
       "anchors": {
         "from_solution_id": "sol-symmetric-difference",
         "to_solution_id": "sol-official-compressed"
@@ -47311,8 +47312,8 @@
       "to": "imo-2019-c3-coin-process-digraph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "After orienting every nonterminal state to its successor, the process graph behaves like a rooted directed tree/DAG toward a sink; the solution counts distances recursively.",
-      "backward_text": "The coin process is not an undirected tree theorem, but its state graph uses the same no-cycle-to-root accounting idea.",
+      "forward_text": "После ориентации каждого нетерминального состояния на его преемника граф процесса ведет себя как корневое направленное дерево/DAG в направлении приемника; решение считает расстояния рекурсивно.",
+      "backward_text": "Процесс монеты не является теоремой о ненаправленном дереве, но его граф состояний использует ту же идею учета без цикла к корню.",
       "anchors": {
         "from_solution_id": "sol-leaf-induction",
         "to_solution_id": "sol-official-compressed"
@@ -47327,8 +47328,8 @@
       "to": "imo-2019-c5-social-network-refriending",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems study a graph operation that deletes edges while preserving a crucial invariant until a target sparse structure is reached.",
-      "backward_text": "The social-network operation is degree-sensitive and reduces edge count by one; the 2004 operation deletes from 4-cycles and preserves connected non-bipartite structure.",
+      "forward_text": "Обе задачи изучают операцию над графом, которая удаляет ребра, сохраняя при этом решающий инвариант до тех пор, пока не будет достигнута целевая разреженная структура.",
+      "backward_text": "Операция социальной сети чувствительна к степени и уменьшает количество ребер на единицу; операция 2004 года удаляет из 4-циклов и сохраняет связную недвудольную структуру.",
       "anchors": {
         "from_solution_id": "sol-reviewed-secondary",
         "to_solution_id": "sol-official-compressed"
@@ -47343,8 +47344,8 @@
       "to": "imo-2020-c4-fibonacci-difference-forest",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The lower bound constructs a graph whose selected Fibonacci-difference edges cannot contain a cycle, so the forest edge bound becomes the core graph fact.",
-      "backward_text": "IMO 2020 C4 is an olympiad application of forest acyclicity, with Fibonacci growth proving that a longest edge cannot be bypassed around a cycle.",
+      "forward_text": "Нижняя граница создает граф, выбранные ребра которого с разностью Фибоначчи не могут содержать цикл, поэтому граница ребра леса становится основным фактом графа.",
+      "backward_text": "IMO 2020 C4 — это олимпиадное применение лесной ацикличности, в котором рост Фибоначчи доказывает, что самое длинное ребро невозможно обойти в рамках цикла.",
       "anchors": {
         "from_solution_id": "sol-leaf-induction",
         "to_solution_id": "sol-official-compressed"
@@ -47359,8 +47360,8 @@
       "to": "imo-2024-c8-board-coloring-tree",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions build an auxiliary graph from chosen objects/actions and prove that any cycle contradicts the defining growth or colouring rule; the result is a forest/tree bound.",
-      "backward_text": "C8 encodes board operations as a tree, while C4 encodes selected differences as a forest; in both, cycles are the forbidden certificate.",
+      "forward_text": "Оба решения строят вспомогательный граф из выбранных объектов/действий и доказывают, что любой цикл противоречит определяющему правилу роста или раскраски; результатом является граница леса/дерева.",
+      "backward_text": "C8 кодирует операции на доске в виде дерева, а C4 кодирует выбранные различия в виде леса; в обоих случаях циклы являются запрещенным сертификатом.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-x-graph-halving"
@@ -47375,8 +47376,8 @@
       "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems study paths in tournament-like complete directed structures: 2021 counts edge-disjoint directed paths through cuts, while 2023 controls Hamiltonian paths under colouring.",
-      "backward_text": "The 2023 problem is a colouring/hamiltonian-path obstruction, whereas 2021 is a Menger cut-counting problem; both use tournament path structure.",
+      "forward_text": "Обе задачи изучают пути в турнироподобных полных направленных структурах: 2021 подсчитывает непересекающиеся по ребрам направленные пути через разрезы, а 2023 контролирует гамильтоновы пути при раскраске.",
+      "backward_text": "Задача 2023 года — это препятствие раскраске/гамильтонову пути, тогда как задача 2021 года — это задача подсчета разрезов Менгера; оба используют структуру турнирного пути.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47391,8 +47392,8 @@
       "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
       "type": "same_motif",
       "distance": 4,
-      "forward_text": "Both are Hamiltonian path/cycle problems where global traversal of all vertices is the main object, though C7 uses edge-colour closure rather than degree conditions.",
-      "backward_text": "IMO 2023 C7 is not a Dirac theorem application, but it belongs to the same Hamiltonian traversal cluster.",
+      "forward_text": "Обе задачи представляют собой гамильтонову задачу пути/цикла, где основной задачей является глобальный обход всех вершин, хотя в C7 используется замыкание по цвету ребра, а не условия степени.",
+      "backward_text": "IMO 2023 C7 не является приложением теоремы Дирака, но принадлежит тому же кластеру обхода гамильтониана.",
       "anchors": {
         "from_solution_id": "sol-longest-path",
         "to_solution_id": "sol-official-compressed"
@@ -47407,8 +47408,8 @@
       "to": "imo-2023-c4-strip-pieces-eulerian-graph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions translate a geometric cutting problem into a graph and then use connectivity/component counting to prove the lower bound.",
-      "backward_text": "The strip problem uses an Eulerian graph on residues; the labyrinth problem uses a region graph of doors. The shared idea is graph connectivity forced by reconstruction.",
+      "forward_text": "Оба решения преобразуют задачу геометрического разрезания в граф, а затем используют подсчет связности/компонентов для доказательства нижней границы.",
+      "backward_text": "В задаче о полосе используется эйлеров граф остатков; задача о лабиринте использует граф областей дверей. Общая идея — связность графов, вызванная реконструкцией.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47423,8 +47424,8 @@
       "to": "imo-2024-c3-knights-chord-uncrossing",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions compare pairings by looking at the obstruction created by crossing or alternating structures and then remove/avoid one obstruction at a time.",
-      "backward_text": "The knight problem uncrosses chords by swaps; the domino problem uses alternating cycles of two matchings. Both are pairing-obstruction arguments.",
+      "forward_text": "Оба решения сравнивают пары, рассматривая препятствие, созданное пересечением или чередованием структур, а затем удаляя/избегая одного препятствия за раз.",
+      "backward_text": "Задача о коне разъединяет аккорды путем перестановки; В задаче домино используются чередующиеся циклы двух паросочетаний. Оба являются аргументами, препятствующими спариванию.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-chord-uncrossing-induction"
@@ -47439,8 +47440,8 @@
       "to": "imo-2013-c6-flight-distance-layers",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions use an extremal value in a connected graph-like structure and then propagate local equality/uniqueness through neighbours or layers.",
-      "backward_text": "The 2013 distance-layer argument is much more quantitative, but it shares with 1994 C2 the motif that a locally forced extremal configuration spreads through connectedness.",
+      "forward_text": "Оба решения используют экстремальное значение в связанной графоподобной структуре, а затем распространяют локальное равенство/уникальность через соседей или слои.",
+      "backward_text": "Аргумент о дистанционном слое 2013 года носит гораздо более количественный характер, но он разделяет с аргументом C2 1994 года мотив, заключающийся в том, что локально вынужденная экстремальная конфигурация распространяется через связность.",
       "anchors": {
         "from_solution_id": "sol-secondary-sketch",
         "to_solution_id": "sol-official-compressed"
@@ -47455,8 +47456,8 @@
       "to": "imo-2016-c8-domino-unique-tiling-cycles",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "The 1994 strategy pairs cells periodically so that every dangerous line is blocked; the 2016 domino problem also studies paired cells and obstructions created by alternating paired structures.",
-      "backward_text": "IMO 2016 C8 is a matching/alternating-cycle problem rather than a game strategy, but both solutions reason through pairings that prevent a forbidden global configuration.",
+      "forward_text": "Стратегия 1994 года периодически объединяет ячейки в пары, чтобы блокировать каждую опасную линию; Задача домино 2016 года также изучает парные клетки и препятствия, создаваемые чередующимися парными структурами.",
+      "backward_text": "IMO 2016 C8 — это задача сопоставления/попеременного цикла, а не игровая стратегия, но оба решения основаны на парах, которые предотвращают запрещенную глобальную конфигурацию.",
       "anchors": {
         "from_solution_id": "sol-reviewed-secondary",
         "to_solution_id": "sol-official-compressed"
@@ -47471,8 +47472,8 @@
       "to": "imo-1995-nc5-greetings-regular-codegree-graph",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The solution counts incidences between a centre vertex and two neighbours, a higher-order version of the degree-sum/handshaking count.",
-      "backward_text": "The greetings problem is a regular-codegree graph application of incidence double counting.",
+      "forward_text": "Решение подсчитывает совпадения между центральной вершиной и двумя соседями, что представляет собой версию подсчета суммы степеней/квитирования более высокого порядка.",
+      "backward_text": "Задача приветствий представляет собой применение графа регулярных костепеней двойного счета инцидентности.",
       "anchors": {
         "from_solution_id": "sol-double-counting",
         "to_solution_id": "sol-reviewed-secondary"
@@ -47487,8 +47488,8 @@
       "to": "imo-2004-c8-triangles-tetrahedra-graph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions organise the count through common neighbourhoods: constant codegrees in 1995, and common-neighbour counts of edges/triangles leading to K4 counts in 2004.",
-      "backward_text": "IMO 2004 C8 is a clique-density inequality, but its local quantities are the same kind of common-neighbour counts that drive the 1995 greetings problem.",
+      "forward_text": "Оба решения организуют подсчет через общие окрестности: постоянные костепени в 1995 году и подсчет общих соседей ребер/треугольников, что приводит к подсчету K4 в 2004 году.",
+      "backward_text": "IMO 2004 C8 — это неравенство плотности клик, но его локальные величины — это тот же вид подсчета общих соседей, который лежит в основе задачи приветствий 1995 года.",
       "anchors": {
         "from_solution_id": "sol-reviewed-secondary",
         "to_solution_id": "sol-secondary-sketch"
@@ -47503,8 +47504,8 @@
       "to": "imo-2024-c4-turbo-grid-monsters",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems are grid-reachability questions where a path must be constructed under local move restrictions, with modular or adversarial obstructions controlling impossibility.",
-      "backward_text": "Turbo's monster grid is not a modular-colouring problem, but it is a later IMO shortlist instance of constrained path construction in a grid graph.",
+      "forward_text": "Обе задачи представляют собой вопросы достижимости сетки, когда путь должен быть построен с учетом локальных ограничений перемещения, а модульные или состязательные препятствия контролируют невозможность.",
+      "backward_text": "Сетка монстров Turbo — это не задача модульной раскраски, а более поздний пример построения ограниченного пути в сеточном графе, включенный в короткий список IMO.",
       "anchors": {
         "from_solution_id": "sol-secondary-sketch",
         "to_solution_id": "sol-three-attempts"
@@ -47519,8 +47520,8 @@
       "to": "imo-1999-c5-grid-total-domination",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both are finite-grid colouring/counting problems where local constraints on adjacent cells or unit squares force a global row/column pattern.",
-      "backward_text": "The 1999 domination proof uses a lower-bound colouring and construction, while 1996 C2 classifies row transitions; the shared motif is local grid constraints becoming global structure.",
+      "forward_text": "Обе задачи представляют собой задачи раскраски/подсчета на конечной сетке, где локальные ограничения на соседние ячейки или единичные квадраты заставляют использовать глобальный шаблон строк/столбцов.",
+      "backward_text": "Доказательство доминирования 1999 года использует раскраску и конструкцию нижней границы, а C2 1996 года классифицирует переходы строк; общий мотив заключается в том, что локальные ограничения сетки становятся глобальной структурой.",
       "anchors": {
         "from_solution_id": "sol-secondary-sketch",
         "to_solution_id": "sol-reviewed-web"
@@ -47535,8 +47536,8 @@
       "to": "imo-2004-c3-delete-edge-from-4cycle",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The lower bound uses that a connected graph with n-1 edges is a tree; preserving non-bipartiteness or an odd cycle rules out ending with a tree.",
-      "backward_text": "IMO 2004 C3 is a graph-operation problem where the basic tree edge count becomes the first obstruction to deleting more edges.",
+      "forward_text": "Нижняя оценка предполагает, что связный граф с n-1 ребрами является деревом; сохранение недвудольности или нечетного цикла исключает завершение деревом.",
+      "backward_text": "IMO 2004 C3 — это задача операций с графом, в которой количество ребер базового дерева становится первым препятствием для удаления большего количества ребер.",
       "anchors": {
         "from_solution_id": "sol-leaf-induction",
         "to_solution_id": "sol-reviewed-secondary"
@@ -47551,8 +47552,8 @@
       "to": "imo-2024-c8-board-coloring-tree",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions turn the process into a graph and use the distinction between trees and graphs with cycles as the key invariant/obstruction.",
-      "backward_text": "The 2024 board problem builds a tree-like graph from operations, while 2004 C3 proves an operation cannot eliminate the last odd cycle.",
+      "forward_text": "Оба решения превращают процесс в граф и используют различие между деревьями и графами с циклами в качестве ключевого инварианта/препятствия.",
+      "backward_text": "Задача с доской 2024 года строит древовидный граф из операций, а задача C3 2004 года доказывает, что операция не может исключить последний нечетный цикл.",
       "anchors": {
         "from_solution_id": "sol-reviewed-secondary",
         "to_solution_id": "sol-x-graph-halving"
@@ -47567,8 +47568,8 @@
       "to": "imo-2004-c8-triangles-tetrahedra-graph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both are extremal clique-counting statements. Turan maximizes edges under a forbidden clique, while 2004 C8 compares K3 and K4 densities using local common-neighbour counts and convexity.",
-      "backward_text": "IMO 2004 C8 is not a direct Turan theorem application, but it belongs to the same extremal clique-density family.",
+      "forward_text": "Оба являются экстремальными утверждениями о подсчете клик. Turan максимизирует ребра под запретной кликой, а C8 2004 сравнивает плотности K3 и K4, используя локальный подсчет общих соседей и выпуклость.",
+      "backward_text": "IMO 2004 C8 не является прямым применением теоремы Турана, но принадлежит к тому же семейству экстремальной плотности клик.",
       "anchors": {
         "from_solution_id": "sol-symmetrization",
         "to_solution_id": "sol-secondary-sketch"
@@ -47583,8 +47584,8 @@
       "to": "imo-2005-c2-dynastic-vertices-forest",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The dynastic-vertex bound is proved by pruning rooted binary trees and charging disjoint descendants, a direct tree-induction/leaf-removal style argument.",
-      "backward_text": "IMO 2005 C2 is an olympiad application of induction and disjoint charging in rooted forests.",
+      "forward_text": "Граница династической вершины доказывается путем обрезки корневых бинарных деревьев и зарядки непересекающихся потомков, что является прямым аргументом в стиле индукции дерева / удаления листьев.",
+      "backward_text": "IMO 2005 C2 — это олимпиада по применению индукционной и непересекающейся зарядки в корнекорневых лесах.",
       "anchors": {
         "from_solution_id": "sol-leaf-induction",
         "to_solution_id": "sol-secondary-sketch"
@@ -47599,8 +47600,8 @@
       "to": "tc-2023-24-coins-pairing-weighing-forest",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both arguments use forest structure to charge a controlled number of vertices/edges to each special object and obtain a global bound.",
-      "backward_text": "The coins-weighing problem is algorithmic, but its forest accounting is close in spirit to the charging proof for dynastic vertices.",
+      "forward_text": "Оба аргумента используют структуру леса для присвоения контролируемого количества вершин/ребер каждому специальному объекту и получения глобальной границы.",
+      "backward_text": "Задача о взвешивании монет является алгоритмической, но ее учет леса по духу близок к доказательству начисления платы за династические вершины.",
       "anchors": {
         "from_solution_id": "sol-secondary-sketch",
         "to_solution_id": "sol-forest-accounting"
@@ -47615,8 +47616,8 @@
       "to": "imo-2019-c4-labyrinth-region-graph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions exploit planar grid/region connectivity: a path or component structure is selected canonically and then used to control a counting argument.",
-      "backward_text": "The 2019 labyrinth problem counts components of a planar region graph, while 2005 C3 uses the lowest left-right path to build an injection.",
+      "forward_text": "Оба решения используют плоскую связность сетки/области: структура пути или компонента выбирается канонически, а затем используется для управления аргументом подсчета.",
+      "backward_text": "Задача лабиринта 2019 года подсчитывает компоненты графа плоской области, а задача C3 2005 года использует самый нижний путь слева направо для построения инъекции.",
       "anchors": {
         "from_solution_id": "sol-reviewed-secondary",
         "to_solution_id": "sol-official-compressed"
@@ -47631,8 +47632,8 @@
       "to": "imo-2024-c3-knights-chord-uncrossing",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems encode the situation with chords/diagonals in a convex polygon or circle and make crossing numbers the central quantity.",
-      "backward_text": "IMO 2024 C3 uses uncrossing of partner chords, while 2005 C8 optimizes crossings between two noncrossing triangulation-like diagonal sets.",
+      "forward_text": "Обе задачи кодируют ситуацию с хордами/диагоналями в выпуклом многоугольнике или круге и делают числа пересечений центральной величиной.",
+      "backward_text": "IMO 2024 C3 использует непересечение партнерских аккордов, а 2005 C8 оптимизирует пересечения между двумя непересекающимися диагональными наборами, подобными триангуляции.",
       "anchors": {
         "from_solution_id": "sol-reviewed-web",
         "to_solution_id": "sol-chord-uncrossing-induction"
@@ -47647,8 +47648,8 @@
       "to": "imo-2014-c9-snail-circles-tree",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both are planar-arrangement problems where a global bound comes from decomposing the picture into local planar pieces and counting crossings/incidences.",
-      "backward_text": "The snail problem turns regions into a tree, whereas 2005 C8 pairs ears in triangulations; the common relation is planar decomposition plus incidence counting.",
+      "forward_text": "Обе задачи представляют собой задачи плоского расположения, где глобальная граница получается в результате разложения изображения на локальные плоские части и подсчета пересечений/инцидентов.",
+      "backward_text": "Задача об улитке превращает регионы в дерево, тогда как C8 2005 объединяет уши в триангуляции; общее соотношение - это планарное разложение плюс подсчет инцидентов.",
       "anchors": {
         "from_solution_id": "sol-reviewed-web",
         "to_solution_id": "sol-official-compressed"
@@ -47759,8 +47760,8 @@
       "to": "kolmogorov-2002-individual-olympiad-8-9-output-problem-5",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both 2002 individual problems ask for a rainbow triangle in an edge-colored complete graph; the hypotheses differ, but the common core is to assume no rainbow triangle and force a global color-structure contradiction.",
-      "backward_text": "The 8-9 class version is a close companion to the 10-11 class version: it uses the same rainbow-triangle target, with a many-colors condition instead of a per-color edge bound.",
+      "forward_text": "Обе отдельные задачи 2002 года требуют наличия радужного треугольника на полном графе с раскрашенными ребрами; Гипотезы различаются, но общая суть состоит в том, чтобы предположить отсутствие радужного треугольника и вызвать глобальное противоречие структуры цвета.",
+      "backward_text": "Версия класса 8-9 является близким аналогом версии класса 10-11: она использует ту же цель в виде радужного треугольника с условием многих цветов вместо ограничения края для каждого цвета.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47775,8 +47776,8 @@
       "to": "hall-marriage-theorem",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The official KOLM solution proves its clique-intersection lemma by passing to an auxiliary graph and applying Hall's theorem to a minimal obstruction.",
-      "backward_text": "Hall's theorem supplies the matching-deficiency language behind the auxiliary lemma used in the KOLM block-intersection problem.",
+      "forward_text": "Официальное решение KOLM доказывает свою лемму о пересечении клик путем перехода к вспомогательному графу и применения теоремы Холла к минимальному препятствию.",
+      "backward_text": "Теорема Холла обеспечивает язык дефекта сопоставления, лежащий в основе вспомогательной леммы, используемой в задаче пересечения блоков KOLM.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-tight-set-splitting"
@@ -47791,8 +47792,8 @@
       "to": "kolmogorov-2017-team-olympiad-seniors-problem-5",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both 2017 team problems are weighted transportation-graph questions about shortest paths. In each solution a cut or partition isolates the pairs whose shortest-path values can change.",
-      "backward_text": "The senior problem is a softer weighted-shortest-path companion to the junior road-closing problem: both control all-pairs distances by finding a partition across which the critical edge behavior is forced.",
+      "forward_text": "Обе командные задачи 2017 года представляют собой вопросы о взвешенных транспортных графах о кратчайших путях. В каждом решении разрез или разделение изолирует пары, значения кратчайшего пути которых могут измениться.",
+      "backward_text": "Старшая задача является более мягким дополнением младшей задачи о закрытии дорог с взвешенным кратчайшим путем: обе контролируют расстояния всех пар, находя перегородку, через которую принудительно реализуется критическое поведение края.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47807,8 +47808,8 @@
       "to": "kolmogorov-2018-team-olympiad-seniors-problem-5",
       "type": "specialization",
       "distance": 1,
-      "forward_text": "The junior problem is the same bus/rail mobility statement with 20 cities and regions of size at most 10; the senior problem repeats the argument at scale 2018 and 1009.",
-      "backward_text": "The senior mobility problem is the direct large-N version of the junior one. Both proofs use the same four-part decomposition of the two extremal regions and the same extremal construction.",
+      "forward_text": "Младшая задача — это та же самая формула автобусной/железнодорожной мобильности с 20 городами и регионами размером не более 10; старшая задача повторяет аргумент в масштабе 2018 и 1009.",
+      "backward_text": "Старшая задача мобильности — это прямая версия младшей задачи с большим N. Оба доказательства используют одно и то же четырехчастное разложение двух экстремальных областей и одну и ту же экстремальную конструкцию.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47823,8 +47824,8 @@
       "to": "handshaking-lemma",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The volleyball proof assumes no team beats another twice, builds a graph whose vertices are teams, and contradicts the handshaking lemma because all 999 degrees would equal 499.",
-      "backward_text": "The handshaking lemma is exactly the parity obstruction used in the KOLM tournament-schedule problem.",
+      "forward_text": "Доказательство волейбола предполагает, что ни одна команда не обыгрывает другую дважды, строит граф, вершинами которого являются команды, и противоречит лемме о рукопожатии, поскольку все 999 градусов будут равны 499.",
+      "backward_text": "Лемма о установлении связи — это в точности то же самое препятствие четности, которое используется в задаче о расписании турниров KOLM.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-double-counting"
@@ -47839,8 +47840,8 @@
       "to": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions use directed cycles or Hamiltonian paths as the organizing object for a global ordering problem. The gadget-allocation proof repeatedly removes a preferred directed cycle, while the 2010 problem merges Hamiltonian paths in a tournament-like digraph.",
-      "backward_text": "The 2010 Hamiltonian-path merging problem is a distant directed-ordering relative of the KOLM gadget-allocation proof: in both, the graph model converts individual choices into a controlled global permutation.",
+      "forward_text": "Оба решения используют направленные циклы или гамильтоновы пути в качестве организующего объекта для глобальной задачи упорядочения. Доказательство распределения гаджетов неоднократно удаляет предпочтительный направленный цикл, а задача 2010 года объединяет гамильтоновы пути в турнирный орграф.",
+      "backward_text": "Задача слияния гамильтоновых путей 2010 года является дальним родственником направленного упорядочения доказательства распределения гаджетов KOLM: в обоих случаях графовая модель преобразует отдельные варианты выбора в контролируемую глобальную перестановку.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47855,8 +47856,8 @@
       "to": "kolmogorov-2006-round-4-super-league-problem-5",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems study triangulations of a convex polygon through the combinatorics of ears and the tree-like structure behind the triangulation. The 2021 problem minimizes independent vertex sets, while the 2006 problem maximizes the number of triangle types.",
-      "backward_text": "The 2006 triangulation problem is a natural structural neighbor of the 2021 anticlique-counting problem: both reduce geometric triangulations to recursive/tree-like constraints on adjacent triangles.",
+      "forward_text": "Обе задачи изучают триангуляцию выпуклого многоугольника с помощью комбинаторики ушей и древовидной структуры, лежащей в основе триангуляции. Задача 2021 года минимизирует независимые множества вершин, а задача 2006 года максимизирует количество типов треугольников.",
+      "backward_text": "Задача триангуляции 2006 года является естественным структурным соседом задачи подсчета антикликов 2021 года: обе сводят геометрические триангуляции к рекурсивным/древовидным ограничениям на соседние треугольники.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47871,8 +47872,8 @@
       "to": "kolmogorov-2002-individual-olympiad-8-9-output-problem-5",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both are edge-colored complete or complete bipartite graph problems where many colors force a useful cycle/component structure. The 2002 proof keeps one edge of each color to find a rainbow cycle; the 2021 proof counts color components and their cyclomatic surplus.",
-      "backward_text": "The 2002 rainbow-cycle argument is a compact ancestor of the same many-colors-versus-cycles motif that appears in the 2021 bipartite color-component proof.",
+      "forward_text": "Обе задачи представляют собой полные или полные двудольные графы с раскрашенными ребрами, где множество цветов создают полезную структуру цикла/компонента. Доказательство 2002 года сохраняет по одному краю каждого цвета, чтобы найти цикл радуги; доказательство 2021 года учитывает цветовые компоненты и их цикломатический избыток.",
+      "backward_text": "Аргумент о радужном цикле 2002 года является компактным предком того же мотива «множество цветов и циклов», который появляется в двудольном доказательстве цветовых компонентов 2021 года.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47887,8 +47888,8 @@
       "to": "kolmogorov-2008-round-2-second-league-problem-2",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both cards are variants of the same wheel-graph construction: the solution splits or colors the edges while preserving two connected spanning structures. The shared mechanism is edge counting plus local control of the wheel cycle.",
-      "backward_text": "The second-league card is a close wheel-graph variant of the first-league card. Both are best read as problems about decomposing the wheel into connected spanning edge sets.",
+      "forward_text": "Обе карты представляют собой варианты одной и той же конструкции колесного графа: решение разбивает или окрашивает края, сохраняя при этом две связанные связующие структуры. Общий механизм — это подсчет ребер плюс локальное управление циклом вращения колеса.",
+      "backward_text": "Карта второй лиги представляет собой вариант карты первой лиги с закрытым колесным графиком. И то и другое лучше всего рассматривать как задачи о разложении колеса на связанные множества ребер.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47903,8 +47904,8 @@
       "to": "kolmogorov-2008-round-2-first-league-and-higher-junior-problem-1",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both problems use the same wheel graph motif. The junior version and the first-league version differ in level and wording, but the proof structure is the same: use the rim and hub to control connected edge classes.",
-      "backward_text": "The first-league version extends the same wheel-graph decomposition idea that appears in the junior variant: count edges and verify connectedness of the two selected parts.",
+      "forward_text": "В обеих задачах используется один и тот же мотив колесного графа. Младшая версия и версия первой лиги различаются по уровню и формулировке, но структура доказательства одинакова: используйте обод и концентратор для управления классами связанных ребер.",
+      "backward_text": "Версия первой лиги расширяет ту же идею декомпозиции графа колеса, которая появляется в младшем варианте: подсчитать ребра и проверить связность двух выбранных частей.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47919,8 +47920,8 @@
       "to": "kolmogorov-2008-round-4-second-league-problem-7",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both problems work with trees and a two-part coloring or bipartition. The common proof ingredients are leaves, degree sums, and the fact that a tree is a minimally connected graph.",
-      "backward_text": "The second-league task is a neighboring tree variant: it turns the tree into a bipartite degree-sum argument, but the same minimal-connected-tree structure drives the proof.",
+      "forward_text": "Обе задачи работают с деревьями и двухчастной раскраской или двудольным разделением. Обычными ингредиентами доказательства являются листья, суммы степеней и тот факт, что дерево является минимально связным графом.",
+      "backward_text": "Задача второй лиги представляет собой вариант соседнего дерева: она превращает дерево в двудольный аргумент суммы степеней, но в основе доказательства лежит та же самая структура минимально связного дерева.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47935,8 +47936,8 @@
       "to": "kolmogorov-2013-team-olympiad-seniors-problem-8",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both 2013 team cards focus on chromatic number and local recoloring. The important shared move is to alter a coloring locally in order to free colors or control the number of colors used.",
-      "backward_text": "The senior team problem is a stronger neighbor of the junior team problem: in both, chromatic number is controlled through local recoloring and restrictions on neighborhoods.",
+      "forward_text": "Обе карточки команд 2013 года сосредоточены на хроматическом числе и локальном перекрашивании. Важным общим шагом является локальное изменение цвета, чтобы освободить цвета или контролировать количество используемых цветов.",
+      "backward_text": "Задача старшей команды является более сильным соседом задачи младшей команды: в обеих задачах хроматическое число контролируется посредством локальной перекраски и ограничений на окрестности.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47951,8 +47952,8 @@
       "to": "kolmogorov-2013-team-olympiad-seniors-problem-8",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems are coloring problems where local constraints on the graph become global restrictions on possible colors. Reading them together highlights the same local-recoloring style.",
-      "backward_text": "The team problem is related to the individual problem through the method of local recoloring under structural constraints on the graph.",
+      "forward_text": "Обе задачи представляют собой задачи раскраски, в которых локальные ограничения на граф становятся глобальными ограничениями на возможные цвета. Совместное чтение подчеркивает один и тот же стиль локального перекрашивания.",
+      "backward_text": "Командная задача связана с индивидуальной задачей методом локальной перекраски при структурных ограничениях на граф.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47967,8 +47968,8 @@
       "to": "kolmogorov-2006-round-2-first-junior-league-problem-8",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both round-2 problems from 2006 use an auxiliary graph on a grid-like structure, where the essential object becomes a tree. The shared method is to translate the original setting into a graph and then use tree structure.",
-      "backward_text": "The junior problem is a simpler neighbor of the senior problem: both reveal a hidden tree inside a grid-style graph model.",
+      "forward_text": "В обеих задачах второго раунда 2006 года используется вспомогательный граф с сеточной структурой, где основным объектом становится дерево. Общий метод заключается в преобразовании исходной настройки в график и последующем использовании древовидной структуры.",
+      "backward_text": "Младшая задача является более простым соседом старшей задачи: обе раскрывают скрытое дерево внутри графовой модели в виде сетки.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47983,8 +47984,8 @@
       "to": "kolmogorov-2011-team-olympiad-seniors-problem-4",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both 2011 team problems use a constructive graph model with parity and connected components. The proof builds an object step by step while preserving global connectivity.",
-      "backward_text": "The senior problem is related to the junior problem by the same constructive graph style: parity restrictions and connectedness act as the main invariants.",
+      "forward_text": "В обеих командных задачах 2011 года используется конструктивная графовая модель с компонентами четности и связности. Доказательство строит объект шаг за шагом, сохраняя при этом глобальную связность.",
+      "backward_text": "Старшая задача связана с младшей задачей тем же конструктивным графическим стилем: ограничения на четность и связность выступают в качестве основных инвариантов.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -47999,8 +48000,8 @@
       "to": "usamo-1976-p1-monochromatic-rectangle-bipartite",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The KOLM airline-coloring problem and USAMO 1976 P1 use the same Ramsey-style double-counting move: force many monochromatic local configurations, then close them into a monochromatic cycle or rectangle.",
-      "backward_text": "USAMO 1976 P1 is a close model for the KOLM task: monochromatic structure is forced by counting common neighbors or monochromatic two-step paths.",
+      "forward_text": "Задача KOLM о раскраске авиалиний и USAMO 1976 P1 используют один и тот же прием двойного счета в стиле Рэмси: создают множество монохроматических локальных конфигураций, а затем замыкают их в монохроматический цикл или прямоугольник.",
+      "backward_text": "USAMO 1976 P1 — это близкая модель для задачи KOLM: монохроматическая структура создается путем подсчета общих соседей или монохроматических двухэтапных путей.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-column-pair-double-counting"
@@ -48015,8 +48016,8 @@
       "to": "planar-edge-bound",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The KOLM solution uses the same core tool as the planar edge bound: Euler formula and face-length counting, especially under restrictions on short cycles.",
-      "backward_text": "The planar edge bound is a natural prerequisite for this KOLM problem because it explains how face counting yields strong structural restrictions.",
+      "forward_text": "Решение KOLM использует тот же основной инструмент, что и граница плоского ребра: формулу Эйлера и подсчет длин граней, особенно при ограничениях на короткие циклы.",
+      "backward_text": "Плоская граница ребра является естественной предпосылкой для этой задачи KOLM, поскольку она объясняет, как подсчет граней приводит к сильным структурным ограничениям.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-face-counting"
@@ -48031,8 +48032,8 @@
       "to": "dirac-theorem",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The KOLM problem about Hamiltonian paths between arbitrary endpoints is related to Dirac theorem through the standard longest-path and degree-condition motif.",
-      "backward_text": "Dirac theorem is useful background for this KOLM problem: both arguments use an extremal path and degree constraints to force Hamiltonian structure.",
+      "forward_text": "Задача KOLM о гамильтоновых путях между произвольными конечными точками связана с теоремой Дирака через стандартный мотив наибольшего пути и условия степени.",
+      "backward_text": "Теорема Дирака является полезной основой для этой задачи KOLM: оба аргумента используют экстремальный путь и ограничения степени, чтобы вызвать гамильтонову структуру.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-longest-path"
@@ -48047,8 +48048,8 @@
       "to": "tree-equivalent-properties",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "Reconstructing the tree from vertex-deleted drawings relies on basic tree facts: leaves, components after deleting a vertex, and recursive removal of peripheral pieces.",
-      "backward_text": "The standard equivalent properties of trees give the language for this reconstruction task, especially leaf deletion and component analysis.",
+      "forward_text": "Реконструкция дерева по рисункам с удаленными вершинами опирается на основные факты о дереве: листья, компоненты после удаления вершины и рекурсивное удаление периферийных частей.",
+      "backward_text": "Стандартные эквивалентные свойства деревьев определяют язык для этой задачи реконструкции, особенно удаления листьев и анализа компонентов.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-leaf-induction"
@@ -48063,8 +48064,8 @@
       "to": "tree-equivalent-properties",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The task of transforming one tree into another naturally uses basic tree properties: leaves, deletion of a leaf, and induction on the remaining connected graph.",
-      "backward_text": "The standard tree equivalences are a useful tool for the tree-transformation problem, since they control connectivity through leaf operations.",
+      "forward_text": "Задача преобразования одного дерева в другое естественным образом использует основные свойства дерева: листья, удаление листа и индукцию по оставшемуся связному графу.",
+      "backward_text": "Стандартные эквивалентности деревьев являются полезным инструментом для решения задачи преобразования деревьев, поскольку они управляют связностью посредством листовых операций.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-leaf-induction"
@@ -48079,8 +48080,8 @@
       "to": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems translate the situation into a directed complete graph or a similar digraph, then count directed local configurations. Double counting is the main global step in both solutions.",
-      "backward_text": "The 2010 problem is related to the 2008 tournament problem through directed edges as a model and double counting of directed paths or reachability patterns.",
+      "forward_text": "Обе задачи переводят ситуацию в ориентированный полный граф или аналогичный орграф, а затем подсчитывают ориентированные локальные конфигурации. Двойной учет является основным глобальным шагом в обоих решениях.",
+      "backward_text": "Задача 2010 года связана с задачей турнира 2008 года посредством направленных ребер в качестве модели и двойного подсчета направленных путей или шаблонов достижимости.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48095,8 +48096,8 @@
       "to": "kolmogorov-2008-individual-olympiad-seniors-problem-5",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both 2008 individual problems use graph coloring and bipartite or odd-cycle obstructions. One builds a coloring through bipartition, while the other avoids monochromatic odd cycles.",
-      "backward_text": "The senior problem about avoiding monochromatic odd cycles is close to the junior problem through bipartiteness, coloring, and odd-cycle control.",
+      "forward_text": "В обеих отдельных задачах 2008 года используются раскраска графов и препятствия из двудольных или нечетных циклов. Один строит раскраску посредством двудольного разделения, а другой избегает монохроматических нечетных циклов.",
+      "backward_text": "Старшая задача об избежании монохроматических нечетных циклов близка к младшей задаче за счет двудольности, раскраски и контроля нечетных циклов.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48111,8 +48112,8 @@
       "to": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems are graph-coloring tasks with strong local restrictions. Their solutions use local recoloring and control of chromatic number through neighborhood structure.",
-      "backward_text": "The 2007 chromatic-number problem is a natural neighbor of the 2006 coloring problem: in both, local graph restrictions are converted into a valid recoloring argument.",
+      "forward_text": "Обе задачи представляют собой задачи раскраски графов с сильными локальными ограничениями. Их решения используют локальную перекраску и контроль хроматического числа через структуру окрестности.",
+      "backward_text": "Задача хроматических чисел 2007 года является естественным соседом задачи раскраски 2006 года: в обеих локальные ограничения графа преобразуются в действительный аргумент перекраски.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48127,8 +48128,8 @@
       "to": "brooks-theorem",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "The KOLM friendship-and-factions coloring problem is close in spirit to Brooks theorem: both use degree restrictions, exceptional cycle or clique cases, and local recoloring.",
-      "backward_text": "Brooks theorem gives a classical reference point for this KOLM problem: outside exceptional cases, coloring is obtained from degree analysis and recoloring.",
+      "forward_text": "Задача раскраски дружбы и фракций KOLM по духу близка к теореме Брукса: обе используют ограничения по степеням, исключительные случаи цикла или клики, а также локальную перекраску.",
+      "backward_text": "Теорема Брукса дает классическую точку отсчета для этой задачи KOLM: за пределами исключительных случаев раскраска получается из анализа степеней и перекрашивания.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-sketch"
@@ -48143,8 +48144,8 @@
       "to": "imo-2013-c6-flight-distance-layers",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems use a directed or layered reachability model and an extremal choice to derive a global constraint on paths or distances.",
-      "backward_text": "IMO 2013 C6 is related to this KOLM problem through the layer-reachability motif: local restrictions on moves create global path structure.",
+      "forward_text": "Обе задачи используют направленную или многоуровневую модель достижимости и экстремальный выбор для получения глобального ограничения на пути или расстояния.",
+      "backward_text": "IMO 2013 C6 связан с этой задачей KOLM через мотив достижимости уровней: локальные ограничения на перемещения создают глобальную структуру пути.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48159,8 +48160,8 @@
       "to": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions treat a proper coloring as a partition into independent sets and then modify color classes. The round 3 problem uses a Kempe-style swap inside a two-color induced component to force connectedness; the chromatic-number problem recolors whole color classes to remove singleton colors.",
-      "backward_text": "The chromatic-number recoloring problem is a useful neighbor for the unique-coloring edge-count problem: both are driven by controlled changes of independent color classes rather than by a structural theorem.",
+      "forward_text": "Оба решения рассматривают правильную раскраску как разделение на независимые множества, а затем изменяют классы цвета. В задаче третьего раунда используется замена в стиле Кемпе внутри двухцветного индуцированного компонента для обеспечения связности; задача хроматических чисел перекрашивает целые классы цветов, чтобы удалить одиночные цвета.",
+      "backward_text": "Задача перекрашивания хроматических чисел является полезным соседом задачи подсчета ребер уникальной раскраски: обе они обусловлены контролируемыми изменениями независимых цветовых классов, а не структурной теоремой.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48175,8 +48176,8 @@
       "to": "kolmogorov-2008-round-2-first-league-and-higher-junior-problem-1",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The common mechanism is not the object but the proof move: a coloring or edge-coloring is forced by connectedness. In the unique 5-coloring problem, every two-color induced subgraph must be connected, otherwise one can swap colors in a component; in the wheel problem, the connectedness of both color classes forces the rim colors after the spokes are chosen.",
-      "backward_text": "The wheel-coloring card gives a concrete version of the same connectedness-forces-coloring idea that appears abstractly in the unique-coloring lower bound.",
+      "forward_text": "Общим механизмом является не объект, а доказательство: раскраска или раскраска ребер вызвана связностью. В уникальной задаче о 5-раскраске каждый двухцветный индуцированный подграф должен быть связным, иначе в компоненте можно поменять местами цвета; в задаче о колесах связанность обоих цветовых классов приводит к выбору цвета обода после выбора спиц.",
+      "backward_text": "Карта раскраски колеса дает конкретную версию той же идеи раскраски сил связности, которая абстрактно проявляется в нижней границе уникальной раскраски.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48191,8 +48192,8 @@
       "to": "kolmogorov-2013-team-olympiad-juniors-problem-7",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both proofs manipulate an existing coloring by selecting a color class and reusing it in a new coloring. The 2007 card removes singleton colors; the 2013 junior card glues two partial colorings by taking one color class inside the overlap.",
-      "backward_text": "The 2013 junior coloring-gluing proof is a close methodological neighbor of the 2007 recoloring argument: in both, the key object is a chosen color class that can be absorbed into another proper coloring.",
+      "forward_text": "Оба доказательства манипулируют существующей раскраской, выбирая класс цвета и повторно используя его в новой раскраске. На карте 2007 года удалены одноэлементные цвета; Детская карта 2013 года объединяет две частичные раскраски, используя один цветовой класс внутри перекрытия.",
+      "backward_text": "Доказательство раскраски-склеивания 2013 года является близким методологическим соседом аргумента о перекрашивании 2007 года: в обоих случаях ключевым объектом является выбранный цветовой класс, который может быть включен в другую правильную раскраску.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48207,8 +48208,8 @@
       "to": "kolmogorov-2013-team-olympiad-seniors-problem-8",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The shared upper-bound method is local recoloring through a selected color class. The senior 2013 problem adds an extremal construction for sharpness, so the relation is weaker than the junior version but still useful for the recoloring idea.",
-      "backward_text": "The 2007 chromatic-number card isolates the recoloring component that appears as the upper-bound half of the 2013 senior problem.",
+      "forward_text": "Общий метод верхней границы — это локальное перекрашивание с помощью выбранного цветового класса. Старшая задача 2013 года добавляет экстремальную конструкцию для повышения резкости, поэтому связь слабее, чем младшая версия, но все же полезна для идеи перекрашивания.",
+      "backward_text": "Карточка с хроматическими числами 2007 года выделяет компонент перекрашивания, который выглядит как верхняя половина старшей задачи 2013 года.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48223,8 +48224,8 @@
       "to": "kolmogorov-2008-round-4-first-league-and-higher-junior-problem-1",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems prove the existence of a low-degree vertex from a global graph condition. The round 1 card uses induction, cut vertices, and a longest-path contradiction to find degree at most 2; the tree card uses degree sums in a bipartition to force a leaf in the larger part.",
-      "backward_text": "The tree leaf card is a cleaner degree-sum companion to the round 1 low-degree argument. The shared lesson is to turn a global restriction into a forced small-degree vertex.",
+      "forward_text": "Обе задачи доказывают существование вершины низкой степени из условия глобального графа. Карта раунда 1 использует индукцию, разрезанные вершины и противоречие о самом длинном пути, чтобы найти степень не выше 2; карта дерева использует суммы степеней в двуразделении, чтобы заставить лист находиться в большей части.",
+      "backward_text": "Карточка с листом дерева является более чистым дополнением к аргументу с низкой степенью в первом раунде. Общий урок — превратить глобальное ограничение в вынужденную вершину малой степени.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48239,8 +48240,8 @@
       "to": "kolmogorov-2013-individual-olympiad-seniors-problem-5",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions are organized around leaves of a tree and a simplification step. The 2008 problem moves leaves to transform a tree; the 2013 problem deletes a chosen internal vertex and adjacent leaves, colors the remaining tree, and then restores the leaves along a cycle.",
-      "backward_text": "The 2013 tree-plus-leaf-cycle coloring proof is a natural method neighbor for the 2008 tree transformation card: both use leaves as the movable or removable part of the tree.",
+      "forward_text": "Оба решения организованы вокруг листьев дерева и шага упрощения. Задача 2008 года перемещает листья, чтобы преобразовать дерево; Задача 2013 года удаляет выбранную внутреннюю вершину и прилегающие к ней листья, окрашивает оставшееся дерево, а затем циклически восстанавливает листья.",
+      "backward_text": "Доказательство раскрашивания цикла «дерево плюс лист» 2013 года является естественным методом, соседствующим с карточкой трансформации дерева 2008 года: обе используют листья в качестве подвижной или съемной части дерева.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48255,8 +48256,8 @@
       "to": "kolmogorov-2010-individual-olympiad-juniors-problem-5",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both cards convert a travel question into a Hamiltonian traversal problem. The 2008 card optimizes the number of edges under Hamiltonian paths with prescribed endpoints; the 2010 card uses bounded shortest paths to guarantee a Hamiltonian tour length after ordering the cities.",
-      "backward_text": "The 2010 travel card is a softer Hamiltonian-ordering companion to the 2008 extremal Hamiltonian-path problem: both are about arranging all vertices in one long traversal under graph constraints.",
+      "forward_text": "Обе карты преобразуют вопрос о путешествии в гамильтонову задачу обхода. Карта 2008 года оптимизирует количество ребер гамильтоновых путей с предписанными конечными точками; карта 2010 года использует ограниченные кратчайшие пути, чтобы гарантировать длину гамильтонового тура после упорядочивания городов.",
+      "backward_text": "Карта путешествия 2010 года является более мягким дополнением к гамильтоновой задаче 2008 года с гамильтоновым упорядочением: обе задачи связаны с расположением всех вершин за один длинный обход при ограничениях графа.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48271,8 +48272,8 @@
       "to": "kolmogorov-2006-round-4-super-league-problem-5",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both cards replace a geometric dissection by a planar graph and count through faces or the associated adjacency structure. The square-dissection problem uses Euler's formula and degree bounds; the triangulation problem uses the dual tree of triangles and degree constraints in that tree.",
-      "backward_text": "The triangulation card is a dual-tree companion to the square-dissection face-counting card: both turn noncrossing segments into a graph whose degrees control the answer.",
+      "forward_text": "Обе карты заменяют геометрическое рассечение плоским графом и ведут подсчет по граням или соответствующей структуре смежности. Задача квадратного рассечения использует формулу Эйлера и границы степени; задача триангуляции использует двойственное дерево треугольников и ограничения степени в этом дереве.",
+      "backward_text": "Карта триангуляции является дополнением карты двойного дерева к карте подсчета лиц с квадратным разрезом: обе превращают непересекающиеся сегменты в граф, степени которого определяют ответ.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48287,8 +48288,8 @@
       "to": "kolmogorov-2012-individual-olympiad-seniors-problem-6",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions build an auxiliary directed graph and control a long directed route by order constraints. The 2010 card merges two ordered Hamiltonian paths in a tournament-like setting; the 2012 grid card bounds an Euler-style directed trail by counting unavoidable crossings of directed cuts.",
-      "backward_text": "The 2012 directed-grid route problem is a distant method neighbor of the 2010 path-merging problem: both are useful examples of turning the original story into directed paths plus counting constraints.",
+      "forward_text": "Оба решения создают вспомогательный ориентированный граф и управляют длинным направленным маршрутом с помощью ограничений порядка. Карта 2010 года объединяет два упорядоченных гамильтоновых пути в турнирной обстановке; карта сетки 2012 года ограничивает направленный след в стиле Эйлера, подсчитывая неизбежные пересечения направленных разрезов.",
+      "backward_text": "Задача маршрута с направленной сеткой 2012 года является дальним методом-соседкой задачи слияния путей 2010 года: обе являются полезными примерами превращения исходной истории в направленные пути плюс ограничения подсчета.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48367,7 +48368,7 @@
       "to": "menger-theorem",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Колмогоровская задача про fragile graphs — это экстремальный вопрос о существовании малого независимого вершинного разреза, тематически стоящий рядом с общими теоремами о вершинной связности и разрезах.",
+      "forward_text": "Колмогоровская задача о хрупких графах — это экстремальный вопрос о существовании растений независимого вершинного разреза, тематически стоящего рядом с обычными водопадами о вершинной связности и разрезах.",
       "backward_text": "Теорема Менгера даёт общий язык для задач о вершинных разрезах; колмогоровская задача 2024/4/3 выделяет на этом фоне точный разреженный класс графов, где разрез можно выбрать независимым.",
       "anchors": {
         "from_solution_id": "sol-chen-yu",
@@ -48383,8 +48384,8 @@
       "to": "benjamini-tzalik-shortest-paths-bound",
       "type": "reformulation",
       "distance": 1,
-      "forward_text": "The Kolmogorov Cup problem is the olympiad formulation of the Benjamini--Tzalik theorem. With Delta=2m, the paper's bound 2*(Delta/2)^t becomes exactly 2m^t, and the same layered Cauchy--Schwarz proof and extremal construction are used.",
-      "backward_text": "The Benjamini--Tzalik theorem is the original source behind the Kolmogorov Cup card: the tournament statement specializes the degree bound to Delta=2m and asks for the sharp maximum.",
+      "forward_text": "Задача о Кубке Колмогорова представляет собой олимпиадную формулировку теоремы Беньямини--Цалика. При Delta=2m граница статьи 2*(Delta/2)^t становится точно 2m^t, и используются те же многослойные доказательства Коши-Шварца и экстремальная конструкция.",
+      "backward_text": "Теорема Беньямини--Цалика является первоначальным источником карты Кубка Колмогорова: в протоколе турнира указывается степень, привязанная к Дельта = 2m, и требуется резкий максимум.",
       "anchors": {
         "from_solution_id": "sol-layered-cs",
         "to_solution_id": "sol-paper-bound"
@@ -48399,8 +48400,8 @@
       "to": "chen-yu-fragile-graphs-theorem",
       "type": "reformulation",
       "distance": 1,
-      "forward_text": "The Kolmogorov Cup problem states exactly the Chen--Yu fragile graphs theorem: every connected graph with n vertices and at most 2n-4 edges has an independent vertex cut.",
-      "backward_text": "The Chen--Yu theorem is the original source of the Kolmogorov Cup problem; the olympiad card republishes the same extremal statement in contest form.",
+      "forward_text": "Задача о Кубке Колмогорова в точности формулирует теорему Чен--Ю о хрупких графах: каждый связный граф с n вершинами и не более чем 2n-4 ребрами имеет независимый вершинный разрез.",
+      "backward_text": "Теорема Чэнь-Ю является первоисточником задачи Кубка Колмогорова; олимпиадная карточка повторяет то же самое экстремальное утверждение в соревновательной форме.",
       "anchors": {
         "from_solution_id": "sol-chen-yu",
         "to_solution_id": "sol-paper-theorem"
@@ -48415,8 +48416,8 @@
       "to": "five-color-theorem",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both proofs reduce colouring by deleting a vertex and then repair the colouring through a carefully controlled local recolouring step.",
-      "backward_text": "The five-colour theorem is the planar version with Kempe chains, while Brooks works in general graphs, but both use the same extend-a-colouring after a local obstruction appears.",
+      "forward_text": "Оба доказательства уменьшают раскраску за счет удаления вершины, а затем восстанавливают раскраску посредством тщательно контролируемого этапа локального перекрашивания.",
+      "backward_text": "Теорема о пяти цветах представляет собой плоскую версию с цепочками Кемпе, а Брукс работает с общими графами, но обе используют одну и ту же раскраску после появления локального препятствия.",
       "anchors": {
         "from_solution_id": "sol-sketch",
         "to_solution_id": "sol-kempe-sketch"
@@ -48431,8 +48432,8 @@
       "to": "five-color-theorem",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The five-colour induction starts from the planar fact that some vertex has degree at most five, which is exactly the standard consequence of the planar edge bound.",
-      "backward_text": "The theorem on five-colouring uses the edge bound as the low-degree input before the Kempe-chain recolouring step.",
+      "forward_text": "Пятицветная индукция начинается с плоского факта, что некоторая вершина имеет степень не выше пяти, что является в точности стандартным следствием плоской границы ребра.",
+      "backward_text": "Теорема о пятицветной раскраске использует границу ребра в качестве входных данных низкой степени перед этапом перекрашивания цепочки Кемпе.",
       "anchors": {
         "from_solution_id": "sol-face-counting",
         "to_solution_id": "sol-kempe-sketch"
@@ -48447,8 +48448,8 @@
       "to": "konig-vertex-cover-theorem",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "König's theorem is built on the same alternating-path structure as the augmenting-path lemma: once no augmenting path exists, alternating reachability becomes a minimax certificate.",
-      "backward_text": "The vertex-cover equality theorem is the canonical next step after the augmenting-path decomposition of a matching problem.",
+      "forward_text": "Теорема Кенига построена на той же структуре альтернативных путей, что и лемма о увеличивающем пути: если увеличивающего пути не существует, альтернативная достижимость становится минимаксным сертификатом.",
+      "backward_text": "Теорема о равенстве вершинных покрытий является каноническим следующим шагом после декомпозиции увеличивающего пути задачи сопоставления.",
       "anchors": {
         "from_solution_id": "sol-symmetric-difference",
         "to_solution_id": "sol-alternating"
@@ -48463,8 +48464,8 @@
       "to": "ore-theorem",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Both classical Hamiltonicity criteria close a longest path using degree information at its endpoints; Ore is the degree-sum refinement of the Dirac paradigm.",
-      "backward_text": "Ore's theorem generalizes Dirac's theorem by replacing a minimum-degree condition with a condition on every nonedge.",
+      "forward_text": "Оба классических критерия гамильтоновости закрывают самый длинный путь, используя информацию о степени в его конечных точках; Руда — это уточнение парадигмы Дирака по сумме степеней.",
+      "backward_text": "Теорема Ора обобщает теорему Дирака, заменяя условие минимальной степени условием на каждом неребре.",
       "anchors": {
         "from_solution_id": "sol-longest-path",
         "to_solution_id": "sol-closure-sketch"
@@ -48479,8 +48480,8 @@
       "to": "imo-1986-sl12-increasing-edge-trail",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both arguments choose a longest path and then exploit the impossibility of extending it to force structural information on the endpoints and their incident edges.",
-      "backward_text": "The shortlist problem concerns increasing edge labels rather than Hamiltonicity, but its official graph review still runs on the same longest-path extremal template as Dirac-style proofs.",
+      "forward_text": "Оба аргумента выбирают самый длинный путь, а затем используют невозможность его расширения, чтобы передать структурную информацию в конечные точки и их инцидентные ребра.",
+      "backward_text": "Задача короткого списка касается увеличения меток ребер, а не гамильтоновости, но ее официальный обзор графов по-прежнему работает на том же экстремальном шаблоне наибольшего пути, что и доказательства в стиле Дирака.",
       "anchors": {
         "from_solution_id": "sol-longest-path",
         "to_solution_id": "sol-graph-review"
@@ -48495,8 +48496,8 @@
       "to": "tc-2009-10-acquaintances-even-cycle",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both proofs start from a longest path and deduce constraints on how its endpoints can connect back into the graph.",
-      "backward_text": "The Tournament of Cities problem uses longest-path parity to force an even cycle, while Dirac uses the same extremal path viewpoint to force a Hamiltonian cycle.",
+      "forward_text": "Оба доказательства начинаются с самого длинного пути и выводят ограничения на то, как его конечные точки могут снова соединиться с графом.",
+      "backward_text": "В задаче «Турнир городов» используется четность самого длинного пути для обеспечения четного цикла, в то время как Дирак использует ту же точку зрения экстремального пути для создания гамильтонова цикла.",
       "anchors": {
         "from_solution_id": "sol-longest-path",
         "to_solution_id": "sol-longest-path-parity"
@@ -48511,8 +48512,8 @@
       "to": "tc-2010-11-odd-main-roads",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both results are parity subgraph statements: one characterizes when every degree can be made even, the other constructs a spanning subgraph where every degree is odd.",
-      "backward_text": "The main-roads problem is not an Euler tour criterion, but its solution uses the same mod-2 language of paths and edge sets with prescribed degree parity.",
+      "forward_text": "Оба результата являются утверждениями о четности подграфа: один характеризует, когда каждая степень может быть четной, другой создает охватывающий подграф, где каждая степень нечетна.",
+      "backward_text": "Задача главных дорог не является критерием обхода Эйлера, но для ее решения используется тот же язык путей и множеств ребер mod-2 с заданной четностью степеней.",
       "anchors": {
         "from_solution_id": "sol-cycle-splicing",
         "to_solution_id": "sol-path-parity"
@@ -48527,8 +48528,8 @@
       "to": "rmm-2013-p2-tester-pair-endomorphism-digraph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems study how much symmetry a graph-like structure can have and force rigidity by showing that a seemingly plausible permutation would have to fix more and more structure.",
-      "backward_text": "The RMM problem is about endomorphisms of a coloured digraph, while the Tournament of Cities problem is about automorphisms of a vertex-transitive graph, but both arguments are symmetry-to-rigidity reductions.",
+      "forward_text": "Обе задачи изучают, насколько симметрией может обладать графоподобная структура, и обеспечивают жесткость, показывая, что кажущаяся правдоподобной перестановка должна фиксировать все больше и больше структур.",
+      "backward_text": "Задача RMM касается эндоморфизмов цветного орграфа, а задача Турнира городов — автоморфизмов вершинно-транзитивного графа, но оба аргумента представляют собой приведение симметрии к жесткости.",
       "anchors": {
         "from_solution_id": "sol-counterexample-from-source",
         "to_solution_id": "sol-official-compressed"
@@ -48543,8 +48544,8 @@
       "to": "tc-2017-18-polyhedron-three-colors-parity",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The polyhedron colouring argument begins with the same degree-parity bookkeeping as the handshaking lemma: odd-degree counts and path pairings are controlled by counting edge incidences.",
-      "backward_text": "The Tournament of Cities problem is a coloured polyhedral application of the handshaking-parity principle.",
+      "forward_text": "Аргумент о раскраске многогранника начинается с того же учета четности степеней, что и лемма о согласовании: подсчет нечетных степеней и пары путей контролируются путем подсчета инцидентностей ребер.",
+      "backward_text": "Задача «Турнир городов» представляет собой цветное многогранное применение принципа четности квитирования.",
       "anchors": {
         "from_solution_id": "sol-double-counting",
         "to_solution_id": "sol-handshaking"
@@ -48559,8 +48560,8 @@
       "to": "vosh-2008-regional-bureaucrats-common-neighborhood",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions count pairs with a large common-neighbour structure inside an acquaintance graph and then isolate an extremal pair by averaging.",
-      "backward_text": "APMO 2010 maximizes nonadjacent pairs with a common acquaintance, while the VOSH problem forces one pair with many common neighbours or non-neighbours, but both are common-neighbour counting problems.",
+      "forward_text": "Оба решения подсчитывают пары с большой структурой общих соседей внутри графа знакомств, а затем изолируют экстремальную пару путем усреднения.",
+      "backward_text": "APMO 2010 максимизирует несмежные пары с общим знакомым, в то время как задача VOSH требует наличия одной пары со многими общими соседями или несоседями, но обе задачи являются задачами подсчета общих соседей.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-double-counting-triples"
@@ -48575,8 +48576,8 @@
       "to": "vosh-2010-11-final-nonbreakable-company",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both proofs attack a colouring obstruction by choosing a minimal bad configuration and then showing that local structure forces a recolouring contradiction.",
-      "backward_text": "The VOSH problem uses a minimal odd cycle in a K4-free non-3-colourable graph, while Brooks uses a minimal non-colourable counterexample, but the local recolouring philosophy is closely related.",
+      "forward_text": "Оба доказательства решают задачу раскраски, выбирая минимальную плохую конфигурацию, а затем показывая, что локальная структура вызывает противоречие перекраски.",
+      "backward_text": "В задаче VOSH используется минимальный нечетный цикл в графе, не раскрашиваемом в 3 цвета, без K4, а в задаче Брукса используется минимальный нераскрашиваемый контрпример, но философия локальной перекраски тесно связана с ней.",
       "anchors": {
         "from_solution_id": "sol-sketch",
         "to_solution_id": "sol-minimal-odd-cycle"
@@ -48591,8 +48592,8 @@
       "to": "imo-2013-c6-flight-distance-layers",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both official solutions organize the graph by distance layers from a source and bound how quickly a frontier can expand under local constraints.",
-      "backward_text": "The flight problem is an extremal distance argument in an abstract graph, while the firefighters problem is a grid process, but both rely on layer counting and controlled frontier growth.",
+      "forward_text": "Оба официальных решения организуют график по слоям расстояний от источника и определяют, насколько быстро граница может расширяться при местных ограничениях.",
+      "backward_text": "Задача полета представляет собой аргумент экстремального расстояния в абстрактном графе, а задача пожарных — это сеточный процесс, но обе они основаны на подсчете слоев и контролируемом расширении границ.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48607,8 +48608,8 @@
       "to": "memo-2025-i2-ruby-rooks-two-step-reachability",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems count unordered pairs joined by a common neighbour in an auxiliary graph and compare that count with an extremal construction.",
-      "backward_text": "APMO 2010 maximizes nonedges at distance 2 in an acquaintance graph, while MEMO 2025 counts pairs of squares with a common rook move, but the shared graph idea is the same common-neighbour accounting.",
+      "forward_text": "Обе задачи подсчитывают неупорядоченные пары, соединенные общим соседом во вспомогательном графе, и сравнивают этот подсчет с экстремальной конструкцией.",
+      "backward_text": "APMO 2010 максимизирует отсутствие ребер на расстоянии 2 в знакомом графе, а MEMO 2025 подсчитывает пары полей с общим ходом ладьи, но идея общего графа заключается в том же учете общих соседей.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48623,8 +48624,8 @@
       "to": "apmo-2010-p3-common-acquaintance-extremal",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions study an acquaintance graph and show that a star-like structure is extremal or forced once common-neighbour information becomes strong enough.",
-      "backward_text": "APMO 2010 is an extremal counting problem rather than a direct existence statement, but its extremal graph is again the universal-acquaintance star.",
+      "forward_text": "Оба решения изучают граф знакомств и показывают, что звездообразная структура становится экстремальной или вынужденной, когда информация об общих соседях становится достаточно достоверной.",
+      "backward_text": "APMO 2010 — это экстремальная задача подсчета, а не прямое утверждение о существовании, но ее экстремальный граф снова является звездой всеобщего знакомства.",
       "anchors": {
         "from_solution_id": "sol-clique-extension",
         "to_solution_id": "sol-official-compressed"
@@ -48639,8 +48640,8 @@
       "to": "apmo-2016-p4-dreamland-28-step-coloring",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both proofs color an auxiliary graph by reducing the problem to a controlled colouring step and then extending the colouring inductively.",
-      "backward_text": "Dreamland is a bespoke reachability graph rather than a degree-bound colouring theorem, but its official solution uses the same graph-colouring reduction mindset.",
+      "forward_text": "Оба доказательства раскрашивают вспомогательный граф, сводя задачу к этапу контролируемой раскраски, а затем индуктивно расширяя раскраску.",
+      "backward_text": "Страна грез — это специальный граф достижимости, а не теорема о раскраске, привязанная к степени, но ее официальное решение использует тот же подход к сокращению раскраски графа.",
       "anchors": {
         "from_solution_id": "sol-sketch",
         "to_solution_id": "sol-official-compressed"
@@ -48655,8 +48656,8 @@
       "to": "imo-2019-c4-labyrinth-region-graph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both official solutions turn a planar-looking configuration into a graph of boundary pieces or regions and then count components to force the target bound.",
-      "backward_text": "The labyrinth problem uses line arrangements and doors, while BMO 2022 uses colored-grid boundaries, but both are planar component-counting arguments through an auxiliary graph.",
+      "forward_text": "Оба официальных решения превращают плоскую конфигурацию в граф граничных частей или регионов, а затем подсчитывают компоненты, чтобы обеспечить целевую границу.",
+      "backward_text": "В задаче о лабиринте используются расположение линий и двери, а в BMO 2022 используются границы цветной сетки, но оба являются плоскими аргументами подсчета компонентов через вспомогательный граф.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48671,8 +48672,8 @@
       "to": "bmo-2022-p4-frog-grid-boundary-graph",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions encode a coloured grid by a boundary or adjacency graph and use component/edge bounds instead of cell-by-cell analysis.",
-      "backward_text": "The Tournament of Cities problem is more counting-heavy, while BMO 2022 packages the geometry into a boundary graph, but both rely on the same grid-to-graph translation.",
+      "forward_text": "Оба решения кодируют цветную сетку с помощью границы или графа смежности и используют границы компонента/ребра вместо анализа по ячейкам.",
+      "backward_text": "Задача «Турнир городов» требует больше вычислений, в то время как BMO 2022 упаковывает геометрию в граничный граф, но оба полагаются на один и тот же перевод сетки в граф.",
       "anchors": {
         "from_solution_id": "sol-bound-boundary",
         "to_solution_id": "sol-official-compressed"
@@ -48687,8 +48688,8 @@
       "to": "bmo-2025-p4-flights-long-short-paths",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both arguments choose a longest path and then use the impossibility of extending it to deduce strong restrictions on neighbours of its endpoints.",
-      "backward_text": "BMO 2025 is not a Hamiltonicity criterion, but its official proof is built from the same longest-path extremal toolkit as Dirac-style arguments.",
+      "forward_text": "Оба аргумента выбирают самый длинный путь, а затем используют невозможность его расширения, чтобы вывести строгие ограничения на соседей его конечных точек.",
+      "backward_text": "BMO 2025 не является критерием гамильтоновости, но его официальное доказательство построено на том же наборе экстремальных инструментов для поиска наибольшего пути, что и аргументы в стиле Дирака.",
       "anchors": {
         "from_solution_id": "sol-longest-path",
         "to_solution_id": "sol-official-compressed"
@@ -48703,8 +48704,8 @@
       "to": "memo-2021-i2-bishop-circuit-forest",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both official solutions replace a board configuration by a bipartite incidence graph and then bound the number of marked cells by a component or forest estimate.",
-      "backward_text": "EGMO 2016 counts edges through component sizes in a row-column graph, while MEMO 2021 proves acyclicity in a diagonal graph, but the core board-to-bipartite-graph move is shared.",
+      "forward_text": "Оба официальных решения заменяют конфигурацию платы двудольным графом заболеваемости, а затем ограничивают количество отмеченных ячеек оценкой компонента или леса.",
+      "backward_text": "EGMO 2016 подсчитывает ребра по размерам компонентов в графе строк-столбцов, а MEMO 2021 доказывает ацикличность в диагональном графе, но основной переход от доски к двудольному графу является общим.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48719,8 +48720,8 @@
       "to": "imo-2016-c8-domino-unique-tiling-cycles",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both domino problems are solved by translating tilings into bipartite matchings and then studying how structured changes of matchings constrain the board.",
-      "backward_text": "IMO 2016 focuses on alternating cycles between tilings, while EGMO 2022 uses parity and symmetry of domino matchings, but both live squarely in the matching model of domino tilings.",
+      "forward_text": "Обе задачи домино решаются путем перевода мозаик в двусторонние сопоставления, а затем изучения того, как структурированные изменения паросочетаний ограничивают доску.",
+      "backward_text": "IMO 2016 фокусируется на чередующихся циклах между мозаиками, а EGMO 2022 использует четность и симметрию сопоставлений домино, но оба они напрямую связаны с моделью сопоставления мозаик домино.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48735,8 +48736,8 @@
       "to": "egmo-2025-p5-rotating-arrows-dynamic-cycle",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both solutions encode a repeated move process as motion on a cyclic graph and then use parity or periodicity of that graph walk to bound the possible starts.",
-      "backward_text": "EGMO 2025 works on a board-wide cycle through all cells, while IMO 1979 analyzes walks on a fixed cycle graph, but the same cycle-encoding viewpoint drives both.",
+      "forward_text": "Оба решения кодируют повторяющийся процесс перемещения как движение по циклическому графу, а затем используют четность или периодичность этого обхода графа для ограничения возможных запусков.",
+      "backward_text": "EGMO 2025 работает с циклом по всей доске через все ячейки, тогда как IMO 1979 анализирует обход по графику с фиксированным циклом, но в обоих случаях используется одна и та же точка зрения циклического кодирования.",
       "anchors": {
         "from_solution_id": "sol-graph-review",
         "to_solution_id": "sol-official-compressed"
@@ -48751,8 +48752,8 @@
       "to": "memo-2022-t4-teleport-table-reachability",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both official solutions partition board states into classes and then use a domino pairing of cells to force a parity balance between those classes.",
-      "backward_text": "EGMO 2022 counts domino tilings via a matching involution, while MEMO 2022 compares reachability classes through a domino partition, but both use domino pairing as the decisive parity device.",
+      "forward_text": "Оба официальных решения разделяют состояния платы на классы, а затем используют пары ячеек домино, чтобы обеспечить баланс четности между этими классами.",
+      "backward_text": "EGMO 2022 подсчитывает плитки домино с помощью соответствующей инволюции, а MEMO 2022 сравнивает классы достижимости с помощью разделения домино, но оба используют спаривание домино в качестве решающего устройства четности.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48767,8 +48768,8 @@
       "to": "rmm-2012-p1-sociable-sets-bipartite-parity",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both arguments study covering behaviour in a bipartite acquaintance graph and reason about how subsets on one side control the opposite side.",
-      "backward_text": "RMM 2012 is a parity statement rather than a full existence theorem, but its official solution uses the same subset-neighbourhood viewpoint as Hall-type arguments.",
+      "forward_text": "Оба аргумента изучают поведение покрытия в двудольном графе знакомств и рассуждают о том, как подмножества на одной стороне контролируют противоположную сторону.",
+      "backward_text": "RMM 2012 — это утверждение о четности, а не теорема о полном существовании, но ее официальное решение использует ту же точку зрения на подмножество окрестности, что и аргументы типа Холла.",
       "anchors": {
         "from_solution_id": "sol-induction",
         "to_solution_id": "sol-official-compressed"
@@ -48783,8 +48784,8 @@
       "to": "rmm-2017-p5-sieve-sticks-bipartite-matching",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The official solution is an explicit Hall-style translation of a geometric covering problem into a bipartite matching statement.",
-      "backward_text": "RMM 2017 P5 is essentially a clean olympiad application of Hall's theorem on a grid incidence graph.",
+      "forward_text": "Официальное решение представляет собой явный перевод геометрической задачи о покрытии в стиле Холла в оператор двустороннего сопоставления.",
+      "backward_text": "RMM 2017 P5, по сути, представляет собой чистое олимпиадное применение теоремы Холла о графе инцидентности сетки.",
       "anchors": {
         "from_solution_id": "sol-induction",
         "to_solution_id": "sol-official-compressed"
@@ -48799,8 +48800,8 @@
       "to": "rmm-2017-p5-sieve-sticks-bipartite-matching",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions convert a grid configuration into a bipartite incidence graph whose left and right parts are natural row/column-type objects.",
-      "backward_text": "EGMO 2016 uses the incidence graph for counting and component bounds, while RMM 2017 uses it for Hall matching, but the modelling step is nearly identical.",
+      "forward_text": "Оба решения преобразуют конфигурацию сетки в двудольный граф инцидентности, левая и правая части которого являются естественными объектами типа строк/столбцов.",
+      "backward_text": "EGMO 2016 использует график инцидентности для подсчета и границ компонентов, а RMM 2017 использует его для сопоставления Холла, но этап моделирования практически идентичен.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-official-compressed"
@@ -48815,8 +48816,8 @@
       "to": "memo-2025-t4-toll-complete-graph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both arguments aggregate local vertex contributions over the whole graph to get a global bound; MEMO 2025 does this in a weighted complete graph setting.",
-      "backward_text": "The toll problem is not the plain handshaking lemma, but its official solution has the same degree-sum flavour lifted to weighted partitions of a complete graph.",
+      "forward_text": "Оба аргумента объединяют вклады локальных вершин по всему графу, чтобы получить глобальную границу; MEMO 2025 делает это в виде полного взвешенного графика.",
+      "backward_text": "Задача платных дорог — это не простая лемма о квитировании связи, но ее официальное решение имеет тот же вид суммы степеней, что и взвешенные разделы полного графа.",
       "anchors": {
         "from_solution_id": "sol-double-counting",
         "to_solution_id": "sol-official-compressed"
@@ -49095,8 +49096,8 @@
       "to": "vosh-2025-26-final-regions-friendship-coloring",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both proofs repair an existing colouring by changing only two colours at a time inside a controlled subgraph and then argue that the global admissibility condition is preserved.",
-      "backward_text": "The five-colour theorem uses Kempe chains in a planar graph, while the 2025/26 VSOSh problem recolours a bipartite two-colour subgraph, but the common mechanism is local recolouring that frees or cleans colours without breaking the global condition.",
+      "forward_text": "Оба доказательства восстанавливают существующую раскраску, изменяя одновременно только два цвета внутри контролируемого подграфа, а затем утверждают, что глобальное условие допустимости сохраняется.",
+      "backward_text": "Теорема о пяти цветах использует цепи Кемпе в плоском графе, в то время как задача ???? 2025/26 перекрашивает двудольный двухцветный подграф, но общим механизмом является локальная перекраска, которая освобождает или очищает цвета, не нарушая глобального условия.",
       "anchors": {
         "from_solution_id": "sol-kempe-sketch",
         "to_solution_id": "sol-official-compressed"
@@ -49111,8 +49112,8 @@
       "to": "vosh-2025-26-final-regions-friendship-coloring",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both arguments turn a partially acceptable colouring into a proper one by identifying a local obstruction and then recolouring a carefully chosen subgraph.",
-      "backward_text": "Brooks works through a minimal counterexample and local recolouring, while the 2025/26 VSOSh problem repeatedly cleans pairs of colours via a bipartite induced subgraph. The shared idea is that colour conflicts can be removed by controlled recolouring rather than rebuilding the colouring from scratch.",
+      "forward_text": "Оба аргумента превращают частично приемлемую раскраску в правильную, идентифицируя локальное препятствие и затем перекрашивая тщательно выбранный подграф.",
+      "backward_text": "Брукс работает с помощью минимального контрпримера и локальной перекраски, в то время как задача ???? 2025/26 неоднократно очищает пары цветов с помощью двудольного индуцированного подграфа. Общая идея заключается в том, что цветовые конфликты можно устранить путем контролируемого перекрашивания, а не путем восстановления окраски с нуля.",
       "anchors": {
         "from_solution_id": "sol-sketch",
         "to_solution_id": "sol-official-compressed"
