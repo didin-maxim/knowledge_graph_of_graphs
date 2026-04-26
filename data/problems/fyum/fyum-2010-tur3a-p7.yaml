@@ -65,7 +65,7 @@
     "graph_theory": [
       {
         "id": "stmt-graph-parameterized",
-        "text": "Let G be a graph on n vertices whose vertices are colored with r colors. Suppose every cycle of G uses at least three different colors. Then |E(G)| <= C(r,2)(n-1). In particular, for r=5 such a coloring cannot exist in a 100-regular graph.",
+        "text": "Пусть вершины графа \\(G\\) на \\(n\\) вершинах окрашены в \\(r\\) цветов. Предположим, что каждый цикл в \\(G\\) использует не менее трёх различных цветов. Тогда \\(|E(G)|\\le C(r,2)(n-1)\\). В частности, при \\(r=5\\) такая раскраска не может существовать в 100-регулярном графе.",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
@@ -85,7 +85,7 @@
     {
       "id": "sol-official-archive",
       "title": "Archive solution",
-      "text": "Look at the subgraph induced by any pair of colors. If it contained a cycle, that cycle would use only two colors, contradicting the hypothesis. So every two-color subgraph is a forest. Counting edges in these forests gives an upper bound incompatible with every vertex having degree 100. Therefore such a coloring does not exist.",
+      "text": "Рассмотрим подграф, порождённый любой парой цветов. Если бы он содержал цикл, этот цикл использовал бы только два цвета, что противоречит условию. Значит, каждый двухцветный подграф является лесом. Подсчёт рёбер в этих лесах даёт верхнюю оценку, несовместимую с тем, что степень каждой вершины равна 100. Поэтому такой раскраски не существует.",
       "idea_ids": [],
       "standard_idea_ids": [],
       "status": "ai_checked"

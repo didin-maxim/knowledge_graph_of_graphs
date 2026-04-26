@@ -473,7 +473,7 @@
           {
             "id": "stmt-graph-distance-layers",
             "title": "Distance-layer formulation",
-            "text": "In the grid graph \\(P_n\\square P_n\\), fix a start vertex \\((1,c)\\) with \\(c\\le n/2\\). At time \\(t\\), the infected set consists of all vertices reached from the start in at most \\(t\\) steps unless they were deleted earlier. Before each new infection round, one still uninfected vertex may be deleted permanently. Determine the maximum possible number of vertices that can avoid infection forever.",
+            "text": "В решёточном графе \\(P_n\\square P_n\\) зафиксируем начальную вершину \\((1,c)\\), где \\(c\\le n/2\\). В момент \\(t\\) заражённое множество состоит из всех вершин, до которых можно дойти из начальной не более чем за \\(t\\) шагов, если они не были удалены раньше. Перед каждым новым раундом заражения разрешается навсегда удалить одну ещё не заражённую вершину. Определите наибольшее возможное число вершин, которые могут навсегда избежать заражения.",
             "source_id": "src-apmo-2005-official",
             "status": "ai_checked",
             "self_contained": {
@@ -795,7 +795,7 @@
           },
           {
             "id": "stmt-graph-conflict",
-            "text": "Let $N\\ge 57$. For a directed graph $D$ on $N$ vertices with outdegree 1 at every vertex, define an undirected graph $R_{28}(D)$ on the same vertex set by joining $u$ and $v$ whenever $D$ contains a directed path from $u$ to $v$ or from $v$ to $u$ of length at most 28. Determine the least $k$ such that $\\chi(R_{28}(D))\\le k$ for every such $D$.",
+            "text": "Пусть \\(N\\ge 57\\). Для ориентированного графа \\(D\\) на \\(N\\) вершинах, у каждой из которых исходящая степень равна 1, определим неориентированный граф \\(R_{28}(D)\\) на том же множестве вершин: вершины \\(u\\) и \\(v\\) соединяются ребром, если в \\(D\\) есть ориентированный путь из \\(u\\) в \\(v\\) или из \\(v\\) в \\(u\\) длины не более 28. Найдите наименьшее \\(k\\), такое что \\(\\chi(R_{28}(D))\\le k\\) для любого такого \\(D\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -1421,7 +1421,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "Let two vertices of a graph have distance t, and suppose all degrees are bounded by Delta. Then the number of shortest paths between the two vertices is at most 2*(Delta/2)^t.",
+            "text": "Пусть две вершины графа находятся на расстоянии \\(t\\), а все степени вершин не превосходят \\(\\Delta\\). Тогда число кратчайших путей между этими двумя вершинами не превосходит \\(2(\\Delta/2)^t\\).",
             "source_id": "src-benjamini-tzalik-shortest-paths",
             "status": "source_verified",
             "self_contained": {
@@ -1436,7 +1436,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Let two vertices of a graph have distance t, and suppose all degrees are bounded by Delta. Then the number of shortest paths between the two vertices is at most 2*(Delta/2)^t.",
+            "text": "Пусть две вершины графа находятся на расстоянии \\(t\\), а все степени вершин не превосходят \\(\\Delta\\). Тогда число кратчайших путей между этими двумя вершинами не превосходит \\(2(\\Delta/2)^t\\).",
             "status": "source_verified",
             "self_contained": {
               "status": "ai_checked"
@@ -1467,7 +1467,7 @@
         {
           "id": "sol-paper-bound",
           "title": "Compressed paper proof",
-          "text": "After deleting all edges and vertices outside shortest x-y paths, the graph becomes layered by distance from x. If p(v) is the number of shortest paths from x to v, each transition between two consecutive layers is bounded by Cauchy--Schwarz and by the degree constraint. Iterating the layer inequality gives at most 2*(Delta/2)^t shortest x-y paths. The extremal construction uses two internally disjoint length-t chains with Delta/2 parallel choices at each step.",
+          "text": "Удалим все рёбра и вершины, не лежащие на кратчайших путях из \\(x\\) в \\(y\\). Оставшийся граф разбивается на слои по расстоянию от \\(x\\). Если \\(p(v)\\) — число кратчайших путей из \\(x\\) в \\(v\\), то переход между двумя соседними слоями оценивается неравенством Коши — Буняковского и ограничением на степени. Итерируя это послойное неравенство, получаем не более \\(2(\\Delta/2)^t\\) кратчайших путей из \\(x\\) в \\(y\\). Экстремальная конструкция состоит из двух внутренне непересекающихся цепочек длины \\(t\\), где на каждом шаге есть \\(\\Delta/2\\) параллельных вариантов выбора.",
           "idea_ids": [
             "idea-layered-cauchy-schwarz"
           ],
@@ -1725,7 +1725,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "Every connected graph on n vertices with at most 2n-4 edges has a vertex cut which is also an independent set.",
+            "text": "Всякий связный граф на \\(n\\) вершинах с не более чем \\(2n-4\\) рёбрами имеет вершинный разрез, который одновременно является независимым множеством.",
             "source_id": "src-chen-yu-fragile-graphs",
             "status": "source_verified",
             "self_contained": {
@@ -1740,7 +1740,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Every connected graph on n vertices with at most 2n-4 edges has a vertex cut which is also an independent set.",
+            "text": "Всякий связный граф на \\(n\\) вершинах с не более чем \\(2n-4\\) рёбрами имеет вершинный разрез, который одновременно является независимым множеством.",
             "status": "source_verified",
             "self_contained": {
               "status": "ai_checked"
@@ -1772,7 +1772,7 @@
         {
           "id": "sol-paper-theorem",
           "title": "Paper theorem",
-          "text": "This card records the theorem proved by Chen and Yu. The proof in the original paper establishes that a graph with no independent vertex cut must have at least 2n-3 edges; equivalently, every connected graph with at most 2n-4 edges is fragile.",
+          "text": "Эта карточка фиксирует теорему Чена и Юя. В исходной статье доказывается, что граф без независимого вершинного разреза должен иметь не менее \\(2n-3\\) рёбер. Эквивалентно, всякий связный граф с не более чем \\(2n-4\\) рёбрами является хрупким в указанном смысле.",
           "idea_ids": [
             "idea-sparse-graphs-have-stable-cutset"
           ],
@@ -2802,7 +2802,7 @@
           },
           {
             "id": "stmt-graph-complement",
-            "text": "Part 1. Determine the maximum number of edges in a simple graph on \\(2n+1\\) vertices with no clique of size \\(n+1\\). Part 2. Determine the maximum number of edges in a simple graph on \\(2n\\) vertices with no clique of size \\(n\\).",
+            "text": "Часть 1. Найдите наибольшее число рёбер в простом графе на \\(2n+1\\) вершинах, не содержащем клики размера \\(n+1\\). Часть 2. Найдите наибольшее число рёбер в простом графе на \\(2n\\) вершинах, не содержащем клики размера \\(n\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -6034,7 +6034,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Induct on the number of vertices. The key lemma says that reversing one edge A->B to B->A does not change the parity of the number of Hamiltonian paths: paths through A->B and B->A are reduced to paths in the graph without B. Then repeatedly reverse edges until only one Hamiltonian path remains. Therefore the original number of Hamiltonian paths was odd.",
+          "text": "Докажем индукцией по числу вершин. Ключевая лемма утверждает, что изменение направления одного ребра \\(A\\to B\\) на \\(B\\to A\\) не меняет чётность числа гамильтоновых путей: пути, проходящие через \\(A\\to B\\) и через \\(B\\to A\\), сводятся к путям в графе без вершины \\(B\\). После этого последовательно меняем направления рёбер, пока не останется ровно один гамильтонов путь. Значит, исходное число гамильтоновых путей было нечётным.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -6140,7 +6140,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Let the two parts be A and B. Assign to every number the letter A or B independently with probability 1/2. We want each vertex to contain at least one number whose letter matches the side of the bipartition. For a fixed vertex the failure probability is 2^{-n}; since the total number of vertices is less than 2^n, the total failure probability is less than 1. So a good assignment exists. Keep one suitable number in every vertex.",
+          "text": "Пусть доли двудольного графа равны \\(A\\) и \\(B\\). Каждому числу независимо припишем букву \\(A\\) или \\(B\\) с вероятностью \\(1/2\\). Нужно, чтобы в каждой вершине нашлось число, буква которого совпадает с долей этой вершины. Для фиксированной вершины вероятность неудачи равна \\(2^{-n}\\); поскольку всего вершин меньше \\(2^n\\), суммарная вероятность неудачи меньше 1. Следовательно, хорошее приписывание существует. В каждой вершине оставляем одно подходящее число.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -6235,7 +6235,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-parameterized",
-            "text": "Let m,d be positive integers. Any graph on 2m+1 vertices with more than md edges cannot have its edges colored with d colors in such a way that each color class is a matching. In particular, if a graph on 2m+1 vertices has 2m vertices of degree d and one vertex of degree 2, then such a coloring is impossible.",
+            "text": "Пусть \\(m,d\\) — положительные целые числа. Всякий граф на \\(2m+1\\) вершинах с более чем \\(md\\) рёбрами нельзя раскрасить в \\(d\\) цветов так, чтобы каждый цветовой класс был паросочетанием. В частности, если в графе на \\(2m+1\\) вершинах есть \\(2m\\) вершин степени \\(d\\) и одна вершина степени 2, то такая раскраска невозможна.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -6255,7 +6255,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "The graph has 1004*200+1 edges, so by the pigeonhole principle one color is used on at least 1005 edges. If edges of one color do not share endpoints, they form a matching of size 1005 and require 2010 endpoints. But the graph has only 2009 vertices. Contradiction.",
+          "text": "В графе \\(1004\\cdot 200+1\\) ребро, поэтому по принципу Дирихле некоторый цвет использован хотя бы на 1005 рёбрах. Если рёбра одного цвета не имеют общих концов, они образуют паросочетание размера 1005 и требуют 2010 различных концов. Но в графе всего 2009 вершин. Противоречие.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked",
@@ -6359,7 +6359,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-ramsey-tree",
-            "text": "Let T be any tree on n vertices, and let k be a positive integer. Then every graph on (n-1)(k-1)+1 vertices contains either a copy of T or an independent set of size k.",
+            "text": "Пусть \\(T\\) — произвольное дерево на \\(n\\) вершинах, а \\(k\\) — положительное целое число. Тогда всякий граф на \\((n-1)(k-1)+1\\) вершинах содержит либо копию \\(T\\), либо независимое множество размера \\(k\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -6380,7 +6380,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Prove a stronger claim: every graph on (n-1)(k-1)+1 vertices contains either an independent set of size k or a copy of any fixed tree T on n vertices. Induct on n. Delete a leaf from T to get T-prime. Delete edges in the graph until an independent set M of size k-1 appears but not one of size k. By induction the graph without M contains T-prime; then attach one suitable vertex of M to the neighbor of the deleted leaf and recover T.",
+          "text": "Докажем более сильное утверждение: всякий граф на \\((n-1)(k-1)+1\\) вершинах содержит либо независимое множество размера \\(k\\), либо копию любого фиксированного дерева \\(T\\) на \\(n\\) вершинах. Индукция идёт по \\(n\\). Удалим из \\(T\\) лист и получим дерево \\(T'\\). В графе удаляем рёбра, пока не появится независимое множество \\(M\\) размера \\(k-1\\), но ещё нет независимого множества размера \\(k\\). По индукционному предположению граф без \\(M\\) содержит \\(T'\\); затем присоединяем подходящую вершину из \\(M\\) к соседу удалённого листа и восстанавливаем \\(T\\).",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked",
@@ -6489,7 +6489,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-parameterized",
-            "text": "For every graph G with maximum degree at most Delta, there exists an orientation of its edges such that every directed path has length at most Delta.",
+            "text": "Для всякого графа \\(G\\) с максимальной степенью не больше \\(\\Delta\\) существует ориентация его рёбер, при которой всякий ориентированный путь имеет длину не больше \\(\\Delta\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -6511,7 +6511,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Properly color the graph with 11 colors; this is possible because the maximum degree is 10. Orient every edge from the endpoint of smaller color to the endpoint of larger color. Along every directed path the colors strictly increase, so its length is at most 10.",
+          "text": "Правильно раскрасим вершины графа в 11 цветов; это возможно, поскольку максимальная степень равна 10. Каждое ребро ориентируем от конца меньшего цвета к концу большего цвета. Вдоль любого ориентированного пути цвета строго возрастают, поэтому его длина не превосходит 10.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked",
@@ -6621,7 +6621,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Use the closure lemma: if two nonadjacent vertices u and v satisfy deg(u)+deg(v) >= n, then adding the edge uv does not change Hamiltonicity. Indeed, any Hamiltonian cycle using uv can be rerouted without that edge. Add all such edges. In the closure the degree condition forces a Hamiltonian cycle, hence the original graph was Hamiltonian too.",
+          "text": "Используем лемму о замыкании: если две несмежные вершины \\(u\\) и \\(v\\) удовлетворяют \\(\\deg(u)+\\deg(v)\\ge n\\), то добавление ребра \\(uv\\) не меняет гамильтоновость. Действительно, любой гамильтонов цикл, использующий \\(uv\\), можно перестроить без этого ребра. Добавим все такие рёбра. В замыкании условие на степени заставляет существовать гамильтонов цикл, значит, исходный граф тоже был гамильтоновым.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -6729,7 +6729,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Keep adding every allowed edge until the process stops. Assume no universal vertex appears. Let the maximum degree be 239+k. Then k<239. A neighbor of that vertex has degree at most 239+k, and a non-neighbor has degree at most 239-k-1, otherwise the missing edge could still be added. Summing degrees gives an upper bound at most 239000, contradicting the assumption.",
+          "text": "Будем добавлять все разрешённые рёбра, пока процесс не остановится. Предположим, что универсальная вершина так и не появилась. Пусть максимальная степень равна \\(239+k\\). Тогда \\(k<239\\). Сосед такой вершины имеет степень не больше \\(239+k\\), а несосед — не больше \\(239-k-1\\), иначе недостающее ребро ещё можно было бы добавить. Суммирование степеней даёт верхнюю оценку не более 239000, что противоречит условию.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -6843,7 +6843,7 @@
         {
           "id": "sol-official-archive",
           "title": "Ответ через Ramsey theorem for multiple triangles",
-          "text": "Ответ: `n=500`. Верхняя оценка следует из Theorem 2 Burr--Erdos--Spencer: для каждого `m>=2` Ramsey number графа `mK_3`, то есть объединения `m` попарно непересекающихся треугольников, равен `5m`. При `m=100` это означает, что любая красно-синяя раскраска рёбер `K_{500}` содержит либо 100 попарно непересекающихся красных треугольников, либо 100 попарно непересекающихся синих треугольников. Треугольник является нечётным простым циклом, поэтому требуемое свойство для `n=500` доказано. Для нижней оценки возьмём экстремальную раскраску из доказательства Burr--Erdos--Spencer. Разобьём `499=3*100-1+2*100-1+1` вершин на множества `A,B,C`, где `|A|=299`, `|B|=199`, `|C|=1`. Все рёбра внутри `A` красные, все рёбра внутри `B` синие, рёбра между `A` и `B` синие, рёбра между `A` и `C` синие, рёбра между `B` и `C` красные. Красный граф состоит из клики `A` и красной звезды с центром `C` и листьями в `B`; поэтому каждый красный нечётный цикл целиком лежит в `A`, и таких попарно непересекающихся циклов не больше `floor(299/3)=99`. Синий граф состоит из клики `B` и полного двудольного графа между `B` и `A union C`; в каждом синем нечётном цикле есть хотя бы одно ребро внутри `B`, а значит он использует не меньше двух вершин из `B`. Поэтому попарно непересекающихся синих нечётных циклов не больше `floor(199/2)=99`. Значит, на `499` вершинах требуемое свойство ещё не гарантировано, а минимальное `n` равно `500`.",
+          "text": "Ответ: `n=500`. Верхняя оценка следует из теоремы 2 Берра — Эрдёша — Спенсера: для каждого `m>=2` число Рамсея графа `mK_3`, то есть объединения `m` попарно непересекающихся треугольников, равен `5m`. При `m=100` это означает, что любая красно-синяя раскраска рёбер `K_{500}` содержит либо 100 попарно непересекающихся красных треугольников, либо 100 попарно непересекающихся синих треугольников. Треугольник является нечётным простым циклом, поэтому требуемое свойство для `n=500` доказано. Для нижней оценки возьмём экстремальную раскраску из доказательства Burr--Erdos--Spencer. Разобьём `499=3*100-1+2*100-1+1` вершин на множества `A,B,C`, где `|A|=299`, `|B|=199`, `|C|=1`. Все рёбра внутри `A` красные, все рёбра внутри `B` синие, рёбра между `A` и `B` синие, рёбра между `A` и `C` синие, рёбра между `B` и `C` красные. Красный граф состоит из клики `A` и красной звезды с центром `C` и листьями в `B`; поэтому каждый красный нечётный цикл целиком лежит в `A`, и таких попарно непересекающихся циклов не больше `floor(299/3)=99`. Синий граф состоит из клики `B` и полного двудольного графа между `B` и `A union C`; в каждом синем нечётном цикле есть хотя бы одно ребро внутри `B`, а значит он использует не меньше двух вершин из `B`. Поэтому попарно непересекающихся синих нечётных циклов не больше `floor(199/2)=99`. Значит, на `499` вершинах требуемое свойство ещё не гарантировано, а минимальное `n` равно `500`.",
           "idea_ids": [
             "idea-burr-erdos-spencer-triangle-tiling"
           ],
@@ -6961,7 +6961,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Decompose the tournament into strongly connected components and order them topologically. Two lemmas are used: a strongly connected tournament has a cycle through all its vertices, and from a cycle of length k one can get a cycle of length k-1. Therefore no component may have more than m vertices, otherwise there would be a cycle of length m+1. Number the vertices block by block according to the component order. Then the required edge directions follow from this ordering.",
+          "text": "Разложим турнир на сильносвязные компоненты и упорядочим их топологически. Используются две леммы: сильносвязный турнир имеет цикл, проходящий через все его вершины, а из цикла длины \\(k\\) можно получить цикл длины \\(k-1\\). Поэтому ни одна компонента не может иметь более \\(m\\) вершин, иначе возник бы цикл длины \\(m+1\\). Нумеруем вершины блоками согласно порядку компонент. Тогда требуемые направления рёбер следуют из этого порядка.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -7073,7 +7073,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Choose a proper coloring with the minimum possible number of bad inter-layer edges. If a bad edge remains, look at the two-color subgraph relevant to its endpoints. Every cycle in that subgraph is important. The hypothesis implies that cycles through the chosen bad edge cannot be odd, so the subgraph is bipartite. Swapping the two colors on one component decreases the number of bad edges, a contradiction. Hence no bad edges remain and the graph is properly colored with n colors.",
+          "text": "Выберем правильную раскраску с минимальным возможным числом плохих рёбер между слоями. Если плохое ребро осталось, рассмотрим двухцветный подграф, соответствующий цветам его концов. Каждый цикл в этом подграфе является важным. Условие задачи показывает, что циклы через выбранное плохое ребро не могут быть нечётными, значит, подграф двудолен. Перестановка двух цветов в одной компоненте уменьшает число плохих рёбер, противоречие. Следовательно, плохих рёбер нет, и граф правильно раскрашен в \\(n\\) цветов.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -7193,7 +7193,7 @@
         {
           "id": "sol-official-archive",
           "title": "Следствие из леммы Bondy--Simonovits",
-          "text": "В статье Bondy--Simonovits `Cycles of Even Length in Graphs` дана следующая лемма: если `t` — положительное целое число, а `G` — связный граф, для которого `e(G)>2t v(G)`, то любая `t`-периодическая раскраска вершин `G` использует не более двух цветов. В нашей задаче граф связен, имеет `n` вершин и больше чем `2tn` рёбер, то есть ровно удовлетворяет неравенству `e(G)>2t v(G)`. Поэтому по этой лемме в любой `t`-периодической раскраске используется не более двух цветов.",
+          "text": "В статье Бонди — Симоновича «Циклы чётной длины в графах» дана следующая лемма: если `t` — положительное целое число, а `G` — связный граф, для которого `e(G)>2t v(G)`, то любая `t`-периодическая раскраска вершин `G` использует не более двух цветов. В нашей задаче граф связен, имеет `n` вершин и больше чем `2tn` рёбер, то есть ровно удовлетворяет неравенству `e(G)>2t v(G)`. Поэтому по этой лемме в любой `t`-периодической раскраске используется не более двух цветов.",
           "idea_ids": [
             "idea-bondy-simonovits-periodic-coloring-lemma"
           ],
@@ -7417,7 +7417,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Take a maximal acyclic subgraph H. Keep the orientation of the edges of H and reverse all other edges, obtaining G-prime. This new graph is acyclic because every reversed edge originally closed a directed cycle together with edges of H. Also every reversed edge can be replaced by a directed path in H, so the longest directed path between any two vertices does not become longer. That is exactly what was needed.",
+          "text": "Возьмём максимальный ациклический подграф \\(H\\). Сохраним направления рёбер \\(H\\), а все остальные рёбра развернём, получив граф \\(G'\\). Новый граф ацикличен, потому что каждое развёрнутое ребро раньше замыкало ориентированный цикл вместе с рёбрами \\(H\\). Кроме того, каждое развёрнутое ребро можно заменить ориентированным путём в \\(H\\), поэтому длина длиннейшего ориентированного пути между любыми двумя вершинами не увеличивается. Это ровно то, что требовалось.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -7518,7 +7518,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-transitive-tournament",
-            "text": "Let T be an acyclic tournament on n^2+1 vertices. If every edge of T is colored red or blue, then T contains a monochromatic directed path with n edges.",
+            "text": "Пусть \\(T\\) — ациклический турнир на \\(n^2+1\\) вершинах. Если каждое ребро \\(T\\) окрашено в красный или синий цвет, то \\(T\\) содержит одноцветный ориентированный путь с \\(n\\) рёбрами.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -7539,7 +7539,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "After ordering the vertices linearly, assign to each vertex the lengths of the longest red and blue directed paths starting there. Two vertices cannot have the same pair of values, otherwise one of the paths could be extended. Since there are n^2+1 vertices, one of the parameters must reach n, giving a monochromatic directed path of length n.",
+          "text": "Упорядочим вершины линейно и каждой вершине сопоставим длины длиннейших красного и синего ориентированных путей, начинающихся в ней. Две вершины не могут иметь одну и ту же пару значений, иначе один из путей можно было бы продолжить. Так как вершин \\(n^2+1\\), один из параметров должен достичь \\(n\\), что даёт одноцветный ориентированный путь длины \\(n\\).",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -7649,7 +7649,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "First prove the claim for k=2 by induction on the number of edges. If the graph has a cycle, remove it, color the rest inductively, and color the even cycle alternately. If the graph is a tree, remove an edge leading to a leaf and then choose its color at the end. For general k, choose a coloring minimizing the number of same-color edge pairs at a vertex and show that then all color counts differ by at most 1.",
+          "text": "Сначала докажем утверждение для \\(k=2\\) индукцией по числу рёбер. Если в графе есть цикл, удалим его, раскрасим остальное по индукции и раскрасим чётный цикл попеременно. Если граф является деревом, удалим ребро к листу и выберем его цвет в самом конце. Для общего \\(k\\) выбираем раскраску, минимизирующую число пар рёбер одного цвета при одной вершине, и показываем, что тогда количества рёбер разных цветов при каждой вершине отличаются не более чем на 1.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -7758,7 +7758,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "This is the k=2 case. Induct on the number of edges. Even cycles can be colored alternately after the rest is colored inductively, and trees are handled by removing a leaf edge and restoring it at the end. The result is a 2-coloring where the numbers of incident edges of the two colors differ by at most 1 at every vertex.",
+          "text": "Это случай \\(k=2\\). Индукция идёт по числу рёбер. Чётные циклы можно раскрасить попеременно после индукционной раскраски остальной части, а деревья обрабатываются удалением ребра к листу и возвращением его в конце. В результате получается 2-раскраска, в которой при каждой вершине числа инцидентных рёбер двух цветов отличаются не более чем на 1.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -7867,7 +7867,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Consider all nonempty non-dominating vertex sets and build an auxiliary graph on them. Two such sets are adjacent when they are disjoint and there are no edges between them in the original graph. For every vertex of this auxiliary graph the degree is odd; this is checked directly from the neighborhood closure of the corresponding set. Hence the auxiliary graph has an even number of vertices, so the number of nonempty non-dominating sets is even. Therefore the number of dominating sets cannot be even.",
+          "text": "Рассмотрим все непустые недоминирующие множества вершин и построим на них вспомогательный граф. Два таких множества соединяются ребром, если они не пересекаются и между ними нет рёбер исходного графа. Для каждой вершины этого вспомогательного графа степень нечётна; это напрямую проверяется по замыканию окрестности соответствующего множества. Значит, во вспомогательном графе чётное число вершин, то есть число непустых недоминирующих множеств чётно. Следовательно, число доминирующих множеств не может быть чётным.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -7971,7 +7971,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-parameterized",
-            "text": "Let G be a graph on n vertices whose vertices are colored with r colors. Suppose every cycle of G uses at least three different colors. Then |E(G)| <= C(r,2)(n-1). In particular, for r=5 such a coloring cannot exist in a 100-regular graph.",
+            "text": "Пусть вершины графа \\(G\\) на \\(n\\) вершинах окрашены в \\(r\\) цветов. Предположим, что каждый цикл в \\(G\\) использует не менее трёх различных цветов. Тогда \\(|E(G)|\\le C(r,2)(n-1)\\). В частности, при \\(r=5\\) такая раскраска не может существовать в 100-регулярном графе.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -7991,7 +7991,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Look at the subgraph induced by any pair of colors. If it contained a cycle, that cycle would use only two colors, contradicting the hypothesis. So every two-color subgraph is a forest. Counting edges in these forests gives an upper bound incompatible with every vertex having degree 100. Therefore such a coloring does not exist.",
+          "text": "Рассмотрим подграф, порождённый любой парой цветов. Если бы он содержал цикл, этот цикл использовал бы только два цвета, что противоречит условию. Значит, каждый двухцветный подграф является лесом. Подсчёт рёбер в этих лесах даёт верхнюю оценку, несовместимую с тем, что степень каждой вершины равна 100. Поэтому такой раскраски не существует.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -8094,7 +8094,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-parameterized",
-            "text": "Let G be a graph whose vertices are colored with three colors. If every cycle of G contains vertices of all three colors, then |E(G)| <= 3(|V(G)|-1). In particular, no 6-regular graph has such a 3-coloring.",
+            "text": "Пусть вершины графа \\(G\\) окрашены в три цвета. Если каждый цикл в \\(G\\) содержит вершины всех трёх цветов, то \\(|E(G)|\\le 3(|V(G)|-1)\\). В частности, ни один 6-регулярный граф не имеет такой 3-раскраски.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -8115,7 +8115,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Assume such a graph exists. Remove all vertices of one color; the remaining two-color graph has no cycles, hence it is a forest. Do this for each of the three colors. Each of the three resulting graphs has at most n-1 edges, so the original graph has at most 3n-3 edges. But a 6-regular graph on n vertices has exactly 3n edges. Contradiction.",
+          "text": "Предположим, что такой граф существует. Удалим все вершины одного цвета; оставшийся двухцветный граф не содержит циклов, значит, является лесом. Сделаем это для каждого из трёх цветов. Каждый из трёх полученных графов имеет не более \\(n-1\\) рёбер, поэтому исходный граф имеет не более \\(3n-3\\) рёбер. Но 6-регулярный граф на \\(n\\) вершинах имеет ровно \\(3n\\) рёбер. Противоречие.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -8231,7 +8231,7 @@
         {
           "id": "sol-official-archive",
           "title": "Следствие из теоремы о двухблочных ориентированных путях",
-          "text": "Рассмотрим требуемый путь как ориентированный гамильтонов путь в турнире на 200 вершинах. Его тип имеет ровно два блока: сначала 100 последовательных рёбер направлены против порядка обхода, затем 99 последовательных рёбер направлены по порядку обхода. В обзорной статье Bang-Jensen--Gutin зафиксирован результат B. Alspach--M. Rosenfeld и H. J. Straight: в каждом турнире реализуется любой ориентированный гамильтонов путь с двумя блоками. Применяя эту теорему к типу `(-1)^{100}(+1)^{99}`, получаем гамильтонов путь на всех 200 вершинах, то есть путь из 199 звеньев, у которого первые 100 рёбер ориентированы к началу, а следующие 99 — к концу.",
+          "text": "Рассмотрим требуемый путь как ориентированный гамильтонов путь в турнире на 200 вершинах. Его тип имеет ровно два блока: сначала 100 последовательных рёбер направлены против порядка обхода, затем 99 последовательных рёбер направлены по порядку обхода. В обзорной статье Банга-Йенсена — Гутина зафиксирован результат Б. Олспача — М. Розенфельда и Х. Дж. Стрейта: в каждом турнире реализуется любой ориентированный гамильтонов путь с двумя блоками. Применяя эту теорему к типу `(-1)^{100}(+1)^{99}`, получаем гамильтонов путь на всех 200 вершинах, то есть путь из 199 звеньев, у которого первые 100 рёбер ориентированы к началу, а следующие 99 — к концу.",
           "idea_ids": [
             "idea-two-block-oriented-hamiltonian-path-theorem"
           ],
@@ -8574,7 +8574,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Fix an edge uv and consider all Hamiltonian paths that start at u and use uv first. These paths become the vertices of an auxiliary graph. Two paths are joined when one can be obtained from the other by a standard local exchange. The odd-degree vertices of the auxiliary graph correspond exactly to Hamiltonian cycles through uv. By the handshake lemma, the number of odd-degree vertices is even. Therefore the number of Hamiltonian cycles through uv is even.",
+          "text": "Зафиксируем ребро \\(uv\\) и рассмотрим все гамильтоновы пути, которые начинаются в \\(u\\) и используют \\(uv\\) первым ребром. Эти пути станут вершинами вспомогательного графа. Два пути соединяются ребром, если один получается из другого стандартной локальной перестановкой. Вершины нечётной степени во вспомогательном графе в точности соответствуют гамильтоновым циклам через \\(uv\\). По лемме о рукопожатиях число вершин нечётной степени чётно. Следовательно, число гамильтоновых циклов через \\(uv\\) чётно.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -8664,7 +8664,7 @@
           {
             "id": "stmt-original",
             "title": "Statement",
-            "text": "A graph has maximum degree at most 11. Prove that its edges can be colored with 221 colors so that any two edges of the same color are disjoint and no edge is adjacent to both of them.",
+            "text": "Граф имеет максимальную степень не больше 11. Докажите, что его рёбра можно раскрасить в 221 цвет так, чтобы любые два ребра одного цвета не имели общих концов и ни одно ребро не было смежно с ними обоими.",
             "source_id": "src-fyum-2012-tur1a-p10-official",
             "status": "ai_checked",
             "self_contained": {
@@ -8678,7 +8678,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-parameterized",
-            "text": "For every graph G with maximum degree at most Delta, one can color E(G) with at most 2Delta^2-2Delta+1 colors so that any two edges of the same color are disjoint and no edge is adjacent to both of them. The FYUM statement is the case Delta=11.",
+            "text": "Для всякого графа \\(G\\) с максимальной степенью не больше \\(\\Delta\\) можно раскрасить \\(E(G)\\) не более чем в \\(2\\Delta^2-2\\Delta+1\\) цвет так, чтобы любые два ребра одного цвета не имели общих концов и ни одно ребро не было смежно с ними обоими. Утверждение FYUM — это случай \\(\\Delta=11\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -8698,7 +8698,7 @@
         {
           "id": "sol-greedy-distance-two-bound",
           "title": "Standard greedy bound for strong edge-coloring",
-          "text": "Color the edges one by one in an arbitrary order. When we come to an edge e = uv, the only forbidden colors are those already used on edges at distance at most 2 from e, because exactly those edges cannot share a color with e. There are at most 2*11 - 2 = 20 edges adjacent to e. Also, from the u-side there are at most 10 other edges incident with u, and each of their far endpoints contributes at most 10 further edges; this gives at most 10*10 edges at distance 2 from e on the u-side. The same bound holds on the v-side. Hence the number of edges at distance exactly 2 from e is at most 2*10*10 = 200, so in total at most 20 + 200 = 220 colors are forbidden. With 221 available colors there is always a free color for e. Continuing greedily, we color every edge. By construction, each color class is an induced matching, which is exactly the required condition.",
+          "text": "Красим рёбра по одному в произвольном порядке. Когда очередь доходит до ребра \\(e=uv\\), запрещены только цвета, уже использованные на рёбрах расстояния не более 2 от \\(e\\), потому что именно такие рёбра не могут иметь общий цвет с \\(e\\). Рёбер, смежных с \\(e\\), не более \\(2\\cdot 11-2=20\\). Кроме того, со стороны \\(u\\) есть не более 10 других рёбер, инцидентных \\(u\\), и каждый их дальний конец даёт не более 10 дальнейших рёбер; это даёт не более \\(10\\cdot 10\\) рёбер расстояния 2 от \\(e\\) со стороны \\(u\\). Такая же оценка верна со стороны \\(v\\). Значит, рёбер на расстоянии ровно 2 от \\(e\\) не более \\(2\\cdot 10\\cdot 10=200\\), а всего запрещено не более \\(20+200=220\\) цветов. При 221 доступном цвете для \\(e\\) всегда есть свободный цвет. Продолжая жадно, раскрасим все рёбра. По построению каждый цветовой класс является индуцированным паросочетанием, что и требуется.",
           "idea_ids": [],
           "standard_idea_ids": [],
           "definition_ids": [
@@ -9079,7 +9079,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-conflict",
-            "text": "Let G be a planar graph with maximum degree d>100 and girth at least 10d+100. Define X_2(G) to be the graph whose vertices are the edges of G, where two vertices of X_2(G) are adjacent whenever the corresponding edges of G share a vertex or have adjacent endpoints in G. Then X_2(G) is properly colorable with 2d-1 colors.",
+            "text": "Пусть \\(G\\) — планарный граф с максимальной степенью \\(d>100\\) и обхватом не менее \\(10d+100\\). Определим \\(X_2(G)\\) как граф, вершинами которого являются рёбра \\(G\\), причём две вершины \\(X_2(G)\\) смежны, если соответствующие рёбра \\(G\\) имеют общий конец или имеют смежные концы в \\(G\\). Тогда \\(X_2(G)\\) правильно раскрашивается в \\(2d-1\\) цвет.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -9114,7 +9114,7 @@
         {
           "id": "sol-official-archive",
           "title": "Следствие из теоремы Chang--Montassier--Pecher--Raspaud",
-          "text": "Используем Theorem 5 из preprint `Strong chromatic index of planar graphs with large girth`: если планарный граф имеет максимальную степень не больше `Delta` и обхват не меньше `10Delta+46`, то его рёбра допускают strong edge coloring в `2Delta-1` цвет. В задаче максимальная степень равна `d>100`, а длина минимального простого цикла равна `10d+100`; в частности, обхват графа не меньше `10d+46`. Подставляя `Delta=d` в эту теорему, сразу получаем strong `(2d-1)`-edge-coloring. Именно это и означает требование задачи: любые два ребра, имеющие общую вершину или соединяющие смежные вершины, получают разные цвета.",
+          "text": "Используем теорему 5 из препринта «Сильный хроматический индекс планарных графов большого обхвата»: если планарный граф имеет максимальную степень не больше \\(\\Delta\\) и обхват не меньше \\(10\\Delta+46\\), то его рёбра допускают сильную рёберную раскраску в \\(2\\Delta-1\\) цвет. В задаче максимальная степень равна \\(d>100\\), а длина минимального простого цикла равна \\(10d+100\\); в частности, обхват графа не меньше \\(10d+46\\). Подставляя \\(\\Delta=d\\) в эту теорему, сразу получаем сильную \\((2d-1)\\)-рёберную раскраску. Именно это и означает требование задачи: любые два ребра, имеющие общую вершину или соединяющие смежные вершины, получают разные цвета.",
           "idea_ids": [
             "idea-reduce-to-large-girth-strong-edge-coloring-theorem"
           ],
@@ -9216,7 +9216,7 @@
           {
             "id": "stmt-original",
             "title": "Statement",
-            "text": "A graph has 300 vertices, and every vertex has degree 3. What is the largest possible number of cycles of length 4 in this graph?",
+            "text": "В графе 300 вершин, и степень каждой вершины равна 3. Какое наибольшее возможное число циклов длины 4 может быть в таком графе?",
             "source_id": "src-fyum-2013-tur2b-p7-official",
             "status": "ai_checked",
             "self_contained": {
@@ -9231,7 +9231,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-parameterized",
-            "text": "Let G be a 3-regular graph on 6m vertices. Then the number of 4-cycles in G is at most 9m. Equality is attained by the disjoint union of m copies of K_{3,3}. The FYUM problem is the case m=50.",
+            "text": "Пусть \\(G\\) — 3-регулярный граф на \\(6m\\) вершинах. Тогда число 4-циклов в \\(G\\) не превосходит \\(9m\\). Равенство достигается на несвязном объединении \\(m\\) копий \\(K_{3,3}\\). Задача FYUM — это случай \\(m=50\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -9253,7 +9253,7 @@
         {
           "id": "sol-official-archive",
           "title": "Archive solution",
-          "text": "Fix a vertex and any two edges incident to it. Those two edges can belong together to at most two distinct 4-cycles. Since every vertex has degree 3, there are only three unordered pairs of incident edges, so at most six 4-cycles pass through a given vertex. Summing over all 300 vertices and dividing by 4, because each 4-cycle is counted once at each of its four vertices, we get an upper bound 300*6/4 = 450. This bound is attained by the disjoint union of 50 copies of K_{3,3}: each copy contains exactly 9 cycles of length 4, hence the total number is 50*9 = 450.",
+          "text": "Зафиксируем вершину и любые два ребра, инцидентные ей. Эти два ребра могут вместе входить не более чем в два различных 4-цикла. Так как степень каждой вершины равна 3, есть только три неупорядоченные пары инцидентных рёбер, поэтому через фиксированную вершину проходит не более шести 4-циклов. Суммируя по всем 300 вершинам и деля на 4, поскольку каждый 4-цикл посчитан по одному разу в каждой из своих четырёх вершин, получаем верхнюю оценку \\(300\\cdot 6/4=450\\). Эта оценка достигается на несвязном объединении 50 копий \\(K_{3,3}\\): каждая копия содержит ровно 9 циклов длины 4, значит, всего циклов \\(50\\cdot 9=450\\).",
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -13465,7 +13465,7 @@
           {
             "id": "stmt-graph-distance-layers",
             "title": "Distance-layer formulation",
-            "text": "Let \\(G\\) be a connected graph, and for a vertex \\(x\\) let \\(L_i(x)\\) be the set of vertices at graph distance exactly \\(i\\) from \\(x\\). Assume that \\(|L_3(x)|\\le 100\\) for every vertex \\(x\\). Prove that \\(|L_4(x)|\\le 2550\\) for every vertex \\(x\\).",
+            "text": "Введём обозначение сфер вокруг вершины: \\(L_i(x)=\\{y\\in V(G):\\operatorname{dist}(x,y)=i\\}\\). Условие говорит, что каждая третья сфера имеет размер не больше 100. Требуется получить универсальную оценку для следующей сферы: для любого выбора центра \\(x\\) четвёртая сфера \\(L_4(x)\\) содержит не более 2550 вершин.",
             "source_id": "src-imo-2013-shortlist",
             "status": "ai_checked",
             "self_contained": {
@@ -13995,7 +13995,7 @@
           {
             "id": "stmt-graph-cut",
             "title": "Cut-invariant formulation",
-            "text": "Consider the evolving graph process on a connected graph \\(G\\) in which an edge \\(xy\\) is deleted and then every vertex adjacent to exactly one of \\(x,y\\) switches that adjacency to the other endpoint. Assume that for every nontrivial cut of the vertex set, at some moment an operated edge crosses that cut. Prove that eventually the graph has a vertex adjacent to all others.",
+            "text": "Рассмотрим процесс на связном графе \\(G\\): ребро \\(xy\\) удаляется, после чего каждая вершина, смежная ровно с одной из вершин \\(x,y\\), переносит эту смежность на другой конец. Предположим, что для всякого нетривиального разреза множества вершин в некоторый момент операция применяется к ребру, пересекающему этот разрез. Докажите, что в конце концов в графе появится вершина, смежная со всеми остальными.",
             "source_id": "src-imo-2016-shortlist",
             "status": "ai_checked",
             "self_contained": {
@@ -14150,7 +14150,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph-perfect-matching",
-            "text": "Let \\(G=P_{2n}\\square P_{2n}\\). Determine the least \\(k\\) for which one can choose \\(k\\) vertices of \\(G\\) so that there exists a perfect matching \\(M\\) with no edge having both ends in the chosen set, and every perfect matching of \\(G\\) with this property is equal to \\(M\\).",
+            "text": "Пусть \\(G=P_{2n}\\square P_{2n}\\). Определите наименьшее \\(k\\), для которого можно выбрать \\(k\\) вершин графа \\(G\\) так, что существует совершенное паросочетание \\(M\\), не имеющее рёбер с обоими концами в выбранном множестве, и всякое совершенное паросочетание \\(G\\) с этим свойством совпадает с \\(M\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -14308,7 +14308,7 @@
         "graph_theory": [
           {
             "id": "stmt-state-digraph",
-            "text": "For a given $n$, consider the directed graph $G_n$ whose vertices are all binary strings $x_1x_2\\ldots x_n$ of length $n$. If a string $x$ contains exactly $k>0$ ones, draw one directed edge from $x$ to the string obtained by flipping the $k$-th symbol of $x$. The zero string $00\\ldots 0$ is a sink. For each vertex $x$, let $d(x)$ be the length of the directed path from $x$ to $00\\ldots 0$. Find the average value of $d(x)$ over all $2^n$ vertices of $G_n$.",
+            "text": "Для данного \\(n\\) рассмотрим ориентированный граф \\(G_n\\), вершинами которого являются все двоичные строки \\(x_1x_2\\ldots x_n\\) длины \\(n\\). Если строка \\(x\\) содержит ровно \\(k>0\\) единиц, проведём из \\(x\\) одно ориентированное ребро в строку, полученную заменой \\(k\\)-го символа строки \\(x\\) на противоположный. Нулевая строка \\(00\\ldots 0\\) является стоком. Для каждой вершины \\(x\\) пусть \\(d(x)\\) — длина ориентированного пути из \\(x\\) в \\(00\\ldots 0\\). Найдите среднее значение \\(d(x)\\) по всем \\(2^n\\) вершинам \\(G_n\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -21256,7 +21256,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "A graph on 100 vertices has more than 2500 edges and contains a simple cycle passing through all vertices. Prove that for every k = 3, 4, ..., 99 the graph contains a simple cycle passing through exactly k vertices.",
+            "text": "В графе на 100 вершинах больше 2500 рёбер, и он содержит простой цикл, проходящий через все вершины. Докажите, что для каждого \\(k=3,4,\\ldots,99\\) граф содержит простой цикл, проходящий ровно через \\(k\\) вершин.",
             "source_id": "src-kolmogorov-2009-official",
             "status": "ai_checked",
             "self_contained": {
@@ -21273,7 +21273,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "A 100-vertex graph with more than 2500 edges and a Hamiltonian cycle is pancyclic for all lengths from 3 to 99.",
+            "text": "Граф на 100 вершинах с более чем 2500 рёбрами и гамильтоновым циклом является панциклическим по всем длинам от 3 до 99.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -21401,7 +21401,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "In every set of 2d+2 vertices of a graph one can choose d vertices meeting every edge whose endpoints both lie in that set. Prove that the vertices of the graph can be colored in d+2 colors so that the endpoints of every edge have different colors.",
+            "text": "В каждом множестве из \\(2d+2\\) вершин графа можно выбрать \\(d\\) вершин, которые покрывают все рёбра с обоими концами в этом множестве. Докажите, что вершины графа можно раскрасить в \\(d+2\\) цвета так, чтобы концы каждого ребра имели разные цвета.",
             "source_id": "src-kolmogorov-2009-official",
             "status": "ai_checked",
             "self_contained": {
@@ -21418,7 +21418,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "Every induced subgraph on 2d+2 vertices has a vertex cover of size d; prove the corresponding chromatic-number upper bound.",
+            "text": "Каждый индуцированный подграф на \\(2d+2\\) вершинах имеет вершинное покрытие размера \\(d\\); докажите соответствующую верхнюю оценку для хроматического числа.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -21545,7 +21545,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "The edges of the complete graph on n vertices are labeled with distinct consecutive positive integers. Prove that for all sufficiently large n there is a, possibly closed, path of three edges whose label sum is at most 3n - 1000.",
+            "text": "Рёбра полного графа на \\(n\\) вершинах помечены различными последовательными положительными целыми числами. Докажите, что при всех достаточно больших \\(n\\) существует, возможно замкнутый, путь из трёх рёбер, сумма меток которого не превосходит \\(3n-1000\\).",
             "source_id": "src-kolmogorov-2009-official",
             "status": "ai_checked",
             "self_contained": {
@@ -21562,7 +21562,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "In an edge-labeled complete graph, find a three-edge walk with small total label.",
+            "text": "В полном графе с метками на рёбрах нужно найти трёхрёберный маршрут с малой суммой меток.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -21687,7 +21687,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "In a complete directed graph on 2009 vertices, exactly 1004 edges leave each vertex. Prove that the graph has at least 2500 Hamiltonian directed paths.",
+            "text": "В полном ориентированном графе на 2009 вершинах из каждой вершины выходит ровно 1004 ребра. Докажите, что в графе есть не менее 2500 гамильтоновых ориентированных путей.",
             "source_id": "src-kolmogorov-2009-official",
             "status": "ai_checked",
             "self_contained": {
@@ -21704,7 +21704,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "A regular tournament on 2009 vertices must contain many Hamiltonian paths.",
+            "text": "Регулярный турнир на 2009 вершинах должен содержать много гамильтоновых путей.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -23246,7 +23246,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "There is a complete undirected graph on 2014 vertices. Two players alternately orient previously unoriented edges. On each move the first player orients one edge, and the second player orients from 1 to 1000 edges. When all edges are oriented, the first player wins if the resulting directed graph contains a simple directed cycle; otherwise the second player wins. Determine the winner with best play.",
+            "text": "Дан полный неориентированный граф на 2014 вершинах. Два игрока по очереди ориентируют ещё не ориентированные рёбра. За один ход первый игрок ориентирует одно ребро, а второй — от 1 до 1000 рёбер. Когда все рёбра ориентированы, первый игрок выигрывает, если получившийся ориентированный граф содержит простой ориентированный цикл; иначе выигрывает второй игрок. Определите победителя при правильной игре.",
             "source_id": "src-kolmogorov-2014-official",
             "status": "ai_checked",
             "self_contained": {
@@ -23264,7 +23264,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "This is a game on orienting the edges of a complete graph; the first player aims to force a directed cycle.",
+            "text": "Это игра на ориентацию рёбер полного графа; первый игрок стремится заставить появиться ориентированный цикл.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -23549,7 +23549,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "A country has 2014 cities. Exactly 8 roads leave every city, and every road belongs to at least one cyclic route through three cities. Prove that some city belongs to at least five cyclic routes through three cities.",
+            "text": "В стране 2014 городов. Из каждого города выходит ровно 8 дорог, и каждая дорога входит хотя бы в один циклический маршрут через три города. Докажите, что некоторый город входит хотя бы в пять циклических маршрутов через три города.",
             "source_id": "src-kolmogorov-2014-official",
             "status": "ai_checked",
             "self_contained": {
@@ -23566,7 +23566,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "In an 8-regular graph on 2014 vertices where every edge lies in a triangle, prove that some vertex lies in at least five triangles.",
+            "text": "В 8-регулярном графе на 2014 вершинах, где каждое ребро лежит в треугольнике, нужно доказать, что некоторая вершина лежит хотя бы в пяти треугольниках.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -23695,7 +23695,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "A connected graph has 200 vertices. Every vertex has degree 4, every edge belongs to a triangle, and after deleting any three vertices the graph remains connected. Prove that the graph contains two vertex-disjoint simple cycles of length 100.",
+            "text": "Связный граф имеет 200 вершин. Степень каждой вершины равна 4, каждое ребро принадлежит треугольнику, и после удаления любых трёх вершин граф остаётся связным. Докажите, что граф содержит два простых цикла длины 100, не имеющих общих вершин.",
             "source_id": "src-kolmogorov-2014-official",
             "status": "ai_checked",
             "self_contained": {
@@ -23713,7 +23713,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "A 4-regular highly connected graph with every edge in a triangle must contain two disjoint 100-cycles.",
+            "text": "4-регулярный высокосвязный граф, в котором каждое ребро лежит в треугольнике, должен содержать два непересекающихся 100-цикла.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -23843,7 +23843,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "In a graph the distance between any two vertices is at most d, where d > 1, and for every vertex there is another vertex at distance d from it. Prove that the graph has a simple cycle containing at least 2d vertices.",
+            "text": "В графе расстояние между любыми двумя вершинами не превосходит \\(d\\), где \\(d>1\\), и для каждой вершины найдётся другая вершина на расстоянии \\(d\\) от неё. Докажите, что в графе есть простой цикл, содержащий не менее \\(2d\\) вершин.",
             "source_id": "src-kolmogorov-2014-official",
             "status": "ai_checked",
             "self_contained": {
@@ -23860,7 +23860,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "A graph of diameter d in which every vertex has eccentricity d contains a cycle of length at least 2d.",
+            "text": "Граф диаметра \\(d\\), в котором эксцентриситет каждой вершины равен \\(d\\), содержит цикл длины не менее \\(2d\\).",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -25649,7 +25649,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "A loopless simple graph has adjacent vertices u and v, and N chips are placed on its vertices. A vertex may fire whenever it has at least as many chips as its degree, sending one chip to each neighbor; at most one vertex fires at a time. Prove that at every moment the numbers of firings made by u and v differ by at most N.",
+            "text": "В простом графе без петель есть смежные вершины \\(u\\) и \\(v\\), а на вершинах графа размещено \\(N\\) фишек. Вершина может сработать, если на ней не меньше фишек, чем её степень: при этом она отправляет по одной фишке каждому соседу; в каждый момент срабатывает не более одной вершины. Докажите, что в любой момент числа срабатываний вершин \\(u\\) и \\(v\\) отличаются не более чем на \\(N\\).",
             "source_id": "src-kolmogorov-2021-official",
             "status": "ai_checked",
             "self_contained": {
@@ -26003,7 +26003,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "Let G be a connected graph such that deleting any vertex leaves the graph connected, and every simple cycle is chordless. Prove that the edges of G can be oriented so that the resulting digraph is strongly connected, but deleting any edge destroys strong connectivity.",
+            "text": "Пусть \\(G\\) — связный граф, такой что удаление любой вершины оставляет граф связным, а каждый простой цикл не имеет хорд. Докажите, что рёбра \\(G\\) можно ориентировать так, чтобы получившийся орграф был сильно связным, но удаление любого ребра разрушало сильную связность.",
             "source_id": "src-kolmogorov-2021-official",
             "status": "ai_checked",
             "self_contained": {
@@ -26129,7 +26129,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "The vertices of a directed graph are 0,1,...,2020 on a circle. From each vertex i there are directed edges to i+1,i+2,...,i+101 modulo 2021. Color the edges with as few colors as possible so that for every ordered pair of vertices there is a directed path whose edges have pairwise distinct colors. Find the minimum number of colors.",
+            "text": "Вершины ориентированного графа — числа \\(0,1,\\ldots,2020\\) на окружности. Из каждой вершины \\(i\\) проведены ориентированные рёбра в \\(i+1,i+2,\\ldots,i+101\\) по модулю 2021. Раскрасьте рёбра в как можно меньшее число цветов так, чтобы для каждой упорядоченной пары вершин существовал ориентированный путь, рёбра которого имеют попарно различные цвета. Найдите минимальное число цветов.",
             "source_id": "src-kolmogorov-2021-official",
             "status": "ai_checked",
             "self_contained": {
@@ -26387,7 +26387,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "Given n, partition the numbers 1,2,...,n into nonempty groups and arrange each group cyclically. Two such arrangements are equivalent if one can be obtained from the other by permuting the cycles and rotating individual cycles. What is the maximum number of pairwise non-equivalent arrangements one can choose?",
+            "text": "Для данного \\(n\\) разбейте числа \\(1,2,\\ldots,n\\) на непустые группы и расположите элементы каждой группы по циклу. Две такие расстановки считаются эквивалентными, если одну можно получить из другой перестановкой циклов и поворотами отдельных циклов. Какое наибольшее число попарно неэквивалентных расстановок можно выбрать?",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -26403,7 +26403,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "The official solution represents each arrangement by a directed graph of a permutation, whose connected components are directed cycles.",
+            "text": "В официальном решении каждая расстановка представляется ориентированным графом перестановки, компоненты связности которого являются ориентированными циклами.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -26524,7 +26524,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "Let n >= 3. A graph G has n vertices and k edges. For every permutation sigma of the vertices, there are two non-adjacent vertices u and v such that sigma(u) and sigma(v) are also non-adjacent. What is the largest possible k?",
+            "text": "Пусть \\(n\\ge 3\\). В графе \\(G\\) есть \\(n\\) вершин и \\(k\\) рёбер. Для любой перестановки \\(\\sigma\\) вершин найдутся две несмежные вершины \\(u\\) и \\(v\\), такие что \\(\\sigma(u)\\) и \\(\\sigma(v)\\) тоже несмежны. Каково наибольшее возможное \\(k\\)?",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -26540,7 +26540,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "For every permutation of the vertex set, some nonedge is mapped to a nonedge; maximize the number of edges.",
+            "text": "Для любой перестановки множества вершин некоторый не-ребро переходит в не-ребро; нужно максимизировать число рёбер.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -26667,7 +26667,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "All binary strings of length 99 are written on a board, each in either red or blue. Then a nonempty set of positions is chosen, and the strings are paired so that the two strings in each pair differ exactly in the chosen positions. Must one be able to choose the positions so that the number of same-color pairs differs from the number of different-color pairs?",
+            "text": "На доске записаны все двоичные строки длины 99, каждая красным или синим цветом. Затем выбирается непустое множество позиций, и строки разбиваются на пары так, что две строки в каждой паре отличаются ровно в выбранных позициях. Обязательно ли можно выбрать позиции так, чтобы число одноцветных пар отличалось от числа разноцветных пар?",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -26683,7 +26683,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "The chosen positions define a perfect matching on the hypercube of binary strings; compare same-color and different-color matching edges.",
+            "text": "Выбранные позиции задают совершенное паросочетание на гиперкубе двоичных строк; нужно сравнить одноцветные и разноцветные рёбра этого паросочетания.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -26810,7 +26810,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "The positive integers are colored in 100 colors. Prove that there is an infinite increasing sequence a1 < a2 < ... with bounded successive differences such that for every n there exists x for which a1+x, a2+x, ..., an+x all have the same color.",
+            "text": "Положительные целые числа окрашены в 100 цветов. Докажите, что существует бесконечная возрастающая последовательность \\(a_1<a_2<\\ldots\\) с ограниченными соседними разностями, такая что для каждого \\(n\\) найдётся \\(x\\), при котором числа \\(a_1+x,a_2+x,\\ldots,a_n+x\\) имеют один и тот же цвет.",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -26825,7 +26825,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "The official solution constructs an infinite tree/graph of finite color patterns and applies a Konig-type compactness argument.",
+            "text": "В официальном решении строится бесконечное дерево/граф конечных цветовых шаблонов и применяется компактностный аргумент типа теоремы Кёнига.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -26948,7 +26948,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "Every edge of the complete graph on 100 vertices is colored red or blue. A simple path is Hamiltonian if it visits each vertex exactly once. Let a be the number of Hamiltonian paths using only red edges and b the number using only blue edges. Prove that a-b is divisible by 4.",
+            "text": "Каждое ребро полного графа на 100 вершинах окрашено в красный или синий цвет. Простой путь называется гамильтоновым, если он проходит через каждую вершину ровно один раз. Пусть \\(a\\) — число гамильтоновых путей, использующих только красные рёбра, а \\(b\\) — число гамильтоновых путей, использующих только синие рёбра. Докажите, что \\(a-b\\) делится на 4.",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -26965,7 +26965,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "Count monochromatic Hamiltonian paths in the two color classes of an edge-colored complete graph.",
+            "text": "Нужно посчитать одноцветные гамильтоновы пути в двух цветовых классах полного графа с раскрашенными рёбрами.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -27093,7 +27093,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "Ten points are given in the plane, no three collinear. Every pair is joined by a red or blue segment. For one point A an odd number of red segments leave A, and for all other points the numbers of red segments leaving them are distinct. What can be the number of red triangles?",
+            "text": "Даны десять точек на плоскости, никакие три из них не лежат на одной прямой. Каждая пара соединена красным или синим отрезком. Из одной точки \\(A\\) выходит нечётное число красных отрезков, а для всех остальных точек числа выходящих из них красных отрезков различны. Каким может быть число красных треугольников?",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -27110,7 +27110,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "This is a red-blue coloring of the edges of K10 with constraints on red degrees; determine the possible number of red triangles.",
+            "text": "Это красно-синяя раскраска рёбер \\(K_{10}\\) с условиями на красные степени; нужно определить возможное число красных треугольников.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -27241,7 +27241,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "A country has several airports, with two-way flights between some pairs. A travel company offers all tours consisting of d consecutive flights, where a tour may visit a city or use a flight several times. The company claims that for any two, not necessarily distinct, cities the number of tours starting at the first and ending at the second is odd. Can this be true for some d?",
+            "text": "В стране несколько аэропортов, между некоторыми парами есть двусторонние рейсы. Туристическая компания предлагает все маршруты, состоящие из \\(d\\) последовательных перелётов; маршрут может посещать город или использовать рейс несколько раз. Компания утверждает, что для любых двух, не обязательно различных, городов число маршрутов, начинающихся в первом и заканчивающихся во втором, нечётно. Может ли это быть верно при некотором \\(d\\)?",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -27257,7 +27257,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "In an undirected graph, ask whether all entries of the length-d walk-count matrix can be odd modulo 2.",
+            "text": "В неориентированном графе спрашивается, могут ли все элементы матрицы числа маршрутов длины \\(d\\) быть нечётными по модулю 2.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -27377,7 +27377,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "A finite set of points in the plane is given, no three collinear. Some pairs are joined by segments so that the resulting graph is a tree, and the total length of the chosen segments is as large as possible. Prove that all circles with these segments as diameters have a common point.",
+            "text": "Дано конечное множество точек на плоскости, никакие три из них не лежат на одной прямой. Некоторые пары соединены отрезками так, что получившийся граф является деревом, а суммарная длина выбранных отрезков как можно больше. Докажите, что все окружности с этими отрезками в качестве диаметров имеют общую точку.",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -27392,7 +27392,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "A maximum-total-length tree on a finite point set is studied through the geometry of its edges.",
+            "text": "Дерево максимальной суммарной длины на конечном множестве точек изучается через геометрию его рёбер.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -27516,7 +27516,7 @@
           {
             "id": "stmt-original",
             "title": "Original statement",
-            "text": "Do there exist a graph G whose vertex degrees are all even and a positive integer n such that for any two, not necessarily distinct, vertices u and v there is an odd number of walks from u to v of exactly n steps? Walks may repeat vertices and edges.",
+            "text": "Существуют ли граф \\(G\\), у которого степени всех вершин чётны, и положительное целое \\(n\\), такие что для любых двух, не обязательно различных, вершин \\(u\\) и \\(v\\) существует нечётное число маршрутов из \\(u\\) в \\(v\\) ровно за \\(n\\) шагов? Маршруты могут повторять вершины и рёбра.",
             "source_id": "src-kolmogorov-2022-official",
             "status": "ai_checked",
             "self_contained": {
@@ -27533,7 +27533,7 @@
           {
             "id": "stmt-graph",
             "title": "Graph-theoretic formulation",
-            "text": "In an even-degree graph, ask whether all length-n walk counts between vertex pairs can be odd.",
+            "text": "В графе с чётными степенями спрашивается, могут ли все числа маршрутов длины \\(n\\) между парами вершин быть нечётными.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -27660,7 +27660,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "The edges of the complete bipartite graph with part sizes km and kn are colored in k colors. Prove that some monochromatic connected component contains at least m+n vertices.",
+            "text": "Рёбра полного двудольного графа с долями размеров \\(km\\) и \\(kn\\) окрашены в \\(k\\) цветов. Докажите, что некоторая одноцветная компонента связности содержит не менее \\(m+n\\) вершин.",
             "source_id": "src-kolmogorov-2023-official",
             "status": "ai_checked",
             "self_contained": {
@@ -27788,7 +27788,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "Let m and t be positive integers. Consider a multigraph whose maximum degree is at most 2m. Two vertices x and y have distance t. What is the largest possible number of paths of length t from x to y?",
+            "text": "Пусть \\(m\\) и \\(t\\) — положительные целые числа. Рассмотрим мультиграф, максимальная степень которого не превосходит \\(2m\\). Две вершины \\(x\\) и \\(y\\) находятся на расстоянии \\(t\\). Каково наибольшее возможное число путей длины \\(t\\) из \\(x\\) в \\(y\\)?",
             "source_id": "src-kolmogorov-2024-official",
             "status": "ai_checked",
             "self_contained": {
@@ -27932,7 +27932,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "Let G be a connected graph with n vertices and at most 2n-4 edges. Prove that G has an independent set of vertices whose deletion disconnects the graph.",
+            "text": "Пусть \\(G\\) — связный граф с \\(n\\) вершинами и не более чем \\(2n-4\\) рёбрами. Докажите, что в \\(G\\) есть независимое множество вершин, удаление которого делает граф несвязным.",
             "source_id": "src-kolmogorov-2024-official",
             "status": "ai_checked",
             "self_contained": {
@@ -31975,7 +31975,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Зафиксируем parity class пустой клетки и назовём special squares клетки той же чётности координат. Для каждой special square `s`, занятой домино, проведём ориентированное ребро из `s` в следующую special square, куда это домино указывает. Тогда конфигурация задаёт ориентированный граф на множестве special squares; компонента, содержащая пустую клетку, оказывается деревом, а `k(C)` равно числу его вершин. Следовательно, нужно максимизировать размер этого дерева.",
+            "text": "Зафиксируем класс чётности пустой клетки и назовём специальными клетки той же чётности координат. Для каждой специальной клетки \\(s\\), занятой домино, проведём ориентированное ребро из \\(s\\) в следующую специальную клетку, куда это домино указывает. Тогда конфигурация задаёт ориентированный граф на множестве специальных клеток; компонента, содержащая пустую клетку, управляет всеми достижимыми положениями пустой клетки.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -32021,7 +32021,7 @@
         {
           "id": "sol-directed-graph-and-spanning-tree-bound",
           "title": "Ориентированный граф special squares и максимум по spanning tree",
-          "text": "Рассмотрим special squares той же чётности координат, что и пустая клетка. Каждое домино, лежащее на такой клетке, естественно указывает на следующую special square в своём направлении; это задаёт ориентированный граф `G(C)`. Пусть `T` — weakly connected component, содержащая пустую клетку. Так как у каждой вершины outdegree не больше `1`, любой undirected cycle в `T` превращается в directed cycle: на цикле ровно столько рёбер, сколько вершин, и у каждой вершины может быть не более одного исходящего ребра. В компоненте с пустой клеткой такого directed cycle быть не может, поскольку пустая клетка имеет outdegree `0`, а в конечном функциональном графе слабая компонента содержит либо sink, либо directed cycle. Следовательно, `T` — дерево. Теперь любой ход домино соответствует изменению положения sink внутри этого дерева, а достижимые конфигурации получаются ровно выбором вершины `T` в качестве новой пустой клетки; значит `k(C)=|V(T)|`. Поэтому максимум `k(C)` не превосходит общего числа special squares, то есть `((n+1)/2)^2`. Осталось самодостаточно построить конфигурацию, где `T` проходит через все такие клетки. Пусть `n=2m+1` и special squares — клетки с нечётными координатами. Обозначим их `R_{i,j}=(2i-1,2j-1)`, где `1<=i,j<=m+1`. Проведём через все `R_{i,j}` змейку: в первой строке слева направо, затем вниз по правому краю, во второй строке справа налево, затем вниз по левому краю, и так далее. Конечную клетку змейки оставим пустой. Для каждой другой клетки `R_{i,j}` поставим домино из неё в сторону следующей клетки змейки; оно покрывает `R_{i,j}` и промежуточную клетку между двумя соседними special squares. После этого в каждой нечётной строке уже покрыты все клетки, кроме конечной пустой special square. В каждой чётной строке один крайний промежуточный квадрат покрыт вертикальным домино змейки; остальные нечётные клетки этой строки попарно покрываем горизонтальными домино с соседними чётно-чётными клетками: если вертикальный переход змейки стоит справа, кладём такие домино вправо, а если слева — влево. Так покрываются все оставшиеся клетки без пересечений. В полученной конфигурации граф `T` является путём через все `((n+1)/2)^2` special squares, поэтому `k(C)=((n+1)/2)^2`. Значит максимальное возможное значение равно `((n+1)/2)^2`.",
+          "text": "Рассмотрим специальные клетки той же чётности координат, что и пустая клетка. Каждое домино, лежащее на такой клетке, естественно указывает на следующую специальную клетку в своём направлении; это задаёт ориентированный граф \\(G(C)\\). Пусть \\(T\\) — слабо связная компонента, содержащая пустую клетку. Так как у каждой вершины исходящая степень не больше 1, любой неориентированный цикл в \\(T\\) превращается в ориентированный цикл: на цикле ровно столько рёбер, сколько вершин, и у каждой вершины может быть не более одного исходящего ребра. В компоненте с пустой клеткой такого ориентированного цикла быть не может, поскольку пустая клетка имеет исходящую степень 0, а в конечном функциональном графе слабая компонента содержит либо сток, либо ориентированный цикл. Следовательно, \\(T\\) — дерево. Теперь любой ход домино соответствует изменению положения стока внутри этого дерева, а достижимые конфигурации получаются ровно выбором вершины \\(T\\) в качестве новой пустой клетки; значит, \\(k(C)=|V(T)|\\). Поэтому максимум \\(k(C)\\) не превосходит общего числа специальных клеток, то есть \\(((n+1)/2)^2\\). Осталось самодостаточно построить конфигурацию, где \\(T\\) проходит через все такие клетки. Пусть \\(n=2m+1\\), и специальные клетки — клетки с нечётными координатами. Обозначим их \\(R_{i,j}=(2i-1,2j-1)\\), где \\(1\\le i,j\\le m+1\\). Проведём через все \\(R_{i,j}\\) змейку: в первой строке слева направо, затем вниз по правому краю, во второй строке справа налево, затем вниз по левому краю, и так далее. Конечную клетку змейки оставим пустой. Для каждой другой клетки \\(R_{i,j}\\) поставим домино из неё в сторону следующей клетки змейки; оно покрывает \\(R_{i,j}\\) и промежуточную клетку между двумя соседними специальными клетками. После этого в каждой нечётной строке уже покрыты все клетки, кроме конечной пустой специальной клетки. В каждой чётной строке один крайний промежуточный квадрат покрыт вертикальным домино змейки; остальные нечётные клетки этой строки попарно покрываем горизонтальными домино с соседними чётно-чётными клетками: если вертикальный переход змейки стоит справа, кладём такие домино вправо, а если слева — влево. Так покрываются все оставшиеся клетки без пересечений. В полученной конфигурации граф \\(T\\) является путём через все \\(((n+1)/2)^2\\) специальные клетки, поэтому \\(k(C)=((n+1)/2)^2\\). Значит, максимальное возможное значение равно \\(((n+1)/2)^2\\).",
           "idea_ids": [
             "idea-fixed-parity-class-of-hole",
             "idea-empty-component-is-tree",
@@ -33074,7 +33074,7 @@
         {
           "id": "sol-induction-plus-alternating-cycles",
           "title": "Индукция для существования и alternating cycles для единственности",
-          "text": "Докажем сначала существование tasteful-разбиения индукцией по числу клеток. Возьмём клетку на верхней границе с максимальной абсциссой. Если её нельзя покрыть единственным домино, не создающим немедленно запрещённый узор, то около неё уже возникает один из distasteful паттернов, чего tasteful-разбиение допустить не может. Значит крайнее домино фактически вынуждено; удаляем его и применяем индукцию к оставшемуся шахматному многоугольнику. Для единственности пусть `T` — tasteful-разбиение, а `M` — любое другое. Смотрим на симметрическую разность двух наборов домино. Каждая клетка, где разбиения различаются, принадлежит ровно одному домино из `T` и одному из `M`, поэтому объединение таких домино образует `2`-регулярный граф на клетках, состоящий из попарно непересекающихся чётных чередующихся циклов. Если хотя бы один цикл есть, рассмотрим его крайнюю левую нижнюю клетку. Локальная геометрия цикла в этой точке вынуждает один из двух запрещённых рисунков: либо два параллельных домино в квадрате `2x2`, либо соответствующий `3x2`-паттерн. Это противоречит tasteful-свойству `T`. Следовательно, симметрическая разность пуста и `M=T`. Значит tasteful-разбиение существует и единственно.",
+          "text": "Докажем сначала существование хорошего разбиения индукцией по числу клеток. Возьмём клетку на верхней границе с максимальной абсциссой. Если её нельзя покрыть единственным домино, не создающим немедленно запрещённый узор, то около неё уже возникает один из disхорошее паттернов, чего хорошее разбиение допустить не может. Значит крайнее домино фактически вынуждено; удаляем его и применяем индукцию к оставшемуся шахматному многоугольнику. Для единственности пусть `T` — хорошее разбиение, а `M` — любое другое. Смотрим на симметрическую разность двух наборов домино. Каждая клетка, где разбиения различаются, принадлежит ровно одному домино из `T` и одному из `M`, поэтому объединение таких домино образует `2`-регулярный граф на клетках, состоящий из попарно непересекающихся чётных чередующихся циклов. Если хотя бы один цикл есть, рассмотрим его крайнюю левую нижнюю клетку. Локальная геометрия цикла в этой точке вынуждает один из двух запрещённых рисунков: либо два параллельных домино в квадрате `2x2`, либо соответствующий `3x2`-паттерн. Это противоречит хорошее-свойству `T`. Следовательно, симметрическая разность пуста и `M=T`. Значит хорошее разбиение существует и единственно.",
           "idea_ids": [
             "idea-peel-corner-domino-inductively",
             "idea-symmetric-difference-gives-alternating-cycles",
@@ -33095,7 +33095,7 @@
         {
           "id": "sol-community-overlay-boundary",
           "title": "Community-версия: overlay двух tilings и крайний цикл",
-          "text": "В community-разборе Shen-Fu Tsai часть (b) формулируется почти целиком на языке overlay-графа двух domino tilings. Предполагая существование двух tasteful-разбиений, автор раскрашивает домино двух разбиений в разные цвета и рассматривает компоненты их объединения. Так как в каждой внутренней клетке встречается по одному домино каждого цвета, каждая компонента является циклом. Дальше берётся крайняя компонента и анализируется её граничный угол; именно он заставляет цикл сделать локальный поворот, несовместимый с tasteful-ограничениями. Это даёт ту же уникальность, но в более явно графовой форме: ключевой объект — не просто плиточная картинка, а alternating-cycle decomposition симметрической разности двух perfect matchings.",
+          "text": "В разборе сообщества Shen-Fu Tsai часть (b) формулируется почти целиком на языке графа наложения двух домино-разбиений. Предполагая существование двух «хороших» разбиений, автор раскрашивает домино двух разбиений в разные цвета и рассматривает компоненты их объединения. Так как в каждой внутренней клетке встречается по одному домино каждого цвета, каждая компонента является циклом. Дальше берётся крайняя компонента и анализируется её граничный угол; именно он заставляет цикл сделать локальный поворот, несовместимый с ограничениями «хорошего» разбиения. Это даёт ту же единственность, но в более явно графовой форме: ключевой объект — не просто плиточная картинка, а разложение симметрической разности двух совершенных паросочетаний на чередующиеся циклы.",
           "idea_ids": [
             "idea-symmetric-difference-gives-alternating-cycles",
             "idea-boundary-forces-distasteful-corner-on-cycle"
@@ -33216,7 +33216,7 @@
           {
             "id": "stmt-original",
             "title": "Planar National Park",
-            "text": "Парк состоит из нескольких троп, пересекающихся только в junctions. Каждая тропа соединяет две разные junctions, в каждой junction сходятся ровно три тропы, и кратных троп между двумя junctions нет. Посетительница выбирает стартовую junction и первую тропу, а затем в каждой следующей junction поочерёдно поворачивает налево, направо, налево, направо и так далее, пока не вернётся в стартовую junction. Какое наибольшее число раз она может войти в одну и ту же junction?",
+            "text": "Парк состоит из нескольких троп, пересекающихся только в узлах. Каждая тропа соединяет два разных узла, в каждом узле сходятся ровно три тропы, и кратных троп между двумя узлами нет. Посетительница выбирает стартовый узел и первую тропу, а затем в каждом следующем узле поочерёдно поворачивает налево, направо, налево, направо и так далее, пока не вернётся в стартовый узел. Какое наибольшее число раз она может войти в один и тот же узел?",
             "source_id": "src-usamo-2021-p2-aops-wiki",
             "status": "ai_checked",
             "self_contained": {
@@ -33268,7 +33268,7 @@
         {
           "id": "sol-local-state-bound-and-prism",
           "title": "Локальная детерминированность и пятиугольная призма",
-          "text": "Ответ равен `3`. Верхняя оценка идёт из локальной структуры кубической вершины. Когда обход входит в вершину, он использует один из трёх incident trails как входной, а затем по правилу left/right обязан выйти по одной из двух остальных. Для фиксированной planar embedding это эквивалентно выбору одного из трёх локальных переходов через вершину; после повторения такого локального состояния дальнейшее движение уже периодически повторяет тот же участок обхода, так что четвёртый существенно новый вход невозможен. Поэтому ни в одну вершину нельзя войти более трёх раз. Точность достигается на pentagonal prism: Eric Shen explicitly records that this construction gives a closed alternating-turn walk with a vertex visited three times.",
+          "text": "Ответ равен 3. Верхняя оценка идёт из локальной структуры кубической вершины. Когда обход входит в вершину, он использует одну из трёх инцидентных троп как входную, а затем по правилу «налево/направо» обязан выйти по одной из двух остальных. Для фиксированного планарного вложения это эквивалентно выбору одного из трёх локальных переходов через вершину; после повторения такого локального состояния дальнейшее движение уже периодически повторяет тот же участок обхода, так что четвёртый существенно новый вход невозможен. Поэтому ни в одну вершину нельзя войти более трёх раз. Точность достигается на пятиугольной призме: Эрик Шен явно указывает, что эта конструкция даёт замкнутый обход с чередованием поворотов, в котором некоторая вершина посещается три раза.",
           "idea_ids": [
             "idea-three-local-states-at-a-cubic-vertex",
             "idea-pentagonal-prism-construction"
@@ -33383,7 +33383,7 @@
           {
             "id": "stmt-original",
             "title": "Amber and Bronze",
-            "text": "Пусть `a,b` — положительные целые. Клетки доски `(a+b+1) x (a+b+1)` окрашены в amber и bronze так, что amber-клеток не меньше `a^2+ab-b`, а bronze-клеток не меньше `b^2+ab-a`. Докажите, что можно выбрать `a` amber-клеток и `b` bronze-клеток так, чтобы никакие две из выбранных `a+b` клеток не лежали в одной строке или одном столбце.",
+            "text": "Пусть \\(a,b\\) — положительные целые числа. Клетки доски \\((a+b+1)\\times(a+b+1)\\) окрашены в янтарный и бронзовый цвета так, что янтарных клеток не меньше \\(a^2+ab-b\\), а бронзовых клеток не меньше \\(b^2+ab-a\\). Докажите, что можно выбрать \\(a\\) янтарных клеток и \\(b\\) бронзовых клеток так, чтобы никакие две из выбранных \\(a+b\\) клеток не лежали в одной строке или одном столбце.",
             "source_id": "src-usamo-2022-p1-aops-wiki",
             "status": "ai_checked",
             "self_contained": {
@@ -33395,7 +33395,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Рассмотрим двудольный граф `K_{n,n}`, где `n=a+b+1`, а строки и столбцы являются двумя долями. Amber-клетка — amber-ребро между соответствующей строкой и столбцом, bronze-клетка — bronze-ребро. Требуется найти набор из `a` amber-рёбер и `b` bronze-рёбер, которые попарно не имеют общих концов.",
+            "text": "Рассмотрим двудольный граф \\(K_{n,n}\\), где \\(n=a+b+1\\), а строки и столбцы являются двумя долями. Янтарная клетка — янтарное ребро между соответствующей строкой и столбцом, бронзовая клетка — бронзовое ребро. Требуется найти набор из \\(a\\) янтарных рёбер и \\(b\\) бронзовых рёбер, которые попарно не имеют общих концов.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -33433,7 +33433,7 @@
         {
           "id": "sol-hall-matchings-and-uncrossing",
           "title": "Два больших matchings и их разведение",
-          "text": "Положим `n=a+b+1`. Сначала работаем с amber-клетками. В двудольном графе строк и столбцов amber-клетки образуют подграф `G_A`. Если бы максимальное matching в `G_A` имело размер не больше `a-1`, то по теореме Кёнига все amber-рёбра покрывались бы `a-1` вершинами. Каждая вершина покрывает не больше `n` amber-рёбер, значит всего amber-клеток было бы не больше `(a-1)n=(a-1)(a+b+1)=a^2+ab-b-1`, противоречие. Значит `G_A` имеет matching `M_A` размера `a`. Аналогично bronze-подграф `G_B` имеет matching `M_B` размера `b`. Теперь выберем такую пару `(M_A,M_B)`, у которой число конфликтов — общих строк или столбцов между amber- и bronze-рёбрами — минимально. Если конфликтов нет, задача решена. Иначе, поскольку суммарно используется только `a+b=n-1` строк и `a+b=n-1` столбцов, существуют пустые строка и столбец. Клетка на их пересечении имеет некоторый цвет, скажем amber. Тогда её можно добавить в `M_A`, а из `M_A` удалить amber-ребро, которое конфликтовало с каким-то bronze-ребром; размер amber-matching сохранится, а число конфликтов уменьшится. Если пустое пересечение bronze, делаем симметричный шаг в `M_B`. Это противоречит минимальности числа конфликтов. Следовательно, существует пара disjoint matchings: `a` amber-рёбер и `b` bronze-рёбер без общих концов.",
+          "text": "Положим \\(n=a+b+1\\). Сначала работаем с янтарными клетками. В двудольном графе строк и столбцов янтарные клетки образуют подграф \\(G_A\\). Если бы максимальное паросочетание в \\(G_A\\) имело размер не больше \\(a-1\\), то по теореме Кёнига все янтарные рёбра покрывались бы \\(a-1\\) вершинами. Каждая вершина покрывает не больше \\(n\\) янтарных рёбер, значит, всего янтарных клеток было бы не больше \\((a-1)n=(a-1)(a+b+1)=a^2+ab-b-1\\), противоречие. Значит, \\(G_A\\) имеет паросочетание \\(M_A\\) размера \\(a\\). Аналогично бронзовый подграф \\(G_B\\) имеет паросочетание \\(M_B\\) размера \\(b\\). Теперь выберем такую пару \\((M_A,M_B)\\), у которой число конфликтов — общих строк или столбцов между янтарными и бронзовыми рёбрами — минимально. Если конфликтов нет, задача решена. Иначе, поскольку суммарно используется только \\(a+b=n-1\\) строк и \\(a+b=n-1\\) столбцов, существуют пустые строка и столбец. Клетка на их пересечении имеет некоторый цвет, скажем янтарный. Тогда её можно добавить в \\(M_A\\), а из \\(M_A\\) удалить янтарное ребро, которое конфликтовало с каким-то бронзовым ребром; размер янтарного паросочетания сохранится, а число конфликтов уменьшится. Если пустое пересечение бронзовое, делаем симметричный шаг в \\(M_B\\). Это противоречит минимальности числа конфликтов. Следовательно, существует пара непересекающихся паросочетаний: \\(a\\) янтарных рёбер и \\(b\\) бронзовых рёбер без общих концов.",
           "idea_ids": [
             "idea-each-color-has-large-matching",
             "idea-resolve-conflicts-by-empty-row-column"
@@ -33725,7 +33725,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Зафиксируем parity class пустой клетки и назовём special squares клетки той же чётности координат, что и пустая. Для каждой special square `s`, занятой домино, проведём ориентированное ребро из `s` в special square, куда это домино «указывает». Тогда конфигурация задаёт ориентированный граф на множестве special squares; компонент, содержащий пустую клетку, оказывается деревом, а `k(C)` равно числу его вершин.",
+            "text": "Зафиксируем класс чётности пустой клетки и назовём специальными клетки той же чётности координат, что и пустая. Для каждой специальной клетки \\(s\\), занятой домино, проведём ориентированное ребро из \\(s\\) в специальную клетку, куда это домино «указывает». Тогда конфигурация задаёт ориентированный граф на множестве специальных клеток; компонент, содержащий пустую клетку, определяет достижимые положения пустой клетки.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -33771,7 +33771,7 @@
         {
           "id": "sol-special-square-digraph",
           "title": "Частично восстановленное графовое решение",
-          "text": "Ответ должен быть таким: `k(C)` может принимать все значения из множества `{1,2,...,((n-1)/2)^2} U {((n+1)/2)^2}`. Зафиксируем конфигурацию `C` и пустую клетку. Назовём special squares клетки той же чётности координат, что и пустая клетка. Каждое домино, лежащее на special square, покрывает ещё одну клетку и тем самым естественно «указывает» на следующую special square; это задаёт ориентированный граф `G(C)` на множестве special squares. В случае odd-odd для всех special squares, кроме пустой, есть ровно одно исходящее ребро. Ключевое утверждение из notes Evan Chen: любая связная компонента `G`, не содержащая пустую клетку внутри цикла, ациклична; для цикла это доказывается анализом области, которую он ограничивает, через паритет и Pick's theorem. Поэтому компонента `T`, содержащая пустую клетку, является деревом. Дальше ход домино просто переворачивает одно ребро вдоль этого дерева, а достижимые конфигурации получаются ровно выбором вершины дерева, которая играет роль sink, то есть пустой клетки. Следовательно, `k(C)=|V(T)|`. Если пустая клетка имеет odd-odd coordinates, то максимум достигается, когда `T` охватывает все special squares, и тогда `k(C)=((n+1)/2)^2`; явная row-snake конструкция такого spanning tree записана в карточке USAJMO 2023 P3. Если `T` не является spanning tree, циклы зажимают её внутрь и получается более сильная оценка `k(C)<=((n-3)/2)^2`. Во втором случае, когда special squares имеют even-even coordinates, аналогичный граф всё ещё даёт дерево `T`, но полная реализация каждого размера `|V(T)|` от `1` до `((n-1)/2)^2` в доступных источниках дана через snake-картинки и локальные модификации без полного текстового алгоритма. Поэтому верхняя оценка и идея классификации восстановлены, но конструктивная часть всех малых значений пока не самодостаточна.",
+          "text": "Ответ должен быть таким: \\(k(C)\\) может принимать все значения из множества \\(\\{1,2,\\ldots,((n-1)/2)^2\\}\\cup\\{((n+1)/2)^2\\}\\). Зафиксируем конфигурацию \\(C\\) и пустую клетку. Назовём специальными клетки той же чётности координат, что и пустая клетка. Каждое домино, лежащее на специальной клетке, покрывает ещё одну клетку и тем самым естественно «указывает» на следующую специальную клетку; это задаёт ориентированный граф \\(G(C)\\) на множестве специальных клеток. В случае нечётно-нечётных координат для всех специальных клеток, кроме пустой, есть ровно одно исходящее ребро. Ключевое утверждение из заметок Эвана Чена: любая связная компонента \\(G\\), не содержащая пустую клетку внутри цикла, ациклична; для цикла это доказывается анализом области, которую он ограничивает, через паритет и теорему Пика. Поэтому компонента \\(T\\), содержащая пустую клетку, является деревом. Дальше ход домино просто переворачивает одно ребро вдоль этого дерева, а достижимые конфигурации получаются ровно выбором вершины дерева, которая играет роль стока, то есть пустой клетки. Следовательно, \\(k(C)=|V(T)|\\). Если пустая клетка имеет нечётно-нечётные координаты, то максимум достигается, когда \\(T\\) охватывает все специальные клетки, и тогда \\(k(C)=((n+1)/2)^2\\); явная конструкция такого остовного дерева змейкой по строкам записана в карточке USAJMO 2023 P3. Если \\(T\\) не является остовным деревом, циклы зажимают её внутрь и получается более сильная оценка \\(k(C)\\le((n-3)/2)^2\\). Во втором случае, когда специальные клетки имеют чётно-чётные координаты, аналогичный граф всё ещё даёт дерево \\(T\\), но полная реализация каждого размера \\(|V(T)|\\) от 1 до \\(((n-1)/2)^2\\) в доступных источниках дана через картинки-змейки и локальные модификации без полного текстового алгоритма. Поэтому верхняя оценка и идея классификации восстановлены, но конструктивная часть всех малых значений пока не самодостаточна.",
           "idea_ids": [
             "idea-special-squares-parity-class",
             "idea-empty-component-is-tree",
@@ -33902,7 +33902,7 @@
         "graph_theory": [
           {
             "id": "stmt-graph",
-            "text": "Триангуляция выпуклого `n`-угольника задаёт maximal outerplanar graph на его вершинах. Требуется понять, когда треугольные faces этого outerplanar graph можно разбить на `m` классов с одинаковой суммой площадей.",
+            "text": "Триангуляция выпуклого \\(n\\)-угольника задаёт максимальный внешнепланарный граф на его вершинах. Требуется понять, когда треугольные грани этого внешнепланарного графа можно разбить на \\(m\\) классов с одинаковой суммой площадей.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -33937,7 +33937,7 @@
         {
           "id": "sol-fan-and-integrality",
           "title": "Веерная конструкция и критерий `m | n`",
-          "text": "Ответ: такие триангуляции существуют тогда и только тогда, когда `m` делит `n`. Достаточность проще всего получить на веерной triagulation правильного `n`-угольника из одной вершины. Её `n-2` треугольников удобно индексировать шагами по дуге, и при `m | n` можно раскрасить их по классам остатков так, что суммарные площади каждого цвета совпадут. Необходимость в решении Evan Chen уже почти не использует графовую структуру триангуляции как таковую: площади всех возможных треугольников выражаются через корни из единицы, и из equality-of-color-sums выводится, что рациональное число `n/m` обязано быть algebraic integer. Это возможно только при `m | n`. Поэтому графовая роль здесь существенна для постановки и для удобной модели triangulation/outerplanar graph, но центральная техника решения в действительности алгебраическая.",
+          "text": "Ответ: такие триангуляции существуют тогда и только тогда, когда \\(m\\) делит \\(n\\). Достаточность проще всего получить на веерной триангуляции правильного \\(n\\)-угольника из одной вершины. Её \\(n-2\\) треугольников удобно индексировать шагами по дуге, и при \\(m\\mid n\\) можно раскрасить их по классам остатков так, что суммарные площади каждого цвета совпадут. Необходимость в решении Эвана Чена уже почти не использует графовую структуру триангуляции как таковую: площади всех возможных треугольников выражаются через корни из единицы, и из равенства сумм по цветам выводится, что рациональное число \\(n/m\\) обязано быть алгебраическим целым. Это возможно только при \\(m\\mid n\\). Поэтому графовая роль здесь существенна для постановки и для удобной модели триангуляции как внешнепланарного графа, но центральная техника решения в действительности алгебраическая.",
           "idea_ids": [
             "idea-fan-triangulation-when-m-divides-n",
             "idea-necessity-via-algebraic-integrality"
@@ -34099,7 +34099,7 @@
         {
           "id": "sol-gabriel-planar-bound",
           "title": "Распознавание Gabriel graph и планарность",
-          "text": "AoPS-решение прямо отмечает, что при подходящем выборе `S` построенная дорожная сеть есть Gabriel graph множества городов. Для Gabriel graph известно и геометрически легко видно, что он планарен: если два ребра пересекались бы, то один из диаметровых дисков не был бы пуст. Кроме того, такой граф связен. После этого задача фактически становится стандартной: в любом конечном простом планарном графе средняя степень меньше `6`, поскольку `e <= 3v-6`. Значит в каждом конечном участке есть вершина степени не больше `5`; это и даёт требуемый город малой степени. Содержательная графовая часть здесь не в вычислениях, а в правильном распознавании объекта: после перехода к Gabriel graph вся задача схлопывается к планарности и обычной edge bound.",
+          "text": "Решение AoPS прямо отмечает, что при подходящем выборе \\(S\\) построенная дорожная сеть есть граф Габриэля множества городов. Для графа Габриэля известно и геометрически легко видно, что он планарен: если два ребра пересекались бы, то один из диаметровых дисков не был бы пуст. Кроме того, такой граф связен. После этого задача фактически становится стандартной: в любом конечном простом планарном графе средняя степень меньше 6, поскольку \\(e\\le 3v-6\\). Значит, в каждом конечном участке есть вершина степени не больше 5; это и даёт требуемый город малой степени. Содержательная графовая часть здесь не в вычислениях, а в правильном распознавании объекта: после перехода к графу Габриэля вся задача сводится к планарности и обычной оценке числа рёбер.",
           "idea_ids": [
             "idea-identify-gabriel-graph",
             "idea-planar-average-degree"
@@ -34434,7 +34434,7 @@
           {
             "id": "stmt-graph-directed",
             "title": "Directed-graph formulation",
-            "text": "Let \\(D\\) be a directed graph on 22 vertices in which every vertex has outdegree exactly 3. Prove that \\(D\\) contains an independent set of 4 vertices, that is, a set of 4 vertices with no directed edge between any two of them in either direction.",
+            "text": "Пусть \\(D\\) — ориентированный граф на 22 вершинах, в котором исходящая степень каждой вершины равна 3. Докажите, что \\(D\\) содержит независимое множество из 4 вершин, то есть множество из 4 вершин, между любыми двумя из которых нет ориентированного ребра ни в одну сторону.",
             "source_id": "src-utyum-1995_final_10_writers_committee-official",
             "status": "ai_checked",
             "self_contained": {
@@ -34897,7 +34897,7 @@
           {
             "id": "stmt-graph-bipartite-grid",
             "title": "Bipartite-grid formulation",
-            "text": "Consider the \\(9\\times 9\\) grid graph whose vertices are the lattice points of the square grid and whose edges join neighboring lattice points. What is the largest possible number of vertices in a simple cycle of this graph?",
+            "text": "Рассмотрим решёточный граф \\(9\\times 9\\), вершинами которого являются узлы квадратной решётки, а рёбра соединяют соседние узлы. Какое наибольшее возможное число вершин может быть в простом цикле этого графа?",
             "source_id": "src-utyum-2002_carousel_senior_8x8_polyline-official",
             "status": "ai_checked",
             "self_contained": {
@@ -35155,7 +35155,7 @@
           {
             "id": "stmt-graph-complement",
             "title": "Complement-graph formulation",
-            "text": "Let \\(H\\) be the graph of unfamiliar pairs on 100 vertices. Assume that in every 5-vertex subset, the complement graph of \\(H\\) contains at least two different triangles. Prove that \\(H\\) has at most 100 edges.",
+            "text": "Пусть \\(H\\) — граф незнакомых пар на 100 вершинах. Предположим, что в любом 5-элементном множестве вершин дополнительный граф к \\(H\\) содержит хотя бы два различных треугольника. Докажите, что в \\(H\\) не более 100 рёбер.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -35666,7 +35666,7 @@
           {
             "id": "stmt-graph-bipartite-degrees",
             "title": "Bipartite-degree formulation",
-            "text": "Find the smallest number of edges in a bipartite graph with 50 vertices in each part such that all 100 vertex degrees are pairwise distinct.",
+            "text": "Найдите наименьшее число рёбер в двудольном графе с 50 вершинами в каждой доле, такое что все 100 степеней вершин попарно различны.",
             "source_id": "src-utyum-2011_tur4_37_8_equal_sums_bipartite_graph-official",
             "status": "ai_checked",
             "self_contained": {
@@ -36152,7 +36152,7 @@
           {
             "id": "stmt-graph-complement",
             "title": "Complement-graph formulation",
-            "text": "Let \\(H\\) be the graph of unfamiliar pairs on 25 vertices. Assume that in every 4-vertex subset, the complement graph of \\(H\\) contains a matching of size 2. Prove that \\(H\\) has at most 25 edges.",
+            "text": "Пусть \\(H\\) — граф незнакомых пар на 25 вершинах. Предположим, что в любом 4-элементном множестве вершин дополнительный граф к \\(H\\) содержит паросочетание размера 2. Докажите, что в \\(H\\) не более 25 рёбер.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -37888,7 +37888,7 @@
           {
             "id": "stmt-graph-complement",
             "title": "Complement-graph formulation",
-            "text": "Let \\(H\\) be a graph on 11 vertices with no independent set of size 6. Must the chromatic number of the complement graph \\(\\overline H\\) be at most 5?",
+            "text": "Пусть \\(H\\) — граф на 11 вершинах без независимого множества размера 6. Обязательно ли хроматическое число дополнительного графа \\(\\overline H\\) не превосходит 5?",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -38258,7 +38258,7 @@
           {
             "id": "stmt-graph-complement",
             "title": "Complement-graph formulation",
-            "text": "Let \\(H\\) be a simple graph on 100 vertices with at most one isolated vertex. Prove that \\(H\\) has at least 50 edges.",
+            "text": "Пусть \\(H\\) — простой граф на 100 вершинах, в котором не более одной изолированной вершины. Докажите, что в \\(H\\) не менее 50 рёбер.",
             "status": "ai_checked",
             "self_contained": {
               "status": "ai_checked"
@@ -41236,7 +41236,7 @@
           {
             "id": "stmt-graph-row-column-forest",
             "title": "Bipartite row-column formulation",
-            "text": "Consider a bipartite graph with 8 row-vertices and 8 column-vertices. Edges are added one by one, and after each step the current graph remains acyclic. What is the largest possible total number of edges?",
+            "text": "Рассмотрим двудольный граф с 8 вершинами-строками и 8 вершинами-столбцами. Рёбра добавляются по одному, и после каждого шага текущий граф остаётся ациклическим. Какое наибольшее общее число рёбер можно добавить?",
             "source_id": "src-yumt-2014-start-round4-problem2-official",
             "status": "ai_checked",
             "self_contained": {

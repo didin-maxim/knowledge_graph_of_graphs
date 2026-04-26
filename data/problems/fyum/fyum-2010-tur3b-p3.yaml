@@ -65,7 +65,7 @@
     "graph_theory": [
       {
         "id": "stmt-graph-parameterized",
-        "text": "Let G be a graph whose vertices are colored with three colors. If every cycle of G contains vertices of all three colors, then |E(G)| <= 3(|V(G)|-1). In particular, no 6-regular graph has such a 3-coloring.",
+        "text": "Пусть вершины графа \\(G\\) окрашены в три цвета. Если каждый цикл в \\(G\\) содержит вершины всех трёх цветов, то \\(|E(G)|\\le 3(|V(G)|-1)\\). В частности, ни один 6-регулярный граф не имеет такой 3-раскраски.",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
@@ -86,7 +86,7 @@
     {
       "id": "sol-official-archive",
       "title": "Archive solution",
-      "text": "Assume such a graph exists. Remove all vertices of one color; the remaining two-color graph has no cycles, hence it is a forest. Do this for each of the three colors. Each of the three resulting graphs has at most n-1 edges, so the original graph has at most 3n-3 edges. But a 6-regular graph on n vertices has exactly 3n edges. Contradiction.",
+      "text": "Предположим, что такой граф существует. Удалим все вершины одного цвета; оставшийся двухцветный граф не содержит циклов, значит, является лесом. Сделаем это для каждого из трёх цветов. Каждый из трёх полученных графов имеет не более \\(n-1\\) рёбер, поэтому исходный граф имеет не более \\(3n-3\\) рёбер. Но 6-регулярный граф на \\(n\\) вершинах имеет ровно \\(3n\\) рёбер. Противоречие.",
       "idea_ids": [],
       "standard_idea_ids": [],
       "status": "ai_checked"

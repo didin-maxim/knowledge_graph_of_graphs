@@ -50,7 +50,7 @@
       {
         "id": "stmt-original",
         "title": "Statement",
-        "text": "A graph has 300 vertices, and every vertex has degree 3. What is the largest possible number of cycles of length 4 in this graph?",
+        "text": "В графе 300 вершин, и степень каждой вершины равна 3. Какое наибольшее возможное число циклов длины 4 может быть в таком графе?",
         "source_id": "src-fyum-2013-tur2b-p7-official",
         "status": "ai_checked",
         "self_contained": {
@@ -65,7 +65,7 @@
     "graph_theory": [
       {
         "id": "stmt-graph-parameterized",
-        "text": "Let G be a 3-regular graph on 6m vertices. Then the number of 4-cycles in G is at most 9m. Equality is attained by the disjoint union of m copies of K_{3,3}. The FYUM problem is the case m=50.",
+        "text": "Пусть \\(G\\) — 3-регулярный граф на \\(6m\\) вершинах. Тогда число 4-циклов в \\(G\\) не превосходит \\(9m\\). Равенство достигается на несвязном объединении \\(m\\) копий \\(K_{3,3}\\). Задача FYUM — это случай \\(m=50\\).",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
@@ -87,7 +87,7 @@
     {
       "id": "sol-official-archive",
       "title": "Archive solution",
-      "text": "Fix a vertex and any two edges incident to it. Those two edges can belong together to at most two distinct 4-cycles. Since every vertex has degree 3, there are only three unordered pairs of incident edges, so at most six 4-cycles pass through a given vertex. Summing over all 300 vertices and dividing by 4, because each 4-cycle is counted once at each of its four vertices, we get an upper bound 300*6/4 = 450. This bound is attained by the disjoint union of 50 copies of K_{3,3}: each copy contains exactly 9 cycles of length 4, hence the total number is 50*9 = 450.",
+      "text": "Зафиксируем вершину и любые два ребра, инцидентные ей. Эти два ребра могут вместе входить не более чем в два различных 4-цикла. Так как степень каждой вершины равна 3, есть только три неупорядоченные пары инцидентных рёбер, поэтому через фиксированную вершину проходит не более шести 4-циклов. Суммируя по всем 300 вершинам и деля на 4, поскольку каждый 4-цикл посчитан по одному разу в каждой из своих четырёх вершин, получаем верхнюю оценку \\(300\\cdot 6/4=450\\). Эта оценка достигается на несвязном объединении 50 копий \\(K_{3,3}\\): каждая копия содержит ровно 9 циклов длины 4, значит, всего циклов \\(50\\cdot 9=450\\).",
       "idea_ids": [],
       "standard_idea_ids": [],
       "status": "ai_checked"

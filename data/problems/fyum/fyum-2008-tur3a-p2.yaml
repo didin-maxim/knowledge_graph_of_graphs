@@ -61,7 +61,7 @@
     "graph_theory": [
       {
         "id": "stmt-graph-ramsey-tree",
-        "text": "Let T be any tree on n vertices, and let k be a positive integer. Then every graph on (n-1)(k-1)+1 vertices contains either a copy of T or an independent set of size k.",
+        "text": "Пусть \\(T\\) — произвольное дерево на \\(n\\) вершинах, а \\(k\\) — положительное целое число. Тогда всякий граф на \\((n-1)(k-1)+1\\) вершинах содержит либо копию \\(T\\), либо независимое множество размера \\(k\\).",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
@@ -82,7 +82,7 @@
     {
       "id": "sol-official-archive",
       "title": "Archive solution",
-      "text": "Prove a stronger claim: every graph on (n-1)(k-1)+1 vertices contains either an independent set of size k or a copy of any fixed tree T on n vertices. Induct on n. Delete a leaf from T to get T-prime. Delete edges in the graph until an independent set M of size k-1 appears but not one of size k. By induction the graph without M contains T-prime; then attach one suitable vertex of M to the neighbor of the deleted leaf and recover T.",
+      "text": "Докажем более сильное утверждение: всякий граф на \\((n-1)(k-1)+1\\) вершинах содержит либо независимое множество размера \\(k\\), либо копию любого фиксированного дерева \\(T\\) на \\(n\\) вершинах. Индукция идёт по \\(n\\). Удалим из \\(T\\) лист и получим дерево \\(T'\\). В графе удаляем рёбра, пока не появится независимое множество \\(M\\) размера \\(k-1\\), но ещё нет независимого множества размера \\(k\\). По индукционному предположению граф без \\(M\\) содержит \\(T'\\); затем присоединяем подходящую вершину из \\(M\\) к соседу удалённого листа и восстанавливаем \\(T\\).",
       "idea_ids": [],
       "standard_idea_ids": [],
       "status": "ai_checked",

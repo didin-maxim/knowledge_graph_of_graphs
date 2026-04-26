@@ -50,7 +50,7 @@
       {
         "id": "stmt-original",
         "title": "Statement",
-        "text": "A graph has maximum degree at most 11. Prove that its edges can be colored with 221 colors so that any two edges of the same color are disjoint and no edge is adjacent to both of them.",
+        "text": "Граф имеет максимальную степень не больше 11. Докажите, что его рёбра можно раскрасить в 221 цвет так, чтобы любые два ребра одного цвета не имели общих концов и ни одно ребро не было смежно с ними обоими.",
         "source_id": "src-fyum-2012-tur1a-p10-official",
         "status": "ai_checked",
         "self_contained": {
@@ -64,7 +64,7 @@
     "graph_theory": [
       {
         "id": "stmt-graph-parameterized",
-        "text": "For every graph G with maximum degree at most Delta, one can color E(G) with at most 2Delta^2-2Delta+1 colors so that any two edges of the same color are disjoint and no edge is adjacent to both of them. The FYUM statement is the case Delta=11.",
+        "text": "Для всякого графа \\(G\\) с максимальной степенью не больше \\(\\Delta\\) можно раскрасить \\(E(G)\\) не более чем в \\(2\\Delta^2-2\\Delta+1\\) цвет так, чтобы любые два ребра одного цвета не имели общих концов и ни одно ребро не было смежно с ними обоими. Утверждение FYUM — это случай \\(\\Delta=11\\).",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
@@ -84,7 +84,7 @@
     {
       "id": "sol-greedy-distance-two-bound",
       "title": "Standard greedy bound for strong edge-coloring",
-      "text": "Color the edges one by one in an arbitrary order. When we come to an edge e = uv, the only forbidden colors are those already used on edges at distance at most 2 from e, because exactly those edges cannot share a color with e. There are at most 2*11 - 2 = 20 edges adjacent to e. Also, from the u-side there are at most 10 other edges incident with u, and each of their far endpoints contributes at most 10 further edges; this gives at most 10*10 edges at distance 2 from e on the u-side. The same bound holds on the v-side. Hence the number of edges at distance exactly 2 from e is at most 2*10*10 = 200, so in total at most 20 + 200 = 220 colors are forbidden. With 221 available colors there is always a free color for e. Continuing greedily, we color every edge. By construction, each color class is an induced matching, which is exactly the required condition.",
+      "text": "Красим рёбра по одному в произвольном порядке. Когда очередь доходит до ребра \\(e=uv\\), запрещены только цвета, уже использованные на рёбрах расстояния не более 2 от \\(e\\), потому что именно такие рёбра не могут иметь общий цвет с \\(e\\). Рёбер, смежных с \\(e\\), не более \\(2\\cdot 11-2=20\\). Кроме того, со стороны \\(u\\) есть не более 10 других рёбер, инцидентных \\(u\\), и каждый их дальний конец даёт не более 10 дальнейших рёбер; это даёт не более \\(10\\cdot 10\\) рёбер расстояния 2 от \\(e\\) со стороны \\(u\\). Такая же оценка верна со стороны \\(v\\). Значит, рёбер на расстоянии ровно 2 от \\(e\\) не более \\(2\\cdot 10\\cdot 10=200\\), а всего запрещено не более \\(20+200=220\\) цветов. При 221 доступном цвете для \\(e\\) всегда есть свободный цвет. Продолжая жадно, раскрасим все рёбра. По построению каждый цветовой класс является индуцированным паросочетанием, что и требуется.",
       "idea_ids": [],
       "standard_idea_ids": [],
       "definition_ids": [

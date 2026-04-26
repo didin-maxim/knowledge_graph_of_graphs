@@ -56,7 +56,7 @@
     "original": [
       {
         "id": "stmt-original",
-        "text": "Let two vertices of a graph have distance t, and suppose all degrees are bounded by Delta. Then the number of shortest paths between the two vertices is at most 2*(Delta/2)^t.",
+        "text": "Пусть две вершины графа находятся на расстоянии \\(t\\), а все степени вершин не превосходят \\(\\Delta\\). Тогда число кратчайших путей между этими двумя вершинами не превосходит \\(2(\\Delta/2)^t\\).",
         "source_id": "src-benjamini-tzalik-shortest-paths",
         "status": "source_verified",
         "self_contained": {
@@ -71,7 +71,7 @@
     "graph_theory": [
       {
         "id": "stmt-graph",
-        "text": "Let two vertices of a graph have distance t, and suppose all degrees are bounded by Delta. Then the number of shortest paths between the two vertices is at most 2*(Delta/2)^t.",
+        "text": "Пусть две вершины графа находятся на расстоянии \\(t\\), а все степени вершин не превосходят \\(\\Delta\\). Тогда число кратчайших путей между этими двумя вершинами не превосходит \\(2(\\Delta/2)^t\\).",
         "status": "source_verified",
         "self_contained": {
           "status": "ai_checked"
@@ -102,7 +102,7 @@
     {
       "id": "sol-paper-bound",
       "title": "Compressed paper proof",
-      "text": "After deleting all edges and vertices outside shortest x-y paths, the graph becomes layered by distance from x. If p(v) is the number of shortest paths from x to v, each transition between two consecutive layers is bounded by Cauchy--Schwarz and by the degree constraint. Iterating the layer inequality gives at most 2*(Delta/2)^t shortest x-y paths. The extremal construction uses two internally disjoint length-t chains with Delta/2 parallel choices at each step.",
+      "text": "Удалим все рёбра и вершины, не лежащие на кратчайших путях из \\(x\\) в \\(y\\). Оставшийся граф разбивается на слои по расстоянию от \\(x\\). Если \\(p(v)\\) — число кратчайших путей из \\(x\\) в \\(v\\), то переход между двумя соседними слоями оценивается неравенством Коши — Буняковского и ограничением на степени. Итерируя это послойное неравенство, получаем не более \\(2(\\Delta/2)^t\\) кратчайших путей из \\(x\\) в \\(y\\). Экстремальная конструкция состоит из двух внутренне непересекающихся цепочек длины \\(t\\), где на каждом шаге есть \\(\\Delta/2\\) параллельных вариантов выбора.",
       "idea_ids": [
         "idea-layered-cauchy-schwarz"
       ],
