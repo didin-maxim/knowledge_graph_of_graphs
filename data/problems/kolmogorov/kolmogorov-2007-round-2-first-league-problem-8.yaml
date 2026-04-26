@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2007-round-2-first-league-problem-8",
-  "title": "????? ??????????? 2007: Round 2, First League Problem 8",
+  "title": "Kolmogorov Cup 2007: Round 2, First League Problem 8",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -70,7 +70,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2007-round-2-first-league-problem-8",
+      "title": "Graph-theory role in kolmogorov-2007-round-2-first-league-problem-8",
       "text": "В условии граф не назван, но официальное решение существенно строит циклы и вспомогательный граф, который затем доказывается деревом; без этого противоречие не получается.",
       "tags": [],
       "status": "needs_human_review"
@@ -79,7 +79,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Официальное решение предполагает, что такое разрезание существует, и внутри каждой фигурки проводит вспомогательные синие отрезки. Эти отрезки объединяются в непересекающиеся циклы.\n\nРассматривают внутренний цикл без других циклов внутри него. Затем по внутренним вершинам клеточной сетки строят желтый граф смежности. Этот граф оказывается связным и ацикличным, то есть деревом.\n\nДалее используется паритетный подсчет: число внутренних вершин цикла четно, число ребер в желтом дереве нечетно, а суммарное число выходящих из отмеченных вершин ребер одновременно должно иметь и другую четность. Получается противоречие.\n\nСледовательно, требуемого разрезания не существует.",
       "idea_ids": [
         "idea-graph-role"
@@ -97,7 +97,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -137,6 +137,6 @@
       "Original final-selection name: Round 2, First League, Problem 8."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

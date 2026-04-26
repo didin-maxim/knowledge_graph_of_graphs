@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
-  "title": "????? ??????????? 2008: Round 1, First League / Higher Junior League Problem 1",
+  "title": "Kolmogorov Cup 2008: Round 1, First League / Higher Junior League Problem 1",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -60,7 +60,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
+      "title": "Graph-theory role in kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
       "text": "В условии явно фигурирует дерево, то есть специальный вид графа. Официальное решение опирается на структуру деревьев, листья и операции переподвешивания.",
       "tags": [],
       "status": "ai_checked"
@@ -69,7 +69,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Ответ: `n - 3`.\n\nНижняя оценка получается на примере пути и звезды: чтобы превратить путь в звезду, нужно переподвесить все внутренние вершины пути, кроме двух крайних и будущего центра, то есть требуется `n - 3` ходов.\n\nДля верхней оценки в официальном решении выбирают в первом дереве путь длины 2 и показывают, что можно последовательно переставлять листья так, чтобы сохранить этот общий фрагмент и постепенно привести дерево к нужному виду. Иначе говоря, любое дерево можно за не более чем `n - 3` операций превратить в звезду, а из звезды — в любое другое дерево.\n\nСледовательно, максимальное необходимое число ходов равно `n - 3`.",
       "idea_ids": [
         "idea-graph-role"
@@ -87,7 +87,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

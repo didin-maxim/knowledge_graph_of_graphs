@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2004-round3-higher-league-problem-10",
-  "title": "????? ??????????? 2004: Round 3, Higher League Problem 10",
+  "title": "Kolmogorov Cup 2004: Round 3, Higher League Problem 10",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -61,7 +61,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2004-round3-higher-league-problem-10",
+      "title": "Graph-theory role in kolmogorov-2004-round3-higher-league-problem-10",
       "text": "В условии прямо дан ориентированный граф, а официальное решение полностью основано на\nанализе компонент сильной связности и структуры дуг между ними.",
       "tags": [],
       "status": "needs_human_review"
@@ -70,7 +70,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Решение начинается с предположения противного: удаление любой вершины разрушает сильную\nсвязность. Для вершины `a` выбирается максимальная по числу вершин компонента сильной\nсвязности `K` графа `G-a`.\n\nЗатем подробно исследуются ребра между `K` и остальной частью графа. Из максимальности\nкомпоненты и сильной связности исходного графа выводятся жесткие ограничения на то, как\nмогут быть устроены входящие и исходящие ребра у вершин вне `K`.\n\nЭти ограничения несовместимы с условием, что из каждой вершины выходит не меньше двух\nребер. Получается противоречие, значит существует вершина, удаление которой не нарушает\nсильную связность.",
       "idea_ids": [
         "idea-graph-role"
@@ -86,7 +86,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

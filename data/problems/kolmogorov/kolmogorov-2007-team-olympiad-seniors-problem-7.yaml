@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2007-team-olympiad-seniors-problem-7",
-  "title": "????? ??????????? 2007: Team Olympiad, Seniors Problem 7",
+  "title": "Kolmogorov Cup 2007: Team Olympiad, Seniors Problem 7",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -66,7 +66,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2007-team-olympiad-seniors-problem-7",
+      "title": "Graph-theory role in kolmogorov-2007-team-olympiad-seniors-problem-7",
       "text": "В условии граф не назван напрямую, но официальное решение существенно переводит задачу в граф знакомств и рассуждает через степени вершин в индуцированных подгруппах.",
       "tags": [],
       "status": "ai_checked"
@@ -75,7 +75,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Ответ: `n(n-1)/2`, то есть знакомы должны быть все со всеми.\n\nВ официальном решении рассматривают произвольную группу из `m+1` человек и замечают, что каждый ее участник имеет одно и то же число знакомых внутри этой группы: иначе после удаления разных людей число пар знакомых среди оставшихся `m` менялось бы.\n\nПредположим теперь, что существуют двое незнакомых. Тогда можно выбрать группу `L` из `m+1` человек, где есть и такая незнакомая пара, и какая-то знакомая пара. Замена одного человека на внешнего человека `C` приводит к новой группе `M`; сравнение степеней внутри `L` и `M` показывает, что `C` должен иметь те же знакомства внутри `L`, что и замененный человек.\n\nПовторяя рассуждение с другой заменой, получают невозможное изменение суммарных степеней. Значит, незнакомых пар нет, и весь граф знакомств полный.",
       "idea_ids": [
         "idea-graph-role"
@@ -91,7 +91,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -125,6 +125,6 @@
       "Original final-selection name: Team Olympiad, Seniors, Problem 7."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

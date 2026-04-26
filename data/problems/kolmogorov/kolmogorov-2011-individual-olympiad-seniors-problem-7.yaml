@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2011-individual-olympiad-seniors-problem-7",
-  "title": "????? ??????????? 2011: Individual Olympiad, Seniors Problem 7",
+  "title": "Kolmogorov Cup 2011: Individual Olympiad, Seniors Problem 7",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -65,7 +65,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2011-individual-olympiad-seniors-problem-7",
+      "title": "Graph-theory role in kolmogorov-2011-individual-olympiad-seniors-problem-7",
       "text": "Граф полностью задан уже в условии: связный граф, расстояние между вершинами и гамильтонов цикл. Официальное решение целиком построено на графовых операциях с деревом и степенями вершин.",
       "tags": [],
       "status": "ai_checked"
@@ -74,7 +74,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Достаточно рассмотреть случай, когда `G` — дерево: если утверждение верно для остовного дерева, то оно верно и для исходного графа.\n\nДоказательство ведется индукцией по числу вершин. В графе `G^3` длиной ребра называют расстояние между его концами в исходном дереве, так что возможны ребра длин `1`, `2` и `3`.\n\nЕсли в дереве есть вершина, смежная хотя бы с двумя листьями, то одну новую висячую вершину можно вставить в уже построенный гамильтонов цикл меньшего дерева, заменив участок `u-v1-u'` на `u-v1-v2-u'`.\n\nВ противном случае берут вершину степени не меньше `3`, у которой висит путь `v1, ..., vk`, удаляют этот путь и по предположению индукции получают гамильтонов цикл в `T^3`. В этом цикле находится ребро, соединяющее разные компоненты графа `T - w`; его заменяют на специальный проход через вершины удаленного пути. Все новые ребра имеют длину не более `3`, значит, действительно принадлежат `G^3`.\n\nТак индуктивно строится гамильтонов цикл в `G^3`.",
       "idea_ids": [
         "idea-graph-role"
@@ -94,7 +94,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

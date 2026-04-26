@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2007-round-4-first-league-problem-1",
-  "title": "????? ??????????? 2007: Round 4, First League Problem 1",
+  "title": "Kolmogorov Cup 2007: Round 4, First League Problem 1",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -61,7 +61,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2007-round-4-first-league-problem-1",
+      "title": "Graph-theory role in kolmogorov-2007-round-4-first-league-problem-1",
       "text": "Граф прямо присутствует в условии, а официальное решение полностью опирается на сильную связность орграфа, ориентированные пути и нечетные циклы.",
       "tags": [],
       "status": "ai_checked"
@@ -70,7 +70,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "В официальном решении берут простой нечетный цикл `C = a_1...a_n` исходного графа и работают в сильно связной ориентации этого графа.\n\nПроходя по циклу `C`, для каждого ребра `a_i a_{i+1}` смотрят, совпадает ли его ориентация с направлением обхода. Если да, его просто включают в строящуюся цепь. Если нет, то по сильной связности существует ориентированный путь из `a_i` в `a_{i+1}`.\n\nЕсли такой путь имеет четную длину, то вместе с обратным ребром цикла он сразу дает ориентированный цикл нечетной длины. Если же путь нечетный, его присоединяют к текущей конструкции и переходят к следующей вершине цикла. В итоге после обхода всего `C` получается ориентированный цикл нечетной длины.",
       "idea_ids": [
         "idea-graph-role"
@@ -86,7 +86,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

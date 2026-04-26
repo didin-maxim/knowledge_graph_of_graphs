@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2007-round-3-high-and-first-league-problem-3",
-  "title": "????? ??????????? 2007: Round 3, High League / First League Problem 3",
+  "title": "Kolmogorov Cup 2007: Round 3, High League / First League Problem 3",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -64,7 +64,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2007-round-3-high-and-first-league-problem-3",
+      "title": "Graph-theory role in kolmogorov-2007-round-3-high-and-first-league-problem-3",
       "text": "Граф прямо присутствует в условии, а официальное решение использует индуцированные подграфы, компоненты связности и подсчет ребер.",
       "tags": [],
       "status": "ai_checked"
@@ -73,7 +73,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Пусть единственное разбиение на независимые множества равно `V_1, ..., V_5`. Для каждой пары индексов `i, j` рассматривают индуцированный подграф `G_{i,j}` на `V_i ∪ V_j`.\n\nСначала в официальном решении доказывают, что каждый такой `G_{i,j}` связен. Иначе можно было бы взять одну компоненту связности и поменять внутри нее классы `V_i` и `V_j`, получив другое допустимое разбиение на 5 независимых множеств, что противоречит единственности.\n\nЗначит, в каждом `G_{i,j}` не меньше `|V_i| + |V_j| - 1` ребер. Складывая эти 10 оценок и замечая, что каждое ребро исходного графа считается ровно трижды, получают итоговую нижнюю границу `|E(G)| >= 4n - 10`.",
       "idea_ids": [
         "idea-graph-role"
@@ -91,7 +91,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

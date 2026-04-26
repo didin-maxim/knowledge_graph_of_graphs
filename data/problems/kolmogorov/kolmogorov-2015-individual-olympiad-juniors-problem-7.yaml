@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2015-individual-olympiad-juniors-problem-7",
-  "title": "????? ??????????? 2015: Individual Olympiad, Juniors Problem 7",
+  "title": "Kolmogorov Cup 2015: Individual Olympiad, Juniors Problem 7",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -56,7 +56,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2015-individual-olympiad-juniors-problem-7",
+      "title": "Graph-theory role in kolmogorov-2015-individual-olympiad-juniors-problem-7",
       "text": "В официальном решении прямо строится граф знакомств между девочками и ключевым шагом становится правильная 3-раскраска его компонент связности.",
       "tags": [],
       "status": "ai_checked"
@@ -65,7 +65,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Обозначим пары через M1D1, ..., M2015D2015. Для каждой девочки Di выбирают другую девочку, знакомую с ее партнером Mi. Так получается граф на вершинах D1, ..., D2015 с 2015 ребрами. Достаточно правильно раскрасить этот граф в три цвета, а мальчиков покрасить в цвета их партнерш: тогда у каждого мальчика есть знакомые как минимум двух других цветов, и то же верно для девочек. Далее рассматривают компоненту связности построенного графа. Если в ней есть вершина степени 1, ее удаляют и потом докрашивают обратно. После удаления всех таких вершин остается граф минимальной степени 2, а поскольку число ребер равно числу вершин, каждая оставшаяся компонента является простым циклом. Простой цикл легко 3-раскрасить, после чего восстановленные вершины тоже докрашиваются.",
       "idea_ids": [
         "idea-graph-role"
@@ -80,7 +80,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -112,6 +112,6 @@
       "Original final-selection name: Individual Olympiad, Juniors, Problem 7."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

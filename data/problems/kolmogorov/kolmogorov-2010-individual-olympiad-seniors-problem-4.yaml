@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
-  "title": "????? ??????????? 2010: Individual Olympiad, Seniors Problem 4",
+  "title": "Kolmogorov Cup 2010: Individual Olympiad, Seniors Problem 4",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -72,7 +72,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2010-individual-olympiad-seniors-problem-4",
+      "title": "Graph-theory role in kolmogorov-2010-individual-olympiad-seniors-problem-4",
       "text": "В официальном решении задача целиком переводится на язык ориентированных графов, гамильтоновых путей и склейки путей в турнире. Эта графовая модель является основной, а не факультативной.",
       "tags": [],
       "status": "ai_checked"
@@ -81,7 +81,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Официальное решение строит ориентированный граф `T`, вершины которого соответствуют городам, а дуги — авиарейсам. Пусть `w` — столица, а `A` и `B` — подграфы, соответствующие двум республикам.\n\nДоказывается лемма о склейке двух непересекающихся ориентированных путей `P` и `Q` в полном ориентированном графе: можно построить путь `R` на вершинах этих двух путей, в котором вершины `P` и `Q` сохраняют свой порядок.\n\nТеперь берутся любые гамильтоновы пути `P` в графе `A` и `Q` в графе `B`. Каждый из них проходит через столицу `w`, поэтому их можно записать в виде `P = P1 w P2` и `Q = Q1 w Q2`. По лемме существуют склейки `R1` для `P1` и `Q1` и `R2` для `P2` и `Q2`, после чего путь `R = R1 w R2` становится гамильтоновым путем во всей стране.\n\nЗначит, каждому гамильтонову пути во всей стране соответствует пара гамильтоновых путей в республиках, и число глобальных маршрутов не превосходит `N1 * N2`.",
       "idea_ids": [
         "idea-graph-role"
@@ -101,7 +101,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -144,6 +144,6 @@
       "Original final-selection name: Individual Olympiad, Seniors, Problem 4."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

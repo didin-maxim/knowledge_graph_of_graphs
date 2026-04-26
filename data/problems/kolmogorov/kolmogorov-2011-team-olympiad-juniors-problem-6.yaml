@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2011-team-olympiad-juniors-problem-6",
-  "title": "????? ??????????? 2011: Team Olympiad, Juniors Problem 6",
+  "title": "Kolmogorov Cup 2011: Team Olympiad, Juniors Problem 6",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -66,7 +66,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2011-team-olympiad-juniors-problem-6",
+      "title": "Graph-theory role in kolmogorov-2011-team-olympiad-juniors-problem-6",
       "text": "Существенная часть официального решения — построение графа белых вершин и применение графовых идей: степени вершин, связность компоненты и существование эйлерова маршрута.",
       "tags": [],
       "status": "ai_checked"
@@ -75,7 +75,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Ответ: `1335`.\n\nКак и в старшей задаче, официальное решение строит граф белых вершин: вершины клеток красят в шахматном порядке, и каждая допустимая диагональ становится ребром между белыми вершинами. Максимальный маршрут муравья интерпретируется как маршрут по ребрам этого графа.\n\nДля оценки сверху стирают ребра максимального маршрута. В оставшемся белом графе появляются вершины нечетной степени; две из них лежат в одной компоненте связности, а соединяющий их путь имеет длину не менее `15`. Значит, хотя бы `15` ребер белого графа не используются, поэтому посещено не более `6(15^2) - 15 = 1335` центров клеток.\n\nДля достижения оценки удаляют по одной диагонали на каждой грани так, чтобы оставшийся белый граф был связен и имел ровно две вершины нечетной степени. Тогда в нем существует эйлеров маршрут, проходящий по всем оставшимся ребрам, то есть через `1335` центров клеток.",
       "idea_ids": [
         "idea-graph-role"
@@ -92,7 +92,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -133,6 +133,6 @@
       "Original final-selection name: Team Olympiad, Juniors, Problem 6."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

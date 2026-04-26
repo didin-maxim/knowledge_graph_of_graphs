@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2007-round-1-high-league-problem-5",
-  "title": "????? ??????????? 2007: Round 1, High League Problem 5",
+  "title": "Kolmogorov Cup 2007: Round 1, High League Problem 5",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -62,7 +62,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2007-round-1-high-league-problem-5",
+      "title": "Graph-theory role in kolmogorov-2007-round-1-high-league-problem-5",
       "text": "В условии явно присутствует дорожный граф, а официальное решение существенно использует эйлеровы циклы, леса, четность степеней и подграфы.",
       "tags": [],
       "status": "ai_checked"
@@ -71,7 +71,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Официальное решение сразу переводит задачу на язык графов. Граф дорог эйлеров: он связен и все степени его вершин четны.\n\nТребуется доказать, что любой путь, начинающийся в вершине `Центральный`, продолжается до эйлерова цикла тогда и только тогда, когда подграф, образованный ребрами, не проходящими через `Центральный`, является лесом.\n\nЕсли в периферийной части есть цикл, его можно удалить и обойти только оставшуюся эйлерову компоненту с центральной вершиной, после чего удаленный цикл останется необойденным. Если же периферийный подграф ацикличен, то после любого начального пути необойденные периферийные ребра образуют лес с четными степенями, а значит пусты.\n\nОтсюда и получается эквивалентность из условия.",
       "idea_ids": [
         "idea-graph-role"
@@ -87,7 +87,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

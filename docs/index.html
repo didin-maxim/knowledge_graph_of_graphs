@@ -16012,7 +16012,7 @@
     },
     "kolmogorov-2002-individual-olympiad-10-11-output-problem-5": {
       "id": "kolmogorov-2002-individual-olympiad-10-11-output-problem-5",
-      "title": "????? ??????????? 2002: Individual Olympiad, 10-11 Classes, Output Problem 5",
+      "title": "Kolmogorov Cup 2002: Individual Olympiad, 10-11 Classes, Output Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -16131,7 +16131,7 @@
     },
     "kolmogorov-2002-individual-olympiad-8-9-output-problem-5": {
       "id": "kolmogorov-2002-individual-olympiad-8-9-output-problem-5",
-      "title": "????? ??????????? 2002: Individual Olympiad, 8-9 Classes, Output Problem 5",
+      "title": "Kolmogorov Cup 2002: Individual Olympiad, 8-9 Classes, Output Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -16249,7 +16249,7 @@
     },
     "kolmogorov-2002-team-olympiad-seniors-problem-8": {
       "id": "kolmogorov-2002-team-olympiad-seniors-problem-8",
-      "title": "????? ??????????? 2002: Team Olympiad, Seniors Problem 8",
+      "title": "Kolmogorov Cup 2002: Team Olympiad, Seniors Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -16365,7 +16365,7 @@
     },
     "kolmogorov-2003-team-olympiad-seniors-problem-8": {
       "id": "kolmogorov-2003-team-olympiad-seniors-problem-8",
-      "title": "????? ??????????? 2003: Team Olympiad, Seniors Problem 8",
+      "title": "Kolmogorov Cup 2003: Team Olympiad, Seniors Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -16427,7 +16427,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2003-team-olympiad-seniors-problem-8",
+          "title": "Graph-theory role in kolmogorov-2003-team-olympiad-seniors-problem-8",
           "text": "Граф явно присутствует в условии через ориентированную дорожную сеть, а официальное решение\nцеликом сформулировано как утверждение о сильно связном орграфе и его дугах.",
           "tags": [],
           "status": "ai_checked"
@@ -16436,7 +16436,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение переводит условие в язык ориентированных графов:\nгорода становятся вершинами, дороги - дугами. Получаем сильно связный орграф, в котором\nудаление любой дуги разрушает сильную связность.\n\nСначала строится пример с 197 дорогами: берутся вершины `A`, `B`, `C_1, ..., C_98` и\nнаправленные треугольники `A -> C_i -> B -> A` для всех `i`. Такой орграф сильно связен,\nа каждая дуга в нем существенна.\n\nДля оценки сверху доказывается лемма: если сильно связный орграф на `k` вершинах имеет\nхотя бы `2k-1` дуг, то одну дугу можно удалить без потери сильной связности. После этого\nрассматривается минимальный ориентированный цикл и производится сжатие/склейка его вершин,\nчто уменьшает число вершин и позволяет применить лемму к меньшему орграфу. Из этого\nвыводится верхняя граница `197`.\n\nСледовательно, максимальное число дорог равно `197`.",
           "idea_ids": [
             "idea-graph-role"
@@ -16454,7 +16454,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -16501,7 +16501,7 @@
     },
     "kolmogorov-2004-round1-higher-league-problem-3": {
       "id": "kolmogorov-2004-round1-higher-league-problem-3",
-      "title": "????? ??????????? 2004: Round 1, Higher League Problem 3",
+      "title": "Kolmogorov Cup 2004: Round 1, Higher League Problem 3",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -16564,7 +16564,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2004-round1-higher-league-problem-3",
+          "title": "Graph-theory role in kolmogorov-2004-round1-higher-league-problem-3",
           "text": "В условии явно дано дерево и операции удаления вершины из графа; официальное решение\nиспользует структурные свойства деревьев, листьев и компонент связности.",
           "tags": [],
           "status": "ai_checked"
@@ -16573,7 +16573,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В решении выделяются рисунки, на которых получился связный граф. Это в точности те случаи,\nкогда была удалена висячая вершина. Их общая часть восстанавливает дерево после удаления\nвсех листьев.\n\nЗатем вводится периферийная вершина: вершина исходного дерева, у которой все соседи,\nкроме одного, висячие. Такие вершины распознаются по рисункам однозначно, а число\nприкрепленных к ним листьев читается из набора компонент.\n\nПосле этого дерево восстанавливается рекурсивно: по восстановленному \"скелету\" без листьев\nпоследовательно возвращаются все периферийные вершины и их висячие соседи. Так Игорь\nоднозначно восстанавливает исходное дерево.",
           "idea_ids": [
             "idea-graph-role"
@@ -16592,7 +16592,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -16640,7 +16640,7 @@
     },
     "kolmogorov-2004-round2-higher-league-problem-9": {
       "id": "kolmogorov-2004-round2-higher-league-problem-9",
-      "title": "????? ??????????? 2004: Round 2, Higher League Problem 9",
+      "title": "Kolmogorov Cup 2004: Round 2, Higher League Problem 9",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -16704,7 +16704,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2004-round2-higher-league-problem-9",
+          "title": "Graph-theory role in kolmogorov-2004-round2-higher-league-problem-9",
           "text": "Граф явно присутствует в условии, а официальное решение существенно использует запрет\n4-циклов и возникновение больших двудольных подграфов.",
           "tags": [],
           "status": "needs_human_review"
@@ -16713,7 +16713,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение идет от противного. Предполагается, что для некоторой длины `m`\nлюбая арифметическая прогрессия этой длины содержит хотя бы одно ребро графа.\n\nТогда, рассматривая графы `G_n` на первых `n` числах и подсчитывая число прогрессий,\nавторы показывают, что в таком случае для любого `k` в графе должен возникать полный\nдвудольный подграф `K_{k,k}`. Идея состоит в последовательном уплотнении множества ребер:\nесли прогрессий слишком много и каждая содержит ребро, то найдутся большие наборы вершин\nс одинаковыми соседями.\n\nНо уже `K_{2,2}` содержит 4-цикл, что противоречит условию. Следовательно, найдется\nарифметическая прогрессия длины 5 без смежных вершин.",
           "idea_ids": [
             "idea-graph-role"
@@ -16732,7 +16732,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -16779,7 +16779,7 @@
     },
     "kolmogorov-2004-round3-higher-league-problem-10": {
       "id": "kolmogorov-2004-round3-higher-league-problem-10",
-      "title": "????? ??????????? 2004: Round 3, Higher League Problem 10",
+      "title": "Kolmogorov Cup 2004: Round 3, Higher League Problem 10",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -16840,7 +16840,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2004-round3-higher-league-problem-10",
+          "title": "Graph-theory role in kolmogorov-2004-round3-higher-league-problem-10",
           "text": "В условии прямо дан ориентированный граф, а официальное решение полностью основано на\nанализе компонент сильной связности и структуры дуг между ними.",
           "tags": [],
           "status": "needs_human_review"
@@ -16849,7 +16849,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Решение начинается с предположения противного: удаление любой вершины разрушает сильную\nсвязность. Для вершины `a` выбирается максимальная по числу вершин компонента сильной\nсвязности `K` графа `G-a`.\n\nЗатем подробно исследуются ребра между `K` и остальной частью графа. Из максимальности\nкомпоненты и сильной связности исходного графа выводятся жесткие ограничения на то, как\nмогут быть устроены входящие и исходящие ребра у вершин вне `K`.\n\nЭти ограничения несовместимы с условием, что из каждой вершины выходит не меньше двух\nребер. Получается противоречие, значит существует вершина, удаление которой не нарушает\nсильную связность.",
           "idea_ids": [
             "idea-graph-role"
@@ -16865,7 +16865,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -16904,7 +16904,7 @@
     },
     "kolmogorov-2004-round4-first-junior-league-problem-10": {
       "id": "kolmogorov-2004-round4-first-junior-league-problem-10",
-      "title": "????? ??????????? 2004: Round 4, First Junior League Problem 10",
+      "title": "Kolmogorov Cup 2004: Round 4, First Junior League Problem 10",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -16972,7 +16972,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2004-round4-first-junior-league-problem-10",
+          "title": "Graph-theory role in kolmogorov-2004-round4-first-junior-league-problem-10",
           "text": "В условии графа нет, но официальное решение существенно строит граф Уфнаровского и сводит\nзадачу к поиску и непериодическому чередованию циклов в этом графе.",
           "tags": [],
           "status": "ai_checked"
@@ -16981,7 +16981,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В официальном решении выписываются допустимые трехзначные простые блоки:\n`337, 373, 379, 733, 739, 773, 797, 937, 977, 997`.\n\nПосле этого строится граф Уфнаровского на двузначных состояниях: вершина задает две\nпоследние цифры, а ребро означает, что к ним можно приписать следующую цифру так, чтобы\nполучился допустимый трехзначный простой блок.\n\nВ этом графе находятся два ориентированных цикла, например\n`33 -> 37 -> 73 -> 33` и `33 -> 37 -> 79 -> 97 -> 77 -> 73 -> 33`.\nЕсли обходить эти циклы непериодически, получается бесконечная десятичная запись без\nединиц, в которой каждый блок из трех подряд идущих цифр прост. Непериодичность гарантирует\nиррациональность числа.",
           "idea_ids": [
             "idea-graph-role"
@@ -17000,7 +17000,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -17039,13 +17039,13 @@
           "Original final-selection name: Round 4, First Junior League, Problem 10."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2004-round4-first-junior-league-problem-10.yaml"
     },
     "kolmogorov-2004-team-olympiad-seniors-problem-9": {
       "id": "kolmogorov-2004-team-olympiad-seniors-problem-9",
-      "title": "????? ??????????? 2004: Team Olympiad, Seniors Problem 9",
+      "title": "Kolmogorov Cup 2004: Team Olympiad, Seniors Problem 9",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -17107,7 +17107,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2004-team-olympiad-seniors-problem-9",
+          "title": "Graph-theory role in kolmogorov-2004-team-olympiad-seniors-problem-9",
           "text": "Граф явно присутствует в условии, а официальное решение целиком опирается на\nнезависимые множества, двудольность и нечетные циклы.",
           "tags": [],
           "status": "ai_checked"
@@ -17116,7 +17116,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Пусть данные важные ребра равны `ab` и `ac`, а максимальный размер пустого\nподграфа исходного графа равен `k`. Так как `ab` важно, существует множество\nвершин `B` мощности `k+1`, в котором ребро `ab` является единственным. Аналогично,\nтак как `ac` важно, существует множество `C` мощности `k+1`, в котором ребро `ac`\nявляется единственным.\n\nОставим в графе только вершины из `B ∪ C`. После этого свойства множеств `B`\nи `C` не исчезнут, а все вершины из `(B ∩ C) \\\\ {a}` станут изолированными,\nпотому что в `B` и в `C` у них не было соседей. Такие вершины можно удалить,\nодновременно уменьшая и `k`, и размеры `B`, `C` на одну и ту же величину.\n\nВ итоге получаем граф на `2k+1` вершинах, разбитых на два пустых множества\n`B \\\\ {a}` и `C \\\\ {a}` мощности `k` и общую вершину `a`, причем единственные\nвнутренние ребра в множествах `B` и `C` уже устранены.\n\nЕсли бы в этом графе не было нечетного цикла, он был бы двудольным. Но любой\nдвудольный граф на `2k+1` вершинах содержит независимое множество мощности\n`k+1` (берем большую долю двудольного разбиения). Это противоречит определению\n`k` как максимального размера пустого подграфа.\n\nСледовательно, в графе обязательно существует нечетный цикл.",
           "idea_ids": [
             "idea-graph-role"
@@ -17134,7 +17134,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -17173,7 +17173,7 @@
     },
     "kolmogorov-2005-team-olympiad-juniors-problem-8": {
       "id": "kolmogorov-2005-team-olympiad-juniors-problem-8",
-      "title": "????? ??????????? 2005: Team Olympiad, Juniors Problem 8",
+      "title": "Kolmogorov Cup 2005: Team Olympiad, Juniors Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -17239,7 +17239,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2005-team-olympiad-juniors-problem-8",
+          "title": "Graph-theory role in kolmogorov-2005-team-olympiad-juniors-problem-8",
           "text": "Граф прямо присутствует в условии, а официальное решение строит еще один граф на множестве остовных деревьев и использует четность степеней и обмен ребер между деревьями.",
           "tags": [],
           "status": "ai_checked"
@@ -17248,7 +17248,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Пусть у графа `G` ровно `2k` вершин. Построим вспомогательный граф `H`, вершинами которого будут все остовные деревья графа `G`. Два остовных дерева `T1` и `T2` соединим ребром тогда и только тогда, когда они отличаются заменой одного ребра.\n\nРассмотрим фиксированное остовное дерево `T` и ребро `e` этого дерева. После удаления `e` дерево распадается на две компоненты `U` и `V`. Так как степени всех вершин графа `G` четны, число ребер графа `G`, соединяющих `U` и `V`, четно. Одним из них является `e`, поэтому других ребер между `U` и `V` нечетное число. Заменяя `e` на любое из этих ребер, получаем остовные деревья, соседние с `T` в графе `H`.\n\nТо же верно для каждого ребра дерева `T`. В самом дереве `T` число ребер равно `2k-1`, то есть оно нечетно. Значит, степень вершины `T` в графе `H` тоже нечетна.\n\nСледовательно, в графе `H` каждая вершина имеет нечетную степень. По лемме о рукопожатиях число вершин такого графа четно. Но вершины `H` и есть остовные деревья графа `G`, поэтому их количество четно.",
           "idea_ids": [
             "idea-graph-role"
@@ -17266,7 +17266,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -17306,7 +17306,7 @@
     },
     "kolmogorov-2005-team-olympiad-seniors-problem-9": {
       "id": "kolmogorov-2005-team-olympiad-seniors-problem-9",
-      "title": "????? ??????????? 2005: Team Olympiad, Seniors Problem 9",
+      "title": "Kolmogorov Cup 2005: Team Olympiad, Seniors Problem 9",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -17373,7 +17373,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2005-team-olympiad-seniors-problem-9",
+          "title": "Graph-theory role in kolmogorov-2005-team-olympiad-seniors-problem-9",
           "text": "Граф прямо присутствует в условии, а официальное решение целиком построено на графовых объектах: двудольности, остовных деревьях, остовных одноцикловых подграфах и четности длины циклов.",
           "tags": [],
           "status": "ai_checked"
@@ -17382,7 +17382,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Обозначим через `T(G)` множество остовных деревьев графа `G`, а через `M(G)` множество его остовных подграфов, имеющих ровно один цикл.\n\nВозьмем любое остовное дерево `T`. Так как число вершин четно, у дерева нечетное число ребер. Поскольку общее число ребер графа тоже четно, вне `T` остается нечетное число ребер. Если добавить к `T` любое из этих ребер, получится остовный подграф с единственным циклом, то есть элемент множества `M(G)`. Значит, каждому дереву соответствует нечетное число элементов из `M(G)`.\n\nТеперь возьмем любой граф `H` из `M(G)` и рассмотрим его единственный цикл `Z`. Удаляя из `Z` одно ребро, мы получаем остовные деревья, из которых мог получиться `H`. Так как исходный граф двудолен, цикл `Z` имеет четную длину, следовательно, у `H` четное число таких \"предков\".\n\nПодсчитав число пар вида `(остовное дерево, одноцикловый остовный граф)`, где второй получается добавлением одного ребра к первому, двумя способами, получаем, что число остовных деревьев должно быть четным.",
           "idea_ids": [
             "idea-graph-role"
@@ -17401,7 +17401,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -17441,7 +17441,7 @@
     },
     "kolmogorov-2006-round-1-super-high-first-league-problem-1": {
       "id": "kolmogorov-2006-round-1-super-high-first-league-problem-1",
-      "title": "????? ??????????? 2006: Round 1, Super League / High League / First League Problem 1",
+      "title": "Kolmogorov Cup 2006: Round 1, Super League / High League / First League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -17506,7 +17506,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2006-round-1-super-high-first-league-problem-1",
+          "title": "Graph-theory role in kolmogorov-2006-round-1-super-high-first-league-problem-1",
           "text": "Граф прямо присутствует в условии, а официальное решение полностью использует графовые понятия: степени вершин, пути, циклы, двудольность и локальные запрещенные конфигурации.",
           "tags": [],
           "status": "ai_checked"
@@ -17515,7 +17515,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение сводит задачу к отсутствию нечетных циклов. Предположим, что в графе есть нечетный цикл минимальной длины `n`.\n\nПри `n = 5` каждая из остальных 95 вершин может быть соединена не более чем с двумя вершинами цикла, иначе появился бы треугольник. Тогда сумма степеней вершин цикла не превышает `10 + 95 * 2 = 200`, и какая-то вершина цикла имела бы степень не больше 40, что противоречит условию.\n\nПри `n = 7` среди остальных вершин найдется вершина, соединенная хотя бы с тремя вершинами цикла; тогда легко возникает либо треугольник, либо цикл длины 5. При `n >= 9` используют тот факт, что любые две вершины графа соединяются путем длины не больше 3, и это позволяет разрезать исходный цикл на два меньших, один из которых нечетен. Получаем противоречие с минимальностью.\n\nСледовательно, нечетных циклов нет, значит граф двудолен.",
           "idea_ids": [
             "idea-graph-role"
@@ -17533,7 +17533,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -17573,7 +17573,7 @@
     },
     "kolmogorov-2006-round-1-super-high-first-league-problem-9": {
       "id": "kolmogorov-2006-round-1-super-high-first-league-problem-9",
-      "title": "????? ??????????? 2006: Round 1, Super League / High League / First League Problem 9",
+      "title": "Kolmogorov Cup 2006: Round 1, Super League / High League / First League Problem 9",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -17641,7 +17641,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2006-round-1-super-high-first-league-problem-9",
+          "title": "Graph-theory role in kolmogorov-2006-round-1-super-high-first-league-problem-9",
           "text": "В условии граф не назван напрямую, но официальное решение существенно строит планарный граф разбиения и применяет степени вершин и формулу Эйлера.",
           "tags": [],
           "status": "ai_checked"
@@ -17650,7 +17650,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `0` при `n = 1`, `1` при `n = 2`, `3n - 6` при `n >= 3`.\n\nВ официальном решении строят граф из проведенных отрезков и сторон квадрата. Все внутренние вершины этого графа имеют степень не меньше 3. Для вершин самого квадрата также получают почти ту же нижнюю оценку на степени: иначе при `n > 2` возник бы невыпуклый многоугольник или слишком малое число частей.\n\nПосле этого для числа вершин `V`, ребер `E` и граней `F = n` используют неравенство `2E >= 3V - 1` и формулу Эйлера `1 = V - E + F`. Из них выводится оценка `E <= 3n - 2`, а затем вычитаются 4 стороны квадрата. Получается верхняя граница `3n - 6`.\n\nПример на `3n - 6` строится по индукции, добавляя треугольник вместо внутренней вершины степени 3.",
           "idea_ids": [
             "idea-graph-role"
@@ -17668,7 +17668,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -17709,13 +17709,13 @@
           "Original final-selection name: Round 1, Super League / High League / First League, Problem 9."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2006-round-1-super-high-first-league-problem-9.yaml"
     },
     "kolmogorov-2006-round-2-first-junior-league-problem-8": {
       "id": "kolmogorov-2006-round-2-first-junior-league-problem-8",
-      "title": "????? ??????????? 2006: Round 2, First Junior League Problem 8",
+      "title": "Kolmogorov Cup 2006: Round 2, First Junior League Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -17781,7 +17781,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2006-round-2-first-junior-league-problem-8",
+          "title": "Graph-theory role in kolmogorov-2006-round-2-first-junior-league-problem-8",
           "text": "Граф не дан явно, но официальное решение строит дерево соседства клеток и именно через свойства этого дерева получает верхнюю оценку.",
           "tags": [],
           "status": "ai_checked"
@@ -17790,7 +17790,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `3n + 1`.\n\nВ официальном решении на клетках строят дерево: выбирают белую клетку в качестве корня, на следующий ярус помещают соседние с ней черные, затем соседние с ними белые клетки и так далее.\n\nИз корня может выходить не более 4 ребер, а из любой другой вершины дерева — не более 3. Так как цвета по ярусам чередуются, при `n` черных клетках число белых клеток не превосходит `3n + 1`.\n\nЭта оценка достигается на подходящей ветвящейся конструкции, поэтому максимум равен `3n + 1`.",
           "idea_ids": [
             "idea-graph-role"
@@ -17808,7 +17808,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -17850,13 +17850,13 @@
           "Original final-selection name: Round 2, First Junior League, Problem 8."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2006-round-2-first-junior-league-problem-8.yaml"
     },
     "kolmogorov-2006-round-2-super-league-problem-6": {
       "id": "kolmogorov-2006-round-2-super-league-problem-6",
-      "title": "????? ??????????? 2006: Round 2, Super League Problem 6",
+      "title": "Kolmogorov Cup 2006: Round 2, Super League Problem 6",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -17920,7 +17920,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2006-round-2-super-league-problem-6",
+          "title": "Graph-theory role in kolmogorov-2006-round-2-super-league-problem-6",
           "text": "В условии графа нет, но официальное решение существенно строит дерево соседства клеток и использует пути, листья и ветвление этого дерева.",
           "tags": [],
           "status": "ai_checked"
@@ -17929,7 +17929,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение сначала строит дерево соседства клеток: выбирают белую клетку как корень, на следующий ярус ставят соседние с ней черные клетки, затем соседние с ними белые и так далее.\n\nИз корня в следующий ярус выходит не более 4 ребер, из любой другой вершины — не более 3. Отсюда получается нужная структурная оценка: при почти максимальном числе черных клеток каждая белая клетка должна граничить как минимум с тремя черными.\n\nДалее идет индукция по числу белых клеток. В дереве рассматривают путь максимальной длины; его предпоследняя белая вершина оказывается смежной с тремя висячими черными клетками. Эти четыре клетки образуют нужную фигурку `T`-тетрамино. Удалив ее, применяют предположение индукции к оставшейся фигуре.",
           "idea_ids": [
             "idea-graph-role"
@@ -17946,7 +17946,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -17987,13 +17987,13 @@
           "Original final-selection name: Round 2, Super League, Problem 6."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2006-round-2-super-league-problem-6.yaml"
     },
     "kolmogorov-2006-round-3-super-league-problem-3": {
       "id": "kolmogorov-2006-round-3-super-league-problem-3",
-      "title": "????? ??????????? 2006: Round 3, Super League Problem 3",
+      "title": "Kolmogorov Cup 2006: Round 3, Super League Problem 3",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -18053,7 +18053,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2006-round-3-super-league-problem-3",
+          "title": "Graph-theory role in kolmogorov-2006-round-3-super-league-problem-3",
           "text": "Граф прямо присутствует в условии, а официальное решение основано на правильной раскраске, индуцированных подграфах, компонентах связности и перекраске по компонентам.",
           "tags": [],
           "status": "ai_checked"
@@ -18062,7 +18062,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение идет от противного. Предполагают, что у соседей вершины `A` использовано не более 499 цветов, и фиксируют одну такую раскраску.\n\nДалее рассматривают индуцированные подграфы на двух выбранных цветах и анализируют их компоненты связности. Если компоненту можно локально перекрасить, не ухудшая правильность раскраски, то число цветов в окрестности `A` удается увеличить, что противоречит выбранности.\n\nВ итоге получается сильно ограниченная структура соответствующей компоненты: она должна быть объединением путей, и эти пути вынуждены проходить через слишком много специально выбранных соседей `A`. Подсчет и анализ степеней приводят к противоречию.\n\nСледовательно, существует правильная раскраска, в которой среди соседей `A` не менее 500 различных цветов.",
           "idea_ids": [
             "idea-graph-role"
@@ -18079,7 +18079,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -18126,7 +18126,7 @@
     },
     "kolmogorov-2006-round-4-super-league-problem-5": {
       "id": "kolmogorov-2006-round-4-super-league-problem-5",
-      "title": "????? ??????????? 2006: Round 4, Super League Problem 5",
+      "title": "Kolmogorov Cup 2006: Round 4, Super League Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -18196,7 +18196,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2006-round-4-super-league-problem-5",
+          "title": "Graph-theory role in kolmogorov-2006-round-4-super-league-problem-5",
           "text": "В условии граф не упомянут, но официальное решение существенно заменяет триангуляцию деревом смежности треугольников и считает типы вершин этого дерева.",
           "tags": [],
           "status": "ai_checked"
@@ -18205,7 +18205,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение сопоставляет любой триангуляции дерево: вершины этого дерева соответствуют треугольникам, а ребра — парам соседних треугольников. Степени всех вершин такого дерева не превосходят 3.\n\nДлины сторон каждого треугольника однозначно определяются размерами компонент связности, возникающих после удаления соответствующей вершины дерева. Поэтому число различных треугольников оценивается через возможные типы вершин в этом дереве.\n\nЗатем отдельно оценивают вклад висячих вершин, вершин степени 2 и степени 3. Полученная верхняя оценка достигается на явной конструкции, так что максимум найден.",
           "idea_ids": [
             "idea-graph-role"
@@ -18224,7 +18224,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -18267,13 +18267,13 @@
           "Original final-selection name: Round 4, Super League, Problem 5."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2006-round-4-super-league-problem-5.yaml"
     },
     "kolmogorov-2006-team-olympiad-seniors-problem-9": {
       "id": "kolmogorov-2006-team-olympiad-seniors-problem-9",
-      "title": "????? ??????????? 2006: Team Olympiad, Seniors Problem 9",
+      "title": "Kolmogorov Cup 2006: Team Olympiad, Seniors Problem 9",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -18336,7 +18336,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2006-team-olympiad-seniors-problem-9",
+          "title": "Graph-theory role in kolmogorov-2006-team-olympiad-seniors-problem-9",
           "text": "В условии явно задан граф дорог, а официальное решение непосредственно считает остовные деревья графа-колеса с помощью вспомогательного графа.",
           "tags": [],
           "status": "ai_checked"
@@ -18345,7 +18345,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение прямо переводит задачу на граф «колесо» `W_n`. Искомые проекты — это остовные деревья этого графа.\n\nДля подсчета вводят вспомогательный граф «лапа» `L_n`, получаемый из пути длины `n` добавлением вершины, соединенной со всеми вершинами пути. Доказывается лемма: число остовных деревьев в `L_n` равно `F_{2n}`.\n\nПосле этого колесо разбивают на два естественных случая и выражают число его остовных деревьев через соседние значения для «лапы». В итоге получается формула\n`F_{2n+1} + F_{2n-1} - 2`.",
           "idea_ids": [
             "idea-graph-role"
@@ -18363,7 +18363,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -18410,7 +18410,7 @@
     },
     "kolmogorov-2007-round-1-high-league-problem-5": {
       "id": "kolmogorov-2007-round-1-high-league-problem-5",
-      "title": "????? ??????????? 2007: Round 1, High League Problem 5",
+      "title": "Kolmogorov Cup 2007: Round 1, High League Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -18472,7 +18472,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2007-round-1-high-league-problem-5",
+          "title": "Graph-theory role in kolmogorov-2007-round-1-high-league-problem-5",
           "text": "В условии явно присутствует дорожный граф, а официальное решение существенно использует эйлеровы циклы, леса, четность степеней и подграфы.",
           "tags": [],
           "status": "ai_checked"
@@ -18481,7 +18481,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение сразу переводит задачу на язык графов. Граф дорог эйлеров: он связен и все степени его вершин четны.\n\nТребуется доказать, что любой путь, начинающийся в вершине `Центральный`, продолжается до эйлерова цикла тогда и только тогда, когда подграф, образованный ребрами, не проходящими через `Центральный`, является лесом.\n\nЕсли в периферийной части есть цикл, его можно удалить и обойти только оставшуюся эйлерову компоненту с центральной вершиной, после чего удаленный цикл останется необойденным. Если же периферийный подграф ацикличен, то после любого начального пути необойденные периферийные ребра образуют лес с четными степенями, а значит пусты.\n\nОтсюда и получается эквивалентность из условия.",
           "idea_ids": [
             "idea-graph-role"
@@ -18497,7 +18497,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -18538,7 +18538,7 @@
     },
     "kolmogorov-2007-round-2-first-league-problem-8": {
       "id": "kolmogorov-2007-round-2-first-league-problem-8",
-      "title": "????? ??????????? 2007: Round 2, First League Problem 8",
+      "title": "Kolmogorov Cup 2007: Round 2, First League Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -18608,7 +18608,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2007-round-2-first-league-problem-8",
+          "title": "Graph-theory role in kolmogorov-2007-round-2-first-league-problem-8",
           "text": "В условии граф не назван, но официальное решение существенно строит циклы и вспомогательный граф, который затем доказывается деревом; без этого противоречие не получается.",
           "tags": [],
           "status": "needs_human_review"
@@ -18617,7 +18617,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение предполагает, что такое разрезание существует, и внутри каждой фигурки проводит вспомогательные синие отрезки. Эти отрезки объединяются в непересекающиеся циклы.\n\nРассматривают внутренний цикл без других циклов внутри него. Затем по внутренним вершинам клеточной сетки строят желтый граф смежности. Этот граф оказывается связным и ацикличным, то есть деревом.\n\nДалее используется паритетный подсчет: число внутренних вершин цикла четно, число ребер в желтом дереве нечетно, а суммарное число выходящих из отмеченных вершин ребер одновременно должно иметь и другую четность. Получается противоречие.\n\nСледовательно, требуемого разрезания не существует.",
           "idea_ids": [
             "idea-graph-role"
@@ -18635,7 +18635,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -18675,13 +18675,13 @@
           "Original final-selection name: Round 2, First League, Problem 8."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2007-round-2-first-league-problem-8.yaml"
     },
     "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem": {
       "id": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
-      "title": "????? ??????????? 2007: Round 2, High League / First League Chromatic-number problem",
+      "title": "Kolmogorov Cup 2007: Round 2, High League / First League Chromatic-number problem",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -18742,7 +18742,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
+          "title": "Graph-theory role in kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
           "text": "Граф и его хроматическое число прямо даны в условии, а официальное решение целиком работает с правильными раскрасками вершин.",
           "tags": [],
           "status": "ai_checked"
@@ -18751,7 +18751,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение фиксирует базовую правильную раскраску, где каждый цвет встречается хотя бы дважды, и отдельно рассматривает произвольную правильную раскраску в `k` цветов.\n\nЕсли в этой `k`-раскраске есть цвет, представленный одной вершиной, то всю соответствующую цветовую группу из базовой раскраски перекрашивают в этот цвет. После этого полученный цвет уже не станет одноэлементным на следующих шагах.\n\nПовторяя процесс, последовательно устраняют все «плохие» цвета, состоящие из одной вершины. В конце получается правильная раскраска в `k` цветов, где каждый цвет используется не менее двух раз.",
           "idea_ids": [
             "idea-graph-role"
@@ -18768,7 +18768,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -18814,7 +18814,7 @@
     },
     "kolmogorov-2007-round-3-high-and-first-league-problem-3": {
       "id": "kolmogorov-2007-round-3-high-and-first-league-problem-3",
-      "title": "????? ??????????? 2007: Round 3, High League / First League Problem 3",
+      "title": "Kolmogorov Cup 2007: Round 3, High League / First League Problem 3",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -18878,7 +18878,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2007-round-3-high-and-first-league-problem-3",
+          "title": "Graph-theory role in kolmogorov-2007-round-3-high-and-first-league-problem-3",
           "text": "Граф прямо присутствует в условии, а официальное решение использует индуцированные подграфы, компоненты связности и подсчет ребер.",
           "tags": [],
           "status": "ai_checked"
@@ -18887,7 +18887,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Пусть единственное разбиение на независимые множества равно `V_1, ..., V_5`. Для каждой пары индексов `i, j` рассматривают индуцированный подграф `G_{i,j}` на `V_i ∪ V_j`.\n\nСначала в официальном решении доказывают, что каждый такой `G_{i,j}` связен. Иначе можно было бы взять одну компоненту связности и поменять внутри нее классы `V_i` и `V_j`, получив другое допустимое разбиение на 5 независимых множеств, что противоречит единственности.\n\nЗначит, в каждом `G_{i,j}` не меньше `|V_i| + |V_j| - 1` ребер. Складывая эти 10 оценок и замечая, что каждое ребро исходного графа считается ровно трижды, получают итоговую нижнюю границу `|E(G)| >= 4n - 10`.",
           "idea_ids": [
             "idea-graph-role"
@@ -18905,7 +18905,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -18954,7 +18954,7 @@
     },
     "kolmogorov-2007-round-4-first-league-problem-1": {
       "id": "kolmogorov-2007-round-4-first-league-problem-1",
-      "title": "????? ??????????? 2007: Round 4, First League Problem 1",
+      "title": "Kolmogorov Cup 2007: Round 4, First League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -19015,7 +19015,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2007-round-4-first-league-problem-1",
+          "title": "Graph-theory role in kolmogorov-2007-round-4-first-league-problem-1",
           "text": "Граф прямо присутствует в условии, а официальное решение полностью опирается на сильную связность орграфа, ориентированные пути и нечетные циклы.",
           "tags": [],
           "status": "ai_checked"
@@ -19024,7 +19024,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В официальном решении берут простой нечетный цикл `C = a_1...a_n` исходного графа и работают в сильно связной ориентации этого графа.\n\nПроходя по циклу `C`, для каждого ребра `a_i a_{i+1}` смотрят, совпадает ли его ориентация с направлением обхода. Если да, его просто включают в строящуюся цепь. Если нет, то по сильной связности существует ориентированный путь из `a_i` в `a_{i+1}`.\n\nЕсли такой путь имеет четную длину, то вместе с обратным ребром цикла он сразу дает ориентированный цикл нечетной длины. Если же путь нечетный, его присоединяют к текущей конструкции и переходят к следующей вершине цикла. В итоге после обхода всего `C` получается ориентированный цикл нечетной длины.",
           "idea_ids": [
             "idea-graph-role"
@@ -19040,7 +19040,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -19079,7 +19079,7 @@
     },
     "kolmogorov-2007-team-olympiad-seniors-problem-7": {
       "id": "kolmogorov-2007-team-olympiad-seniors-problem-7",
-      "title": "????? ??????????? 2007: Team Olympiad, Seniors Problem 7",
+      "title": "Kolmogorov Cup 2007: Team Olympiad, Seniors Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -19145,7 +19145,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2007-team-olympiad-seniors-problem-7",
+          "title": "Graph-theory role in kolmogorov-2007-team-olympiad-seniors-problem-7",
           "text": "В условии граф не назван напрямую, но официальное решение существенно переводит задачу в граф знакомств и рассуждает через степени вершин в индуцированных подгруппах.",
           "tags": [],
           "status": "ai_checked"
@@ -19154,7 +19154,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `n(n-1)/2`, то есть знакомы должны быть все со всеми.\n\nВ официальном решении рассматривают произвольную группу из `m+1` человек и замечают, что каждый ее участник имеет одно и то же число знакомых внутри этой группы: иначе после удаления разных людей число пар знакомых среди оставшихся `m` менялось бы.\n\nПредположим теперь, что существуют двое незнакомых. Тогда можно выбрать группу `L` из `m+1` человек, где есть и такая незнакомая пара, и какая-то знакомая пара. Замена одного человека на внешнего человека `C` приводит к новой группе `M`; сравнение степеней внутри `L` и `M` показывает, что `C` должен иметь те же знакомства внутри `L`, что и замененный человек.\n\nПовторяя рассуждение с другой заменой, получают невозможное изменение суммарных степеней. Значит, незнакомых пар нет, и весь граф знакомств полный.",
           "idea_ids": [
             "idea-graph-role"
@@ -19170,7 +19170,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -19204,13 +19204,13 @@
           "Original final-selection name: Team Olympiad, Seniors, Problem 7."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2007-team-olympiad-seniors-problem-7.yaml"
     },
     "kolmogorov-2008-individual-olympiad-juniors-problem-8": {
       "id": "kolmogorov-2008-individual-olympiad-juniors-problem-8",
-      "title": "????? ??????????? 2008: Individual Olympiad, Juniors Problem 8",
+      "title": "Kolmogorov Cup 2008: Individual Olympiad, Juniors Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -19273,7 +19273,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-individual-olympiad-juniors-problem-8",
+          "title": "Graph-theory role in kolmogorov-2008-individual-olympiad-juniors-problem-8",
           "text": "Граф явно задан в условии: аэропорты — вершины, рейсы — ребра, причем граф 3-регулярен. Официальное решение использует раскраску вершин и двудольность подграфов.",
           "tags": [],
           "status": "ai_checked"
@@ -19282,7 +19282,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение сначала правильно раскрашивает вершины графа в 4 цвета. Это можно сделать, поскольку граф 3-регулярен и имеет максимальную степень 3.\n\nЗатем одну авиакомпанию наделяют ребрами типов `1-2`, `2-3`, `3-4`, `4-1`, а вторую — ребрами типов `1-3` и `2-4`. В каждом из этих двух подграфов вершины естественно разбиваются на две доли, поэтому оба подграфа двудольны.\n\nСледовательно, ни у одной компании не может возникнуть нечетный цикл.",
           "idea_ids": [
             "idea-graph-role"
@@ -19300,7 +19300,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -19347,7 +19347,7 @@
     },
     "kolmogorov-2008-individual-olympiad-seniors-problem-5": {
       "id": "kolmogorov-2008-individual-olympiad-seniors-problem-5",
-      "title": "????? ??????????? 2008: Individual Olympiad, Seniors Problem 5",
+      "title": "Kolmogorov Cup 2008: Individual Olympiad, Seniors Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -19412,7 +19412,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-individual-olympiad-seniors-problem-5",
+          "title": "Graph-theory role in kolmogorov-2008-individual-olympiad-seniors-problem-5",
           "text": "Граф прямо присутствует в условии, и официальное решение целиком использует графовые идеи: двудольность, отсутствие нечетных циклов, раскраску вершин и перенос раскраски ребер.",
           "tags": [],
           "status": "ai_checked"
@@ -19421,7 +19421,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В официальном решении сначала доказывается вспомогательный факт: существует раскраска ребер полного графа на `2^n` вершинах в `n` цветов так, что подграф каждого цвета двудолен.\n\nЗатем вершины исходного графа правильно красят в `1024` цвета, что возможно по теореме о жадной раскраске, так как максимальная степень равна 1000. После этого каждому ребру исходного графа присваивают цвет ребра между соответствующими цветами вершин в заранее построенном полном графе на 1024 вершинах.\n\nТак как в каждом цвете в вспомогательном полном графе нет нечетных циклов, то и в исходном графе одноцветный нечетный цикл возникнуть не может.",
           "idea_ids": [
             "idea-graph-role"
@@ -19440,7 +19440,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -19487,7 +19487,7 @@
     },
     "kolmogorov-2008-individual-olympiad-seniors-problem-7": {
       "id": "kolmogorov-2008-individual-olympiad-seniors-problem-7",
-      "title": "????? ??????????? 2008: Individual Olympiad, Seniors Problem 7",
+      "title": "Kolmogorov Cup 2008: Individual Olympiad, Seniors Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -19550,7 +19550,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-individual-olympiad-seniors-problem-7",
+          "title": "Graph-theory role in kolmogorov-2008-individual-olympiad-seniors-problem-7",
           "text": "Условие просит найти гамильтонов цикл в графе ребер многогранника. Официальное решение тоже работает именно с этим графом, хотя использует геометрическую проекцию.",
           "tags": [],
           "status": "ai_checked"
@@ -19559,7 +19559,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение рассматривает граф многогранника. Выбирают направление проектирования так, чтобы ни одна грань не была параллельна плоскости проекции, и проецируют многогранник на плоскость.\n\nТогда внешняя граница проекции проходит через все вершины: иначе часть многогранника закрывала бы другую часть, что противоречит выпуклости и треугольности граней. Следовательно, вершины на границе проекции образуют цикл, проходящий через каждую вершину ровно один раз.\n\nЭтот цикл и дает искомый замкнутый маршрут по ребрам многогранника.",
           "idea_ids": [
             "idea-graph-role"
@@ -19578,7 +19578,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -19625,7 +19625,7 @@
     },
     "kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1": {
       "id": "kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
-      "title": "????? ??????????? 2008: Round 1, First League / Higher Junior League Problem 1",
+      "title": "Kolmogorov Cup 2008: Round 1, First League / Higher Junior League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -19685,7 +19685,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
+          "title": "Graph-theory role in kolmogorov-2008-round-1-first-league-and-higher-junior-problem-1",
           "text": "В условии явно фигурирует дерево, то есть специальный вид графа. Официальное решение опирается на структуру деревьев, листья и операции переподвешивания.",
           "tags": [],
           "status": "ai_checked"
@@ -19694,7 +19694,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `n - 3`.\n\nНижняя оценка получается на примере пути и звезды: чтобы превратить путь в звезду, нужно переподвесить все внутренние вершины пути, кроме двух крайних и будущего центра, то есть требуется `n - 3` ходов.\n\nДля верхней оценки в официальном решении выбирают в первом дереве путь длины 2 и показывают, что можно последовательно переставлять листья так, чтобы сохранить этот общий фрагмент и постепенно привести дерево к нужному виду. Иначе говоря, любое дерево можно за не более чем `n - 3` операций превратить в звезду, а из звезды — в любое другое дерево.\n\nСледовательно, максимальное необходимое число ходов равно `n - 3`.",
           "idea_ids": [
             "idea-graph-role"
@@ -19712,7 +19712,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -19760,7 +19760,7 @@
     },
     "kolmogorov-2008-round-1-high-league-problem-1": {
       "id": "kolmogorov-2008-round-1-high-league-problem-1",
-      "title": "????? ??????????? 2008: Round 1, High League Problem 1",
+      "title": "Kolmogorov Cup 2008: Round 1, High League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -19828,7 +19828,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-1-high-league-problem-1",
+          "title": "Graph-theory role in kolmogorov-2008-round-1-high-league-problem-1",
           "text": "Граф прямо дан в условии, а официальное решение существенно использует базовые графовые понятия: связность, точки сочленения, степени вершин, пути и циклы.",
           "tags": [],
           "status": "ai_checked"
@@ -19837,7 +19837,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение идет по индукции по числу вершин графа.\n\nЕсли граф несвязен, утверждение доказывают отдельно для каждой компоненты. Если граф имеет точку сочленения, то индукцию применяют к блокам, в одном из них находится вершина степени не больше 2, и ее степень в исходном графе также не превосходит 2.\n\nОстается случай, когда граф связен и не имеет точек сочленения. Предположим противное: степени всех вершин хотя бы 3. Рассмотрим максимальный простой путь `v_1...v_k`. Так как конец `v_k` не является точкой сочленения, после удаления `v_k` граф остается связным, поэтому у `v_k` есть как минимум два соседа на этом пути. Отсюда возникают два цикла, проходящие по разным хордам к пути и имеющие ровно одно общее ребро, что противоречит условию.\n\nЗначит, вершина степени не больше 2 существует.",
           "idea_ids": [
             "idea-graph-role"
@@ -19857,7 +19857,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -19906,7 +19906,7 @@
     },
     "kolmogorov-2008-round-2-first-junior-league-problem-1": {
       "id": "kolmogorov-2008-round-2-first-junior-league-problem-1",
-      "title": "????? ??????????? 2008: Round 2, First Junior League Problem 1",
+      "title": "Kolmogorov Cup 2008: Round 2, First Junior League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -19969,7 +19969,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-2-first-junior-league-problem-1",
+          "title": "Graph-theory role in kolmogorov-2008-round-2-first-junior-league-problem-1",
           "text": "Граф явно присутствует в условии в виде дорожной сети-колеса, а официальное решение полностью опирается на структуру колеса и связность цветных подграфов.",
           "tags": [],
           "status": "ai_checked"
@@ -19978,7 +19978,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Это тот же граф-колесо, только с 10 вершинами на ободе. Официальное решение повторяет рассуждение общей задачи: каждая фирма должна получить связный остов, поэтому все определяется выбором цветов у спиц, кроме двух одноцветных вариантов.\n\nПосле выбора цветов спиц ребра на внешнем цикле должны быть раскрашены единственным возможным образом, иначе один из цветных подграфов потеряет связность.\n\nВ итоге число способов равно `2(2^10 - 2)`.",
           "idea_ids": [
             "idea-graph-role"
@@ -19996,7 +19996,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -20045,7 +20045,7 @@
     },
     "kolmogorov-2008-round-2-first-league-and-higher-junior-problem-1": {
       "id": "kolmogorov-2008-round-2-first-league-and-higher-junior-problem-1",
-      "title": "????? ??????????? 2008: Round 2, First League / Higher Junior League Problem 1",
+      "title": "Kolmogorov Cup 2008: Round 2, First League / Higher Junior League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -20113,7 +20113,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-2-first-league-and-higher-junior-problem-1",
+          "title": "Graph-theory role in kolmogorov-2008-round-2-first-league-and-higher-junior-problem-1",
           "text": "Граф прямо присутствует в условии: задача сформулирована про колесо `W_n`. Официальное решение полностью использует связность цветных подграфов и структуру этого графа.",
           "tags": [],
           "status": "ai_checked"
@@ -20122,7 +20122,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `2(2^n - 2)`.\n\nВ официальном решении отмечают, что в каждом цвете должен получиться остов, а значит в одном цвете можно выбрать произвольное непустое собственное множество спиц колеса. После выбора цветов спиц раскраска ребер внешнего цикла определяется однозначно: каждое ребро цикла должно соединять вершины, чьи спицы окрашены в разные цвета, иначе один из цветных подграфов распадется.\n\nТаким образом, допустимы все раскраски спиц, кроме двух одноцветных. Таких раскрасок `2^n - 2`, и еще есть выбор, какой цвет считается первым. Итого получаем `2(2^n - 2)`.",
           "idea_ids": [
             "idea-graph-role"
@@ -20141,7 +20141,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -20191,7 +20191,7 @@
     },
     "kolmogorov-2008-round-2-high-league-problem-1": {
       "id": "kolmogorov-2008-round-2-high-league-problem-1",
-      "title": "????? ??????????? 2008: Round 2, High League Problem 1",
+      "title": "Kolmogorov Cup 2008: Round 2, High League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -20262,7 +20262,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-2-high-league-problem-1",
+          "title": "Graph-theory role in kolmogorov-2008-round-2-high-league-problem-1",
           "text": "Хотя в условии граф не упоминается, официальное решение явно и существенно переводит задачу в полный ориентированный граф турнира и далее рассуждает о нумерациях его вершин.",
           "tags": [],
           "status": "ai_checked"
@@ -20271,7 +20271,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В официальном решении результаты турнира переводятся на язык ориентированного графа: игроки становятся вершинами, а для каждой пары проводится ориентированное ребро от победителя к проигравшему. Получается полный ориентированный граф с помеченными вершинами.\n\nОдин вопрос сравнения двух мест делит множество возможных нумераций вершин не более чем пополам. Изначально возможны все `n!` нумераций, поэтому после `k` вопросов можно различить не более `2^k` вариантов.\n\nОтсюда достаточно взять `k`, для которого `2^k >= n!`, то есть `k >= ceil(log_2(n!))`. Далее в решении используется оценка `log_2(n!) <= n log_2 n`, так что числа вопросов порядка `n log_2 n` хватает.",
           "idea_ids": [
             "idea-graph-role"
@@ -20290,7 +20290,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -20331,13 +20331,13 @@
           "Original final-selection name: Round 2, High League, Problem 1."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2008-round-2-high-league-problem-1.yaml"
     },
     "kolmogorov-2008-round-2-second-league-problem-2": {
       "id": "kolmogorov-2008-round-2-second-league-problem-2",
-      "title": "????? ??????????? 2008: Round 2, Second League Problem 2",
+      "title": "Kolmogorov Cup 2008: Round 2, Second League Problem 2",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -20405,7 +20405,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-2-second-league-problem-2",
+          "title": "Graph-theory role in kolmogorov-2008-round-2-second-league-problem-2",
           "text": "В условии явно задана дорожная сеть, которая в точности является графом-колесом, а официальное решение непосредственно переводит задачу к связным подграфам этого колеса.",
           "tags": [],
           "status": "ai_checked"
@@ -20414,7 +20414,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение замечает, что дорожная сеть есть колесо: 100 городов на ободе и столица в центре. Поэтому задача эквивалентна раскраске ребер колеса в два цвета так, чтобы оба цветных подграфа были связны.\n\nКак и в общей задаче про колесо, раскраска полностью определяется выбором цветов у спиц. Нельзя покрасить все спицы в один цвет, иначе второй цвет не будет связным. Для любого другого выбора ребра обода раскрашиваются единственным образом.\n\nПоэтому число способов равно `2(2^100 - 2)`.",
           "idea_ids": [
             "idea-graph-role"
@@ -20433,7 +20433,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -20483,7 +20483,7 @@
     },
     "kolmogorov-2008-round-3-high-league-problem-1": {
       "id": "kolmogorov-2008-round-3-high-league-problem-1",
-      "title": "????? ??????????? 2008: Round 3, High League Problem 1",
+      "title": "Kolmogorov Cup 2008: Round 3, High League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -20550,7 +20550,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-3-high-league-problem-1",
+          "title": "Graph-theory role in kolmogorov-2008-round-3-high-league-problem-1",
           "text": "Граф прямо дан в условии, а официальное решение является чисто графовым: используются степени вершин, гамильтоновы пути и явная экстремальная конструкция графа.",
           "tags": [],
           "status": "ai_checked"
@@ -20559,7 +20559,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `5000`.\n\nДля нижней оценки официальное решение замечает, что каждая вершина должна иметь степень не меньше 3: при меньшей степени нельзя обеспечить гамильтонов путь с произвольными концами. Тогда сумма степеней не меньше `3 * 3332 + 4`, откуда число ребер не меньше 5000.\n\nДля верхней оценки строится конкретный пример на 3333 вершинах с 5000 ребрами: берется прямоугольная решетка `2 x 1666` и добавляется специальная вершина, соединенная с двумя угловыми. В полученном графе между любыми двумя вершинами можно выписать гамильтонов путь.\n\nЗначит, минимальное число ребер действительно равно `5000`.",
           "idea_ids": [
             "idea-graph-role"
@@ -20580,7 +20580,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -20630,7 +20630,7 @@
     },
     "kolmogorov-2008-round-4-first-league-and-higher-junior-problem-1": {
       "id": "kolmogorov-2008-round-4-first-league-and-higher-junior-problem-1",
-      "title": "????? ??????????? 2008: Round 4, First League / Higher Junior League Problem 1",
+      "title": "Kolmogorov Cup 2008: Round 4, First League / Higher Junior League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -20697,7 +20697,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-4-first-league-and-higher-junior-problem-1",
+          "title": "Graph-theory role in kolmogorov-2008-round-4-first-league-and-higher-junior-problem-1",
           "text": "В условии явно стоит дерево. Официальное решение существенно использует двудольность дерева, суммы степеней и свойства листьев.",
           "tags": [],
           "status": "ai_checked"
@@ -20706,7 +20706,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В официальном решении дерево рассматривают как двудольный граф по раскраске вершин. Пусть, вопреки утверждению, каждый красный вершина имеет степень не меньше 2. Тогда сумма степеней красных вершин не меньше удвоенного числа красных вершин.\n\nНо в двудольном графе сумма степеней красных вершин равна сумме степеней синих, а в дереве она равна числу ребер, то есть `R + B - 1`, где `R` и `B` — числа красных и синих вершин. Из предположения `R >= B` и неравенства для степеней получается противоречие.\n\nСледовательно, среди красных вершин обязательно есть лист.",
           "idea_ids": [
             "idea-graph-role"
@@ -20727,7 +20727,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -20777,7 +20777,7 @@
     },
     "kolmogorov-2008-round-4-second-league-problem-7": {
       "id": "kolmogorov-2008-round-4-second-league-problem-7",
-      "title": "????? ??????????? 2008: Round 4, Second League Problem 7",
+      "title": "Kolmogorov Cup 2008: Round 4, Second League Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -20844,7 +20844,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-round-4-second-league-problem-7",
+          "title": "Graph-theory role in kolmogorov-2008-round-4-second-league-problem-7",
           "text": "В условии явно задан связный граф дорог, который по числу ребер сразу распознается как дерево; официальное решение опирается на двудольность, степени вершин и листы дерева.",
           "tags": [],
           "status": "ai_checked"
@@ -20853,7 +20853,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Так как граф связен и имеет 999 ребер при 1000 вершинах, он является деревом. Пусть в большей республике `R` городов, а в меньшей `B` городов, где `R >= B`.\n\nПредположим, что в большей республике нет листьев. Тогда каждая вершина этой доли имеет степень не меньше 2, и сумма степеней вершин большей доли не меньше `2R`.\n\nНо граф двудолен, поэтому сумма степеней вершин каждой доли равна числу ребер, то есть `999`. С другой стороны, `999 = R + B - 1`, а из `R >= B` следует `999 < 2R`, что дает противоречие. Значит, в большей республике есть вершина степени 1.",
           "idea_ids": [
             "idea-graph-role"
@@ -20874,7 +20874,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -20924,7 +20924,7 @@
     },
     "kolmogorov-2008-team-olympiad-juniors-problem-5": {
       "id": "kolmogorov-2008-team-olympiad-juniors-problem-5",
-      "title": "????? ??????????? 2008: Team Olympiad, Juniors Problem 5",
+      "title": "Kolmogorov Cup 2008: Team Olympiad, Juniors Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -20994,7 +20994,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-team-olympiad-juniors-problem-5",
+          "title": "Graph-theory role in kolmogorov-2008-team-olympiad-juniors-problem-5",
           "text": "В условии граф не назван напрямую, но официальное решение существенно переводит задачу в 3-раскрашенный граф дружбы, использует 2-регулярность и разложение на циклы.",
           "tags": [],
           "status": "ai_checked"
@@ -21003,7 +21003,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В официальном решении депутаты становятся вершинами графа, дружбы — ребрами, а принадлежность к фракциям — 3-раскраской вершин. Так как у каждого ровно два друга, граф 2-регулярен, то есть состоит из циклов.\n\nПоскольку соседние вершины имеют разные цвета, каждый цикл должен быть раскрашен в три цвета по кругу. Значит, длина каждого цикла делится на 3. Тогда общее число вершин графа также должно делиться на 3.\n\nНо `2008` на 3 не делится. Полученное противоречие показывает, что исходная конфигурация невозможна, а значит требуемое утверждение верно.",
           "idea_ids": [
             "idea-graph-role"
@@ -21022,7 +21022,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -21063,13 +21063,13 @@
           "Original final-selection name: Team Olympiad, Juniors, Problem 5."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2008-team-olympiad-juniors-problem-5.yaml"
     },
     "kolmogorov-2008-team-olympiad-seniors-problem-7": {
       "id": "kolmogorov-2008-team-olympiad-seniors-problem-7",
-      "title": "????? ??????????? 2008: Team Olympiad, Seniors Problem 7",
+      "title": "Kolmogorov Cup 2008: Team Olympiad, Seniors Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -21137,7 +21137,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2008-team-olympiad-seniors-problem-7",
+          "title": "Graph-theory role in kolmogorov-2008-team-olympiad-seniors-problem-7",
           "text": "Условие прямо задает полный граф с раскраской ребер. Официальное решение полностью графовое: используется цветной полный граф, одноцветные пути и циклы.",
           "tags": [],
           "status": "ai_checked"
@@ -21146,7 +21146,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение рассматривает полный граф на 21 вершине с раскраской ребер в 4 цвета. Из одной вершины выходит 20 ребер, значит хотя бы 5 из них имеют один цвет; рассматривают соответствующие 5 соседей.\n\nЕсли среди этих 5 вершин есть ребро того же цвета, то вместе с исходной вершиной получается одноцветный треугольник, из которого затем извлекают нужную конфигурацию. Если же такого ребра нет, то между 5 вершинами остаются только три цвета, и подсчет одноцветных двушаговых путей показывает, что среди них возникает одноцветный цикл длины 4.\n\nСледовательно, в любой 4-раскраске ребер полного графа `K_21` обязательно есть одноцветный цикл из четырех вершин.",
           "idea_ids": [
             "idea-graph-role"
@@ -21166,7 +21166,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -21790,7 +21790,7 @@
     },
     "kolmogorov-2010-individual-olympiad-juniors-problem-5": {
       "id": "kolmogorov-2010-individual-olympiad-juniors-problem-5",
-      "title": "????? ??????????? 2010: Individual Olympiad, Juniors Problem 5",
+      "title": "Kolmogorov Cup 2010: Individual Olympiad, Juniors Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -21856,7 +21856,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2010-individual-olympiad-juniors-problem-5",
+          "title": "Graph-theory role in kolmogorov-2010-individual-olympiad-juniors-problem-5",
           "text": "В условии прямо задан дорожный граф на городах, а официальное решение использует именно граф городов и дорог, кратчайшие пути и цикл обхода по вершинам.",
           "tags": [],
           "status": "ai_checked"
@@ -21865,7 +21865,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `99 * 8 = 792` часа.\n\nРассматривается граф городов и дорог. Поскольку граф на 100 вершинах и 1000 ребрах не является полным, найдутся два города, кратчайший путь между которыми проходит через промежуточный город. Пусть, например, кратчайший путь от `x1` к `x3` идет через `x2`.\n\nТогда можно построить цикл `x1 -> x2 -> x3 -> ... -> x100`, в котором каждый переход требует не более 8 часов. Всего таких переходов 99, значит, весь объезд можно гарантировать за `99 * 8` часов.\n\nОценка точна: если все города соединены с одним центральным городом дорогами по 4 часа, а между остальными парами дорог либо нет, либо они имеют длину 8 часов, то лучше гарантированно сделать нельзя.",
           "idea_ids": [
             "idea-graph-role"
@@ -21886,7 +21886,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -21934,7 +21934,7 @@
     },
     "kolmogorov-2010-individual-olympiad-seniors-problem-4": {
       "id": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
-      "title": "????? ??????????? 2010: Individual Olympiad, Seniors Problem 4",
+      "title": "Kolmogorov Cup 2010: Individual Olympiad, Seniors Problem 4",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -22006,7 +22006,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2010-individual-olympiad-seniors-problem-4",
+          "title": "Graph-theory role in kolmogorov-2010-individual-olympiad-seniors-problem-4",
           "text": "В официальном решении задача целиком переводится на язык ориентированных графов, гамильтоновых путей и склейки путей в турнире. Эта графовая модель является основной, а не факультативной.",
           "tags": [],
           "status": "ai_checked"
@@ -22015,7 +22015,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Официальное решение строит ориентированный граф `T`, вершины которого соответствуют городам, а дуги — авиарейсам. Пусть `w` — столица, а `A` и `B` — подграфы, соответствующие двум республикам.\n\nДоказывается лемма о склейке двух непересекающихся ориентированных путей `P` и `Q` в полном ориентированном графе: можно построить путь `R` на вершинах этих двух путей, в котором вершины `P` и `Q` сохраняют свой порядок.\n\nТеперь берутся любые гамильтоновы пути `P` в графе `A` и `Q` в графе `B`. Каждый из них проходит через столицу `w`, поэтому их можно записать в виде `P = P1 w P2` и `Q = Q1 w Q2`. По лемме существуют склейки `R1` для `P1` и `Q1` и `R2` для `P2` и `Q2`, после чего путь `R = R1 w R2` становится гамильтоновым путем во всей стране.\n\nЗначит, каждому гамильтонову пути во всей стране соответствует пара гамильтоновых путей в республиках, и число глобальных маршрутов не превосходит `N1 * N2`.",
           "idea_ids": [
             "idea-graph-role"
@@ -22035,7 +22035,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -22078,13 +22078,13 @@
           "Original final-selection name: Individual Olympiad, Seniors, Problem 4."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2010-individual-olympiad-seniors-problem-4.yaml"
     },
     "kolmogorov-2011-individual-olympiad-seniors-problem-7": {
       "id": "kolmogorov-2011-individual-olympiad-seniors-problem-7",
-      "title": "????? ??????????? 2011: Individual Olympiad, Seniors Problem 7",
+      "title": "Kolmogorov Cup 2011: Individual Olympiad, Seniors Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -22149,7 +22149,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2011-individual-olympiad-seniors-problem-7",
+          "title": "Graph-theory role in kolmogorov-2011-individual-olympiad-seniors-problem-7",
           "text": "Граф полностью задан уже в условии: связный граф, расстояние между вершинами и гамильтонов цикл. Официальное решение целиком построено на графовых операциях с деревом и степенями вершин.",
           "tags": [],
           "status": "ai_checked"
@@ -22158,7 +22158,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Достаточно рассмотреть случай, когда `G` — дерево: если утверждение верно для остовного дерева, то оно верно и для исходного графа.\n\nДоказательство ведется индукцией по числу вершин. В графе `G^3` длиной ребра называют расстояние между его концами в исходном дереве, так что возможны ребра длин `1`, `2` и `3`.\n\nЕсли в дереве есть вершина, смежная хотя бы с двумя листьями, то одну новую висячую вершину можно вставить в уже построенный гамильтонов цикл меньшего дерева, заменив участок `u-v1-u'` на `u-v1-v2-u'`.\n\nВ противном случае берут вершину степени не меньше `3`, у которой висит путь `v1, ..., vk`, удаляют этот путь и по предположению индукции получают гамильтонов цикл в `T^3`. В этом цикле находится ребро, соединяющее разные компоненты графа `T - w`; его заменяют на специальный проход через вершины удаленного пути. Все новые ребра имеют длину не более `3`, значит, действительно принадлежат `G^3`.\n\nТак индуктивно строится гамильтонов цикл в `G^3`.",
           "idea_ids": [
             "idea-graph-role"
@@ -22178,7 +22178,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -22226,7 +22226,7 @@
     },
     "kolmogorov-2011-team-olympiad-juniors-problem-6": {
       "id": "kolmogorov-2011-team-olympiad-juniors-problem-6",
-      "title": "????? ??????????? 2011: Team Olympiad, Juniors Problem 6",
+      "title": "Kolmogorov Cup 2011: Team Olympiad, Juniors Problem 6",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -22292,7 +22292,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2011-team-olympiad-juniors-problem-6",
+          "title": "Graph-theory role in kolmogorov-2011-team-olympiad-juniors-problem-6",
           "text": "Существенная часть официального решения — построение графа белых вершин и применение графовых идей: степени вершин, связность компоненты и существование эйлерова маршрута.",
           "tags": [],
           "status": "ai_checked"
@@ -22301,7 +22301,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `1335`.\n\nКак и в старшей задаче, официальное решение строит граф белых вершин: вершины клеток красят в шахматном порядке, и каждая допустимая диагональ становится ребром между белыми вершинами. Максимальный маршрут муравья интерпретируется как маршрут по ребрам этого графа.\n\nДля оценки сверху стирают ребра максимального маршрута. В оставшемся белом графе появляются вершины нечетной степени; две из них лежат в одной компоненте связности, а соединяющий их путь имеет длину не менее `15`. Значит, хотя бы `15` ребер белого графа не используются, поэтому посещено не более `6(15^2) - 15 = 1335` центров клеток.\n\nДля достижения оценки удаляют по одной диагонали на каждой грани так, чтобы оставшийся белый граф был связен и имел ровно две вершины нечетной степени. Тогда в нем существует эйлеров маршрут, проходящий по всем оставшимся ребрам, то есть через `1335` центров клеток.",
           "idea_ids": [
             "idea-graph-role"
@@ -22318,7 +22318,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -22359,13 +22359,13 @@
           "Original final-selection name: Team Olympiad, Juniors, Problem 6."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2011-team-olympiad-juniors-problem-6.yaml"
     },
     "kolmogorov-2011-team-olympiad-seniors-problem-4": {
       "id": "kolmogorov-2011-team-olympiad-seniors-problem-4",
-      "title": "????? ??????????? 2011: Team Olympiad, Seniors Problem 4",
+      "title": "Kolmogorov Cup 2011: Team Olympiad, Seniors Problem 4",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -22433,7 +22433,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2011-team-olympiad-seniors-problem-4",
+          "title": "Graph-theory role in kolmogorov-2011-team-olympiad-seniors-problem-4",
           "text": "Хотя в условии граф не назван напрямую, официальное решение существенно строит граф белых вершин, анализирует степени вершин, компоненты связности и пути в этом графе. Без этой графовой конструкции решение не работает.",
           "tags": [],
           "status": "ai_checked"
@@ -22442,7 +22442,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: нет.\n\nВ официальном решении вершины клеток красят в шахматном порядке. Тогда каждая диагональ соединяет две вершины одного цвета, и весь маршрут муравья можно рассматривать внутри графа белых вершин, где диагонали клеток становятся ребрами.\n\nРассматривают максимальный маршрут муравья и стирают все использованные им ребра. В оставшемся белом графе по крайней мере у двух белых вершин остается нечетная степень, причем две такие вершины лежат в одной компоненте связности. Соединяющий их путь в этой компоненте имеет длину не менее `11`, значит, остается как минимум `11` непосещенных центров клеток.\n\nСледовательно, муравей может посетить не более `6(11^2) - 11 = 715` центров клеток, и число `720` недостижимо.",
           "idea_ids": [
             "idea-graph-role"
@@ -22459,7 +22459,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -22499,13 +22499,13 @@
           "Original final-selection name: Team Olympiad, Seniors, Problem 4."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2011-team-olympiad-seniors-problem-4.yaml"
     },
     "kolmogorov-2012-individual-olympiad-seniors-problem-1": {
       "id": "kolmogorov-2012-individual-olympiad-seniors-problem-1",
-      "title": "????? ??????????? 2012: Individual Olympiad, Seniors Problem 1",
+      "title": "Kolmogorov Cup 2012: Individual Olympiad, Seniors Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -22564,7 +22564,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2012-individual-olympiad-seniors-problem-1",
+          "title": "Graph-theory role in kolmogorov-2012-individual-olympiad-seniors-problem-1",
           "text": "Граф прямо задан в условии: вершины, ребра и треугольники являются объектами задачи. Официальное решение использует связность графа и пример со звездой.",
           "tags": [],
           "status": "ai_checked"
@@ -22573,7 +22573,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `n - 1`.\n\nПример дает звезда: одна вершина соединена со всеми остальными, а других ребер нет. Тогда при добавлении любого недостающего ребра между двумя листьями возникает треугольник с центром звезды.\n\nПокажем, что меньше `n - 1` ребер быть не может. Если в графе на `n` вершинах меньше `n - 1` ребра, то он несвязен. Тогда можно добавить ребро между вершинами из разных компонент связности, и никакого треугольника не появится. Противоречие.",
           "idea_ids": [
             "idea-graph-role"
@@ -22590,7 +22590,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -22637,7 +22637,7 @@
     },
     "kolmogorov-2012-individual-olympiad-seniors-problem-6": {
       "id": "kolmogorov-2012-individual-olympiad-seniors-problem-6",
-      "title": "????? ??????????? 2012: Individual Olympiad, Seniors Problem 6",
+      "title": "Kolmogorov Cup 2012: Individual Olympiad, Seniors Problem 6",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -22710,7 +22710,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2012-individual-olympiad-seniors-problem-6",
+          "title": "Graph-theory role in kolmogorov-2012-individual-olympiad-seniors-problem-6",
           "text": "В официальном решении задача переводится в ориентированный граф на узлах уличной сетки. Существенны именно графовые понятия: ориентированные ребра, входящие и исходящие степени, удаление ребер и существование маршрута через все оставшиеся ребра.",
           "tags": [],
           "status": "needs_human_review"
@@ -22719,7 +22719,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: `100(2n^2 - 2n + 4)`.\n\nРассмотрим сетку единичных отрезков и ориентируем каждый отрезок по направлению движения на соответствующей улице. Тогда задача превращается в задачу об ориентированном графе: нужно найти максимальную длину допустимого маршрута из стартовой вершины в финишную, не проходя по одному ребру дважды.\n\nВ официальном решении сначала оценивают снизу число непройденных ребер. Для этого рассматривают семейства диагональных прямых `x + y = k + 1/2` и подсчитывают, сколько ориентированных единичных отрезков их пересекает. Из-за чередования направлений на соседних улицах и условий входа-выхода через такие сечения получается, что хотя бы `4n - 4` ребер неизбежно останутся непройденными.\n\nЗатем приводится конструкция, где удаляют ровно `4n - 4` ориентированных ребра и коротких ориентированных пути так, что у внутренних вершин сохраняется баланс входящих и исходящих ребер, а на границе остаются нужные степени для существования требуемого маршрута. Значит, можно пройти по всем остальным ребрам, то есть по `2n(n + 1) - (4n - 4) = 2n^2 - 2n + 4` единичным отрезкам, что и дает искомое расстояние.",
           "idea_ids": [
             "idea-graph-role"
@@ -22739,7 +22739,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -22781,13 +22781,13 @@
           "Original final-selection name: Individual Olympiad, Seniors, Problem 6."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2012-individual-olympiad-seniors-problem-6.yaml"
     },
     "kolmogorov-2013-individual-olympiad-seniors-problem-5": {
       "id": "kolmogorov-2013-individual-olympiad-seniors-problem-5",
-      "title": "????? ??????????? 2013: Individual Olympiad, Seniors Problem 5",
+      "title": "Kolmogorov Cup 2013: Individual Olympiad, Seniors Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -22852,7 +22852,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2013-individual-olympiad-seniors-problem-5",
+          "title": "Graph-theory role in kolmogorov-2013-individual-olympiad-seniors-problem-5",
           "text": "В условии прямо фигурируют дерево, цикл, рёбра, вершины и правильная раскраска графа. Официальное решение существенно использует структуру дерева и графовую 3-раскраску.",
           "tags": [],
           "status": "ai_checked"
@@ -22861,7 +22861,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Выделим в дереве вершину, смежную с какой-нибудь висячей вершиной; она не является висячей. Все висячие вершины, смежные с ней, назовём особыми. Не все висячие вершины особые, потому что степени всех вершин меньше `n-1`.\n\nЕсли удалить из исходного дерева выделенную вершину и все висячие вершины, то останется дерево, а значит, его можно раскрасить в два цвета. Выделенную вершину покрасим в третий цвет.\n\nТеперь надо раскрасить висячие вершины, обходя добавленный цикл. В этом цикле найдётся особая вершина, за которой идёт не особая. Эту не особую вершину красим в третий цвет, а затем каждую следующую вершину цикла красим в любой цвет, отличный и от цвета предыдущей вершины цикла, и от цвета вершины дерева, с которой она смежна вне цикла.\n\nВ конце приходим к первой особой вершине. Две из трёх её соседних вершин уже покрашены в третий цвет, поэтому ей можно подобрать один из двух остальных цветов. Получается правильная 3-раскраска всего графа.",
           "idea_ids": [
             "idea-graph-role"
@@ -22881,7 +22881,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -22930,7 +22930,7 @@
     },
     "kolmogorov-2013-team-olympiad-juniors-problem-7": {
       "id": "kolmogorov-2013-team-olympiad-juniors-problem-7",
-      "title": "????? ??????????? 2013: Team Olympiad, Juniors Problem 7",
+      "title": "Kolmogorov Cup 2013: Team Olympiad, Juniors Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -22991,7 +22991,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2013-team-olympiad-juniors-problem-7",
+          "title": "Graph-theory role in kolmogorov-2013-team-olympiad-juniors-problem-7",
           "text": "Граф явно присутствует в условии: вершины, рёбра и правильная раскраска графа названы напрямую. Официальное решение целиком работает с раскраской подграфов и разбиением множества вершин.",
           "tags": [],
           "status": "ai_checked"
@@ -23000,7 +23000,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Раскрасим `B ∪ C` в `n` цветов и назовём один из этих цветов первым. Пусть `D` — множество всех вершин из `B`, покрашенных в первый цвет.\n\nТеперь раскрасим `A ∪ D` в `k` цветов, использовав в качестве одного из них тот же первый цвет, а остальные `k-1` цветов взяв отличными от уже использованных в раскраске `B ∪ C`.\n\nУ вершин, не входящих в `A ∪ D`, сохраним прежнюю раскраску. Полученная раскраска корректна: вершины из `A ∪ D` не соединены рёбрами с вершинами из `C`, покрашенными в первый цвет. Для вершин из `D` это следует из правильности исходной раскраски `B ∪ C`, а для вершин из `A` — из условия, что между `A` и `C` нет рёбер.\n\nЗначит, весь граф удалось правильно раскрасить в `k+n-1` цвет.",
           "idea_ids": [
             "idea-graph-role"
@@ -23017,7 +23017,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -23063,7 +23063,7 @@
     },
     "kolmogorov-2013-team-olympiad-seniors-problem-8": {
       "id": "kolmogorov-2013-team-olympiad-seniors-problem-8",
-      "title": "????? ??????????? 2013: Team Olympiad, Seniors Problem 8",
+      "title": "Kolmogorov Cup 2013: Team Olympiad, Seniors Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -23128,7 +23128,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2013-team-olympiad-seniors-problem-8",
+          "title": "Graph-theory role in kolmogorov-2013-team-olympiad-seniors-problem-8",
           "text": "Граф напрямую задан в условии, а официальное решение использует и графовую раскраску, и явную экстремальную конструкцию графа для нижней оценки.",
           "tags": [],
           "status": "ai_checked"
@@ -23137,7 +23137,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: в `k+n-1` цвет.\n\nВерхняя оценка совпадает с решением юниорской задачи: раскрашиваем `B ∪ C` в `n` цветов, фиксируем один цвет, берём множество `D` вершин из `B` этого цвета и затем раскрашиваем `A ∪ D` в `k` цветов, используя тот же цвет и ещё `k-1` новых.\n\nДля нижней оценки строится специальный граф. Берутся `kn` вершин множества `B` в виде прямоугольной таблицы из `n` строк и `k` столбцов. Ниже добавляется строка из `k` вершин — это `A`, слева столбец из `n` вершин — это `C`.\n\nВнутри `B` соединяются ребром любые две вершины, не лежащие в одной строке и не лежащие в одном столбце. Внутри `A` и внутри `C` берутся полные графы. Кроме того, вершина из `A` соединяется со всеми вершинами `B`, не лежащими с ней в одном столбце, а вершина из `C` — со всеми вершинами `B`, не лежащими с ней в одной строке.\n\nТогда `A ∪ B` раскрашивается в `k` цветов по столбцам, а `B ∪ C` — в `n` цветов по строкам. Остаётся показать, что весь граф нельзя раскрасить в `k+n-2` цвета. В официальном решении это делается подсчётом общих цветов, отмеченных строк и столбцов и выбором в `B` клики из `m` попарно смежных вершин, что даёт противоречие. Значит, минимум равен `k+n-1`.",
           "idea_ids": [
             "idea-graph-role"
@@ -23156,7 +23156,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -23947,7 +23947,7 @@
     },
     "kolmogorov-2015-individual-olympiad-juniors-problem-7": {
       "id": "kolmogorov-2015-individual-olympiad-juniors-problem-7",
-      "title": "????? ??????????? 2015: Individual Olympiad, Juniors Problem 7",
+      "title": "Kolmogorov Cup 2015: Individual Olympiad, Juniors Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -24003,7 +24003,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2015-individual-olympiad-juniors-problem-7",
+          "title": "Graph-theory role in kolmogorov-2015-individual-olympiad-juniors-problem-7",
           "text": "В официальном решении прямо строится граф знакомств между девочками и ключевым шагом становится правильная 3-раскраска его компонент связности.",
           "tags": [],
           "status": "ai_checked"
@@ -24012,7 +24012,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Обозначим пары через M1D1, ..., M2015D2015. Для каждой девочки Di выбирают другую девочку, знакомую с ее партнером Mi. Так получается граф на вершинах D1, ..., D2015 с 2015 ребрами. Достаточно правильно раскрасить этот граф в три цвета, а мальчиков покрасить в цвета их партнерш: тогда у каждого мальчика есть знакомые как минимум двух других цветов, и то же верно для девочек. Далее рассматривают компоненту связности построенного графа. Если в ней есть вершина степени 1, ее удаляют и потом докрашивают обратно. После удаления всех таких вершин остается граф минимальной степени 2, а поскольку число ребер равно числу вершин, каждая оставшаяся компонента является простым циклом. Простой цикл легко 3-раскрасить, после чего восстановленные вершины тоже докрашиваются.",
           "idea_ids": [
             "idea-graph-role"
@@ -24027,7 +24027,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -24059,13 +24059,13 @@
           "Original final-selection name: Individual Olympiad, Juniors, Problem 7."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2015-individual-olympiad-juniors-problem-7.yaml"
     },
     "kolmogorov-2015-round-2-graph-coloring-problem": {
       "id": "kolmogorov-2015-round-2-graph-coloring-problem",
-      "title": "????? ??????????? 2015: Round 2 (High League / Higher Junior League / First Junior League) Graph Coloring Under Cycle Constraint",
+      "title": "Kolmogorov Cup 2015: Round 2 (High League / Higher Junior League / First Junior League) Graph Coloring Under Cycle Constraint",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -24116,7 +24116,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2015-round-2-graph-coloring-problem",
+          "title": "Graph-theory role in kolmogorov-2015-round-2-graph-coloring-problem",
           "text": "Граф присутствует прямо в условии, а официальное решение полностью основано на разрезаниях графа по вершинам, индуцированных подграфах и поиске подразбиения K4.",
           "tags": [],
           "status": "ai_checked"
@@ -24125,7 +24125,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Решение ведется индукцией по числу вершин. Если в графе есть точка сочленения, его разбивают на два индуцированных подграфа с общей вершиной и раскрашивают их по индукции, согласовав цвет общей вершины. Если граф разделяется удалением двух вершин x и y, его разбивают на два подграфа с общими вершинами x и y и при необходимости добавляют ребро xy. Показывается, что условие про не более чем три простых цикла через каждое ребро сохраняется, после чего оба подграфа раскрашиваются по индукции и раскраски склеиваются. В оставшемся случае граф не имеет ни точек сочленения, ни разделяющих пар вершин, поэтому все степени не меньше трех. Тогда в нем находится подразбиение K4, но в таком подразбиении какое-то ребро входит как минимум в четыре различных простых цикла, что противоречит условию. Значит, предыдущие случаи исчерпывают все варианты, и 3-раскраска существует.",
           "idea_ids": [
             "idea-graph-role"
@@ -24140,7 +24140,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -24178,7 +24178,7 @@
     },
     "kolmogorov-2015-round-3-missionaries-and-cannibals-problem": {
       "id": "kolmogorov-2015-round-3-missionaries-and-cannibals-problem",
-      "title": "????? ??????????? 2015: Round 3, Second Junior League Problem 1",
+      "title": "Kolmogorov Cup 2015: Round 3, Second Junior League Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -24234,7 +24234,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2015-round-3-missionaries-and-cannibals-problem",
+          "title": "Graph-theory role in kolmogorov-2015-round-3-missionaries-and-cannibals-problem",
           "text": "В официальном решении строится двудольный граф совместных рейсов, и именно через свойства его компонент связности выводится противоречие.",
           "tags": [],
           "status": "ai_checked"
@@ -24243,7 +24243,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: не могло. Сначала показывается, что вдвоем могут плыть только миссионер и каннибал: два миссионера или два каннибала приводят к нарушению условий на одном из берегов. Если персонажи совершают одинаковое число рейсов вообще, то и число рейсов туда у них одинаково. После этого официальное решение объявляет персонажей вершинами, а совместные рейсы туда — ребрами графа. Получается двудольный граф с долями \"миссионеры\" и \"каннибалы\", возможно с кратными ребрами. В каждой компоненте связности степени всех вершин одинаковы, причем в компоненте есть хотя бы одно ребро. Тогда суммы степеней в обеих долях совпадают, а потому кратны числу вершин в каждой доле. Отсюда в каждой компоненте число миссионеров равно числу каннибалов, значит и во всей группе их поровну, что противоречит условию, что миссионеров было на одного больше.",
           "idea_ids": [
             "idea-graph-role"
@@ -24258,7 +24258,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -24290,13 +24290,13 @@
           "Original final-selection name: Round 3 missionaries and cannibals problem."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2015-round-3-missionaries-and-cannibals-problem.yaml"
     },
     "kolmogorov-2015-round-4-spies-and-opergroups-problem": {
       "id": "kolmogorov-2015-round-4-spies-and-opergroups-problem",
-      "title": "????? ??????????? 2015: Round 4 (High League / First League) Problem 6",
+      "title": "Kolmogorov Cup 2015: Round 4 (High League / First League) Problem 6",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -24352,7 +24352,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2015-round-4-spies-and-opergroups-problem",
+          "title": "Graph-theory role in kolmogorov-2015-round-4-spies-and-opergroups-problem",
           "text": "Официальное решение целиком сформулировано как реконструкция одного графа из другого: вводятся графы G и H, используются компоненты связности, точки сочленения, степени и индуцированный подграф.",
           "tags": [],
           "status": "ai_checked"
@@ -24361,7 +24361,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В решении вводятся два графа: G — граф связей между шпионами и H — граф связей между опергруппами. Изолированные вершины H соответствуют компонентам связности G из одной вершины, а остальные компоненты H отвечают неодноэлементным компонентам G. Поэтому задачу сводят к случаю, когда G связен. Далее вершины H отождествляют с соответствующими подмножествами вершин G. Одноэлементные опергруппы рассматриваются как специальные вершины-уникумы, и задача сводится к тому, чтобы распознать их в графе H. Показывается, что вершина степени 1 в H соответствует множеству G\\\\{v}, где v не является точкой сочленения в G; таким образом можно найти один уникум. После этого по соседству и расстоянию 2 в H разбивают все опергруппы на несколько классов в зависимости от того, содержат ли они v и его соседей в G, и по этим классам восстанавливают соседство в G. Удаляя найденную вершину и повторяя процедуру, восстанавливают весь граф шпионских связей.",
           "idea_ids": [
             "idea-graph-role"
@@ -24376,7 +24376,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -24408,13 +24408,13 @@
           "Original final-selection name: Round 4 spies and_opergroups_problem."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2015-round-4-spies-and-opergroups-problem.yaml"
     },
     "kolmogorov-2016-individual-olympiad-juniors-problem-7": {
       "id": "kolmogorov-2016-individual-olympiad-juniors-problem-7",
-      "title": "????? ??????????? 2016: Individual Olympiad, Juniors Problem 7",
+      "title": "Kolmogorov Cup 2016: Individual Olympiad, Juniors Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -24470,7 +24470,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2016-individual-olympiad-juniors-problem-7",
+          "title": "Graph-theory role in kolmogorov-2016-individual-olympiad-juniors-problem-7",
           "text": "Официальное решение прямо вводит двуцветный ориентированный граф и строит искомое множество через свойства стрелок и независимости.",
           "tags": [],
           "status": "ai_checked"
@@ -24479,7 +24479,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "В официальном решении рассматривается двуцветный ориентированный граф на множестве A. Из вершины b в вершину a проводится синяя стрелка, если b делится на a, и красная стрелка, если a+1 делится на b+1. Нужно выбрать независимое множество вершин B, из которого в каждую вершину A\\\\B ведет хотя бы одна стрелка. Далее вершины делят на три группы: исходные, выбранные и хорошие. Сначала в выбранные помещают вершины, в которые не входит ни одна синяя стрелка; тогда по транзитивности синих стрелок каждая оставшаяся исходная вершина получает синюю стрелку из выбранной. Если внутри выбранных есть красные стрелки, их концы переносят в хорошие. Затем в выбранные добавляют исходные вершины, в которые синие стрелки приходят только из хороших вершин, и снова убирают в хорошие концы красных стрелок между выбранными. Из-за транзитивности синего и красного отношений процесс заканчивается, когда множество исходных вершин перестает уменьшаться. В этот момент между выбранными нет запрещенных стрелок нужного типа, а каждая невыбранная вершина покрывается стрелкой из выбранной, что и дает требуемое множество B.",
           "idea_ids": [
             "idea-graph-role"
@@ -24494,7 +24494,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -24526,13 +24526,13 @@
           "Original final-selection name: Individual Olympiad, Juniors, Problem 7."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2016-individual-olympiad-juniors-problem-7.yaml"
     },
     "kolmogorov-2016-team-olympiad-juniors-problem-6": {
       "id": "kolmogorov-2016-team-olympiad-juniors-problem-6",
-      "title": "????? ??????????? 2016: Team Olympiad, Juniors Problem 6",
+      "title": "Kolmogorov Cup 2016: Team Olympiad, Juniors Problem 6",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -24588,7 +24588,7 @@
       "ideas": [
         {
           "id": "idea-graph-role",
-          "title": "???????? ???? ???????? kolmogorov-2016-team-olympiad-juniors-problem-6",
+          "title": "Graph-theory role in kolmogorov-2016-team-olympiad-juniors-problem-6",
           "text": "Официальное решение явно строит граф на вершинах 2017-угольника и использует правильную раскраску и свойства смежных вершин.",
           "tags": [],
           "status": "ai_checked"
@@ -24597,7 +24597,7 @@
       "solutions": [
         {
           "id": "sol-official-compressed",
-          "title": "??????????? ???????, ?????? ???????",
+          "title": "Official solution, compressed",
           "text": "Ответ: 12. В официальном решении для верхней оценки вводится граф G на вершинах 2017-угольника: две вершины соединяются ребром, если между ними не больше 9 промежуточных вершин. Затем показывается, что этот граф можно правильно раскрасить в 12 цветов, и Петя может расставить числа по цветам так, чтобы Вася никогда не возвращался к меньшему цвету; значит, он посетит не более 12 вершин. Для нижней оценки каждой вершине сопоставляют максимальную длину возрастающей цепочки, начинающейся в ней. Соседние в графе вершины не могут получить одно и то же значение, иначе из одной цепочки можно было бы удлинить другую. Если бы все значения были не больше 11, по принципу Дирихле нашлись бы две близкие вершины с одинаковым значением, что невозможно. Значит, существует вершина, из которой достижима цепочка длины не меньше 12.",
           "idea_ids": [
             "idea-graph-role"
@@ -24612,7 +24612,7 @@
       "difficulty": {
         "main": "national_final_medium",
         "local_score": 6,
-        "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+        "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
         "status": "needs_human_review"
       },
       "tags": [
@@ -24644,13 +24644,13 @@
           "Original final-selection name: Team Olympiad, Juniors, Problem 6."
         ],
         "relations_status": "deep_done",
-        "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+        "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
       },
       "_path": "data\\problems\\kolmogorov\\kolmogorov-2016-team-olympiad-juniors-problem-6.yaml"
     },
     "kolmogorov-2017-individual-olympiad-seniors-problem-7": {
       "id": "kolmogorov-2017-individual-olympiad-seniors-problem-7",
-      "title": "????? ??????????? 2017: Individual Olympiad, Seniors Problem 7",
+      "title": "Kolmogorov Cup 2017: Individual Olympiad, Seniors Problem 7",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -24768,7 +24768,7 @@
     },
     "kolmogorov-2017-team-olympiad-juniors-problem-6": {
       "id": "kolmogorov-2017-team-olympiad-juniors-problem-6",
-      "title": "????? ??????????? 2017: Team Olympiad, Juniors Problem 6",
+      "title": "Kolmogorov Cup 2017: Team Olympiad, Juniors Problem 6",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -24890,7 +24890,7 @@
     },
     "kolmogorov-2017-team-olympiad-seniors-problem-5": {
       "id": "kolmogorov-2017-team-olympiad-seniors-problem-5",
-      "title": "????? ??????????? 2017: Team Olympiad, Seniors Problem 5",
+      "title": "Kolmogorov Cup 2017: Team Olympiad, Seniors Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -25010,7 +25010,7 @@
     },
     "kolmogorov-2018-team-olympiad-juniors-problem-6": {
       "id": "kolmogorov-2018-team-olympiad-juniors-problem-6",
-      "title": "????? ??????????? 2018: Team Olympiad, Juniors Problem 6",
+      "title": "Kolmogorov Cup 2018: Team Olympiad, Juniors Problem 6",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -25128,7 +25128,7 @@
     },
     "kolmogorov-2018-team-olympiad-seniors-problem-5": {
       "id": "kolmogorov-2018-team-olympiad-seniors-problem-5",
-      "title": "????? ??????????? 2018: Team Olympiad, Seniors Problem 5",
+      "title": "Kolmogorov Cup 2018: Team Olympiad, Seniors Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -25246,7 +25246,7 @@
     },
     "kolmogorov-2019-team-olympiad-juniors-problem-8": {
       "id": "kolmogorov-2019-team-olympiad-juniors-problem-8",
-      "title": "????? ??????????? 2019: Team Olympiad, Juniors Problem 8",
+      "title": "Kolmogorov Cup 2019: Team Olympiad, Juniors Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -25362,7 +25362,7 @@
     },
     "kolmogorov-2021-individual-olympiad-seniors-problem-1": {
       "id": "kolmogorov-2021-individual-olympiad-seniors-problem-1",
-      "title": "????? ??????????? 2021: Individual Olympiad, Seniors Problem 1",
+      "title": "Kolmogorov Cup 2021: Individual Olympiad, Seniors Problem 1",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -25486,7 +25486,7 @@
     },
     "kolmogorov-2021-individual-olympiad-seniors-problem-5": {
       "id": "kolmogorov-2021-individual-olympiad-seniors-problem-5",
-      "title": "????? ??????????? 2021: Individual Olympiad, Seniors Problem 5",
+      "title": "Kolmogorov Cup 2021: Individual Olympiad, Seniors Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -25724,7 +25724,7 @@
     },
     "kolmogorov-2021-round1-second-league-problem-10": {
       "id": "kolmogorov-2021-round1-second-league-problem-10",
-      "title": "????? ??????????? 2021: Round 1, Second League Problem 10",
+      "title": "Kolmogorov Cup 2021: Round 1, Second League Problem 10",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -25840,7 +25840,7 @@
     },
     "kolmogorov-2021-round1-second-league-problem-8": {
       "id": "kolmogorov-2021-round1-second-league-problem-8",
-      "title": "????? ??????????? 2021: Round 1, Second League Problem 8",
+      "title": "Kolmogorov Cup 2021: Round 1, Second League Problem 8",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -26225,7 +26225,7 @@
     },
     "kolmogorov-2021-team-olympiad-seniors-problem-5": {
       "id": "kolmogorov-2021-team-olympiad-seniors-problem-5",
-      "title": "????? ??????????? 2021: Team Olympiad, Seniors Problem 5",
+      "title": "Kolmogorov Cup 2021: Team Olympiad, Seniors Problem 5",
       "kind": {
         "primary": "olympiad_problem",
         "secondary": [
@@ -50830,244 +50830,244 @@
     "src-kolmogorov-1999-official": {
       "id": "src-kolmogorov-1999-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 1999, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 1999 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm3.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2000-official": {
       "id": "src-kolmogorov-2000-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2000, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2000 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm4.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2001-official": {
       "id": "src-kolmogorov-2001-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2001, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2001 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm5.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2002-official": {
       "id": "src-kolmogorov-2002-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2002, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2002 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm6.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ??????????????? ???????? ???????? ????? 2002 ????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2003-official": {
       "id": "src-kolmogorov-2003-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2003, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2003 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm7.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2004-official": {
       "id": "src-kolmogorov-2004-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2004, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2004 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm8.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2005-official": {
       "id": "src-kolmogorov-2005-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2005, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2005 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm9.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2006-official": {
       "id": "src-kolmogorov-2006-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2006, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2006 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm10.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2007-official": {
       "id": "src-kolmogorov-2007-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2007, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2007 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm11.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2008-official": {
       "id": "src-kolmogorov-2008-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2008, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2008 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm12.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2010-official": {
       "id": "src-kolmogorov-2010-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2010, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2010 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm14.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2011-official": {
       "id": "src-kolmogorov-2011-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2011, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2011 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm15.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2012-official": {
       "id": "src-kolmogorov-2012-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2012, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2012 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm16.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2013-official": {
       "id": "src-kolmogorov-2013-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2013, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2013 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm17.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2015-official": {
       "id": "src-kolmogorov-2015-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2015, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2015 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm19.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2016-official": {
       "id": "src-kolmogorov-2016-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2016, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2016 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm20.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? ??????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ????????? ???????? ?????????????? ???????? ?????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2017-official": {
       "id": "src-kolmogorov-2017-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2017, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2017 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm21.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ??????????????? ???????? ???????? ????? 2017 ????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2018-official": {
       "id": "src-kolmogorov-2018-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2018, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2018 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm22.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ??????????????? ???????? ???????? ????? 2018 ????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2019-official": {
       "id": "src-kolmogorov-2019-official",
       "type": "olympiad_archive",
-      "title": "????? ??????????? 2019, ??????????? ???????? ?????",
+      "title": "Kolmogorov Cup 2019 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm23.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "??????????? zip-????? ?? ?????? ????? ???????????; ??????????? ??? ??????????????? ???????? ???????? ?????? 2019 ????."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2021-official": {
       "id": "src-kolmogorov-2021-official",
       "type": "olympiad_archive",
-      "title": "Кубок Колмогорова 2021, официальный архивный пакет",
+      "title": "Kolmogorov Cup 2021 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm24.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "Официальный zip-пакет XXIV Кубка Колмогорова с исходниками листков и частью решений."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2023-official": {
       "id": "src-kolmogorov-2023-official",
       "type": "olympiad_archive",
-      "title": "Кубок Колмогорова 2023, официальный архивный пакет",
+      "title": "Kolmogorov Cup 2023 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm26.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "Официальный zip-пакет XXVI Кубка Колмогорова; содержит tex- и pdf-материалы туров и личной олимпиады."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2024-official": {
       "id": "src-kolmogorov-2024-official",
       "type": "olympiad_archive",
-      "title": "Кубок Колмогорова 2024, официальный архивный пакет",
+      "title": "Kolmogorov Cup 2024 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm27.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "Официальный zip-пакет XXVII Кубка Колмогорова с tex-исходниками туров."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-archive": {
       "id": "src-kolmogorov-archive",
@@ -51175,7 +51175,7 @@
       "language": "en",
       "official": false,
       "status": "source_verified",
-      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Balkan Mathematical Olympiad 2022."
+      "access_note": "Retrieved from MOlympiad.NET for source verification."
     },
     "src-molympiad-memo-2021": {
       "id": "src-molympiad-memo-2021",
@@ -51186,7 +51186,7 @@
       "language": "en",
       "official": false,
       "status": "source_verified",
-      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? MEMO 2021."
+      "access_note": "Retrieved from MOlympiad.NET for source verification."
     },
     "src-molympiad-memo-2022": {
       "id": "src-molympiad-memo-2022",
@@ -51197,7 +51197,7 @@
       "language": "en",
       "official": false,
       "status": "source_verified",
-      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? MEMO 2022."
+      "access_note": "Retrieved from MOlympiad.NET for source verification."
     },
     "src-molympiad-rmm-2012": {
       "id": "src-molympiad-rmm-2012",
@@ -51208,7 +51208,7 @@
       "language": "en",
       "official": false,
       "status": "source_verified",
-      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2012."
+      "access_note": "Retrieved from MOlympiad.NET for source verification."
     },
     "src-molympiad-rmm-2013": {
       "id": "src-molympiad-rmm-2013",
@@ -51219,7 +51219,7 @@
       "language": "en",
       "official": false,
       "status": "source_verified",
-      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2013."
+      "access_note": "Retrieved from MOlympiad.NET for source verification."
     },
     "src-molympiad-rmm-2016": {
       "id": "src-molympiad-rmm-2016",
@@ -51230,7 +51230,7 @@
       "language": "en",
       "official": false,
       "status": "source_verified",
-      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2016."
+      "access_note": "Retrieved from MOlympiad.NET for source verification."
     },
     "src-molympiad-rmm-2017": {
       "id": "src-molympiad-rmm-2017",
@@ -51241,7 +51241,7 @@
       "language": "en",
       "official": false,
       "status": "source_verified",
-      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2017."
+      "access_note": "Retrieved from MOlympiad.NET for source verification."
     },
     "src-molympiad-rmm-2023": {
       "id": "src-molympiad-rmm-2023",
@@ -51252,7 +51252,7 @@
       "language": "en",
       "official": false,
       "status": "source_verified",
-      "access_note": "???????? MOlympiad.NET ? ????????? ? ????????? Romanian Masters Mathematics 2023."
+      "access_note": "Retrieved from MOlympiad.NET for source verification."
     },
     "src-mse-hall-tight-sets": {
       "id": "src-mse-hall-tight-sets",
@@ -53398,35 +53398,35 @@
     "src-kolmogorov-2009-official": {
       "id": "src-kolmogorov-2009-official",
       "type": "olympiad_archive",
-      "title": "Kolmogorov Cup 2009 official archive packet",
+      "title": "Kolmogorov Cup 2009 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm13.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "Official archive packet mirrored in the local extracted text folder work/kolm/text/2009."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2014-official": {
       "id": "src-kolmogorov-2014-official",
       "type": "olympiad_archive",
-      "title": "Kolmogorov Cup 2014 official archive packet",
+      "title": "Kolmogorov Cup 2014 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm18.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "Official archive packet mirrored in the local extracted text folder work/kolm/text/2014."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     },
     "src-kolmogorov-2022-official": {
       "id": "src-kolmogorov-2022-official",
       "type": "olympiad_archive",
-      "title": "Kolmogorov Cup 2022 official archive packet",
+      "title": "Kolmogorov Cup 2022 official archive",
       "url": "https://turmath.ru/kolm/files/archive/kolm25.zip",
       "browser_openable": true,
       "language": "ru",
       "official": true,
       "status": "source_verified",
-      "preference_note": "Official archive packet mirrored in the local extracted TeX/text folder work/kolm/text/2022."
+      "preference_note": "Official archive zip from the Kolmogorov Cup archive; used for source verification and prepared card imports."
     }
   },
   "definitions": {

@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2012-individual-olympiad-seniors-problem-6",
-  "title": "????? ??????????? 2012: Individual Olympiad, Seniors Problem 6",
+  "title": "Kolmogorov Cup 2012: Individual Olympiad, Seniors Problem 6",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -73,7 +73,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2012-individual-olympiad-seniors-problem-6",
+      "title": "Graph-theory role in kolmogorov-2012-individual-olympiad-seniors-problem-6",
       "text": "В официальном решении задача переводится в ориентированный граф на узлах уличной сетки. Существенны именно графовые понятия: ориентированные ребра, входящие и исходящие степени, удаление ребер и существование маршрута через все оставшиеся ребра.",
       "tags": [],
       "status": "needs_human_review"
@@ -82,7 +82,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Ответ: `100(2n^2 - 2n + 4)`.\n\nРассмотрим сетку единичных отрезков и ориентируем каждый отрезок по направлению движения на соответствующей улице. Тогда задача превращается в задачу об ориентированном графе: нужно найти максимальную длину допустимого маршрута из стартовой вершины в финишную, не проходя по одному ребру дважды.\n\nВ официальном решении сначала оценивают снизу число непройденных ребер. Для этого рассматривают семейства диагональных прямых `x + y = k + 1/2` и подсчитывают, сколько ориентированных единичных отрезков их пересекает. Из-за чередования направлений на соседних улицах и условий входа-выхода через такие сечения получается, что хотя бы `4n - 4` ребер неизбежно останутся непройденными.\n\nЗатем приводится конструкция, где удаляют ровно `4n - 4` ориентированных ребра и коротких ориентированных пути так, что у внутренних вершин сохраняется баланс входящих и исходящих ребер, а на границе остаются нужные степени для существования требуемого маршрута. Значит, можно пройти по всем остальным ребрам, то есть по `2n(n + 1) - (4n - 4) = 2n^2 - 2n + 4` единичным отрезкам, что и дает искомое расстояние.",
       "idea_ids": [
         "idea-graph-role"
@@ -102,7 +102,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -144,6 +144,6 @@
       "Original final-selection name: Individual Olympiad, Seniors, Problem 6."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

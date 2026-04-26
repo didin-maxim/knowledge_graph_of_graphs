@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2016-individual-olympiad-juniors-problem-7",
-  "title": "????? ??????????? 2016: Individual Olympiad, Juniors Problem 7",
+  "title": "Kolmogorov Cup 2016: Individual Olympiad, Juniors Problem 7",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -56,7 +56,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2016-individual-olympiad-juniors-problem-7",
+      "title": "Graph-theory role in kolmogorov-2016-individual-olympiad-juniors-problem-7",
       "text": "Официальное решение прямо вводит двуцветный ориентированный граф и строит искомое множество через свойства стрелок и независимости.",
       "tags": [],
       "status": "ai_checked"
@@ -65,7 +65,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "В официальном решении рассматривается двуцветный ориентированный граф на множестве A. Из вершины b в вершину a проводится синяя стрелка, если b делится на a, и красная стрелка, если a+1 делится на b+1. Нужно выбрать независимое множество вершин B, из которого в каждую вершину A\\\\B ведет хотя бы одна стрелка. Далее вершины делят на три группы: исходные, выбранные и хорошие. Сначала в выбранные помещают вершины, в которые не входит ни одна синяя стрелка; тогда по транзитивности синих стрелок каждая оставшаяся исходная вершина получает синюю стрелку из выбранной. Если внутри выбранных есть красные стрелки, их концы переносят в хорошие. Затем в выбранные добавляют исходные вершины, в которые синие стрелки приходят только из хороших вершин, и снова убирают в хорошие концы красных стрелок между выбранными. Из-за транзитивности синего и красного отношений процесс заканчивается, когда множество исходных вершин перестает уменьшаться. В этот момент между выбранными нет запрещенных стрелок нужного типа, а каждая невыбранная вершина покрывается стрелкой из выбранной, что и дает требуемое множество B.",
       "idea_ids": [
         "idea-graph-role"
@@ -80,7 +80,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -112,6 +112,6 @@
       "Original final-selection name: Individual Olympiad, Juniors, Problem 7."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

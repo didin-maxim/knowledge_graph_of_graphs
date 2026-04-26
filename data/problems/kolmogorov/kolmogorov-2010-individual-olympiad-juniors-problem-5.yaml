@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2010-individual-olympiad-juniors-problem-5",
-  "title": "????? ??????????? 2010: Individual Olympiad, Juniors Problem 5",
+  "title": "Kolmogorov Cup 2010: Individual Olympiad, Juniors Problem 5",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -66,7 +66,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2010-individual-olympiad-juniors-problem-5",
+      "title": "Graph-theory role in kolmogorov-2010-individual-olympiad-juniors-problem-5",
       "text": "В условии прямо задан дорожный граф на городах, а официальное решение использует именно граф городов и дорог, кратчайшие пути и цикл обхода по вершинам.",
       "tags": [],
       "status": "ai_checked"
@@ -75,7 +75,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Ответ: `99 * 8 = 792` часа.\n\nРассматривается граф городов и дорог. Поскольку граф на 100 вершинах и 1000 ребрах не является полным, найдутся два города, кратчайший путь между которыми проходит через промежуточный город. Пусть, например, кратчайший путь от `x1` к `x3` идет через `x2`.\n\nТогда можно построить цикл `x1 -> x2 -> x3 -> ... -> x100`, в котором каждый переход требует не более 8 часов. Всего таких переходов 99, значит, весь объезд можно гарантировать за `99 * 8` часов.\n\nОценка точна: если все города соединены с одним центральным городом дорогами по 4 часа, а между остальными парами дорог либо нет, либо они имеют длину 8 часов, то лучше гарантированно сделать нельзя.",
       "idea_ids": [
         "idea-graph-role"
@@ -96,7 +96,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

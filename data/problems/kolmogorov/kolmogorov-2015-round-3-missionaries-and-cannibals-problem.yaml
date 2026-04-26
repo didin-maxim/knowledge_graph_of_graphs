@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2015-round-3-missionaries-and-cannibals-problem",
-  "title": "????? ??????????? 2015: Round 3, Second Junior League Problem 1",
+  "title": "Kolmogorov Cup 2015: Round 3, Second Junior League Problem 1",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -56,7 +56,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2015-round-3-missionaries-and-cannibals-problem",
+      "title": "Graph-theory role in kolmogorov-2015-round-3-missionaries-and-cannibals-problem",
       "text": "В официальном решении строится двудольный граф совместных рейсов, и именно через свойства его компонент связности выводится противоречие.",
       "tags": [],
       "status": "ai_checked"
@@ -65,7 +65,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Ответ: не могло. Сначала показывается, что вдвоем могут плыть только миссионер и каннибал: два миссионера или два каннибала приводят к нарушению условий на одном из берегов. Если персонажи совершают одинаковое число рейсов вообще, то и число рейсов туда у них одинаково. После этого официальное решение объявляет персонажей вершинами, а совместные рейсы туда — ребрами графа. Получается двудольный граф с долями \"миссионеры\" и \"каннибалы\", возможно с кратными ребрами. В каждой компоненте связности степени всех вершин одинаковы, причем в компоненте есть хотя бы одно ребро. Тогда суммы степеней в обеих долях совпадают, а потому кратны числу вершин в каждой доле. Отсюда в каждой компоненте число миссионеров равно числу каннибалов, значит и во всей группе их поровну, что противоречит условию, что миссионеров было на одного больше.",
       "idea_ids": [
         "idea-graph-role"
@@ -80,7 +80,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -112,6 +112,6 @@
       "Original final-selection name: Round 3 missionaries and cannibals problem."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

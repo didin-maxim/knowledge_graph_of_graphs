@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2015-round-2-graph-coloring-problem",
-  "title": "????? ??????????? 2015: Round 2 (High League / Higher Junior League / First Junior League) Graph Coloring Under Cycle Constraint",
+  "title": "Kolmogorov Cup 2015: Round 2 (High League / Higher Junior League / First Junior League) Graph Coloring Under Cycle Constraint",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -51,7 +51,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2015-round-2-graph-coloring-problem",
+      "title": "Graph-theory role in kolmogorov-2015-round-2-graph-coloring-problem",
       "text": "Граф присутствует прямо в условии, а официальное решение полностью основано на разрезаниях графа по вершинам, индуцированных подграфах и поиске подразбиения K4.",
       "tags": [],
       "status": "ai_checked"
@@ -60,7 +60,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Решение ведется индукцией по числу вершин. Если в графе есть точка сочленения, его разбивают на два индуцированных подграфа с общей вершиной и раскрашивают их по индукции, согласовав цвет общей вершины. Если граф разделяется удалением двух вершин x и y, его разбивают на два подграфа с общими вершинами x и y и при необходимости добавляют ребро xy. Показывается, что условие про не более чем три простых цикла через каждое ребро сохраняется, после чего оба подграфа раскрашиваются по индукции и раскраски склеиваются. В оставшемся случае граф не имеет ни точек сочленения, ни разделяющих пар вершин, поэтому все степени не меньше трех. Тогда в нем находится подразбиение K4, но в таком подразбиении какое-то ребро входит как минимум в четыре различных простых цикла, что противоречит условию. Значит, предыдущие случаи исчерпывают все варианты, и 3-раскраска существует.",
       "idea_ids": [
         "idea-graph-role"
@@ -75,7 +75,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

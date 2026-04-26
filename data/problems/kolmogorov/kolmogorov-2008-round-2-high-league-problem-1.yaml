@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2008-round-2-high-league-problem-1",
-  "title": "????? ??????????? 2008: Round 2, High League Problem 1",
+  "title": "Kolmogorov Cup 2008: Round 2, High League Problem 1",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -71,7 +71,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2008-round-2-high-league-problem-1",
+      "title": "Graph-theory role in kolmogorov-2008-round-2-high-league-problem-1",
       "text": "Хотя в условии граф не упоминается, официальное решение явно и существенно переводит задачу в полный ориентированный граф турнира и далее рассуждает о нумерациях его вершин.",
       "tags": [],
       "status": "ai_checked"
@@ -80,7 +80,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "В официальном решении результаты турнира переводятся на язык ориентированного графа: игроки становятся вершинами, а для каждой пары проводится ориентированное ребро от победителя к проигравшему. Получается полный ориентированный граф с помеченными вершинами.\n\nОдин вопрос сравнения двух мест делит множество возможных нумераций вершин не более чем пополам. Изначально возможны все `n!` нумераций, поэтому после `k` вопросов можно различить не более `2^k` вариантов.\n\nОтсюда достаточно взять `k`, для которого `2^k >= n!`, то есть `k >= ceil(log_2(n!))`. Далее в решении используется оценка `log_2(n!) <= n log_2 n`, так что числа вопросов порядка `n log_2 n` хватает.",
       "idea_ids": [
         "idea-graph-role"
@@ -99,7 +99,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -140,6 +140,6 @@
       "Original final-selection name: Round 2, High League, Problem 1."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

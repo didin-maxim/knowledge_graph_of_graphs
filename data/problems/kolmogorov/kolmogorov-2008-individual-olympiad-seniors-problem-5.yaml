@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2008-individual-olympiad-seniors-problem-5",
-  "title": "????? ??????????? 2008: Individual Olympiad, Seniors Problem 5",
+  "title": "Kolmogorov Cup 2008: Individual Olympiad, Seniors Problem 5",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -65,7 +65,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2008-individual-olympiad-seniors-problem-5",
+      "title": "Graph-theory role in kolmogorov-2008-individual-olympiad-seniors-problem-5",
       "text": "Граф прямо присутствует в условии, и официальное решение целиком использует графовые идеи: двудольность, отсутствие нечетных циклов, раскраску вершин и перенос раскраски ребер.",
       "tags": [],
       "status": "ai_checked"
@@ -74,7 +74,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "В официальном решении сначала доказывается вспомогательный факт: существует раскраска ребер полного графа на `2^n` вершинах в `n` цветов так, что подграф каждого цвета двудолен.\n\nЗатем вершины исходного графа правильно красят в `1024` цвета, что возможно по теореме о жадной раскраске, так как максимальная степень равна 1000. После этого каждому ребру исходного графа присваивают цвет ребра между соответствующими цветами вершин в заранее построенном полном графе на 1024 вершинах.\n\nТак как в каждом цвете в вспомогательном полном графе нет нечетных циклов, то и в исходном графе одноцветный нечетный цикл возникнуть не может.",
       "idea_ids": [
         "idea-graph-role"
@@ -93,7 +93,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2006-team-olympiad-seniors-problem-9",
-  "title": "????? ??????????? 2006: Team Olympiad, Seniors Problem 9",
+  "title": "Kolmogorov Cup 2006: Team Olympiad, Seniors Problem 9",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -63,7 +63,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2006-team-olympiad-seniors-problem-9",
+      "title": "Graph-theory role in kolmogorov-2006-team-olympiad-seniors-problem-9",
       "text": "В условии явно задан граф дорог, а официальное решение непосредственно считает остовные деревья графа-колеса с помощью вспомогательного графа.",
       "tags": [],
       "status": "ai_checked"
@@ -72,7 +72,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Официальное решение прямо переводит задачу на граф «колесо» `W_n`. Искомые проекты — это остовные деревья этого графа.\n\nДля подсчета вводят вспомогательный граф «лапа» `L_n`, получаемый из пути длины `n` добавлением вершины, соединенной со всеми вершинами пути. Доказывается лемма: число остовных деревьев в `L_n` равно `F_{2n}`.\n\nПосле этого колесо разбивают на два естественных случая и выражают число его остовных деревьев через соседние значения для «лапы». В итоге получается формула\n`F_{2n+1} + F_{2n-1} - 2`.",
       "idea_ids": [
         "idea-graph-role"
@@ -90,7 +90,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [

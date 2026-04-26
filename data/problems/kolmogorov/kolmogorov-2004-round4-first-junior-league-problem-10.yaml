@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2004-round4-first-junior-league-problem-10",
-  "title": "????? ??????????? 2004: Round 4, First Junior League Problem 10",
+  "title": "Kolmogorov Cup 2004: Round 4, First Junior League Problem 10",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -68,7 +68,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2004-round4-first-junior-league-problem-10",
+      "title": "Graph-theory role in kolmogorov-2004-round4-first-junior-league-problem-10",
       "text": "В условии графа нет, но официальное решение существенно строит граф Уфнаровского и сводит\nзадачу к поиску и непериодическому чередованию циклов в этом графе.",
       "tags": [],
       "status": "ai_checked"
@@ -77,7 +77,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "В официальном решении выписываются допустимые трехзначные простые блоки:\n`337, 373, 379, 733, 739, 773, 797, 937, 977, 997`.\n\nПосле этого строится граф Уфнаровского на двузначных состояниях: вершина задает две\nпоследние цифры, а ребро означает, что к ним можно приписать следующую цифру так, чтобы\nполучился допустимый трехзначный простой блок.\n\nВ этом графе находятся два ориентированных цикла, например\n`33 -> 37 -> 73 -> 33` и `33 -> 37 -> 79 -> 97 -> 77 -> 73 -> 33`.\nЕсли обходить эти циклы непериодически, получается бесконечная десятичная запись без\nединиц, в которой каждый блок из трех подряд идущих цифр прост. Непериодичность гарантирует\nиррациональность числа.",
       "idea_ids": [
         "idea-graph-role"
@@ -96,7 +96,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -135,6 +135,6 @@
       "Original final-selection name: Round 4, First Junior League, Problem 10."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "?????????????? ???????? ???????? ???? ??? ???????????? ? ??????????? ???????; ????????? ????????????? graph_theory-???????????? ??? ?? ????????."
+    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
   }
 }

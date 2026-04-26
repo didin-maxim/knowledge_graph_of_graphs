@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2013-team-olympiad-juniors-problem-7",
-  "title": "????? ??????????? 2013: Team Olympiad, Juniors Problem 7",
+  "title": "Kolmogorov Cup 2013: Team Olympiad, Juniors Problem 7",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -61,7 +61,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "???????? ???? ???????? kolmogorov-2013-team-olympiad-juniors-problem-7",
+      "title": "Graph-theory role in kolmogorov-2013-team-olympiad-juniors-problem-7",
       "text": "Граф явно присутствует в условии: вершины, рёбра и правильная раскраска графа названы напрямую. Официальное решение целиком работает с раскраской подграфов и разбиением множества вершин.",
       "tags": [],
       "status": "ai_checked"
@@ -70,7 +70,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "??????????? ???????, ?????? ???????",
+      "title": "Official solution, compressed",
       "text": "Раскрасим `B ∪ C` в `n` цветов и назовём один из этих цветов первым. Пусть `D` — множество всех вершин из `B`, покрашенных в первый цвет.\n\nТеперь раскрасим `A ∪ D` в `k` цветов, использовав в качестве одного из них тот же первый цвет, а остальные `k-1` цветов взяв отличными от уже использованных в раскраске `B ∪ C`.\n\nУ вершин, не входящих в `A ∪ D`, сохраним прежнюю раскраску. Полученная раскраска корректна: вершины из `A ∪ D` не соединены рёбрами с вершинами из `C`, покрашенными в первый цвет. Для вершин из `D` это следует из правильности исходной раскраски `B ∪ C`, а для вершин из `A` — из условия, что между `A` и `C` нет рёбер.\n\nЗначит, весь граф удалось правильно раскрасить в `k+n-1` цвет.",
       "idea_ids": [
         "idea-graph-role"
@@ -87,7 +87,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "???????? ?????? ?? ?????????????? ???????? KOLM; ????????? ??????? ?????? ??????????.",
+    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
     "status": "needs_human_review"
   },
   "tags": [
