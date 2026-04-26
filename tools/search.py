@@ -1,7 +1,17 @@
 import argparse
 from collections import deque
 
-from lib import load_problems, load_relations, problem_text, relation_neighbors
+from lib import (
+    extract_problem_year,
+    has_real_solution,
+    infer_source_key,
+    infer_source_label,
+    load_problems,
+    load_relations,
+    problem_text,
+    problem_source_values,
+    relation_neighbors,
+)
 
 
 def cmd_query(args):
@@ -9,6 +19,17 @@ def cmd_query(args):
     words = [word.lower() for word in args.text.split()]
     matches = []
     for problem in problems.values():
+        if args.source:
+            source_query = args.source.lower()
+            source_values = problem_source_values(problem)
+            if not any(source_query == value or source_query in value for value in source_values):
+                continue
+        if args.year and extract_problem_year(problem) != str(args.year):
+            continue
+        if args.solution == "with" and not has_real_solution(problem):
+            continue
+        if args.solution == "without" and has_real_solution(problem):
+            continue
         text = problem_text(problem)
         score = sum(text.count(word) for word in words)
         if score:
@@ -65,6 +86,9 @@ def main():
     q = sub.add_parser("query")
     q.add_argument("text")
     q.add_argument("--limit", type=int, default=20)
+    q.add_argument("--source")
+    q.add_argument("--year", type=int)
+    q.add_argument("--solution", choices=["all", "with", "without"], default="all")
     q.set_defaults(func=cmd_query)
 
     p = sub.add_parser("problem")
@@ -82,4 +106,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

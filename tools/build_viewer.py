@@ -162,6 +162,7 @@ def build_html(data):
     }}
 
     .list-button {{
+      display: block;
       width: 100%;
       text-align: left;
       border: 0;
@@ -170,6 +171,7 @@ def build_html(data):
       padding: 10px;
       cursor: pointer;
       color: var(--ink);
+      text-decoration: none;
     }}
 
     .list-button:hover, .list-button.active {{
@@ -425,6 +427,9 @@ def build_html(data):
           <button class="mode-button" id="mode-comments" type="button">Комментарии</button>
         </div>
         <input id="search-input" type="search" placeholder="Поиск">
+        <select id="source-filter"></select>
+        <select id="year-filter"></select>
+        <select id="solution-filter"></select>
         <select id="tag-filter"></select>
       </div>
       <div class="list" id="list"></div>
@@ -444,7 +449,7 @@ def build_html(data):
     const definitions = DB.definitions;
     const standardIdeas = DB.standard_ideas;
     const taxonomy = DB.taxonomy;
-    const state = {{ query: '', tag: 'all', view: 'problems' }};
+    const state = {{ query: '', tag: 'all', source: 'all', year: 'all', solution: 'all', view: 'problems' }};
 
     const byId = (id) => document.getElementById(id);
     const esc = (value) => String(value ?? '')
@@ -585,6 +590,26 @@ def build_html(data):
       return standardIdeas[id] ? `<a class="pill" href="#stdidea-${{encodeURIComponent(id)}}">${{esc(standardIdeas[id].title)}}</a>` : '';
     }}
 
+    function renderAuthors(problem) {{
+      const authors = problem.authors || [];
+      if (!authors.length) return '';
+      const items = authors.map(author => {{
+        const name = esc(author.name || '?');
+        const review = author.status && author.status !== 'source_verified'
+          ? `<span class="pill">${{esc(label(taxonomy.statuses, author.status) || author.status)}}</span>`
+          : '';
+        return `<span class="author-entry"><span>${{name}}</span>${{review}}</span>`;
+      }}).join('');
+      return `
+        <div class="section">
+          <h3>Авторы</h3>
+          <div class="card">
+            <div class="pill-row">${{items}}</div>
+          </div>
+        </div>
+      `;
+    }}
+
     function sortedProblems() {{
       return Object.values(problems).sort((a, b) => a.title.localeCompare(b.title, 'ru'));
     }}
@@ -609,13 +634,117 @@ def build_html(data):
       return JSON.stringify(value).toLowerCase();
     }}
 
-    function filteredProblems() {{
-      const query = state.query.trim().toLowerCase();
-      return sortedProblems().filter(problem => {{
-        const tagOk = state.tag === 'all' || (problem.tags || []).includes(state.tag);
-        const queryOk = !query || searchBlob(problem).includes(query);
-        return tagOk && queryOk;
+    function normalizeCompact(value) {{
+      return String(value || '').toLowerCase().replace(/[^a-z0-9а-яё]+/g, '');
+    }}
+
+    function firstYear(value) {{
+      const match = String(value || '').match(/(19|20)\\d{{2}}/);
+      return match ? match[0] : '';
+    }}
+
+    function problemYear(problem) {{
+      return firstYear(problem.title) || firstYear(problem.id);
+    }}
+
+    function sourceAliasMap() {{
+      return {{
+        yumt: ['yumt', 'юмт'],
+        fyum: ['fyum', 'фюм'],
+        imo: ['imo'],
+        apmo: ['apmo'],
+        bmo: ['bmo'],
+        egmo: ['egmo'],
+        usamo: ['usamo'],
+        rmm: ['rmm']
+      }};
+    }}
+
+    function sourceInfo(problem) {{
+      const title = String(problem.title || '');
+      const chunks = title.split(',').map(item => item.trim()).filter(Boolean);
+      let labelText = '';
+      for (const chunk of chunks) {{
+        const match = chunk.match(/(19|20)\\d{{2}}/);
+        if (!match) continue;
+        labelText = chunk.slice(0, match.index).replace(/[-, ]+$/, '').trim();
+        if (labelText) break;
+      }}
+      const idMatch = String(problem.id || '').match(/^([a-z0-9-]+)-((19|20)\\d{{2}})(?:-|$)/);
+      const key = idMatch ? idMatch[1].split('-')[0] : normalizeCompact(labelText) || 'misc';
+      const labelTextCompact = normalizeCompact(labelText);
+      const year = problemYear(problem);
+      const aliases = new Set([key, labelTextCompact]);
+      (sourceAliasMap()[key] || []).forEach(alias => aliases.add(alias));
+      if (year) {{
+        aliases.add(`${{key}}${{year}}`);
+        if (labelTextCompact) aliases.add(`${{labelTextCompact}}${{year}}`);
+        (sourceAliasMap()[key] || []).forEach(alias => aliases.add(`${{alias}}${{year}}`));
+      }}
+      return {{
+        key,
+        label: labelText || (key !== 'misc' ? key.toUpperCase() : 'Прочее'),
+        year,
+        aliases: Array.from(aliases).filter(Boolean)
+      }};
+    }}
+
+    function problemHasRealSolution(problem) {{
+      return (problem.solutions || []).some(solution => {{
+        const text = String(solution.text || '').trim();
+        const title = String(solution.title || '').trim();
+        return text
+          && !/^решение пока не найдено[.!]?$/i.test(text)
+          && !/близк\\w*\\s+решени\\w*/i.test(title);
       }});
+    }}
+
+    function problemSearchBlob(problem) {{
+      const info = sourceInfo(problem);
+      const extra = {{
+        source_key: info.key,
+        source_label: info.label,
+        source_aliases: info.aliases,
+        year: info.year,
+        solution_state: problemHasRealSolution(problem) ? 'with_solution' : 'without_solution'
+      }};
+      return searchBlob({{ ...problem, _search_meta: extra }});
+    }}
+
+    function problemMatchesFilters(problem, options = {{}}) {{
+      const query = state.query.trim().toLowerCase();
+      const info = sourceInfo(problem);
+      if (!options.excludeTag) {{
+        const tagOk = state.tag === 'all' || (problem.tags || []).includes(state.tag);
+        if (!tagOk) return false;
+      }}
+      if (!options.excludeSource) {{
+        const sourceOk = state.source === 'all' || info.key === state.source;
+        if (!sourceOk) return false;
+      }}
+      if (!options.excludeYear) {{
+        const yearOk = state.year === 'all' || info.year === state.year;
+        if (!yearOk) return false;
+      }}
+      if (!options.excludeSolution) {{
+        const hasSolution = problemHasRealSolution(problem);
+        const solutionOk = state.solution === 'all'
+          || (state.solution === 'with' && hasSolution)
+          || (state.solution === 'without' && !hasSolution);
+        if (!solutionOk) return false;
+      }}
+      if (!options.excludeQuery) {{
+        const compactQuery = normalizeCompact(query);
+        const queryOk = !query
+          || problemSearchBlob(problem).includes(query)
+          || (compactQuery && info.aliases.some(alias => alias.includes(compactQuery)));
+        if (!queryOk) return false;
+      }}
+      return true;
+    }}
+
+    function filteredProblems() {{
+      return sortedProblems().filter(problem => problemMatchesFilters(problem));
     }}
 
     function filteredDefinitions() {{
@@ -678,10 +807,49 @@ def build_html(data):
       render();
     }}
 
+    function activateListRoute(link) {{
+      const id = link?.dataset?.listId;
+      if (!id) return;
+      if (link.dataset.listRoute === 'definition') setDefinition(id);
+      else if (link.dataset.listRoute === 'idea') setStandardIdea(id);
+      else if (link.dataset.listRoute === 'comment') setComment(id);
+      else setProblem(id);
+    }}
+
+    function routeHash(type, id) {{
+      if (!id) return '';
+      if (type === 'definition') return `def-${{encodeURIComponent(id)}}`;
+      if (type === 'idea') return `stdidea-${{encodeURIComponent(id)}}`;
+      if (type === 'comment') return `comment-${{encodeURIComponent(id)}}`;
+      return encodeURIComponent(id);
+    }}
+
+    function firstVisibleRoute() {{
+      if (state.view === 'definitions') return {{ type: 'definition', id: filteredDefinitions()[0]?.id }};
+      if (state.view === 'ideas') return {{ type: 'idea', id: filteredStandardIdeas()[0]?.id }};
+      if (state.view === 'comments') return {{ type: 'comment', id: filteredComments()[0]?.id }};
+      return {{ type: 'problem', id: filteredProblems()[0]?.id }};
+    }}
+
+    function selectFirstVisibleRoute() {{
+      const route = firstVisibleRoute();
+      const nextHash = routeHash(route.type, route.id);
+      if (!nextHash) {{
+        render();
+        return;
+      }}
+      if (location.hash.replace(/^#/, '') === nextHash) render();
+      else location.hash = nextHash;
+    }}
+
     function problemUsesDefinition(problem, definitionId) {{
-      return Object.values(problem.statements || {{}}).some(group =>
+      const statementsUse = Object.values(problem.statements || {{}}).some(group =>
         (group || []).some(statement => (statement.definition_ids || []).includes(definitionId))
       );
+      const solutionsUse = (problem.solutions || []).some(solution =>
+        (solution.definition_ids || []).includes(definitionId)
+      );
+      return statementsUse || solutionsUse;
     }}
 
     function definitionUsage(definitionId) {{
@@ -726,24 +894,18 @@ def build_html(data):
       const list = byId('list');
       if (state.view === 'definitions') {{
         list.innerHTML = filteredDefinitions().map(item => `
-          <button class="list-button ${{item.id === route.id ? 'active' : ''}}" data-definition-id="${{esc(item.id)}}">
+          <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#def-${{encodeURIComponent(item.id)}}" data-list-route="definition" data-list-id="${{esc(item.id)}}">
             <div>${{esc(item.title)}}</div>
             <div class="id">${{esc(item.id)}} · задач: ${{definitionUsage(item.id).length}}</div>
-          </button>
+          </a>
         `).join('');
-        list.querySelectorAll('[data-definition-id]').forEach(button => {{
-          button.addEventListener('click', () => setDefinition(button.dataset.definitionId));
-        }});
       }} else if (state.view === 'ideas') {{
         list.innerHTML = filteredStandardIdeas().map(item => `
-          <button class="list-button ${{item.id === route.id ? 'active' : ''}}" data-standard-idea-id="${{esc(item.id)}}">
+          <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#stdidea-${{encodeURIComponent(item.id)}}" data-list-route="idea" data-list-id="${{esc(item.id)}}">
             <div>${{esc(item.title)}}</div>
             <div class="id">${{esc(item.id)}} · задач: ${{standardIdeaUsage(item.id).length}}</div>
-          </button>
+          </a>
         `).join('');
-        list.querySelectorAll('[data-standard-idea-id]').forEach(button => {{
-          button.addEventListener('click', () => setStandardIdea(button.dataset.standardIdeaId));
-        }});
       }} else if (state.view === 'comments') {{
         const items = filteredComments();
         list.innerHTML = items.length ? items.map(item => {{
@@ -751,25 +913,19 @@ def build_html(data):
             ? (problems[item.target.problem_id]?.title || item.target.problem_id)
             : 'Архитектура базы';
           return `
-            <button class="list-button ${{item.id === route.id ? 'active' : ''}}" data-comment-id="${{esc(item.id)}}">
+            <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#comment-${{encodeURIComponent(item.id)}}" data-list-route="comment" data-list-id="${{esc(item.id)}}">
               <div>${{esc(item.title)}}</div>
               <div class="id">${{esc(item.id)}} · ${{esc(targetTitle)}}</div>
-            </button>
+            </a>
           `;
         }}).join('') : `<div class="empty" style="padding:10px;">Комментариев пока нет.</div>`;
-        list.querySelectorAll('[data-comment-id]').forEach(button => {{
-          button.addEventListener('click', () => setComment(button.dataset.commentId));
-        }});
       }} else {{
         list.innerHTML = filteredProblems().map(item => `
-          <button class="list-button ${{item.id === route.id ? 'active' : ''}}" data-problem-id="${{esc(item.id)}}">
+          <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#${{encodeURIComponent(item.id)}}" data-list-route="problem" data-list-id="${{esc(item.id)}}">
             <div>${{esc(item.title)}}</div>
             <div class="id">${{esc(item.id)}}</div>
-          </button>
+          </a>
         `).join('');
-        list.querySelectorAll('[data-problem-id]').forEach(button => {{
-          button.addEventListener('click', () => setProblem(button.dataset.problemId));
-        }});
       }}
     }}
 
@@ -788,15 +944,83 @@ def build_html(data):
       select.disabled = false;
       const counts = {{}};
       Object.values(problems).forEach(problem => {{
+        if (!problemMatchesFilters(problem, {{ excludeTag: true }})) return;
         (problem.tags || []).forEach(tag => {{
           counts[tag] = (counts[tag] || 0) + 1;
         }});
       }});
       const tags = Object.keys(counts).sort((a, b) => label(taxonomy.tags, a).localeCompare(label(taxonomy.tags, b), 'ru'));
-      select.innerHTML = `<option value="all">Все метки (${{Object.keys(problems).length}})</option>` + tags.map(tag =>
+      const total = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeTag: true }})).length;
+      select.innerHTML = `<option value="all">Все метки (${{total}})</option>` + tags.map(tag =>
         `<option value="${{esc(tag)}}">${{esc(label(taxonomy.tags, tag))}} (${{counts[tag]}})</option>`
       ).join('');
       select.value = state.tag;
+    }}
+
+    function renderSourceFilter() {{
+      const select = byId('source-filter');
+      if (state.view !== 'problems') {{
+        select.disabled = true;
+        select.innerHTML = `<option>Источники</option>`;
+        return;
+      }}
+      select.disabled = false;
+      const counts = {{}};
+      const labels = {{}};
+      Object.values(problems).forEach(problem => {{
+        if (!problemMatchesFilters(problem, {{ excludeSource: true }})) return;
+        const info = sourceInfo(problem);
+        counts[info.key] = (counts[info.key] || 0) + 1;
+        labels[info.key] = info.label;
+      }});
+      const keys = Object.keys(counts).sort((a, b) => labels[a].localeCompare(labels[b], 'ru'));
+      const total = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeSource: true }})).length;
+      select.innerHTML = `<option value="all">Все источники (${{total}})</option>` + keys.map(key =>
+        `<option value="${{esc(key)}}">${{esc(labels[key])}} (${{counts[key]}})</option>`
+      ).join('');
+      select.value = state.source;
+    }}
+
+    function renderYearFilter() {{
+      const select = byId('year-filter');
+      if (state.view !== 'problems') {{
+        select.disabled = true;
+        select.innerHTML = `<option>Годы</option>`;
+        return;
+      }}
+      select.disabled = false;
+      const counts = {{}};
+      Object.values(problems).forEach(problem => {{
+        if (!problemMatchesFilters(problem, {{ excludeYear: true }})) return;
+        const year = problemYear(problem);
+        if (!year) return;
+        counts[year] = (counts[year] || 0) + 1;
+      }});
+      const years = Object.keys(counts).sort((a, b) => a.localeCompare(b, 'ru'));
+      const total = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeYear: true }})).length;
+      select.innerHTML = `<option value="all">Все годы (${{total}})</option>` + years.map(year =>
+        `<option value="${{esc(year)}}">${{esc(year)}} (${{counts[year]}})</option>`
+      ).join('');
+      select.value = state.year;
+    }}
+
+    function renderSolutionFilter() {{
+      const select = byId('solution-filter');
+      if (state.view !== 'problems') {{
+        select.disabled = true;
+        select.innerHTML = `<option>Решения</option>`;
+        return;
+      }}
+      select.disabled = false;
+      const matching = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeSolution: true }}));
+      const withSolution = matching.filter(problem => problemHasRealSolution(problem)).length;
+      const withoutSolution = matching.length - withSolution;
+      select.innerHTML = [
+        `<option value="all">Все задачи (${{matching.length}})</option>`,
+        `<option value="with">С решением (${{withSolution}})</option>`,
+        `<option value="without">Без решения (${{withoutSolution}})</option>`
+      ].join('');
+      select.value = state.solution;
     }}
 
     function renderStatements(problem) {{
@@ -844,6 +1068,15 @@ def build_html(data):
 
     function renderSolutions(problem) {{
       const solutions = problem.solutions || [];
+      if (!problemHasRealSolution(problem)) {{
+        return `
+          <div class="card">
+            <div class="pill-row">
+              <span class="pill status-needs_human_review">Решение не найдено</span>
+            </div>
+          </div>
+        `;
+      }}
       if (!solutions.length) return '<div class="empty">Решений пока нет.</div>';
       return solutions.map(solution => `
         <div class="card">
@@ -851,9 +1084,10 @@ def build_html(data):
             <span>${{esc(solution.title || solution.id)}}</span>
             ${{statusPill(solution.status)}}
           </div>
-          ${{textBlock(solution.text, [], solution.standard_idea_ids || [])}}
-          ${{renderExamples(solution.examples || [], [], solution.standard_idea_ids || [])}}
+          ${{textBlock(solution.text, solution.definition_ids || [], solution.standard_idea_ids || [])}}
+          ${{renderExamples(solution.examples || [], solution.definition_ids || [], solution.standard_idea_ids || [])}}
           <div class="pill-row">
+            ${{(solution.definition_ids || []).map(definitionPill).join('')}}
             ${{(solution.idea_ids || []).map(id => `<span class="pill code">${{esc(id)}}</span>`).join('')}}
             ${{(solution.standard_idea_ids || []).map(standardIdeaPill).join('')}}
           </div>
@@ -1047,6 +1281,8 @@ def build_html(data):
         <div class="subtle">${{esc(problem.difficulty?.comment || '')}}</div>
         <div class="pill-row">${{(problem.tags || []).map(tagPill).join('')}}</div>
 
+        ${{renderAuthors(problem)}}
+
         <div class="section">
           <h3>Формулировки</h3>
           ${{renderStatements(problem)}}
@@ -1212,6 +1448,9 @@ def build_html(data):
       const route = currentRoute();
       state.view = route.type === 'definition' ? 'definitions' : route.type === 'idea' ? 'ideas' : route.type === 'comment' ? 'comments' : 'problems';
       renderSidebar();
+      renderSourceFilter();
+      renderYearFilter();
+      renderSolutionFilter();
       renderTagFilter();
       if (route.type === 'definition') renderDefinition();
       else if (route.type === 'idea') renderStandardIdea();
@@ -1221,12 +1460,50 @@ def build_html(data):
 
     byId('search-input').addEventListener('input', event => {{
       state.query = event.target.value;
-      renderSidebar();
+      selectFirstVisibleRoute();
     }});
 
     byId('tag-filter').addEventListener('change', event => {{
       state.tag = event.target.value;
-      renderSidebar();
+      selectFirstVisibleRoute();
+    }});
+
+    byId('source-filter').addEventListener('change', event => {{
+      state.source = event.target.value;
+      selectFirstVisibleRoute();
+    }});
+
+    byId('year-filter').addEventListener('change', event => {{
+      state.year = event.target.value;
+      selectFirstVisibleRoute();
+    }});
+
+    byId('solution-filter').addEventListener('change', event => {{
+      state.solution = event.target.value;
+      selectFirstVisibleRoute();
+    }});
+
+    byId('list').addEventListener('pointerdown', event => {{
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest('[data-list-route]');
+      if (!link) return;
+      event.preventDefault();
+      activateListRoute(link);
+    }});
+
+    byId('list').addEventListener('click', event => {{
+      const link = event.target.closest('[data-list-route]');
+      if (!link) return;
+      event.preventDefault();
+      activateListRoute(link);
+    }});
+
+    byId('list').addEventListener('keydown', event => {{
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const link = event.target.closest('[data-list-route]');
+      if (!link) return;
+      event.preventDefault();
+      activateListRoute(link);
     }});
 
     byId('mode-problems').addEventListener('click', () => setProblem(sortedProblems()[0]?.id));
@@ -1243,13 +1520,13 @@ def build_html(data):
 
 
 def main():
-    viewer_dir = ROOT / "viewer"
-    viewer_dir.mkdir(exist_ok=True)
     copy_example_assets()
     html = build_html(load_viewer_data())
-    target = viewer_dir / "index.html"
-    target.write_text(html, encoding="utf-8")
-    print(f"Built {target}")
+    for target_dir in (ROOT / "viewer", ROOT / "docs"):
+        target_dir.mkdir(exist_ok=True)
+        target = target_dir / "index.html"
+        target.write_text(html, encoding="utf-8")
+        print(f"Built {target}")
 
 
 if __name__ == "__main__":

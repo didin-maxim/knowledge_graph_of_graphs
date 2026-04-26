@@ -6,8 +6,8 @@
       "to": "usamo-1976-p1-monochromatic-rectangle-bipartite",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both problems use a C4-free bipartite-style model and double-count local configurations. In the KOLM problem, graph edges cover 5-term arithmetic progressions, while the C4-free bound limits how many such progressions one edge can cover.",
-      "backward_text": "USAMO 1976 P1 is a close training model: a monochromatic rectangle is exactly a 4-cycle in the row-column bipartite graph, and the key step is again a double count of column pairs or local coincidences.",
+      "forward_text": "В обеих задачах используется двудольная модель без C4 и локальные конфигурации с двойным подсчетом. В задаче KOLM ребра графа покрывают 5-членные арифметические прогрессии, в то время как граница без C4 ограничивает количество таких прогрессий, которые может покрыть одно ребро.",
+      "backward_text": "USAMO 1976 P1 представляет собой модель тщательного обучения: монохромный прямоугольник представляет собой в точности 4-цикл в двудольном графе строка-столбец, а ключевым шагом снова является двойной подсчет пар столбцов или локальных совпадений.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-column-pair-double-counting"
@@ -21,8 +21,8 @@
       "to": "shortest-odd-cycle-external-neighbor-bound",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "The KOLM solution starts from a shortest odd cycle in a triangle-free graph and uses chordlessness plus restrictions on outside neighbors. This is the same local mechanism as the shortest-odd-cycle external-neighbor lemma.",
-      "backward_text": "The shortest-odd-cycle lemma gives the natural language for the KOLM proof: minimality turns extra chords or too dense outside neighborhoods into a shorter odd cycle or a forbidden triangle.",
+      "forward_text": "Решение KOLM начинается с кратчайшего нечетного цикла в графе без треугольников и использует отсутствие хорд плюс ограничения на внешних соседей. Это тот же локальный механизм, что и лемма о кратчайшем нечетном цикле о внешнем соседе.",
+      "backward_text": "Лемма о кратчайшем нечетном цикле дает естественный язык доказательства KOLM: минимальность превращает лишние хорды или слишком плотные внешние окрестности в более короткий нечетный цикл или запрещенный треугольник.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-odd-arc-or-k4"
@@ -36,8 +36,8 @@
       "to": "mantel-theorem",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems extract global structure from the absence of triangles together with degree or edge-count estimates. KOLM proves the more specialized structural conclusion of bipartiteness under high minimum degree, while Mantel gives the extremal density bound.",
-      "backward_text": "Mantel's theorem is a natural neighbor for this KOLM problem: in both arguments, forbidding triangles pushes the graph toward a bipartite structure, with degree sums and extremal reasoning doing the work.",
+      "forward_text": "Обе задачи извлекают глобальную структуру из отсутствия треугольников вместе с оценками степени или количества ребер. KOLM доказывает более специализированный структурный вывод о двудольности при высокой минимальной степени, в то время как Мантел дает границу экстремальной плотности.",
+      "backward_text": "Теорема Мантеля является естественным соседом этой проблемы KOLM: в обоих аргументах запрет треугольников подталкивает граф к двудольной структуре, где суммы степеней и экстремальные рассуждения делают всю работу.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-degree-sum"
@@ -51,8 +51,8 @@
       "to": "brooks-theorem",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Both solutions improve a proper coloring by local recoloring: two-color components are inspected so that a needed color can be freed or multiplied without breaking the global coloring.",
-      "backward_text": "Brooks' theorem gives a classical backdrop for the KOLM solution: when greedy coloring is not enough, local recoloring and two-color components overcome the obstruction around a chosen vertex.",
+      "forward_text": "Оба решения улучшают правильную раскраску за счет локальной перекраски: двухцветные компоненты проверяются так, чтобы необходимый цвет можно было освободить или умножить, не нарушая глобальную раскраску.",
+      "backward_text": "Теорема Брукса дает классическую основу для решения KOLM: когда жадной раскраски недостаточно, локальная перекраска и двухцветные компоненты преодолевают препятствие вокруг выбранной вершины.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-sketch"
@@ -66,8 +66,8 @@
       "to": "five-color-theorem",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "The official KOLM solution and the five-color theorem use the same Kempe-chain style move: inspect a component induced by two colors, then swap the two colors inside that component to create the required local effect.",
-      "backward_text": "The five-color theorem is the canonical Kempe-chain example; it helps identify the KOLM proof as a controlled local recoloring of two-color components rather than a plain coloring count.",
+      "forward_text": "Официальное решение KOLM и теорема о пяти цветах используют один и тот же прием в стиле цепочки Кемпе: проверьте компонент, вызванный двумя цветами, затем поменяйте местами два цвета внутри этого компонента, чтобы создать необходимый локальный эффект.",
+      "backward_text": "Теорема о пяти цветах является каноническим примером цепочки Кемпе; это помогает идентифицировать доказательство KOLM как контролируемое локальное перекрашивание двухцветных компонентов, а не просто подсчет раскрасок.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-kempe-sketch"
@@ -81,8 +81,8 @@
       "to": "euler-formula-planar",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The triangulation problem turns a polygon dissection into a planar structure and a triangle-adjacency tree. The same Euler-style count of vertices, edges, and faces explains the number of triangles and diagonals.",
-      "backward_text": "Euler's formula is a basic tool for these triangulation problems: it explains why there are n-3 diagonals, n-2 triangles, and why the triangle-adjacency graph is a tree.",
+      "forward_text": "Задача триангуляции превращает рассечение многоугольника в плоскую структуру и дерево смежности треугольников. Тот же подсчет вершин, ребер и граней в стиле Эйлера объясняет количество треугольников и диагоналей.",
+      "backward_text": "Формула Эйлера является основным инструментом для решения этих задач триангуляции: она объясняет, почему существует n-3 диагоналей, n-2 треугольников и почему граф смежности треугольников является деревом.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-reduce-to-tree"
@@ -96,8 +96,8 @@
       "to": "tree-equivalent-properties",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "KOLM reduces choosing n roads in a connected network on n+1 vertices to counting spanning trees of a wheel graph. The needed basic fact is that a connected graph with |V|-1 edges is a tree.",
-      "backward_text": "The equivalent properties of trees provide the language for this reduction: once the chosen subgraph is connected and has exactly |V|-1 edges, it is a spanning tree, so the remaining task is to count such trees.",
+      "forward_text": "KOLM сводит выбор n дорог в связной сети с n+1 вершинами к подсчету остовных деревьев колесного графа. Необходимый основной факт состоит в том, что связный граф с |V|-1 ребрами является деревом.",
+      "backward_text": "Эквивалентные свойства деревьев обеспечивают язык для этого сокращения: как только выбранный подграф связен и имеет ровно |V|-1 ребер, он становится остовным деревом, поэтому оставшаяся задача — подсчитать такие деревья.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-minimal-connected-subgraph"
@@ -111,8 +111,8 @@
       "to": "handshaking-lemma",
       "type": "prerequisite",
       "distance": 2,
-      "forward_text": "The KOLM solution compares edge counts in induced m-vertex subgraphs, equivalently controlling partial degrees after replacing one vertex. This directly extends the incidence-counting idea behind handshaking.",
-      "backward_text": "The handshaking lemma is the base form of the same double count: edges in induced subgraphs can be counted through vertex degrees, which lets the KOLM proof force a rigid global acquaintance graph.",
+      "forward_text": "Решение KOLM сравнивает количество ребер в индуцированных подграфах с m-вершинами, эквивалентно контролируя частичные степени после замены одной вершины. Это напрямую расширяет идею подсчета заболеваемости, лежащую в основе рукопожатия.",
+      "backward_text": "Лемма о установлении связи является базовой формой того же двойного подсчета: ребра в индуцированных подграфах можно подсчитывать по степеням вершин, что позволяет доказательству KOLM создать жесткий глобальный граф знакомств.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-double-counting"
@@ -126,8 +126,8 @@
       "to": "imo-1995-nc5-greetings-regular-codegree-graph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems convert uniform local numbers into global regularity of an acquaintance graph. KOLM fixes the edge count in every m-set and compares vertex replacements; IMO Shortlist 1995 NC5 fixes common-neighbor counts and also forces regular counting identities.",
-      "backward_text": "IMO 1995 NC5 is close in style: local uniformity in an acquaintance graph is analyzed by double counting and comparing vertex contributions, making it a useful neighbor for the KOLM induced-subgraph problem.",
+      "forward_text": "Обе задачи преобразуют однородные локальные числа в глобальную регулярность графа знакомств. KOLM фиксирует количество ребер в каждом m-наборе и сравнивает замены вершин; IMO Shortlist 1995 NC5 фиксирует подсчет общих соседей, а также обеспечивает регулярный подсчет идентификаторов.",
+      "backward_text": "IMO 1995 NC5 близок по стилю: локальная однородность графа знакомств анализируется путем двойного подсчета и сравнения вкладов вершин, что делает его полезным соседом для задачи KOLM, индуцированного подграфа.",
       "anchors": {
         "from_solution_id": "sol-official-compressed",
         "to_solution_id": "sol-reviewed-secondary"
