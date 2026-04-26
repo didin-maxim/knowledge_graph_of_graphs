@@ -89,14 +89,17 @@
   ],
   "solutions": [
     {
-      "id": "sol-import-note",
-      "title": "Решение пока не найдено",
-      "text": "Решение пока не найдено.",
+      "id": "sol-official-restored",
+      "title": "Официальное решение, восстановлено из исходников",
+      "text": "Пусть $N$ \"--- точка с нечетным количеством отрезков, $B_1$, $B_2$, \\ldots, $B_9$ \"--- 9 оставшихся точек.\nПусть $x_i$ \"--- количество красных отрезков с концом $B_i$ ($1\\leq i\\leq 9$).\nНе умаляя общности $0 \\leq x_1 < x_2 < \\ldots < x_9\\leq 9$.\nДокажем, что $x_9 = 9$. Если $x_9 \\leq 8$, то $x_1 = 0$.\nНо тогда точек с нечетным количеством выходящих из них отрезков нечетно ($N$ и $B_2$, $B_4$, $B_6$, $B_8$).\n\nТаким образом, $B_9$ соединена со всеми остальными 9 точками красным отрезком.\nЭто означает, что $x_i=i$ для $1 \\leq  i \\leq 9$.\nТо есть, $B_9$ соединена (далее будем считать только красные отрезки) со всеми, включая $N$. А $B_1$ только с $B_9$.\nТогда $B_8$ соединена со всеми, кроме $B_1$, $B_2$ только $B_9$ и $B_8$, и т.д.\n\nПолучаем, что все вершины разбиваются на множества\n$A = \\{N, B_5, B_6, B_7, B_8, B_9 \\}$ и $B = \\{B_1, B_2, B_3, B_4 \\}$, для которых\nлюбые две точки из $A$ соединены, никакие две точки из $B$ не соединены,\nи для каждой точки $B_i\\in B$ выходит в $A$ ровно $i$ отрезков.\n\nПоэтому количество треугольников равно $C^2_2+C^2_3+C^2_4+C^2_6=30$.\n\n\\r Граф восстановлен неверно хотя бы в одном случае: \\textit{не более 6 баллов}.\n\n}",
       "idea_ids": [
         "idea-graph-role"
       ],
-      "standard_idea_ids": [],
-      "status": "needs_human_review",
+      "standard_idea_ids": [
+        "double_counting",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
       "definition_ids": [
         "simple_graph",
         "complete_graph",
@@ -113,7 +116,8 @@
   "tags": [
     "coloring",
     "extremal_graph_theory",
-    "goal_other"
+    "double_counting",
+    "goal_counting"
   ],
   "properties": {},
   "sources": [
@@ -136,9 +140,10 @@
     "notes": [
       "Imported from missed KOLM graph task audit after final/candidates files showed year 2022 was not converted into database cards.",
       "Source file: work/kolm/text/2022/2 tur__sen-liga-2-3-tur2.txt.",
-      "Graph role: explicit_in_statement."
+      "Graph role: explicit_in_statement.",
+      "Official solution restored from local Kolmogorov 2022 archive TeX source in this pass."
     ],
-    "relations_status": "reviewed_no_links",
+    "relations_status": "deep_done",
     "graph_theory_duplicate_removed": false
   }
 }

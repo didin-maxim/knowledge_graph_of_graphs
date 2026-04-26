@@ -231,7 +231,7 @@ CARDS = [
         ],
         "Выберем ученика A. Среди 16 разговоров от A хотя бы 6 имеют одну тему, скажем первую; пусть это множество B. Если две вершины из B также говорили на первую тему, вместе с A они дают нужную тройку. Если нет, то все рёбра внутри B окрашены только двумя оставшимися цветами. По R(3,3)=6 в K_6 найдётся одноцветный треугольник. Значит в любом случае есть трое учеников, попарно говоривших на одну тему.",
         {"objects": ["complete_graph", "edge_coloring", "monochromatic_triangle"], "methods": ["ramsey_theory", "pigeonhole"], "transformations": ["students_to_complete_graph"], "goal": ["force_monochromatic_triangle"], "auxiliary_graph_type": [], "invariants": ["color_degree"], "standard_idea_ids": ["pigeonhole_principle"], "local_score": 8},
-        ["ramsey_theory", "coloring", "olympiad_tool"],
+        ["ramsey_theory", "coloring"],
     ),
     card(
         "imo-1979-p6-octagon-walks-cycle-graph",
@@ -245,7 +245,7 @@ CARDS = [
         ],
         "Нечётная длина невозможна, потому что C_8 двудолен и S,F лежат в одной доле: a_{2n-1}=0. Для чётных длин сложим вершины цикла по симметрии относительно оси SF и будем считать числа путей в зависимости от расстояния до S. Переходы между четырьмя расстояниями дают линейную систему; исключая промежуточные состояния, получаем для b_n=a_{2n} рекурсию b_n=4b_{n-1}-2b_{n-2} с начальными значениями b_1=0, b_2=2. Поэтому b_n=((2+sqrt(2))^{n-1}-(2-sqrt(2))^{n-1})/sqrt(2).",
         {"objects": ["cycle_graph", "walks", "recurrence"], "methods": ["graph_symmetry", "linear_recurrence"], "transformations": ["octagon_moves_to_cycle_graph"], "goal": ["count_walks"], "auxiliary_graph_type": ["cycle_graph"], "invariants": ["parity"], "standard_idea_ids": [], "local_score": 9},
-        ["graph_symmetry", "double_counting", "olympiad_tool"],
+        ["graph_symmetry", "double_counting"],
     ),
     card(
         "imo-1985-sl5-lattice-perfect-code",
@@ -259,7 +259,7 @@ CARDS = [
         ],
         "Положим S={(x,y,z): x+2y+3z ≡ 0 (mod 7)}. У шести соседей точки значение этой линейной формы отличается на ±1, ±2, ±3, то есть на все ненулевые остатки по модулю 7. Поэтому две соседние точки не могут обе лежать в S. Если же значение в точке равно r≠0, то среди шести изменений ±1,±2,±3 ровно одно равно -r mod 7; соответствующий сосед и только он лежит в S.",
         {"objects": ["infinite_grid_graph", "perfect_code", "independent_set"], "methods": ["modular_coloring", "construction"], "transformations": ["lattice_to_grid_graph"], "goal": ["construct_perfect_independent_dominating_set"], "auxiliary_graph_type": ["grid_graph"], "invariants": ["residue_class"], "standard_idea_ids": [], "local_score": 10},
-        ["coloring", "extremal_graph_theory", "olympiad_tool"],
+        ["coloring", "extremal_graph_theory"],
         "secondary_shortlist_statement",
     ),
     card(
@@ -274,7 +274,7 @@ CARDS = [
         ],
         "Рассматриваем каждое ребро исходного графа как вершину линейного графа L(G); две такие вершины смежны, если соответствующие рёбра имеют общий конец. Направим каждое ребро L(G) от меньшей метки к большей. Требуется длинный ориентированный путь. Стандартное доказательство берёт для каждого ребра наибольшую длину возрастающей цепи, заканчивающейся в нём, и суммирует эти величины по инцидентным рёбрам у каждой вершины исходного графа. Из выпуклости/средней степени получается, что максимальная длина не меньше средней степени исходного графа, то есть 2q/n.",
         {"objects": ["graph", "edge_labels", "line_graph", "directed_path"], "methods": ["longest_path", "average_degree"], "transformations": ["edges_to_line_graph_vertices"], "goal": ["find_long_increasing_trail"], "auxiliary_graph_type": ["line_graph"], "invariants": ["edge_label_order"], "standard_idea_ids": ["longest_path"], "local_score": 12},
-        ["extremal_graph_theory", "extremal_choice", "olympiad_tool"],
+        ["extremal_graph_theory", "extremal_choice"],
         "secondary_shortlist_statement",
     ),
     card(
@@ -289,7 +289,7 @@ CARDS = [
         ],
         "Создадим двудольный граф: слева все занятые горизонтали, справа все занятые вертикали, а точка (x,y) даёт ребро между своей горизонталью и вертикалью. Достаточно раскрасить рёбра графа в два цвета так, чтобы у каждой вершины разность чисел инцидентных рёбер двух цветов была не больше 1. В каждой компоненте добавим при необходимости фиктивные рёбра, чтобы все степени стали чётными, разложим на эйлеровы циклы и покрасим рёбра каждого цикла попеременно. После удаления фиктивных рёбер баланс в каждой вершине нарушается не более чем на 1. Возвращаясь к точкам, получаем требуемую раскраску.",
         {"objects": ["bipartite_graph", "edge_coloring", "eulerian_circuits"], "methods": ["graph_modeling", "alternating_coloring", "eulerian_decomposition"], "transformations": ["points_to_row_column_bipartite_graph"], "goal": ["balanced_two_coloring"], "auxiliary_graph_type": ["bipartite_graph"], "invariants": ["local_color_balance"], "standard_idea_ids": ["alternating_paths"], "local_score": 13},
-        ["eulerian_graphs", "coloring", "olympiad_tool"],
+        ["eulerian_graphs", "coloring"],
     ),
     card(
         "imo-1989-sl14-seven-points-triangle-cover",
@@ -303,7 +303,7 @@ CARDS = [
         ],
         "Пусть проведённые отрезки — рёбра графа G на 7 вершинах. Условие означает, что в G нет независимой тройки. В дополнении H это значит, что H не содержит треугольников. По теореме Мантеля e(H)≤floor(7^2/4)=12, поэтому e(G)≥21-12=9. Достижимость: взять H=K_{3,4}; тогда дополнение состоит из двух клик K_3 и K_4 и имеет 3+6=9 рёбер. В любой тройке вершин дополнения K_{3,4} не может быть треугольника, значит в исходном графе каждая тройка содержит ребро.",
         {"objects": ["graph", "independence_number", "complement_graph", "triangle_free_graph"], "methods": ["complement_graph", "mantel_theorem", "extremal_construction"], "transformations": ["segments_to_graph_edges"], "goal": ["minimum_edges"], "auxiliary_graph_type": [], "invariants": ["alpha_at_most_two"], "standard_idea_ids": ["complement_graph_transition"], "local_score": 9},
-        ["extremal_graph_theory", "forbidden_triangle", "olympiad_tool"],
+        ["extremal_graph_theory", "forbidden_triangle"],
         "secondary_shortlist_statement",
     ),
     card(
@@ -318,7 +318,7 @@ CARDS = [
         ],
         "Если граф не содержит K_6, то по теореме Турана его плотность не превосходит плотность полного 5-дольного графа. В минимально-степенной форме удобно рассуждать так: в K_6-свободном экстремальном графе можно симметризовать несмежные вершины и прийти к полному 5-дольному графу; при 1991 вершине одна часть имеет размер не меньше ceil(1991/5)=399, поэтому в таком графе есть вершина степени не больше 1991-399=1592. Значит δ≥1593 гарантирует K_6. Граница точна: полный 5-дольный граф с размерами 399,398,398,398,398 имеет минимальную степень 1592 и не содержит шести попарно смежных вершин.",
         {"objects": ["graph", "minimum_degree", "clique", "turan_graph"], "methods": ["turan_theorem", "symmetrization", "extremal_construction"], "transformations": [], "goal": ["force_clique_k6"], "auxiliary_graph_type": [], "invariants": ["minimum_degree"], "standard_idea_ids": ["symmetrization"], "local_score": 11},
-        ["extremal_graph_theory", "forbidden_clique", "symmetrization", "olympiad_tool"],
+        ["extremal_graph_theory", "forbidden_clique", "symmetrization"],
         "secondary_shortlist_statement",
     ),
     card(
@@ -333,7 +333,7 @@ CARDS = [
         ],
         "Берём остовное дерево T графа G. Рёбра вне T получают часть меток произвольно; они не мешают, потому что добавляют новые инцидентные метки. Дальше нумеруем рёбра дерева от листьев к корню так, чтобы у каждой внутренней вершины среди инцидентных рёбер оказалась пара меток без общего простого делителя; это делается жадно, используя соседние свободные числа и то, что одно ребро ведёт к родителю, а остальные уже можно упорядочить в поддеревьях. В стандартном решении эту идею оформляют через удаление листьев/индукцию по дереву: после возврата удалённого листового блока выбирают метку, взаимно простую с уже закреплённой меткой у его опорной вершины. Поэтому ни в одной вершине степени хотя бы 2 общий делитель всех инцидентных меток не превосходит 1.",
         {"objects": ["connected_graph", "edge_labeling", "spanning_tree"], "methods": ["spanning_tree", "induction", "greedy_labeling"], "transformations": ["connected_graph_to_spanning_tree"], "goal": ["edge_label_gcd_condition"], "auxiliary_graph_type": ["tree"], "invariants": ["connectedness"], "standard_idea_ids": ["induction", "delete_to_simplify"], "local_score": 14},
-        ["trees", "induction", "extremal_choice", "olympiad_tool"],
+        ["trees", "induction", "extremal_choice"],
     ),
     card(
         "imo-1992-p3-nine-points-partial-ramsey",
@@ -347,7 +347,7 @@ CARDS = [
         ],
         "Ответ: 33. Нижний пример на 32 рёбрах строится из 5-цикловой Ramsey-раскраски K_5 без одноцветных треугольников, заменяя вершины на группы размеров 2,2,2,2,1 и раскрашивая междолевые рёбра по цвету соответствующего ребра C_5/дополнения, а внутри больших долей оставляя только безопасные рёбра. Для верхней оценки рассматривают красный и синий треугольник-свободные графы на 9 вершинах, покрывающие все окрашенные рёбра. Усиленная форма оценки Мантеля для пары таких графов даёт не более 32 рёбер без одноцветного треугольника; значит при 33 окрашенных рёбрах одноцветный треугольник неизбежен.",
         {"objects": ["complete_graph", "partial_edge_coloring", "monochromatic_triangle"], "methods": ["ramsey_theory", "extremal_graph_theory", "construction"], "transformations": ["segments_to_edges_of_k9"], "goal": ["minimum_edges_for_monochromatic_triangle"], "auxiliary_graph_type": [], "invariants": ["triangle_free_color_classes"], "standard_idea_ids": ["complement_graph_transition"], "local_score": 13},
-        ["ramsey_theory", "coloring", "extremal_graph_theory", "olympiad_tool"],
+        ["ramsey_theory", "coloring", "extremal_graph_theory"],
     ),
     card(
         "imo-1997-p4-silver-matrix-factorization-graph",
@@ -362,7 +362,7 @@ CARDS = [
         ],
         "Свяжем с каждым числом a множество клеток, где оно стоит. Клетка (i,j) покрывает индексы i и j; условие, что в i-й строке и i-м столбце вместе встречаются все 2n-1 чисел, означает, что для каждого a его клетки покрывают каждый индекс ровно один раз. Поэтому каждый символ задаёт 1-фактороподобную структуру на n индексах, где диагональная клетка играет роль петли, а внедиагональная — ребра. Для нечётного n=1997 подсчёт петель/внедиагональных покрытий даёт паритетное противоречие. Для бесконечного семейства n берут n из подходящей чётной/групповой конструкции и заполняют матрицу циклически так, что каждый символ покрывает все индексы ровно один раз.",
         {"objects": ["matrix", "matching", "one_factorization", "edge_coloring"], "methods": ["matching_model", "parity", "cyclic_construction"], "transformations": ["matrix_symbols_to_matchings"], "goal": ["existence_and_nonexistence"], "auxiliary_graph_type": ["complete_graph_with_loops"], "invariants": ["vertex_coverage"], "standard_idea_ids": [], "local_score": 14},
-        ["matching", "coloring", "graph_symmetry", "olympiad_tool"],
+        ["matching", "coloring", "graph_symmetry"],
     ),
 ]
 
@@ -377,12 +377,20 @@ SOURCE_IDS = {
     "imo-1991-sl-kalva-9": "imo-1991-sl9-min-degree-for-k6",
     "imo-1991-p4": "imo-1991-p4-connected-graph-gcd-edge-labels",
     "imo-1992-p3": "imo-1992-p3-nine-points-partial-ramsey",
-    "imo-1997-p4": "imo-1997-p4-silver-matrix-factorization-graph",
+}
+
+
+EXCLUDED_PROBLEM_IDS = {
+    # Reviewed 2026-04-26: the published solution is matrix parity/counting;
+    # the graph interpretation is weak and nonessential for this database.
+    "imo-1997-p4-silver-matrix-factorization-graph",
 }
 
 
 def write_cards() -> None:
     for item in CARDS:
+        if item["id"] in EXCLUDED_PROBLEM_IDS:
+            continue
         dump(DATA / "problems" / "imo" / f"{item['id']}.yaml", item)
 
 
@@ -426,7 +434,8 @@ def main() -> int:
     ensure_sources()
     write_cards()
     write_batch()
-    print(f"wrote {len(CARDS)} remaining graph cards")
+    kept_cards = [item for item in CARDS if item["id"] not in EXCLUDED_PROBLEM_IDS]
+    print(f"wrote {len(kept_cards)} remaining graph cards")
     return 0
 
 

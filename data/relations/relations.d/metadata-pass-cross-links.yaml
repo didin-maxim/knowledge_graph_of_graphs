@@ -1,0 +1,94 @@
+{
+  "relations": [
+    {
+      "id": "rel-metadata-pass-hall-kolm-2002-blocks",
+      "from": "hall-marriage-theorem",
+      "to": "kolmogorov-2002-team-olympiad-seniors-problem-8",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The restored official solution proves Dolnikov's lemma by building a bipartite matching between the outside part Y\\A and the remaining vertices of X. Hall's condition is the exact tool that turns the maximal non-Hall-deficient set into the required matching.",
+      "backward_text": "KOLM 2002 team seniors problem 8 is a direct olympiad use of Hall's theorem inside a clique-intersection argument: the matching step controls the complement graph before the final block-intersection estimate.",
+      "anchors": {
+        "from_solution_id": "sol-tight-set-splitting",
+        "to_solution_id": "sol-official-full"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-metadata-pass-tree-kolm-2006-t-tetromino",
+      "from": "tree-equivalent-properties",
+      "to": "kolmogorov-2006-round-2-super-league-problem-6",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The repaired solution chooses a spanning tree of the cell-adjacency graph, uses the edge count and leaf/longest-path structure of a tree, and then removes a T-tetromino while keeping the remaining tree connected.",
+      "backward_text": "The tetromino decomposition problem is a concrete grid application of tree basics: a connected cell graph is reduced to a spanning tree, whose degree sum, leaves, and longest paths force a removable local configuration.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-metadata-pass-brooks-kolm-2006-recoloring",
+      "from": "brooks-theorem",
+      "to": "kolmogorov-2006-round-3-super-league-problem-3",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both arguments use Kempe-style local recoloring in induced two-color subgraphs. Brooks supplies the classical pattern of changing colors along connected components to escape a blocked coloring.",
+      "backward_text": "The KOLM 2006 coloring problem is not an application of Brooks' theorem, but its restored proof lives in the same family of local recoloring and two-color component arguments.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-metadata-pass-tournament-path-kolm-2010",
+      "from": "tournament-hamiltonian-path",
+      "to": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The corrected KOLM 2010 solution counts Hamiltonian paths in tournaments and uses the standard insertion/merging idea for tournament paths. The classical Redei theorem is the base fact guaranteeing such paths.",
+      "backward_text": "KOLM 2010 is a counting-strengthening around tournament Hamiltonian paths: after two republican Hamiltonian paths are chosen, the solution merges them into a global path while preserving the internal orders.",
+      "anchors": {
+        "from_solution_id": "sol-insertion",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-metadata-pass-eulerian-kolm-2012-grid",
+      "from": "eulerian-graph-criterion",
+      "to": "kolmogorov-2012-individual-olympiad-seniors-problem-6",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "After the explicit deletion pattern, the restored solution checks connectedness and in/out degree balance, then invokes the Eulerian path criterion to traverse every remaining directed street exactly once.",
+      "backward_text": "The snowplow grid problem is a directed Eulerian-trail application with extra extremal work: the difficult part is choosing the 4n-4 omitted edges, while the final route is certified by the Eulerian criterion.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-metadata-pass-handshaking-usamo-2008-parity",
+      "from": "handshaking-lemma",
+      "to": "usamo-2008-p6-even-friends-two-rooms",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The completed switching solution is driven by degree parity: odd-degree vertices are removed by a count-preserving switch, and the even-degree base case becomes a parity-closed family under symmetric difference.",
+      "backward_text": "USAMO 2008 P6 is a richer F2 version of the parity principle behind handshaking: local evenness constraints on vertex neighborhoods organize all valid room assignments into a power-of-two family.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-existence-by-switching-odd-vertex"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    }
+  ]
+}

@@ -16,28 +16,35 @@
   ],
   "problem_profile": {
     "objects": [
-      "bipartite_graph",
-      "cycle"
+      "simple_graph",
+      "cycle",
+      "c4_free_graph",
+      "arithmetic_progression"
     ],
     "methods": [
-      "extremal_choice"
+      "double_counting",
+      "extremal_graph_bound"
     ],
-    "transformations": [],
+    "transformations": [
+      "count_forbidden_progressions_by_edges"
+    ],
     "goal": [
       "proof"
     ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "edge_count"
+    ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2004",
-      "graph",
-      "extremal graph theory",
-      "bipartite graph",
-      "cycle",
-      "arithmetic progression"
+      "C4-free graph",
+      "double counting",
+      "arithmetic progression",
+      "extremal graph theory"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked",
+    "central_method": "double_counting"
   },
   "statements": {
     "original": [
@@ -46,16 +53,14 @@
         "title": "Оригинальная формулировка",
         "text": "Вершины графа занумерованы натуральными числами от `1` до `10^5`, причем каждое число\nвстречается ровно один раз. Известно, что в этом графе нет циклов длины 4.\n\nДокажите, что существует арифметическая прогрессия из пяти натуральных чисел, не\nпревосходящих `10^5`, такая, что никакие две вершины с номерами из этой прогрессии\nне соединены ребром.",
         "source_id": "src-kolmogorov-2004-official",
-        "status": "needs_human_review",
+        "status": "ai_checked",
         "self_contained": {
-          "status": "needs_human_review"
+          "status": "ai_checked"
         },
         "definition_ids": [
           "simple_graph",
-          "bipartite_graph",
           "cycle"
-        ],
-        "review_notes": "Prepared card confidence was below high; statement should be checked against the official source before publication."
+        ]
       }
     ],
     "graph_theory": [],
@@ -65,26 +70,30 @@
     {
       "id": "idea-graph-role",
       "title": "Графовая роль",
-      "text": "Граф явно присутствует в условии, а официальное решение существенно использует запрет\n4-циклов и возникновение больших двудольных подграфов.",
-      "tags": [],
-      "status": "needs_human_review"
+      "text": "Граф явно присутствует в условии. Ключевой ход решения — сравнить число 5-членных арифметических прогрессий с максимальным числом ребер в графе без 4-циклов.",
+      "tags": [
+        "double_counting",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Официальное решение идет от противного. Предполагается, что для некоторой длины `m`\nлюбая арифметическая прогрессия этой длины содержит хотя бы одно ребро графа.\n\nТогда, рассматривая графы `G_n` на первых `n` числах и подсчитывая число прогрессий,\nавторы показывают, что в таком случае для любого `k` в графе должен возникать полный\nдвудольный подграф `K_{k,k}`. Идея состоит в последовательном уплотнении множества ребер:\nесли прогрессий слишком много и каждая содержит ребро, то найдутся большие наборы вершин\nс одинаковыми соседями.\n\nНо уже `K_{2,2}` содержит 4-цикл, что противоречит условию. Следовательно, найдется\nарифметическая прогрессия длины 5 без смежных вершин.",
+      "title": "Полное решение через двойной счет прогрессий",
+      "text": "Пусть `N = 10^5`, а `E` — число ребер графа. Предположим противное: каждая арифметическая прогрессия\n`a, a + d, a + 2d, a + 3d, a + 4d`, где `d >= 1` и `a + 4d <= N`, содержит хотя бы одну пару вершин,\nсоединенных ребром.\n\nСначала посчитаем такие прогрессии. Для фиксированного `d` есть `N - 4d` вариантов начала, поэтому при\n`q = floor((N - 1)/4) = 24999` их число равно\n`P = sum_{d=1}^q (N - 4d) = qN - 2q(q+1) = 1249950000`.\n\nТеперь оценим, сколько прогрессий может покрывать одно ребро. Пусть ребро соединяет вершины с номерами\n`x < y`. Если оно лежит в 5-членной прогрессии, то числа `x` и `y` занимают в ней две из пяти позиций.\nЭти позиции можно выбрать `binom(5,2) = 10` способами. После выбора позиций общий шаг прогрессии, если он\nсуществует, уже однозначно равен `(y-x)/(j-i)`, а начало тоже однозначно. Значит одно ребро содержится не\nболее чем в `10` таких прогрессиях.\n\nПо предположению каждая из `P` прогрессий содержит ребро, а каждое ребро отвечает не более чем за `10`\nпрогрессий. Следовательно,\n`E >= P/10 = 124995000`.\n\nОсталось воспользоваться запретом 4-циклов. В графе без циклов длины `4` любые две различные вершины имеют\nне более одного общего соседа: два общих соседа сразу дали бы 4-цикл. Поэтому число неупорядоченных путей\nдлины `2` не превосходит числа пар их концов:\n`sum_v binom(deg v, 2) <= binom(N,2)`.\nС другой стороны, функция `t(t-1)/2` выпукла, и при среднем значении степени `x = 2E/N` по неравенству\nЙенсена\n`sum_v binom(deg v, 2) >= N binom(x,2) = N*x*(x-1)/2`.\nЗначит `x(x-1) <= N-1 = 99999`. Отсюда `x < 317`, поскольку `317*316 > 99999`, и потому\n`E = Nx/2 < 100000*317/2 = 15850000`.\n\nПолучили одновременно `E >= 124995000` и `E < 15850000`, что невозможно. Противоречие доказывает, что\nсуществует 5-членная арифметическая прогрессия, внутри которой нет ни одного ребра графа.",
       "idea_ids": [
         "idea-graph-role"
       ],
       "standard_idea_ids": [
-        "extremal_choice"
+        "double_counting"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
+      "repair_status": "completed_ai_checked",
+      "review_notes": "Deep final pass completed the direct proof via counting 5-term arithmetic progressions and a C4-free edge bound; metadata pass 2026-04-26 aligned statement status and double-counting profile.",
       "definition_ids": [
         "simple_graph",
-        "bipartite_graph",
         "cycle"
       ]
     }
@@ -97,15 +106,15 @@
   },
   "tags": [
     "extremal_graph_theory",
-    "matching",
-    "goal_exact_bound"
+    "double_counting",
+    "goal_proof"
   ],
   "properties": {
     "central_method": {
       "value": [
-        "extremal_choice"
+        "double_counting"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -123,14 +132,17 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
+    "review_status": "ai_checked",
     "public_ready": false,
     "notes": [
       "Imported from prepared card cards/kolm/2004_round2_higher_league_problem_9.md.",
       "Source file noted by card: work/kolm/text/2004/tur2.txt.",
       "Source page noted by card: round 2 higher league, problem 9.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Round 2, Higher League, Problem 9."
+      "Original final-selection name: Round 2, Higher League, Problem 9.",
+      "2026-04-26 plan-to-solution pass verdict: deferred_needs_source_or_reconstruction; compressed official summary gives the strategy but not the estimates needed to certify a complete solution.",
+      "2026-04-26 deep-final pass verdict: completed_ai_checked; full direct double-counting proof restored. Previous numerical gap was resolved by counting every pair of positions in a 5-term progression, so a fixed edge covers at most 10 progressions.",
+      "2026-04-26 metadata-pass: aligned tags, problem_profile, central_method, standard_idea_ids, definition_ids, statuses, and repair metadata after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

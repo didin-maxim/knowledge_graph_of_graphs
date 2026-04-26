@@ -1,0 +1,139 @@
+{
+  "relations": [
+    {
+      "id": "rel-metadata-kolm-2004-ap-c4-usamo-rectangle",
+      "from": "kolmogorov-2004-round2-higher-league-problem-9",
+      "to": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both problems use a C4-free bipartite-style model and double-count local configurations. In the KOLM problem, graph edges cover 5-term arithmetic progressions, while the C4-free bound limits how many such progressions one edge can cover.",
+      "backward_text": "USAMO 1976 P1 is a close training model: a monochromatic rectangle is exactly a 4-cycle in the row-column bipartite graph, and the key step is again a double count of column pairs or local coincidences.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-column-pair-double-counting"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-metadata-kolm-2006-triangle-free-shortest-odd-cycle",
+      "from": "kolmogorov-2006-round-1-super-high-first-league-problem-1",
+      "to": "shortest-odd-cycle-external-neighbor-bound",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "The KOLM solution starts from a shortest odd cycle in a triangle-free graph and uses chordlessness plus restrictions on outside neighbors. This is the same local mechanism as the shortest-odd-cycle external-neighbor lemma.",
+      "backward_text": "The shortest-odd-cycle lemma gives the natural language for the KOLM proof: minimality turns extra chords or too dense outside neighborhoods into a shorter odd cycle or a forbidden triangle.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-odd-arc-or-k4"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-metadata-kolm-2006-triangle-free-mantel",
+      "from": "kolmogorov-2006-round-1-super-high-first-league-problem-1",
+      "to": "mantel-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems extract global structure from the absence of triangles together with degree or edge-count estimates. KOLM proves the more specialized structural conclusion of bipartiteness under high minimum degree, while Mantel gives the extremal density bound.",
+      "backward_text": "Mantel's theorem is a natural neighbor for this KOLM problem: in both arguments, forbidding triangles pushes the graph toward a bipartite structure, with degree sums and extremal reasoning doing the work.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-degree-sum"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-metadata-kolm-2006-recoloring-brooks",
+      "from": "kolmogorov-2006-round-3-super-league-problem-3",
+      "to": "brooks-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions improve a proper coloring by local recoloring: two-color components are inspected so that a needed color can be freed or multiplied without breaking the global coloring.",
+      "backward_text": "Brooks' theorem gives a classical backdrop for the KOLM solution: when greedy coloring is not enough, local recoloring and two-color components overcome the obstruction around a chosen vertex.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-sketch"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-metadata-kolm-2006-recoloring-five-color",
+      "from": "kolmogorov-2006-round-3-super-league-problem-3",
+      "to": "five-color-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The official KOLM solution and the five-color theorem use the same Kempe-chain style move: inspect a component induced by two colors, then swap the two colors inside that component to create the required local effect.",
+      "backward_text": "The five-color theorem is the canonical Kempe-chain example; it helps identify the KOLM proof as a controlled local recoloring of two-color components rather than a plain coloring count.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-metadata-kolm-2006-triangulation-euler-formula",
+      "from": "kolmogorov-2006-round-4-super-league-problem-5",
+      "to": "euler-formula-planar",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "The triangulation problem turns a polygon dissection into a planar structure and a triangle-adjacency tree. The same Euler-style count of vertices, edges, and faces explains the number of triangles and diagonals.",
+      "backward_text": "Euler's formula is a basic tool for these triangulation problems: it explains why there are n-3 diagonals, n-2 triangles, and why the triangle-adjacency graph is a tree.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-reduce-to-tree"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-metadata-kolm-2006-wheel-spanning-tree-basics",
+      "from": "kolmogorov-2006-team-olympiad-seniors-problem-9",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "KOLM reduces choosing n roads in a connected network on n+1 vertices to counting spanning trees of a wheel graph. The needed basic fact is that a connected graph with |V|-1 edges is a tree.",
+      "backward_text": "The equivalent properties of trees provide the language for this reduction: once the chosen subgraph is connected and has exactly |V|-1 edges, it is a spanning tree, so the remaining task is to count such trees.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-minimal-connected-subgraph"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.83
+    },
+    {
+      "id": "rel-metadata-kolm-2007-induced-count-handshaking",
+      "from": "kolmogorov-2007-team-olympiad-seniors-problem-7",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "The KOLM solution compares edge counts in induced m-vertex subgraphs, equivalently controlling partial degrees after replacing one vertex. This directly extends the incidence-counting idea behind handshaking.",
+      "backward_text": "The handshaking lemma is the base form of the same double count: edges in induced subgraphs can be counted through vertex degrees, which lets the KOLM proof force a rigid global acquaintance graph.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-double-counting"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-metadata-kolm-2007-induced-count-imo-1995-nc5",
+      "from": "kolmogorov-2007-team-olympiad-seniors-problem-7",
+      "to": "imo-1995-nc5-greetings-regular-codegree-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems convert uniform local numbers into global regularity of an acquaintance graph. KOLM fixes the edge count in every m-set and compares vertex replacements; IMO Shortlist 1995 NC5 fixes common-neighbor counts and also forces regular counting identities.",
+      "backward_text": "IMO 1995 NC5 is close in style: local uniformity in an acquaintance graph is analyzed by double counting and comparing vertex contributions, making it a useful neighbor for the KOLM induced-subgraph problem.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-reviewed-secondary"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.68
+    }
+  ]
+}

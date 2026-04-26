@@ -25,10 +25,12 @@
     "methods": [
       "fan_triangulation_construction",
       "complex_numbers",
-      "algebraic_integrality"
+      "algebraic_integrality",
+      "roots_of_unity_filter"
     ],
     "transformations": [
-      "triangulation_to_outerplanar_structure"
+      "triangulation_to_outerplanar_structure",
+      "add_zero_area_degenerate_triangles"
     ],
     "goal": [
       "classify_balanced_color_counts"
@@ -38,7 +40,9 @@
     ],
     "invariants": [
       "equal_area_sum_per_color",
-      "n_divisible_by_m"
+      "n_divisible_by_m",
+      "cyclotomic_integrality",
+      "root_of_unity_progression_sum"
     ],
     "keywords": [
       "usamo_2024_p3",
@@ -80,7 +84,7 @@
     {
       "id": "idea-fan-triangulation-when-m-divides-n",
       "title": "Если `m | n`, достаточно веерной triagulation",
-      "text": "В fan triangulation от одной вершины длины и площади треугольников периодичны по модулю `n`; при `m | n` можно разбить их на `m` циклических классов с одинаковой суммой площадей.",
+      "text": "В fan triangulation от одной вершины длины и площади треугольников периодичны по модулю `n`; при proper divisor `m | n` можно раскрасить треугольники циклически по остаткам modulo `m`. Добавление двух вырожденных нулевых треугольников делает сумму по каждому цвету полной геометрической прогрессией, поэтому суммы площадей совпадают.",
       "tags": [
         "extremal_choice",
         "planar_graphs"
@@ -90,7 +94,7 @@
     {
       "id": "idea-necessity-via-algebraic-integrality",
       "title": "Необходимость оказывается не графовой, а алгебраической",
-      "text": "После записи площадей через корни из единицы условие balanced сводится к тому, что `n/m` должно быть algebraic integer; для рационального числа это эквивалентно делимости `m | n`.",
+      "text": "После записи площадей через корни из единицы каждая цветовая сумма, умноженная на `4i`, является суммой algebraic integers. Но равная доля площади правильного `n`-угольника равна `(n/m)(omega-omega^{-1})/(4i)`; в cyclotomic field это возможно только если рациональное число `n/m` является algebraic integer, то есть обычным целым.",
       "tags": [],
       "status": "ai_checked"
     }
@@ -98,8 +102,8 @@
   "solutions": [
     {
       "id": "sol-fan-and-integrality",
-      "title": "Веерная конструкция и критерий `m | n`",
-      "text": "Ответ: такие триангуляции существуют тогда и только тогда, когда \\(m\\) делит \\(n\\). Достаточность проще всего получить на веерной триангуляции правильного \\(n\\)-угольника из одной вершины. Её \\(n-2\\) треугольников удобно индексировать шагами по дуге, и при \\(m\\mid n\\) можно раскрасить их по классам остатков так, что суммарные площади каждого цвета совпадут. Необходимость в решении Эвана Чена уже почти не использует графовую структуру триангуляции как таковую: площади всех возможных треугольников выражаются через корни из единицы, и из равенства сумм по цветам выводится, что рациональное число \\(n/m\\) обязано быть алгебраическим целым. Это возможно только при \\(m\\mid n\\). Поэтому графовая роль здесь существенна для постановки и для удобной модели триангуляции как внешнепланарного графа, но центральная техника решения в действительности алгебраическая.",
+      "title": "Веерная конструкция и критерий proper divisor",
+      "text": "Ответ: такие триангуляции существуют тогда и только тогда, когда `m` является собственным делителем `n`. Условие «собственным» необходимо уже потому, что все настоящие треугольники имеют положительную площадь, так что при равных ненулевых суммах каждый цвет должен появиться, а значит `m <= n-2 < n`. Достаточность проще всего получить на веерной триангуляции правильного `n`-угольника из одной вершины. Пусть вершины равны `1, omega, ..., omega^{n-1}`, где `omega = exp(2*pi*i/n)`, а веерные треугольники имеют вид `(1, omega^j, omega^{j+1})`, `1 <= j <= n-2`. Если `m | n` и `m < n`, красим треугольник с номером `j` по остатку `j mod m`. Для вычисления суммы удобно также добавить вырожденные треугольники при `j=0` и `j=n-1`, их площадь равна нулю. Signed area треугольника `(1, omega^a, omega^b)` равна `T(a,b)=((omega^a-1)(omega^b-1)(omega^{-b}-omega^{-a}))/(4i)`. Тогда для фиксированного остатка `r mod m` сумма `T(j,j+1)` по всем `0 <= j < n`, `j == r mod m`, после раскрытия превращается в одну и ту же постоянную часть плюс суммы `sum omega^j` и `sum omega^{-1-j}` по полной прогрессии с шагом `m`; эти две суммы равны нулю, потому что `m` собственно делит `n`. Поэтому суммарная площадь каждого цвета равна `(n/m)(omega-omega^{-1})/(4i)`, независимо от `r`. Для необходимости рассмотрим любую balanced triangulation. Та же формула площади показывает, что для любых вершин `omega^k, omega^{k+a}, omega^{k+b}` число `4iT(a,b)=(omega^a-1)(omega^b-1)(omega^{-b}-omega^{-a})` является algebraic integer, поскольку корни из единицы являются algebraic integers и это свойство замкнуто относительно сложения и умножения. Следовательно, `4i` times сумма площадей одного цвета тоже algebraic integer. Но эта сумма равна ровно `1/m` площади всего правильного `n`-угольника, то есть `S=(n/m)(omega-omega^{-1})/(4i)`. В cyclotomic field `Q(omega)` используем стандартный факт `O_{Q(omega)} = Z[omega]`: если `q=n/m` не целое, то `q(omega-omega^{-1})`, а после умножения на `omega` и `q(omega^2-1)`, имеет нецелые координаты в power basis of `Z[omega]` (малые случаи уже покрыты ограничением `m <= n-2`). Поэтому `4iS` не могло быть algebraic integer при `m` not dividing `n`. Значит `n/m` является рациональным algebraic integer, то есть обычным целым, и `m | n`. Совместно с `m < n` получаем ровно собственные делители `n`. Поэтому графовая роль здесь существенна для постановки и для удобной модели triangulation как внешнепланарного графа, но центральная техника решения в действительности алгебраическая.",
       "idea_ids": [
         "idea-fan-triangulation-when-m-divides-n",
         "idea-necessity-via-algebraic-integrality"
@@ -119,14 +123,14 @@
   },
   "tags": [
     "planar_graphs",
-    "extremal_choice",
     "goal_characterization"
   ],
   "properties": {
     "central_method": {
       "value": [
         "fan_triangulation_construction",
-        "complex_numbers"
+        "complex_numbers",
+        "algebraic_integrality"
       ],
       "status": "ai_checked"
     }
@@ -146,10 +150,11 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-24",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
-      "После перепроверки задача оставлена в strong core как graph-in-statement карточка, но в явном виде помечено, что ключевая техника решения не графовая."
+      "После перепроверки задача оставлена в strong core как graph-in-statement карточка, но в явном виде помечено, что ключевая техника решения не графовая.",
+      "2026-04-26 metadata pass: aligned USAMO 2024 P3 as graph-in-statement/outerplanar setup with algebraic central method; kept non-graph necessity explicit."
     ],
     "relations_status": "deep_done"
   }

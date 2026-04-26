@@ -24,12 +24,14 @@
     "methods": [
       "minimal_counterexample",
       "extremal_choice",
-      "longest_path"
+      "longest_path",
+      "degree_sum_closure"
     ],
     "transformations": [
       "maximal_nonhamiltonian_completion",
       "add_missing_edges",
-      "close_hamiltonian_path"
+      "close_hamiltonian_path",
+      "convert_cycle_to_hamiltonian_path"
     ],
     "goal": [
       "hamiltonian_cycle_existence"
@@ -71,33 +73,35 @@
     {
       "id": "idea-add-missing-edges",
       "title": "Добавление ребер",
-      "text": "Если добавить недостающее ребро между парой с большой суммой степеней, гамильтоновость не меняется в нужную сторону.",
+      "text": "Если к негамильтонову графу максимально добавлять недостающие ребра, то любое оставшееся недостающее ребро после добавления создает гамильтонов цикл; удаление этого ребра дает гамильтонов путь, который замыкается позиционным аргументом по сумме степеней.",
       "tags": [
         "hamiltonian_cycles",
         "extremal_choice"
       ],
-      "status": "ai_draft"
+      "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-closure-sketch",
       "title": "Доказательство через максимальное добавление ребер",
-      "text": "Добавим к G все ребра, которые можно добавить, не создавая гамильтонова цикла, и получим максимальный негамильтонов граф H. В H есть несмежные u,v, иначе H полный и гамильтонов. По условию \\( \\deg(u)+\\deg(v) \\ge n \\). Но в максимальном H граф H+uv имеет гамильтонов цикл, использующий uv; удалив uv, получаем гамильтонов путь от u к v. Стандартный аргумент с позициями соседей на этом пути и неравенством степеней замыкает путь в цикл уже в H, противоречие.",
+      "text": "Предположим, что G не гамильтонов. Добавим к G все ребра, которые можно добавить, не создавая гамильтонова цикла, и получим максимальный по включению негамильтонов надграф H на тех же n вершинах. Для любой несмежной пары x,y в H эта пара была несмежной и в G, а степени при добавлении ребер только увеличиваются, поэтому в H также выполнено \\( \\deg_H(x)+\\deg_H(y) \\ge n \\). В H есть несмежные вершины u,v, иначе H был бы полным графом и имел бы гамильтонов цикл. По максимальности граф H+uv уже гамильтонов; более того, всякий его гамильтонов цикл обязан использовать новое ребро uv, иначе такой цикл лежал бы в H. Удалив uv из этого цикла, получаем гамильтонов путь \\( v_1,v_2,\\ldots,v_n \\) в H, где \\( v_1=u \\) и \\( v_n=v \\). Рассмотрим множества индексов \\( A=\\{i: 1\\le i\\le n-1,\\ v_i v_n\\in E(H)\\} \\) и \\( B=\\{i: 1\\le i\\le n-1,\\ v_1 v_{i+1}\\in E(H)\\} \\). Тогда \\( |A|=\\deg_H(v_n) \\), потому что все соседи \\( v_n \\) лежат на этом пути и \\( v_1v_n\\notin E(H) \\), а \\( |B|=\\deg_H(v_1) \\). Если бы A и B не пересекались, то \\( \\deg_H(v_1)+\\deg_H(v_n)=|A|+|B|\\le n-1 \\), что противоречит условию Оре для несмежных \\( v_1,v_n \\). Значит, существует индекс i, для которого одновременно \\( v_i v_n\\in E(H) \\) и \\( v_1 v_{i+1}\\in E(H) \\). Тогда \\( v_1,v_{i+1},v_{i+2},\\ldots,v_n,v_i,v_{i-1},\\ldots,v_1 \\) — гамильтонов цикл в H. Это противоречит выбору H как негамильтонова графа. Следовательно, исходный граф G гамильтонов.",
       "idea_ids": [
         "idea-add-missing-edges"
       ],
-      "status": "ai_draft",
+      "status": "ai_checked",
       "standard_idea_ids": [
         "minimal_counterexample",
-        "longest_path"
+        "longest_path",
+        "extremal_choice"
       ],
       "definition_ids": [
         "degree",
         "path",
         "cycle",
         "hamiltonian_path",
-        "hamiltonian_cycle"
+        "hamiltonian_cycle",
+        "simple_graph"
       ]
     }
   ],
@@ -105,15 +109,24 @@
     "main": "national_final_hard",
     "local_score": 8,
     "comment": "Обобщает Дирака; доказательство чуть менее прямое.",
-    "status": "ai_draft"
+    "status": "ai_checked"
   },
   "tags": [
     "hamiltonian_cycles",
     "extremal_choice",
+    "minimal_counterexample",
     "classical_theorem",
     "goal_exact_bound"
   ],
-  "properties": {},
+  "properties": {
+    "central_method": {
+      "value": [
+        "minimal_counterexample",
+        "longest_path"
+      ],
+      "status": "ai_checked"
+    }
+  },
   "sources": [
     {
       "source_id": "src-wikipedia-ore",
@@ -124,9 +137,11 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-19",
-    "review_status": "needs_human_review",
-    "public_ready": false,
-    "notes": [],
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-26 metadata pass: aligned Ore with maximal non-Hamiltonian completion, longest-path closure, and degree-sum metadata."
+    ],
     "graph_theory_duplicate_removed": true,
     "relations_status": "deep_done"
   }

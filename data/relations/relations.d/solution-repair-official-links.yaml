@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-apmo-2016-rmm-2013-functional-digraph-encoding",
+      "from": "apmo-2016-p4-dreamland-28-step-coloring",
+      "to": "rmm-2013-p2-tester-pair-endomorphism-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе официальные графовые модели начинают с функций как ориентированных графов малой исходящей степени. В APMO 2016 один исходящий рейс задаёт функциональный орграф и затем граф достижимости, а в RMM 2013 две функции кодируются красными и синими дугами, после чего свойства коммутирующих отображений читаются как эндоморфизмы.",
+      "backward_text": "RMM 2013 использует раскрашенный функциональный орграф для жёсткости эндоморфизмов, тогда как APMO 2016 использует функциональный орграф для раскраски 28-шаговой достижимости; общий шаг — перевод отображений в ориентированные рёбра и работа с компонентами такого орграфа.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-rmm-2016-rmm-2023-tree-exchange-descent",
+      "from": "rmm-2016-p6-ab-tree-termination-semiinvariant",
+      "to": "rmm-2023-p6-colored-spanning-tree-suspicious-edges",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Оба решения управляют локальными обменами рёбер в деревьях с помощью строго убывающего объекта. В RMM 2016 это числовой потенциал двудольного дерева, а в RMM 2023 — число подозрительных рёбер в экстремально выбранном семействе остовов.",
+      "backward_text": "RMM 2023 работает не с одним деревом, а с семейством остовов, но его цикл-разрезный обмен играет ту же роль, что локальная замена ребра в RMM 2016: после правильного экстремального выбора допустимый обмен строго улучшает меру и исключает бесконечное или плохое поведение.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-turan-memo-2025-t4-balanced-partition-extremal",
+      "from": "turan-theorem",
+      "to": "memo-2025-t4-toll-complete-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обоих аргументах экстремальность приводит к разбиению полного графа на части, а затем размеры частей оцениваются через баланс. Теорема Турана максимизирует число междольных рёбер почти равными долями, а MEMO 2025 минимизирует внутриклассовый вес и затем оценивает число удаляемых внутриклассовых рёбер через суммы квадратов размеров частей.",
+      "backward_text": "Задача платных дорог является взвешенной и не запрещает клики, но её официальный шаг с минимальным 100-разбиением и балансировкой размеров частей является близким родственником туранианского экстремального разбиения полного графа.",
+      "anchors": {
+        "from_solution_id": "sol-symmetrization",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.73
+    },
+    {
+      "id": "rel-rmm-2012-vosh-2025-two-side-bipartite-balance",
+      "from": "rmm-2012-p1-sociable-sets-bipartite-parity",
+      "to": "vosh-2025-26-final-regions-friendship-coloring",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Оба решения используют симметрию двух сторон после ограничения графа: RMM 2012 считает разделённые пары множеств в двудольном графе, а VOSH 2025/26 рассматривает подграф на двух цветах и доказывает, что его циклы обязаны быть сбалансированными, то есть двудольными.",
+      "backward_text": "VOSH 2025/26 — задача о перекраске, а RMM 2012 — задача о чётности покрытий, но в обоих случаях ключевое упрощение приходит от перехода к двум классам и контроля того, как одна сторона ограничивает другую.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.67
+    },
+    {
+      "id": "rel-egmo-2025-usajmo-2023-grid-dynamic-cycle-encoding",
+      "from": "egmo-2025-p5-rotating-arrows-dynamic-cycle",
+      "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Оба решения кодируют динамику на клетчатой доске графом состояний. В EGMO 2025 хороший старт означает гамильтонов цикл обхода клеток с согласованием по модулю 4, а в USAJMO 2023 перемещения домино сводятся к ориентированному графу специальных клеток, где достижимые конфигурации задаются деревом компоненты пустой клетки.",
+      "backward_text": "USAJMO 2023 считает достижимые положения пустой клетки в функциональном орграфе, а EGMO 2025 считает хорошие старты на циклическом обходе; обе карточки роднит перевод пошагового процесса на доске в статический граф клеток с жёстким условием достижимости.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    }
+  ]
+}

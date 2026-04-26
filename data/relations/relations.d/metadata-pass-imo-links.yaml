@@ -1,0 +1,109 @@
+{
+  "relations": [
+    {
+      "id": "rel-metadata-pass-imo-1985-sl5-imo-1996-c1-grid-residues",
+      "from": "imo-1985-sl5-lattice-perfect-code",
+      "to": "imo-1996-c1-grid-knight-reachability",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи используют решётку как граф ходов и выделяют арифметические классы клеток: в SL5 это модульная конструкция кода, а в C1 инвариант/разбор компонент показывает, какие клетки достижимы.",
+      "backward_text": "IMO 1996 C1 является более локальной задачей о достижимости, но её модульная раскраска и явное построение путей хорошо читаются после карточки о lattice perfect code.",
+      "anchors": {
+        "from_solution_id": "sol-graph-review",
+        "to_solution_id": "sol-secondary-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-metadata-pass-utyum-2007-imo-1996-c2-grid-color-counting",
+      "from": "utyum-2007_lichol30_4_rectangle_coloring",
+      "to": "imo-1996-c2-grid-vertices-two-red",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки кодируют локальные условия на прямоугольной решётке через раскраску/матрицу и затем считают допустимые глобальные конфигурации по строкам или граничным данным.",
+      "backward_text": "IMO 1996 C2 даёт компактный вариант той же идеи: условие на каждом 4-цикле заставляет жёсткую рекурренцию между соседними строками.",
+      "anchors": {
+        "from_solution_id": "sol-official",
+        "to_solution_id": "sol-secondary-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-metadata-pass-utyum-2012-imo-2005-c2-binary-tree-induction",
+      "from": "utyum-2012_komol39_8_binary_tree_ordering",
+      "to": "imo-2005-c2-dynastic-vertices-forest",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи работают с бинарным деревом/лесом и используют рекурсивную структуру поддеревьев: удаление или заряд поддеревьев превращает локальные условия потомков в глобальную оценку.",
+      "backward_text": "IMO 2005 C2 является более оценочной версией бинарно-деревянной индукции: вместо построения порядка нужно контролировать число специальных вершин через размеры поддеревьев.",
+      "anchors": {
+        "from_solution_id": "sol-official",
+        "to_solution_id": "sol-secondary-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-metadata-pass-five-color-imo-2013-c3-local-recoloring",
+      "from": "five-color-theorem",
+      "to": "imo-2013-c3-imons-graph-coloring",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе карточки живут в языке понижения числа цветов: в пятицветной теореме цвет освобождается локальной перекраской, а в IMO 2013 C3 число цветов уменьшается индуктивной операцией над графом.",
+      "backward_text": "IMO 2013 C3 не использует планарность или цепи Кемпе напрямую, но как навигационная соседка полезна после классических задач о локальном управлении раскраской.",
+      "anchors": {
+        "from_solution_id": "sol-kempe-sketch",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.64
+    },
+    {
+      "id": "rel-metadata-pass-benjamini-tzalik-imo-2013-c6-layer-counting",
+      "from": "benjamini-tzalik-shortest-paths-bound",
+      "to": "imo-2013-c6-flight-distance-layers",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи рассматривают BFS-слои/кратчайшие пути и получают ограничение через подсчёт вершин или путей между соседними слоями.",
+      "backward_text": "IMO 2013 C6 использует более элементарный слой расстояния 4 и приватные пути, но навигационно близка к задачам о границах слоёв кратчайших путей.",
+      "anchors": {
+        "from_solution_id": "sol-paper-bound",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.73
+    },
+    {
+      "id": "rel-metadata-pass-usamo-2008-p3-imo-2016-c8-grid-alternation",
+      "from": "usamo-2008-p3-diamond-lattice-path-partition",
+      "to": "imo-2016-c8-domino-unique-tiling-cycles",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе задачи используют решётчатую паритетную структуру и чередование путей/циклов как способ сравнить допустимые конфигурации на доске.",
+      "backward_text": "IMO 2016 C8 более явно говорит о домино и симметрической разности разбиений, но его cycle-switching хорошо соседствует с lattice path partition аргументами USAMO 2008 P3.",
+      "anchors": {
+        "from_solution_id": "sol-red-black-imbalance",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.62
+    },
+    {
+      "id": "rel-metadata-pass-kolm-2022-hamiltonian-parity-imo-2023-c7",
+      "from": "kolmogorov-2022-round2-juniors-hamiltonian-path-parity",
+      "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе карточки изучают полные графы через гамильтоновы пути и раскраску/паритет рёбер; полезный общий объект — порядок вершин вдоль пути.",
+      "backward_text": "IMO 2023 C7 ищет оптимальное число цветов, неизбежных на каждом гамильтоновом пути, тогда как задача Колмогорова использует паритетный счёт, но обе навигационно относятся к edge-coloured Hamiltonian path arguments.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.66
+    }
+  ]
+}

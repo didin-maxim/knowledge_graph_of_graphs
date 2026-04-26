@@ -1,0 +1,184 @@
+{
+  "relations": [
+    {
+      "id": "rel-after-tags-imo-2010-flags-konig-cover",
+      "from": "konig-vertex-cover-theorem",
+      "to": "imo-2010-c2-flags-diagonal-matching",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Kőnig's alternating-path proof supplies the bipartite matching/minimax language behind the diagonal flag pairing: after the incidence graph is built, the obstruction is exactly a vertex-cover versus matching obstruction.",
+      "backward_text": "IMO 2010 C2 is a compact olympiad instance of the Kőnig-Hall toolkit, using a bipartite incidence graph where the diagonal condition is certified by a matching/cover argument.",
+      "anchors": {
+        "from_solution_id": "sol-alternating",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.89
+    },
+    {
+      "id": "rel-after-tags-konig-usamo-2009-tiling",
+      "from": "konig-vertex-cover-theorem",
+      "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions organize a bipartite structure by alternating paths or cycles. Kőnig's theorem is not directly invoked in the tiling proof, but its alternating-reachability partition is the same mechanism used to control unmatched or switchable configurations.",
+      "backward_text": "The tasteful domino tiling problem is a board-tiling version of the alternating-path motif: overlaying tilings creates alternating cycles, much as Kőnig's proof follows alternating paths from unmatched vertices.",
+      "anchors": {
+        "from_solution_id": "sol-alternating",
+        "to_solution_id": "sol-induction-plus-alternating-cycles"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-after-tags-kolm-2011-2012-eulerian-construction",
+      "from": "kolmogorov-2011-team-olympiad-seniors-problem-4",
+      "to": "kolmogorov-2012-individual-olympiad-seniors-problem-6",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The updated metadata marks both solutions with eulerian_trail and explicit_construction. In each problem the main construction is reduced to arranging a directed route whose local degree balances make an Eulerian traversal possible.",
+      "backward_text": "The snowplow grid solution is the more explicit Eulerian-trail endpoint: after deleting the right edges, the proof checks connectedness and degree balance, paralleling the 2011 construction's route-building logic.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-after-tags-imo-2020-2023-eulerian-parity",
+      "from": "imo-2020-c6-colored-coins-eulerian-multigraph",
+      "to": "imo-2023-c4-strip-pieces-eulerian-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both corrected cards use an Eulerian graph model where parity of degrees is the invariant that permits a global traversal or decomposition. The local objects differ, but the proof architecture is the same handshaking-to-Eulerian conversion.",
+      "backward_text": "IMO 2023 C4 turns strip pieces into an Eulerian graph certificate; this mirrors IMO 2020 C6, where colored coin moves are encoded as a multigraph with even-degree constraints.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-after-tags-kolm-2010-2011-hamiltonian-cycles",
+      "from": "kolmogorov-2010-individual-olympiad-juniors-problem-5",
+      "to": "kolmogorov-2011-individual-olympiad-seniors-problem-7",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The two cards now share hamiltonian_cycle, cycle, and simple_graph metadata. Both arguments are built around forcing or excluding a Hamiltonian cycle by tracking how a long cyclic structure can be extended.",
+      "backward_text": "KOLM 2011 seniors problem 7 is a stronger Hamiltonian-cycle obstruction/extension problem, while the 2010 juniors problem gives a smaller instance of the same cycle-extension motif.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-after-tags-ore-kolm-2022-hamiltonian-parity",
+      "from": "ore-theorem",
+      "to": "kolmogorov-2022-round2-juniors-hamiltonian-path-parity",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Ore's closure proof and the KOLM 2022 parity problem both reason about when degree/color constraints force a Hamiltonian ordering. The olympiad problem is not a direct application of Ore, but it uses the same extremal Hamiltonian-path perspective.",
+      "backward_text": "KOLM 2022 round 2 juniors is a parity-colored variant of Hamiltonian-path forcing; Ore's theorem is the classical benchmark for turning local degree information into a global Hamiltonian conclusion.",
+      "anchors": {
+        "from_solution_id": "sol-closure-sketch",
+        "to_solution_id": "sol-official-restored"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-after-tags-kolm-2007-2008-local-recoloring",
+      "from": "kolmogorov-2007-round-3-high-and-first-league-problem-3",
+      "to": "kolmogorov-2008-round-2-first-junior-league-problem-1",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both repaired metadata blocks now identify local_recoloring together with double_counting, coloring, and connectivity. The proofs count colored configurations and then modify a coloring locally to improve or normalize the extremal setup.",
+      "backward_text": "The 2008 first-junior problem is a close later instance of the 2007 coloring/counting scheme: double counting isolates the relevant colored edges, and local recoloring controls the remaining cases.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.87
+    },
+    {
+      "id": "rel-after-tags-kolm-2008-recoloring-counting-pair",
+      "from": "kolmogorov-2008-round-2-first-junior-league-problem-1",
+      "to": "kolmogorov-2008-round-2-second-league-problem-2",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "The final tags make these two cards a near-pair: both have coloring, connectivity, double_counting, goal_counting, local_recoloring, and the same central_method list. They should be cross-linked as parallel variants of the same counting-plus-recoloring template.",
+      "backward_text": "The second-league variant follows the same metadata profile and proof template as the first-junior card, with local recoloring used after a double-counting reduction.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-after-tags-turan-kolm-2022-complement-extremal",
+      "from": "turan-theorem",
+      "to": "kolmogorov-2022-round1-high-edge-count-permutation-nonedges",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Turan's theorem records the classical Zykov/symmetrization endpoint for extremal edge bounds under forbidden clique structure. The KOLM 2022 problem is a complement-graph extremal edge-count argument, so the useful cross-link is the shared extremal-complement viewpoint rather than a direct theorem application.",
+      "backward_text": "The KOLM 2022 permutation-nonedges problem is an olympiad complement-graph extremal argument; Turan's theorem is the nearby classical model for transforming a forbidden-structure condition into an edge-count bound.",
+      "anchors": {
+        "from_solution_id": "sol-symmetrization",
+        "to_solution_id": "sol-official-restored"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.75
+    },
+    {
+      "id": "rel-after-tags-kolm-2008-solid-angle-imo-2004-tetrahedra",
+      "from": "kolmogorov-2008-individual-olympiad-seniors-problem-7",
+      "to": "imo-2004-c8-triangles-tetrahedra-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "The KOLM 2008 card is now marked by solid_angle, projection, spherical_area_covering, and planar_graphs. IMO 2004 C8 is a tetrahedra/triangle incidence counting problem, so it is a useful nearby geometric graph-counting card, though the actual projection method is specific to KOLM 2008.",
+      "backward_text": "IMO 2004 C8 gives a discrete tetrahedra/triangles graph-counting companion to the KOLM solid-angle problem: both translate spatial geometry into an incidence graph and then count constrained configurations.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-secondary-sketch"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-after-tags-imo-2005-injection-imo-2013-layers",
+      "from": "imo-2005-c3-black-paths-injection",
+      "to": "imo-2013-c6-flight-distance-layers",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both cards use a counting map from local path/layer data into a bounded set of witnesses. IMO 2005 C3 is explicitly tagged by injection and extremal_path, while IMO 2013 C6 uses layer_counting and an extremal choice of distance layers.",
+      "backward_text": "IMO 2013 C6 is a distance-layer version of the same counting philosophy: choose an extremal path/layer structure, then account for the possible witnesses without overcounting, much as the black-path problem does via injection.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-after-tags-menger-imo-2021-kolm-2004-strong-digraph",
+      "from": "imo-2021-c4-anisotropy-menger",
+      "to": "kolmogorov-2004-round3-higher-league-problem-10",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both updated cards live in directed connectivity: IMO 2021 C4 uses Menger/cut_counting in tournaments, while KOLM 2004 studies strongly connected digraphs and strong components through an extremal choice.",
+      "backward_text": "KOLM 2004 round 3 is a strong-connectivity extremal problem; IMO 2021 C4 is a tournament cut/Menger counterpart where directed cuts and disjoint paths provide the connectivity certificate.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    }
+  ]
+}

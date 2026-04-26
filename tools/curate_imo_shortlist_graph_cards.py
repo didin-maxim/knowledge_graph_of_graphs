@@ -142,7 +142,7 @@ CARDS = [
         ],
         "Ответ: \\(2^N-1\\). Нижняя оценка получается удалением пары противоположных флагов: оставшееся семейство из \\(2^N-2\\) флагов не обязано содержать нужную диагональ. Для верхней оценки фиксируем цвет и строим двудольный граф: слева флаги, справа позиции, ребро означает, что в этой позиции флаг имеет данный цвет. Если для какого-то цвета выполнено условие Холла, то соответствующее паросочетание даёт \\(N\\) флагов и перестановку строк с одноцветной диагональю. Если условие Холла нарушено для обоих цветов, то две запрещающие группы позиций и флагов дают слишком мало различных флагов, что противоречит наличию \\(2^N-1\\) флагов.",
         {"objects": ["binary_flags", "bipartite_graph", "matching"], "methods": ["hall_condition", "extremal_example"], "transformations": ["flags_to_bipartite_matching"], "goal": ["minimum_for_guaranteed_matching"], "auxiliary_graph_type": ["bipartite_graph"], "invariants": []},
-        ["matching", "olympiad_tool"],
+        ["matching"],
         "imo_p3_plus",
     ),
     card(
@@ -159,7 +159,7 @@ CARDS = [
         ],
         "Переводим турнир в ориентированный полный граф. Запрет плохой четвёрки означает: если вершина проигрывает трём вершинам, то эти три не могут образовывать ориентированный цикл. Официальное решение доказывает утверждение индукцией по числу вершин, разбивая вершины относительно выбранного игрока на победителей и проигравших и используя, что внутри соответствующих частей сохраняется тот же запрет. При раскрытии суммы кубов \\((w_i-l_i)^3\\) вклад между частями контролируется степенями, а запрещённый цикл в тройке даёт нужный знак. В итоге сумма неотрицательна.",
         {"objects": ["tournament", "outdegree", "indegree"], "methods": ["induction", "degree_sum", "forbidden_directed_cycle"], "transformations": ["tennis_results_to_tournament"], "goal": ["degree_inequality"], "auxiliary_graph_type": [], "invariants": ["score_difference"]},
-        ["tournaments", "double_counting", "olympiad_tool"],
+        ["tournaments", "double_counting"],
     ),
     card(
         "imo-2012-c7-equal-sum-chords-independent-set",
@@ -175,7 +175,7 @@ CARDS = [
         ],
         "Ключевая лемма официального решения: в любом графе \\(G\\) существует независимое множество размера не меньше \\(\\sum_{v\\in G}1/(d(v)+1)\\); она доказывается индукцией удалением вершины минимальной степени и её соседей. Далее для каждой возможной суммы рассматриваются хорды, соединяющие пары чисел с этой суммой. Внутри такого класса строится граф пересечений: вершины — хорды, рёбра — пересечения. Суммирование оценки по подходящим классам показывает, что хотя бы в одном классе независимое множество имеет размер не меньше 100. Его вершины и дают 100 попарно непересекающихся хорд с одинаковыми суммами.",
         {"objects": ["circle_chords", "intersection_graph", "independent_set"], "methods": ["induction", "caro_wei_bound", "averaging"], "transformations": ["chords_to_intersection_graph"], "goal": ["large_disjoint_chord_family"], "auxiliary_graph_type": ["intersection_graph"], "invariants": ["degree_bound"]},
-        ["extremal_graph_theory", "olympiad_tool"],
+        ["extremal_graph_theory"],
     ),
     card(
         "imo-2013-c3-imons-graph-coloring",
@@ -191,7 +191,7 @@ CARDS = [
         ],
         "Строим граф запутанностей. Доказывается лемма: если текущий граф имеет правильную раскраску в \\(n>1\\) цветов, то после конечной последовательности разрешённых операций можно получить граф, раскрашиваемый в \\(n-1\\) цветов. Сначала удаляют все возможные вершины нечётной степени. Затем удваивают граф: две копии и рёбра между соответствующими вершинами меняют чётности так, что один цветовой класс можно устранить, а оставшиеся классы переназначить. Повторяя лемму, уменьшаем число цветов до одного; граф, раскрашиваемый в один цвет, не имеет рёбер.",
         {"objects": ["graph", "proper_coloring", "parity_degree"], "methods": ["induction", "color_reduction", "parity"], "transformations": ["entanglement_to_graph", "doubling_graph"], "goal": ["eliminate_edges"], "auxiliary_graph_type": [], "invariants": ["degree_parity", "chromatic_number_bound"]},
-        ["coloring", "olympiad_tool"],
+        ["coloring"],
     ),
     card(
         "imo-2013-c6-flight-distance-layers",
@@ -207,7 +207,7 @@ CARDS = [
         ],
         "Пусть от города \\(x\\) слишком много городов на расстоянии 4. Разобьём их по первому шагу кратчайшего пути из \\(x\\). В большой группе выбираем соседа \\(a\\) и для каждого соответствующего города \\(d_y\\) кратчайший путь \\(x-y-b_y-c_y-d_y\\). Официальное решение показывает, что для разных \\(y\\) вершины \\(b_y\\) и \\(c_y\\) не совпадают: иначе возник бы более короткий или запрещённый альтернативный путь к некоторому \\(d_y\\). Кроме того, для каждого \\(y\\) хотя бы одна из вершин \\(b_y,c_y\\) лежит на расстоянии 3 от \\(a\\). Так получается больше 100 городов на расстоянии 3 от \\(a\\), противоречие.",
         {"objects": ["connected_graph", "distance_layers", "shortest_paths"], "methods": ["extremal_choice", "layer_counting"], "transformations": ["cities_to_graph"], "goal": ["bound_sphere_size"], "auxiliary_graph_type": [], "invariants": ["graph_distance"]},
-        ["connectivity", "olympiad_tool"],
+        ["connectivity"],
     ),
     card(
         "imo-2014-c9-snail-circles-tree",
@@ -223,7 +223,7 @@ CARDS = [
         ],
         "Официальное решение рассматривает плоскую картину окружностей и области дополнения. Области классифицируются по чётности числа окружностей, внутри которых они лежат, а точки пересечения также делятся на два типа. Из условия, что траектория улитки одна и покрывает все дуги, следует связность специального графа нечётных областей: вершины — нечётные области, рёбра — нечётные точки пересечения, через которые области соединяются. Цикл в этом графе дал бы отдельную замкнутую часть траектории, поэтому граф является деревом. Тогда число его вершин на единицу больше числа рёбер. Сравнение этой формулы с подсчётом областей и пересечений окружностей даёт, что \\(n\\) нечётно.",
         {"objects": ["circle_arrangement", "plane_regions", "auxiliary_tree"], "methods": ["tree_counting", "parity", "planar_arrangement"], "transformations": ["regions_to_graph"], "goal": ["prove_odd_number_of_circles"], "auxiliary_graph_type": ["region_tree"], "invariants": ["parity_of_regions", "acyclicity"]},
-        ["trees", "planar_graphs", "olympiad_tool"],
+        ["trees", "planar_graphs"],
     ),
     card(
         "imo-2015-c5-sequence-rays",
@@ -239,7 +239,7 @@ CARDS = [
         ],
         "Строим ориентированный граф на положительных целых числах, проводя стрелку \\(i\\to i+a_i\\). Условие \\(i+a_i\\ne j+a_j\\) означает, что входящая степень каждой вершины не больше 1; так как стрелки идут вправо и имеют длину не больше 2015, компоненты являются бесконечными лучами, начинающимися в вершинах без входящей стрелки. Таких стартовых вершин не больше 2015: иначе все соответствующие лучи пересекли бы один интервал длины 2015 в разных точках. Число лучей обозначается \\(b\\). Сравнивая количество стрелок, пересекающих большие отрезки, официальное решение получает, что сумма \\(\\sum(a_i-b)\\) на любом достаточно далёком отрезке ограничена универсальной константой.",
         {"objects": ["functional_digraph", "directed_rays", "bounded_jump"], "methods": ["pigeonhole_principle", "ray_counting"], "transformations": ["sequence_to_directed_graph"], "goal": ["bounded_discrepancy"], "auxiliary_graph_type": ["functional_digraph"], "invariants": ["number_of_rays"]},
-        ["connectivity", "olympiad_tool"],
+        ["connectivity"],
     ),
     card(
         "imo-2016-c6-ferry-graph-dynamics",
@@ -255,7 +255,7 @@ CARDS = [
         ],
         "Рассмотрим граф маршрутов. Операция закрытия ребра \\(XY\\) фактически переносит различия в окрестностях \\(X\\) и \\(Y\\): вершины, смежные ровно с одним концом, становятся смежными с обоими. Официальное решение выбирает пару вершин с максимальным числом общих соседей и показывает, что если ни одна вершина ещё не универсальна, то условие о будущих закрытиях рёбер через любой разрез позволит найти операцию, увеличивающую этот максимум. Так как максимум ограничен \\(n-2\\), процесс не может продолжаться без появления вершины, смежной со всеми остальными.",
         {"objects": ["dynamic_graph", "connected_graph", "universal_vertex"], "methods": ["extremal_choice", "cut_argument"], "transformations": ["ferry_routes_to_graph"], "goal": ["force_universal_vertex"], "auxiliary_graph_type": [], "invariants": ["common_neighborhood_size"]},
-        ["connectivity", "olympiad_tool"],
+        ["connectivity"],
     ),
     card(
         "imo-2016-c8-domino-unique-tiling-cycles",
@@ -271,7 +271,7 @@ CARDS = [
         ],
         "Официальное решение даёт конструкцию и нижнюю оценку. Для нижней оценки фиксируем допустимое домино-разбиение \\(P\\) и отражаем его относительно главной диагонали. Строим граф на клетках: красное ребро соединяет клетки одного домино из \\(P\\), синее — клетки, которые стали парой после отражения. У каждой вершины красная и синяя степень равны 1, поэтому граф распадается на чередующиеся циклы. Если найти цикл, не заблокированный отмеченными клетками, то вдоль него можно заменить красные домино синими и получить другое допустимое разбиение, противореча единственности. Анализ циклов, проходящих через диагональ, даёт требуемую нижнюю оценку, а явная расстановка отмеченных клеток показывает её достижимость.",
         {"objects": ["domino_tiling", "alternating_cycles", "grid_board"], "methods": ["alternating_paths", "symmetrization"], "transformations": ["two_tilings_to_colored_graph"], "goal": ["unique_tiling_forcing"], "auxiliary_graph_type": ["2_colored_2_regular_graph"], "invariants": ["cycle_switching"]},
-        ["matching", "graph_symmetry", "olympiad_tool"],
+        ["matching", "graph_symmetry"],
     ),
     card(
         "imo-2019-c3-coin-process-digraph",
@@ -287,7 +287,7 @@ CARDS = [
         ],
         "Строим ориентированный граф \\(G_n\\), вершины которого — строки из \\(H,T\\) длины \\(n\\), а ребро ведёт из каждой нефинальной строки к её следующему состоянию. Тогда \\(l(C)\\) — расстояние от вершины \\(C\\) до стока \\(TT\\ldots T\\). Главная рекурсия официального решения описывает \\(G_n\\) через две копии \\(G_{n-1}\\): в одной к строкам приписывается \\(T\\), в другой строки переворачиваются, разворачиваются и получают \\(H\\); затем добавляется одно соединяющее ребро. Это даёт рекуррентную формулу для суммы всех расстояний до стока, а значит и для среднего значения.",
         {"objects": ["state_digraph", "functional_graph", "sink"], "methods": ["induction", "recurrence"], "transformations": ["coin_process_to_state_graph"], "goal": ["average_stopping_time"], "auxiliary_graph_type": ["directed_state_graph"], "invariants": ["distance_to_sink"]},
-        ["induction", "olympiad_tool"],
+        ["induction"],
     ),
     card(
         "imo-2019-c4-labyrinth-region-graph",
@@ -303,7 +303,7 @@ CARDS = [
         ],
         "Для любой раскраски строим граф \\(G\\): вершины — области разбиения плоскости прямыми, рёбра — двери при пересечениях. Известно, что \\(n\\) прямых дают \\(\\binom{n+1}{2}+1\\) областей, а дверей ровно \\(\\binom n2\\). Добавление каждого ребра уменьшает число компонент не более чем на 1, поэтому компонент в \\(G\\) не меньше \\(n+1\\). Поставив по одному рыцарю в каждую компоненту, Моргана гарантирует \\(n+1\\) невстречающихся рыцарей. Обратная конструкция раскраски из официального решения делает граф дверей имеющим ровно \\(n+1\\) компонент, поэтому больше гарантировать нельзя.",
         {"objects": ["line_arrangement", "region_graph", "connected_components"], "methods": ["component_counting", "induction"], "transformations": ["labyrinth_to_region_graph"], "goal": ["max_guaranteed_components"], "auxiliary_graph_type": ["region_adjacency_graph"], "invariants": ["number_of_regions", "number_of_edges"]},
-        ["connectivity", "planar_graphs", "double_counting", "olympiad_tool"],
+        ["connectivity", "planar_graphs", "double_counting"],
     ),
     card(
         "imo-2019-c5-social-network-refriending",
@@ -319,7 +319,7 @@ CARDS = [
         ],
         "Официальное решение сразу переформулирует задачу на языке графов. Дана графовая степень: 1010 вершин степени 1009 и 1009 вершин степени 1010. Операция выбирает путь \\(B-A-C\\), где \\(BC\\) отсутствует, удаляет \\(AB,AC\\) и добавляет \\(BC\\), то есть уменьшает число рёбер на 1. Сначала доказывается связность исходного графа. Затем анализируется, как операция действует на компоненты и степени: пока есть вершина степени хотя бы 2, можно выбрать подходящих соседей и выполнить операцию, не разрушая нужных инвариантов. Повторяя, уменьшаем число рёбер до графа, все компоненты которого имеют размер не больше 2, то есть степени всех вершин не превосходят 1.",
         {"objects": ["simple_graph", "degree_sequence", "local_edge_operation"], "methods": ["extremal_choice", "degree_argument"], "transformations": ["social_network_to_graph"], "goal": ["reduce_max_degree"], "auxiliary_graph_type": [], "invariants": ["degree_parity", "edge_count_decrease"]},
-        ["connectivity", "olympiad_tool"],
+        ["connectivity"],
     ),
     card(
         "imo-2020-c4-fibonacci-difference-forest",
@@ -335,7 +335,7 @@ CARDS = [
         ],
         "Для нижней оценки выбираем примерно половину требуемых разностей, например нечётные индексы, и строим граф на вершинах \\(S\\): для каждой выбранной разности добавляем ребро между соответствующими \\(x,y\\). Длины рёбер различны и равны числам Фибоначчи. Если бы возник цикл, взяли бы в нём самое длинное ребро. Сумма всех меньших выбранных чисел Фибоначчи строго меньше его длины, поэтому пройти от одного конца этого ребра к другому по остальным рёбрам невозможно. Значит, построенный граф — лес, и число его рёбер не превосходит \\(|S|-1\\). Это даёт нижнюю оценку. Верхняя конструкция берёт подходящие начальные суммы чисел Фибоначчи и достигает той же величины.",
         {"objects": ["integer_set", "edge_lengths", "forest"], "methods": ["acyclicity", "longest_edge", "fibonacci_estimate"], "transformations": ["differences_to_graph"], "goal": ["minimum_set_size"], "auxiliary_graph_type": ["forest"], "invariants": ["edge_length_order"]},
-        ["trees", "extremal_graph_theory", "olympiad_tool"],
+        ["trees", "extremal_graph_theory"],
     ),
     card(
         "imo-2020-c6-colored-coins-eulerian-multigraph",
@@ -351,7 +351,7 @@ CARDS = [
         ],
         "Сначала разбиваем монеты на \\(2n\\) пар с суммой \\(4n+1\\). Теперь достаточно разделить эти пары на две группы по \\(n\\) пар так, чтобы каждый цвет встретился по два раза в каждой группе. Строим мультиграф: вершины — цвета, а каждая пара монет даёт ребро между цветами этих двух монет, петля разрешена. У каждой вершины степень 4, потому что монет каждого цвета четыре. Значит, каждая компонента эйлерова и её рёбра можно пройти по циклам. Раскрашивая рёбра каждого цикла попеременно в два цвета, получаем разбиение пар на две группы; в каждой вершине поровну инцидентных рёбер каждого цвета. Поэтому каждая итоговая группа содержит по две монеты каждого цвета и имеет одинаковый вес.",
         {"objects": ["multigraph", "eulerian_components", "colored_edges"], "methods": ["eulerian_cycle", "alternating_coloring"], "transformations": ["coin_pairs_to_multigraph"], "goal": ["balanced_partition"], "auxiliary_graph_type": ["color_multigraph"], "invariants": ["even_degrees", "equal_pair_sum"]},
-        ["eulerian_graphs", "matching", "olympiad_tool"],
+        ["eulerian_graphs", "matching"],
     ),
     card(
         "imo-2021-c4-anisotropy-menger",
@@ -367,7 +367,7 @@ CARDS = [
         ],
         "Первое решение строит пути явно, второе формулирует графовый механизм. Рассматриваем ориентированный полный граф. По теореме Менгера в рёберной форме максимальное число рёберно-непересекающихся путей из \\(s\\) в \\(t\\) равно минимуму числа рёбер, идущих из части \\(S\\) в часть \\(T\\), среди разрезов \\(s\\in S,t\\in T\\). Для турнира такой минимум можно оценить через исходящие степени \\(A\\) и \\(B\\). Анализ разрезов показывает, что разность \\(N_{AB}-N_{BA}\\) имеет тот же знак, что разность исходящих степеней. Поэтому равенство максимумов путей эквивалентно равенству исходящих степеней.",
         {"objects": ["tournament", "edge_disjoint_paths", "directed_cut"], "methods": ["menger_theorem", "cut_counting"], "transformations": ["roads_to_tournament"], "goal": ["compare_path_packings"], "auxiliary_graph_type": [], "invariants": ["outdegree", "minimum_cut"]},
-        ["tournaments", "connectivity", "olympiad_tool"],
+        ["tournaments", "connectivity"],
     ),
     card(
         "imo-2023-c4-strip-pieces-eulerian-graph",
@@ -383,7 +383,7 @@ CARDS = [
         ],
         "Официальное решение разрезает задачу ещё раз: каждый получившийся кусок с метками \\(a,a+1,\\ldots,b-1\\) задаёт ребро в графе на вершинах \\(1,\\ldots,n\\), из остатка \\(a\\) в остаток \\(b\\) по модулю \\(n\\). Так как куски можно восстановить в одну исходную полоску, все рёбра графа допускают эйлеров цикл. Кроме того, куски, лежащие в строках квадрата, дают для каждого остатка специальный цикл. Связность эйлерова графа и необходимость покрыть все такие циклы заставляют иметь не меньше \\(2n-1\\) рёбер. Конструкция из \\(2n-1\\) кусков достигает этой границы, значит это минимум.",
         {"objects": ["multigraph", "eulerian_cycle", "modular_residues"], "methods": ["eulerian_cycle", "connectivity", "lower_bound"], "transformations": ["strip_pieces_to_edges"], "goal": ["minimum_number_of_pieces"], "auxiliary_graph_type": ["residue_multigraph"], "invariants": ["connected_eulerian_graph"]},
-        ["eulerian_graphs", "connectivity", "olympiad_tool"],
+        ["eulerian_graphs", "connectivity"],
     ),
     card(
         "imo-2023-c7-ferry-companies-hamiltonian-paths",
@@ -399,7 +399,7 @@ CARDS = [
         ],
         "Ответ: \\(\\lfloor\\log_2 n\\rfloor\\). Переформулируем: нужно раскрасить рёбра \\(K_n\\) в \\(k\\) цветов так, чтобы каждый гамильтонов путь содержал все цвета. Конструкция для \\(k=\\lfloor\\log_2 n\\rfloor\\) нумерует вершины и красит ребро по первому двоичному разряду, в котором номера различаются; при проходе через все вершины каждый разряд обязан где-то измениться, значит каждый цвет встречается. Для верхней оценки официальное решение показывает, что если цветов слишком много, то можно разбить вершины по одному цвету на части и рекурсивно построить гамильтонов путь, избегающий некоторого цвета. Это противоречит требованию, поэтому больше \\(\\lfloor\\log_2 n\\rfloor\\) цветов невозможно.",
         {"objects": ["complete_graph", "edge_coloring", "hamiltonian_path"], "methods": ["binary_labeling", "induction"], "transformations": ["ferry_lines_to_edge_coloring"], "goal": ["maximize_colors_seen_by_every_hamiltonian_path"], "auxiliary_graph_type": [], "invariants": ["first_differing_bit"]},
-        ["coloring", "hamiltonian_cycles", "olympiad_tool"],
+        ["coloring", "hamiltonian_cycles"],
     ),
 ]
 

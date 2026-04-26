@@ -1,0 +1,154 @@
+{
+  "relations": [
+    {
+      "id": "rel-paths-counting-longest-detour-kolm-2008-r1",
+      "from": "longest-path-endpoints-shortest-detour",
+      "to": "kolmogorov-2008-round-1-high-league-problem-1",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The classical detour lemma and the repaired KOLM 2008 round 1 card both start from a longest path and use the impossibility of extending it to constrain endpoint neighborhoods. In the Kolmogorov problem this endpoint pressure becomes a degree/connectivity contradiction.",
+      "backward_text": "KOLM 2008 round 1 is a direct olympiad instance of the longest-path endpoint motif: choose an extremal path, then read forced adjacency or separation information from its ends.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-longer-than-path",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-paths-counting-longest-detour-kolm-2008-r3",
+      "from": "longest-path-endpoints-shortest-detour",
+      "to": "kolmogorov-2008-round-3-high-league-problem-1",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both solutions use a longest path as the extremal object and then convert endpoint constraints into a Hamiltonian-path or cycle obstruction. The Kolmogorov sharp bound adds degree bookkeeping and a construction, but the path-cycle conversion is the shared core.",
+      "backward_text": "The repaired KOLM 2008 round 3 problem is a Hamiltonian-path counting/bounding neighbor of the detour lemma: the key obstruction is still that a supposed longest path cannot be made longer through endpoint shortcuts.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-longer-than-path",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-paths-counting-kolm-2010-fyum-2011-tournament-paths",
+      "from": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
+      "to": "fyum-2011-finalb-p4",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both cards count structured Hamiltonian paths in tournaments. The KOLM 2010 solution uses double counting and path merging for republican Hamiltonian paths, while the FYUM problem fixes a special oriented path pattern and counts completions in a tournament.",
+      "backward_text": "FYUM 2011 final B problem 4 is a natural tournament-path counting neighbor for the repaired KOLM 2010 card: both refine Redei-style Hamiltonian path existence into a counting statement with extra orientation constraints.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-archive"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-paths-counting-kolm-2010-imo-2023-hamiltonian-paths",
+      "from": "kolmogorov-2010-individual-olympiad-seniors-problem-4",
+      "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "The two repaired cards both place Hamiltonian paths in a complete-graph setting at the center of the proof. KOLM 2010 counts compatible directed Hamiltonian paths in tournaments; IMO 2023 C7 colors complete-graph edges so that every Hamiltonian path sees many colors.",
+      "backward_text": "IMO 2023 C7 is a coloring variant of the same global-path theme: instead of counting tournament paths, it controls all Hamiltonian paths in a complete graph through a structural labeling argument.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-paths-counting-imo-1996-c1-imo-2013-c6-layers",
+      "from": "imo-1996-c1-grid-knight-reachability",
+      "to": "imo-2013-c6-flight-distance-layers",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both repaired IMO shortlist cards turn a reachability question into graph layers. IMO 1996 C1 separates reachable components with modular coloring and explicit paths, while IMO 2013 C6 counts distance layers from an extremal city.",
+      "backward_text": "IMO 2013 C6 is a distance-layer counting counterpart to the grid reachability card: after a graph model is fixed, the proof studies what vertices can sit at prescribed path distances.",
+      "anchors": {
+        "from_solution_id": "sol-secondary-sketch",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.85
+    },
+    {
+      "id": "rel-paths-counting-imo-2005-injection-imo-1996-reachability",
+      "from": "imo-2005-c3-black-paths-injection",
+      "to": "imo-1996-c1-grid-knight-reachability",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both grid cards use path structure to certify a global constraint. IMO 2005 C3 selects an extremal black path and injects path witnesses into a bounded set; IMO 1996 C1 uses residue invariants and explicit paths to decide reachability components.",
+      "backward_text": "The IMO 1996 reachability problem is a path-component neighbor for the black-path injection card: in both, local grid moves are encoded as paths and then controlled by an invariant or extremal choice.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-secondary-sketch"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-paths-counting-kolm-2008-solid-angle-euler-planar",
+      "from": "kolmogorov-2008-individual-olympiad-seniors-problem-7",
+      "to": "euler-formula-planar",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "The solid-angle repair uses projection and spherical area covering to force a Hamiltonian-cycle conclusion in a planar polyhedron graph. Euler's formula is not invoked directly, but it is the nearest classical planar-counting card for the same geometry-to-planar-graph viewpoint.",
+      "backward_text": "Euler's formula is a planar-counting reference point for the KOLM polyhedron problem: both arguments replace geometry by global graph structure and then use a count over the whole embedded graph.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-reduce-to-tree"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.67
+    },
+    {
+      "id": "rel-paths-counting-usamo-1976-imo-1996-c2-grid-count",
+      "from": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+      "to": "imo-1996-c2-grid-vertices-two-red",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both grid-coloring cards reduce a local square condition to counting 4-cycles or equal row/column patterns. USAMO 1976 double-counts same-color column pairs; IMO 1996 C2 counts vertex colorings with exactly two red vertices in each unit square.",
+      "backward_text": "IMO 1996 C2 is a local-constraint counting neighbor of the monochromatic-rectangle problem: the common mechanism is to encode grid squares as 4-cycles and count the admissible color patterns.",
+      "anchors": {
+        "from_solution_id": "sol-column-pair-double-counting",
+        "to_solution_id": "sol-secondary-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-paths-counting-mantel-usa-tst-2013-rainbow-triangles",
+      "from": "mantel-theorem",
+      "to": "usa-tst-2013-dec-p1-language-club-rainbow-triangles",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Mantel's theorem is the classical triangle-free edge-count model behind many no-triangle counting inequalities. The USA TST problem counts rainbow triangles in an edge-colored complete graph under a no-monochromatic-triangle constraint, using degree sums and convexity rather than a direct Mantel application.",
+      "backward_text": "USA TST 2013 December P1 is a colored triangle-counting analogue of the Mantel mindset: local triangle restrictions are converted into global degree and counting inequalities.",
+      "anchors": {
+        "from_solution_id": "sol-degree-sum",
+        "to_solution_id": "sol-count-local-repeats"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.69
+    },
+    {
+      "id": "rel-paths-counting-usamo-1976-kolm-2007-induced-count",
+      "from": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+      "to": "kolmogorov-2007-team-olympiad-seniors-problem-7",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both checked cards are clean double-counting problems where the same small structure is counted through many local views. USAMO 1976 counts repeated color pairs across columns, while KOLM 2007 counts induced subgraph data through vertex degrees.",
+      "backward_text": "KOLM 2007 team seniors problem 7 is a degree/induced-subgraph counterpart to the rectangle double-counting card: both turn a desired counting conclusion into an incidence count over repeated local configurations.",
+      "anchors": {
+        "from_solution_id": "sol-column-pair-double-counting",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    }
+  ]
+}

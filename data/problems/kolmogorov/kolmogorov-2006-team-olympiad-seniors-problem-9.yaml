@@ -16,29 +16,36 @@
   ],
   "problem_profile": {
     "objects": [
-      "tree",
-      "spanning_tree"
+      "wheel_graph",
+      "spanning_tree",
+      "cycle"
     ],
     "methods": [
-      "double_counting"
+      "matrix_tree_theorem",
+      "recurrence"
     ],
-    "transformations": [],
+    "transformations": [
+      "wheel_graph_model"
+    ],
     "goal": [
       "counting"
     ],
     "auxiliary_graph_type": [],
     "invariants": [
-      "edge_count"
+      "edge_count",
+      "spanning_tree_count"
     ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2006",
-      "wheel-graph",
-      "spanning-tree",
+      "wheel graph",
+      "spanning tree",
       "counting",
-      "fibonacci"
+      "fibonacci",
+      "matrix tree theorem"
     ],
-    "status": "ai_checked"
+    "status": "ai_checked",
+    "central_method": "matrix_tree_theorem"
   },
   "statements": {
     "original": [
@@ -52,6 +59,8 @@
           "status": "ai_checked"
         },
         "definition_ids": [
+          "simple_graph",
+          "cycle",
           "tree",
           "spanning_tree"
         ]
@@ -65,26 +74,31 @@
       "id": "idea-graph-role",
       "title": "Графовая роль",
       "text": "В условии явно задан граф дорог, а официальное решение непосредственно считает остовные деревья графа-колеса с помощью вспомогательного графа.",
-      "tags": [],
+      "tags": [
+        "trees",
+        "double_counting"
+      ],
       "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Официальное решение прямо переводит задачу на граф «колесо» `W_n`. Искомые проекты — это остовные деревья этого графа.\n\nДля подсчета вводят вспомогательный граф «лапа» `L_n`, получаемый из пути длины `n` добавлением вершины, соединенной со всеми вершинами пути. Доказывается лемма: число остовных деревьев в `L_n` равно `F_{2n}`.\n\nПосле этого колесо разбивают на два естественных случая и выражают число его остовных деревьев через соседние значения для «лапы». В итоге получается формула\n`F_{2n+1} + F_{2n-1} - 2`.",
+      "title": "Развернутое решение через число остовных деревьев колеса",
+      "text": "Будем считать площади вершинами графа. Внешние площади образуют цикл из `n` вершин, а центральная площадь соединена со всеми внешними; это граф-колесо `W_n` с `n + 1` вершинами. Если выбрать `n` дорог так, чтобы по ним можно было пройти между любыми двумя площадями, то выбранный связный граф имеет `n + 1` вершин и `n` ребер, а значит является деревом. Поэтому нужно посчитать остовные деревья графа `W_n`.\n\nВоспользуемся матричной теоремой о деревьях. Удалим из лапласиана графа строку и столбец, соответствующие центральной вершине. Останется матрица `A` размера `n \\times n`: на диагонали стоят числа `3`, а в двух соседних по циклу позициях каждой строки стоят `-1`, включая угловые позиции, соответствующие ребру между первой и последней внешними вершинами. Тогда число нужных проектов равно `det A`.\n\nПусть `\\zeta` -- первообразный корень степени `n` из единицы. Для `k = 0, 1, ..., n-1` вектор `(1, \\zeta^k, \\zeta^{2k}, ..., \\zeta^{(n-1)k})` является собственным вектором матрицы `A` с собственным значением\n`3 - \\zeta^k - \\zeta^{-k}`.\nСледовательно,\n`det A = \\prod_{k=0}^{n-1} (3 - \\zeta^k - \\zeta^{-k})`.\n\nОбозначим через `\\alpha` и `\\beta` корни уравнения `x^2 - 3x + 1 = 0`. Тогда `\\alpha + \\beta = 3`, `\\alpha\\beta = 1`, и для любого `z`\n`3 - z - z^{-1} = -z^{-1}(z - \\alpha)(z - \\beta)`.\nПодставляя `z = \\zeta^k` и перемножая по всем `k`, получаем\n`det A = - (\\alpha^n - 1)(\\beta^n - 1) = \\alpha^n + \\beta^n - 2`, потому что `\\alpha\\beta = 1`.\n\nТеперь `\\alpha = \\varphi^2`, `\\beta = \\psi^2`, где `\\varphi = (1 + \\sqrt5)/2`, `\\psi = (1 - \\sqrt5)/2`. Поэтому `\\alpha^n + \\beta^n = \\varphi^{2n} + \\psi^{2n} = L_{2n}`, где `L_m` -- числа Люка. Из стандартной связи `L_m = F_{m-1} + F_{m+1}` следует\n`det A = L_{2n} - 2 = F_{2n-1} + F_{2n+1} - 2`.\n\nЗначит число способов выбрать дороги действительно равно `F_{2n+1} + F_{2n-1} - 2`.",
       "idea_ids": [
         "idea-graph-role"
       ],
-      "standard_idea_ids": [
-        "double_counting"
-      ],
-      "status": "needs_human_review",
+      "standard_idea_ids": [],
+      "status": "ai_checked",
       "definition_ids": [
+        "simple_graph",
+        "cycle",
         "tree",
         "spanning_tree"
-      ]
+      ],
+      "repair_status": "metadata_aligned_after_solution_repair",
+      "review_notes": "Metadata pass 2026-04-26: graph model is the wheel graph and the central method is the matrix-tree theorem; no repository standard idea currently covers that theorem directly."
     }
   ],
   "difficulty": {
@@ -101,9 +115,9 @@
   "properties": {
     "central_method": {
       "value": [
-        "double_counting"
+        "matrix_tree_theorem"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -121,14 +135,16 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
+    "review_status": "ai_checked",
     "public_ready": false,
     "notes": [
       "Imported from prepared card cards/kolm/2006_team_olympiad_seniors_problem_9.md.",
       "Source file noted by card: work/kolm/text/2006/KOMOL10.txt.",
       "Source page noted by card: 2.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Team Olympiad, Seniors, Problem 9."
+      "Original final-selection name: Team Olympiad, Seniors, Problem 9.",
+      "2026-04-26 plan-to-solution pass: compressed solution expanded into a complete Kirchhoff/matrix-tree proof for the wheel graph count.",
+      "2026-04-26 metadata-pass: aligned tags, problem_profile, central_method, standard_idea_ids, definition_ids, statuses, and repair metadata after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

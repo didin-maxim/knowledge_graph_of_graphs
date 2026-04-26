@@ -16,28 +16,34 @@
   ],
   "problem_profile": {
     "objects": [
-      "directed_graph"
+      "directed_graph",
+      "strongly_connected_digraph",
+      "minimal_strong_digraph"
     ],
     "methods": [
       "extremal_choice"
     ],
-    "transformations": [],
+    "transformations": [
+      "contract_strong_component"
+    ],
     "goal": [
-      "proof"
+      "exact_bound"
     ],
     "auxiliary_graph_type": [],
     "invariants": [
-      "connectivity"
+      "strong_connectivity",
+      "edge_minimality"
     ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2003",
-      "graph",
       "directed graph",
       "strong connectivity",
+      "minimal strongly connected graph",
       "extremal graph theory"
     ],
-    "status": "ai_checked"
+    "status": "ai_checked",
+    "central_method": "extremal_choice"
   },
   "statements": {
     "original": [
@@ -51,8 +57,9 @@
           "status": "ai_checked"
         },
         "definition_ids": [
-          "simple_graph",
-          "directed_graph"
+          "directed_graph",
+          "path",
+          "connected_graph"
         ]
       }
     ],
@@ -64,26 +71,32 @@
       "id": "idea-graph-role",
       "title": "Графовая роль",
       "text": "Граф явно присутствует в условии через ориентированную дорожную сеть, а официальное решение\nцеликом сформулировано как утверждение о сильно связном орграфе и его дугах.",
-      "tags": [],
+      "tags": [
+        "connectivity",
+        "extremal_graph_theory"
+      ],
       "status": "ai_checked"
     }
   ],
   "solutions": [
     {
-      "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Официальное решение переводит условие в язык ориентированных графов:\nгорода становятся вершинами, дороги - дугами. Получаем сильно связный орграф, в котором\nудаление любой дуги разрушает сильную связность.\n\nСначала строится пример с 197 дорогами: берутся вершины `A`, `B`, `C_1, ..., C_98` и\nнаправленные треугольники `A -> C_i -> B -> A` для всех `i`. Такой орграф сильно связен,\nа каждая дуга в нем существенна.\n\nДля оценки сверху доказывается лемма: если сильно связный орграф на `k` вершинах имеет\nхотя бы `2k-1` дуг, то одну дугу можно удалить без потери сильной связности. После этого\nрассматривается минимальный ориентированный цикл и производится сжатие/склейка его вершин,\nчто уменьшает число вершин и позволяет применить лемму к меньшему орграфу. Из этого\nвыводится верхняя граница `197`.\n\nСледовательно, максимальное число дорог равно `197`.",
+      "id": "sol-official-expanded",
+      "title": "Официальное решение, развернутое изложение",
+      "text": "Переведем условие на язык ориентированных графов. Города будем считать вершинами, а дороги - дугами. Так как любые два города соединены не более чем одной дорогой, между двумя вершинами нет ни параллельных дуг, ни двух противоположно направленных дуг. Условие достижимости означает, что граф сильно связен, а условие про закрытие любой дороги означает, что после удаления любой дуги сильная связность исчезает. Иными словами, перед нами минимальный по дугам сильно связный ориентированный граф на `100` вершинах.\n\nПостроим пример. Возьмем вершины `A`, `B`, `C_1, ..., C_98` и проведем дуги\n`A -> C_i`, `C_i -> B` для всех `i = 1, ..., 98`, а также одну дугу `B -> A`. Всего дуг\n`98 + 98 + 1 = 197`. Из любой вершины можно добраться до любой другой: из `A` попадаем в любой `C_i`, затем в `B`, из `B` попадаем в `A`, а из `C_i` путь идет через `B` и `A`. Каждая дуга существенна: без дуги `A -> C_i` нельзя попасть из `A` в `C_i`, без дуги `C_i -> B` нельзя выйти из `C_i`, а без дуги `B -> A` нельзя попасть из `B` в `A`. Значит, `197` дорог достижимы.\n\nДокажем, что больше быть не может. Пусть `G` - любой минимальный сильно связный ориентированный граф без противоположных пар дуг, имеющий `n` вершин и `m` дуг. Докажем оценку `m <= 2n - 3`.\n\nСначала выберем в `G` какой-нибудь ориентированный цикл `C` длины `k`. Так как противоположных пар дуг нет, `k >= 3`. Будем строить сильно связный подграф `H`. Сначала положим `H = C`. Если `H` содержит еще не все вершины графа, то из сильной связности `G` найдется путь из вершины `H` в вершину вне `H` и затем путь обратно в `H`. На объединении этих двух путей есть направленный путь, который начинается в `H`, заканчивается в `H`, а все его внутренние вершины лежат вне `H`: берем первый момент выхода из `H` и первый последующий момент возвращения в `H`. Добавим этот путь к `H`. После добавления сильная связность сохраняется: старые вершины уже были взаимно достижимы внутри `H`, до новых внутренних вершин можно дойти от начальной вершины добавленного пути, а из них можно продолжить путь до его конечной вершины и вернуться в старую часть.\n\nКаждый такой добавленный путь имеет длину не меньше `2`, потому что содержит хотя бы одну новую внутреннюю вершину. Если он имеет `l` дуг, то он добавляет ровно `l - 1` новых вершин. Продолжаем процесс, пока все `n` вершин не окажутся в `H`. Пусть добавлено `t` таких путей. Тогда\n`n = k + sum(l_j - 1)`, поэтому `t <= sum(l_j - 1) = n - k`. Число дуг в построенном подграфе равно\n`k + sum l_j = k + sum(l_j - 1) + t = n + t <= n + (n - k) = 2n - k <= 2n - 3`.\n\nОсталось заметить, что этот подграф на всех вершинах на самом деле совпадает с `G` по дугам. Если бы в `G` была дуга, не вошедшая в `H`, то после ее удаления подграф `H` все равно оставался бы сильно связным на всех вершинах. Значит, и весь граф без этой дуги оставался бы сильно связным, что противоречит существенности каждой дуги. Следовательно, `m` равно числу дуг в `H`, и потому `m <= 2n - 3`.\n\nПри `n = 100` получаем `m <= 2 * 100 - 3 = 197`. Построенный выше пример имеет ровно `197` дуг, поэтому максимальное возможное число дорог равно `197`.",
       "idea_ids": [
         "idea-graph-role"
       ],
       "standard_idea_ids": [
         "extremal_choice"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
-        "simple_graph",
-        "directed_graph"
-      ]
+        "directed_graph",
+        "path",
+        "connected_graph"
+      ],
+      "repair_status": "metadata_aligned_after_solution_repair",
+      "review_notes": "Metadata pass 2026-04-26: expanded official solution is the checked solution; profile now records the minimal strongly connected digraph and extremal component choice."
     }
   ],
   "difficulty": {
@@ -102,7 +115,7 @@
       "value": [
         "extremal_choice"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -120,14 +133,15 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
+    "review_status": "ai_checked",
     "public_ready": false,
     "notes": [
       "Imported from prepared card cards/kolm/2003_team_olympiad_seniors_problem_8.md.",
       "Source file noted by card: work/kolm/text/2003/Komol7.txt.",
       "Source page noted by card: senior team solutions, problem 8.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Team Olympiad, Seniors, Problem 8."
+      "Original final-selection name: Team Olympiad, Seniors, Problem 8.",
+      "2026-04-26 metadata-pass: aligned tags, problem_profile, central_method, standard_idea_ids, definition_ids, statuses, and repair metadata after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

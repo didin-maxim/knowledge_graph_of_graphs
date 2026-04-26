@@ -4,10 +4,10 @@ import math
 import re
 from collections import Counter
 
-from lib import collect_text, load_problems, load_relations
+from lib import collect_text, external_problem_refs, load_problems, load_relations
 
 
-BROAD_TAGS = {"olympiad_tool", "classical_theorem"}
+BROAD_TAGS = {"classical_theorem"}
 BROAD_IDEAS = {"induction"}
 PROFILE_FIELDS = [
     "objects",
@@ -97,6 +97,7 @@ def best_solution_anchor(left, right):
 
 
 def score_pair(left, right):
+    common_source_refs = set(external_problem_refs(left)) & set(external_problem_refs(right))
     left_tags = set(left.get("tags", [])) - BROAD_TAGS
     right_tags = set(right.get("tags", [])) - BROAD_TAGS
     common_tags = left_tags & right_tags
@@ -125,7 +126,8 @@ def score_pair(left, right):
     local_overlap = local_idea_titles(left) & local_idea_titles(right)
 
     score = (
-        3.0 * len(common_ideas)
+        100.0 * len(common_source_refs)
+        + 3.0 * len(common_ideas)
         + 2.0 * len(common_methods)
         + 1.4 * len(common_tags)
         + 2.2 * sum(len(values) for values in common_profile.values())
@@ -134,6 +136,8 @@ def score_pair(left, right):
     )
 
     reasons = []
+    if common_source_refs:
+        reasons.append("external_problem_ref=" + ",".join(sorted(common_source_refs)))
     if common_ideas:
         reasons.append("standard_ideas=" + ",".join(sorted(common_ideas)))
     if common_methods:
@@ -147,10 +151,12 @@ def score_pair(left, right):
     if local_overlap:
         reasons.append("local_ideas=" + ",".join(sorted(local_overlap)))
 
-    return score, reasons, common_ideas, common_tags, common_profile
+    return score, reasons, common_ideas, common_tags, common_profile, common_source_refs
 
 
-def suggested_type_and_distance(score, common_ideas, common_tags, common_profile):
+def suggested_type_and_distance(score, common_ideas, common_tags, common_profile, common_source_refs=None):
+    if common_source_refs:
+        return "reprint", 1
     if common_profile.get("transformations") or common_profile.get("methods") or common_ideas:
         relation_type = "same_motif"
     else:
@@ -168,9 +174,9 @@ def suggested_type_and_distance(score, common_ideas, common_tags, common_profile
     return relation_type, distance
 
 
-def make_candidate(left, right, score, reasons, common_ideas, common_tags, common_profile):
+def make_candidate(left, right, score, reasons, common_ideas, common_tags, common_profile, common_source_refs=None):
     from_solution, to_solution, anchor_ideas = best_solution_anchor(left, right)
-    relation_type, distance = suggested_type_and_distance(score, common_ideas, common_tags, common_profile)
+    relation_type, distance = suggested_type_and_distance(score, common_ideas, common_tags, common_profile, common_source_refs)
     return {
         "from": left["id"],
         "to": right["id"],
@@ -209,9 +215,9 @@ def suggest(problem_id=None, min_score=3.0, limit=30):
                 continue
             left = problems[left_id]
             right = problems[right_id]
-            score, reasons, common_ideas, common_tags, common_profile = score_pair(left, right)
+            score, reasons, common_ideas, common_tags, common_profile, common_source_refs = score_pair(left, right)
             if score >= min_score:
-                candidates.append(make_candidate(left, right, score, reasons, common_ideas, common_tags, common_profile))
+                candidates.append(make_candidate(left, right, score, reasons, common_ideas, common_tags, common_profile, common_source_refs))
     candidates.sort(key=lambda item: (-item["score"], item["from"], item["to"]))
     return candidates[:limit]
 

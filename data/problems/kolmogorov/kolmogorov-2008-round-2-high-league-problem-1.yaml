@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2008-round-2-high-league-problem-1",
-  "title": "Кубок Колмогорова 2008: 2 тур, старшая лига задача 1",
+  "title": "Кубок Колмогорова 2008: 2 тур, старшая лига, задача 1",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -22,6 +22,7 @@
       "tournament"
     ],
     "methods": [
+      "comparison_strategy",
       "double_counting"
     ],
     "transformations": [
@@ -43,7 +44,14 @@
       "directed-graph",
       "graph-labeling",
       "counting",
-      "information-theory"
+      "information-theory",
+      "double_counting",
+      "tournaments",
+      "goal_exact_bound",
+      "directed_graph",
+      "complete_graph",
+      "tournament",
+      "comparison_strategy"
     ],
     "status": "ai_checked"
   },
@@ -80,20 +88,22 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "В официальном решении результаты турнира переводятся на язык ориентированного графа: игроки становятся вершинами, а для каждой пары проводится ориентированное ребро от победителя к проигравшему. Получается полный ориентированный граф с помеченными вершинами.\n\nОдин вопрос сравнения двух мест делит множество возможных нумераций вершин не более чем пополам. Изначально возможны все `n!` нумераций, поэтому после `k` вопросов можно различить не более `2^k` вариантов.\n\nОтсюда достаточно взять `k`, для которого `2^k >= n!`, то есть `k >= ceil(log_2(n!))`. Далее в решении используется оценка `log_2(n!) <= n log_2 n`, так что числа вопросов порядка `n log_2 n` хватает.",
+      "title": "Решение через сортировку игроков по местам",
+      "text": "Будем считать игроков вершинами полного ориентированного графа турнира: для каждой пары игроков проводим стрелку от победителя личной встречи к проигравшему. Таблица результатов задает такой турнир на уже известных игроках. Искомое распределение мест — это некоторая нумерация этих `n` вершин местами от `1` до `n`; вопрос к жюри сравнивает номера двух выбранных вершин.\n\nДостаточная стратегия не требует угадывать эту нумерацию сразу. Нужно просто отсортировать игроков по их местам, используя разрешенные вопросы как обычные сравнения. Например, применим сортировку слиянием. Разобьем игроков на две почти равные группы, рекурсивно упорядочим каждую группу, а затем сольем два уже упорядоченных списка. При слиянии каждый вопрос сравнивает первых еще не поставленных игроков из двух списков; игрок, занявший более высокое место, записывается следующим. Если один список закончился, оставшиеся игроки второго списка дописываются без вопросов.\n\nДля слияния двух списков общей длины `m` требуется не более `m - 1` вопросов. Поэтому на каждом уровне рекурсии суммарно задается не более `n` вопросов, а уровней не больше `ceil(log_2 n)`. Значит, в худшем случае достаточно не более `n ceil(log_2 n)` вопросов. Более точная стандартная оценка для сортировки слиянием также дает число порядка `n log_2 n`.\n\nИнформационная оценка объясняет, почему этот порядок правильный. До вопросов, если не использовать дополнительных ограничений на места, возможны `n!` разных нумераций игроков. После `k` вопросов есть не более `2^k` различных последовательностей ответов, значит для гарантированного различения всех вариантов необходимо `2^k >= n!`, то есть `k >= ceil(log_2(n!))`. Следовательно, найденная стратегия имеет оптимальный порядок величины.",
       "idea_ids": [
         "idea-graph-role"
       ],
       "standard_idea_ids": [
         "double_counting"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
         "directed_graph",
         "complete_graph",
         "tournament"
-      ]
+      ],
+      "repair_status": "completed_full_solution",
+      "review_notes": "Metadata pass 2026-04-26: profile aligned to the repaired comparison/merge-sort strategy on a tournament model; double counting records the sharp lower-bound component."
     }
   ],
   "difficulty": {
@@ -105,14 +115,15 @@
   "tags": [
     "double_counting",
     "tournaments",
-    "goal_counting"
+    "goal_exact_bound"
   ],
   "properties": {
     "central_method": {
       "value": [
+        "comparison_strategy",
         "double_counting"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -130,14 +141,16 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Imported from prepared card cards/kolm/2008_round_2_high_league_problem_1.md.",
       "Source file noted by card: work/kolm/text/2008/tur2_12sol.txt.",
       "Source page noted by card: 1.",
       "Graph role: essential_in_official_solution.",
-      "Original final-selection name: Round 2, High League, Problem 1."
+      "Original final-selection name: Round 2, High League, Problem 1.",
+      "2026-04-26 plan-to-solution pass verdict: completed_ai_checked; replaced the compressed information-bound-only text with a full merge-sort comparison strategy and kept the lower bound only as a sharpness note.",
+      "2026-04-26 metadata pass: tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status fields aligned after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_absent_reason": "Исходная формулировка уже является графовой формулировкой этой импортированной карточки KOLM, либо карточка фиксирует графовую модель как вспомогательную часть официального решения; отдельная графовая переформулировка в этом проходе не курировалась."

@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2008-round-1-high-league-problem-1",
-  "title": "Кубок Колмогорова 2008: 1 тур, старшая лига задача 1",
+  "title": "Кубок Колмогорова 2008: 1 тур, старшая лига, задача 1",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -16,12 +16,14 @@
   ],
   "problem_profile": {
     "objects": [
+      "simple_graph",
       "cycle",
+      "path",
       "degree"
     ],
     "methods": [
-      "induction",
-      "delete_to_simplify"
+      "longest_path",
+      "extremal_choice"
     ],
     "transformations": [],
     "goal": [
@@ -40,7 +42,14 @@
       "degree",
       "connectivity",
       "cut-vertex",
-      "induction"
+      "longest path",
+      "extremal choice",
+      "extremal_choice",
+      "goal_proof",
+      "simple_graph",
+      "cycle",
+      "path",
+      "longest_path"
     ],
     "status": "ai_checked"
   },
@@ -58,6 +67,7 @@
         "definition_ids": [
           "simple_graph",
           "cycle",
+          "path",
           "degree"
         ]
       }
@@ -69,7 +79,7 @@
     {
       "id": "idea-graph-role",
       "title": "Графовая роль",
-      "text": "Граф прямо дан в условии, а официальное решение существенно использует базовые графовые понятия: связность, точки сочленения, степени вершин, пути и циклы.",
+      "text": "Граф прямо дан в условии, а решение использует базовые графовые понятия: степени вершин, длиннейший путь и циклы, возникающие из хорд к этому пути.",
       "tags": [],
       "status": "ai_checked"
     }
@@ -77,21 +87,24 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Официальное решение идет по индукции по числу вершин графа.\n\nЕсли граф несвязен, утверждение доказывают отдельно для каждой компоненты. Если граф имеет точку сочленения, то индукцию применяют к блокам, в одном из них находится вершина степени не больше 2, и ее степень в исходном графе также не превосходит 2.\n\nОстается случай, когда граф связен и не имеет точек сочленения. Предположим противное: степени всех вершин хотя бы 3. Рассмотрим максимальный простой путь `v_1...v_k`. Так как конец `v_k` не является точкой сочленения, после удаления `v_k` граф остается связным, поэтому у `v_k` есть как минимум два соседа на этом пути. Отсюда возникают два цикла, проходящие по разным хордам к пути и имеющие ровно одно общее ребро, что противоречит условию.\n\nЗначит, вершина степени не больше 2 существует.",
+      "title": "Решение через длиннейший путь",
+      "text": "Предположим противное: степень каждой вершины графа не меньше 3. Рассмотрим одну связную компоненту графа. В ней тоже степени всех вершин не меньше 3, поэтому достаточно получить противоречие внутри этой компоненты.\n\nВыберем в этой компоненте простой путь максимальной длины и обозначим его `v_1, v_2, ..., v_k`. Все соседи вершины `v_k` лежат на этом пути: если бы у `v_k` был сосед вне пути, путь можно было бы продолжить, что противоречило бы максимальности.\n\nТак как `deg(v_k) >= 3`, у вершины `v_k` есть по крайней мере три соседа среди вершин пути. Пусть два соседних среди них вдоль пути соседа имеют номера `i < j`, а следующий после них имеет номер `l`, так что `v_i`, `v_j`, `v_l` смежны с `v_k` и между `v_i` и `v_j`, а также между `v_j` и `v_l` на пути нет других соседей `v_k`.\n\nТогда ребро `v_kv_j` и отрезок пути от `v_i` до `v_j` вместе с ребром `v_kv_i` образуют цикл. Аналогично ребро `v_kv_j`, отрезок пути от `v_j` до `v_l` и ребро `v_kv_l` образуют второй цикл. Эти два цикла имеют общее ребро `v_kv_j`. Других общих ребер у них нет: соответствующие отрезки длиннейшего пути не пересекаются по ребрам, а остальные ребра циклов различны.\n\nПолучились два цикла, имеющие ровно одно общее ребро, что запрещено условием. Противоречие показывает, что в графе обязательно есть вершина степени не больше 2.",
       "idea_ids": [
         "idea-graph-role"
       ],
       "standard_idea_ids": [
-        "induction",
-        "delete_to_simplify"
+        "longest_path",
+        "extremal_choice"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
         "simple_graph",
         "cycle",
+        "path",
         "degree"
-      ]
+      ],
+      "repair_status": "completed_full_solution",
+      "review_notes": "Metadata pass 2026-04-26: repaired solution is a longest-path/extremal-choice contradiction; definitions, tags, and central_method now reflect cycles, paths, and vertex degrees."
     }
   ],
   "difficulty": {
@@ -102,17 +115,16 @@
   },
   "tags": [
     "connectivity",
-    "double_counting",
-    "induction",
+    "extremal_choice",
     "goal_proof"
   ],
   "properties": {
     "central_method": {
       "value": [
-        "induction",
-        "delete_to_simplify"
+        "longest_path",
+        "extremal_choice"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -130,14 +142,16 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Imported from prepared card cards/kolm/2008_round_1_high_league_problem_1.md.",
       "Source file noted by card: work/kolm/text/2008/tur1_12sol.txt.",
       "Source page noted by card: 1.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Round 1, High League, Problem 1."
+      "Original final-selection name: Round 1, High League, Problem 1.",
+      "Plan-to-solution pass 2026-04-26: replaced the compressed induction/block sketch with a complete longest-path contradiction proof; solution marked ai_checked.",
+      "2026-04-26 metadata pass: tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status fields aligned after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

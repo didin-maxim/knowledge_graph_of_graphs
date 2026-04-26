@@ -1,0 +1,94 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm-2022-edge-count-complement-sparse-tree",
+      "from": "kolmogorov-2022-round1-high-edge-count-permutation-nonedges",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Официальное решение сначала переходит к дополнительному графу, а затем использует базовый язык разреженных графов: компоненты, деревья и висячие вершины позволяют удалить две вершины и продолжить индукцию. Поэтому стандартные свойства деревьев являются прямым инструментом для оценки.",
+      "backward_text": "Карточка о свойствах деревьев даёт словарь, который нужен в решении KOLM 2022: в графе с не более чем n-2 рёбрами выделяются древесные компоненты и листья, после чего задача уменьшается индукцией.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-kolm-2022-colored-integers-imo-2015-infinite-rays",
+      "from": "kolmogorov-2022-round2-high-colored-integers-infinite-tree",
+      "to": "imo-2015-c5-sequence-rays",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи переводят бесконечную числовую конструкцию в графовый объект с лучами. В KOLM 2022 конечные цветовые шаблоны образуют бесконечно ветвящееся по уровням дерево, где путь выбирается по теореме Кёнига; в IMO 2015 стрелки i -> i+a_i образуют бесконечные направленные лучи и затем контролируются инвариантом состояний.",
+      "backward_text": "IMO 2015 C5 полезна как дальний родственник KOLM 2022: там тоже бесконечная последовательность становится графом лучей, только вместо компактностного выбора ветви используется динамический подсчёт ограниченного пула.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-kolm-2022-k10-triangles-handshaking",
+      "from": "kolmogorov-2022-round2-second-third-red-blue-k10-triangles",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Восстановленное решение KOLM 2022 использует чётность числа вершин нечётной степени: если максимальная красная степень была бы не больше 8, то возникло бы нечётное число вершин нечётной степени. Это ровно базовый вывод леммы о рукопожатиях.",
+      "backward_text": "Лемма о рукопожатиях является непосредственным инструментом для задачи про красные треугольники в K10: она запрещает предложенную последовательность степеней и запускает дальнейшее восстановление экстремального графа.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-double-counting"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-kolm-2022-airport-walk-parity-handshaking",
+      "from": "kolmogorov-2022-round4-high-airport-walk-parity",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Решение задачи об аэропортах выводит, что все степени одной чётности, а в случае нечётных степеней использует чётность числа вершин. Этот шаг является прямым применением паритетной части леммы о рукопожатиях, после чего уже работает подсчёт маршрутов по модулю 2.",
+      "backward_text": "Лемма о рукопожатиях даёт начальный паритетный запрет, который нужен в более сильной задаче KOLM 2022 о нечётном числе маршрутов между всеми парами вершин.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-double-counting"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-kolm-2022-even-degree-odd-walks-handshaking",
+      "from": "kolmogorov-2022-round4-second-third-even-degree-odd-walks",
+      "to": "handshaking-lemma",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В этой версии все степени уже чётны, а доказательство всё равно построено на паритетном подсчёте маршрутов: разворот пути даёт инволюцию, а последнее ребро группирует выходящие маршруты по степеням. Это близкий по духу модульный подсчёт к лемме о рукопожатиях.",
+      "backward_text": "Лемма о рукопожатиях является базовым паритетным соседством для задачи KOLM 2022: обе карточки используют чётность степеней как механизм подсчёта, хотя олимпиадная задача делает это на маршрутах фиксированной длины.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-double-counting"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-kolm-2019-outdegree-cycles-2021-gadget-cycles",
+      "from": "kolmogorov-2019-team-olympiad-juniors-problem-8",
+      "to": "kolmogorov-2021-individual-olympiad-seniors-problem-5",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе сжатые официальные версии используют конечный ориентированный граф, где цикл является главным структурным объектом. В задаче 2019 года циклы нужно найти непересекающимися при исходящей степени 3; в задаче 2021 года циклы функционального орграфа последовательно удаляются, чтобы построить единственное неблокируемое распределение.",
+      "backward_text": "Задача 2021 года является более алгоритмической родственницей задачи 2019 года: цикл в конечном орграфе не только существует, но используется как очередной блок конструкции, после чего граф уменьшается.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.66
+    }
+  ]
+}

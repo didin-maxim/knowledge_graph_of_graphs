@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-euler-planar-imo-2014-c9-odd-region-tree",
+      "from": "euler-formula-planar",
+      "to": "imo-2014-c9-snail-circles-tree",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "В решении C9 формула Эйлера применяется локально внутри каждой окружности: подсчёт областей, точек пересечения и дуг даёт паритетную формулу, из которой затем строится дерево нечётных областей.",
+      "backward_text": "IMO 2014 C9 является геометрическим применением эйлерова подсчёта: формула не завершает задачу сама, но даёт нужный паритетный инвариант для последующего дерева областей.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-imo-2016-c8-usamo-2009-domino-alternating-cycles",
+      "from": "imo-2016-c8-domino-unique-tiling-cycles",
+      "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе задачи сравнивают два домино-разбиения через наложение паросочетаний: симметрическая разность распадается на чередующиеся циклы, а переключение по подходящему циклу создаёт второе допустимое разбиение или противоречие единственности.",
+      "backward_text": "USAMO 2009 P3 даёт тот же механизм чередующихся циклов для домино-разбиений, что и IMO 2016 C8, но локальное условие «вкусности» заменяет запрет домино с двумя отмеченными клетками.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-induction-plus-alternating-cycles"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-ferry-network-imo-2019-c5-local-edge-operation",
+      "from": "ferry-network-repartition-lemma",
+      "to": "imo-2019-c5-social-network-refriending",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки управляют графом локальной операцией над рёбрами и доказывают, что подходящий структурный инвариант переживает каждый шаг; в C5 это инвариант неполных компонент с нечётной вершиной, а в лемме о паромах — сохранение полного двудольного ядра после переразбиения.",
+      "backward_text": "IMO 2019 C5 является более глобальной динамической версией того же стиля: операция не просто чинит одну двудольную сеть, а многократно сжимает пути длины 2, сохраняя условия на компоненты до графа максимальной степени 1.",
+      "anchors": {
+        "from_solution_id": "sol-repartition-network",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.74
+    }
+  ]
+}

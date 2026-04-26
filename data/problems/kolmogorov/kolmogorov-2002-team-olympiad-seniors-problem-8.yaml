@@ -16,20 +16,39 @@
   ],
   "problem_profile": {
     "objects": [
-      "simple_graph"
+      "simple_graph",
+      "clique",
+      "independent_set",
+      "complement_graph"
     ],
-    "methods": [],
-    "transformations": [],
+    "methods": [
+      "complement_graph_transition",
+      "minimal_counterexample",
+      "augmenting_path_method",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "pass_to_complement_graph"
+    ],
     "goal": [
       "proof"
     ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "degree",
+      "clique_intersection"
+    ],
     "keywords": [
       "kolmogorov",
-      "kolmogorov_2002"
+      "kolmogorov_2002",
+      "clique",
+      "block intersection",
+      "complement graph",
+      "Hall theorem",
+      "Dolnikov lemma"
     ],
-    "status": "ai_checked"
+    "status": "ai_checked",
+    "central_method": "complement_graph_transition"
   },
   "statements": {
     "original": [
@@ -43,7 +62,12 @@
           "status": "ai_checked"
         },
         "definition_ids": [
-          "simple_graph"
+          "simple_graph",
+          "degree",
+          "clique",
+          "independent_set",
+          "complement_graph",
+          "matching"
         ]
       }
     ],
@@ -55,22 +79,62 @@
       "id": "idea-graph-role",
       "title": "Графовая роль",
       "text": "В условии явно фигурирует граф, степени вершин, смежность и полные подграфы размера `n`.\nОфициальное решение целиком работает внутри теории графов: использует дополнительный граф, клики, пересечения блоков и лемму Холла.",
-      "tags": [],
+      "tags": [
+        "extremal_graph_theory",
+        "matching"
+      ],
       "status": "ai_checked"
     }
   ],
   "solutions": [
     {
+      "id": "sol-official-full",
+      "title": "Полное решение по официальному разбору",
+      "text": "Обозначим через \\(\\Delta\\) максимальную степень графа \\(G\\) и положим \\(k=\\Delta-n\\). Из условия \\(\\Delta<3n/2-1\\) следует \\(2(k+1)<n\\). Кроме того, в \\(G\\) нет клики размера \\(n+1\\), потому что среди любых \\(n+1\\) вершин есть две несмежные.\n\nСначала докажем лемму Дольникова в дополнительной форме. Пусть \\(Q\\) -- граф на \\(2m-1\\) вершинах, и после удаления любой вершины в \\(Q\\) остается независимое множество размера \\(m\\). Тогда в \\(Q\\) есть независимое множество размера \\(m+1\\). Предположим противное и выберем контрпример с минимальным \\(m\\). Возьмем независимое множество \\(X\\) размера \\(m\\), а остальные вершины обозначим \\(Y\\), так что \\(|Y|=m-1\\). Назовем множество \\(A\\subseteq Y\\) плохим, если \\(|A|>|N_X(A)|\\), и выберем максимальное по включению плохое \\(A\\); пусть \\(|A|=a\\). Если бы для некоторого \\(C\\subseteq Y\\setminus A\\) выполнялось \\(|N_{X\\setminus N_X(A)}(C)|<|C|\\), то \\(A\\cup C\\) было бы плохим, что противоречит максимальности \\(A\\). Поэтому по лемме Холла вершины \\(Y\\setminus A\\) можно попарно различно сопоставить их соседям из \\(X\\setminus N_X(A)\\). Пусть \\(B\\) -- несопоставленные вершины из \\(X\\). Тогда \\(|B|=a+1\\), причем \\(N_X(A)\\subseteq B\\).\n\nРассмотрим подграф \\(Q[A\\cup B]\\). Вне \\(A\\cup B\\) остались ровно \\(m-a-1\\) сопоставленных пар, и в каждой паре ее две вершины смежны, поэтому любое независимое множество берет оттуда не более одной вершины из каждой пары. Значит, после удаления любой вершины из \\(A\\cup B\\) независимое множество размера \\(m\\), существующее по условию, содержит не менее \\(a+1\\) вершин внутри \\(A\\cup B\\). Итак, в \\(Q[A\\cup B]\\) после удаления любой вершины остается независимое множество размера \\(a+1\\). Если \\(a+1<m\\), то по минимальности \\(m\\) граф \\(Q[A\\cup B]\\) содержит независимое множество размера \\(a+2\\); добавив к нему все вершины \\(X\\setminus B\\), получим в \\(Q\\) независимое множество размера \\(m+1\\), поскольку \\(X\\setminus B\\) не смежно ни с \\(A\\), ни с \\(B\\). Если же \\(a+1=m\\), то \\(A=Y\\), и из плохости \\(A\\) найдется вершина \\(x\\in X\\), не смежная ни с одной вершиной из \\(Y\\). Удалив \\(x\\), находим независимое множество размера \\(m\\), а затем добавляем к нему \\(x\\); снова получаем независимое множество размера \\(m+1\\). Лемма доказана.\n\nТеперь докажем вторую лемму. Пусть \\(L\\) -- непустое пересечение нескольких блоков графа \\(G\\). Тогда \\(|L|\\ge n-k-1\\). Действительно, пусть \\(T\\) -- объединение всех блоков, содержащих \\(L\\). Любая вершина из \\(L\\) смежна со всеми остальными вершинами из \\(T\\), поэтому \\(|T|\\le \\Delta+1\\le n+k+1\\). Положим \\(r=n-|L|\\). Если \\(v\\in T\\setminus L\\), то существует блок, содержащий \\(L\\), но не содержащий \\(v\\); значит, после удаления любой вершины из \\(G[T\\setminus L]\\) остается клика размера \\(r\\). При этом в \\(G[T\\setminus L]\\) нет клики размера \\(r+1\\), иначе вместе с \\(L\\) она дала бы клику размера \\(n+1\\) в \\(G\\). Поэтому из предыдущей леммы, примененной к дополнительному графу (а при числе вершин меньше \\(2r-1\\) можно добавить изолированные в \\(G[T\\setminus L]\\) фиктивные вершины), следует \\(|T\\setminus L|\\ge 2r\\). Совмещая это с верхней оценкой на \\(|T|\\), получаем\n\\[\n2(n-|L|)\\le |T\\setminus L|\\le n+k+1-|L|,\n\\]\nоткуда \\(|L|\\ge n-k-1\\).\n\nЗавершим доказательство. Зафиксируем блок \\(H\\). Будем по одному добавлять все блоки, пересекающие \\(H\\), и следить за их общим пересечением. Сначала оно равно \\(H\\) и непусто. Предположим, что после нескольких шагов текущее пересечение \\(I\\) непусто. По второй лемме \\(|I|\\ge n-k-1\\). Для следующего блока \\(B\\), пересекающего \\(H\\), та же лемма, примененная к пересечению \\(B\\cap H\\), дает \\(|B\\cap H|\\ge n-k-1\\). Оба множества \\(I\\) и \\(B\\cap H\\) лежат в \\(H\\), а\n\\[\n2(n-k-1)>n=|H|.\n\\]\nСледовательно, они имеют общую вершину, то есть \\(B\\cap I\\ne\\varnothing\\), и общее пересечение не исчезает. По условию любые два блока пересекаются, значит, каждый блок пересекает выбранный \\(H\\). После добавления всех блоков их общее пересечение остается непустым. Это и требовалось доказать.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "complement_graph_transition",
+        "minimal_counterexample",
+        "augmenting_path_method",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "repair_status": "repaired_full_solution_from_official_source",
+      "review_notes": "Deep final pass 2026-04-26 restored the full official proof from the Kolmogorov Cup 2002 archive; metadata pass aligned Hall/complement/minimal-counterexample tags and definitions.",
+      "definition_ids": [
+        "simple_graph",
+        "degree",
+        "clique",
+        "independent_set",
+        "complement_graph",
+        "matching"
+      ]
+    },
+    {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
+      "title": "Official solution, compressed summary",
       "text": "В официальном решении вводятся две леммы.\n\nЛемма 1: если в графе на `2n - 1` вершинах после удаления любой вершины остается полный подграф на `n` вершинах, то и в исходном графе есть полный подграф на `n + 1` вершинах.\nДоказательство проводится через дополнительный граф, лемму Холла и минимальный контрпример.\n\nЛемма 2: если `L` — непустое пересечение нескольких блоков графа `G`, то `L` содержит не менее `n - k - 1` вершин, где `k` определяется из оценки на степени.\nДля этого рассматривают объединение всех блоков, содержащих `L`, и применяют Лемму 1 к подходящему индуцированному подграфу.\n\nДалее фиксируют один блок `H` и рассматривают пересечение всех блоков, имеющих с ним непустое пересечение.\nПока пересечение непусто, по Лемме 2 оно достаточно велико.\nПоэтому любой следующий блок, пересекающий `H`, обязан пересечь и текущее общее пересечение.\nЗначит, при последовательном добавлении всех блоков, пересекающих `H`, общее пересечение не исчезает.\n\nОтсюда следует, что все блоки графа имеют общую вершину.",
       "idea_ids": [
         "idea-graph-role"
       ],
-      "standard_idea_ids": [],
-      "status": "needs_human_review",
+      "standard_idea_ids": [
+        "complement_graph_transition",
+        "minimal_counterexample",
+        "augmenting_path_method",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "repair_status": "superseded_by_full_official_solution",
+      "review_notes": "Metadata pass 2026-04-26: this compressed official summary is retained as a short companion to sol-official-full and no longer carries the old deferred status.",
       "definition_ids": [
-        "simple_graph"
+        "simple_graph",
+        "degree",
+        "clique",
+        "independent_set",
+        "complement_graph",
+        "matching"
       ]
     }
   ],
@@ -81,9 +145,19 @@
     "status": "needs_human_review"
   },
   "tags": [
+    "extremal_graph_theory",
+    "matching",
+    "forbidden_clique",
     "goal_proof"
   ],
-  "properties": {},
+  "properties": {
+    "central_method": {
+      "value": [
+        "complement_graph_transition"
+      ],
+      "status": "ai_checked"
+    }
+  },
   "sources": [
     {
       "source_id": "src-kolmogorov-2002-official",
@@ -99,14 +173,17 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
+    "review_status": "ai_checked",
     "public_ready": false,
     "notes": [
       "Imported from prepared card cards/kolm/2002_team_olympiad_seniors_problem_8.md.",
       "Source file noted by card: work/kolm/text/2002/OLYMPVI_from_tex.txt.",
       "Source page noted by card: team olympiad seniors, problem 8.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Team Olympiad, Seniors, Problem 8."
+      "Original final-selection name: Team Olympiad, Seniors, Problem 8.",
+      "2026-04-26 plan-to-solution pass verdict: deferred_needs_source_or_reconstruction; compressed official summary is not enough to certify a complete solution.",
+      "2026-04-26 deep-final-pass: official archive kolm6.zip was downloaded from turmath.ru; text extracted from OlympVI.doc contains the full solution for senior team olympiad problem 8, now recorded as sol-official-full.",
+      "2026-04-26 metadata-pass: aligned tags, problem_profile, central_method, standard_idea_ids, definition_ids, statuses, and repair metadata after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_absent_reason": "Исходная формулировка уже является графовой формулировкой этой импортированной карточки KOLM, либо карточка фиксирует графовую модель как вспомогательную часть официального решения; отдельная графовая переформулировка в этом проходе не курировалась.",

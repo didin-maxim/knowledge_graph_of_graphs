@@ -16,12 +16,14 @@
   ],
   "problem_profile": {
     "objects": [
+      "simple_graph",
       "tree",
       "cycle",
       "hamiltonian_cycle"
     ],
     "methods": [
-      "induction"
+      "induction",
+      "euler_tour"
     ],
     "transformations": [],
     "goal": [
@@ -36,7 +38,14 @@
       "graph-power",
       "hamiltonian-cycle",
       "tree",
-      "induction"
+      "induction",
+      "hamiltonian_cycles",
+      "trees",
+      "goal_proof",
+      "simple_graph",
+      "cycle",
+      "hamiltonian_cycle",
+      "euler_tour"
     ],
     "status": "ai_checked"
   },
@@ -74,21 +83,23 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Достаточно рассмотреть случай, когда `G` — дерево: если утверждение верно для остовного дерева, то оно верно и для исходного графа.\n\nДоказательство ведется индукцией по числу вершин. В графе `G^3` длиной ребра называют расстояние между его концами в исходном дереве, так что возможны ребра длин `1`, `2` и `3`.\n\nЕсли в дереве есть вершина, смежная хотя бы с двумя листьями, то одну новую висячую вершину можно вставить в уже построенный гамильтонов цикл меньшего дерева, заменив участок `u-v1-u'` на `u-v1-v2-u'`.\n\nВ противном случае берут вершину степени не меньше `3`, у которой висит путь `v1, ..., vk`, удаляют этот путь и по предположению индукции получают гамильтонов цикл в `T^3`. В этом цикле находится ребро, соединяющее разные компоненты графа `T - w`; его заменяют на специальный проход через вершины удаленного пути. Все новые ребра имеют длину не более `3`, значит, действительно принадлежат `G^3`.\n\nТак индуктивно строится гамильтонов цикл в `G^3`.",
+      "title": "Complete solution via a tree traversal",
+      "text": "It is enough to prove the result for trees. Indeed, every connected graph `G` has a spanning tree `T`. If two vertices are at distance at most `3` in `T`, then they are also at distance at most `3` in `G`; hence every Hamiltonian cycle in `T^3` is also a Hamiltonian cycle in `G^3`.\n\nWe prove that `T^3` is Hamiltonian for every tree `T` with at least three vertices. Root `T` at a vertex `r` and make the usual depth-first closed walk `W` that traverses every edge of `T` exactly twice, starting and ending at `r`.\n\nFrom the occurrences of each vertex in `W`, choose exactly one occurrence as follows. If the vertex has even distance from `r`, choose its first occurrence in `W`; if it has odd distance from `r`, choose its last occurrence in `W`. For the root, choose the initial occurrence. Now list the vertices in the cyclic order in which their chosen occurrences appear along `W`. Each vertex appears exactly once in this list.\n\nIt remains to check that consecutive vertices in this cyclic list are adjacent in `T^3`. Let the next chosen occurrence after the chosen occurrence of a vertex `v` belong to a vertex `u`. We show that the part of `W` from `v` to `u` has length at most `3`; then the distance from `v` to `u` in `T` is at most `3`.\n\nIf `v` has even depth and its first occurrence was chosen, then the walk either goes next to an odd-depth leaf child, whose only occurrence is chosen, or goes to an odd-depth child and then to an even-depth grandchild, whose first occurrence is chosen. If there is no unvisited child of `v`, the walk returns to the odd-depth parent of `v`; either this is the parent's last occurrence and is chosen, or the walk next enters the parent's next child, which has even depth and is chosen at its first occurrence. In all cases the next chosen occurrence is reached within at most two tree-edges.\n\nIf `v` has odd depth and its last occurrence was chosen, then the walk returns to the even-depth parent of `v`. If that parent has a next unvisited child, then either that child is an odd-depth leaf and its occurrence is chosen, or one more step reaches an even-depth grandchild chosen at its first occurrence. If the parent has no next child, the walk goes up to the odd-depth grandparent; either this is the grandparent's last occurrence and is chosen, or the walk next enters the grandparent's next child, which has even depth and is chosen at its first occurrence. Thus the next chosen occurrence is reached within at most three tree-edges. The cyclic transition from the last chosen occurrence back to the initial occurrence of `r` is covered by the same closed-walk argument.\n\nTherefore every two consecutive vertices in the constructed cyclic order have distance at most `3` in `T`, so they are adjacent in `T^3`. This cyclic order is a Hamiltonian cycle of `T^3`, and hence also of `G^3`. The proof is complete.",
       "idea_ids": [
         "idea-graph-role"
       ],
       "standard_idea_ids": [
         "induction"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
         "simple_graph",
         "tree",
         "cycle",
         "hamiltonian_cycle"
-      ]
+      ],
+      "repair_status": "completed_full_solution",
+      "review_notes": "Metadata pass 2026-04-26: profile aligned to the completed DFS/Euler-tour proof for a Hamiltonian cycle in the cube of a tree."
     }
   ],
   "difficulty": {
@@ -106,9 +117,10 @@
   "properties": {
     "central_method": {
       "value": [
-        "induction"
+        "induction",
+        "euler_tour"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -126,14 +138,16 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Imported from prepared card cards/kolm/2011_individual_olympiad_seniors_problem_7.md.",
       "Source file noted by card: work/kolm/archive/2011/extracted/lichol15.doc.",
       "Source page noted by card: 1.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Individual Olympiad, Seniors, Problem 7."
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 7.",
+      "2026-04-26 plan-to-solution pass verdict: completed_full_solution; replaced the compressed induction sketch with a complete DFS/Euler-tour proof for the cube of a spanning tree.",
+      "2026-04-26 metadata pass: tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status fields aligned after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

@@ -16,6 +16,7 @@
   ],
   "problem_profile": {
     "objects": [
+      "simple_graph",
       "s_t_paths",
       "vertex_cut",
       "internally_disjoint_paths",
@@ -23,11 +24,13 @@
     ],
     "methods": [
       "max_flow_min_cut",
-      "vertex_splitting"
+      "vertex_splitting",
+      "integral_flow_decomposition"
     ],
     "transformations": [
       "split_vertices",
-      "reduce_to_flow"
+      "reduce_to_flow",
+      "orient_edges_both_ways"
     ],
     "goal": [
       "path_cut_minimax",
@@ -39,7 +42,8 @@
     "invariants": [
       "cut_capacity",
       "path_disjointness",
-      "separator_size"
+      "separator_size",
+      "flow_integrality"
     ],
     "keywords": [
       "menger_theorem",
@@ -61,7 +65,8 @@
         },
         "definition_ids": [
           "path",
-          "connected_graph"
+          "connected_graph",
+          "simple_graph"
         ]
       }
     ],
@@ -75,7 +80,8 @@
         },
         "definition_ids": [
           "path",
-          "connected_graph"
+          "connected_graph",
+          "simple_graph"
         ]
       }
     ],
@@ -89,21 +95,25 @@
       "tags": [
         "connectivity"
       ],
-      "status": "ai_draft"
+      "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-flow-sketch",
       "title": "Доказательство через поток",
-      "text": "Раздвоим каждую вершину v на \\( v_i \\)n и v_out и проведем ребро \\( v_i \\)n v_out пропускной способности 1. Исходные ребра заменим ребрами бесконечной пропускной способности между соответствующими копиями. Тогда целочисленный максимальный поток из s в t раскладывается в внутренне непересекающиеся пути, а минимальный разрез выбирает вершины-разделители. Теорема о максимальном потоке и минимальном разрезе дает равенство.",
+      "text": "Пусть G имеет n вершин, а s и t различны и несмежны. Построим ориентированную сеть. Для каждой вершины v создадим две копии v_in и v_out. Если v не равно s,t, проведем дугу v_in -> v_out пропускной способности 1; для s и t эту внутреннюю дугу считаем имеющей пропускную способность M=n+1, чтобы разрез не платил за концы путей. Каждое неориентированное ребро xy заменим двумя дугами x_out -> y_in и y_out -> x_in пропускной способности M. Источник возьмем s_out, сток — t_in. Так как удаление всех вершин, кроме s,t, отделяет s от t, существует разрез емкости не больше n-2; значит минимальный разрез не использует дуги емкости M и состоит только из внутренних дуг v_in -> v_out для некоторых v не равно s,t. Такое множество вершин действительно отделяет s от t: если бы в G после их удаления остался s-t путь, то его копия в сети прошла бы из источника в сток, не пересекая выбранный разрез. Обратно, любой вершинный разделитель X дает разрез емкости |X|, если перерезать дуги x_in -> x_out для x из X. Поэтому минимальная емкость s-t разреза в сети равна минимальному размеру вершинного s-t разделителя в G. По теореме о максимальном потоке и минимальном разрезе эта величина равна значению максимального потока; все емкости целые, значит можно взять целочисленный максимальный поток. Разложим его на единичные s_out-t_in пути в сети. Возвращая каждому такому пути исходные вершины G, получаем s-t пути. Две разные единицы потока не могут пройти через одну и ту же внутреннюю вершину v, потому что дуга v_in -> v_out имеет емкость 1. Следовательно, полученные пути попарно не имеют общих внутренних вершин. Значит число внутренне непересекающихся s-t путей не меньше размера минимального разделителя. Противоположное неравенство очевидно: каждый s-t разделитель должен содержать внутреннюю вершину каждого из попарно внутренне непересекающихся путей, причем для разных путей эти вершины различны. Итак, максимальное число таких путей равно минимальному размеру разделителя.",
       "idea_ids": [
         "idea-min-cut-max-path"
       ],
-      "status": "ai_draft",
-      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "augmenting_path_method"
+      ],
       "definition_ids": [
-        "path"
+        "path",
+        "simple_graph",
+        "directed_graph"
       ]
     }
   ],
@@ -111,19 +121,21 @@
     "main": "imo_p3_plus",
     "local_score": 9,
     "comment": "Мощный инструмент; полное доказательство обычно выходит за рамки короткой школьной задачи.",
-    "status": "ai_draft"
+    "status": "ai_checked"
   },
   "tags": [
     "connectivity",
+    "augmenting_path",
     "classical_theorem",
     "goal_exact_bound"
   ],
   "properties": {
     "central_method": {
       "value": [
-        "min_cut_max_path"
+        "max_flow_min_cut",
+        "vertex_splitting"
       ],
-      "status": "ai_draft"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -136,9 +148,11 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-19",
-    "review_status": "needs_human_review",
-    "public_ready": false,
-    "notes": [],
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-26 metadata pass: marked flow proof as checked, added vertex-splitting/max-flow central method and expanded path/cut definitions."
+    ],
     "relations_status": "deep_done"
   }
 }

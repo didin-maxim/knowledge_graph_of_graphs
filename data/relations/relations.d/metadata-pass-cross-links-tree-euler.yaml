@@ -1,0 +1,124 @@
+{
+  "relations": [
+    {
+      "id": "rel-metadata-tree-euler-tree-memo-2021-i2-forest-bound",
+      "from": "tree-equivalent-properties",
+      "to": "memo-2021-i2-bishop-circuit-forest",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The MEMO bishop-circuit solution turns red squares into edges of a diagonal incidence graph and then uses the forest edge bound. This is a direct application of the tree/forest edge-count characterization.",
+      "backward_text": "MEMO 2021 I2 is a clean board-model example of the tree-equivalent-properties card: forbidding bishop circuits is exactly the move that makes the incidence graph a forest, so the n-c edge bound controls the answer.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-metadata-tree-euler-tree-rmm-2023-spanning-exchange",
+      "from": "tree-equivalent-properties",
+      "to": "rmm-2023-p6-colored-spanning-tree-suspicious-edges",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The RMM solution ranges over spanning trees of a connected colored graph and changes them by edge exchanges. The basic facts that a spanning tree is connected, acyclic, and has a unique replacement cycle are the local engine of the exchange argument.",
+      "backward_text": "RMM 2023 P6 is an advanced spanning-tree exchange problem: the color-profile minimization sits on top of the elementary tree facts about unique paths and cycle-breaking after adding one non-tree edge.",
+      "anchors": {
+        "from_solution_id": "sol-minimal-connected-subgraph",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.91
+    },
+    {
+      "id": "rel-metadata-tree-euler-tree-kolm-2022-infinite-tree",
+      "from": "tree-equivalent-properties",
+      "to": "kolmogorov-2022-round2-high-colored-integers-infinite-tree",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The restored Kolmogorov solution explicitly builds an infinite rooted tree of compatible intervals and argues along branches. It is not a finite tree edge-count application, but it uses the same unique-parent and branch-extension intuition as basic rooted trees.",
+      "backward_text": "The colored-integers problem is a natural next card after finite tree basics: the solution transfers induction and branching language to an infinite tree model for monochromatic pattern extraction.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-official-restored"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-metadata-tree-euler-eulerian-kolm-2022-airport-walks",
+      "from": "eulerian-graph-criterion",
+      "to": "kolmogorov-2022-round4-high-airport-walk-parity",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both cards are governed by parity of walks and degrees. The airport-walk solution derives even-degree information from parity recurrences for walks, while the Eulerian criterion is the canonical theorem where even degrees certify a closed traversal.",
+      "backward_text": "The Kolmogorov airport problem is not a direct Euler-cycle construction, but its parity recurrence lives close to the Eulerian criterion: degree parity is extracted from walk counts and then used as a structural constraint.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-official-restored"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-metadata-tree-euler-eulerian-kolm-2022-even-degree-odd-walks",
+      "from": "eulerian-graph-criterion",
+      "to": "kolmogorov-2022-round4-second-third-even-degree-odd-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The even-degree odd-walk problem is organized around the same even-degree parity condition that appears in the Eulerian criterion. Its proof studies walk counts modulo 2 rather than constructing an Euler tour, so the relation is motif-level rather than a direct prerequisite.",
+      "backward_text": "The Kolmogorov problem is a parity-walk variant of the Eulerian theme: even degrees control which walk-count parities can occur, echoing the in-out pairing behind Eulerian cycles.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-official-restored"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-metadata-tree-euler-handshaking-egmo-2016-incidence",
+      "from": "handshaking-lemma",
+      "to": "egmo-2016-p3-blue-cells-bipartite-incidence",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The EGMO solution models blue cells as a row-column incidence bipartite graph and uses degree counting plus component-size bounds. The handshaking lemma supplies the degree-sum language behind this incidence count.",
+      "backward_text": "EGMO 2016 P3 is a compact olympiad use of handshaking in disguise: rows and columns become vertices, blue cells become edges, and the lower bound follows from degree sums inside connected components.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-metadata-tree-euler-handshaking-bmo-2022-boundary",
+      "from": "handshaking-lemma",
+      "to": "bmo-2022-p4-frog-grid-boundary-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "The BMO boundary-graph solution uses local degree constraints and component counting on a graph built from color-region boundaries. This is a handshaking-style degree-counting argument in a planar grid encoding.",
+      "backward_text": "BMO 2022 P4 is a useful next example after the handshaking lemma: instead of counting all incidences in an abstract graph, it counts constrained boundary incidences coming from a colored grid.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.79
+    },
+    {
+      "id": "rel-metadata-tree-euler-handshaking-imo-2010-c5-degree-sum",
+      "from": "handshaking-lemma",
+      "to": "imo-2010-c5-bad-company-tournament",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The IMO 2010 C5 metadata now marks degree_sum and double_counting in a tournament. The handshaking lemma is the basic incidence-counting principle underlying the score and degree comparisons in the solution.",
+      "backward_text": "IMO 2010 C5 is a tournament-flavored handshaking application: outdegrees and indegrees replace undirected degrees, but the proof still depends on summing local degree data to force a global inequality.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

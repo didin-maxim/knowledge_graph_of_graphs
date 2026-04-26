@@ -17,13 +17,17 @@
   ],
   "problem_profile": {
     "objects": [
-      "tree"
+      "tree",
+      "grid_graph",
+      "polyomino",
+      "bipartite_cell_adjacency_graph"
     ],
     "methods": [
-      "induction"
+      "induction",
+      "delete_to_simplify"
     ],
     "transformations": [
-      "auxiliary_graph_model"
+      "cell_adjacency_graph_model"
     ],
     "goal": [
       "proof"
@@ -31,16 +35,20 @@
     "auxiliary_graph_type": [
       "official_solution_graph_model"
     ],
-    "invariants": [],
+    "invariants": [
+      "black_white_cell_count"
+    ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2006",
       "tree",
-      "grid-graph",
+      "grid graph",
       "polyomino",
+      "tetromino",
       "induction"
     ],
-    "status": "ai_checked"
+    "status": "ai_checked",
+    "central_method": "induction"
   },
   "statements": {
     "original": [
@@ -54,7 +62,9 @@
           "status": "ai_checked"
         },
         "definition_ids": [
-          "tree"
+          "tree",
+          "connected_graph",
+          "bipartite_graph"
         ]
       }
     ],
@@ -66,24 +76,32 @@
       "id": "idea-graph-role",
       "title": "Графовая роль",
       "text": "В условии графа нет, но официальное решение существенно строит дерево соседства клеток и использует пути, листья и ветвление этого дерева.",
-      "tags": [],
+      "tags": [
+        "trees",
+        "induction"
+      ],
       "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Официальное решение сначала строит дерево соседства клеток: выбирают белую клетку как корень, на следующий ярус ставят соседние с ней черные клетки, затем соседние с ними белые и так далее.\n\nИз корня в следующий ярус выходит не более 4 ребер, из любой другой вершины — не более 3. Отсюда получается нужная структурная оценка: при почти максимальном числе черных клеток каждая белая клетка должна граничить как минимум с тремя черными.\n\nДалее идет индукция по числу белых клеток. В дереве рассматривают путь максимальной длины; его предпоследняя белая вершина оказывается смежной с тремя висячими черными клетками. Эти четыре клетки образуют нужную фигурку `T`-тетрамино. Удалив ее, применяют предположение индукции к оставшейся фигуре.",
+      "title": "Полное решение через остовное дерево",
+      "text": "Покажем, что фигура разбивается на `T`-тетрамино: такие четырехклеточные фигурки состоят из одной белой клетки и трех черных клеток, примыкающих к ней по сторонам. Все такие фигурки одинаковы с точностью до поворота.\n\nРассмотрим граф соседства клеток данной фигуры: вершины — клетки фигуры, ребро соединяет две клетки с общей стороной. Этот граф связен и двудолен по шахматной раскраске. Пусть в фигуре `W` белых и `B` черных клеток; по условию `B = 3W`. Возьмем любое остовное дерево `T` этого графа. В нем `4W` вершин и `4W - 1` ребер. Каждое ребро дерева инцидентно ровно одной белой вершине, поэтому сумма степеней всех белых вершин в дереве равна `4W - 1`. Но у любой клетки на шахматной доске не больше четырех соседей, значит степень каждой белой вершины в `T` не больше 4. Следовательно, ровно одна белая вершина имеет степень 3, а все остальные белые вершины имеют степень 4. В частности, белых листьев в `T` нет, так что все листья дерева черные.\n\nДокажем утверждение индукцией по `W`. При `W = 1` имеем `B = 3`; связность заставляет все три черные клетки примыкать к единственной белой, то есть вся фигура уже является `T`-тетрамино.\n\nПусть `W > 1`. Возьмем в дереве `T` путь максимальной длины. Его концы — листья, а значит черные вершины. Рассмотрим белые вершины, соседние с двумя концами этого пути. Если бы обе они имели степень 3, то из единственности белой вершины степени 3 они совпали бы; тогда максимальный путь имел бы вид черная — белая — черная, что возможно только при `W = 1`, вопреки предположению. Значит, хотя бы у одного конца пути соседняя с ним белая вершина `x` имеет степень 4.\n\nУ вершины `x` ровно один сосед лежит на выбранном пути в сторону остального дерева. Все остальные соседи `x` обязаны быть листьями: если от такого соседа продолжалась бы ветвь, путь можно было бы удлинить, начав с ее конца. Поэтому три остальных соседа `x` — висячие черные вершины. Клетка `x` вместе с этими тремя черными клетками образует `T`-тетрамино.\n\nУдалим это `T`-тетрамино. В дереве мы удалили вершину `x` и три висячих черных вершины, а компоненту, содержащую четвертого соседа `x`, не разорвали; значит оставшиеся клетки, если они есть, все еще связны. Число белых клеток уменьшилось на 1, число черных — на 3, поэтому соотношение `B = 3W` для остатка сохраняется. По предположению индукции остаток разбивается на `T`-тетрамино. Добавляя удаленную фигурку, получаем требуемое разбиение всей фигуры на одинаковые связные фигурки из четырех клеток.",
       "idea_ids": [
         "idea-graph-role"
       ],
       "standard_idea_ids": [
-        "induction"
+        "induction",
+        "delete_to_simplify"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
+      "repair_status": "completed_ai_checked",
+      "review_notes": "Deep-final repair checked the official T-tetromino connectivity argument; metadata pass 2026-04-26 aligned the graph model with induction/delete-to-simplify methods.",
       "definition_ids": [
-        "tree"
+        "tree",
+        "connected_graph",
+        "bipartite_graph"
       ]
     }
   ],
@@ -103,7 +121,7 @@
       "value": [
         "induction"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -121,14 +139,17 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
+    "review_status": "ai_checked",
     "public_ready": false,
     "notes": [
       "Imported from prepared card cards/kolm/2006_round_2_super_league_problem_6.md.",
       "Source file noted by card: work/kolm/text/2006/tur2_10sol.txt.",
       "Source page noted by card: 2.",
       "Graph role: essential_in_official_solution.",
-      "Original final-selection name: Round 2, Super League, Problem 6."
+      "Original final-selection name: Round 2, Super League, Problem 6.",
+      "2026-04-26 plan-to-solution pass verdict: deferred_needs_source_or_reconstruction; compressed official summary states the induction strategy but omits the key removable T-tetromino justification.",
+      "2026-04-26 deep-final pass verdict: completed_ai_checked; local DOC source tmp/kolm10/Problems/tur2_10sol.doc was inspected, and the proof was completed with a spanning-tree degree/diameter lemma that justifies both the removable T-tetromino and connectedness of the remainder.",
+      "2026-04-26 metadata-pass: aligned tags, problem_profile, central_method, standard_idea_ids, definition_ids, statuses, and repair metadata after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_absent_reason": "Исходная формулировка уже является графовой формулировкой этой импортированной карточки KOLM, либо карточка фиксирует графовую модель как вспомогательную часть официального решения; отдельная графовая переформулировка в этом проходе не курировалась."

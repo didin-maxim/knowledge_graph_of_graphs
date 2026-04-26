@@ -10,18 +10,21 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "И. Богданов",
+      "status": "source_verified"
     }
   ],
   "problem_profile": {
     "objects": [
       "cycle",
       "hamiltonian_cycle",
-      "planar_graph"
+      "planar_graph",
+      "solid_angle",
+      "convex_polyhedron"
     ],
     "methods": [
-      "face_counting"
+      "spherical_area_covering",
+      "projection"
     ],
     "transformations": [],
     "goal": [
@@ -35,7 +38,20 @@
       "polyhedron-graph",
       "hamiltonian-cycle",
       "planar-graph",
-      "geometry"
+      "solid-angle",
+      "orthogonal-projection",
+      "geometry",
+      "hamiltonian_cycles",
+      "planar_graphs",
+      "double_counting",
+      "goal_existence",
+      "cycle",
+      "hamiltonian_cycle",
+      "planar_graph",
+      "solid_angle",
+      "convex_polyhedron",
+      "spherical_area_covering",
+      "projection"
     ],
     "status": "ai_checked"
   },
@@ -44,7 +60,7 @@
       {
         "id": "stmt-original",
         "title": "Оригинальная формулировка",
-        "text": "Выпуклый многогранник имеет треугольные грани. Докажите, что можно выбрать замкнутый маршрут по его ребрам, проходящий через каждую вершину ровно один раз.",
+        "text": "Сумма телесных углов при вершинах выпуклого многогранника равна π. Докажите, что существует замкнутый маршрут по его ребрам, проходящий через каждую его вершину ровно один раз. Телесный угол как величина многогранного угла измеряется площадью фигуры, высекаемой этим многогранным углом на единичной сфере; площадь всей единичной сферы равна 4π.",
         "source_id": "src-kolmogorov-2008-official",
         "status": "ai_checked",
         "self_contained": {
@@ -64,7 +80,7 @@
     {
       "id": "idea-graph-role",
       "title": "Графовая роль",
-      "text": "Условие просит найти гамильтонов цикл в графе ребер многогранника. Официальное решение тоже работает именно с этим графом, хотя использует геометрическую проекцию.",
+      "text": "Условие просит найти гамильтонов цикл в графе ребер многогранника. Геометрическое условие о сумме телесных углов позволяет выбрать направление проекции, в котором все вершины многогранника становятся вершинами контура проекции.",
       "tags": [],
       "status": "ai_checked"
     }
@@ -72,15 +88,17 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Официальное решение рассматривает граф многогранника. Выбирают направление проектирования так, чтобы ни одна грань не была параллельна плоскости проекции, и проецируют многогранник на плоскость.\n\nТогда внешняя граница проекции проходит через все вершины: иначе часть многогранника закрывала бы другую часть, что противоречит выпуклости и треугольности граней. Следовательно, вершины на границе проекции образуют цикл, проходящий через каждую вершину ровно один раз.\n\nЭтот цикл и дает искомый замкнутый маршрут по ребрам многогранника.",
+      "title": "Официальное решение через проекцию",
+      "text": "Обозначим многогранник через M, а его вершины через A. Для каждой вершины перенесем многогранный угол M при A в общий центр O единичной сферы. Пусть S_A — та часть сферы, которая попадает внутрь этого угла. По определению площадь S_A равна телесному углу при A, поэтому сумма площадей всех S_A равна π.\n\nРассмотрим также центрально-симметричные области -S_A. Суммарная площадь всех отмеченных областей S_A и -S_A, считая с кратностями, равна 2π, а площадь всей сферы равна 4π. Значит, найдется точка T сферы, не принадлежащая ни одной из этих областей; кроме того, ее можно выбрать так, чтобы прямая OT не была параллельна ни одной грани многогранника, потому что таких запрещенных направлений только конечное число больших окружностей.\n\nСпроектируем M на плоскость, перпендикулярную OT. Докажем, что проекция каждой вершины A является вершиной полученного выпуклого многоугольника. Проведем через A прямую, параллельную OT. Если эта прямая пересекает M по ненулевому отрезку с концом A, то одно из направлений OT или TO лежит внутри многогранного угла при A; на сфере это означало бы, что T принадлежит S_A или -S_A. Наш выбор T это исключает. Поэтому прямая имеет с M только точку A. Тогда через нее можно провести опорную плоскость к многогранному углу при A, пересекающую M только в A; после проекции соответствующая опорная прямая показывает, что проекция A является вершиной контура.\n\nИтак, все вершины M попали в вершины контура проекции. Соседние вершины контура проекции соединены проекцией некоторого ребра M: вертикальная опорная плоскость над стороной контура содержит отрезок между соответствующими вершинами многогранника; она не может содержать целую грань, так как OT не параллельна граням, значит этот отрезок является ребром. Следовательно, обход контура проекции поднимается в замкнутый путь по ребрам M, проходящий через все вершины ровно один раз. Это и есть требуемый маршрут.",
       "idea_ids": [
         "idea-graph-role"
       ],
       "standard_idea_ids": [
-        "face_counting"
+        "double_counting"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
+      "repair_status": "repaired_from_local_official_doc_and_kvant_article",
+      "review_notes": "Metadata pass 2026-04-26: tags and profile aligned to the repaired solid-angle/polyhedron statement; the central method is spherical area covering plus projection, with double counting retained as the standard idea.",
       "definition_ids": [
         "cycle",
         "hamiltonian_cycle",
@@ -91,20 +109,22 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "Imported from prepared KOLM graph-theory card; difficulty estimate needs human review.",
-    "status": "needs_human_review"
+    "comment": "Условие и решение восстановлены по официальному материалу; сложность соответствует задаче личной олимпиады старшей группы.",
+    "status": "ai_checked"
   },
   "tags": [
     "hamiltonian_cycles",
     "planar_graphs",
-    "goal_counting"
+    "double_counting",
+    "goal_existence"
   ],
   "properties": {
     "central_method": {
       "value": [
-        "face_counting"
+        "spherical_area_covering",
+        "projection"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -122,14 +142,18 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Imported from prepared card cards/kolm/2008_individual_olympiad_seniors_problem_7.md.",
       "Source file noted by card: work/kolm/text/2008/lichol12.txt.",
       "Source page noted by card: 3.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Individual Olympiad, Seniors, Problem 7."
+      "Original final-selection name: Individual Olympiad, Seniors, Problem 7.",
+      "2026-04-26 plan-to-solution pass verdict: deferred_needs_source_or_reconstruction; compressed projection summary is not enough and the apparent statement is mathematically unsafe without source verification/correction.",
+      "2026-04-26 deep final pass: recovered the official statement from tmp/kolm12/kolm12/lichol12.doc; the source condition is sum of solid angles equal to pi, not triangular faces.",
+      "The same problem appears as Kvant M2153 in I. Bogdanov, 'О сумме телесных углов многогранника', Kvant 2010 no. 3, with the projection proof used here.",
+      "2026-04-26 metadata pass: tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status fields aligned after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

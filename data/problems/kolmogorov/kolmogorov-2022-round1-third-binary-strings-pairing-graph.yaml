@@ -89,14 +89,16 @@
   ],
   "solutions": [
     {
-      "id": "sol-import-note",
-      "title": "Решение пока не найдено",
-      "text": "Решение пока не найдено.",
+      "id": "sol-official-restored",
+      "title": "Официальное решение, восстановлено из исходников",
+      "text": "Ответ: да.\n\nЗаменим красный цвет числом 1, а синий числом -1. Для двоичной строки x обозначим это число через f(x). Если выбран непустой набор позиций s, то разность между числом одноцветных и разноцветных пар равна половине суммы\n\\[\n  A_s=\\sum_x f(x)f(x+s),\n\\]\nгде сложение x+s означает одновременный переворот выбранных битов, а сумма берётся по всем двоичным строкам длины 99. Достаточно доказать, что для некоторого ненулевого s величина A_s не равна нулю.\n\nПросуммируем A_s по всем 2^{99} векторам s, включая нулевой. Получим\n\\[\n  \\sum_s A_s=\\sum_s\\sum_x f(x)f(x+s)=\\left(\\sum_x f(x)\\right)^2.\n\\]\nЕсли бы все A_s при ненулевых s были равны нулю, то эта сумма равнялась бы A_0=2^{99}. Но \\(\\left(\\sum_x f(x)\\right)^2\\) является квадратом целого числа, а 2^{99} не является полным квадратом. Противоречие.\n\nЗначит, существует непустой набор позиций s, для которого A_s\\ne0; для соответствующего разбиения число одноцветных пар отличается от числа разноцветных.",
       "idea_ids": [
         "idea-graph-role"
       ],
-      "standard_idea_ids": [],
-      "status": "needs_human_review",
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
       "definition_ids": [
         "simple_graph",
         "matching"
@@ -112,6 +114,7 @@
   "tags": [
     "coloring",
     "matching",
+    "double_counting",
     "goal_counting"
   ],
   "properties": {},
@@ -135,7 +138,8 @@
     "notes": [
       "Imported from missed KOLM graph task audit after final/candidates files showed year 2022 was not converted into database cards.",
       "Source file: work/kolm/text/2022/1 tur__sen-liga3-tur1.txt.",
-      "Graph role: essential_in_official_solution."
+      "Graph role: essential_in_official_solution.",
+      "Official solution restored from local Kolmogorov 2022 archive TeX source in this pass."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": false

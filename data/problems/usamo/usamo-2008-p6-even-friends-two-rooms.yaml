@@ -24,11 +24,14 @@
     ],
     "methods": [
       "linear_algebra_over_f2",
+      "affine_solution_space",
       "graph_modeling",
-      "parity_constraints"
+      "parity_constraints",
+      "switching_induction"
     ],
     "transformations": [
-      "conference_to_friendship_graph"
+      "conference_to_friendship_graph",
+      "seidel_switching_on_neighborhood"
     ],
     "goal": [
       "count_valid_partitions"
@@ -38,7 +41,9 @@
     ],
     "invariants": [
       "even_friends_in_room",
-      "solution_space_affine_over_f2"
+      "solution_space_affine_over_f2",
+      "parity_of_neighborhoods",
+      "count_preserving_switching"
     ],
     "keywords": [
       "usamo_2008_p6",
@@ -137,13 +142,14 @@
     },
     {
       "id": "sol-existence-by-switching-odd-vertex",
-      "title": "AoPS-альтернатива на существование: индукция с переключением соседей",
-      "text": "Ещё одна AoPS-идея доказывает хотя бы существование хорошего разбиения индукцией по числу вершин. Если в графе все степени чётны, то подходит разбиение, где все сидят вместе. Иначе выбирают вершину `v` нечётной степени, удаляют её и у всех пар соседей `v` переключают наличие ребра. Для полученного меньшего графа по предположению индукции есть хорошее разбиение. Затем вершину `v` возвращают в ту комнату, где у неё получается чётное число соседей. Проверка показывает, что и для остальных вершин чётности сохраняются именно из-за произведённого переключения на множестве `N(v)`. Хотя это решение не считает число всех конфигураций, оно хорошо подчёркивает графовую природу задачи: само существование правильного разбиения можно получить чисто комбинаторным преобразованием графа.",
+      "title": "Count-версия AoPS-индукции с переключением соседей",
+      "text": "Усилим переключающую индукцию до счёта. Если в графе есть вершина `v` нечётной степени, удалим её и у всех пар вершин из `N(v)` переключим наличие ребра; пусть полученный граф равен `H`. Хорошее разбиение `H` единственным образом продолжается до хорошего разбиения исходного графа: так как `deg(v)` нечётна, среди двух комнат ровно в одной число соседей `v` чётно, и туда надо посадить `v`. Проверка для соседей `v` обратима: переключение рёбер внутри `N(v)` ровно компенсирует добавление вершины `v`, а для остальных вершин условие не меняется. Поэтому число хороших разбиений не меняется при таком шаге. Повторяя шаг, приходим к графу, где все степени чётны. В таком графе условие «у каждой вершины чётно много соседей в своей комнате» эквивалентно тому, что каждая вершина имеет чётное число соседей по другую сторону разбиения. Множества вершин, задающие одну из комнат и удовлетворяющие этому условию, замкнуты относительно симметрической разности, потому что паритет числа рёбер из фиксированной вершины через разрез складывается по модулю `2`. Значит эти множества образуют векторное пространство над `F_2`, и их число равно `2^k`. Так как все предыдущие переключающие шаги сохраняли число разбиений, исходное число тоже является степенью двойки.",
       "idea_ids": [
         "idea-delete-odd-vertex-and-switch-neighborhood"
       ],
       "standard_idea_ids": [
-        "induction"
+        "induction",
+        "delete_to_simplify"
       ],
       "status": "ai_checked",
       "definition_ids": [
@@ -160,7 +166,7 @@
   },
   "tags": [
     "coloring",
-    "extremal_choice",
+    "graph_symmetry",
     "goal_counting"
   ],
   "properties": {
@@ -182,9 +188,12 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-24",
-    "review_status": "needs_human_review",
-    "public_ready": false,
-    "notes": [],
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-26 deep final pass: strengthened `sol-existence-by-switching-odd-vertex` into a full count solution via a count-preserving odd-degree switching bijection and an Eulerian-graph symmetric-difference base case.",
+      "2026-04-26 metadata pass: aligned USAMO 2008 P6 around F2 affine solution spaces, parity constraints, and switching-induction alternate solution."
+    ],
     "relations_status": "deep_done"
   }
 }

@@ -16,26 +16,34 @@
   ],
   "problem_profile": {
     "objects": [
-      "directed_graph"
+      "directed_graph",
+      "strongly_connected_digraph",
+      "strong_component"
     ],
-    "methods": [],
-    "transformations": [],
+    "methods": [
+      "extremal_choice"
+    ],
+    "transformations": [
+      "contract_strong_component"
+    ],
     "goal": [
       "proof"
     ],
     "auxiliary_graph_type": [],
     "invariants": [
-      "connectivity"
+      "strong_connectivity",
+      "outdegree"
     ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2004",
-      "graph",
       "directed graph",
       "strong connectivity",
-      "structural graph theory"
+      "vertex deletion",
+      "extremal component"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked",
+    "central_method": "extremal_choice"
   },
   "statements": {
     "original": [
@@ -44,15 +52,15 @@
         "title": "Оригинальная формулировка",
         "text": "В сильно связном ориентированном графе любые две вершины соединены не более чем одним\nребром, и из каждой вершины выходит хотя бы два ребра.\n\nДокажите, что можно удалить одну вершину вместе со всеми входящими в нее и исходящими\nиз нее ребрами так, чтобы оставшийся граф остался сильно связным.",
         "source_id": "src-kolmogorov-2004-official",
-        "status": "needs_human_review",
+        "status": "ai_checked",
         "self_contained": {
-          "status": "needs_human_review"
+          "status": "ai_checked"
         },
         "definition_ids": [
-          "simple_graph",
-          "directed_graph"
-        ],
-        "review_notes": "Prepared card confidence was below high; statement should be checked against the official source before publication."
+          "directed_graph",
+          "path",
+          "connected_graph"
+        ]
       }
     ],
     "graph_theory": [],
@@ -63,8 +71,11 @@
       "id": "idea-graph-role",
       "title": "Графовая роль",
       "text": "В условии прямо дан ориентированный граф, а официальное решение полностью основано на\nанализе компонент сильной связности и структуры дуг между ними.",
-      "tags": [],
-      "status": "needs_human_review"
+      "tags": [
+        "connectivity",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
     }
   ],
   "solutions": [
@@ -75,11 +86,35 @@
       "idea_ids": [
         "idea-graph-role"
       ],
-      "standard_idea_ids": [],
-      "status": "needs_human_review",
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "repair_status": "superseded_by_expanded_official_solution",
+      "review_notes": "Deep final pass restored the official archive proof; metadata pass 2026-04-26 keeps this compressed block as a checked summary of the expanded solution.",
       "definition_ids": [
-        "simple_graph",
-        "directed_graph"
+        "directed_graph",
+        "path",
+        "connected_graph"
+      ]
+    },
+    {
+      "id": "sol-official-expanded",
+      "title": "Expanded official solution",
+      "text": "Assume the contrary: for every vertex `v`, the graph `G-v` is not strongly connected. Choose a vertex `a` and a strongly connected component `K` of `G-a` with maximum possible size among all components of all graphs obtained from `G` by deleting one vertex.\n\nContract `K` to one vertex `k`. The contracted graph is still strongly connected, so it contains a directed cycle through `k` and `a`. Lift this cycle back to `G`: inside `K` we may move between any two vertices, so the vertices of `K` together with the vertices of the lifted cycle form a strongly connected subgraph.\n\nIf some vertex `b` outside `K` were not on this cycle, then after deleting `b` the same lifted cycle would still show that `K` and `a` lie in one strongly connected component. This component would contain all vertices of `K` and also `a`, hence would be larger than `K`, contradicting the choice of `K`. Therefore every vertex outside `K` lies on the cycle.\n\nSince `G-a` is not strongly connected, there is at least one vertex outside `K` other than `a`; hence the cycle has at least two vertices outside `K`. Go along the cycle from `k` and let `c,d` be the first two outside vertices encountered. Thus the cycle uses the edge `c -> d`, and every outside vertex different from `c` and `d` occurs after `d` before the cycle returns to `k`.\n\nBy hypothesis at least two edges leave `c`. As there is at most one edge between any two vertices, the second outgoing edge from `c` goes to some vertex `e != d`. If `e` lies in `K`, then in `G-d` the vertex `c` reaches `K` directly; if `e` lies outside `K`, then `e` is on the chosen cycle after `d`, so following the cycle from `e` back to `K` avoids `d`. In either case `c` reaches `K` in `G-d`. Conversely, the initial part of the cycle from `K` to `c` avoids `d`, so `K` reaches `c` in `G-d`. Together with the strong connectivity of `K`, this means that `G-d` has a strongly connected component containing `K` and `c`, again larger than `K`. This final contradiction proves that some vertex can be deleted without destroying strong connectivity.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "repair_status": "repaired_from_official_archive_with_expansion",
+      "review_notes": "Recovered from the official Kolmogorov Cup 2004 archive and checked in the deep final pass; metadata now records extremal SCC contraction as the central method.",
+      "definition_ids": [
+        "directed_graph",
+        "path",
+        "connected_graph"
       ]
     }
   ],
@@ -91,9 +126,17 @@
   },
   "tags": [
     "connectivity",
+    "extremal_graph_theory",
     "goal_proof"
   ],
-  "properties": {},
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  },
   "sources": [
     {
       "source_id": "src-kolmogorov-2004-official",
@@ -109,14 +152,17 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
+    "review_status": "ai_checked",
     "public_ready": false,
     "notes": [
       "Imported from prepared card cards/kolm/2004_round3_higher_league_problem_10.md.",
       "Source file noted by card: work/kolm/text/2004/tur3.txt.",
       "Source page noted by card: round 3 higher league, problem 10.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Round 3, Higher League, Problem 10."
+      "Original final-selection name: Round 3, Higher League, Problem 10.",
+      "2026-04-26 plan-to-solution pass verdict: deferred_needs_source_or_reconstruction; compressed official summary is not enough to certify a complete solution.",
+      "2026-04-26 deep final pass: official archive `kolm8.zip` / `tur3.doc` recovered the Round 3 Higher League Problem 10 solution; added `sol-official-expanded` with a complete contraction-cycle proof.",
+      "2026-04-26 metadata-pass: aligned tags, problem_profile, central_method, standard_idea_ids, definition_ids, statuses, and repair metadata after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

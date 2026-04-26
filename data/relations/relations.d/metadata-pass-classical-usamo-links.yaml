@@ -1,0 +1,109 @@
+{
+  "relations": [
+    {
+      "id": "rel-metadata-pass-brooks-color-reduction-odd-deletion",
+      "from": "brooks-theorem",
+      "to": "color-reduction-by-odd-deletion-and-doubling",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both cards use a coloring argument in which deleting or ordering vertices with controlled degree parity/degree leaves enough freedom to reduce the color demand. Brooks is the structural theorem; the color-reduction lemma is a smaller operator-style version of the same delete-and-reinsert mindset.",
+      "backward_text": "The odd-deletion color-reduction lemma is not Brooks' theorem, but it is a useful nearby tool for recognizing when a coloring proof is really driven by a controlled deletion order and a final color-class removal.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-even-core-and-double"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-metadata-pass-menger-usamo-2004-grid-separator",
+      "from": "menger-theorem",
+      "to": "usamo-2004-p4-black-path-grid-game",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Menger packages the path-versus-separator dichotomy abstractly, while USAMO 2004 P4 realizes the same dichotomy on a grid: one player wants a top-bottom path and the other builds a barrier crossing every such path.",
+      "backward_text": "The grid game can be read as an olympiad shadow of Menger even though the solution is constructive and strategic rather than an explicit max-flow/min-cut proof.",
+      "anchors": {
+        "from_solution_id": "sol-flow-sketch",
+        "to_solution_id": "sol-bob-useless-squares"
+      },
+      "status": "ai_checked",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-metadata-pass-ore-dirac-degree-path-closure",
+      "from": "ore-theorem",
+      "to": "dirac-theorem",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Ore's degree-sum theorem extends Dirac's minimum-degree criterion. Both proofs turn degree information at the ends of a Hamiltonian path into a closing edge pattern that creates a Hamiltonian cycle.",
+      "backward_text": "Dirac is the clean minimum-degree special case that helps index Ore: replace the endpoint degree sum condition by the stronger uniform bound deg(v) >= n/2.",
+      "anchors": {
+        "from_solution_id": "sol-closure-sketch",
+        "to_solution_id": "sol-longest-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-metadata-pass-turan-mantel-forbidden-clique",
+      "from": "turan-theorem",
+      "to": "mantel-theorem",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Mantel is exactly the r=2 forbidden-clique case of Turan. The general Turan card records the symmetrization and balanced multipartite extremal structure; Mantel is the triangle-free bipartite extremal boundary.",
+      "backward_text": "Mantel is the small, highly usable special case of Turan for olympiad problems where the forbidden clique is a triangle.",
+      "anchors": {
+        "from_solution_id": "sol-symmetrization",
+        "to_solution_id": "sol-degree-sum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-metadata-pass-usamo-2008-handshaking-parity",
+      "from": "handshaking-lemma",
+      "to": "usamo-2008-p6-even-friends-two-rooms",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "The handshaking lemma is the base parity language for degree constraints. USAMO 2008 P6 upgrades this to a system of local degree-parity equations over F2 for a two-room partition.",
+      "backward_text": "USAMO 2008 P6 is much stronger than handshaking, but it is a natural next card after degree parity: each vertex imposes one parity condition on its own neighborhood.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-adjacency-matrix-over-f2"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-metadata-pass-egmo-2022-usamo-2009-domino-matchings",
+      "from": "egmo-2022-p5-domino-parity-bipartite-matching",
+      "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems translate domino tilings into perfect matchings of a grid-like bipartite graph. EGMO 2022 focuses on parity/counting of matchings, while USAMO 2009 uses symmetric difference and alternating cycles to prove uniqueness.",
+      "backward_text": "USAMO 2009 is a good companion to EGMO 2022 because it shows the uniqueness side of the same matching overlay technology: two tilings differ by alternating cycles.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-induction-plus-alternating-cycles"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-metadata-pass-euler-usamo-2024-outerplanar-triangulation",
+      "from": "euler-formula-planar",
+      "to": "usamo-2024-p3-balanced-regular-polygon-triangulation",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "A polygon triangulation is a maximal outerplanar graph, so Euler-style planar bookkeeping explains the n-2 triangular faces that are being colored. In USAMO 2024 P3 the decisive step is algebraic, but the graph model is still the outerplanar triangulation framework.",
+      "backward_text": "USAMO 2024 P3 is a useful reminder that Euler/outerplanar structure can set up a problem without being the final engine: the face count and triangulation graph are the stage for a roots-of-unity argument.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-fan-and-integrality"
+      },
+      "status": "ai_checked",
+      "confidence": 0.68
+    }
+  ]
+}

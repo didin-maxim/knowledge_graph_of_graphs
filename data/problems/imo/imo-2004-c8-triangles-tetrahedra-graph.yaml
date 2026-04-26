@@ -22,7 +22,6 @@
     ],
     "methods": [
       "double_counting",
-      "holder_inequality",
       "extremal_example"
     ],
     "transformations": [],
@@ -33,12 +32,15 @@
     "invariants": [
       "clique_counts"
     ],
+    "standard_idea_ids": [
+      "double_counting"
+    ],
     "keywords": [
       "imo_2004_c8",
       "secondary_shortlist",
       "early_imo_shortlist"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -50,7 +52,9 @@
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": [],
+        "definition_ids": [
+          "complete_graph"
+        ],
         "title": "Условие",
         "distinct_from": [
           "stmt-graph"
@@ -65,7 +69,9 @@
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": [],
+        "definition_ids": [
+          "complete_graph"
+        ],
         "distinct_from": [
           "stmt-original"
         ]
@@ -77,11 +83,11 @@
     {
       "id": "idea-clique-density",
       "title": "Сравнение плотностей клик",
-      "text": "Неравенство связывает число 3-клик и 4-клик; равенство асимптотически проверяется на полных графах.",
+      "text": "Сначала оценивают число треугольников через число рёбер в произвольном графе, а затем применяют эту оценку к графам, индуцированным окрестностями вершин.",
       "tags": [
         "extremal_graph_theory"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     },
     {
       "id": "idea-complete-graph-sharpness",
@@ -90,14 +96,14 @@
       "tags": [
         "double_counting"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-secondary-sketch",
-      "title": "Сжатый графовый разбор",
-      "text": "Для полного графа \\(K_n\\) имеем \\(f=\\binom n3\\), \\(g=\\binom n4\\), и отношение \\(g^3/f^4\\) стремится к \\(3/32\\), поэтому \\(c\\) не может быть меньше \\(3/32\\). Верхняя оценка доказывается через стандартное сравнение чисел клик: суммируют по вершинам и рёбрам числа треугольников и тетраэдров, применяя выпуклость/Гёльдера к локальным количествам общих соседей. В результате получается \\(g(G)^3\\le (3/32)f(G)^4\\). Карточка фиксирует графовую суть; перед публичной версией стоит восстановить полный официальный вывод неравенства.",
+      "title": "Полное решение подсчётом в окрестностях вершин",
+      "text": "Ответ: \\(c=3/32\\). Сначала докажем вспомогательную оценку. Пусть \\(H\\) — конечный граф с \\(m\\) рёбрами и \\(T\\) треугольниками. Для вершины \\(x\\) обозначим через \\(d_x\\) её степень, а через \\(a_x\\) число рёбер между соседями \\(x\\). Тогда \\(a_x\\) равно числу треугольников графа \\(H\\), содержащих \\(x\\), поэтому \\(\\sum_x a_x=3T\\), а \\(\\sum_x d_x=2m\\). С другой стороны, \\(a_x\\le \\binom{d_x}{2}\\le d_x^2/2\\) и, конечно, \\(a_x\\le m\\). Следовательно, \\(a_x^2\\le d_x^2m/2\\), то есть \\(a_x\\le d_x\\sqrt{m/2}\\). После суммирования получаем \\(3T\\le 2m\\sqrt{m/2}=\\sqrt2\\,m^{3/2}\\), или \\(T^2\\le 2m^3/9\\). Теперь применим это к исходному графу \\(G\\). Пусть его вершины — \\(V_1,\\ldots,V_n\\), а \\(A_i\\) — множество соседей вершины \\(V_i\\). Обозначим через \\(G_i\\) подграф, индуцированный на \\(A_i\\), через \\(e_i\\) число его рёбер, а через \\(t_i\\) число его треугольников. Рёбра графа \\(G_i\\) соответствуют треугольникам графа \\(G\\), содержащим \\(V_i\\), поэтому \\(\\sum_i e_i=3f(G)\\). Треугольники графа \\(G_i\\) соответствуют копиям \\(K_4\\) в \\(G\\), содержащим \\(V_i\\), поэтому \\(\\sum_i t_i=4g(G)\\). По доказанной оценке, применённой к \\(G_i\\), имеем \\(t_i^2\\le 2e_i^3/9\\), откуда \\(t_i^{2/3}\\le (2/9)^{1/3}e_i\\). Так как всякий треугольник в \\(G_i\\) является треугольником в \\(G\\), то \\(t_i\\le f(G)\\), и потому \\(t_i=t_i^{1/3}t_i^{2/3}\\le f(G)^{1/3}(2/9)^{1/3}e_i\\). Суммируя по \\(i\\), получаем \\(4g(G)\\le f(G)^{1/3}(2/9)^{1/3}\\sum_i e_i=3(2/9)^{1/3}f(G)^{4/3}\\). Возводя в куб, имеем \\(64g(G)^3\\le 27\\cdot(2/9)f(G)^4=6f(G)^4\\), то есть \\(g(G)^3\\le (3/32)f(G)^4\\). Осталось проверить, что эту константу нельзя уменьшить. Для полного графа \\(K_n\\) выполнено \\(f(K_n)=\\binom n3\\) и \\(g(K_n)=\\binom n4\\), поэтому \\(g(K_n)^3/f(K_n)^4\\to (1/24)^3/(1/6)^4=3/32\\) при \\(n\\to\\infty\\). Значит, наименьшая возможная константа равна \\(3/32\\).",
       "idea_ids": [
         "idea-clique-density",
         "idea-complete-graph-sharpness"
@@ -105,7 +111,7 @@
       "standard_idea_ids": [
         "double_counting"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
         "complete_graph"
       ]
@@ -126,10 +132,9 @@
     "central_method": {
       "value": [
         "double_counting",
-        "holder_inequality",
         "extremal_example"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -147,9 +152,11 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-20",
-    "review_status": "needs_human_review",
-    "public_ready": false,
-    "notes": [],
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Metadata pass IMO: карточка уже содержит полное решение; устаревшая sketch-метка оставлена только в id ради стабильности relations."
+    ],
     "relations_status": "deep_done"
   }
 }

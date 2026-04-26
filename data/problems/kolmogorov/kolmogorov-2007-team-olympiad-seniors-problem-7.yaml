@@ -17,31 +17,38 @@
   ],
   "problem_profile": {
     "objects": [
+      "simple_graph",
       "complete_graph",
-      "degree"
+      "degree",
+      "induced_subgraph"
     ],
-    "methods": [],
+    "methods": [
+      "double_counting"
+    ],
     "transformations": [
-      "auxiliary_graph_model"
+      "compare_induced_m_vertex_subgraphs"
     ],
     "goal": [
-      "proof"
+      "counting"
     ],
     "auxiliary_graph_type": [
       "official_solution_graph_model"
     ],
     "invariants": [
-      "degree"
+      "degree",
+      "induced_edge_count"
     ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2007",
-      "acquaintance-graph",
+      "acquaintance graph",
       "degree",
-      "induced-subgraph",
-      "complete-graph"
+      "induced subgraph",
+      "complete graph",
+      "double counting"
     ],
-    "status": "ai_checked"
+    "status": "ai_checked",
+    "central_method": "double_counting"
   },
   "statements": {
     "original": [
@@ -55,6 +62,7 @@
           "status": "ai_checked"
         },
         "definition_ids": [
+          "simple_graph",
           "complete_graph",
           "degree"
         ]
@@ -68,24 +76,32 @@
       "id": "idea-graph-role",
       "title": "Графовая роль",
       "text": "В условии граф не назван напрямую, но официальное решение существенно переводит задачу в граф знакомств и рассуждает через степени вершин в индуцированных подгруппах.",
-      "tags": [],
+      "tags": [
+        "double_counting",
+        "extremal_graph_theory"
+      ],
       "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Ответ: `n(n-1)/2`, то есть знакомы должны быть все со всеми.\n\nВ официальном решении рассматривают произвольную группу из `m+1` человек и замечают, что каждый ее участник имеет одно и то же число знакомых внутри этой группы: иначе после удаления разных людей число пар знакомых среди оставшихся `m` менялось бы.\n\nПредположим теперь, что существуют двое незнакомых. Тогда можно выбрать группу `L` из `m+1` человек, где есть и такая незнакомая пара, и какая-то знакомая пара. Замена одного человека на внешнего человека `C` приводит к новой группе `M`; сравнение степеней внутри `L` и `M` показывает, что `C` должен иметь те же знакомства внутри `L`, что и замененный человек.\n\nПовторяя рассуждение с другой заменой, получают невозможное изменение суммарных степеней. Значит, незнакомых пар нет, и весь граф знакомств полный.",
+      "title": "Официальное решение, развернутое изложение",
+      "text": "Ответ: `n(n-1)/2`.\n\nРассмотрим граф знакомств: вершины — люди, ребра — пары знакомых. По условию число ребер в любом индуцированном подграфе на `m` вершинах одно и то же. Обозначим это число через `q`.\n\nВозьмем двух различных людей `x` и `y` и любое множество `S` из `m-1` остальных людей. В двух группах `S \\cup {x}` и `S \\cup {y}` по `m` человек, поэтому в них по `q` пар знакомых. Пары внутри самого `S` в этих двух подсчетах одинаковы, значит, число знакомых у `x` среди людей из `S` равно числу знакомых у `y` среди людей из `S`.\n\nПоложим `k=m-1`. Тогда `1 <= k <= n-3`. Итак, для любых разных `x,y` сумма величин `a_z`, где `a_z=1`, если `x` знаком с `z`, и `a_z=-1`, если только `y` знаком с `z` (а если оба знакомы или оба не знакомы с `z`, то `a_z=0`), равна нулю по любому `k`-элементному множеству `S` из остальных вершин. Отсюда все `a_z` равны между собой: при `k=1` это сразу следует из одноэлементных множеств, а при `k>1` можно сравнить два таких множества, отличающихся только одной вершиной. Но сумма по любому `k`-множеству равна нулю, значит, это общее значение равно нулю. Поэтому для любых трех различных людей `x,y,z` человек `z` либо знаком с обоими `x,y`, либо не знаком ни с одним из них.\n\nТеперь покажем, что все пары людей имеют один и тот же статус. Так как `m<n-1`, имеем `n>=4`, и для любой пары `a,b` можно выбрать третьего человека `c`. Применив предыдущий вывод к тройке `a,b,c`, получаем, что знакомство `a` с `b` имеет тот же статус, что и знакомство `c` с `b`. Перенося так статус через общую вершину, видим, что все пары в компании либо знакомы, либо все не знакомы.\n\nВ условии сказано, что в компании есть знакомые друг с другом люди. Следовательно, невозможен случай, когда знакомых пар нет. Значит, знакомы все со всеми, и общее число пар знакомых равно числу всех пар людей: `C(n,2)=n(n-1)/2`.",
       "idea_ids": [
         "idea-graph-role"
       ],
-      "standard_idea_ids": [],
-      "status": "needs_human_review",
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
       "definition_ids": [
+        "simple_graph",
         "complete_graph",
         "degree"
-      ]
+      ],
+      "repair_status": "metadata_aligned_after_solution_repair",
+      "review_notes": "Metadata pass 2026-04-26: checked the induced-subgraph comparison proof and aligned it as a double-counting/counting profile."
     }
   ],
   "difficulty": {
@@ -96,10 +112,17 @@
   },
   "tags": [
     "double_counting",
-    "ramsey_theory",
+    "extremal_graph_theory",
     "goal_counting"
   ],
-  "properties": {},
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
   "sources": [
     {
       "source_id": "src-kolmogorov-2007-official",
@@ -115,14 +138,16 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
+    "review_status": "ai_checked",
     "public_ready": false,
     "notes": [
       "Imported from prepared card cards/kolm/2007_team_olympiad_seniors_problem_7.md.",
       "Source file noted by card: work/kolm/text/2007/komol11.txt.",
       "Source page noted by card: 2.",
       "Graph role: essential_in_official_solution.",
-      "Original final-selection name: Team Olympiad, Seniors, Problem 7."
+      "Original final-selection name: Team Olympiad, Seniors, Problem 7.",
+      "2026-04-26 plan-to-solution pass verdict: ai_checked; compressed official summary was sufficient to reconstruct a complete graph-theoretic proof.",
+      "2026-04-26 metadata-pass: aligned tags, problem_profile, central_method, standard_idea_ids, definition_ids, statuses, and repair metadata after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_absent_reason": "Исходная формулировка уже является графовой формулировкой этой импортированной карточки KOLM, либо карточка фиксирует графовую модель как вспомогательную часть официального решения; отдельная графовая переформулировка в этом проходе не курировалась."

@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2008-round-3-high-league-problem-1",
-  "title": "Кубок Колмогорова 2008: 3 тур, старшая лига задача 1",
+  "title": "Кубок Колмогорова 2008: 3 тур, старшая лига, задача 1",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -16,8 +16,10 @@
   ],
   "problem_profile": {
     "objects": [
+      "simple_graph",
       "path",
-      "degree"
+      "degree",
+      "hamiltonian_path"
     ],
     "methods": [
       "extremal_choice",
@@ -39,7 +41,16 @@
       "hamiltonian-path",
       "degree",
       "extremal",
-      "construction"
+      "construction",
+      "extremal_graph_theory",
+      "hamiltonian_cycles",
+      "goal_exact_bound",
+      "simple_graph",
+      "path",
+      "hamiltonian_path",
+      "extremal_choice",
+      "longest_path",
+      "greedy_ordering"
     ],
     "status": "ai_checked"
   },
@@ -57,7 +68,8 @@
         "definition_ids": [
           "simple_graph",
           "path",
-          "degree"
+          "degree",
+          "hamiltonian_path"
         ]
       }
     ],
@@ -76,8 +88,8 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Ответ: `5000`.\n\nДля нижней оценки официальное решение замечает, что каждая вершина должна иметь степень не меньше 3: при меньшей степени нельзя обеспечить гамильтонов путь с произвольными концами. Тогда сумма степеней не меньше `3 * 3332 + 4`, откуда число ребер не меньше 5000.\n\nДля верхней оценки строится конкретный пример на 3333 вершинах с 5000 ребрами: берется прямоугольная решетка `2 x 1666` и добавляется специальная вершина, соединенная с двумя угловыми. В полученном графе между любыми двумя вершинами можно выписать гамильтонов путь.\n\nЗначит, минимальное число ребер действительно равно `5000`.",
+      "title": "Официальное решение, развернутое изложение",
+      "text": "Ответ: `5000`.\n\nСначала докажем нижнюю оценку. Возьмем любые две смежные вершины `a` и `b`. По условию есть гамильтонов путь с концами `a` и `b`; добавив ребро `ab`, получаем гамильтонов цикл. Значит, степень каждой вершины не меньше `2`.\n\nПокажем, что вершины степени `2` тоже невозможны. Пусть `v` - такая вершина, а ее соседи на найденном гамильтоновом цикле равны `x` и `y`. По условию существует гамильтонов путь с концами `x` и `y`. В этом пути вершина `v` не является концом, поэтому обе соседние с ней в пути вершины должны быть ее соседями в графе, то есть это `x` и `y`. Но тогда путь имеет вид `x-v-y` в соответствующем месте; поскольку `x` и `y` - концы всего пути, других вершин в нем быть не может. Это противоречит тому, что вершин `3333`. Следовательно, минимальная степень графа не меньше `3`.\n\nТогда сумма степеней не меньше `3 * 3333 = 9999`. Она четна, поэтому на самом деле не меньше `10000`, и число ребер не меньше `5000`.\n\nОсталось построить пример. Возьмем лестницу из двух горизонтальных рядов по `1666` вершин: верхние вершины обозначим `u_1, ..., u_1666`, нижние - `v_1, ..., v_1666`; проведем все горизонтальные ребра `u_i u_{i+1}`, `v_i v_{i+1}` и все вертикальные ребра `u_i v_i`. Добавим особую вершину `A` и соединим ее с четырьмя углами `u_1, v_1, u_1666, v_1666`. Вершин получилось `2 * 1666 + 1 = 3333`, а ребер `2 * 1665 + 1666 + 4 = 5000`.\n\nПроверим гамильтонову связность этого графа. Сначала пусть обе заданные вершины `B` и `C` лежат на лестнице; если нужно, отразим рисунок так, чтобы `B` была не правее `C`. Идем из `B` змейкой по полосе между столбцами `B` и `C`: если между соответствующими вертикалями есть `k > 0` клеток, то делаем `k - 1` шагов вправо, один вертикальный шаг и `k - 1` шагов влево; при `k = 0` эта начальная часть пуста. Из полученной вершины продолжаем такую же змейку влево до левого края лестницы. Из вершины, соседней с `C` по вертикали, ведем вторую змейку вправо до правого края. Две змейки покрывают все вершины лестницы ровно по одному разу и оканчиваются в углах; соединяем их через особую вершину `A`, которая смежна с обоими углами. Получается гамильтонов путь с концами `B` и `C`.\n\nТеперь пусть один конец равен `A`, а другой конец `B` лежит на лестнице. Отразим рисунок при необходимости и пусть слева от столбца `B` находится `k` клеток. Начиная из `B`, сначала обходим левую часть: делаем `k` шагов вправо, один вертикальный шаг и `k` шагов влево. После этого идем змейкой вправо по оставшейся части лестницы до правого угла и последним шагом приходим в `A`. Такой путь также проходит по всем вершинам ровно один раз.\n\nИтак, построенный граф удовлетворяет условию и имеет `5000` ребер. Вместе с нижней оценкой это дает искомый минимум.",
       "idea_ids": [
         "idea-graph-role"
       ],
@@ -86,12 +98,15 @@
         "longest_path",
         "greedy_ordering"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
         "simple_graph",
         "path",
-        "degree"
-      ]
+        "degree",
+        "hamiltonian_path"
+      ],
+      "repair_status": "completed_full_solution_from_official_archive",
+      "review_notes": "Metadata pass 2026-04-26: profile aligned to the repaired official upper-bound and ladder construction; Hamiltonian path and degree objects are explicit."
     }
   ],
   "difficulty": {
@@ -101,7 +116,6 @@
     "status": "needs_human_review"
   },
   "tags": [
-    "double_counting",
     "extremal_graph_theory",
     "hamiltonian_cycles",
     "goal_exact_bound"
@@ -113,7 +127,7 @@
         "longest_path",
         "greedy_ordering"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -131,14 +145,16 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Imported from prepared card cards/kolm/2008_round_3_high_league_problem_1.md.",
       "Source file noted by card: work/kolm/text/2008/tur3_12sol.txt.",
       "Source page noted by card: 1.",
       "Graph role: explicit_in_statement.",
-      "Original final-selection name: Round 3, High League, Problem 1."
+      "Original final-selection name: Round 3, High League, Problem 1.",
+      "2026-04-26 plan-to-solution pass: expanded the official short solution from the archived tur3_12sol.doc; corrected the construction to a 2-by-1666 ladder with the added vertex joined to all four corners.",
+      "2026-04-26 metadata pass: tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status fields aligned after solution repair."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true
