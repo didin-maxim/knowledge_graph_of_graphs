@@ -1,6 +1,6 @@
 {
   "id": "benjamini-tzalik-shortest-paths-bound",
-  "title": "Benjamini--Tzalik bound on the number of shortest paths",
+  "title": "Оценка Беньямини — Цалика на число кратчайших путей",
   "kind": {
     "primary": "theorem",
     "secondary": [
@@ -90,8 +90,8 @@
   "ideas": [
     {
       "id": "idea-layered-cauchy-schwarz",
-      "title": "Layer shortest paths and apply Cauchy--Schwarz",
-      "text": "Keep only edges that lie on shortest paths, split the graph into distance layers, and propagate a weighted square-sum bound across consecutive layers.",
+      "title": "Разбить кратчайшие пути на слои и применить неравенство Коши — Буняковского",
+      "text": "Оставляем только рёбра, лежащие на кратчайших путях, разбиваем граф на слои по расстоянию и протягиваем взвешенную оценку суммы квадратов между соседними слоями.",
       "tags": [
         "extremal_graph_theory"
       ],
@@ -101,7 +101,7 @@
   "solutions": [
     {
       "id": "sol-paper-bound",
-      "title": "Compressed paper proof",
+      "title": "Сжатое доказательство из статьи",
       "text": "Удалим все рёбра и вершины, не лежащие на кратчайших путях из \\(x\\) в \\(y\\). Оставшийся граф разбивается на слои по расстоянию от \\(x\\). Если \\(p(v)\\) — число кратчайших путей из \\(x\\) в \\(v\\), то переход между двумя соседними слоями оценивается неравенством Коши — Буняковского и ограничением на степени. Итерируя это послойное неравенство, получаем не более \\(2(\\Delta/2)^t\\) кратчайших путей из \\(x\\) в \\(y\\). Экстремальная конструкция состоит из двух внутренне непересекающихся цепочек длины \\(t\\), где на каждом шаге есть \\(\\Delta/2\\) параллельных вариантов выбора.",
       "idea_ids": [
         "idea-layered-cauchy-schwarz"

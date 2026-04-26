@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2011-team-olympiad-seniors-problem-4",
-  "title": "Kolmogorov Cup 2011: Team Olympiad, Seniors Problem 4",
+  "title": "Кубок Колмогорова 2011: командная олимпиада, старшие, задача 4",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -50,7 +50,7 @@
     "original": [
       {
         "id": "stmt-original",
-        "title": "Original statement",
+        "title": "Оригинальная формулировка",
         "text": "Поверхность куба `11 x 11 x 11` разбита на клетки `1 x 1`. Муравей бегает по диагоналям клеток, нигде не поворачивая назад. Он не может бывать внутри одной клетки более одного раза, но может несколько раз проходить одну вершину.\n\nМожет ли он посетить центры `720` клеток?",
         "source_id": "src-kolmogorov-2011-official",
         "status": "ai_checked",
@@ -68,7 +68,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "Graph-theory role in kolmogorov-2011-team-olympiad-seniors-problem-4",
+      "title": "Графовая роль",
       "text": "Хотя в условии граф не назван напрямую, официальное решение существенно строит граф белых вершин, анализирует степени вершин, компоненты связности и пути в этом графе. Без этой графовой конструкции решение не работает.",
       "tags": [],
       "status": "ai_checked"
@@ -77,7 +77,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Official solution, compressed",
+      "title": "Официальное решение, сжатое изложение",
       "text": "Ответ: нет.\n\nВ официальном решении вершины клеток красят в шахматном порядке. Тогда каждая диагональ соединяет две вершины одного цвета, и весь маршрут муравья можно рассматривать внутри графа белых вершин, где диагонали клеток становятся ребрами.\n\nРассматривают максимальный маршрут муравья и стирают все использованные им ребра. В оставшемся белом графе по крайней мере у двух белых вершин остается нечетная степень, причем две такие вершины лежат в одной компоненте связности. Соединяющий их путь в этой компоненте имеет длину не менее `11`, значит, остается как минимум `11` непосещенных центров клеток.\n\nСледовательно, муравей может посетить не более `6(11^2) - 11 = 715` центров клеток, и число `720` недостижимо.",
       "idea_ids": [
         "idea-graph-role"
@@ -134,6 +134,6 @@
       "Original final-selection name: Team Olympiad, Seniors, Problem 4."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
+    "graph_theory_absent_reason": "Исходная формулировка уже является графовой формулировкой этой импортированной карточки KOLM, либо карточка фиксирует графовую модель как вспомогательную часть официального решения; отдельная графовая переформулировка в этом проходе не курировалась."
   }
 }

@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2006-round-1-super-high-first-league-problem-9",
-  "title": "Kolmogorov Cup 2006: Round 1, Super League / High League / First League Problem 9",
+  "title": "Кубок Колмогорова 2006: 1 тур, суперлига / старшая лига / первая лига задача 9",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -49,7 +49,7 @@
     "original": [
       {
         "id": "stmt-original",
-        "title": "Original statement",
+        "title": "Оригинальная формулировка",
         "text": "Внутри квадрата отмечено несколько точек, вместе с вершинами квадрата. Некоторые пары отмеченных точек соединены непересекающимися отрезками так, что квадрат разбился на `n` выпуклых многоугольников без отмеченных точек внутри. Найдите максимальное возможное количество проведенных отрезков.",
         "source_id": "src-kolmogorov-2006-official",
         "status": "ai_checked",
@@ -68,7 +68,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "Graph-theory role in kolmogorov-2006-round-1-super-high-first-league-problem-9",
+      "title": "Графовая роль",
       "text": "В условии граф не назван напрямую, но официальное решение существенно строит планарный граф разбиения и применяет степени вершин и формулу Эйлера.",
       "tags": [],
       "status": "ai_checked"
@@ -77,7 +77,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Official solution, compressed",
+      "title": "Официальное решение, сжатое изложение",
       "text": "Ответ: `0` при `n = 1`, `1` при `n = 2`, `3n - 6` при `n >= 3`.\n\nВ официальном решении строят граф из проведенных отрезков и сторон квадрата. Все внутренние вершины этого графа имеют степень не меньше 3. Для вершин самого квадрата также получают почти ту же нижнюю оценку на степени: иначе при `n > 2` возник бы невыпуклый многоугольник или слишком малое число частей.\n\nПосле этого для числа вершин `V`, ребер `E` и граней `F = n` используют неравенство `2E >= 3V - 1` и формулу Эйлера `1 = V - E + F`. Из них выводится оценка `E <= 3n - 2`, а затем вычитаются 4 стороны квадрата. Получается верхняя граница `3n - 6`.\n\nПример на `3n - 6` строится по индукции, добавляя треугольник вместо внутренней вершины степени 3.",
       "idea_ids": [
         "idea-graph-role"
@@ -136,6 +136,6 @@
       "Original final-selection name: Round 1, Super League / High League / First League, Problem 9."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
+    "graph_theory_absent_reason": "Исходная формулировка уже является графовой формулировкой этой импортированной карточки KOLM, либо карточка фиксирует графовую модель как вспомогательную часть официального решения; отдельная графовая переформулировка в этом проходе не курировалась."
   }
 }

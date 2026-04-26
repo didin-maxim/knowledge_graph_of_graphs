@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2021-individual-olympiad-seniors-problem-1",
-  "title": "Kolmogorov Cup 2021: Individual Olympiad, Seniors Problem 1",
+  "title": "Кубок Колмогорова 2021: личная олимпиада, старшие, задача 1",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -44,7 +44,7 @@
     "original": [
       {
         "id": "stmt-original",
-        "title": "Original statement",
+        "title": "Оригинальная формулировка",
         "text": "`999` команд сыграли двухкруговой турнир по волейболу: каждая сыграла с каждой матч дома и матч в гостях.\n\nКаждая команда выиграла ровно половину своих домашних матчей и ровно половину гостевых.\n\nДокажите, что какая-то из команд дважды обыграла какую-то другую.",
         "source_id": "src-kolmogorov-2021-official",
         "status": "ai_checked",
@@ -62,7 +62,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "Graph-theory role in kolmogorov-2021-individual-olympiad-seniors-problem-1",
+      "title": "Графовая роль",
       "text": "В условии турнир не сформулирован языком графов, но официальное решение существенно вводит граф на командах и завершает доказательство через лемму о рукопожатиях.",
       "tags": [],
       "status": "ai_checked"
@@ -71,7 +71,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Official solution, compressed",
+      "title": "Официальное решение, сжатое изложение",
       "text": "Предположим противное: ни одна команда не обыграла другую дважды.\n\nТогда для каждой пары команд возможны только два типа поведения:\nлибо обе команды выиграли домашние матчи,\nлибо обе команды выиграли гостевые матчи.\n\nСоединим ребром те пары команд, в которых обе команды победили друг друга дома.\n\nПолучим граф на `999` вершинах. Так как каждая команда выиграла ровно половину домашних матчей, степень каждой вершины этого графа равна `499`.\n\nНо сумма степеней графа должна быть четной, а здесь она равна `999 * 499`, что нечетно. Это противоречит лемме о рукопожатиях.\n\nСледовательно, найдется пара команд, одна из которых выиграла у другой оба матча.",
       "idea_ids": [
         "idea-graph-role"
@@ -118,6 +118,6 @@
       "Original final-selection name: Individual Olympiad, Seniors, Problem 1."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
+    "graph_theory_absent_reason": "Исходная формулировка уже является графовой формулировкой этой импортированной карточки KOLM, либо карточка фиксирует графовую модель как вспомогательную часть официального решения; отдельная графовая переформулировка в этом проходе не курировалась."
   }
 }

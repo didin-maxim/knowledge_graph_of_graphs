@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2015-individual-olympiad-juniors-problem-7",
-  "title": "Kolmogorov Cup 2015: Individual Olympiad, Juniors Problem 7",
+  "title": "Кубок Колмогорова 2015: личная олимпиада, младшие, задача 7",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -38,7 +38,7 @@
     "original": [
       {
         "id": "stmt-original",
-        "title": "Original statement",
+        "title": "Оригинальная формулировка",
         "text": "На балу присутствуют 2015 пар, каждая состоит из мальчика и девочки. Каждый участник знаком со своим партнером и еще хотя бы с одним человеком противоположного пола. Нужно раскрасить всех участников в три цвета так, чтобы у каждого было хотя бы два знакомых разных цветов.",
         "source_id": "src-kolmogorov-2015-official",
         "status": "ai_checked",
@@ -56,7 +56,7 @@
   "ideas": [
     {
       "id": "idea-graph-role",
-      "title": "Graph-theory role in kolmogorov-2015-individual-olympiad-juniors-problem-7",
+      "title": "Графовая роль",
       "text": "В официальном решении прямо строится граф знакомств между девочками и ключевым шагом становится правильная 3-раскраска его компонент связности.",
       "tags": [],
       "status": "ai_checked"
@@ -65,7 +65,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Official solution, compressed",
+      "title": "Официальное решение, сжатое изложение",
       "text": "Обозначим пары через M1D1, ..., M2015D2015. Для каждой девочки Di выбирают другую девочку, знакомую с ее партнером Mi. Так получается граф на вершинах D1, ..., D2015 с 2015 ребрами. Достаточно правильно раскрасить этот граф в три цвета, а мальчиков покрасить в цвета их партнерш: тогда у каждого мальчика есть знакомые как минимум двух других цветов, и то же верно для девочек. Далее рассматривают компоненту связности построенного графа. Если в ней есть вершина степени 1, ее удаляют и потом докрашивают обратно. После удаления всех таких вершин остается граф минимальной степени 2, а поскольку число ребер равно числу вершин, каждая оставшаяся компонента является простым циклом. Простой цикл легко 3-раскрасить, после чего восстановленные вершины тоже докрашиваются.",
       "idea_ids": [
         "idea-graph-role"
@@ -112,6 +112,6 @@
       "Original final-selection name: Individual Olympiad, Juniors, Problem 7."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "Original statement is already the graph-theory formulation for this imported KOLM card, or the card records graph theory as an auxiliary model in the official solution; no separate reformulation was curated in this pass."
+    "graph_theory_absent_reason": "Исходная формулировка уже является графовой формулировкой этой импортированной карточки KOLM, либо карточка фиксирует графовую модель как вспомогательную часть официального решения; отдельная графовая переформулировка в этом проходе не курировалась."
   }
 }
