@@ -71,8 +71,8 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Self-contained Euler-tour obstruction proof",
-      "text": "Let c be the Central city and let H be the graph formed by all roads not incident with c. Since the whole road graph has an Eulerian circuit, it is connected and every vertex has even degree.\n\nFirst suppose H contains a cycle Z. Delete the edges of Z. The remaining graph still has all degrees even, and the component containing c has an Eulerian circuit using exactly its edges. That circuit avoids every edge of Z, so a traveler who chooses that circuit first cannot be forced to complete an Eulerian tour of the original graph. Hence the required property fails whenever there is a cycle avoiding c.\n\nNow suppose H is a forest. Consider any trail P that starts at c and uses no road twice. Let x be its current endpoint, and remove the edges of P from the original graph. In the unused graph, every vertex except possibly c and x has even degree; if x is not c, then c and x are the two odd-degree vertices, and if x is c then every unused degree is even.\n\nTake any connected component of unused edges that does not contain x. If it contains c while x is not c, then it has exactly one odd-degree vertex, impossible by the handshaking lemma. Otherwise all its vertices have even unused degree. In either case, such a component cannot contain an edge: because it is a subgraph of the forest H unless it contains c, and after removing c-free peripheral edges every nonempty forest has a vertex of degree 1. The same leaf-degree contradiction applies to every c-free component with all degrees even.\n\nThus every unused edge lies in the component containing the current endpoint x. If unused edges remain, x has positive unused degree and the trail can be extended by one unused edge. Repeating this, the traveler extends the original trail until no unused edge remains. The final trail is an Eulerian circuit. Therefore every initial trail from c can be extended exactly when every cycle of the road graph passes through c.",
+      "title": "Самодостаточное доказательство через препятствие к эйлерову обходу",
+      "text": "Пусть `c` — город Центральный, а `H` — граф, образованный всеми дорогами, не инцидентными `c`. Так как во всем дорожном графе есть эйлеров цикл, этот граф связен, и степень каждой его вершины четна.\n\nСначала предположим, что `H` содержит цикл `Z`. Удалим ребра `Z`. В оставшемся графе все степени по-прежнему четны, а компонента, содержащая `c`, имеет эйлеров цикл, проходящий ровно по ее ребрам. Этот цикл не использует ни одного ребра из `Z`, поэтому турист, сначала выбравший такой обход, не обязан завершить эйлеров обход исходного графа. Значит, требуемое свойство нарушается всякий раз, когда есть цикл, не проходящий через `c`.\n\nТеперь предположим, что `H` — лес. Рассмотрим любой маршрут `P`, который начинается в `c` и не проходит ни по одной дороге дважды. Пусть `x` — его текущий конец; удалим ребра `P` из исходного графа. В неиспользованном графе каждая вершина, кроме, возможно, `c` и `x`, имеет четную степень; если `x` не совпадает с `c`, то `c` и `x` — две вершины нечетной степени, а если `x = c`, то все неиспользованные степени четны.\n\nВозьмем любую связную компоненту неиспользованных ребер, не содержащую `x`. Если она содержит `c`, а `x` не совпадает с `c`, то в ней ровно одна вершина нечетной степени, что невозможно по лемме о рукопожатиях. В противном случае все ее вершины имеют четную неиспользованную степень. В любом случае такая компонента не может содержать ребро: если она не содержит `c`, то является подграфом леса `H`, а после удаления периферийных ребер, не связанных с `c`, в каждом непустом лесу найдется вершина степени 1. То же противоречие со степенью листа применимо к каждой компоненте без `c`, в которой все степени четны.\n\nЗначит, каждое неиспользованное ребро лежит в компоненте, содержащей текущий конец `x`. Если неиспользованные ребра еще остались, то у `x` положительная неиспользованная степень, и маршрут можно продолжить на одно неиспользованное ребро. Повторяя это, турист продолжает исходный маршрут, пока неиспользованных ребер не останется. Итоговый маршрут является эйлеровым циклом. Следовательно, любой начальный маршрут из `c` можно продолжить тогда и только тогда, когда каждый цикл дорожного графа проходит через `c`.",
       "idea_ids": [
         "idea-graph-role"
       ],
@@ -87,7 +87,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "Импортировано из подготовленной графовой карточки KOLM; оценка сложности требует проверки человеком.",
+    "comment": "Импортировано из подготовленной графовой карточки КОЛМ; оценка сложности требует проверки человеком.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -118,8 +118,8 @@
       "Импортировано из подготовленной карточки cards/kolm/2007_round_1_high_league_problem_5.md.",
       "Файл-источник, указанный в карточке: work/kolm/text/2007/tur1_11sol.txt.",
       "Страница-источник, указанная в карточке: 1.",
-      "Роль графа: explicit_in_statement.",
-      "Исходное название в финальной выборке: Round 1, High League, Problem 5."
+      "Роль графа: явно присутствует в условии.",
+      "Исходное название в финальной выборке: тур 1, высшая лига, задача 5."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

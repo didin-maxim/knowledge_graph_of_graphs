@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2025-p1-functional-halving-lemma",
+      "from": "cmo-2025-p1-voting-functional-graph",
+      "to": "functional-digraph-pointer-jumping-round-halving",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Решение CMO 2025 P1 напрямую использует лемму о том, что один раунд pointer-jumping сжимает единственный цикл до длины не больше половины, а после появления петли аналогично сжимает пути к ней.",
+      "backward_text": "Лемма выделена именно из CMO 2025 P1: карточка задачи является естественным применением оценок \\(K\\mapsto\\lfloor K/2\\rfloor\\) для цикла и \\(L\\mapsto\\lceil L/2\\rceil\\) для путей.",
+      "anchors": {
+        "from_solution_id": "sol-official-cycle-and-path-halving",
+        "to_solution_id": "sol-charging-proof"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-cmo-2025-p1-cmo-1994-p3-voting-dynamics",
+      "from": "cmo-2025-p1-voting-functional-graph",
+      "to": "cmo-1994-p3-voting-stabilizes-cycle",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи CMO формализуют процедуру голосования как конечную динамику на циклической структуре и доказывают неизбежное глобальное успокоение: единогласие в CMO 2025 P1 и стабилизацию ответов в CMO 1994 P3.",
+      "backward_text": "CMO 1994 P3 использует синхронную динамику 2-раскраски нечётного цикла, а CMO 2025 P1 — асинхронное обновление указателей в функциональном орграфе; родство состоит в переводе voting story в графовую динамику с монотонным прогрессом.",
+      "anchors": {
+        "from_idea_id": "idea-pointer-jumping",
+        "to_solution_id": "sol-official-stabilizing-set"
+      },
+      "status": "ai_checked",
+      "confidence": 0.91
+    },
+    {
+      "id": "rel-cmo-2025-p1-cmo-2012-p4-synchronization",
+      "from": "cmo-2025-p1-voting-functional-graph",
+      "to": "cmo-2012-p4-synchronizing-grid-robots",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе CMO-задачи доказывают синхронизацию конечного дискретного процесса. В CMO 2025 P1 все указатели функционального графа приходят к одному голосу, а в CMO 2012 P4 общая последовательность команд собирает всех роботов в одной клетке.",
+      "backward_text": "CMO 2012 P4 работает с автоматом на клеточной решетке и минимальными словами, тогда как CMO 2025 P1 работает с pointer-jumping; связь надежна на уровне цели синхронизации и графовой модели конечной динамики.",
+      "anchors": {
+        "from_idea_id": "idea-halving",
+        "to_solution_id": "sol-official-pairwise"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-cmo-2025-p1-apmo-2016-p4-functional-digraph",
+      "from": "cmo-2025-p1-voting-functional-graph",
+      "to": "apmo-2016-p4-dreamland-28-step-coloring",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи используют функциональный ориентированный граф как основной перевод условия: в CMO 2025 P1 каждая вершина указывает на текущий голос, а в APMO 2016 P4 из каждого города выходит ровно один рейс.",
+      "backward_text": "APMO 2016 P4 применяет функциональный граф для раскраски ограниченной достижимости, а CMO 2025 P1 — для динамического сжатия указателей; связь полезна как соседство по модели outdegree-1 digraph, хотя цели доказательств разные.",
+      "anchors": {
+        "from_idea_id": "idea-pointer-jumping",
+        "to_idea_id": "idea-cycle-lower-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+  ]
+}

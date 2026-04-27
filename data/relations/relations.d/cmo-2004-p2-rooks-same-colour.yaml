@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2004-p2-cmo-1973-p4-bipartite-matching-count",
+      "from": "cmo-2004-p2-rooks-same-colour",
+      "to": "cmo-1973-p4-triangulated-nonagon-labelings",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе CMO-задачи после перевода в двудольный граф становятся задачами на точный счёт паросочетаний: в CMO 2004 ребра — клетки доски, а в CMO 1973 ребра — допустимые соответствия между метками и треугольниками.",
+      "backward_text": "CMO 1973 является более маленьким и вынужденным примером того же языка: допустимые объекты считаются как паросочетания в двудольном графе, тогда как CMO 2004 требует ещё разложить граф по цвету и чётности.",
+      "anchors": {
+        "from_solution_id": "sol-official-parity",
+        "to_solution_id": "sol-forced-matching"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-cmo-2004-p2-usamo-2022-p1-colored-rook-matching",
+      "from": "cmo-2004-p2-rooks-same-colour",
+      "to": "usamo-2022-p1-amber-bronze-transversal",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих задачах цветная клетка доски читается как цветное ребро между строкой и столбцом, а условие «никакие две выбранные клетки не лежат в одной строке или столбце» означает паросочетание в этом двудольном графе.",
+      "backward_text": "USAMO 2022 использует ту же клеточно-двудольную модель, но вместо точного счёта монохроматических паросочетаний требует доказать существование двух непересекающихся цветовых наборов заданных размеров.",
+      "anchors": {
+        "from_solution_id": "sol-official-parity",
+        "to_solution_id": "sol-hall-matchings-and-uncrossing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-cmo-2004-p2-imo-2010-c2-one-color-matching",
+      "from": "cmo-2004-p2-rooks-same-colour",
+      "to": "imo-2010-c2-flags-diagonal-matching",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи сводят одноцветное требование к паросочетанию в одном из двух цветовых двудольных графов: в CMO 2004 выбираются клетки одного цвета, а в IMO Shortlist 2010 C2 — флаги для одноцветной диагонали.",
+      "backward_text": "IMO Shortlist 2010 C2 является более теоретическим вариантом того же мотива: нужно гарантировать существование одноцветного matching с помощью Холла, тогда как CMO 2004 напрямую считает такие matchings на фиксированной доске.",
+      "anchors": {
+        "from_solution_id": "sol-official-parity",
+        "to_solution_id": "sol-hall-extremal-full"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    }
+  ]
+}

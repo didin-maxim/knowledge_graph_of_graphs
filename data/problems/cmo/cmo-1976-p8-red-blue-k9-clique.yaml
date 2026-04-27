@@ -1,0 +1,182 @@
+{
+  "id": "cmo-1976-p8-red-blue-k9-clique",
+  "title": "Красно-синяя раскраска отрезков между девятью точками, CMO 1976 P8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "ramsey_type"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Olympiad",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "two_colored_complete_graph",
+      "complete_graph",
+      "monochromatic_clique",
+      "triangle_free_graph",
+      "independent_set"
+    ],
+    "methods": [
+      "ramsey_theory",
+      "complement_graph_transition",
+      "pigeonhole_principle"
+    ],
+    "transformations": [
+      "colored_segments_to_edge_colored_complete_graph",
+      "blue_edges_to_triangle_free_graph"
+    ],
+    "goal": [
+      "force_red_K4",
+      "prove_R_3_4_upper_bound"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph",
+      "complement_graph"
+    ],
+    "invariants": [
+      "no_blue_triangle",
+      "red_complement_of_blue_graph"
+    ],
+    "keywords": [
+      "cmo_1976_p8",
+      "R_3_4",
+      "edge_coloring_K9",
+      "monochromatic_clique",
+      "triangle_free_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальная формулировка",
+        "text": "Каждый из 36 отрезков, соединяющих две различные точки из девяти точек на окружности, окрашен либо в красный, либо в синий цвет. Предположим, что каждый треугольник, определяемый тремя из этих девяти точек, содержит хотя бы одну красную сторону. Докажите, что найдутся четыре точки, у которых все 6 соединяющих их отрезков красные.",
+        "source_id": "src-cmo-1976-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Эквивалентная графовая формулировка",
+        "text": "В полной красно-синей раскраске ребер графа \\(K_9\\) нет синего треугольника. Докажите, что существует красная клика \\(K_4\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-blue-complement"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-blue-complement",
+        "title": "Комплементарная графовая форма",
+        "text": "Пусть \\(G\\) - простой граф на 9 вершинах, в котором нет треугольника. Докажите, что в дополнении графа \\(G\\) есть клика \\(K_4\\); эквивалентно, в самом \\(G\\) есть независимое множество из 4 вершин.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complement_graph",
+          "clique",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-ramsey-r34",
+      "title": "Малая теорема Рамсея",
+      "text": "Содержательно задача является верхней оценкой \\(R(3,4)\\le 9\\): отсутствие синего треугольника должно вынудить красную клику из четырех вершин.",
+      "tags": [
+        "ramsey_theory",
+        "forbidden_triangle",
+        "forbidden_clique"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-complement-graph",
+      "title": "Синие ребра как треугольник-свободный граф",
+      "text": "Если рассматривать только синие ребра, условие становится запретом треугольников, а требуемая красная четверка становится независимым множеством размера 4 в этом синем графе.",
+      "tags": [
+        "ramsey_theory",
+        "forbidden_triangle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 9,
+    "comment": "CMO 1976 P8; компактная, но нетривиальная малая задача Рамсея, соответствующая оценке \\(R(3,4)\\le 9\\).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "coloring",
+    "forbidden_triangle",
+    "forbidden_clique",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "ramsey_theory",
+        "complement_graph_transition"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-1976-official",
+      "role": "statement_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Официальный PDF CMO 1976 содержит условие задачи 8. Решение в карточку не добавлялось: в текущем проходе не переносилось полноценное проверенное решение.",
+      "Комплементарная формулировка вынесена в graph_hint_reformulations, так как выбор синего графа и независимого множества подсказывает ход решения."
+    ],
+    "relations_status": "deep_done"
+  }
+}

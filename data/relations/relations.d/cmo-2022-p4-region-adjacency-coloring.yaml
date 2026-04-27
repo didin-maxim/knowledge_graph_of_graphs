@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2022-p4-side-count-lemma",
+      "from": "cmo-2022-p4-region-adjacency-coloring",
+      "to": "line-arrangement-side-count-levels",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Решение CMO 2022 P4 прямо использует лемму о счётчике сторон: соседние области получают соседние значения \\(k\\), а уровни \\(0,1,\\ldots,n\\) гарантируют появление всех шести пар цветов при \\(n\\ge5\\).",
+      "backward_text": "CMO 2022 P4 является почти прямым применением леммы: уровни областей раскрашиваются по чётности и по модулю 3.",
+      "anchors": {
+        "from_solution_id": "sol-official-russian",
+        "to_solution_id": "sol-horizontal-sweep"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-cmo-2022-p4-imo-2019-line-arrangement-levels",
+      "from": "cmo-2022-p4-region-adjacency-coloring",
+      "to": "imo-2019-c4-labyrinth-region-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи работают с областями расположения прямых и присваивают области число прямых, относительно которых она лежит с выбранной стороны. В CMO это число даёт раскраску по модулю 2 и 3; в IMO Shortlist 2019 оно описывает компоненты графа дверей.",
+      "backward_text": "IMO Shortlist 2019 C4 даёт близкий, более связностный вариант того же счётчика областей: вместо раскраски соседних областей используется сохранение метки при переходе через специальные двери.",
+      "anchors": {
+        "from_solution_id": "sol-official-russian",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-cmo-2022-p4-five-color-map-coloring",
+      "from": "cmo-2022-p4-region-adjacency-coloring",
+      "to": "five-color-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки являются задачами о раскраске областей плоской карты через граф смежности областей. В CMO 2022 структура карты задана расположением прямых и позволяет явную модульную раскраску; пятицветная теорема даёт общий фон для раскрасок произвольных планарных карт.",
+      "backward_text": "Пятицветная теорема служит общим ориентиром для языка карт и планарных графов; CMO 2022 P4 — специализированная карта из прямых, где вместо общей теоремы работает точный счётчик уровней.",
+      "anchors": {
+        "from_solution_id": "sol-official-russian",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-cmo-2022-p4-imo-1996-modular-coloring-obstruction",
+      "from": "cmo-2022-p4-region-adjacency-coloring",
+      "to": "imo-1996-c1-grid-knight-reachability-divisible-2-or-3",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи используют раскраску по остаткам как инвариант графа, но с разными целями: в CMO соседние области обязаны менять остаток, а в IMO 1996 допустимые ходы сохраняют выбранный остаток и поэтому разделяют компоненты.",
+      "backward_text": "IMO 1996 C1 является родственным примером модульной раскраски графа ходов: там остатки запрещают путь, а в CMO 2022 остатки строят корректную раскраску всех областей.",
+      "anchors": {
+        "from_solution_id": "sol-official-russian",
+        "to_solution_id": "sol-modular-obstruction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    }
+  ]
+}

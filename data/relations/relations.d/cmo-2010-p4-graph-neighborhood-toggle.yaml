@@ -1,0 +1,63 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2010-p4-handshaking-even-degree",
+      "from": "cmo-2010-p4-graph-neighborhood-toggle",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В нечётном случае решения CMO 2010 P4 требуется стандартный вывод из леммы о рукопожатиях: в графе с нечётным числом вершин существует вершина чётной степени.",
+      "backward_text": "CMO 2010 P4 является прямым олимпийским применением леммы о рукопожатиях: чётная степень одной вершины позволяет собрать нечётное число переключений каждой вершины.",
+      "anchors": {
+        "from_solution_id": "sol-official-induction",
+        "to_solution_id": "sol-double-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-cmo-2010-p4-usamo-2008-f2-toggle-parity",
+      "from": "cmo-2010-p4-graph-neighborhood-toggle",
+      "to": "usamo-2008-p6-even-friends-two-rooms",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи читают графовую раскраску через операции и условия по модулю 2. В CMO 2010 переключаются замкнутые окрестности, а в USAMO 2008 допустимые разбиения образуют аффинное пространство над F_2.",
+      "backward_text": "USAMO 2008 даёт более линейно-алгебраический сосед для CMO 2010: там паритет окрестностей используется для подсчёта всех конфигураций, а здесь для доказательства достижимости одной конфигурации.",
+      "anchors": {
+        "from_solution_id": "sol-official-induction",
+        "to_solution_id": "sol-adjacency-matrix-over-f2"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-cmo-2010-p4-color-reduction-parity-operations",
+      "from": "cmo-2010-p4-graph-neighborhood-toggle",
+      "to": "color-reduction-by-odd-deletion-and-doubling",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки используют паритет степеней вместе с разрешёнными операциями над графовой раскраской. В CMO 2010 локальные переключения окрестностей складываются по модулю 2, а в лемме о понижении цветов нечётность степеней управляет допустимыми удалениями.",
+      "backward_text": "Лемма о понижении цветов является более сложной операционной паритетной задачей рядом с CMO 2010: в обеих важно, как графовые операции меняют состояние раскраски и степени только по чётности.",
+      "anchors": {
+        "from_solution_id": "sol-official-induction",
+        "to_solution_id": "sol-even-core-and-double"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-cmo-2010-p4-cmo-1991-degree-parity",
+      "from": "cmo-2010-p4-graph-neighborhood-toggle",
+      "to": "cmo-1991-p4-edge-difference-labeling-diagram",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе CMO-задачи завершаются коротким выводом из чётности степеней. В CMO 2010 нужна вершина чётной степени при нечётном числе вершин, а в CMO 1991 все степени чётны и поэтому каждый разрез имеет чётный размер.",
+      "backward_text": "CMO 1991 является соседним примером использования леммы о рукопожатиях в графовой задаче: там чётность запрещает разметку, тогда как в CMO 2010 она обеспечивает существование нужной последовательности переключений.",
+      "anchors": {
+        "from_solution_id": "sol-official-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    }
+  ]
+}

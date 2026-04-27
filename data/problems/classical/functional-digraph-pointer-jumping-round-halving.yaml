@@ -1,0 +1,148 @@
+{
+  "id": "functional-digraph-pointer-jumping-round-halving",
+  "title": "Сжатие цикла и путей за один раунд прыжков по указателям",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Society",
+      "role": "source_of_extracted_lemma",
+      "status": "source_verified",
+      "note": "Лемма выделена из официального решения CMO 2025 P1; отдельного классического автора в источнике не указано."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "functional_digraph",
+      "directed_cycle",
+      "directed_path",
+      "self_loop"
+    ],
+    "methods": [
+      "charging_argument",
+      "round_process",
+      "pointer_jumping"
+    ],
+    "transformations": [
+      "successor_update_to_shortcut"
+    ],
+    "goal": [
+      "halve_cycle_length",
+      "halve_path_length"
+    ],
+    "auxiliary_graph_type": [
+      "functional_digraph"
+    ],
+    "invariants": [
+      "unique_directed_cycle",
+      "fixed_root_self_loop"
+    ],
+    "keywords": [
+      "pointer_jumping",
+      "functional_graph",
+      "round_halving",
+      "cmo_2025_p1_lemma"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-round-halving",
+        "title": "Лемма",
+        "text": "Пусть в функциональном ориентированном графе за один раунд каждая вершина обновляется ровно один раз в произвольном порядке: если в момент обновления \\(a\\to b\\to c\\), то стрелка \\(a\\to b\\) заменяется на \\(a\\to c\\). Тогда выполнены два утверждения. Если в начале раунда единственный направленный цикл имеет длину \\(K>1\\), то к концу раунда его длина не превосходит \\(\\lfloor K/2\\rfloor\\). Если же в начале раунда есть петля \\(z\\to z\\) и вершина \\(a\\) находится на расстоянии \\(L\\) от \\(z\\), то к концу раунда расстояние от \\(a\\) до \\(z\\) не превосходит \\(\\lceil L/2\\rceil\\).",
+        "source_id": "src-cmo-2025-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "outdegree",
+          "cycle",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-charge-deleted-before-update",
+      "title": "Выпавшие до обновления заряжаются полезным обновлениям",
+      "text": "Если вершина исходного цикла или пути выпала до собственного обновления, ее выбросило более раннее обновление соседней предшествующей вершины. Одно такое обновление выбрасывает не более одной вершины, значит полезных обновлений не меньше, чем преждевременно выпавших.",
+      "tags": [
+        "extremal_choice",
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-charging-proof",
+      "title": "Доказательство зарядкой выпавших вершин",
+      "text": "Рассмотрим сначала цикл длины \\(K>1\\) в начале раунда. Если вершина \\(a\\) обновляется, пока она еще лежит на текущем цикле, и на цикле в этот момент есть участок \\(a\\to b\\to c\\), то после замены стрелки на \\(a\\to c\\) вершина \\(b\\) выпадает из цикла. Значит, каждое такое полезное обновление уменьшает длину цикла на 1.\n\nВершина, которая была на исходном цикле, но к своему обновлению уже выпала из него, могла выпасть только из-за более раннего полезного обновления своей текущей предшествующей вершины на цикле. Одно полезное обновление выбрасывает не более одной такой вершины. Поэтому среди \\(K\\) исходных вершин цикла число полезно обновившихся не меньше числа выпавших до обновления, то есть полезно обновившихся не меньше \\(\\lceil K/2\\rceil\\). Длина цикла к концу раунда не превосходит \\(K-\\lceil K/2\\rceil=\\lfloor K/2\\rfloor\\).\n\nДля пути к петле \\(z\\to z\\) рассуждение такое же. Пусть в начале раунда путь от \\(a\\) до \\(z\\) имеет вид\n\\[\na=x_L\\to x_{L-1}\\to\\cdots\\to x_1\\to z.\n\\]\nОбновление вершины, пока она еще лежит на текущем пути от \\(a\\) к \\(z\\), перепрыгивает через следующую вершину и уменьшает длину этого пути на 1. Вершина начального пути, выпавшая до собственного обновления, заряжается более раннему полезному обновлению соседней предшествующей вершины; одно полезное обновление выбрасывает не более одной вершины. Следовательно, полезных обновлений среди \\(x_1,\\ldots,x_L\\) не меньше \\(\\lfloor L/2\\rfloor\\), и новая длина пути не превосходит \\(L-\\lfloor L/2\\rfloor=\\lceil L/2\\rceil\\).",
+      "idea_ids": [
+        "idea-charge-deleted-before-update"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph",
+        "cycle",
+        "path"
+      ],
+      "source_id": "src-cmo-2025-solutions"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 5,
+    "comment": "Техническая лемма из CMO 2025 P1: короткая, но требует аккуратного учета произвольного порядка обновлений внутри раунда.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "invariant",
+    "extremal_choice",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "pointer_jumping",
+        "charging_argument",
+        "halving_bound"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-2025-solutions",
+      "role": "source_of_extracted_lemma",
+      "status": "source_verified",
+      "note": "Выделено из официального решения 1 для CMO 2025 P1."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: выделено из data/problems/cmo/cmo-2025-p1-voting-functional-graph.yaml как переиспользуемый шаг деления пополам."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "graph_theory_absent_reason": "Основная формулировка леммы уже является самостоятельным графовым утверждением, поэтому отдельная дублирующая graph_theory-версия не выделена."
+  }
+}

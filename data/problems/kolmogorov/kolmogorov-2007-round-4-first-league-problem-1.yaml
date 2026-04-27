@@ -70,8 +70,8 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Self-contained odd directed cycle proof",
-      "text": "Let C = a_1 a_2 ... a_m a_1 be a simple odd cycle in the original undirected graph, with indices read modulo m. Work in the given strongly connected orientation.\n\nFor each edge a_i a_{i+1} of C, do the following. If it is oriented a_i -> a_{i+1}, record this one-edge directed path. If it is oriented a_{i+1} -> a_i, strong connectivity gives a directed path P_i from a_i to a_{i+1}. Choose P_i shortest among such paths. Then P_i has no repeated vertex, and together with the reverse edge a_{i+1} -> a_i it forms a directed cycle.\n\nIf one of those replacement paths P_i has even length, then P_i plus the edge a_{i+1} -> a_i is an odd directed cycle, and we are done. Otherwise every replacement path used for a backward edge has odd length, while every forward edge recorded as a one-edge path also has odd length.\n\nConcatenate the recorded directed paths from a_1 to a_2, from a_2 to a_3, and so on up to a_m to a_1. This is a closed directed walk whose length is a sum of m odd numbers. Since m is odd, the closed directed walk has odd length.\n\nEvery closed directed walk decomposes into directed cycles by cutting at a repeated vertex and continuing inductively. If all cycles in this decomposition were even, the total walk length would be even. Hence at least one directed cycle in the decomposition is odd. This gives the required odd directed cycle.",
+      "title": "Самодостаточное доказательство существования нечетного ориентированного цикла",
+      "text": "Пусть `C = a_1 a_2 ... a_m a_1` — простой нечетный цикл в исходном неориентированном графе, причем индексы читаются по модулю `m`. Работаем в данной сильно связной ориентации.\n\nДля каждого ребра `a_i a_{i+1}` цикла `C` поступим так. Если оно ориентировано как `a_i -> a_{i+1}`, запишем этот однореберный ориентированный путь. Если оно ориентировано как `a_{i+1} -> a_i`, то из сильной связности существует ориентированный путь `P_i` из `a_i` в `a_{i+1}`. Выберем `P_i` кратчайшим среди таких путей. Тогда в `P_i` нет повторяющихся вершин, и вместе с обратным ребром `a_{i+1} -> a_i` он образует ориентированный цикл.\n\nЕсли один из таких заменяющих путей `P_i` имеет четную длину, то `P_i` вместе с ребром `a_{i+1} -> a_i` дает нечетный ориентированный цикл, и все доказано. Иначе каждый заменяющий путь для обратно ориентированного ребра имеет нечетную длину, а каждое прямо ориентированное ребро, записанное как путь из одного ребра, тоже имеет нечетную длину.\n\nСклеим записанные ориентированные пути из `a_1` в `a_2`, из `a_2` в `a_3` и так далее до пути из `a_m` в `a_1`. Получится замкнутый ориентированный обход, длина которого равна сумме `m` нечетных чисел. Так как `m` нечетно, этот замкнутый ориентированный обход имеет нечетную длину.\n\nКаждый замкнутый ориентированный обход раскладывается на ориентированные циклы: можно разрезать его в повторяющейся вершине и продолжить по индукции. Если бы все циклы в таком разложении были четными, общая длина обхода была бы четной. Значит, хотя бы один ориентированный цикл в разложении нечетен. Это и дает требуемый нечетный ориентированный цикл.",
       "idea_ids": [
         "idea-graph-role"
       ],
@@ -86,7 +86,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "Импортировано из подготовленной графовой карточки KOLM; оценка сложности требует проверки человеком.",
+    "comment": "Импортировано из подготовленной графовой карточки КОЛМ; оценка сложности требует проверки человеком.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -115,8 +115,8 @@
       "Импортировано из подготовленной карточки cards/kolm/2007_round_4_first_league_problem_1.md.",
       "Файл-источник, указанный в карточке: work/kolm/text/2007/tur4_11sol.txt.",
       "Страница-источник, указанная в карточке: 1.",
-      "Роль графа: explicit_in_statement.",
-      "Исходное название в финальной выборке: Round 4, First League, Problem 1."
+      "Роль графа: явно присутствует в условии.",
+      "Исходное название в финальной выборке: тур 4, первая лига, задача 1."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-consecutive-pair-barrier-cmo-1996-p3",
+      "from": "consecutive-pair-barrier-step-two-permutation",
+      "to": "cmo-1996-p3-permutation-step-two-mod3",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В решении CMO 1996 P3 барьерная лемма о соседней паре целых чисел используется для разбиения допустимых перестановок на случаи и вывода рекурсии \\(f(n)=f(n-1)+f(n-3)+1\\).",
+      "backward_text": "CMO 1996 P3 является прямым применением барьерной леммы: после появления соседней пары хвост перестановки обязан остаться по одну сторону от неё, что резко ограничивает возможные продолжения.",
+      "anchors": {
+        "from_solution_id": "sol-gap-crossing-contradiction",
+        "to_solution_id": "sol-official-recurrence"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-cmo-1996-p3-cmo-2026-p3-hamiltonian-path-counting",
+      "from": "cmo-1996-p3-permutation-step-two-mod3",
+      "to": "cmo-2026-p3-grid-hamiltonian-snail",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи переводят исходный язык в гамильтоновы обходы специального графа: в CMO 1996 P3 это гамильтоновы пути в квадрате пути, а в CMO 2026 P3 — гамильтоновы пути и циклы в квадратной решётке.",
+      "backward_text": "CMO 2026 P3 — более игровая и геометрическая родственница CMO 1996 P3: в обеих карточках ключевой графовый объект — порядок обхода всех вершин специального графа ровно по одному разу.",
+      "anchors": {
+        "from_solution_id": "sol-official-recurrence",
+        "to_solution_id": "sol-official-checkerboard-cycle-pairing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2026-p3-cmo-2008-p5-grid-paths",
+      "from": "cmo-2026-p3-grid-hamiltonian-snail",
+      "to": "cmo-2008-p5-self-avoiding-rook-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи CMO переводят ходы между соседними клетками доски в пути в решётчатом графе смежности клеток. CMO 2026 использует остовный гамильтонов путь и минимаксную оценку на отмеченных клетках, тогда как CMO 2008 считает все самонепересекающиеся пути в полосе 3 на n, разбирая их поведение в первом столбце.",
+      "backward_text": "CMO 2026 — гамильтонова и минимаксная версия мотива путей в графе смежности клеток из CMO 2008: путь должен посетить каждую клетку ровно один раз, а главным становится контроль меток, назначенных выбранной половине вершин.",
+      "anchors": {
+        "from_solution_id": "sol-official-checkerboard-cycle-pairing",
+        "to_solution_id": "sol-official-recurrence"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-cmo-2026-p3-cmo-1977-p7-grid-self-avoiding",
+      "from": "cmo-2026-p3-grid-hamiltonian-snail",
+      "to": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи посвящены простому движению по прямоугольным решётчатым структурам. CMO 2026 изучает самонепересекающийся обход всех клеток чётной квадратной доски, а CMO 1977 ограничивает число простых городских путей, кодируя их соседними единичными квадратами.",
+      "backward_text": "CMO 2026 — аналог темы самонепересекающихся путей на прямоугольной решётке из CMO 1977, но для остовного пути: вместо подсчёта путей она использует существование гамильтонова решётчатого обхода для оптимизации оценки на выбранных клетках.",
+      "anchors": {
+        "from_solution_id": "sol-official-checkerboard-cycle-pairing",
+        "to_solution_id": "sol-left-cells-injection"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-cmo-2026-p3-bmo-2025-p4-hamiltonian-cycle",
+      "from": "cmo-2026-p3-grid-hamiltonian-snail",
+      "to": "bmo-2025-p4-flights-long-short-paths",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Оба решения используют гамильтонов цикл как центральный организующий объект для гамильтоновых путей. В CMO 2026 явный гамильтонов цикл решётки даёт два противоположных гамильтоновых пути, оценки которых правильно усредняются; в BMO 2025 рассуждение о самом длинном пути сначала вынуждает гамильтонов цикл, а затем классифицирует хорды по циклическому расстоянию.",
+      "backward_text": "CMO 2026 — более конкретный пример на решётчатой доске для взгляда через гамильтонов цикл, который также движет BMO 2025: когда гамильтонов цикл уже есть, пути сравниваются через положения на цикле, а не через локальный поиск в графе.",
+      "anchors": {
+        "from_solution_id": "sol-official-checkerboard-cycle-pairing",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    }
+  ]
+}

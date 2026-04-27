@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2015-p3-cmo-2026-p3-grid-hamiltonian-cycle",
+      "from": "cmo-2015-p3-grid-hamiltonian-turtle",
+      "to": "cmo-2026-p3-grid-hamiltonian-snail",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе задачи CMO используют гамильтоновы обходы квадратной решётки клеток как центральный графовый объект. CMO 2015 считает входы в строки и столбцы вдоль гамильтонова цикла, а CMO 2026 использует гамильтонов цикл чётной решётки, чтобы сравнить два противоположных гамильтоновых пути.",
+      "backward_text": "CMO 2015 — близкий более ранний спутник CMO 2026 в теме гамильтоновых решёток: вместо минимаксной оценки на отмеченных клетках там требуется точный вынужденный максимум числа входов в строки и столбцы вдоль гамильтонова цикла.",
+      "anchors": {
+        "from_solution_id": "sol-official-averaging-and-quadrants",
+        "to_solution_id": "sol-official-checkerboard-cycle-pairing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-cmo-2015-p3-cmo-2008-p5-grid-paths",
+      "from": "cmo-2015-p3-grid-hamiltonian-turtle",
+      "to": "cmo-2008-p5-self-avoiding-rook-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки переводят движение между соседними клетками доски в пути графа смежности клеток. CMO 2015 изучает гамильтонов цикл с подсчётом пересечений строк и столбцов, тогда как CMO 2008 считает самоизбегающиеся пути в узкой решёточной полосе через разбор их геометрии.",
+      "backward_text": "CMO 2015 — экстремальный гамильтоново-циклический аналог темы решёточных блужданий из CMO 2008: путь обязан покрыть всю доску, а главной статистикой становится то, как часто он входит в строки и столбцы.",
+      "anchors": {
+        "from_solution_id": "sol-official-averaging-and-quadrants",
+        "to_solution_id": "sol-official-recurrence"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-cmo-2015-p3-cmo-1977-p7-grid-self-avoiding",
+      "from": "cmo-2015-p3-grid-hamiltonian-turtle",
+      "to": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи используют самоизбегающее движение на прямоугольных решёточных структурах. CMO 2015 задаёт замкнутый обход через все клетки и оценивает входы в строки и столбцы; CMO 1977 оценивает число простых городских путей, кодируя путь соседними клетками.",
+      "backward_text": "CMO 2015 — версия мотива прямоугольных решёточных путей из CMO 1977 с гамильтоновым циклом: подсчёт путей заменён точной экстремальной статистикой того, как путь пересекает строки и столбцы.",
+      "anchors": {
+        "from_solution_id": "sol-official-averaging-and-quadrants",
+        "to_solution_id": "sol-left-cells-injection"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    }
+  ]
+}

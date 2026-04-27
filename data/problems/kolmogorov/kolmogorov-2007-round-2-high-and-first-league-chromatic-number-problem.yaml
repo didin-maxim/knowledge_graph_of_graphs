@@ -70,8 +70,8 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Self-contained exchange recoloring proof",
-      "text": "Take any proper coloring `alpha` in which every color class has at least two vertices. Also take a proper coloring `beta` in exactly `k` colors; it exists because `chi(G)=k`.\n\nCall a color of the current `beta`-coloring protected if it contains one whole color class of `alpha`. Such a color has at least two vertices. Moreover, once a color is protected, it stays protected in the process below, because later moves recolor whole `alpha`-classes different from the one already protecting it.\n\nIf every `beta`-color has at least two vertices, we are done. Otherwise let color `c` be represented by the single vertex `v`. Let `A` be the `alpha`-color class containing `v`. Since `A` is independent and has at least two vertices, recolor all vertices of `A` with color `c`, leaving all other vertices with their current `beta`-colors. The new coloring is proper: the class of color `c` is exactly the independent set `A`, and every other color class only lost vertices from its previous independent class.\n\nNo color can become empty after this operation. If that happened, the resulting proper coloring would use at most `k-1` nonempty colors, contradicting `chi(G)=k`. Thus we still have a proper coloring in exactly `k` colors. The color `c` is now protected by the whole set `A`, so it will never again be a singleton.\n\nRepeat this operation while a singleton color exists. At each step one previously unprotected singleton color becomes protected, and protected colors never become singleton; hence after at most `k` steps no singleton color remains. The final coloring is proper, uses exactly `k` colors, and every color is used at least twice.",
+      "title": "Самодостаточное доказательство через обменную перекраску",
+      "text": "Возьмем любую правильную раскраску `alpha`, в которой каждый цветовой класс содержит хотя бы две вершины. Также возьмем правильную раскраску `beta` ровно в `k` цветов; она существует, поскольку `chi(G)=k`.\n\nНазовем цвет текущей `beta`-раскраски защищенным, если он содержит целый цветовой класс раскраски `alpha`. В таком цвете есть хотя бы две вершины. Более того, однажды защищенный цвет остается защищенным в описанном ниже процессе, потому что дальнейшие ходы перекрашивают целые `alpha`-классы, отличные от того, который уже его защищает.\n\nЕсли каждый цвет `beta` встречается хотя бы в двух вершинах, все доказано. Иначе пусть цвет `c` представлен единственной вершиной `v`. Пусть `A` — цветовой класс раскраски `alpha`, содержащий `v`. Так как множество `A` независимо и содержит хотя бы две вершины, перекрасим все вершины из `A` в цвет `c`, оставив всем остальным вершинам их текущие `beta`-цвета. Новая раскраска правильна: класс цвета `c` — это ровно независимое множество `A`, а каждый другой цветовой класс только потерял вершины из своего прежнего независимого класса.\n\nПосле этой операции ни один цвет не может исчезнуть. Если бы это произошло, получившаяся правильная раскраска использовала бы не более `k-1` непустых цветов, что противоречит `chi(G)=k`. Значит, у нас по-прежнему есть правильная раскраска ровно в `k` цветов. Цвет `c` теперь защищен всем множеством `A`, поэтому он больше никогда не станет одноэлементным.\n\nПовторяем эту операцию, пока существует одноэлементный цвет. На каждом шаге один ранее незащищенный одноэлементный цвет становится защищенным, а защищенные цвета больше не становятся одноэлементными; значит, не более чем через `k` шагов одноэлементных цветов не останется. Итоговая раскраска правильна, использует ровно `k` цветов, и каждый цвет встречается хотя бы дважды.",
       "idea_ids": [
         "idea-graph-role"
       ],
@@ -87,7 +87,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "Импортировано из подготовленной графовой карточки KOLM; оценка сложности требует проверки человеком.",
+    "comment": "Импортировано из подготовленной графовой карточки КОЛМ; оценка сложности требует проверки человеком.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -123,9 +123,9 @@
       "Импортировано из подготовленной карточки cards/kolm/2007_round_2_high_and_first_league_chromatic_number_problem.md.",
       "Файл-источник, указанный в карточке: work/kolm/text/2007/tur2_11sol.txt.",
       "Страница-источник, указанная в карточке: 2.",
-      "Роль графа: explicit_in_statement.",
-      "Исходное название в финальной выборке: Round 2, High League / First League, chromatic-number problem.",
-      "Backlog 2026-04-27: recoloring gap resolved by a local protected-color exchange invariant."
+      "Роль графа: явно присутствует в условии.",
+      "Исходное название в финальной выборке: тур 2, высшая лига / первая лига, задача о хроматическом числе.",
+      "Задел 2026-04-27: пробел в перекраске закрыт локальным обменным инвариантом защищенного цвета."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

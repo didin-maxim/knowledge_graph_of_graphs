@@ -51,7 +51,7 @@ def build_html(data):
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>graphs</title>
+  <title>База графовых задач</title>
   <script>
     window.MathJax = {{
       tex: {{ inlineMath: [['\\\\(', '\\\\)']], displayMath: [['\\\\[', '\\\\]']] }},
@@ -362,6 +362,145 @@ def build_html(data):
       font-style: italic;
     }}
 
+    .home-hero {{
+      min-height: min(70vh, 680px);
+      display: grid;
+      align-content: center;
+      gap: 24px;
+      padding: clamp(22px, 5vw, 58px) 0 32px;
+      border-bottom: 1px solid var(--line);
+    }}
+
+    .home-kicker {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }}
+
+    .home-title {{
+      max-width: 920px;
+      font-size: 76px;
+      line-height: 0.98;
+      letter-spacing: 0;
+      margin: 0;
+    }}
+
+    .home-lead {{
+      max-width: 760px;
+      font-size: 21px;
+      color: #425057;
+      margin: 0;
+    }}
+
+    .home-actions {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }}
+
+    .home-action {{
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 13px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+    }}
+
+    .home-action.primary {{
+      background: #113f3b;
+      border-color: #113f3b;
+      color: #fff;
+    }}
+
+    .home-stats {{
+      display: grid;
+      grid-template-columns: repeat(5, minmax(110px, 1fr));
+      gap: 10px;
+      max-width: 900px;
+    }}
+
+    .home-stat, .home-panel, .home-chip {{
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
+    }}
+
+    .home-stat {{
+      padding: 12px;
+    }}
+
+    .home-stat strong {{
+      display: block;
+      font-size: 24px;
+      line-height: 1.1;
+    }}
+
+    .home-stat span, .home-chip span {{
+      color: var(--muted);
+      font-size: 13px;
+    }}
+
+    .home-band {{
+      padding: 30px 0 4px;
+    }}
+
+    .home-grid {{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }}
+
+    .home-panel {{
+      padding: 16px;
+    }}
+
+    .home-panel h3 {{
+      margin: 0 0 8px;
+      font-size: 18px;
+    }}
+
+    .home-panel p, .home-panel li {{
+      color: #425057;
+    }}
+
+    .home-panel ul {{
+      padding-left: 19px;
+      margin: 10px 0 0;
+    }}
+
+    .home-search-map {{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }}
+
+    .home-chip {{
+      padding: 11px;
+    }}
+
+    .home-chip strong {{
+      display: block;
+      margin-bottom: 3px;
+    }}
+
+    .home-note {{
+      border-left: 4px solid #d5a021;
+      background: #fff8e5;
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      color: #51431f;
+    }}
+
     .comment-form {{
       background: var(--panel);
       border: 1px solid var(--line);
@@ -409,6 +548,22 @@ def build_html(data):
         border-bottom: 1px solid var(--line);
         max-height: 48vh;
       }}
+
+      .home-stats, .home-grid, .home-search-map {{
+        grid-template-columns: 1fr;
+      }}
+
+      .home-hero {{
+        min-height: auto;
+      }}
+
+      .home-title {{
+        font-size: 40px;
+      }}
+
+      .home-lead {{
+        font-size: 17px;
+      }}
     }}
   </style>
 </head>
@@ -416,10 +571,11 @@ def build_html(data):
   <div class="shell">
     <aside class="sidebar">
       <div class="brand">
-        <h1>graphs</h1>
+        <h1><a href="#home" style="color:inherit;text-decoration:none;">Графы</a></h1>
         <div class="meta" id="db-meta"></div>
       </div>
       <div class="search">
+        <button class="mode-button" id="mode-home" type="button">Главная</button>
         <div class="mode-toggle">
           <button class="mode-button active" id="mode-problems" type="button">Задачи</button>
           <button class="mode-button" id="mode-definitions" type="button">Определения</button>
@@ -832,6 +988,8 @@ def build_html(data):
 
     function currentRoute() {{
       const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+      if (!id || id === 'home') return {{ type: 'home', id: 'home' }};
+      if (id === 'comments') return {{ type: 'comment', id: null }};
       if (id.startsWith('def-')) {{
         const definitionId = id.slice(4);
         if (definitions[definitionId]) return {{ type: 'definition', id: definitionId }};
@@ -849,6 +1007,11 @@ def build_html(data):
       if (state.view === 'ideas') return {{ type: 'idea', id: sortedStandardIdeas()[0]?.id }};
       if (state.view === 'comments') return {{ type: 'comment', id: sortedComments()[0]?.id || null }};
       return {{ type: 'problem', id: sortedProblems()[0]?.id }};
+    }}
+
+    function setHome() {{
+      location.hash = 'home';
+      render();
     }}
 
     function setProblem(id) {{
@@ -871,7 +1034,7 @@ def build_html(data):
 
     function setComment(id) {{
       state.view = 'comments';
-      location.hash = id ? `comment-${{encodeURIComponent(id)}}` : '';
+      location.hash = id ? `comment-${{encodeURIComponent(id)}}` : 'comments';
       render();
     }}
 
@@ -954,7 +1117,8 @@ def build_html(data):
       const route = currentRoute();
       state.view = route.type === 'definition' ? 'definitions' : route.type === 'idea' ? 'ideas' : route.type === 'comment' ? 'comments' : 'problems';
       byId('db-meta').textContent = `${{Object.keys(problems).length}} карточек · ${{Object.keys(definitions).length}} определений · ${{Object.keys(standardIdeas).length}} идей · ${{relations.length}} связей · ${{Object.keys(comments).length}} комментариев`;
-      byId('mode-problems').classList.toggle('active', state.view === 'problems');
+      byId('mode-home').classList.toggle('active', route.type === 'home');
+      byId('mode-problems').classList.toggle('active', state.view === 'problems' && route.type !== 'home');
       byId('mode-definitions').classList.toggle('active', state.view === 'definitions');
       byId('mode-ideas').classList.toggle('active', state.view === 'ideas');
       byId('mode-comments').classList.toggle('active', state.view === 'comments');
@@ -1339,8 +1503,8 @@ def build_html(data):
     function renderCommentForm(targetType, problemId = '') {{
       const title = targetType === 'problem' ? 'Новый комментарий к задаче' : 'Новый комментарий по архитектуре';
       const note = targetType === 'problem'
-        ? 'Комментарий будет открыт как GitHub issue с привязкой к этой задаче.'
-        : 'Комментарий будет открыт как GitHub issue по архитектуре базы.';
+        ? 'Комментарий будет открыт как обсуждение на GitHub с привязкой к этой задаче.'
+        : 'Комментарий будет открыт как обсуждение на GitHub по архитектуре базы.';
       const options = targetType === 'problem' ? problemCommentKindOptions() : architectureCommentKindOptions();
       return `
         <form class="comment-form" data-comment-form data-target-type="${{esc(targetType)}}" data-problem-id="${{esc(problemId)}}">
@@ -1419,8 +1583,102 @@ def build_html(data):
             await persistCommentPayload(payload);
             form.reset();
           }} catch (error) {{
-            alert(`Не удалось открыть GitHub issue: ${{error.message || error}}`);
+            alert(`Не удалось открыть обсуждение на GitHub: ${{error.message || error}}`);
           }}
+        }});
+      }});
+    }}
+
+    function renderHome() {{
+      const problemList = Object.values(problems);
+      const solvedCount = problemList.filter(problem => problemHasRealSolution(problem)).length;
+      const reviewCount = problemList.filter(problem => problem.editorial?.review_status === 'needs_human_review').length;
+      const graphStatements = problemList.reduce((total, problem) =>
+        total + (problem.statements?.graph_theory?.length || 0) + (problem.statements?.graph_hint_reformulations?.length || 0), 0);
+      const filteredCount = filteredProblems().length;
+      const selectedProblem = filteredProblems()[0] || sortedProblems()[0];
+      const selectedHref = selectedProblem ? `#${{encodeURIComponent(selectedProblem.id)}}` : '#home';
+      const sourceCount = new Set(problemList.map(problem => sourceInfo(problem).key).filter(Boolean)).size;
+      byId('content').innerHTML = `
+        <section class="home-hero">
+          <div class="home-kicker">
+            <span class="pill">черновая исследовательская база</span>
+            <span>${{esc(sourceCount)}} источниковых семейств</span>
+            <span>${{esc(relations.length)}} родственных связей</span>
+          </div>
+          <h2 class="home-title">Графовые задачи, связи и идеи в одном рабочем поле</h2>
+          <p class="home-lead">
+            Это база олимпиадных и классических задач по теории графов: с оригинальными условиями, графовыми формулировками,
+            решениями, идеями, источниками и картой родства между карточками.
+          </p>
+          <div class="home-actions">
+            <a class="home-action primary" href="${{selectedHref}}">Открыть найденные карточки: ${{filteredCount}}</a>
+            <button class="home-action" type="button" data-home-view="definitions">Определения</button>
+            <button class="home-action" type="button" data-home-view="ideas">Идеи</button>
+            <button class="home-action" type="button" data-home-view="comments">Комментарии</button>
+          </div>
+          <div class="home-stats">
+            <div class="home-stat"><strong>${{problemList.length}}</strong><span>карточек</span></div>
+            <div class="home-stat"><strong>${{solvedCount}}</strong><span>с решениями</span></div>
+            <div class="home-stat"><strong>${{graphStatements}}</strong><span>графовых формулировок</span></div>
+            <div class="home-stat"><strong>${{Object.keys(definitions).length}}</strong><span>определений</span></div>
+            <div class="home-stat"><strong>${{reviewCount}}</strong><span>на проверке</span></div>
+          </div>
+        </section>
+
+        <section class="home-band">
+          <h3>Как искать</h3>
+          <div class="home-search-map">
+            <div class="home-chip"><strong>Строка поиска</strong><span>Ищет по названию, условию, решению, источнику, автору и служебным ключам.</span></div>
+            <div class="home-chip"><strong>Источник и год</strong><span>Отфильтруйте КОЛМ, ФЮМ, УТЮМ, ЮМТ, IMO, USAMO и другие серии.</span></div>
+            <div class="home-chip"><strong>Цель, объект, метод</strong><span>Разделяйте “оценка+пример”, “дерево”, “индукция” и похожие роли задачи.</span></div>
+            <div class="home-chip"><strong>Тип и решения</strong><span>Оставьте только задачи, теоремы, леммы, карточки с решением или без решения.</span></div>
+          </div>
+          <p class="home-note">Фильтры слева работают вместе: можно, например, искать задачи КОЛМ про деревья с методом индукции и сразу открыть первую подходящую карточку.</p>
+        </section>
+
+        <section class="home-band">
+          <h3>Как пользоваться базой</h3>
+          <div class="home-grid">
+            <div class="home-panel">
+              <h3>Читайте карточку слоями</h3>
+              <p>Сначала смотрите оригинальное условие, затем графовую формулировку, идеи и решение. Если графовая формулировка не нужна, она намеренно удалена как дубль.</p>
+            </div>
+            <div class="home-panel">
+              <h3>Ходите по связям</h3>
+              <p>Родственные связи показывают общий метод, вариант, обобщение или похожий мотив. Это помогает видеть не одну задачу, а семейство приёмов.</p>
+            </div>
+            <div class="home-panel">
+              <h3>Комментируйте как редактор</h3>
+              <p>Кнопка комментария открывает обсуждение на GitHub. Комментарии экспертов считаются рабочими инструкциями к базе, а не отзывами для модерации.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-band">
+          <h3>Как база создавалась</h3>
+          <div class="home-grid">
+            <div class="home-panel">
+              <h3>Сбор источников</h3>
+              <p>Карточки импортировались из официальных архивов и проверенных разборов: турниры, списки задач, классические теоремы и локальные подборки.</p>
+            </div>
+            <div class="home-panel">
+              <h3>Редакторский проход</h3>
+              <p>Для каждой карточки нормализовались русский текст, самодостаточность условия, графовая постановка, цель задачи, объект и метод решения.</p>
+            </div>
+            <div class="home-panel">
+              <h3>Сеть связей</h3>
+              <p>После базовой карточки строились родственные связи: близкие варианты, разные решения одной идеи, частные случаи, обобщения и парные модификации.</p>
+            </div>
+          </div>
+        </section>
+      `;
+      document.querySelectorAll('[data-home-view]').forEach(button => {{
+        button.addEventListener('click', () => {{
+          const view = button.dataset.homeView;
+          if (view === 'definitions') setDefinition(sortedDefinitions()[0]?.id);
+          else if (view === 'ideas') setStandardIdea(sortedStandardIdeas()[0]?.id);
+          else if (view === 'comments') setComment(sortedComments()[0]?.id || null);
         }});
       }});
     }}
@@ -1613,7 +1871,8 @@ def build_html(data):
       renderObjectFilter();
       renderMethodFilter();
       renderTypeFilter();
-      if (route.type === 'definition') renderDefinition();
+      if (route.type === 'home') renderHome();
+      else if (route.type === 'definition') renderDefinition();
       else if (route.type === 'idea') renderStandardIdea();
       else if (route.type === 'comment') renderCommentPage();
       else renderProblem();
@@ -1687,6 +1946,7 @@ def build_html(data):
       activateListRoute(link);
     }});
 
+    byId('mode-home').addEventListener('click', setHome);
     byId('mode-problems').addEventListener('click', () => setProblem(sortedProblems()[0]?.id));
     byId('mode-definitions').addEventListener('click', () => setDefinition(sortedDefinitions()[0]?.id));
     byId('mode-ideas').addEventListener('click', () => setStandardIdea(sortedStandardIdeas()[0]?.id));

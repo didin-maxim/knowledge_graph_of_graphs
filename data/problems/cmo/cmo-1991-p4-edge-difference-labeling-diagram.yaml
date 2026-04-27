@@ -1,0 +1,184 @@
+{
+  "id": "cmo-1991-p4-edge-difference-labeling-diagram",
+  "title": "Различные разности на ребрах в десятивершинной диаграмме, CMO 1991 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "graph_labeling",
+      "parity_obstruction"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Комитет Канадской математической олимпиады",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "vertex_labeling",
+      "edge_difference_labels",
+      "ten_vertex_eulerian_graph",
+      "parity_cut"
+    ],
+    "methods": [
+      "parity_argument",
+      "cut_parity",
+      "handshaking_lemma"
+    ],
+    "transformations": [
+      "diagram_to_graph",
+      "label_parity_to_vertex_cut"
+    ],
+    "goal": [
+      "disprove_existence_of_labeling"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph",
+      "bipartite_graph",
+      "eulerian_graph"
+    ],
+    "invariants": [
+      "distinct_absolute_edge_differences",
+      "parity_of_cut_size",
+      "even_vertex_degrees"
+    ],
+    "keywords": [
+      "cmo_1991_p4",
+      "edge_difference_labels",
+      "graceful_labeling_obstruction",
+      "odd_differences",
+      "eulerian_cut_parity"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальное условие",
+        "text": "Нужно выбрать десять различных чисел из множества \\(\\{0,1,2,\\ldots,13,14\\}\\) и вписать их в десять кружков на следующем графе. Граф состоит из двух копий одного и того же пятивершинного ромба с центром: в каждой копии есть верхняя, нижняя, левая, центральная и правая вершины; ребра идут от верхней вершины к каждой из левой, центральной и правой, а также от каждой из левой, центральной и правой к нижней. Две копии соединены двумя дополнительными ребрами: одно соединяет две верхние вершины, другое - две нижние. Абсолютные величины разностей двух чисел, соединенных каждым отрезком, должны отличаться от значений для всех остальных отрезков. Возможно ли это сделать? Обоснуйте ответ.",
+        "source_id": "src-cmo-1991-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph",
+          "stmt-parity-cut-hint"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Эквивалентная формулировка на языке разметки графа",
+        "text": "Пусть \\(G\\) - простой граф на вершинах \\(t_1,b_1,x_1,y_1,z_1,t_2,b_2,x_2,y_2,z_2\\), с ребрами \\(t_i x_i,t_i y_i,t_i z_i,b_i x_i,b_i y_i,b_i z_i\\) при \\(i=1,2\\), а также с двумя ребрами \\(t_1t_2\\) и \\(b_1b_2\\). Можно ли инъективно пометить вершины \\(G\\) десятью числами, выбранными из \\(\\{0,1,\\ldots,14\\}\\), так, чтобы абсолютные разности на всех 14 ребрах были попарно различны?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-parity-cut-hint"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-parity-cut-hint",
+        "title": "Препятствие через четность разреза",
+        "text": "В графовой формулировке 14 попарно различных положительных разностей на ребрах должны быть ровно числами \\(1,2,\\ldots,14\\). Значит, ровно семь ребер имеют нечетную разность. Нечетная разность означает, что метки двух концов имеют разную четность, поэтому эти семь ребер образуют разрез между вершинами с нечетными и четными метками. Но каждая вершина \\(G\\) имеет четную степень, поэтому по лемме о рукопожатиях любой разрез в \\(G\\) имеет четный размер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-odd-differences-as-cut",
+      "title": "Нечетные разности образуют разрез",
+      "text": "Поскольку ребер 14 и все разности на ребрах являются различными элементами \\(\\{1,2,\\ldots,14\\}\\), эти разности должны быть ровно всеми этими 14 числами. Нечетные разности соответствуют в точности ребрам, переходящим от вершин с нечетными метками к вершинам с четными метками.",
+      "tags": [
+        "coloring",
+        "goal_impossibility"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-even-degree-cut-parity",
+      "title": "Четные степени вынуждают четные разрезы",
+      "text": "Граф диаграммы имеет степени \\(4,4,2,2,2,4,4,2,2,2\\). Значит, каждая вершина имеет четную степень, а лемма о рукопожатиях, примененная к одной стороне любого вершинного разреза, показывает, что каждый разрез содержит четное число ребер.",
+      "tags": [
+        "double_counting",
+        "eulerian_graphs"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "CMO 1991 P4; диаграмма превращается в небольшой граф с четными степенями, а препятствие задается коротким аргументом о четности разреза.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "double_counting",
+    "eulerian_graphs",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "parity_argument",
+        "cut_parity",
+        "handshaking_lemma"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-1991-official",
+      "role": "statement_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Официальный PDF CMS с задачами CMO 1991 содержит эту задачу в виде диаграммы; исходное условие здесь явно описывает диаграмму, чтобы карточка была самодостаточной.",
+      "Обычная запись graph_theory является эквивалентной самодостаточной задачей о разметке графа. Препятствие через четность разреза оставлено отдельно в graph_hint_reformulations, потому что оно сильно подсказывает решение.",
+      "В манифесте источников указан PDF CMS с решениями за 1991 год, но архивный URL не открылся во время этого прохода и локально извлеченное решение CMO 1991 найдено не было; поэтому solutions намеренно оставлен пустым."
+    ],
+    "relations_status": "base_done"
+  }
+}

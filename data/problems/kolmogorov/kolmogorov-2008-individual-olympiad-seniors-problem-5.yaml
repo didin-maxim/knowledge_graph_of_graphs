@@ -74,8 +74,8 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Self-contained hypercube edge-coloring proof",
-      "text": "First use the standard greedy vertex coloring: a graph of maximum degree 1000 has a proper coloring with 1001 colors, because when each vertex is colored at most 1000 colors are forbidden by its neighbors.\n\nEmbed these 1001 vertex colors into the 1024 binary strings of length 10. Color an edge uv of the original graph by the first coordinate in which the two binary strings assigned to the vertex colors of u and v differ. The endpoint colors are distinct, so such a coordinate always exists. This gives one of 10 edge colors.\n\nFor a fixed coordinate i, every edge of color i joins vertices whose assigned binary strings differ in coordinate i. Therefore the subgraph formed by color i is bipartite: one part consists of vertices whose assigned string has i-th bit 0, and the other part consists of vertices whose assigned string has i-th bit 1.\n\nSince every one-color subgraph is bipartite, no one-color subgraph contains an odd cycle. Thus the edges can always be colored in 10 colors with the required property.",
+      "title": "Самодостаточное доказательство через раскраску ребер гиперкуба",
+      "text": "Сначала используем стандартную жадную раскраску вершин: граф максимальной степени 1000 имеет правильную раскраску в 1001 цвет, потому что при раскрашивании каждой вершины ее соседи запрещают не более 1000 цветов.\n\nВложим эти 1001 цвет вершины в 1024 двоичные строки длины 10. Покрасим ребро `uv` исходного графа в цвет первой координаты, в которой различаются две двоичные строки, сопоставленные цветам вершин `u` и `v`. Цвета концов различны, поэтому такая координата всегда существует. Так получается один из 10 цветов ребер.\n\nДля фиксированной координаты `i` каждое ребро цвета `i` соединяет вершины, у которых сопоставленные двоичные строки различаются в координате `i`. Поэтому подграф, образованный цветом `i`, двудолен: одна доля состоит из вершин, у которых в сопоставленной строке `i`-й бит равен 0, а другая — из вершин, у которых в сопоставленной строке `i`-й бит равен 1.\n\nТак как каждый одноцветный подграф двудолен, ни один одноцветный подграф не содержит нечетного цикла. Значит, ребра всегда можно раскрасить в 10 цветов с требуемым свойством.",
       "idea_ids": [
         "idea-graph-role"
       ],
@@ -93,7 +93,7 @@
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "Импортировано из подготовленной графовой карточки KOLM; оценка сложности требует проверки человеком.",
+    "comment": "Импортировано из подготовленной графовой карточки КОЛМ; оценка сложности требует проверки человеком.",
     "status": "needs_human_review"
   },
   "tags": [
@@ -130,8 +130,8 @@
       "Импортировано из подготовленной карточки cards/kolm/2008_individual_olympiad_seniors_problem_5.md.",
       "Файл-источник, указанный в карточке: work/kolm/text/2008/lichol12.txt.",
       "Страница-источник, указанная в карточке: 1.",
-      "Роль графа: explicit_in_statement.",
-      "Исходное название в финальной выборке: Individual Olympiad, Seniors, Problem 5."
+      "Роль графа: явно присутствует в условии.",
+      "Исходное название в финальной выборке: индивидуальная олимпиада, старшие участники, задача 5."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

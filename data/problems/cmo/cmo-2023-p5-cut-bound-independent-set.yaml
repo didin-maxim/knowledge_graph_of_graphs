@@ -1,0 +1,215 @@
+{
+  "id": "cmo-2023-p5-cut-bound-independent-set",
+  "title": "CMO 2023 P5: независимое множество из ограничения на разрезы",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "extremal_graph_problem"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Канадское математическое общество",
+      "role": "publisher_of_official_archive",
+      "status": "source_verified",
+      "note": "Официальные PDF с задачами и решениями CMO 2023 указывают источник олимпиады, но не называют индивидуального автора задачи 5."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "graph_cut",
+      "independent_set",
+      "complete_graph_construction"
+    ],
+    "methods": [
+      "extremal_construction",
+      "maximal_colorable_subset",
+      "extremal_choice",
+      "double_counting"
+    ],
+    "transformations": [
+      "cities_to_vertices",
+      "roads_to_edges",
+      "partition_into_independent_sets"
+    ],
+    "goal": [
+      "exact_bound",
+      "guaranteed_independent_set_size"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "maximum_cut_size",
+      "size_of_largest_2k_colorable_induced_subgraph"
+    ],
+    "keywords": [
+      "cmo_2023_p5",
+      "cut_bound",
+      "independent_set",
+      "disjoint_union_of_cliques"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Оригинальное условие",
+        "text": "В стране с \\(n\\) городами некоторые пары городов соединены двусторонними дорогами. Замечено, что при любом разбиении страны на две части между этими частями проходит не более \\(kn\\) дорог, где \\(k\\) — фиксированное положительное целое число. Каково наибольшее целое \\(m\\), выраженное через \\(n\\) и \\(k\\), для которого гарантированно найдётся множество из \\(m\\) городов, никакие два из которых не соединены дорогой напрямую?",
+        "source_id": "src-cmo-2023-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph",
+          "stmt-graph-answer-hint"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Эквивалентная графовая формулировка",
+        "text": "Пусть \\(G\\) — конечный простой граф на \\(n\\) вершинах. Предположим, что для любого разбиения \\(V(G)=X\\sqcup Y\\) число рёбер с одним концом в \\(X\\) и другим концом в \\(Y\\) не превосходит \\(kn\\), где \\(k\\) — положительное целое число. Найдите наибольшее гарантированное значение \\(m\\), такое что в \\(G\\) обязательно есть независимое множество размера \\(m\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph-answer-hint"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-graph-answer-hint",
+        "title": "Формулировка с ответом и экстремальной конструкцией",
+        "text": "Докажите, что наилучшее гарантированное значение равно \\(\\left\\lceil n/(4k)\\right\\rceil\\). Для точности запишите \\(n=4kq+r\\), где \\(1\\le r\\le 4k\\), и рассмотрите несвязное объединение \\(q\\) копий \\(K_{4k}\\) и одной копии \\(K_r\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complete_graph",
+          "independent_set"
+        ],
+        "hint_level": "reveals_answer_and_extremal_construction",
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-clique-construction",
+      "title": "Несвязные клики делают границу точной",
+      "text": "Несвязное объединение полных графов размера не больше \\(4k\\) удовлетворяет ограничению на все разрезы: разрез клики на \\(i\\le 4k\\) вершинах даёт не более \\(i^2/4\\le ki\\) рёбер.",
+      "tags": [
+        "extremal_graph_theory",
+        "goal_construction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-maximal-2k-colorable-set",
+      "title": "Максимальное \\(2k\\)-раскрашиваемое множество покрывает хотя бы половину графа",
+      "text": "Выберите наибольшее множество \\(S\\), которое можно разбить на \\(2k\\) независимых множеств. Если \\(|S|<n/2\\), ограничение на разрез между \\(S\\) и дополнением даёт вершину вне \\(S\\), которую можно добавить в один из цветовых классов.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-ru-expanded",
+      "title": "Точная граница через максимальное \\(2k\\)-разделимое множество",
+      "text": "Ответ: \\(m=\\left\\lceil \\frac{n}{4k}\\right\\rceil\\).\n\nСначала покажем, что больше гарантировать нельзя. Запишем \\(n=4kq+r\\), где \\(1\\le r\\le 4k\\); тогда \\(\\left\\lceil n/(4k)\\right\\rceil=q+1\\). Построим граф как несвязное объединение \\(q\\) копий полного графа \\(K_{4k}\\) и одной копии \\(K_r\\). Независимое множество в таком графе может взять не более одной вершины из каждой полной компоненты, поэтому его размер не превосходит \\(q+1=\\left\\lceil n/(4k)\\right\\rceil\\).\n\nПроверим, что этот пример удовлетворяет условию. Рассмотрим произвольный разрез всех вершин. Внутри полной компоненты размера \\(i\\le 4k\\), если разрез делит ее вершины на части размеров \\(a\\) и \\(b\\), число ребер между этими частями равно \\(ab\\). При фиксированном \\(i=a+b\\) имеем\n\\[\nab\\le \\frac{i^2}{4}\\le ki,\n\\]\nпоскольку \\(i\\le 4k\\). Суммируя по всем полным компонентам, получаем, что всего ребер, пересекающих данный разрез, не больше \\(k\\) умножить на суммарное число вершин, то есть не больше \\(kn\\). Значит, условие выполнено, а независимого множества большего размера в этом графе нет. Следовательно, \\(m\\le \\left\\lceil n/(4k)\\right\\rceil\\).\n\nТеперь докажем, что такое множество всегда существует. Назовем множество вершин \\(i\\)-разделимым, если его можно разбить на \\(i\\) попарно не пересекающихся независимых множеств; иначе говоря, индуцированный на нем граф можно правильно раскрасить в \\(i\\) цветов. В данном графе выберем множество \\(S\\) максимального по включению размера среди всех \\(2k\\)-разделимых множеств. Пусть\n\\[\nS=A_1\\sqcup A_2\\sqcup\\cdots\\sqcup A_{2k},\n\\]\nгде каждое \\(A_j\\) независимо, и пусть \\(|S|=t\\).\n\nДокажем, что \\(t\\ge n/2\\). Предположим противное: \\(t<n/2\\). Рассмотрим разрез между \\(S\\) и его дополнением. По условию между этими двумя частями не больше \\(kn\\) ребер. Вне \\(S\\) находится \\(n-t>n/2\\) вершин, поэтому среднее число соседей в \\(S\\) у вершины из дополнения к \\(S\\) меньше\n\\[\n\\frac{kn}{n-t}<2k.\n\\]\nЗначит, найдется вершина \\(u\\notin S\\), имеющая в \\(S\\) не более \\(2k-1\\) соседей. Эти соседи лежат в \\(2k\\) множествах \\(A_1,\\ldots,A_{2k}\\), поэтому хотя бы одно из множеств \\(A_j\\) не содержит соседей вершины \\(u\\). Тогда \\(A_j\\cup\\{u\\}\\) также независимо, а все остальные классы остаются независимыми. Следовательно, \\(S\\cup\\{u\\}\\) тоже \\(2k\\)-разделимо, что противоречит максимальности выбора \\(S\\). Значит, действительно \\(t\\ge n/2\\).\n\nОсталось применить принцип Дирихле к разбиению \\(S\\) на \\(2k\\) независимых множеств. Среди множеств \\(A_1,\\ldots,A_{2k}\\) найдется одно размера не меньше\n\\[\n\\frac{t}{2k}\\ge \\frac{n}{4k}.\n\\]\nПоскольку его размер целый, он не меньше \\(\\left\\lceil n/(4k)\\right\\rceil\\). Это независимое множество требуемого размера. Вместе с построенным выше примером получаем точное значение \\(m=\\left\\lceil n/(4k)\\right\\rceil\\).",
+      "idea_ids": [
+        "idea-clique-construction",
+        "idea-maximal-2k-colorable-set"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "extremal_choice",
+        "double_counting"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "complete_graph",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "CMO 2023 P5; конструкция короткая, а нижняя оценка требует неочевидного аргумента с максимальным \\(2k\\)-раскрашиваемым множеством.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "extremal_choice",
+    "double_counting",
+    "coloring",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_construction",
+        "maximal_2k_colorable_subset",
+        "double_counting",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    "extremal_object": {
+      "value": "disjoint_union_of_q_copies_of_K_4k_and_one_copy_of_K_r",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-2023-official",
+      "role": "problem_statement_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    },
+    {
+      "source_id": "src-cmo-2023-solutions",
+      "role": "official_solution_crosscheck",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-official-ru-expanded"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: сверено с официальными PDF задач и решений CMS CMO 2023; отдельный автор задачи там не указан.",
+      "2026-04-27: обычная формулировка graph_theory эквивалентна и самодостаточна; версия, раскрывающая ответ/конструкцию, помещена в graph_hint_reformulations.",
+      "2026-04-27: русское решение переписано в корректном UTF-8 и расширено на шаге максимального 2k-разделяющего множества."
+    ],
+    "relations_status": "base_done"
+  }
+}

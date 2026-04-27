@@ -1064,6 +1064,62 @@
       },
       "status": "ai_checked",
       "confidence": 0.82
+    },
+    {
+      "id": "rel-cmo-1977-p7-cmo-1979-p5-self-avoiding-grid-paths",
+      "from": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
+      "to": "cmo-1979-p5-square-lattice-self-avoiding-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи CMO считают или оценивают самоизбегающиеся пути в решёточных графах. Задача 1977 года работает с конечным прямоугольным городом и путями из угла в угол, а задача 1979 года — с бесконечной квадратной решёткой и фиксированным началом.",
+      "backward_text": "CMO 1979 P5 — локальная бесконечно-решёточная версия того же мотива самоизбегающихся путей, который появляется в CMO 1977 P7; акцент смещён с подсчёта путей между углами прямоугольника на начальные значения и универсальные оценки ветвления.",
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-cmo-1979-p5-cmo-2008-p5-self-avoiding-grid-walks",
+      "from": "cmo-1979-p5-square-lattice-self-avoiding-walks",
+      "to": "cmo-2008-p5-self-avoiding-rook-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи изучают самоизбегающиеся блуждания на решёточных графах. CMO 1979 P5 использует всю квадратную решётку и спрашивает первые значения и грубые оценки; CMO 2008 P5 ограничивается доской \\(3\\times n\\) и требует точной рекурсии или явной формулы.",
+      "backward_text": "CMO 2008 P5 — конечная точная версия темы самоизбегающихся блужданий из CMO 1979 P5: запрет повторять вершины тот же, но конечная полосовая структура позволяет ввести рекуррентные состояния.",
+      "anchors": {
+        "from_solution_id": "sol-enumeration-and-branching",
+        "to_solution_id": "sol-official-recurrence"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-cmo-1977-p7-cmo-2008-p5-self-avoiding-grid-paths",
+      "from": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
+      "to": "cmo-2008-p5-self-avoiding-rook-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих CMO-задачах основной объект - простой путь на прямоугольной решетке. CMO 1977 дает верхнюю оценку через кодирование областей, а CMO 2008 считает узкое семейство таких путей через рекурсию.",
+      "backward_text": "CMO 1977 P7 стоит рядом с CMO 2008 P5 как более общий прямоугольный вариант про самоизбегающиеся пути; вместо рекурсии по ширине доски используется инъекция в подмножества клеток.",
+      "anchors": {
+        "from_solution_id": "sol-left-cells-injection",
+        "to_solution_id": "sol-official-recurrence"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-cmo-1977-p7-imo-2005-c3-grid-path-injection",
+      "from": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
+      "to": "imo-2005-c3-black-paths-injection",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи используют решеточные пути и инъективный подсчет через области около пути. В CMO 1977 один путь кодируется множеством клеток слева от него, а в IMO 2005 C3 пары раскрасок кодируются обменом области относительно выбранного пути.",
+      "backward_text": "CMO 1977 P7 является более прямым примером той же идеи: граница решеточного пути задает область, и эта область используется как код для подсчета.",
+      "anchors": {
+        "from_solution_id": "sol-left-cells-injection",
+        "to_solution_id": "sol-reviewed-secondary"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
     }
   ]
 }

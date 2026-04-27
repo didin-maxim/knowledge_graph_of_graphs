@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2006-p4-imo-2010-c5-tournament-triples",
+      "from": "cmo-2006-p4-cycle-triplets-tournament",
+      "to": "imo-2010-c5-bad-company-tournament",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе задачи переводят результаты матчей без ничьих в турнир и считают малые подтурниры через исходящие степени. В CMO 2006 P4 ключевой объект — циклические и транзитивные тройки; в IMO Shortlist 2010 C5 те же циклические тройки входят в запрет плохих четвёрок и в подсчёт степенных сумм.",
+      "backward_text": "IMO Shortlist 2010 C5 является более сложным родственником CMO 2006 P4: вместо максимизации числа циклических троек она использует подсчёт локальных чемпионов и проигравших в тройках и четвёрках турнира.",
+      "anchors": {
+        "from_solution_id": "sol-official-degree-count",
+        "to_solution_id": "sol-degree-sum-full"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-cmo-2006-p4-tournament-king-outdegree",
+      "from": "cmo-2006-p4-cycle-triplets-tournament",
+      "to": "tournament-king-radius-two",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки работают в турнирах через исходящие степени. CMO 2006 P4 суммирует \\(\\binom{d^+(v)}2\\) по всем вершинам, а лемма о короле выбирает вершину максимальной исходящей степени и сравнивает её исходящих соседей.",
+      "backward_text": "Лемма о короле радиуса 2 — базовый пример техники исходящих степеней в турнирах; CMO 2006 P4 использует тот же язык степеней уже для точного экстремального подсчёта циклических троек.",
+      "anchors": {
+        "from_solution_id": "sol-official-degree-count",
+        "to_solution_id": "sol-max-outdegree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-cmo-2006-p4-tournament-hamiltonian-path",
+      "from": "cmo-2006-p4-cycle-triplets-tournament",
+      "to": "tournament-hamiltonian-path",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "CMO 2006 P4 и теорема о гамильтоновом пути имеют общий объект — конечный турнир. В первой карточке важна глобальная структура регулярного турнира и подсчёт циклических троек, во второй — существование линейного направленного пути через все вершины.",
+      "backward_text": "Теорема о гамильтоновом пути даёт базовый вход в язык турниров; CMO 2006 P4 показывает другой стандартный мотив турниров — экстремальный подсчёт малых подтурниров по степеням.",
+      "anchors": {
+        "from_solution_id": "sol-official-degree-count",
+        "to_solution_id": "sol-max-forward-edges"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-cmo-2006-p4-redei-odd-hamiltonian-paths",
+      "from": "cmo-2006-p4-cycle-triplets-tournament",
+      "to": "redei-odd-hamiltonian-paths-tournament",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются классическими задачами о турнирах: CMO 2006 P4 считает направленные циклы длины 3, а усиленная теорема Редеи считает гамильтоновы пути по модулю 2. Их удобно связывать как разные базовые инварианты конечного турнира.",
+      "backward_text": "Теорема Редеи показывает глобальный подсчёт путей в турнире; CMO 2006 P4 — локальный экстремальный подсчёт направленных треугольников через исходящие степени.",
+      "anchors": {
+        "from_solution_id": "sol-official-degree-count",
+        "to_solution_id": "sol-complement-and-edge-reversal"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    }
+  ]
+}

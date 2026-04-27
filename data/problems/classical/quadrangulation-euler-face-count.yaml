@@ -1,0 +1,137 @@
+{
+  "id": "quadrangulation-euler-face-count",
+  "title": "Эйлеров подсчёт четырёхугольного разбиения многоугольника",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "plane_graph",
+      "quadrangulation",
+      "polygon_dissection",
+      "faces"
+    ],
+    "methods": [
+      "euler_formula",
+      "face_counting",
+      "double_counting"
+    ],
+    "transformations": [
+      "polygon_dissection_to_plane_graph"
+    ],
+    "goal": [
+      "face_count_identity"
+    ],
+    "auxiliary_graph_type": [
+      "plane_map"
+    ],
+    "invariants": [
+      "interior_vertices",
+      "boundary_vertices",
+      "quadrilateral_faces",
+      "boundary_edges"
+    ],
+    "keywords": [
+      "quadrangulation",
+      "euler_formula",
+      "face_counting",
+      "polygon_dissection"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-quadrangulation-count",
+        "title": "Формула для числа четырёхугольников",
+        "text": "Пусть связный плоский граф разбивает внутренность многоугольника на \\(q\\) четырёхугольных граней. Пусть на внешней границе графа \\(B\\) вершин, а внутри многоугольника \\(I\\) вершин. Тогда \\(q=I+B/2-1\\).",
+        "source_id": "src-wikipedia-planar",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-euler-plus-boundary-count",
+      "title": "Эйлер плюс подсчёт граничных рёбер",
+      "text": "Формула Эйлера выражает число рёбер через \\(I,B,q\\), а подсчёт сторон четырёхугольных граней даёт второе уравнение: внутренние рёбра считаются дважды, а \\(B\\) граничных рёбер — один раз.",
+      "tags": [
+        "planar_graphs",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-euler-face-count",
+      "title": "Двойной подсчёт граней",
+      "text": "Обозначим через \\(V\\), \\(E\\), \\(F\\) числа вершин, рёбер и граней плоского графа, считая внешнюю грань. Тогда \\(V=I+B\\), а \\(F=q+1\\). По формуле Эйлера для связного плоского графа\n\\[\nV-E+F=2,\n\\]\nоткуда\n\\[\nE=I+B+q-1.\n\\]\n\nТеперь посчитаем стороны всех \\(q\\) внутренних четырёхугольных граней. С одной стороны, их \\(4q\\). С другой стороны, каждое внутреннее ребро граничит с двумя внутренними гранями и считается дважды, а каждое граничное ребро внешнего многоугольника считается один раз. Так как внешняя граница имеет \\(B\\) рёбер, получаем\n\\[\n4q=2E-B.\n\\]\nПодставляя найденное значение \\(E\\), имеем\n\\[\n4q=2(I+B+q-1)-B=2I+B+2q-2.\n\\]\nСледовательно, \\(2q=2I+B-2\\), то есть \\(q=I+B/2-1\\).",
+      "idea_ids": [
+        "idea-euler-plus-boundary-count"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "face_counting"
+      ],
+      "definition_ids": [
+        "planar_graph"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 3,
+    "comment": "Стандартное следствие формулы Эйлера для четырёхугольных разбиений диска.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "double_counting",
+    "classical_theorem",
+    "goal_counting"
+  ],
+  "properties": {
+    "typical_olympiad_use": {
+      "value": "Быстро заменить геометрическое разбиение многоугольника на плоский граф и выразить число четырёхугольных частей через внутренние и граничные вершины.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-planar",
+      "role": "standard_euler_formula_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Выделено из CMO 1995 P3 как переиспользуемая эйлерова часть подсчёта в аргументе о четырёхугольном разбиении."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2023-p2-handshaking-edge-count",
+      "from": "cmo-2023-p2-three-regular-bootstrap-friendship",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Решение CMO 2023 P2 прямо использует лемму о рукопожатиях: из 20 вершин степени 3 получается ровно 30 дружб, после чего 31 использованная дружба дает противоречие.",
+      "backward_text": "Лемма о рукопожатиях применяется здесь в очень чистом олимпиадном виде: сумма степеней в 3-регулярном графе ограничивает общее число ребер, с которым сравнивается ход процесса.",
+      "anchors": {
+        "from_solution_id": "sol-official-used-friendships-ru",
+        "to_solution_id": "sol-double-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-cmo-2023-p2-cubic-four-cycle-bound",
+      "from": "cmo-2023-p2-three-regular-bootstrap-friendship",
+      "to": "cubic-graph-four-cycle-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки работают с 3-регулярным графом и получают сильное ограничение простым счетом локальных вкладов: в CMO 2023 P2 считаются использованные ребра процесса, а в лемме о 4-циклах считаются пары инцидентных ребер.",
+      "backward_text": "Лемма о 4-циклах является соседним примером того, как кубичность графа превращает локальный подсчет вокруг вершин в глобальную оценку; в CMO 2023 P2 та же жесткость степени 3 запрещает полное заражение процесса.",
+      "anchors": {
+        "from_solution_id": "sol-official-used-friendships-ru",
+        "to_solution_id": "sol-double-count-incident-edge-pairs"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-cmo-2023-p2-cmo-2020-friendship-graph-counting",
+      "from": "cmo-2023-p2-three-regular-bootstrap-friendship",
+      "to": "cmo-2020-p5-friendship-induced-subgraphs",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи CMO переводят дружбы в ребра графа и решаются счетом ребер. В CMO 2023 P2 ребер в 3-регулярном графе слишком мало для полного процесса, а в CMO 2020 P5 глобальная нижняя оценка на число дружб доказывается через индуцированные подграфы и степени.",
+      "backward_text": "CMO 2020 P5 дает более сложный экстремальный сосед для CMO 2023 P2: там тоже социальная формулировка становится графовой задачей о числе дружб, но вместо короткого процессного инварианта нужен минимальный выбор половины вершин.",
+      "anchors": {
+        "from_solution_id": "sol-official-used-friendships-ru",
+        "to_solution_id": "sol-official-russian-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-cmo-2023-p2-cmo-2023-p5-official-graph-counting",
+      "from": "cmo-2023-p2-three-regular-bootstrap-friendship",
+      "to": "cmo-2023-p5-cut-bound-independent-set",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи из CMO 2023 имеют естественную графовую переформулировку и используют глобальные ограничения на ребра: P2 считает все ребра кубического графа, а P5 ограничивает разрезы и выводит гарантированное независимое множество.",
+      "backward_text": "CMO 2023 P5 является более трудным графовым соседом той же олимпиады: вместо короткой оценки числа ребер в 3-регулярном графе там применяется разрезная оценка и экстремальная конструкция.",
+      "anchors": {
+        "from_solution_id": "sol-official-used-friendships-ru",
+        "to_solution_id": "sol-official-ru-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    }
+  ]
+}

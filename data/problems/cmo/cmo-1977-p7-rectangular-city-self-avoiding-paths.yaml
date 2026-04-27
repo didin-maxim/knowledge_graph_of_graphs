@@ -1,0 +1,162 @@
+{
+  "id": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
+  "title": "Самоизбегающиеся пути в прямоугольном городе, CMO 1977 P7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Olympiad Committee",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "rectangular_grid_graph",
+      "self_avoiding_path",
+      "unit_square_cells"
+    ],
+    "methods": [
+      "injection",
+      "path_encoding_by_faces"
+    ],
+    "transformations": [
+      "city_blocks_to_grid_graph"
+    ],
+    "goal": [
+      "upper_bound_number_of_paths"
+    ],
+    "auxiliary_graph_type": [
+      "planar_grid_graph"
+    ],
+    "invariants": [
+      "cells_on_one_side_of_path",
+      "oriented_boundary"
+    ],
+    "keywords": [
+      "cmo_1977_p7",
+      "rectangular_city",
+      "self_avoiding_paths",
+      "grid_path_counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Прямоугольный город имеет ровно \\(m\\) кварталов в длину и \\(n\\) кварталов в ширину. Женщина живет в юго-западном углу города и работает в северо-восточном углу. Каждый день она идет на работу так, что за один путь не проходит ни через один перекресток дважды. Пусть \\(f(m,n)\\) - число различных путей, которыми она может дойти до работы. Докажите, что \\(f(m,n)\\le 2^{mn}\\).",
+        "source_id": "src-cmo-1977-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В прямоугольном решеточном графе с вершинами \\((i,j)\\), где \\(0\\le i\\le m\\), \\(0\\le j\\le n\\), и ребрами между вершинами на расстоянии 1 по Манхэттену, пусть \\(f(m,n)\\) - число простых путей из \\((0,0)\\) в \\((m,n)\\). Докажите, что \\(f(m,n)\\le 2^{mn}\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-left-cells-encoding",
+      "title": "Кодирование клетками слева от пути",
+      "text": "Если ориентировать путь из юго-западного угла в северо-восточный, то каждому его ребру соответствует клетка, лежащая слева от этого ребра, если такая клетка есть. Множество всех таких клеток должно однозначно задавать путь.",
+      "tags": [
+        "planar_graphs",
+        "goal_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-boundary-reconstruction",
+      "title": "Восстановление по границе множества клеток",
+      "text": "Путь восстанавливается как ориентированная часть границы отмеченного множества клеток: отмеченные клетки остаются слева, а неотмеченные клетки или внешность прямоугольника - справа.",
+      "tags": [
+        "planar_graphs",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-left-cells-injection",
+      "title": "Инъекция в множества кварталов",
+      "text": "Рассмотрим любой допустимый путь \\(P\\) и будем идти по нему от юго-западного угла к северо-восточному. Для каждого ребра пути отметим квартал, который лежит непосредственно слева от этого направленного ребра; если ребро идет по границе города и слева от него квартала нет, ничего не отмечаем. Так каждому пути сопоставляется некоторое множество \\(S(P)\\) из \\(mn\\) кварталов.\n\nДокажем, что это сопоставление инъективно. Удобно считать кварталы единичными квадратами, а путь - ломаной по их сторонам. Так как путь не проходит через один и тот же перекресток дважды, он не имеет самопересечений. После небольшого скругления в окрестностях перекрестков это простая дуга от юго-западного угла прямоугольника к северо-восточному. Идя по этой дуге, мы ровно записываем, какие клетки находятся с ее левой стороны вдоль каждого участка.\n\nТеперь пусть известно только множество \\(S=S(P)\\). Рассмотрим все стороны кварталов, которые разделяют отмеченную клетку и неотмеченную клетку или внешность прямоугольника. Среди этих сторон есть единственная граничная цепочка, идущая от юго-западного угла к северо-восточному так, что отмеченные клетки лежат слева от направления движения. Именно эта цепочка и есть исходный путь: каждое ребро пути входит в такую границу по определению \\(S(P)\\), а лишняя граничная цепочка с теми же концами дала бы две разные простые дуги с одной и той же левой стороной, что невозможно при обходе границы одного и того же множества клеток. Значит, по \\(S(P)\\) путь восстанавливается однозначно.\n\nИтак, разные допустимые пути дают разные подмножества множества всех \\(mn\\) кварталов. Подмножеств кварталов всего \\(2^{mn}\\), поэтому \\(f(m,n)\\le 2^{mn}\\).",
+      "idea_ids": [
+        "idea-left-cells-encoding",
+        "idea-boundary-reconstruction"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "CMO 1977 P7; оценка числа самоизбегающихся путей на прямоугольной решетке через инъекцию в подмножества клеток.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "connectivity",
+    "goal_counting",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "injection",
+        "path_encoding_by_faces"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-1977-official",
+      "role": "problem_statement_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: условие сверено с официальным PDF задач CMS CMO 1977 и страницей условия на AoPS; источник CMS sol1977.pdf, указанный в библиографии, сейчас возвращает 404, поэтому карточка ссылается только на официальное условие.",
+      "Формулировка graph_theory является нейтральной эквивалентной переформулировкой; кодирование клетками оставлено в ideas и solution, а не в graph_hint_reformulations."
+    ],
+    "relations_status": "deep_done"
+  }
+}

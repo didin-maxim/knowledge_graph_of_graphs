@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2005-p1-cmo-1977-grid-path-encoding",
+      "from": "cmo-2005-p1-triangular-grid-paths",
+      "to": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе CMO-задачи считают или ограничивают самоизбегающиеся пути в клеточном графе через кодирование пути внешними данными. В CMO 2005 путь однозначно задается выбранными пересечениями горизонтальных уровней; в CMO 1977 путь кодируется множеством клеток слева от него.",
+      "backward_text": "CMO 2005 является более короткой версией той же идеи кодирования пути: вместо произвольного прямоугольного самоизбегающего пути монотонность в треугольной решетке делает код независимым выбором одного отрезка на каждом уровне.",
+      "anchors": {
+        "from_solution_id": "sol-official-crossings",
+        "to_solution_id": "sol-left-cells-injection"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-cmo-2005-p1-cmo-1979-self-avoiding-path-counting",
+      "from": "cmo-2005-p1-triangular-grid-paths",
+      "to": "cmo-1979-p5-square-lattice-self-avoiding-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи CMO формулируются как подсчет простых путей в решеточном графе. CMO 1979 использует ветвление и монотонные подпути для оценок, а CMO 2005 за счет запрета движения вверх получает точную факториальную формулу.",
+      "backward_text": "CMO 2005 дает точный монотонный пример темы самоизбегающихся решеточных путей из CMO 1979: ограничение направлений превращает общий ветвящийся подсчет в независимые выборы по слоям.",
+      "anchors": {
+        "from_solution_id": "sol-official-crossings",
+        "to_solution_id": "sol-enumeration-and-branching"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-cmo-2005-p1-cmo-2008-rook-walks",
+      "from": "cmo-2005-p1-triangular-grid-paths",
+      "to": "cmo-2008-p5-self-avoiding-rook-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи CMO считают самоизбегающиеся пути в графе клеток доски. В CMO 2005 слои дают прямое произведение числа выборов, а в CMO 2008 более сложная прямоугольная геометрия требует разбиения на случаи и рекурсии.",
+      "backward_text": "CMO 2005 - близкий простой ориентир для CMO 2008: в обеих карточках путь рассматривается как простой путь в графе смежности клеток, но треугольная монотонность устраняет рекурсивные состояния.",
+      "anchors": {
+        "from_solution_id": "sol-official-crossings",
+        "to_solution_id": "sol-official-recurrence"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+  ]
+}

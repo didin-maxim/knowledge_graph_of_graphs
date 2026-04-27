@@ -1,0 +1,132 @@
+{
+  "id": "minimal-half-subset-exchange-lemma",
+  "title": "Лемма об обмене для подмножества с минимальным числом внутренних ребер",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Society",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "fixed_size_vertex_subset",
+      "internal_edges",
+      "degrees_into_subset"
+    ],
+    "methods": [
+      "extremal_choice",
+      "exchange_argument"
+    ],
+    "transformations": [
+      "swap_inside_and_outside_vertices"
+    ],
+    "goal": [
+      "degree_comparison"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "minimum_internal_edge_count"
+    ],
+    "keywords": [
+      "minimal_subset",
+      "exchange_lemma",
+      "internal_edges",
+      "degree_into_subset"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть \\(G\\) — конечный простой граф, а \\(S\\subseteq V(G)\\) — подмножество заданного размера, для которого число ребер внутри \\(S\\) минимально среди всех подмножеств такого же размера. Для вершины \\(v\\) обозначим через \\(d_S(v)\\) число ее соседей в \\(S\\). Тогда для любых \\(r\\in S\\) и \\(b\\notin S\\) выполнено\n\\[\nd_S(b)-\\mathbf 1_{br}\\ge d_S(r),\n\\]\nгде \\(\\mathbf 1_{br}=1\\), если \\(b\\) и \\(r\\) смежны, и \\(0\\) иначе. В частности, \\(d_S(b)\\ge d_S(r)\\), а если \\(br\\) — ребро, то \\(d_S(b)>d_S(r)\\).",
+        "source_id": "src-cmo-2020-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-swap-cannot-improve",
+      "title": "Обмен не должен уменьшать экстремальную величину",
+      "text": "Если заменить \\(r\\in S\\) на \\(b\\notin S\\), то старые внутренние ребра, инцидентные \\(r\\), исчезают, а ребра от \\(b\\) к старым вершинам \\(S\\setminus\\{r\\}\\) становятся внутренними. Минимальность \\(S\\) запрещает уменьшение.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-one-swap",
+      "title": "Доказательство одним обменом",
+      "text": "Рассмотрим множество\n\\[\nS'=(S\\setminus\\{r\\})\\cup\\{b\\}.\n\\]\nОно имеет тот же размер, что и \\(S\\), поэтому по минимальности \\(S\\) число внутренних ребер в \\(S'\\) не меньше, чем в \\(S\\).\n\nПри переходе от \\(S\\) к \\(S'\\) исчезают ровно \\(d_S(r)\\) внутренних ребер: это ребра от \\(r\\) к другим вершинам \\(S\\). Появляются ровно \\(d_S(b)-\\mathbf 1_{br}\\) внутренних ребер: это ребра от \\(b\\) к вершинам из \\(S\\setminus\\{r\\}\\). Следовательно, прирост числа внутренних ребер равен\n\\[\n(d_S(b)-\\mathbf 1_{br})-d_S(r)\n\\]\nи не может быть отрицательным. Отсюда\n\\[\nd_S(b)-\\mathbf 1_{br}\\ge d_S(r).\n\\]\nЕсли \\(br\\) не является ребром, это сразу дает \\(d_S(b)\\ge d_S(r)\\). Если \\(br\\) является ребром, то \\(d_S(b)-1\\ge d_S(r)\\), то есть \\(d_S(b)>d_S(r)\\).",
+      "idea_ids": [
+        "idea-swap-cannot-improve"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 2,
+    "comment": "Короткая лемма об обмене, выделенная из официального доказательства нижней оценки в CMO 2020 P5.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "extremal_choice",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice",
+        "exchange_argument"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-2020-solutions",
+      "role": "extracted_from_solution_step",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Выделено из официального решения CMO 2020 P5 как переиспользуемая лемма об экстремальном выборе с одним обменом."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

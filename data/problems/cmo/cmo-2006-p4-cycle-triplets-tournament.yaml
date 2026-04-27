@@ -1,0 +1,207 @@
+{
+  "id": "cmo-2006-p4-cycle-triplets-tournament",
+  "title": "Минимум и максимум циклических троек в турнире, CMO 2006 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "extremal_counting"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Olympiad",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "directed_triangle",
+      "transitive_triple",
+      "regular_tournament"
+    ],
+    "methods": [
+      "degree_counting",
+      "double_counting",
+      "cauchy_schwarz",
+      "regular_tournament_construction"
+    ],
+    "transformations": [
+      "round_robin_to_tournament",
+      "noncyclic_triples_to_dominated_triples"
+    ],
+    "goal": [
+      "find_minimum_and_maximum",
+      "exact_extremal_count"
+    ],
+    "auxiliary_graph_type": [
+      "complete_oriented_graph"
+    ],
+    "invariants": [
+      "outdegrees",
+      "dominated_triples",
+      "sum_of_outdegrees"
+    ],
+    "keywords": [
+      "cmo_2006_p4",
+      "cycle_triplet",
+      "regular_tournament",
+      "directed_3_cycle",
+      "outdegree_counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальная формулировка",
+        "text": "В круговом турнире участвуют \\(2n+1\\) команд, где каждая команда играет с каждой другой командой ровно один раз; ничьих нет. Скажем, что три команды \\(X,Y,Z\\) образуют циклическую тройку, если \\(X\\) побеждает \\(Y\\), \\(Y\\) побеждает \\(Z\\), а \\(Z\\) побеждает \\(X\\). Найдите минимально возможное и максимально возможное число циклических троек.",
+        "source_id": "src-cmo-2006-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Эквивалентная графовая формулировка",
+        "text": "Пусть \\(T\\) — турнир на \\(2n+1\\) вершинах, то есть ориентация полного графа, в которой между любыми двумя различными вершинами проведена ровно одна дуга. Определите минимально возможное и максимально возможное число направленных циклов длины \\(3\\) в таком турнире.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "directed_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-degree-hint"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-degree-hint",
+        "title": "Формулировка через исходящие степени",
+        "text": "Пусть \\(x_v\\) — исходящая степень вершины \\(v\\) турнира на \\(2n+1\\) вершинах. Каждая тройка вершин либо является направленным циклом, либо имеет вершину, из которой выходят две дуги внутри этой тройки. Поэтому число нециклических троек равно \\(\\sum_v \\binom{x_v}{2}\\). Максимум числа направленных \\(3\\)-циклов получается при минимизации этой суммы при условии \\(\\sum_v x_v=\\binom{2n+1}{2}\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "outdegree"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-dominated-triples",
+      "title": "Нециклическая тройка имеет победителя",
+      "text": "Любые три вершины турнира образуют либо направленный цикл, либо транзитивную тройку. Во втором случае ровно одна вершина побеждает две остальные, поэтому такие тройки удобно считать по исходящим степеням.",
+      "tags": [
+        "tournaments",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-regular-tournament-extremal",
+      "title": "Максимум достигается на регулярном турнире",
+      "text": "Чтобы циклических троек было как можно больше, надо минимизировать число транзитивных троек \\(\\sum_v\\binom{x_v}{2}\\). При фиксированной сумме исходящих степеней эта выпуклая сумма минимальна, когда все степени равны \\(n\\), что реализуется циклическим регулярным турниром.",
+      "tags": [
+        "tournaments",
+        "extremal_graph_theory",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-degree-count",
+      "title": "Подсчет транзитивных троек по исходящим степеням",
+      "text": "Ответ: минимум равен \\(0\\), максимум равен\n\\[\n\\frac{n(n+1)(2n+1)}6.\n\\]\n\nСначала докажем минимум. Пронумеруем команды \\(T_1,T_2,\\ldots,T_{2n+1}\\) и пусть команда с большим номером всегда побеждает команду с меньшим номером. Тогда в любой тройке команд есть самая большая по номеру команда: она побеждает две остальные. Значит, циклических троек нет, и минимум действительно равен \\(0\\).\n\nТеперь найдем максимум. Рассмотрим произвольный турнир на \\(2n+1\\) командах. Обозначим через \\(c\\) число циклических троек, а через \\(d\\) число остальных троек. Всего троек команд\n\\[\nc+d=\\binom{2n+1}{3}.\n\\]\nЛюбая нециклическая тройка в турнире имеет одну команду, которая побеждает две другие: если три результата не образуют цикл, то они упорядочиваются как «сильная — средняя — слабая». Наоборот, если некоторая команда побеждает две другие внутри выбранной тройки, то эта тройка не может быть циклической.\n\nПусть \\(x_i\\) — число команд, которые побеждает команда \\(T_i\\), то есть ее исходящая степень. Тогда команда \\(T_i\\) является победителем ровно в \\(\\binom{x_i}{2}\\) нециклических троек: достаточно выбрать две команды из тех \\(x_i\\), которых она побеждает. Каждая нециклическая тройка так посчитана ровно один раз, по своему единственному победителю. Следовательно,\n\\[\nd=\\sum_{i=1}^{2n+1}\\binom{x_i}{2}.\n\\]\nКроме того,\n\\[\n\\sum_{i=1}^{2n+1}x_i=\\binom{2n+1}{2}=n(2n+1),\n\\]\nпотому что каждая игра дает ровно одну победу.\n\nОценим сумму \\(d\\). Так как\n\\[\n\\sum_i\\binom{x_i}{2}=\\frac12\\sum_i x_i^2-\\frac12\\sum_i x_i,\n\\]\nа сумма \\(\\sum_i x_i\\) фиксирована, нужно оценить снизу \\(\\sum_i x_i^2\\). По неравенству Коши\n\\[\n(2n+1)\\sum_i x_i^2\\ge \\left(\\sum_i x_i\\right)^2=n^2(2n+1)^2,\n\\]\nто есть \\(\\sum_i x_i^2\\ge n^2(2n+1)\\). Поэтому\n\\[\nd\\ge \\frac12 n^2(2n+1)-\\frac12 n(2n+1)=(2n+1)\\binom n2.\n\\]\nОтсюда\n\\[\nc=\\binom{2n+1}{3}-d\n\\le \\binom{2n+1}{3}-(2n+1)\binom n2\n=\\frac{n(n+1)(2n+1)}6.\n\\]\n\nОсталось показать, что эта оценка достижима. Расположим \\(2n+1\\) команд по кругу и пусть каждая команда побеждает следующие \\(n\\) команд по часовой стрелке, а оставшимся \\(n\\) командам проигрывает. Для каждой пары команд это правило задает ровно один результат: если от первой до второй по часовой стрелке расстояние \\(1,2,\\ldots,n\\), то первая побеждает вторую; если расстояние \\(n+1,\\ldots,2n\\), то побеждает вторая.\n\nВ таком турнире каждая команда имеет исходящую степень \\(n\\). Значит,\n\\[\nd=(2n+1)\binom n2,\n\\]\nи потому число циклических троек равно найденной верхней оценке\n\\[\n\\binom{2n+1}{3}-(2n+1)\binom n2=\\frac{n(n+1)(2n+1)}6.\n\\]\nИтак, минимально возможное число циклических троек равно \\(0\\), а максимально возможное — \\(\\frac{n(n+1)(2n+1)}6\\).",
+      "idea_ids": [
+        "idea-dominated-triples",
+        "idea-regular-tournament-extremal"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tournament",
+        "outdegree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "CMO 2006 P4: средняя финальная задача на перевод кругового турнира в турнир, подсчет транзитивных троек по исходящим степеням и регулярную конструкцию.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "tournaments",
+    "extremal_graph_theory",
+    "double_counting",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "degree_counting",
+        "double_counting",
+        "regular_tournament_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-2006-official",
+      "role": "statement_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    },
+    {
+      "source_id": "src-cmo-2006-solutions",
+      "role": "official_solution_crosscheck",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-official-degree-count"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Официальное условие сверено с exam2006.pdf, задача 4; решение сверено с sol2006.pdf, задача 4.",
+      "Обычная graph_theory-формулировка оставлена эквивалентной и самодостаточной; степень-счетная версия вынесена в graph_hint_reformulations как сильная подсказка."
+    ],
+    "relations_status": "deep_done"
+  }
+}

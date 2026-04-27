@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-euler-formula-quadrangulation-euler-count",
+      "from": "euler-formula-planar",
+      "to": "quadrangulation-euler-face-count",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Формула Эйлера является основным входом в лемму о четырёхугольном разбиении: после записи \\(V-E+F=2\\) остаётся только посчитать стороны внутренних граней.",
+      "backward_text": "Лемма о четырёхугольном разбиении — специализированное олимпиадное следствие формулы Эйлера для плоского графа в диске, где все внутренние грани имеют длину 4.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-euler-face-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-quadrangulation-euler-count-cmo-1995-p3",
+      "from": "quadrangulation-euler-face-count",
+      "to": "cmo-1995-p3-polygon-quadrangulation-boomerangs",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В эйлеровом варианте решения CMO 1995 P3 лемма даёт точную формулу \\(q=I+B/2-1\\) для числа четырёхугольников в разбиении.",
+      "backward_text": "CMO 1995 P3 добавляет к чистому эйлерову подсчёту геометрический шаг: каждый бумеранг даёт отдельную внутреннюю вершину, а число граничных вершин не меньше числа сторон исходного выпуклого многоугольника.",
+      "anchors": {
+        "from_solution_id": "sol-euler-face-count",
+        "to_solution_id": "sol-euler-counting-variant"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-planar-edge-bound-cmo-1995-p3-face-counting",
+      "from": "planar-edge-bound",
+      "to": "cmo-1995-p3-polygon-quadrangulation-boomerangs",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют одну и ту же планарную механику: формулу Эйлера вместе с подсчётом инцидентностей ребро-грань. В стандартной оценке числа рёбер планарного графа длины граней дают верхнюю оценку на число рёбер, а в CMO 1995 P3 четырёхугольные грани дают точную формулу для \\(q\\).",
+      "backward_text": "CMO 1995 P3 является геометрическим применением подсчёта граней: после перевода разбиения в плоский граф тот же эйлеров подсчёт граней работает почти как в стандартной оценке числа рёбер планарного графа.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-euler-counting-variant"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-usamo-2024-triangulation-cmo-1995-quadrangulation",
+      "from": "usamo-2024-p3-balanced-regular-polygon-triangulation",
+      "to": "cmo-1995-p3-polygon-quadrangulation-boomerangs",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "USAMO 2024 P3 и CMO 1995 P3 обе кодируют разбиения многоугольника как внешнепланарные или плоские структуры граней. В первой задаче изучаются треугольные грани с весами площадей, а во второй — четырёхугольные грани и вклады входящих углов.",
+      "backward_text": "CMO 1995 P3 — более элементарный счётный сосед задач о триангуляциях многоугольника: вместо алгебраических ограничений на площади здесь используются структура граней четырёхугольного разбиения и суммы углов.",
+      "anchors": {
+        "from_solution_id": "sol-fan-and-integrality",
+        "to_solution_id": "sol-official-angle-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+  ]
+}

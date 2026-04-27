@@ -1,0 +1,177 @@
+{
+  "id": "cmo-1989-p4-ladders-ropes-monkeys",
+  "title": "Обезьяны, лестницы и верёвки как сеть переключений, CMO 1989 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Olympiad Committee",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "ladder_switching_network",
+      "horizontal_matching_layers",
+      "permutation_of_terminals"
+    ],
+    "methods": [
+      "bijection_argument",
+      "composition_of_transpositions",
+      "path_following"
+    ],
+    "transformations": [
+      "ropes_between_ladders_to_switching_network",
+      "ordered_rope_levels_to_permutation"
+    ],
+    "goal": [
+      "prove_all_top_terminals_are_reached"
+    ],
+    "auxiliary_graph_type": [
+      "layered_graph",
+      "transition_network"
+    ],
+    "invariants": [
+      "one_monkey_per_ladder_between_consecutive_rope_levels",
+      "bijection_between_bottom_and_top_terminals"
+    ],
+    "keywords": [
+      "cmo_1989_p4",
+      "cmo",
+      "monkeys_ladders_ropes",
+      "switching_network",
+      "permutation_by_transpositions"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Есть 5 обезьян и 5 лестниц; наверху каждой лестницы лежит банан. Несколько верёвок соединяют лестницы, каждая верёвка соединяет две лестницы. Никакие две верёвки не прикреплены к одной и той же перекладине одной и той же лестницы. Каждая обезьяна начинает снизу своей лестницы. Обезьяны лезут вверх по лестницам, но всякий раз, когда встречают верёвку, переходят по ней на лестницу на другом конце верёвки и затем продолжают лезть вверх. Докажите, что при любом числе верёвок каждая обезьяна получит банан.",
+        "source_id": "src-cmo-1989-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Даны пять вертикальных путей от нижних терминалов к верхним терминалам. Горизонтальные рёбра соединяют пары вертикальных путей так, что на каждом вертикальном пути никакие два горизонтальных ребра не имеют одной и той же высоты; на одной высоте горизонтальные рёбра образуют паросочетание. Из каждого нижнего терминала одновременно выпускают по одной фишке: фишка движется вверх по своему вертикальному пути, а встретив горизонтальное ребро, переходит по нему на другой вертикальный путь и затем снова движется вверх. Докажите, что в конце заняты все пять верхних терминалов.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path",
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-hint-transpositions",
+        "title": "Подсказка через перестановки уровней",
+        "text": "Упорядочьте все высоты, на которых есть горизонтальные рёбра. Между двумя соседними высотами на каждом из пяти вертикальных путей находится ровно одна фишка. На очередной высоте горизонтальные рёбра попарно меняют фишки местами на своих концах, то есть действуют как произведение непересекающихся транспозиций. Докажите, что после всех высот полученная карта нижних терминалов в верхние является перестановкой.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-rope-levels",
+      "title": "Верёвки как уровни переключения",
+      "text": "Если смотреть снизу вверх, то все верёвки одной высоты задают паросочетание на пяти лестницах и просто переставляют обезьян между лестницами.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-bijection",
+      "title": "Композиция перестановок остаётся перестановкой",
+      "text": "Каждый уровень действует биективно на множество лестниц; значит, вся сеть переводит пять нижних стартов в пять различных верхних выходов.",
+      "tags": [
+        "goal_proof"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-transposition-levels",
+      "title": "Решение через перестановки на уровнях",
+      "text": "Рассмотрим все уровни, на которых к лестницам прикреплены верёвки, в порядке снизу вверх. На каждом таком уровне никакая лестница не участвует более чем в одной верёвке, поэтому верёвки этого уровня образуют паросочетание на пяти лестницах.\n\nДо первого уровня на каждой лестнице находится ровно одна обезьяна. Когда обезьяны доходят до очередного уровня, каждая верёвка этого уровня меняет местами обезьян на двух своих концах, а лестницы без верёвки на этом уровне сохраняют своих обезьян. Значит, переход через уровень является перестановкой пяти обезьян по пяти лестницам. После уровня снова на каждой лестнице ровно одна обезьяна.\n\nПовторяя это для всех уровней, получаем композицию перестановок. Следовательно, перед последним отрезком до вершин лестниц на каждой лестнице по-прежнему находится ровно одна обезьяна. Все обезьяны дальше лезут вверх и достигают верхов лестниц; поскольку верхов пять и на каждой лестнице приходит ровно одна обезьяна, все пять бананов будут взяты.",
+      "idea_ids": [
+        "idea-rope-levels",
+        "idea-bijection"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 5,
+    "comment": "CMO 1989 P4; короткая задача на биекцию: уровни верёвок действуют как произведения непересекающихся транспозиций.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "goal_proof",
+    "goal_characterization"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bijection_argument",
+        "composition_of_transpositions"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-1989-official",
+      "role": "problem_statement_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: условие сверено с официальным PDF CMS exam1989.pdf; отдельное официальное решение для ранних лет CMO в открытом архиве не использовалось. Решение проверено как самостоятельный аргумент через перестановки.",
+      "2026-04-27: после проставления меток просмотрены кандидаты по базе; уверенных родственных связей, кроме слишком широкого совпадения по паросочетаниям, не добавлено."
+    ],
+    "relations_status": "reviewed_no_links"
+  }
+}

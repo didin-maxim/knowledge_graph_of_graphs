@@ -1,0 +1,137 @@
+{
+  "id": "alternating-boundary-pairs-noncrossing-arcs",
+  "title": "Непересекающиеся дуги с чередующимися концами на границе диска",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "extracted_solution_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "disk",
+      "boundary_points",
+      "simple_arcs",
+      "planar_embedding"
+    ],
+    "methods": [
+      "jordan_curve_separation",
+      "planar_separation"
+    ],
+    "transformations": [
+      "arc_plus_boundary_arc_to_jordan_curve"
+    ],
+    "goal": [
+      "prove_intersection"
+    ],
+    "auxiliary_graph_type": [
+      "embedded_planar_graph"
+    ],
+    "invariants": [
+      "cyclic_order_on_boundary",
+      "separation_by_simple_closed_curve"
+    ],
+    "keywords": [
+      "noncrossing_arcs",
+      "alternating_endpoints",
+      "jordan_curve",
+      "planar_separation"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть \\(A,B,C,D\\) — четыре различные точки на границе диска, расположенные на ней в циклическом порядке \\(A,B,C,D\\). Тогда две простые дуги внутри диска, соединяющие \\(A\\) с \\(C\\) и \\(B\\) с \\(D\\), не могут быть непересекающимися.",
+        "source_id": "src-wikipedia-euler-characteristic",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-one-arc-separates-alternating-endpoints",
+      "title": "Одна диагональная дуга разделяет два оставшихся конца",
+      "text": "Дуга \\(AC\\) вместе с одной из двух граничных дуг между \\(A\\) и \\(C\\) образует простую замкнутую кривую; при чередующемся порядке точек \\(B\\) и \\(D\\) оказываются по разные стороны этой кривой.",
+      "tags": [
+        "planar_graphs",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-jordan-separation",
+      "title": "Разделение простой замкнутой кривой",
+      "text": "Проведем дугу \\(\\alpha\\), соединяющую \\(A\\) с \\(C\\). На границе диска есть две граничные дуги между \\(A\\) и \\(C\\): одна содержит \\(B\\), другая содержит \\(D\\). Возьмем ту граничную дугу, которая содержит \\(B\\), и объединим ее с \\(\\alpha\\). Получится простая замкнутая кривая.\n\nПо теореме Жордана эта кривая делит диск на две области. Точка \\(D\\) лежит на другой граничной дуге между \\(A\\) и \\(C\\), поэтому она находится по другую сторону от точки \\(B\\). Следовательно, любая дуга из \\(B\\) в \\(D\\) внутри диска обязана пересечь построенную замкнутую кривую. Она не может пересечь выбранную граничную дугу, если ее внутренняя часть лежит внутри диска и ее концы — только \\(B\\) и \\(D\\). Значит она должна пересечь \\(\\alpha\\). Поэтому дуги \\(AC\\) и \\(BD\\) не могут быть непересекающимися.",
+      "idea_ids": [
+        "idea-one-arc-separates-alternating-endpoints"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 3,
+    "comment": "Стандартный факт о разделении жордановой кривой, используемый в олимпиадных аргументах о планарных графах.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "connectivity",
+    "classical_theorem",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "jordan_curve_separation",
+        "planar_separation"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-euler-characteristic",
+      "role": "standard_topological_reference",
+      "status": "source_verified",
+      "note": "Используется только как общий топологический источник для планарного разделения и контекста жордановой кривой, уже присутствующего в списке источников."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "updated_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: выделено из шага о планарном разделении в CMO 2025 P5; сформулировано как самостоятельная лемма о непересекающихся дугах для будущих задач о планарных графах."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "graph_theory_absent_reason": "Исходная формулировка уже является графово-топологической формулировкой леммы."
+  }
+}

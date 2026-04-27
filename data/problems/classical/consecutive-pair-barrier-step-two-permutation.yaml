@@ -1,0 +1,116 @@
+{
+  "id": "consecutive-pair-barrier-step-two-permutation",
+  "title": "Барьер из соседней пары в перестановке с шагом не больше двух",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Olympiad Committee",
+      "note": "Выделено из официального решения CMO 1996 P3; отдельный автор в источнике CMS не указан.",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "integer_permutation",
+      "bounded_difference_path",
+      "consecutive_pair"
+    ],
+    "methods": [
+      "barrier_argument",
+      "contradiction"
+    ],
+    "transformations": [
+      "permutation_to_path_in_path_square"
+    ],
+    "goal": [
+      "separation_property"
+    ],
+    "auxiliary_graph_type": [
+      "square_of_path"
+    ],
+    "invariants": [
+      "used_consecutive_values",
+      "cannot_cross_gap_after_pair_is_used"
+    ],
+    "keywords": [
+      "step_two_permutation",
+      "consecutive_pair_barrier",
+      "path_square"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть \\(a_1,a_2,\\ldots,a_n\\) — перестановка чисел \\(1,2,\\ldots,n\\), в которой \\(|a_i-a_{i+1}|\\le 2\\) для всех \\(i\\). Если для некоторого \\(k<n\\) числа \\(a_k\\) и \\(a_{k+1}\\) являются соседними целыми числами, то все члены справа от \\(a_{k+1}\\) лежат по одну сторону от этой пары: они либо все меньше \\(\\min(a_k,a_{k+1})\\), либо все больше \\(\\max(a_k,a_{k+1})\\).",
+        "source_id": "src-cmo-1996-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-used-pair-blocks-crossing",
+      "title": "Использованная соседняя пара блокирует переход",
+      "text": "После того как путь прошёл через два соседних значения \\(m\\) и \\(m+1\\), перейти позже с чисел \\(\\le m-1\\) на числа \\(\\ge m+2\\) невозможно: ближайшие промежуточные значения уже использованы, а прямой скачок имеет длину не меньше 3.",
+      "tags": [
+        "goal_proof"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-gap-crossing-contradiction",
+      "title": "Противоречие по первому переходу через зазор",
+      "text": "Обозначим соседнюю пару через \\(m,m+1\\). Предположим, что справа от неё встречаются числа по обе стороны: хотя бы одно число не больше \\(m-1\\) и хотя бы одно число не меньше \\(m+2\\). Двигаясь по хвосту перестановки справа от этой пары, рассмотрим первый момент, когда последовательность переходит с одной стороны зазора \\(m,m+1\\) на другую. Этот переход не может использовать сами числа \\(m\\) и \\(m+1\\), потому что они уже стоят в позициях \\(k\\) и \\(k+1\\). Значит, два соседних члена хвоста имеют вид \\(x\\le m-1\\) и \\(y\\ge m+2\\), или наоборот. Тогда \\(|x-y|\\ge 3\\), что противоречит условию \\(|a_i-a_{i+1}|\\le 2\\). Следовательно, все члены справа от пары лежат по одну сторону от неё.",
+      "idea_ids": [
+        "idea-used-pair-blocks-crossing"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Короткая структурная лемма для перестановок с ограниченным соседним скачком; в CMO 1996 P3 она запускает разбор случаев и рекурсию.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "goal_proof"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-cmo-1996-solutions",
+      "role": "extracted_from_official_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: выделено из барьерного наблюдения, использованного в официальном решении CMO 1996 P3."
+    ],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "id": "cmo-1971-p10-one-way-phone-gossip",
+  "title": "Односторонние телефонные звонки и распространение всей информации, CMO 1971 P10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Комитет Канадской математической олимпиады",
+      "note": "В официальных материалах CMS указан источник задачи, но не назван индивидуальный автор.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_communication_process",
+      "token_spreading",
+      "one_way_calls"
+    ],
+    "methods": [
+      "temporal_reachability_lower_bound",
+      "constructive_schedule",
+      "first_universal_knower_argument"
+    ],
+    "transformations": [
+      "phone_calls_to_directed_transmissions",
+      "information_pieces_to_tokens"
+    ],
+    "goal": [
+      "minimum_number_of_calls",
+      "exact_bound"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "known_information_sets",
+      "first_time_someone_knows_all_information"
+    ],
+    "keywords": [
+      "cmo_1971_p10",
+      "one_way_gossip",
+      "directed_broadcast",
+      "gather_and_broadcast"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальное условие",
+        "text": "Пусть каждый из \\(n\\) человек знает ровно один факт, причем все \\(n\\) фактов различны. Каждый раз, когда человек \\(A\\) звонит человеку \\(B\\), \\(A\\) сообщает \\(B\\) все, что знает сам, а \\(B\\) ничего не сообщает \\(A\\). Каково минимальное число телефонных звонков между парами людей, необходимое для того, чтобы каждый знал все факты? Докажите, что найденное число минимально.",
+        "source_id": "src-cmo-1971-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Эквивалентная графовая формулировка",
+        "text": "Имеется \\(n\\) вершин, и в начале у каждой вершины есть свой уникальный жетон. За один ход выбирается упорядоченная пара различных вершин \\((u,v)\\), после чего все жетоны, известные вершине \\(u\\), копируются в вершину \\(v\\); вершина \\(u\\) при этом новых жетонов не получает. Определите минимальное число таких направленных передач, после которого каждая вершина знает все \\(n\\) жетонов, и докажите минимальность.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-hint-gather-broadcast",
+        "title": "Подсказочная формулировка через две фазы",
+        "text": "В той же модели направленных передач найдите минимальное число ходов, если сначала все жетоны должны попасть хотя бы в одну вершину, а затем из уже все знающей вершины информация должна дойти до всех остальных. Обоснуйте, почему до первого момента, когда какая-то вершина знает все жетоны, необходимо не меньше \\(n-1\\) передач, и почему после этого всем остальным вершинам нужно получить хотя бы по одной новой передаче.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-answer-two-n-minus-two",
+      "title": "Ответ \\(2n-2\\)",
+      "text": "Все факты можно собрать у одного человека за \\(n-1\\) звонков, например последовательно передавая накопленную информацию к выбранному центру, а затем за еще \\(n-1\\) звонков этот человек может сообщить полный набор фактов всем остальным.",
+      "tags": [
+        "goal_exact_bound",
+        "goal_construction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-first-universal-knower",
+      "title": "Первый человек, который узнал все",
+      "text": "До первого момента, когда кто-то впервые знает все \\(n\\) фактов, информация каждого из остальных \\(n-1\\) людей должна по направленной цепочке дойти до него, что требует как минимум \\(n-1\\) звонков. После этого ни один другой человек еще не знал всего раньше, поэтому каждому из остальных \\(n-1\\) людей нужен хотя бы один последующий входящий звонок с полным набором фактов.",
+      "tags": [
+        "goal_bound",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "CMO 1971 P10; точная граница получается из конструкции «собрать и разослать» и нижней оценки по первому человеку, который узнал все факты.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "extremal_choice",
+    "goal_algorithm",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "temporal_reachability_lower_bound",
+        "constructive_schedule"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-1971-official",
+      "role": "statement_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: официальный PDF CMO 1971 содержит задачу 10 с параметром n, поэтому численное обобщение не требовалось.",
+      "2026-04-27: архивная ссылка на решение CMO 1971 проверена и не открыла официальное решение; поле solutions намеренно оставлено пустым.",
+      "2026-04-27: graph_theory эквивалентна исходной задаче о передаче информации; graph_hint_reformulations фиксирует двухфазную идею сбора и рассылки."
+    ],
+    "relations_status": "base_done",
+    "updated_at": "2026-04-27"
+  }
+}

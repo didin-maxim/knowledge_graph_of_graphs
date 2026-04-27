@@ -1,0 +1,187 @@
+{
+  "id": "cmo-1973-p4-triangulated-nonagon-labelings",
+  "title": "Разметка треугольников в триангулированном девятиугольнике, CMO 1973 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application",
+      "counting_problem"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Комитет Канадской математической олимпиады",
+      "note": "Официальный лист задач CMS указывает соревнование, но не называет отдельного автора задачи.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "triangulated_polygon",
+      "bipartite_incidence_graph",
+      "perfect_matching"
+    ],
+    "methods": [
+      "forced_choices",
+      "case_counting",
+      "incidence_constraints"
+    ],
+    "transformations": [
+      "triangle_vertex_incidence_to_bipartite_graph"
+    ],
+    "goal": [
+      "count_valid_labelings",
+      "count_perfect_matchings"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "which_named_vertices_are_incident_to_each_triangle",
+      "unused_triangle_names",
+      "unused_actual_triangles"
+    ],
+    "keywords": [
+      "cmo_1973_p4",
+      "triangulated_nonagon",
+      "incidence_labeling",
+      "perfect_matching_count"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальное условие",
+        "text": "Выпуклый многоугольник имеет девять вершин \\(P_0,P_1,\\ldots,P_8\\) в циклическом порядке. Шесть диагоналей разбивают его на семь треугольников \\(P_0P_1P_3\\), \\(P_0P_3P_6\\), \\(P_0P_6P_7\\), \\(P_0P_7P_8\\), \\(P_1P_2P_3\\), \\(P_3P_4P_6\\) и \\(P_4P_5P_6\\). Сколькими способами можно присвоить этим треугольникам названия \\(\\Delta_1,\\Delta_2,\\ldots,\\Delta_7\\) так, чтобы \\(P_i\\) была вершиной треугольника \\(\\Delta_i\\) при \\(i=1,2,\\ldots,7\\)? Обоснуйте ответ.",
+        "source_id": "src-cmo-1973-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть левая доля двудольного графа состоит из семи меток \\(1,2,\\ldots,7\\), а правая доля - из семи треугольников \\(013,036,067,078,123,346,456\\). Соединим метку \\(i\\) с треугольником тогда и только тогда, когда вершина \\(P_i\\) принадлежит этому треугольнику. Найдите число совершенных паросочетаний в этом двудольном графе.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-graph-forced-neighbors",
+        "title": "Взгляд через вынужденных соседей в паросочетании",
+        "text": "В двудольном графе меток и настоящих треугольников сначала отметим метки степени один: метка \\(2\\) смежна только с треугольником \\(123\\), а метка \\(5\\) - только с треугольником \\(456\\). После удаления этих вынужденных пар продолжайте удалять вынужденные пары метка-треугольник. Определите, сколько совершенных паросочетаний останется.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-incidence-matching",
+      "title": "Метки как задача о паросочетании",
+      "text": "Допустимая разметка - это ровно совершенное паросочетание между семью названиями \\(\\Delta_i\\) и семью настоящими треугольниками, где допустимость задается инцидентностью вершины и треугольника.",
+      "tags": [
+        "matching",
+        "goal_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-forced-leaves",
+      "title": "Последовательно снимайте вынужденные метки",
+      "text": "Некоторые метки можно поставить только на один из оставшихся треугольников. Каждый такой выбор степени один вынужден, а после его удаления появляются новые вынужденные выборы.",
+      "tags": [
+        "matching",
+        "goal_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-forced-matching",
+      "title": "Вынужденные выборы в графе инцидентности",
+      "text": "Запишем семь настоящих треугольников как \\(013,036,067,078,123,346,456\\). Разметка допустима тогда и только тогда, когда каждая метка \\(i\\) присвоена отдельному треугольнику, содержащему вершину \\(P_i\\). Поэтому нужно лишь посчитать совершенные паросочетания в этой таблице инцидентности.\n\nМетку \\(2\\) можно поставить только на треугольник \\(123\\), значит \\(\\Delta_2=123\\). Точно так же метку \\(5\\) можно поставить только на треугольник \\(456\\), значит \\(\\Delta_5=456\\).\n\nПосле удаления этих двух треугольников метка \\(1\\) уже не может использовать \\(123\\) и вынужденно идет на \\(013\\). Метка \\(4\\) уже не может использовать \\(456\\) и вынужденно идет на \\(346\\). Оставшиеся неразмеченные треугольники - \\(036,067,078\\), а оставшиеся метки - \\(3,6,7\\). Теперь метка \\(3\\) среди оставшихся треугольников может использовать только \\(036\\); затем метка \\(6\\) вынужденно идет на \\(067\\), а метка \\(7\\) - на \\(078\\).\n\nИтак, каждый шаг вынужден, и единственная допустимая разметка такова:\n\\[\n\\Delta_1=013,\n\\Delta_2=123,\n\\Delta_3=036,\n\\Delta_4=346,\n\\Delta_5=456,\n\\Delta_6=067,\n\\Delta_7=078.\n\\]\nСледовательно, число разметок равно \\(1\\).",
+      "idea_ids": [
+        "idea-incidence-matching",
+        "idea-forced-leaves"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [],
+      "definition_ids": [
+        "bipartite_graph",
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 4,
+    "comment": "CMO 1973 P4 сводится к небольшому подсчету паросочетаний инцидентности; после двудольной переформулировки паросочетание находится вынужденными выборами степени один.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "triangle_vertex_incidence_to_bipartite_graph",
+        "forced_choices"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-1973-official",
+      "role": "statement_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: официальный PDF содержит диаграмму; приведенное здесь условие делает триангуляцию самодостаточной, перечисляя все семь треугольников.",
+      "2026-04-27: решение расширено на русском; запись graph_hint_reformulations фиксирует взгляд через вынужденное паросочетание.",
+      "2026-04-27: отдельная лемма не выделялась, потому что вынужденные выборы специфичны для этого небольшого графа инцидентности."
+    ],
+    "relations_status": "deep_done",
+    "updated_at": "2026-04-27"
+  }
+}

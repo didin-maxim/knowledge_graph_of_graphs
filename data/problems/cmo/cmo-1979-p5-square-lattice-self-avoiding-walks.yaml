@@ -1,0 +1,196 @@
+{
+  "id": "cmo-1979-p5-square-lattice-self-avoiding-walks",
+  "title": "Самоизбегающие маршруты на квадратной решетке, CMO 1979 P5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "note": "Официальный лист задач CMS указывает соревнование, но не отдельного автора задачи.",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "square_lattice_graph",
+      "self_avoiding_walk",
+      "simple_walk"
+    ],
+    "methods": [
+      "case_enumeration",
+      "branching_bound",
+      "monotone_subfamily_lower_bound"
+    ],
+    "transformations": [
+      "unit_steps_to_square_lattice_walk"
+    ],
+    "goal": [
+      "compute_initial_values",
+      "prove_two_sided_bound"
+    ],
+    "auxiliary_graph_type": [
+      "infinite_grid_graph"
+    ],
+    "invariants": [
+      "no_repeated_vertices"
+    ],
+    "keywords": [
+      "cmo_1979_p5",
+      "canadian_mathematical_olympiad",
+      "goal_counting",
+      "square_lattice",
+      "self_avoiding_walks"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальное условие",
+        "text": "Маршрут состоит из последовательности шагов длины 1 в направлениях на север, юг, восток или запад. Маршрут называется самоизбегающим, если он никогда не проходит через одну и ту же точку дважды. Пусть \\(f(n)\\) обозначает число \\(n\\)-шаговых самоизбегающих маршрутов, начинающихся в начале координат. Найдите \\(f(1)\\), \\(f(2)\\), \\(f(3)\\), \\(f(4)\\) и докажите, что \\(2^n<f(n)\\le 4\\cdot 3^{n-1}\\).",
+        "source_id": "src-cmo-1979-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть вершинами являются целочисленные точки решетки \\(\\mathbb Z^2\\), а ребра соединяют пары точек на евклидовом расстоянии 1. Пусть \\(f(n)\\) - число простых путей длины \\(n\\), начинающихся в \\((0,0)\\). Найдите \\(f(1),f(2),f(3),f(4)\\) и докажите, что \\(2^n<f(n)\\le 4\\cdot 3^{n-1}\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-graph-hint-branching",
+        "text": "В графе квадратной решетки посчитайте простые пути из \\((0,0)\\). Для верхней оценки раскрывайте путь по одной вершине: первый шаг имеет 4 варианта, а затем путь не может сразу вернуться в предыдущую вершину, поэтому на каждом шаге есть не более 3 вариантов. Для нижней оценки сравните с монотонными путями, использующими только шаги на север и восток.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-branching-after-first-step",
+      "title": "Ветвление после первого шага",
+      "text": "После выбора первого единичного шага следующий шаг имеет не более трех возможных направлений, поскольку обратный шаг сразу вернул бы маршрут в предыдущую точку решетки. Это дает стандартную верхнюю оценку \\(f(n)\\le 4\\cdot 3^{n-1}\\).",
+      "tags": [
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-monotone-subfamily",
+      "title": "Монотонные маршруты дают нижнюю оценку",
+      "text": "Каждая последовательность шагов на север и восток самоизбегающая, что дает \\(2^n\\) маршрутов; кроме них есть и другие маршруты, например маршрут только на юг. Следовательно, \\(2^n<f(n)\\).",
+      "tags": [
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-four-step-square-correction",
+      "title": "На четвертом шаге мешают только обходы единичного квадрата",
+      "text": "Для четырехшаговых маршрутов наивная оценка дает \\(4\\cdot3^3\\). Единственные запрещенные четвертые ходы - это 8 завершений пути по трем сторонам единичного квадрата с возвращением в начало координат, поэтому \\(f(4)=108-8=100\\).",
+      "tags": [
+        "goal_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-enumeration-and-branching",
+      "title": "Перебор и оценки ветвления",
+      "text": "Для одного, двух и трех шагов после первого шага есть соответственно ноль, один или два дальнейших выбора, каждый с 3 доступными направлениями без немедленного возврата, и до шага 4 никакое другое повторение невозможно. Поэтому \\(f(1)=4\\), \\(f(2)=4\\cdot3=12\\) и \\(f(3)=4\\cdot3^2=36\\). Для четырех шагов начнем с тех же \\(4\\cdot3^3=108\\) маршрутов без немедленного возврата. Повторение может быть только возвращением в начало координат на четвертом шаге; это происходит ровно тогда, когда первые три шага идут по трем сторонам единичного квадрата. Есть 4 варианта первого шага и 2 варианта направления обхода квадрата, значит таких маршрутов 8. Следовательно, \\(f(4)=108-8=100\\). Для каждого \\(n\\ge1\\) первый шаг имеет 4 варианта, а каждый последующий шаг имеет не более 3 вариантов, потому что путь не может сразу вернуться в предыдущую точку решетки, поэтому \\(f(n)\\le4\\cdot3^{n-1}\\). Кроме того, все \\(2^n\\) маршрутов, использующих только шаги на север и восток, самоизбегающие, и существует хотя бы еще один самоизбегающий маршрут, например маршрут только на юг. Значит, \\(2^n<f(n)\\).",
+      "idea_ids": [
+        "idea-branching-after-first-step",
+        "idea-monotone-subfamily",
+        "idea-four-step-square-correction"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "CMO 1979 P5; короткая задача национального финала на перебор самоизбегающих маршрутов, с прямой верхней оценкой ветвления и нижней оценкой через монотонные маршруты.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "goal_counting",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "case_enumeration",
+        "branching_bound",
+        "monotone_subfamily_lower_bound"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-1979-official",
+      "role": "problem_statement_official",
+      "statement_ids": [
+        "stmt-original"
+      ],
+      "status": "source_verified",
+      "note": "Официальный архивный PDF CMS с задачами Канадской математической олимпиады 1979 года; отдельный автор на листе не указан."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: официальное условие сверено с архивом CMS exam1979.pdf.",
+      "2026-04-27: в официальном листе задач отдельный автор не указан; поле authors намеренно остается needs_human_review.",
+      "2026-04-27: запись graph_hint_reformulations оставлена отдельно, потому что она дает основные идеи ветвления и монотонного подсемейства."
+    ],
+    "relations_status": "base_done"
+  }
+}
