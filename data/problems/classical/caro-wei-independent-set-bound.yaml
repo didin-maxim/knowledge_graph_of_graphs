@@ -1,0 +1,140 @@
+{
+  "id": "caro-wei-independent-set-bound",
+  "title": "Лемма Каро-Вея о независимом множестве",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Yair Caro",
+      "status": "source_verified"
+    },
+    {
+      "name": "C. C. Wei",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "degree_sequence",
+      "independent_set"
+    ],
+    "methods": [
+      "probabilistic_method",
+      "random_ordering",
+      "linearity_of_expectation"
+    ],
+    "transformations": [
+      "choose_vertices_minimal_in_closed_neighborhood",
+      "average_over_permutations"
+    ],
+    "goal": [
+      "large_independent_set",
+      "degree_sequence_lower_bound"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "closed_neighborhood_size",
+      "vertex_degree"
+    ],
+    "keywords": [
+      "caro_wei_bound",
+      "independence_number",
+      "random_ordering"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Для любого конечного простого графа \\(G\\) существует независимое множество размера не меньше \\(\\sum_{v\\in V(G)} \\frac{1}{d(v)+1}\\), где \\(d(v)\\) — степень вершины \\(v\\). Иными словами, \\(\\alpha(G)\\ge \\sum_{v\\in V(G)}1/(d(v)+1)\\).",
+        "source_id": "src-wikipedia-turan-en-caro-wei",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "independent_set"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-random-ordering",
+      "title": "Случайный порядок вершин",
+      "text": "Упорядочим вершины случайно и возьмем те вершины, которые идут раньше всех своих соседей. Такая вершина выбирается с вероятностью \\(1/(d(v)+1)\\), а выбранные вершины попарно несмежны.",
+      "tags": [
+        "extremal_choice",
+        "goal_existence"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-random-order",
+      "title": "Доказательство через случайный порядок",
+      "text": "Выберем равновероятный случайный порядок всех вершин графа \\(G\\). Включим вершину \\(v\\) в множество \\(S\\), если среди вершин \\(\\{v\\}\\cup N(v)\\) она стоит первой. Если две вершины \\(u\\) и \\(v\\) смежны, то они не могут обе попасть в \\(S\\): из пары \\(u,v\\) только одна может быть раньше другой. Значит, \\(S\\) всегда является независимым множеством. Для фиксированной вершины \\(v\\) все \\(d(v)+1\\) вершин из ее замкнутой окрестности равноправны, поэтому вероятность события \\(v\\in S\\) равна \\(1/(d(v)+1)\\). По линейности математического ожидания \\(\\mathbb E|S|=\\sum_{v\\in V(G)}1/(d(v)+1)\\). Следовательно, при некотором порядке вершин размер построенного независимого множества не меньше этого ожидания.",
+      "idea_ids": [
+        "idea-random-ordering"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "definition_ids": [
+        "degree",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Классическая короткая лемма: доказательство занимает один вероятностный выбор, но сам инструмент часто оказывается решающим в олимпиадных графовых задачах.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "classical_theorem",
+    "goal_bound",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-turan-en-caro-wei",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted as a standalone classical_tool for the Caro-Wei lemma used in imo-2012-c7-equal-sum-chords-independent-set."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

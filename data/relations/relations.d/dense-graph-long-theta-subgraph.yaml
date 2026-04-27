@@ -1,0 +1,35 @@
+{
+  "relations": [
+    {
+      "id": "rel-dense-long-theta-fyum-2009-tur3a-p7",
+      "from": "dense-graph-long-theta-subgraph",
+      "to": "fyum-2009-tur3a-p7",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Эта структурная лемма является первым ключевым шагом решения FYUM: из условия \\(e(G)>2t|V(G)|\\) она дает theta-подграф из ребра и двух длинных внутренне непересекающихся ветвей. Затем периодичность раскраски на трех циклах этого theta-подграфа ограничивает число цветов двумя.",
+      "backward_text": "В FYUM 2009 Тур 3A P7 лемма применяется напрямую к исходному связному графу; оставшаяся часть решения использует найденный theta-подграф для арифметики периодов в \\(t\\)-периодической раскраске.",
+      "anchors": {
+        "from_solution_id": "sol-pruning-longest-path",
+        "to_solution_id": "sol-official-archive",
+        "from_statement_id": "stmt-dense-long-theta"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-dense-long-theta-dirac-longest-path-motif",
+      "from": "dense-graph-long-theta-subgraph",
+      "to": "dirac-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют один и тот же экстремальный прием: у конца длиннейшего пути все соседи уже лежат на пути. Здесь большое число таких соседей строит theta-подграф, а в теореме Дирака соседства двух концов замыкают путь в гамильтонов цикл.",
+      "backward_text": "Теорема Дирака является более известным примером работы с соседями концов длиннейшего пути; лемма о плотном графе использует тот же локальный механизм после предварительного удаления вершин малой степени.",
+      "anchors": {
+        "from_solution_id": "sol-pruning-longest-path",
+        "to_solution_id": "sol-longest-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

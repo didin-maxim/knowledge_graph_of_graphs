@@ -1,0 +1,137 @@
+{
+  "id": "greedy-strong-edge-coloring-bound",
+  "title": "Greedy strong edge-coloring bound",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "en",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "graph_with_bounded_maximum_degree",
+      "edge_coloring",
+      "strong_edge_coloring",
+      "induced_matching"
+    ],
+    "methods": [
+      "greedy_coloring",
+      "local_counting",
+      "distance_two_edge_count"
+    ],
+    "transformations": [
+      "edge_conflicts_to_distance_two_in_line_graph",
+      "forbid_colors_on_nearby_edges"
+    ],
+    "goal": [
+      "construct_strong_edge_coloring",
+      "upper_bound_number_of_colors"
+    ],
+    "auxiliary_graph_type": [
+      "distance_two_edge_conflict_graph"
+    ],
+    "invariants": [
+      "maximum_degree_delta",
+      "at_most_2_delta_squared_minus_2_delta_forbidden_colors"
+    ],
+    "keywords": [
+      "strong_edge_coloring",
+      "strong_chromatic_index",
+      "greedy_bound",
+      "bounded_degree",
+      "induced_matching"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-greedy-strong-edge-coloring-bound",
+        "title": "Greedy bound",
+        "text": "Let G be a finite graph with maximum degree at most \\(\\Delta\\). Then the edges of G can be colored with at most \\(2\\Delta^2-2\\Delta+1\\) colors so that every color class is an induced matching.",
+        "source_id": "src-fyum-2012-tur1a-p10-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "matching"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-distance-two-edge-conflicts",
+      "title": "Count edge conflicts within distance two",
+      "text": "When an edge is colored greedily, only colors already used on edges adjacent to it or adjacent to one of those adjacent edges are forbidden. The maximum degree bound gives at most \\(2\\Delta^2-2\\Delta\\) such earlier edges.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-greedy-distance-two-counting",
+      "title": "Greedy counting proof",
+      "text": "Order the edges arbitrarily and color them one by one. Suppose the next edge is \\(e=uv\\). A color is forbidden for \\(e\\) exactly when it has already appeared on an edge at edge-distance at most two from \\(e\\), because two edges of one color must form an induced matching with all other edges of that color.\n\nThere are at most \\((\\Delta-1)+(\\Delta-1)=2\\Delta-2\\) edges adjacent to \\(e\\). From the \\(u\\)-side, each of the at most \\(\\Delta-1\\) adjacent edges reaches a further endpoint from which at most \\(\\Delta-1\\) additional edges can continue; hence this side contributes at most \\((\\Delta-1)^2\\) edges at distance two. The same bound holds on the \\(v\\)-side. Thus the number of already colored edges whose colors can be forbidden is at most\n\\[\n(2\\Delta-2)+2(\\Delta-1)^2=2\\Delta^2-2\\Delta.\n\\]\nWith \\(2\\Delta^2-2\\Delta+1\\) colors, at least one color remains available for \\(e\\). Continuing greedily colors every edge, and the rule forbidding colors within distance two guarantees that each color class is an induced matching.",
+      "idea_ids": [
+        "idea-count-distance-two-edge-conflicts"
+      ],
+      "standard_idea_ids": [
+        "greedy_ordering"
+      ],
+      "definition_ids": [
+        "degree",
+        "matching"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "A standard greedy distance-two counting bound for strong edge-coloring; the FYUM 2012 problem is the specialization Delta = 11, giving 221 colors.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "classical_theorem",
+    "goal_exact_bound"
+  ],
+  "sources": [
+    {
+      "source_id": "src-fyum-2012-tur1a-p10-official",
+      "role": "source_problem_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-ntu-strong-edge-coloring-trivial-bound",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted as a reusable lemma from fyum-2012-tur1a-p10; the original FYUM card is intentionally left unchanged.",
+      "The proof uses only the elementary greedy count of edge conflicts within distance two."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

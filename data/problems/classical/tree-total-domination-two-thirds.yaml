@@ -1,0 +1,164 @@
+{
+  "id": "tree-total-domination-two-thirds",
+  "title": "Every tree has a total dominating set of size at most floor(2n/3)",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "en",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "total_dominating_set",
+      "leaf",
+      "longest_path"
+    ],
+    "methods": [
+      "induction",
+      "longest_path",
+      "delete_to_simplify",
+      "local_tree_pruning"
+    ],
+    "transformations": [
+      "remove_pendant_fragment",
+      "extend_total_dominating_set_back_to_tree"
+    ],
+    "goal": [
+      "upper_bound_on_total_domination_number",
+      "construct_small_vertex_set"
+    ],
+    "auxiliary_graph_type": [
+      "subtree"
+    ],
+    "invariants": [
+      "every_vertex_has_selected_neighbor",
+      "two_selected_vertices_per_three_deleted_vertices"
+    ],
+    "keywords": [
+      "total_domination",
+      "tree_domination",
+      "two_thirds_bound",
+      "pendant_path",
+      "longest_path_pruning"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-tree-total-domination-two-thirds",
+        "text": "Let T be a tree on n >= 3 vertices. Then there is a set S of at most floor(2n/3) vertices such that every vertex of T has a neighbor in S. Equivalently, the total domination number of every tree of order at least 3 is at most floor(2n/3).",
+        "source_id": "src-utyum-2018_lichol_8_tree_cities-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "path",
+          "dominating_set"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-prune-near-longest-path-end",
+      "title": "Prune a small pendant fragment near an end of a longest path",
+      "text": "Look at the first few vertices at an end of a longest path. The local branches there are forced to be shallow, so one can delete a pendant fragment of size at least 2 and put back at most two selected vertices that dominate that fragment and keep the boundary vertex handled.",
+      "tags": [
+        "trees",
+        "induction",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-two-per-three-budget",
+      "title": "Spend at most two selected vertices per three deleted vertices",
+      "text": "The induction is arranged so that each local deletion either removes at least three vertices and later adds two selected vertices, or removes at least two leaves around one support vertex and later adds only that support vertex. The floor inequality then preserves the 2n/3 bound.",
+      "tags": [
+        "goal_bound",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-longest-path-pruning",
+      "title": "Induction by pruning a pendant fragment",
+      "text": "We prove the statement by induction on n. The cases n=3 and n=4 are immediate: a path or a star on these orders is totally dominated by two adjacent vertices.\n\nThe induction uses a standard pruning claim. In every tree T with at least five vertices one can find a pendant connected fragment F, meeting the rest of the tree in at most one boundary vertex, and a set A inside F together with possibly that boundary vertex, such that: after deleting F the remaining graph is either a smaller tree or one of the direct small endings; every vertex of F and the boundary vertex have a neighbor in A union D whenever D is a total dominating set of the remaining tree; and |A| <= floor(2|F|/3) except for the case where |F| is two leaves with a common support, where adding the support costs only one vertex. To see the claim, take a longest path v0 v1 ... vk and root the tree at vk. All children of v1 are leaves. If v1 has at least two leaf children, use those leaves as F and add v1. Otherwise v1 has degree 2; then look one step farther at v2. If the path continues through a degree-2 vertex, use the pendant path v0 v1 v2 and add v1,v2. If v2 has side branches, the longest-path choice forces each such side branch to have height at most one; taking the side branch together with v0,v1 gives one of the same three-for-two local fragments. These are exactly the local shapes that can occur next to the end of a longest path.\n\nNow apply the claim. Delete the fragment F, use the induction hypothesis on the remaining tree when its order is at least 3, and then add the local set A. The definition of A ensures that all deleted vertices are dominated and that domination across the single boundary is preserved. The size estimate is also local: removing three vertices and adding two gives floor(2(n-3)/3)+2 = floor(2n/3), removing four or more and adding at most two is even cheaper, and removing at least two sibling leaves while adding only their support gives floor(2(n-r)/3)+1 <= floor(2n/3) for r >= 2. The exceptional remaining trees of order 1 or 2 occur only at the end of the pruning and are checked directly by choosing two adjacent vertices in the original final piece.\n\nThus each induction step reduces the tree and extends the selected set without exceeding the two-thirds budget. The resulting set has size at most floor(2n/3), and every vertex, selected or not, has a selected neighbor.",
+      "idea_ids": [
+        "idea-prune-near-longest-path-end",
+        "idea-two-per-three-budget"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "longest_path",
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree",
+        "path",
+        "dominating_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 4,
+    "comment": "A standard tree-domination tool. The main work is choosing the correct small pendant fragment so the floor(2n/3) budget survives induction.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "induction",
+    "goal_bound",
+    "goal_existence",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "longest_path",
+        "delete_to_simplify",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-utyum-2018_lichol_8_tree_cities-official",
+      "role": "extracted_from_solution_tool",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-tree-total-domination-two-thirds"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted from the UTYUM 2018 tree-cities solution as the classical total-domination lemma. The source UTYUM card was intentionally not edited.",
+      "The statement uses the total domination convention: every vertex, including selected vertices, must have a selected neighbor."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

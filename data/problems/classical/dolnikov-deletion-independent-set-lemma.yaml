@@ -1,0 +1,165 @@
+{
+  "id": "dolnikov-deletion-independent-set-lemma",
+  "title": "Лемма Дольникова о независимом множестве после удаления вершины",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Дольников В.Л.",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "independent_set",
+      "clique",
+      "complement_graph",
+      "bipartite_matching"
+    ],
+    "methods": [
+      "minimal_counterexample",
+      "hall_theorem",
+      "matching",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "pass_to_complement_graph",
+      "split_vertices_by_maximal_bad_set"
+    ],
+    "goal": [
+      "large_independent_set",
+      "large_clique_in_complement"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "independence_number",
+      "neighborhood_size",
+      "matching_size"
+    ],
+    "keywords": [
+      "dolnikov_lemma",
+      "independent_set",
+      "clique",
+      "vertex_deletion",
+      "hall_theorem"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-independent-form",
+        "title": "Форма через независимые множества",
+        "text": "Пусть \\(Q\\) — конечный простой граф на \\(2m-1\\) вершинах. Если после удаления любой вершины графа \\(Q\\) в оставшемся графе существует независимое множество размера \\(m\\), то в самом \\(Q\\) существует независимое множество размера \\(m+1\\).",
+        "source_id": "src-kolmogorov-2002-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "independent_set"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-maximal-bad-set",
+      "title": "Максимальное плохое множество",
+      "text": "Выбирается независимое множество \\(X\\) размера \\(m\\), а остальные вершины образуют \\(Y\\). Если часть \\(A\\subseteq Y\\) имеет слишком мало соседей в \\(X\\), берется максимальное такое \\(A\\); вне него условие Холла уже выполняется.",
+      "tags": [
+        "matching",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-matched-pairs-force-core",
+      "title": "Сопоставленные пары выталкивают независимость в ядро",
+      "text": "Паросочетание между \\(Y\\setminus A\\) и частью \\(X\\) создает смежные пары. Поэтому большое независимое множество после удаления вершины вынуждено брать достаточно много вершин из меньшего подграфа на \\(A\\cup B\\).",
+      "tags": [
+        "matching",
+        "minimal_counterexample"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-hall-minimal-counterexample",
+      "title": "Доказательство через Холла и минимальный контрпример",
+      "text": "Предположим противное и выберем контрпример с минимальным \\(m\\). Возьмем в \\(Q\\) независимое множество \\(X\\) размера \\(m\\), а остальные вершины обозначим через \\(Y\\), так что \\(|Y|=m-1\\). Если бы для каждого \\(A\\subseteq Y\\) выполнялось \\(|N_X(A)|\\ge |A|\\), то по теореме Холла все вершины \\(Y\\) можно было бы сопоставить их различным соседям из \\(X\\). После удаления единственной несопоставленной вершины из \\(X\\) независимое множество могло бы взять не более одной вершины из каждой сопоставленной смежной пары, то есть имело бы размер не больше \\(m-1\\), противоречие. Значит, существует плохое множество \\(A\\subseteq Y\\), для которого \\(|A|>|N_X(A)|\\). Выберем такое \\(A\\) максимальным по включению и положим \\(|A|=a\\).\n\nДля любого \\(C\\subseteq Y\\setminus A\\) выполняется \\(|N_{X\\setminus N_X(A)}(C)|\\ge |C|\\); иначе \\(A\\cup C\\) тоже было бы плохим. По теореме Холла вершины \\(Y\\setminus A\\) можно попарно различно сопоставить их соседям из \\(X\\setminus N_X(A)\\). Пусть \\(B\\) — множество несопоставленных вершин из \\(X\\). Тогда \\(|B|=a+1\\), причем \\(N_X(A)\\subseteq B\\).\n\nРассмотрим индуцированный подграф \\(Q[A\\cup B]\\). Вне \\(A\\cup B\\) остались ровно \\(m-a-1\\) сопоставленных смежных пар, поэтому любое независимое множество берет оттуда не более \\(m-a-1\\) вершин. Следовательно, после удаления любой вершины из \\(A\\cup B\\) независимое множество размера \\(m\\), существующее по условию леммы, содержит внутри \\(A\\cup B\\) не менее \\(a+1\\) вершин. Значит, в \\(Q[A\\cup B]\\), который имеет \\(2a+1=2(a+1)-1\\) вершин, после удаления любой вершины остается независимое множество размера \\(a+1\\).\n\nЕсли \\(a+1<m\\), то по минимальности \\(m\\) в \\(Q[A\\cup B]\\) есть независимое множество размера \\(a+2\\). Добавив к нему все вершины \\(X\\setminus B\\), получаем независимое множество размера \\(m+1\\) в \\(Q\\), поскольку \\(X\\setminus B\\) не смежно ни с \\(A\\), ни с \\(B\\). Если же \\(a+1=m\\), то \\(A=Y\\), а из плохости \\(A\\) найдется вершина \\(x\\in X\\), не смежная ни с одной вершиной из \\(Y\\). После удаления \\(x\\) по условию есть независимое множество размера \\(m\\); добавляя к нему \\(x\\), снова получаем независимое множество размера \\(m+1\\). Противоречие доказывает лемму.",
+      "idea_ids": [
+        "idea-maximal-bad-set",
+        "idea-matched-pairs-force-core"
+      ],
+      "standard_idea_ids": [
+        "minimal_counterexample",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "independent_set",
+        "matching",
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 7,
+    "comment": "Самостоятельная экстремальная графовая лемма: короткая формулировка, но доказательство требует Холла, дефицитных окрестностей и минимального контрпримера.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "matching",
+    "forbidden_clique",
+    "classical_theorem",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "hall_theorem",
+        "minimal_counterexample"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2002-official",
+      "role": "official_solution_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted from the restored official solution of kolmogorov-2002-team-olympiad-seniors-problem-8, where it is explicitly introduced as lemma Dolnikova in the complementary independent-set form.",
+      "The author attribution follows the lemma name used in the official solution; exact bibliographic origin still needs human/source review."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-fyum-2013-tur2a-p1-degree-two-path-lemma",
+      "from": "planar-large-girth-degree-two-path",
+      "to": "fyum-2013-tur2a-p1",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Эта лемма является первым самостоятельным шагом решения FYUM: после удаления листьев она находит длинный путь, внутренние вершины которого имеют степень 2 в оставшемся планарном графе большого обхвата.",
+      "backward_text": "FYUM-задача использует лемму как структурный вход перед удалением длинного пути и последующей докраской через обход во вспомогательном odd graph.",
+      "anchors": {
+        "from_solution_id": "sol-contract-two-paths-and-euler",
+        "to_solution_id": "sol-official-archive"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-euler-formula-planar-degree-two-path",
+      "from": "euler-formula-planar",
+      "to": "planar-large-girth-degree-two-path",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Формула Эйлера используется в финальном противоречии: простой планарный граф с обхватом хотя бы 6 удовлетворяет \\(E\\le 3V/2-3\\).",
+      "backward_text": "Лемма о длинном 2-пути — типичное применение формулы Эйлера после предварительного стягивания локальных цепочек.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-contract-two-paths-and-euler"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-planar-edge-bound-degree-two-path",
+      "from": "planar-edge-bound",
+      "to": "planar-large-girth-degree-two-path",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе карточки используют один и тот же планарный счет граней: нижняя оценка на длины граней вместе с формулой Эйлера дает верхнюю оценку на число ребер.",
+      "backward_text": "В лемме о 2-пути счет граней применяется не сразу к исходному графу, а к сжатому ядру, где исчезли длинные цепочки вершин степени 2.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-contract-two-paths-and-euler"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.88
+    }
+  ]
+}

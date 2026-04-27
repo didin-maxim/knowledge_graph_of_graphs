@@ -1,0 +1,151 @@
+{
+  "id": "dense-graph-long-theta-subgraph",
+  "title": "Плотный граф содержит theta-подграф с двумя длинными ветвями",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "extracted_lemma"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "J. A. Bondy and M. Simonovits",
+      "status": "source_verified",
+      "note": "Лемма выделена как структурный шаг из доказательства Lemma 1 о периодических раскрасках."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "dense_graph",
+      "theta_subgraph",
+      "longest_path"
+    ],
+    "methods": [
+      "delete_low_degree_vertices",
+      "longest_path",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "prune_low_degree_vertices",
+      "pass_to_dense_component"
+    ],
+    "goal": [
+      "force_long_theta_subgraph"
+    ],
+    "auxiliary_graph_type": [
+      "theta_graph"
+    ],
+    "invariants": [
+      "edge_density_above_2t",
+      "minimum_degree_after_pruning",
+      "neighbor_indices_on_longest_path"
+    ],
+    "keywords": [
+      "bondy_simonovits",
+      "theta_graph",
+      "long_cycles",
+      "extremal_graph_theory",
+      "periodic_coloring_lemma"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-dense-long-theta",
+        "title": "Плотность больше \\(2t\\) на вершину вынуждает длинный theta-подграф",
+        "text": "Пусть \\(t\\ge 1\\), а \\(G\\) — конечный простой связный граф такой, что \\(e(G)>2t|V(G)|\\). Тогда в \\(G\\) существуют вершины \\(a,b\\), ребро \\(ab\\), и два внутренне непересекающихся простых \\(a-b\\) пути, каждый длины хотя бы \\(t\\), причем вместе с ребром \\(ab\\) они образуют theta-подграф.",
+        "source_id": "src-bondy-simonovits-cycles-even-length-1974",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "path",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-prune-to-minimum-degree-and-use-longest-path",
+      "title": "Очистить малые степени и посмотреть на конец длиннейшего пути",
+      "text": "Пока есть вершина степени меньше \\(2t\\), ее можно удалить, сохранив строгую плотность \\(e>2t|V|\\) в оставшемся графе; затем берется плотная компонента с минимальной степенью хотя бы \\(2t\\). У конца длиннейшего пути все соседи лежат на этом пути, а большое число соседей дает две длинные дуги к подходящему соседу.",
+      "tags": [
+        "extremal_graph_theory",
+        "extremal_choice",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-pruning-longest-path",
+      "title": "Доказательство через прореживание и длиннейший путь",
+      "text": "Будем удалять из текущего графа вершины степени меньше \\(2t\\). Если в графе с \\(N\\) вершинами и \\(M>2tN\\) ребрами удалить вершину степени не больше \\(2t-1\\), то останется больше \\(2tN-(2t-1)>2t(N-1)\\) ребер, так что строгая плотность сохраняется. Поэтому после последовательных удалений останется непустой граф \\(H\\) с \\(e(H)>2t|V(H)|\\) и минимальной степенью хотя бы \\(2t\\); взяв компоненту с отношением \\(e/|V|\\) больше \\(2t\\), можно считать \\(H\\) связным.\n\nВозьмем в \\(H\\) длиннейший простой путь \\(P=x_0x_1\\ldots x_m\\). Все соседи вершины \\(x_0\\) лежат на \\(P\\), иначе путь можно было бы удлинить. Пусть эти соседи имеют индексы \\(1=i_1<i_2<\\cdots<i_r\\). Так как \\(\\delta(H)\\ge 2t\\), имеем \\(r\\ge 2t\\). Положим \\(a=x_0\\) и \\(b=x_{i_t}\\). Тогда \\(ab\\) — ребро. Первый \\(a-b\\) путь идет вдоль \\(P\\): \\(x_0x_1\\ldots x_{i_t}\\), и его длина \\(i_t\\ge t\\). Второй путь идет сначала по ребру \\(x_0x_{i_r}\\), а затем назад вдоль \\(P\\) до \\(x_{i_t}\\): \\(x_0x_{i_r}x_{i_r-1}\\ldots x_{i_t}\\). Его длина равна \\(1+i_r-i_t\\), а поскольку \\(i_r\\ge r\\ge 2t\\) и \\(i_t\\le i_r-(r-t)\\), она тоже не меньше \\(t+1\\). Внутренние вершины этих двух путей лежат соответственно на отрезках \\(x_1,\\ldots,x_{i_t-1}\\) и \\(x_{i_t+1},\\ldots,x_{i_r}\\), поэтому не пересекаются. Вместе с ребром \\(ab\\) они дают требуемый theta-подграф в \\(H\\), а значит и в исходном \\(G\\).",
+      "idea_ids": [
+        "idea-prune-to-minimum-degree-and-use-longest-path"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice",
+        "longest_path"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Короткая экстремальная лемма: основная идея состоит в стандартном переходе к большой минимальной степени и выборе конца длиннейшего пути.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "goal_existence"
+  ],
+  "properties": {
+    "typical_olympiad_use": {
+      "value": "Из плотности \\(e(G)>2t|V(G)|\\) извлечь theta-подграф с двумя длинными ветвями; затем применять ограничения на длины путей или периоды раскраски.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-bondy-simonovits-cycles-even-length-1974",
+      "role": "reference_theorem_and_proof_context",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-fyum-2009-tur3a-p7-official",
+      "role": "olympiad_application_with_extracted_solution_step",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Это не полная лемма Bondy--Simonovits о t-периодических раскрасках, а ее самодостаточный структурный шаг: плотность вынуждает theta-подграф с двумя длинными ветвями.",
+      "Параметры: условие e(G)>2t|V(G)|; вынужденный подграф — ребро ab плюс два внутренне непересекающихся a-b пути длины хотя бы t.",
+      "Исходная карточка FYUM не редактировалась."
+    ],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "id": "no-two-color-cycle-edge-bound",
+  "title": "Оценка числа рёбер при отсутствии двухцветных циклов",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "vertex_coloring",
+      "two_color_induced_subgraph",
+      "color_classes"
+    ],
+    "methods": [
+      "forest_counting",
+      "double_counting",
+      "delete_one_color_class"
+    ],
+    "transformations": [
+      "restrict_to_two_colors",
+      "sum_over_color_pairs",
+      "delete_each_color_in_turn"
+    ],
+    "goal": [
+      "upper_bound_edges",
+      "rule_out_dense_colored_graph"
+    ],
+    "auxiliary_graph_type": [
+      "two_color_induced_subgraph",
+      "forest"
+    ],
+    "invariants": [
+      "two_color_subgraphs_are_forests",
+      "each_edge_is_counted_at_least_once"
+    ],
+    "keywords": [
+      "cycle_coloring",
+      "two_color_cycle",
+      "forest_counting",
+      "edge_bound",
+      "color_classes"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-general-bound",
+        "text": "Пусть вершины конечного простого графа \\(G\\) окрашены в \\(r\\ge 2\\) цветов, а каждый цикл в \\(G\\) содержит вершины как минимум трёх различных цветов. Обозначим через \\(V_i\\) класс вершин цвета \\(i\\), а через \\(G_{ij}\\) подграф, индуцированный множеством \\(V_i\\cup V_j\\). Тогда каждый \\(G_{ij}\\) является лесом. Поэтому\n\\[\n|E(G)|\\le \\sum_{1\\le i<j\\le r}|E(G_{ij})|\\le \\sum_{1\\le i<j\\le r,\\ V_i\\cup V_j\\ne\\varnothing} (|V_i|+|V_j|-1)\\le (r-1)|V(G)|.\n\\]\nВ частности, при \\(r=5\\) достаточно удобной оценки \\(|E(G)|\\le 4|V(G)|\\).",
+        "source_ids": [
+          "src-fyum-2010-tur3a-p7-official",
+          "src-fyum-2010-tur3b-p3-official"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle",
+          "tree"
+        ]
+      },
+      {
+        "id": "stmt-three-colors-corollary",
+        "text": "Следствие для трёх цветов. Если вершины графа \\(G\\) окрашены в три цвета и каждый цикл содержит вершины всех трёх цветов, то \\(|E(G)|\\le 3(|V(G)|-1)\\) при \\(|V(G)|>0\\). Действительно, после удаления любого одного цвета оставшийся двухцветный индуцированный подграф не содержит циклов, значит является лесом и имеет не более \\(|V(G)|-1\\) рёбер; сумма по трём удаляемым цветам считает каждое ребро хотя бы один раз.",
+        "source_id": "src-fyum-2010-tur3b-p3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle",
+          "tree"
+        ],
+        "distinct_from": [
+          "stmt-general-bound"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-two-color-subgraphs-are-forests",
+      "title": "Двухцветный цикл ровно запрещён",
+      "text": "Если подграф на двух цветах содержит цикл, то этот же цикл в исходном графе использует не более двух цветов. Поэтому условие про минимум три цвета в каждом цикле сразу превращает все двухцветные индуцированные подграфы в леса.",
+      "tags": [
+        "coloring",
+        "trees"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-sum-forest-bounds-over-color-pairs",
+      "title": "Сложить лесные оценки по парам цветов",
+      "text": "Для каждой пары цветов лес даёт линейную оценку на число рёбер. При суммировании по парам каждое ребро исходного графа попадает хотя бы в один такой подграф: разноцветное ребро попадает в свою пару цветов, а одноцветное ребро попадает во все пары, содержащие этот цвет.",
+      "tags": [
+        "double_counting",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-general-pair-counting",
+      "title": "Доказательство через пары цветов",
+      "text": "Зафиксируем пару цветов \\(i<j\\). Если в индуцированном подграфе \\(G_{ij}=G[V_i\\cup V_j]\\) был бы цикл, то в исходном графе \\(G\\) этот цикл использовал бы только цвета \\(i\\) и \\(j\\), вопреки условию. Значит, каждый \\(G_{ij}\\) является лесом.\n\nЕсли \\(V_i\\cup V_j\\ne\\varnothing\\), то лес на \\(|V_i|+|V_j|\\) вершинах имеет не более \\(|V_i|+|V_j|-1\\) рёбер. Поэтому\n\\[\n\\sum_{i<j}|E(G_{ij})|\\le \\sum_{i<j,\\ V_i\\cup V_j\\ne\\varnothing}(|V_i|+|V_j|-1)\\le \\sum_{i<j}(|V_i|+|V_j|)=(r-1)|V(G)|.\n\\]\nОстаётся сравнить эту сумму с \\(|E(G)|\\). Ребро между разными цветами \\(i\\) и \\(j\\) входит в \\(G_{ij}\\), а ребро внутри цвета \\(i\\) входит в каждый \\(G_{ij}\\) при \\(j\\ne i\\). Следовательно, каждое ребро исходного графа посчитано в левой сумме хотя бы один раз, и \\(|E(G)|\\le \\sum_{i<j}|E(G_{ij})|\\). Это доказывает общий bound и, при \\(r=5\\), даёт \\(|E(G)|\\le 4|V(G)|\\).",
+      "idea_ids": [
+        "idea-two-color-subgraphs-are-forests",
+        "idea-sum-forest-bounds-over-color-pairs"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "cycle",
+        "tree"
+      ]
+    },
+    {
+      "id": "sol-three-color-deletion-counting",
+      "title": "Трёхцветное следствие через удаление одного цвета",
+      "text": "Пусть \\(|V(G)|=n>0\\), а цвета равны 1, 2, 3. Удалим все вершины цвета 1; оставшийся подграф на цветах 2 и 3 не имеет циклов, потому что любой его цикл был бы циклом исходного графа, использующим только два цвета. Значит, этот подграф является лесом и содержит не более \\(n-1\\) рёбер. То же верно после удаления цвета 2 и после удаления цвета 3.\n\nСложим три полученные оценки. Каждое ребро исходного графа осталось хотя бы в одном из трёх подграфов: ребро между двумя разными цветами остаётся после удаления третьего цвета, а одноцветное ребро остаётся после удаления любого из двух других цветов. Поэтому \\(|E(G)|\\le 3(n-1)\\).",
+      "idea_ids": [
+        "idea-two-color-subgraphs-are-forests"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "cycle",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 2,
+    "comment": "Короткая олимпиадная лемма: ключевой шаг состоит в том, чтобы явно выделить двухцветные индуцированные подграфы как леса и затем аккуратно сложить стандартную оценку на число рёбер леса.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "trees",
+    "extremal_graph_theory",
+    "goal_bound",
+    "double_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "forest_counting",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-fyum-2010-tur3a-p7-official",
+      "role": "extracted_from_solution_tool",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-general-bound"
+      ]
+    },
+    {
+      "source_id": "src-fyum-2010-tur3b-p3-official",
+      "role": "extracted_from_solution_tool",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-general-bound",
+        "stmt-three-colors-corollary"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted as a standalone lemma-card for the two-color-subgraph forest bound used in FYUM 2010 tur3a p7 and tur3b p3; source FYUM cards intentionally left unchanged."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

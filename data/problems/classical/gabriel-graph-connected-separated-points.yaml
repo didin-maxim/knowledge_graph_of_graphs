@@ -1,0 +1,142 @@
+{
+  "id": "gabriel-graph-connected-separated-points",
+  "title": "Связность графа Габриэля для разреженного множества точек",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "geometric_graph",
+      "gabriel_graph",
+      "infinite_point_set",
+      "connectivity"
+    ],
+    "methods": [
+      "infinite_descent",
+      "metric_descent"
+    ],
+    "transformations": [
+      "nonedge_to_point_in_diameter_disk"
+    ],
+    "goal": [
+      "prove_connectivity"
+    ],
+    "auxiliary_graph_type": [
+      "planar_geometric_graph"
+    ],
+    "invariants": [
+      "squared_distance",
+      "unit_separation",
+      "empty_diameter_disk"
+    ],
+    "keywords": [
+      "gabriel_graph",
+      "connectivity",
+      "squared_distance_descent"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть `X` — конечное или бесконечное множество точек плоскости, расстояние между любыми двумя различными точками которого больше `1`. В графе Габриэля на `X` соединены те и только те пары `A,B`, для которых замкнутый диск с диаметром `AB` не содержит других точек из `X`. Докажите, что этот граф связен.",
+        "source_id": "src-usamo-2025-p3-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "gabriel_graph",
+          "connected_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-distance-descent",
+      "title": "Спуск по квадрату расстояния между компонентами",
+      "text": "Если две точки лежат в разных компонентах и не соединены ребром, то внутри их диаметрального диска есть третья точка. Одна из двух новых пар снова соединяет разные компоненты, но имеет существенно меньший квадрат расстояния.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-distance-descent",
+      "title": "Бесконечный спуск по расстоянию",
+      "text": "Предположим, что граф Габриэля несвязен, и возьмём точки \\(p,q\\) из разных компонент. Если \\(pq\\) является ребром, эти точки лежат в одной компоненте, поэтому \\(pq\\) не ребро. Значит, в замкнутом диске с диаметром \\(pq\\) есть третья точка \\(r\\in X\\).\n\nТочка \\(r\\) не может одновременно лежать в компоненте \\(p\\) и в компоненте \\(q\\). Поэтому хотя бы одна из пар \\((p,r)\\), \\((r,q)\\) снова соединяет разные компоненты; обозначим её \\((u,v)\\), а второй отрезок от \\(r\\) к одному из концов \\(pq\\) обозначим через \\(w\\). Так как \\(r\\) лежит в диаметральном диске \\(pq\\), угол \\(prq\\) не меньше \\(90^\\circ\\), и из элементарной геометрии следует \\(uv^2\\le pq^2-w^2\\). При этом \\(w>1\\), потому что расстояния между различными точками множества больше \\(1\\). Значит, \\(uv^2<pq^2-1\\).\n\nПовторяя этот шаг, мы строили бы пары точек из разных компонент с неотрицательными квадратами расстояний, каждый раз уменьшающимися больше чем на \\(1\\). Это невозможно бесконечно. Следовательно, разных компонент нет, и граф связен.",
+      "idea_ids": [
+        "idea-distance-descent"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "gabriel_graph",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Короткая метрическая лемма; основная тонкость — использовать разреженность, чтобы спуск по квадрату расстояния не мог продолжаться бесконечно.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "connectivity",
+    "classical_theorem",
+    "goal_proof"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-usamo-2025-p3-aops-wiki",
+      "role": "solution_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-gabriel-sokal-1969",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-matula-sokal-1980-gabriel-properties",
+      "role": "properties_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2025-evan-chen-notes",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Extracted from the USAMO 2025 P3 Gabriel-graph solution so the olympiad card does not expose the full graph-theory reformulation as a separate statement.",
+      "For finite point sets, this is a standard Gabriel-graph property: Matula--Sokal prove that the Euclidean shortest spanning tree is contained in the Gabriel graph, hence the Gabriel graph is connected. The present card keeps the direct metric-descent proof because USAMO 2025 P3 uses an infinite, uniformly separated set of cities."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

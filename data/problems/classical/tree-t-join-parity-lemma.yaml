@@ -1,0 +1,154 @@
+{
+  "id": "tree-t-join-parity-lemma",
+  "title": "Лемма о T-соединении в дереве и нечётных степенях",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "tree",
+      "even_vertex_set",
+      "degree_parity",
+      "edge_set_mod_2"
+    ],
+    "methods": [
+      "parity",
+      "tree_paths",
+      "symmetric_difference",
+      "spanning_tree_reduction"
+    ],
+    "transformations": [
+      "pass_to_spanning_tree",
+      "pair_vertices_of_T",
+      "take_symmetric_difference_of_paths"
+    ],
+    "goal": [
+      "construct_subgraph_with_prescribed_odd_vertices"
+    ],
+    "auxiliary_graph_type": [
+      "spanning_tree"
+    ],
+    "invariants": [
+      "degree_parity",
+      "path_endpoint_parity",
+      "symmetric_difference_mod_2"
+    ],
+    "keywords": [
+      "t_join",
+      "odd_degree_vertices",
+      "parity_subgraph",
+      "tree_paths"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть \\(G\\) — конечный связный неориентированный граф, а \\(T\\) — чётное множество его вершин. Тогда существует множество рёбер \\(F\\subseteq E(G)\\), для которого вершины нечётной степени в подграфе \\((V(G),F)\\) — ровно вершины из \\(T\\). В частности, достаточно доказать это для дерева: в дереве можно попарно разбить вершины \\(T\\), соединить каждую пару единственным простым путём и взять симметрическую разность этих путей.",
+        "source_id": "src-problems-64633",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree",
+          "path",
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pair-and-xor-paths",
+      "title": "Попарные пути и сложение по модулю 2",
+      "text": "Если сложить набор путей по модулю 2, то внутренняя вершина каждого пути меняет степень на 2, а концы пути — на 1. Поэтому после попарного соединения вершин из \\(T\\) нечётность степени остаётся только в этих концах.",
+      "tags": [
+        "trees"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-use-spanning-tree",
+      "title": "Связный граф сводится к дереву",
+      "text": "В связном графе можно выбрать остовное дерево. Если нужный набор рёбер построен в нём, он автоматически является набором рёбер исходного графа.",
+      "tags": [
+        "trees"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-symmetric-difference-of-tree-paths",
+      "title": "Симметрическая разность путей",
+      "text": "Сначала докажем утверждение для дерева \\(D\\). Так как \\(|T|\\) чётно, разобьём вершины множества \\(T\\) на пары \\(\\{a_1,b_1\\},\\ldots,\\{a_k,b_k\\}\\). Для каждой пары возьмём единственный простой путь \\(P_i\\) в дереве \\(D\\) между \\(a_i\\) и \\(b_i\\). Определим \\(F\\) как симметрическую разность множеств рёбер этих путей: ребро входит в \\(F\\) тогда и только тогда, когда оно лежит в нечётном числе путей \\(P_i\\).\n\nПосмотрим на степени вершин в подграфе с множеством рёбер \\(F\\) по модулю 2. Для одного пути \\(P_i\\) вклад в степень каждой внутренней вершины равен 2, то есть чётен, а вклад в степени концов \\(a_i\\) и \\(b_i\\) равен 1. При переходе к симметрической разности мы просто складываем эти вклады по модулю 2: если одно и то же ребро встречается в двух путях, его двойной вклад исчезает. Поэтому нечётность степени вершины в \\(F\\) равна числу раз, когда эта вершина была концом выбранных путей, взятому по модулю 2. Каждая вершина из \\(T\\) является концом ровно одного пути, а вершины вне \\(T\\) не являются концами ни одного из них. Значит, нечётные степени в \\((V(D),F)\\) имеют ровно вершины из \\(T\\).\n\nТеперь пусть \\(G\\) — произвольный связный граф. Возьмём в нём остовное дерево \\(D\\). По доказанному в \\(D\\) существует множество рёбер \\(F\\) с нечётными степенями ровно в \\(T\\). Поскольку \\(E(D)\\subseteq E(G)\\), то же множество \\(F\\) подходит и для исходного графа \\(G\\). Лемма доказана.",
+      "idea_ids": [
+        "idea-pair-and-xor-paths",
+        "idea-use-spanning-tree"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "degree",
+        "path",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 2,
+    "comment": "Короткий стандартный инструмент о чётности степеней; в олимпиадных решениях обычно применяется как скрытая лемма про выбор рёбер с заданными нечётными вершинами.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "goal_existence",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "parity_subgraph",
+        "tree_paths",
+        "symmetric_difference"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-64633",
+      "role": "extracted_from_solution_tool",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted as the T-join/odd-degree subgraph tool used in vosh-2013-14-regional-even-rows-columns; source card intentionally not edited in this pass."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

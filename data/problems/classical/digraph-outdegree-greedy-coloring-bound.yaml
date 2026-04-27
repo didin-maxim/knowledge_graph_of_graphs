@@ -1,0 +1,145 @@
+{
+  "id": "digraph-outdegree-greedy-coloring-bound",
+  "title": "Greedy coloring bound for digraphs of bounded outdegree",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "en",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_directed_graph",
+      "proper_vertex_coloring",
+      "bounded_outdegree"
+    ],
+    "methods": [
+      "induction",
+      "greedy_coloring",
+      "average_indegree"
+    ],
+    "transformations": [
+      "delete_low_indegree_vertex",
+      "extend_coloring_after_deletion"
+    ],
+    "goal": [
+      "construct_proper_coloring",
+      "upper_bound_number_of_colors"
+    ],
+    "auxiliary_graph_type": [
+      "underlying_conflict_graph"
+    ],
+    "invariants": [
+      "maximum_outdegree_at_most_r",
+      "average_indegree_at_most_r",
+      "at_most_2r_forbidden_neighbor_colors"
+    ],
+    "keywords": [
+      "directed_graph_coloring",
+      "bounded_outdegree",
+      "greedy_coloring",
+      "indegree_pigeonhole"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-digraph-outdegree-greedy-coloring-bound",
+        "title": "Bounded outdegree coloring lemma",
+        "text": "Let \\(r\\ge 0\\). Every finite directed graph in which each vertex has outdegree at most \\(r\\) can be colored with \\(2r+1\\) colors so that the endpoints of every directed edge have different colors.",
+        "source_id": "src-apmo-2016-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "outdegree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-low-indegree-extend-coloring",
+      "title": "Delete a vertex of small indegree and extend",
+      "text": "Since the total indegree equals the total outdegree, average indegree is at most \\(r\\). Choose a vertex with indegree at most \\(r\\), color the remaining graph by induction, and then return this vertex: its in-neighbors and out-neighbors forbid at most \\(r+r=2r\\) colors.",
+      "tags": [
+        "coloring",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-low-indegree-induction",
+      "title": "Induction on the number of vertices",
+      "text": "We prove the statement by induction on the number of vertices. The empty graph and one-vertex graph are immediate. Now let \\(D\\) be a finite directed graph with maximum outdegree at most \\(r\\). The sum of the indegrees equals the sum of the outdegrees, so the average indegree is also at most \\(r\\). Hence some vertex \\(v\\) has indegree at most \\(r\\).\n\nDelete \\(v\\). The remaining directed graph still has maximum outdegree at most \\(r\\), so by the induction hypothesis it has a coloring with colors \\(1,\\dots,2r+1\\) in which every directed edge has differently colored endpoints.\n\nWhen we put \\(v\\) back, a color is forbidden for \\(v\\) only if it already appears on an in-neighbor or an out-neighbor of \\(v\\). There are at most \\(r\\) out-neighbors because the outdegree of \\(v\\) is at most \\(r\\), and at most \\(r\\) in-neighbors by the choice of \\(v\\). Thus at most \\(2r\\) colors are forbidden. Among \\(2r+1\\) colors one color remains available for \\(v\\), and assigning it preserves the condition on every directed edge incident to \\(v\\). This completes the induction.",
+      "idea_ids": [
+        "idea-low-indegree-extend-coloring"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "greedy_ordering"
+      ],
+      "definition_ids": [
+        "directed_graph",
+        "outdegree",
+        "chromatic_number"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "A short greedy-induction coloring lemma; the only trick is to use average indegree, not outdegree, to choose the vertex removed by induction.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "induction",
+    "goal_bound",
+    "classical_theorem"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "greedy_coloring",
+        "average_indegree"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-apmo-2016-official",
+      "role": "source_solution_lemma",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted as the stronger reusable lemma used in apmo-2016-p4-dreamland-28-step-coloring; the original APMO card is intentionally left unchanged.",
+      "The proof is the standard low-indegree deletion and greedy extension argument."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

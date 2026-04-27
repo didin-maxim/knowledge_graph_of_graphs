@@ -1,0 +1,164 @@
+{
+  "id": "redei-odd-hamiltonian-paths-tournament",
+  "title": "Теорема Редеи о нечётности числа гамильтоновых путей в турнире",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "parity_lemma"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "László Rédei",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "directed_hamiltonian_path",
+      "directed_graph_complement",
+      "transitive_tournament"
+    ],
+    "methods": [
+      "parity_argument",
+      "inclusion_exclusion",
+      "edge_reversal_invariance",
+      "reduction_to_transitive_tournament"
+    ],
+    "transformations": [
+      "reverse_single_arc",
+      "take_directed_complement",
+      "reverse_all_arcs"
+    ],
+    "goal": [
+      "count_hamiltonian_paths_mod_2",
+      "hamiltonian_path_existence"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "parity_of_hamiltonian_paths_under_arc_reversal"
+    ],
+    "keywords": [
+      "redei_theorem",
+      "tournament",
+      "hamiltonian_path",
+      "odd_number_of_hamiltonian_paths",
+      "parity",
+      "edge_reversal"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "В любом конечном турнире число направленных гамильтоновых путей нечётно. В частности, в каждом конечном турнире существует направленный гамильтонов путь.",
+        "source_id": "src-redei-1935-ein-kombinatorischer-satz",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "hamiltonian_path",
+          "directed_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-arc-reversal-parity-invariant",
+      "title": "Чётность не меняется при перевороте одного ребра",
+      "text": "Если два турнира отличаются только направлением одного ребра, то числа их гамильтоновых путей имеют одинаковую чётность. Поэтому любой турнир можно перевести в транзитивный турнир, где гамильтонов путь ровно один.",
+      "tags": [
+        "tournaments",
+        "symmetrization"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-complement-parity",
+      "title": "Дополнение орграфа сохраняет число путей по модулю 2",
+      "text": "Для любого орграфа с более чем одной вершиной число гамильтоновых путей в графе и в его направленном дополнении одинаково по модулю 2; это следует из включений-исключений по запрещённым соседним дугам.",
+      "tags": [
+        "symmetrization",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-complement-and-edge-reversal",
+      "title": "Инвариантность чётности при перевороте ребра",
+      "text": "Обозначим через h(G) число направленных гамильтоновых путей в конечном орграфе G. Сначала докажем вспомогательный факт: если n>1 и \\(\\overline G\\) — направленное дополнение G, то \\(h(G)\\equiv h(\\overline G)\\pmod 2\\). Для spanning-подграфа H графа G пусть s(H) — число нумераций вершин числами 1,...,n, при которых все дуги H идут из i в i+1. Если H не является объединением непересекающихся направленных путей, то s(H)=0; если является объединением k путей, то s(H)=k!, поэтому по модулю 2 вклад дают только сами гамильтоновы пути. Значит, \\(h(G)\\equiv \\sum_{E(H)\\subseteq E(G)}s(H)\\pmod 2\\). С другой стороны, нумерации, которые не задают гамильтонов путь в \\(\\overline G\\), — это ровно нумерации, где хотя бы одна соседняя дуга i->i+1 принадлежит G. По включениям-исключениям их число равно \\(\\sum_{E(H)\\subseteq E(G)}(-1)^{|E(H)|}s(H)\\), что по модулю 2 равно предыдущей сумме. Так как n! чётно, получаем \\(h(\\overline G)\\equiv h(G)\\pmod 2\\).\n\nТеперь пусть турнир T содержит ребро e=a->b, а T' получается из T заменой e на обратное ребро f=b->a. Положим \\(G_0=T-e\\), \\(G_e=G_0+e=T\\), \\(G_f=G_0+f=T'\\), \\(G_{ef}=G_0+e+f\\). Дополнение \\(G_{ef}\\) получается из \\(G_0\\) переворотом всех дуг; это не меняет число гамильтоновых путей, потому что каждому пути соответствует обратный порядок вершин. По вспомогательному факту \\(h(G_{ef})\\equiv h(G_0)\\pmod 2\\). При этом пути, появляющиеся при переходе от \\(G_0\\) к \\(G_{ef}\\), разбиваются на пути, использующие e, и пути, использующие f; один гамильтонов путь не может использовать обе эти противоположные дуги между a и b. Поэтому \\(h(G_{ef})-h(G_0)=(h(G_e)-h(G_0))+(h(G_f)-h(G_0))\\), откуда \\(h(G_e)+h(G_f)\\equiv h(G_{ef})+h(G_0)\\equiv0\\pmod2\\). Значит, \\(h(T)\\equiv h(T')\\pmod2\\): чётность инвариантна при перевороте одного ребра.\n\nПоследовательно перевернём ребра произвольного турнира так, чтобы получить транзитивный турнир на тех же вершинах. В транзитивном турнире существует ровно один направленный гамильтонов путь — порядок от максимальной вершины к минимальной по ориентации. Следовательно, исходный турнир имеет нечётное число гамильтоновых путей.",
+      "idea_ids": [
+        "idea-complement-parity",
+        "idea-arc-reversal-parity-invariant"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "complement_graph_transition"
+      ],
+      "definition_ids": [
+        "tournament",
+        "hamiltonian_path",
+        "directed_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 3,
+    "comment": "Классическое усиление теоремы Редеи: существование гамильтонова пути следует из нечётности их числа.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "tournaments",
+    "hamiltonian_cycles",
+    "symmetrization",
+    "classical_theorem",
+    "goal_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "uses_complement_graph": true,
+    "central_method": [
+      "symmetrization",
+      "double_counting"
+    ],
+    "typical_olympiad_use": "Усиление стандартной теоремы о гамильтоновом пути в турнире до подсчёта числа таких путей по модулю 2."
+  },
+  "sources": [
+    {
+      "source_id": "src-redei-1935-ein-kombinatorischer-satz",
+      "role": "original_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-tournament",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Сформулирована как отдельная classical-card для усиленной версии теоремы Редеи: нечётность числа направленных гамильтоновых путей.",
+      "Доказательство дано через инвариантность чётности при перевороте одного ребра; вспомогательный факт о дополнении орграфа включён в решение для самодостаточности."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

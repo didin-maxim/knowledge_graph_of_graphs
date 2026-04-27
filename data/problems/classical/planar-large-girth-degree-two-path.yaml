@@ -1,0 +1,157 @@
+{
+  "id": "planar-large-girth-degree-two-path",
+  "title": "Длинный 2-путь в планарном графе большого обхвата",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "planar_graph",
+      "minimum_degree",
+      "girth",
+      "degree_two_path"
+    ],
+    "methods": [
+      "euler_formula",
+      "face_counting",
+      "contraction",
+      "proof_by_contradiction"
+    ],
+    "transformations": [
+      "contract_maximal_degree_two_paths",
+      "reduce_to_minimum_degree_three"
+    ],
+    "goal": [
+      "find_long_path_with_degree_two_internal_vertices"
+    ],
+    "auxiliary_graph_type": [
+      "contracted_planar_core"
+    ],
+    "invariants": [
+      "planarity",
+      "girth_lower_bound",
+      "minimum_degree"
+    ],
+    "keywords": [
+      "planar_graph",
+      "girth",
+      "degree_two_path",
+      "euler_formula",
+      "face_counting",
+      "contraction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-degree-two-path",
+        "title": "Длинная цепочка вершин степени 2",
+        "text": "Пусть \\(m\\ge 1\\), а \\(H\\) — конечный планарный граф с минимальной степенью хотя бы \\(2\\) и обхватом не меньше \\(5m+1\\). Тогда в \\(H\\) есть простой путь \\(v_0v_1\\ldots v_{m+1}\\), у которого все внутренние вершины \\(v_1,\\ldots,v_m\\) имеют степень \\(2\\) в \\(H\\).",
+        "source_id": "src-ntu-strong-edge-coloring-planar-large-girth-2013",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-contract-short-two-paths",
+      "title": "Сжать все короткие 2-пути",
+      "text": "Если длинной цепочки вершин степени 2 нет, то каждый максимальный путь с внутренними вершинами степени 2 заменяется одним ребром длины не больше \\(m\\). Короткий цикл в сжатом графе поднимался бы в цикл длины не больше \\(5m\\) в исходном графе.",
+      "tags": [
+        "planar_graphs",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-euler-girth-six-contradiction",
+      "title": "Эйлер запрещает min degree 3 и обхват 6",
+      "text": "После сжатия получается простой планарный граф с минимальной степенью хотя бы \\(3\\) и обхватом хотя бы \\(6\\). Но счет граней дает \\(E\\le 3V/2-3\\), а сумма степеней дает \\(E\\ge 3V/2\\).",
+      "tags": [
+        "planar_graphs",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-contract-two-paths-and-euler",
+      "title": "Стягивание 2-путей и формула Эйлера",
+      "text": "Если какая-то компонента графа \\(H\\) является циклом, то из условия на обхват ее длина не меньше \\(5m+1\\), и на этом цикле можно взять любой путь из \\(m+1\\) ребер. Все его внутренние вершины имеют степень \\(2\\).\n\nОстается случай, когда есть нециклическая компонента. Будем работать в ней; минимальная степень по-прежнему не меньше \\(2\\). Предположим, что нужного пути нет. Стянем каждый максимальный путь, внутренние вершины которого имеют степень \\(2\\), в одно ребро. Концы такого максимального пути имеют степень хотя бы \\(3\\), а сам путь, по предположению, имеет длину не больше \\(m\\): иначе первые \\(m\\) внутренних вершин уже дали бы требуемый путь.\n\nОбозначим полученный граф через \\(K\\). Стягивание сохраняет планарность. В \\(K\\) нет петель: петля соответствовала бы циклу в \\(H\\) длины не больше \\(m\\). В \\(K\\) нет и кратных ребер: две параллельные дуги поднимались бы в два пути между одними и теми же концами, каждый длины не больше \\(m\\), а вместе они давали бы цикл длины не больше \\(2m\\). Значит, \\(K\\) — простой планарный граф. Кроме того, все его вершины имеют степень хотя бы \\(3\\).\n\nЕсли в \\(K\\) есть цикл длины \\(r\\le 5\\), то каждое его ребро поднимается в путь длины не больше \\(m\\), поэтому в \\(H\\) появился бы цикл длины не больше \\(rm\\le 5m\\), что противоречит обхвату не меньше \\(5m+1\\). Следовательно, обхват \\(K\\) не меньше \\(6\\).\n\nПусть у связного плоского вложения \\(K\\) есть \\(V\\) вершин, \\(E\\) ребер и \\(F\\) граней. Так как каждая грань имеет длину хотя бы \\(6\\), имеем \\(2E\\ge 6F\\). Из формулы Эйлера \\(V-E+F=2\\) следует \\(E\\le 3V/2-3\\). С другой стороны, минимальная степень хотя бы \\(3\\) дает \\(2E\\ge 3V\\), то есть \\(E\\ge 3V/2\\). Полученное противоречие доказывает лемму.",
+      "idea_ids": [
+        "idea-contract-short-two-paths",
+        "idea-euler-girth-six-contradiction"
+      ],
+      "standard_idea_ids": [
+        "face_counting",
+        "delete_to_simplify"
+      ],
+      "definition_ids": [
+        "planar_graph",
+        "degree",
+        "cycle",
+        "simple_graph"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Стандартная планарная лемма: сжатие максимальных цепочек вершин степени 2 сводит утверждение к невозможности простого планарного графа с min degree >= 3 и girth >= 6.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "classical_theorem",
+    "double_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "typical_olympiad_use": {
+      "value": "Extract a long path whose internal vertices all have degree 2 from a planar large-girth graph; useful before extending colorings or local constructions along the path.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-ntu-strong-edge-coloring-planar-large-girth-2013",
+      "role": "context_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted from the first standalone lemma in fyum-2013-tur2a-p1; the FYUM card was intentionally left unchanged.",
+      "The proof is self-contained apart from standard planar terminology and Euler's formula."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

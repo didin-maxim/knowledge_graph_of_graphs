@@ -1,0 +1,127 @@
+{
+  "id": "no-isolated-vertices-edge-lower-bound",
+  "title": "Лемма о нижней оценке числа рёбер при почти отсутствии изолированных вершин",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "vertices",
+      "edges",
+      "degrees",
+      "isolated_vertices"
+    ],
+    "methods": [
+      "degree_counting",
+      "double_counting"
+    ],
+    "transformations": [
+      "count_degree_sum"
+    ],
+    "goal": [
+      "edge_lower_bound"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_sum",
+      "nonisolated_vertex_count"
+    ],
+    "keywords": [
+      "isolated_vertices",
+      "edge_lower_bound",
+      "degree_sum",
+      "complement_graph_tool"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть \\(N\\ge 1\\), и пусть \\(H\\) — простой граф на \\(N\\) вершинах, в котором не более одной изолированной вершины. Тогда в \\(H\\) не менее \\(\\lceil (N-1)/2\\rceil\\) рёбер.",
+        "source_id": "src-utyum-2024_komol63_8_4_lipshire_roads-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-nonisolated-degrees",
+      "title": "Посчитать степени неизолированных вершин",
+      "text": "Если изолирована не более одной вершины, то по крайней мере \\(N-1\\) вершин имеют степень не меньше 1. Поэтому сумма степеней не меньше \\(N-1\\), а каждое ребро даёт в эту сумму ровно 2.",
+      "tags": [
+        "double_counting",
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-degree-sum",
+      "title": "Доказательство через сумму степеней",
+      "text": "Обозначим через \\(e\\) число рёбер графа \\(H\\). По условию в \\(H\\) не более одной изолированной вершины, значит как минимум \\(N-1\\) вершин имеют степень не меньше 1. Поэтому сумма степеней всех вершин не меньше \\(N-1\\). По лемме о рукопожатиях эта сумма равна \\(2e\\), следовательно \\(2e\\ge N-1\\). Так как \\(e\\) — целое число, получаем \\(e\\ge \\lceil (N-1)/2\\rceil\\).",
+      "idea_ids": [
+        "idea-count-nonisolated-degrees"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 1,
+    "comment": "Короткая служебная лемма на сумму степеней; обычно используется как один шаг после перехода к дополнительному графу.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "double_counting",
+    "goal_bound"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-utyum-2024_komol63_8_4_lipshire_roads-official",
+      "role": "extracted_from_solution_step",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted as a standalone small lemma from the complement-graph step in utyum-2024_komol63_8_4_lipshire_roads.",
+      "The lemma is intentionally minimal: it only packages the degree-sum lower bound used after passing to the complement."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

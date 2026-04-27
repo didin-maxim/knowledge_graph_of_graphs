@@ -1,0 +1,193 @@
+{
+  "id": "bounded-forward-rays-balanced-sums",
+  "title": "Ограниченные лучи вперед и сбалансированные суммы",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "graph_in_solution"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "functional_digraph",
+      "directed_rays",
+      "bounded_jump",
+      "integer_sequence"
+    ],
+    "methods": [
+      "state_invariant",
+      "pigeonhole_principle",
+      "telescoping"
+    ],
+    "transformations": [
+      "sequence_to_directed_graph",
+      "active_edges_to_height_pool"
+    ],
+    "goal": [
+      "bounded_discrepancy",
+      "eventual_balancing"
+    ],
+    "auxiliary_graph_type": [
+      "functional_digraph"
+    ],
+    "invariants": [
+      "bounded_pool_size",
+      "eventual_pool_size",
+      "sum_of_heights"
+    ],
+    "keywords": [
+      "bounded_forward_rays",
+      "pool_of_balls",
+      "balanced_sums",
+      "imo_2015_c5_lemma"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-sequence",
+        "title": "Последовательность с различными правыми концами",
+        "text": "Пусть \\(L\\ge 1\\), и пусть \\((a_i)_{i\\ge 1}\\) - бесконечная последовательность целых чисел, такая что \\(1\\le a_i\\le L\\) для всех \\(i\\), а числа \\(i+a_i\\) попарно различны. Тогда существуют положительные целые числа \\(b\\) и \\(N\\), такие что для любых \\(n>m\\ge N\\) выполнено\n\\[\n\\left|\\sum_{i=m+1}^n (a_i-b)\\right|\\le \\left\\lfloor\\frac{(L-1)^2}{4}\\right\\rfloor.\n\\]",
+        "source_id": "src-imo-2015-shortlist",
+        "status": "needs_human_review",
+        "review_notes": "Константа перенесена из графовой формулировки IMO 2015 C5 и проверена алгебраически как максимум (b-1)(L-b), но карточка оставлена на human review из-за чувствительности точной оценки.",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-forward-functional-digraph",
+        "title": "Функциональный ориентированный граф с ограниченными скачками",
+        "text": "Пусть на положительных целых вершинах задан ориентированный граф, в котором из каждой вершины \\(i\\) выходит ровно одна стрелка в вершину \\(i+a_i\\), где \\(1\\le a_i\\le L\\), и ни в какую вершину не входит больше одной стрелки. Тогда существуют положительные целые \\(b\\) и \\(N\\), такие что для любых \\(n>m\\ge N\\) суммарное отклонение длин стрелок на отрезке удовлетворяет\n\\[\n\\left|\\sum_{i=m+1}^n (a_i-b)\\right|\\le \\left\\lfloor\\frac{(L-1)^2}{4}\\right\\rfloor.\n\\]",
+        "status": "needs_human_review",
+        "review_notes": "Эквивалентность с последовательностной формой стандартна: условие входящей степени не больше 1 есть попарная различность концов i+a_i.",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph"
+        ],
+        "distinct_from": [
+          "stmt-sequence"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-imo-2015-c5-special-case",
+        "title": "Случай \\(L=2015\\)",
+        "text": "При \\(L=2015\\) из леммы следует существование положительных целых \\(b,N\\), для которых при всех \\(n>m\\ge N\\) выполнено \\(\\left|\\sum_{i=m+1}^n(a_i-b)\\right|\\le 1007^2\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-active-rays-as-balls",
+      "title": "Активные стрелки как шары на высотах",
+      "text": "В момент \\(t\\) берем все стрелки \\(i\\to i+a_i\\), пересекающие промежуток от \\(t\\) к \\(t+1\\). Такой стрелке соответствует шар высоты \\(i+a_i-t\\); из-за различных концов эти высоты попарно различны и лежат среди \\(0,1,\\dots,L-1\\).",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-eventual-pool-size",
+      "title": "Стабилизация числа шаров",
+      "text": "При переходе к следующему моменту исчезает не более одного шара и добавляется ровно один новый, поэтому число шаров не убывает и ограничено сверху числом \\(L\\). Значит, с некоторого момента оно постоянно равно некоторому \\(b\\).",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-height-sum-telescopes",
+      "title": "Телескопирование суммы высот",
+      "text": "После стабилизации на каждом шаге есть шар высоты 0. Если \\(S_t\\) - сумма высот в пуле, то переход от \\(t\\) к \\(t+1\\) дает \\(S_{t+1}-S_t=a_{t+1}-b\\), и частичные суммы \\(a_i-b\\) становятся разностями двух ограниченных величин.",
+      "tags": [
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-pool-of-balls",
+      "title": "Доказательство через пул шаров высот",
+      "text": "Для каждого целого \\(t\\ge 0\\) рассмотрим пул шаров, соответствующих тем индексам \\(i\\), для которых \\(i\\le t<i+a_i\\). Шару индекса \\(i\\) приписываем высоту \\(h=i+a_i-t\\). Так как \\(1\\le a_i\\le L\\), каждая высота лежит в множестве \\(\\{0,1,\\dots,L-1\\}\\). Если два шара в один момент имели бы одинаковую высоту, то соответствующие стрелки имели бы один и тот же конец \\(i+a_i\\), что запрещено. Поэтому в пуле всегда не больше \\(L\\) шаров.\n\nПусть \\(B_t\\) - число шаров в момент \\(t\\). При переходе от \\(t\\) к \\(t+1\\) удаляется шар высоты 0, если он есть, добавляется новый шар, отвечающий индексу \\(t+1\\), а затем все высоты уменьшаются на 1. Следовательно, на каждом шаге мы удаляем не более одного шара и добавляем ровно один, так что \\(B_{t+1}\\ge B_t\\). Последовательность \\(B_t\\) неубывает и ограничена числом \\(L\\), значит, начиная с некоторого момента \\(N\\), она постоянно равна некоторому положительному целому \\(b\\).\n\nДля всякого \\(t\\ge N\\) в пуле обязательно есть шар высоты 0: иначе на следующем шаге ничего не удалилось бы, новый шар добавился бы, и число шаров стало бы \\(b+1\\), что противоречит стабилизации. Обозначим через \\(S_t\\) сумму высот всех шаров в момент \\(t\\). На стабилизированном участке переход можно считать так: удалить один шар высоты 0, добавить шар высоты \\(a_{t+1}\\), затем уменьшить все \\(b\\) высот на 1. Поэтому\n\\[\nS_{t+1}=S_t+a_{t+1}-b\n\\]\nдля всех \\(t\\ge N\\). Суммируя по \\(t=m,m+1,\\dots,n-1\\), получаем\n\\[\n\\sum_{i=m+1}^n(a_i-b)=S_n-S_m\n\\]\nпри всех \\(n>m\\ge N\\).\n\nОстается оценить возможный размах \\(S_t\\). После момента \\(N\\) среди \\(b\\) попарно различных высот из \\(\\{0,1,\\dots,L-1\\}\\) всегда есть высота 0. Минимальная возможная сумма таких высот равна \\(0+1+\\dots+(b-1)\\), а максимальная - \\(0+(L-1)+(L-2)+\\dots+(L-b+1)\\). Поэтому разность любых двух возможных значений \\(S_t\\) не превосходит\n\\[\n\\bigl(0+(L-1)+(L-2)+\\dots+(L-b+1)\\bigr)-\\bigl(0+1+\\dots+(b-1)\\bigr)=(b-1)(L-b).\n\\]\nПри целых \\(1\\le b\\le L\\) максимум выражения \\((b-1)(L-b)\\) равен \\(\\left\\lfloor (L-1)^2/4\\right\\rfloor\\). Значит,\n\\[\n\\left|\\sum_{i=m+1}^n(a_i-b)\\right|=|S_n-S_m|\\le \\left\\lfloor\\frac{(L-1)^2}{4}\\right\\rfloor\n\\]\nдля всех \\(n>m\\ge N\\), что и требовалось.",
+      "idea_ids": [
+        "idea-active-rays-as-balls",
+        "idea-eventual-pool-size",
+        "idea-height-sum-telescopes"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle",
+        "extremal_choice"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "directed_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p2_p5",
+    "local_score": 9,
+    "comment": "Независимый технический слой из IMO Shortlist 2015 C5: идея короткая, но точная константа требует аккуратного контроля стабилизированного пула.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "extremal_choice",
+    "goal_bound",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "state_invariant",
+        "pigeonhole_principle",
+        "telescoping_height_sum"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2015-shortlist",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-sequence",
+        "stmt-imo-2015-c5-special-case"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted as an independent lemma from data/problems/imo/imo-2015-c5-sequence-rays.yaml without editing the IMO card.",
+      "The sharp constant is marked for human review, although the algebraic maximum in the proof matches the graph statement."
+    ],
+    "relations_status": "deep_done"
+  }
+}

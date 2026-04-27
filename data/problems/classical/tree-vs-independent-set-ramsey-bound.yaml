@@ -1,0 +1,144 @@
+{
+  "id": "tree-vs-independent-set-ramsey-bound",
+  "title": "Рамсеевская граница для дерева и независимого множества",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "tree",
+      "independent_set"
+    ],
+    "methods": [
+      "induction",
+      "ramsey_argument",
+      "minimal_counterexample"
+    ],
+    "transformations": [
+      "remove_leaf",
+      "delete_edges_to_critical_graph",
+      "remove_independent_set"
+    ],
+    "goal": [
+      "tree_embedding",
+      "exact_ramsey_bound"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "no_independent_set_of_size_k",
+      "vertex_count_after_removing_k_minus_one_vertices"
+    ],
+    "keywords": [
+      "ramsey_for_trees",
+      "tree_vs_independent_set",
+      "chvatal_tree_ramsey_bound",
+      "leaf_induction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Пусть \\(T\\) — произвольное фиксированное дерево на \\(n\\) вершинах, а \\(k\\) — положительное целое число. Тогда всякий простой граф на \\((n-1)(k-1)+1\\) вершинах содержит либо копию дерева \\(T\\), либо независимое множество размера \\(k\\).",
+        "source_id": "src-fyum-2008-tur3a-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "tree",
+          "independent_set"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-critical-independent-set",
+      "title": "Критическое удаление рёбер даёт почти максимальное независимое множество",
+      "text": "Если граф не имеет независимого множества размера \\(k\\), можно удалить рёбра до минимального по включению подграфа с тем же свойством. Удаление любого оставшегося ребра тогда создаёт независимое \\(k\\)-множество, а значит в исходном критическом графе есть независимое множество размера \\(k-1\\).",
+      "tags": [
+        "ramsey_theory",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-attach-leaf-from-independent-set",
+      "title": "Лист достраивается из независимого множества",
+      "text": "После удаления независимого множества \\(M\\) размера \\(k-1\\) остаётся ровно достаточно вершин, чтобы по индукции найти дерево \\(T\\) без одного листа. Любая вершина вне \\(M\\) смежна с некоторой вершиной из \\(M\\), иначе вместе с \\(M\\) она дала бы независимое множество размера \\(k\\).",
+      "tags": [
+        "trees",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-leaf-induction",
+      "title": "Индукция по числу вершин дерева",
+      "text": "Докажем утверждение индукцией по \\(n\\). При \\(n=1\\) копия дерева из одной вершины есть в любом непустом графе, а при \\(k=1\\) независимое множество размера \\(1\\) тоже есть, так что базовые случаи очевидны.\n\nПусть \\(n>1\\), и пусть граф \\(G\\) на \\((n-1)(k-1)+1\\) вершинах не содержит независимого множества размера \\(k\\). Достаточно доказать, что он содержит заданное дерево \\(T\\). Удаляя из \\(G\\) рёбра, пока это возможно без появления независимого множества размера \\(k\\), получим остовный подграф \\(H\\), минимальный по рёбрам среди графов с \\(\\alpha(H)<k\\). В \\(H\\) есть независимое множество размера \\(k-1\\): если рёбер нет, это ясно из числа вершин; иначе для любого ребра \\(uv\\) граф \\(H-uv\\) уже имеет независимое множество \\(I\\) размера \\(k\\). В графе \\(H\\) множество \\(I\\) не независимо, и единственное добавленное обратно ребро внутри \\(I\\) — это \\(uv\\); поэтому \\(I\\setminus\\{u\\}\\) независимо и имеет размер \\(k-1\\). Обозначим такое множество через \\(M\\).\n\nУдалим из \\(T\\) лист \\(x\\) и обозначим получившееся дерево через \\(T'\\); пусть \\(y\\) — сосед листа \\(x\\) в \\(T\\). В графе \\(H-M\\) осталось\n\\[\n((n-1)(k-1)+1)-(k-1)=(n-2)(k-1)+1\n\\]\nвершин. Если бы в \\(H-M\\) было независимое множество размера \\(k\\), оно было бы независимым и в \\(H\\), что невозможно. Поэтому по индукционному предположению \\(H-M\\) содержит копию дерева \\(T'\\). Пусть вершина \\(z\\) этой копии соответствует вершине \\(y\\).\n\nТак как \\(M\\) независимо и имеет размер \\(k-1\\), вершина \\(z\\) обязана иметь соседа в \\(M\\); иначе \\(M\\cup\\{z\\}\\) было бы независимым множеством размера \\(k\\) в \\(H\\). Берём такой сосед как образ удалённого листа \\(x\\). Тогда копия \\(T'\\) вместе с этим ребром даёт копию всего дерева \\(T\\) в \\(H\\), а значит и в исходном графе \\(G\\).",
+      "idea_ids": [
+        "idea-critical-independent-set",
+        "idea-attach-leaf-from-independent-set"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "tree",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Классическая рамсеевская лемма с короткой индукцией по листу дерева; в олимпиадных задачах часто используется как готовый инструмент.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "trees",
+    "induction",
+    "goal_exact_bound"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-fyum-2008-tur3a-p2-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Выделено из graph_theory-формулировки и решения карточки fyum-2008-tur3a-p2; исходная FYUM-карточка намеренно не изменялась."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

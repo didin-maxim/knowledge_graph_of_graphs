@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-gabriel-connectivity-lemma-usamo-2025-p3",
+      "from": "gabriel-graph-connected-separated-points",
+      "to": "usamo-2025-p3-gabriel-graph-road-network",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о связности графа Габриэля является одним из двух готовых инструментов в решении USAMO 2025 P3: после выбора Alice множества S построенная дорожная сеть распознаётся как граф Габриэля, и эта лемма даёт конечный путь дорог между любыми двумя городами.",
+      "backward_text": "USAMO 2025 P3 использует лемму о связности не как отдельную графовую формулировку условия, а как инструмент после ключевого выбора S и распознавания дорожной сети как графа Габриэля.",
+      "anchors": {
+        "from_solution_id": "sol-distance-descent",
+        "to_solution_id": "sol-gabriel-planar-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-gabriel-planarity-lemma-usamo-2025-p3",
+      "from": "gabriel-graph-straight-line-planar",
+      "to": "usamo-2025-p3-gabriel-graph-road-network",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о прямолинейной планарности графа Габриэля даёт второе условие выигрыша Alice в USAMO 2025 P3: после сведения дорожной сети к графу Габриэля она гарантирует, что дороги-отрезки не пересекаются внутренними точками.",
+      "backward_text": "В USAMO 2025 P3 отсутствие пересечений дорог доказывается не заново внутри карточки задачи, а ссылкой на стандартную лемму о прямолинейной планарности графа Габриэля.",
+      "anchors": {
+        "from_solution_id": "sol-thales-crossing",
+        "to_solution_id": "sol-gabriel-planar-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-gabriel-connectivity-planarity-paired-lemmas",
+      "from": "gabriel-graph-connected-separated-points",
+      "to": "gabriel-graph-straight-line-planar",
+      "type": "paired_variant",
+      "distance": 2,
+      "forward_text": "Обе карточки являются самостоятельными леммами о графе Габриэля: первая отвечает за связность при разреженности множества точек, вторая — за отсутствие пересечений в прямолинейном рисунке.",
+      "backward_text": "Лемма о планарности графа Габриэля естественно парна лемме о связности: вместе они превращают распознавание графа Габриэля в полный ответ на дорожную задачу USAMO 2025 P3.",
+      "anchors": {
+        "from_solution_id": "sol-distance-descent",
+        "to_solution_id": "sol-thales-crossing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    }
+  ]
+}

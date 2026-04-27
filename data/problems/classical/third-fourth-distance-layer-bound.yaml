@@ -1,0 +1,155 @@
+{
+  "id": "third-fourth-distance-layer-bound",
+  "title": "Оценка четвертого слоя через третий слой расстояний",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "distance_layers",
+      "shortest_paths"
+    ],
+    "methods": [
+      "layer_counting",
+      "neighbor_partition",
+      "quadratic_optimization"
+    ],
+    "transformations": [
+      "partition_fourth_layer_by_first_neighbor"
+    ],
+    "goal": [
+      "bound_sphere_size",
+      "transfer_third_layer_bound_to_fourth_layer"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "graph_distance",
+      "distance_layer_size"
+    ],
+    "keywords": [
+      "distance_layers",
+      "third_layer",
+      "fourth_layer",
+      "imo_2013_c6_tool"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-distance-layer-bound",
+        "title": "Оценка четвертого слоя",
+        "text": "Пусть \\(G\\) — конечный связный неориентированный граф, а \\(M\\ge1\\) — целое число. Для вершины \\(x\\) обозначим \\(L_i(x)=\\{y\\in V(G):\\operatorname{dist}(x,y)=i\\}\\). Если для каждой вершины \\(x\\) выполнено \\(|L_3(x)|\\le M\\), то для каждой вершины \\(x\\) выполнено \\(|L_4(x)|\\le \\left\\lfloor (M+1)^2/4\\right\\rfloor\\).",
+        "source_id": "src-mse-imo-2013-c6-layer-counting",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-partition-by-first-neighbor",
+      "title": "Разбить четвертый слой по первому соседу",
+      "text": "Фиксируем стартовую вершину \\(v\\). Каждую вершину из \\(L_4(v)\\) приписываем одному соседу \\(v\\), через которого идет кратчайший путь длины 4; затем сравниваем размеры получившихся классов с третьими слоями вокруг этих соседей.",
+      "tags": [
+        "connectivity",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-quadratic-maximum",
+      "title": "Максимум произведения при равных частях",
+      "text": "Если непустых классов \\(q\\), то каждый из них имеет размер не больше \\(M+1-q\\), поэтому весь четвертый слой имеет размер не больше \\(q(M+1-q)\\), а максимум этой квадратичной функции равен \\(\\lfloor(M+1)^2/4\\rfloor\\).",
+      "tags": [
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-mse-neighbor-partition",
+      "title": "Подсчет через разбиение по соседям стартовой вершины",
+      "text": "Зафиксируем вершину \\(v\\) и перечислим ее соседей как \\(v_1,\\dots,v_p\\). Построим разбиение слоя \\(L_4(v)\\). Идем по соседям в этом порядке; в класс \\(V_i\\) кладем те еще не распределенные вершины \\(w\\in L_4(v)\\), для которых существует кратчайший путь \\(v-v_i-a-b-w\\). Тогда каждая вершина из \\(L_4(v)\\) попадет ровно в один класс, поэтому \\(|L_4(v)|=\\sum_i |V_i|\\).\n\nОставим только непустые классы и обозначим их размеры через \\(n_1,\\dots,n_q\\). Для фиксированного непустого класса \\(V_i\\) все его \\(n_i\\) вершин лежат на расстоянии 3 от соответствующего соседа \\(v_i\\). Кроме того, каждый другой непустой класс дает еще одну вершину на расстоянии 3 от \\(v_i\\): берем вершину \\(w\\) из этого другого класса и кратчайший путь от его первого соседа до \\(w\\); при переходе от расстояния не больше 2 от \\(v_i\\) к вершине \\(w\\), не принадлежащей классу \\(V_i\\), на этом пути возникает новый свидетель из \\(L_3(v_i)\\). Для разных классов такие свидетели можно выбрать различными, иначе общий свидетель дал бы более раннее присваивание одной из рассматриваемых вершин. Значит, \\(|L_3(v_i)|\\ge n_i+q-1\\).\n\nПо условию \\(|L_3(v_i)|\\le M\\), поэтому \\(n_i+q-1\\le M\\), то есть \\(n_i\\le M+1-q\\) для всех \\(i\\). Следовательно, \\(|L_4(v)|=\\sum_{i=1}^q n_i\\le q(M+1-q)\\). Правая часть как функция целого \\(q\\) не превосходит максимума произведения двух неотрицательных чисел с суммой \\(M+1\\), то есть \\(\\left\\lfloor (M+1)^2/4\\right\\rfloor\\). Вершина \\(v\\) была произвольной, поэтому та же оценка верна для каждого четвертого слоя.",
+      "idea_ids": [
+        "idea-partition-by-first-neighbor",
+        "idea-quadratic-maximum"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 10,
+    "comment": "Самостоятельная графовая лемма из IMO Shortlist 2013 C6: короткая идея разбиения проста, но аккуратный учет свидетелей третьего слоя требует осторожности.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "double_counting",
+    "goal_bound",
+    "extremal_graph_theory"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "layer_counting",
+        "neighbor_partition",
+        "quadratic_optimization"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-mse-imo-2013-c6-layer-counting",
+      "role": "community_alternative_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-2013-shortlist",
+      "role": "source_problem_instance",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Extracted as a standalone distance-layer lemma from imo-2013-c6-flight-distance-layers; the original IMO card was intentionally left unchanged.",
+      "The proof is the parameterized version of the short MSE neighbor-partition argument; the IMO instance is M=100, giving floor(101^2/4)=2550."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}
