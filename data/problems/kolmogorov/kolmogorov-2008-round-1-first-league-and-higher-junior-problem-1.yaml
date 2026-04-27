@@ -69,7 +69,7 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
+      "title": "Решение через общий фрагмент",
       "text": "Ответ: `n - 3`.\n\nНижняя оценка получается на примере пути и звезды: чтобы превратить путь в звезду, нужно переподвесить все внутренние вершины пути, кроме двух крайних и будущего центра, то есть требуется `n - 3` ходов.\n\nДля верхней оценки в официальном решении выбирают в первом дереве путь длины 2 и показывают, что можно последовательно переставлять листья так, чтобы сохранить этот общий фрагмент и постепенно привести дерево к нужному виду. Иначе говоря, любое дерево можно за не более чем `n - 3` операций превратить в звезду, а из звезды — в любое другое дерево.\n\nСледовательно, максимальное необходимое число ходов равно `n - 3`.",
       "idea_ids": [
         "idea-graph-role"
@@ -78,10 +78,11 @@
         "extremal_choice",
         "delete_to_simplify"
       ],
-      "status": "ai_checked",
+      "status": "needs_human_review",
       "definition_ids": [
         "tree"
-      ]
+      ],
+      "review_notes": "2026-04-27 red-flag repair: left as needs_human_review because the local text still gives only a compressed upper-bound argument for preserving a length-2 common fragment while reattaching leaves; expanding it safely requires source/OCR lookup or a separate reconstruction."
     }
   ],
   "difficulty": {

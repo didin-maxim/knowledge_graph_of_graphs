@@ -24,6 +24,7 @@
 ```powershell
 python tools/validate.py
 python tools/check_links.py
+python tools/audit_rules.py
 python tools/build_index.py
 python tools/build_viewer.py
 python tools/search.py query "matching"
@@ -55,6 +56,7 @@ python tools/comments.py --status open
 ## Документация
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — актуальная схема репозитория
+- [docs/AI_CARD_RULES.md](docs/AI_CARD_RULES.md) — компактные правила для ИИ-правок карточек
 - [docs/IMPORT_WORKFLOW.md](docs/IMPORT_WORKFLOW.md) — как устроен массовый импорт
 - [docs/REVIEW_GUIDE.md](docs/REVIEW_GUIDE.md) — что именно смотреть в этой черновой публикации
 - [docs/HANDOFF_FOR_NEW_CHAT.md](docs/HANDOFF_FOR_NEW_CHAT.md) — короткая точка входа для нового чата

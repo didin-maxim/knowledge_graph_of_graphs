@@ -43,7 +43,22 @@
         "definition_ids": []
       }
     ],
-    "graph_theory": [],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-knight-independent-sets",
+        "text": "Рассмотрим граф ходов коня на клетках шахматной доски 8 x 8: вершины соответствуют клеткам, а ребро соединяет две клетки, если конь может перейти с одной на другую. Сколько в этом графе независимых множеств размера 31?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
     "olympiad_reformulations": []
   },
   "ideas": [
@@ -67,7 +82,7 @@
         "idea-knight-move-graph"
       ],
       "standard_idea_ids": [],
-      "status": "ai_checked",
+      "status": "needs_human_review",
       "definition_ids": [
         "connected_graph"
       ]
@@ -97,9 +112,10 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [
-      "Импортировано из проверенной рабочей карточки ЮМТ 2016_start_high_round1_problem7.md."
+      "Импортировано из проверенной рабочей карточки ЮМТ 2016_start_high_round1_problem7.md.",
+      "2026-04-27: решение оставлено needs_human_review: подсчёт 68 использует официальный рисунок/неразвёрнутый разбор четвёртого квадрата и четырёх исключительных конфигураций."
     ],
     "relations_status": "deep_done",
-    "graph_theory_absent_reason": "Графовая сущность этой задачи проявляется прежде всего в официальном решении; отдельная самодостаточная graph_theory-формулировка пока не вынесена."
+    "graph_theory_duplicate_removed": false
   }
 }

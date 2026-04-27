@@ -186,6 +186,10 @@ def main():
                 and editorial.get("graph_theory_absent_reason")
             )
         )
+        if editorial.get("graph_theory_duplicate_removed") and statements.get("graph_theory"):
+            add_error(errors, path, "graph_theory_duplicate_removed is true but graph_theory statement is still present")
+        if editorial.get("graph_theory_absent_reason") and statements.get("graph_theory"):
+            add_error(errors, path, "graph_theory_absent_reason is present but graph_theory statement exists")
         if not statements.get("graph_theory") and not graph_theory_optional:
             add_error(errors, path, "missing graph_theory statement, graph_theory_duplicate_removed flag, or graph_theory_absent_reason for graph_in_solution card")
 
@@ -316,6 +320,13 @@ def main():
                 for standard_idea_id in standard_idea_ids:
                     if standard_idea_id not in standard_ideas:
                         add_error(errors, path, f"solution {solution.get('id')} references unknown standard idea {standard_idea_id}")
+            for example in solution.get("examples", []):
+                if isinstance(example, dict) and example.get("type") == "image":
+                    asset_path = example.get("path")
+                    if not isinstance(asset_path, str) or not asset_path:
+                        add_error(errors, path, f"solution {solution.get('id')} image example has empty path")
+                    elif not (ROOT / "data" / asset_path).exists():
+                        add_error(errors, path, f"solution {solution.get('id')} image asset does not exist: {asset_path}")
 
         statement_ids = {
             statement_id

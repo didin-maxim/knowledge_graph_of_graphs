@@ -106,6 +106,7 @@
 - `tools/lib.py` — общая загрузка данных
 - `tools/validate.py` — структурная проверка базы
 - `tools/check_links.py` — проверка ссылок и маршрутов
+- `tools/audit_rules.py` — редакторские warnings для ИИ-правок
 - `tools/search.py` — локальный CLI-поиск
 - `tools/build_index.py` — сборка SQLite-индекса
 - `tools/build_viewer.py` — сборка viewer

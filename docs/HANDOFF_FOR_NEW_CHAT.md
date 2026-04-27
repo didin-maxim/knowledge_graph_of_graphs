@@ -102,6 +102,7 @@ python tools\comments.py --architecture
 cd C:\Users\Admin\Documents\Codex\2026-04-20-c-users-admin-documents-codex-2026
 python tools\validate.py
 python tools\check_links.py
+python tools\audit_rules.py
 python tools\build_index.py
 python tools\build_viewer.py
 ```
@@ -128,6 +129,7 @@ python tools\build_viewer.py
 ## Где смотреть архитектурный контекст
 
 - [README.md](../README.md)
+- [AI_CARD_RULES.md](AI_CARD_RULES.md)
 - [ARCHITECTURE.md](ARCHITECTURE.md)
 - [REVIEW_GUIDE.md](REVIEW_GUIDE.md)
 - [CONTRIBUTING.md](../CONTRIBUTING.md)
@@ -137,7 +139,7 @@ python tools\build_viewer.py
 Если новый чат подхватывает работу, ему лучше начать так:
 
 1. Прочитать этот файл.
-2. Прочитать `README.md` и `docs/ARCHITECTURE.md`.
+2. Прочитать `README.md`, `docs/AI_CARD_RULES.md` и `docs/ARCHITECTURE.md`.
 3. Прогнать:
    ```powershell
    python tools\validate.py

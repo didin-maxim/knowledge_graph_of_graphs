@@ -55,26 +55,6 @@
         "id": "stmt-original-1",
         "text": "Пусть n и r — натуральные числа. Среди всех простых неориентированных графов на n вершинах, в которых нет r+1 попарно соединенных вершин, наибольшее число ребер имеет полный r-дольный граф с долями, размеры которых отличаются не более чем на 1.",
         "source_id": "src-wikipedia-turan",
-        "status": "needs_review",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "simple_graph",
-          "clique",
-          "complete_graph",
-          "independent_set"
-        ],
-        "distinct_from": [
-          "stmt-graph-1",
-          "stmt-graph-complement"
-        ]
-      }
-    ],
-    "graph_theory": [
-      {
-        "id": "stmt-graph-1",
-        "text": "Пусть G — простой неориентированный граф на n вершинах. Если G не содержит клики \\( K_{r+1} \\), то \\( e(G) \\le e(T_r(n)) \\), где \\( T_r(n) \\) — полный r-дольный граф Турана: вершины разбиты на r почти равных независимых долей, а ребра проведены между всеми вершинами из разных долей.",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
@@ -86,26 +66,7 @@
           "independent_set"
         ],
         "distinct_from": [
-          "stmt-original-1",
           "stmt-graph-complement"
-        ]
-      },
-      {
-        "id": "stmt-graph-complement",
-        "text": "Пусть \\(G\\) — простой граф на \\(n\\) вершинах, в котором число независимости не превосходит \\(r\\). Тогда \\(e(G)\\) не меньше числа рёбер в графе, состоящем из \\(r\\) попарно несвязанных клик с мощностями, отличающимися не более чем на 1. Равенство достигается именно на таком графе; эквивалентно, дополнительный граф \\(\\overline G\\) является графом Турана \\(T_r(n)\\).",
-        "status": "ai_checked",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "simple_graph",
-          "independent_set",
-          "clique",
-          "complement_graph"
-        ],
-        "distinct_from": [
-          "stmt-original-1",
-          "stmt-graph-1"
         ]
       }
     ],
@@ -245,8 +206,10 @@
     "review_status": "ai_checked",
     "public_ready": true,
     "notes": [
-      "2026-04-26 metadata pass: aligned Turan with Zykov symmetrization, balanced-partite extremal object, complement reformulations, and fuller definitions."
+      "2026-04-26 metadata pass: aligned Turan with Zykov symmetrization, balanced-partite extremal object, complement reformulations, and fuller definitions.",
+      "2026-04-27 public_ready audit: statement checked against the Zykov symmetrization proof and balanced-partite extremal calculation; local uncertain statement status resolved."
     ],
-    "relations_status": "deep_done"
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
   }
 }

@@ -49,26 +49,6 @@
         "id": "stmt-original-1",
         "text": "Для любых натуральных r и s существует такое N, что при любой раскраске каждого ребра полного графа K_N в красный или синий цвет найдется либо r вершин, все ребра между которыми красные, либо s вершин, все ребра между которыми синие.",
         "source_id": "src-wikipedia-ramsey",
-        "status": "needs_review",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "complete_graph",
-          "clique",
-          "independent_set",
-          "simple_graph"
-        ],
-        "distinct_from": [
-          "stmt-graph-1",
-          "stmt-graph-complement"
-        ]
-      }
-    ],
-    "graph_theory": [
-      {
-        "id": "stmt-graph-1",
-        "text": "Число Рамсея \\( R(r,s) \\) конечно: существует такое N, что каждый простой граф на N вершинах содержит либо клику размера r, либо независимое множество размера s.",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
@@ -80,26 +60,7 @@
           "simple_graph"
         ],
         "distinct_from": [
-          "stmt-original-1",
           "stmt-graph-complement"
-        ]
-      },
-      {
-        "id": "stmt-graph-complement",
-        "text": "Для любых натуральных \\(r\\) и \\(s\\) существует такое \\(N\\), что любой простой граф на \\(N\\) вершинах содержит либо клику размера \\(r\\), либо его дополнительный граф содержит клику размера \\(s\\).",
-        "status": "ai_checked",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "simple_graph",
-          "clique",
-          "complement_graph",
-          "complete_graph"
-        ],
-        "distinct_from": [
-          "stmt-original-1",
-          "stmt-graph-1"
         ]
       }
     ],
@@ -121,7 +82,7 @@
     {
       "id": "sol-recursive-bound",
       "title": "Рекуррентная оценка",
-      "text": "Докажем \\( R(r,s) \\)<=R(r-1,s)+R(r,s-1). В полной раскраске на таком числе вершин выберем вершину v. Если красных ребер из v хотя бы R(r-1,s), то среди их концов есть красная K_{r-1}, которая вместе с v дает красную K_r, либо синяя K_s. Если красных ребер меньше, то синих концов хотя бы R(r,s-1), и аналогично получаем синюю K_s или красную K_r. База R(1,s)=R(r,1)=1.",
+      "text": "Докажем рекурсию \\(R(r,s)\\le R(r-1,s)+R(r,s-1)\\) при базе \\(R(1,s)=R(r,1)=1\\). Возьмем полную красно-синюю раскраску на \\(N=R(r-1,s)+R(r,s-1)\\) вершинах и выберем вершину v. Среди остальных \\(N-1\\) вершин хотя бы \\(R(r-1,s)\\) соединены с v красным ребром или хотя бы \\(R(r,s-1)\\) соединены с v синим ребром. В первом случае применяем определение \\(R(r-1,s)\\) к красному множеству концов: если там есть красная \\(K_{r-1}\\), то вместе с v она дает красную \\(K_r\\); если там есть синяя \\(K_s\\), цель уже достигнута. Во втором случае применяем определение \\(R(r,s-1)\\) к синему множеству концов: синяя \\(K_{s-1}\\) вместе с v дает синюю \\(K_s\\), а красная \\(K_r\\) уже подходит. Индукция по \\(r+s\\) дает конечность всех чисел \\(R(r,s)\\).",
       "idea_ids": [
         "idea-pivot-vertex"
       ],
@@ -155,9 +116,12 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-19",
-    "review_status": "needs_human_review",
-    "public_ready": false,
-    "notes": [],
-    "relations_status": "deep_done"
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27 public_ready audit: made the recursive Ramsey proof explicit and resolved local review status."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
   }
 }

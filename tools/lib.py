@@ -27,8 +27,14 @@ EXTERNAL_PROBLEM_REF_PATTERNS = [
 
 
 def load_json_yaml(path):
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
+    raw = path.read_bytes()
+    if raw.startswith(b"\xef\xbb\xbf"):
+        try:
+            location = path.relative_to(ROOT)
+        except ValueError:
+            location = path
+        raise ValueError(f"{location}: UTF-8 BOM is not allowed")
+    return json.loads(raw.decode("utf-8"))
 
 
 def problem_paths():

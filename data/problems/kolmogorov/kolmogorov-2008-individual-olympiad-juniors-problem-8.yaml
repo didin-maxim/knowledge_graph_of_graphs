@@ -72,8 +72,8 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Официальное решение сначала правильно раскрашивает вершины графа в 4 цвета. Это можно сделать, поскольку граф 3-регулярен и имеет максимальную степень 3.\n\nЗатем одну авиакомпанию наделяют ребрами типов `1-2`, `2-3`, `3-4`, `4-1`, а вторую — ребрами типов `1-3` и `2-4`. В каждом из этих двух подграфов вершины естественно разбиваются на две доли, поэтому оба подграфа двудольны.\n\nСледовательно, ни у одной компании не может возникнуть нечетный цикл.",
+      "title": "Self-contained four-color partition proof",
+      "text": "A graph of maximum degree 3 can be properly colored with 4 colors by the greedy algorithm: order the vertices arbitrarily and color them one by one; when a vertex is colored, at most three colors are forbidden by its already colored neighbors.\n\nTake such a proper vertex coloring with colors 1, 2, 3, 4. Put an edge into the first airline if its endpoint colors are 1-2, 2-3, 3-4, or 4-1. Put an edge into the second airline if its endpoint colors are 1-3 or 2-4. Every edge joins two different colors, so it belongs to exactly one of these two lists.\n\nThe first airline graph is bipartite with parts {1,3} and {2,4}: each allowed first-airline edge joins one color from the first part to one color from the second part. The second airline graph is bipartite with parts {1,2} and {3,4}: each allowed second-airline edge also crosses between its two parts.\n\nA bipartite graph has no odd cycle. Therefore neither airline network contains an odd cycle, as required.",
       "idea_ids": [
         "idea-graph-role"
       ],

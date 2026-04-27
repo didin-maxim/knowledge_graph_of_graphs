@@ -70,8 +70,8 @@
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Официальное решение, сжатое изложение",
-      "text": "Официальное решение фиксирует базовую правильную раскраску, где каждый цвет встречается хотя бы дважды, и отдельно рассматривает произвольную правильную раскраску в `k` цветов.\n\nЕсли в этой `k`-раскраске есть цвет, представленный одной вершиной, то всю соответствующую цветовую группу из базовой раскраски перекрашивают в этот цвет. После этого полученный цвет уже не станет одноэлементным на следующих шагах.\n\nПовторяя процесс, последовательно устраняют все «плохие» цвета, состоящие из одной вершины. В конце получается правильная раскраска в `k` цветов, где каждый цвет используется не менее двух раз.",
+      "title": "Self-contained exchange recoloring proof",
+      "text": "Take any proper coloring `alpha` in which every color class has at least two vertices. Also take a proper coloring `beta` in exactly `k` colors; it exists because `chi(G)=k`.\n\nCall a color of the current `beta`-coloring protected if it contains one whole color class of `alpha`. Such a color has at least two vertices. Moreover, once a color is protected, it stays protected in the process below, because later moves recolor whole `alpha`-classes different from the one already protecting it.\n\nIf every `beta`-color has at least two vertices, we are done. Otherwise let color `c` be represented by the single vertex `v`. Let `A` be the `alpha`-color class containing `v`. Since `A` is independent and has at least two vertices, recolor all vertices of `A` with color `c`, leaving all other vertices with their current `beta`-colors. The new coloring is proper: the class of color `c` is exactly the independent set `A`, and every other color class only lost vertices from its previous independent class.\n\nNo color can become empty after this operation. If that happened, the resulting proper coloring would use at most `k-1` nonempty colors, contradicting `chi(G)=k`. Thus we still have a proper coloring in exactly `k` colors. The color `c` is now protected by the whole set `A`, so it will never again be a singleton.\n\nRepeat this operation while a singleton color exists. At each step one previously unprotected singleton color becomes protected, and protected colors never become singleton; hence after at most `k` steps no singleton color remains. The final coloring is proper, uses exactly `k` colors, and every color is used at least twice.",
       "idea_ids": [
         "idea-graph-role"
       ],
@@ -124,7 +124,8 @@
       "Файл-источник, указанный в карточке: work/kolm/text/2007/tur2_11sol.txt.",
       "Страница-источник, указанная в карточке: 2.",
       "Роль графа: explicit_in_statement.",
-      "Исходное название в финальной выборке: Round 2, High League / First League, chromatic-number problem."
+      "Исходное название в финальной выборке: Round 2, High League / First League, chromatic-number problem.",
+      "Backlog 2026-04-27: recoloring gap resolved by a local protected-color exchange invariant."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

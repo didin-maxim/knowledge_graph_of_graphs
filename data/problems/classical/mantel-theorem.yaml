@@ -64,47 +64,7 @@
           "bipartite_graph"
         ],
         "distinct_from": [
-          "stmt-graph-1",
           "stmt-graph-complement"
-        ]
-      }
-    ],
-    "graph_theory": [
-      {
-        "id": "stmt-graph-1",
-        "text": "Если простой граф G не содержит треугольника K_3, то \\( e(G) \\le \\lfloor |V(G)|^2/4 \\rfloor \\). Равенство достигается на полном двудольном графе, две доли которого имеют размеры, отличающиеся не более чем на 1.",
-        "status": "ai_checked",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "simple_graph",
-          "clique",
-          "complete_graph",
-          "bipartite_graph"
-        ],
-        "distinct_from": [
-          "stmt-original-1",
-          "stmt-graph-complement"
-        ]
-      },
-      {
-        "id": "stmt-graph-complement",
-        "text": "Пусть \\(G\\) — простой граф на \\(n\\) вершинах, в котором нет независимого множества размера 3. Тогда \\(e(G)\\ge \\binom n2-\\lfloor n^2/4\\rfloor\\). Равенство достигается тогда и только тогда, когда вершины \\(G\\) можно разбить на две клики с мощностями, отличающимися не более чем на 1; эквивалентно, дополнительный граф \\(\\overline G\\) является полным двудольным графом с почти равными долями.",
-        "status": "ai_checked",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "simple_graph",
-          "independent_set",
-          "clique",
-          "complement_graph",
-          "bipartite_graph"
-        ],
-        "distinct_from": [
-          "stmt-original-1",
-          "stmt-graph-1"
         ]
       }
     ],
@@ -173,6 +133,7 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [],
-    "relations_status": "deep_done"
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
   }
 }
