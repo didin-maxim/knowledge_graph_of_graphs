@@ -150,6 +150,10 @@ def statement_similarity(left, right):
     return max(sequence, containment)
 
 
+STATEMENT_SECTIONS = ["original", "graph_theory", "graph_hint_reformulations", "olympiad_reformulations"]
+GRAPH_STATEMENT_SECTIONS = {"graph_theory", "graph_hint_reformulations"}
+
+
 def main():
     errors = []
     problems = load_problems()
@@ -186,11 +190,12 @@ def main():
                 and editorial.get("graph_theory_absent_reason")
             )
         )
+        has_graph_statement = bool(statements.get("graph_theory") or statements.get("graph_hint_reformulations"))
         if editorial.get("graph_theory_duplicate_removed") and statements.get("graph_theory"):
             add_error(errors, path, "graph_theory_duplicate_removed is true but graph_theory statement is still present")
         if editorial.get("graph_theory_absent_reason") and statements.get("graph_theory"):
             add_error(errors, path, "graph_theory_absent_reason is present but graph_theory statement exists")
-        if not statements.get("graph_theory") and not graph_theory_optional:
+        if not has_graph_statement and not graph_theory_optional:
             add_error(errors, path, "missing graph_theory statement, graph_theory_duplicate_removed flag, or graph_theory_absent_reason for graph_in_solution card")
 
         local_solution_ids = ids(problem.get("solutions", []))
@@ -231,19 +236,19 @@ def main():
         if difficulty.get("status") not in statuses:
             add_error(errors, path, f"unknown difficulty status {difficulty.get('status')}")
 
-        for section_name in ["original", "graph_theory", "olympiad_reformulations"]:
+        for section_name in STATEMENT_SECTIONS:
             for statement in statements.get(section_name, []):
                 statement_items.append((section_name, statement.get("id"), statement.get("text", "")))
                 if not statement.get("text"):
                     add_error(errors, path, f"{section_name} statement {statement.get('id')} has empty text")
                 elif has_encoding_damage(statement.get("text", "")):
                     add_error(errors, path, f"{section_name} statement {statement.get('id')} looks like damaged encoding")
-                if section_name == "graph_theory":
+                if section_name in GRAPH_STATEMENT_SECTIONS:
                     for statement_problem in graph_theory_statement_problems(statement.get("text", "")):
                         add_error(
                             errors,
                             path,
-                            f"graph_theory statement {statement.get('id')} is not self-contained: {statement_problem}",
+                            f"{section_name} statement {statement.get('id')} is not self-contained: {statement_problem}",
                         )
                 if statement.get("status") not in statuses:
                     add_error(errors, path, f"unknown statement status {statement.get('status')}")

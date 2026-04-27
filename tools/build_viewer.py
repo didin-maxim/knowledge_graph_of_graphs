@@ -1172,6 +1172,7 @@ def build_html(data):
       const groups = [
         ['original', 'Оригинальные формулировки'],
         ['graph_theory', 'На языке теории графов'],
+        ['graph_hint_reformulations', 'Графовые переформулировки-подсказки'],
         ['olympiad_reformulations', 'Олимпиадные переформулировки']
       ];
       return groups.map(([key, title]) => {{
