@@ -1,0 +1,150 @@
+{
+  "id": "imo-1996-c1-grid-knight-reachability-divisible-2-or-3",
+  "title": "Недостижимость в графе ходов при \\(r\\), делящемся на 2 или 3, IMO Shortlist 1996 C1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "move_graph",
+      "connected_components"
+    ],
+    "methods": [
+      "modular_coloring",
+      "component_analysis"
+    ],
+    "transformations": [
+      "board_moves_to_graph"
+    ],
+    "goal": [
+      "reachability",
+      "impossibility"
+    ],
+    "auxiliary_graph_type": [
+      "finite_move_graph"
+    ],
+    "invariants": [
+      "parity",
+      "residue_class"
+    ],
+    "keywords": [
+      "imo_1996_c1",
+      "secondary_shortlist",
+      "early_imo_shortlist",
+      "divisible_by_2_or_3"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Дан прямоугольник \\(20\\times12\\), разбитый на единичные клетки. Пусть \\(A\\) и \\(B\\) — концы стороны длины \\(20\\), и нужно попасть из клетки, прилегающей к вершине \\(A\\), в клетку, прилегающую к вершине \\(B\\) вдоль этой стороны. Разрешено переходить из одной клетки в другую, если расстояние между центрами этих клеток равно \\(\\sqrt r\\). Докажите, что такой переход невозможен для любого целого \\(r\\), делящегося на \\(2\\) или на \\(3\\).",
+        "source_id": "src-secondary-imo-1996-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие: режим r делится на 2 или 3",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим граф, вершинами которого являются клетки доски \\(20\\times12\\), пронумерованные центрами \\((x,y)\\), где \\(1\\le x\\le20\\), \\(1\\le y\\le12\\). Две вершины соединены ребром, если евклидово расстояние между центрами соответствующих клеток равно \\(\\sqrt r\\). Докажите, что для каждого положительного целого \\(r\\), делящегося на \\(2\\) или на \\(3\\), вершины \\((1,1)\\) и \\((20,1)\\) лежат в разных компонентах этого графа.",
+        "source_id": "src-secondary-imo-1996-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-residue-obstruction",
+      "title": "Инвариант остатка для всех ходов",
+      "text": "Если \\(2\\mid r\\), любой допустимый вектор хода сохраняет \\(x+y\\pmod2\\). Если \\(3\\mid r\\), обе координаты каждого допустимого вектора кратны \\(3\\), поэтому сохраняются координаты по модулю \\(3\\).",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-modular-obstruction",
+      "title": "Модульная раскраска разделяет старт и цель",
+      "text": "Будем считать центры клеток точками целочисленной решётки; стартовая клетка имеет координаты \\((1,1)\\), а целевая — \\((20,1)\\). Каждый допустимый ход задаётся вектором \\((a,b)\\) с \\(a^2+b^2=r\\), причём после хода обе координаты остаются в пределах доски. Если \\(2\\mid r\\), то \\(a^2+b^2\\equiv0\\pmod2\\), откуда \\(a\\) и \\(b\\) имеют одну чётность. Значит \\(a+b\\) чётно, и величина \\(x+y\\pmod2\\) не меняется при любом ходе. Но для \\((1,1)\\) она равна \\(0\\), а для \\((20,1)\\) равна \\(1\\), поэтому путь невозможен. Если \\(3\\mid r\\), то квадраты по модулю \\(3\\) равны только \\(0\\) или \\(1\\), и равенство \\(a^2+b^2\\equiv0\\pmod3\\) возможно лишь при \\(a\\equiv b\\equiv0\\pmod3\\). Следовательно, каждый ход сохраняет обе координаты по модулю \\(3\\). У клеток \\((1,1)\\) и \\((20,1)\\) первые координаты различны по модулю \\(3\\), так что они лежат в разных компонентах графа ходов.",
+      "idea_ids": [
+        "idea-residue-obstruction"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 7,
+    "comment": "Один самостоятельный режим IMO Shortlist 1996 C1: невозможность при делимости r на 2 или 3.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "coloring",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "modular_coloring",
+        "component_analysis"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1996-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "updated_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split from the former composite IMO 1996 C1 card; this card keeps only the divisibility-by-2-or-3 obstruction regime."
+    ],
+    "relations_status": "deep_done"
+  }
+}

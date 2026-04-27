@@ -428,9 +428,13 @@ def build_html(data):
         </div>
         <input id="search-input" type="search" placeholder="Поиск">
         <select id="source-filter"></select>
+        <select id="author-filter"></select>
         <select id="year-filter"></select>
         <select id="solution-filter"></select>
-        <select id="tag-filter"></select>
+        <select id="goal-filter"></select>
+        <select id="object-filter"></select>
+        <select id="method-filter"></select>
+        <select id="type-filter"></select>
       </div>
       <div class="list" id="list"></div>
     </aside>
@@ -449,7 +453,18 @@ def build_html(data):
     const definitions = DB.definitions;
     const standardIdeas = DB.standard_ideas;
     const taxonomy = DB.taxonomy;
-    const state = {{ query: '', tag: 'all', source: 'all', year: 'all', solution: 'all', view: 'problems' }};
+    const state = {{
+      query: '',
+      goal: 'all',
+      object: 'all',
+      method: 'all',
+      type: 'all',
+      source: 'all',
+      author: 'all',
+      year: 'all',
+      solution: 'all',
+      view: 'problems'
+    }};
 
     const byId = (id) => document.getElementById(id);
     const esc = (value) => String(value ?? '')
@@ -647,6 +662,20 @@ def build_html(data):
       return firstYear(problem.title) || firstYear(problem.id);
     }}
 
+    function normalizeAuthor(value) {{
+      return normalizeCompact(value);
+    }}
+
+    function problemAuthors(problem) {{
+      return (problem.authors || [])
+        .map(author => String(author.name || '').trim())
+        .filter(name => name && name !== '?');
+    }}
+
+    function problemAuthorKeys(problem) {{
+      return problemAuthors(problem).map(normalizeAuthor).filter(Boolean);
+    }}
+
     function sourceAliasMap() {{
       return {{
         yumt: ['yumt', 'юмт'],
@@ -705,22 +734,61 @@ def build_html(data):
         source_key: info.key,
         source_label: info.label,
         source_aliases: info.aliases,
+        authors: problemAuthors(problem),
         year: info.year,
         solution_state: problemHasRealSolution(problem) ? 'with_solution' : 'without_solution'
       }};
       return searchBlob({{ ...problem, _search_meta: extra }});
     }}
 
+    function tagCategory(tag) {{
+      return taxonomy.tags?.[tag]?.category || 'other';
+    }}
+
+    function tagInCategories(tag, categories) {{
+      return categories.includes(tagCategory(tag));
+    }}
+
+    function categoryFilterOk(problem, stateKey) {{
+      const selected = state[stateKey];
+      return selected === 'all' || (problem.tags || []).includes(selected);
+    }}
+
+    function problemTypeKey(problem) {{
+      const tags = problem.tags || [];
+      if (tags.includes('classical_theorem')) return 'classical_theorem';
+      const primary = problem.kind?.primary || 'olympiad_problem';
+      if (['theorem', 'lemma', 'corollary'].includes(primary)) return primary;
+      if ((problem.kind?.secondary || []).includes('classical_tool')) return 'classical_tool';
+      return 'olympiad_problem';
+    }}
+
+    function problemTypeLabel(type) {{
+      const labels = {{
+        olympiad_problem: 'Задача',
+        theorem: 'Теорема',
+        lemma: 'Лемма',
+        corollary: 'Следствие',
+        classical_theorem: 'Классическая теорема',
+        classical_tool: 'Классический инструмент'
+      }};
+      return labels[type] || type;
+    }}
+
     function problemMatchesFilters(problem, options = {{}}) {{
       const query = state.query.trim().toLowerCase();
       const info = sourceInfo(problem);
-      if (!options.excludeTag) {{
-        const tagOk = state.tag === 'all' || (problem.tags || []).includes(state.tag);
-        if (!tagOk) return false;
-      }}
+      if (!options.excludeGoal && !categoryFilterOk(problem, 'goal')) return false;
+      if (!options.excludeObject && !categoryFilterOk(problem, 'object')) return false;
+      if (!options.excludeMethod && !categoryFilterOk(problem, 'method')) return false;
+      if (!options.excludeType && state.type !== 'all' && problemTypeKey(problem) !== state.type) return false;
       if (!options.excludeSource) {{
         const sourceOk = state.source === 'all' || info.key === state.source;
         if (!sourceOk) return false;
+      }}
+      if (!options.excludeAuthor) {{
+        const authorOk = state.author === 'all' || problemAuthorKeys(problem).includes(state.author);
+        if (!authorOk) return false;
       }}
       if (!options.excludeYear) {{
         const yearOk = state.year === 'all' || info.year === state.year;
@@ -929,34 +997,83 @@ def build_html(data):
       }}
     }}
 
-    function renderTagFilter() {{
-      const select = byId('tag-filter');
+    function inactiveFilterLabel() {{
+      return state.view === 'definitions'
+        ? `Определения (${{Object.keys(definitions).length}})`
+        : state.view === 'ideas'
+        ? `Идеи (${{Object.keys(standardIdeas).length}})`
+        : `Комментарии (${{Object.keys(comments).length}})`;
+    }}
+
+    function renderTagCategoryFilter(selectId, stateKey, categories, allLabel) {{
+      const select = byId(selectId);
       if (state.view !== 'problems') {{
         select.disabled = true;
-        const labelText = state.view === 'definitions'
-          ? `Определения (${{Object.keys(definitions).length}})`
-          : state.view === 'ideas'
-          ? `Идеи (${{Object.keys(standardIdeas).length}})`
-          : `Комментарии (${{Object.keys(comments).length}})`;
-        select.innerHTML = `<option>${{labelText}}</option>`;
+        select.innerHTML = `<option>${{inactiveFilterLabel()}}</option>`;
+        return;
+      }}
+      select.disabled = false;
+      const excludeOption = stateKey === 'goal'
+        ? {{ excludeGoal: true }}
+        : stateKey === 'object'
+        ? {{ excludeObject: true }}
+        : {{ excludeMethod: true }};
+      const counts = {{}};
+      Object.values(problems).forEach(problem => {{
+        if (!problemMatchesFilters(problem, excludeOption)) return;
+        (problem.tags || []).forEach(tag => {{
+          if (!tagInCategories(tag, categories)) return;
+          counts[tag] = (counts[tag] || 0) + 1;
+        }});
+      }});
+      const tags = Object.keys(counts).sort((a, b) => label(taxonomy.tags, a).localeCompare(label(taxonomy.tags, b), 'ru'));
+      const total = Object.values(problems).filter(problem => problemMatchesFilters(problem, excludeOption)).length;
+      select.innerHTML = `<option value="all">${{allLabel}} (${{total}})</option>` + tags.map(tag =>
+        `<option value="${{esc(tag)}}">${{esc(label(taxonomy.tags, tag))}} (${{counts[tag]}})</option>`
+      ).join('');
+      select.value = state[stateKey];
+      if (select.value !== state[stateKey]) select.value = 'all';
+    }}
+
+    function renderGoalFilter() {{
+      renderTagCategoryFilter('goal-filter', 'goal', ['goal'], 'Все цели');
+    }}
+
+    function renderObjectFilter() {{
+      renderTagCategoryFilter('object-filter', 'object', ['object', 'topic'], 'Все объекты');
+    }}
+
+    function renderMethodFilter() {{
+      renderTagCategoryFilter('method-filter', 'method', ['method'], 'Все методы');
+    }}
+
+    function renderTypeFilter() {{
+      const select = byId('type-filter');
+      if (state.view !== 'problems') {{
+        select.disabled = true;
+        select.innerHTML = `<option>${{inactiveFilterLabel()}}</option>`;
         return;
       }}
       select.disabled = false;
       const counts = {{}};
       Object.values(problems).forEach(problem => {{
-        if (!problemMatchesFilters(problem, {{ excludeTag: true }})) return;
-        (problem.tags || []).forEach(tag => {{
-          counts[tag] = (counts[tag] || 0) + 1;
-        }});
+        if (!problemMatchesFilters(problem, {{ excludeType: true }})) return;
+        const type = problemTypeKey(problem);
+        counts[type] = (counts[type] || 0) + 1;
       }});
-      const tags = Object.keys(counts).sort((a, b) => label(taxonomy.tags, a).localeCompare(label(taxonomy.tags, b), 'ru'));
-      const total = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeTag: true }})).length;
-      select.innerHTML = `<option value="all">Все метки (${{total}})</option>` + tags.map(tag =>
-        `<option value="${{esc(tag)}}">${{esc(label(taxonomy.tags, tag))}} (${{counts[tag]}})</option>`
+      const order = ['olympiad_problem', 'theorem', 'lemma', 'corollary', 'classical_theorem', 'classical_tool'];
+      const types = Object.keys(counts).sort((a, b) => {{
+        const indexA = order.includes(a) ? order.indexOf(a) : order.length;
+        const indexB = order.includes(b) ? order.indexOf(b) : order.length;
+        return indexA - indexB || problemTypeLabel(a).localeCompare(problemTypeLabel(b), 'ru');
+      }});
+      const total = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeType: true }})).length;
+      select.innerHTML = `<option value="all">Все типы (${{total}})</option>` + types.map(type =>
+        `<option value="${{esc(type)}}">${{esc(problemTypeLabel(type))}} (${{counts[type]}})</option>`
       ).join('');
-      select.value = state.tag;
+      select.value = state.type;
+      if (select.value !== state.type) select.value = 'all';
     }}
-
     function renderSourceFilter() {{
       const select = byId('source-filter');
       if (state.view !== 'problems') {{
@@ -979,6 +1096,34 @@ def build_html(data):
         `<option value="${{esc(key)}}">${{esc(labels[key])}} (${{counts[key]}})</option>`
       ).join('');
       select.value = state.source;
+    }}
+
+    function renderAuthorFilter() {{
+      const select = byId('author-filter');
+      if (state.view !== 'problems') {{
+        select.disabled = true;
+        select.innerHTML = `<option>Авторы</option>`;
+        return;
+      }}
+      select.disabled = false;
+      const counts = {{}};
+      const labels = {{}};
+      Object.values(problems).forEach(problem => {{
+        if (!problemMatchesFilters(problem, {{ excludeAuthor: true }})) return;
+        problemAuthors(problem).forEach(author => {{
+          const key = normalizeAuthor(author);
+          if (!key) return;
+          counts[key] = (counts[key] || 0) + 1;
+          labels[key] = author;
+        }});
+      }});
+      const keys = Object.keys(counts).sort((a, b) => labels[a].localeCompare(labels[b], 'ru'));
+      const total = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeAuthor: true }})).length;
+      select.innerHTML = `<option value="all">Все авторы (${{total}})</option>` + keys.map(key =>
+        `<option value="${{esc(key)}}">${{esc(labels[key])}} (${{counts[key]}})</option>`
+      ).join('');
+      select.value = state.author;
+      if (select.value !== state.author) select.value = 'all';
     }}
 
     function renderYearFilter() {{
@@ -1033,14 +1178,21 @@ def build_html(data):
         const items = problem.statements?.[key] || [];
         if (!items.length) return '';
         return `<h4>${{title}}</h4>` + items.map(statement => {{
-          const source = statement.source_id ? sources[statement.source_id] : null;
+          const sourceIds = [
+            ...(statement.source_id ? [statement.source_id] : []),
+            ...(statement.source_ids || [])
+          ];
+          const sourceLinks = sourceIds.map(sourceId => sources[sourceId]).filter(Boolean).map(source =>
+            `<a class="subtle" href="${{esc(source.url)}}" target="_blank" rel="noreferrer">${{esc(source.title)}}</a>`
+          ).join(' ');
           return `
             <div class="card">
               <div class="item-title">
                 <span>${{esc(statement.title || statement.id)}}</span>
                 ${{statusPill(statement.status)}}
                 ${{statement.self_contained ? `<span class="pill">самодостаточность: ${{esc(label(taxonomy.statuses, statement.self_contained.status))}}</span>` : ''}}
-                ${{source ? `<a class="subtle" href="${{esc(source.url)}}" target="_blank" rel="noreferrer">${{esc(source.title)}}</a>` : ''}}
+                ${{statement.shared_statement_group ? `<span class="pill">общий источник: ${{esc(statement.shared_statement_group.id)}} / ${{esc(statement.shared_statement_group.case_id)}}</span>` : ''}}
+                ${{sourceLinks}}
               </div>
               ${{textBlock(statement.text, statement.definition_ids || [])}}
               <div class="pill-row">${{(statement.definition_ids || []).map(definitionPill).join('')}}</div>
@@ -1186,8 +1338,8 @@ def build_html(data):
     function renderCommentForm(targetType, problemId = '') {{
       const title = targetType === 'problem' ? 'Новый комментарий к задаче' : 'Новый комментарий по архитектуре';
       const note = targetType === 'problem'
-        ? 'Сохраните файл в data/comments/, чтобы я потом увидел его и смог обработать.'
-        : 'Сохраните файл в data/comments/, чтобы комментарий попал в базу.';
+        ? 'Комментарий будет открыт как GitHub issue с привязкой к этой задаче.'
+        : 'Комментарий будет открыт как GitHub issue по архитектуре базы.';
       const options = targetType === 'problem' ? problemCommentKindOptions() : architectureCommentKindOptions();
       return `
         <form class="comment-form" data-comment-form data-target-type="${{esc(targetType)}}" data-problem-id="${{esc(problemId)}}">
@@ -1197,7 +1349,7 @@ def build_html(data):
           <input name="title" type="text" placeholder="Короткий заголовок" required>
           <textarea name="text" placeholder="Текст комментария" required></textarea>
           <div class="subtle">${{note}}</div>
-          <button type="submit">Сохранить комментарий в файл</button>
+          <button type="submit">Отправить комментарий в базу</button>
         </form>
       `;
     }}
@@ -1223,33 +1375,37 @@ def build_html(data):
       }};
     }}
 
+    function commentIssueBody(payload) {{
+      const target = payload.target.type === 'problem'
+        ? `problem_id: ${{payload.target.problem_id}}`
+        : 'target: architecture';
+      return [
+        'Комментарий доверенного эксперта к черновой базе.',
+        '',
+        '```json',
+        JSON.stringify(payload, null, 2),
+        '```',
+        '',
+        `Тип: ${{payload.kind}}`,
+        target,
+        `Автор: ${{payload.author}}`,
+        '',
+        payload.text
+      ].join('\\n');
+    }}
+
     async function persistCommentPayload(payload) {{
-      const text = JSON.stringify(payload, null, 2);
-      const suggestedName = `${{payload.id}}.yaml`;
-      if (window.showSaveFilePicker) {{
-        const handle = await window.showSaveFilePicker({{
-          suggestedName,
-          types: [{{
-            description: 'YAML',
-            accept: {{ 'application/x-yaml': ['.yaml'] }}
-          }}]
-        }});
-        const writable = await handle.createWritable();
-        await writable.write(text);
-        await writable.close();
-        alert('Комментарий сохранён. Если вы сохранили его не в data/comments/, перенесите файл туда.');
-        return;
+      const issueTitle = `[comment] ${{payload.title}}`;
+      const params = new URLSearchParams({{
+        title: issueTitle,
+        body: commentIssueBody(payload),
+        labels: 'comment'
+      }});
+      const url = `https://github.com/didin-maxim/knowledge_graph_of_graphs/issues/new?${{params.toString()}}`;
+      const opened = window.open(url, '_blank', 'noopener,noreferrer');
+      if (!opened) {{
+        window.location.href = url;
       }}
-      const blob = new Blob([text], {{ type: 'application/x-yaml;charset=utf-8' }});
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = suggestedName;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
-      alert('Файл комментария скачан. Переместите его в data/comments/, чтобы база его увидела.');
     }}
 
     function attachCommentForms() {{
@@ -1262,7 +1418,7 @@ def build_html(data):
             await persistCommentPayload(payload);
             form.reset();
           }} catch (error) {{
-            alert(`Не удалось сохранить комментарий: ${{error.message || error}}`);
+            alert(`Не удалось открыть GitHub issue: ${{error.message || error}}`);
           }}
         }});
       }});
@@ -1449,9 +1605,13 @@ def build_html(data):
       state.view = route.type === 'definition' ? 'definitions' : route.type === 'idea' ? 'ideas' : route.type === 'comment' ? 'comments' : 'problems';
       renderSidebar();
       renderSourceFilter();
+      renderAuthorFilter();
       renderYearFilter();
       renderSolutionFilter();
-      renderTagFilter();
+      renderGoalFilter();
+      renderObjectFilter();
+      renderMethodFilter();
+      renderTypeFilter();
       if (route.type === 'definition') renderDefinition();
       else if (route.type === 'idea') renderStandardIdea();
       else if (route.type === 'comment') renderCommentPage();
@@ -1463,13 +1623,33 @@ def build_html(data):
       selectFirstVisibleRoute();
     }});
 
-    byId('tag-filter').addEventListener('change', event => {{
-      state.tag = event.target.value;
+    byId('goal-filter').addEventListener('change', event => {{
+      state.goal = event.target.value;
+      selectFirstVisibleRoute();
+    }});
+
+    byId('object-filter').addEventListener('change', event => {{
+      state.object = event.target.value;
+      selectFirstVisibleRoute();
+    }});
+
+    byId('method-filter').addEventListener('change', event => {{
+      state.method = event.target.value;
+      selectFirstVisibleRoute();
+    }});
+
+    byId('type-filter').addEventListener('change', event => {{
+      state.type = event.target.value;
       selectFirstVisibleRoute();
     }});
 
     byId('source-filter').addEventListener('change', event => {{
       state.source = event.target.value;
+      selectFirstVisibleRoute();
+    }});
+
+    byId('author-filter').addEventListener('change', event => {{
+      state.author = event.target.value;
       selectFirstVisibleRoute();
     }});
 

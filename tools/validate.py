@@ -24,9 +24,97 @@ def ids(items):
     return {item["id"] for item in items}
 
 
+def statement_source_ids(statement):
+    source_ids = []
+    if statement.get("source_id"):
+        source_ids.append(statement["source_id"])
+    source_ids.extend(statement.get("source_ids", []))
+    return source_ids
+
+
+def validate_shared_statement_group(errors, path, section_name, statement):
+    group = statement.get("shared_statement_group")
+    if group is None:
+        return
+    prefix = f"{section_name} statement {statement.get('id')} shared_statement_group"
+    if not isinstance(group, dict):
+        add_error(errors, path, f"{prefix} must be an object")
+        return
+    for field in ["id", "case_id"]:
+        if not isinstance(group.get(field), str) or not group.get(field).strip():
+            add_error(errors, path, f"{prefix}.{field} must be a non-empty string")
+    if "note" in group and not isinstance(group.get("note"), str):
+        add_error(errors, path, f"{prefix}.note must be a string")
+
+
 def has_encoding_damage(text):
     damaged_markers = ["???", "Рџ", "Рњ", "Рљ", "Р°", "СЃ", "С‚", "С‡"]
     return any(marker in text for marker in damaged_markers)
+
+
+def graph_theory_statement_problems(text):
+    lowered = re.sub(r"\s+", " ", text.lower()).strip()
+    problems = []
+
+    meta_markers = [
+        "в официальном решении",
+        "в одном из решений",
+        "одно из решений",
+        "построим граф",
+        "построим двудольный граф",
+        "строится",
+        "представляется",
+        "изучается через",
+        "задача спрашивает",
+        "модель присутствует",
+    ]
+    for marker in meta_markers:
+        if marker in lowered:
+            problems.append(f"meta or solution-language marker '{marker}'")
+
+    summary_starts = [
+        "это задача",
+        "это игра",
+        "это красно-синяя раскраска",
+        "карточка фиксирует",
+    ]
+    for marker in summary_starts:
+        if lowered.startswith(marker):
+            problems.append(f"summary-like start '{marker}'")
+
+    if "стремится" in lowered:
+        problems.append("game goal is described as a role summary, not a rule")
+
+    has_task_verb = any(
+        marker in lowered
+        for marker in [
+            "докаж",
+            "найд",
+            "определ",
+            "каково",
+            "какие",
+            "можно ли",
+            "обязательно ли",
+            "существует ли",
+            "требуется",
+        ]
+    )
+    has_setup = any(
+        marker in lowered
+        for marker in [
+            "дан",
+            "пусть",
+            "рассмотрим",
+            "на окружности",
+            "изначально",
+            "неизвестен",
+            "разрешено",
+        ]
+    )
+    if len(lowered) < 180 and "нужно" in lowered and not (has_setup and has_task_verb):
+        problems.append("too compressed: uses 'нужно' without a full setup and task")
+
+    return problems
 
 
 def normalize_statement_text(text):
@@ -79,6 +167,7 @@ def main():
     relation_types = set(load_taxonomy("relation-types.yaml", "relation_types"))
     difficulty_levels = set(load_taxonomy("difficulty.yaml", "difficulty_levels"))
     properties = set(load_taxonomy("properties.yaml", "properties"))
+    sourced_statement_records = []
 
     for problem_id, problem in problems.items():
         path = problem["_path"]
@@ -146,23 +235,12 @@ def main():
                 elif has_encoding_damage(statement.get("text", "")):
                     add_error(errors, path, f"{section_name} statement {statement.get('id')} looks like damaged encoding")
                 if section_name == "graph_theory":
-                    lowered_statement = statement.get("text", "").lower()
-                    solution_only_markers = [
-                        "в одном из решений",
-                        "одно из решений",
-                        "алгоритм",
-                        "взвешив",
-                        "сравнен",
-                        "после предварительного",
-                    ]
-                    for marker in solution_only_markers:
-                        if marker in lowered_statement:
-                            add_error(
-                                errors,
-                                path,
-                                f"graph_theory statement {statement.get('id')} looks like a solution fragment, not a standalone formulation: marker '{marker}'",
-                            )
-                            break
+                    for statement_problem in graph_theory_statement_problems(statement.get("text", "")):
+                        add_error(
+                            errors,
+                            path,
+                            f"graph_theory statement {statement.get('id')} is not self-contained: {statement_problem}",
+                        )
                 if statement.get("status") not in statuses:
                     add_error(errors, path, f"unknown statement status {statement.get('status')}")
                 self_contained = statement.get("self_contained")
@@ -179,9 +257,26 @@ def main():
                     for definition_id in definition_ids:
                         if definition_id not in definitions:
                             add_error(errors, path, f"{section_name} statement {statement.get('id')} references unknown definition {definition_id}")
-                source_id = statement.get("source_id")
-                if source_id and source_id not in sources:
-                    add_error(errors, path, f"unknown statement source {source_id}")
+                source_ids = statement.get("source_ids")
+                if source_ids is not None and not isinstance(source_ids, list):
+                    add_error(errors, path, f"{section_name} statement {statement.get('id')} source_ids must be a list")
+                validate_shared_statement_group(errors, path, section_name, statement)
+                shared_group = statement.get("shared_statement_group") or {}
+                for source_id in statement_source_ids(statement):
+                    if source_id not in sources:
+                        add_error(errors, path, f"unknown statement source {source_id}")
+                    sourced_statement_records.append(
+                        {
+                            "problem_id": problem_id,
+                            "path": path,
+                            "section": section_name,
+                            "statement_id": statement.get("id"),
+                            "source_id": source_id,
+                            "text": normalize_statement_text(statement.get("text", "")),
+                            "shared_group_id": shared_group.get("id"),
+                            "shared_case_id": shared_group.get("case_id"),
+                        }
+                    )
 
         for index, left in enumerate(statement_items):
             for right in statement_items[index + 1 :]:
@@ -222,11 +317,24 @@ def main():
                     if standard_idea_id not in standard_ideas:
                         add_error(errors, path, f"solution {solution.get('id')} references unknown standard idea {standard_idea_id}")
 
+        statement_ids = {
+            statement_id
+            for _section_name, statement_id, _text in statement_items
+            if statement_id
+        }
         for source in problem.get("sources", []):
             if source.get("source_id") not in sources:
                 add_error(errors, path, f"unknown source {source.get('source_id')}")
             if source.get("status") not in statuses:
                 add_error(errors, path, f"unknown source status {source.get('status')}")
+            scoped_statement_ids = source.get("statement_ids")
+            if scoped_statement_ids is not None:
+                if not isinstance(scoped_statement_ids, list):
+                    add_error(errors, path, f"source {source.get('source_id')} statement_ids must be a list")
+                else:
+                    for statement_id in scoped_statement_ids:
+                        if statement_id not in statement_ids:
+                            add_error(errors, path, f"source {source.get('source_id')} references unknown statement {statement_id}")
 
         review_status = problem.get("editorial", {}).get("review_status")
         if review_status not in statuses:
@@ -234,6 +342,40 @@ def main():
         relations_status = problem.get("editorial", {}).get("relations_status")
         if relations_status not in relations_statuses:
             add_error(errors, path, f"unknown relations status {relations_status}")
+
+    records_by_statement_source = {}
+    for record in sourced_statement_records:
+        if not record["source_id"] or not record["text"]:
+            continue
+        key = (record["source_id"], record["text"])
+        records_by_statement_source.setdefault(key, []).append(record)
+    for (source_id, _text), records in records_by_statement_source.items():
+        problem_ids = {record["problem_id"] for record in records}
+        if len(problem_ids) <= 1:
+            continue
+        group_ids = {record.get("shared_group_id") for record in records if record.get("shared_group_id")}
+        missing = [record for record in records if not record.get("shared_group_id") or not record.get("shared_case_id")]
+        if missing or len(group_ids) != 1:
+            locations = ", ".join(
+                f"{record['problem_id']}#{record['statement_id']}"
+                for record in records
+            )
+            add_error(
+                errors,
+                "data/problems",
+                f"same statement text and source {source_id} appear in multiple cards without one shared_statement_group: {locations}",
+            )
+            continue
+        case_to_problem = {}
+        for record in records:
+            case_id = record.get("shared_case_id")
+            previous = case_to_problem.setdefault(case_id, record["problem_id"])
+            if previous != record["problem_id"]:
+                add_error(
+                    errors,
+                    "data/problems",
+                    f"shared_statement_group {next(iter(group_ids))} reuses case_id {case_id} for both {previous} and {record['problem_id']}",
+                )
 
     for source_id, source in sources.items():
         url = source.get("url", "")

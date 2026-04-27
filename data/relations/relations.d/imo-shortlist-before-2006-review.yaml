@@ -61,19 +61,64 @@
       "confidence": 0.8
     },
     {
-      "id": "rel-imo-1996-c1-imo-2024-c4-grid-reachability",
-      "from": "imo-1996-c1-grid-knight-reachability",
-      "to": "imo-2024-c4-turbo-grid-monsters",
+      "id": "rel-imo-1996-c1-r97-imo-2024-c4-grid-reachability",
+      "from": "imo-1996-c1-grid-knight-reachability-r97-impossible",
+      "to": "imo-2024-c4-turbo-grid-monsters-three-attempts-strategy",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Обе задачи представляют собой вопросы достижимости сетки, когда путь должен быть построен с учетом локальных ограничений перемещения, а модульные или состязательные препятствия контролируют невозможность.",
-      "backward_text": "Сетка монстров Turbo — это не задача модульной раскраски, а более поздний пример построения ограниченного пути в сеточном графе, включенный в короткий список IMO.",
+      "forward_text": "Обе задачи представляют собой вопросы достижимости сетки, где локальные ограничения перемещения контролируются глобальным препятствием: полосовым инвариантом в режиме r=97 и состязательной структурой в Turbo.",
+      "backward_text": "Конструктивная стратегия Turbo — это не задача модульной раскраски, а более поздний пример построения ограниченного пути в сеточном графе, включенный в короткий список IMO.",
       "anchors": {
-        "from_solution_id": "sol-secondary-sketch",
-        "to_solution_id": "sol-three-attempts"
+        "from_solution_id": "sol-band-parity-obstruction",
+        "to_solution_id": "sol-three-attempt-strategy"
       },
       "status": "needs_human_review",
       "confidence": 0.64
+    },
+    {
+      "id": "rel-imo-1996-c1-divisibility-r73-paired-regimes",
+      "from": "imo-1996-c1-grid-knight-reachability-divisible-2-or-3",
+      "to": "imo-1996-c1-grid-knight-reachability-r73-path",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это два самостоятельных режима одной исходной задачи IMO 1996 C1: делимость r на 2 или 3 даёт невозможность через остаточный инвариант, а r=73 даёт достижимость через явный путь.",
+      "backward_text": "Режим r=73 является положительным парным вариантом к случаю делимости r на 2 или 3: та же доска и те же старт/цель, но вместо инварианта предъявляется маршрут.",
+      "anchors": {
+        "from_solution_id": "sol-modular-obstruction",
+        "to_solution_id": "sol-explicit-r73-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-imo-1996-c1-divisibility-r97-paired-regimes",
+      "from": "imo-1996-c1-grid-knight-reachability-divisible-2-or-3",
+      "to": "imo-1996-c1-grid-knight-reachability-r97-impossible",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Оба режима одной исходной задачи завершаются невозможностью, но используют разные инварианты: остатки по модулю 2 или 3 против полосового паритета для r=97.",
+      "backward_text": "Режим r=97 является отдельным невозможным случаем той же задачи; его препятствие не следует напрямую из делимости r на 2 или 3 и требует полосового инварианта.",
+      "anchors": {
+        "from_solution_id": "sol-modular-obstruction",
+        "to_solution_id": "sol-band-parity-obstruction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-imo-1996-c1-r73-r97-paired-regimes",
+      "from": "imo-1996-c1-grid-knight-reachability-r73-path",
+      "to": "imo-1996-c1-grid-knight-reachability-r97-impossible",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это два конкретных числовых режима одной исходной задачи: при r=73 существует явный путь, а при r=97 старт и цель разделяются полосовым инвариантом.",
+      "backward_text": "Режим r=97 показывает, что близкий по форме набор ходов может давать противоположный ответ: вместо явного пути, как при r=73, появляется инвариант компоненты.",
+      "anchors": {
+        "from_solution_id": "sol-explicit-r73-path",
+        "to_solution_id": "sol-band-parity-obstruction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
     },
     {
       "id": "rel-imo-1996-c2-imo-1999-c5-grid-colouring",

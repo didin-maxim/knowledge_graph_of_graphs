@@ -1,0 +1,169 @@
+{
+  "id": "stiebitz-double-critical-k5",
+  "title": "Теорема Штибица о double-critical 5-хроматических графах",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Michael Stiebitz",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "graph_coloring",
+      "chromatic_number",
+      "clique"
+    ],
+    "methods": [
+      "critical_graph",
+      "unique_coloring",
+      "maximal_induced_subgraph",
+      "recoloring"
+    ],
+    "transformations": [
+      "delete_adjacent_vertices",
+      "extend_coloring",
+      "add_vertex_to_induced_subgraph"
+    ],
+    "goal": [
+      "forbidden_graph_characterization",
+      "chromatic_critical_classification"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "chromatic_number",
+      "common_neighborhood",
+      "unique_3_coloring"
+    ],
+    "keywords": [
+      "stiebitz",
+      "double_critical",
+      "5_chromatic",
+      "k5"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-stiebitz-original",
+        "title": "Теорема Штибица",
+        "text": "Если связный граф G имеет хроматическое число 5 и для каждого ребра xy выполнено \\(\\chi(G-\\{x,y\\})=3\\), то G изоморфен полному графу K_5.",
+        "source_id": "src-stiebitz-double-critical-k5",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "chromatic_number",
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph-double-critical-k5"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-double-critical-k5",
+        "title": "Графовая формулировка",
+        "text": "Единственный double-critical граф с хроматическим числом 5, то есть связный 5-хроматический граф, в котором удаление концов любого ребра уменьшает хроматическое число ровно на 2, есть K_5.",
+        "source_id": "src-stiebitz-double-critical-k5",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "chromatic_number",
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-stiebitz-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-common-neighborhood-colors",
+      "title": "Общие соседи концов ребра видят все три цвета",
+      "text": "Если удалить концы ребра double-critical 5-хроматического графа и раскрасить остаток в 3 цвета, то каждый из трёх цветов обязан встретиться среди общих соседей этих концов.",
+      "tags": [
+        "coloring",
+        "minimal_counterexample"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-maximal-unique-3-colorable-subgraph",
+      "title": "Максимальный однозначно 3-раскрашиваемый подграф",
+      "text": "Максимальный индуцированный подграф с единственной 3-раскраской заставляет найти две внешние вершины, которые вместе с подходящим ребром образуют K_4.",
+      "tags": [
+        "coloring",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-stiebitz-proof",
+      "title": "Доказательство через общие окрестности и единственную 3-раскраску",
+      "text": "Пусть G — double-critical 5-хроматический граф. Для ребра \\(e=xy\\) обозначим через \\(T(e)\\) множество общих соседей x и y.\n\nСначала докажем ключевой факт. Возьмём любую 3-раскраску c графа \\(G-\\{x,y\\}\\). Продлим её до 5-раскраски h всего G, дав x цвет 4, а y цвет 5. Так как G не 4-раскрашиваем, в этой 5-раскраске для каждого цвета i найдётся вершина цвета i, имеющая соседей всех остальных четырёх цветов: иначе цвет i можно было бы слить с отсутствующим у него соседним цветом и получить 4-раскраску. Для i=1,2,3 такая вершина цвета i смежна и с x, и с y, потому что вершины цветов 4 и 5 единственны. Значит, в \\(T(e)\\) встречаются все три цвета раскраски c.\n\nНазовём граф с хроматическим числом не больше 3 однозначно 3-раскрашиваемым, если любые две его 3-раскраски задают одно и то же разбиение на цветовые классы. Построим максимальную цепочку индуцированных подграфов \\(H_1\\subset H_2\\subset\\cdots\\subset H_r\\), где \\(|V(H_i)|=i\\), каждый \\(H_i\\) однозначно 3-раскрашиваем, и уже нельзя добавить к \\(H_r\\) одну вершину G так, чтобы снова получить однозначно 3-раскрашиваемый индуцированный подграф. Такая цепочка существует: по доказанному факту у любого ребра есть общий сосед, поэтому в G есть треугольник, а \\(K_1\\subset K_2\\subset K_3\\) подходит для начала. При этом \\(H_r\\ne G\\), поскольку G имеет хроматическое число 5.\n\nЗанумеруем вершины \\(H_r\\) в порядке их появления в цепочке. Выберем в \\(H_r\\) ребро xy так, чтобы меньший из номеров x и y был как можно больше. Тогда каждый общий сосед x и y в \\(H_r\\) появился раньше обоих концов: если бы общий сосед z появился позже одного из концов, то ребро z с другим концом имело бы больший минимальный номер. Поэтому все общие соседи x и y в \\(H_r\\) лежат в некотором \\(H_i\\subset H_r-\\{x,y\\}\\).\n\nРассмотрим 3-раскраску графа \\(G-\\{x,y\\}\\). На \\(H_i\\) она должна совпадать, с точностью до переименования цветов, с ограничением единственной 3-раскраски \\(H_r\\). В любой 3-раскраске \\(H_r\\) общие соседи смежных x и y имеют один и тот же третий цвет. Значит, множество \\(T(xy)\\cap V(H_r)\\) использует не больше одного цвета. Но весь \\(T(xy)\\) использует все три цвета, поэтому вне \\(H_r\\) найдутся две разные вершины u и v, смежные и с x, и с y.\n\nПокажем, что \\(H_r+u\\) и \\(H_r+v\\) 4-хроматичны. Если, например, \\(H_r+u\\) был бы 3-раскрашиваем, то его 3-раскраска на \\(H_r\\) была бы единственной, а цвет u был бы вынужденно третьим относительно смежных x и y; значит, \\(H_r+u\\) тоже был бы однозначно 3-раскрашиваем, что противоречит максимальности \\(H_r\\). С другой стороны, добавление одной вершины к 3-раскрашиваемому графу требует не больше одного нового цвета, так что хроматическое число равно 4.\n\nПоложим \\(X=V(G)\\setminus V(H_r)\\). Так как \\(H_r+u\\) уже 4-хроматичен, в \\(X\\setminus\\{u\\}\\) не может быть ребра ab: иначе double-critical свойство дало бы 3-раскраску \\(G-\\{a,b\\}\\), но этот граф содержит \\(H_r+u\\). Значит, \\(X\\setminus\\{u\\}\\) независимо; аналогично \\(X\\setminus\\{v\\}\\) независимо. Всё X не может быть независимым, иначе 3-раскраску \\(H_r\\) можно было бы дополнить одним новым цветом для всех вершин X и получить 4-раскраску G. Следовательно, в X есть ребро, и из независимости \\(X\\setminus\\{u\\}\\) и \\(X\\setminus\\{v\\}\\) это ребро вынуждено быть uv. Тогда x,y,u,v попарно смежны, то есть в G есть клика K_4.\n\nПусть теперь \\(Q\\) — клика K_4, а \\(Y=V(G)\\setminus Q\\). Множество Y независимо: если бы в Y было ребро ab, то \\(G-\\{a,b\\}\\) содержал бы 4-хроматический подграф Q, что невозможно для double-critical 5-хроматического графа. Множество Y непусто, иначе G был бы K_4 и не имел бы хроматического числа 5. Возьмём \\(y\\in Y\\). Из связности G и независимости Y вершина y имеет соседа x в Q. По первому факту ребро xy лежит хотя бы в трёх треугольниках, а общие соседи x и y могут лежать только в трёх остальных вершинах Q. Поэтому y смежна со всеми вершинами Q, и \\(Q\\cup\\{y\\}\\) образует K_5. Наконец, другой вершины \\(y'\\in Y\\) быть не может: удалив ребро xy, мы получили бы граф, содержащий K_4 на \\((Q\\setminus\\{x\\})\\cup\\{y'\\}\\), вопреки 3-раскрашиваемости \\(G-\\{x,y\\}\\). Значит, \\(|Y|=1\\) и G изоморфен K_5.",
+      "idea_ids": [
+        "idea-common-neighborhood-colors",
+        "idea-maximal-unique-3-colorable-subgraph"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "chromatic_number",
+        "complete_graph",
+        "clique",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 11,
+    "comment": "Короткая, но нетривиальная классификационная теорема о double-critical 5-хроматических графах; нужна как инструмент для задачи ЮМТ 2015 GF P5.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "forbidden_clique",
+    "classical_theorem",
+    "goal_characterization"
+  ],
+  "sources": [
+    {
+      "source_id": "src-stiebitz-double-critical-k5",
+      "role": "original_source",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-27: proof ported from Stiebitz 1987, with the implicit maximal-edge and final |Y|=1 steps expanded for local self-containment."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

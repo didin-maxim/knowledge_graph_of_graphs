@@ -1,0 +1,161 @@
+{
+  "id": "imo-1998-c6-k5-rainbow-edges-construction",
+  "title": "Пятицветная раскраска рёбер \\(K_{10}\\) с пятью цветами на любых пяти вершинах, IMO Shortlist 1998 C6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "rainbow_subgraph"
+    ],
+    "methods": [
+      "explicit_coloring",
+      "pigeonhole_principle"
+    ],
+    "transformations": [
+      "points_to_complete_graph"
+    ],
+    "goal": [
+      "construct_valid_coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "color_class_partition"
+    ],
+    "standard_idea_ids": [
+      "pigeonhole_principle"
+    ],
+    "keywords": [
+      "imo-1998-c6",
+      "rainbow_edges",
+      "k5_construction",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-k5",
+        "title": "Условие, случай k = 5",
+        "text": "Даны 10 точек общего положения на плоскости. Нужно окрасить каждый отрезок между парой точек в один из 5 цветов так, чтобы для любых 5 из этих 10 точек среди отрезков с концами в выбранных точках нашлись 5 отрезков попарно различных цветов. Докажите, что такая раскраска существует.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph-k5"
+        ],
+        "source_id": "src-secondary-imo-1998-shortlist"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-k5",
+        "title": "Графовая формулировка",
+        "text": "Постройте 5-раскраску рёбер \\(K_{10}\\), в которой любые 5 вершин индуцируют подграф, содержащий рёбра всех 5 цветов. Иными словами, каждые 5 вершин должны содержать 5 попарно разноцветных рёбер.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original-k5"
+        ],
+        "source_id": "src-secondary-imo-1998-shortlist"
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-five-color-partitions",
+      "title": "Для каждого цвета разбить вершины на четыре группы",
+      "text": "Если для каждого цвета вершины разбиты на четыре группы и все рёбра внутри групп имеют этот цвет, то любые пять вершин по принципу Дирихле содержат ребро этого цвета. Достаточно подобрать пять таких разбиений, чтобы каждое ребро \\(K_{10}\\) попало ровно в один цвет.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-k5-explicit-construction",
+      "title": "Явная пятицветная раскраска",
+      "text": "Занумеруем вершины числами \\(0,1,\\ldots,9\\). Зададим цвета списками рёбер: синие рёбра идут внутри \\(\\{0,2,5,9\\}\\) и ещё \\(13,48,67\\); зелёные идут внутри \\(\\{1,2,4,7\\}\\) и ещё \\(06,35,89\\); красные идут внутри \\(\\{3,4,6,9\\}\\) и ещё \\(01,28,57\\); жёлтые идут внутри \\(\\{1,5,6,8\\}\\) и ещё \\(04,23,79\\); белые идут внутри \\(\\{0,3,7,8\\}\\) и ещё \\(19,26,45\\). Здесь запись \\(13\\) означает ребро между вершинами 1 и 3.\n\nЭти пять списков попарно не пересекаются и вместе дают все 45 рёбер \\(K_{10}\\). Для каждого цвета перечисление задаёт разбиение десяти вершин на четыре группы: одну группу из четырёх вершин и три пары; все рёбра внутри этих групп имеют данный цвет. Поэтому любые пять вершин по принципу Дирихле содержат две вершины в одной из четырёх групп этого цвета, а значит содержат ребро этого цвета. Это верно для каждого из пяти цветов, следовательно любые пять вершин содержат рёбра всех пяти цветов.",
+      "idea_ids": [
+        "idea-five-color-partitions"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "Конструктивная часть IMO Shortlist 1998 C6 для k = 5.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "goal_construction",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "explicit_coloring",
+        "pigeonhole_principle"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1998-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kalva-imo-1998-c6-solution",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-aops-imo-1998-shortlist",
+      "role": "community_wiki",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Split out from composite card imo-1998-c6-complete-graph-rainbow-edges on 2026-04-27."
+    ],
+    "relations_status": "base_done"
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "id": "balanced-bipartite-edge-coloring-two-colors",
+  "title": "Балансирующая 2-раскраска рёбер двудольного графа",
+  "kind": {
+    "primary": "problem_family",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "edge_coloring",
+      "eulerian_circuits"
+    ],
+    "methods": [
+      "graph_modeling",
+      "alternating_coloring",
+      "eulerian_decomposition"
+    ],
+    "transformations": [
+      "points_to_row_column_bipartite_graph",
+      "add_dummy_edges_to_even_degrees"
+    ],
+    "goal": [
+      "balanced_two_coloring",
+      "balance_incident_color_counts"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "local_color_balance"
+    ],
+    "keywords": [
+      "imo_1986_p6",
+      "fyum_2010_tur1b_p8",
+      "balanced_bipartite_edge_coloring",
+      "alternating_euler_cycles"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-imo-1986-p6-points",
+        "title": "IMO 1986 P6, координатные точки",
+        "text": "Дано конечное множество точек с целыми координатами на плоскости. Можно ли раскрасить часть точек в красный цвет, а остальные в белый так, чтобы на каждой прямой, параллельной одной из координатных осей, числа красных и белых точек отличались не более чем на 1?",
+        "source_ids": [
+          "src-imomath-imo-1986"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-fyum-2010-bipartite",
+          "stmt-graph-balanced-edge-coloring"
+        ]
+      },
+      {
+        "id": "stmt-fyum-2010-bipartite",
+        "title": "ФЮМ 2010, двудольный граф",
+        "text": "Дан двудольный граф G. Докажите, что рёбра графа G можно покрасить в два цвета так, чтобы для любой вершины количества рёбер разных цветов, выходящих из этой вершины, отличались не более чем на 1.",
+        "source_ids": [
+          "src-fyum-2010-tur1b-p8-official"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-imo-1986-p6-points",
+          "stmt-graph-balanced-edge-coloring"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-balanced-edge-coloring",
+        "title": "Графовая формулировка",
+        "text": "В любом двудольном графе можно раскрасить рёбра в два цвета так, чтобы в каждой вершине количества инцидентных рёбер двух цветов отличались не более чем на 1.",
+        "source_ids": [
+          "src-fyum-2010-tur1b-p8-official"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-imo-1986-p6-points",
+          "stmt-fyum-2010-bipartite"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-points-as-bipartite-edges",
+      "title": "Точки как рёбра двудольного графа",
+      "text": "Горизонтали и вертикали становятся вершинами двух долей графа, а каждая точка задаёт ребро между соответствующей горизонталью и вертикалью.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-alternate-euler-cycles",
+      "title": "Попеременная раскраска эйлеровых циклов",
+      "text": "После добавления фиктивных рёбер, делающих все степени чётными и сохраняющих двудольность, рёбра каждой компоненты можно обойти эйлеровыми циклами и красить попеременно.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-balanced-edge-coloring",
+      "title": "Единое решение",
+      "text": "Докажем графовую формулировку. В каждой компоненте двудольного графа числа вершин нечётной степени в двух долях имеют одинаковую чётность. Разобьём нечётные вершины каждой доли на пары, а если в обеих долях осталось по одной нечётной вершине, соединим эти две вершины. Для каждой такой пары добавим фиктивное ребро. Получится двудольный эйлеров мультиграф: все степени стали чётными.\n\nРазложим его рёбра на эйлеровы циклы и покрасим рёбра каждого цикла попеременно в два цвета. Поскольку граф двудольный, все эти циклы чётные; значит, на каждом цикле у каждой вершины поровну инцидентных рёбер двух цветов. Поэтому в графе с фиктивными рёбрами баланс в каждой вершине точный. Удалим фиктивные рёбра. Каждая исходно нечётная вершина была инцидентна ровно одному фиктивному ребру, а исходно чётные вершины — ни одному, поэтому после удаления в каждой вершине числа рёбер двух цветов отличаются не более чем на 1.\n\nДля задачи IMO строим двудольный граф, в котором вершины одной доли — занятые горизонтали, вершины другой доли — занятые вертикали, а каждая точка — ребро между своей горизонталью и вертикалью. Цвет ребра задаёт цвет точки. Условие баланса в вершине графа в точности означает баланс красных и белых точек на соответствующей горизонтали или вертикали.",
+      "idea_ids": [
+        "idea-points-as-bipartite-edges",
+        "idea-alternate-euler-cycles"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "eulerian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_p6",
+    "local_score": 13,
+    "comment": "Объединяет координатную формулировку IMO 1986 P6 и прямую двудольную формулировку ФЮМ 2010.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "coloring",
+    "goal_other"
+  ],
+  "sources": [
+    {
+      "source_id": "src-imomath-imo-1986",
+      "role": "statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-imo-1986-p6-points"
+      ]
+    },
+    {
+      "source_id": "src-imo-compendium-solutions-1959-2004",
+      "role": "secondary_solution_crosscheck",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-imo-1986-p6-points"
+      ]
+    },
+    {
+      "source_id": "src-aops-imo-1986-p6",
+      "role": "community_wiki",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-imo-1986-p6-points"
+      ]
+    },
+    {
+      "source_id": "src-fyum-2010-tur1b-p8-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-fyum-2010-bipartite",
+        "stmt-graph-balanced-edge-coloring"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Пробная объединённая карточка для IMO 1986 P6 и ФЮМ 2010, тур 1Б, задача 8.",
+      "Графовая формулировка является основной математической формой задачи; формулировка IMO кодирует то же утверждение о раскраске рёбер двудольного графа в координатном языке."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

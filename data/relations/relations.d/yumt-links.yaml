@@ -7,7 +7,7 @@
       "type": "same_motif",
       "distance": 2,
       "forward_text": "Задача ЮМТ про четыре авиакомпании является специальным конечным вопросом в духе многокрасочной теории Рамсея для полного графа без монохроматических треугольников.",
-      "backward_text": "Общая теорема Рамсея даёт правильный umbrella-viewpoint для задачи ЮМТ 2012 о 4-раскраске рёбер K_20.",
+      "backward_text": "Общая теорема Рамсея даёт правильный общий взгляд для задачи ЮМТ 2012 о 4-раскраске рёбер K_20.",
       "status": "needs_human_review",
       "confidence": 0.79
     },
@@ -43,6 +43,21 @@
       "backward_text": "ЮМТ 2023 продолжает тот же сюжет, что и задача ЮМТ 2015 про разбиение по хроматическим числам.",
       "status": "needs_human_review",
       "confidence": 0.92
+    },
+    {
+      "id": "rel-yumt-2015-grand-final-p5-stiebitz-double-critical-k5",
+      "from": "yumt-2015-grand-final-problem5",
+      "to": "stiebitz-double-critical-k5",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Решение задачи ЮМТ сводит минимальный 5-хроматический граф без K_5 к дважды критическому случаю; теорема Штибица исключает этот случай.",
+      "backward_text": "Теорема Штибица даёт ровно тот запрет на дважды критические 5-хроматические графы, который нужен для нахождения ребра xy с χ(H-{x,y})≥4 в задаче ЮМТ.",
+      "anchors": {
+        "from_solution_id": "sol-external-mse-chromatic-partition",
+        "to_solution_id": "sol-stiebitz-proof"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
     },
     {
       "id": "rel-yumt-2014-start-r4-p2-egmo-2016-p3-incidence-forest",
@@ -90,16 +105,16 @@
       "confidence": 0.9
     },
     {
-      "id": "rel-yumt-2016-start-high-r1-p7-imo-1996-c1-knight-graph",
+      "id": "rel-yumt-2016-start-high-r1-p7-imo-1996-c1-r73-knight-graph",
       "from": "yumt-2016-start-high-round1-problem7",
-      "to": "imo-1996-c1-grid-knight-reachability",
+      "to": "imo-1996-c1-grid-knight-reachability-r73-path",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Обе задачи переводят шахматную ситуацию в граф ходов коня и затем используют свойства этого графа вместо клеточного перебора.",
-      "backward_text": "IMO 1996 и ЮМТ 2016 опираются на один и тот же объект — граф ходов коня на доске.",
+      "forward_text": "Обе задачи переводят шахматную ситуацию в граф разрешённых ходов и затем используют путь в этом графе вместо клеточного перебора.",
+      "backward_text": "Режим IMO 1996 C1 при r=73 опирается на тот же тип объекта, что и ЮМТ 2016: граф ходов на доске и явную связность нужных клеток.",
       "anchors": {
         "from_solution_id": "sol-archive-card",
-        "to_solution_id": "sol-secondary-sketch"
+        "to_solution_id": "sol-explicit-r73-path"
       },
       "status": "needs_human_review",
       "confidence": 0.88

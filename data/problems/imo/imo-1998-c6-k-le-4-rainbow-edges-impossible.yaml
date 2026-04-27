@@ -1,0 +1,176 @@
+{
+  "id": "imo-1998-c6-k-le-4-rainbow-edges-impossible",
+  "title": "Невозможность раскраски рёбер \\(K_{10}\\) при \\(k\\le 4\\), IMO Shortlist 1998 C6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "rainbow_subgraph",
+      "ramsey_triangle"
+    ],
+    "methods": [
+      "ramsey_theory",
+      "degree_counting",
+      "pigeonhole_principle"
+    ],
+    "transformations": [
+      "points_to_complete_graph"
+    ],
+    "goal": [
+      "prove_impossibility_for_small_k"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "color_degree_constraints"
+    ],
+    "standard_idea_ids": [
+      "pigeonhole_principle"
+    ],
+    "keywords": [
+      "imo-1998-c6",
+      "rainbow_edges",
+      "k_le_4",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-k-le-4",
+        "title": "Условие, малая часть ответа",
+        "text": "Даны 10 точек общего положения на плоскости; каждый отрезок между парой точек окрашен в один из k цветов. Требуется, чтобы для любых k из этих 10 точек среди отрезков с концами в выбранных точках нашлись k отрезков попарно различных цветов. Докажите, что при k = 1, 2, 3 или 4 такая раскраска невозможна.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph-k-le-4"
+        ],
+        "source_id": "src-secondary-imo-1998-shortlist"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-k-le-4",
+        "title": "Графовая формулировка",
+        "text": "Рёбра полного графа \\(K_{10}\\) окрашены в \\(k\\) цветов. Нужно, чтобы любые \\(k\\) вершин индуцировали подграф, в котором присутствуют \\(k\\) рёбер попарно различных цветов, то есть все \\(k\\) цветов. Докажите, что для \\(k\\le 4\\) такой раскраски не существует.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original-k-le-4"
+        ],
+        "source_id": "src-secondary-imo-1998-shortlist"
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-small-k-basic-obstructions",
+      "title": "Слишком мало рёбер при k = 1,2 и слишком мало цветов у звезды при k = 3",
+      "text": "Для k = 1 и k = 2 в выбранных k вершинах меньше k рёбер. Для k = 3 каждое треугольное множество должно быть радужным; тогда в одной вершине никакие два инцидентных ребра не могут иметь один цвет, что невозможно при 9 рёбрах и 3 цветах.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-four-color-ramsey-obstruction",
+      "title": "Запрет четырёх цветов через R(3,3)",
+      "text": "При k = 4 сначала ограничивается число рёбер одного цвета из каждой вершины, затем выбираются ровно три одноцветных ребра из вершины. На оставшихся шести вершинах теорема \\(R(3,3)=6\\) даёт синий или бессиний треугольник, и оба случая нарушают требование для четырёх вершин.",
+      "tags": [
+        "ramsey_theory",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-k-le-4-impossible",
+      "title": "Доказательство невозможности для k <= 4",
+      "text": "Для \\(k=1\\) выбранная одна вершина не содержит рёбер, а для \\(k=2\\) две выбранные вершины содержат только одно ребро, поэтому требование сразу невозможно. Пусть \\(k=3\\). Тогда каждые три вершины должны образовывать треугольник с тремя разными цветами. Значит, из любой вершины не могут выходить два ребра одного цвета: если \\(AB\\) и \\(AC\\) одного цвета, то треугольник \\(ABC\\) не радужный. Но из вершины выходят 9 рёбер, а цветов только 3, противоречие.\n\nОсталось исключить \\(k=4\\). Предположим, что подходящая 4-раскраска существует, и назовём один цвет синим. Из любой вершины не может выходить четыре синих ребра. В самом деле, если \\(AB,AC,AD,AE\\) синие, то среди \\(B,C,D,E\\) либо есть синее ребро, и тогда четыре вершины с \\(A\\) и концами этого ребра содержат четыре синих ребра и не могут содержать все четыре цвета, либо синего ребра среди \\(B,C,D,E\\) нет, и сами \\(B,C,D,E\\) не содержат синего цвета. Следовательно, в каждой вершине степень каждого цвета не больше 3.\n\nТак как из вершины выходит 9 рёбер четырёх цветов, для некоторой вершины \\(A\\) и некоторого цвета, пусть синего, выходят ровно три синих ребра \\(AB,AC,AD\\). Рёбра \\(BC,BD,CD\\) не синие, иначе четыре вершины \\(A,B,C,D\\) имели бы слишком много синих рёбер и не все четыре цвета. Рассмотрим шесть остальных вершин. По \\(R(3,3)=6\\) в раскраске их рёбер на синие и несиние есть либо несиний треугольник, либо синий треугольник. Несиний треугольник вместе с \\(A\\) даёт четыре вершины без синего ребра. Если же \\(E,F,G\\) образуют синий треугольник, то среди \\(B,C,D,E\\) должно быть синее ребро, а так как \\(BC,BD,CD\\) не синие, одно из \\(BE,CE,DE\\) синее. Тогда эта вершина вместе с \\(E,F,G\\) даёт четыре вершины с четырьмя синими рёбрами, а значит там не могут встретиться все четыре цвета. Противоречие.",
+      "idea_ids": [
+        "idea-small-k-basic-obstructions",
+        "idea-four-color-ramsey-obstruction"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "ramsey_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 13,
+    "comment": "Часть IMO Shortlist 1998 C6: малые k, включая рамсеевское препятствие для четырёх цветов.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "ramsey_theory",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "ramsey_theory",
+        "degree_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1998-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kalva-imo-1998-c6-solution",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-aops-imo-1998-shortlist",
+      "role": "community_wiki",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Split out from composite card imo-1998-c6-complete-graph-rainbow-edges on 2026-04-27."
+    ],
+    "relations_status": "deep_done"
+  }
+}

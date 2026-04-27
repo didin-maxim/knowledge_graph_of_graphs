@@ -61,31 +61,31 @@
       "confidence": 0.72
     },
     {
-      "id": "rel-paths-counting-imo-1996-c1-imo-2013-c6-layers",
-      "from": "imo-1996-c1-grid-knight-reachability",
+      "id": "rel-paths-counting-imo-1996-c1-r73-imo-2013-c6-layers",
+      "from": "imo-1996-c1-grid-knight-reachability-r73-path",
       "to": "imo-2013-c6-flight-distance-layers",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Обе отремонтированные карты короткого списка IMO превращают вопрос о достижимости в слои графиков. IMO 1996 C1 разделяет достижимые компоненты с помощью модульной раскраски и явных путей, а IMO 2013 C6 подсчитывает уровни расстояний от экстремального города.",
+      "forward_text": "Обе отремонтированные карты короткого списка IMO превращают вопрос о достижимости в работу с путями графа. Режим IMO 1996 C1 при r=73 предъявляет путь в графе ходов, а IMO 2013 C6 подсчитывает уровни расстояний от экстремального города.",
       "backward_text": "IMO 2013 C6 — это аналог карты достижимости сетки для подсчета дистанционных слоев: после того, как модель графа фиксирована, доказательство изучает, какие вершины могут находиться на заданных расстояниях пути.",
       "anchors": {
-        "from_solution_id": "sol-secondary-sketch",
+        "from_solution_id": "sol-explicit-r73-path",
         "to_solution_id": "sol-official-compressed"
       },
       "status": "ai_checked",
       "confidence": 0.85
     },
     {
-      "id": "rel-paths-counting-imo-2005-injection-imo-1996-reachability",
+      "id": "rel-paths-counting-imo-2005-injection-imo-1996-r97-reachability",
       "from": "imo-2005-c3-black-paths-injection",
-      "to": "imo-1996-c1-grid-knight-reachability",
+      "to": "imo-1996-c1-grid-knight-reachability-r97-impossible",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Обе карты сетки используют структуру пути для сертификации глобального ограничения. IMO 2005 C3 выбирает экстремальный черный путь и вводит свидетелей пути в ограниченный набор; IMO 1996 C1 использует инварианты остатков и явные пути для определения компонентов достижимости.",
-      "backward_text": "Проблема достижимости IMO 1996 года является соседом компонента пути для карты внедрения черного пути: в обоих случаях перемещения локальной сетки кодируются как пути, а затем управляются инвариантным или экстремальным выбором.",
+      "forward_text": "Обе карты сетки используют структуру пути для сертификации глобального ограничения. IMO 2005 C3 выбирает экстремальный черный путь и вводит свидетелей пути в ограниченный набор; режим IMO 1996 C1 при r=97 использует инвариант, чтобы отделить компоненту старта.",
+      "backward_text": "Режим r=97 задачи IMO 1996 C1 является соседом компонента пути для карты внедрения черного пути: в обоих случаях локальные перемещения кодируются путями, а затем управляются инвариантом или экстремальным выбором.",
       "anchors": {
         "from_solution_id": "sol-reviewed-secondary",
-        "to_solution_id": "sol-secondary-sketch"
+        "to_solution_id": "sol-band-parity-obstruction"
       },
       "status": "needs_human_review",
       "confidence": 0.7

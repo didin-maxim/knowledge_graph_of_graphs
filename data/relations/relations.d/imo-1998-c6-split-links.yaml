@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-imo-1998-c6-small-k-k5-paired-variant",
+      "from": "imo-1998-c6-k-le-4-rainbow-edges-impossible",
+      "to": "imo-1998-c6-k5-rainbow-edges-construction",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это соседние части одной задачи IMO Shortlist 1998 C6: малая карта доказывает невозможность при k <= 4, а пятицветная карта показывает первый возможный случай.",
+      "backward_text": "Пятицветная конструкция дополняет препятствие для k <= 4 и показывает точный порог перехода от невозможности к существованию.",
+      "anchors": {
+        "from_solution_id": "sol-k-le-4-impossible",
+        "to_solution_id": "sol-k5-explicit-construction"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-imo-1998-c6-k5-large-k-paired-variant",
+      "from": "imo-1998-c6-k5-rainbow-edges-construction",
+      "to": "imo-1998-c6-k-ge-6-one-factorization",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Обе карты являются конструктивными частями IMO Shortlist 1998 C6: для k = 5 нужна специальная пятицветная раскраска, а для k >= 6 работает 1-факторизация K10.",
+      "backward_text": "Конструкция через 1-факторизацию покрывает большие k, тогда как случай k = 5 требует отдельного специального разбиения цветовых классов.",
+      "anchors": {
+        "from_solution_id": "sol-k5-explicit-construction",
+        "to_solution_id": "sol-k-ge-6-one-factorization"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-imo-1998-c6-small-k-large-k-paired-variant",
+      "from": "imo-1998-c6-k-le-4-rainbow-edges-impossible",
+      "to": "imo-1998-c6-k-ge-6-one-factorization",
+      "type": "paired_variant",
+      "distance": 2,
+      "forward_text": "Это противоположные стороны классификации IMO Shortlist 1998 C6: одна карта исключает малые k, другая даёт стандартную конструкцию для всех k >= 6.",
+      "backward_text": "Большие k решаются конструкцией через совершенные паросочетания, в отличие от малых k, где локальные цветовые степени и R(3,3) создают препятствие.",
+      "anchors": {
+        "from_solution_id": "sol-k-le-4-impossible",
+        "to_solution_id": "sol-k-ge-6-one-factorization"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.9
+    }
+  ]
+}

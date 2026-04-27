@@ -61,19 +61,34 @@
       "confidence": 0.67
     },
     {
-      "id": "rel-egmo-2025-usajmo-2023-grid-dynamic-cycle-encoding",
-      "from": "egmo-2025-p5-rotating-arrows-dynamic-cycle",
+      "id": "rel-egmo-2025-even-usajmo-2023-grid-dynamic-cycle-encoding",
+      "from": "egmo-2025-p5-rotating-arrows-even-dynamic-cycle",
       "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Оба решения кодируют динамику на клетчатой доске графом состояний. В EGMO 2025 хороший старт означает гамильтонов цикл обхода клеток с согласованием по модулю 4, а в USAJMO 2023 перемещения домино сводятся к ориентированному графу специальных клеток, где достижимые конфигурации задаются деревом компоненты пустой клетки.",
-      "backward_text": "USAJMO 2023 считает достижимые положения пустой клетки в функциональном орграфе, а EGMO 2025 считает хорошие старты на циклическом обходе; обе карточки роднит перевод пошагового процесса на доске в статический граф клеток с жёстким условием достижимости.",
+      "forward_text": "Оба решения кодируют динамику на клетчатой доске графом состояний. В чётном случае EGMO 2025 хороший старт означает гамильтонов цикл обхода клеток с согласованием по модулю 4, а в USAJMO 2023 перемещения домино сводятся к ориентированному графу специальных клеток, где достижимые конфигурации задаются деревом компоненты пустой клетки.",
+      "backward_text": "USAJMO 2023 считает достижимые положения пустой клетки в функциональном орграфе, а чётный случай EGMO 2025 считает хорошие старты на циклическом обходе; обе карточки роднит перевод пошагового процесса на доске в статический граф клеток с жёстким условием достижимости.",
       "anchors": {
-        "from_solution_id": "sol-official-compressed",
+        "from_solution_id": "sol-dynamic-cycle-bound",
         "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
       },
       "status": "needs_human_review",
       "confidence": 0.7
+    },
+    {
+      "id": "rel-egmo-2025-p5-odd-even-paired-variant",
+      "from": "egmo-2025-p5-rotating-arrows-odd-parity",
+      "to": "egmo-2025-p5-rotating-arrows-even-dynamic-cycle",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это нечётный случай той же задачи EGMO 2025 P5: ответ сразу равен 0 по шахматной чётности, тогда как чётный случай требует конструкции и верхней оценки через динамический цикл.",
+      "backward_text": "Это чётный случай той же задачи EGMO 2025 P5: здесь максимум равен \\(n^2/4\\), а парная нечётная карточка отделяет невозможность хорошего старта простым чётностным аргументом.",
+      "anchors": {
+        "from_solution_id": "sol-parity-bound",
+        "to_solution_id": "sol-dynamic-cycle-bound"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.96
     }
   ]
 }

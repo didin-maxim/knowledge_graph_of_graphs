@@ -1,0 +1,169 @@
+{
+  "id": "imo-1998-c6-k-ge-6-one-factorization",
+  "title": "Раскраска рёбер \\(K_{10}\\) для \\(k\\ge 6\\) через 1-факторизацию, IMO Shortlist 1998 C6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "perfect_matching",
+      "one_factorization"
+    ],
+    "methods": [
+      "one_factorization",
+      "matching_independence_bound",
+      "explicit_coloring"
+    ],
+    "transformations": [
+      "points_to_complete_graph"
+    ],
+    "goal": [
+      "construct_valid_coloring"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "perfect_matching_independence_number"
+    ],
+    "standard_idea_ids": [
+      "pigeonhole_principle"
+    ],
+    "keywords": [
+      "imo-1998-c6",
+      "rainbow_edges",
+      "k_ge_6",
+      "one_factorization",
+      "early_imo_shortlist",
+      "secondary_review"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-k-ge-6",
+        "title": "Условие, случаи k >= 6",
+        "text": "Даны 10 точек общего положения на плоскости. Для каждого \\(k\\), \\(6\\le k\\le 10\\), требуется окрасить каждый отрезок между парой точек в один из \\(k\\) цветов так, чтобы для любых \\(k\\) из этих 10 точек среди отрезков с концами в выбранных точках нашлись \\(k\\) отрезков попарно различных цветов. Докажите, что такая раскраска существует.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph-k-ge-6"
+        ],
+        "source_id": "src-secondary-imo-1998-shortlist"
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-k-ge-6",
+        "title": "Графовая формулировка",
+        "text": "Для каждого \\(k\\), \\(6\\le k\\le 10\\), постройте \\(k\\)-раскраску рёбер \\(K_{10}\\), в которой любые \\(k\\) вершин индуцируют подграф, содержащий рёбра всех \\(k\\) цветов. Конструкцию нужно получить из 1-факторизации \\(K_{10}\\).",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original-k-ge-6"
+        ],
+        "source_id": "src-secondary-imo-1998-shortlist"
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-one-factorization-large-k",
+      "title": "Каждые шесть вершин пересекают каждое совершенное паросочетание",
+      "text": "В совершенном паросочетании на 10 вершинах независимое множество имеет размер не больше 5. Значит, любые хотя бы 6 вершин содержат ребро каждого выбранного 1-фактора; раскрасив выбранные 1-факторы разными цветами, получаем все нужные цвета.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-k-ge-6-one-factorization",
+      "title": "Раскраска через 1-факторизацию",
+      "text": "Возьмём 1-факторизацию \\(K_{10}\\), то есть разбиение всех его рёбер на 9 совершенных паросочетаний \\(F_1,\\ldots,F_9\\). Для \\(6\\le k\\le 9\\) покрасим рёбра \\(F_1,\\ldots,F_k\\) в разные цвета, а все остальные рёбра покрасим произвольно в один из этих \\(k\\) цветов. Любые \\(k\\) вершин, а значит любые не менее 6 вершин, содержат ребро каждого \\(F_i\\): иначе эти \\(k\\) вершин были бы независимым множеством в совершенном паросочетании \\(F_i\\), что невозможно, потому что из каждой пары паросочетания можно выбрать не более одной вершины, всего не более 5. Поэтому выбранные \\(k\\) вершин содержат все \\(k\\) цветов.\n\nДля \\(k=10\\) используем ту же 1-факторизацию: покрасим \\(F_1,\\ldots,F_9\\) в первые 9 цветов, а затем одно ребро, например из \\(F_1\\), перекрасим в десятый цвет. Единственное множество из 10 вершин есть весь \\(K_{10}\\), и в нём присутствуют все 10 цветов.",
+      "idea_ids": [
+        "idea-one-factorization-large-k"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "matching",
+        "one_factorization"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_p6",
+    "local_score": 10,
+    "comment": "Конструктивная часть IMO Shortlist 1998 C6 для k >= 6.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "matching",
+    "goal_construction",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "one_factorization",
+        "matching_independence_bound",
+        "explicit_coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1998-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kalva-imo-1998-c6-solution",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-aops-imo-1998-shortlist",
+      "role": "community_wiki",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Split out from composite card imo-1998-c6-complete-graph-rainbow-edges on 2026-04-27."
+    ],
+    "relations_status": "base_done"
+  }
+}

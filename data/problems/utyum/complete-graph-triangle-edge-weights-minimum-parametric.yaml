@@ -1,0 +1,172 @@
+{
+  "id": "complete-graph-triangle-edge-weights-minimum-parametric",
+  "title": "Минимальная сумма весов 1, 2, 3 на рёбрах полного графа при треугольном ограничении",
+  "kind": {
+    "primary": "problem_family",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "weighted_complete_graph",
+      "matching_of_light_edges",
+      "triangle_constraints"
+    ],
+    "methods": [
+      "extremal_construction",
+      "local_replacement",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "construct_maximal_matching_of_unit_edges",
+      "replace_1_plus_3_by_2_plus_2"
+    ],
+    "goal": [
+      "minimum_total_edge_weight"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "triangle_weight_lower_bound",
+      "number_of_bad_vertices"
+    ],
+    "keywords": [
+      "utyum",
+      "complete_graph_weights",
+      "parametric_family",
+      "local_replacement",
+      "matching_extremal_example"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-utyum-2019-grade7-n2000",
+        "title": "УТЮМ 2019, 7 класс, n = 2000",
+        "text": "На каждом ребре полного графа с 2000 вершинами написано число 1, 2 или 3 так, что сумма чисел на рёбрах каждого треугольника не меньше 5.\n\nКакова наименьшая возможная сумма всех чисел на рёбрах?",
+        "source_ids": [
+          "src-utyum-2019_komol_7_complete_graph_weights_2000-official"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-graph-parametric",
+          "stmt-utyum-2019-grade8-n2019"
+        ]
+      },
+      {
+        "id": "stmt-utyum-2019-grade8-n2019",
+        "title": "УТЮМ 2019, 8 класс, n = 2019",
+        "text": "На каждом ребре полного графа с 2019 вершинами написано число 1, 2 или 3 так, что сумма чисел на рёбрах каждого треугольника не меньше 5.\n\nКакова наименьшая возможная сумма всех чисел на рёбрах?",
+        "source_ids": [
+          "src-utyum-2019_komol_8_complete_graph_weights_2019-official"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-graph-parametric",
+          "stmt-utyum-2019-grade7-n2000"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-parametric",
+        "title": "Параметрическая графовая формулировка",
+        "text": "Пусть n >= 3. На рёбрах полного графа K_n записаны числа 1, 2 или 3. В каждом треугольнике сумма чисел на его рёбрах не меньше 5. Найдите минимально возможную сумму чисел на всех рёбрах графа.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-utyum-2019-grade7-n2000",
+          "stmt-utyum-2019-grade8-n2019"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [],
+  "solutions": [
+    {
+      "id": "sol-parametric",
+      "title": "Параметрическое решение",
+      "text": "Ответ: n(n-1) - floor(n/2).\n\nПример. Выберем в K_n паросочетание максимального размера, то есть floor(n/2) попарно непересекающихся рёбер. На этих рёбрах запишем 1, а на всех остальных рёбрах запишем 2. Тогда каждый треугольник содержит не более одного ребра веса 1, поэтому сумма весов в нём равна либо 6, либо 5. Общая сумма равна 2*C(n,2) - floor(n/2) = n(n-1) - floor(n/2).\n\nОценка снизу в официальном решении получается локальным выравниванием. Вершина называется плохой, если из неё выходит больше одного ребра веса 1. Если плохих вершин нет, то рёбра веса 1 образуют паросочетание; значит, их не больше floor(n/2), и сумма не меньше n(n-1) - floor(n/2).\n\nЕсли плохая вершина есть, возьмём два выходящих из неё ребра веса 1. Третье ребро соответствующего треугольника обязано иметь вес 3, иначе сумма в этом треугольнике была бы меньше 5. Далее локальный шаг из официального решения заменяет пару весов 1 и 3 на 2 и 2, сохраняя общую сумму и условие на треугольники, но уменьшая число плохих вершин. После конечного числа шагов получается раскладка той же суммы без плохих вершин, и предыдущий абзац даёт нижнюю оценку.\n\nДля n = 2000 ответ равен 2000*1999 - 1000 = 3997000. Для n = 2019 ответ равен 2019*2018 - 1009 = 4073333.",
+      "idea_ids": [],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "complete_graph",
+        "matching",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Параметрическое объединение двух вариантов УТЮМ 2019 для n = 2000 и n = 2019.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "matching",
+    "goal_exact_bound"
+  ],
+  "sources": [
+    {
+      "source_id": "src-utyum-2019_komol_7_complete_graph_weights_2000-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-utyum-2019-grade7-n2000"
+      ]
+    },
+    {
+      "source_id": "src-utyum-2019_komol_8_complete_graph_weights_2019-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-utyum-2019-grade8-n2019"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Техническая проба объединения: раздел graph_theory содержит основную параметрическую формулировку, а исходные олимпиадные формулировки сохраняют свои source_ids.",
+      "Старые карточки с фиксированными n удалены после переноса их условий, источников и решений в эту объединённую карточку.",
+      "Текст параметрической нижней оценки требует человеческой проверки перед тем, как эта карточка заменит две карточки с фиксированными n."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

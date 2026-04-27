@@ -1,0 +1,163 @@
+{
+  "id": "imo-2024-c4-turbo-grid-monsters-two-attempts-lower-bound",
+  "title": "Две попытки Турбо-улитки недостаточны, IMO 2024 P5 / Shortlist C4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "hidden_obstacles",
+      "paths",
+      "adaptive_strategy"
+    ],
+    "methods": [
+      "adversary_strategy",
+      "online_lower_bound"
+    ],
+    "transformations": [
+      "board_to_grid_graph",
+      "first_visit_to_forced_obstacle"
+    ],
+    "goal": [
+      "lower_bound_on_attempts",
+      "prevent_guaranteed_path_to_last_row"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "one_monster_per_middle_row",
+      "at_most_one_monster_per_column",
+      "unrevealed_monster_positions"
+    ],
+    "keywords": [
+      "imo_2024_p5",
+      "turbo_snail",
+      "grid_path",
+      "hidden_monsters",
+      "two_attempts"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-two-attempts",
+        "title": "Улитка, доска и две попытки",
+        "text": "Улитка Турбо играет на доске с \\(2024\\) строками и \\(2023\\) столбцами. В \\(2022\\) клетках спрятаны монстры. Сначала Турбо не знает, где они находятся, но знает, что ровно по одному монстру стоит в каждой строке, кроме первой и последней, и что в каждом столбце находится не более одного монстра. Турбо делает попытки пройти из первой строки в последнюю. В каждой попытке он выбирает любую клетку первой строки, а затем многократно переходит в соседнюю по стороне клетку; ему разрешено возвращаться в уже посещённые клетки. Если Турбо попадает в клетку с монстром, попытка заканчивается, и его возвращают в первую строку. Монстры не двигаются, а Турбо запоминает, в каких посещённых клетках есть монстры и в каких их нет. Если он достигает любой клетки последней строки, попытка заканчивается, и игра выиграна. Докажите, что никакая стратегия не гарантирует Турбо победу не позже второй попытки.",
+        "source_id": "src-imo-2024-problems-eng",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-graph-two-attempts"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-two-attempts",
+        "text": "Рассмотрим решётчатый граф \\(2024\\times2023\\), вершины которого — клетки доски, а рёбра соединяют клетки с общей стороной. В каждой внутренней строке скрыта ровно одна запрещённая вершина, причём в каждом столбце запрещённых вершин не более одной. Игрок адаптивно выбирает пути, начинающиеся в первой строке; путь прерывается при первом попадании в запрещённую вершину, после чего игрок знает все посещённые безопасные вершины и найденную запрещённую вершину. Докажите, что двух таких путей недостаточно, чтобы гарантировать достижение последней строки при любой скрытой конфигурации.",
+        "source_id": "src-imo-2024-problems-eng",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original-two-attempts"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-first-new-row-trap",
+      "title": "Ловушка в первой новой строке",
+      "text": "Противник может объявить монстром первую клетку второй строки, достигнутую в первой попытке, а затем первую клетку третьей строки, достигнутую во второй попытке.",
+      "tags": [
+        "goal_strategy_game",
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-two-attempt-adversary",
+      "title": "Стратегия монстров против двух попыток",
+      "text": "Пусть в первой попытке Турбо впервые достигает второй строки в клетке \\((2,i)\\). Расположение монстров, при котором монстр второй строки стоит именно в \\((2,i)\\), не противоречит условиям, поэтому первая попытка может закончиться сразу. Во второй попытке Турбо уже знает, что \\((2,i)\\) опасна, и если он впервые достигает третьей строки, то делает это в некоторой клетке \\((3,j)\\), придя из \\((2,j)\\), где \\(j\\ne i\\). Теперь можно поставить монстра третьей строки в \\((3,j)\\). Условия снова соблюдены: монстры в разных строках и в разных столбцах. Тогда и вторая попытка заканчивается неудачей. Значит, двух попыток недостаточно для гарантированной победы.",
+      "idea_ids": [
+        "idea-first-new-row-trap"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p2_p5",
+    "local_score": 7,
+    "comment": "Нижняя оценка для IMO 2024 P5 / Shortlist C4; короткий аргумент от противника по первым входам в новые строки.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "goal_strategy_game",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "adversary_strategy",
+        "first_visit_argument"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imo-2024-problems-eng",
+      "role": "official_problem_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-2024-shortlist",
+      "role": "official_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-aops-imo-2024-p5",
+      "role": "community_wiki",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Split from composite card imo-2024-c4-turbo-grid-monsters."
+    ],
+    "relations_status": "deep_done"
+  }
+}

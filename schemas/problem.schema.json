@@ -4,6 +4,14 @@
   "type": "object",
   "required": ["id", "title", "statements", "ideas", "solutions", "difficulty", "tags", "sources", "editorial"],
   "properties": {
+    "statements": {
+      "type": "object",
+      "description": "Statement groups. A statement may use legacy source_id, source_ids, and shared_statement_group for intentional same statement+source splits across cards."
+    },
+    "sources": {
+      "type": "array",
+      "description": "Problem-level source bibliography. Entries may include statement_ids to scope a source to particular formulations instead of the whole problem."
+    },
     "problem_profile": {
       "type": "object",
       "description": "Optional navigation profile used for relation suggestions and import review.",

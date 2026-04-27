@@ -147,6 +147,7 @@ def problem_text(problem):
     fields = [
         problem.get("id", ""),
         problem.get("title", ""),
+        " ".join(author.get("name", "") for author in problem.get("authors", [])),
         infer_source_key(problem),
         infer_source_label(problem),
         " ".join(problem_search_tokens(problem)),
@@ -231,6 +232,14 @@ def problem_search_tokens(problem):
             tokens.add(f"{compact_key}{year}")
         if compact_label:
             tokens.add(f"{compact_label}{year}")
+    for author in problem.get("authors", []):
+        name = author.get("name", "")
+        if not name or name == "?":
+            continue
+        tokens.add(name.lower())
+        compact_author = re.sub(r"[^a-z0-9Р°-СЏС‘]+", "", name.lower())
+        if compact_author:
+            tokens.add(compact_author)
     tokens.add("with_solution" if has_real_solution(problem) else "without_solution")
     tokens.update(external_problem_refs(problem))
     return sorted(token for token in tokens if token)

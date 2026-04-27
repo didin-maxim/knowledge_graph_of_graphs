@@ -1,0 +1,147 @@
+{
+  "id": "tc-2020-21-gnomes-two-cycles-odd-n",
+  "title": "Два круглых столика гномов при нечётном n, Турнир городов 2020/21",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Святловский М.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "two_cycles",
+      "hamiltonian_cycle",
+      "added_edges",
+      "bridge_families"
+    ],
+    "methods": [
+      "construction",
+      "pigeonhole_principle",
+      "parity"
+    ],
+    "transformations": [
+      "add_matching_like_bridges",
+      "splice_two_cycles"
+    ],
+    "goal": [
+      "good_wizard_strategy",
+      "force_hamiltonian_cycle_after_deletions"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "n_parity",
+      "adjacent_bridges"
+    ],
+    "keywords": [
+      "odd_n",
+      "two_cycles",
+      "hamiltonian_cycle_game",
+      "bridges"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Гномы за двумя столиками: нечётное n",
+        "text": "Пусть \\(n>1\\) нечётно. За каждым из двух круглых столиков сидит по \\(n\\) гномов. Каждый гном дружит только со своими соседями по своему столику слева и справа. Добрый волшебник хочет, чтобы после его действий и любых действий злого волшебника всех \\(2n\\) гномов можно было рассадить за один круглый стол так, чтобы каждые два соседних гнома дружили между собой. Добрый волшебник может подружить \\(2n\\) пар гномов, а затем злой волшебник поссорит между собой \\(n\\) пар из этих \\(2n\\) новых пар. Докажите, что при нечётном \\(n\\) добрый волшебник может добиться желаемого, как бы ни действовал злой волшебник.",
+        "source_id": "src-problems-66880",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть \\(n>1\\) нечётно. Дан граф, являющийся объединением двух непересекающихся циклов длины \\(n\\). Докажите, что можно добавить \\(2n\\) новых рёбер так, что после удаления любых \\(n\\) из добавленных рёбер в полученном графе всё ещё будет гамильтонов цикл.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-two-shifted-bridge-families",
+      "title": "Две сдвинутые системы перемычек",
+      "text": "Добрый волшебник добавляет две циклически сдвинутые системы рёбер между столиками. После удаления половины новых рёбер в одной системе остаётся достаточно много перемычек; на нечётном цикле среди них обязательно найдутся две соседние, и они склеивают два старых цикла в один.",
+      "tags": [
+        "hamiltonian_cycles"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-odd-bridge-strategy",
+      "title": "Стратегия доброго волшебника",
+      "text": "Обозначим гномов за двумя столиками через \\(A_1,\\ldots,A_n\\) и \\(B_1,\\ldots,B_n\\) в циклическом порядке, индексы считаем по модулю \\(n\\). Пусть \\(n=2k-1\\). Добрый волшебник добавляет рёбра \\(A_iB_i\\) и \\(A_iB_{i+1}\\) для всех \\(i\\). После того как злой волшебник удалит \\(n\\) из этих \\(2n\\) рёбер, в одной из двух систем останется хотя бы \\(k\\) рёбер. На нечётном цикле длины \\(2k-1\\) любые \\(k\\) выбранных позиций содержат две соседние. Значит, в одной системе уцелели две соседние перемычки. Разрезав оба исходных цикла в соответствующих местах и пройдя по двум уцелевшим перемычкам, получаем один цикл через все \\(2n\\) вершин. Поэтому при нечётном \\(n\\) добрый волшебник может гарантировать нужную рассадку.",
+      "idea_ids": [
+        "idea-two-shifted-bridge-families"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "cycle",
+        "hamiltonian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Нечётный режим исходной задачи Турнира городов 2020/21: конструктивная часть с принципом Дирихле на нечётном цикле.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "goal_construction",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "pigeonhole_principle",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-66880",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}

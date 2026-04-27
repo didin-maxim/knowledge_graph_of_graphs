@@ -23,6 +23,13 @@ def main():
                 for definition_id in statement.get("definition_ids", []):
                     if f"def-{definition_id}" not in valid_routes:
                         errors.append(f"{problem_id}: broken definition route {definition_id}")
+                statement_source_ids = []
+                if statement.get("source_id"):
+                    statement_source_ids.append(statement["source_id"])
+                statement_source_ids.extend(statement.get("source_ids", []))
+                for source_id in statement_source_ids:
+                    if source_id not in sources:
+                        errors.append(f"{problem_id}: broken statement source {source_id}")
         for solution in problem.get("solutions", []):
             for idea_id in solution.get("standard_idea_ids", []):
                 if f"stdidea-{idea_id}" not in valid_routes:
@@ -49,4 +56,3 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-

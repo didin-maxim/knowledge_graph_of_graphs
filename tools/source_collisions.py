@@ -1,5 +1,6 @@
 import argparse
 import json
+import re
 from collections import defaultdict
 from pathlib import Path
 
@@ -8,6 +9,46 @@ from lib import DATA, ROOT, external_problem_refs, load_problems, load_relations
 
 def relation_pairs():
     return {tuple(sorted((relation["from"], relation["to"]))) for relation in load_relations()}
+
+
+def statement_source_ids(statement):
+    source_ids = []
+    if statement.get("source_id"):
+        source_ids.append(statement["source_id"])
+    source_ids.extend(statement.get("source_ids", []))
+    return source_ids
+
+
+def normalize_statement_text(text):
+    return re.sub(r"\s+", " ", str(text).lower()).strip()
+
+
+def shared_statement_index():
+    index = defaultdict(list)
+    for problem_id, problem in load_problems().items():
+        for section, statements in problem.get("statements", {}).items():
+            for statement in statements:
+                text = normalize_statement_text(statement.get("text", ""))
+                if not text:
+                    continue
+                group = statement.get("shared_statement_group") or {}
+                for source_id in statement_source_ids(statement):
+                    index[(source_id, text)].append(
+                        {
+                            "problem_id": problem_id,
+                            "title": problem.get("title", ""),
+                            "path": problem.get("_path", ""),
+                            "section": section,
+                            "statement_id": statement.get("id"),
+                            "shared_group_id": group.get("id"),
+                            "case_id": group.get("case_id"),
+                        }
+                    )
+    return {
+        f"{source_id}::{text[:80]}": items
+        for (source_id, text), items in index.items()
+        if len({item["problem_id"] for item in items}) > 1
+    }
 
 
 def problem_ref_index():
@@ -110,11 +151,15 @@ def build_report(problem_id=None):
                 }
             )
 
-    return {"collisions": collisions, "missing_originals": missing_originals}
+    return {
+        "collisions": collisions,
+        "missing_originals": missing_originals,
+        "shared_statement_groups": shared_statement_index(),
+    }
 
 
 def print_report(report):
-    if not report["collisions"] and not report["missing_originals"]:
+    if not report["collisions"] and not report["missing_originals"] and not report["shared_statement_groups"]:
         print("No source collisions or missing canonical originals found.")
         return
     for item in report["collisions"]:
@@ -132,6 +177,12 @@ def print_report(report):
             print(f"  - {card['problem_id']} :: {card['path']}")
         for record in item["extracted_records"][:3]:
             print(f"  extracted: {record['id']} from {record['path']} graph_terms={record['graph_terms']}")
+    for key, items in report["shared_statement_groups"].items():
+        print(f"[shared-statement] {key}")
+        for item in items:
+            group = item.get("shared_group_id") or "<missing>"
+            case = item.get("case_id") or "<missing>"
+            print(f"  - {item['problem_id']}#{item['statement_id']} group={group} case={case} :: {item['path']}")
 
 
 def main():

@@ -1,0 +1,146 @@
+{
+  "id": "imo-1996-c1-grid-knight-reachability-r73-path",
+  "title": "Явный путь в графе ходов при \\(r=73\\), IMO Shortlist 1996 C1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "move_graph",
+      "path"
+    ],
+    "methods": [
+      "explicit_path",
+      "component_analysis"
+    ],
+    "transformations": [
+      "board_moves_to_graph"
+    ],
+    "goal": [
+      "reachability",
+      "existence"
+    ],
+    "auxiliary_graph_type": [
+      "finite_move_graph"
+    ],
+    "invariants": [],
+    "keywords": [
+      "imo_1996_c1",
+      "secondary_shortlist",
+      "early_imo_shortlist",
+      "r_73"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Дан прямоугольник \\(20\\times12\\), разбитый на единичные клетки. Пусть \\(A\\) и \\(B\\) — концы стороны длины \\(20\\), и нужно попасть из клетки, прилегающей к вершине \\(A\\), в клетку, прилегающую к вершине \\(B\\) вдоль этой стороны. Разрешено переходить из одной клетки в другую, если расстояние между центрами этих клеток равно \\(\\sqrt{73}\\). Докажите, что такой переход возможен.",
+        "source_id": "src-secondary-imo-1996-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие: режим r=73",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим граф, вершинами которого являются клетки доски \\(20\\times12\\), пронумерованные центрами \\((x,y)\\), где \\(1\\le x\\le20\\), \\(1\\le y\\le12\\). Две вершины соединены ребром, если разность их координат равна одному из векторов \\((\\pm8,\\pm3)\\) или \\((\\pm3,\\pm8)\\). Докажите, что вершины \\((1,1)\\) и \\((20,1)\\) лежат в одной компоненте этого графа.",
+        "source_id": "src-secondary-imo-1996-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-explicit-path",
+      "title": "Сертификат достижимости",
+      "text": "Так как \\(73=8^2+3^2\\), достаточно предъявить цепочку клеток, у которой каждая соседняя разность равна \\((\\pm8,\\pm3)\\) или \\((\\pm3,\\pm8)\\).",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-explicit-r73-path",
+      "title": "Явный маршрут",
+      "text": "Для \\(r=73=8^2+3^2\\) допустимы ходы типа \\((\\pm8,\\pm3)\\) и \\((\\pm3,\\pm8)\\). Явный путь от \\((1,1)\\) к \\((20,1)\\) таков: \\((1,1)\\to(4,9)\\to(7,1)\\to(10,9)\\to(2,6)\\to(10,3)\\to(13,11)\\to(16,3)\\to(19,11)\\to(11,8)\\to(19,5)\\to(11,2)\\to(14,10)\\to(17,2)\\to(20,10)\\to(12,7)\\to(4,4)\\to(7,12)\\to(10,4)\\to(13,12)\\to(16,4)\\to(8,1)\\to(11,9)\\to(14,1)\\to(17,9)\\to(20,1)\\). Все перечисленные точки лежат на доске, а разность соседних точек каждый раз равна одному из допустимых векторов \\((\\pm8,\\pm3)\\), \\((\\pm3,\\pm8)\\). Поэтому это путь в графе ходов, и переход при \\(r=73\\) возможен.",
+      "idea_ids": [
+        "idea-explicit-path"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 6,
+    "comment": "Один самостоятельный режим IMO Shortlist 1996 C1: существование пути при r=73 задаётся явным маршрутом.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "explicit_path",
+        "component_analysis"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1996-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "updated_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split from the former composite IMO 1996 C1 card; this card keeps only the r=73 reachability regime."
+    ],
+    "relations_status": "deep_done"
+  }
+}

@@ -19,6 +19,13 @@ GREEN = (50, 125, 91)
 ORANGE = (219, 136, 37)
 GRAY = (183, 186, 190)
 GOLD = (217, 180, 74)
+PALE_YELLOW = (255, 249, 176)
+PALE_BLUE = (196, 238, 242)
+LIGHT_BLUE = (222, 248, 249)
+PINK = (247, 154, 154)
+DARK_RED = (142, 30, 30)
+MAGENTA = (228, 58, 180)
+PURPLE = (122, 64, 219)
 
 
 class Canvas:
@@ -281,12 +288,348 @@ def generate_incidence_example():
     canvas.save_png(ASSETS / "egmo-2016-p3" / "grid-to-incidence-graph.png")
 
 
+def arrow(canvas, x0, y0, x1, y1, color, thickness=3):
+    canvas.line(x0, y0, x1, y1, color, thickness=thickness)
+    dx = x1 - x0
+    dy = y1 - y0
+    length = max((dx * dx + dy * dy) ** 0.5, 1)
+    ux, uy = dx / length, dy / length
+    px, py = -uy, ux
+    size = 12
+    back = 18
+    left = (x1 - back * ux + size * px, y1 - back * uy + size * py)
+    right = (x1 - back * ux - size * px, y1 - back * uy - size * py)
+    canvas.line(x1, y1, left[0], left[1], color, thickness=thickness)
+    canvas.line(x1, y1, right[0], right[1], color, thickness=thickness)
+
+
+def special_snake(size, parity_coord):
+    cells = []
+    for row in range(size, 0, -1):
+        if (size - row) % 2 == 0:
+            cols = range(1, size + 1)
+        else:
+            cols = range(size, 0, -1)
+        for col in cols:
+            cells.append((parity_coord + 2 * (row - 1), parity_coord + 2 * (col - 1)))
+    return cells
+
+
+def blue_snake(m):
+    return special_snake(m, 2)
+
+
+def hopcroft_karp(adj):
+    unmatched = None
+    left = list(adj)
+    pair_left = {u: unmatched for u in left}
+    pair_right = {}
+    dist = {}
+
+    def bfs():
+        queue = []
+        found = False
+        for u in left:
+            if pair_left[u] is unmatched:
+                dist[u] = 0
+                queue.append(u)
+            else:
+                dist[u] = 10**9
+        head = 0
+        while head < len(queue):
+            u = queue[head]
+            head += 1
+            for v in adj[u]:
+                pu = pair_right.get(v, unmatched)
+                if pu is unmatched:
+                    found = True
+                elif dist[pu] == 10**9:
+                    dist[pu] = dist[u] + 1
+                    queue.append(pu)
+        return found
+
+    def dfs(u):
+        for v in adj[u]:
+            pu = pair_right.get(v, unmatched)
+            if pu is unmatched or (dist[pu] == dist[u] + 1 and dfs(pu)):
+                pair_left[u] = v
+                pair_right[v] = u
+                return True
+        dist[u] = 10**9
+        return False
+
+    while bfs():
+        for u in left:
+            if pair_left[u] is unmatched:
+                dfs(u)
+    return pair_left
+
+
+def match_dark_to_white(n, dark_cells, available_whites):
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    adj = {}
+    for cell in sorted(dark_cells):
+        r, c = cell
+        adj[cell] = sorted(
+            (r + dr, c + dc)
+            for dr, dc in dirs
+            if (r + dr, c + dc) in available_whites
+        )
+    matching = hopcroft_karp(adj)
+    if any(v is None for v in matching.values()):
+        raise RuntimeError(f"could not tile remaining cells for n={n}")
+    return matching
+
+
+def blue_small_k_configuration(m, k):
+    n = 2 * m + 1
+    snake = blue_snake(m)
+    used = set()
+    dominoes = []
+
+    def midpoint(a, b):
+        return ((a[0] + b[0]) // 2, (a[1] + b[1]) // 2)
+
+    for i in range(1, k):
+        dark = snake[i]
+        target = snake[i - 1]
+        white = midpoint(dark, target)
+        used.update([dark, white])
+        dominoes.append({"dark": dark, "white": white, "target": target, "kind": "blue_prefix"})
+
+    for i in range(k, m * m):
+        dark = snake[i]
+        if i + 1 < m * m:
+            target = snake[i + 1]
+            white = midpoint(dark, target)
+        else:
+            r, c = dark
+            if c == 2 * m:
+                white = (r, 2 * m + 1)
+                target = (r, 2 * m + 2)
+            else:
+                white = (r, 1)
+                target = (r, 0)
+        used.update([dark, white])
+        dominoes.append({"dark": dark, "white": white, "target": target, "kind": "blue_suffix"})
+
+    red = {(r, c) for r in range(1, n + 1, 2) for c in range(1, n + 1, 2)}
+    blue = {(r, c) for r in range(2, n + 1, 2) for c in range(2, n + 1, 2)}
+    white = {
+        (r, c)
+        for r in range(1, n + 1)
+        for c in range(1, n + 1)
+        if (r, c) not in red and (r, c) not in blue
+    }
+    matching = match_dark_to_white(n, red, white - used)
+    for dark, white_cell in matching.items():
+        dominoes.append({"dark": dark, "white": white_cell, "target": None, "kind": "red"})
+    return n, snake[0], dominoes
+
+
+def red_spanning_configuration(m):
+    n = 2 * m + 1
+    snake = special_snake(m + 1, 1)
+    used = set()
+    dominoes = []
+
+    def midpoint(a, b):
+        return ((a[0] + b[0]) // 2, (a[1] + b[1]) // 2)
+
+    for i in range(1, len(snake)):
+        dark = snake[i]
+        target = snake[i - 1]
+        white = midpoint(dark, target)
+        used.update([dark, white])
+        dominoes.append({"dark": dark, "white": white, "target": target, "kind": "red_prefix"})
+
+    blue = {(r, c) for r in range(2, n + 1, 2) for c in range(2, n + 1, 2)}
+    red = {(r, c) for r in range(1, n + 1, 2) for c in range(1, n + 1, 2)}
+    white = {
+        (r, c)
+        for r in range(1, n + 1)
+        for c in range(1, n + 1)
+        if (r, c) not in red and (r, c) not in blue
+    }
+    matching = match_dark_to_white(n, blue, white - used)
+    for dark, white_cell in matching.items():
+        dominoes.append({"dark": dark, "white": white_cell, "target": None, "kind": "blue_fill"})
+    return n, snake[0], dominoes
+
+
+def verify_component_size(n, empty, dominoes, parity):
+    edges = {}
+    vertices = {
+        (r, c)
+        for r in range(1, n + 1)
+        for c in range(1, n + 1)
+        if r % 2 == parity and c % 2 == parity
+    }
+    for domino in dominoes:
+        dark = domino["dark"]
+        target = domino["target"]
+        if dark in vertices and target in vertices:
+            edges.setdefault(dark, set()).add(target)
+            edges.setdefault(target, set()).add(dark)
+    seen = {empty}
+    stack = [empty]
+    while stack:
+        cell = stack.pop()
+        for nxt in edges.get(cell, set()):
+            if nxt not in seen:
+                seen.add(nxt)
+                stack.append(nxt)
+    return len(seen)
+
+
+def board_geometry(origin_x, origin_y, cell_size):
+    def rect(cell):
+        r, c = cell
+        x0 = origin_x + (c - 1) * cell_size
+        y0 = origin_y + (r - 1) * cell_size
+        return x0, y0, x0 + cell_size, y0 + cell_size
+
+    def center(cell):
+        x0, y0, x1, y1 = rect(cell)
+        return (x0 + x1) / 2, (y0 + y1) / 2
+
+    return rect, center
+
+
+def draw_domino_board(canvas, n, empty, dominoes, origin_x, origin_y, cell_size, show_suffix_arrows=True):
+    rect, center = board_geometry(origin_x, origin_y, cell_size)
+    canvas.fill_rect(origin_x, origin_y, origin_x + n * cell_size, origin_y + n * cell_size, PALE_YELLOW)
+
+    color_for = {
+        "blue_prefix": PALE_BLUE,
+        "blue_suffix": LIGHT_BLUE,
+        "red": PINK,
+        "red_prefix": PINK,
+        "blue_fill": LIGHT_BLUE,
+    }
+    for domino in dominoes:
+        a = domino["dark"]
+        b = domino["white"]
+        ax0, ay0, ax1, ay1 = rect(a)
+        bx0, by0, bx1, by1 = rect(b)
+        x0, y0 = min(ax0, bx0) + 2, min(ay0, by0) + 2
+        x1, y1 = max(ax1, bx1) - 2, max(ay1, by1) - 2
+        canvas.fill_rect(x0, y0, x1, y1, color_for.get(domino["kind"], WHITE))
+        canvas.stroke_rect(x0, y0, x1, y1, INK, thickness=1)
+
+    ex0, ey0, ex1, ey1 = rect(empty)
+    canvas.fill_rect(ex0 + 3, ey0 + 3, ex1 - 3, ey1 - 3, GRAY)
+    canvas.stroke_rect(ex0 + 3, ey0 + 3, ex1 - 3, ey1 - 3, INK, thickness=1)
+
+    for i in range(n + 1):
+        x = origin_x + i * cell_size
+        y = origin_y + i * cell_size
+        canvas.line(x, origin_y, x, origin_y + n * cell_size, LINE, thickness=1)
+        canvas.line(origin_x, y, origin_x + n * cell_size, y, LINE, thickness=1)
+    canvas.stroke_rect(origin_x, origin_y, origin_x + n * cell_size, origin_y + n * cell_size, INK, thickness=2)
+
+    for r in range(1, n + 1):
+        for c in range(1, n + 1):
+            if r % 2 == c % 2:
+                cx, cy = center((r, c))
+                canvas.fill_circle(cx, cy, max(2, cell_size // 9), INK)
+
+    for domino in dominoes:
+        target = domino["target"]
+        if target is None:
+            continue
+        if domino["kind"] == "blue_suffix" and not show_suffix_arrows:
+            continue
+        x0, y0 = center(domino["dark"])
+        if 1 <= target[0] <= n and 1 <= target[1] <= n:
+            x1, y1 = center(target)
+        else:
+            x1 = origin_x + (target[1] - 0.5) * cell_size
+            y1 = origin_y + (target[0] - 0.5) * cell_size
+        color = INK if domino["kind"] in {"blue_prefix", "red_prefix"} else MUTED
+        arrow(canvas, x0, y0, x1, y1, color, thickness=max(2, cell_size // 16))
+
+
+def generate_usamo_2023_p3_small_k_boards():
+    m = 3
+    n = 2 * m + 1
+    cell = 34
+    panel = n * cell + 24
+    canvas = Canvas(3 * panel + 40, 3 * panel + 40)
+    for idx, k in enumerate(range(m * m, 0, -1)):
+        row = idx // 3
+        col = idx % 3
+        ox = 20 + col * panel + 12
+        oy = 20 + row * panel + 12
+        n, empty, dominoes = blue_small_k_configuration(m, k)
+        size = verify_component_size(n, empty, dominoes, 0)
+        if size != k:
+            raise RuntimeError(f"blue component size {size} != {k}")
+        draw_panel_background(canvas, ox - 8, oy - 8, ox + n * cell + 8, oy + n * cell + 8)
+        draw_domino_board(canvas, n, empty, dominoes, ox, oy, cell)
+    canvas.save_png(ASSETS / "usamo-2023-p3" / "n7-small-k-blue-snake.png")
+
+
+def generate_usamo_2023_p3_cut_schematic():
+    m = 5
+    n = 2 * m + 1
+    k = 13
+    cell = 44
+    canvas = Canvas(620, 560)
+    ox, oy = 70, 35
+    n, empty, dominoes = blue_small_k_configuration(m, k)
+    if verify_component_size(n, empty, dominoes, 0) != k:
+        raise RuntimeError("schematic blue component check failed")
+    draw_domino_board(canvas, n, empty, dominoes, ox, oy, cell, show_suffix_arrows=False)
+    rect, center = board_geometry(ox, oy, cell)
+    snake = blue_snake(m)
+    cut_a = snake[k - 1]
+    cut_b = snake[k]
+    cut = ((cut_a[0] + cut_b[0]) // 2, (cut_a[1] + cut_b[1]) // 2)
+    cx, cy = center(cut)
+    canvas.stroke_circle(cx, cy, cell * 0.33, RED, thickness=5)
+    for cell_index, special in enumerate(snake):
+        sx, sy = center(special)
+        color = BLUE if cell_index < k else MUTED
+        canvas.stroke_circle(sx, sy, 10, color, thickness=3)
+    canvas.save_png(ASSETS / "usamo-2023-p3" / "blue-snake-cut-schematic.png")
+
+
+def generate_usamo_2023_p3_red_spanning():
+    m = 3
+    cell = 54
+    canvas = Canvas(470, 470)
+    n, empty, dominoes = red_spanning_configuration(m)
+    size = verify_component_size(n, empty, dominoes, 1)
+    if size != (m + 1) * (m + 1):
+        raise RuntimeError(f"red component size {size}")
+    draw_panel_background(canvas, 35, 35, 435, 435)
+    draw_domino_board(canvas, n, empty, dominoes, 46, 46, cell)
+    canvas.save_png(ASSETS / "usamo-2023-p3" / "n7-red-spanning-snake.png")
+
+
+def verify_usamo_2023_p3_samples():
+    for m in range(1, 10):
+        for k in range(1, m * m + 1):
+            n, empty, dominoes = blue_small_k_configuration(m, k)
+            if verify_component_size(n, empty, dominoes, 0) != k:
+                raise RuntimeError(f"blue snake verification failed for m={m}, k={k}")
+        n, empty, dominoes = red_spanning_configuration(m)
+        expected = (m + 1) * (m + 1)
+        if verify_component_size(n, empty, dominoes, 1) != expected:
+            raise RuntimeError(f"red snake verification failed for m={m}")
+
+
 def main():
     generate_chord_types()
     generate_ferry_operation()
     generate_reachability_board()
     generate_forest_growth()
     generate_incidence_example()
+    verify_usamo_2023_p3_samples()
+    generate_usamo_2023_p3_small_k_boards()
+    generate_usamo_2023_p3_cut_schematic()
+    generate_usamo_2023_p3_red_spanning()
     print(f"Generated example images under {ASSETS}")
 
 

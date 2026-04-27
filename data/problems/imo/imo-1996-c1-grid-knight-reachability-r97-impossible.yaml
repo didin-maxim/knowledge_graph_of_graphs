@@ -1,0 +1,170 @@
+{
+  "id": "imo-1996-c1-grid-knight-reachability-r97-impossible",
+  "title": "Недостижимость в графе ходов при \\(r=97\\), IMO Shortlist 1996 C1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "move_graph",
+      "connected_components"
+    ],
+    "methods": [
+      "modular_coloring",
+      "component_analysis"
+    ],
+    "transformations": [
+      "board_moves_to_graph"
+    ],
+    "goal": [
+      "reachability",
+      "impossibility"
+    ],
+    "auxiliary_graph_type": [
+      "finite_move_graph"
+    ],
+    "invariants": [
+      "band_parity",
+      "residue_class"
+    ],
+    "keywords": [
+      "imo_1996_c1",
+      "secondary_shortlist",
+      "early_imo_shortlist",
+      "r_97"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Дан прямоугольник \\(20\\times12\\), разбитый на единичные клетки. Пусть \\(A\\) и \\(B\\) — концы стороны длины \\(20\\), и нужно попасть из клетки, прилегающей к вершине \\(A\\), в клетку, прилегающую к вершине \\(B\\) вдоль этой стороны. Разрешено переходить из одной клетки в другую, если расстояние между центрами этих клеток равно \\(\\sqrt{97}\\). Решите вопрос о возможности такого перехода.",
+        "source_id": "src-secondary-imo-1996-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "title": "Условие: режим r=97",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим граф, вершинами которого являются клетки доски \\(20\\times12\\), пронумерованные центрами \\((x,y)\\), где \\(1\\le x\\le20\\), \\(1\\le y\\le12\\). Две вершины соединены ребром, если разность их координат равна одному из векторов \\((\\pm9,\\pm4)\\) или \\((\\pm4,\\pm9)\\). Определите, лежат ли вершины \\((1,1)\\) и \\((20,1)\\) в одной компоненте этого графа.",
+        "source_id": "src-secondary-imo-1996-shortlist",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-band-parity-invariant",
+      "title": "Инвариант по полосам высоты 4",
+      "text": "Разобьём строки на три полосы высоты \\(4\\) и рассмотрим паритет выражения \\(x-\\lceil y/4\\rceil\\). Каждый допустимый ход при \\(r=97\\) сохраняет этот паритет.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-band-parity-obstruction",
+      "title": "Старт и цель разделены полосовым инвариантом",
+      "text": "Для \\(r=97=9^2+4^2\\) допустимые ходы имеют вид \\((\\pm9,\\pm4)\\) или \\((\\pm4,\\pm9)\\). Разобьём строки доски на три полосы \\(1\\le y\\le4\\), \\(5\\le y\\le8\\), \\(9\\le y\\le12\\) и рассмотрим множество клеток \\(S\\), для которых \\(x\\equiv\\lceil y/4\\rceil\\pmod2\\). Стартовая клетка \\((1,1)\\) принадлежит \\(S\\), поскольку \\(1\\equiv\\lceil1/4\\rceil=1\\pmod2\\), а целевая \\((20,1)\\) не принадлежит \\(S\\), поскольку \\(20\\equiv0\\pmod2\\), но \\(\\lceil1/4\\rceil\\equiv1\\pmod2\\). Проверим, что каждый допустимый ход сохраняет принадлежность \\(S\\). Если ход имеет вертикальную составляющую \\(\\pm4\\), то \\(y\\) переходит из одной полосы высоты \\(4\\) в соседнюю, так что \\(\\lceil y/4\\rceil\\) меняется ровно на \\(\\pm1\\); одновременно горизонтальная составляющая \\(\\pm9\\) меняет чётность \\(x\\). Обе стороны сравнения по модулю \\(2\\) меняются, поэтому условие для \\(S\\) сохраняется. Если ход имеет вертикальную составляющую \\(\\pm9\\), то допустимость по высоте оставляет только переходы \\(y=1,2,3\\) в \\(y=10,11,12\\) или обратно: из полосы с номером \\(1\\) в полосу с номером \\(3\\). Эти номера имеют одинаковую чётность, а горизонтальная составляющая \\(\\pm4\\) не меняет чётность \\(x\\); значит условие для \\(S\\) снова сохраняется. Следовательно, любой допустимый путь из \\((1,1)\\) целиком остаётся внутри \\(S\\), но \\((20,1)\\notin S\\). При \\(r=97\\) переход невозможен.",
+      "idea_ids": [
+        "idea-band-parity-invariant"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "path"
+      ]
+    },
+    {
+      "id": "sol-aops-band-invariant",
+      "title": "AoPS: инвариант Tomas Diaz для случая r=97",
+      "text": "Расположим центры клеток в целочисленных точках так, чтобы старт был в \\((1,1)\\), а цель в \\((20,1)\\). Для \\(r=97\\) из \\(97=9^2+4^2\\) следует, что допустимые ходы имеют вид \\((\\pm 9,\\pm 4)\\) или \\((\\pm 4,\\pm 9)\\). Рассмотрим множество клеток \\(S\\), для которых выполняется \\(x\\equiv \\lceil y/4\\rceil \\pmod 2\\). Здесь \\(\\lceil y/4\\rceil\\) — номер одной из трёх горизонтальных полос: \\(1\\) для строк \\(1,2,3,4\\), \\(2\\) для строк \\(5,6,7,8\\), \\(3\\) для строк \\(9,10,11,12\\). Стартовая клетка принадлежит \\(S\\), потому что \\(1\\equiv1\\pmod2\\). Проверим инвариант. Если ход равен \\((\\pm9,\\pm4)\\), то чётность \\(x\\) меняется, а допустимый сдвиг строки на \\(4\\) переводит клетку ровно в соседнюю полосу, поэтому чётность \\(\\lceil y/4\\rceil\\) тоже меняется. Если ход равен \\((\\pm4,\\pm9)\\), то чётность \\(x\\) не меняется. При этом сдвиг по высоте на \\(9\\), остающийся внутри доски высоты \\(12\\), возможен только из строк \\(1,2,3\\) в строки \\(10,11,12\\) или обратно; номера соответствующих полос равны \\(1\\) и \\(3\\), то есть имеют одинаковую чётность. Следовательно, и в этом случае условие \\(x\\equiv \\lceil y/4\\rceil\\pmod2\\) сохраняется. Значит любой допустимый путь из стартовой клетки целиком лежит в \\(S\\). Но клетка \\((20,1)\\) не принадлежит \\(S\\), поскольку \\(20\\equiv0\\pmod2\\), а \\(\\lceil1/4\\rceil=1\\). Следовательно, при \\(r=97\\) дойти до цели невозможно.",
+      "idea_ids": [
+        "idea-band-parity-invariant"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 8,
+    "comment": "Один самостоятельный режим IMO Shortlist 1996 C1: отдельный ответ при r=97 — переход невозможен.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "coloring",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "modular_coloring",
+        "component_analysis"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-secondary-imo-1996-shortlist",
+      "role": "secondary_shortlist_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-aops-imo-1996-p1",
+      "role": "community_alternative_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-20",
+    "updated_at": "2026-04-27",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split from the former composite IMO 1996 C1 card; this card keeps only the r=97 obstruction regime."
+    ],
+    "relations_status": "deep_done"
+  }
+}

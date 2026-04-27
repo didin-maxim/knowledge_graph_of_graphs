@@ -54,14 +54,14 @@
       }
     },
     {
-      "id": "imo-2024-sl-c4",
-      "problem_id": "imo-2024-c4-turbo-grid-monsters",
+      "id": "imo-2024-sl-c4-two-attempts",
+      "problem_id": "imo-2024-c4-turbo-grid-monsters-two-attempts-lower-bound",
       "status": "added",
       "source_ids": [
         "src-imo-2024-problems-eng",
         "src-imo-2024-shortlist"
       ],
-      "decision_reason": "Задача IMO 2024 P5 на пути в решётчатом графе с неизвестными препятствиями и адаптивной стратегией.",
+      "decision_reason": "Нижняя оценка задачи IMO 2024 P5 на пути в решётчатом графе с неизвестными препятствиями: две попытки не гарантируют победу.",
       "problem_profile": {
         "objects": [
           "grid_graph",
@@ -69,7 +69,26 @@
           "adaptive_paths"
         ],
         "methods": [
-          "adversary_strategy",
+          "adversary_strategy"
+        ]
+      }
+    },
+    {
+      "id": "imo-2024-sl-c4-three-attempts",
+      "problem_id": "imo-2024-c4-turbo-grid-monsters-three-attempts-strategy",
+      "status": "added",
+      "source_ids": [
+        "src-imo-2024-problems-eng",
+        "src-imo-2024-shortlist"
+      ],
+      "decision_reason": "Конструктивная часть задачи IMO 2024 P5: три попытки достаточны для гарантированного пути в решётчатом графе с неизвестными препятствиями.",
+      "problem_profile": {
+        "objects": [
+          "grid_graph",
+          "hidden_obstacles",
+          "adaptive_paths"
+        ],
+        "methods": [
           "constructive_path_strategy"
         ]
       }

@@ -1,0 +1,152 @@
+{
+  "id": "tc-2020-21-gnomes-two-cycles-even-n",
+  "title": "Два круглых столика гномов при чётном n, Турнир городов 2020/21",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Святловский М.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "two_cycles",
+      "hamiltonian_cycle",
+      "added_edges",
+      "bipartition_color_classes"
+    ],
+    "methods": [
+      "double_counting",
+      "coloring",
+      "adversary_strategy",
+      "parity"
+    ],
+    "transformations": [
+      "two_color_cycles",
+      "delete_edges_incident_to_color_class"
+    ],
+    "goal": [
+      "evil_wizard_strategy",
+      "rule_out_hamiltonian_cycle"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "n_parity",
+      "degree_sum_by_color_class",
+      "forced_old_cycle"
+    ],
+    "keywords": [
+      "even_n",
+      "two_cycles",
+      "hamiltonian_cycle_game",
+      "degree_sum_obstruction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Гномы за двумя столиками: чётное n",
+        "text": "Пусть \\(n\\) чётно. За каждым из двух круглых столиков сидит по \\(n\\) гномов. Каждый гном дружит только со своими соседями по своему столику слева и справа. Добрый волшебник хочет, чтобы всех \\(2n\\) гномов можно было рассадить за один круглый стол так, чтобы каждые два соседних гнома дружили между собой. Сначала добрый волшебник подружит любые \\(2n\\) пар гномов, а затем злой волшебник поссорит между собой \\(n\\) пар из этих \\(2n\\) новых пар. Докажите, что при чётном \\(n\\) злой волшебник может помешать желаемому, как бы ни действовал добрый волшебник.",
+        "source_id": "src-problems-66880",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть \\(n\\) чётно. Дан граф, являющийся объединением двух непересекающихся циклов длины \\(n\\). Первый игрок произвольно добавляет \\(2n\\) новых рёбер. Докажите, что второй игрок может удалить \\(n\\) из добавленных рёбер так, что в оставшемся графе не будет гамильтонова цикла.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-degree-color-obstruction",
+      "title": "Цветовой класс с малой добавленной степенью",
+      "text": "При чётном \\(n\\) каждый исходный цикл раскрашивается в два цвета через одну вершину. Среди четырёх цветовых классов есть класс, суммарная степень которого по добавленным рёбрам не больше \\(n\\). Удалив все добавленные рёбра, инцидентные этому классу, злой волшебник заставляет любой гамильтонов цикл содержать целый старый цикл, что невозможно.",
+      "tags": [
+        "double_counting",
+        "hamiltonian_cycles"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-even-color-obstruction",
+      "title": "Стратегия злого волшебника",
+      "text": "Так как \\(n\\) чётно, раскрасим вершины каждого из двух исходных циклов в два цвета через одну; всего получим четыре цветовых класса. Рассмотрим граф из \\(2n\\) добавленных добрым волшебником рёбер. Сумма степеней всех вершин по этим рёбрам равна \\(4n\\), поэтому для одного из четырёх цветовых классов эта сумма не больше \\(n\\). Злой волшебник удаляет все добавленные рёбра, инцидентные вершинам этого класса; таких рёбер не больше \\(n\\), а если меньше, он удаляет произвольные добавленные рёбра до общего числа \\(n\\). После этого каждая вершина выбранного класса соединена только с двумя своими старыми соседями. Если бы в оставшемся графе был гамильтонов цикл, то у каждой такой вершины он был бы вынужден использовать оба старых ребра. Но выбранный класс занимает через одну все вершины одного из исходных циклов, значит гамильтонов цикл содержал бы все рёбра этого старого цикла, то есть имел бы внутри себя меньший цикл длины \\(n\\). Это невозможно для одного цикла через все \\(2n\\) вершин. Следовательно, при чётном \\(n\\) злой волшебник всегда может помешать.",
+      "idea_ids": [
+        "idea-degree-color-obstruction"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree",
+        "cycle",
+        "hamiltonian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Чётный режим исходной задачи Турнира городов 2020/21: невозможность доказывается двойным счётом степеней по четырём цветовым классам.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "double_counting",
+    "goal_strategy_game",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-problems-66880",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-19",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "deep_done"
+  }
+}
