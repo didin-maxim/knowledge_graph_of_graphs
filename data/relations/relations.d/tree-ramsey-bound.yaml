@@ -14,6 +14,36 @@
       },
       "status": "ai_checked",
       "confidence": 0.99
+    },
+    {
+      "id": "rel-ramsey-theorem-tree-vs-independent-set-bound",
+      "from": "ramsey-theorem",
+      "to": "tree-vs-independent-set-ramsey-bound",
+      "type": "specialization",
+      "distance": 2,
+      "forward_text": "Лемма о дереве против независимого множества является рамсеевской оценкой специального вида: вместо произвольной клики она гарантирует копию любого фиксированного дерева при отсутствии большого независимого множества.",
+      "backward_text": "Общая теорема Рамсея объясняет мотив «структура или большое независимое множество», а эта карточка даёт более точную древесную специализацию с индукцией по листу.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-tree-equivalent-tree-vs-independent-set-bound",
+      "from": "tree-equivalent-properties",
+      "to": "tree-vs-independent-set-ramsey-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Индукция в древесной рамсеевской лемме использует базовое свойство деревьев: у каждого нетривиального дерева есть лист, который можно удалить и затем вернуть через соседа.",
+      "backward_text": "Лемма tree-vs-independent-set является типичным применением листовой индукции по дереву.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
     }
   ]
 }

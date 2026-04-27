@@ -1,13 +1,13 @@
 {
   "id": "digraph-outdegree-greedy-coloring-bound",
-  "title": "Greedy coloring bound for digraphs of bounded outdegree",
+  "title": "Жадная оценка раскраски орграфа с ограниченной исходящей степенью",
   "kind": {
     "primary": "lemma",
     "secondary": [
       "classical_tool"
     ]
   },
-  "language": "en",
+  "language": "ru",
   "authors": [
     {
       "name": "?",
@@ -53,8 +53,8 @@
     "original": [
       {
         "id": "stmt-digraph-outdegree-greedy-coloring-bound",
-        "title": "Bounded outdegree coloring lemma",
-        "text": "Let \\(r\\ge 0\\). Every finite directed graph in which each vertex has outdegree at most \\(r\\) can be colored with \\(2r+1\\) colors so that the endpoints of every directed edge have different colors.",
+        "title": "Лемма о раскраске при ограниченной исходящей степени",
+        "text": "Пусть \\(r\\ge 0\\). Любой конечный ориентированный граф, в котором исходящая степень каждой вершины не превосходит \\(r\\), можно раскрасить в \\(2r+1\\) цвет так, чтобы концы каждой дуги имели разные цвета.",
         "source_id": "src-apmo-2016-official",
         "status": "ai_checked",
         "self_contained": {
@@ -72,8 +72,8 @@
   "ideas": [
     {
       "id": "idea-low-indegree-extend-coloring",
-      "title": "Delete a vertex of small indegree and extend",
-      "text": "Since the total indegree equals the total outdegree, average indegree is at most \\(r\\). Choose a vertex with indegree at most \\(r\\), color the remaining graph by induction, and then return this vertex: its in-neighbors and out-neighbors forbid at most \\(r+r=2r\\) colors.",
+      "title": "Удалить вершину малой входящей степени и продолжить раскраску",
+      "text": "Сумма входящих степеней равна сумме исходящих, поэтому средняя входящая степень не превосходит \\(r\\). Выбираем вершину входящей степени не больше \\(r\\), красим оставшийся граф по индукции, а затем возвращаем эту вершину: её входящие и исходящие соседи запрещают не больше \\(r+r=2r\\) цветов.",
       "tags": [
         "coloring",
         "induction"
@@ -84,8 +84,8 @@
   "solutions": [
     {
       "id": "sol-low-indegree-induction",
-      "title": "Induction on the number of vertices",
-      "text": "We prove the statement by induction on the number of vertices. The empty graph and one-vertex graph are immediate. Now let \\(D\\) be a finite directed graph with maximum outdegree at most \\(r\\). The sum of the indegrees equals the sum of the outdegrees, so the average indegree is also at most \\(r\\). Hence some vertex \\(v\\) has indegree at most \\(r\\).\n\nDelete \\(v\\). The remaining directed graph still has maximum outdegree at most \\(r\\), so by the induction hypothesis it has a coloring with colors \\(1,\\dots,2r+1\\) in which every directed edge has differently colored endpoints.\n\nWhen we put \\(v\\) back, a color is forbidden for \\(v\\) only if it already appears on an in-neighbor or an out-neighbor of \\(v\\). There are at most \\(r\\) out-neighbors because the outdegree of \\(v\\) is at most \\(r\\), and at most \\(r\\) in-neighbors by the choice of \\(v\\). Thus at most \\(2r\\) colors are forbidden. Among \\(2r+1\\) colors one color remains available for \\(v\\), and assigning it preserves the condition on every directed edge incident to \\(v\\). This completes the induction.",
+      "title": "Индукция по числу вершин",
+      "text": "Докажем утверждение индукцией по числу вершин. Для пустого графа и графа из одной вершины всё очевидно. Пусть теперь \\(D\\) — конечный ориентированный граф с максимальной исходящей степенью не больше \\(r\\). Сумма входящих степеней равна сумме исходящих степеней, поэтому средняя входящая степень тоже не превосходит \\(r\\). Значит, найдётся вершина \\(v\\) входящей степени не больше \\(r\\).\n\nУдалим \\(v\\). В оставшемся ориентированном графе максимальная исходящая степень по-прежнему не больше \\(r\\), поэтому по предположению индукции он имеет раскраску цветами \\(1,\\dots,2r+1\\), в которой концы каждой дуги окрашены по-разному.\n\nВернём \\(v\\). Цвет для \\(v\\) запрещён только тогда, когда он уже стоит на входящем или исходящем соседе \\(v\\). Исходящих соседей не больше \\(r\\), потому что исходящая степень \\(v\\) не превосходит \\(r\\), а входящих соседей не больше \\(r\\) по выбору \\(v\\). Значит, запрещено не более \\(2r\\) цветов. Среди \\(2r+1\\) цветов остаётся доступный цвет для \\(v\\); присвоив его, мы сохраняем условие для всех дуг, инцидентных \\(v\\). Индукция завершена.",
       "idea_ids": [
         "idea-low-indegree-extend-coloring"
       ],
@@ -104,7 +104,7 @@
   "difficulty": {
     "main": "regional",
     "local_score": 3,
-    "comment": "A short greedy-induction coloring lemma; the only trick is to use average indegree, not outdegree, to choose the vertex removed by induction.",
+    "comment": "Короткая жадно-индукционная лемма о раскраске; единственный трюк — выбирать удаляемую вершину по средней входящей, а не исходящей степени.",
     "status": "ai_checked"
   },
   "tags": [
@@ -136,8 +136,8 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [
-      "Extracted as the stronger reusable lemma used in apmo-2016-p4-dreamland-28-step-coloring; the original APMO card is intentionally left unchanged.",
-      "The proof is the standard low-indegree deletion and greedy extension argument."
+      "Вынесено как более сильная переиспользуемая лемма из apmo-2016-p4-dreamland-28-step-coloring; исходная карточка APMO намеренно не редактировалась.",
+      "Доказательство — стандартное удаление вершины малой входящей степени с последующим жадным продолжением раскраски."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

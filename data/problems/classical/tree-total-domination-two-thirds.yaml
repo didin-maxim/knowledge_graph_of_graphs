@@ -1,13 +1,13 @@
 {
   "id": "tree-total-domination-two-thirds",
-  "title": "Every tree has a total dominating set of size at most floor(2n/3)",
+  "title": "В каждом дереве есть полное доминирующее множество размера не больше floor(2n/3)",
   "kind": {
     "primary": "lemma",
     "secondary": [
       "classical_tool"
     ]
   },
-  "language": "en",
+  "language": "ru",
   "authors": [
     {
       "name": "classical folklore",
@@ -55,7 +55,7 @@
     "original": [
       {
         "id": "stmt-tree-total-domination-two-thirds",
-        "text": "Let T be a tree on n >= 3 vertices. Then there is a set S of at most floor(2n/3) vertices such that every vertex of T has a neighbor in S. Equivalently, the total domination number of every tree of order at least 3 is at most floor(2n/3).",
+        "text": "Пусть \\(T\\) — дерево на \\(n\\ge 3\\) вершинах. Тогда существует множество \\(S\\) размера не больше \\(\\lfloor 2n/3\\rfloor\\), такое что у каждой вершины \\(T\\) есть сосед в \\(S\\). Эквивалентно, полное доминирующее число любого дерева порядка хотя бы 3 не превосходит \\(\\lfloor 2n/3\\rfloor\\).",
         "source_id": "src-utyum-2018_lichol_8_tree_cities-official",
         "status": "ai_checked",
         "self_contained": {
@@ -74,8 +74,8 @@
   "ideas": [
     {
       "id": "idea-prune-near-longest-path-end",
-      "title": "Prune a small pendant fragment near an end of a longest path",
-      "text": "Look at the first few vertices at an end of a longest path. The local branches there are forced to be shallow, so one can delete a pendant fragment of size at least 2 and put back at most two selected vertices that dominate that fragment and keep the boundary vertex handled.",
+      "title": "Срезать малый висячий фрагмент около конца длиннейшего пути",
+      "text": "Рассматриваем первые несколько вершин у конца длиннейшего пути. Локальные ветви там вынужденно мелкие, поэтому можно удалить висячий фрагмент размера хотя бы 2, а затем вернуть не более двух выбранных вершин, которые доминируют этот фрагмент и контролируют граничную вершину.",
       "tags": [
         "trees",
         "induction",
@@ -85,8 +85,8 @@
     },
     {
       "id": "idea-two-per-three-budget",
-      "title": "Spend at most two selected vertices per three deleted vertices",
-      "text": "The induction is arranged so that each local deletion either removes at least three vertices and later adds two selected vertices, or removes at least two leaves around one support vertex and later adds only that support vertex. The floor inequality then preserves the 2n/3 bound.",
+      "title": "Тратить не больше двух выбранных вершин на три удалённые",
+      "text": "Индукция устроена так, что каждое локальное удаление либо убирает хотя бы три вершины и затем добавляет две выбранные вершины, либо убирает хотя бы два листа около одной опорной вершины и затем добавляет только эту опорную вершину. Неравенство с целой частью сохраняет границу \\(2n/3\\).",
       "tags": [
         "goal_bound",
         "induction"
@@ -97,8 +97,8 @@
   "solutions": [
     {
       "id": "sol-longest-path-pruning",
-      "title": "Induction by pruning a pendant fragment",
-      "text": "We prove the statement by induction on n. The cases n=3 and n=4 are immediate: a path or a star on these orders is totally dominated by two adjacent vertices.\n\nThe induction uses a standard pruning claim. In every tree T with at least five vertices one can find a pendant connected fragment F, meeting the rest of the tree in at most one boundary vertex, and a set A inside F together with possibly that boundary vertex, such that: after deleting F the remaining graph is either a smaller tree or one of the direct small endings; every vertex of F and the boundary vertex have a neighbor in A union D whenever D is a total dominating set of the remaining tree; and |A| <= floor(2|F|/3) except for the case where |F| is two leaves with a common support, where adding the support costs only one vertex. To see the claim, take a longest path v0 v1 ... vk and root the tree at vk. All children of v1 are leaves. If v1 has at least two leaf children, use those leaves as F and add v1. Otherwise v1 has degree 2; then look one step farther at v2. If the path continues through a degree-2 vertex, use the pendant path v0 v1 v2 and add v1,v2. If v2 has side branches, the longest-path choice forces each such side branch to have height at most one; taking the side branch together with v0,v1 gives one of the same three-for-two local fragments. These are exactly the local shapes that can occur next to the end of a longest path.\n\nNow apply the claim. Delete the fragment F, use the induction hypothesis on the remaining tree when its order is at least 3, and then add the local set A. The definition of A ensures that all deleted vertices are dominated and that domination across the single boundary is preserved. The size estimate is also local: removing three vertices and adding two gives floor(2(n-3)/3)+2 = floor(2n/3), removing four or more and adding at most two is even cheaper, and removing at least two sibling leaves while adding only their support gives floor(2(n-r)/3)+1 <= floor(2n/3) for r >= 2. The exceptional remaining trees of order 1 or 2 occur only at the end of the pruning and are checked directly by choosing two adjacent vertices in the original final piece.\n\nThus each induction step reduces the tree and extends the selected set without exceeding the two-thirds budget. The resulting set has size at most floor(2n/3), and every vertex, selected or not, has a selected neighbor.",
+      "title": "Индукция со срезанием висячего фрагмента",
+      "text": "Доказываем утверждение индукцией по \\(n\\). Случаи \\(n=3\\) и \\(n=4\\) непосредственны: путь или звезда такого порядка полностью доминируются двумя соседними вершинами.\n\nВ индукции используется стандартное утверждение о срезании. В каждом дереве \\(T\\) с хотя бы пятью вершинами можно найти связный висячий фрагмент \\(F\\), который встречается с остальным деревом не более чем по одной граничной вершине, и множество \\(A\\) внутри \\(F\\), возможно вместе с этой граничной вершиной, так что после удаления \\(F\\) остаётся меньшее дерево или один из малых конечных случаев; каждая вершина \\(F\\) и граничная вершина имеют соседа в \\(A\\cup D\\), если \\(D\\) — полное доминирующее множество оставшегося дерева; и \\(|A|\\le \\lfloor 2|F|/3\\rfloor\\), кроме случая, когда \\(F\\) состоит из двух листьев с общей опорной вершиной, где добавление опорной вершины стоит только одну вершину. Чтобы увидеть это, возьмём длиннейший путь \\(v_0v_1\\ldots v_k\\) и укореним дерево в \\(v_k\\). Все дети \\(v_1\\) являются листьями. Если у \\(v_1\\) есть хотя бы два листовых ребёнка, берём эти листья в качестве \\(F\\) и добавляем \\(v_1\\). Иначе степень \\(v_1\\) равна 2; тогда смотрим на шаг дальше, на \\(v_2\\). Если путь продолжается через вершину степени 2, берём висячий путь \\(v_0v_1v_2\\) и добавляем \\(v_1,v_2\\). Если у \\(v_2\\) есть боковые ветви, выбор длиннейшего пути заставляет каждую такую ветвь иметь высоту не больше одного; взяв боковую ветвь вместе с \\(v_0,v_1\\), получаем один из тех же локальных фрагментов с расходом две вершины на три. Это ровно те локальные формы, которые могут появиться рядом с концом длиннейшего пути.\n\nТеперь применим это утверждение. Удаляем фрагмент \\(F\\), используем предположение индукции для оставшегося дерева, если его порядок хотя бы 3, и затем добавляем локальное множество \\(A\\). Определение \\(A\\) гарантирует, что все удалённые вершины доминированы и что доминирование через единственную границу сохранено. Оценка размера тоже локальна: удаление трёх вершин и добавление двух даёт \\(\\lfloor 2(n-3)/3\\rfloor+2=\\lfloor 2n/3\\rfloor\\), удаление четырёх или более вершин с добавлением не более двух ещё дешевле, а удаление хотя бы двух братских листьев с добавлением только их опорной вершины даёт \\(\\lfloor 2(n-r)/3\\rfloor+1\\le \\lfloor 2n/3\\rfloor\\) при \\(r\\ge 2\\). Исключительные оставшиеся деревья порядка 1 или 2 возникают только в конце срезания и проверяются напрямую выбором двух соседних вершин в исходном последнем фрагменте.\n\nТаким образом, каждый шаг индукции уменьшает дерево и продолжает выбранное множество, не превышая бюджет две трети. Полученное множество имеет размер не больше \\(\\lfloor 2n/3\\rfloor\\), и у каждой вершины, выбранной или нет, есть выбранный сосед.",
       "idea_ids": [
         "idea-prune-near-longest-path-end",
         "idea-two-per-three-budget"
@@ -119,7 +119,7 @@
   "difficulty": {
     "main": "classical_tool",
     "local_score": 4,
-    "comment": "A standard tree-domination tool. The main work is choosing the correct small pendant fragment so the floor(2n/3) budget survives induction.",
+    "comment": "Стандартный инструмент о полном доминировании в деревьях. Главная работа — выбрать правильный малый висячий фрагмент, чтобы бюджет \\(\\lfloor 2n/3\\rfloor\\) сохранялся при индукции.",
     "status": "ai_checked"
   },
   "tags": [
@@ -155,8 +155,8 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [
-      "Extracted from the UTYUM 2018 tree-cities solution as the classical total-domination lemma. The source UTYUM card was intentionally not edited.",
-      "The statement uses the total domination convention: every vertex, including selected vertices, must have a selected neighbor."
+      "Вынесено из решения задачи UTYUM 2018 о городах в дереве как классическая лемма о полном доминировании. Исходная карточка UTYUM намеренно не редактировалась.",
+      "Формулировка использует соглашение о полном доминировании: каждая вершина, включая выбранные, должна иметь выбранного соседа."
     ],
     "relations_status": "base_done",
     "graph_theory_duplicate_removed": true

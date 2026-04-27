@@ -7,13 +7,28 @@
       "type": "prerequisite",
       "distance": 1,
       "forward_text": "Лемма Каро-Вея является отдельным графовым инструментом в решении IMO Shortlist 2012 C7: после перехода к графу пересечений хорд она дает нижнюю оценку на размер независимого множества через степени вершин.",
-      "backward_text": "В задаче IMO Shortlist 2012 C7 лемма Каро-Вея применяется как готовый tool/lemma: для одного класса хорд с одинаковой суммой концов оценка \\(\\sum_v 1/(d(v)+1)\\) гарантирует достаточно много попарно непересекающихся хорд.",
+      "backward_text": "В задаче IMO Shortlist 2012 C7 лемма Каро-Вея применяется как готовый инструмент: для одного класса хорд с одинаковой суммой концов оценка \\(\\sum_v 1/(d(v)+1)\\) гарантирует достаточно много попарно непересекающихся хорд.",
       "anchors": {
         "from_solution_id": "sol-random-order",
         "to_solution_id": "sol-official-compressed"
       },
       "status": "ai_checked",
       "confidence": 0.99
+    },
+    {
+      "id": "rel-caro-wei-dolnikov-independent-set-motif",
+      "from": "caro-wei-independent-set-bound",
+      "to": "dolnikov-deletion-independent-set-lemma",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются инструментами для получения больших независимых множеств в конечных графах; Каро-Вей даёт количественную оценку через степени, а лемма Дольникова использует условие о независимых множествах после удаления вершины.",
+      "backward_text": "Лемма Дольникова родственна Каро-Вею по цели — вынудить большое независимое множество, хотя её механизм основан на Холле и минимальном контрпримере, а не на случайном порядке.",
+      "anchors": {
+        "from_solution_id": "sol-random-order",
+        "to_solution_id": "sol-hall-minimal-counterexample"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
     }
   ]
 }

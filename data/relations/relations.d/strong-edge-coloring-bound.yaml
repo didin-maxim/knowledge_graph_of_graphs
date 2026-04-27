@@ -6,14 +6,29 @@
       "to": "fyum-2012-tur1a-p10",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The greedy strong edge-coloring bound directly proves the FYUM 2012 problem after substituting \\(\\Delta=11\\): the bound \\(2\\Delta^2-2\\Delta+1\\) becomes \\(221\\), and each color class is an induced matching.",
-      "backward_text": "FYUM 2012 tour 1A problem 10 is the concrete \\(\\Delta=11\\) instance of the general greedy strong edge-coloring lemma.",
+      "forward_text": "Жадная оценка сильной рёберной раскраски напрямую доказывает задачу ФЮМ 2012 после подстановки \\(\\Delta=11\\): граница \\(2\\Delta^2-2\\Delta+1\\) превращается в \\(221\\), а каждый цветовой класс является индуцированным паросочетанием.",
+      "backward_text": "ФЮМ 2012, тур 1A, задача 10 — конкретный случай \\(\\Delta=11\\) общей жадной леммы о сильной рёберной раскраске.",
       "anchors": {
         "from_solution_id": "sol-greedy-distance-two-counting",
         "to_solution_id": "sol-greedy-distance-two-bound"
       },
       "status": "ai_checked",
       "confidence": 0.99
+    },
+    {
+      "id": "rel-greedy-strong-edge-digraph-outdegree-coloring-motif",
+      "from": "greedy-strong-edge-coloring-bound",
+      "to": "digraph-outdegree-greedy-coloring-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются жадными оценками раскраски через локальное число запрещённых цветов: одна считает рёбра на расстоянии два, другая выбирает вершину малой входящей степени в орграфе.",
+      "backward_text": "Лемма для орграфов родственна жадной сильной рёберной оценке как ещё один инструмент раскраски при ограничении на степень.",
+      "anchors": {
+        "from_solution_id": "sol-greedy-distance-two-counting",
+        "to_solution_id": "sol-low-indegree-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
     }
   ]
 }

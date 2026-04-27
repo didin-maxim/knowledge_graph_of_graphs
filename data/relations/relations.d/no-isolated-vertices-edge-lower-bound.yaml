@@ -14,6 +14,21 @@
       },
       "status": "ai_checked",
       "confidence": 0.99
+    },
+    {
+      "id": "rel-handshaking-no-isolated-edge-lower-bound",
+      "from": "handshaking-lemma",
+      "to": "no-isolated-vertices-edge-lower-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о рукопожатиях даёт нижнюю оценку на число рёбер через сумму степеней: если почти все вершины имеют положительную степень, то сумма степеней не меньше числа таких вершин.",
+      "backward_text": "Оценка для графа без изолированных вершин является прямым применением леммы о рукопожатиях: каждая неизолированная вершина даёт вклад хотя бы 1 в сумму степеней, а каждое ребро считается дважды.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-degree-sum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
     }
   ]
 }

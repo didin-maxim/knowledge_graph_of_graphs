@@ -1,0 +1,192 @@
+{
+  "id": "euler-trail-extension-center-forest",
+  "title": "Продление эйлерова пути из центральной вершины",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_connected_eulerian_graph",
+      "distinguished_vertex",
+      "trail",
+      "forest"
+    ],
+    "methods": [
+      "parity",
+      "delete_used_edges",
+      "component_analysis",
+      "cycle_obstruction"
+    ],
+    "transformations": [
+      "remove_trail_edges",
+      "delete_distinguished_vertex",
+      "separate_unused_edges"
+    ],
+    "goal": [
+      "characterize_extendable_trails",
+      "eulerian_tour_completion"
+    ],
+    "auxiliary_graph_type": [
+      "unused_edge_subgraph",
+      "vertex_deleted_subgraph"
+    ],
+    "invariants": [
+      "even_degrees",
+      "odd_vertices_after_trail_removal",
+      "acyclicity_of_G_minus_c"
+    ],
+    "keywords": [
+      "eulerian_graph",
+      "trail_extension",
+      "central_vertex",
+      "forest_obstruction",
+      "all_cycles_through_c"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-euler-trail-extension-center-forest",
+        "title": "Критерий продления пути из центральной вершины",
+        "text": "Пусть \\(G\\) — конечный связный эйлеров граф, а \\(c\\in V(G)\\). Тогда любой путь без повторения рёбер, начинающийся в \\(c\\), можно продолжить неиспользованными рёбрами до эйлерова цикла графа \\(G\\) тогда и только тогда, когда \\(G-c\\) является лесом. Эквивалентно, каждый цикл графа \\(G\\) содержит \\(c\\). Для мультиграфов здесь используется обычное соглашение, что параллельные рёбра образуют цикл длины 2.",
+        "source_id": "src-kolmogorov-2007-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "eulerian_cycle",
+          "path",
+          "cycle",
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-road-network-central-city",
+        "title": "Формулировка про дорожную сеть",
+        "text": "В связной дорожной сети, где существует замкнутый маршрут по всем дорогам ровно по одному разу, путешественник, начавший из выделенного города \\(c\\), может завершить любой уже выбранный маршрут без повторения дорог до полного эйлерова обхода ровно тогда, когда после удаления \\(c\\) не остаётся циклов.",
+        "source_id": "src-kolmogorov-2007-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "eulerian_cycle",
+          "path",
+          "tree"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-cycle-left-behind",
+      "title": "Цикл вне центра можно оставить позади",
+      "text": "Если цикл не проходит через \\(c\\), сначала удалим его рёбра. Компонента, содержащая \\(c\\), всё ещё эйлерова, поэтому можно обойти все её рёбра и вернуться в \\(c\\), оставив этот цикл в отдельной неиспользованной компоненте.",
+      "tags": [
+        "eulerian_graphs",
+        "trees"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-unused-components-forced-to-current-end",
+      "title": "Неиспользованные рёбра остаются при текущем конце",
+      "text": "После любого пути без повторения рёбер из \\(c\\) в \\(x\\) в графе неиспользованных рёбер нечётными могут быть только \\(c\\) и \\(x\\). Компонента неиспользованных рёбер вне \\(x\\) либо содержала бы ровно одну нечётную вершину, либо была бы ненулевым подграфом леса \\(G-c\\), все степени которого чётны; оба варианта невозможны.",
+      "tags": [
+        "eulerian_graphs",
+        "trees"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-cycle-obstruction-and-unused-components",
+      "title": "Цикловое препятствие и компоненты неиспользованных рёбер",
+      "text": "Сначала предположим, что \\(G-c\\) содержит цикл \\(Z\\). Удалим рёбра \\(Z\\). Так как \\(G\\) эйлеров, а удаление цикла меняет степень каждой вершины на \\(Z\\) на 2, в графе \\(G-E(Z)\\) все степени по-прежнему чётны. Значит, компонента графа \\(G-E(Z)\\), содержащая \\(c\\), имеет эйлеров цикл. Возьмём этот цикл как начальный путь из \\(c\\). Он использует все рёбра своей компоненты и возвращается в \\(c\\), но рёбра \\(Z\\) остаются неиспользованными и уже недостижимы продолжением из \\(c\\) по неиспользованному ребру. Следовательно, не всякий путь из \\(c\\) продолжается.\n\nТеперь пусть \\(G-c\\) — лес. Возьмём любой путь \\(P\\) без повторения рёбер, начинающийся в \\(c\\), и пусть его текущий конец равен \\(x\\). Обозначим через \\(R=G-E(P)\\) граф неиспользованных рёбер. В \\(R\\) все вершины имеют чётную степень, кроме, возможно, \\(c\\) и \\(x\\); если \\(x\\ne c\\), именно эти две вершины имеют нечётную неиспользованную степень, а если \\(x=c\\), все неиспользованные степени чётны.\n\nРассмотрим связную компоненту \\(K\\) графа \\(R\\), не содержащую \\(x\\). Если \\(K\\) содержит \\(c\\), то обязательно \\(x\\ne c\\), и в \\(K\\) ровно одна вершина нечётной степени, что невозможно по лемме о рукопожатиях. Если \\(K\\) не содержит \\(c\\), то все степени в \\(K\\) чётны, но \\(K\\) является подграфом леса \\(G-c\\). Непустой лес хотя бы с одним ребром имеет лист степени 1, противоречие. Значит, каждая компонента \\(R\\), не содержащая \\(x\\), не имеет рёбер.\n\nПоэтому, если неиспользованные рёбра ещё остались, они лежат в компоненте \\(R\\), содержащей \\(x\\), и некоторое неиспользованное ребро инцидентно \\(x\\). Значит, путь можно продлить на одно ребро. Повторяя этот шаг, мы в конце используем все рёбра. Полный путь обязан закончиться в \\(c\\), потому что в \\(G\\) все степени чётны. Следовательно, это эйлеров цикл, продолжающий исходный путь.\n\nНаконец, \\(G-c\\) является лесом ровно тогда, когда ни один цикл \\(G\\) не избегает \\(c\\), то есть когда каждый цикл \\(G\\) содержит \\(c\\).",
+      "idea_ids": [
+        "idea-cycle-left-behind",
+        "idea-unused-components-forced-to-current-end"
+      ],
+      "standard_idea_ids": [
+        "delete_to_simplify"
+      ],
+      "definition_ids": [
+        "connected_graph",
+        "degree",
+        "path",
+        "eulerian_cycle",
+        "tree"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Компактная эйлерова лемма: препятствие — цикл, не проходящий через выделенную вершину, а положительная часть сводится к проверке чётности в компонентах неиспользованных рёбер.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "trees",
+    "goal_characterization",
+    "classical_theorem"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "unused_edge_component_analysis",
+        "degree_parity",
+        "forest_leaf_contradiction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2007-official",
+      "role": "source_solution_lemma",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-eulerian-path",
+      "role": "standard_eulerian_background",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-tree",
+      "role": "standard_forest_background",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Вынесено как самостоятельная переиспользуемая лемма из kolmogorov-2007-round-1-high-league-problem-5; исходная карточка Колмогорова намеренно не редактировалась.",
+      "Утверждение верно в этой общей форме для конечных связных эйлеровых графов с выделенной вершиной c.",
+      "Авторство оставлено на проверку: карточка извлечена из решения задачи, а не из отдельного опубликованного источника."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

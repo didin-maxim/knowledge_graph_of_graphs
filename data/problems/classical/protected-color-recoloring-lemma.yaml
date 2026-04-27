@@ -1,0 +1,137 @@
+{
+  "id": "protected-color-recoloring-lemma",
+  "title": "Лемма о защищённых цветах и устранении одноточечных классов",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "chromatic_number",
+      "proper_vertex_coloring",
+      "color_class"
+    ],
+    "methods": [
+      "local_recoloring",
+      "invariant"
+    ],
+    "transformations": [
+      "recolor_whole_reference_color_class",
+      "eliminate_singleton_color_class"
+    ],
+    "goal": [
+      "normalize_coloring",
+      "remove_singletons"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "proper_coloring",
+      "exactly_k_nonempty_colors",
+      "protected_color_class"
+    ],
+    "keywords": [
+      "chromatic_number",
+      "proper_coloring",
+      "color_class",
+      "singleton_color_class",
+      "recoloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-protected-color-recoloring",
+        "title": "Лемма о защищённых цветах",
+        "text": "Пусть \\(G\\) — конечный граф с \\(\\chi(G)=k\\). Предположим, что у \\(G\\) есть правильная \\(k\\)-раскраска \\(\\alpha\\), в которой каждый цветовой класс содержит хотя бы две вершины. Тогда любую правильную раскраску \\(\\beta\\), использующую ровно \\(k\\) непустых цветов, можно конечным числом перекрасок целых цветовых классов раскраски \\(\\alpha\\) преобразовать в правильную \\(k\\)-раскраску, где каждый цветовой класс содержит хотя бы две вершины.",
+        "source_id": "src-kolmogorov-2007-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-protected-colors",
+      "title": "Защищённые цвета",
+      "text": "Текущий цвет называется защищённым, если он содержит целиком некоторый цветовой класс фиксированной эталонной раскраски \\(\\alpha\\). Перекраска другого целого \\(\\alpha\\)-класса не может разрушить эту защиту.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-protected-singleton-recoloring",
+      "title": "Исправлять по одному одноточечному классу",
+      "text": "Зафиксируем эталонную раскраску \\(\\alpha\\) и назовём цвет текущей \\(\\beta\\)-раскраски защищённым, если он содержит все вершины некоторого \\(\\alpha\\)-цветового класса. Такой защищённый цвет содержит хотя бы две вершины, а дальнейшие операции с другими \\(\\alpha\\)-классами не делают его одноточечным.\n\nЕсли в текущей раскраске нет одноточечных цветовых классов, всё доказано. Иначе пусть цвет \\(c\\) встречается только на вершине \\(v\\). Пусть \\(A\\) — цветовой класс раскраски \\(\\alpha\\), содержащий \\(v\\). Перекрасим все вершины \\(A\\) в цвет \\(c\\), а остальные вершины оставим как были. Новая раскраска правильна: новый класс цвета \\(c\\) — это независимое множество \\(A\\), а все остальные цветовые классы только потеряли вершины из независимого множества.\n\nНи один цвет после этой операции не может исчезнуть. Если бы это произошло, полученная правильная раскраска использовала бы не более \\(k-1\\) непустых цветов, что противоречит \\(\\chi(G)=k\\). Поэтому мы всё ещё имеем правильную раскраску ровно в \\(k\\) цветов, а цвет \\(c\\) теперь защищён классом \\(A\\) и больше никогда не станет одноточечным.\n\nПовторяя этот шаг, мы на каждом ходе защищаем ранее незащищённый одноточечный цвет, а защищённые цвета остаются неодноточечными. Не более чем через \\(k\\) ходов одноточечных цветовых классов не останется.",
+      "idea_ids": [
+        "idea-protected-colors"
+      ],
+      "standard_idea_ids": [
+        "local_recoloring"
+      ],
+      "definition_ids": [
+        "chromatic_number",
+        "independent_set"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Короткий переносимый инвариант перекраски из задачи Колмогорова 2007 о хроматическом числе. Он полезнее окружающей задачи, но его не стоит усиливать до утверждения, что каждый финальный цвет защищён целым эталонным классом.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_recoloring",
+        "invariant"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2007-official",
+      "role": "source_solution_lemma",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Вынесено из аргумента официального решения kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem; исходная карточка намеренно не редактировалась.",
+      "Самостоятельная формулировка намеренно говорит об устранении одноточечных цветовых классов. Доказательство защищает цвета, которые были одноточечными в момент обработки; само по себе оно не утверждает, что каждый финальный цвет содержит целый эталонный цветовой класс."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

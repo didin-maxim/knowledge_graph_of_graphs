@@ -1878,7 +1878,7 @@
           "title": "Активные стрелки как шары на высотах",
           "text": "В момент \\(t\\) берем все стрелки \\(i\\to i+a_i\\), пересекающие промежуток от \\(t\\) к \\(t+1\\). Такой стрелке соответствует шар высоты \\(i+a_i-t\\); из-за различных концов эти высоты попарно различны и лежат среди \\(0,1,\\dots,L-1\\).",
           "tags": [
-            "connectivity"
+            "extremal_choice"
           ],
           "status": "ai_checked"
         },
@@ -1928,7 +1928,6 @@
         "status": "needs_human_review"
       },
       "tags": [
-        "connectivity",
         "extremal_choice",
         "goal_bound",
         "goal_existence"
@@ -1960,8 +1959,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as an independent lemma from data/problems/imo/imo-2015-c5-sequence-rays.yaml without editing the IMO card.",
-          "The sharp constant is marked for human review, although the algebraic maximum in the proof matches the graph statement."
+          "Вынесено как самостоятельная лемма из data/problems/imo/imo-2015-c5-sequence-rays.yaml без редактирования карточки IMO.",
+          "Точная константа оставлена на human review, хотя алгебраический максимум в доказательстве совпадает с графовой формулировкой."
         ],
         "relations_status": "deep_done"
       },
@@ -2241,7 +2240,8 @@
       "properties": {
         "central_method": {
           "value": [
-            "extremal_choice"
+            "random_ordering",
+            "linearity_of_expectation"
           ],
           "status": "ai_checked"
         }
@@ -2259,7 +2259,7 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as a standalone classical_tool for the Caro-Wei lemma used in imo-2012-c7-equal-sum-chords-independent-set."
+          "Вынесено как самостоятельный классический инструмент для леммы Каро-Вея, используемой в imo-2012-c7-equal-sum-chords-independent-set."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -2851,14 +2851,14 @@
     },
     "digraph-outdegree-greedy-coloring-bound": {
       "id": "digraph-outdegree-greedy-coloring-bound",
-      "title": "Greedy coloring bound for digraphs of bounded outdegree",
+      "title": "Жадная оценка раскраски орграфа с ограниченной исходящей степенью",
       "kind": {
         "primary": "lemma",
         "secondary": [
           "classical_tool"
         ]
       },
-      "language": "en",
+      "language": "ru",
       "authors": [
         {
           "name": "?",
@@ -2904,8 +2904,8 @@
         "original": [
           {
             "id": "stmt-digraph-outdegree-greedy-coloring-bound",
-            "title": "Bounded outdegree coloring lemma",
-            "text": "Let \\(r\\ge 0\\). Every finite directed graph in which each vertex has outdegree at most \\(r\\) can be colored with \\(2r+1\\) colors so that the endpoints of every directed edge have different colors.",
+            "title": "Лемма о раскраске при ограниченной исходящей степени",
+            "text": "Пусть \\(r\\ge 0\\). Любой конечный ориентированный граф, в котором исходящая степень каждой вершины не превосходит \\(r\\), можно раскрасить в \\(2r+1\\) цвет так, чтобы концы каждой дуги имели разные цвета.",
             "source_id": "src-apmo-2016-official",
             "status": "ai_checked",
             "self_contained": {
@@ -2923,8 +2923,8 @@
       "ideas": [
         {
           "id": "idea-low-indegree-extend-coloring",
-          "title": "Delete a vertex of small indegree and extend",
-          "text": "Since the total indegree equals the total outdegree, average indegree is at most \\(r\\). Choose a vertex with indegree at most \\(r\\), color the remaining graph by induction, and then return this vertex: its in-neighbors and out-neighbors forbid at most \\(r+r=2r\\) colors.",
+          "title": "Удалить вершину малой входящей степени и продолжить раскраску",
+          "text": "Сумма входящих степеней равна сумме исходящих, поэтому средняя входящая степень не превосходит \\(r\\). Выбираем вершину входящей степени не больше \\(r\\), красим оставшийся граф по индукции, а затем возвращаем эту вершину: её входящие и исходящие соседи запрещают не больше \\(r+r=2r\\) цветов.",
           "tags": [
             "coloring",
             "induction"
@@ -2935,8 +2935,8 @@
       "solutions": [
         {
           "id": "sol-low-indegree-induction",
-          "title": "Induction on the number of vertices",
-          "text": "We prove the statement by induction on the number of vertices. The empty graph and one-vertex graph are immediate. Now let \\(D\\) be a finite directed graph with maximum outdegree at most \\(r\\). The sum of the indegrees equals the sum of the outdegrees, so the average indegree is also at most \\(r\\). Hence some vertex \\(v\\) has indegree at most \\(r\\).\n\nDelete \\(v\\). The remaining directed graph still has maximum outdegree at most \\(r\\), so by the induction hypothesis it has a coloring with colors \\(1,\\dots,2r+1\\) in which every directed edge has differently colored endpoints.\n\nWhen we put \\(v\\) back, a color is forbidden for \\(v\\) only if it already appears on an in-neighbor or an out-neighbor of \\(v\\). There are at most \\(r\\) out-neighbors because the outdegree of \\(v\\) is at most \\(r\\), and at most \\(r\\) in-neighbors by the choice of \\(v\\). Thus at most \\(2r\\) colors are forbidden. Among \\(2r+1\\) colors one color remains available for \\(v\\), and assigning it preserves the condition on every directed edge incident to \\(v\\). This completes the induction.",
+          "title": "Индукция по числу вершин",
+          "text": "Докажем утверждение индукцией по числу вершин. Для пустого графа и графа из одной вершины всё очевидно. Пусть теперь \\(D\\) — конечный ориентированный граф с максимальной исходящей степенью не больше \\(r\\). Сумма входящих степеней равна сумме исходящих степеней, поэтому средняя входящая степень тоже не превосходит \\(r\\). Значит, найдётся вершина \\(v\\) входящей степени не больше \\(r\\).\n\nУдалим \\(v\\). В оставшемся ориентированном графе максимальная исходящая степень по-прежнему не больше \\(r\\), поэтому по предположению индукции он имеет раскраску цветами \\(1,\\dots,2r+1\\), в которой концы каждой дуги окрашены по-разному.\n\nВернём \\(v\\). Цвет для \\(v\\) запрещён только тогда, когда он уже стоит на входящем или исходящем соседе \\(v\\). Исходящих соседей не больше \\(r\\), потому что исходящая степень \\(v\\) не превосходит \\(r\\), а входящих соседей не больше \\(r\\) по выбору \\(v\\). Значит, запрещено не более \\(2r\\) цветов. Среди \\(2r+1\\) цветов остаётся доступный цвет для \\(v\\); присвоив его, мы сохраняем условие для всех дуг, инцидентных \\(v\\). Индукция завершена.",
           "idea_ids": [
             "idea-low-indegree-extend-coloring"
           ],
@@ -2955,7 +2955,7 @@
       "difficulty": {
         "main": "regional",
         "local_score": 3,
-        "comment": "A short greedy-induction coloring lemma; the only trick is to use average indegree, not outdegree, to choose the vertex removed by induction.",
+        "comment": "Короткая жадно-индукционная лемма о раскраске; единственный трюк — выбирать удаляемую вершину по средней входящей, а не исходящей степени.",
         "status": "ai_checked"
       },
       "tags": [
@@ -2987,8 +2987,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as the stronger reusable lemma used in apmo-2016-p4-dreamland-28-step-coloring; the original APMO card is intentionally left unchanged.",
-          "The proof is the standard low-indegree deletion and greedy extension argument."
+          "Вынесено как более сильная переиспользуемая лемма из apmo-2016-p4-dreamland-28-step-coloring; исходная карточка APMO намеренно не редактировалась.",
+          "Доказательство — стандартное удаление вершины малой входящей степени с последующим жадным продолжением раскраски."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -3282,8 +3282,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted from the restored official solution of kolmogorov-2002-team-olympiad-seniors-problem-8, where it is explicitly introduced as lemma Dolnikova in the complementary independent-set form.",
-          "The author attribution follows the lemma name used in the official solution; exact bibliographic origin still needs human/source review."
+          "Вынесено из восстановленного официального решения kolmogorov-2002-team-olympiad-seniors-problem-8, где это утверждение явно введено как лемма Дольникова в дополнительной форме про независимые множества.",
+          "Атрибуция следует названию леммы в официальном решении; точное библиографическое происхождение ещё требует human/source review."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -3423,6 +3423,199 @@
         "relations_status": "deep_done"
       },
       "_path": "data\\problems\\classical\\euler-formula-planar.yaml"
+    },
+    "euler-trail-extension-center-forest": {
+      "id": "euler-trail-extension-center-forest",
+      "title": "Продление эйлерова пути из центральной вершины",
+      "kind": {
+        "primary": "lemma",
+        "secondary": [
+          "classical_tool"
+        ]
+      },
+      "language": "ru",
+      "authors": [
+        {
+          "name": "?",
+          "status": "needs_human_review"
+        }
+      ],
+      "problem_profile": {
+        "objects": [
+          "finite_connected_eulerian_graph",
+          "distinguished_vertex",
+          "trail",
+          "forest"
+        ],
+        "methods": [
+          "parity",
+          "delete_used_edges",
+          "component_analysis",
+          "cycle_obstruction"
+        ],
+        "transformations": [
+          "remove_trail_edges",
+          "delete_distinguished_vertex",
+          "separate_unused_edges"
+        ],
+        "goal": [
+          "characterize_extendable_trails",
+          "eulerian_tour_completion"
+        ],
+        "auxiliary_graph_type": [
+          "unused_edge_subgraph",
+          "vertex_deleted_subgraph"
+        ],
+        "invariants": [
+          "even_degrees",
+          "odd_vertices_after_trail_removal",
+          "acyclicity_of_G_minus_c"
+        ],
+        "keywords": [
+          "eulerian_graph",
+          "trail_extension",
+          "central_vertex",
+          "forest_obstruction",
+          "all_cycles_through_c"
+        ],
+        "status": "ai_checked"
+      },
+      "statements": {
+        "original": [
+          {
+            "id": "stmt-euler-trail-extension-center-forest",
+            "title": "Критерий продления пути из центральной вершины",
+            "text": "Пусть \\(G\\) — конечный связный эйлеров граф, а \\(c\\in V(G)\\). Тогда любой путь без повторения рёбер, начинающийся в \\(c\\), можно продолжить неиспользованными рёбрами до эйлерова цикла графа \\(G\\) тогда и только тогда, когда \\(G-c\\) является лесом. Эквивалентно, каждый цикл графа \\(G\\) содержит \\(c\\). Для мультиграфов здесь используется обычное соглашение, что параллельные рёбра образуют цикл длины 2.",
+            "source_id": "src-kolmogorov-2007-official",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "connected_graph",
+              "eulerian_cycle",
+              "path",
+              "cycle",
+              "tree"
+            ]
+          }
+        ],
+        "graph_theory": [],
+        "olympiad_reformulations": [
+          {
+            "id": "stmt-road-network-central-city",
+            "title": "Формулировка про дорожную сеть",
+            "text": "В связной дорожной сети, где существует замкнутый маршрут по всем дорогам ровно по одному разу, путешественник, начавший из выделенного города \\(c\\), может завершить любой уже выбранный маршрут без повторения дорог до полного эйлерова обхода ровно тогда, когда после удаления \\(c\\) не остаётся циклов.",
+            "source_id": "src-kolmogorov-2007-official",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "eulerian_cycle",
+              "path",
+              "tree"
+            ]
+          }
+        ]
+      },
+      "ideas": [
+        {
+          "id": "idea-cycle-left-behind",
+          "title": "Цикл вне центра можно оставить позади",
+          "text": "Если цикл не проходит через \\(c\\), сначала удалим его рёбра. Компонента, содержащая \\(c\\), всё ещё эйлерова, поэтому можно обойти все её рёбра и вернуться в \\(c\\), оставив этот цикл в отдельной неиспользованной компоненте.",
+          "tags": [
+            "eulerian_graphs",
+            "trees"
+          ],
+          "status": "ai_checked"
+        },
+        {
+          "id": "idea-unused-components-forced-to-current-end",
+          "title": "Неиспользованные рёбра остаются при текущем конце",
+          "text": "После любого пути без повторения рёбер из \\(c\\) в \\(x\\) в графе неиспользованных рёбер нечётными могут быть только \\(c\\) и \\(x\\). Компонента неиспользованных рёбер вне \\(x\\) либо содержала бы ровно одну нечётную вершину, либо была бы ненулевым подграфом леса \\(G-c\\), все степени которого чётны; оба варианта невозможны.",
+          "tags": [
+            "eulerian_graphs",
+            "trees"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "solutions": [
+        {
+          "id": "sol-cycle-obstruction-and-unused-components",
+          "title": "Цикловое препятствие и компоненты неиспользованных рёбер",
+          "text": "Сначала предположим, что \\(G-c\\) содержит цикл \\(Z\\). Удалим рёбра \\(Z\\). Так как \\(G\\) эйлеров, а удаление цикла меняет степень каждой вершины на \\(Z\\) на 2, в графе \\(G-E(Z)\\) все степени по-прежнему чётны. Значит, компонента графа \\(G-E(Z)\\), содержащая \\(c\\), имеет эйлеров цикл. Возьмём этот цикл как начальный путь из \\(c\\). Он использует все рёбра своей компоненты и возвращается в \\(c\\), но рёбра \\(Z\\) остаются неиспользованными и уже недостижимы продолжением из \\(c\\) по неиспользованному ребру. Следовательно, не всякий путь из \\(c\\) продолжается.\n\nТеперь пусть \\(G-c\\) — лес. Возьмём любой путь \\(P\\) без повторения рёбер, начинающийся в \\(c\\), и пусть его текущий конец равен \\(x\\). Обозначим через \\(R=G-E(P)\\) граф неиспользованных рёбер. В \\(R\\) все вершины имеют чётную степень, кроме, возможно, \\(c\\) и \\(x\\); если \\(x\\ne c\\), именно эти две вершины имеют нечётную неиспользованную степень, а если \\(x=c\\), все неиспользованные степени чётны.\n\nРассмотрим связную компоненту \\(K\\) графа \\(R\\), не содержащую \\(x\\). Если \\(K\\) содержит \\(c\\), то обязательно \\(x\\ne c\\), и в \\(K\\) ровно одна вершина нечётной степени, что невозможно по лемме о рукопожатиях. Если \\(K\\) не содержит \\(c\\), то все степени в \\(K\\) чётны, но \\(K\\) является подграфом леса \\(G-c\\). Непустой лес хотя бы с одним ребром имеет лист степени 1, противоречие. Значит, каждая компонента \\(R\\), не содержащая \\(x\\), не имеет рёбер.\n\nПоэтому, если неиспользованные рёбра ещё остались, они лежат в компоненте \\(R\\), содержащей \\(x\\), и некоторое неиспользованное ребро инцидентно \\(x\\). Значит, путь можно продлить на одно ребро. Повторяя этот шаг, мы в конце используем все рёбра. Полный путь обязан закончиться в \\(c\\), потому что в \\(G\\) все степени чётны. Следовательно, это эйлеров цикл, продолжающий исходный путь.\n\nНаконец, \\(G-c\\) является лесом ровно тогда, когда ни один цикл \\(G\\) не избегает \\(c\\), то есть когда каждый цикл \\(G\\) содержит \\(c\\).",
+          "idea_ids": [
+            "idea-cycle-left-behind",
+            "idea-unused-components-forced-to-current-end"
+          ],
+          "standard_idea_ids": [
+            "delete_to_simplify"
+          ],
+          "definition_ids": [
+            "connected_graph",
+            "degree",
+            "path",
+            "eulerian_cycle",
+            "tree"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "difficulty": {
+        "main": "regional",
+        "local_score": 4,
+        "comment": "Компактная эйлерова лемма: препятствие — цикл, не проходящий через выделенную вершину, а положительная часть сводится к проверке чётности в компонентах неиспользованных рёбер.",
+        "status": "ai_checked"
+      },
+      "tags": [
+        "eulerian_graphs",
+        "trees",
+        "goal_characterization",
+        "classical_theorem"
+      ],
+      "properties": {
+        "central_method": {
+          "value": [
+            "unused_edge_component_analysis",
+            "degree_parity",
+            "forest_leaf_contradiction"
+          ],
+          "status": "ai_checked"
+        }
+      },
+      "sources": [
+        {
+          "source_id": "src-kolmogorov-2007-official",
+          "role": "source_solution_lemma",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-wikipedia-eulerian-path",
+          "role": "standard_eulerian_background",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-wikipedia-tree",
+          "role": "standard_forest_background",
+          "status": "source_verified"
+        }
+      ],
+      "editorial": {
+        "created_by": "ai",
+        "created_at": "2026-04-27",
+        "review_status": "needs_human_review",
+        "public_ready": false,
+        "notes": [
+          "Вынесено как самостоятельная переиспользуемая лемма из kolmogorov-2007-round-1-high-league-problem-5; исходная карточка Колмогорова намеренно не редактировалась.",
+          "Утверждение верно в этой общей форме для конечных связных эйлеровых графов с выделенной вершиной c.",
+          "Авторство оставлено на проверку: карточка извлечена из решения задачи, а не из отдельного опубликованного источника."
+        ],
+        "relations_status": "deep_done",
+        "graph_theory_duplicate_removed": true
+      },
+      "_path": "data\\problems\\classical\\euler-trail-extension-center-forest.yaml"
     },
     "eulerian-graph-criterion": {
       "id": "eulerian-graph-criterion",
@@ -4122,7 +4315,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "Пусть `X` — конечное или бесконечное множество точек плоскости, расстояние между любыми двумя различными точками которого больше `1`. В графе Габриэля на `X` соединены те и только те пары `A,B`, для которых замкнутый диск с диаметром `AB` не содержит других точек из `X`. Докажите, что этот граф связен.",
+            "text": "Пусть \\(X\\) — конечное или бесконечное множество точек плоскости, расстояние между любыми двумя различными точками которого больше \\(1\\). В графе Габриэля на \\(X\\) соединены те и только те пары \\(A,B\\), для которых замкнутый диск с диаметром \\(AB\\) не содержит других точек из \\(X\\). Тогда этот граф связен.",
             "source_id": "src-usamo-2025-p3-aops-wiki",
             "status": "ai_checked",
             "self_contained": {
@@ -4202,11 +4395,12 @@
       "editorial": {
         "created_by": "ai",
         "created_at": "2026-04-27",
-        "review_status": "ai_checked",
-        "public_ready": true,
+        "review_status": "needs_human_review",
+        "public_ready": false,
         "notes": [
-          "Extracted from the USAMO 2025 P3 Gabriel-graph solution so the olympiad card does not expose the full graph-theory reformulation as a separate statement.",
-          "For finite point sets, this is a standard Gabriel-graph property: Matula--Sokal prove that the Euclidean shortest spanning tree is contained in the Gabriel graph, hence the Gabriel graph is connected. The present card keeps the direct metric-descent proof because USAMO 2025 P3 uses an infinite, uniformly separated set of cities."
+          "Вынесено из решения USAMO 2025 P3 о графе Габриэля, чтобы олимпиадная карточка не держала полную графовую переформулировку как отдельное условие.",
+          "Для конечных множеств точек это стандартное свойство графа Габриэля: Matula--Sokal доказывают, что евклидово кратчайшее остовное дерево является подграфом графа Габриэля, значит граф Габриэля связен. В этой карточке оставлено прямое метрическое доказательство, потому что USAMO 2025 P3 использует бесконечное равномерно разреженное множество городов.",
+          "Формулировка и атрибуция оставлены на human review перед публикацией."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -4264,7 +4458,7 @@
         "original": [
           {
             "id": "stmt-original",
-            "text": "Пусть `X` — множество точек плоскости, никакие три точки из `X` не лежат на одной прямой. В графе Габриэля на `X` соединены те и только те пары `A,B`, для которых замкнутый диск с диаметром `AB` не содержит других точек из `X`. Докажите, что если рёбра рисовать отрезками между соответствующими точками, то никакие два ребра не пересекаются внутренними точками.",
+            "text": "Пусть \\(X\\) — множество точек плоскости, никакие три точки из \\(X\\) не лежат на одной прямой. В графе Габриэля на \\(X\\) соединены те и только те пары \\(A,B\\), для которых замкнутый диск с диаметром \\(AB\\) не содержит других точек из \\(X\\). Тогда при рисовании рёбер отрезками между соответствующими точками никакие два ребра не пересекаются внутренними точками.",
             "source_id": "src-usamo-2025-p3-aops-wiki",
             "status": "ai_checked",
             "self_contained": {
@@ -4283,7 +4477,7 @@
         {
           "id": "idea-crossing-gives-forbidden-disk-point",
           "title": "Пересечение даёт точку в диаметральном диске",
-          "text": "Если два отрезка-ребра пересекаются, их четыре конца образуют выпуклый четырёхугольник. У одного из его углов величина не меньше `90°`, а значит соответствующая вершина лежит в замкнутом диске с диаметром противоположного ребра.",
+          "text": "Если два отрезка-ребра пересекаются, их четыре конца образуют выпуклый четырёхугольник. У одного из его углов величина не меньше \\(90^\\circ\\), а значит соответствующая вершина лежит в замкнутом диске с диаметром противоположного ребра.",
           "tags": [
             "planar_graphs"
           ],
@@ -4343,11 +4537,12 @@
       "editorial": {
         "created_by": "ai",
         "created_at": "2026-04-27",
-        "review_status": "ai_checked",
-        "public_ready": true,
+        "review_status": "needs_human_review",
+        "public_ready": false,
         "notes": [
-          "Extracted from the USAMO 2025 P3 Gabriel-graph solution so the olympiad card can cite it as a lemma.",
-          "This is a standard Gabriel-graph property, not a USAMO-specific observation: the Gabriel graph is a planar geometric graph, equivalently a subgraph of the Delaunay triangulation; the card keeps the elementary Thales proof for olympiad use."
+          "Вынесено из решения USAMO 2025 P3 о графе Габриэля, чтобы олимпиадная карточка могла ссылаться на эту лемму.",
+          "Это стандартное свойство графа Габриэля, а не USAMO-специфическое наблюдение: граф Габриэля является планарным геометрическим графом, эквивалентно, подграфом триангуляции Делоне; карточка сохраняет элементарное доказательство через теорему Фалеса для олимпиадного применения.",
+          "Формулировка и атрибуция оставлены на human review перед публикацией."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -4356,14 +4551,14 @@
     },
     "greedy-strong-edge-coloring-bound": {
       "id": "greedy-strong-edge-coloring-bound",
-      "title": "Greedy strong edge-coloring bound",
+      "title": "Жадная оценка сильной рёберной раскраски",
       "kind": {
         "primary": "lemma",
         "secondary": [
           "classical_tool"
         ]
       },
-      "language": "en",
+      "language": "ru",
       "authors": [
         {
           "name": "?",
@@ -4410,8 +4605,8 @@
         "original": [
           {
             "id": "stmt-greedy-strong-edge-coloring-bound",
-            "title": "Greedy bound",
-            "text": "Let G be a finite graph with maximum degree at most \\(\\Delta\\). Then the edges of G can be colored with at most \\(2\\Delta^2-2\\Delta+1\\) colors so that every color class is an induced matching.",
+            "title": "Жадная оценка",
+            "text": "Пусть \\(G\\) — конечный граф максимальной степени не больше \\(\\Delta\\). Тогда рёбра \\(G\\) можно раскрасить не более чем в \\(2\\Delta^2-2\\Delta+1\\) цвет так, чтобы каждый цветовой класс был индуцированным паросочетанием.",
             "source_id": "src-fyum-2012-tur1a-p10-official",
             "status": "ai_checked",
             "self_contained": {
@@ -4429,8 +4624,8 @@
       "ideas": [
         {
           "id": "idea-count-distance-two-edge-conflicts",
-          "title": "Count edge conflicts within distance two",
-          "text": "When an edge is colored greedily, only colors already used on edges adjacent to it or adjacent to one of those adjacent edges are forbidden. The maximum degree bound gives at most \\(2\\Delta^2-2\\Delta\\) such earlier edges.",
+          "title": "Посчитать конфликтующие рёбра на расстоянии не больше двух",
+          "text": "При жадной раскраске очередного ребра запрещены только цвета, уже использованные на рёбрах, смежных с ним или смежных с одним из таких смежных рёбер. Ограничение на максимальную степень даёт не более \\(2\\Delta^2-2\\Delta\\) таких ранее окрашенных рёбер.",
           "tags": [
             "coloring"
           ],
@@ -4440,8 +4635,8 @@
       "solutions": [
         {
           "id": "sol-greedy-distance-two-counting",
-          "title": "Greedy counting proof",
-          "text": "Order the edges arbitrarily and color them one by one. Suppose the next edge is \\(e=uv\\). A color is forbidden for \\(e\\) exactly when it has already appeared on an edge at edge-distance at most two from \\(e\\), because two edges of one color must form an induced matching with all other edges of that color.\n\nThere are at most \\((\\Delta-1)+(\\Delta-1)=2\\Delta-2\\) edges adjacent to \\(e\\). From the \\(u\\)-side, each of the at most \\(\\Delta-1\\) adjacent edges reaches a further endpoint from which at most \\(\\Delta-1\\) additional edges can continue; hence this side contributes at most \\((\\Delta-1)^2\\) edges at distance two. The same bound holds on the \\(v\\)-side. Thus the number of already colored edges whose colors can be forbidden is at most\n\\[\n(2\\Delta-2)+2(\\Delta-1)^2=2\\Delta^2-2\\Delta.\n\\]\nWith \\(2\\Delta^2-2\\Delta+1\\) colors, at least one color remains available for \\(e\\). Continuing greedily colors every edge, and the rule forbidding colors within distance two guarantees that each color class is an induced matching.",
+          "title": "Жадное доказательство подсчётом",
+          "text": "Упорядочим рёбра произвольно и будем красить их по одному. Пусть очередное ребро равно \\(e=uv\\). Цвет запрещён для \\(e\\) ровно тогда, когда он уже появился на ребре, находящемся от \\(e\\) на рёберном расстоянии не больше двух: два ребра одного цвета должны образовывать индуцированное паросочетание вместе со всеми остальными рёбрами этого цвета.\n\nС ребром \\(e\\) смежно не более \\((\\Delta-1)+(\\Delta-1)=2\\Delta-2\\) рёбер. Со стороны \\(u\\) каждое из не более чем \\(\\Delta-1\\) смежных рёбер ведёт к дальнейшему концу, из которого выходит не более \\(\\Delta-1\\) дополнительных рёбер; значит, эта сторона даёт не более \\((\\Delta-1)^2\\) рёбер на расстоянии два. Такая же оценка верна со стороны \\(v\\). Поэтому число уже окрашенных рёбер, чьи цвета могут быть запрещены, не превосходит\n\\[\n(2\\Delta-2)+2(\\Delta-1)^2=2\\Delta^2-2\\Delta.\n\\]\nПри \\(2\\Delta^2-2\\Delta+1\\) цветах для \\(e\\) остаётся хотя бы один доступный цвет. Продолжая жадно, мы окрашиваем все рёбра, а запрет цветов на расстоянии не больше двух гарантирует, что каждый цветовой класс является индуцированным паросочетанием.",
           "idea_ids": [
             "idea-count-distance-two-edge-conflicts"
           ],
@@ -4458,13 +4653,13 @@
       "difficulty": {
         "main": "regional",
         "local_score": 4,
-        "comment": "A standard greedy distance-two counting bound for strong edge-coloring; the FYUM 2012 problem is the specialization Delta = 11, giving 221 colors.",
+        "comment": "Стандартная жадная оценка через подсчёт рёбер на расстоянии два для сильной рёберной раскраски; задача ФЮМ 2012 — случай Delta = 11, дающий 221 цвет.",
         "status": "ai_checked"
       },
       "tags": [
         "coloring",
         "classical_theorem",
-        "goal_exact_bound"
+        "goal_bound"
       ],
       "sources": [
         {
@@ -4484,8 +4679,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as a reusable lemma from fyum-2012-tur1a-p10; the original FYUM card is intentionally left unchanged.",
-          "The proof uses only the elementary greedy count of edge conflicts within distance two."
+          "Вынесено как переиспользуемая лемма из fyum-2012-tur1a-p10; исходная карточка ФЮМ намеренно не редактировалась.",
+          "Доказательство использует только элементарный жадный подсчёт конфликтов рёбер на расстоянии не больше двух."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -4505,8 +4700,8 @@
       "language": "ru",
       "authors": [
         {
-          "name": "folklore / extracted from BMO 2022 P4 solution",
-          "status": "ai_checked"
+          "name": "?",
+          "status": "needs_human_review"
         }
       ],
       "problem_profile": {
@@ -4588,7 +4783,7 @@
         {
           "id": "sol-boundary-component-count",
           "title": "Граф границ и подсчёт компонент",
-          "text": "Пусть \\(N\\) — число нетривиальных компонент графа границ \\(B\\).\n\nСначала докажем оценку на число областей. Если забыть все границы между разными цветами, вся доска является одной связной областью в смысле движения между клетками через общую вершину. Теперь добавим обратно нетривиальные компоненты границы по одной. Рёбра одной такой компоненты образуют связную преграду между красными и синими клетками; при добавлении этой преграды уже существующая область либо не делится, либо делится на две части. Значит, каждая компонента увеличивает число монохроматических областей не более чем на \\(1\\), и всего областей не больше \\(N+1\\).\n\nОсталось оценить \\(N\\) для нечётного \\(n\\). В угловых узлах решётки степень в \\(B\\) равна \\(0\\), потому что через угол не проходит внутренняя сторона между двумя клетками. В неугловом узле на границе доски степень равна \\(0\\) или \\(1\\). Во внутреннем узле сходятся четыре клетки; при обходе вокруг узла цвет меняется чётное число раз, поэтому степень этого узла в \\(B\\) равна \\(0\\), \\(2\\) или \\(4\\).\n\nРассмотрим нетривиальную компоненту. Если она не содержит граничных узлов, то все её вершины имеют степень хотя бы \\(2\\), а в квадратной решётке нет треугольников, поэтому в ней не меньше четырёх вершин. Если компонента содержит граничные узлы, то её концы на границе имеют степень \\(1\\), а внутренние вершины — степень \\(2\\) или \\(4\\). Компонента с менее чем четырьмя вершинами может появиться только возле угла доски: иначе два граничных конца нельзя соединить одним или двумя рёбрами решётки, не нарушив чётность степеней во внутренних узлах. Таких исключительных компонент не больше четырёх, по одной возле каждого угла.\n\nСледовательно, по сравнению с грубой оценкой \"четыре вершины на каждую нетривиальную компоненту\" можно потерять не больше четырёх вершин. Иными словами, все нетривиальные компоненты вместе занимают не менее \\(4N-4\\) узлов решётки. Четыре угловых узла имеют степень \\(0\\) и не входят ни в одну нетривиальную компоненту, поэтому всего узлов решётки не меньше\n+\\[\n+(4N-4)+4=4N.\n+\\]\n+Так как всего узлов \\((n+1)^2\\), получаем \\(4N\\le (n+1)^2\\), то есть \\(N\\le (n+1)^2/4\\).",
+          "text": "Пусть \\(N\\) — число нетривиальных компонент графа границ \\(B\\).\n\nСначала докажем оценку на число областей. Если забыть все границы между разными цветами, вся доска является одной связной областью в смысле движения между клетками через общую вершину. Теперь добавим обратно нетривиальные компоненты границы по одной. Рёбра одной такой компоненты образуют связную преграду между красными и синими клетками; при добавлении этой преграды уже существующая область либо не делится, либо делится на две части. Значит, каждая компонента увеличивает число монохроматических областей не более чем на \\(1\\), и всего областей не больше \\(N+1\\).\n\nОсталось оценить \\(N\\) для нечётного \\(n\\). В угловых узлах решётки степень в \\(B\\) равна \\(0\\), потому что через угол не проходит внутренняя сторона между двумя клетками. В неугловом узле на границе доски степень равна \\(0\\) или \\(1\\). Во внутреннем узле сходятся четыре клетки; при обходе вокруг узла цвет меняется чётное число раз, поэтому степень этого узла в \\(B\\) равна \\(0\\), \\(2\\) или \\(4\\).\n\nРассмотрим нетривиальную компоненту. Если она не содержит граничных узлов, то все её вершины имеют степень хотя бы \\(2\\), а в квадратной решётке нет треугольников, поэтому в ней не меньше четырёх вершин. Если компонента содержит граничные узлы, то её концы на границе имеют степень \\(1\\), а внутренние вершины — степень \\(2\\) или \\(4\\). Компонента с менее чем четырьмя вершинами может появиться только возле угла доски: иначе два граничных конца нельзя соединить одним или двумя рёбрами решётки, не нарушив чётность степеней во внутренних узлах. Таких исключительных компонент не больше четырёх, по одной возле каждого угла.\n\nСледовательно, по сравнению с грубой оценкой \"четыре вершины на каждую нетривиальную компоненту\" можно потерять не больше четырёх вершин. Иными словами, все нетривиальные компоненты вместе занимают не менее \\(4N-4\\) узлов решётки. Четыре угловых узла имеют степень \\(0\\) и не входят ни в одну нетривиальную компоненту, поэтому всего узлов решётки не меньше\n\\[\n(4N-4)+4=4N.\n\\]\nТак как всего узлов \\((n+1)^2\\), получаем \\(4N\\le (n+1)^2\\), то есть \\(N\\le (n+1)^2/4\\).",
           "idea_ids": [
             "idea-boundaries-split-regions",
             "idea-local-degrees-limit-components"
@@ -4638,7 +4833,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as the boundary-graph component-counting lemma used in bmo-2022-p4-frog-grid-boundary-graph; the BMO card was intentionally not edited in this pass."
+          "Вынесено как лемма о подсчёте компонент графа границ, используемая в bmo-2022-p4-frog-grid-boundary-graph; исходная карточка BMO намеренно не редактировалась.",
+          "Авторство оставлено на проверку: карточка извлечена из решения задачи, а не из отдельного опубликованного источника."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -5635,8 +5831,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as a standalone small lemma from the complement-graph step in utyum-2024_komol63_8_4_lipshire_roads.",
-          "The lemma is intentionally minimal: it only packages the degree-sum lower bound used after passing to the complement."
+          "Вынесено как самостоятельная малая лемма из шага с дополнительным графом в utyum-2024_komol63_8_4_lipshire_roads.",
+          "Лемма намеренно минимальна: она упаковывает только нижнюю оценку через сумму степеней, используемую после перехода к дополнению."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -5843,7 +6039,7 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as a standalone lemma-card for the two-color-subgraph forest bound used in FYUM 2010 tur3a p7 and tur3b p3; source FYUM cards intentionally left unchanged."
+          "Вынесено как самостоятельная карточка леммы для оценки двухцветных подграфов-лесов, используемой в FYUM 2010 tur3a p7 и tur3b p3; исходные карточки FYUM намеренно не редактировались."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -6393,7 +6589,7 @@
       ],
       "properties": {
         "typical_olympiad_use": {
-          "value": "Extract a long path whose internal vertices all have degree 2 from a planar large-girth graph; useful before extending colorings or local constructions along the path.",
+          "value": "Извлечь длинный путь, все внутренние вершины которого имеют степень 2, из планарного графа большого обхвата; полезно перед продолжением раскрасок или локальных конструкций вдоль пути.",
           "status": "ai_checked"
         }
       },
@@ -6410,13 +6606,151 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted from the first standalone lemma in fyum-2013-tur2a-p1; the FYUM card was intentionally left unchanged.",
-          "The proof is self-contained apart from standard planar terminology and Euler's formula."
+          "Вынесено из первой самостоятельной леммы в fyum-2013-tur2a-p1; исходная карточка ФЮМ намеренно не редактировалась.",
+          "Доказательство самодостаточно, кроме стандартной планарной терминологии и формулы Эйлера."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
       },
       "_path": "data\\problems\\classical\\planar-large-girth-degree-two-path.yaml"
+    },
+    "protected-color-recoloring-lemma": {
+      "id": "protected-color-recoloring-lemma",
+      "title": "Лемма о защищённых цветах и устранении одноточечных классов",
+      "kind": {
+        "primary": "lemma",
+        "secondary": [
+          "classical_tool",
+          "graph_in_statement"
+        ]
+      },
+      "language": "ru",
+      "authors": [
+        {
+          "name": "?",
+          "status": "needs_human_review"
+        }
+      ],
+      "problem_profile": {
+        "objects": [
+          "chromatic_number",
+          "proper_vertex_coloring",
+          "color_class"
+        ],
+        "methods": [
+          "local_recoloring",
+          "invariant"
+        ],
+        "transformations": [
+          "recolor_whole_reference_color_class",
+          "eliminate_singleton_color_class"
+        ],
+        "goal": [
+          "normalize_coloring",
+          "remove_singletons"
+        ],
+        "auxiliary_graph_type": [],
+        "invariants": [
+          "proper_coloring",
+          "exactly_k_nonempty_colors",
+          "protected_color_class"
+        ],
+        "keywords": [
+          "chromatic_number",
+          "proper_coloring",
+          "color_class",
+          "singleton_color_class",
+          "recoloring"
+        ],
+        "status": "ai_checked"
+      },
+      "statements": {
+        "original": [
+          {
+            "id": "stmt-protected-color-recoloring",
+            "title": "Лемма о защищённых цветах",
+            "text": "Пусть \\(G\\) — конечный граф с \\(\\chi(G)=k\\). Предположим, что у \\(G\\) есть правильная \\(k\\)-раскраска \\(\\alpha\\), в которой каждый цветовой класс содержит хотя бы две вершины. Тогда любую правильную раскраску \\(\\beta\\), использующую ровно \\(k\\) непустых цветов, можно конечным числом перекрасок целых цветовых классов раскраски \\(\\alpha\\) преобразовать в правильную \\(k\\)-раскраску, где каждый цветовой класс содержит хотя бы две вершины.",
+            "source_id": "src-kolmogorov-2007-official",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "chromatic_number"
+            ]
+          }
+        ],
+        "graph_theory": [],
+        "olympiad_reformulations": []
+      },
+      "ideas": [
+        {
+          "id": "idea-protected-colors",
+          "title": "Защищённые цвета",
+          "text": "Текущий цвет называется защищённым, если он содержит целиком некоторый цветовой класс фиксированной эталонной раскраски \\(\\alpha\\). Перекраска другого целого \\(\\alpha\\)-класса не может разрушить эту защиту.",
+          "tags": [
+            "coloring"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "solutions": [
+        {
+          "id": "sol-protected-singleton-recoloring",
+          "title": "Исправлять по одному одноточечному классу",
+          "text": "Зафиксируем эталонную раскраску \\(\\alpha\\) и назовём цвет текущей \\(\\beta\\)-раскраски защищённым, если он содержит все вершины некоторого \\(\\alpha\\)-цветового класса. Такой защищённый цвет содержит хотя бы две вершины, а дальнейшие операции с другими \\(\\alpha\\)-классами не делают его одноточечным.\n\nЕсли в текущей раскраске нет одноточечных цветовых классов, всё доказано. Иначе пусть цвет \\(c\\) встречается только на вершине \\(v\\). Пусть \\(A\\) — цветовой класс раскраски \\(\\alpha\\), содержащий \\(v\\). Перекрасим все вершины \\(A\\) в цвет \\(c\\), а остальные вершины оставим как были. Новая раскраска правильна: новый класс цвета \\(c\\) — это независимое множество \\(A\\), а все остальные цветовые классы только потеряли вершины из независимого множества.\n\nНи один цвет после этой операции не может исчезнуть. Если бы это произошло, полученная правильная раскраска использовала бы не более \\(k-1\\) непустых цветов, что противоречит \\(\\chi(G)=k\\). Поэтому мы всё ещё имеем правильную раскраску ровно в \\(k\\) цветов, а цвет \\(c\\) теперь защищён классом \\(A\\) и больше никогда не станет одноточечным.\n\nПовторяя этот шаг, мы на каждом ходе защищаем ранее незащищённый одноточечный цвет, а защищённые цвета остаются неодноточечными. Не более чем через \\(k\\) ходов одноточечных цветовых классов не останется.",
+          "idea_ids": [
+            "idea-protected-colors"
+          ],
+          "standard_idea_ids": [
+            "local_recoloring"
+          ],
+          "definition_ids": [
+            "chromatic_number",
+            "independent_set"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "difficulty": {
+        "main": "regional",
+        "local_score": 4,
+        "comment": "Короткий переносимый инвариант перекраски из задачи Колмогорова 2007 о хроматическом числе. Он полезнее окружающей задачи, но его не стоит усиливать до утверждения, что каждый финальный цвет защищён целым эталонным классом.",
+        "status": "ai_checked"
+      },
+      "tags": [
+        "coloring",
+        "goal_existence"
+      ],
+      "properties": {
+        "central_method": {
+          "value": [
+            "local_recoloring",
+            "invariant"
+          ],
+          "status": "ai_checked"
+        }
+      },
+      "sources": [
+        {
+          "source_id": "src-kolmogorov-2007-official",
+          "role": "source_solution_lemma",
+          "status": "source_verified"
+        }
+      ],
+      "editorial": {
+        "created_by": "ai",
+        "created_at": "2026-04-27",
+        "review_status": "needs_human_review",
+        "public_ready": false,
+        "notes": [
+          "Вынесено из аргумента официального решения kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem; исходная карточка намеренно не редактировалась.",
+          "Самостоятельная формулировка намеренно говорит об устранении одноточечных цветовых классов. Доказательство защищает цвета, которые были одноточечными в момент обработки; само по себе оно не утверждает, что каждый финальный цвет содержит целый эталонный цветовой класс."
+        ],
+        "relations_status": "deep_done",
+        "graph_theory_duplicate_removed": true
+      },
+      "_path": "data\\problems\\classical\\protected-color-recoloring-lemma.yaml"
     },
     "ramsey-r33": {
       "id": "ramsey-r33",
@@ -6828,19 +7162,27 @@
       },
       "tags": [
         "tournaments",
-        "hamiltonian_cycles",
         "symmetrization",
         "classical_theorem",
         "goal_counting",
         "goal_existence"
       ],
       "properties": {
-        "uses_complement_graph": true,
-        "central_method": [
-          "symmetrization",
-          "double_counting"
-        ],
-        "typical_olympiad_use": "Усиление стандартной теоремы о гамильтоновом пути в турнире до подсчёта числа таких путей по модулю 2."
+        "uses_complement_graph": {
+          "value": true,
+          "status": "ai_checked"
+        },
+        "central_method": {
+          "value": [
+            "symmetrization",
+            "double_counting"
+          ],
+          "status": "ai_checked"
+        },
+        "typical_olympiad_use": {
+          "value": "Усиление стандартной теоремы о гамильтоновом пути в турнире до подсчёта числа таких путей по модулю 2.",
+          "status": "ai_checked"
+        }
       },
       "sources": [
         {
@@ -6860,7 +7202,7 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Сформулирована как отдельная classical-card для усиленной версии теоремы Редеи: нечётность числа направленных гамильтоновых путей.",
+          "Сформулирована как отдельная классическая карточка для усиленной версии теоремы Редеи: нечётность числа направленных гамильтоновых путей.",
           "Доказательство дано через инвариантность чётности при перевороте одного ребра; вспомогательный факт о дополнении орграфа включён в решение для самодостаточности."
         ],
         "relations_status": "deep_done",
@@ -7288,8 +7630,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as a standalone distance-layer lemma from imo-2013-c6-flight-distance-layers; the original IMO card was intentionally left unchanged.",
-          "The proof is the parameterized version of the short MSE neighbor-partition argument; the IMO instance is M=100, giving floor(101^2/4)=2550."
+          "Вынесено как самостоятельная лемма о слоях расстояний из imo-2013-c6-flight-distance-layers; исходная карточка IMO намеренно не редактировалась.",
+          "Доказательство является параметризованной версией короткого аргумента с разбиением по соседям; в случае IMO параметр M=100 и получается floor(101^2/4)=2550."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -7765,7 +8107,7 @@
       "language": "ru",
       "authors": [
         {
-          "name": "extracted from UTYUM 2025 solution",
+          "name": "?",
           "status": "needs_human_review"
         }
       ],
@@ -7904,8 +8246,9 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as the general extremal lemma used by utyum-2025_komol64_8_7_tree_matchings_path; source UTYUM card intentionally not edited.",
-          "Proof is self-contained but long; solution status remains needs_human_review."
+          "Вынесено как общая экстремальная лемма, используемая в utyum-2025_komol64_8_7_tree_matchings_path; исходная карточка UTYUM намеренно не редактировалась.",
+          "Авторство оставлено на проверку: карточка извлечена из решения задачи, а не из отдельного опубликованного источника.",
+          "Доказательство самодостаточно, но длинное; статус решения оставлен needs_human_review."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -8060,7 +8403,7 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted as the T-join/odd-degree subgraph tool used in vosh-2013-14-regional-even-rows-columns; source card intentionally not edited in this pass."
+          "Вынесено как инструмент T-соединений и подграфов с заданными нечётными степенями, используемый в vosh-2013-14-regional-even-rows-columns; исходная карточка намеренно не редактировалась в этом проходе."
         ],
         "relations_status": "deep_done",
         "graph_theory_duplicate_removed": true
@@ -8069,14 +8412,14 @@
     },
     "tree-total-domination-two-thirds": {
       "id": "tree-total-domination-two-thirds",
-      "title": "Every tree has a total dominating set of size at most floor(2n/3)",
+      "title": "В каждом дереве есть полное доминирующее множество размера не больше floor(2n/3)",
       "kind": {
         "primary": "lemma",
         "secondary": [
           "classical_tool"
         ]
       },
-      "language": "en",
+      "language": "ru",
       "authors": [
         {
           "name": "classical folklore",
@@ -8124,7 +8467,7 @@
         "original": [
           {
             "id": "stmt-tree-total-domination-two-thirds",
-            "text": "Let T be a tree on n >= 3 vertices. Then there is a set S of at most floor(2n/3) vertices such that every vertex of T has a neighbor in S. Equivalently, the total domination number of every tree of order at least 3 is at most floor(2n/3).",
+            "text": "Пусть \\(T\\) — дерево на \\(n\\ge 3\\) вершинах. Тогда существует множество \\(S\\) размера не больше \\(\\lfloor 2n/3\\rfloor\\), такое что у каждой вершины \\(T\\) есть сосед в \\(S\\). Эквивалентно, полное доминирующее число любого дерева порядка хотя бы 3 не превосходит \\(\\lfloor 2n/3\\rfloor\\).",
             "source_id": "src-utyum-2018_lichol_8_tree_cities-official",
             "status": "ai_checked",
             "self_contained": {
@@ -8143,8 +8486,8 @@
       "ideas": [
         {
           "id": "idea-prune-near-longest-path-end",
-          "title": "Prune a small pendant fragment near an end of a longest path",
-          "text": "Look at the first few vertices at an end of a longest path. The local branches there are forced to be shallow, so one can delete a pendant fragment of size at least 2 and put back at most two selected vertices that dominate that fragment and keep the boundary vertex handled.",
+          "title": "Срезать малый висячий фрагмент около конца длиннейшего пути",
+          "text": "Рассматриваем первые несколько вершин у конца длиннейшего пути. Локальные ветви там вынужденно мелкие, поэтому можно удалить висячий фрагмент размера хотя бы 2, а затем вернуть не более двух выбранных вершин, которые доминируют этот фрагмент и контролируют граничную вершину.",
           "tags": [
             "trees",
             "induction",
@@ -8154,8 +8497,8 @@
         },
         {
           "id": "idea-two-per-three-budget",
-          "title": "Spend at most two selected vertices per three deleted vertices",
-          "text": "The induction is arranged so that each local deletion either removes at least three vertices and later adds two selected vertices, or removes at least two leaves around one support vertex and later adds only that support vertex. The floor inequality then preserves the 2n/3 bound.",
+          "title": "Тратить не больше двух выбранных вершин на три удалённые",
+          "text": "Индукция устроена так, что каждое локальное удаление либо убирает хотя бы три вершины и затем добавляет две выбранные вершины, либо убирает хотя бы два листа около одной опорной вершины и затем добавляет только эту опорную вершину. Неравенство с целой частью сохраняет границу \\(2n/3\\).",
           "tags": [
             "goal_bound",
             "induction"
@@ -8166,8 +8509,8 @@
       "solutions": [
         {
           "id": "sol-longest-path-pruning",
-          "title": "Induction by pruning a pendant fragment",
-          "text": "We prove the statement by induction on n. The cases n=3 and n=4 are immediate: a path or a star on these orders is totally dominated by two adjacent vertices.\n\nThe induction uses a standard pruning claim. In every tree T with at least five vertices one can find a pendant connected fragment F, meeting the rest of the tree in at most one boundary vertex, and a set A inside F together with possibly that boundary vertex, such that: after deleting F the remaining graph is either a smaller tree or one of the direct small endings; every vertex of F and the boundary vertex have a neighbor in A union D whenever D is a total dominating set of the remaining tree; and |A| <= floor(2|F|/3) except for the case where |F| is two leaves with a common support, where adding the support costs only one vertex. To see the claim, take a longest path v0 v1 ... vk and root the tree at vk. All children of v1 are leaves. If v1 has at least two leaf children, use those leaves as F and add v1. Otherwise v1 has degree 2; then look one step farther at v2. If the path continues through a degree-2 vertex, use the pendant path v0 v1 v2 and add v1,v2. If v2 has side branches, the longest-path choice forces each such side branch to have height at most one; taking the side branch together with v0,v1 gives one of the same three-for-two local fragments. These are exactly the local shapes that can occur next to the end of a longest path.\n\nNow apply the claim. Delete the fragment F, use the induction hypothesis on the remaining tree when its order is at least 3, and then add the local set A. The definition of A ensures that all deleted vertices are dominated and that domination across the single boundary is preserved. The size estimate is also local: removing three vertices and adding two gives floor(2(n-3)/3)+2 = floor(2n/3), removing four or more and adding at most two is even cheaper, and removing at least two sibling leaves while adding only their support gives floor(2(n-r)/3)+1 <= floor(2n/3) for r >= 2. The exceptional remaining trees of order 1 or 2 occur only at the end of the pruning and are checked directly by choosing two adjacent vertices in the original final piece.\n\nThus each induction step reduces the tree and extends the selected set without exceeding the two-thirds budget. The resulting set has size at most floor(2n/3), and every vertex, selected or not, has a selected neighbor.",
+          "title": "Индукция со срезанием висячего фрагмента",
+          "text": "Доказываем утверждение индукцией по \\(n\\). Случаи \\(n=3\\) и \\(n=4\\) непосредственны: путь или звезда такого порядка полностью доминируются двумя соседними вершинами.\n\nВ индукции используется стандартное утверждение о срезании. В каждом дереве \\(T\\) с хотя бы пятью вершинами можно найти связный висячий фрагмент \\(F\\), который встречается с остальным деревом не более чем по одной граничной вершине, и множество \\(A\\) внутри \\(F\\), возможно вместе с этой граничной вершиной, так что после удаления \\(F\\) остаётся меньшее дерево или один из малых конечных случаев; каждая вершина \\(F\\) и граничная вершина имеют соседа в \\(A\\cup D\\), если \\(D\\) — полное доминирующее множество оставшегося дерева; и \\(|A|\\le \\lfloor 2|F|/3\\rfloor\\), кроме случая, когда \\(F\\) состоит из двух листьев с общей опорной вершиной, где добавление опорной вершины стоит только одну вершину. Чтобы увидеть это, возьмём длиннейший путь \\(v_0v_1\\ldots v_k\\) и укореним дерево в \\(v_k\\). Все дети \\(v_1\\) являются листьями. Если у \\(v_1\\) есть хотя бы два листовых ребёнка, берём эти листья в качестве \\(F\\) и добавляем \\(v_1\\). Иначе степень \\(v_1\\) равна 2; тогда смотрим на шаг дальше, на \\(v_2\\). Если путь продолжается через вершину степени 2, берём висячий путь \\(v_0v_1v_2\\) и добавляем \\(v_1,v_2\\). Если у \\(v_2\\) есть боковые ветви, выбор длиннейшего пути заставляет каждую такую ветвь иметь высоту не больше одного; взяв боковую ветвь вместе с \\(v_0,v_1\\), получаем один из тех же локальных фрагментов с расходом две вершины на три. Это ровно те локальные формы, которые могут появиться рядом с концом длиннейшего пути.\n\nТеперь применим это утверждение. Удаляем фрагмент \\(F\\), используем предположение индукции для оставшегося дерева, если его порядок хотя бы 3, и затем добавляем локальное множество \\(A\\). Определение \\(A\\) гарантирует, что все удалённые вершины доминированы и что доминирование через единственную границу сохранено. Оценка размера тоже локальна: удаление трёх вершин и добавление двух даёт \\(\\lfloor 2(n-3)/3\\rfloor+2=\\lfloor 2n/3\\rfloor\\), удаление четырёх или более вершин с добавлением не более двух ещё дешевле, а удаление хотя бы двух братских листьев с добавлением только их опорной вершины даёт \\(\\lfloor 2(n-r)/3\\rfloor+1\\le \\lfloor 2n/3\\rfloor\\) при \\(r\\ge 2\\). Исключительные оставшиеся деревья порядка 1 или 2 возникают только в конце срезания и проверяются напрямую выбором двух соседних вершин в исходном последнем фрагменте.\n\nТаким образом, каждый шаг индукции уменьшает дерево и продолжает выбранное множество, не превышая бюджет две трети. Полученное множество имеет размер не больше \\(\\lfloor 2n/3\\rfloor\\), и у каждой вершины, выбранной или нет, есть выбранный сосед.",
           "idea_ids": [
             "idea-prune-near-longest-path-end",
             "idea-two-per-three-budget"
@@ -8188,7 +8531,7 @@
       "difficulty": {
         "main": "classical_tool",
         "local_score": 4,
-        "comment": "A standard tree-domination tool. The main work is choosing the correct small pendant fragment so the floor(2n/3) budget survives induction.",
+        "comment": "Стандартный инструмент о полном доминировании в деревьях. Главная работа — выбрать правильный малый висячий фрагмент, чтобы бюджет \\(\\lfloor 2n/3\\rfloor\\) сохранялся при индукции.",
         "status": "ai_checked"
       },
       "tags": [
@@ -8224,8 +8567,8 @@
         "review_status": "needs_human_review",
         "public_ready": false,
         "notes": [
-          "Extracted from the UTYUM 2018 tree-cities solution as the classical total-domination lemma. The source UTYUM card was intentionally not edited.",
-          "The statement uses the total domination convention: every vertex, including selected vertices, must have a selected neighbor."
+          "Вынесено из решения задачи UTYUM 2018 о городах в дереве как классическая лемма о полном доминировании. Исходная карточка UTYUM намеренно не редактировалась.",
+          "Формулировка использует соглашение о полном доминировании: каждая вершина, включая выбранные, должна иметь выбранного соседа."
         ],
         "relations_status": "base_done",
         "graph_theory_duplicate_removed": true
@@ -8592,6 +8935,173 @@
         "graph_theory_duplicate_removed": true
       },
       "_path": "data\\problems\\classical\\turan-theorem.yaml"
+    },
+    "vertex-coloring-to-bipartite-edge-layers": {
+      "id": "vertex-coloring-to-bipartite-edge-layers",
+      "title": "Коды вершинных цветов разбивают рёбра на двудольные слои",
+      "kind": {
+        "primary": "lemma",
+        "secondary": [
+          "classical_tool"
+        ]
+      },
+      "language": "ru",
+      "authors": [
+        {
+          "name": "?",
+          "status": "needs_human_review"
+        }
+      ],
+      "problem_profile": {
+        "objects": [
+          "finite_graph",
+          "proper_vertex_coloring",
+          "edge_partition",
+          "bipartite_subgraph",
+          "bounded_maximum_degree"
+        ],
+        "methods": [
+          "greedy_coloring",
+          "binary_encoding",
+          "coordinate_partition"
+        ],
+        "transformations": [
+          "encode_vertex_colors_by_binary_strings",
+          "assign_edges_to_differing_coordinates",
+          "split_edges_into_bipartite_layers"
+        ],
+        "goal": [
+          "partition_edges_into_bipartite_subgraphs",
+          "upper_bound_number_of_layers"
+        ],
+        "auxiliary_graph_type": [
+          "hypercube_color_code"
+        ],
+        "invariants": [
+          "proper_vertex_coloring",
+          "each_edge_has_endpoint_codes_differing_in_some_coordinate",
+          "fixed_coordinate_layer_crosses_a_bit_partition"
+        ],
+        "keywords": [
+          "vertex_coloring",
+          "binary_codes",
+          "hypercube_coloring",
+          "edge_partition",
+          "bipartite_layers",
+          "maximum_degree"
+        ],
+        "status": "ai_checked"
+      },
+      "statements": {
+        "original": [
+          {
+            "id": "stmt-color-codes-bipartite-layers",
+            "title": "Лемма о двоичных кодах и двудольных слоях",
+            "text": "Пусть вершины конечного графа \\(G\\) правильно раскрашены в \\(q\\) цветов. Положим \\(r=\\lceil\\log_2 q\\rceil\\). Тогда множество рёбер \\(G\\) можно разбить на \\(r\\) двудольных подграфов. В частности, у любого конечного графа максимальной степени не больше \\(\\Delta\\) множество рёбер можно разбить на \\(\\lceil\\log_2(\\Delta+1)\\rceil\\) двудольных подграфов.",
+            "source_id": "src-kolmogorov-2008-official",
+            "status": "ai_checked",
+            "self_contained": {
+              "status": "ai_checked"
+            },
+            "definition_ids": [
+              "simple_graph",
+              "bipartite_graph",
+              "degree",
+              "chromatic_number"
+            ]
+          }
+        ],
+        "graph_theory": [],
+        "olympiad_reformulations": []
+      },
+      "ideas": [
+        {
+          "id": "idea-binary-color-code-layers",
+          "title": "Использовать биты цветовых кодов как двудольные разбиения",
+          "text": "Заменим каждый вершинный цвет двоичным кодом. Ребро соединяет вершины разных цветов, поэтому их коды различаются хотя бы в одной координате; если отнести ребро к такой координате, то каждый фиксированный координатный слой пересекает двудольное разбиение по этому биту.",
+          "tags": [
+            "coloring"
+          ],
+          "status": "ai_checked"
+        },
+        {
+          "id": "idea-greedy-delta-plus-one-colors",
+          "title": "Жадная раскраска даёт нужные коды",
+          "text": "Если известно только ограничение на максимальную степень, обычная жадная раскраска вершин даёт \\(\\Delta+1\\) правильных вершинных цветов; затем эти цвета кодируются двоичными строками длины \\(\\lceil\\log_2(\\Delta+1)\\rceil\\).",
+          "tags": [
+            "coloring"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "solutions": [
+        {
+          "id": "sol-binary-code-edge-partition",
+          "title": "Доказательство двоичными кодами цветов",
+          "text": "Выберем для \\(q\\) вершинных цветов попарно различные двоичные строки длины \\(r\\). Это возможно, потому что \\(2^r\\ge q\\). Каждой вершине припишем строку, соответствующую её цвету.\n\nДля любого ребра \\(uv\\) цвета концов различны, значит, две приписанные строке различны. Выберем координату, в которой они различаются, например первую такую координату, и поместим \\(uv\\) в слой этой координаты. Так каждое ребро попадает ровно в один из \\(r\\) слоёв.\n\nЗафиксируем координату \\(i\\). В \\(i\\)-м слое каждое ребро соединяет вершину, у которой \\(i\\)-й бит равен 0, с вершиной, у которой \\(i\\)-й бит равен 1, потому что в этот слой попадали только рёбра с различными кодами концов в координате \\(i\\). Поэтому \\(i\\)-й слой двудолен, с долями, заданными значением \\(i\\)-го бита. Значит, рёбра разбиты на \\(r\\) двудольных подграфов.\n\nДля следствия раскрасим вершины графа максимальной степени не больше \\(\\Delta\\) жадно в произвольном порядке, используя \\(\\Delta+1\\) цвет: когда вершина окрашивается, на её уже окрашенных соседях стоит не более \\(\\Delta\\) цветов, поэтому некоторый цвет доступен. Применяя первую часть при \\(q=\\Delta+1\\), получаем разбиение рёбер на \\(\\lceil\\log_2(\\Delta+1)\\rceil\\) двудольных подграфов.",
+          "idea_ids": [
+            "idea-binary-color-code-layers",
+            "idea-greedy-delta-plus-one-colors"
+          ],
+          "standard_idea_ids": [
+            "greedy_ordering"
+          ],
+          "definition_ids": [
+            "simple_graph",
+            "bipartite_graph",
+            "degree",
+            "chromatic_number"
+          ],
+          "status": "ai_checked"
+        }
+      ],
+      "difficulty": {
+        "main": "regional",
+        "local_score": 3,
+        "comment": "Короткая кодировочная лемма: нужны только жадная вершинная раскраска и наблюдение, что каждая битовая координата задаёт двудольное разбиение.",
+        "status": "ai_checked"
+      },
+      "tags": [
+        "coloring",
+        "goal_construction",
+        "goal_bound",
+        "classical_theorem"
+      ],
+      "properties": {
+        "central_method": {
+          "value": [
+            "greedy_coloring",
+            "binary_encoding",
+            "coordinate_partition"
+          ],
+          "status": "ai_checked"
+        }
+      },
+      "sources": [
+        {
+          "source_id": "src-kolmogorov-2008-official",
+          "role": "source_solution_lemma",
+          "status": "source_verified"
+        },
+        {
+          "source_id": "src-kolmogorov-archive",
+          "role": "official_archive_index",
+          "status": "source_verified"
+        }
+      ],
+      "editorial": {
+        "created_by": "ai",
+        "created_at": "2026-04-27",
+        "review_status": "needs_human_review",
+        "public_ready": false,
+        "notes": [
+          "Вынесено как общая самодостаточная лемма, используемая в задачах личной олимпиады Кубка Колмогорова 2008 для младших и старших; исходные карточки намеренно не редактировались.",
+          "Задача для младших — специализация q=4, r=2; задача для старших использует следствие при Delta=1000 и r=10."
+        ],
+        "relations_status": "deep_done",
+        "graph_theory_duplicate_removed": true
+      },
+      "_path": "data\\problems\\classical\\vertex-coloring-to-bipartite-edge-layers.yaml"
     },
     "egmo-2016-p3-blue-cells-bipartite-incidence": {
       "id": "egmo-2016-p3-blue-cells-bipartite-incidence",
@@ -9432,7 +9942,11 @@
         {
           "id": "sol-official-archive",
           "title": "Архивное решение",
-          "text": "Докажем индукцией по числу вершин. Ключевая лемма утверждает, что изменение направления одного ребра \\(A\\to B\\) на \\(B\\to A\\) не меняет чётность числа гамильтоновых путей: пути, проходящие через \\(A\\to B\\) и через \\(B\\to A\\), сводятся к путям в графе без вершины \\(B\\). После этого последовательно меняем направления рёбер, пока не останется ровно один гамильтонов путь. Значит, исходное число гамильтоновых путей было нечётным.",
+          "text": "Докажем индукцией по числу вершин. Ключевая лемма, вынесенная отдельно в карточку `redei-odd-hamiltonian-paths-tournament`, утверждает, что изменение направления одного ребра \\(A\\to B\\) на \\(B\\to A\\) не меняет чётность числа гамильтоновых путей.\n\nПоясним паритетную редукцию. Гамильтоновы пути, не использующие пару \\(A,B\\) подряд, при перевороте ребра вообще не меняются. Меняются только пути, где \\(A\\) и \\(B\\) стоят подряд. Такие пути в одном турнире проходят через дугу \\(A\\to B\\), а в другом — через \\(B\\to A\\). Если стянуть этот соседний блок в одну вершину, то оставшаяся часть пути задаёт гамильтонов путь в турнире на \\(n-1\\) вершинах; по предположению индукции число таких путей нечётно. Поэтому число путей, потерянных при перевороте, и число путей, приобретённых при перевороте, имеют одинаковую чётность, а общая чётность не меняется.\n\nПосле этого последовательно меняем направления рёбер, пока турнир не станет транзитивным. В транзитивном турнире ровно один гамильтонов путь — порядок вершин от источника к стоку. Так как чётность на каждом перевороте сохранялась, в исходном турнире число гамильтоновых путей тоже нечётно.",
+          "definition_ids": [
+            "tournament",
+            "hamiltonian_path"
+          ],
           "idea_ids": [],
           "standard_idea_ids": [],
           "status": "ai_checked"
@@ -50416,7 +50930,7 @@
         "to_solution_id": "sol-official-compressed"
       },
       "status": "needs_human_review",
-      "confidence": 0.95,
+      "confidence": 0.78,
       "_path": "data\\relations\\relations.d\\bounded-forward-rays-balanced-sums.yaml"
     },
     {
@@ -50426,13 +50940,29 @@
       "type": "prerequisite",
       "distance": 1,
       "forward_text": "Лемма Каро-Вея является отдельным графовым инструментом в решении IMO Shortlist 2012 C7: после перехода к графу пересечений хорд она дает нижнюю оценку на размер независимого множества через степени вершин.",
-      "backward_text": "В задаче IMO Shortlist 2012 C7 лемма Каро-Вея применяется как готовый tool/lemma: для одного класса хорд с одинаковой суммой концов оценка \\(\\sum_v 1/(d(v)+1)\\) гарантирует достаточно много попарно непересекающихся хорд.",
+      "backward_text": "В задаче IMO Shortlist 2012 C7 лемма Каро-Вея применяется как готовый инструмент: для одного класса хорд с одинаковой суммой концов оценка \\(\\sum_v 1/(d(v)+1)\\) гарантирует достаточно много попарно непересекающихся хорд.",
       "anchors": {
         "from_solution_id": "sol-random-order",
         "to_solution_id": "sol-official-compressed"
       },
       "status": "ai_checked",
       "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\caro-wei-lemma.yaml"
+    },
+    {
+      "id": "rel-caro-wei-dolnikov-independent-set-motif",
+      "from": "caro-wei-independent-set-bound",
+      "to": "dolnikov-deletion-independent-set-lemma",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются инструментами для получения больших независимых множеств в конечных графах; Каро-Вей даёт количественную оценку через степени, а лемма Дольникова использует условие о независимых множествах после удаления вершины.",
+      "backward_text": "Лемма Дольникова родственна Каро-Вею по цели — вынудить большое независимое множество, хотя её механизм основан на Холле и минимальном контрпримере, а не на случайном порядке.",
+      "anchors": {
+        "from_solution_id": "sol-random-order",
+        "to_solution_id": "sol-hall-minimal-counterexample"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86,
       "_path": "data\\relations\\relations.d\\caro-wei-lemma.yaml"
     },
     {
@@ -50490,8 +51020,8 @@
       "to": "apmo-2016-p4-dreamland-28-step-coloring",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The bounded-outdegree digraph coloring lemma is exactly the stronger coloring step used in APMO 2016 P4. Applying it with \\(r=28\\) gives a \\(57\\)-coloring of the auxiliary reachability digraph, so the endpoints of every reachability arc receive different colors.",
-      "backward_text": "APMO 2016 P4 uses the \\(r=28\\) instance of this general lemma after building the auxiliary digraph of reachability within 28 flights; its maximum outdegree is at most 28, hence \\(2r+1=57\\) colors suffice.",
+      "forward_text": "Лемма о раскраске орграфа с ограниченной исходящей степенью — ровно тот усиленный шаг раскраски, который используется в APMO 2016 P4. Применение при \\(r=28\\) даёт \\(57\\)-раскраску вспомогательного орграфа достижимости, поэтому концы каждой дуги достижимости получают разные цвета.",
+      "backward_text": "APMO 2016 P4 использует случай \\(r=28\\) этой общей леммы после построения вспомогательного орграфа достижимости за 28 перелётов; его максимальная исходящая степень не превосходит 28, значит, достаточно \\(2r+1=57\\) цветов.",
       "anchors": {
         "from_solution_id": "sol-low-indegree-induction",
         "to_solution_id": "sol-official-compressed"
@@ -50547,6 +51077,54 @@
       "status": "ai_checked",
       "confidence": 0.95,
       "_path": "data\\relations\\relations.d\\dolnikov-lemma.yaml"
+    },
+    {
+      "id": "rel-euler-trail-extension-center-forest-kolmogorov-2007-r1hl-p5",
+      "from": "euler-trail-extension-center-forest",
+      "to": "kolmogorov-2007-round-1-high-league-problem-5",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Задача Колмогорова о дорожной сети — это ровно эта лемма, где Центральный город является выделенной вершиной \\(c\\): возможность завершить любой маршрут без повторения дорог из \\(c\\) эквивалентна тому, что все циклы проходят через \\(c\\).",
+      "backward_text": "Задача Колмогорова является мотивирующим олимпиадным случаем критерия продления эйлерова пути из центральной вершины.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-obstruction-and-unused-components",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\euler-trail-extension-center-forest.yaml"
+    },
+    {
+      "id": "rel-eulerian-criterion-euler-trail-extension-center-forest",
+      "from": "eulerian-graph-criterion",
+      "to": "euler-trail-extension-center-forest",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о продлении использует эйлеров критерий дважды: после удаления цикла, не проходящего через \\(c\\), \\(c\\)-компонента всё ещё имеет эйлеров цикл, а в положительном направлении исходный граф имеет все степени чётными.",
+      "backward_text": "Критерий продления из центральной вершины — уточнённое эйлерово утверждение: он спрашивает, какие выделенные вершины делают каждый частичный путь продолжимым, а не только когда существует некоторый эйлеров цикл.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-cycle-obstruction-and-unused-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93,
+      "_path": "data\\relations\\relations.d\\euler-trail-extension-center-forest.yaml"
+    },
+    {
+      "id": "rel-tree-equivalent-properties-euler-trail-extension-center-forest",
+      "from": "tree-equivalent-properties",
+      "to": "euler-trail-extension-center-forest",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Положительное направление леммы о продлении использует базовый факт о лесах: непустой конечный лес имеет лист, поэтому ненулевой лес не может иметь все степени чётными.",
+      "backward_text": "Критерий продления эйлерова пути из центральной вершины — чистое применение ацикличности леса: после удаления центральной вершины все возможные неиспользованные внецентральные компоненты становятся лесами, где чётность степеней заставляет их быть безрёберными.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-cycle-obstruction-and-unused-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92,
+      "_path": "data\\relations\\relations.d\\euler-trail-extension-center-forest.yaml"
     },
     {
       "id": "rel-pairwise-intersecting-edges-tc-1994-95",
@@ -50648,7 +51226,7 @@
       "id": "rel-planar-edge-bound-degree-two-path",
       "from": "planar-edge-bound",
       "to": "planar-large-girth-degree-two-path",
-      "type": "same_motif",
+      "type": "prerequisite",
       "distance": 1,
       "forward_text": "Обе карточки используют один и тот же планарный счет граней: нижняя оценка на длины граней вместе с формулой Эйлера дает верхнюю оценку на число ребер.",
       "backward_text": "В лемме о 2-пути счет граней применяется не сразу к исходному графу, а к сжатому ядру, где исчезли длинные цепочки вершин степени 2.",
@@ -52099,6 +52677,54 @@
       "status": "needs_human_review",
       "confidence": 0.7,
       "_path": "data\\relations\\relations.d\\imo-shortlist-graph.yaml"
+    },
+    {
+      "id": "rel-bipartite-edge-layers-kolmogorov-2008-juniors-p8",
+      "from": "vertex-coloring-to-bipartite-edge-layers",
+      "to": "kolmogorov-2008-individual-olympiad-juniors-problem-8",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о двоичных кодах даёт ровно ту конструкцию, которая используется в задаче для младших. 3-регулярный граф жадно 4-раскрашиваем, четыре цвета кодируются двумя битами, а назначение каждого ребра в координату, где коды концов различаются, разбивает рёбра на две двудольные сети.",
+      "backward_text": "Задача для младших — специализация леммы при q=4 и r=2: две авиакомпании являются двумя битовыми координатными слоями правильной 4-раскраски.",
+      "anchors": {
+        "from_solution_id": "sol-binary-code-edge-partition",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\kolmogorov-2008-bipartite-edge-layers.yaml"
+    },
+    {
+      "id": "rel-bipartite-edge-layers-kolmogorov-2008-seniors-p5",
+      "from": "vertex-coloring-to-bipartite-edge-layers",
+      "to": "kolmogorov-2008-individual-olympiad-seniors-problem-5",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о двоичных кодах напрямую доказывает задачу для старших. Жадная вершинная раскраска даёт 1001 цвет для графа максимальной степени 1000, а \\(1001\\le 2^{10}\\), поэтому достаточно десяти битовых слоёв; каждый слой двудолен и потому не содержит нечётных циклов.",
+      "backward_text": "Задача для старших — случай \\(\\Delta=1000\\) следствия леммы о максимальной степени: \\(\\lceil\\log_2(1001)\\rceil=10\\) двудольных рёберных слоёв.",
+      "anchors": {
+        "from_solution_id": "sol-binary-code-edge-partition",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\kolmogorov-2008-bipartite-edge-layers.yaml"
+    },
+    {
+      "id": "rel-bipartite-edge-layers-digraph-outdegree-greedy-coloring-bound",
+      "from": "vertex-coloring-to-bipartite-edge-layers",
+      "to": "digraph-outdegree-greedy-coloring-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют жадную раскраску как инструмент при ограничении на степень. Здесь жадная раскраска даёт \\(\\Delta+1\\) вершинных цветов перед двоичным разбиением рёбер, а в орграфной лемме жадно-индукционный порядок сразу даёт правильную раскраску при ограниченной исходящей степени.",
+      "backward_text": "Орграфная лемма о раскраске — ещё одна переиспользуемая жадная оценка. В отличие от леммы о двоичных слоях, она останавливается на вершинной раскраске и не кодирует цвета для разбиения рёбер на двудольные слои.",
+      "anchors": {
+        "from_solution_id": "sol-binary-code-edge-partition",
+        "to_solution_id": "sol-low-indegree-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "_path": "data\\relations\\relations.d\\kolmogorov-2008-bipartite-edge-layers.yaml"
     },
     {
       "id": "rel-kolm-2002-rainbow-triangle-two-criteria",
@@ -54068,6 +54694,22 @@
       "_path": "data\\relations\\relations.d\\no-isolated-vertices-edge-lower-bound.yaml"
     },
     {
+      "id": "rel-handshaking-no-isolated-edge-lower-bound",
+      "from": "handshaking-lemma",
+      "to": "no-isolated-vertices-edge-lower-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о рукопожатиях даёт нижнюю оценку на число рёбер через сумму степеней: если почти все вершины имеют положительную степень, то сумма степеней не меньше числа таких вершин.",
+      "backward_text": "Оценка для графа без изолированных вершин является прямым применением леммы о рукопожатиях: каждая неизолированная вершина даёт вклад хотя бы 1 в сумму степеней, а каждое ребро считается дважды.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-degree-sum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\no-isolated-vertices-edge-lower-bound.yaml"
+    },
+    {
       "id": "rel-no-two-color-cycle-edge-bound-fyum-2010-tur3a-p7",
       "from": "no-two-color-cycle-edge-bound",
       "to": "fyum-2010-tur3a-p7",
@@ -54097,6 +54739,22 @@
       },
       "status": "ai_checked",
       "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\no-two-color-cycle-edge-bound.yaml"
+    },
+    {
+      "id": "rel-tree-equivalent-no-two-color-cycle-edge-bound",
+      "from": "tree-equivalent-properties",
+      "to": "no-two-color-cycle-edge-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Базовый факт о лесах используется в лемме для каждого двухцветного подграфа: отсутствие циклов означает, что такой подграф является лесом и потому имеет не больше \\(|V|-1\\) рёбер в каждой непустой компоненте.",
+      "backward_text": "Лемма о запрете двухцветных циклов многократно применяет лесную оценку к подграфам, образованным парами цветов.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-general-pair-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96,
       "_path": "data\\relations\\relations.d\\no-two-color-cycle-edge-bound.yaml"
     },
     {
@@ -54516,10 +55174,26 @@
       "_path": "data\\relations\\relations.d\\official-archives-idea-links.yaml"
     },
     {
+      "id": "rel-protected-color-recoloring-kolmogorov-2007-chromatic",
+      "from": "protected-color-recoloring-lemma",
+      "to": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Задача Колмогорова 2007 о хроматическом числе является прямым применением этой леммы о перекраске: берём обещанную толстую \\(k\\)-раскраску как \\(\\alpha\\), любую \\(k\\)-раскраску \\(\\beta\\), существующую из \\(\\chi(G)=k\\), и устраняем все одноточечные цветовые классы.",
+      "backward_text": "Решение задачи Колмогорова содержит этот инвариант защищённых цветов как переиспользуемое ядро: одноточечный цвет заменяется целым эталонным цветовым классом его единственной вершины, а \\(\\chi(G)=k\\) не даёт ни одному цвету исчезнуть.",
+      "anchors": {
+        "from_solution_id": "sol-protected-singleton-recoloring",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97,
+      "_path": "data\\relations\\relations.d\\protected-color-recoloring-lemma.yaml"
+    },
+    {
       "id": "rel-redei-odd-hamiltonian-paths-fyum-2008-tur1a-p10",
       "from": "redei-odd-hamiltonian-paths-tournament",
       "to": "fyum-2008-tur1a-p10",
-      "type": "prerequisite",
+      "type": "same_motif",
       "distance": 1,
       "forward_text": "Теорема Редеи является ровно классическим утверждением, которое требуется доказать в задаче FYUM 2008: в любом турнире число направленных гамильтоновых путей нечётно.",
       "backward_text": "FYUM 2008 tur1a p10 — олимпиадная формулировка усиленной теоремы Редеи; её архивное решение использует тот же инвариант чётности при перевороте одного ребра.",
@@ -54793,14 +55467,30 @@
       "to": "fyum-2012-tur1a-p10",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "The greedy strong edge-coloring bound directly proves the FYUM 2012 problem after substituting \\(\\Delta=11\\): the bound \\(2\\Delta^2-2\\Delta+1\\) becomes \\(221\\), and each color class is an induced matching.",
-      "backward_text": "FYUM 2012 tour 1A problem 10 is the concrete \\(\\Delta=11\\) instance of the general greedy strong edge-coloring lemma.",
+      "forward_text": "Жадная оценка сильной рёберной раскраски напрямую доказывает задачу ФЮМ 2012 после подстановки \\(\\Delta=11\\): граница \\(2\\Delta^2-2\\Delta+1\\) превращается в \\(221\\), а каждый цветовой класс является индуцированным паросочетанием.",
+      "backward_text": "ФЮМ 2012, тур 1A, задача 10 — конкретный случай \\(\\Delta=11\\) общей жадной леммы о сильной рёберной раскраске.",
       "anchors": {
         "from_solution_id": "sol-greedy-distance-two-counting",
         "to_solution_id": "sol-greedy-distance-two-bound"
       },
       "status": "ai_checked",
       "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\strong-edge-coloring-bound.yaml"
+    },
+    {
+      "id": "rel-greedy-strong-edge-digraph-outdegree-coloring-motif",
+      "from": "greedy-strong-edge-coloring-bound",
+      "to": "digraph-outdegree-greedy-coloring-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются жадными оценками раскраски через локальное число запрещённых цветов: одна считает рёбра на расстоянии два, другая выбирает вершину малой входящей степени в орграфе.",
+      "backward_text": "Лемма для орграфов родственна жадной сильной рёберной оценке как ещё один инструмент раскраски при ограничении на степень.",
+      "anchors": {
+        "from_solution_id": "sol-greedy-distance-two-counting",
+        "to_solution_id": "sol-low-indegree-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86,
       "_path": "data\\relations\\relations.d\\strong-edge-coloring-bound.yaml"
     },
     {
@@ -54820,6 +55510,22 @@
       "_path": "data\\relations\\relations.d\\tree-near-perfect-matchings-path.yaml"
     },
     {
+      "id": "rel-tree-equivalent-tree-near-perfect-matchings-path",
+      "from": "tree-equivalent-properties",
+      "to": "tree-near-perfect-matchings-path-extremal",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Экстремальная лемма о почти совершенных паросочетаниях в дереве использует базовую древесную структуру: листья, двудольность дерева и индукционное удаление висячих частей.",
+      "backward_text": "Карточка про почти совершенные паросочетания является специализированным применением стандартных свойств деревьев.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-induction-bipartition"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.84,
+      "_path": "data\\relations\\relations.d\\tree-near-perfect-matchings-path.yaml"
+    },
+    {
       "id": "rel-tree-vs-independent-set-ramsey-bound-fyum-2008-tur3a-p2",
       "from": "tree-vs-independent-set-ramsey-bound",
       "to": "fyum-2008-tur3a-p2",
@@ -54833,6 +55539,38 @@
       },
       "status": "ai_checked",
       "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\tree-ramsey-bound.yaml"
+    },
+    {
+      "id": "rel-ramsey-theorem-tree-vs-independent-set-bound",
+      "from": "ramsey-theorem",
+      "to": "tree-vs-independent-set-ramsey-bound",
+      "type": "specialization",
+      "distance": 2,
+      "forward_text": "Лемма о дереве против независимого множества является рамсеевской оценкой специального вида: вместо произвольной клики она гарантирует копию любого фиксированного дерева при отсутствии большого независимого множества.",
+      "backward_text": "Общая теорема Рамсея объясняет мотив «структура или большое независимое множество», а эта карточка даёт более точную древесную специализацию с индукцией по листу.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "_path": "data\\relations\\relations.d\\tree-ramsey-bound.yaml"
+    },
+    {
+      "id": "rel-tree-equivalent-tree-vs-independent-set-bound",
+      "from": "tree-equivalent-properties",
+      "to": "tree-vs-independent-set-ramsey-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Индукция в древесной рамсеевской лемме использует базовое свойство деревьев: у каждого нетривиального дерева есть лист, который можно удалить и затем вернуть через соседа.",
+      "backward_text": "Лемма tree-vs-independent-set является типичным применением листовой индукции по дереву.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95,
       "_path": "data\\relations\\relations.d\\tree-ramsey-bound.yaml"
     },
     {
@@ -54857,14 +55595,30 @@
       "to": "utyum-2018_lichol_8_tree_cities",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "This lemma is the exact graph-theoretic tool behind the UTYUM tree-cities problem: for n=1500 it gives a total dominating set of size at most floor(2n/3)=1000, which is precisely the required set of cities.",
-      "backward_text": "The UTYUM problem is the n=1500 application of this tree total domination lemma, expressed in the language of villages, roads, and cities.",
+      "forward_text": "Эта лемма является точным графовым инструментом для задачи UTYUM о городах в дереве: при n=1500 она даёт полное доминирующее множество размера не больше floor(2n/3)=1000, то есть ровно требуемый набор городов.",
+      "backward_text": "Задача UTYUM — это применение леммы о полном доминировании в дереве при n=1500, выраженное языком посёлков, дорог и городов.",
       "anchors": {
         "from_solution_id": "sol-longest-path-pruning",
         "to_solution_id": "sol-official"
       },
       "status": "ai_checked",
       "confidence": 0.99,
+      "_path": "data\\relations\\relations.d\\tree-total-domination-two-thirds.yaml"
+    },
+    {
+      "id": "rel-tree-equivalent-tree-total-domination-two-thirds",
+      "from": "tree-equivalent-properties",
+      "to": "tree-total-domination-two-thirds",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Доказательство оценки полного доминирования использует базовые свойства деревьев: существование листьев, длиннейший путь и удаление висячих фрагментов.",
+      "backward_text": "Лемма о полном доминировании является более тонким применением стандартной листовой структуры деревьев.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-longest-path-pruning"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9,
       "_path": "data\\relations\\relations.d\\tree-total-domination-two-thirds.yaml"
     },
     {

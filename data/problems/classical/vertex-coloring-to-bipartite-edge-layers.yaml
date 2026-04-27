@@ -1,0 +1,166 @@
+{
+  "id": "vertex-coloring-to-bipartite-edge-layers",
+  "title": "Коды вершинных цветов разбивают рёбра на двудольные слои",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_graph",
+      "proper_vertex_coloring",
+      "edge_partition",
+      "bipartite_subgraph",
+      "bounded_maximum_degree"
+    ],
+    "methods": [
+      "greedy_coloring",
+      "binary_encoding",
+      "coordinate_partition"
+    ],
+    "transformations": [
+      "encode_vertex_colors_by_binary_strings",
+      "assign_edges_to_differing_coordinates",
+      "split_edges_into_bipartite_layers"
+    ],
+    "goal": [
+      "partition_edges_into_bipartite_subgraphs",
+      "upper_bound_number_of_layers"
+    ],
+    "auxiliary_graph_type": [
+      "hypercube_color_code"
+    ],
+    "invariants": [
+      "proper_vertex_coloring",
+      "each_edge_has_endpoint_codes_differing_in_some_coordinate",
+      "fixed_coordinate_layer_crosses_a_bit_partition"
+    ],
+    "keywords": [
+      "vertex_coloring",
+      "binary_codes",
+      "hypercube_coloring",
+      "edge_partition",
+      "bipartite_layers",
+      "maximum_degree"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-color-codes-bipartite-layers",
+        "title": "Лемма о двоичных кодах и двудольных слоях",
+        "text": "Пусть вершины конечного графа \\(G\\) правильно раскрашены в \\(q\\) цветов. Положим \\(r=\\lceil\\log_2 q\\rceil\\). Тогда множество рёбер \\(G\\) можно разбить на \\(r\\) двудольных подграфов. В частности, у любого конечного графа максимальной степени не больше \\(\\Delta\\) множество рёбер можно разбить на \\(\\lceil\\log_2(\\Delta+1)\\rceil\\) двудольных подграфов.",
+        "source_id": "src-kolmogorov-2008-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "bipartite_graph",
+          "degree",
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-binary-color-code-layers",
+      "title": "Использовать биты цветовых кодов как двудольные разбиения",
+      "text": "Заменим каждый вершинный цвет двоичным кодом. Ребро соединяет вершины разных цветов, поэтому их коды различаются хотя бы в одной координате; если отнести ребро к такой координате, то каждый фиксированный координатный слой пересекает двудольное разбиение по этому биту.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-greedy-delta-plus-one-colors",
+      "title": "Жадная раскраска даёт нужные коды",
+      "text": "Если известно только ограничение на максимальную степень, обычная жадная раскраска вершин даёт \\(\\Delta+1\\) правильных вершинных цветов; затем эти цвета кодируются двоичными строками длины \\(\\lceil\\log_2(\\Delta+1)\\rceil\\).",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-binary-code-edge-partition",
+      "title": "Доказательство двоичными кодами цветов",
+      "text": "Выберем для \\(q\\) вершинных цветов попарно различные двоичные строки длины \\(r\\). Это возможно, потому что \\(2^r\\ge q\\). Каждой вершине припишем строку, соответствующую её цвету.\n\nДля любого ребра \\(uv\\) цвета концов различны, значит, две приписанные строке различны. Выберем координату, в которой они различаются, например первую такую координату, и поместим \\(uv\\) в слой этой координаты. Так каждое ребро попадает ровно в один из \\(r\\) слоёв.\n\nЗафиксируем координату \\(i\\). В \\(i\\)-м слое каждое ребро соединяет вершину, у которой \\(i\\)-й бит равен 0, с вершиной, у которой \\(i\\)-й бит равен 1, потому что в этот слой попадали только рёбра с различными кодами концов в координате \\(i\\). Поэтому \\(i\\)-й слой двудолен, с долями, заданными значением \\(i\\)-го бита. Значит, рёбра разбиты на \\(r\\) двудольных подграфов.\n\nДля следствия раскрасим вершины графа максимальной степени не больше \\(\\Delta\\) жадно в произвольном порядке, используя \\(\\Delta+1\\) цвет: когда вершина окрашивается, на её уже окрашенных соседях стоит не более \\(\\Delta\\) цветов, поэтому некоторый цвет доступен. Применяя первую часть при \\(q=\\Delta+1\\), получаем разбиение рёбер на \\(\\lceil\\log_2(\\Delta+1)\\rceil\\) двудольных подграфов.",
+      "idea_ids": [
+        "idea-binary-color-code-layers",
+        "idea-greedy-delta-plus-one-colors"
+      ],
+      "standard_idea_ids": [
+        "greedy_ordering"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "bipartite_graph",
+        "degree",
+        "chromatic_number"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Короткая кодировочная лемма: нужны только жадная вершинная раскраска и наблюдение, что каждая битовая координата задаёт двудольное разбиение.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "goal_construction",
+    "goal_bound",
+    "classical_theorem"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "greedy_coloring",
+        "binary_encoding",
+        "coordinate_partition"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2008-official",
+      "role": "source_solution_lemma",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-27",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Вынесено как общая самодостаточная лемма, используемая в задачах личной олимпиады Кубка Колмогорова 2008 для младших и старших; исходные карточки намеренно не редактировались.",
+      "Задача для младших — специализация q=4, r=2; задача для старших использует следствие при Delta=1000 и r=10."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

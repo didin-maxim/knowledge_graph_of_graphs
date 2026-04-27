@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-euler-trail-extension-center-forest-kolmogorov-2007-r1hl-p5",
+      "from": "euler-trail-extension-center-forest",
+      "to": "kolmogorov-2007-round-1-high-league-problem-5",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Задача Колмогорова о дорожной сети — это ровно эта лемма, где Центральный город является выделенной вершиной \\(c\\): возможность завершить любой маршрут без повторения дорог из \\(c\\) эквивалентна тому, что все циклы проходят через \\(c\\).",
+      "backward_text": "Задача Колмогорова является мотивирующим олимпиадным случаем критерия продления эйлерова пути из центральной вершины.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-obstruction-and-unused-components",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-eulerian-criterion-euler-trail-extension-center-forest",
+      "from": "eulerian-graph-criterion",
+      "to": "euler-trail-extension-center-forest",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о продлении использует эйлеров критерий дважды: после удаления цикла, не проходящего через \\(c\\), \\(c\\)-компонента всё ещё имеет эйлеров цикл, а в положительном направлении исходный граф имеет все степени чётными.",
+      "backward_text": "Критерий продления из центральной вершины — уточнённое эйлерово утверждение: он спрашивает, какие выделенные вершины делают каждый частичный путь продолжимым, а не только когда существует некоторый эйлеров цикл.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-cycle-obstruction-and-unused-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-tree-equivalent-properties-euler-trail-extension-center-forest",
+      "from": "tree-equivalent-properties",
+      "to": "euler-trail-extension-center-forest",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Положительное направление леммы о продлении использует базовый факт о лесах: непустой конечный лес имеет лист, поэтому ненулевой лес не может иметь все степени чётными.",
+      "backward_text": "Критерий продления эйлерова пути из центральной вершины — чистое применение ацикличности леса: после удаления центральной вершины все возможные неиспользованные внецентральные компоненты становятся лесами, где чётность степеней заставляет их быть безрёберными.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-cycle-obstruction-and-unused-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    }
+  ]
+}

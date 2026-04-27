@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-bipartite-edge-layers-kolmogorov-2008-juniors-p8",
+      "from": "vertex-coloring-to-bipartite-edge-layers",
+      "to": "kolmogorov-2008-individual-olympiad-juniors-problem-8",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о двоичных кодах даёт ровно ту конструкцию, которая используется в задаче для младших. 3-регулярный граф жадно 4-раскрашиваем, четыре цвета кодируются двумя битами, а назначение каждого ребра в координату, где коды концов различаются, разбивает рёбра на две двудольные сети.",
+      "backward_text": "Задача для младших — специализация леммы при q=4 и r=2: две авиакомпании являются двумя битовыми координатными слоями правильной 4-раскраски.",
+      "anchors": {
+        "from_solution_id": "sol-binary-code-edge-partition",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-bipartite-edge-layers-kolmogorov-2008-seniors-p5",
+      "from": "vertex-coloring-to-bipartite-edge-layers",
+      "to": "kolmogorov-2008-individual-olympiad-seniors-problem-5",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о двоичных кодах напрямую доказывает задачу для старших. Жадная вершинная раскраска даёт 1001 цвет для графа максимальной степени 1000, а \\(1001\\le 2^{10}\\), поэтому достаточно десяти битовых слоёв; каждый слой двудолен и потому не содержит нечётных циклов.",
+      "backward_text": "Задача для старших — случай \\(\\Delta=1000\\) следствия леммы о максимальной степени: \\(\\lceil\\log_2(1001)\\rceil=10\\) двудольных рёберных слоёв.",
+      "anchors": {
+        "from_solution_id": "sol-binary-code-edge-partition",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-bipartite-edge-layers-digraph-outdegree-greedy-coloring-bound",
+      "from": "vertex-coloring-to-bipartite-edge-layers",
+      "to": "digraph-outdegree-greedy-coloring-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют жадную раскраску как инструмент при ограничении на степень. Здесь жадная раскраска даёт \\(\\Delta+1\\) вершинных цветов перед двоичным разбиением рёбер, а в орграфной лемме жадно-индукционный порядок сразу даёт правильную раскраску при ограниченной исходящей степени.",
+      "backward_text": "Орграфная лемма о раскраске — ещё одна переиспользуемая жадная оценка. В отличие от леммы о двоичных слоях, она останавливается на вершинной раскраске и не кодирует цвета для разбиения рёбер на двудольные слои.",
+      "anchors": {
+        "from_solution_id": "sol-binary-code-edge-partition",
+        "to_solution_id": "sol-low-indegree-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    }
+  ]
+}
