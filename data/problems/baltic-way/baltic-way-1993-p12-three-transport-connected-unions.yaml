@@ -1,0 +1,58 @@
+{
+  "id": "baltic-way-1993-p12-three-transport-connected-unions",
+  "title": "Три вида транспорта и связность любых двух цветов, Baltic Way 1993 P12",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "application"]},
+  "language": "ru",
+  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "problem_profile": {
+    "objects": ["edge_coloured_graph", "connected_graph"],
+    "methods": ["edge_counting", "construction"],
+    "transformations": ["transport_network_to_coloured_graph"],
+    "goal": ["find_exact_minimum"],
+    "auxiliary_graph_type": [],
+    "invariants": ["edge_count_in_colour_unions"],
+    "keywords": ["baltic_way_1993_p12", "three_transport_graph"],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Условие",
+      "text": "В некотором королевстве 13 городов. Между некоторыми парами городов устанавливаются прямые двусторонние сообщения трёх видов: автобусные, железнодорожные или воздушные. Какое наименьшее число сообщений нужно установить, чтобы при выборе любых двух видов транспорта можно было добраться из любого города в любой другой, не используя третий вид?",
+      "source_id": "src-baltic-way-1993-official-solutions",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["connected_graph"]
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph",
+      "text": "Найдите минимальное число рёбер в графе на 13 вершинах, рёбра которого окрашены в три цвета, если объединение любых двух цветовых классов является связным графом.",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["connected_graph"],
+      "distinct_from": ["stmt-original"]
+    }],
+    "olympiad_reformulations": []
+  },
+  "ideas": [{
+    "id": "idea-three-connected-unions-counting",
+    "title": "Каждое двухцветное объединение содержит хотя бы 12 рёбер",
+    "text": "Связный граф на 13 вершинах имеет не меньше 12 рёбер. Суммируя это для трёх пар цветов, каждое ребро считается ровно дважды.",
+    "tags": ["double_counting", "connectivity"],
+    "status": "ai_checked"
+  }],
+  "solutions": [{
+    "id": "sol-official-expanded",
+    "title": "Двойной подсчёт и конструкция",
+    "text": "Докажем нижнюю оценку. Если выбрать любые два вида транспорта, полученный граф на 13 городах должен быть связным, а значит содержит не меньше 12 сообщений. Есть три выбора пары видов транспорта. При суммировании трёх полученных чисел каждое сообщение учитывается ровно дважды, потому что его цвет входит ровно в две пары цветов. Поэтому \\(2E\\ge 12+12+12=36\\), откуда \\(E\\ge18\\).\n\nПостроим пример с 18 сообщениями. Пронумеруем города числами \\(0,1,\\ldots,12\\). Проведём автобусные сообщения \\(01,23,45,67,89,10\\,11\\), железнодорожные сообщения \\(12,34,56,78,9\\,10,11\\,12\\) и воздушные сообщения \\(02,14,36,58,7\\,10,9\\,12\\). Если оставить автобусные и железнодорожные сообщения, получится путь \\(0-1-2-\\cdots-12\\). Если оставить автобусные и воздушные, получится путь \\(11-10-7-6-3-2-0-1-4-5-8-9-12\\). Если оставить железнодорожные и воздушные, получится путь \\(0-2-1-4-3-6-5-8-7-10-9-12-11\\). Во всех трёх случаях любые два вида транспорта связывают все города. Следовательно, нижняя оценка достижима, и минимальное число сообщений равно 18.",
+    "idea_ids": ["idea-three-connected-unions-counting"],
+    "standard_idea_ids": ["double_counting"],
+    "status": "ai_checked",
+    "definition_ids": ["connected_graph"]
+  }],
+  "difficulty": {"main": "regional", "local_score": 4, "comment": "Графовая точная оценка через двойной подсчёт и явную трёхцветную конструкцию.", "status": "ai_checked"},
+  "tags": ["connectivity", "double_counting", "goal_exact_bound", "construction"],
+  "properties": {"central_method": {"value": ["connected_graph_edge_lower_bound", "double_counting"], "status": "ai_checked"}},
+  "sources": [{"source_id": "src-baltic-way-1993-official-solutions", "role": "problem_and_solutions_official", "status": "source_verified"}],
+  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "needs_human_review", "public_ready": false, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan; local explicit construction replaces the official figure."], "relations_status": "base_done"}
+}

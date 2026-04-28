@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-inmo-2021-p4-complete-graph-minus-edges-lemma",
+      "from": "inmo-2021-p4-detective-cards-hamiltonian-path",
+      "to": "complete-graph-minus-n-minus-2-edges-hamiltonian-path",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Нижняя оценка в INMO 2021 P4 напрямую использует лемму: после отрицательных ответов остаётся граф, полученный из полного удалением малого числа рёбер, и его гамильтонов путь задаёт допустимую нумерацию карт.",
+      "backward_text": "Лемма выделена из INMO 2021 P4 как самостоятельный плотностный инструмент для построения гамильтонова пути после удаления не более n-2 рёбер из полного графа.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-official-longest-path"
+      },
+      "status": "ai_checked",
+      "confidence": 1.0
+    },
+    {
+      "id": "rel-inmo-2021-p4-longest-path-endpoint-cycle",
+      "from": "complete-graph-minus-n-minus-2-edges-hamiltonian-path",
+      "to": "longest-path-endpoints-shortest-detour",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе леммы используют один и тот же экстремальный приём: выбирается длиннейший путь, а затем дополнительные рёбра или обход между его концами превращают путь в цикл, из которого получился бы ещё более длинный путь.",
+      "backward_text": "Лемма об обходе концов длиннейшего пути является более локальной версией того же мотива, который в INMO-лемме доказывает гамильтоновость пути в плотном графе.",
+      "anchors": {
+        "from_solution_id": "sol-official-longest-path",
+        "to_solution_id": "sol-cycle-longer-than-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

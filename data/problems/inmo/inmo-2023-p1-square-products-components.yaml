@@ -1,0 +1,200 @@
+{
+  "id": "inmo-2023-p1-square-products-components",
+  "title": "Квадратные произведения и компоненты-клики, INMO 2023 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "HBCSE",
+      "role": "publisher_of_official_archive",
+      "status": "source_verified",
+      "note": "Официальные PDF INMO 2023 с условиями и решениями не указывают индивидуального автора задачи."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_set_of_positive_integers",
+      "square_product_relation",
+      "graph_components",
+      "cliques"
+    ],
+    "methods": [
+      "graph_model",
+      "component_clique_argument",
+      "modulo_8_square_obstruction"
+    ],
+    "transformations": [
+      "square_product_relation_to_graph"
+    ],
+    "goal": [
+      "find_four_pairwise_non_square_products"
+    ],
+    "auxiliary_graph_type": [
+      "equivalence_relation_graph"
+    ],
+    "invariants": [
+      "component_sizes",
+      "sum_of_squares_of_component_sizes"
+    ],
+    "keywords": [
+      "inmo_2023_p1",
+      "square_products",
+      "components_are_cliques",
+      "official_solution_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальное условие",
+        "text": "Пусть \\(S\\) — конечное множество положительных целых чисел. Предположим, что существует ровно \\(2023\\) упорядоченных пар \\((x,y)\\in S\\times S\\), для которых произведение \\(xy\\) является полным квадратом. Докажите, что можно найти по крайней мере четыре различных элемента множества \\(S\\), у которых произведение любых двух из них не является полным квадратом.\n\nНапример, если \\(S=\\{1,2,4\\}\\), то таких упорядоченных пар ровно пять: \\((1,1),(1,4),(2,2),(4,1),(4,4)\\).",
+        "source_id": "src-inmo-2023-official-problems",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph-hint"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-graph-hint",
+        "title": "Подсказочная графовая формулировка",
+        "text": "Постройте граф на вершинах \\(S\\): две различные вершины \\(x,y\\) соединены ребром тогда и только тогда, когда \\(xy\\) — полный квадрат. Докажите, что каждая компонента связности этого графа является кликой. После этого условие о \\(2023\\) упорядоченных парах превращается в равенство \\(a_1^2+\\cdots+a_m^2=2023\\), где \\(a_i\\) — размеры компонент. Требуется доказать, что \\(m\\ge4\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-square-product-transitivity",
+      "title": "Связность превращается в смежность",
+      "text": "Если \\(x=a_1,a_2,\n\\ldots,a_t=y\\) — путь, и каждое произведение \\(a_i a_{i+1}\\) является квадратом, то \\(xy\\) тоже квадрат, потому что промежуточные множители входят в произведение дважды.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-component-square-count",
+      "title": "Компоненты дают сумму квадратов",
+      "text": "Внутри одной компоненты любые две вершины дают квадратное произведение, а из разных компонент — не дают. Поэтому число упорядоченных пар с квадратным произведением равно сумме квадратов размеров компонент.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-mod-8-three-squares",
+      "title": "Три квадрата не дают 2023",
+      "text": "Квадрат по модулю \\(8\\) равен \\(0\\), \\(1\\) или \\(4\\). Сумма трёх таких остатков не может быть равна \\(7\\), тогда как \\(2023\\equiv7\\pmod8\\).",
+      "tags": [
+        "goal_impossibility"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-graph-components",
+      "title": "Решение через граф квадратных произведений",
+      "text": "Построим граф \\(G\\), вершинами которого являются элементы множества \\(S\\). Две различные вершины \\(x\\) и \\(y\\) соединяем ребром тогда и только тогда, когда \\(xy\\) является полным квадратом.\n\nДокажем, что каждая компонента связности графа \\(G\\) является кликой. Возьмём две вершины \\(x\\) и \\(y\\) из одной компоненты. Между ними есть путь\n\\[\nx=a_1,a_2,\n\\ldots,a_{t-1},a_t=y,\n\\]\nто есть каждое произведение \\(a_i a_{i+1}\\) является полным квадратом. Тогда\n\\[\nxy=a_1a_t=\\frac{(a_1a_2)(a_2a_3)\n\\cdots(a_{t-1}a_t)}{a_2^2a_3^2\n\\cdots a_{t-1}^2}\n\\]\nтоже является полным квадратом: в числителе стоит произведение квадратов, а знаменатель сам является квадратом. Значит, \\(x\\) и \\(y\\) соединены ребром. Поэтому любые две вершины одной компоненты смежны, и компонента действительно является кликой.\n\nПусть размеры компонент равны \\(a_1,a_2,\n\\ldots,a_m\\). Так как компоненты — клики, две вершины \\(x,y\\) дают квадратное произведение \\(xy\\) тогда и только тогда, когда они лежат в одной компоненте. Упорядоченных пар внутри компоненты размера \\(a_i\\) ровно \\(a_i^2\\), включая пары \\((x,x)\\). По условию\n\\[\na_1^2+a_2^2+\n\\cdots+a_m^2=2023.\n\\]\n\nПредположим, что компонент не больше трёх. Добавив при необходимости нулевые размеры, получаем представление\n\\[\na^2+b^2+c^2=2023\n\\]\nнеотрицательными целыми числами. Но квадрат по модулю \\(8\\) может иметь только остаток \\(0\\), \\(1\\) или \\(4\\). Сумма трёх чисел из \\(\\{0,1,4\\}\\) не сравнима с \\(7\\) по модулю \\(8\\), а \\(2023\\equiv7\\pmod8\\). Противоречие.\n\nЗначит, компонент связности как минимум четыре. Выберем по одному элементу из четырёх разных компонент. Между элементами из разных компонент нет ребра, то есть произведение любых двух выбранных элементов не является полным квадратом. Это и требовалось доказать.",
+      "idea_ids": [
+        "idea-square-product-transitivity",
+        "idea-component-square-count",
+        "idea-mod-8-three-squares"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "connected_graph",
+        "clique"
+      ],
+      "source_id": "src-inmo-2023-official-solutions"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "INMO 2023 P1; графовая модель быстро выявляет компоненты как классы эквивалентности, после чего остаётся короткое сравнение по модулю 8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "graph_model",
+    "double_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "square_product_graph",
+        "components_as_cliques",
+        "component_size_square_count",
+        "modulo_8_obstruction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-inmo-2023-official-problems",
+      "role": "problem_statement_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    },
+    {
+      "source_id": "src-inmo-2023-official-solutions",
+      "role": "official_solutions",
+      "status": "source_verified",
+      "note": "Решение 1 в официальном PDF начинается с построения графа на элементах S."
+    },
+    {
+      "source_id": "src-jpsaha-inmo-index",
+      "role": "reliable_archive_index",
+      "status": "source_verified",
+      "note": "Индекс использован для обнаружения и сверки официальных ссылок HBCSE."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-28",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-28: импортировано по задаче Linear MAX-14 после проверки отсутствия дублей по `perfect square`, `ordered pairs`, `component is a clique`.",
+      "2026-04-28: добавлена только graph_hint_reformulation, потому что графовая модель является главным ходом официального решения."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

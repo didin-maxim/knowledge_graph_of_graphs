@@ -1,0 +1,46 @@
+{
+  "id": "polish-mo-2022-graph-import",
+  "title": "Polish MO 2022 confirmed graph imports",
+  "status": "needs_human_review",
+  "created_at": "2026-04-28",
+  "updated_at": "2026-04-28",
+  "source_scope": {
+    "source_ids": [
+      "src-polish-mo-2022-ii-p6-official-problems",
+      "src-polish-mo-2022-ii-p6-official-solutions",
+      "src-polish-mo-2022-iii-p3-official-problems",
+      "src-polish-mo-2022-iii-p3-official-solutions"
+    ],
+    "notes": [
+      "Compact MAX-17 pass over official Polish MO archive: current OM site table 47-77 was downloaded and keyword-scanned; PTM archom entrypoint for older 1-60 was checked through its cookie gate, with no import made from the older archive in this pass.",
+      "Whole database duplicate searches were run before import using Polish and Russian motifs for the two confirmed tasks."
+    ]
+  },
+  "items": [
+    {
+      "id": "polish-mo-2022-ii-p6",
+      "problem_id": "polish-mo-2022-ii-p6-badminton-euler-cycles",
+      "status": "added",
+      "source_ids": [
+        "src-polish-mo-2022-ii-p6-official-problems",
+        "src-polish-mo-2022-ii-p6-official-solutions"
+      ],
+      "decision_reason": "Official solution substantially uses graph theory: the drawn two-match pairs form an even-degree graph decomposed into cycles."
+    },
+    {
+      "id": "polish-mo-2022-iii-p3",
+      "problem_id": "polish-mo-2022-iii-p3-robust-chord-graph-sparsification",
+      "status": "added",
+      "source_ids": [
+        "src-polish-mo-2022-iii-p3-official-problems",
+        "src-polish-mo-2022-iii-p3-official-solutions"
+      ],
+      "decision_reason": "Graph-theoretic statement after the direct chord-to-edge translation; official proof is fully graph-theoretic via iterated spanning forests."
+    },
+    {
+      "id": "polish-mo-2024-ii-p3",
+      "status": "skipped",
+      "decision_reason": "Road-network wording is graph-flavoured, but the official proof is an averaging argument over explicit construction plans and does not use a substantive graph-theory idea in this compact pass."
+    }
+  ]
+}

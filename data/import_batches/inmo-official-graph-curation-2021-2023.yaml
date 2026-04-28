@@ -1,0 +1,58 @@
+{
+  "id": "inmo-official-graph-curation-2021-2023",
+  "title": "INMO official archive graph curation, MAX-14",
+  "status": "needs_human_review",
+  "created_at": "2026-04-28",
+  "created_by": "ai",
+  "source_scope": {
+    "contest": "INMO",
+    "archive": "HBCSE official PDFs via J. P. Saha INMO index",
+    "scan_note": "Compact keyword scan of official/reliable INMO archive links 1986-2026; imported only confirmed missing strong graph tasks from official solution PDFs."
+  },
+  "items": [
+    {
+      "id": "inmo-2021-p4",
+      "problem_id": "inmo-2021-p4-detective-cards-hamiltonian-path",
+      "source_ids": [
+        "src-inmo-2021-official-solutions",
+        "src-jpsaha-inmo-index"
+      ],
+      "status": "added",
+      "reason": "Official solution substantially uses a graph model: deleted edges in K_N and a Hamiltonian-path lemma."
+    },
+    {
+      "id": "inmo-2021-p4-lemma",
+      "problem_id": "complete-graph-minus-n-minus-2-edges-hamiltonian-path",
+      "source_ids": [
+        "src-inmo-2021-official-solutions"
+      ],
+      "status": "added",
+      "reason": "Reusable independent lemma extracted from the official solution."
+    },
+    {
+      "id": "inmo-2023-p1",
+      "problem_id": "inmo-2023-p1-square-products-components",
+      "source_ids": [
+        "src-inmo-2023-official-problems",
+        "src-inmo-2023-official-solutions",
+        "src-jpsaha-inmo-index"
+      ],
+      "status": "added",
+      "reason": "Official solution 1 substantially uses a graph whose connected components are cliques."
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "inmo-2025-p5",
+      "status": "rejected",
+      "reason": "Polygon-adjacent coin process on a cycle, but the official solution scan indicates invariant/construction bookkeeping rather than a substantial graph-theoretic method; rejected as weak graph-adjacent for this compact pass."
+    }
+  ],
+  "editorial": {
+    "review_status": "ai_checked",
+    "notes": [
+      "Known BMO/Baltic Way already-present and prior-discovery items from the Linear issue were not touched.",
+      "No `data/problems/inmo` folder existed before this import."
+    ]
+  }
+}

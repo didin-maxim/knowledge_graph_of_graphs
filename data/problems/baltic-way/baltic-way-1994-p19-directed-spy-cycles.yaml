@@ -1,0 +1,58 @@
+{
+  "id": "baltic-way-1994-p19-directed-spy-cycles",
+  "title": "Из 10-циклов к 11-циклам в орграфе шпионов, Baltic Way 1994 P19",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "application"]},
+  "language": "ru",
+  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "problem_profile": {
+    "objects": ["directed_graph", "oriented_graph", "directed_cycle"],
+    "methods": ["degree_counting", "contradiction"],
+    "transformations": ["spies_to_oriented_graph"],
+    "goal": ["prove_existence"],
+    "auxiliary_graph_type": [],
+    "invariants": ["neutral_pairs"],
+    "keywords": ["baltic_way_1994_p19", "directed_cycles"],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Условие",
+      "text": "В разведывательной службе Чудо-острова в Тарту находятся 16 шпионов. Каждый из них следит за некоторыми своими коллегами. Известно, что если шпион \\(A\\) следит за шпионом \\(B\\), то \\(B\\) не следит за \\(A\\). Кроме того, любые 10 шпионов можно занумеровать так, что первый следит за вторым, второй — за третьим, ..., десятый — за первым. Докажите, что любые 11 шпионов тоже можно занумеровать таким образом.",
+      "source_id": "src-baltic-way-1994-official-solutions",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["directed_graph", "cycle"]
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph",
+      "text": "В ориентированном графе на 16 вершинах между двумя вершинами проведено не более одной дуги, и встречные дуги запрещены. Известно, что любое множество из 10 вершин содержит ориентированный гамильтонов цикл. Докажите, что любое множество из 11 вершин тоже содержит ориентированный гамильтонов цикл.",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["directed_graph", "hamiltonian_cycle"],
+      "distinct_from": ["stmt-original"]
+    }],
+    "olympiad_reformulations": []
+  },
+  "ideas": [{
+    "id": "idea-neutral-pair-count",
+    "title": "У каждой вершины не больше одного нейтрального партнёра",
+    "text": "Если у вершины слишком мало входящих или исходящих соседей среди остальных, можно выбрать 10 вершин, которые не образуют требуемый цикл. Отсюда число нейтральных вершин для каждой вершины не превосходит 1.",
+    "tags": ["degree_counting", "tournaments"],
+    "status": "needs_human_review"
+  }],
+  "solutions": [{
+    "id": "sol-official-expanded",
+    "title": "Нейтральные пары",
+    "text": "Назовём двух шпионов нейтральными, если ни один из них не следит за другим. Для шпиона \\(A_i\\) обозначим через \\(a_i\\) число шпионов, которые следят за ним, через \\(b_i\\) число шпионов, за которыми следит он, а через \\(c_i\\) число нейтральных к нему шпионов. Тогда \\(a_i+b_i+c_i=15\\).\n\nИз условия о любых 10 шпионах следует, что \\(a_i+c_i\\le 8\\) и \\(b_i+c_i\\le 8\\). Действительно, если бы, например, \\(a_i+c_i\\ge9\\), то вместе с \\(A_i\\) можно было бы выбрать 10 шпионов, среди которых из \\(A_i\\) нет дуги ни в одну из остальных девяти вершин. Тогда \\(A_i\\) не мог бы стоять в ориентированном цикле длины 10. Аналогично для \\(b_i+c_i\\ge9\\). Складывая две оценки, получаем \\(a_i+b_i+2c_i\\le16\\). Так как \\(a_i+b_i+c_i=15\\), имеем \\(c_i\\le1\\).\n\nПредположим теперь, что существует группа из 11 шпионов без нужной нумерации. Возьмём в ней произвольного шпиона \\(B\\). Остальные 10 можно занумеровать \\(C_1,\\ldots,C_{10}\\) так, что \\(C_1\to C_2\to\\cdots\to C_{10}\to C_1\\). Если среди \\(C_i\\) нет нейтрального к \\(B\\), то между \\(B\\) и каждым \\(C_i\\) есть ровно одна дуга. Если \\(C_i\to B\\), то не может быть \\(B\to C_{i+1}\\), иначе \\(C_i,B,C_{i+1},C_{i+2},\\ldots,C_{i-1}\\) дали бы ориентированный цикл длины 11. Поэтому из \\(C_i\to B\\) следует \\(C_{i+1}\to B\\). Так как хотя бы одна дуга между \\(B\\) и циклом направлена в \\(B\\) или из \\(B\\), обходом по циклу получаем, что все \\(C_i\to B\\), но тогда из любой дуги \\(B\to C_j\\), если она есть, получается противоречие; если таких дуг нет, то \\(B\\) имеет десять входящих соседей в этой группе, что несовместимо с оценками для подходящего выбора 10 вершин. Значит, среди десяти \\(C_i\\) обязан быть нейтральный к \\(B\\).\n\nИтак, в любой предполагаемой плохой группе из 11 вершин каждая вершина имеет нейтральную пару внутри этой группы. Но выше доказано, что у каждой вершины во всём графе не больше одного нейтрального партнёра. Тогда нейтральные пары должны разбить 11 вершин на пары, что невозможно для нечётного числа 11. Противоречие доказывает утверждение.",
+    "idea_ids": ["idea-neutral-pair-count"],
+    "standard_idea_ids": ["double_counting", "pigeonhole_principle"],
+    "status": "needs_human_review",
+    "definition_ids": ["directed_graph", "cycle", "hamiltonian_cycle"]
+  }],
+  "difficulty": {"main": "regional", "local_score": 7, "comment": "Содержательная задача об ориентированных циклах; решение расширено из официального, но отдельные переходы оставлены на human review.", "status": "needs_human_review"},
+  "tags": ["tournaments", "degree_counting", "goal_proof"],
+  "properties": {"central_method": {"value": ["neutral_pair_counting", "directed_cycle_insertion"], "status": "needs_human_review"}},
+  "sources": [{"source_id": "src-baltic-way-1994-official-solutions", "role": "problem_and_solutions_official", "status": "source_verified"}],
+  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "needs_human_review", "public_ready": false, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan; proof needs human review for the expanded neutral-pair contradiction."], "relations_status": "base_done"}
+}

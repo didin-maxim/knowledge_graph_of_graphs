@@ -1,0 +1,58 @@
+{
+  "id": "baltic-way-2023-p6-colour-touch-graph",
+  "title": "Граф соприкосновения цветов в таблице, Baltic Way 2023 P6",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_solution"]},
+  "language": "ru",
+  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "problem_profile": {
+    "objects": ["grid_coloring", "connected_graph", "maximum_degree_two_graph"],
+    "methods": ["auxiliary_colour_graph", "diameter_bound"],
+    "transformations": ["colours_to_touch_graph"],
+    "goal": ["find_exact_maximum"],
+    "auxiliary_graph_type": ["path_or_cycle"],
+    "invariants": ["distance_from_center_cell"],
+    "keywords": ["baltic_way_2023_p6", "colour_touch_graph"],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Условие",
+      "text": "Пусть \\(n\\) — положительное целое число. Каждая клетка таблицы \\(n\times n\\) окрашена в один из \\(k\\) цветов, причём каждый цвет использован хотя бы один раз. Два разных цвета называются соприкасающимися, если существуют две клетки этих цветов с общей стороной. Раскраска такова, что каждый цвет соприкасается не более чем с двумя другими цветами. Найдите максимальное возможное значение \\(k\\) в зависимости от \\(n\\).",
+      "source_id": "src-baltic-way-2023-official-solutions",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": []
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph-hint",
+      "text": "Постройте граф цветов: вершины — использованные цвета, два цвета соединены ребром, если они соприкасаются по стороне клетки. Этот граф связен и имеет максимальную степень не больше 2; значит, он является путём или циклом. Используя расстояния от центральной клетки или центрального блока \\(2\times2\\), найдите наибольшее число вершин такого графа.",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["connected_graph", "degree", "path", "cycle"],
+      "distinct_from": ["stmt-original"]
+    }],
+    "olympiad_reformulations": []
+  },
+  "ideas": [{
+    "id": "idea-colour-graph-diameter",
+    "title": "Граф цветов имеет степень не больше 2",
+    "text": "Связный граф максимальной степени 2 — путь или цикл; если от одной или нескольких центральных клеток до любой клетки таблицы путь по клеткам имеет длину не больше \\(n-1\\), то и в графе цветов все цвета лежат на расстоянии не больше \\(n-1\\).",
+    "tags": ["connectivity", "degree_counting"],
+    "status": "ai_checked"
+  }],
+  "solutions": [{
+    "id": "sol-official-expanded",
+    "title": "Оценка через граф цветов",
+    "text": "Ответ: \\(k=1\\) при \\(n=1\\), \\(k=4\\) при \\(n=2\\), а при \\(n\\ge 3\\) максимум равен \\(2n-1\\). Конструкция для \\(n\\ge3\\) получается диагональными полосами: клетки с одинаковой суммой координат получают один цвет. Тогда цветов \\(2n-1\\), и каждый цвет соприкасается только с соседними по номеру диагоналями.\n\nДокажем оценку сверху. Построим граф, вершины которого — цвета, а ребро соединяет два соприкасающихся цвета. Так как вся таблица связна по сторонам и каждый цвет используется, этот граф связен. По условию степень каждой вершины не больше 2, поэтому граф является либо путём, либо циклом.\n\nПусть \\(n\\) нечётно. Возьмём центральную клетку. От неё до любой клетки таблицы можно дойти по соседним клеткам не более чем за \\(n-1\\) шагов. Следовательно, от цвета центральной клетки до любого другого цвета в графе цветов расстояние не больше \\(n-1\\). В пути или цикле с \\(2n\\) и более вершинами у любой вершины найдётся вершина на расстоянии хотя бы \\(n\\). Значит, \\(k\\le 2n-1\\).\n\nПусть \\(n\\) чётно. Рассмотрим четыре центральные клетки. Если все они имеют разные цвета, то эти четыре цвета образуют цикл длины 4 в графе цветов; так как связный граф степени не больше 2, содержащий цикл, сам является этим циклом, и тогда \\(k=4\\). Если среди центральных клеток два цвета совпадают, то от этого цвета до любой клетки снова можно дойти не более чем за \\(n-1\\) переходов по клеткам, и предыдущий аргумент даёт \\(k\\le 2n-1\\). При \\(n=2\\) возможны четыре цвета, а при \\(n\\ge3\\) диагональная конструкция даёт \\(2n-1\\), что не меньше 4. Ответ доказан.",
+    "idea_ids": ["idea-colour-graph-diameter"],
+    "standard_idea_ids": ["pigeonhole_principle"],
+    "status": "ai_checked",
+    "definition_ids": ["connected_graph", "degree", "path", "cycle"]
+  }],
+  "difficulty": {"main": "regional", "local_score": 5, "comment": "Граф не в исходной формулировке, но официальное решение существенно использует граф цветов.", "status": "ai_checked"},
+  "tags": ["connectivity", "degree_counting", "coloring", "goal_exact_bound"],
+  "properties": {"central_method": {"value": ["auxiliary_colour_graph", "diameter_bound"], "status": "ai_checked"}},
+  "sources": [{"source_id": "src-baltic-way-2023-official-solutions", "role": "problem_and_solutions_official", "status": "source_verified"}],
+  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "needs_human_review", "public_ready": false, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan."], "relations_status": "base_done"}
+}

@@ -1,0 +1,153 @@
+{
+  "id": "complete-graph-minus-n-minus-2-edges-hamiltonian-path",
+  "title": "Гамильтонов путь после удаления не более n-2 рёбер из полного графа",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "HBCSE",
+      "role": "publisher_of_official_archive",
+      "status": "source_verified",
+      "note": "Лемма выделена из официального решения INMO 2021 P4; индивидуальный автор в PDF не указан."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "deleted_edges",
+      "dense_graph",
+      "longest_path",
+      "hamiltonian_path"
+    ],
+    "methods": [
+      "degree_sum_common_neighbor",
+      "longest_path_extremal_choice",
+      "cycle_closure"
+    ],
+    "transformations": [
+      "deleted_edges_to_dense_spanning_subgraph"
+    ],
+    "goal": [
+      "force_hamiltonian_path"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "at_most_n_minus_2_missing_edges"
+    ],
+    "keywords": [
+      "complete_graph_minus_few_edges",
+      "hamiltonian_path",
+      "inmo_2021_p4_lemma"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть \\(G\\) — граф на \\(n>3\\) вершинах, полученный из полного графа \\(K_n\\) удалением не более \\(n-2\\) рёбер. Тогда в \\(G\\) существует гамильтонов путь.",
+        "source_id": "src-inmo-2021-official-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-common-neighbor-connectivity",
+      "title": "Сумма степеней даёт общего соседа",
+      "text": "Так как удалено мало рёбер, для любых двух вершин \\(a,b\\) остаётся \\(\\deg a+\\deg b\\ge n\\). Отсюда у них есть общий сосед, а значит граф связен.",
+      "tags": [
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-longest-path-closes-cycle",
+      "title": "Длиннейший путь замыкается в цикл",
+      "text": "У концов длиннейшего пути все соседи лежат на самом пути. Большая сумма степеней концов заставляет два подходящих ребра к внутренним вершинам, которые замыкают вершины пути в цикл. Связность затем запрещает вершины вне пути.",
+      "tags": [
+        "hamiltonian_cycles"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-longest-path",
+      "title": "Доказательство длиннейшим путём",
+      "text": "Возьмём любые две вершины \\(a\\) и \\(b\\). В полном графе каждая из них имела степень \\(n-1\\). При удалении не более \\(n-2\\) рёбер сумма \\(\\deg a+\\deg b\\) уменьшается не более чем на \\(n-2\\), если считать только те удалённые рёбра, которые касаются хотя бы одной из этих двух вершин. Поэтому\n\\[\n\\deg a+\\deg b\\ge 2(n-1)-(n-2)=n.\n\\]\nЕсли бы у \\(a\\) и \\(b\\) не было общего соседа, то сумма их степеней была бы не больше \\(n-1\\). Значит, любые две вершины имеют общего соседа; в частности, граф связен.\n\nПусть \\(P:u=u_0,u_1,\n\\ldots,u_k=v\\) — длиннейший простой путь в \\(G\\). Все соседи \\(u\\) и \\(v\\) лежат среди вершин этого пути: иначе путь можно было бы продлить. Запишем соседей \\(u\\) на пути как \\(u_{i_1},\\ldots,u_{i_x}\\), где \\(1=i_1<\\cdots<i_x\\), а соседей \\(v\\) как \\(u_{j_1},\\ldots,u_{j_y}\\). Из оценки \\(x+y=\\deg u+\n\\deg v\\ge n\\) следует, что найдётся индекс \\(i\\), для которого есть рёбра \\(u u_{i+1}\\) и \\(u_i v\\). Тогда вершины пути \\(P\\) образуют цикл: идём от \\(u_{i+1}\\) назад к \\(u\\), затем по пути до \\(u_i\\), затем по ребру к \\(v\\), а после этого назад по пути до \\(u_{i+1}\\).\n\nЕсли какая-то вершина \\(w\\) не лежит на \\(P\\), то по связности существует путь от \\(w\\) к одной из вершин полученного цикла. Пройдя от \\(w\\) до цикла и затем по циклу через все вершины \\(P\\), получаем простой путь длиннее \\(P\\). Это противоречие. Следовательно, \\(P\\) проходит через все вершины графа, то есть является гамильтоновым путём.",
+      "idea_ids": [
+        "idea-common-neighbor-connectivity",
+        "idea-longest-path-closes-cycle"
+      ],
+      "standard_idea_ids": [
+        "longest_path",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "connected_graph",
+        "path"
+      ],
+      "source_id": "src-inmo-2021-official-solutions"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Короткая плотностная лемма о гамильтоновом пути; полезна как самостоятельный инструмент для adversary-задач.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "connectivity",
+    "extremal_graph_theory",
+    "degree_counting",
+    "classical_lemma"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "degree_sum_common_neighbor",
+        "longest_path_extremal_choice",
+        "cycle_closure"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-inmo-2021-official-solutions",
+      "role": "official_solution_source",
+      "status": "source_verified",
+      "note": "Выделено из графового доказательства нижней оценки в INMO 2021 P4."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-28",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-04-28: выделено из INMO 2021 P4 как самостоятельная плотностная лемма."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_absent_reason": "Карточка сама является теоретико-графовой леммой, поэтому отдельная graph_theory-переформулировка не нужна.",
+    "graph_theory_duplicate_removed": true
+  }
+}
