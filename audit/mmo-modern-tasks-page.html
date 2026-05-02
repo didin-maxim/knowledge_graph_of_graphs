@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="/Admin/js/jquery-1.7.min.js"></script>
+<script src="/Admin/js/jquery.form.js"></script>
+<script src="/Admin/js/forum.js"></script>
+<script src="/Admin/js/user_functions.js"></script>
+<title>Задания -  Московская математическая олимпиада </title><link media="all" href="/css/style.css?date=20260502224701" rel="stylesheet">
+<link media="all" href="/css/stolzl.css" rel="stylesheet">
+<link rel="stylesheet" href="https://i.icomoon.io/public/ce1f1167f4/MOS/style.css">
+<script type="text/javascript" src="/js/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="/js/fancybox/jquery.fancybox.js"></script>
+<link rel="stylesheet" type="text/css" href="/js/fancybox/jquery.fancybox.css" media="screen" />
+<link type="text/css" href="/js/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="/js/jquery-ui/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/functions.js?date=20260502224701"></script>
+<script type="text/javascript" src="/js/jquery.flexisel.js"></script>
+<script type="text/javascript" src="/Admin/js/shop.site.js?v=3"></script>
+<!--<script src="//api-maps.yandex.ru/2.1.20/?lang=ru_RU"></script>-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/files/imagecache/c05e85be5ba290adc69499c355fb4093.png" /><link rel="apple-touch-icon" sizes="57x57" href="/files/imagecache/1a8f0440c62429bccf9feb2a2872f61a.png"><link rel="apple-touch-icon" sizes="114x114" href="/files/imagecache/48a738918acf2bd11846d2b7ee9d0038.png"><link rel="apple-touch-icon" sizes="72x72" href="/files/imagecache/da8a6f019bafba7b8e81d8078f0a9226.png"><link rel="apple-touch-icon" sizes="144x144" href="/files/imagecache/d49dda580721f83725b50f0f56d62c7b.png"><link rel="apple-touch-icon" sizes="60x60" href="/files/imagecache/b72cea7198dd17d3d4a1bddf54ac8f45.png"><link rel="apple-touch-icon" sizes="120x120" href="/files/imagecache/a19f981f448f7a8f53aae8f13daac4d5.png"><link rel="apple-touch-icon" sizes="76x76" href="/files/imagecache/c9072d2560ec803a91a5a6d96840cea3.png"><link rel="apple-touch-icon" sizes="152x152" href="/files/imagecache/704c2394815aa2fc3384032fe7a65d79.png"><meta name="yandex-verification" content="9fdb88e1153cbe08" /></head><body ><!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(17525161, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/17525161" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter --><div class="header">
+	<div class="content">
+		<a href="/" class="nored"><img src="/images/logo_mosh.svg"/><span>Московская олимпиада школьников</span></a>
+		<a href="https://vk.com/mosh_olymp" target="_blank" class="fs"><i class="icon-vk"></i></a>
+		<a href="javascript:showMenu()" class="ms"><i class="icon-menu"></i></a>
+		<!--<div class="menu-round ms"><a href="javascript:void(0)" class="menu-line">Задания</a></div>-->
+	</div>
+</div><div class="content">
+	<div class="middle_content">
+		<div id="left_menu_container">
+			<div class="mtop ms">
+				<a href="/" class="menu-logo ms"><img src="/images/logo_mosh.svg"></a>
+				<a href="javascript:void(0)" class="menu-closer ms">&times;</a>
+			</div>
+			<div class="left_menu">
+
+				<div class="container_olimp_menu fs">
+					<a class=" fs" href="javascript:void(0)"><span class="with_grey_arrow">Олимпиады</span>
+										</a>
+						<div class="select_variants olimp_menu popup fs">
+							<ul>
+							<li><a href="/olymp/arab">Арабский язык</a></li><li><a href="/olymp/astr">Астрономия</a></li><li><a href="/olymp/biol">Биология</a></li><li><a href="/olymp/bioecon">Биоэкономика</a></li><li><a href="/olymp/pt">Вероятность и статистика</a></li><li><a href="/olymp/gen">Генетика</a></li><li><a href="/olymp/geog">География</a></li><li><a href="/olymp/izo">Изобразительное искусство</a></li><li><span>Информатика</span><ul><li><a href="/olymp/iikt-10-11">10-11 классы</a></li><li><a href="/olymp/iikt-6-9">6-9 классы</a></li></ul></li><li><a href="/olymp/ib">Информационная безопасность</a></li><li><a href="/olymp/hist">История</a></li><li><a href="/olymp/amxk">История искусств</a></li><li><a href="/olymp/obzh">Комплексная безопасность</a></li><li><a href="/olymp/ling">Лингвистика</a></li><li><span class="red">Математика</span><ul><li><a href="/olymp/math-6-7">Математический праздник </a></li><li><span class="red">Московская математическая олимпиада </span></li></ul></li><li><a href="/olymp/soci">Обществознание</a></li><li><a href="/olymp/law">Право</a></li></ul><ul><li><span>Предпрофессиональная олимпиада</span><ul><li><a href="/olymp/predprof-engprak">Инженерия</a></li><li><a href="/olymp/predprof-infprak">Информационные технологии</a></li><li><a href="/olymp/predprof-sciprak">Исследования</a></li></ul></li><li><span>Робототехника</span><ul><li><a href="/olymp/robo-5-8">5-8 классы</a></li><li><a href="/olymp/robo-9-11">9-11 классы</a></li></ul></li><li><span>Труд (технология)</span><ul><li><a href="/olymp/trud-kd">Культура дома, дизайн и технологии</a></li><li><a href="/olymp/trud-tt">Техника, технологии и техническое творчество</a></li></ul></li><li><a href="/olymp/phys">Физика</a></li><li><a href="/olymp/phil">Филология</a></li><li><a href="/olymp/fingram">Финансовая грамотность</a></li><li><a href="/olymp/chem">Химия</a></li><li><a href="/olymp/ecol">Экология</a></li><li><a href="/olymp/econ">Экономика</a></li>							</ul>
+					</div>
+				</div>
+				<a class="ms " href="/">Главная</a>
+				<a class=" ms" href="/olimpiads"><span class="with_grey_arrow">Олимпиады</span></a>
+				
+
+<a href="/news" class="">Новости</a>
+
+<a href="/tasks" class="selected">Задания</a>
+
+<a href="/docs" class="">Документы</a>
+
+<a href="/schedule" class="">Расписание</a>
+
+<a href="/results" class="">Результаты</a>
+
+<a href="/contacts" class="">Контакты</a>
+			</div>
+			
+		</div>
+		<div class="right_content text">
+						<h1 class="red">Московская математическая олимпиада </h1>
+			<div class="block">
+								<h3>2024-2025 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Отборочный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2024-25/math/tasks-math-11-otbor-24-25.pdf">11 класс</a><br />ответы: <a href="/upload/files/Archive_tasks_2013-.../2024-25/math/ans-math-11-otbor-24-25.pdf">11 класс</a></p>
+<p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2024-25/math/tasks-math-8-final-24-25.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2024-25/math/tasks-math-9-final-24-25.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2024-25/math/tasks-math-10-final-24-25.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2024-25/math/tasks-math-11-tur1-final-24-25.pdf">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_2013-.../2024-25/math/tasks-math-11-tur2-final-24-25.pdf">11 класс - 2 день</a><br />решения:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2024-25/math/sol-math-8-final-24-25.pdf">8 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2024-25/math/sol-math-9-final-24-25.pdf">9 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2024-25/math/sol-math-10-final-24-25.pdf">10 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2024-25/math/sol-math-11-tur1-final-24-25.pdf">11 класс - 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2024-25/math/sol-math-11-tur2-final-24-25.pdf">11 класс - 2 день</a><br />видеоразборы: <a href="https://vk.com/video-65937233_456239348" target="_blank" rel="noopener">8 класс</a>&nbsp;|&nbsp;<a href="https://vk.com/video-65937233_456239349" target="_blank" rel="noopener">9 класс</a>&nbsp;|&nbsp;<a href="https://vk.com/video-65937233_456239350" target="_blank" rel="noopener">10 класс</a>&nbsp;|&nbsp;<a href="https://vk.com/video-65937233_456239351" target="_blank" rel="noopener">11 класс - 1 день</a> |&nbsp;<a href="https://vk.com/video-65937233_456239356" target="_blank" rel="noopener">11 класс - 2 день</a></p></div>
+				</div>
+							<h3>2023-2024 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Отборочный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2023-24/math/tasks-math-11-otbor-23-24.pdf">11 класс</a><br />ответы: <a href="/upload/files/Archive_tasks_2013-.../2023-24/math/ans-math-11-otbor-23-24.pdf">11 класс</a></p>
+<p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2023-24/math/tasks-math-8-final-23-24.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2023-24/math/tasks-math-9-final-23-24.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2023-24/math/tasks-math-10-final-23-24.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2023-24/math/tasks-math-11-day1-final-23-24.pdf">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_2013-.../2023-24/math/tasks-math-11-day2-final-23-24.pdf">11 класс - 2 день</a><br />решения:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2023-24/math/sol-math-8-final-23-24.pdf">8 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2023-24/math/sol-math-9-final-23-24.pdf">9 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2023-24/math/sol-math-10-final-23-24.pdf">10 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2023-24/math/sol-math-11-day1-final-23-24.pdf">11 класс - 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2023-24/math/sol-math-11-day2-final-23-24.pdf">11 класс - 2 день<br /></a>видеоразборы: <a href="https://www.youtube.com/watch?v=_b6hhkzInxw" target="_blank" rel="noopener">8 класс</a>&nbsp;|&nbsp;<a href="https://www.youtube.com/watch?v=05GxedWjzxc" target="_blank" rel="noopener">9 класс</a>&nbsp;|&nbsp;<a href="https://www.youtube.com/watch?v=eapCN8tQ96w" target="_blank" rel="noopener">10 класс</a>&nbsp;|&nbsp;<a href="https://www.youtube.com/watch?v=sjFcsHuHRZc" target="_blank" rel="noopener">11 класс - 1 день</a> |&nbsp;<a href="https://youtu.be/HCY_-ABXX28" target="_blank" rel="noopener">11 класс - 2 день</a></p></div>
+				</div>
+							<h3>2022-2023 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Отборочный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2022-23/math/tasks-math-11-otbor-22-23.pdf">11 класс</a><br />ответы: <a href="/upload/files/Archive_tasks_2013-.../2022-23/math/ans-math-11-otbor-22-23.pdf">11 класс</a></p>
+<p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2022-23/math/tasks-math-8-final-22-23.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2022-23/math/tasks-math-9-final-22-23.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2022-23/math/tasks-math-10-final-22-23.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2022-23/math/tasks-math-11-day1-final-22-23.pdf">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_2013-.../2022-23/math/tasks-math-11-day2-final-22-23.pdf">11 класс - 2 день</a><br />решения:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2022-23/math/sol-math-8-final-22-23.pdf">8 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2022-23/math/sol-math-9-final-22-23.pdf">9 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2022-23/math/sol-math-10-final-22-23.pdf">10 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2022-23/math/sol-math-11-day1-final-22-23.pdf">11 класс - 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2022-23/math/sol-math-11-day2-final-22-23.pdf">11 класс - 2 день<br /></a>видеоразборы: <a href="https://youtu.be/6L-MNyCbQ_o" target="_blank" rel="noopener">8 класс</a>&nbsp;|&nbsp;<a href="https://youtu.be/ZdeQerbnryk" target="_blank" rel="noopener">9 класс</a>&nbsp;|&nbsp;<a href="https://youtu.be/qUBCp6Uhd2A" target="_blank" rel="noopener">10 класс</a>&nbsp;|&nbsp;<a href="https://youtu.be/h1CI-X7-DW4" target="_blank" rel="noopener">11 класс - 1 день</a></p></div>
+				</div>
+							<h3>2021-2022 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Заочный тур<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2021-22/math/tasks-math-11-otbor-21-22.pdf">11 класс</a><br />ответы: <a href="/upload/files/Archive_tasks_2013-.../2021-22/math/ans-math-11-otbor-21-22.pdf">11 класс</a></p>
+<p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2021-22/math/tasks-math-8-final-21-22.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2021-22/math/tasks-math-9-final-21-22.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2021-22/math/tasks-math-10-final-21-22.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2021-22/math/tasks-math-11-day1-final-21-22.pdf">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_2013-.../2021-22/math/tasks-math-11-day2-final-21-22.pdf">11 класс - 2 день<br /></a>решения:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2021-22/math/sol-math-8-final-21-22.pdf">8 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2021-22/math/sol-math-9-final-21-22.pdf">9 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2021-22/math/sol-math-10-final-21-22.pdf">10 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2021-22/math/sol-math-11-day1-final-21-22.pdf">11 класс - 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2021-22/math/sol-math-11-day2-final-21-22.pdf">11 класс - 2 день<br /></a></p></div>
+				</div>
+							<h3>2020-2021 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Заочный тур<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2020-21/math/tasks-math-11-zaoch-20-21.pdf">11 класс</a><br />ответы: <a href="/upload/files/Archive_tasks_2013-.../2020-21/math/ans-math-11-zaoch-20-21.pdf">11 класс</a></p>
+<p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2020-21/math/tasks-math-8-final-20-21.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2020-21/math/tasks-math-9-final-20-21.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2020-21/math/tasks-math-10-final-20-21.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2020-21/math/tasks-math-11-day1-final-20-21.pdf">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_2013-.../2020-21/math/tasks-math-11-day2-final-20-21.pdf">11 класс - 2 день<br /></a>решения:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2020-21/math/ans-math-8-final-20-21.pdf">8 кл</a>.&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2020-21/math/ans-math-9-final-20-21.pdf">9 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2020-21/math/ans-math-10-final-20-21.pdf">10 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2020-21/math/ans-math-11-day1-final-20-21.pdf">11 класс - 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2020-21/math/ans-math-11-day2-final-20-21.pdf">11 класс - 2 день<br /></a></p></div>
+				</div>
+							<h3>2019-2020 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Заочный этап<br />задание:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2019-20/math/tasks-math-11-zaoch-19-0.pdf">11 класс</a></p><p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2019-20/math/tasks-math-8-final-19-0.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2019-20/math/tasks-math-9-final-19-0.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2019-20/math/tasks-math-10-final-19-0.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2019-20/math/tasks-math-11-day1-final-19-0.pdf">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_2013-.../2019-20/math/tasks-math-11-day2-final-19-0.pdf">11 класс - 2 день<br /></a>решения:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2019-20/math/ans-math-8-final-19-0.pdf">8 кл</a>.&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2019-20/math/ans-math-9-final-19-0.pdf">9 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2019-20/math/ans-math-10-final-19-0.pdf">10 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2019-20/math/ans-math-11-day1-final-19-0.pdf">11 класс - 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2019-20/math/ans-math-11-day2-final-19-0.pdf">11 класс - 2 день<br /></a></p></div>
+				</div>
+							<h3>2018-2019 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Заочный этап<br />задание:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2018-19/math/tasks-math-11-zaoch-18-9.pdf">11 класс</a></p>
+<p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2018-19/math/tasks-math-8-final-18-9.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2018-19/math/tasks-math-9-final-18-9.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2018-19/math/tasks-math-10-final-18-9.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2018-19/math/tasks-math-11-day1-final-18-9.pdf">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_2013-.../2018-19/math/tasks-math-11-day2-final-18-9.pdf">11 класс - 2 день<br /></a>решения:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2018-19/math/ans-math-8-final-18-9.pdf">8 кл</a>.&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2018-19/math/ans-math-9-final-18-9.pdf">9 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2018-19/math/ans-math-10-final-18-9.pdf">10 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2018-19/math/ans-math-11-day1-final-18-9.pdf">11 класс - 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2018-19/math/ans-math-11-day2-final-18-9.pdf">11 класс - 2 день</a><a href="/upload/files/Archive_tasks_2013-.../2018-19/math/ans-math-11-day2-final-18-9.pdf"><br /></a></p></div>
+				</div>
+							<h3>2017-2018 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Заочный этап<br />задание:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2017-18/math/tasks-math-11-zaoch-17-8.pdf">11 класс</a><br />ответы:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2017-18/math/ans-math-11-zaoch-17-8.pdf">11 класс</a></p>
+<p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2017-18/math/tasks-math-8-final-17-8.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2017-18/math/tasks-math-9-final-17-8.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2017-18/math/tasks-math-10-final-17-8.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2017-18/math/tasks-math-11-day1-final-17-8.pdf">11 класс&nbsp;- 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2017-18/math/tasks-math-11-day2-final-17-8.pdf">11 класс&nbsp;-&nbsp;2 день</a>&nbsp;<br />решения:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2017-18/math/ans-math-8-final-17-8.pdf">8 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2017-18/math/ans-math-9-final-17-8.pdf">9 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2017-18/math/ans-math-10-final-17-8.pdf">10 класс</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2017-18/math/ans-math-11-day1-final-17-8.pdf">11 класс&nbsp;- 1 день</a>&nbsp;|&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2017-18/math/ans-math-11-day2-final-17-8.pdf">11 класс&nbsp;-&nbsp;2 день</a>&nbsp;</p></div>
+				</div>
+							<h3>2016-2017 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/tasks-math-8-final-16-7.pdf">8 класс</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/tasks-math-9-final-16-7.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/tasks-math-10-final-16-7.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/tasks-math-11-day1-final-16-7.pdf">11 класс&nbsp;- 1 день</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/tasks-math-11-day2-final-16-7.pdf">11 класс - 2 день</a><br />решения: <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/ans-math-8-final-16-7.pdf">8 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/ans-math-9-final-16-7.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/ans-math-10-final-16-7.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/ans-math-11-day1-final-16-7.pdf">11 класс&nbsp;- 1 день</a> | <a href="/upload/files/Archive_tasks_2013-.../2016-17/math/ans-math-11-day2-final-16-7.pdf">11 класс - 2 день</a></p></div>
+				</div>
+							<h3>2015-2016 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Заочный тур<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2015-16/math/tasks-math-11-zaoch_tur-15-6.pdf">11 класс</a><br />ответы: <a href="/upload/files/Archive_tasks_2013-.../2015-16/math/ans-math-11-zaoch_tur-15-6.pdf">11 класс</a><br /><br />Заключительный этап<br />задания: <a href="/upload/files/Archive_tasks_2013-.../2015-16/math/tasks-math-8-final-15-6.pdf">8 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2015-16/math/tasks-math-9-final-15-6.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2015-16/math/tasks-math-10-final-15-6.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2015-16/math/tasks-math-11-day1-final-15-6.pdf">11 класс - 1 день</a>&nbsp;| <a href="/upload/files/Archive_tasks_2013-.../2015-16/math/tasks-math-11-day2-final-15-6.pdf">11 класс - 2 день</a><br />решения: <a href="/upload/files/Archive_tasks_2013-.../2015-16/math/ans-math-8-11-final-15-6.pdf">8-11 классы</a></p></div>
+				</div>
+							<h3>2014-2015 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p><span style="text-decoration: underline;">Отборочный этап</span><br />задания: <a href="/upload/files/Archive_tasks_2013-.../2014-15/math/tasks-math-11-dist-14-5.pdf">11 класс</a><br />решения: <a href="/upload/files/Archive_tasks_2013-.../2014-15/math/ans-math-11-dist-14-5.pdf">11 класс</a></p>
+<p><span style="text-decoration: underline;">Заключительный этап</span><br />задания: <a href="/upload/files/Archive_tasks_2013-.../2014-15/math/tasks-math-8-final-14-5.pdf">8 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2014-15/math/tasks-math-9-final-14-5.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2014-15/math/tasks-math-10-final-14-5.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2014-15/math/tasks-math-11-day1-final-14-5.pdf">11 класс (1 день)</a> | <a href="/upload/files/Archive_tasks_2013-.../2014-15/math/tasks-math-11-day2-final-14-5.pdf">11 класс (2 день)</a><br />решения: <a href="/upload/files/Archive_tasks_2013-.../2014-15//math/ans-math-8-11-final-14-5.pdf">8-11 классы</a></p></div>
+				</div>
+							<h3>2013-2014 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><p>Отборочный этап<br />задания:&nbsp;<a href="/upload/files/Archive_tasks_2013-.../2013-14/mmo/tasks-math-11-otbor-13-4.pdf">11 класс</a></p>
+<p>Заключительный этап <br /> задания: <a href="/upload/files/Archive_tasks_2013-.../2013-14/mmo/tasks-math-8-final-13-4.pdf">8 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2013-14/mmo/tasks-math-9-final-13-4.pdf">9 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2013-14/mmo/tasks-math-10-final-13-4.pdf">10 класс</a> | <a href="/upload/files/Archive_tasks_2013-.../2013-14/mmo/tasks-math-11-final-13-4.pdf">11 класс (1 день)</a>&nbsp;|&nbsp;<a href="http://olympiads.mccme.ru/mmo/2014/11kl-2.pdf" target="_blank">11 класс (2 день)</a><br /> решения: <a href="http://olympiads.mccme.ru/mmo/2014/77mmo.pdf">8-11 классы</a></p></div>
+				</div>
+							<h3>2012-2013 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="/upload/files/Archive_tasks_...-2011/math/2013/tasks-8-mmo-final-2012-3.pdf" target="_blank">8 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2013/tasks-9-mmo-final-2012-3.pdf" target="_blank">9 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2013/tasks-10-mmo-final-2012-3.pdf" target="_blank">10 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2013/tasks-11-mmo-1day-final-2012-3.pdf" target="_blank">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2013/tasks-11-mmo-2day-final-2012-3.pdf" target="_blank">11 класс - 2 день</a><br />решения:<a href="http://olympiads.mccme.ru/mmo/2013/76mmo.pdf" target="_blank"> 8-11 классы</a></p></div>
+				</div>
+							<h3>2011-2012 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2012/08.pdf" target="_blank">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2012/09.pdf" target="_blank">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2012/10.pdf" target="_blank">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2012/11.pdf" target="_blank">11 класс - 1 день</a> | <a href="http://olympiads.mccme.ru/mmo/2012/11-2.pdf" target="_blank">11 класс - 2 день</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2012/75mmo.pdf" target="_blank">8-11 классы</a>
+</p></div>
+				</div>
+							<h3>2010-2011 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="/upload/files/Archive_tasks_...-2011/math/2011/tasks-8-mmo-final-2010-1.pdf" target="_blank">8 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2011/tasks-9-mmo-final-2010-1.pdf" target="_blank">9 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2011/tasks-10-mmo-final-2010-1.pdf" target="_blank">10 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2011/tasks-11-mmo-1day-final-2010-1.pdf" target="_blank">11 класс - 1 день</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2011/tasks-11-mmo-2day-final-2010-1.pdf" target="_blank">11 класс - 2 день</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2011/74mmo.pdf" target="_blank">8-11 классы</a></p></div>
+				</div>
+							<h3>2009-2010 учебный год</h3>
+				<h4>Московская математическая олимпиада </h4>
+				<div class="item_tasks text">
+					<div><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="/upload/files/Archive_tasks_...-2011/math/2010/tasks-8-mmo-final-2009-10.pdf" target="_blank">8 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2010/tasks-9-mmo-final-2009-10.pdf" target="_blank">9 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2010/tasks-10-mmo-final-2009-10.pdf" target="_blank">10 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2010/tasks-11-mmo-final-2009-10.pdf" target="_blank">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2010/solutions.pdf" target="_blank">8-11 классы</a></p></div>
+				</div>
+			</div>
+			<div class="block">
+									<p>Московская математическая олимпиада </p>
+				<div class="item_tasks text">
+					<div><hr />
+<p><strong><a name="math-2008-9"></a>2008-2009 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="/upload/files/Archive_tasks_...-2011/math/2009/tasks-8-mmo-final-2008-9.pdf" target="_blank" rel="noopener">8 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2009/tasks-9-mmo-final-2008-9.pdf" target="_blank" rel="noopener">9 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2009/tasks-10-mmo-final-2008-9.pdf" target="_blank" rel="noopener">10 класс</a> | <a href="/upload/files/Archive_tasks_...-2011/math/2009/tasks-11-mmo-final-2008-9.pdf" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2009/solutions.pdf" target="_blank" rel="noopener">8-11 классы</a></p>
+<hr />
+<p><strong><a name="math-2007-8"></a>2007-2008 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2008/var8.pdf" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2008/var9.pdf" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2008/var10.pdf" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2008/var11.pdf" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2008/solutions.pdf" target="_blank" rel="noopener">8-11 классы</a></p>
+<hr />
+<p><strong><a name="math-2006-7"></a>2006-2007 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2007/08.pdf" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2007/09.pdf" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2007/10.pdf">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2007/11.pdf" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2007/solutions.pdf" target="_blank" rel="noopener">8-11 классы</a></p>
+<hr />
+<p><strong><a name="math-2005-6"></a>2005-2006 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2006/mmo2006.htm#k8" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2006/mmo2006.htm#k9" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2006/mmo2006.htm#k10" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2006/mmo2006.htm#k11" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2006/all.pdf" target="_blank" rel="noopener">8-11 классы</a></p>
+<hr />
+<p><strong><a name="math-2004-5"></a>2004-2005 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2005/mmo2005.htm#k8" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2005/mmo2005.htm#k9" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2005/mmo2005.htm#k10" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2005/mmo2005.htm#k11" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2005/all.pdf" target="_blank" rel="noopener">8-11 классы</a><br /><br /></p>
+<hr />
+<p><strong><br /><a name="math-2003-4"></a>2003-2004 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2004/mmo2004.htm#k8" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2004/mmo2004.htm#k9" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2004/mmo2004.htm#k10" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2004/mmo2004.htm#k11" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2004/resh08.pdf" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2004/resh09.pdf" target="_blank" rel="noopener">9 класс </a>| <a href="http://olympiads.mccme.ru/mmo/2004/resh10.pdf" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2004/resh11.pdf" target="_blank" rel="noopener">11 класс</a></p>
+<hr />
+<p><strong><a name="math-2002-3"></a>2002-2003 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2003/mmo2003.htm#k8" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2003/mmo2003.htm#k9" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2003/mmo2003.htm#k10" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2003/mmo2003.htm#k11" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2003/resh/8.htm" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2003/resh/9.htm" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2003/resh/10.htm" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2003/resh/11.htm" target="_blank" rel="noopener">11 класс</a></p>
+<hr />
+<p><strong><a name="math-2001-2"></a>2001-2002 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2002/mmo2002.htm#k8" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2002/mmo2002.htm#k9" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2002/mmo2002.htm#k10" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2002/mmo2002.htm#k11" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2002/resh8.htm" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2002/resh9.htm" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2002/resh10.htm" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2002/resh11.htm" target="_blank" rel="noopener">11 класс</a></p>
+<hr />
+<p><strong><a name="math-2000-1"></a>2000-2001 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2001/mmo2001.htm#z8" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2001/mmo2001.htm#z9" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2001/mmo2001.htm#z10" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2001/mmo2001.htm#z11" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2001/mmo2001.htm#r8" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2001/mmo2001.htm#r9" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2001/mmo2001.htm#r10" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2001/mmo2001.htm#r11" target="_blank" rel="noopener">11 класс</a></p>
+<hr />
+<p><strong><a name="math-1999-2000"></a>1999-2000 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/2000/mmo2000.htm#z8" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2000/mmo2000.htm#z9" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2000/mmo2000.htm#z10" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2000/mmo2000.htm#z11" target="_blank" rel="noopener">11 класс</a><br />решения: <a href="http://olympiads.mccme.ru/mmo/2000/mmo2000.htm#8kl1" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2000/mmo2000.htm#9kl1" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2000/mmo2000.htm#10kl1" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/2000/mmo2000.htm#11kl1" target="_blank" rel="noopener">11 класс</a></p>
+<hr />
+<p><strong><a name="math-1998-99"></a>1998-1999 учебный год</strong><br /><br /><span style="text-decoration: underline;"><em>Заключительный этап</em></span><br /><br />задания: <a href="http://olympiads.mccme.ru/mmo/1999/index.htm#8kl" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/1999/index.htm#9kl" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/1999/index.htm#10kl" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/1999/index.htm#11kl" target="_blank" rel="noopener">11 класс<br /></a>решения: <a href="http://olympiads.mccme.ru/mmo/1999/mmo99sol.htm#8kl1" target="_blank" rel="noopener">8 класс</a> | <a href="http://olympiads.mccme.ru/mmo/1999/mmo99sol.htm#9kl1" target="_blank" rel="noopener">9 класс</a> | <a href="http://olympiads.mccme.ru/mmo/1999/mmo99sol.htm#10kl1" target="_blank" rel="noopener">10 класс</a> | <a href="http://olympiads.mccme.ru/mmo/1999/mmo99sol.htm#11kl1" target="_blank" rel="noopener">11 класс</a></p>
+<hr />
+<p><strong><a name="math-1935-98"></a>1935-1998 годы<br /><br /></strong><a href="http://olympiads.mccme.ru/mmo/books/index.htm" target="_blank" rel="noopener">Книги и материалы</a><strong><a href="http://olympiads.mccme.ru/mmo/1999/index.htm#11kl" target="_blank" rel="noopener"><br /></a></strong></p></div>
+				</div>
+			</div>					</div>
+	</div>
+</div>
+<div class="footer">
+	<div class="content">
+		<div class="f_menu">
+			<a class="flogo" href="/"><img src="/images/wlogo.svg"/></a>
+			<a href="https://vk.com/mosh_olymp" class="ms" style="font-size: 24px; text-decoration: none;"><i class="icon-vk"></i></a>
+			<div class="menu">
+				
+
+<a href="/ob-olimpiade" class="">Об олимпиаде</a>
+
+<a href="/contacts" class="">Контакты</a>
+			</div>
+		</div>
+		<div class="delim"></div>
+		<div class="f_banners">
+			<div class="fb-text">
+				Партнеры<br>и организаторы
+			</div>
+			<span></span>
+			<a target="_blank" href="https://цпм.рф"><img src="/images/cpm.svg"/></a>
+			<span></span>
+			<a target="_blank" href="https://olimpiada.ru/"><img src="/images/oru.png" alt="Информационный портал olimpiada.ru"></a>
+			<span></span>
+			<a target="_blank" href="https://всош.цпм.рф"><img src="/images/vsosh.svg" alt="Всероссийская олимпиада в Москве"></a>
+		</div>
+		<div class="delim"></div>
+		<div class="f_copy">
+			<p><i class="icon-copy"></i> Московская олимпиада школьников 2026</p>			<a href="https://vk.com/mosh_olymp" target="_blank" class="fs"><i class="icon-vk"></i></a>
+		</div>
+	</div>
+</div><a class="upper ms"><i class="icon-arrow2"></i></a></body></html>

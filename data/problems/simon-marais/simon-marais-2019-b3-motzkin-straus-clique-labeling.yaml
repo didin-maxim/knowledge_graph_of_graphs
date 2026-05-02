@@ -1,0 +1,168 @@
+{
+  "id": "simon-marais-2019-b3-motzkin-straus-clique-labeling",
+  "title": "Максимум суммы произведений меток на рёбрах и кликовое число, SMMC 2019 B3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "classical_theorem"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "clique_number",
+      "vertex_weights",
+      "quadratic_form_on_edges"
+    ],
+    "methods": [
+      "weight_shifting",
+      "compression_to_clique",
+      "cauchy_schwarz",
+      "extremal_labeling"
+    ],
+    "transformations": [],
+    "goal": [
+      "determine_maximum_value"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [
+      "sum_of_labels_equals_one",
+      "positive_support_becomes_clique",
+      "clique_size_at_most_k"
+    ],
+    "keywords": [
+      "smmc_2019_b3",
+      "motzkin_straus",
+      "clique_number"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(G\\) - конечный простой граф, а \\(k\\) - наибольшее число вершин в клике графа \\(G\\). Каждой вершине \\(G\\) присваивается неотрицательное вещественное число так, что сумма всех меток равна \\(1\\). Значением ребра называется произведение меток двух его концов, а значением разметки - сумма значений всех рёбер. Докажите, что максимальное возможное значение разметки графа \\(G\\) равно \\((k-1)/(2k)\\).",
+        "source_id": "src-simon-marais-2019-B3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Формулировка как теорема Моцкина-Штрауса",
+        "text": "Для конечного простого графа \\(G=(V,E)\\) с кликовым числом \\(\\omega(G)=k\\) докажите, что \\(\\max \\sum_{uv\\in E} x_u x_v=(k-1)/(2k)\\), где максимум берётся по всем \\(x_v\\ge0\\) с \\(\\sum_{v\\in V}x_v=1\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-lower-bound-clique",
+      "title": "Равномерно нагрузить максимальную клику",
+      "text": "Если выбрать клику размера \\(k\\) и дать каждой её вершине метку \\(1/k\\), а всем остальным - ноль, то вклад дают ровно \\(k(k-1)/2\\) рёбер клики, и сумма равна \\((k-1)/(2k)\\).",
+      "tags": [
+        "forbidden_clique",
+        "goal_construction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-merge-nonadjacent-positive-weights",
+      "title": "Сливать положительные веса несмежных вершин",
+      "text": "Если две несмежные вершины имеют положительные метки, то можно перенести весь их общий вес на ту из них, у которой сумма меток соседей не меньше. Значение разметки не уменьшается, а число положительных меток уменьшается.",
+      "tags": [
+        "extremal_choice",
+        "symmetrization"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-motzkin-straus",
+      "title": "Сжатие носителя до клики",
+      "text": "Сначала получим нижнюю оценку. Возьмём максимальную клику размера \\(k\\), всем её вершинам присвоим метку \\(1/k\\), а всем остальным вершинам - метку \\(0\\). В этой клике \\(k(k-1)/2\\) рёбер, каждое имеет значение \\(1/k^2\\), поэтому значение разметки равно \\((k-1)/(2k)\\).\n\nДокажем, что больше получить нельзя. Рассмотрим произвольную разметку. Если существуют две несмежные вершины \\(u\\) и \\(v\\) с положительными метками \\(a\\) и \\(b\\), сравним суммы меток соседей этих вершин. Пусть сумма по соседям \\(u\\) не меньше суммы по соседям \\(v\\). Заменим метки \\(u,v\\) на \\(a+b,0\\). Поскольку между \\(u\\) и \\(v\\) нет ребра, вклад, связанный с этими двумя вершинами, изменяется линейно: мы переносим вес к вершине с не меньшей соседской суммой. Поэтому значение разметки не уменьшается. При этом число вершин с положительной меткой уменьшается.\n\nПовторяя такую операцию, мы придём к разметке не меньшего значения, в которой любые две вершины с положительными метками смежны. Значит, положительный носитель этой разметки является кликой. Пусть в нём \\(t\\) вершин с метками \\(a_1,\\ldots,a_t\\). Тогда \\(t\\le k\\) и \\(a_1+\\cdots+a_t=1\\). Значение разметки равно\n\\\\[\n\\sum_{1\\le i<j\\le t} a_i a_j = \\frac12\\left((a_1+\\cdots+a_t)^2-(a_1^2+\\cdots+a_t^2)\\right).\n\\\\]\nПо неравенству Коши \\(a_1^2+\\cdots+a_t^2\\ge 1/t\\). Поэтому значение не превосходит \\(\\frac12-\\frac1{2t}\\le \\frac12-\\frac1{2k}=(k-1)/(2k)\\).\n\nВместе с построением на максимальной клике это доказывает точное значение максимума.",
+      "idea_ids": [
+        "idea-lower-bound-clique",
+        "idea-merge-nonadjacent-positive-weights"
+      ],
+      "standard_idea_ids": [
+        "symmetrization",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "clique"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Олимпиадная версия теоремы Моцкина-Штрауса: ключевой ход - перенос веса между несмежными вершинами.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "extremal_choice",
+    "forbidden_clique",
+    "goal_exact_bound",
+    "symmetrization",
+    "classical_theorem"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "motzkin_straus_weight_shifting",
+        "support_compression_to_clique"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2019-B3-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальная формулировка уже является графовой; это стандартная теорема Моцкина-Штрауса."
+    ],
+    "relations_status": "base_done"
+  }
+}

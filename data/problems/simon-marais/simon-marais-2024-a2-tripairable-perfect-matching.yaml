@@ -1,0 +1,168 @@
+{
+  "id": "simon-marais-2024-a2-tripairable-perfect-matching",
+  "title": "Паросочетания по суммам-степеням тройки, SMMC 2024 A2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Michael Albert",
+      "status": "ai_checked"
+    },
+    {
+      "name": "Christopher Tuffley",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_graph",
+      "perfect_matching",
+      "integer_interval"
+    ],
+    "methods": [
+      "induction",
+      "forced_matching",
+      "ternary_expansion"
+    ],
+    "transformations": [
+      "pair_partition_to_perfect_matching"
+    ],
+    "goal": [
+      "count_n"
+    ],
+    "auxiliary_graph_type": [
+      "power_sum_graph"
+    ],
+    "invariants": [
+      "ternary_digits",
+      "forced_outer_pairs"
+    ],
+    "keywords": [
+      "smmc_2024_a2",
+      "tripairable",
+      "perfect_matching",
+      "ternary_digits"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Положительное целое \\(n\\) называется tripairable, если множество \\(\\{1,2,\\ldots,n\\}\\) можно разбить на непересекающиеся пары так, что сумма двух элементов в каждой паре является степенью 3. Например, \\(6\\) имеет такое разбиение: \\(\\{1,2\\}\\cup\\{3,6\\}\\cup\\{4,5\\}\\), поскольку \\(1+2=3^1\\), \\(3+6=3^2\\) и \\(4+5=3^2\\). Сколько положительных целых чисел, не превосходящих 2024, являются tripairable?",
+        "source_id": "src-simon-marais-2024-A2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Для каждого \\(n\\) дан граф \\(G_n\\) на вершинах \\(1,2,\\ldots,n\\), где \\(i\\) и \\(j\\) соединены ребром тогда и только тогда, когда \\(i+j\\) — степень 3. Найдите число \\(n\\le2024\\), для которых \\(G_n\\) имеет совершенное паросочетание.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-forced-outer-matching",
+      "title": "Большие вершины имеют вынужденных партнеров",
+      "text": "Если \\(3^k\\le n<3^{k+1}\\), то вершина \\(j\\) из верхнего хвоста может быть сматчена только с \\(3^{k+1}-j\\). Поэтому существование совершенного паросочетания у \\(G_n\\) сводится к меньшему графу \\(G_m\\), где \\(m=3^{k+1}-n-1\\).",
+      "tags": [
+        "matching",
+        "induction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-ternary-zero-two",
+      "title": "Троичная запись состоит только из 0 и 2",
+      "text": "Итерация вынужденного снятия хвоста показывает, что подходящие \\(n\\) — ровно те, чья троичная запись не содержит цифры 1.",
+      "tags": [
+        "invariant"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-ternary-count",
+      "title": "Сведение совершенного паросочетания к троичной записи",
+      "text": "Считаем также \\(0\\) допустимым: пустой граф имеет пустое совершенное паросочетание. Докажем индукцией по \\(k\\), что для \\(n<3^k\\) граф \\(G_n\\) имеет совершенное паросочетание тогда и только тогда, когда троичная запись \\(n\\) состоит только из цифр 0 и 2.\n\nПусть \\(3^k\\le n<3^{k+1}\\). Для всякой вершины \\(j\\ge3^k\\) сумма с ее партнером не может быть \\(3^k\\) и не может быть больше \\(3^{k+1}\\), поэтому партнер вынужден: это \\(3^{k+1}-j\\). Значит, весь верхний хвост спаривается симметрично, а остаток — это ровно граф \\(G_m\\) при \\(m=3^{k+1}-n-1\\). Следовательно, \\(G_n\\) имеет совершенное паросочетание тогда и только тогда, когда оно есть у \\(G_m\\). Такая замена в троичной записи меняет набор цифр 0/2 на дополнительный набор цифр 0/2, и индукция завершает критерий.\n\nОстается посчитать \\(n\\le2024\\). Так как \\(2024=(2202222)_3\\), подходящие положительные числа имеют один из видов \\(a_5a_4a_3a_2a_1a_0\\), \\(20a_4a_3a_2a_1a_0\\), \\(220a_3a_2a_1a_0\\), где все \\(a_i\\in\\{0,2\\}\\). Таких неотрицательных чисел \\(2^6+2^5+2^4=112\\); исключая \\(0\\), получаем \\(111\\).",
+      "idea_ids": [
+        "idea-forced-outer-matching",
+        "idea-ternary-zero-two"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "После графовой формулировки ключ — увидеть вынужденные ребра совершенного паросочетания и троичную рекурсию.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "induction",
+    "goal_counting",
+    "graph_model"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "forced_matching",
+        "ternary_expansion"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2024-A2-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Оригинальное разбиение на пары эквивалентно совершенному паросочетанию в явном графе сумм."
+    ],
+    "relations_status": "base_done"
+  }
+}

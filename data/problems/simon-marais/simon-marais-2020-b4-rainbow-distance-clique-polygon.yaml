@@ -1,0 +1,158 @@
+{
+  "id": "simon-marais-2020-b4-rainbow-distance-clique-polygon",
+  "title": "Радужная клика по расстояниям в правильном многоугольнике, Simon Marais 2020 B4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "open_problem_part"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring_by_distance",
+      "rainbow_clique",
+      "cyclic_difference_set"
+    ],
+    "methods": [
+      "cyclic_group_model",
+      "finite_projective_plane",
+      "difference_set_construction"
+    ],
+    "transformations": [
+      "regular_polygon_to_cyclic_group",
+      "pairwise_distances_to_edge_colours"
+    ],
+    "goal": [
+      "construct_example",
+      "classify_possible_orders"
+    ],
+    "auxiliary_graph_type": [
+      "edge_colored_complete_graph"
+    ],
+    "invariants": [
+      "all_nonzero_differences_used_once",
+      "N_equals_n_squared_minus_n_plus_one"
+    ],
+    "keywords": [
+      "simon_marais_2020_b4",
+      "taut_integer",
+      "rainbow_clique",
+      "difference_set"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть n не меньше 2, а P_n - правильный многоугольник с n^2-n+1 вершинами. Назовем n натянутым, если можно выбрать n вершин P_n так, чтобы все попарные расстояния между выбранными вершинами были различны. (a) Докажите, что если n-1 простое, то n натянуто. (b) Какие n не меньше 2 натянуты?",
+        "source_id": "src-simon-marais-2020-B4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть N=n^2-n+1. Возьмем полный граф на вершинах правильного N-угольника и покрасим ребро цветом, равным евклидову расстоянию между его концами. Требуется найти радужную клику K_n, то есть n вершин, на которых все binom(n,2) цветов ребер различны. Часть (a) утверждает существование такой клики при простом n-1; часть (b) просит классификацию.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "chromatic_number",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-singer-difference-set",
+      "title": "Расстояния как разности в циклической группе",
+      "text": "Если вершины занумеровать элементами Z_N, равенство расстояний эквивалентно равенству разностей с точностью до знака. Поэтому нужна n-элементная система, у которой все упорядоченные ненулевые разности различны. При n-1=p это дает классическую конструкцию через прямую в проективной плоскости над F_p.",
+      "tags": [
+        "graph_model",
+        "coloring",
+        "goal_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-part-a",
+      "title": "Конструкция при простом n-1",
+      "text": "Положим p=n-1 и N=n^2-n+1=p^2+p+1. Занумеруем вершины многоугольника элементами Z_N. Расстояния между вершинами i,j и k,l равны тогда и только тогда, когда i-j равно плюс-минус (k-l) в Z_N. Поэтому достаточно построить подмножество D размера p+1, у которого все упорядоченные разности x-y при x не равно y различны. Официальное решение строит такое D через поле E из p^3 элементов. Пусть F=F_p, G=E^*, H=F^*. Тогда фактор K=G/H цикличен и имеет порядок (p^3-1)/(p-1)=N, так что его можно отождествить с Z_N. Выберем alpha из E вне F. Так как 1, alpha, alpha^2 линейно независимы над F, множество ненулевых элементов плоскости span_F(1,alpha) задает в K подмножество D из p+1=n точек. Если бы две упорядоченные пары различных элементов D давали один и тот же quotient, то после выбора представителей из {1} union {t+alpha: t in F} мы получили бы нетривиальное квадратное соотношение над F для alpha. Это невозможно. Значит все упорядоченные разности различны, а значит все неориентированные расстояния между выбранными вершинами различны. В графовой формулировке это радужная клика K_n.",
+      "idea_ids": [
+        "idea-singer-difference-set"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "complete_graph",
+        "chromatic_number",
+        "clique"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "Часть (a) требует нетривиальной конструкции разностного множества через конечные поля; часть (b) в официальном архиве заявлена как открытая.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "coloring",
+    "goal_construction",
+    "goal_classification"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "cyclic_difference_set",
+        "projective_plane_construction",
+        "rainbow_clique_in_distance_coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2020-B4-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Включено как содержательная графовая переформулировка: ребра полного графа на вершинах правильного многоугольника окрашены расстояниями, а искомый набор является радужной кликой.",
+      "Официальный архив помечает часть (b) как открытую; карточка дает решение только части (a)."
+    ],
+    "relations_status": "not_started"
+  }
+}

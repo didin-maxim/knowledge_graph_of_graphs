@@ -1,0 +1,161 @@
+{
+  "id": "miklos-schweitzer-2018-p1-continuous-graph-countable-coloring",
+  "title": "Граф, заданный непрерывной функцией, имеет счетную раскраску, Schweitzer 2018 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "topological_graph",
+      "subspace_of_Rn",
+      "countable_chromatic_number",
+      "closed_set"
+    ],
+    "methods": [
+      "continuity",
+      "countable_base",
+      "local_independent_sets"
+    ],
+    "transformations": [
+      "continuous_relation_to_open_independent_neighborhoods"
+    ],
+    "goal": [
+      "prove_countable_coloring"
+    ],
+    "auxiliary_graph_type": [
+      "infinite_graph"
+    ],
+    "invariants": [
+      "separability",
+      "closedness_of_forbidden_set"
+    ],
+    "keywords": [
+      "schweitzer_2018_p1",
+      "countable_chromatic_number",
+      "topological_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(S\\subset \\mathbb R\\) - замкнутое множество, а \\(f:\\mathbb R^{2n}\\to\\mathbb R\\) - непрерывная функция. Определим граф \\(G\\) так: точка \\(x\\in\\mathbb R^n\\) является вершиной тогда и только тогда, когда \\(f(x,x)\\notin S\\). Две вершины \\(x\\) и \\(y\\) соединены ребром тогда и только тогда, когда \\(f(x,y)\\in S\\) или \\(f(y,x)\\in S\\). Докажите, что хроматическое число \\(G\\) счетно.",
+        "source_id": "src-miklos-schweitzer-2018-p1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Топологическая формулировка",
+        "text": "В графе на подмножестве сепарабельного метрического пространства каждая вершина имеет открытую окрестность, индуцирующую независимое множество. Докажите, что такой граф допускает счетную правильную раскраску.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "independent_set",
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-local-independent-ball",
+      "title": "Окрестность вершины независима",
+      "text": "Так как \\(f(x,x)\\notin S\\), замкнутость \\(S\\) и непрерывность \\(f\\) дают малую окрестность \\(U\\) точки \\(x\\), в которой \\(f(u,v)\\notin S\\) для всех \\(u,v\\in U\\). Значит внутри \\(U\\) нет ребер.",
+      "tags": [
+        "coloring",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-countable-base-colors",
+      "title": "Цвета - элементы счетной базы",
+      "text": "У \\(\\mathbb R^n\\) есть счетная база. Каждой вершине можно назначить один базисный шар, который содержит ее и лежит в независимой окрестности; вершины с одинаковым назначенным шаром попарно несмежны.",
+      "tags": [
+        "coloring",
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-countable-base",
+      "title": "Раскраска счетной базой",
+      "text": "Пусть \\(x\\) - вершина графа. Тогда \\(f(x,x)\\notin S\\). Так как \\(S\\) замкнуто, его дополнение открыто, поэтому существует окрестность \\(W\\) числа \\(f(x,x)\\), не пересекающаяся с \\(S\\). По непрерывности отображения \\((u,v)\\mapsto f(u,v)\\) найдется окрестность \\(U_x\\) точки \\(x\\) такая, что для всех \\(u,v\\in U_x\\) выполнено \\(f(u,v)\\in W\\), а значит \\(f(u,v)\\notin S\\). Следовательно, любые две вершины из \\(U_x\\) не соединены ребром: условие ребра не выполняется ни в одном направлении.\n\nВозьмем счетную базу \\(\\mathcal B\\) пространства \\(\\mathbb R^n\\), например шары с рациональными центрами и рациональными радиусами. Для каждой вершины \\(x\\) выберем базисный элемент \\(B(x)\\in\\mathcal B\\) такой, что \\(x\\in B(x)\\subset U_x\\). Покрасим вершину \\(x\\) цветом \\(B(x)\\). Цветов не больше счетного числа. Если две вершины \\(x,y\\) получили один и тот же цвет \\(B\\), то \\(x,y\\in B\\subset U_x\\), а \\(U_x\\) независимо, значит ребра \\(xy\\) нет. Раскраска правильная, поэтому хроматическое число графа счетно.",
+      "idea_ids": [
+        "idea-local-independent-ball",
+        "idea-countable-base-colors"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "independent_set",
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Ключ - заметить локальную независимость и использовать счетную базу евклидова пространства.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "graph_model",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "local_independent_neighborhood",
+        "countable_base_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2018-p1-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие; решение восстановлено напрямую из непрерывности и счетной базы."
+    ],
+    "relations_status": "not_started"
+  }
+}

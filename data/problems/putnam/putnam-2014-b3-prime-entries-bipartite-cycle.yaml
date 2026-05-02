@@ -1,0 +1,152 @@
+{
+  "id": "putnam-2014-b3-prime-entries-bipartite-cycle",
+  "title": "Простые элементы матрицы и цикл в двудольном графе, Putnam 2014 B3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "linear_algebra"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "matrix_rank_one",
+      "cycle"
+    ],
+    "methods": [
+      "cycle_in_dense_graph",
+      "rank_one_minor",
+      "prime_factorization"
+    ],
+    "transformations": [
+      "prime_matrix_entries_to_bipartite_graph"
+    ],
+    "goal": [
+      "prove_rank_lower_bound"
+    ],
+    "auxiliary_graph_type": [
+      "row_column_bipartite_graph"
+    ],
+    "invariants": [
+      "number_of_distinct_prime_entries",
+      "vanishing_two_by_two_minors"
+    ],
+    "keywords": [
+      "putnam_2014_b3",
+      "putnam",
+      "rank"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(A\\) — матрица размера \\(m\\times n\\) с рациональными элементами. Предположим, что среди абсолютных значений элементов \\(A\\) встречается по меньшей мере \\(m+n\\) различных простых чисел. Докажите, что ранг \\(A\\) не меньше 2.",
+        "source_id": "src-putnam-2014-B3-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть каждой строке и каждому столбцу рациональной матрицы \\(A\\) соответствует вершина двудольного графа; соединяем строку и столбец ребром, если соответствующий элемент матрицы по модулю является простым числом, и помечаем это ребро этим простым числом. Если в таком графе встречается по крайней мере \\(m+n\\) различных простых меток, докажите, что матрица не может иметь ранг 0 или 1.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cycle-forces-prime-product",
+      "title": "Много рёбер дают цикл, а цикл противоречит рангу 1",
+      "text": "Граф на \\(m+n\\) вершинах с хотя бы \\(m+n\\) рёбрами содержит цикл. В двудольном цикле ранговое условие \\(A_{ij}=r_i c_j\\) заставляет произведения элементов через одну позицию совпадать, но они являются произведениями двух разных наборов простых чисел.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kedlaya-graph",
+      "title": "Решение через двудольный граф строк и столбцов",
+      "text": "Предположим, что \\(\\operatorname{rank} A\\le 1\\). Нулевой ранг невозможен, так как в матрице есть элементы, абсолютные значения которых являются простыми числами. Поэтому можно считать, что ранг равен 1.\n\nПостроим двудольный граф: левая доля — строки, правая — столбцы, а ребро проводится там, где \\(|A_{ij}|\\) является простым числом. Так как среди абсолютных значений есть не меньше \\(m+n\\) различных простых чисел, в графе есть не меньше \\(m+n\\) рёбер. У графа всего \\(m+n\\) вершин, поэтому он не является лесом: всякий ациклический граф на \\(v\\) вершинах имеет не более \\(v-1\\) рёбер. Следовательно, в графе есть цикл. Поскольку граф двудольный, цикл имеет вид\n\\[\nR_1-C_1-R_2-C_2-\\cdots-R_t-C_t-R_1\n\\]\nпри \\(t\\ge 2\\), где все соответствующие матричные элементы имеют попарно различные простые модули; обозначим их \\(p_1,p_2,\n\\ldots,p_{2t}\\) по порядку обхода цикла.\n\nУ матрицы ранга 1 все миноры \\(2\\times2\\) равны нулю, а значит для любых строк \\(R_a,R_b\\) и столбцов \\(C_c,C_d\\) выполняется\n\\[\nA_{R_a C_c}A_{R_b C_d}=A_{R_a C_d}A_{R_b C_c}\n\\]\nтам, где эти четыре позиции рассматриваются. Применяя это последовательно вдоль цикла, получаем равенство модулей произведений элементов на чередующихся рёбрах цикла:\n\\[\n p_1p_3\\cdots p_{2t-1}=p_2p_4\\cdots p_{2t}.\n\\]\nНо слева и справа стоят произведения двух непересекающихся наборов различных простых чисел. Единственность разложения на простые множители делает такое равенство невозможным. Противоречие доказывает, что ранг \\(A\\) не меньше 2.",
+      "idea_ids": [
+        "idea-cycle-forces-prime-product"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "Putnam B3; графовая часть проста, но требуется связать цикл с ранговыми соотношениями и простыми множителями.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "graph_model",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bipartite_cycle",
+        "rank_one_contradiction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2014-B3-kedlaya",
+      "role": "problem_and_solutions_archive",
+      "status": "source_verified",
+      "url": "https://kskedlaya.org/putnam-archive/2014.pdf",
+      "solution_url": "https://kskedlaya.org/putnam-archive/2014s.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "В архивном решении явно дан графовый вариант; он естественен и короче линейно-алгебраического варианта через векторы простых показателей."
+    ],
+    "relations_status": "base_done"
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "id": "vjimc-2017-cat1-p3-polyhedron-edge-products",
+  "title": "Веса на вершинах многогранника и сумма произведений по рёбрам, VJIMC 2017 I.3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "convex_polyhedron_skeleton",
+      "simple_planar_graph",
+      "vertex_weights",
+      "complete_subgraph"
+    ],
+    "methods": [
+      "extremal_choice",
+      "support_reduction",
+      "planarity_obstruction"
+    ],
+    "transformations": [
+      "polyhedron_skeleton_to_planar_graph"
+    ],
+    "goal": [
+      "prove_upper_bound"
+    ],
+    "auxiliary_graph_type": [
+      "planar_skeleton_graph"
+    ],
+    "invariants": [
+      "sum_of_vertex_weights",
+      "edge_weight_sum",
+      "support_size"
+    ],
+    "keywords": [
+      "vjimc_2017_cat1_p3",
+      "convex_polyhedron",
+      "planar_graph",
+      "complete_subgraph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(P\\) - выпуклый многогранник. В каждую вершину \\(P\\) записали неотрицательное действительное число так, что сумма всех записанных чисел равна \\(1\\). Затем на каждое ребро записали произведение чисел в его концах. Докажите, что сумма чисел на рёбрах не превосходит \\(3/8\\).",
+        "source_id": "src-vjimc-2017-cat1-p3-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть \\(G=(V,E)\\) - скелет выпуклого многогранника, то есть простой планарный граф, полученный из его вершин и рёбер. Каждой вершине \\(v\\in V\\) сопоставлено число \\(a_v\\ge 0\\), причём \\(\\sum_{v\\in V}a_v=1\\). Докажите, что \\(\\sum_{uv\\in E}a_u a_v\\le 3/8\\).",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "planar_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-maximal-support-clique",
+      "title": "В максимуме положительные вершины попарно смежны",
+      "text": "Выбираем максимум суммы по рёбрам, а среди максимумов - конфигурацию с наибольшим числом нулевых весов. Если две положительные несмежные вершины есть, можно перенести вес с меньшей на большую; линейность по этому переносу либо улучшает сумму, либо даёт максимум с ещё одним нулём.",
+      "tags": [
+        "extremal_choice",
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-planar-clique-four",
+      "title": "Планарность оставляет не более четырёх положительных весов",
+      "text": "Положительные вершины образуют полный подграф, а в планарном графе полный подграф имеет не более четырёх вершин. После этого остаётся чистое неравенство для четырёх неотрицательных чисел с суммой 1.",
+      "tags": [
+        "planar_graphs"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-planar-extremal",
+      "title": "Решение через планарный скелет и экстремальный выбор",
+      "text": "Рассмотрим граф \\(G=(V,E)\\), вершины и рёбра которого - вершины и рёбра многогранника. Этот граф можно нарисовать на сфере, а значит и на плоскости, без пересечения рёбер.\n\nОбозначим веса через \\(a_v\\). Нужно оценить\n\\[\nF(a)=\\sum_{uv\\in E} a_u a_v\n\\]\nпри условиях \\(a_v\\ge 0\\) и \\(\\sum_v a_v=1\\). Множество всех таких наборов весов компактно, а \\(F\\) непрерывна, поэтому максимум достигается. Выберем среди всех максимальных наборов такой, где число нулевых весов максимально.\n\nПокажем, что любые две вершины с положительными весами смежны. Пусть это не так: \\(x\\) и \\(y\\) не соединены ребром, но \\(a_x>0\\), \\(a_y>0\\). Без ограничения общности \\(a_x\\le a_y\\). Перенесём величину \\(t\\) веса из \\(x\\) в \\(y\\): заменим \\(a_x\\) на \\(a_x-t\\), \\(a_y\\) на \\(a_y+t\\), остальные веса не меняем. Так как ребра \\(xy\\) нет, выражение \\(F\\) как функция от \\(t\\) линейно на отрезке \\([0,a_x]\\). При \\(t=0\\) оно имеет максимум относительно малых допустимых изменений, значит эта линейная функция постоянна на всём отрезке. Тогда при \\(t=a_x\\) значение \\(F\\) остаётся максимальным, но вес в вершине \\(x\\) становится нулём. Это противоречит выбору максимума с наибольшим числом нулей. Следовательно, все вершины с положительными весами попарно смежны.\n\nЗначит, положительные вершины индуцируют полный подграф графа \\(G\\). Полный граф \\(K_5\\) непланарен, поэтому в планарном графе не может быть пяти попарно смежных вершин. Следовательно, положительных весов не больше четырёх. Обозначим их \\(a,b,c,d\\), добавив нули, если положительных весов меньше. Тогда сумма по рёбрам не превосходит суммы по всем парам этих четырёх чисел:\n\\[\nF(a)\\le ab+ac+ad+bc+bd+cd.\n\\]\nТак как \\(a+b+c+d=1\\), имеем\n\\[\nab+ac+ad+bc+bd+cd=\\frac{(a+b+c+d)^2-(a^2+b^2+c^2+d^2)}2.\n\\]\nЭта величина максимальна, когда сумма квадратов минимальна. По неравенству Коши\n\\[\na^2+b^2+c^2+d^2\\ge \\frac{(a+b+c+d)^2}{4}=\\frac14.\n\\]\nОтсюда\n\\[\nF(a)\\le \\frac{1-1/4}{2}=\\frac38.\n\\]\nТребуемая оценка доказана.",
+      "idea_ids": [
+        "idea-maximal-support-clique",
+        "idea-planar-clique-four"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph",
+        "complete_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 9,
+    "comment": "VJIMC 2017 Category I Problem 3; ключевой шаг официального решения переводит скелет многогранника в планарный граф и использует ограничение на полный подграф.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "extremal_graph_theory",
+    "extremal_choice",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "planar_graph_skeleton",
+        "support_reduction_to_clique"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vjimc-2017-cat1-p3-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальный PDF даёт также альтернативу через теорему о четырёх красках; в карточке перенесено первое решение, использующее только планарность и невозможность K5."
+    ],
+    "relations_status": "base_done"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "id": "miklos-schweitzer-2017-p1-triangle-tiling-no-shared-side",
+  "title": "Разбиение квадрата на треугольники без общей стороны, Schweitzer 2017 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "square_tiling",
+      "triangles",
+      "plane_graph",
+      "faces"
+    ],
+    "methods": [
+      "planar_graph_model",
+      "Euler_formula",
+      "face_counting"
+    ],
+    "transformations": [
+      "triangular_tiling_to_plane_graph"
+    ],
+    "goal": [
+      "decide_existence"
+    ],
+    "auxiliary_graph_type": [
+      "plane_graph"
+    ],
+    "invariants": [
+      "Euler_characteristic",
+      "boundary_edges"
+    ],
+    "keywords": [
+      "schweitzer_2017_p1",
+      "triangle_tiling",
+      "plane_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Разбиение квадрата",
+        "text": "Можно ли разбить квадрат на конечное число треугольников так, чтобы никакие два треугольника не имели общей стороны? Треугольники имеют попарно непересекающиеся внутренности, а их объединение равно квадрату.",
+        "source_id": "src-miklos-schweitzer-2017-p1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Планарная модель",
+        "text": "Постройте плоский граф, вершинами которого являются вершины всех треугольников и точки разбиения сторон, а ребрами - минимальные отрезки сторон треугольников между соседними такими вершинами. Нужно решить, может ли этот плоский граф быть графом разбиения квадрата на треугольные плитки, если ни одна полная сторона одной треугольной плитки не является полной стороной другой.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-plane-graph-counting",
+      "title": "Считать макроскопический плоский граф",
+      "text": "Официальные и вторичные разборы сводят задачу к счету в плоском графе разбиения: нужно учитывать число треугольников, вершин, ребер и вклад внешней границы квадрата.",
+      "tags": [
+        "planar_graphs",
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-no-complete-shared-side",
+      "title": "Запрет общей стороны меняет счет границ",
+      "text": "Если две плитки не могут иметь одну и ту же полную сторону, то каждая внутренняя сторона треугольника должна быть разбита вершинами соседних треугольников; это дает дополнительное неравенство для плоского графа.",
+      "tags": [
+        "planar_graphs",
+        "goal_impossibility"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Короткая формулировка, но аккуратный планарный счет тонкий из-за сторон, разбитых вершинами соседних треугольников.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "double_counting",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "plane_graph_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2017-p1-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие. Венгерское решение и вторичная версия KöMaL используют плоский граф разбиения; полное русское доказательство не внесено без ручной проверки деталей счета."
+    ],
+    "relations_status": "not_started"
+  }
+}

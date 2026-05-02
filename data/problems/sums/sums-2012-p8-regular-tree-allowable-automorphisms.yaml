@@ -1,0 +1,147 @@
+{
+  "id": "sums-2012-p8-regular-tree-allowable-automorphisms",
+  "title": "Три допустимых автоморфизма 3-регулярного дерева между двумя вершинами, SUMS 2012/8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "graph_symmetry"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "infinite_3_regular_tree",
+      "automorphism_group",
+      "reflection",
+      "rotation"
+    ],
+    "methods": [
+      "word_labels_on_tree",
+      "group_action",
+      "normal_form"
+    ],
+    "transformations": [
+      "vertex_to_turn_word"
+    ],
+    "goal": [
+      "count_automorphisms_between_vertices"
+    ],
+    "auxiliary_graph_type": [
+      "regular_tree"
+    ],
+    "invariants": [
+      "word_length_from_root",
+      "stabilizer_of_root"
+    ],
+    "keywords": [
+      "SUMS_2012_8",
+      "3_regular_tree",
+      "automorphism",
+      "graph_symmetry"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(T\\) - бесконечное 3-регулярное дерево. В фиксированном плоском рисунке заданы два автоморфизма: отражение \\(\\sigma\\) и поворот \\(\\rho\\), который фиксирует одну вершину \\(a\\) и циклически переставляет три соседних направления. Допустимыми называются автоморфизмы, которые можно получить последовательным применением \\(\\rho\\) и \\(\\sigma\\). Докажите, что для любых двух вершин \\(v\\) и \\(w\\) дерева \\(T\\) существует ровно три допустимых автоморфизма, переводящих \\(v\\) в \\(w\\).",
+        "source_id": "src-sums-2012-p8-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-regular-tree-turn-words",
+      "title": "Вершины кодируются первым направлением и поворотами налево/направо",
+      "text": "От корня \\(a\\) к любой другой вершине идёт единственный путь. Его можно записать как первую букву \\(b,c,d\\), а затем строку из поворотов \\(L,R\\). Поворот меняет первую букву, а отражение после приведения первой буквы к \\(b\\) уменьшает длину слова.",
+      "tags": [
+        "trees",
+        "graph_symmetry",
+        "induction"
+      ],
+      "status": "source_verified"
+    },
+    {
+      "id": "idea-root-stabilizer-three",
+      "title": "Стабилизатор корня состоит только из трёх поворотов",
+      "text": "После сокращения слов в порождающих \\(\\rho,\\sigma\\) всякий нетривиальный элемент, содержащий \\(\\sigma\\), переводит корень в вершину с непустым словом. Поэтому корень фиксируют только \\(1,\\rho,\\rho^2\\).",
+      "tags": [
+        "graph_symmetry",
+        "minimal_counterexample"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-word-action",
+      "title": "Действие на словах вершин",
+      "text": "Зафиксируем корень \\(a\\) и обозначим его соседей \\(b,c,d\\). Любая другая вершина кодируется словом: первая буква показывает, через какого из \\(b,c,d\\) начинается путь от \\(a\\), а последующие буквы \\(L,R\\) показывают левые и правые повороты вдоль пути. Поворот \\(\\rho\\) циклически меняет первую букву \\(b\\to c\\to d\\to b\\), а отражение \\(\\sigma\\) устроено так, что после подходящего поворота оно сокращает расстояние до \\(a\\) на один. Поэтому индукцией по длине слова любую вершину можно перевести в \\(a\\); действие допустимой группы на вершинах транзитивно. Теперь достаточно посчитать допустимые автоморфизмы, фиксирующие \\(a\\). Очевидно, \\(1,\\rho,\\rho^2\\) фиксируют \\(a\\). Любое другое сокращённое слово в порождающих можно записать как \\(\\rho^{i_0}\\sigma\\rho^{i_1}\\sigma\\cdots\\sigma\\rho^{i_k}\\), где внутри стоят только ненулевые степени \\(\\rho\\). Применяя такое слово справа налево к \\(a\\), первое появление \\(\\sigma\\) переводит \\(a\\) в соседнюю вершину, а каждое последующее звено увеличивает длину соответствующего слова или меняет только первое направление; вернуться в \\(a\\) уже нельзя. Значит стабилизатор \\(a\\) имеет ровно три элемента. По транзитивности число элементов, переводящих \\(v\\) в \\(w\\), равно размеру стабилизатора одной вершины, то есть равно 3.",
+      "idea_ids": [
+        "idea-regular-tree-turn-words",
+        "idea-root-stabilizer-three"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "source_verified",
+      "source_id": "src-sums-2012-p8-official"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 7,
+    "comment": "Задача на симметрии бесконечного дерева; нужна нормальная форма слова в порождающих.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "graph_symmetry",
+    "induction",
+    "minimal_counterexample",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "turn_word_coordinates",
+        "root_stabilizer_count"
+      ],
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-sums-2012-p8-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "relations_status": "not_started",
+    "graph_theory_duplicate_removed": true
+  }
+}

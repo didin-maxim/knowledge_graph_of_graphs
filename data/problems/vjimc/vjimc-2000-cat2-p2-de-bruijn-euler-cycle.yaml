@@ -1,0 +1,148 @@
+{
+  "id": "vjimc-2000-cat2-p2-de-bruijn-euler-cycle",
+  "title": "Циклическая последовательность со всеми словами длины \\(l\\), VJIMC 2000 Category II P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "de_bruijn_graph",
+      "directed_graph",
+      "eulerian_cycle"
+    ],
+    "methods": [
+      "eulerian_cycle_construction",
+      "degree_counting",
+      "strong_connectivity"
+    ],
+    "transformations": [
+      "words_to_de_bruijn_graph"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "equal_indegree_outdegree"
+    ],
+    "keywords": [
+      "vjimc_2000_cat2_p2",
+      "de_bruijn_sequence"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Последовательность \\(AAABABBB\\), записанная по окружности, содержит каждое слово длины \\(3\\) над алфавитом \\(\\{A,B\\}\\) ровно один раз. Решите, можно ли для алфавита из \\(k\\) букв записать по окружности такую последовательность, чтобы каждое слово длины \\(l\\) над этим алфавитом встречалось ровно один раз.",
+        "source_id": "src-vjimc-2000-cat2-p2-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Постройте ориентированный граф де Брёйна: вершины - слова длины \\(l-1\\) над \\(k\\)-буквенным алфавитом, а ребро соответствует слову длины \\(l\\), соединяя его префикс длины \\(l-1\\) с суффиксом длины \\(l-1\\). Докажите, что в этом графе есть эйлеров цикл.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "eulerian_cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-balanced-strongly-connected",
+      "title": "Граф де Брёйна сбалансирован и сильно связен",
+      "text": "Из каждой вершины выходит \\(k\\) рёбер и входит \\(k\\) рёбер. Кроме того, из любого слова длины \\(l-1\\) можно перейти к любому другому, последовательно дописывая его буквы.",
+      "tags": [
+        "eulerian_graphs",
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-de-bruijn-euler-cycle",
+      "title": "Эйлеров цикл в графе де Брёйна",
+      "text": "Ответ: да. При \\(l=1\\) достаточно записать все \\(k\\) букв по одному разу. Пусть \\(l\\ge2\\).\n\nПостроим ориентированный граф. Его вершинами будут все слова длины \\(l-1\\). Каждому слову \\(a_1\\ldots a_l\\) длины \\(l\\) сопоставим ребро из \\(a_1\\ldots a_{l-1}\\) в \\(a_2\\ldots a_l\\). Тогда пройти по ребру означает дописать последнюю букву.\n\nУ каждой вершины ровно \\(k\\) исходящих рёбер и ровно \\(k\\) входящих: можно свободно выбрать дописываемую букву справа или слева. Граф сильно связен: чтобы перейти от \\(a_1\\ldots a_{l-1}\\) к \\(b_1\\ldots b_{l-1}\\), достаточно последовательно дописать \\(b_1,b_2,\\ldots,b_{l-1}\\).\n\nЗначит, в этом конечном ориентированном графе есть эйлеров цикл. Запишем сначала слово, соответствующее стартовой вершине, а затем при каждом переходе по эйлерову циклу будем дописывать последнюю букву нового ребра. Каждое ребро графа пройдено ровно один раз, то есть каждое слово длины \\(l\\) встречается ровно один раз по окружности.",
+      "idea_ids": [
+        "idea-balanced-strongly-connected"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "eulerian_cycle",
+        "directed_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Классическая конструкция последовательностей де Брёйна через эйлеров цикл.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "connectivity",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "eulerian_cycle"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vjimc-2000-cat2-p2-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Добавлено при проходе по официальному архиву VJIMC."
+    ],
+    "relations_status": "base_done"
+  }
+}

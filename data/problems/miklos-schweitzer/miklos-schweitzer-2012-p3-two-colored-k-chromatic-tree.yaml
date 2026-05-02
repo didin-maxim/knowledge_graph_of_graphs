@@ -1,0 +1,142 @@
+{
+  "id": "miklos-schweitzer-2012-p3-two-colored-k-chromatic-tree",
+  "title": "Одноцветное дерево на k вершинах в 2-раскрашенном k-хроматическом графе, Miklos Schweitzer 2012 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "graph_in_solution"
+    ]
+  },
+  "language": "ru",
+  "status": "ai_checked",
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "chromatic_number",
+      "edge_coloring",
+      "monochromatic_tree"
+    ],
+    "methods": [
+      "monochromatic_components",
+      "intersection_graph",
+      "coloring_argument"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "keywords": [
+      "schweitzer_2012_p3",
+      "chromatic_number",
+      "monochromatic_tree"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Два цвета на ребрах",
+        "text": "Пусть дан простой граф, хроматическое число которого равно \\(k\\). Все его ребра раскрашены в два цвета. Докажите, что существует одноцветное дерево с \\(k\\) вершинами.",
+        "source_id": "src-miklos-schweitzer-2012-p3-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number",
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "В любой 2-раскраске ребер графа \\(G\\) с \\(\\chi(G)=k\\) одна из одноцветных компонент имеет не меньше \\(k\\) вершин; взяв в ней остовное дерево на \\(k\\) вершинах, получаем требуемое одноцветное дерево.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "tree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-components-color-vertices",
+      "title": "Малые одноцветные компоненты дали бы правильную раскраску вершин",
+      "text": "Если каждая одноцветная компонента имеет меньше \\(k\\) вершин, можно попытаться закодировать вершину парой ее красной и синей компонент и получить раскраску исходного графа менее чем в \\(k\\) цветов. Противоречие с \\(\\chi(G)=k\\) заставляет одну компоненту иметь хотя бы \\(k\\) вершин.",
+      "tags": [
+        "coloring",
+        "connectivity",
+        "goal_existence"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-gyarfas-simonsovits",
+      "title": "Компонента размера не меньше хроматического числа",
+      "text": "Используем стандартную лемму: в любой раскраске ребер графа в два цвета существует одноцветная связная компонента, содержащая не меньше \\(\\chi(G)\\) вершин. Действительно, если все одноцветные компоненты меньше \\(\\chi(G)\\), то сжатие компонент одного цвета и рассмотрение пересечений с компонентами другого цвета дает правильную вершинную раскраску с меньшим числом цветов; это противоречит определению хроматического числа. Поэтому есть одноцветная компонента \\(C\\) с \\(|C|\\ge k\\). В связном графе \\(C\\) выберем любые \\(k\\) вершин и минимальный связный подграф, который их содержит; из него удалением циклов получаем одноцветное дерево с \\(k\\) вершинами.",
+      "idea_ids": [
+        "idea-components-color-vertices"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "chromatic_number",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Ключ - известная лемма о большой одноцветной компоненте в терминах хроматического числа.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "trees",
+    "connectivity",
+    "classical_lemma",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "monochromatic_component_chromatic_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2012-p3-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2012-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Добавлено стандартное решение-идея; желательно сверить с официальным венгерским решением."
+    ],
+    "relations_status": "not_started"
+  }
+}

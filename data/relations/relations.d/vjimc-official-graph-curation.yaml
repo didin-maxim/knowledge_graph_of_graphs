@@ -1,0 +1,114 @@
+{
+  "relations": [
+    {
+      "id": "rel-vjimc-1999-lines-ramsey-r33",
+      "from": "vjimc-1999-cat2-p1-lines-ramsey-three-relations",
+      "to": "ramsey-r33",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "VJIMC 1999 переводит взаимное расположение прямых в раскраску рёбер полного графа и ищет одноцветный треугольник.",
+      "backward_text": "Классическая задача \\(R(3,3)\\) является базовой моделью того же аргумента: раскраска рёбер полного графа вынуждает одноцветный треугольник.",
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-vjimc-1999-lines-imo-1964",
+      "from": "vjimc-1999-cat2-p1-lines-ramsey-three-relations",
+      "to": "imo-1964-p4-three-topic-ramsey",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В VJIMC 1999 цвета рёбер полного графа кодируют три типа взаимного расположения прямых.",
+      "backward_text": "IMO 1964 также кодирует пары объектов цветами рёбер полного графа; отличие в том, что VJIMC добавляет геометрические ограничения на допустимые раскраски.",
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-vjimc-2000-distances-imc-2013-necklace",
+      "from": "vjimc-2000-cat1-p4-red-blue-distances",
+      "to": "imc-2013-day2-p5-necklace-good-colorings-odd",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "VJIMC 2000 рассматривает двуцветную раскраску вершин цикла и считает пары на каждом циклическом расстоянии.",
+      "backward_text": "IMC 2013 также работает с раскрасками цикла; там локальное ограничение ведёт к рекурсии, а здесь фиксированный шаг разбивает цикл на циклы меньшего обхода.",
+      "status": "ai_checked",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-vjimc-2000-debruijn-eulerian-criterion",
+      "from": "vjimc-2000-cat2-p2-de-bruijn-euler-cycle",
+      "to": "eulerian-graph-criterion",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Решение VJIMC 2000 строит граф де Брёйна и использует существование эйлерова цикла в сбалансированном связном орграфе.",
+      "backward_text": "Критерий эйлерова цикла является основным инструментом, который превращает граф де Брёйна в циклическую последовательность со всеми словами.",
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-vjimc-2005-weighted-cut-graph-cut",
+      "from": "vjimc-2005-cat2-p2-weighted-cut-half",
+      "to": "cmo-2023-p5-cut-bound-independent-set",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "VJIMC 2005 выбирает максимальный взвешенный разрез и использует локальную оптимальность при переносе одной вершины.",
+      "backward_text": "CMO 2023 также использует ограничения на разрезы как способ получить глобальную структуру графа; обе задачи полезны в кластере «разрезы и локальные оценки».",
+      "status": "needs_human_review",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-vjimc-2007-key-ring-cycle-symmetry",
+      "from": "vjimc-2007-cat1-p2-key-ring-distinguishing-coloring",
+      "to": "imo-1979-p6-octagon-walks-cycle-graph",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "VJIMC 2007 рассматривает цикл как граф с диэдральными симметриями и раскрасками вершин.",
+      "backward_text": "IMO 1979 использует другой аспект графа-цикла - маршруты и симметрию расстояний. Связь слабая, но обе задачи являются хорошими примерами работы с циклом как самостоятельным графом.",
+      "status": "needs_human_review",
+      "confidence": 0.6
+    },
+    {
+      "id": "rel-vjimc-2009-partial-hypergraph-imc-1997",
+      "from": "vjimc-2009-cat1-p3-partial-hypergraph-bicoloring",
+      "to": "imc-1997-day1-p6-intersecting-families-finite-transversal",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "VJIMC 2009 и IMC 1997 обе естественно читаются как задачи о гиперграфах: в одной нужно частично раскрасить гиперрёбра, в другой - контролировать пересечения гиперрёбер.",
+      "backward_text": "IMC 1997 даёт родственный язык конечных гиперграфов и трансверсалей; VJIMC 2009 добавляет раскрасочную цель.",
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-vjimc-2017-polyhedron-planar-edge-bound",
+      "from": "vjimc-2017-cat1-p3-polyhedron-edge-products",
+      "to": "planar-edge-bound",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "VJIMC 2017 использует планарность скелета выпуклого многогранника и ограничения на полный подграф положительных весов.",
+      "backward_text": "Оценки для простых планарных графов объясняют, почему слишком большая клика положительных вершин невозможна в скелете многогранника.",
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-vjimc-2024-degree-squares-mantel",
+      "from": "vjimc-2024-cat1-p3-degree-squares-triangle",
+      "to": "mantel-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "VJIMC 2024 доказывает наличие треугольника от противного, используя ограничения на суммы степеней в треугольник-свободном графе.",
+      "backward_text": "Теорема Мантеля является базовой экстремальной задачей о треугольник-свободных графах; VJIMC 2024 даёт другую численную гарантию треугольника через квадраты степеней.",
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-vjimc-2024-degree-squares-handshaking",
+      "from": "vjimc-2024-cat1-p3-degree-squares-triangle",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "В решении VJIMC 2024 сумма квадратов степеней переписывается как сумма выражений по рёбрам, что является усиленной формой подсчёта степеней.",
+      "backward_text": "Лемма о рукопожатиях даёт базовый язык сумм степеней; VJIMC 2024 использует тот же подсчёт на следующем уровне, суммируя степени соседей.",
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+  ]
+}

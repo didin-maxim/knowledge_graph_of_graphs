@@ -1,0 +1,164 @@
+{
+  "id": "simon-marais-2025-b1-beaut-functions-gcd-graph",
+  "title": "Beaut-функции и раскраска графа общих делителей, SMMC 2025 B1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Liam Baker",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "gcd_graph",
+      "list_assignment",
+      "proper_coloring"
+    ],
+    "methods": [
+      "case_analysis",
+      "interval_divisibility",
+      "obstruction"
+    ],
+    "transformations": [
+      "function_to_list_coloring"
+    ],
+    "goal": [
+      "characterize_n"
+    ],
+    "auxiliary_graph_type": [
+      "gcd_graph"
+    ],
+    "invariants": [
+      "common_divisor_adjacency",
+      "unique_multiple_in_interval"
+    ],
+    "keywords": [
+      "smmc_2025_b1",
+      "beaut_function",
+      "gcd_graph",
+      "list_coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Функция \\(f:\\{1,2,\\ldots,n\\}\\to\\{m+1,m+2,\\ldots,m+n\\}\\), где \\(m,n\\) — положительные целые числа, называется beaut, если \\(a\\mid f(a)\\) для всех \\(a\\in\\{1,2,\\ldots,n\\}\\), и \\(f(a)\\ne f(b)\\) для любых различных \\(a,b\\) с \\(\\gcd(a,b)\\ne1\\). Найдите все положительные \\(n\\), такие что для любого положительного \\(m\\) существует beaut-функция.",
+        "source_id": "src-simon-marais-2025-B1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть \\(H_n\\) — граф на вершинах \\(1,2,\\ldots,n\\), где \\(a\\) и \\(b\\) смежны тогда и только тогда, когда \\(\\gcd(a,b)>1\\). Для заданного \\(m\\) вершина \\(a\\) имеет список допустимых цветов \\(L_a=\\{x\\in\\{m+1,\\ldots,m+n\\}:a\\mid x\\}\\). Найдите все \\(n\\), для которых при любом \\(m\\) граф \\(H_n\\) имеет правильную раскраску, выбирающую цвет каждой вершины из ее списка.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-small-n-only-edge",
+      "title": "При \\(n\\le5\\) единственное нетривиальное ребро — между 2 и 4",
+      "text": "Для малых \\(n\\) условие различия цветов фактически нужно проверять только для пары \\(2,4\\), а нужные кратные в любом интервале длины \\(n\\) существуют по простому делению с остатком.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-two-adjacent-lists-collapse",
+      "title": "Для больших \\(n\\) две смежные вершины вынуждены получить один цвет",
+      "text": "Если взять две смежные вершины больше половины \\(n\\), можно выбрать интервал длины \\(n\\), где единственное число, кратное хотя бы одной из них, — их произведение. Тогда правильная списочная раскраска невозможна.",
+      "tags": [
+        "extremal_choice",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-n-at-most-five",
+      "title": "Характеризация: \\(n\\le5\\)",
+      "text": "Ответ: ровно \\(n\\le5\\).\n\nДля \\(n\\le5\\) в графе \\(H_n\\) единственное ребро, влияющее на условие различия цветов, — \\(2\\sim4\\). Для \\(n=1,2,3\\) достаточно выбрать в интервале \\(m+1,\\ldots,m+n\\) кратные соответственно 2 и 3 там, где они нужны. Для \\(n=4\\) в любом интервале длины 4 есть ровно одно число, кратное 4, и другое четное число, не кратное 4; ими раскрашиваем вершины 4 и 2 разными цветами. Для \\(n=5\\) дополнительно берем единственное кратное 5, а рассуждение для 2 и 4 остается тем же.\n\nПусть \\(n\\ge6\\). Если \\(n\\) четно, вершины \\(n\\) и \\(n-2\\) смежны в \\(H_n\\), обе больше \\(n/2\\). Выберем \\(m=n(n-2)-n/2\\). В интервале длины \\(n\\) единственное число, кратное \\(n\\) или \\(n-2\\), равно \\(n(n-2)\\). Значит, обе смежные вершины вынуждены получить один цвет, что невозможно. Если \\(n\\) нечетно, аналогично берем смежные вершины \\(n-1\\) и \\(n-3\\) и интервал вокруг \\((n-1)(n-3)\\); снова единственный допустимый цвет для обеих вершин совпадает. Поэтому при \\(n\\ge6\\) нужной раскраски для некоторого \\(m\\) нет.",
+      "idea_ids": [
+        "idea-small-n-only-edge",
+        "idea-two-adjacent-lists-collapse"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Естественная списочная раскраска графа по отношению \\(\\gcd>1\\); решение короткое, но требует точного выбора запрещающего интервала.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "coloring",
+    "extremal_choice",
+    "goal_characterization"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "list_coloring_model",
+        "interval_obstruction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2025-B1-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Условие injectivity только на парах с gcd>1 естественно является правильной списочной раскраской gcd-графа."
+    ],
+    "relations_status": "base_done"
+  }
+}

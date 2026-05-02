@@ -1,0 +1,165 @@
+{
+  "id": "putnam-2012-b3-round-robin-winners-hall",
+  "title": "Победитель каждого дня в круговом турнире и теорема Холла, Putnam 2012 B3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "matching"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "round_robin_tournament_schedule",
+      "bipartite_graph",
+      "matching"
+    ],
+    "methods": [
+      "hall_marriage_theorem",
+      "neighborhood_lower_bound",
+      "counting_losses"
+    ],
+    "transformations": [
+      "days_and_teams_to_bipartite_graph"
+    ],
+    "goal": [
+      "select_distinct_representatives"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_incidence_graph"
+    ],
+    "invariants": [
+      "each_pair_plays_once",
+      "one_game_per_team_per_day"
+    ],
+    "keywords": [
+      "putnam_2012_b3",
+      "round_robin",
+      "hall_theorem",
+      "system_of_distinct_representatives"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Круговой турнир с \\(2n\\) командами длился \\(2n-1\\) дней. В каждый день каждая команда играла ровно одну игру против другой команды; в каждой из \\(n\\) игр был один победитель и один проигравший. За весь турнир каждая команда сыграла с каждой другой ровно один раз. Всегда ли можно выбрать по одной выигравшей команде из каждого дня так, чтобы ни одна команда не была выбрана более одного раза?",
+        "source_id": "src-putnam-2012-B3-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть полный граф \\(K_{2n}\\) разложен на \\(2n-1\\) совершенных паросочетаний, соответствующих дням турнира, а каждое ребро ориентировано от победителя к проигравшему. Докажите, что можно выбрать по одному ребру из каждого паросочетания так, чтобы начальные вершины выбранных ребер были попарно различны.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching",
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-days-teams-bipartite",
+      "title": "Дни и команды образуют двудольный граф",
+      "text": "Соединим день с командой, если эта команда выиграла в этот день. Требуется паросочетание, покрывающее все дни.",
+      "tags": [
+        "matching",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-hall-by-losses",
+      "title": "Условие Холла следует из проигрышей",
+      "text": "Если за \\(m\\) дней победителями были меньше \\(m\\) команд, то любая команда вне этого множества проиграла в каждый из этих дней, то есть проиграла \\(m\\) раз \\(m\\) различным соперникам из слишком маленького множества.",
+      "tags": [
+        "matching",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kedlaya-hall",
+      "title": "Теорема Холла",
+      "text": "Ответ: да.\n\nДокажем сначала ключевую оценку. Возьмем любые \\(m\\) дней, где \\(1\\le m\\le 2n-1\\). Утверждаем, что среди этих дней есть по крайней мере \\(m\\) различных команд, которые хотя бы раз выигрывали. Предположим обратное: множество таких победителей \\(W\\) имеет размер меньше \\(m\\). Тогда любая команда вне \\(W\\) не выигрывала ни в один из выбранных \\(m\\) дней, значит, в каждый из этих дней она проигрывала. За круговой турнир команда не играет с одним и тем же соперником дважды, поэтому за эти \\(m\\) дней она проиграла \\(m\\) различным соперникам. Все эти соперники принадлежат \\(W\\), потому что именно они выиграли соответствующие игры. Но \\(|W|<m\\), что невозможно.\n\nТеперь построим двудольный граф. В левой доле находятся \\(2n-1\\) дней, в правой - \\(2n\\) команд. Соединим день \\(d\\) с командой \\(t\\), если команда \\(t\\) выиграла свою игру в день \\(d\\). Только что доказанная оценка говорит, что для любого множества из \\(m\\) левых вершин его множество соседей имеет размер не меньше \\(m\\). Это ровно условие Холла для покрытия всех дней паросочетанием.\n\nПо теореме Холла существует паросочетание, насыщающее все левые вершины. Оно выбирает для каждого дня одну соседнюю команду, то есть команду, выигравшую в этот день, причем разные дни сопоставлены разным командам. Это и требовалось.",
+      "idea_ids": [
+        "idea-days-teams-bipartite",
+        "idea-hall-by-losses"
+      ],
+      "standard_idea_ids": [
+        "augmenting_path_method",
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 10,
+    "comment": "Putnam B3; после построения двудольного графа задача становится прямым применением теоремы Холла.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "graph_model",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "hall_marriage_theorem",
+        "bipartite_incidence_graph"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2012-B3-kedlaya",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done"
+  }
+}

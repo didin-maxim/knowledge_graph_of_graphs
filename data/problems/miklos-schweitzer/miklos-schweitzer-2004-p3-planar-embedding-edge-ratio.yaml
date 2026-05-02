@@ -1,0 +1,144 @@
+{
+  "id": "miklos-schweitzer-2004-p3-planar-embedding-edge-ratio",
+  "title": "Планарный граф с неизбежно большим отношением длин ребер, Schweitzer 2004/3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "geometric_graph_theory"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "planar_graph",
+      "straight_line_plane_embedding",
+      "edge_lengths"
+    ],
+    "methods": [
+      "planar_graph_construction",
+      "geometric_embedding_obstruction",
+      "extremal_construction"
+    ],
+    "transformations": [],
+    "goal": [
+      "construct_planar_graph_with_large_required_edge_ratio"
+    ],
+    "auxiliary_graph_type": [
+      "planar_graph"
+    ],
+    "invariants": [
+      "number_of_vertices",
+      "ratio_of_two_edge_lengths_in_every_straight_line_embedding"
+    ],
+    "keywords": [
+      "schweitzer_2004_p3",
+      "planar_graph",
+      "straight_line_embedding",
+      "edge_length_ratio"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Докажите, что существует константа \\(c>0\\) такая, что для любого \\(n\\ge3\\) найдется планарный граф \\(G\\) с \\(n\\) вершинами, у которого в каждом плоском вложении с прямолинейными ребрами есть пара ребер, отношение длин которых не меньше \\(cn\\).",
+        "source_id": "src-miklos-schweitzer-2004-p3-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Геометрическая графовая формулировка",
+        "text": "Существуют \\(n\\)-вершинные планарные графы, для которых нельзя выбрать прямолинейное плоское изображение с отношением максимальной и минимальной длины ребра меньше порядка \\(n\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-forced-nesting",
+      "title": "Искать конструкцию с вынужденной вложенностью",
+      "text": "Естественный путь - строить планарный граф, где комбинаторика граней заставляет в любом прямолинейном вложении появляться цепочку вложенных или экранирующих структур. Тогда последовательные геометрические ограничения на площади или расстояния дают большое отношение длин ребер.",
+      "tags": [
+        "planar_graphs",
+        "construction"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-area-or-separation",
+      "title": "Сравнивать площади и разделения",
+      "text": "Если все ребра имели бы сравнимые длины, то локальные треугольники или многоугольные барьеры давали бы слишком мало места для требуемого числа уровней. Значит, в любой реализации должен возникнуть масштабный скачок.",
+      "tags": [
+        "extremal_choice",
+        "goal_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "Конструктивная задача на границе планарной и геометрической теории графов; без официального решения оставлена для проверки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "construction",
+    "extremal_choice",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "forced_geometric_distortion_in_planar_embedding"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2004-p3-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2004-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие; опубликованное решение в индексе для 2004 года не указано."
+    ],
+    "relations_status": "not_started"
+  }
+}

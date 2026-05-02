@@ -1,0 +1,212 @@
+{
+  "id": "miklos-schweitzer-1959-p10-even-circuit-edge-bound",
+  "title": "Чётный цикл в графе с 2n+1 вершинами и 3n+1 рёбрами, Schweitzer 1959/10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_graph",
+      "simple_graph",
+      "cycle",
+      "even_cycle",
+      "maximal_forest"
+    ],
+    "methods": [
+      "maximal_acyclic_subgraph",
+      "fundamental_cycles",
+      "parity_argument",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "reduce_multigraph_to_simple_graph",
+      "non_tree_edges_to_fundamental_cycles"
+    ],
+    "goal": [
+      "prove_even_cycle_exists",
+      "show_bound_is_sharp"
+    ],
+    "auxiliary_graph_type": [
+      "forest"
+    ],
+    "invariants": [
+      "forest_edge_bound",
+      "cycle_length_parity"
+    ],
+    "keywords": [
+      "schweitzer_1959_p10",
+      "even_circuit",
+      "maximal_forest",
+      "windmill_triangles"
+    ],
+    "status": "source_verified"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Докажите, что если граф с \\(2n+1\\) вершинами имеет не менее \\(3n+1\\) рёбер, то в нём есть контур чётной длины. Докажите также, что утверждение уже неверно для \\(3n\\) рёбер. В книге под контуром понимается замкнутая самонепересекающаяся линия, то есть простой цикл.",
+        "source_id": "src-miklos-schweitzer-1959-p10-old-book",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "source_verified",
+          "notes": "Формулировка сверена по разделу Problems of the contests; OCR искажает число 3n, но контекст и решение однозначны."
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(G\\) - конечный граф на \\(2n+1\\) вершинах. Если \\(|E(G)|\\ge 3n+1\\), то \\(G\\) содержит простой цикл чётной длины. Оценка точна: для каждого \\(n\\) существует граф на \\(2n+1\\) вершинах с \\(3n\\) рёбрами, в котором все циклы нечётны.",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "source_verified",
+          "notes": "Это та же задача в современной терминологии."
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-maximal-forest",
+      "title": "Вынести все лишние рёбра за максимальный лес",
+      "text": "В максимальном ациклическом подграфе на \\(2n+1\\) вершинах не больше \\(2n\\) рёбер. Поэтому при \\(3n+k\\) рёбрах, где \\(k\\ge 1\\), вне выбранного леса остаётся хотя бы \\(n+k\\) рёбер, и каждое из них замыкает свой фундаментальный цикл.",
+      "tags": [
+        "trees",
+        "extremal_choice",
+        "goal_bound"
+      ],
+      "status": "source_verified"
+    },
+    {
+      "id": "idea-two-overlapping-cycles",
+      "title": "Два пересекающихся фундаментальных цикла дают чётный цикл",
+      "text": "Если бы все полученные циклы были попарно реберно непересекающимися, они потребовали бы слишком много рёбер. Значит, два цикла имеют общее ребро. Между двумя подходящими общими вершинами возникают три простых цикла с длинами \\(a_1+a_2\\), \\(a_1+b_1\\), \\(a_2+b_1\\); сумма этих трёх чисел чётна, поэтому хотя бы один из циклов имеет чётную длину.",
+      "tags": [
+        "extremal_graph_theory",
+        "parity_coloring",
+        "goal_existence"
+      ],
+      "status": "source_verified"
+    },
+    {
+      "id": "idea-sharpness",
+      "title": "Острота: веер из треугольников",
+      "text": "Контрпример для \\(3n\\) рёбер получается из \\(n\\) треугольников с одной общей вершиной и без других общих вершин. В нём \\(2n+1\\) вершина и \\(3n\\) рёбер, а каждый простой цикл является одним из треугольников.",
+      "tags": [
+        "construction",
+        "forbidden_triangle",
+        "goal_construction"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-forest-cycles",
+      "title": "Решение через максимальный лес и пересекающиеся циклы",
+      "type": "official_solution_adapted",
+      "source_id": "src-miklos-schweitzer-1959-p10-old-book",
+      "text": "Петли исключаются смыслом задачи: если их разрешить, появляются ложные контрпримеры. Если две вершины соединены двумя разными рёбрами, то эти два ребра уже образуют чётный контур длины 2. Поэтому достаточно рассмотреть простой граф.\n\nПусть в графе \\(2n+1\\) вершин и \\(3n+k\\) рёбер, где \\(k\\ge 1\\). Возьмём максимальное множество рёбер \\(B\\), не содержащее циклов, то есть максимальный лес. В любом лесу на \\(2n+1\\) вершинах не больше \\(2n\\) рёбер, значит, вне \\(B\\) лежит не меньше \\(n+k\\) рёбер. По максимальности \\(B\\) каждое такое ребро вместе с рёбрами леса замыкает простой цикл.\n\nЭтих циклов не меньше \\(n+k\\). Если бы они не имели общих рёбер, то, поскольку граф простой и каждый цикл имеет длину хотя бы 3, они вместе содержали бы не меньше \\(3n+3k\\) рёбер. Но весь граф содержит только \\(3n+k\\) рёбер, противоречие. Следовательно, два из этих циклов имеют общее ребро.\n\nВыберем два таких цикла. В одном из них есть ребро, которого нет в другом; идя от него по циклу в обе стороны до первых вершин второго цикла, получаем две вершины \\(A\\) и \\(B\\). Дуга первого цикла между \\(A\\) и \\(B\\) и две дуги второго цикла между теми же вершинами образуют три простых цикла. Если длины двух дуг второго цикла равны \\(a_1\\) и \\(a_2\\), а длина выбранной дуги первого цикла равна \\(b_1\\), то длины трёх циклов равны \\(a_1+a_2\\), \\(a_1+b_1\\), \\(a_2+b_1\\). Их сумма равна \\(2(a_1+a_2+b_1)\\), поэтому не все три числа нечётны; один из этих циклов чётный.\n\nДля остроты оценки возьмём \\(n\\) треугольников, имеющих ровно одну общую вершину и больше не пересекающихся. Тогда вершин \\(1+2n=2n+1\\), рёбер \\(3n\\), а все простые циклы - именно эти треугольники, так что чётного цикла нет.",
+      "tags": [
+        "extremal_graph_theory",
+        "trees",
+        "extremal_choice",
+        "construction",
+        "goal_exact_bound"
+      ],
+      "status": "source_verified",
+      "standard_idea_ids": [
+        "extremal_choice"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Короткая экстремальная задача: ключевой ход - максимальный лес и фундаментальные циклы; затем нужна аккуратная проверка чётности и пример на точность.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "trees",
+    "extremal_choice",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "maximal_forest_and_fundamental_cycles",
+        "parity_from_three_cycles"
+      ],
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-1959-p10-old-book",
+      "role": "official_statement_and_solution",
+      "url": "https://real-eod.mtak.hu/14558/1/AkademiaiKiado_007070.pdf",
+      "status": "source_verified",
+      "pages": [
+        {
+          "pdf_page": 33,
+          "book_page": 29,
+          "part": "statement"
+        },
+        {
+          "pdf_page": 254,
+          "book_page": 250,
+          "part": "solution_start"
+        },
+        {
+          "pdf_page": 255,
+          "book_page": 251,
+          "part": "solution"
+        },
+        {
+          "pdf_page": 256,
+          "book_page": 252,
+          "part": "solution_end"
+        }
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Источник - старый английский сборник Contests in higher mathematics. Hungary, 1949-1961. In memoriam Miklos Schweitzer.",
+      "OCR заметно шумит в обозначениях и в числе 3n, но условие и решение 1959/10 читаются однозначно по контексту.",
+      "Фраза circuit переведена как простой цикл; в самом условии книги дано пояснение closed line which does not intersect itself."
+    ],
+    "relations_status": "not_started"
+  }
+}

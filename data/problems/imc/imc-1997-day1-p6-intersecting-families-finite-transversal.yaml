@@ -1,0 +1,158 @@
+{
+  "id": "imc-1997-day1-p6-intersecting-families-finite-transversal",
+  "title": "Пересекающиеся семейства конечных подмножеств и конечный носитель пересечений, IMC 1997 Day 1 P6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "advanced"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "intersecting_family",
+      "finite_hypergraph",
+      "transversal_for_pairwise_intersections",
+      "uniform_hypergraph"
+    ],
+    "methods": [
+      "counterexample",
+      "induction_on_uniformities",
+      "finite_partition_by_trace"
+    ],
+    "transformations": [
+      "sets_as_hyperedges"
+    ],
+    "goal": [
+      "existence_and_nonexistence"
+    ],
+    "auxiliary_graph_type": [
+      "hypergraph"
+    ],
+    "invariants": [
+      "edge_size",
+      "cross_intersection"
+    ],
+    "keywords": [
+      "imc_1997_day1_p6",
+      "finite_intersection_witness",
+      "uniform_intersecting_family"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(\\mathcal F\\) - семейство конечных подмножеств множества натуральных чисел \\(\\mathbb N\\), причем любые два множества \\(A,B\\in\\mathcal F\\) имеют непустое пересечение. (a) Верно ли, что существует конечное множество \\(Y\\subset\\mathbb N\\), такое что для любых \\(A,B\\in\\mathcal F\\) выполнено \\(A\\cap B\\cap Y\\ne\\varnothing\\)? (b) Останется ли утверждение пункта (a) верным, если дополнительно известно, что все множества из \\(\\mathcal F\\) имеют один и тот же размер? Ответы обоснуйте.",
+        "source_id": "src-imc-1997-day1-p6-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-hypergraph",
+        "title": "Гиперграфовая формулировка",
+        "text": "Ребра конечного гиперграфа на вершинах \\(\\mathbb N\\) попарно пересекаются. Нужно понять, всегда ли существует конечное множество вершин \\(Y\\), которое пересекает каждое множество вида \\(E\\cap E'\\) для двух ребер \\(E,E'\\). Постройте контрпример в общем случае и докажите существование такого \\(Y\\) для равномерного попарно пересекающегося гиперграфа.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "definition_ids": []
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-moving-intersection-counterexample",
+      "title": "Пересечение можно уводить за любой конечный барьер",
+      "text": "В неравномерном случае пары множеств можно устроить так, что \\(A_n\\cap B_n\\) состоит из одной большой точки \\(2n\\). Тогда любое заранее выбранное конечное \\(Y\\) промахивается мимо этой пары при больших \\(n\\).",
+      "tags": [
+        "construction",
+        "goal_impossibility"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-traces-on-fixed-pair",
+      "title": "Индукция по размерам через следы на фиксированной паре",
+      "text": "Для двух равномерных перекрестно пересекающихся семейств фиксируем одну пару ребер и разбиваем остальные ребра по их следам на объединении этой пары. Если два следа пересекаются, одна точка уже работает; если нет, пересечение вынуждено лежать вне фиксированного конечного множества, и размеры ребер уменьшаются.",
+      "tags": [
+        "induction",
+        "graph_model"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Контрпример и индукция для равномерного случая",
+      "text": "В пункте (a) ответ отрицательный. Для каждого \\(n\\ge 1\\) положим\n\\(A_n=\\{1,3,5,\\ldots,2n-1,2n\\}\\) и \\(B_n=\\{2,4,6,\\ldots,2n,2n+1\\}\\), а семейство \\(\\mathcal F\\) составим из всех этих \\(A_n\\) и \\(B_n\\). Любые два множества из семейства пересекаются: два множества типа \\(A\\) имеют общие нечетные элементы, два множества типа \\(B\\) имеют общие четные элементы; если сравнивать \\(A_n\\) и \\(B_m\\), то при \\(n\\le m\\) общим является \\(2n\\), а при \\(n>m\\) общим является \\(2m+1\\). Но \\(A_n\\cap B_n=\\{2n\\}\\). Поэтому для любого конечного \\(Y\\) можно выбрать \\(n\\) так, что \\(2n\\notin Y\\), и тогда \\(A_n\\cap B_n\\cap Y=\\varnothing\\).\n\nДля пункта (b) докажем более сильное утверждение. Пусть \\(\\mathcal F\\) и \\(\\mathcal G\\) - два семейства конечных подмножеств \\(\\mathbb N\\), каждое множество из \\(\\mathcal F\\) имеет размер \\(r\\), каждое множество из \\(\\mathcal G\\) имеет размер \\(s\\), и для любых \\(A\\in\\mathcal F\\), \\(B\\in\\mathcal G\\) выполнено \\(A\\cap B\\ne\\varnothing\\). Тогда существует конечное \\(Y\\), такое что \\(A\\cap B\\cap Y\\ne\\varnothing\\) для всех таких \\(A,B\\). Нужный результат получается при \\(\\mathcal F=\\mathcal G\\).\n\nДоказательство ведем индукцией по паре \\((r,s)\\), например по сумме \\(r+s\\). При \\(r=s=1\\) все очевидно. Зафиксируем \\(A_0\\in\\mathcal F\\) и \\(B_0\\in\\mathcal G\\). Для каждого непустого \\(C\\subset A_0\\cup B_0\\) рассмотрим подсемейство \\(\\mathcal F(C)=\\{A\\in\\mathcal F: A\\cap(A_0\\cup B_0)=C\\}\\); аналогично определим \\(\\mathcal G(D)\\). Следы непусты, потому что каждое \\(A\\) пересекает \\(B_0\\), а каждое \\(B\\) пересекает \\(A_0\\).\n\nДостаточно для каждой пары непустых следов \\(C,D\\subset A_0\\cup B_0\\) построить конечное множество \\(Y_{C,D}\\), работающее для \\(\\mathcal F(C)\\) и \\(\\mathcal G(D)\\), а затем взять объединение всех этих конечных множеств. Если \\(C\\cap D\\ne\\varnothing\\), то любая точка из \\(C\\cap D\\) лежит во всех соответствующих пересечениях \\(A\\cap B\\), так что можно взять одноточечное \\(Y_{C,D}\\). Если же \\(C\\cap D=\\varnothing\\), то пересечение любого \\(A\\in\\mathcal F(C)\\) и \\(B\\in\\mathcal G(D)\\) не может лежать внутри \\(A_0\\cup B_0\\), значит множества \\(A\\setminus C\\) и \\(B\\setminus D\\) по-прежнему перекрестно пересекаются. Их размеры равны \\(r-|C|<r\\) и \\(s-|D|<s\\), поэтому к этим двум новым семействам применима индукционная гипотеза. Полученное конечное множество и будет \\(Y_{C,D}\\). Объединение по всем \\(C,D\\) конечно и пересекает каждое \\(A\\cap B\\), что завершает доказательство.",
+      "idea_ids": [
+        "idea-moving-intersection-counterexample",
+        "idea-traces-on-fixed-pair"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 13,
+    "comment": "Продвинутая гиперграфовая задача о конечных носителях попарных пересечений; официальный индукционный аргумент требует аккуратной работы с двумя перекрестно пересекающимися семействами.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "induction",
+    "construction",
+    "goal_proof",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "hypergraph_model",
+        "induction_on_uniformities",
+        "finite_trace_partition"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-1997-day1-p6-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Включено как продвинутая гиперграфовая задача; официальный PDF содержит OCR-искажение в строке с итоговым пересечением, исправлено по смыслу доказательства."
+    ],
+    "relations_status": "base_done"
+  }
+}

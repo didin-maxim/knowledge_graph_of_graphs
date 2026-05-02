@@ -1,0 +1,125 @@
+{
+  "id": "miklos-schweitzer-2015-p2-van-der-corput-rectangle-graph-coloring",
+  "title": "Граф видимости точек Ван дер Корпута прямоугольниками, Miklos Schweitzer 2015 P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "geometric_graph"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "van_der_corput_sequence",
+      "infinite_geometric_graph",
+      "axis_parallel_rectangle",
+      "chromatic_number"
+    ],
+    "methods": [
+      "geometric_graph_modeling",
+      "coloring",
+      "dyadic_structure"
+    ],
+    "goal": [
+      "prove_bound"
+    ],
+    "keywords": [
+      "schweitzer_2015_p2",
+      "van_der_corput",
+      "rectangle_graph",
+      "chromatic_number"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Прямоугольники и последовательность Ван дер Корпута",
+        "text": "Пусть \\(x_n\\) - последовательность Ван дер Корпута: если двоичная запись \\(n\\) равна \\(\\sum a_i2^i\\), то \\(x_n=\\sum a_i2^{-i-1}\\). Пусть \\(V\\) - множество точек плоскости вида \\((n,x_n)\\). Определим граф \\(G\\) с множеством вершин \\(V\\): две точки \\(p,q\\) соединены ребром, если существует осепараллельный прямоугольник \\(R\\), для которого \\(R\\cap V=\\{p,q\\}\\). Докажите, что хроматическое число \\(G\\) конечно.",
+        "source_id": "src-miklos-schweitzer-2015-p2-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Геометрический граф",
+        "text": "На бесконечном множестве точек \\((n,x_n)\\) задан граф прямоугольной видимости: ребро означает, что пара точек может быть отделена осепараллельным прямоугольником от всех остальных точек множества. Нужно доказать ограниченность хроматического числа этого бесконечного графа абсолютной константой.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-dyadic-levels",
+      "title": "Использовать двоичную структуру последовательности",
+      "text": "Точки Ван дер Корпута имеют жесткую dyadic-структуру: близость по первой координате и порядок по второй кодируются двоичными разрядами. Вероятная раскраска должна зависеть от нескольких старших/младших разрядов так, чтобы ребра прямоугольной видимости не соединяли одинаковые классы.",
+      "tags": [
+        "coloring",
+        "graph_model",
+        "goal_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Явная бесконечная геометрическая графовая задача; решение зависит от тонкой структуры последовательности.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "graph_model",
+    "goal_bound",
+    "construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "dyadic_coloring",
+        "axis_parallel_rectangle_visibility"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2015-p2-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2015-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие; решение не добавлено."
+    ],
+    "relations_status": "not_started"
+  }
+}

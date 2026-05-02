@@ -1,0 +1,149 @@
+{
+  "id": "imc-2022-day2-p5-regular-43-coloured-triangles",
+  "title": "Красно-синие треугольники в \\(K_{43}\\), IMC 2022 Day 2 P5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Mike Daas",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "triangle",
+      "cherry"
+    ],
+    "methods": [
+      "double_counting",
+      "degree_counting"
+    ],
+    "transformations": [
+      "polygon_diagonals_to_complete_graph"
+    ],
+    "goal": [
+      "find_exact_number"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "red_degree",
+      "blue_degree",
+      "cherry_contribution"
+    ],
+    "keywords": [
+      "imc_2022_day2_p5",
+      "two_coloured_complete_graph",
+      "monochromatic_triangles"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Все стороны и диагонали правильного \\(43\\)-угольника \\(P\\) окрашены в красный или синий цвет так, что из каждой вершины выходит \\(20\\) красных и \\(22\\) синих отрезка. Треугольник с вершинами в вершинах \\(P\\) называется одноцветным, если все его стороны одного цвета. Известно, что синих одноцветных треугольников \\(2022\\). Сколько красных одноцветных треугольников?",
+        "source_id": "src-imc-2022-day2-p5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рёбра полного графа \\(K_{43}\\) окрашены в красный и синий цвета; степень каждой вершины в красном подграфе равна \\(20\\), а в синем равна \\(22\\). Если синих одноцветных треугольников \\(2022\\), найдите число красных одноцветных треугольников.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cherries-contribution",
+      "title": "Вишни отличают одноцветные треугольники",
+      "text": "Пара рёбер с общей вершиной даёт вклад в подсчёт. Для одноцветного треугольника три такие пары одноцветны, а для неодноцветного ровно одна одноцветна и две разноцветны.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Двойной счёт пар рёбер с общей вершиной",
+      "text": "Будем рассматривать данный рисунок как полную графовую раскраску \\\\(K_{43}\\\\). Назовём вишней пару различных рёбер с общей вершиной. Вишня бывает одноцветной или разноцветной.\n\nПусть \\\\(M\\\\) -- число одноцветных вишен во всём графе, а \\\\(P\\\\) -- число разноцветных. Рассмотрим величину \\\\(2M-P\\\\) по треугольникам. Каждая вишня входит ровно в один треугольник: если рёбра имеют общий центр \\\\(v\\\\) и другие концы \\\\(a,b\\\\), то это треугольник \\\\(a,b,v\\\\).\n\nЕсли треугольник одноцветный, то все три его вишни одноцветны, и он даёт вклад \\\\(2\\\\cdot3=6\\\\). Если треугольник не одноцветный, то в двухцветной раскраске его рёбер есть две стороны одного цвета и одна другого; значит, ровно одна вишня одноцветна и две разноцветны. Его вклад равен \\\\(2\\\\cdot1-2=0\\\\). Поэтому\n\\\\[\n2M-P=6T,\n\\\\]\nгде \\\\(T\\\\) -- общее число одноцветных треугольников.\n\nТеперь посчитаем ту же величину по центрам вишен. В каждой вершине выходит \\\\(20\\\\) красных и \\\\(22\\\\) синих рёбер. Поэтому число одноцветных вишен с данным центром равно\n\\\\[\n\\\\binom{20}{2}+\\\\binom{22}{2}=190+231=421,\n\\\\]\nа число разноцветных вишен с данным центром равно \\\\(20\\\\cdot22=440\\\\). Вклад одной вершины в \\\\(2M-P\\\\) равен\n\\\\[\n2\\\\cdot421-440=402.\n\\\\]\nВершин \\\\(43\\\\), значит\n\\\\[\n2M-P=43\\\\cdot402.\n\\\\]\nСледовательно,\n\\\\[\nT=\\\\frac{43\\\\cdot402}{6}=43\\\\cdot67=2881.\n\\\\]\nИз них \\\\(2022\\\\) треугольника синие, поэтому красных одноцветных треугольников\n\\\\[\n2881-2022=859.\n\\\\]\"\n",
+      "idea_ids": [
+        "idea-cherries-contribution"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Классический двойной счёт в двухцветном полном графе с регулярными цветными степенями.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "degree_counting",
+    "coloring",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "cherry_double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2022-day2-p5-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Official IMC 2022 Day 2 solution expanded in Russian; sources.yaml intentionally untouched."
+    ],
+    "relations_status": "base_done"
+  }
+}

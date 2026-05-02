@@ -1,0 +1,159 @@
+{
+  "id": "putnam-1996-a3-course-hypergraph",
+  "title": "Выборы курсов как 3-гиперграф, Putnam 1996 A3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "set_system",
+      "three_uniform_hypergraph",
+      "complete_three_uniform_hypergraph",
+      "course_selection"
+    ],
+    "methods": [
+      "counterexample_construction",
+      "double_counting",
+      "extremal_set_system"
+    ],
+    "transformations": [
+      "students_to_hyperedges",
+      "courses_to_vertices",
+      "course_pairs_to_codegrees"
+    ],
+    "goal": [
+      "disprove_existence_statement"
+    ],
+    "auxiliary_graph_type": [
+      "uniform_hypergraph"
+    ],
+    "invariants": [
+      "pair_codegree",
+      "complement_pair_codegree"
+    ],
+    "keywords": [
+      "putnam_1996_a3",
+      "course_choices",
+      "complete_3_uniform_hypergraph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Двадцать студентов и шесть курсов",
+        "text": "Каждый из 20 студентов выбрал некоторое число курсов, от 0 до 6, из шести предложенных курсов. Верно ли, что обязательно найдутся 5 студентов и 2 курса такие, что либо все эти 5 студентов выбрали оба курса, либо все эти 5 студентов не выбрали ни один из этих двух курсов? Докажите или приведите контрпример.",
+        "source_id": "src-putnam-1996-A3-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "На множестве из 6 вершин дано 20 гиперребер, каждое из которых является множеством выбранных вершин, возможно разных размеров. Обязательно ли найдется пара вершин, которая содержится хотя бы в 5 гиперребрах или не пересекается хотя бы с 5 гиперребрами? Покажите, что нет.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-all-triples",
+      "title": "Взять все тройки курсов",
+      "text": "Пусть каждый студент выбирает свою тройку из шести курсов. Тогда всего студентов ровно \\(\\binom63=20\\).",
+      "tags": [
+        "construction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-pair-codegrees-four",
+      "title": "Каждая пара встречается ровно четыре раза",
+      "text": "Фиксированную пару курсов можно дополнить до тройки четырьмя способами, и ровно четырьмя способами можно выбрать тройку целиком среди оставшихся четырех курсов.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-complete-3-uniform-counterexample",
+      "title": "Контрпример из всех трехэлементных выборов",
+      "text": "Утверждение неверно. Пронумеруем курсы числами \\(1,\n2,\n\\ldots,6\\). Так как \\(\\binom63=20\\), можно сопоставить 20 студентам все различные трехэлементные подмножества множества курсов: каждый студент выбирает ровно одну свою тройку, и каждая тройка появляется ровно один раз.\n\nПроверим, что эта конфигурация избегает требуемого вывода. Зафиксируем пару курсов, скажем \\(\\{i,j\\}\\). Студент выбрал оба этих курса тогда и только тогда, когда его тройка имеет вид \\(\\{i,j,k\\}\\), где \\(k\\) - один из оставшихся четырех курсов. Поэтому таких студентов ровно 4, а не 5.\n\nТеперь посчитаем студентов, которые не выбрали ни один из двух курсов \\(i,j\\). Их тройки должны быть трехэлементными подмножествами четырех оставшихся курсов. Таких троек \\(\\binom43=4\\). Значит для той же пары курсов ровно 4 студента не выбрали ни один из них.\n\nПара курсов была произвольной. Следовательно, ни для какой пары нельзя найти 5 студентов, которые все выбрали оба курса, и нельзя найти 5 студентов, которые все не выбрали оба курса. Это дает требуемый контрпример. В гиперграфовом языке это полный 3-однородный гиперграф \\(K_6^{(3)}\\): кодегепень каждой пары равна 4, и кодегепень той же пары в дополнении по непересечению также равна 4.",
+      "idea_ids": [
+        "idea-all-triples",
+        "idea-pair-codegrees-four"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice",
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 4,
+    "comment": "Короткий контрпример; гиперграфовая модель делает конструкцию полной и прозрачной.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "construction",
+    "double_counting",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "complete_3_uniform_hypergraph",
+        "pair_codegree_count"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-1996-A3-kedlaya",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "В архивном решении также упомянута альтернативная конструкция через икосаэдр; в карточке оставлен более прямой полный 3-гиперграф."
+    ],
+    "relations_status": "not_started"
+  }
+}

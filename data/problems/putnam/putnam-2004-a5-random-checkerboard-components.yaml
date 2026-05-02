@@ -1,0 +1,169 @@
+{
+  "id": "putnam-2004-a5-random-checkerboard-components",
+  "title": "Случайная раскраска доски и монохромные компоненты, Putnam 2004 A5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "probabilistic_method"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "random_two_coloring",
+      "connected_component",
+      "four_cycle"
+    ],
+    "methods": [
+      "linearity_of_expectation",
+      "component_lower_bound_by_edges",
+      "cycle_edge_deletion"
+    ],
+    "transformations": [
+      "checkerboard_to_monochromatic_adjacency_graph"
+    ],
+    "goal": [
+      "prove_expected_lower_bound"
+    ],
+    "auxiliary_graph_type": [
+      "monochromatic_grid_adjacency_graph"
+    ],
+    "invariants": [
+      "number_of_components",
+      "edges_minus_four_cycles"
+    ],
+    "keywords": [
+      "putnam_2004_a5",
+      "random_checkerboard",
+      "monochromatic_regions",
+      "linearity_of_expectation"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Каждая клетка доски \\(m\\times n\\) независимо красится в черный или белый цвет с вероятностью \\(1/2\\). Две клетки принадлежат одной и той же связной монохромной области, если можно перейти от одной к другой по последовательности клеток одного цвета, каждый раз переходя через общую сторону. Докажите, что математическое ожидание числа связных монохромных областей больше \\(mn/8\\).",
+        "source_id": "src-putnam-2004-A5-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Вершины прямоугольной решетки \\(m\\times n\\) независимо красятся в два цвета. Соединим ребром две соседние по стороне вершины, если они одного цвета. Докажите, что математическое ожидание числа компонент связности получившегося случайного графа строго больше \\(mn/8\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-delete-cycle-edges",
+      "title": "Из каждого монохромного квадрата можно вычесть одно ребро",
+      "text": "Для графа с \\(N\\) вершинами и \\(E\\) ребрами число компонент не меньше \\(N-E\\). Если дополнительно удалить по одному ребру из каждого монохромного \\(2\\times2\\)-квадрата, компоненты не изменятся, а нижняя оценка улучшится на число таких квадратов.",
+      "tags": [
+        "connectivity",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-expectation-local",
+      "title": "Ожидания считаются локально",
+      "text": "Число одноцветных соседних пар и число одноцветных блоков \\(2\\times2\\) являются суммами индикаторов. Поэтому их ожидания равны числу возможных объектов, умноженному на вероятности \\(1/2\\) и \\(1/8\\) соответственно.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kedlaya-graph-expectation",
+      "title": "Граф компонент и линейность ожидания",
+      "text": "Построим граф \\(G\\): его вершины - клетки доски, а ребро соединяет две клетки с общей стороной, если они одного цвета. Компоненты связности этого графа ровно соответствуют связным монохромным областям.\n\nПусть \\(A\\) - число ребер в \\(G\\), а \\(B\\) - число монохромных блоков \\(2\\times2\\). В каждом таком блоке четыре клетки образуют цикл длины 4 в графе \\(G\\). Удалим из каждого такого цикла, например, его нижнее ребро. Такое удаление не меняет число компонент: концы удаляемого ребра остаются соединены обходом вокруг соответствующего монохромного блока; если несколько монохромных блоков стоят друг над другом, тот же обход можно рассматривать по верхней границе соответствующей монохромной полосы. Важно лишь, что мы удаляем по одному ребру из каждого локального цикла, не разрывая монохромную область.\n\nПосле этих удалений остается граф на \\(mn\\) вершинах с \\(A-B\\) ребрами и тем же числом компонент, что у \\(G\\). Любой граф на \\(N\\) вершинах и \\(E\\) ребрах имеет не меньше \\(N-E\\) компонент: добавление одного ребра может уменьшить число компонент не более чем на 1. Поэтому для каждого исхода раскраски\n\\[\nC\\ge mn-A+B,\n\\]\nгде \\(C\\) - число монохромных областей. Берем математическое ожидание:\n\\[\n\\mathbb E C\\ge mn-\\mathbb E A+\\mathbb E B.\n\\]\n\nОсталось посчитать два локальных ожидания. Всего соседних по стороне пар клеток равно \\(m(n-1)+(m-1)n\\), и каждая такая пара одноцветна с вероятностью \\(1/2\\). Значит,\n\\[\n\\mathbb E A={1\\over2}(m(n-1)+(m-1)n).\n\\]\nБлоков \\(2\\times2\\) равно \\((m-1)(n-1)\\), и все четыре клетки блока имеют один цвет с вероятностью \\(2/16=1/8\\). Поэтому\n\\[\n\\mathbb E B={1\\over8}(m-1)(n-1).\n\\]\nПодстановка дает\n\\[\n\\mathbb E C\\ge mn-{1\\over2}(m(n-1)+(m-1)n)+{1\\over8}(m-1)(n-1)\n={mn+3m+3n+1\\over8}>{mn\\over8}.\n\\]\nЭто и требовалось доказать.",
+      "idea_ids": [
+        "idea-delete-cycle-edges",
+        "idea-expectation-local"
+      ],
+      "standard_idea_ids": [
+        "invariant",
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 14,
+    "comment": "Putnam A5; ключевой шаг - увидеть граф компонент и компенсировать лишние ребра монохромными 4-циклами.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "double_counting",
+    "graph_model",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "random_graph_model_on_grid",
+        "linearity_of_expectation",
+        "component_bound_after_cycle_deletion"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2004-A5-kedlaya",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Kedlaya archive gives this as the first solution and also mentions a dual planar-graph/Euler-formula approach."
+    ],
+    "relations_status": "base_done"
+  }
+}

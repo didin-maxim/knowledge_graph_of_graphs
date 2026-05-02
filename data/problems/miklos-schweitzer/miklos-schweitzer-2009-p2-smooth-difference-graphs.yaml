@@ -1,0 +1,121 @@
+{
+  "id": "miklos-schweitzer-2009-p2-smooth-difference-graphs",
+  "title": "Граф разностей с заданными простыми делителями, Miklos Schweitzer 2009 P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "number_theoretic_graph"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "finite_integer_set",
+      "difference_graph",
+      "complete_graph",
+      "path_or_cycle"
+    ],
+    "methods": [
+      "graph_modeling",
+      "number_theoretic_construction",
+      "degree_constraints"
+    ],
+    "goal": [
+      "existence_or_nonexistence"
+    ],
+    "keywords": [
+      "schweitzer_2009_p2",
+      "smooth_numbers",
+      "difference_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Граф на множестве целых чисел",
+        "text": "Пусть \\(p_1,\\ldots,p_k\\) - простые числа, а \\(S\\) - множество целых чисел, все простые делители которых принадлежат множеству \\(\\{p_1,\\ldots,p_k\\}\\). Для конечного множества целых чисел \\(A\\) обозначим через \\(\\mathcal G(A)\\) граф с вершинами из \\(A\\), где \\(a\\) и \\(b\\) соединены ребром тогда и только тогда, когда \\(a-b\\in S\\). Верно ли, что для каждого \\(m\\ge 3\\) существует \\(m\\)-элементное множество \\(A\\), для которого: (i) \\(\\mathcal G(A)\\) полон; (ii) \\(\\mathcal G(A)\\) связен, но все степени не превосходят 2?",
+        "source_id": "src-miklos-schweitzer-2009-p2-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Нужно понять, какие графы порядка \\(m\\) могут возникать как графы разностей на конечном множестве целых чисел, если разрешенные разности имеют простые делители только из фиксированного конечного набора. В частности, спрашивается о реализуемости полного графа и связного графа максимальной степени 2.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-realization",
+      "title": "Реализация графа через арифметические разности",
+      "text": "Полный граф требует, чтобы все попарные разности элементов \\(A\\) лежали в мультипликативно порожденном множестве \\(S\\). Условие степени не больше 2 требует, наоборот, построить длинную цепочку или цикл разрешенных разностей и подавить все лишние хорды.",
+      "tags": [
+        "graph_model",
+        "construction",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Содержательно это смесь теории чисел и реализации графов; без официального решения оставлена только постановка и направление.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "connectivity",
+    "degree_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "integer_difference_graph_realization"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2009-p2-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2009-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие; уверенное решение не добавлено."
+    ],
+    "relations_status": "not_started"
+  }
+}

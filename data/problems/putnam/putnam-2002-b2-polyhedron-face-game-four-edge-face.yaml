@@ -1,0 +1,169 @@
+{
+  "id": "putnam-2002-b2-polyhedron-face-game-four-edge-face",
+  "title": "Игра на гранях полиэдра и грань с четырьмя сторонами, Putnam 2002 B2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "polyhedral_graph",
+      "face_adjacency",
+      "cubic_planar_graph"
+    ],
+    "methods": [
+      "winning_strategy",
+      "local_face_configuration",
+      "polyhedral_degree_argument"
+    ],
+    "transformations": [
+      "polyhedron_to_embedded_graph_game"
+    ],
+    "goal": [
+      "prove_first_player_win"
+    ],
+    "auxiliary_graph_type": [
+      "polyhedral_embedding",
+      "face_incidence_hypergraph"
+    ],
+    "invariants": [
+      "three_faces_around_vertex",
+      "face_size"
+    ],
+    "keywords": [
+      "putnam_2002_b2",
+      "polyhedron_game",
+      "cubic_polyhedral_graph",
+      "face_with_at_least_four_edges"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Рассмотрим полиэдр по крайней мере с пятью гранями, у каждой вершины которого сходятся ровно три ребра. Два игрока по очереди подписывают ранее не подписанную грань своим именем. Побеждает тот, кто первым подпишет три грани, имеющие общую вершину. Докажите, что при правильной игре первый игрок всегда может выиграть.",
+        "source_id": "src-putnam-2002-B2-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть дан связный полиэдрально вложенный граф, у каждой вершины которого степень 3, а число граней не меньше 5. Игроки по очереди выбирают еще не выбранные грани; игрок выигрывает, если после своего хода владеет всеми тремя гранями, инцидентными некоторой вершине. Докажите, что у первого игрока есть выигрышная стратегия.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-large-face-gives-trap",
+      "title": "Грань с четырьмя соседями дает вилку",
+      "text": "Если первый игрок занимает грань с хотя бы четырьмя сторонами, то после первого ответа соперника среди соседних с ней граней найдутся три подряд свободные. Ход в среднюю из них создает две независимые угрозы закончить тройку вокруг одной из двух соседних вершин.",
+      "tags": [
+        "goal_strategy_game",
+        "planar_graphs"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-not-all-triangles",
+      "title": "Кубический полиэдр с пятью гранями не весь треугольный",
+      "text": "Если каждая грань была бы треугольником, то из одной треугольной грани и условия степени 3 локально восстанавливается тетраэдр. Это противоречит связности и наличию по крайней мере пяти граней.",
+      "tags": [
+        "degree_counting",
+        "planar_graphs"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kedlaya-expanded",
+      "title": "Стратегия через большую грань",
+      "text": "Сначала докажем структурный факт: у полиэдра есть грань, ограниченная как минимум четырьмя ребрами. Действительно, предположим обратное, то есть все грани треугольные. Возьмем грань с вершинами \\(v_1,v_2,v_3\\). Из каждой вершины выходит ровно три ребра; кроме двух ребер этой грани из \\(v_1\\) выходит еще одно ребро, пусть к вершине \\(v_4\\). Так как ребра и грани образуют обычную связную полиэдральную структуру, три грани, соседние с исходным треугольником по его сторонам, вынужденно имеют вершины \\(v_1,v_2,v_4\\), \\(v_1,v_3,v_4\\) и \\(v_2,v_3,v_4\\). Тогда четыре вершины \\(v_1,v_2,v_3,v_4\\) уже образуют тетраэдр, то есть целую связную компоненту из четырех граней. Это невозможно, поскольку полиэдр связен и граней не меньше пяти. Значит, существует грань \\(A\\) с не менее чем четырьмя сторонами.\n\nТеперь первый игрок первым ходом подписывает \\(A\\). После первого хода второго игрока среди граней, соседних с \\(A\\) вдоль ее сторон, занята не более одна. В циклическом порядке вокруг \\(A\\) поэтому можно выбрать три подряд идущие свободные соседние грани \\(B,C,D\\). Первый игрок вторым ходом подписывает среднюю грань \\(C\\).\n\nГрани \\(A,B,C\\) имеют общую вершину: это вершина на границе \\(A\\), где соседние с \\(A\\) грани \\(B\\) и \\(C\\) встречаются. Аналогично \\(A,C,D\\) имеют общую вершину. После второго хода первого игрока у него есть две угрозы: на следующем ходу подписать \\(B\\) или подписать \\(D\\). Второй игрок одним ходом может занять не более одной из этих двух граней, поэтому по крайней мере одна остается свободной. Третьим ходом первый игрок подписывает оставшуюся из \\(B,D\\) и получает три свои грани с общей вершиной. Следовательно, первый игрок выигрывает.",
+      "idea_ids": [
+        "idea-large-face-gives-trap",
+        "idea-not-all-triangles"
+      ],
+      "standard_idea_ids": [
+        "invariant",
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 12,
+    "comment": "Putnam B2; короткая стратегия, но нужна правильная полиэдральная лемма о грани размера хотя бы 4.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "degree_counting",
+    "goal_strategy_game"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "polyhedral_face_size_lemma",
+        "fork_strategy"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2002-B2-kedlaya",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "В решении Kedlaya явно используются стандартные предположения: граф многогранника связен, а две грани не имеют более одного общего ребра."
+    ],
+    "relations_status": "base_done"
+  }
+}

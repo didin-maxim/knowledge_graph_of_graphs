@@ -1,0 +1,165 @@
+{
+  "id": "miklos-schweitzer-2020-p4-axis-parallel-segments-curves-planar-graph",
+  "title": "Кривые из начала координат и пары осевых отрезков, Schweitzer 2020 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Eyal Ackerman, Balázs Keszegh, Dömötör Pálvölgyi",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "axis_parallel_segments",
+      "pairwise_disjoint_curves",
+      "plane_graph",
+      "segment_intersection_graph"
+    ],
+    "methods": [
+      "planar_graph_bound",
+      "contraction",
+      "sphere_doubling",
+      "boundary_counting"
+    ],
+    "transformations": [
+      "segments_to_vertices",
+      "curves_to_edges",
+      "arrangement_to_plane_graph"
+    ],
+    "goal": [
+      "linear_bound"
+    ],
+    "auxiliary_graph_type": [
+      "plane_graph"
+    ],
+    "invariants": [
+      "pairwise_disjoint_curve_interiors",
+      "distinct_segment_pairs"
+    ],
+    "keywords": [
+      "schweitzer_2020_p4",
+      "planar_graph",
+      "axis_parallel_segments",
+      "linear_bound"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Отрезки и кривые",
+        "text": "В плоскости даны \\(n\\) отрезков, каждый из которых вертикален или горизонтален; отрезки могут пересекаться. Кроме того, даны \\(m\\) кривых, выходящих из начала координат, попарно непересекающихся за исключением общего начального конца, причем каждая кривая пересекает ровно два отрезка, а разные кривые пересекают разные пары отрезков. Докажите, что \\(m=O(n)\\).",
+        "source_id": "src-miklos-schweitzer-2020-p4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая модель",
+        "text": "Сегменты можно считать вершинами вспомогательного графа, а кривые - ребрами между двумя сегментами, которые они пересекают. Попарная непересекаемость кривых и геометрия горизонтальных/вертикальных семейств позволяют свести оценку числа таких ребер к линейной оценке для плоских графов.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-disjoint-segments-contract",
+      "title": "Если отрезки не пересекаются, их можно стянуть",
+      "text": "Для попарно непересекающихся отрезков стягивание каждого отрезка в вершину превращает кривые в ребра плоского графа; значит кривых только линейно много.",
+      "tags": [
+        "planar_graphs",
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-two-families-on-sphere",
+      "title": "Горизонтальные и вертикальные семейства разделяются",
+      "text": "Кривые, попадающие в один горизонтальный и один вертикальный отрезок, можно нарисовать дважды на двух полусферах: на одной вместе с горизонтальными отрезками, на другой вместе с вертикальными. Получается плоский граф, поэтому число таких кривых линейно.",
+      "tags": [
+        "planar_graphs",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-planar",
+      "title": "Сведение к плоским графам",
+      "text": "Сначала устраним вырожденности малым возмущением: можно считать, что начало координат не лежит на отрезке, параллельные отрезки не лежат на одной прямой, а конец одного отрезка не лежит внутри другого. Это не меняет пары отрезков, пересекаемые каждой кривой.\n\nЕсли рассматривать только кривые, пересекающие два горизонтальных отрезка, то горизонтальные отрезки образуют попарно непересекающееся семейство. Стянем каждый такой отрезок в вершину, а каждую кривую оставим как ребро между двумя соответствующими вершинами. Так как кривые попарно не пересекаются вне начала и разные кривые задают разные пары отрезков, получается простой плоский граф; значит таких кривых \\(O(n)\\). То же верно для пар вертикальных отрезков.\n\nОстается случай, когда кривая пересекает один горизонтальный и один вертикальный отрезок. Возьмем малую жорданову кривую вокруг начала координат, которую каждая данная кривая пересекает один раз, и удалим ее внутренность. Полученную область отождествим с северным полушарием сферы и нарисуем на ней кривые вместе с горизонтальными отрезками. На южном полушарии нарисуем те же кривые вместе с вертикальными отрезками. Каждая исходная кривая теперь служит общей дугой, связывающей горизонтальный объект на одной половине с вертикальным объектом на другой, а пересечения не возникают сверх уже разрешенных. После стягивания отрезков снова получается плоский граф с \\(O(n)\\) вершинами, следовательно, и таких кривых \\(O(n)\\).\n\nСуммируя три типа кривых - горизонтальная-горизонтальная, вертикальная-вертикальная и смешанная, получаем \\(m=O(n)\\).",
+      "idea_ids": [
+        "idea-disjoint-segments-contract",
+        "idea-two-families-on-sphere"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Нужно увидеть плоский граф за геометрией кривых и аккуратно разделить горизонтальные и вертикальные отрезки.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "graph_model",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "planar_graph_edge_bound",
+        "sphere_doubling"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2020-p4-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Условие есть в английском PDF; решение сверено с венгерским PDF решений, где приведены два планарных доказательства."
+    ],
+    "relations_status": "not_started"
+  }
+}

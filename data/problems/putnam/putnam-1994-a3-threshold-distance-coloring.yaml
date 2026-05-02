@@ -1,0 +1,165 @@
+{
+  "id": "putnam-1994-a3-threshold-distance-coloring",
+  "title": "Четыре цвета на равнобедренном прямоугольном треугольнике, Putnam 1994 A3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "geometric_graph",
+      "distance_threshold_graph",
+      "point_coloring",
+      "right_isosceles_triangle"
+    ],
+    "methods": [
+      "finite_obstruction",
+      "pigeonhole_principle",
+      "distance_check"
+    ],
+    "transformations": [
+      "colored_continuum_to_finite_point_graph",
+      "distance_threshold_to_adjacency"
+    ],
+    "goal": [
+      "force_monochromatic_far_pair"
+    ],
+    "auxiliary_graph_type": [
+      "finite_geometric_graph"
+    ],
+    "invariants": [
+      "threshold_distance",
+      "available_colors"
+    ],
+    "keywords": [
+      "putnam_1994_a3",
+      "distance_coloring",
+      "finite_geometric_obstruction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Раскраска точек треугольника",
+        "text": "Каждая точка равнобедренного прямоугольного треугольника с катетами длины 1 раскрашена в один из четырех цветов. Докажите, что найдутся две точки одного цвета, расстояние между которыми не меньше \\(2-\\sqrt2\\).",
+        "source_id": "src-putnam-1994-A3-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В равнобедренном прямоугольном треугольнике с катетами 1 рассмотрим граф на его точках, где две точки смежны, если расстояние между ними не меньше \\(2-\\sqrt2\\). Докажите, что этот граф не является 4-раскрашиваемым.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-seven-point-obstruction",
+      "title": "Достаточно семи специально выбранных точек",
+      "text": "Если во всем треугольнике нет одноцветной дальней пары, то в частности корректно раскрашен конечный граф на вершинах \\(A,B,C,D,E,F,G\\), где ребра отвечают расстояниям хотя бы \\(2-\\sqrt2\\).",
+      "tags": [
+        "coloring",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-endpoints-use-two-colors",
+      "title": "Две крайние вершины сразу забирают два цвета",
+      "text": "В выбранной конфигурации вершины \\(A\\) и \\(C\\) достаточно далеки от всех остальных важных точек, поэтому они вынуждают жесткие запреты для оставшихся цветов.",
+      "tags": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-seven-point-distance-graph",
+      "title": "Конечный граф внутри треугольника",
+      "text": "Положим \\(k=2-\\sqrt2\\). Обозначим вершины прямоугольного равнобедренного треугольника через \\(A,B,C\\), где \\(\\angle B=90^\\circ\\) и \\(AB=BC=1\\). Выберем точки \\(D\\in AB\\), \\(E,F\\in AC\\), \\(G\\in BC\\) так, что \\(AD=AE=k\\) и \\(CF=CG=k\\).\n\nПрямой расчет расстояний в таком треугольнике дает \\(DF=EG=DG=k\\). Кроме того, каждая из точек \\(A\\) и \\(C\\) находится на расстоянии не меньше \\(k\\) от любой другой отмеченной точки. Поэтому, если бы все точки треугольника можно было раскрасить в четыре цвета без одноцветной пары на расстоянии хотя бы \\(k\\), то отмеченные семь точек тоже давали бы правильную 4-раскраску соответствующего графа расстояний.\n\nПокажем, что это невозможно. Так как \\(AC\\ge k\\), вершины \\(A\\) и \\(C\\) имеют разные цвета. Точки \\(D\\) и \\(G\\) находятся на расстоянии не меньше \\(k\\) и каждая из них находится на расстоянии не меньше \\(k\\) от \\(A\\) и от \\(C\\). Значит \\(D\\) и \\(G\\) должны занять два оставшихся цвета, причем разные.\n\nТочка \\(E\\) находится на расстоянии не меньше \\(k\\) от \\(A\\), \\(C\\) и \\(G\\), поэтому она вынуждена иметь цвет \\(D\\). Аналогично точка \\(F\\) находится на расстоянии не меньше \\(k\\) от \\(A\\), \\(C\\) и \\(D\\), поэтому она вынуждена иметь цвет \\(G\\). Наконец, точка \\(B\\) находится на расстоянии не меньше \\(k\\) от \\(A\\), \\(C\\), \\(E\\) и \\(F\\). Эти четыре точки уже используют все четыре цвета, значит для \\(B\\) не остается допустимого цвета.\n\nПолучили противоречие. Следовательно, исходная раскраска всего треугольника обязательно содержит две одноцветные точки на расстоянии не меньше \\(2-\\sqrt2\\).",
+      "idea_ids": [
+        "idea-seven-point-obstruction",
+        "idea-endpoints-use-two-colors"
+      ],
+      "standard_idea_ids": [
+        "invariant",
+        "pigeonhole_principle"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Геометрическая раскраска сводится к небольшой конечной графовой обструкции; требуется аккуратная проверка расстояний.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "graph_model",
+    "goal_proof",
+    "pigeonhole_principle"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "finite_geometric_graph_obstruction",
+        "distance_threshold_coloring"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-1994-A3-kedlaya",
+      "role": "archived_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Kedlaya archive для 1994 года содержит условие; решение сверено с открытой версией Kalva/John Scholes.",
+      "Следует проверить формулировку: в некоторых открытых транскрипциях рассматриваются точки на сторонах треугольника, тогда как архив Kedlaya формулирует все точки треугольника. Конечная обструкция работает для более сильной области."
+    ],
+    "relations_status": "not_started"
+  }
+}

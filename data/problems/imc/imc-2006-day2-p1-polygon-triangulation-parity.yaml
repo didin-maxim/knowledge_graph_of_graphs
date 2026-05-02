@@ -1,0 +1,153 @@
+{
+  "id": "imc-2006-day2-p1-polygon-triangulation-parity",
+  "title": "Триангуляция многоугольника с заданной чётностью вершин, IMC 2006 Day 2 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "planar_graphs"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "convex_polygon",
+      "triangulation",
+      "plane_graph",
+      "vertex_triangle_incidence"
+    ],
+    "methods": [
+      "induction_by_three_vertices",
+      "base_cases",
+      "parity_tracking"
+    ],
+    "transformations": [
+      "triangulation_to_plane_graph"
+    ],
+    "goal": [
+      "construct_triangulation_with_parity_condition"
+    ],
+    "auxiliary_graph_type": [
+      "maximal_outerplanar_graph"
+    ],
+    "invariants": [
+      "parity_of_triangle_count_at_vertices",
+      "n_mod_3"
+    ],
+    "keywords": [
+      "imc_2006_day2_p1",
+      "polygon_triangulation",
+      "parity"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(V\\) — выпуклый многоугольник с \\(n\\) вершинами. (a) Докажите, что если \\(3\\mid n\\), то \\(V\\) можно триангулировать, то есть разбить непересекающимися диагоналями на треугольники с вершинами в вершинах \\(V\\), так, чтобы каждая вершина \\(V\\) была вершиной нечётного числа треугольников. (b) Докажите, что если \\(3\\nmid n\\), то \\(V\\) можно триангулировать так, чтобы ровно две вершины были вершинами чётного числа треугольников.",
+        "source_id": "src-imc-2006-day2-p1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В терминах плоского графа требуется достроить цикл \\(C_n\\) непересекающимися хордами до максимального внешнепланарного графа так, чтобы число внутренних треугольных граней, инцидентных каждой вершине, имело заданную чётность: все нечётны при \\(3\\mid n\\), а при \\(3\\nmid n\\) ровно две вершины имеют чётную инцидентность.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-add-three-vertices",
+      "title": "Добавление трёх вершин сохраняет нужное число чётных вершин",
+      "text": "Если задача решена для \\(k\\)-угольника, то к стороне между двумя старыми вершинами можно приставить три новые вершины и три треугольника. Две старые вершины получают по два новых инцидентных треугольника, а три новые — по нечётному числу, поэтому набор чётных вершин не меняется.",
+      "tags": [
+        "induction",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Индукция с шагом на три вершины",
+      "text": "Достаточно проверить три начальных случая и затем переходить от \\(k\\) к \\(k+3\\).\n\nДля \\(n=3\\) единственный треугольник даёт нечётное число треугольников при каждой вершине. Для \\(n=4\\) любая диагональ разбивает четырёхугольник на два треугольника: две вершины диагонали входят в два треугольника, а две остальные — в один, значит ровно две вершины имеют чётную инцидентность. Для \\(n=5\\) достаточно взять триангуляцию веером из одной вершины: эта вершина входит в три треугольника, две соседние с ней — в один, а две оставшиеся — в два; снова ровно две вершины чётные.\n\nПусть утверждение уже доказано для выпуклого \\(k\\)-угольника \\(P_1P_2\\ldots P_k\\). Рассмотрим \\((k+3)\\)-угольник \\(P_1P_2\\ldots P_{k+3}\\). Сначала триангулируем старый \\(k\\)-угольник \\(P_1P_2\\ldots P_k\\) по индукционному предположению. Затем добавим три треугольника\n\\[\nP_1P_kP_{k+2},\\qquad P_kP_{k+1}P_{k+2},\\qquad P_1P_{k+2}P_{k+3}.\n\\]\nОни заполняют добавленную часть многоугольника и вместе со старой триангуляцией дают триангуляцию всего \\((k+3)\\)-угольника.\n\nУ вершин \\(P_1\\) и \\(P_k\\) число инцидентных треугольников увеличилось на \\(2\\), поэтому его чётность не изменилась. Новые вершины \\(P_{k+1}\\), \\(P_{k+2}\\), \\(P_{k+3}\\) входят соответственно в \\(1\\), \\(3\\), \\(1\\) новых треугольников, то есть все они нечётные. Следовательно, количество вершин с чётным числом инцидентных треугольников остаётся тем же, что у исходного \\(k\\)-угольника.\n\nТак как переход увеличивает число вершин на \\(3\\), остаток \\(n\\) по модулю \\(3\\) не меняется. Начальные случаи \\(3,4,5\\) дают соответственно: ни одной чётной вершины при \\(3\\mid n\\) и ровно две чётные вершины при остальных остатках. Утверждение доказано для всех \\(n\\ge3\\).",
+      "idea_ids": [
+        "idea-add-three-vertices"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p2_p5",
+    "local_score": 6,
+    "comment": "Конструктивная индукция на триангуляциях; графовая модель — максимальный внешнепланарный граф с подсчётом инцидентных треугольных граней.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "induction",
+    "parity_coloring",
+    "construction",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction_by_three_vertices",
+        "parity_tracking"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2006-day2-p1-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Official IMC 2006 Day 2 solutions, problem 1."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

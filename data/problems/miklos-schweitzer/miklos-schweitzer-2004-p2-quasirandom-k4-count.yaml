@@ -1,0 +1,153 @@
+{
+  "id": "miklos-schweitzer-2004-p2-quasirandom-k4-count",
+  "title": "Сравнение числа полных четырехвершинников по всем индуцированным числам ребер, Schweitzer 2004/2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "common_vertex_set",
+      "complete_quadrilateral",
+      "induced_edge_count"
+    ],
+    "methods": [
+      "quasirandomness",
+      "subgraph_counting",
+      "cut_norm_estimate"
+    ],
+    "transformations": [
+      "edge_count_discrepancy_to_subgraph_count_discrepancy"
+    ],
+    "goal": [
+      "bound_difference_of_subgraph_counts"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [
+      "uniform_bound_on_edge_count_discrepancy_over_all_vertex_subsets"
+    ],
+    "keywords": [
+      "schweitzer_2004_p2",
+      "complete_quadrilateral",
+      "k4_count",
+      "quasirandom_graphs"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Обозначим через \\(t(G)\\) число полных четырехвершинников в графе \\(G\\), а через \\(e_G(S)\\) - число ребер, натянутых множеством вершин \\(S\\). Пусть \\(G_1,G_2\\) - два простых графа на общем множестве вершин \\(V\\), \\(|V|=n\\), и для любого \\(S\\subseteq V\\) выполнено \\(|e_{G_1}(S)-e_{G_2}(S)|\\le n^2/1000\\). Докажите, что \\(|t(G_1)-t(G_2)|\\le n^4/1000\\).",
+        "source_id": "src-miklos-schweitzer-2004-p2-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "needs_human_review",
+          "notes": "Термин complete quadrilateral в английском PDF интерпретирован как полный граф на четырех вершинах; это нужно сверить с венгерским оригиналом.",
+          "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique"
+        ],
+        "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Если две простые графовые структуры на одном \\(n\\)-элементном множестве имеют близкие числа ребер на каждом подмножестве вершин, то число копий \\(K_4\\) в них отличается не более чем на \\(n^4/1000\\).",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-quasirandom-transfer",
+      "title": "Рассматривать условие как слабую квазислучайную близость",
+      "text": "Оценка для всех \\(S\\) контролирует квадратичную форму разности матриц смежности на индикаторах множеств. Нужно перенести этот контроль с ребер на четырехвершинные полные подграфы.",
+      "tags": [
+        "extremal_graph_theory",
+        "double_counting"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-telescope-edges",
+      "title": "Заменять графы по одному реберному множителю",
+      "text": "Разность счетов \\(K_4\\) можно телескопировать по шести реберным множителям, сводя задачу к оценкам смешанных сумм, где один множитель - разность двух графов, а остальные ограничены индикаторами ребер.",
+      "tags": [
+        "double_counting",
+        "goal_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "Задача требует нетривиального переноса равномерной оценки по всем подмножествам на счет малых подграфов.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "double_counting",
+    "forbidden_clique",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "subgraph_counting_from_edge_discrepancy"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2004-p2-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2004-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие, но решений за 2004 год в индексе нет.",
+      "Термин complete quadrilateral сохранен по смыслу как \\(K_4\\); требуется ручная терминологическая сверка."
+    ],
+    "relations_status": "not_started"
+  }
+}

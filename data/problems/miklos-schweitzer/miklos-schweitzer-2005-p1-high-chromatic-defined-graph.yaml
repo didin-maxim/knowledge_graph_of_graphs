@@ -1,0 +1,150 @@
+{
+  "id": "miklos-schweitzer-2005-p1-high-chromatic-defined-graph",
+  "title": "Явно заданные графы с произвольно большим хроматическим числом, Schweitzer 2005/1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "explicit_undirected_graph_family",
+      "proper_coloring",
+      "chromatic_number",
+      "functions_between_finite_sets"
+    ],
+    "methods": [
+      "coloring_obstruction",
+      "combinatorial_construction",
+      "high_chromatic_graphs"
+    ],
+    "transformations": [],
+    "goal": [
+      "prove_unbounded_chromatic_number"
+    ],
+    "auxiliary_graph_type": [
+      "undirected_graph"
+    ],
+    "invariants": [
+      "vertices_are_pairs_i_f",
+      "adjacency_depends_on_interval_between_indices"
+    ],
+    "keywords": [
+      "schweitzer_2005_p1",
+      "chromatic_number",
+      "explicit_graph",
+      "proper_coloring"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Обозначим \\([n]=\\{1,2,\\ldots,n\\}\\). Для произвольных \\(a,b\\in\\mathbb N\\) определим неориентированный граф \\(G(a,b)\\): его вершины имеют вид \\((i,f)\\), где \\(i\\in[a]\\), а \\(f:[a]\\to[b]\\). Две вершины \\((i,f)\\) и \\((j,g)\\) соединены ребром тогда и только тогда, когда \\(i\\ne j\\), причем \\(f(k)\\ne g(k)\\) выполняется ровно для тех \\(k\\), которые строго лежат между \\(i\\) и \\(j\\), а для всех остальных \\(k\\) выполнено \\(f(k)=g(k)\\). Докажите, что для любого \\(c\\in\\mathbb N\\) существуют \\(a,b\\in\\mathbb N\\), для которых вершины \\(G(a,b)\\) нельзя правильно раскрасить в \\(c\\) цветов.",
+        "source_id": "src-miklos-schweitzer-2005-p1-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "needs_human_review",
+          "notes": "Перевод сделан с венгерского PDF; нужна человеческая сверка нюансов условия.",
+          "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ],
+        "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Семейство явно заданных графов \\(G(a,b)\\), где вершины кодируются индексом и функцией, имеет неограниченное хроматическое число: \\(\\sup_{a,b}\\chi(G(a,b))=\\infty\\).",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-assume-c-coloring",
+      "title": "Предположить ограниченную раскраску и искать повторяющийся шаблон",
+      "text": "Если \\(G(a,b)\\) раскрашен в \\(c\\) цветов, то при больших \\(a,b\\) множество функций \\([a]\\to[b]\\) должно содержать много одноцветных или регулярно окрашенных конфигураций. Ребро задается сравнением функций только на интервале между индексами, поэтому вероятны аргументы типа Рамсея или компактности.",
+      "tags": [
+        "coloring",
+        "ramsey_theory"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-interval-disagreement",
+      "title": "Использовать интервальный характер смежности",
+      "text": "Смежность требует, чтобы две функции совпадали вне промежутка между \\(i\\) и \\(j\\) и различались внутри него. Это похоже на кодирование вложенных интервалов: длинная последовательность индексов должна порождать конфликт с любой фиксированной палитрой цветов.",
+      "tags": [
+        "graph_model",
+        "goal_impossibility"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "Венгерская задача о явно заданном семействе графов с неограниченным хроматическим числом; решение не добавлено без ручной проверки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "ramsey_theory",
+    "graph_model",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "high_chromatic_explicit_graph_family"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2005-p1-official",
+      "role": "official_statement_hungarian",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2005.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "В индексе для 2005 года доступен только венгерский PDF.",
+      "Карточка намеренно помечена needs_human_review из-за перевода с венгерского и отсутствия решения."
+    ],
+    "relations_status": "not_started"
+  }
+}

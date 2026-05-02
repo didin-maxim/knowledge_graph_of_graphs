@@ -1,0 +1,165 @@
+{
+  "id": "putnam-1988-a4-unit-distance-coloring",
+  "title": "Раскраска плоскости и точки на расстоянии 1, Putnam 1988 A4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "unit_distance_graph",
+      "plane_coloring",
+      "finite_unit_distance_subgraph",
+      "periodic_coloring"
+    ],
+    "methods": [
+      "finite_obstruction",
+      "tiling_construction",
+      "pigeonhole_principle"
+    ],
+    "transformations": [
+      "plane_points_to_unit_distance_graph",
+      "square_tiling_to_periodic_coloring"
+    ],
+    "goal": [
+      "existence_and_counterexample"
+    ],
+    "auxiliary_graph_type": [
+      "unit_distance_graph"
+    ],
+    "invariants": [
+      "distance_one_adjacency",
+      "tile_color_period"
+    ],
+    "keywords": [
+      "putnam_1988_a4",
+      "unit_distance_coloring",
+      "chromatic_number_of_plane"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Раскраска точек плоскости",
+        "text": "Каждая точка плоскости раскрашена в один из трех цветов. Обязательно ли найдутся две точки одного цвета на расстоянии ровно 1? Как изменится ответ, если вместо трех цветов разрешить девять?",
+        "source_id": "src-putnam-1988-A4-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим бесконечный граф, вершинами которого являются точки евклидовой плоскости, а ребра соединяют пары точек на расстоянии 1. Докажите, что этот граф нельзя правильно раскрасить в 3 цвета, но можно раскрасить в 9 цветов.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-rhombus-forces-equal-colors",
+      "title": "Малый граф единичных расстояний заставляет совпадение цветов",
+      "text": "Если две точки находятся на расстоянии \\(\\sqrt3\\), то две вершины пересечения единичных окружностей вокруг них вместе с исходными точками образуют две единичные равносторонние треугольные связки. При трех цветах это вынуждает исходные две точки иметь один цвет.",
+      "tags": [
+        "coloring",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-nine-periodic-square-tiling",
+      "title": "Периодическая раскраска квадратных плиток",
+      "text": "Квадраты достаточно малого размера можно раскрасить 3 на 3 периодически: внутри одной плитки расстояния меньше 1, а между одноцветными плитками расстояния больше 1.",
+      "tags": [
+        "construction",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-three-and-nine",
+      "title": "Три цвета невозможны, девяти достаточно",
+      "text": "Ответ: для трех цветов обязательно найдется одноцветная пара на расстоянии 1, а для девяти цветов можно избежать таких пар.\n\nСначала докажем невозможность трехцветной раскраски. Предположим, что одноцветных пар на расстоянии 1 нет. Возьмем две точки \\(A\\) и \\(B\\) на расстоянии \\(\\sqrt3\\). Единичные окружности с центрами \\(A\\) и \\(B\\) пересекаются в двух точках \\(X\\) и \\(Y\\). Тогда \\(AX=AY=BX=BY=1\\), а также \\(XY=1\\): эти пять точек дают два равносторонних треугольника со стороной 1 на общей стороне \\(XY\\). Так как \\(X\\) и \\(Y\\) находятся на расстоянии 1, их цвета различны. Точка \\(A\\) смежна с обеими \\(X,Y\\), значит при трех цветах она вынуждена иметь третий цвет. То же самое верно для \\(B\\). Следовательно, любые две точки на расстоянии \\(\\sqrt3\\) имеют один и тот же цвет.\n\nТеперь возьмем равносторонний треугольник со стороной \\(\\sqrt3\\). По только что доказанному все три его вершины должны иметь один цвет. Но расстояние между вершинами этого треугольника равно \\(\\sqrt3\\), а не 1; чтобы получить противоречие с исходным запретом, применим тот же вывод к двум вершинам \\(B,C\\) треугольника \\(ABC\\), где \\(AB=AC=\\sqrt3\\) и \\(BC=1\\). Из вывода следует, что \\(A\\) имеет тот же цвет, что \\(B\\), и тот же цвет, что \\(C\\). Поэтому \\(B\\) и \\(C\\) одноцветны, хотя \\(BC=1\\), противоречие.\n\nДля девяти цветов построим пример. Разобьем плоскость на квадраты со стороной \\(s\\), где, например, \\(1/2<s<1/\\sqrt2\\). Раскрасим квадраты периодическим блоком \\(3\\times3\\), давая девяти квадратам блока разные цвета и повторяя блок по обеим координатам. Если две точки лежат в одном квадрате, расстояние между ними не превосходит \\(s\\sqrt2<1\\). Если они лежат в разных квадратах одного цвета, то соответствующие квадраты разделены хотя бы двумя промежутками по горизонтали или вертикали, поэтому расстояние между точками больше либо равно \\(2s>1\\). Значит одноцветной пары на расстоянии 1 в этой раскраске нет.",
+      "idea_ids": [
+        "idea-rhombus-forces-equal-colors",
+        "idea-nine-periodic-square-tiling"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Короткая задача на хроматическое число unit-distance графа плоскости: нужно найти малый запрещающий граф и явную периодическую раскраску.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "construction",
+    "goal_exact_bound",
+    "pigeonhole_principle"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "finite_unit_distance_obstruction",
+        "periodic_tiling_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-1988-A4-kedlaya",
+      "role": "archived_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Решение сверено с открытой архивной версией John Scholes/Kalva; источник Kedlaya использован для кода и условия."
+    ],
+    "relations_status": "not_started"
+  }
+}

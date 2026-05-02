@@ -1,0 +1,167 @@
+{
+  "id": "imc-2001-day2-p4-zero-principal-minors-acyclic-digraph",
+  "title": "Нулевые главные миноры и ациклический граф ненулевых элементов, IMC 2001 Day 2 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "advanced"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complex_matrix",
+      "principal_minors",
+      "directed_graph",
+      "acyclic_digraph",
+      "nilpotent_matrix"
+    ],
+    "methods": [
+      "support_digraph",
+      "minimal_directed_cycle",
+      "topological_ordering"
+    ],
+    "transformations": [
+      "nonzero_entries_to_directed_edges",
+      "acyclic_digraph_to_triangular_matrix"
+    ],
+    "goal": [
+      "prove_nilpotency_and_permutation"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "all_principal_minors_zero",
+      "absence_of_directed_cycles"
+    ],
+    "keywords": [
+      "imc_2001_day2_p4",
+      "zero_principal_minors",
+      "nilpotent_by_acyclic_support"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(A=(a_{k,l})_{k,l=1,\\ldots,n}\\) - комплексная матрица \\(n\\times n\\), такая что для каждого \\(m\\in\\{1,\\ldots,n\\}\\) и любых \\(1\\le j_1<\\cdots<j_m\\le n\\) определитель матрицы \\((a_{j_k,j_l})_{k,l=1,\\ldots,m}\\) равен нулю. Докажите, что \\(A^n=0\\), и что существует перестановка \\(\\sigma\\in S_n\\), для которой матрица \\((a_{\\sigma(k),\\sigma(l)})_{k,l=1,\\ldots,n}\\) имеет нули на диагонали и ниже диагонали.",
+        "source_id": "src-imc-2001-day2-p4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "По матрице \\(A\\) построим ориентированный граф на вершинах \\(1,\\ldots,n\\), проводя дугу \\(i\\to j\\) при \\(a_{ij}\\ne0\\). Условие о нулевых главных минорах должно исключить все ориентированные циклы. Тогда топологический порядок этого графа одновременно переставляет строки и столбцы так, что все ненулевые элементы оказываются строго выше диагонали.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "directed_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-minimal-cycle-determinant-term",
+      "title": "Минимальный ориентированный цикл дает ненулевой главный минор",
+      "text": "Если в графе ненулевых элементов есть кратчайший ориентированный цикл, то в определителе главной подматрицы по его вершинам есть ненулевой циклический член. Остальные ненулевые члены разлагаются на ориентированные циклы и нарушают минимальность, поэтому этот минор не может быть нулевым.",
+      "tags": [
+        "minimal_counterexample",
+        "graph_model"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-acyclic-support-triangular",
+      "title": "Ациклический граф упорядочивается топологически",
+      "text": "Если в ориентированном графе нет циклов, его вершины можно занумеровать так, что каждая дуга идет вперед. В этой нумерации матрица имеет нули на диагонали и ниже нее, а значит является строго верхнетреугольной.",
+      "tags": [
+        "graph_model",
+        "goal_proof"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Граф ненулевых элементов",
+      "text": "Сначала из главных миноров порядка \\(1\\) получаем \\(a_{ii}=0\\) для всех \\(i\\). Построим ориентированный граф \\(G\\) на вершинах \\(1,\\ldots,n\\): дуга \\(i\\to j\\) проводится тогда и только тогда, когда \\(a_{ij}\\ne0\\). Нужно доказать, что в \\(G\\) нет ориентированных циклов.\n\nПредположим противное и выберем ориентированный цикл минимальной длины \\(m\\), пусть его вершины \\(i_1,i_2,\\ldots,i_m\\) идут в порядке цикла. Рассмотрим главную подматрицу \\(B\\) с этими строками и столбцами. В разложении \\(\\det B\\) есть член\n\\(a_{i_1i_2}a_{i_2i_3}\\cdots a_{i_mi_1}\\), и он ненулевой. Если другой член разложения также ненулевой, соответствующая перестановка раскладывается на циклы, каждый из которых дает ориентированный цикл в \\(G\\) на части выбранных вершин. По минимальности исходного цикла такие циклы не могут быть короче \\(m\\); поэтому возможен только один цикл длины \\(m\\). Отличный от выбранного цикл на тех же вершинах также привел бы к более короткому циклу при сравнении двух обходов, так что ненулевой вклад остается единственным. Следовательно, \\(\\det B\\ne0\\), что противоречит условию.\n\nЗначит, граф \\(G\\) ацикличен. Для конечного ациклического ориентированного графа существует топологический порядок вершин: можно, например, последовательно удалять вершину без входящих дуг. Пусть этот порядок задает перестановка \\(\\sigma\\). Тогда из \\(a_{\\sigma(k),\\sigma(l)}\\ne0\\) следует \\(k<l\\), то есть все элементы на диагонали и ниже диагонали в переставленной матрице равны нулю. Такая матрица строго верхнетреугольна, а \\(n\\)-я степень любой строго верхнетреугольной матрицы размера \\(n\\times n\\) равна нулю. Одновременная перестановка строк и столбцов не меняет факт нильпотентности, поэтому \\(A^n=0\\).",
+      "idea_ids": [
+        "idea-minimal-cycle-determinant-term",
+        "idea-acyclic-support-triangular"
+      ],
+      "standard_idea_ids": [
+        "minimal_counterexample",
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "directed_graph",
+        "cycle",
+        "nilpotent_matrix"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 14,
+    "comment": "Сильная задача: графовая часть естественна, но ключевой шаг с ненулевым членом определителя и минимальным циклом требует ручной проверки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "minimal_counterexample",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "support_digraph",
+        "minimal_directed_cycle",
+        "topological_ordering"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2001-day2-p4-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Включено как graph_in_solution/advanced: исходная задача линейно-алгебраическая, но официальный ход фактически использует ацикличность графа ненулевых элементов."
+    ],
+    "relations_status": "base_done"
+  }
+}

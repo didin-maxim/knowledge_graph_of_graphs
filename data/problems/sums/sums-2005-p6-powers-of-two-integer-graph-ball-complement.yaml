@@ -1,0 +1,150 @@
+{
+  "id": "sums-2005-p6-powers-of-two-integer-graph-ball-complement",
+  "title": "Дополнение шара в графе целых чисел со степенными шагами, SUMS 2005/6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "infinite_graph"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "infinite_integer_graph",
+      "powers_of_two_edges",
+      "graph_metric",
+      "metric_ball"
+    ],
+    "methods": [
+      "normal_form_for_signed_powers_of_two",
+      "large_power_detour",
+      "connectivity_outside_ball"
+    ],
+    "transformations": [
+      "shortest_path_to_sparse_binary_signed_sum"
+    ],
+    "goal": [
+      "prove_connected_complement"
+    ],
+    "auxiliary_graph_type": [
+      "infinite_graph"
+    ],
+    "invariants": [
+      "distance_from_zero",
+      "signed_power_sum_length"
+    ],
+    "keywords": [
+      "SUMS_2005_6",
+      "integer_graph",
+      "powers_of_two",
+      "ball_complement"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На множестве целых чисел построен граф: разные числа \\(m\\) и \\(n\\) соединены ребром тогда и только тогда, когда \\(|m-n|\\) является степенью двойки: \\(1,2,4,8,\\ldots\\). Пусть \\(\\operatorname{dist}(m,n)\\) - длина кратчайшего пути между \\(m\\) и \\(n\\) в этом графе. Для целого \\(r\\ge 0\\) обозначим через \\(B_r\\) множество всех целых \\(n\\), для которых \\(\\operatorname{dist}(n,0)\\le r\\). Докажите, что дополнение \\(\\mathbb Z\\setminus B_r\\) связно: любые две его вершины можно соединить путём, все вершины которого лежат вне \\(B_r\\).",
+        "source_id": "src-sums-2005-p6-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-signed-power-normal-form",
+      "title": "Кратчайшие пути задаются разреженными суммами степеней двойки",
+      "text": "Если вершина находится на расстоянии \\(s\\) от нуля, её можно записать как сумму \\(s\\) слагаемых вида \\(\\pm 2^m\\). В кратчайшей записи одинаковые степени и слишком длинные цепочки соседних степеней можно устранять переносами, поэтому есть запись с промежутками между показателями не меньше двух.",
+      "tags": [
+        "graph_model",
+        "minimal_counterexample",
+        "goal_proof"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-detour-by-huge-powers",
+      "title": "Уходить к большим степеням двойки безопасно",
+      "text": "Для достаточно большой степени \\(2^M\\) все промежуточные вершины на пути, который прибавляет или вычитает такие большие степени, имеют нормальную форму длины больше \\(r\\). Поэтому снаружи шара можно вывести любую вершину в далёкую область, а затем соединить две далёкие области.",
+      "tags": [
+        "connectivity",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-normal-form-detour",
+      "title": "Нормальная форма и обход шара",
+      "text": "Путь длины не больше \\(r\\) от 0 к числу \\(n\\) равносилен представлению \\(n=\\varepsilon_1 2^{m_1}+\\cdots+\\varepsilon_r2^{m_r}\\), где \\(\\varepsilon_i\\in\\{-1,1\\}\\), а недостающие слагаемые можно не использовать. В кратчайшем представлении одинаковые показатели не нужны: равные с противоположными знаками уничтожаются, а равные с одинаковыми знаками заменяются одной следующей степенью двойки. Также соседние показатели с разными знаками и три подряд идущих показателя можно укоротить стандартными двоичными переносами. Поэтому для вершины на расстоянии ровно \\(s\\) можно выбрать представление из \\(s\\) степеней, показатели которых идут с промежутком хотя бы два. Из такого представления следует важная оценка: старшая степень строго доминирует сумму всех меньших слагаемых. Значит, если к числу прибавить достаточно большую степень двойки, расстояние от нуля увеличится, а при последовательном движении по очень большим степеням мы не попадаем обратно в шар \\(B_r\\). Возьмём две вершины вне \\(B_r\\). Каждую из них выведем, прибавляя большие степени двойки, к числам с одинаковой большой положительной частью. Между такими числами можно пройти, меняя только ещё более младшие, но всё равно достаточно большие степени; доминирующая большая часть сохраняет расстояние от нуля больше \\(r\\). Склеивая эти пути, получаем путь между исходными вершинами целиком в \\(\\mathbb Z\\setminus B_r\\).",
+      "idea_ids": [
+        "idea-signed-power-normal-form",
+        "idea-detour-by-huge-powers"
+      ],
+      "standard_idea_ids": [
+        "minimal_counterexample"
+      ],
+      "status": "ai_checked",
+      "source_id": "src-sums-2005-p6-official"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 7,
+    "comment": "Явная графовая постановка; трудность в аккуратной нормальной форме для кратчайших сумм степеней двойки.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "graph_model",
+    "minimal_counterexample",
+    "construction",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "signed_binary_normal_form",
+        "detour_outside_metric_ball"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-sums-2005-p6-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Решение адаптировано из официального решения SUMS; длинная техническая часть с нормальной формой сжата, но сохранена логика."
+    ],
+    "relations_status": "not_started",
+    "graph_theory_duplicate_removed": true
+  }
+}

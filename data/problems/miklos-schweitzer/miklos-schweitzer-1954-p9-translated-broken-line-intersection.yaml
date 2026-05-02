@@ -1,0 +1,169 @@
+{
+  "id": "miklos-schweitzer-1954-p9-translated-broken-line-intersection",
+  "title": "Сдвиги простой ломаной на доли вектора, Schweitzer 1954/9",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "geometric_graph_theory"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "embedded_polygonal_path",
+      "translation_vector",
+      "intersection_of_translates"
+    ],
+    "methods": [
+      "strip_separation",
+      "topological_separation",
+      "counterexample_construction"
+    ],
+    "transformations": [
+      "reduce_to_subpath_between_corresponding_intersection_points"
+    ],
+    "goal": [
+      "prove_intersection_for_reciprocal_integer_translates",
+      "disprove_other_positive_factors"
+    ],
+    "auxiliary_graph_type": [
+      "path_graph"
+    ],
+    "invariants": [
+      "relative_order_of_parallel_translates",
+      "non_self_intersection_of_the_path"
+    ],
+    "keywords": [
+      "schweitzer_1954_p9",
+      "polygonal_path",
+      "translated_path",
+      "geometric_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(p\\) - связная незамкнутая ломаная без самопересечений на плоскости, а \\(v\\ne0\\) - вектор. Докажите: если \\(p\\) имеет общую точку со своим сдвигом \\(p+v\\), то для каждого положительного целого \\(n\\) ломаная \\(p\\) имеет общую точку и со сдвигом \\(p+v/n\\). Верно ли аналогичное утверждение для других положительных коэффициентов \\(a\\), то есть для сдвига \\(p+av\\)?",
+        "source_id": "src-miklos-schweitzer-1954-p9-old-book",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Геометрическая графовая формулировка",
+        "text": "Простая плоская реализация графа-пути, пересекающая свой сдвиг на вектор \\(v\\), обязательно пересекает каждый промежуточный сдвиг на \\(v/n\\). Точная область коэффициентов такова: утверждение гарантированно верно для \\(a=1/n\\), а для положительных \\(a\\), у которых \\(1/a\\) не является положительным целым числом, существуют контрпримеры.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-reduce-to-finite-subpath",
+      "title": "Оставить участок между соответствующими точками",
+      "text": "Если точка \\(A'\\) лежит одновременно на \\(p\\) и на \\(p+v\\), то точка \\(A=A'-v\\) тоже лежит на \\(p\\). Достаточно рассматривать конечную часть ломаной от \\(A\\) до \\(A'\\), потому что именно она соединяет два соответствующих положения, отличающихся на \\(v\\).",
+      "tags": [
+        "graph_model",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-strip-lemma",
+      "title": "Лемма о полосе между параллельными сдвигами",
+      "text": "Ключевой шаг: если простая ломаная не пересекает два своих сдвига на сонаправленные параллельные векторы \\(v_1\\) и \\(v_2\\), то она не пересекает и сдвиг на \\(v_1+v_2\\). Доказательство использует бесконечную полосу, заметаемую одним сдвигом ломаной, и то, что пересекающий полосу кусок простой ломаной разделяет ее на две части.",
+      "tags": [
+        "planar_graphs",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-strip-induction",
+      "title": "Доказательство через сложение малых сдвигов",
+      "text": "Возьмем участок \\(q\\) исходной ломаной между точками \\(A\\) и \\(A+v\\). Предположим противное: \\(q\\) не пересекает \\(q+v/n\\). Применяя лемму о полосе к сонаправленным сдвигам, получаем последовательно, что \\(q\\) не пересекает \\(q+2v/n\\), затем \\(q+3v/n\\), и так далее до \\(q+v\\). Но конец \\(A+v\\) принадлежит и \\(q\\), и \\(q+v\\) в соответствующем положении, что дает противоречие. Значит, пересечение с \\(p+v/n\\) существует. Для коэффициентов, не равных обратному целому, книга приводит явную зигзагообразную ломаную-контрпример: она пересекает свой сдвиг на \\(v\\), но избегает сдвига на \\(av\\).",
+      "tags": [
+        "connectivity",
+        "induction",
+        "planar_graphs"
+      ],
+      "status": "ai_checked",
+      "source_id": "src-miklos-schweitzer-1954-p9-old-book",
+      "standard_idea_ids": [
+        "induction"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 7,
+    "comment": "Топологическая геометрия простой ломаной: формулировка короткая, но основная лемма о разделении полосы нетривиальна.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "connectivity",
+    "induction",
+    "graph_model",
+    "goal_proof",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "strip_separation_for_translated_embedded_paths"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-1954-p9-old-book",
+      "role": "problem_and_solution_old_book",
+      "url": "https://real-eod.mtak.hu/14558/1/AkademiaiKiado_007070.pdf",
+      "status": "source_verified",
+      "pages": [
+        "PDF page 25: statement",
+        "PDF pages 202-203: solution"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "В OCR встречаются искажения символов и рисунка 5, но условие и основной ход решения читаются по тексту PDF."
+    ],
+    "relations_status": "not_started"
+  }
+}

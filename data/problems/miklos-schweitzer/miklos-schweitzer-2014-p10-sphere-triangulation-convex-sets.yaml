@@ -1,0 +1,122 @@
+{
+  "id": "miklos-schweitzer-2014-p10-sphere-triangulation-convex-sets",
+  "title": "Триангуляция сферы и четыре пересекающихся выпуклых множества, Miklos Schweitzer 2014 P10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "topological_combinatorics"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "sphere_triangulation",
+      "plane_convex_sets",
+      "faces",
+      "intersection_hypergraph"
+    ],
+    "methods": [
+      "graph_modeling",
+      "helly_type_argument",
+      "topological_combinatorics"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "keywords": [
+      "schweitzer_2014_p10",
+      "sphere_triangulation",
+      "convex_sets"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Выпуклые множества на вершинах триангуляции",
+        "text": "Каждой вершине заданной триангуляции двумерной сферы сопоставлено выпуклое подмножество плоскости. Предположим, что три выпуклых множества, соответствующие трем вершинам любой двумерной грани триангуляции, имеют общую точку. Докажите, что существуют четыре вершины, для которых соответствующие выпуклые множества имеют общую точку.",
+        "source_id": "src-miklos-schweitzer-2014-p10-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "На вершинах 1-скелета триангуляции сферы заданы выпуклые множества. Для каждого треугольного лица три множества при его вершинах пересекаются. Нужно доказать существование 4-клики в нерве семейства этих множеств, причем все четыре множества имеют общую точку.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-helly-planar-nerve",
+      "title": "Локальные тройные пересечения и планарная топология",
+      "text": "Условие задает много 2-симплексов в нерве семейства выпуклых множеств. Так как в плоскости действует теорема Хелли с числом 3, четверное пересечение надо добывать из топологии сферической триангуляции, а не только из одной грани.",
+      "tags": [
+        "planar_graphs",
+        "classical_theorem",
+        "goal_existence"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Требуется топологическая комбинаторика; без официального решения оставлены формулировка и идея.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "graph_model",
+    "classical_theorem",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "nerve_of_convex_sets",
+        "sphere_triangulation"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2014-p10-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2014-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие; решение не добавлено."
+    ],
+    "relations_status": "not_started"
+  }
+}

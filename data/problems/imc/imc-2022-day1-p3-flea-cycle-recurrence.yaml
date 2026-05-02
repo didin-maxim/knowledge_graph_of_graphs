@@ -1,0 +1,159 @@
+{
+  "id": "imc-2022-day1-p3-flea-cycle-recurrence",
+  "title": "Блоха на цикле вычетов и число возвратов, IMC 2022 Day 1 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Fedor Petrov",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "cycle_graph",
+      "walk",
+      "modulo_prime"
+    ],
+    "methods": [
+      "cyclic_shift_orbits",
+      "graph_walk_recurrence",
+      "periodic_linear_system"
+    ],
+    "transformations": [
+      "integer_line_to_cycle_mod_p"
+    ],
+    "goal": [
+      "compute_remainder"
+    ],
+    "auxiliary_graph_type": [
+      "cycle_with_loops"
+    ],
+    "invariants": [
+      "endpoint_modulo_p",
+      "orbit_size_mod_p"
+    ],
+    "keywords": [
+      "imc_2022_day1_p3",
+      "flea_walk",
+      "cycle_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(p\\) -- простое число. Блоха находится в точке \\(0\\) числовой прямой. Каждую минуту она может остаться на месте, прыгнуть на \\(1\\) влево или прыгнуть на \\(1\\) вправо. Через \\(p-1\\) минут она хочет снова оказаться в точке \\(0\\). Обозначим через \\(f(p)\\) число её стратегий сделать это. Найдите \\(f(p)\\) по модулю \\(p\\).",
+        "source_id": "src-imc-2022-day1-p3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "На цикле вычетов \\(\\mathbb Z/p\\mathbb Z\\) с петлёй в каждой вершине и рёбрами между соседними вычетами считаются маршруты длины \\(p-1\\) из \\(0\\) в \\(0\\). Определите это число по модулю \\(p\\), учитывая, что маршруты на прямой, возвращающиеся в \\(0\\) за \\(p-1\\) шагов, совпадают с такими маршрутами по модулю \\(p\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-p-step-orbits",
+      "title": "Циклический сдвиг слов длины p",
+      "text": "Слова из \\(p\\) ходов, кроме трёх постоянных слов, разбиваются на орбиты размера \\(p\\) по циклическому сдвигу. Поэтому по модулю \\(p\\) после \\(p\\) шагов остаётся только вклад трёх постоянных стратегий.",
+      "tags": [
+        "invariant"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-three-periodic-system",
+      "title": "Линейная система на цикле имеет период 3",
+      "text": "Если \\(x_i\\) -- число способов оказаться в вычете \\(i\\) после \\(p-1\\) шагов, то уравнения для следующего шага имеют вид \\(x_{i-1}+x_i+x_{i+1}\\). Их решение по модулю \\(p\\) задаётся периодическим шаблоном длины 3.",
+      "tags": [
+        "dynamics"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Сведение к маршрутам на цикле вычетов",
+      "text": "Ответ:\n\\\\[\nf(p)\\\\equiv\n\\\\begin{cases}\n0 \\\\pmod p, & p=3,\\\\\n1 \\\\pmod p, & p\\\\equiv1\\\\pmod3,\\\\\n-1 \\\\pmod p, & p\\\\equiv2\\\\pmod3.\n\\\\end{cases}\n\\\\]\n\nДля \\\\(p=3\\\\) прямо есть три стратегии: стоять два раза, пойти влево и вправо, пойти вправо и влево; значит \\\\(f(3)=3\\\\).\n\nДалее пусть \\\\(p\\\\ne3\\\\). Считаем положение блохи по модулю \\\\(p\\\\). За \\\\(p-1\\\\) ходов из \\\\(0\\\\) невозможно прийти на прямой в ненулевую кратную \\\\(p\\\\) точку, потому что абсолютное смещение не превосходит \\\\(p-1\\\\). Поэтому число возвратов на прямой равно числу маршрутов длины \\\\(p-1\\\\) из \\\\(0\\\\) в \\\\(0\\\\) на графе вычетов.\n\nОбозначим через \\\\(a_i(k)\\\\) число стратегий, после \\\\(k\\\\) минут приводящих в вычет \\\\(i\\\\). Тогда\n\\\\[\na_i(k+1)=a_{i-1}(k)+a_i(k)+a_{i+1}(k),\n\\\\]\nгде индексы берутся по модулю \\\\(p\\\\). Рассмотрим стратегии длины \\\\(p\\\\). Любое непостоянное слово из символов \\\\(-1,0,+1\\\\) имеет орбиту размера \\\\(p\\\\) относительно циклического сдвига: если слово имеет меньший период, этот период делит простое число \\\\(p\\\\), значит слово было бы постоянным. Все слова в одной орбите имеют одну и ту же сумму ходов, то есть один и тот же конечный вычет. Следовательно, по модулю \\\\(p\\\\) все непостоянные слова дают нулевой вклад. Три постоянных слова имеют суммы \\\\(-p,0,p\\\\), то есть все заканчиваются в вычете \\\\(0\\\\). Поэтому\n\\\\[\na_0(p)\\\\equiv3,\\qquad a_i(p)\\\\equiv0\\quad (i\\\\ne0).\n\\\\]\n\nПоложим \\\\(x_i=a_i(p-1)\\\\). Тогда после ещё одного шага получаем систему\n\\\\[\nx_{-1}+x_0+x_1=3,\\qquad x_{i-1}+x_i+x_{i+1}=0\\quad (i=1,\\ldots,p-1),\n\\\\]\nгде всё считается по модулю \\\\(p\\\\). Из второго уравнения следует рекурсия \\\\(x_{i+1}=-x_i-x_{i-1}\\\\), поэтому последовательность имеет период \\\\(3\\\\):\n\\\\[\nx_{i+3}=x_i.\n\\\\]\nЕсли \\\\(p\\\\equiv1\\\\pmod3\\\\), периодическое решение, согласованное с первым уравнением, имеет шаблон \\\\((1,1,-2)\\\\), поэтому \\\\(x_0=1\\\\). Если \\\\(p\\\\equiv2\\\\pmod3\\\\), получается шаблон \\\\((-1,2,-1)\\\\), поэтому \\\\(x_0=-1\\\\). Именно \\\\(x_0=a_0(p-1)=f(p)\\\\), что и даёт ответ.\"\n",
+      "idea_ids": [
+        "idea-p-step-orbits",
+        "idea-three-periodic-system"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "cycle",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Графовая модель цикла вычетов является удобной формой официального рекуррентного решения.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "dynamics",
+    "invariant",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "walk_recurrence_on_cycle",
+        "cyclic_shift_orbits"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2022-day1-p3-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Official IMC 2022 Day 1 solution expanded in Russian; sources.yaml intentionally untouched."
+    ],
+    "relations_status": "base_done"
+  }
+}

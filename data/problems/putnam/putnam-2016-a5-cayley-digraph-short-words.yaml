@@ -1,0 +1,156 @@
+{
+  "id": "putnam-2016-a5-cayley-digraph-short-words",
+  "title": "Короткие слова в двух порождающих через граф Кэли, Putnam 2016 A5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "algebra"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_group",
+      "cayley_digraph",
+      "directed_path"
+    ],
+    "methods": [
+      "generating_set",
+      "strong_connectivity",
+      "shortest_path"
+    ],
+    "transformations": [
+      "group_words_to_cayley_digraph"
+    ],
+    "goal": [
+      "prove_short_representation"
+    ],
+    "auxiliary_graph_type": [
+      "cayley_digraph"
+    ],
+    "invariants": [
+      "word_length",
+      "number_of_group_elements"
+    ],
+    "keywords": [
+      "putnam_2016_a5",
+      "putnam",
+      "cayley_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(G\\) — конечная группа, порождённая двумя элементами \\(g\\) и \\(h\\), причём порядок \\(g\\) нечётен. Докажите, что каждый элемент \\(G\\) можно записать в виде\n\\[\ng^{m_1}h^{n_1}g^{m_2}h^{n_2}\\cdots g^{m_r}h^{n_r},\n\\]\nгде \\(1\\le r\\le |G|\\) и все \\(m_1,n_1,\n\\ldots,m_r,n_r\\) принадлежат \\(\\{-1,1\\}\\).",
+        "source_id": "src-putnam-2016-A5-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "На множестве элементов конечной группы \\(G\\) построим ориентированный граф Кэли с дугами \\(s\\to su\\), где \\(u\\in\\{gh,gh^{-1},g^{-1}h,g^{-1}h^{-1}\\}\\). При условии, что \\(G\\) порождена \\(g,h\\) и порядок \\(g\\) нечётен, докажите, что из единицы до любой вершины есть направленный путь длины не больше \\(|G|\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-generators-make-strong-cayley",
+      "title": "Четыре допустимых блока порождают всю группу",
+      "text": "Блоки \\(gh,gh^{-1},g^{-1}h,g^{-1}h^{-1}\\) порождают \\(g^2\\), а нечётность порядка \\(g\\) означает, что \\(g^2\\) порождает ту же циклическую подгруппу, что и \\(g\\). Отсюда восстанавливаются и \\(g\\), и \\(h\\).",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-shortest-path-no-repeat",
+      "title": "Кратчайший путь не повторяет вершины",
+      "text": "В конечном сильно связном ориентированном графе кратчайший путь между двумя вершинами можно выбрать без повторов, поэтому его длина не превосходит числа вершин.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-cayley-digraph",
+      "title": "Решение через ориентированный граф Кэли",
+      "text": "Рассмотрим четыре допустимых блока\n\\[\nS=\\{gh,gh^{-1},g^{-1}h,g^{-1}h^{-1}\\}.\n\\]\nСначала покажем, что они порождают всю группу \\(G\\). Действительно,\n\\[\n(gh)(g^{-1}h)^{-1}=ghh^{-1}g=g^2.\n\\]\nТак как порядок \\(g\\) нечётен, элемент \\(g^2\\) порождает ту же циклическую подгруппу, что и \\(g\\); значит, из элементов \\(S\\) можно получить \\(g\\). Тогда из \\(gh\\) и \\(g\\) получаем \\(h\\). Поскольку исходно \\(g,h\\) порождают \\(G\\), множество \\(S\\) тоже порождает \\(G\\).\n\nТеперь построим ориентированный граф Кэли: вершины — элементы \\(G\\), а дуга из \\(a\\) в \\(as\\) проводится для каждого \\(s\\in S\\). Так как \\(S\\) порождает \\(G\\), из единицы можно прийти в любой элемент группы; более того, граф сильно связен, но нам нужна только достижимость из единицы.\n\nВозьмём произвольный \\(x\\in G\\) и кратчайший направленный путь от единицы к \\(x\\). В кратчайшем пути не может быть повторяющейся вершины: если такая вершина встретилась дважды, промежуточный цикл можно удалить и получить более короткий путь к тому же концу. Следовательно, путь содержит не больше \\(|G|+1\\) вершин и имеет длину не больше \\(|G|\\).\n\nКаждый шаг этого пути есть умножение справа на один из блоков \\(g^{\\pm1}h^{\\pm1}\\). Поэтому конечная вершина \\(x\\) имеет представление\n\\[\nx=g^{m_1}h^{n_1}\\cdots g^{m_r}h^{n_r}\n\\]\nс \\(m_i,n_i\\in\\{-1,1\\}\\) и \\(r\\le |G|\\). Если \\(x=e\\), можно взять любой допустимый непустой путь к единице длины не больше \\(|G|\\), например из существования цикла в графе Кэли; либо отдельно получить представление из порождающих блоков. Для всех остальных элементов построенный путь сразу даёт требуемую запись.",
+      "idea_ids": [
+        "idea-generators-make-strong-cayley",
+        "idea-shortest-path-no-repeat"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "Putnam A5; граф Кэли даёт компактную стандартную интерпретацию ограничения на длину слова.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "graph_model",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "cayley_digraph_shortest_path"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2016-A5-kedlaya",
+      "role": "problem_and_solutions_archive",
+      "status": "source_verified",
+      "url": "https://kskedlaya.org/putnam-archive/2016.pdf",
+      "solution_url": "https://kskedlaya.org/putnam-archive/2016s.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Архив Kedlaya помечает это как переформулировку через граф Кэли; включено как естественная графовая модель групповых слов."
+    ],
+    "relations_status": "base_done"
+  }
+}

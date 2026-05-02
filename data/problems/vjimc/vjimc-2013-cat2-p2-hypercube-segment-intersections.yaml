@@ -1,0 +1,159 @@
+{
+  "id": "vjimc-2013-cat2-p2-hypercube-segment-intersections",
+  "title": "Точки пересечения хорд между вершинами гиперкуба, VJIMC 2013 Category II P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "hypercube_vertices",
+      "complete_geometric_graph",
+      "cube_face_centers"
+    ],
+    "methods": [
+      "coordinate_encoding",
+      "ternary_vector_counting"
+    ],
+    "transformations": [
+      "cube_vertices_to_binary_vectors",
+      "segment_intersections_to_face_centers"
+    ],
+    "goal": [
+      "count_intersection_points"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph_on_hypercube_vertices"
+    ],
+    "invariants": [
+      "coordinates_in_zero_half_one",
+      "number_of_half_coordinates"
+    ],
+    "keywords": [
+      "vjimc_2013_cat2_p2",
+      "hypercube",
+      "complete_geometric_graph",
+      "segment_intersections"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Дан \\(n\\)-мерный куб. Рассмотрим все отрезки, соединяющие любые две различные вершины куба. Сколько различных точек пересечения имеют эти отрезки, если сами вершины куба не считать?",
+        "source_id": "src-vjimc-2013-cat2-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-geometric-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-geometric-graph",
+        "text": "Рассмотрим геометрическое вложение полного графа на множестве вершин \\(\\{0,1\\}^n\\): каждое ребро изображается прямым отрезком между соответствующими вершинами \\(n\\)-куба. Сколько точек плоскостного/пространственного пересечения рёбер этого вложения не совпадают с вершинами гиперкуба?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-intersections-are-face-centers",
+      "title": "Пересечения являются центрами граней размерности не меньше двух",
+      "text": "Координаты вершины гиперкуба равны \\(0\\) или \\(1\\). Если точка лежит внутри отрезка между двумя вершинами и одновременно является пересечением двух таких отрезков, то каждая её координата равна \\(0\\), \\(1\\) или \\(1/2\\); причём координат \\(1/2\\) должно быть не меньше двух.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-count-ternary-vectors",
+      "title": "Счёт тернарных векторов",
+      "text": "Всего векторов с координатами из \\(\\{0,1/2,1\\}\\) равно \\(3^n\\). Надо исключить \\(2^n\\) вершин без половинных координат и \\(n2^{n-1}\\) точек с ровно одной половинной координатой.",
+      "tags": [
+        "goal_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Координатный подсчёт центров граней",
+      "text": "Ответ:\n\\[\n3^n-2^n-n2^{n-1}.\n\\]\nЗададим вершины куба двоичными векторами \\((\\varepsilon_1,…,\\varepsilon_n)\\), где \\(\\varepsilon_i\\in\\{0,1\\}\\). Середина любого отрезка между двумя вершинами имеет координаты из множества \\(\\{0,1/2,1\\}\\): координата равна \\(0\\) или \\(1\\), если у концов отрезка она совпадает, и равна \\(1/2\\), если концы в этой координате различаются.\n\nЕсли два разных отрезка между вершинами имеют общую внутреннюю точку, то эта точка является центром некоторой грани куба: в фиксированных координатах она имеет значения \\(0\\) или \\(1\\), а в координатах, где меняются концы соответствующей диагонали грани, имеет значение \\(1/2\\). Поэтому всякая такая точка задаётся вектором из \\(\\{0,1/2,1\\}^n\\).\n\nТочек с нулём половинных координат считать нельзя: это ровно \\(2^n\\) вершин куба. Точка с ровно одной координатой \\(1/2\\) является серединой ребра одномерной грани; через неё проходит только один отрезок между вершинами этой грани, поэтому она не является точкой пересечения двух различных отрезков. Таких точек \\(n2^{n-1}\\): выбираем половинную координату и значения остальных координат.\n\nОсталось проверить, что каждая точка с хотя бы двумя половинными координатами действительно получается как пересечение. Пусть множество половинных координат равно \\(H\\), \\(|H|\\ge2\\), а остальные координаты фиксированы как \\(0\\) или \\(1\\). Это центр \\(|H|\\)-мерной грани куба. В такой грани есть как минимум две разные диагонали, соединяющие противоположные вершины, и все они проходят через центр грани. Следовательно, центр является общей внутренней точкой двух отрезков между вершинами куба.\n\nЗначит, нужно посчитать все тернарные векторы с не менее чем двумя координатами \\(1/2\\). Их число равно\n\\[\n3^n-2^n-n2^{n-1},\n\\]\nчто и требовалось.",
+      "idea_ids": [
+        "idea-intersections-are-face-centers",
+        "idea-count-ternary-vectors"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [],
+      "source_id": "src-vjimc-2013-cat2-p2-official"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Короткий координатный подсчёт в геометрическом графе на вершинах гиперкуба; графовая модель естественна, но решение в основном комбинаторно-геометрическое.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "coordinate_encoding",
+        "face_center_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vjimc-2013-cat2-p2-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "url": "https://vjimc.osu.cz/storage/uploads/j23problems2.pdf",
+      "solution_url": "https://vjimc.osu.cz/storage/uploads/j23solutions2.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Added during VJIMC 2006-2014 graph/hypergraph official archive pass.",
+      "Included as a natural complete-geometric-graph-on-hypercube-vertices model; official solution is coordinate-counting."
+    ],
+    "relations_status": "base_done"
+  }
+}

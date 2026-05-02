@@ -1,0 +1,153 @@
+{
+  "id": "imc-2018-day2-p6-path-orthogonal-representation",
+  "title": "Ортогональное представление дополнения пути, IMC 2018 Day 2 P6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Alexey Balitskiy",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "path_graph",
+      "orthogonal_vectors",
+      "independent_set"
+    ],
+    "methods": [
+      "independent_set_bound",
+      "orthogonal_basis_construction"
+    ],
+    "transformations": [
+      "index_condition_to_path_graph"
+    ],
+    "goal": [
+      "find_minimum_dimension"
+    ],
+    "auxiliary_graph_type": [
+      "path_graph"
+    ],
+    "invariants": [
+      "maximum_pairwise_orthogonal_family"
+    ],
+    "keywords": [
+      "imc_2018_day2_p6",
+      "orthogonal_representation",
+      "path_complement"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(k\\) -- положительное целое число. Найдите наименьшее положительное целое \\(n\\), для которого существуют \\(k\\) ненулевых векторов \\(v_1,\\ldots,v_k\\) в \\(\\mathbb R^n\\) такие, что для любых индексов \\(i,j\\) с \\(|i-j|>1\\) векторы \\(v_i\\) и \\(v_j\\) ортогональны.",
+        "source_id": "src-imc-2018-day2-p6-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим путь \\(1-2-\\cdots-k\\). Требуется найти минимальную размерность евклидова пространства, в котором вершинам пути можно сопоставить ненулевые векторы так, чтобы любые две несмежные вершины пути получили ортогональные векторы. Докажите, что эта минимальная размерность равна \\(\\lceil k/2\\rceil\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-odd-indices-independent-set",
+      "title": "Нечётные индексы дают слишком большую ортогональную систему",
+      "text": "В графе пути вершины \\(1,3,5,\\ldots\\) попарно несмежны, поэтому соответствующие векторы должны быть попарно ортогональны. В \\(\\mathbb R^n\\) не может быть больше \\(n\\) ненулевых попарно ортогональных векторов.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-pair-basis-vectors",
+      "title": "Одна базисная ось на две соседние вершины",
+      "text": "Для конструкции достаточно присвоить один и тот же базисный вектор парам индексов \\((1,2),(3,4),\\ldots\\). Несоседние индексы попадают в разные пары и получают разные ортогональные базисные векторы.",
+      "tags": [
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Оценка по независимому множеству пути и явная конструкция",
+      "text": "Ответ: \\\\(\\\\lceil k/2\\\\rceil\\\\).\n\nСначала докажем нижнюю оценку. Пусть такие векторы существуют в \\\\(\\\\mathbb R^n\\\\). Если \\\\(k\\\\ge 2n+1\\\\), то среди них можно выбрать\n\\\\[\nv_1,v_3,v_5,\\ldots,v_{2n+1}.\n\\\\]\nИндексы любых двух выбранных векторов отличаются больше чем на \\\\(1\\\\), поэтому по условию эти \\\\(n+1\\\\) векторов попарно ортогональны. Но в \\\\(n\\\\)-мерном евклидовом пространстве ненулевых попарно ортогональных векторов не больше \\\\(n\\\\): после нормировки они были бы линейно независимыми. Значит, необходимо \\\\(k\\\\le 2n\\\\), то есть \\\\(n\\\\ge \\\\lceil k/2\\\\rceil\\\\).\n\nТеперь построим пример при \\\\(n=\\\\lceil k/2\\\\rceil\\\\). Возьмём ортогональный базис \\\\(e_1,\\\\ldots,e_n\\\\) пространства \\\\(\\\\mathbb R^n\\\\). Для полного списка длины \\\\(2n\\\\) положим\n\\\\[\nv_1=v_2=e_1,\\quad v_3=v_4=e_2,\\quad \\\\ldots,\\quad v_{2n-1}=v_{2n}=e_n.\n\\\\]\nЕсли \\\\(|i-j|>1\\\\), то индексы \\\\(i\\\\) и \\\\(j\\\\) не лежат в одной паре \\\\((2r-1,2r)\\\\). Значит, соответствующие векторы являются разными векторами выбранного ортогонального базиса, а потому ортогональны. Если нужно ровно \\\\(k\\\\) векторов, берём первые \\\\(k\\\\) членов этой последовательности. Конструкция работает, и вместе с нижней оценкой даёт требуемый минимум.\"\n",
+      "idea_ids": [
+        "idea-odd-indices-independent-set",
+        "idea-pair-basis-vectors"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Короткая задача: граф пути помогает увидеть независимое множество нечётных индексов и парную конструкцию.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "extremal_choice",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "independent_set_bound",
+        "orthogonal_basis_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2018-day2-p6-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Official IMC 2018 Day 2 solution expanded in Russian; sources.yaml intentionally untouched."
+    ],
+    "relations_status": "base_done"
+  }
+}

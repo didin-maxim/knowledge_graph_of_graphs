@@ -1,0 +1,157 @@
+{
+  "id": "imc-2003-day2-p4-steiner-triples-elementary-abelian-2-group",
+  "title": "Тройки Штейнера с замыканием и порядок \\(2^m-1\\), IMC 2003 Day 2 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "advanced"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "three_uniform_hypergraph",
+      "steiner_triple_system",
+      "elementary_abelian_2_group",
+      "xor_construction"
+    ],
+    "methods": [
+      "algebraization",
+      "associative_operation",
+      "finite_abelian_group",
+      "construction"
+    ],
+    "transformations": [
+      "unique_triple_to_binary_operation",
+      "triples_from_xor"
+    ],
+    "goal": [
+      "characterize_n"
+    ],
+    "auxiliary_graph_type": [
+      "3_uniform_hypergraph"
+    ],
+    "invariants": [
+      "unique_pair_completion",
+      "closure_condition",
+      "order_two_elements"
+    ],
+    "keywords": [
+      "imc_2003_day2_p4",
+      "steiner_triples",
+      "boolean_group"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Найдите все положительные целые \\(n\\), для которых существует семейство \\(\\mathcal F\\) трехэлементных подмножеств множества \\(S=\\{1,2,\\ldots,n\\}\\), удовлетворяющее двум условиям: (i) для любых двух различных элементов \\(a,b\\in S\\) существует ровно одно множество \\(A\\in\\mathcal F\\), содержащее и \\(a\\), и \\(b\\); (ii) если \\(a,b,c,x,y,z\\in S\\) и \\(\\{a,b,x\\},\\{a,c,y\\},\\{b,c,z\\}\\in\\mathcal F\\), то \\(\\{x,y,z\\}\\in\\mathcal F\\).",
+        "source_id": "src-imc-2003-day2-p4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-hypergraph",
+        "title": "Гиперграфовая формулировка",
+        "text": "Найдите возможные числа вершин \\(n\\) для \\(3\\)-однородного гиперграфа, в котором каждая пара вершин лежит ровно в одном ребре, и выполнено дополнительное правило замыкания: если три ребра достраивают пары \\((a,b)\\), \\((a,c)\\), \\((b,c)\\) до третьих вершин \\(x,y,z\\), то \\(\\{x,y,z\\}\\) тоже является ребром.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "definition_ids": []
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-triples-define-operation",
+      "title": "Единственная тройка задает операцию",
+      "text": "Для разных \\(a,b\\) определяем \\(a*b=c\\), если \\(\\{a,b,c\\}\\) - тройка. Условие (i) дает коммутативность и правило \\(a*(a*b)=b\\), а условие (ii) превращается в ассоциативность для разных аргументов.",
+      "tags": [
+        "graph_model",
+        "goal_characterization"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-add-zero-get-f2-vector-space",
+      "title": "Добавить ноль и получить булеву группу",
+      "text": "Если добавить новый элемент \\(0\\) и положить \\(a*a=0\\), \\(a*0=a\\), то получается конечная абелева группа, в которой каждый элемент имеет порядок \\(2\\). Ее порядок равен степени двойки.",
+      "tags": [
+        "construction",
+        "goal_characterization"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "От троек к группе над \\(\\mathbb F_2\\)",
+      "text": "Пусть такое семейство \\(\\mathcal F\\) существует. По условию (i) для любых разных \\(a,b\\in S\\) однозначно определена третья вершина \\(c\\), для которой \\(\\{a,b,c\\}\\in\\mathcal F\\). Обозначим ее через \\(a*b\\). Тогда при \\(a\\ne b\\) имеем \\(a*b=b*a\\), \\(a*b\\) отличается и от \\(a\\), и от \\(b\\), а также \\(a*(a*b)=b\\): пара \\(a,a*b\\) лежит в той же единственной тройке \\(\\{a,b,a*b\\}\\).\n\nУсловие (ii) говорит, что если \\(x=a*b\\), \\(y=a*c\\), \\(z=b*c\\), то \\(x*y=z\\). В этих обозначениях это именно правило \\((a*b)*(a*c)=b*c\\), то есть нужная форма ассоциативности, когда встречающиеся элементы различны. Теперь добавим к \\(S\\) новый элемент \\(0\\) и доопределим операцию так: \\(a*a=0\\), \\(a*0=0*a=a\\). Описанные тождества проверяются и в случаях совпадающих аргументов, поэтому \\(S\\cup\\{0\\}\\) становится конечной абелевой группой. При этом \\(a*a=0\\) для каждого элемента, значит все ненулевые элементы имеют порядок \\(2\\).\n\nКонечная абелева группа, в которой каждый элемент имеет порядок \\(2\\), является векторным пространством над \\(\\mathbb F_2\\). Поэтому ее размер равен \\(2^m\\) для некоторого \\(m\\ge1\\). Так как к исходному множеству мы добавили один нулевой элемент, получаем необходимое условие \\(n+1=2^m\\), то есть \\(n=2^m-1\\).\n\nОсталось показать достаточность. Пусть \\(n=2^m-1\\). Отождествим \\(S\\) с множеством всех ненулевых векторов пространства \\(\\mathbb F_2^m\\). Для любых двух разных ненулевых векторов \\(a,b\\) вектор \\(a+b\\) тоже ненулевой и отличается от обоих. Включим в \\(\\mathcal F\\) все тройки вида \\(\\{a,b,a+b\\}\\). Тогда каждая пара \\(a,b\\) лежит ровно в одной такой тройке. Кроме того, если \\(x=a+b\\), \\(y=a+c\\), \\(z=b+c\\), то \\(x+y=(a+b)+(a+c)=b+c=z\\), значит \\(\\{x,y,z\\}\\) тоже одна из наших троек. Следовательно, все и только числа \\(n=2^m-1\\) подходят.",
+      "idea_ids": [
+        "idea-triples-define-operation",
+        "idea-add-zero-get-f2-vector-space"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 12,
+    "comment": "Гиперграфовая задача о тройках Штейнера, решаемая алгебраизацией в элементарную абелеву 2-группу.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "construction",
+    "goal_characterization"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "steiner_triple_to_operation",
+        "elementary_abelian_2_group",
+        "xor_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2003-day2-p4-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Это скорее 3-однородный гиперграф/дизайн, чем обычный граф; оставлено как сильная продвинутая графовая карточка."
+    ],
+    "relations_status": "base_done"
+  }
+}

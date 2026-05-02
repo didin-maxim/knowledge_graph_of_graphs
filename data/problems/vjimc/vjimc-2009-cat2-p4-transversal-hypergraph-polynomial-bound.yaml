@@ -1,0 +1,158 @@
+{
+  "id": "vjimc-2009-cat2-p4-transversal-hypergraph-polynomial-bound",
+  "title": "Оценка числа рёбер гиперграфа через разделяющие разбиения, VJIMC 2009 Category II P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "m_uniform_hypergraph",
+      "transversal_partition",
+      "set_family"
+    ],
+    "methods": [
+      "polynomial_method",
+      "linear_independence",
+      "parity_matrix"
+    ],
+    "transformations": [
+      "set_family_to_hypergraph",
+      "partitions_to_squarefree_polynomials"
+    ],
+    "goal": [
+      "prove_upper_bound"
+    ],
+    "auxiliary_graph_type": [
+      "hypergraph"
+    ],
+    "invariants": [
+      "odd_diagonal_even_offdiagonal_evaluation_matrix",
+      "dimension_of_squarefree_polynomial_space"
+    ],
+    "keywords": [
+      "vjimc_2009_cat2_p4",
+      "extremal_hypergraph",
+      "polynomial_method"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(k,m,n\\) - положительные целые числа, \\(1\\le m\\le n\\), и \\(S=\\{1,2,\\ldots,n\\}\\). Пусть \\(A_1,A_2,…,A_k\\) - \\(m\\)-элементные подмножества \\(S\\) со следующим свойством: для каждого \\(i=1,…,k\\) существует разбиение \\(S=S_{1,i}\\cup S_{2,i}\\cup\\cdots\\cup S_{m,i}\\) на попарно непересекающиеся части такое, что \\(A_i\\) имеет ровно один общий элемент с каждой частью этого разбиения, а каждое \\(A_j\\), \\(j\\ne i\\), не пересекается хотя бы с одной частью этого разбиения. Докажите, что \\(k\\le \\binom{n-1}{m-1}\\).",
+        "source_id": "src-vjimc-2009-cat2-p4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-hypergraph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-hypergraph",
+        "text": "Пусть \\(H\\) - \\(m\\)-равномерный гиперграф на множестве вершин \\(S\\), \\(|S|=n\\), с рёбрами \\(A_1,…,A_k\\). Для каждого ребра \\(A_i\\) задано разбиение вершин на \\(m\\) частей, для которого \\(A_i\\) является трансверсалью, а любое другое ребро пропускает хотя бы одну часть. Докажите, что число рёбер не превосходит \\(\\binom{n-1}{m-1}\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-polynomial-for-each-edge",
+      "title": "Каждому ребру сопоставляется квадратсвободный многочлен",
+      "text": "Переименуем части каждого разбиения так, чтобы вершина \\(1\\) лежала в первой части. Для ребра \\(A_i\\) берём произведение сумм переменных по остальным частям. Получаются однородные квадратсвободные многочлены степени \\(m-1\\) от \\(n-1\\) переменных.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-odd-even-evaluation-matrix",
+      "title": "Матрица значений имеет нечётную диагональ и чётные внедиагональные элементы",
+      "text": "На характеристическом векторе собственного ребра многочлен равен \\(1\\). На характеристическом векторе чужого ребра произведение либо равно нулю, либо содержит чётный множитель; значит, по модулю 2 матрица значений является единичной.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Полиномиальный метод и линейная независимость",
+      "text": "Для каждого \\(i\\) переименуем части разбиения так, чтобы \\(1\\in S_{1,i}\\). Рассмотрим переменные \\(x_2,…,x_n\\) и сопоставим ребру \\(A_i\\) многочлен\n\\[\nP_i(x_2,…,x_n)=\\prod_{\\ell=2}^{m}\\left(\\sum_{s\\in S_{\\ell,i}}x_s\\right),\n\\]\nгде переменной \\(x_1\\) нет. Так как части разбиения попарно не пересекаются, при раскрытии скобок в \\(P_i\\) возникают только квадратсвободные мономы степени \\(m-1\\). Пространство таких многочленов от переменных \\(x_2,…,x_n\\) имеет размерность \\(\\binom{n-1}{m-1}\\). Поэтому достаточно доказать, что многочлены \\(P_1,…,P_k\\) линейно независимы.\n\nДля каждого ребра \\(A_j\\) возьмём его характеристический вектор \\(\\chi_j\\) на координатах \\(2,…,n\\). Посмотрим на матрицу \\(M=(P_i(\\chi_j))_{i,j=1}^k\\). Если \\(j=i\\), то ребро \\(A_i\\) имеет ровно один элемент в каждой части разбиения; кроме первой части, этот элемент не равен \\(1\\), поэтому\n\\[\nP_i(\\chi_i)=\\prod_{\\ell=2}^{m}|A_i\\cap S_{\\ell,i}|=1.\n\\]\n\nПусть теперь \\(j\\ne i\\). По условию ребро \\(A_j\\) не пересекает хотя бы одну часть разбиения, соответствующего \\(i\\). Если это одна из частей \\(S_{\\ell,i}\\) при \\(\\ell\\ge2\\), то один множитель в \\(P_i(\\chi_j)\\) равен нулю. Если же \\(A_j\\) пропускает только первую часть, то все его \\(m\\) элементов лежат в остальных \\(m-1\\) частях; следовательно, хотя бы в одной из этих частей лежат два элемента \\(A_j\\), и соответствующий множитель чётен. В обоих случаях \\(P_i(\\chi_j)\\) чётно.\n\nИтак, матрица \\(M\\) по модулю \\(2\\) совпадает с единичной матрицей: диагональные элементы нечётны, внедиагональные чётны. Поэтому её определитель нечётен, в частности не равен нулю. Если бы многочлены \\(P_i\\) были линейно зависимы, то строки матрицы их значений в точках \\(\\chi_j\\) тоже были бы линейно зависимы, что невозможно. Значит, многочлены независимы, и их число не превосходит размерности пространства:\n\\[\nk\\le \\binom{n-1}{m-1}.\n\\]",
+      "idea_ids": [
+        "idea-polynomial-for-each-edge",
+        "idea-odd-even-evaluation-matrix"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [],
+      "source_id": "src-vjimc-2009-cat2-p4-official"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "Содержательная экстремальная задача о гиперграфе; ключевой шаг - полиномиальный метод с матрицей значений по модулю 2.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "graph_model",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "polynomial_method",
+        "linear_independence",
+        "parity_evaluation_matrix"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vjimc-2009-cat2-p4-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "url": "https://vjimc.osu.cz/storage/uploads/j19problems2.pdf",
+      "solution_url": "https://vjimc.osu.cz/storage/uploads/j19solutions2.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Added during VJIMC 2006-2014 graph/hypergraph official archive pass."
+    ],
+    "relations_status": "base_done"
+  }
+}

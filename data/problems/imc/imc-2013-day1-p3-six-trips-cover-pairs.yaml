@@ -1,0 +1,160 @@
+{
+  "id": "imc-2013-day1-p3-six-trips-cover-pairs",
+  "title": "Шесть экскурсий покрывают все пары учеников, IMC 2013 Day 1 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Oleksandr Rybak",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_cover_by_cliques",
+      "uniform_blocks"
+    ],
+    "methods": [
+      "counting_lower_bound",
+      "block_design_construction",
+      "case_split_by_n_mod_6"
+    ],
+    "transformations": [
+      "students_pairs_to_edges_of_complete_graph"
+    ],
+    "goal": [
+      "find_minimum_number_of_cliques"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph_edge_cover"
+    ],
+    "invariants": [
+      "student_trip_incidence_count",
+      "covered_pairs"
+    ],
+    "keywords": [
+      "imc_2013_day1_p3",
+      "six_trips",
+      "edge_cover_by_cliques"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В школе \\(2n\\) учеников, где \\(n\\ge2\\). Каждую неделю \\(n\\) учеников отправляются на экскурсию. После нескольких экскурсий выполнено условие: любые два ученика хотя бы один раз были вместе на экскурсии. Каково минимальное число экскурсий, необходимое для этого?",
+        "source_id": "src-imc-2013-day1-p3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Эквивалентно, нужно покрыть все рёбра полного графа \\(K_{2n}\\) минимальным числом полных подграфов на \\(n\\) вершинах. Докажите, что для всех \\(n\\ge2\\) минимальное число таких \\(K_n\\)-клик равно \\(6\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-each-student-needs-three-trips",
+      "title": "Каждому ученику нужны как минимум три экскурсии",
+      "text": "За одну экскурсию ученик встречает не больше \\(n-1\\) других, а всего ему нужно встретить \\(2n-1\\) школьников. Поэтому каждый участвует минимум в трёх экскурсиях, что даёт нижнюю оценку \\(6n\\) ученико-мест.",
+      "tags": [
+        "double_counting",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-six-blocks",
+      "title": "Шесть блоков реализуют покрытие всех пар",
+      "text": "Конструкции для чётного \\(n\\) и для \\(3\\mid n\\) склеиваются: если \\(n=2x+3y\\), берём четыре группы размера \\(x\\) и шесть групп размера \\(y\\), а шесть экскурсий объединяют соответствующие блоки из двух базовых схем.",
+      "tags": [
+        "construction",
+        "goal_construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Нижняя оценка и блочные конструкции",
+      "text": "Ответ: \\(6\\) экскурсий.\n\nСначала докажем, что пяти экскурсий недостаточно. Если было не больше пяти экскурсий, суммарное число участий учеников в них не превосходит \\(5n\\). С другой стороны, фиксированный ученик за одну экскурсию встречает не более \\(n-1\\) других учеников. Чтобы встретить всех остальных \\(2n-1\\) учеников, он должен участвовать как минимум в трёх экскурсиях, потому что \\(2(n-1)<2n-1\\). Значит, суммарное число участий не меньше \\(3\\cdot2n=6n\\), противоречие. Поэтому нужно хотя бы \\(6\\) экскурсий.\n\nПостроим расписание из шести экскурсий. Если \\(n\\) чётно, делим всех \\(2n\\) учеников на четыре равные группы \\(A,B,C,D\\) размера \\(n/2\\). Шесть экскурсий берём как объединения пар групп:\n\\[\n(A,B),\\ (C,D),\\ (A,C),\\ (B,D),\\ (A,D),\\ (B,C).\n\\]\nЛюбые две группы встречаются вместе ровно в одной экскурсии, а ученики внутри одной группы вместе участвуют во всех трёх экскурсиях, содержащих эту группу. Значит, все пары покрыты.\n\nЕсли \\(n\\) нечётно и делится на \\(3\\), делим учеников на шесть равных групп \\(E,F,G,H,I,J\\) размера \\(n/3\\). Экскурсии:\n\\[\n(E,F,G),\\ (E,F,H),\\ (G,H,I),\\ (G,H,J),\\ (E,I,J),\\ (F,I,J).\n\\]\nКаждая экскурсия содержит три группы, то есть \\(n\\) учеников. Нетрудно проверить, что всякая пара групп встречается хотя бы в одной строке списка; пары внутри одной группы, конечно, тоже встречаются.\n\nОстаётся случай, когда \\(n\\) не чётно и не делится на \\(3\\). Тогда \\(n\\ge5\\), и можно представить \\(n=2x+3y\\) с натуральными \\(x,y\\). Возьмём четыре группы \\(A,B,C,D\\) размера \\(x\\) и шесть групп \\(E,F,G,H,I,J\\) размера \\(y\\). Теперь используем объединённую схему из шести экскурсий:\n\\[\n(A,B,E,F,G),\\quad (C,D,E,F,H),\\quad (A,C,G,H,I),\n\\]\n\\[\n(B,D,G,H,J),\\quad (A,D,E,I,J),\\quad (B,C,F,I,J).\n\\]\nВ каждой строке находится \\(2x+3y=n\\) учеников. Четыре группы \\(A,B,C,D\\) покрываются попарно по схеме для чётного случая; шесть групп \\(E,…,J\\) покрываются по схеме для случая, кратного \\(3\\); смешанные пары групп тоже покрыты, что проверяется по списку строк: каждая из групп \\(A,B,C,D\\) встречается с каждой из \\(E,F,G,H,I,J\\) хотя бы один раз. Значит, после этих шести экскурсий любые два ученика побывали вместе. Нижняя оценка и конструкция совпадают, поэтому минимум равен \\(6\\).",
+      "idea_ids": [
+        "idea-each-student-needs-three-trips",
+        "idea-six-blocks"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p2_p5",
+    "local_score": 6,
+    "comment": "Комбинаторное покрытие рёбер полного графа кликами размера \\(n\\); графовая модель полезна для классификации, хотя официальное решение говорит языком групп учеников.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "construction",
+    "graph_model",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "counting_lower_bound",
+        "block_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2013-day1-p3-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Official IMC 2013 Day 1 solutions, problem 3; source PDF header appears to contain a year typo in the extracted text."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "id": "sums-2011-p8-periodic-hexagon-tessellation-even-vertices",
+  "title": "Периодическая гексагональная тесселяция с заданными вершинами, SUMS 2011/8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "planar_periodic_graph"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "periodic_planar_graph",
+      "hexagonal_faces",
+      "degree_three_vertices",
+      "integer_translates"
+    ],
+    "methods": [
+      "parity_counting",
+      "edge_pairing_by_translation",
+      "periodic_construction"
+    ],
+    "transformations": [
+      "periodic_tessellation_to_fundamental_square_count"
+    ],
+    "goal": [
+      "characterize_even_number_of_vertex_orbits"
+    ],
+    "auxiliary_graph_type": [
+      "cubic_planar_graph"
+    ],
+    "invariants": [
+      "three_edges_at_each_vertex",
+      "boundary_edges_paired_by_translation"
+    ],
+    "keywords": [
+      "SUMS_2011_8",
+      "periodic_hexagon_tessellation",
+      "cubic_planar_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\((x_1,y_1),\\ldots,(x_n,y_n)\\) - различные точки единичного квадрата с \\(0<x_i<1\\) и \\(0<y_i<1\\). Пусть \\(V\\) - множество всех их целочисленных сдвигов. Периодической гексагональной тесселяцией с множеством вершин \\(V\\) называется набор непересекающихся вне концов непрерывных рёбер, соединяющих точки из \\(V\\), такой что каждая вершина имеет степень 3, каждая область дополнения имеет шесть рёбер на границе, и вместе с каждым ребром присутствуют все его целочисленные сдвиги. Докажите, что такая тесселяция существует тогда и только тогда, когда \\(n\\) чётно.",
+        "source_id": "src-sums-2011-p8-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "planar_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Периодический плоский кубический граф",
+        "text": "Дано \\(n\\) орбит вершин относительно действия \\(\\mathbb Z^2\\) на плоскости. Нужно охарактеризовать, когда существует \\(\\mathbb Z^2\\)-периодическое плоское вложение 3-регулярного графа с этими вершинами, у которого все грани являются шестиугольниками. Ответ: такое вложение существует ровно при чётном \\(n\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-fundamental-square-parity",
+      "title": "Рёбра, выходящие из фундаментального квадрата, разбиваются на пары",
+      "text": "Если считать инцидентности у \\(n\\) вершин в единичном квадрате, получаем \\(3n=2|E|+|E'|\\), где \\(E'\\) - рёбра, имеющие ровно один конец в квадрате. Периодичность задаёт на \\(E'\\) свободную инволюцию: ребро заменяется его сдвигом, у которого внутрь квадрата попал другой конец. Значит \\(|E'|\\) чётно, и \\(n\\) чётно.",
+      "tags": [
+        "planar_graphs",
+        "double_counting",
+        "parity_coloring"
+      ],
+      "status": "source_verified"
+    },
+    {
+      "id": "idea-even-periodic-construction",
+      "title": "Чётный случай сводится к стандартной периодической сетке",
+      "text": "Точки внутри фундаментального квадрата можно периодическим гомеоморфизмом перевести в равномерно расположенные точки на горизонтальной середине квадрата. Для двух точек строится стандартная периодическая гексагональная сетка, а для общего чётного \\(n\\) она растягивается/сжимается по горизонтали.",
+      "tags": [
+        "construction",
+        "graph_symmetry"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-parity-and-construction",
+      "title": "Паритет в фундаментальном квадрате и явная конструкция",
+      "text": "Пусть тесселяция уже существует. Обозначим через \\(E\\) рёбра с обоими концами в квадрате \\([0,1]\\times[0,1]\\), а через \\(E'\\) - рёбра с ровно одним концом в этом квадрате. У каждой из \\(n\\) вершин степень 3, поэтому \\(3n=2|E|+|E'|\\). Если \\(C\\in E'\\), один его конец лежит в квадрате, а другой равен целочисленному сдвигу некоторой вершины. Сдвинув \\(C\\) обратно на этот целый вектор, получаем другое ребро из \\(E'\\). Эта операция является инволюцией без неподвижных точек, значит \\(|E'|\\) чётно. Тогда \\(3n\\) чётно, и \\(n\\) чётно. Обратно, пусть \\(n\\) чётно. Периодическим гомеоморфизмом каждого единичного квадрата можно перевести заданные \\(n\\) точек в точки \\(((2i-1)/(2n),1/2)\\). Для \\(n=2\\) берётся стандартная периодическая картинка из трёх типов отрезков, порождающая гексагональную сетку. Для общего чётного \\(n\\) эту картинку растягивают так, чтобы в фундаментальном квадрате появилось \\(n\\) вершин; периодичность по целочисленным сдвигам сохраняется. Применяя обратный гомеоморфизм, получаем тесселяцию для исходного множества \\(V\\).",
+      "idea_ids": [
+        "idea-fundamental-square-parity",
+        "idea-even-periodic-construction"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "source_verified",
+      "source_id": "src-sums-2011-p8-official"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 7,
+    "comment": "Необходимость короткая, но достаточность требует аккуратной периодической топологической конструкции.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "degree_counting",
+    "double_counting",
+    "construction",
+    "goal_characterization"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "fundamental_domain_parity",
+        "periodic_hexagonal_construction"
+      ],
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-sums-2011-p8-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "relations_status": "not_started"
+  }
+}

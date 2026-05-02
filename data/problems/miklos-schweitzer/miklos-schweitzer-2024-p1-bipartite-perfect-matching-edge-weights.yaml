@@ -1,0 +1,145 @@
+{
+  "id": "miklos-schweitzer-2024-p1-bipartite-perfect-matching-edge-weights",
+  "title": "Веса ребер, минимумы и максимумы дают совершенные паросочетания, Schweitzer 2024 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_bipartite_graph",
+      "perfect_matching",
+      "injective_edge_weighting",
+      "local_minimum_edge",
+      "local_maximum_edge"
+    ],
+    "methods": [
+      "matching_structure",
+      "edge_ordering",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "weights_to_linear_order_of_edges"
+    ],
+    "goal": [
+      "construct_weighting"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "one_selected_edge_at_each_left_vertex",
+      "one_selected_edge_at_each_right_vertex"
+    ],
+    "keywords": [
+      "schweitzer_2024_p1",
+      "perfect_matching",
+      "bipartite_graph",
+      "edge_weights"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Двудольный граф с совершенным паросочетанием",
+        "text": "Пусть \\(G=(S,T;E)\\) - конечный двудольный граф, имеющий совершенное паросочетание. Докажите, что существует инъективная весовая функция \\(w:E\\to\\mathbb R\\) со следующими свойствами. (1) Если \\(e_s\\) обозначает ребро минимального веса среди ребер, инцидентных \\(s\\in S\\), то множество \\(\\{e_s:s\\in S\\}\\) является совершенным паросочетанием в \\(G\\). (2) Если \\(e_t\\) обозначает ребро максимального веса среди ребер, инцидентных \\(t\\in T\\), то множество \\(\\{e_t:t\\in T\\}\\) является совершенным паросочетанием в \\(G\\).",
+        "source_id": "src-miklos-schweitzer-2024-p1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Эквивалентно об упорядочении ребер",
+        "text": "Нужно линейно упорядочить ребра двудольного графа так, чтобы первые ребра в звездах вершин доли \\(S\\) образовывали совершенное паросочетание, а последние ребра в звездах вершин доли \\(T\\) тоже образовывали совершенное паросочетание.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-two-extreme-matchings",
+      "title": "Искать два крайних паросочетания",
+      "text": "Минимальные ребра у вершин \\(S\\) и максимальные ребра у вершин \\(T\\) должны быть двумя совершенными паросочетаниями, возможно совпадающими. Задача состоит в том, чтобы выбрать их и затем продолжить выбор до полного строгого порядка на ребрах.",
+      "tags": [
+        "matching",
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-weight-order",
+      "title": "Важен только порядок весов",
+      "text": "Инъективные вещественные веса можно заменить перестановкой ребер: минимумы и максимумы в звездах зависят только от относительного порядка.",
+      "tags": [
+        "graph_model",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Формулировка элементарно графовая, но конструкция порядка ребер для произвольного двудольного графа с совершенным паросочетанием требует отдельной проверки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "matching",
+    "construction",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "edge_ordering_with_local_extrema"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2024-p1-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF с bolyai.hu содержит условие. Решение в индексном архиве для 2024 года не было использовано; карточка намеренно без полного доказательства."
+    ],
+    "relations_status": "not_started"
+  }
+}

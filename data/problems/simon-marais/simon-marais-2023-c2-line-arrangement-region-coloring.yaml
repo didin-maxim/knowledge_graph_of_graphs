@@ -1,0 +1,157 @@
+{
+  "id": "simon-marais-2023-c2-line-arrangement-region-coloring",
+  "title": "Раскраска областей в расположении отрезков, SMMC 2023 C2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "plane_arrangement",
+      "region_adjacency_graph",
+      "bipartite_coloring"
+    ],
+    "methods": [
+      "area_sum",
+      "parity_coloring",
+      "explicit_formula"
+    ],
+    "transformations": [
+      "regions_to_planar_dual_graph"
+    ],
+    "goal": [
+      "characterize_n"
+    ],
+    "auxiliary_graph_type": [
+      "planar_dual_graph"
+    ],
+    "invariants": [
+      "region_color",
+      "signed_area_difference"
+    ],
+    "keywords": [
+      "smmc_2023_c2",
+      "line_segments",
+      "region_adjacency",
+      "two_coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Для целого \\(n\\ge2\\) рассмотрим отрезки, соединяющие точки \\((0,k)\\) и \\((n-k,0)\\) при \\(k=0,1,\\ldots,n\\). Их объединение делит плоскость на одну неограниченную область и несколько ограниченных областей, каждая из которых является треугольником или четырехугольником. Эти ограниченные области можно единственным образом раскрасить в синий и красный цвета так, что области, имеющие общую сторону, имеют разные цвета, а область с вершиной \\((0,0)\\) синяя. Найдите все \\(n\\), для которых суммарная синяя площадь равна суммарной красной площади.",
+        "source_id": "src-simon-marais-2023-C2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Постройте граф смежности ограниченных областей: вершины соответствуют областям, а ребро соединяет две области, если они имеют общий отрезок границы положительной длины. Этот граф двудолен, и заданная раскраска является его единственной правильной 2-раскраской после фиксации цвета области у \\((0,0)\\). Определите все \\(n\\), для которых сумма площадей вершин одной доли равна сумме площадей вершин другой доли.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "planar_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-dual-coloring-to-signed-area",
+      "title": "Раскраска превращает задачу в знакопеременную сумму площадей",
+      "text": "Так как соседние области имеют разные цвета, удобно считать синие площади с плюсом, а красные с минусом. Официальное решение использует симметрию относительно прямой \\(y=x\\): при нечетном \\(n\\) все малые треугольники попарно компенсируются, а при четном остаются лишние синие краевые треугольники.",
+      "tags": [
+        "region_adjacency",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-signed-area-outline",
+      "title": "Через граф смежности областей и площади ячеек",
+      "text": "Ответ: все нечетные \\(n\\).\n\nРассмотрим ограниченные области как вершины планарного двойственного графа. Цвет области меняется при переходе через каждый отрезок, поэтому цвет определяется четностью числа пересеченных границ от области у начала координат; это также объясняет единственность раскраски.\n\nОбозначим через \\(\\ell_k\\) прямую, соединяющую \\((0,k)\\) и \\((n-k,0)\\). Для \\(0\\le i\\le j\\le n\\) точка\n\\[P_{ij}=\\left(\\frac{(n-i)(n-j)}n,\\frac{ij}n\\right)\\]\nлежит на пересечении \\(\\ell_i\\) и \\(\\ell_j\\), а точки \\(P_{0j},P_{1j},\\ldots,P_{jn}\\) идут по \\(\\ell_j\\) через равные промежутки.\n\nЕсли \\(n\\) нечетно, часть рисунка ниже прямой \\(y=x\\) разбивается на пары соседних малых треугольников одинаковой площади и разных цветов; равенство промежутков на каждой \\(\\ell_j\\) дает равенство площадей в каждой паре. Отражение относительно \\(y=x\\) сохраняет тот же баланс, значит суммарные синяя и красная площади равны.\n\nЕсли \\(n\\) четно, почти все треугольники ниже \\(y=x\\) опять попарно компенсируются, но краевые синие треугольники оказываются вдвое больше своих красных партнеров. Поэтому синяя площадь строго больше красной, и равенства нет.",
+      "idea_ids": [
+        "idea-dual-coloring-to-signed-area"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph",
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Граф смежности и его 2-раскраска заданы в условии; основная техническая часть — аккуратное вычисление площадей.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "coloring",
+    "region_adjacency",
+    "goal_characterization"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "planar_dual_coloring",
+        "signed_area_sum"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2023-C2-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Официальное условие явно использует смежность областей; графовая часть — 2-раскраска планарного двойственного графа с площадями как весами вершин."
+    ],
+    "relations_status": "base_done"
+  }
+}

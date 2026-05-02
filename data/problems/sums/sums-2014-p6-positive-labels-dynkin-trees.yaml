@@ -1,0 +1,148 @@
+{
+  "id": "sums-2014-p6-positive-labels-dynkin-trees",
+  "title": "Положительные разметки графа с суммой соседей 2f(v)-1, SUMS 2014/6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "graph_classification"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_simple_graph",
+      "positive_integer_vertex_labels",
+      "tree",
+      "dynkin_diagram"
+    ],
+    "methods": [
+      "minimum_label_argument",
+      "branch_vertex_classification",
+      "path_recurrence"
+    ],
+    "transformations": [
+      "label_equations_to_tree_shape"
+    ],
+    "goal": [
+      "classify_graphs"
+    ],
+    "auxiliary_graph_type": [
+      "tree"
+    ],
+    "invariants": [
+      "neighbor_sum_equals_two_label_minus_one",
+      "at_most_one_branch_vertex"
+    ],
+    "keywords": [
+      "SUMS_2014_6",
+      "positive_labels",
+      "Dynkin_diagrams",
+      "tree_classification"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Для каких связных конечных простых графов можно назначить каждой вершине \\(v\\) положительное целое число \\(f(v)\\) так, чтобы для каждой вершины \\(v\\) сумма меток всех соседних с ней вершин была равна \\(2f(v)-1\\)?",
+        "source_id": "src-sums-2014-p6-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-minimum-label-forces-tree",
+      "title": "Минимальная метка запрещает циклы и большие ветвления",
+      "text": "На цикле вершина с минимальной меткой имела бы двух соседей с суммой не меньше \\(2f(v)\\), что противоречит \\(2f(v)-1\\). Аналогично две ветвящиеся вершины или вершина степени хотя бы 4 дают слишком большую сумму соседей.",
+      "tags": [
+        "trees",
+        "extremal_choice",
+        "goal_classification"
+      ],
+      "status": "source_verified"
+    },
+    {
+      "id": "idea-branch-length-equations",
+      "title": "Оставшиеся деревья классифицируются рекурсиями вдоль ветвей",
+      "text": "Если дерево является путём, метки вдоль пути выражаются как \\(ka-\\binom k2\\), и конечное условие даёт путь чётной длины. Если есть одна вершина степени 3, длины трёх ветвей удовлетворяют диофантовым ограничениям, откуда остаются серии типа \\(D\\) и исключительные случаи \\(E_6,E_8\\).",
+      "tags": [
+        "induction",
+        "goal_classification"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-dynkin-classification",
+      "title": "Классификация через минимальную метку и ветви",
+      "text": "Пусть такая разметка существует. Сначала граф не содержит циклов: на цикле возьмём вершину с минимальной меткой; две её циклические соседки дают сумму не меньше \\(2f(v)\\), а требуется \\(2f(v)-1\\). Значит граф - дерево. В дереве не может быть двух вершин степени хотя бы 3: на пути между ними минимум меток достигается у конца, а затем условие в ветвящейся вершине снова заставляет сумму соседей быть больше \\(2f(v)-1\\). Не может быть и вершины степени хотя бы 4, поскольку каждый её сосед имеет метку больше \\(f(v)/2\\), и сумма четырёх соседей превысила бы \\(2f(v)-1\\). Поэтому дерево либо путь, либо имеет ровно одну вершину степени 3. Для пути с конечной меткой \\(a\\) на конце рекурсия вдоль пути даёт \\(f(v_k)=ka-\\binom k2\\). Условие на другом конце вынуждает число вершин быть \\(2a\\); это серия путей \\(A_{2a}\\). Если есть одна вершина степени 3, пусть длины ветвей равны \\(k\\ge \\ell\\ge m\\). Рекурсия вдоль каждой ветви выражает метку ветвящейся вершины \\(d\\) через конечные метки, а условие в ветвящейся вершине даёт неравенство \\(k/(k+1)+\\ell/(\\ell+1)+m/(m+1)<2\\). Отсюда \\(m=1\\), затем \\(\\ell=1\\) или \\(\\ell=2\\). При \\(\\ell=1\\) получается серия \\(D_{a+1}\\) с целочисленным условием \\(a\\equiv0\\) или \\(3\\pmod4\\). При \\(\\ell=2\\) остаются только \\(k=2,3,4\\); из них целочисленные положительные разметки дают случаи \\(E_6\\) и \\(E_8\\), а \\(k=3\\) отбрасывается. Описанные разметки непосредственно проверяются, значит это полный список.",
+      "idea_ids": [
+        "idea-minimum-label-forces-tree",
+        "idea-branch-length-equations"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "source_verified",
+      "source_id": "src-sums-2014-p6-official"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Полная классификация конечных графов с жёсткой линейной разметкой; решение фактически выводит конечные диаграммы Дынкина типов A, D, E6 и E8.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "graph_symmetry",
+    "extremal_choice",
+    "induction",
+    "goal_classification"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "minimum_label_argument",
+        "branch_length_diophantine_classification"
+      ],
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-sums-2014-p6-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "relations_status": "not_started",
+    "graph_theory_duplicate_removed": true
+  }
+}

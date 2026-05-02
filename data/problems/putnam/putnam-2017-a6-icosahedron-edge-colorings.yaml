@@ -1,0 +1,160 @@
+{
+  "id": "putnam-2017-a6-icosahedron-edge-colorings",
+  "title": "Раскраски рёбер икосаэдра тремя цветами, Putnam 2017 A6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "enumeration"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "icosahedron_graph",
+      "edge_coloring",
+      "dual_graph",
+      "hamiltonian_path"
+    ],
+    "methods": [
+      "linear_algebra_over_f3",
+      "rank_nullity",
+      "surjectivity_via_dual_graph"
+    ],
+    "transformations": [
+      "colors_to_f3",
+      "edge_coloring_to_face_sums"
+    ],
+    "goal": [
+      "count_colorings"
+    ],
+    "auxiliary_graph_type": [
+      "dual_icosahedron_graph"
+    ],
+    "invariants": [
+      "face_edge_sum_mod_3",
+      "kernel_dimension"
+    ],
+    "keywords": [
+      "putnam_2017_a6",
+      "putnam",
+      "icosahedron"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "30 рёбер правильного икосаэдра различены метками \\(1,2,\n\\ldots,30\\). Сколькими способами можно покрасить каждое ребро в красный, белый или синий цвет так, чтобы у каждой из 20 треугольных граней икосаэдра два ребра были одного цвета, а третье ребро — другого цвета?",
+        "source_id": "src-putnam-2017-A6-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "В графе икосаэдра с 30 различимыми рёбрами требуется посчитать трёхцветные раскраски рёбер, при которых на каждом треугольном цикле, соответствующем грани, не все три цвета одинаковы и не все три цвета различны, то есть тип цветов на грани равен \\(2+1\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-f3-face-sums",
+      "title": "Условие на грань — ненулевой суммарный цвет в \\(\\mathbb F_3\\)",
+      "text": "Если три цвета отождествить с элементами поля \\(\\mathbb F_3\\), то на треугольнике сумма цветов равна 0 ровно в двух запрещённых случаях: все три одинаковы или все три различны. Значит, хорошие раскраски — это раскраски, у которых сумма по каждой грани ненулевая.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-surjective-face-map",
+      "title": "Линейное отображение от рёбер к граням сюръективно",
+      "text": "Отображение из пространства рёберных раскрасок в пространство граней посылает раскраску в вектор сумм по граням. Сюръективность можно проверить через гамильтонов путь в двойственном графе или через локальную конструкцию около вершины икосаэдра.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-f3-linear-algebra",
+      "title": "Решение через суммы по граням над \\(\\mathbb F_3\\)",
+      "text": "Отождествим три цвета с элементами поля \\(\\mathbb F_3\\). Для одной треугольной грани сумма цветов трёх её рёбер равна нулю ровно тогда, когда либо все три цвета одинаковы, либо все три различны. Поэтому требование «два ребра одного цвета, третье другого» эквивалентно тому, что сумма цветов на каждой грани ненулевая.\n\nПусть \\(E\\) — множество 30 рёбер, \\(F\\) — множество 20 граней. Рассмотрим линейное отображение \\(T:\\mathbb F_3^E\\to \\mathbb F_3^F\\), которое каждой раскраске ставит в соответствие вектор сумм цветов по граням. Нужно посчитать прообразы тех векторов в \\(\\mathbb F_3^F\\), у которых все 20 координат ненулевые.\n\nКлючевой шаг: \\(T\\) сюръективно. Один способ увидеть это — взять двойственный граф икосаэдра: его вершины — грани, соседство означает общее ребро. В двойственном графе есть гамильтонов путь по всем 20 граням. Последовательно задавая цвета общих рёбер вдоль такого пути, можно независимо управлять суммами на первых 19 гранях; зеркально выбранный второй путь даёт недостающую независимость. Эквивалентная локальная проверка: раскраска пяти рёбер вокруг вершины значениями \\(2,1,2,1,2\\) и нулями на остальных рёбрах даёт в образе вектор, ненулевой ровно на одной грани; по симметрии получаются все базисные векторы пространства граней.\n\nИтак, \\(T\\) сюръективно. Тогда по теореме о ранге и дефекте размерность ядра равна \\(30-20=10\\). Каждый вектор из \\(\\mathbb F_3^F\\) имеет ровно \\(3^{10}\\) прообразов. Векторов с ненулевыми координатами на всех 20 гранях ровно \\(2^{20}\\), поскольку в каждой координате можно выбрать один из двух ненулевых элементов \\(\\mathbb F_3\\). Поэтому число требуемых раскрасок равно \\(2^{20}3^{10}=61917364224\\).",
+      "idea_ids": [
+        "idea-f3-face-sums",
+        "idea-surjective-face-map"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 12,
+    "comment": "Putnam A6; графовая рёберная раскраска плюс линейная алгебра над F3 и сюръективность отображения рёбра-граням.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "planar_graphs",
+    "graph_model",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "f3_face_sum_linear_map",
+        "dual_graph_surjectivity"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2017-A6-kedlaya",
+      "role": "problem_and_solutions_archive",
+      "status": "source_verified",
+      "url": "https://kskedlaya.org/putnam-archive/2017.pdf",
+      "solution_url": "https://kskedlaya.org/putnam-archive/2017s.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Исходное условие уже является задачей о рёбрах графа икосаэдра; отдельная graph_theory-формулировка оставлена для самодостаточной терминологии графов."
+    ],
+    "relations_status": "base_done"
+  }
+}

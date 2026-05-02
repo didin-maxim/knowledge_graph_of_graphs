@@ -1,0 +1,145 @@
+{
+  "id": "vjimc-2024-cat1-p3-degree-squares-triangle",
+  "title": "Сумма квадратов степеней, вынуждающая треугольник, VJIMC 2024 I.3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "triangle_free_graph",
+      "degree_sequence",
+      "maximum_degree"
+    ],
+    "methods": [
+      "contraposition",
+      "degree_sum_over_edges",
+      "neighborhood_independence"
+    ],
+    "transformations": [],
+    "goal": [
+      "force_triangle"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "sum_of_degree_squares",
+      "maximum_degree",
+      "edge_count"
+    ],
+    "keywords": [
+      "vjimc_2024_cat1_p3",
+      "triangle_free",
+      "degree_squares",
+      "maximum_degree"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(G\\) - простой неориентированный граф на \\(n\\) вершинах. Обозначим через \\(d_i\\) степень его \\(i\\)-й вершины, \\(i=1,\\ldots,n\\), и пусть \\(\\Delta=\\max_i d_i\\). Докажите, что если\n\\[\n\\sum_{i=1}^n d_i^2>n\\Delta(n-\\Delta),\n\\]\nто граф \\(G\\) содержит треугольник.",
+        "source_id": "src-vjimc-2024-cat1-p3-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-edge-degree-sum",
+      "title": "Квадраты степеней считаются по рёбрам",
+      "text": "Сумму \\(\\sum d_i^2\\) можно переписать как \\(\\sum_{uv\\in E}(d_u+d_v)\\). В графе без треугольников для каждого ребра \\(uv\\) выполнено \\(d_u+d_v\\le n\\), потому что у смежных вершин нет общего соседа.",
+      "tags": [
+        "degree_counting",
+        "forbidden_triangle"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-max-degree-edge-bound",
+      "title": "Окрестность максимальной вершины независима",
+      "text": "Если граф треугольников не содержит, то соседи вершины максимальной степени не соединены между собой. Поэтому каждое ребро, кроме рёбер из этой вершины, касается одной из вершин вне её замкнутой окрестности, а таких рёбер не больше \\((n-\\Delta-1)\\Delta\\).",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-contrapositive",
+      "title": "Решение от противного для графа без треугольников",
+      "text": "Докажем контрапозицию. Пусть \\(G\\) не содержит треугольников. Обозначим через \\(m\\) число рёбер.\n\nСначала оценим сумму квадратов степеней через рёбра. Каждая вершина \\(i\\) встречается ровно в \\(d_i\\) инцидентных рёбрах, и каждый раз вносит вклад \\(d_i\\). Поэтому\n\\[\n\\sum_{i=1}^n d_i^2=\\sum_{uv\\in E}(d_u+d_v).\n\\]\nЕсли \\(uv\\) - ребро, то в графе без треугольников у \\(u\\) и \\(v\\) нет общего соседа. Значит, их множества соседей не пересекаются, кроме того что \\(u\\) входит в множество соседей \\(v\\), а \\(v\\) входит в множество соседей \\(u\\). Следовательно, всего соседей у них не больше \\(n\\), то есть \\(d_u+d_v\\le n\\). Отсюда\n\\[\n\\sum_{i=1}^n d_i^2\\le mn.\n\\]\n\nТеперь оценим \\(m\\). Возьмём вершину \\(x\\) степени \\(\\Delta\\). Её \\(\\Delta\\) соседей попарно не смежны: иначе вместе с \\(x\\) они образовали бы треугольник. Значит, кроме \\(\\Delta\\) рёбер, выходящих из \\(x\\), каждое ребро графа имеет хотя бы один конец вне множества \\(\\{x\\}\\cup N(x)\\). Таких внешних вершин \\(n-\\Delta-1\\), и степень каждой из них не превосходит \\(\\Delta\\). Поэтому число рёбер, не инцидентных \\(x\\), не больше \\((n-\\Delta-1)\\Delta\\), а значит\n\\[\nm\\le \\Delta+(n-\\Delta-1)\\Delta=\\Delta(n-\\Delta).\n\\]\nСовмещая две оценки, получаем\n\\[\n\\sum_{i=1}^n d_i^2\\le mn\\le n\\Delta(n-\\Delta).\n\\]\nИтак, любой граф без треугольников удовлетворяет противоположному нестрогому неравенству. Следовательно, если \\(\\sum d_i^2>n\\Delta(n-\\Delta)\\), треугольник в \\(G\\) обязательно существует.",
+      "idea_ids": [
+        "idea-edge-degree-sum",
+        "idea-max-degree-edge-bound"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree",
+        "triangle",
+        "neighborhood"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "VJIMC 2024 Category I Problem 3; прямая экстремальная задача о степенях в простом графе.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "degree_counting",
+    "forbidden_triangle",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "degree_counting",
+        "triangle_free_contraposition"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vjimc-2024-cat1-p3-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "id": "miklos-schweitzer-2015-p3-relation-minimal-dominating-set",
+  "title": "Минимальное доминирующее множество в ориентированном отношении, Miklos Schweitzer 2015 P3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "directed_graph"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "finite_directed_graph",
+      "binary_relation",
+      "dominating_set",
+      "independent_set"
+    ],
+    "methods": [
+      "minimality_argument",
+      "independence_bound",
+      "directed_graph_modeling"
+    ],
+    "goal": [
+      "prove_bound"
+    ],
+    "keywords": [
+      "schweitzer_2015_p3",
+      "binary_relation",
+      "dominating_set",
+      "independence_number"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Бинарное отношение",
+        "text": "Пусть \\(A\\) - конечное множество, а \\(\\to\\) - бинарное отношение на нем такое, что для любых \\(a,b,c\\in A\\), если \\(a\\ne b\\), \\(a\\to c\\) и \\(b\\to c\\), то либо \\(a\\to b\\), либо \\(b\\to a\\), либо оба отношения верны. Пусть \\(B\\subset A\\) минимально по включению среди множеств со свойством: для каждого \\(a\\in A\\setminus B\\) существует \\(b\\in B\\), такое что \\(a\\to b\\) или \\(b\\to a\\). Если в \\(A\\) есть не более \\(k\\) попарно не связанных отношением элементов, докажите, что \\(|B|\\le k\\).",
+        "source_id": "src-miklos-schweitzer-2015-p3-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Ориентированная графовая формулировка",
+        "text": "Рассмотрим ориентированный граф отношения на \\(A\\), а неориентированную смежность зададим наличием хотя бы одной дуги между двумя вершинами. Условие говорит: любые две различные вершины, имеющие общую исходящую дугу в одну вершину, смежны между собой. Минимальное множество \\(B\\), доминирующее все остальные вершины по неориентированной смежности, должно иметь размер не больше числа независимости этого неориентированного графа.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-private-witnesses",
+      "title": "Минимальность дает частные свидетели",
+      "text": "Для каждого \\(b\\in B\\) минимальность должна дать вершину-свидетеля, которая теряет доминирование при удалении \\(b\\). Условие про общий образ затем должно заставить этих свидетелей быть попарно несмежными, что и дает оценку через \\(k\\).",
+      "tags": [
+        "minimal_counterexample",
+        "graph_model",
+        "goal_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Ядро задачи похоже на стандартный аргумент с частными соседями, но направление дуг требует аккуратной проверки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "minimal_counterexample",
+    "goal_bound",
+    "connectivity"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "private_witnesses_for_minimal_dominating_set"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2015-p3-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2015-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Условие переведено из английского PDF; решение не добавлено."
+    ],
+    "relations_status": "not_started"
+  }
+}

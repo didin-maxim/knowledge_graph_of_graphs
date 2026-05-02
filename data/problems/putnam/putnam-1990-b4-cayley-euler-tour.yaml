@@ -1,0 +1,164 @@
+{
+  "id": "putnam-1990-b4-cayley-euler-tour",
+  "title": "Двойной обход элементов группы в графе Кэли, Putnam 1990 B4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_group",
+      "directed_cayley_graph",
+      "eulerian_digraph",
+      "closed_walk"
+    ],
+    "methods": [
+      "graph_modeling",
+      "euler_tour",
+      "strong_connectivity"
+    ],
+    "transformations": [
+      "group_generators_to_cayley_digraph",
+      "euler_circuit_to_sequence"
+    ],
+    "goal": [
+      "existence_of_sequence"
+    ],
+    "auxiliary_graph_type": [
+      "directed_cayley_graph",
+      "regular_digraph"
+    ],
+    "invariants": [
+      "indegree_equals_outdegree",
+      "each_vertex_has_two_outgoing_edges"
+    ],
+    "keywords": [
+      "putnam_1990_b4",
+      "cayley_graph",
+      "eulerian_circuit"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Последовательность элементов группы",
+        "text": "Пусть конечная группа \\(G\\) порядка \\(n\\) порождена элементами \\(a\\) и \\(b\\). Докажите или опровергните утверждение: существует циклическая последовательность \\(g_1,g_2,\\ldots,g_{2n}\\), в которой каждый элемент \\(G\\) встречается ровно дважды, и для каждого \\(i\\) элемент \\(g_{i+1}\\) равен либо \\(g_i a\\), либо \\(g_i b\\) (где \\(g_{2n+1}=g_1\\)).",
+        "source_id": "src-putnam-1990-B4-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть \\(D\\) - ориентированный граф Кэли конечной группы \\(G\\) по двум порождающим \\(a,b\\): из каждой вершины \\(g\\) выходят дуги \\(g\\to ga\\) и \\(g\\to gb\\). Докажите, что в \\(D\\) есть замкнутый направленный обход длины \\(2|G|\\), в котором каждая вершина встречается ровно два раза.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "eulerian_cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-two-outgoing-arcs",
+      "title": "Заменить условие на ориентированный граф Кэли",
+      "text": "Разрешенные переходы из \\(g\\) в \\(ga\\) или \\(gb\\) - это ровно две исходящие дуги из вершины \\(g\\) в ориентированном графе Кэли.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-euler-circuit",
+      "title": "Эйлеров цикл автоматически дает два появления",
+      "text": "Если пройти каждую дугу графа Кэли ровно один раз, то каждая вершина появится как начало ровно двух дуг, поскольку из нее выходят две дуги.",
+      "tags": [
+        "eulerian_graphs"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-cayley-euler",
+      "title": "Эйлеров цикл в ориентированном графе Кэли",
+      "text": "Утверждение верно. Построим ориентированный граф \\(D\\) с множеством вершин \\(G\\). Из каждой вершины \\(g\\) проведем две дуги: \\(g\\to ga\\) и \\(g\\to gb\\). Тогда всякая допустимая последовательность элементов группы является направленным обходом в этом графе.\n\nПроверим, что \\(D\\) эйлеров. Из каждой вершины выходит ровно две дуги. Входящих дуг тоже ровно две: в вершину \\(g\\) входят дуги из \\(ga^{-1}\\) и \\(gb^{-1}\\). Если случайно \\(a=b\\), это означает две параллельные дуги; для эйлерова обхода это не мешает, потому что мы работаем с ориентированным мультиграфом. Значит для каждой вершины входящая степень равна исходящей.\n\nОсталось связность в нужном смысле. Так как \\(a,b\\) порождают \\(G\\), из единицы можно попасть в любой элемент, умножая справа на \\(a,b\\) и их обратные. В неориентированном графе, полученном забыванием направлений, это дает связность. Более того, для существования эйлерова цикла достаточно, что все вершины положительной степени лежат в одной слабой компоненте и входящие степени равны исходящим; это здесь выполнено. Эквивалентно можно заметить, что равенство степеней в слабосвязном ориентированном графе устраняет односторонние компоненты и дает эйлерову циркуляцию через все дуги.\n\nПо теореме Эйлера в \\(D\\) существует замкнутый направленный обход, проходящий по каждой дуге ровно один раз. Всего дуг \\(2n\\), поэтому запишем начала последовательно проходимых дуг как \\(g_1,g_2,\\ldots,g_{2n}\\). Следующая вершина после \\(g_i\\) действительно равна \\(g_i a\\) или \\(g_i b\\), потому что так устроены дуги. Наконец, каждый элемент \\(g\\in G\\) встречается среди \\(g_i\\) ровно столько раз, сколько дуг выходит из \\(g\\), то есть ровно два раза. Это и есть требуемая последовательность.",
+      "idea_ids": [
+        "idea-two-outgoing-arcs",
+        "idea-euler-circuit"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph",
+        "eulerian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "После выбора правильного графа задача становится прямым применением эйлерова цикла, но без модели графа Кэли условие выглядит групповым.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "eulerian_graphs",
+    "graph_model",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "cayley_digraph_model",
+        "euler_circuit"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-1990-B4-kedlaya",
+      "role": "archived_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Kedlaya archive для 1990 года содержит условие; решение сверено с открытой стандартной версией Kalva/John Scholes."
+    ],
+    "relations_status": "not_started"
+  }
+}

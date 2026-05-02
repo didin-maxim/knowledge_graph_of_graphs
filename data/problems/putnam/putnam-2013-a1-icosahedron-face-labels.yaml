@@ -1,0 +1,147 @@
+{
+  "id": "putnam-2013-a1-icosahedron-face-labels",
+  "title": "Две грани икосаэдра с общей вершиной и одинаковой меткой, Putnam 2013 A1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "regular_icosahedron",
+      "face_vertex_incidence_hypergraph",
+      "dual_graph_local_clique"
+    ],
+    "methods": [
+      "double_counting",
+      "incidence_counting",
+      "pigeonhole_principle"
+    ],
+    "transformations": [
+      "polyhedron_to_face_incidence_hypergraph"
+    ],
+    "goal": [
+      "prove_equal_labels"
+    ],
+    "auxiliary_graph_type": [
+      "face_intersection_graph"
+    ],
+    "invariants": [
+      "sum_of_face_labels",
+      "five_faces_at_each_vertex"
+    ],
+    "keywords": [
+      "putnam_2013_a1",
+      "putnam",
+      "icosahedron"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Напомним, что правильный икосаэдр имеет 12 вершин и 20 граней, причём все грани являются равносторонними треугольниками. На каждой грани правильного икосаэдра написано неотрицательное целое число, а сумма всех 20 чисел равна 39. Докажите, что найдутся две грани, имеющие общую вершину, на которых написано одно и то же число.",
+        "source_id": "src-putnam-2013-A1-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим гиперграф инцидентности правильного икосаэдра: его вершины соответствуют 12 вершинам икосаэдра, а 20 гиперрёбер соответствуют треугольным граням; каждое гиперребро содержит 3 вершины, и через каждую вершину гиперграфа проходят 5 гиперрёбер. Каждому гиперребру приписано неотрицательное целое число, сумма всех приписанных чисел равна 39. Докажите, что существуют два гиперребра с общей вершиной и одинаковой меткой.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-at-vertices",
+      "title": "Счёт суммы меток вокруг вершин",
+      "text": "Если у каждой вершины пять прилегающих граней имеют попарно различные метки, то сумма этих пяти меток не меньше \\(0+1+2+3+4\\). Суммирование по вершинам даёт нижнюю оценку, несовместимую с тем, что каждая грань учитывается ровно по трём своим вершинам.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kedlaya-compressed",
+      "title": "Решение двойным подсчётом инцидентностей",
+      "text": "Предположим противное: никакие две грани с общей вершиной не имеют одинаковой метки. Тогда в каждой вершине икосаэдра сходятся пять граней, и их пять меток попарно различны. Так как метки неотрицательные целые, сумма меток граней, инцидентных любой фиксированной вершине, не меньше\n\\[\n0+1+2+3+4=10.\n\\]\nПросуммируем эти суммы по всем 12 вершинам. С одной стороны, получаем не меньше \\(12\\cdot 10=120\\). С другой стороны, каждая грань икосаэдра треугольная, поэтому её метка входит в этот общий счёт ровно три раза, по одному разу за каждую вершину грани. Следовательно, общий счёт равен\n\\[\n3\\cdot 39=117.\n\\]\nНеравенство \\(120\\le 117\\) невозможно. Значит, предположение было неверным, и две грани, имеющие общую вершину, действительно могут быть выбраны с одинаковой меткой.",
+      "idea_ids": [
+        "idea-count-at-vertices"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Putnam A1; короткая задача на естественный гиперграф инцидентности граней и вершин икосаэдра.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "pigeonhole_principle",
+    "graph_model",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "incidence_double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2013-A1-kedlaya",
+      "role": "problem_and_solutions_archive",
+      "status": "source_verified",
+      "url": "https://kskedlaya.org/putnam-archive/2013.pdf",
+      "solution_url": "https://kskedlaya.org/putnam-archive/2013s.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Включено как естественная модель инцидентности граней и вершин, не как график функции."
+    ],
+    "relations_status": "base_done"
+  }
+}

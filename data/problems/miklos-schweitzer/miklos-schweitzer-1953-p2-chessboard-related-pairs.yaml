@@ -1,0 +1,173 @@
+{
+  "id": "miklos-schweitzer-1953-p2-chessboard-related-pairs",
+  "title": "Связанные пары белых и чёрных фигур на шахматной доске, Schweitzer 1953/2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "extremal_edge_count"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "8_by_8_chessboard",
+      "white_and_black_chessmen",
+      "bipartite_relation_graph",
+      "row_column_adjacency"
+    ],
+    "methods": [
+      "degree_counting",
+      "row_column_sums",
+      "extremal_arrangement",
+      "smoothing_by_swaps"
+    ],
+    "transformations": [
+      "related_pairs_to_edges"
+    ],
+    "goal": [
+      "find_maximum_and_minimum_edge_count"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "32_white_vertices",
+      "32_black_vertices",
+      "edge_if_same_row_or_column"
+    ],
+    "keywords": [
+      "schweitzer_1953_p2",
+      "chessboard",
+      "related_pairs",
+      "bipartite_graph",
+      "degree_sum"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На шахматной доске \\(8\\times8\\) расставлены 32 белые и 32 чёрные фигуры, по одной фигуре на клетке. Белая и чёрная фигуры образуют связанную пару, если они стоят в одной строке или в одном столбце. Найти максимальное и минимальное возможное число связанных пар.",
+        "source_id": "src-miklos-schweitzer-1953-p2-old-book",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Граф связанных разноцветных фигур",
+        "text": "Рассмотрим двудольный граф, в одной доле которого стоят 32 белые фигуры, а в другой 32 чёрные. Между разноцветными фигурами проводится ребро, если соответствующие клетки лежат в одной строке или в одном столбце. Требуется найти минимальное и максимальное возможное число рёбер такого графа при всех раскрасках клеток доски в 32 белые и 32 чёрные.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-row-column-upper-bound",
+      "title": "Максимум получается из баланса в каждой строке и каждом столбце",
+      "text": "Если в строке стоит \\(x\\) белых и \\(8-x\\) чёрных фигур, то эта строка даёт \\(x(8-x)\\le16\\) связанных пар. Такая же оценка действует для каждого столбца. Суммирование даёт верхнюю границу, а шахматная раскраска её достигает.",
+      "tags": [
+        "degree_counting",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-minimum-by-column-degree-sums",
+      "title": "Для минимума считать вклады фигур по столбцам",
+      "text": "В опубликованном решении нижняя оценка выводится через сумму чисел связанных пар, в которых участвуют фигуры фиксированного столбца. Для доски \\(2k\\times2k\\) каждая такая сумма не меньше \\(2k^2\\); после суммирования по столбцам каждая пара посчитана дважды.",
+      "tags": [
+        "degree_counting",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "solution-extrema",
+      "title": "Оценки и конструкции",
+      "text": "Для максимума: в каждой строке при \\(x\\) белых фигурах возникает \\(x(8-x)\\le16\\) разноцветных пар в этой строке, значит все строки дают не больше \\(8\\cdot16=128\\). Столбцы дают ещё не больше 128, итого максимум не превосходит 256. Шахматная раскраска с 32 белыми и 32 чёрными клетками даёт в каждой строке и каждом столбце по четыре фигуры каждого цвета, поэтому достигает 256.\n\nДля минимума удобно пользоваться обобщением из решения книги на доску \\(2k\\times2k\\). Для фиксированного столбца суммируем по его \\(2k\\) фигурам число связанных с ними фигур противоположного цвета. Перестановками строк и обменами разноцветных фигур можно свести конфигурацию к случаю, где этот столбцовый вклад не больше исходного и равен как минимум \\(2k^2\\); следовательно каждый столбец даёт вклад не меньше \\(2k^2\\). Сумма по \\(2k\\) столбцам равна удвоенному числу связанных пар, поэтому пар не меньше \\(2k^3\\). При \\(k=4\\) это 128. Конструкция с четырьмя полностью белыми строками и четырьмя полностью чёрными строками даёт ровно \\(8\\cdot4\\cdot4=128\\) пар, все они столбцовые. Значит минимум равен 128, максимум равен 256.",
+      "tags": [
+        "degree_counting",
+        "double_counting",
+        "goal_exact_bound"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "double_counting"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Верхняя оценка короткая; нижняя оценка требует аккуратного двойного счёта или сглаживающего аргумента из опубликованного решения.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "degree_counting",
+    "double_counting",
+    "extremal_choice",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "row_column_degree_counting",
+        "double_counting_column_contributions"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-1953-p2-old-book",
+      "role": "old_book_statement_and_solution",
+      "url": "https://real-eod.mtak.hu/14558/1/AkademiaiKiado_007070.pdf",
+      "pages": [
+        23,
+        249,
+        250,
+        251
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "В книге это задача C.2; условие в OCR перепутано с соседними строками, но полный текст повторён в разделе решений.",
+      "Графовая формулировка не использует термин 'graph' в условии, однако отношение связанных разноцветных фигур является естественным двудольным графом, а решение фактически считает степени/вклады."
+    ],
+    "relations_status": "not_started"
+  }
+}

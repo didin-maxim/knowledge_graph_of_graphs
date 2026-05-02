@@ -1,0 +1,171 @@
+{
+  "id": "imc-2013-day2-p5-necklace-good-colorings-odd",
+  "title": "Нечётность числа хороших раскрасок ожерелья, IMC 2013 Day 2 P5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Vsevolod Bykov",
+      "status": "ai_checked"
+    },
+    {
+      "name": "Oleksandr Rybak",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "cycle_graph",
+      "binary_coloring",
+      "forbidden_long_white_run",
+      "linear_recurrence"
+    ],
+    "methods": [
+      "cut_cycle_to_path",
+      "recurrence_mod_two",
+      "periodicity"
+    ],
+    "transformations": [
+      "necklace_to_cycle_coloring",
+      "cycle_to_open_lace"
+    ],
+    "goal": [
+      "prove_parity_is_odd"
+    ],
+    "auxiliary_graph_type": [
+      "cycle",
+      "path"
+    ],
+    "invariants": [
+      "parity_period_22",
+      "white_run_length_bound"
+    ],
+    "keywords": [
+      "imc_2013_day2_p5",
+      "cycle_coloring",
+      "necklace",
+      "parity"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Рассмотрим круговое ожерелье из \\(2013\\) бусин. Каждую бусину можно покрасить в белый или зелёный цвет. Раскраска называется хорошей, если среди любых \\(21\\) последовательных бусин есть хотя бы одна зелёная. Докажите, что число хороших раскрасок нечётно. Две раскраски, которые различаются на каких-то бусинах, считаются различными даже тогда, когда одну можно получить из другой поворотом или отражением ожерелья.",
+        "source_id": "src-imc-2013-day2-p5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Эквивалентно, нужно доказать, что число двуцветных раскрасок вершин цикла \\(C_{2013}\\), в которых на каждом пути из \\(21\\) последовательной вершины есть зелёная вершина, нечётно. То есть в цикле запрещены дуги из \\(21\\) подряд идущей белой вершины.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-open-lace-recurrence",
+      "title": "Последняя зелёная бусина даёт рекурсию порядка 21",
+      "text": "Для линейных хороших цепочек длины \\(k\\) последняя зелёная бусина среди последних \\(21\\) позиций определяет длину предыдущей хорошей цепочки. Поэтому \\(N_k=N_{k-1}+\\cdots+N_{k-21}\\).",
+      "tags": [
+        "process_invariant",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-period-22",
+      "title": "По модулю два рекурсия имеет период 22",
+      "text": "Из рекурсии следует \\(N_k\\equiv N_{k-22}\\pmod2\\). При начальных значениях нечётны ровно \\(N_k\\) с \\(k\\equiv0\\) или \\(21\\pmod{22}\\).",
+      "tags": [
+        "invariant",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Разрезание цикла и рекурсия по модулю два",
+      "text": "Пусть \\(N_k\\) — число хороших линейных цепочек из \\(k\\) бусин, то есть таких бело-зелёных слов длины \\(k\\), в которых в любых \\(21\\) подряд идущих позициях есть зелёная. Для \\(0\\le k\\le20\\) все слова подходят, поэтому \\(N_k=2^k\\): \\(N_0\\) нечётно, а \\(N_1,…,N_{20}\\) чётны.\n\nПри \\(k\\ge21\\) в последних \\(21\\) позициях должна быть зелёная бусина. Пусть последняя зелёная бусина всей цепочки стоит на позиции \\(\\ell\\). Тогда \\(\\ell\\ge k-20\\), а первые \\(\\ell-1\\) бусин образуют произвольную хорошую цепочку. Выбор \\(\\ell=k,k-1,…,k-20\\) даёт рекурсию\n\\[\nN_k=N_{k-1}+N_{k-2}+\\cdots+N_{k-21}\\qquad (k\\ge21).\n\\]\nОтсюда \\(N_{21}=N_0+\\cdots+N_{20}\\) нечётно и \\(N_{22}=N_1+\\cdots+N_{21}\\) тоже нечётно. Кроме того, если заменить в правой части \\(N_{k-1}\\) через предыдущую рекурсию, то по модулю \\(2\\) все средние слагаемые удвоятся и исчезнут:\n\\[\nN_k\\equiv N_{k-22}\\pmod2.\n\\]\nСледовательно, чётность \\(N_k\\) периодична с периодом \\(22\\), и \\(N_k\\) нечётно ровно при \\(k\\equiv0\\) или \\(k\\equiv21\\pmod{22}\\).\n\nТеперь вернёмся к циклическому ожерелью. Разрежем его в фиксированном месте между двумя соседними бусинами. В получившейся цепочке пусть в начале стоит \\(x\\) белых бусин до первой зелёной, а в конце — \\(y\\) белых бусин после последней зелёной. Так как раскраска хорошая на цикле, \\(x+y\\le20\\). Между первой и последней зелёными находится хорошая линейная цепочка длины \\(2011-x-y\\), и по ней вместе с \\(x,y\\) исходная циклическая раскраска восстанавливается однозначно.\n\nПоэтому число хороших раскрасок цикла равно\n\\[\n\\sum_{x+y\\le20} N_{2011-x-y}\n= N_{2011}+2N_{2010}+3N_{2009}+\\cdots+21N_{1991}.\n\\]\nПо модулю \\(2\\) остаются только слагаемые с нечётными коэффициентами:\n\\[\nN_{2011}+N_{2009}+N_{2007}+\\cdots+N_{1991}.\n\\]\nСреди индексов \\(2011,2009,…,1991\\) ровно один, а именно \\(2001=91\\cdot22-1\\), сравним с \\(21\\) по модулю \\(22\\). Остальные не сравнимы ни с \\(0\\), ни с \\(21\\) по модулю \\(22\\), значит соответствующие \\(N_k\\) чётны. Сумма нечётна, и число хороших раскрасок ожерелья нечётно.",
+      "idea_ids": [
+        "idea-open-lace-recurrence",
+        "idea-period-22"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "cycle",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p2_p5",
+    "local_score": 7,
+    "comment": "Циклическая раскраска с запретом длинной белой дуги; графовая формулировка как раскраска \\(C_{2013}\\) естественна.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "parity_coloring",
+    "invariant",
+    "process_invariant",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "linear_recurrence_mod_two",
+        "cycle_cutting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2013-day2-p5-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Official IMC 2013 Day 2 solutions, problem 5."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

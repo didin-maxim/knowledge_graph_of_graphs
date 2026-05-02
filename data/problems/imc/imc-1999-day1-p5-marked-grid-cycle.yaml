@@ -1,0 +1,150 @@
+{
+  "id": "imc-1999-day1-p5-marked-grid-cycle",
+  "title": "Цикл в отмеченных клетках квадратной таблицы, IMC 1999 Day 1 P5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "marked_grid_points",
+      "bipartite_graph",
+      "cycle"
+    ],
+    "methods": [
+      "rows_columns_bipartite_graph",
+      "edge_counting",
+      "acyclic_graph_bound"
+    ],
+    "transformations": [
+      "grid_points_to_row_column_edges"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "vertices_2n_edges_2n"
+    ],
+    "keywords": [
+      "imc_1999_day1_p5",
+      "marked_grid_cycle",
+      "row_column_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В таблице \\(n\\times n\\) отмечены \\(2n\\) точек. Докажите, что для некоторого \\(k>1\\) можно выбрать \\(2k\\) различных отмеченных точек \\(a_1,a_2,\\ldots,a_{2k}\\) так, что \\(a_1\\) и \\(a_2\\) лежат в одной строке, \\(a_2\\) и \\(a_3\\) - в одном столбце, \\(a_3\\) и \\(a_4\\) - в одной строке, и так далее, \\(a_{2k-1}\\) и \\(a_{2k}\\) лежат в одной строке, а \\(a_{2k}\\) и \\(a_1\\) - в одном столбце.",
+        "source_id": "src-imc-1999-day1-p5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Постройте двудольный граф, в одной доле которого находятся строки таблицы, а в другой - столбцы; отмеченная клетка дает ребро между своей строкой и своим столбцом. Нужно доказать, что граф с \\(2n\\) вершинами и \\(2n\\) ребрами содержит цикл, а затем перевести этот цикл обратно в чередующуюся последовательность отмеченных точек.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-row-column-bipartite-cycle",
+      "title": "Строки и столбцы как вершины",
+      "text": "Отмеченная точка становится ребром между своей строкой и своим столбцом. Если бы цикла не было, граф был бы лесом и имел бы не больше \\(2n-1\\) ребра, что противоречит наличию \\(2n\\) отмеченных точек.",
+      "tags": [
+        "connectivity",
+        "double_counting",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-graph",
+      "title": "Двудольный граф строк и столбцов",
+      "text": "Рассмотрим граф \\(G\\). Его вершинами являются все \\(n\\) строк и все \\(n\\) столбцов таблицы. Для каждой отмеченной точки в строке \\(r\\) и столбце \\(c\\) проведем ребро между вершинами \\(r\\) и \\(c\\). Получается двудольный граф с \\(2n\\) вершинами и \\(2n\\) ребрами.\n\nЕсли граф без циклов имеет \\(N\\) вершин, то он содержит не более \\(N-1\\) ребра: каждая его компонента является деревом или изолированной вершиной, и сумма по компонентам дает эту оценку. В нашем случае ребер столько же, сколько вершин, то есть \\(2n\\), поэтому \\(G\\) обязан содержать цикл.\n\nТак как граф двудольный, любой его цикл имеет четную длину и попеременно проходит через вершины-строки и вершины-столбцы. Пусть цикл имеет вид \\(r_1,c_1,r_2,c_2,\\ldots,r_k,c_k,r_1\\). Каждое соседство \\(r_i c_i\\) и \\(c_i r_{i+1}\\) соответствует отмеченной точке таблицы. Взяв эти точки по порядку, получаем \\(2k\\) различных отмеченных точек, у которых соседние пары попеременно лежат то в одной строке, то в одном столбце, а последняя точка замыкается с первой. Поскольку простой цикл в двудольном графе имеет длину хотя бы 4, получаем \\(k>1\\).",
+      "idea_ids": [
+        "idea-row-column-bipartite-cycle"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "cycle",
+        "forest"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 5,
+    "comment": "После перевода в двудольный граф задача сводится к базовой оценке числа ребер в лесу.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "connectivity",
+    "double_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "row_column_bipartite_graph",
+        "forest_edge_bound"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-1999-day1-p5-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Официальный PDF дает также неграфовое решение; карточка разворачивает официальный графовый Solution 2."
+    ],
+    "relations_status": "base_done"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "id": "sums-2012-p7-tree-connected-subsets-extrema",
+  "title": "Минимум и максимум числа связных подмножеств вершин дерева, SUMS 2012/7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "tree_extremal"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "connected_vertex_subset",
+      "subtree",
+      "path",
+      "star"
+    ],
+    "methods": [
+      "subtree_counting",
+      "extremal_examples",
+      "edge_subset_bound"
+    ],
+    "transformations": [
+      "connected_subset_to_subtree"
+    ],
+    "goal": [
+      "find_minimum_and_maximum"
+    ],
+    "auxiliary_graph_type": [
+      "tree"
+    ],
+    "invariants": [
+      "unique_path_between_two_vertices",
+      "tree_has_n_minus_one_edges"
+    ],
+    "keywords": [
+      "SUMS_2012_7",
+      "tree",
+      "subtrees",
+      "connected_subsets"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Для дерева \\(T\\) обозначим через \\(s(T)\\) число непустых подмножеств \\(X\\) множества вершин \\(T\\), таких что любые две вершины из \\(X\\) соединяются в \\(T\\) путём, проходящим только через вершины из \\(X\\). Для данного положительного целого \\(n\\) найдите минимальное и максимальное возможные значения \\(s(T)\\) по всем деревьям с \\(n\\) вершинами.",
+        "source_id": "src-sums-2012-p7-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pairs-give-paths",
+      "title": "Каждая пара вершин даёт связное подмножество",
+      "text": "В дереве между двумя вершинами есть единственный путь. Поэтому все одноэлементные множества и все пути между парами вершин уже дают \\(n+\\binom n2\\) связных подмножеств.",
+      "tags": [
+        "trees",
+        "goal_bound"
+      ],
+      "status": "source_verified"
+    },
+    {
+      "id": "idea-edge-subset-upper-bound",
+      "title": "Поддерево задаётся множеством рёбер",
+      "text": "Каждое непустое связное подмножество с более чем одной вершиной задаёт непустое множество рёбер дерева. Поэтому таких подмножеств не больше \\(2^{n-1}-1\\). Равенство возможно только у звезды.",
+      "tags": [
+        "trees",
+        "extremal_choice"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-path-and-star",
+      "title": "Путь даёт минимум, звезда даёт максимум",
+      "text": "Связные подмножества вершин дерева - это ровно множества вершин поддеревьев. Снизу: есть \\(n\\) одноэлементных поддеревьев, а каждая пара различных вершин задаёт единственный путь, значит \\(s(T)\\ge n+\\binom n2\\). Если дерево не является путём, в нём есть вершина степени хотя бы 3; эта вершина вместе с тремя соседями даёт связное подмножество, не являющееся ни одной вершиной, ни путём между двумя концами. Поэтому минимум равен \\(n+\\binom n2\\) и достигается ровно на пути. Сверху: в дереве \\(n-1\\) рёбер, а каждое непустое связное подмножество с более чем одной вершиной определяется своим непустым множеством рёбер. Значит \\(s(T)\\le n+(2^{n-1}-1)=2^{n-1}+n-1\\). У звезды любое непустое множество рёбер задаёт поддерево, поэтому верхняя оценка достигается. Если дерево не звезда, найдутся два рёбра без общей вершины, и выбранная из них пара рёбер не задаёт связного поддерева; значит равенства нет. Итак, минимум \\(\\frac{n^2+n}{2}\\), максимум \\(2^{n-1}+n-1\\).",
+      "idea_ids": [
+        "idea-pairs-give-paths",
+        "idea-edge-subset-upper-bound"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "source_verified",
+      "source_id": "src-sums-2012-p7-official"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Красивая экстремальная задача о деревьях; ключевые примеры - путь и звезда.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "extremal_choice",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "path_lower_bound",
+        "edge_subset_upper_bound",
+        "star_extremal_example"
+      ],
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-sums-2012-p7-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "relations_status": "not_started",
+    "graph_theory_duplicate_removed": true
+  }
+}

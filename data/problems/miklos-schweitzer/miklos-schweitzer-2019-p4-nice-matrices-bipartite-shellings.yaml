@@ -1,0 +1,165 @@
+{
+  "id": "miklos-schweitzer-2019-p4-nice-matrices-bipartite-shellings",
+  "title": "Хорошие матрицы и шеллинги полного двудольного графа, Schweitzer 2019 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "graph_in_solution"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "rectangular_matrix",
+      "complete_bipartite_graph",
+      "edge_ordering",
+      "connected_prefix"
+    ],
+    "methods": [
+      "graph_reformulation",
+      "shelling_count",
+      "bijection"
+    ],
+    "transformations": [
+      "matrix_cells_to_edges_of_Knm",
+      "increasing_entries_to_edge_ordering"
+    ],
+    "goal": [
+      "exact_count"
+    ],
+    "auxiliary_graph_type": [
+      "complete_bipartite_graph"
+    ],
+    "invariants": [
+      "connected_initial_subgraph",
+      "unique_row_and_column_minimum"
+    ],
+    "keywords": [
+      "schweitzer_2019_p4",
+      "nice_matrix",
+      "shelling",
+      "complete_bipartite_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Хорошие матрицы",
+        "text": "\\(n\\times m\\)-матрица называется хорошей, если она содержит каждое целое число от \\(1\\) до \\(mn\\) ровно один раз и \\(1\\) является единственным элементом, который одновременно минимален в своей строке и в своем столбце. Докажите, что число хороших \\(n\\times m\\)-матриц равно \\(\\frac{(mn)!\\,n!\\,m!}{(n+m-1)!}\\).",
+        "source_id": "src-miklos-schweitzer-2019-p4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Шеллинги \\(K_{n,m}\\)",
+        "text": "Рассмотрим полный двудольный граф \\(K_{n,m}\\), где строки и столбцы матрицы являются долями, а клетка \\((i,j)\\) соответствует ребру между строкой \\(i\\) и столбцом \\(j\\). Упорядочение клеток по возрастанию записанных чисел дает упорядочение ребер. Хорошие матрицы соответствуют таким упорядочениям, у которых каждый начальный набор ребер индуцирует связный подграф на своих непустых вершинах. Нужно получить формулу для числа таких упорядочений.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cells-as-edges",
+      "title": "Клетки - ребра полного двудольного графа",
+      "text": "Строки и столбцы образуют две доли \\(K_{n,m}\\); число в клетке задает момент появления соответствующего ребра.",
+      "tags": [
+        "graph_model",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-local-minima-vs-components",
+      "title": "Локальные минимумы отвечают компонентам префикса",
+      "text": "Если у некоторого начального набора ребер есть несколько компонент, минимальное ребро в каждой компоненте дает клетку, минимальную и в своей строке, и в своем столбце относительно всего порядка. Поэтому единственность такой клетки тесно связана со связностью всех начальных префиксов.",
+      "tags": [
+        "connectivity",
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-shelling-reference",
+      "title": "Через известную формулу для шеллингов \\(K_{n,m}\\)",
+      "text": "Свяжем клетку \\((i,j)\\) с ребром между \\(i\\)-й строкой и \\(j\\)-м столбцом в \\(K_{n,m}\\). Заполнение матрицы числами \\(1,2,\\ldots,mn\\) эквивалентно линейному порядку всех ребер. Условие хорошей матрицы можно читать как условие на начальные префиксы этого порядка: появление отдельной компоненты в префиксе создает собственное минимальное ребро, минимальное одновременно в своей строке и в своем столбце; наоборот, такая дополнительная клетка отделяет компоненту в подходящем начальном префиксе. Поэтому хорошие матрицы считаются тем же числом, что и связные упорядочения ребер полного двудольного графа.\n\nДля полного двудольного графа известная формула Стэнли - Гао - Пэна для числа связных упорядочений ребер дает ровно\n\\[\n\\frac{(mn)!\\,n!\\,m!}{(n+m-1)!}.\n\\]\nТем самым получается требуемое число матриц.",
+      "idea_ids": [
+        "idea-cells-as-edges",
+        "idea-local-minima-vs-components"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "bipartite_graph",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "Графовая биекция естественна, но полная формула для шеллингов полного двудольного графа нетривиальна.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "graph_model",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "matrix_to_complete_bipartite_edge_ordering",
+        "connected_prefix_shelling"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2019-p4-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальный английский PDF содержит условие. Графовая формулировка сверена с опубликованной статьей Fang et al. о shellings of complete bipartite graphs, где задача Schweitzer 2019 P4 указана как исходная мотивация."
+    ],
+    "relations_status": "not_started"
+  }
+}

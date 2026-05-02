@@ -1,0 +1,122 @@
+{
+  "id": "miklos-schweitzer-2009-p1-k17-edge-coloring-cards",
+  "title": "Раскраски ребер полного графа на 17 вершинах и 15-вершинные клики, Miklos Schweitzer 2009 P1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "extremal_coloring"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "clique",
+      "covering_family"
+    ],
+    "methods": [
+      "double_counting",
+      "extremal_coloring",
+      "probabilistic_or_covering_viewpoint"
+    ],
+    "goal": [
+      "find_minimum_number"
+    ],
+    "keywords": [
+      "schweitzer_2009_p1",
+      "K17",
+      "edge_coloring",
+      "rainbow_K15"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Колода раскрашенных 17-угольников",
+        "text": "На каждой карточке изображен правильный 17-угольник со всеми сторонами и диагоналями; вершины занумерованы от 1 до 17. На каждой карточке все ребра раскрашены цветами \\(1,2,\\ldots,105\\). Требуется, чтобы для любых 15 вершин 17-угольника на хотя бы одной карточке все \\(105\\) ребер между этими 15 вершинами имели попарно различные цвета. Найдите минимальное число карточек в колоде.",
+        "source_id": "src-miklos-schweitzer-2009-p1-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "На каждой карточке задана правильная раскраска ребер полного графа \\(K_{17}\\) в \\(105=\\binom{15}{2}\\) цветов. Для каждого 15-элементного множества вершин хотя бы в одной из раскрасок индуцированный \\(K_{15}\\) должен быть радужным. Нужно определить минимальное число таких раскрасок.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cards-as-cover",
+      "title": "Карточки как покрытие 15-вершинных подграфов",
+      "text": "Одна раскраска покрывает ровно те 15-элементные множества вершин, на которых все ребра имеют разные цвета. Задача превращается в экстремальную задачу о минимальном числе раскрасок, покрывающих все \\(\\binom{17}{15}\\) подмножеств.",
+      "tags": [
+        "graph_model",
+        "coloring",
+        "goal_exact_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Условие выглядит коротко, но точный минимум требует нетривиального экстремального анализа раскрасок полного графа.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "coloring",
+    "extremal_graph_theory",
+    "goal_exact_bound",
+    "double_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "covering_by_rainbow_cliques"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2009-p1-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2009-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит только условие; решение не добавлено."
+    ],
+    "relations_status": "not_started"
+  }
+}

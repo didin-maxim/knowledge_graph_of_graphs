@@ -1,0 +1,125 @@
+{
+  "id": "miklos-schweitzer-2012-p10-knot-black-graph-spanning-trees",
+  "title": "Черный граф диаграммы узла и число остовных деревьев, Miklos Schweitzer 2012 P10",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "topological_graph"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "knot_diagram",
+      "checkerboard_coloring",
+      "plane_graph",
+      "spanning_tree"
+    ],
+    "methods": [
+      "planar_graph_model",
+      "spanning_tree_counting",
+      "knot_invariant"
+    ],
+    "goal": [
+      "classification_and_parity"
+    ],
+    "keywords": [
+      "schweitzer_2012_p10",
+      "black_graph",
+      "spanning_trees",
+      "knot_diagram"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Черный граф диаграммы узла",
+        "text": "Пусть \\(K\\) - узел в трехмерном пространстве, а \\(D\\) - его диаграмма. Раскрасим дополнение диаграммы в шахматном порядке в черный и белый цвета. Черным графом \\(\\Gamma_B(D)\\) называется граф, вершины которого соответствуют черным областям, а ребро соединяет две вершины, если соответствующие черные области имеют общую точку. (a) Определите все узлы, имеющие диаграмму \\(D\\), для которой \\(\\Gamma_B(D)\\) имеет не более 3 остовных деревьев. (b) Докажите, что для любого узла и любой диаграммы \\(D\\) граф \\(\\Gamma_B(D)\\) имеет нечетное число остовных деревьев.",
+        "source_id": "src-miklos-schweitzer-2012-p10-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "spanning_tree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Планарно-графовая часть",
+        "text": "Для планарного графа, полученного как черный граф шахматной раскраски диаграммы узла, требуется классифицировать случаи с не более чем тремя остовными деревьями и доказать нечетность числа остовных деревьев.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "spanning_tree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-determinant",
+      "title": "Число остовных деревьев как детерминант узла",
+      "text": "Для шахматного графа диаграммы узла число остовных деревьев связано с детерминантом узла. Нечетность ожидаемо следует из известных свойств детерминанта узла; малая величина числа деревьев должна давать короткую классификацию простых случаев.",
+      "tags": [
+        "planar_graphs",
+        "trees",
+        "goal_counting"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Графовая формулировка ясна, но полное решение требует аккуратной связи с теорией узлов.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "trees",
+    "goal_counting",
+    "goal_classification"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "checkerboard_graph",
+        "spanning_tree_count"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2012-p10-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2012-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие; решение не добавлено из-за топологической части."
+    ],
+    "relations_status": "not_started"
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "simon-marais-2021-a3-determinants-cycle-components",
+  "title": "Детерминанты 0-1 матриц и компоненты-циклы, Simon Marais 2021 A3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "enumeration"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "zero_one_matrix",
+      "multigraph",
+      "cycle_components",
+      "incidence_matrix"
+    ],
+    "methods": [
+      "laplace_expansion",
+      "degree_pruning",
+      "cycle_decomposition",
+      "block_determinants"
+    ],
+    "transformations": [
+      "rows_to_edges",
+      "columns_to_vertices"
+    ],
+    "goal": [
+      "count_possible_values"
+    ],
+    "auxiliary_graph_type": [
+      "multigraph"
+    ],
+    "invariants": [
+      "number_of_edges_equals_number_of_vertices_after_pruning",
+      "minimum_degree_at_least_two"
+    ],
+    "keywords": [
+      "simon_marais_2021_a3",
+      "determinant_values",
+      "cycle_components",
+      "incidence_matrix"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть M - множество всех матриц 2021 на 2021, у которых в каждой строке не более двух элементов равны 1, а все остальные элементы равны 0. Определите размер множества {det A: A принадлежит M}.",
+        "source_id": "src-simon-marais-2021-A3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "После удаления строк с одной единицей и соответствующих столбцов, не меняющего модуль детерминанта, строки с двумя единицами можно читать как ребра мультиграфа на вершинах-столбцах. Нужно понять, какие произведения вкладов компонент-циклов могут возникнуть: четный цикл зануляет детерминант, нечетный цикл дает множитель 2.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "cycle",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-prune-to-cycle-components",
+      "title": "Удаление листьев оставляет объединение циклов",
+      "text": "Строка с одной единицей и соответствующий столбец удаляются разложением Лапласа. Когда все оставшиеся строки имеют по две единицы, они задают ребра мультиграфа. После удаления изолированных вершин и листьев остается граф с n вершинами, n ребрами и минимальной степенью хотя бы 2, значит все степени равны 2, то есть компоненты являются циклами.",
+      "tags": [
+        "graph_model",
+        "degree_counting",
+        "goal_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-graph-pruning",
+      "title": "Мультиграф строк и столбцов",
+      "text": "Если есть нулевая строка, детерминант равен 0. Если есть строка с одной единицей, разложим по этой строке и удалим ее вместе с соответствующим столбцом; модуль детерминанта не изменится. После повторения этой процедуры либо получаем детерминант 0 или 1, либо все оставшиеся строки содержат ровно две единицы. Теперь столбцы считаем вершинами, а каждую строку - ребром между двумя столбцами, в которых стоят единицы. Петель нет, кратные ребра возможны. Если появилась изолированная вершина или вершина степени 1, соответствующий столбец снова дает детерминант 0 или удаляется разложением Лапласа. В итоге остается мультиграф с n не больше 2021 вершинами и n ребрами, без вершин степеней 0 и 1. По сумме степеней все вершины имеют степень 2, значит граф распадается на циклы. Компонента-цикл длины m дает блок J_m. Если m четно, сумма четных строк блока равна сумме нечетных, поэтому детерминант блока равен 0. Если m нечетно, разложение по первому столбцу дает |det J_m|=2. Следовательно, ненулевой модуль детерминанта равен 2^k, где k - число нечетных циклов. Каждый такой цикл имеет длину хотя бы 3, а 2021=3*673+2, поэтому 0<=k<=673. Все значения 2^k достигаются: возьмем k блоков J_3, а оставшиеся позиции заполним единичными диагональными блоками. Значит возможны 0 и все ±2^k для 0<=k<=673, всего 1349 значений.",
+      "idea_ids": [
+        "idea-prune-to-cycle-components"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "multigraph",
+        "cycle",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Задача требует аккуратно связать разложения детерминанта с удалением листьев в мультиграфе и затем посчитать вклады циклических блоков.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "degree_counting",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "matrix_to_multigraph",
+        "leaf_pruning_by_laplace_expansion",
+        "cycle_block_determinants"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2021-A3-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Официальное решение явно вводит граф: столбцы становятся вершинами, строки с двумя единицами - ребрами."
+    ],
+    "relations_status": "not_started"
+  }
+}

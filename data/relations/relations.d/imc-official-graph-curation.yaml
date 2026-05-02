@@ -1,0 +1,180 @@
+{
+  "relations": [
+    {
+      "id": "rel-imc-1999-grid-cycle-egmo-2016-incidence",
+      "from": "imc-1999-day1-p5-marked-grid-cycle",
+      "to": "egmo-2016-p3-blue-cells-bipartite-incidence",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В IMC 1999 отмеченная клетка превращается в ребро между вершиной-строкой и вершиной-столбцом; цикл в этом двудольном графе даёт нужную чередующуюся последовательность точек.",
+      "backward_text": "EGMO 2016 также использует двудольный граф строк и столбцов, где клетки становятся рёбрами. В обеих задачах вся геометрия таблицы заменяется инцидентностью строк и столбцов.",
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-imc-1999-grid-cycle-tree-properties",
+      "from": "imc-1999-day1-p5-marked-grid-cycle",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 3,
+      "forward_text": "Ключевой шаг IMC 1999: граф с числом рёбер не меньше числа вершин содержит цикл. Это одна из стандартных форм эквивалентных свойств лесов и деревьев.",
+      "backward_text": "Классический факт о лесах даёт короткое решение IMC 1999 после перевода отмеченных клеток в рёбра двудольного графа.",
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-imc-2002-students-usa-tst-incidence",
+      "from": "imc-2002-day2-p2-students-problems-dominating-pair",
+      "to": "usa-tst-2005-p1-set-system-incidence-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "IMC 2002 кодирует отношение «студент решил задачу» как двудольную инцидентность и ищет две вершины, покрывающие все задачи.",
+      "backward_text": "USA TST 2005 также переводит систему множеств в граф инцидентности/пересечений; обе задачи решаются подсчётом плохих пар и окрестностей.",
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-imc-2006-triangulation-euler-formula",
+      "from": "imc-2006-day2-p1-polygon-triangulation-parity",
+      "to": "euler-formula-planar",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "IMC 2006 работает с триангуляцией выпуклого многоугольника как с внешнепланарным графом и отслеживает инцидентность вершин треугольникам.",
+      "backward_text": "Формула Эйлера и подсчёт граней являются базовым языком для задач о триангуляциях; IMC 2006 использует тот же планарный подсчёт, но в форме индукции по триангуляции.",
+      "status": "ai_checked",
+      "confidence": 0.75
+    },
+    {
+      "id": "rel-imc-2006-triangulation-cmo-1973",
+      "from": "imc-2006-day2-p1-polygon-triangulation-parity",
+      "to": "cmo-1973-p4-triangulated-nonagon-labelings",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи работают с триангуляцией выпуклого многоугольника и локальными ограничениями на треугольники, инцидентные вершинам.",
+      "backward_text": "CMO 1973 является близкой задачей про комбинаторику треугольников в триангулированном многоугольнике; IMC 2006 добавляет паритетную цель.",
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-imc-2009-friendship-apmo-2010",
+      "from": "imc-2009-day1-p3-friendship-girth-five",
+      "to": "apmo-2010-p3-common-acquaintance-extremal",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "IMC 2009 и APMO 2010 обе используют условие об общих знакомых как графовое ограничение на пары несмежных вершин.",
+      "backward_text": "APMO 2010 является родственной экстремальной задачей о графе знакомств; в IMC 2009 та же идея приводит к анализу 2-шаговых путей и обхвата.",
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-imc-2009-friendship-mantel",
+      "from": "imc-2009-day1-p3-friendship-girth-five",
+      "to": "mantel-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В решении IMC 2009 важны запреты коротких циклов, особенно треугольников, и подсчёт через степени.",
+      "backward_text": "Теорема Мантеля является базовой экстремальной задачей о треугольник-свободных графах; IMC 2009 использует близкий язык, но с дополнительным условием диаметра два.",
+      "status": "needs_human_review",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-imc-2011-tripartite-hall",
+      "from": "imc-2011-day2-p2-tripartite-married-triples",
+      "to": "hall-marriage-theorem",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Одна естественная подача IMC 2011 сводит выбор непересекающихся счастливых троек к паросочетаниям и условию Холла в плотном многодольном графе.",
+      "backward_text": "Теорема Холла даёт язык для выбора совместимых пар/троек; IMC 2011 можно решать и обменным школьным методом, но структура та же.",
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-imc-2013-trips-complete-graph-clique-cover",
+      "from": "imc-2013-day1-p3-six-trips-cover-pairs",
+      "to": "ramsey-r33",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "IMC 2013 рассматривает пары учеников как рёбра полного графа и покрывает их кликами фиксированного размера.",
+      "backward_text": "Ramsey R(3,3) также является задачей о полном графе и локальной структуре троек; связь слабая, но обе карточки полезны в кластере «полный граф как модель пар».",
+      "status": "needs_human_review",
+      "confidence": 0.58
+    },
+    {
+      "id": "rel-imc-2013-necklace-imo-1979-cycle-walks",
+      "from": "imc-2013-day2-p5-necklace-good-colorings-odd",
+      "to": "imo-1979-p6-octagon-walks-cycle-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "IMC 2013 переводит ожерелье в цикл и считает раскраски с локальным запретом через рекурсии по пути/циклу.",
+      "backward_text": "IMO 1979 считает маршруты на цикле; обе задачи используют циклическую симметрию и рекуррентный подсчёт состояний на графе-цикле.",
+      "status": "ai_checked",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-imc-2018-frog-cmo-2005-lattice-paths",
+      "from": "imc-2018-day2-p8-frog-lattice-paths",
+      "to": "cmo-2005-p1-triangular-grid-paths",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "IMC 2018 считает пути в ориентированном решётчатом графе с граничными условиями.",
+      "backward_text": "CMO 2005 также является задачей о подсчёте путей в решётчатом графе; отличие в форме области и допустимых направлений.",
+      "status": "ai_checked",
+      "confidence": 0.83
+    },
+    {
+      "id": "rel-imc-2022-flea-imo-1979-cycle-walks",
+      "from": "imc-2022-day1-p3-flea-cycle-recurrence",
+      "to": "imo-1979-p6-octagon-walks-cycle-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "IMC 2022 считает замкнутые маршруты заданной длины на цикле вычетов по модулю простого числа.",
+      "backward_text": "IMO 1979 также сводится к подсчёту маршрутов на цикле; обе задачи удобно решать через состояния и рекурсии на циклическом графе.",
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-imc-2022-triangles-imo-1964-edge-coloring",
+      "from": "imc-2022-day2-p5-regular-43-coloured-triangles",
+      "to": "imo-1964-p4-three-topic-ramsey",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "IMC 2022 работает с двухцветной раскраской рёбер полного графа и подсчётом одноцветных треугольников.",
+      "backward_text": "IMO 1964 является классической задачей о раскраске рёбер полного графа и одноцветном треугольнике; IMC 2022 добавляет регулярность цветов и точный подсчёт.",
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-imc-2022-triangles-ramsey-r33",
+      "from": "imc-2022-day2-p5-regular-43-coloured-triangles",
+      "to": "ramsey-r33",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих задачах центральный объект - двухцветная раскраска рёбер полного графа и одноцветные треугольники.",
+      "backward_text": "Ramsey R(3,3) даёт базовый пример такого языка; IMC 2022 использует более тонкий двойной счёт при заданных цветных степенях.",
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-imc-2023-tree-distance-tree-properties",
+      "from": "imc-2023-day2-p8-tree-distance-wiener-harary",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "IMC 2023 использует базовые свойства деревьев: единственность путей, число рёбер и количество пар на расстоянии 1.",
+      "backward_text": "Эквивалентные свойства деревьев являются минимальным инструментом для понимания графовой части IMC 2023; дальше добавляются неравенства для расстояний.",
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-imc-2024-tableaux-handshaking",
+      "from": "imc-2024-day2-p9-young-tableaux-friend-graph",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Финальный графовый шаг IMC 2024 - чётность числа вершин нечётной степени в специально построенном графе соседства таблиц.",
+      "backward_text": "Лемма о рукопожатиях ровно объясняет этот шаг: число нечётных степеней в любом конечном графе чётно.",
+      "status": "ai_checked",
+      "confidence": 0.95
+    }
+  ]
+}

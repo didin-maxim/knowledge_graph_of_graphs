@@ -1,0 +1,147 @@
+{
+  "relations": [
+    {
+      "id": "rel-putnam-1988-1994-distance-coloring",
+      "from": "putnam-1988-a4-unit-distance-coloring",
+      "to": "putnam-1994-a3-threshold-distance-coloring",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи сводят непрерывную геометрическую раскраску к конечной обструкции: достаточно найти небольшой граф расстояний, который нельзя раскрасить нужным числом цветов.",
+      "backward_text": "Putnam 1994 A3 использует ту же идею конечного графа расстояний, но с другим порогом расстояния и меньшей локальной конфигурацией.",
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-putnam-1990-vjimc-2000-euler",
+      "from": "putnam-1990-b4-cayley-euler-tour",
+      "to": "vjimc-2000-cat2-p2-de-bruijn-euler-cycle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В Putnam 1990 последовательность кодируется эйлеровым обходом в ориентированном графе Кэли.",
+      "backward_text": "VJIMC 2000 строит эйлеров цикл в графе де Брёйна; в обеих задачах обход рёбер превращается в требуемую последовательность.",
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-putnam-1990-eulerian-criterion",
+      "from": "putnam-1990-b4-cayley-euler-tour",
+      "to": "eulerian-graph-criterion",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "После построения сбалансированного связного орграфа решение Putnam 1990 фактически применяет критерий существования эйлерова цикла.",
+      "backward_text": "Критерий эйлерова цикла объясняет, почему в графе Кэли можно пройти по всем нужным дугам ровно по одному разу.",
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-putnam-2002-planar-edge-bound",
+      "from": "putnam-2002-b2-polyhedron-face-game-four-edge-face",
+      "to": "planar-edge-bound",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Игра на гранях многогранника использует планарный скелет и неизбежность малых граней в кубическом полиэдральном графе.",
+      "backward_text": "Планарные оценки и формула Эйлера дают язык, на котором доказывается существование удобного хода в игре Putnam 2002 B2.",
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-putnam-2004-grid-components-lemma",
+      "from": "putnam-2004-a5-random-checkerboard-components",
+      "to": "grid-boundary-components-coloring-lemma",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Putnam 2004 A5 оценивает число монохромных компонент на решётке через рёбра и локальные 4-циклы.",
+      "backward_text": "Лемма о компонентах на раскрашенной решётке является близким техническим родственником: она тоже переводит области клеток в граф связности.",
+      "status": "needs_human_review",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-putnam-2005-grid-hamiltonian",
+      "from": "putnam-2005-a2-rook-tours-grid-hamiltonian-paths",
+      "to": "cmo-2015-p3-grid-hamiltonian-turtle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Putnam 2005 A2 считает ладейные обходы как гамильтоновы пути в решёточном графе.",
+      "backward_text": "CMO 2015 P3 также работает с гамильтоновым обходом на решётке, но цель там конструктивная, а не перечислительная.",
+      "status": "needs_human_review",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-putnam-2007-planar-triangulation",
+      "from": "putnam-2007-a6-admissible-triangulation-bound",
+      "to": "quadrangulation-euler-face-count",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Putnam 2007 A6 извлекает оценку из планарного графа разбиения и подсчёта степеней.",
+      "backward_text": "Задачи на эйлеров подсчёт граней в разбиениях многоугольников используют тот же переход от геометрической картинки к планарному графу.",
+      "status": "needs_human_review",
+      "confidence": 0.66
+    },
+    {
+      "id": "rel-putnam-2012-hall",
+      "from": "putnam-2012-b3-round-robin-winners-hall",
+      "to": "hall-marriage-theorem",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В Putnam 2012 B3 дни и команды образуют двудольный граф, а выбор различных победителей для всех дней является прямым применением теоремы Холла.",
+      "backward_text": "Теорема Холла даёт точный критерий, который проверяется в турнирной задаче через число команд, выигрывавших в выбранные дни.",
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-putnam-2013-a1-handshaking",
+      "from": "putnam-2013-a1-icosahedron-face-labels",
+      "to": "handshaking-lemma",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Доказательство удобно читать как подсчёт инцидентностей между метками и вершинами икосаэдра.",
+      "backward_text": "Лемма о рукопожатиях задаёт базовый язык для подсчёта инцидентностей, который используется в Putnam 2013 A1.",
+      "status": "needs_human_review",
+      "confidence": 0.62
+    },
+    {
+      "id": "rel-putnam-2014-imc-1999-bipartite-cycle",
+      "from": "putnam-2014-b3-prime-entries-bipartite-cycle",
+      "to": "imc-1999-day1-p5-marked-grid-cycle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Putnam 2014 B3 переводит отмеченные позиции матрицы в рёбра двудольного графа и ловит противоречие через цикл.",
+      "backward_text": "IMC 1999 использует тот же словарь: строки и столбцы становятся долями, а отмеченные клетки — рёбрами двудольного графа.",
+      "status": "needs_human_review",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-putnam-2017-2013-icosahedron",
+      "from": "putnam-2017-a6-icosahedron-edge-colorings",
+      "to": "putnam-2013-a1-icosahedron-face-labels",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе задачи используют комбинаторику икосаэдра, но в Putnam 2017 раскрашиваются рёбра, а в Putnam 2013 считаются метки на гранях.",
+      "backward_text": "Putnam 2013 A1 является более элементарной задачей на ту же полиэдральную структуру икосаэдра.",
+      "status": "needs_human_review",
+      "confidence": 0.6
+    },
+    {
+      "id": "rel-putnam-2025-a3-hall",
+      "from": "putnam-2025-a3-ternary-string-game-perfect-matching",
+      "to": "hall-marriage-theorem",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Стратегия в игре Putnam 2025 A3 строится через парное разбиение позиций, то есть через существование подходящего совершенного паросочетания.",
+      "backward_text": "Теорема Холла является стандартным инструментом для обоснования существования такого паросочетания, если его не выписать явно.",
+      "status": "needs_human_review",
+      "confidence": 0.64
+    },
+    {
+      "id": "rel-putnam-2025-a4-cycle",
+      "from": "putnam-2025-a4-cycle-commutation-graph-matrices",
+      "to": "cmo-1994-p3-voting-stabilizes-cycle",
+      "type": "reformulation",
+      "distance": 1,
+      "forward_text": "Putnam 2025 A4 требует реализовать заданный цикл как граф коммутирования некоторого семейства матриц.",
+      "backward_text": "Понятие цикла здесь является целевой графовой формой: вся линейная алгебра подчинена построению именно этого графа.",
+      "status": "needs_human_review",
+      "confidence": 0.7
+    }
+  ]
+}

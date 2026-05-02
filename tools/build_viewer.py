@@ -92,7 +92,13 @@ def build_html(data):
     .shell {{
       display: grid;
       grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
+      transition: grid-template-columns 160ms ease;
+    }}
+
+    .shell.sidebar-hidden {{
+      grid-template-columns: 0 minmax(0, 1fr);
     }}
 
     .sidebar {{
@@ -101,6 +107,13 @@ def build_html(data):
       display: flex;
       flex-direction: column;
       min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+    }}
+
+    .shell.sidebar-hidden .sidebar {{
+      border-right: 0;
+      visibility: hidden;
     }}
 
     .brand {{
@@ -157,6 +170,8 @@ def build_html(data):
     }}
 
     .list {{
+      flex: 1;
+      min-height: 0;
       overflow: auto;
       padding: 8px;
     }}
@@ -186,7 +201,26 @@ def build_html(data):
 
     main {{
       min-width: 0;
+      height: 100vh;
       overflow: auto;
+    }}
+
+    .sidebar-toggle {{
+      position: fixed;
+      top: 10px;
+      right: 14px;
+      z-index: 20;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.94);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 7px 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }}
+
+    .sidebar-toggle:hover {{
+      background: var(--soft);
     }}
 
     .content {{
@@ -269,6 +303,30 @@ def build_html(data):
       border-radius: 8px;
       padding: 14px;
       margin: 10px 0;
+    }}
+
+    .reveal {{
+      margin: 0 0 10px;
+    }}
+
+    .reveal > summary {{
+      width: fit-content;
+      list-style: none;
+      border: 1px solid #8abfb6;
+      background: var(--soft);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 8px 11px;
+      cursor: pointer;
+      user-select: none;
+    }}
+
+    .reveal > summary::-webkit-details-marker {{
+      display: none;
+    }}
+
+    .reveal[open] > summary {{
+      margin-bottom: 10px;
     }}
 
     .item-title {{
@@ -541,12 +599,21 @@ def build_html(data):
     @media (max-width: 820px) {{
       .shell {{
         grid-template-columns: 1fr;
+        height: 100vh;
       }}
 
       .sidebar {{
         border-right: 0;
         border-bottom: 1px solid var(--line);
         max-height: 48vh;
+      }}
+
+      .shell.sidebar-hidden {{
+        grid-template-columns: 1fr;
+      }}
+
+      .shell.sidebar-hidden .sidebar {{
+        display: none;
       }}
 
       .home-stats, .home-grid, .home-search-map {{
@@ -569,6 +636,7 @@ def build_html(data):
 </head>
 <body>
   <div class="shell">
+    <button class="sidebar-toggle" id="sidebar-toggle" type="button">Скрыть список</button>
     <aside class="sidebar">
       <div class="brand">
         <h1><a href="#home" style="color:inherit;text-decoration:none;">Графы</a></h1>
@@ -619,7 +687,8 @@ def build_html(data):
       author: 'all',
       year: 'all',
       solution: 'all',
-      view: 'problems'
+      view: 'problems',
+      sidebarHidden: localStorage.getItem('kg-sidebar-hidden') === '1'
     }};
 
     const byId = (id) => document.getElementById(id);
@@ -629,6 +698,24 @@ def build_html(data):
       .replaceAll('>', '&gt;')
       .replaceAll('"', '&quot;')
       .replaceAll("'", '&#039;');
+
+    function applySidebarState() {{
+      document.querySelector('.shell').classList.toggle('sidebar-hidden', state.sidebarHidden);
+      byId('sidebar-toggle').textContent = state.sidebarHidden ? 'Показать список' : 'Скрыть список';
+    }}
+
+    function reveal(summary, html) {{
+      if (!html || !html.trim()) return '';
+      return `<details class="reveal"><summary>${{esc(summary)}}</summary>${{html}}</details>`;
+    }}
+
+    function enhanceReveals() {{
+      document.querySelectorAll('details.reveal').forEach(details => {{
+        details.addEventListener('toggle', () => {{
+          if (details.open && window.MathJax?.typesetPromise) MathJax.typesetPromise([details]);
+        }}, {{ once: true }});
+      }});
+    }}
 
     function label(map, id) {{
       return map?.[id]?.title || id;
@@ -1342,7 +1429,7 @@ def build_html(data):
       return groups.map(([key, title]) => {{
         const items = problem.statements?.[key] || [];
         if (!items.length) return '';
-        return `<h4>${{title}}</h4>` + items.map(statement => {{
+        const content = `<h4>${{title}}</h4>` + items.map(statement => {{
           const sourceIds = [
             ...(statement.source_id ? [statement.source_id] : []),
             ...(statement.source_ids || [])
@@ -1365,13 +1452,14 @@ def build_html(data):
             </div>
           `;
         }}).join('');
+        return key === 'graph_hint_reformulations' ? reveal('Показать подсказку', content) : content;
       }}).join('');
     }}
 
     function renderIdeas(problem) {{
       const ideas = problem.ideas || [];
       if (!ideas.length) return '<div class="empty">Идей пока нет.</div>';
-      return ideas.map(idea => `
+      const content = ideas.map(idea => `
         <div class="card">
           <div class="item-title">
             <span>${{esc(idea.title || idea.id)}}</span>
@@ -1381,6 +1469,7 @@ def build_html(data):
           <div class="pill-row">${{(idea.tags || []).map(tagPill).join('')}}</div>
         </div>
       `).join('');
+      return reveal('Показать идеи решения', content);
     }}
 
     function renderSolutions(problem) {{
@@ -1395,7 +1484,7 @@ def build_html(data):
         `;
       }}
       if (!solutions.length) return '<div class="empty">Решений пока нет.</div>';
-      return solutions.map(solution => `
+      const content = solutions.map(solution => `
         <div class="card">
           <div class="item-title">
             <span>${{esc(solution.title || solution.id)}}</span>
@@ -1410,6 +1499,7 @@ def build_html(data):
           </div>
         </div>
       `).join('');
+      return reveal('Показать решение', content);
     }}
 
     function renderRelations(problem) {{
@@ -1862,6 +1952,7 @@ def build_html(data):
     function render() {{
       const route = currentRoute();
       state.view = route.type === 'definition' ? 'definitions' : route.type === 'idea' ? 'ideas' : route.type === 'comment' ? 'comments' : 'problems';
+      applySidebarState();
       renderSidebar();
       renderSourceFilter();
       renderAuthorFilter();
@@ -1876,6 +1967,7 @@ def build_html(data):
       else if (route.type === 'idea') renderStandardIdea();
       else if (route.type === 'comment') renderCommentPage();
       else renderProblem();
+      enhanceReveals();
     }}
 
     byId('search-input').addEventListener('input', event => {{
@@ -1951,6 +2043,12 @@ def build_html(data):
     byId('mode-definitions').addEventListener('click', () => setDefinition(sortedDefinitions()[0]?.id));
     byId('mode-ideas').addEventListener('click', () => setStandardIdea(sortedStandardIdeas()[0]?.id));
     byId('mode-comments').addEventListener('click', () => setComment(sortedComments()[0]?.id || null));
+
+    byId('sidebar-toggle').addEventListener('click', () => {{
+      state.sidebarHidden = !state.sidebarHidden;
+      localStorage.setItem('kg-sidebar-hidden', state.sidebarHidden ? '1' : '0');
+      applySidebarState();
+    }});
 
     window.addEventListener('hashchange', render);
     render();

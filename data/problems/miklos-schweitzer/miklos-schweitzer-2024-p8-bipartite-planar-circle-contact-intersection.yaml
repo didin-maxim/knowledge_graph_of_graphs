@@ -1,0 +1,149 @@
+{
+  "id": "miklos-schweitzer-2024-p8-bipartite-planar-circle-contact-intersection",
+  "title": "Окружности для вершин двудольного планарного графа, Schweitzer 2024 P8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_bipartite_planar_graph",
+      "circle_arrangement",
+      "tangency_graph",
+      "intersection_graph"
+    ],
+    "methods": [
+      "circle_representation",
+      "planar_graph_embedding",
+      "geometric_construction"
+    ],
+    "transformations": [
+      "vertices_to_circles",
+      "adjacency_to_tangency",
+      "nonadjacency_to_two_point_intersection"
+    ],
+    "goal": [
+      "existence_of_representation"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_planar_graph"
+    ],
+    "invariants": [
+      "adjacent_circles_tangent",
+      "nonadjacent_circles_cross_twice"
+    ],
+    "keywords": [
+      "schweitzer_2024_p8",
+      "bipartite_planar_graph",
+      "circle_representation",
+      "tangency"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Представление окружностями",
+        "text": "Докажите, что для любого конечного двудольного планарного графа каждой вершине можно сопоставить окружность так, чтобы все окружности лежали в одной плоскости, окружности, соответствующие любым двум смежным вершинам, касались друг друга, а окружности, соответствующие любым двум различным несмежным вершинам, пересекались в двух точках.",
+        "source_id": "src-miklos-schweitzer-2024-p8-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "bipartite_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Геометрическая реализация графа",
+        "text": "Нужно реализовать произвольный конечный двудольный планарный граф как граф касаний в семействе окружностей, причем дополнение к ребрам кодируется не непересечением, а пересечением соответствующих окружностей в двух точках.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "bipartite_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-contact-vs-crossing",
+      "title": "Смежность кодируется вырожденным пересечением",
+      "text": "В отличие от обычной теоремы о круговых упаковках, здесь несмежные пары должны пересекаться в двух точках, а ребра - быть ровно касаниями. Поэтому задача ближе к тонкой реализации отношения касания внутри плотного семейства окружностей.",
+      "tags": [
+        "planar_graphs",
+        "graph_model"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-bipartite-planarity",
+      "title": "Двудольность и планарность являются структурными ограничениями",
+      "text": "Планарное вложение двудольного графа должно управлять тем, какие пары окружностей доводятся до касания; остальные пары сохраняются как настоящие пересечения.",
+      "tags": [
+        "planar_graphs",
+        "construction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "Задача является прямой графово-геометрической реализацией, но полное доказательство требует источника решений или экспертной проверки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "graph_model",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "circle_representation_of_bipartite_planar_graph"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2024-p8-official",
+      "role": "problem_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF с bolyai.hu содержит условие. Полное решение не внесено: задача оставлена для ручной проверки."
+    ],
+    "relations_status": "not_started"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "id": "simon-marais-2024-c4-random-maximal-independent-set-path",
+  "title": "Случайное максимальное независимое множество в пути, SMMC 2024 C4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Tony Guttman",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "path_graph",
+      "independent_set",
+      "random_greedy_process"
+    ],
+    "methods": [
+      "recurrence",
+      "generating_functions",
+      "asymptotic_limit"
+    ],
+    "transformations": [
+      "seating_to_path_independent_set"
+    ],
+    "goal": [
+      "compute_limit"
+    ],
+    "auxiliary_graph_type": [
+      "path_graph"
+    ],
+    "invariants": [
+      "expected_size",
+      "interval_decomposition"
+    ],
+    "keywords": [
+      "smmc_2024_c4",
+      "path_graph",
+      "maximal_independent_set",
+      "random_sequential_adsorption"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Очередь студентов входит в лекционную аудиторию с \\(N\\) местами в ряд. Каждый студент садится на место, выбранное равновероятно среди мест, не соседних с уже занятым местом. Преподаватель объявляет аудиторию заполненной, когда больше никого нельзя посадить по этому правилу. Пусть \\(S_N\\) — ожидаемая доля занятых мест в момент заполнения. Найдите \\(\\lim_{N\\to\\infty}S_N\\) или докажите, что предел не существует.",
+        "source_id": "src-simon-marais-2024-C4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "independent_set",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "На пути \\(P_N\\) запускается случайный жадный процесс построения независимого множества: на каждом шаге равновероятно выбирается вершина, не смежная с уже выбранными вершинами, и добавляется в множество. Процесс останавливается, когда множество становится максимальным. Найдите предел ожидаемой плотности выбранных вершин.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-first-choice-splits-path",
+      "title": "Первый выбранный узел расщепляет путь",
+      "text": "Если первая выбранная вершина имеет \\(i\\) вершин слева и \\(n-i\\) справа, то ее соседи больше недоступны, а оставшиеся две части становятся независимыми меньшими путями.",
+      "tags": [
+        "trees",
+        "dynamics"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-generating-function-limit",
+      "title": "Рекурсия решается производящей функцией",
+      "text": "Для математического ожидания получается рекурсия свертки; производящая функция дает явную формулу, из которой сразу берется предел плотности.",
+      "tags": [
+        "goal_exact_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-path-generating-function",
+      "title": "Рекурсия для ожидаемого размера",
+      "text": "Пусть \\(E_N\\) — ожидаемый размер итогового независимого множества в пути из \\(N\\) вершин, и положим \\(E_N=0\\) при \\(N\\le0\\). Рассмотрим \\(N=n+1\\). Если первая выбранная вершина стоит на позиции \\(i+1\\), то она добавляет 1 выбранную вершину, ее соседи запрещаются, а слева и справа остаются независимые задачи на путях длины \\(i-1\\) и \\(n-i-1\\). Поэтому\n\\[E_{n+1}=1+\\frac{2}{n+1}\\sum_{i=0}^{n-1}E_i.\\]\nВычитая соседние равенства, получаем\n\\[(n+2)E_{n+2}-(n+1)E_{n+1}=1+2E_n.\\]\n\nДля производящей функции \\(E(x)=\\sum_{n\\ge0}E_nx^n\\) это дает дифференциальное уравнение\n\\[(1-x)E'(x)-2xE(x)=\\frac1{1-x}.\\]\nС учетом \\(E(0)=0\\) получаем\n\\[E(x)=\\frac{1-e^{-2x}}{2(1-x)^2}.\\]\nИз коэффициентов следует, что \\(2E_n/n\\to1-e^{-2}\\). Следовательно,\n\\[\\lim_{N\\to\\infty}S_N=\\frac{1-e^{-2}}2.\\]",
+      "idea_ids": [
+        "idea-first-choice-splits-path",
+        "idea-generating-function-limit"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Графовая модель — случайный жадный максимальный независимый набор на пути; технически нужна аккуратная рекурсия и производящая функция.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "trees",
+    "dynamics",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "path_decomposition",
+        "generating_function"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2024-C4-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Оригинальная модель посадки является стандартной моделью случайного максимального независимого множества на пути."
+    ],
+    "relations_status": "base_done"
+  }
+}

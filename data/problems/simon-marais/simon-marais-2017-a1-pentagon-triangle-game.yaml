@@ -1,0 +1,165 @@
+{
+  "id": "simon-marais-2017-a1-pentagon-triangle-game",
+  "title": "Игра на рёбрах пятиугольника до одноцветного треугольника, SMMC 2017 A1",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph_k5",
+      "edge_coloring_game",
+      "monochromatic_triangle",
+      "winning_strategy"
+    ],
+    "methods": [
+      "case_analysis",
+      "symmetry_reduction",
+      "threat_strategy"
+    ],
+    "transformations": [
+      "pentagon_sides_and_diagonals_to_k5_edges"
+    ],
+    "goal": [
+      "determine_winning_player"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "dihedral_symmetry_of_pentagon",
+      "triangle_threats"
+    ],
+    "keywords": [
+      "smmc_2017_a1",
+      "k5_edge_coloring_game",
+      "monochromatic_triangle"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "На бумаге нарисованы пять сторон и пять диагоналей правильного пятиугольника. Два игрока по очереди раскрашивают по одному из этих десяти отрезков: первый игрок красит синим, второй - красным. Уже раскрашенный отрезок перекрашивать нельзя. Игрок выигрывает, если первым создал треугольник своего цвета, все три вершины которого являются вершинами правильного пятиугольника. Если все десять отрезков раскрашены и никто не выиграл, объявляется ничья. Определите, может ли первый игрок, второй игрок или ни один из них гарантировать победу.",
+        "source_id": "src-simon-marais-2017-A1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Два игрока по очереди раскрашивают ещё не раскрашенные рёбра полного графа \\(K_5\\): первый - синим, второй - красным. Побеждает тот, кто первым получает одноцветный треугольник своего цвета. Если все рёбра раскрашены без такого треугольника, получается ничья. Определите, у кого есть выигрышная стратегия.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "chromatic_number",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-first-edge-symmetry",
+      "title": "Первый ход можно зафиксировать по симметрии",
+      "text": "Пусть вершины пятиугольника пронумерованы \\(1,2,3,4,5\\). По симметрии первый игрок может начать с ребра \\(12\\), а второй ответит либо ребром, смежным с ним в пятиугольнике, либо ребром другого типа; официальное решение сводит это к двум случаям.",
+      "tags": [
+        "graph_symmetry"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-double-threat",
+      "title": "Создать две угрозы одним ходом",
+      "text": "Стратегия первого игрока состоит в том, чтобы после вынужденного защитного ответа второго получить позицию с двумя разными синими рёбрами, каждое из которых завершает синий треугольник. Второй игрок может закрыть только одну угрозу.",
+      "tags": [
+        "goal_strategy_game"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-strategy",
+      "title": "Два случая после первого ответа",
+      "text": "Ответ: первый игрок может гарантировать победу.\n\nОбозначим вершины пятиугольника через \\(1,2,3,4,5\\). Первый игрок красит синим ребро \\(12\\). По симметрии пятиугольника второй игрок своим первым красным ходом попадает в один из двух существенно разных случаев: он красит ребро \\(23\\) или ребро \\(34\\).\n\nСлучай 1: второй игрок красит \\(23\\). Тогда первый красит \\(24\\). Если второй не покрасит \\(14\\), то первый следующим ходом покрасит \\(14\\) и получит синий треугольник \\(124\\). Значит, второй вынужден красить \\(14\\). После этого первый красит \\(25\\). Теперь у первого две угрозы: ребро \\(15\\) завершает треугольник \\(125\\), а ребро \\(45\\) завершает треугольник \\(245\\). Второй игрок может закрыть только одну из них, поэтому первый выигрывает следующим ходом.\n\nСлучай 2: второй игрок красит \\(34\\). Тогда первый красит \\(15\\). Чтобы не проиграть на треугольнике \\(125\\), второй вынужден покрасить \\(25\\). После этого первый красит \\(13\\). Теперь у первого две угрозы: ребро \\(23\\) завершает треугольник \\(123\\), а ребро \\(35\\) завершает треугольник \\(135\\). Второй может закрыть лишь одну угрозу, и первый выигрывает следующим ходом.\n\nВо всех возможных ответах второго игрока первый имеет стратегию, приводящую к одноцветному синему треугольнику раньше, чем второй сможет выиграть.",
+      "idea_ids": [
+        "idea-first-edge-symmetry",
+        "idea-double-threat"
+      ],
+      "standard_idea_ids": [
+        "symmetrization"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 4,
+    "comment": "Небольшая игровая задача на \\(K_5\\): главное - заметить симметрию и построить двойную угрозу.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "graph_symmetry",
+    "goal_strategy_game",
+    "ramsey_theory"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "symmetry_reduction",
+        "double_threat_strategy"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2017-A1-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальные файлы: smmc-2017-paper-1_1.pdf и smmc-2017-solutions-preliminary_1.pdf."
+    ],
+    "relations_status": "base_done"
+  }
+}

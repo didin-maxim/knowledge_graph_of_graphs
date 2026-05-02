@@ -1,0 +1,156 @@
+{
+  "id": "putnam-2025-a3-ternary-string-game-perfect-matching",
+  "title": "Игра на строках из 0,1,2 и совершенное паросочетание, Putnam 2025 A3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "ternary_hypercube",
+      "perfect_matching",
+      "strategy_stealing_pairing"
+    ],
+    "methods": [
+      "pairing_strategy",
+      "perfect_matching"
+    ],
+    "transformations": [
+      "game_positions_to_graph_vertices"
+    ],
+    "goal": [
+      "determine_winner"
+    ],
+    "auxiliary_graph_type": [
+      "induced_grid_graph_on_ternary_strings"
+    ],
+    "invariants": [
+      "unused_matching_pairs"
+    ],
+    "keywords": [
+      "putnam_2025_a3",
+      "putnam",
+      "pairing_strategy"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Алиса и Боб играют со строкой из \\(n\\) цифр, каждая из которых равна 0, 1 или 2. Изначально все цифры равны 0. За один ход можно прибавить 1 к одной цифре или вычесть 1 из одной цифры так, чтобы получилась строка, которая раньше в игре не встречалась. Игрок, у которого нет допустимого хода, проигрывает. Алиса ходит первой, далее игроки ходят по очереди. Для каждого \\(n\\ge1\\) определите, у кого есть гарантированно выигрышная стратегия.",
+        "source_id": "src-putnam-2025-A3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим граф на вершинах \\(\\{0,1,2\\}^n\\), где две строки смежны, если они отличаются на 1 ровно в одной координате. Игра начинается в вершине \\((0,\n\\ldots,0)\\); игроки по очереди переходят по ребру в ещё не посещённую вершину, а тот, кто не может ходить, проигрывает. Докажите, что для каждого \\(n\\ge1\\) выигрывает Боб.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-match-nonzero-strings",
+      "title": "Все ненулевые строки разбиваются на пары",
+      "text": "У ненулевой строки берём первую ненулевую координату и меняем в ней 1 на 2 или 2 на 1. Это инволюция без неподвижных точек, причём парные строки отличаются допустимым ходом.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-bob-follows-matching",
+      "title": "Ответ по паросочетанию сохраняет возможность хода",
+      "text": "После каждого хода Алисы Боб переходит в парную по совершённому паросочетанию вершину. Тогда перед ходом Алисы каждая пара либо полностью использована, либо полностью свободна.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-matching",
+      "title": "Решение стратегией паросочетания",
+      "text": "Исключим начальную строку \\(0^n\\) и рассмотрим граф на всех остальных строках из \\(\\{0,1,2\\}^n\\), где ребро соответствует изменению одной координаты на 1. Построим совершенное паросочетание этого графа. Для ненулевой строки найдём её первую ненулевую координату. Если там стоит 1, заменим её на 2; если стоит 2, заменим её на 1. Остальные координаты не меняем. Полученная строка отличается от исходной ровно в одной координате на 1, значит соединена с ней ребром. Эта операция является инволюцией без неподвижных точек, поэтому все ненулевые строки разбиваются на пары смежных вершин.\n\nСтратегия Боба теперь очевидна. Первый ход Алисы обязательно ведёт из \\(0^n\\) в некоторую ненулевую строку \\(v\\). Боб отвечает переходом в строку \\(w\\), парную к \\(v\\) в построенном паросочетании. Далее Боб делает то же самое после каждого хода Алисы.\n\nПочему ответ всегда легален? Индуктивно перед каждым ходом Алисы каждая пара паросочетания либо ещё не посещена вовсе, либо обе её вершины уже посещены. Алиса, если ходит, приходит в первую вершину некоторой ещё не посещённой пары; вторая вершина этой пары свободна и смежна с ней, так что Боб может туда перейти. После ответа Боба эта пара становится полностью посещённой, и инвариант сохраняется.\n\nТак как число всех позиций конечно, игра обязательно закончится. Если Алиса смогла сделать ход, то Боб по описанной стратегии тоже может ответить. Следовательно, первым игроком без хода будет Алиса, а Боб выигрывает при любом \\(n\\ge1\\).",
+      "idea_ids": [
+        "idea-match-nonzero-strings",
+        "idea-bob-follows-matching"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "Putnam A3; граф позиций и совершенное паросочетание дают полное решение.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "graph_model",
+    "goal_strategy_game"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "perfect_matching_pairing_strategy"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2025-A3-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "url": "https://maa.org/wp-content/uploads/2026/02/2025OfficialSolutions.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Официальное решение формулирует граф позиций и совершенное паросочетание."
+    ],
+    "relations_status": "base_done"
+  }
+}

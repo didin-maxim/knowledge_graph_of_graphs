@@ -1,0 +1,149 @@
+{
+  "id": "imc-2002-day2-p2-students-problems-dominating-pair",
+  "title": "Два студента, покрывающие все задачи конкурса, IMC 2002 Day 2 P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_incidence_graph",
+      "students",
+      "problems",
+      "dominating_pair"
+    ],
+    "methods": [
+      "complement_counting",
+      "bad_pairs",
+      "union_bound"
+    ],
+    "transformations": [
+      "solutions_to_bipartite_graph"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "problem_degree_at_least_120",
+      "nonsolver_count_at_most_80"
+    ],
+    "keywords": [
+      "imc_2002_day2_p2",
+      "students_problems",
+      "dominating_pair"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В математическом конкурсе участвовали \\(200\\) студентов. Им было предложено \\(6\\) задач. Известно, что каждую задачу правильно решили по крайней мере \\(120\\) участников. Докажите, что найдутся два участника, такие что каждая из \\(6\\) задач была решена хотя бы одним из них.",
+        "source_id": "src-imc-2002-day2-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Рассмотрим двудольный граф между \\(200\\) студентами и \\(6\\) задачами: студент соединен с задачей, если он ее решил. Каждая вершина-задача имеет степень не меньше \\(120\\). Докажите, что существуют две вершины-студента, объединение соседей которых равно всему множеству из шести задач.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "dominating_set"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-bad-student-pairs",
+      "title": "Считать пары, которые не покрывают задачу",
+      "text": "Для фиксированной задачи оба студента не решили ее только если они оба лежат среди не более чем \\(80\\) нерешивших. Таких пар не больше \\(\\binom{80}{2}\\). Для шести задач этого меньше, чем общее число пар студентов.",
+      "tags": [
+        "double_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Подсчет плохих пар",
+      "text": "Назовем пару студентов плохой для некоторой задачи, если ни один из этих двух студентов эту задачу не решил. Если найдется пара, которая не является плохой ни для одной из шести задач, то она и требуется.\n\nВсего пар студентов равно \\(\\binom{200}{2}=19900\\). Зафиксируем одну задачу. Ее решили не менее \\(120\\) студентов, значит не решили ее не более \\(80\\) студентов. Поэтому пар, плохих для этой задачи, не больше \\(\\binom{80}{2}=3160\\). Для всех шести задач суммарное число инцидентностей вида «пара студентов плоха для задачи» не превосходит \\(6\\cdot3160=18960\\).\n\nЕсли бы каждая пара студентов не покрывала все задачи, то каждая из \\(19900\\) пар была бы плохой хотя бы для одной задачи, и таких инцидентностей было бы не меньше \\(19900\\). Это невозможно, поскольку \\(18960<19900\\). Следовательно, существует пара студентов, которая для каждой задачи содержит хотя бы одного решившего ее участника. Более того, подсчет показывает, что таких пар как минимум \\(19900-18960=940\\).",
+      "idea_ids": [
+        "idea-count-bad-student-pairs"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 6,
+    "comment": "Короткий счет плохих пар; графовая модель помогает увидеть задачу как поиск пары студентов, доминирующей шесть задач.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "double_counting",
+    "pigeonhole_principle",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bad_pair_counting",
+        "bipartite_incidence_model"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2002-day2-p2-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Графовая модель аккуратная, но решение остается в основном счетным; включено по явному запросу диапазона."
+    ],
+    "relations_status": "base_done"
+  }
+}

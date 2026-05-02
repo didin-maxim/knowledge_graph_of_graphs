@@ -1,0 +1,153 @@
+{
+  "id": "simon-marais-2022-c3-random-walk-cycle-five",
+  "title": "Случайное блуждание по циклу из пяти вершин, Simon Marais 2022 C3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_reformulation",
+      "probability"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "cycle_graph",
+      "random_walk",
+      "transition_recurrence",
+      "modular_classes"
+    ],
+    "methods": [
+      "symmetry",
+      "recurrence",
+      "induction",
+      "roots_of_unity_filter"
+    ],
+    "transformations": [
+      "integer_walk_modulo_five_to_cycle_walk"
+    ],
+    "goal": [
+      "compare_probability"
+    ],
+    "auxiliary_graph_type": [
+      "cycle_graph_C5"
+    ],
+    "invariants": [
+      "reflection_symmetry",
+      "total_probability_one"
+    ],
+    "keywords": [
+      "simon_marais_2022_c3",
+      "random_walk",
+      "cycle_C5",
+      "probability_greater_than_one_fifth"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Кузнечик сидит на числовой прямой, изначально в точке 0. Каждую секунду он прыгает на единицу влево или вправо с равными вероятностями; направления прыжков независимы. Пусть p - вероятность того, что после 2022 прыжков кузнечик находится в числе, делящемся на 5. Определите, верно ли p<1/5, p=1/5 или p>1/5.",
+        "source_id": "src-simon-marais-2022-C3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Рассмотрим простой случайный обход на цикле C5 с вершинами 0,1,2,3,4, где из каждой вершины переходят к двум соседям с вероятностями 1/2. Стартовая вершина - 0. Нужно сравнить с 1/5 вероятность оказаться в вершине 0 после 2022 шагов.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cycle-five-symmetry-order",
+      "title": "Симметрия цикла и порядок вероятностей",
+      "text": "Вероятности в вершинах 1 и 4 равны, как и в вершинах 2 и 3. Для четных моментов можно индукцией доказать строгий порядок a_n>c_n>b_n, где a_n - вероятность в 0, b_n - в 1 или 4, c_n - в 2 или 3. Тогда a_n больше среднего значения 1/5.",
+      "tags": [
+        "graph_model",
+        "graph_symmetry",
+        "induction",
+        "goal_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-cycle-recurrence",
+      "title": "Рекуррентное решение на C5",
+      "text": "Сведем задачу к блужданию по остаткам modulo 5, то есть по циклу C5. Пусть a_n - вероятность быть в классе 0, b_n - в классе 1, c_n - в классе 2, d_n - в классе 3, e_n - в классе 4 после n шагов. По симметрии относительно вершины 0 имеем b_n=e_n и c_n=d_n. Поэтому a_{n+1}=b_n, b_{n+1}=(a_n+c_n)/2, c_{n+1}=(b_n+c_n)/2. Докажем индукцией, что для всех четных n>0 выполнено a_n>c_n>b_n. При n=2 имеем a_2=1/2, c_2=1/4, b_2=0. Если неравенства верны для четного n, то из рекуррентных соотношений через два шага получается a_{n+2}-c_{n+2}=(a_n-b_n)/4>0 и c_{n+2}-b_{n+2}=(a_n-b_n)/4+(c_n-b_n)/4>0. Индукционный шаг доказан. Число 2022 четно и положительно. Значит a_2022>c_2022>b_2022. Пять вероятностей a_2022,b_2022,c_2022,c_2022,b_2022 суммируются в 1 и не все равны; самая большая из них, a_2022, строго больше среднего 1/5. Поэтому p>1/5.",
+      "idea_ids": [
+        "idea-cycle-five-symmetry-order"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "После перехода к циклу C5 достаточно симметрии и короткой индукции по четным временам.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "graph_symmetry",
+    "induction",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "random_walk_modulo_five",
+        "cycle_symmetry",
+        "two_step_probability_inequalities"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simon-marais-2022-C3-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Официальное условие дано как блуждание по целым числам; графовая формулировка является естественной факторизацией modulo 5 в случайный обход на цикле C5."
+    ],
+    "relations_status": "not_started"
+  }
+}

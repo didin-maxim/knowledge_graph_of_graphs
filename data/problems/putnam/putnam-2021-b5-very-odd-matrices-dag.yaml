@@ -1,0 +1,157 @@
+{
+  "id": "putnam-2021-b5-very-odd-matrices-dag",
+  "title": "«Очень нечётные» матрицы и ациклический ориентированный граф, Putnam 2021 B5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "linear_algebra"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_acyclic_graph",
+      "zero_one_matrix_over_f2",
+      "principal_minor"
+    ],
+    "methods": [
+      "minimal_directed_cycle",
+      "topological_ordering",
+      "induction"
+    ],
+    "transformations": [
+      "matrix_mod_2_to_digraph"
+    ],
+    "goal": [
+      "prove_closure_under_powers"
+    ],
+    "auxiliary_graph_type": [
+      "dag"
+    ],
+    "invariants": [
+      "odd_principal_determinants",
+      "acyclic_orientation"
+    ],
+    "keywords": [
+      "putnam_2021_b5",
+      "putnam",
+      "very_odd_matrix"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Назовём целочисленную матрицу \\(A=(a_{ij})_{1\\le i,j\\le n}\\) размера \\(n\\times n\\) очень нечётной, если для всякого непустого множества \\(S\\subseteq\\{1,2,\n\\ldots,n\\}\\) главная подматрица \\((a_{ij})_{i,j\\in S}\\) имеет нечётный определитель. Докажите, что если \\(A\\) очень нечётна, то \\(A^k\\) очень нечётна для каждого \\(k\\ge 1\\).",
+        "source_id": "src-putnam-2021-B5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Работая по модулю 2, поставим матрице \\(A\\) ориентированный граф на вершинах \\(1,\n\\ldots,n\\): диагональные единицы игнорируются, а при \\(i\\ne j\\) проводим дугу \\(i\\to j\\), если \\(a_{ij}=1\\) в \\(\\mathbb F_2\\). Условие нечётности всех главных определителей означает, что все главные подматрицы невырождены над \\(\\mathbb F_2\\). Докажите, что этот граф ацикличен, после чего матрица перестановочно подобна верхнетреугольной унипотентной матрице; значит, то же верно для всех степеней.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cycle-singular-submatrix",
+      "title": "Минимальный ориентированный цикл даёт вырожденную подматрицу",
+      "text": "Если в графе есть минимальный ориентированный цикл, то на соответствующем множестве вершин у подматрицы над \\(\\mathbb F_2\\) каждая строка имеет сумму 0: диагональная единица и ровно одна следующая единица на цикле. Это противоречит невырожденности.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-topological-order",
+      "title": "DAG можно упорядочить треугольно",
+      "text": "Ациклический ориентированный граф имеет топологический порядок вершин. В этом порядке все дуги идут в одну сторону, поэтому матрица над \\(\\mathbb F_2\\) становится треугольной с единицами на диагонали.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-dag",
+      "title": "Решение через DAG над \\(\\mathbb F_2\\)",
+      "text": "Достаточно работать по модулю 2: нечётность определителя означает невырожденность соответствующей матрицы над \\(\\mathbb F_2\\). Из одноэлементных главных подматриц сразу следует, что все диагональные элементы \\(a_{ii}\\) равны 1 по модулю 2.\n\nПостроим ориентированный граф на вершинах \\(1,\n\\ldots,n\\), проводя дугу \\(i\\to j\\) при \\(i\\ne j\\) и \\(a_{ij}=1\\) в \\(\\mathbb F_2\\). Покажем, что циклов в нём нет. Предположим наоборот и возьмём ориентированный цикл минимальной длины \\(m\\) с вершинами \\(i_1,\n\\ldots,i_m\\) по порядку. Минимальность означает, что среди этих вершин нет лишних дуг, перескакивающих вперёд по циклу, иначе был бы более короткий ориентированный цикл. Поэтому в главной подматрице по множеству \\(S=\\{i_1,\n\\ldots,i_m\\}\\) каждая строка имеет единицу на диагонали и единицу в столбце следующей вершины цикла, а остальные возможные единицы, нужные для суммы строк, отсутствуют. Над \\(\\mathbb F_2\\) сумма всех строк этой подматрицы равна нулю, значит подматрица вырождена. Это противоречит тому, что все главные определители нечётны.\n\nСледовательно, полученный ориентированный граф является DAG. У DAG есть топологический порядок вершин. Переставим базис в соответствии с таким порядком; тогда все внедиагональные единицы матрицы окажутся строго по одну сторону от диагонали. Иными словами, существует перестановочная матрица \\(P\\), такая что \\(P^{-1}AP\\) по модулю 2 является унипотентной треугольной матрицей.\n\nСтепень унипотентной треугольной матрицы снова унипотентна и треугольна над \\(\\mathbb F_2\\). Любая её главная подматрица также треугольна с единицами на диагонали, поэтому имеет определитель 1 над \\(\\mathbb F_2\\). Возвращаясь к целым числам, это означает, что все главные определители \\(A^k\\) нечётны. Значит, \\(A^k\\) очень нечётна для всех \\(k\\ge1\\).",
+      "idea_ids": [
+        "idea-cycle-singular-submatrix",
+        "idea-topological-order"
+      ],
+      "standard_idea_ids": [
+        "greedy_ordering"
+      ],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 11,
+    "comment": "Putnam B5; решение официально строит DAG из матрицы и использует топологический порядок.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "graph_model",
+    "induction",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "matrix_to_dag",
+        "topological_ordering"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2021-B5-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "url": "https://maa.org/wp-content/uploads/2024/10/Putnam-2021-problems-and-solutions.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Официальное решение явно строит directed graph и называет его DAG."
+    ],
+    "relations_status": "base_done"
+  }
+}

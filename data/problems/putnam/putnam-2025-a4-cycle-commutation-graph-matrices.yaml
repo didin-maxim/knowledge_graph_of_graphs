@@ -1,0 +1,156 @@
+{
+  "id": "putnam-2025-a4-cycle-commutation-graph-matrices",
+  "title": "Цикл как граф коммутирования матриц минимальной размерности, Putnam 2025 A4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "linear_algebra"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "commutation_graph",
+      "cycle_graph",
+      "rank_one_projection",
+      "matrix_representation"
+    ],
+    "methods": [
+      "orthogonality_construction",
+      "two_dimensional_obstruction",
+      "eigenvector_argument"
+    ],
+    "transformations": [
+      "commutation_pattern_to_cycle_graph"
+    ],
+    "goal": [
+      "find_minimal_dimension"
+    ],
+    "auxiliary_graph_type": [
+      "cycle_graph_c2025"
+    ],
+    "invariants": [
+      "commutation_relation",
+      "orthogonality_of_vectors"
+    ],
+    "keywords": [
+      "putnam_2025_a4",
+      "putnam",
+      "commutation_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Найдите минимальное значение \\(k\\), для которого существуют вещественные матрицы \\(A_1,\\ldots,A_{2025}\\) размера \\(k\\times k\\) со свойством \\(A_iA_j=A_jA_i\\) тогда и только тогда, когда \\(|i-j|\\in\\{0,1,2024\\}\\).",
+        "source_id": "src-putnam-2025-A4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Минимизируйте размерность вещественного матричного представления, в котором граф коммутирования матриц \\(A_1,\n\\ldots,A_{2025}\\) является ровно циклом \\(C_{2025}\\): две разные матрицы коммутируют тогда и только тогда, когда соответствующие вершины цикла соседние.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-three-dimensional-cycle",
+      "title": "В \\(\\mathbb R^3\\) цикл задаётся соседней ортогональностью",
+      "text": "Можно выбрать векторы \\(u_i\\) так, чтобы \\(u_i\\perp u_{i+1}\\) циклически и никаких лишних ортогональностей/коллинеарностей не возникало. Ранговые матрицы \\(A_i=u_i u_i^T\\) коммутируют ровно при ортогональности или коллинеарности соответствующих векторов.",
+      "tags": [
+        "construction"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-two-dimensional-obstruction",
+      "title": "В размерности 2 коммутирование слишком транзитивно",
+      "text": "Для не скалярной матрицы \\(2\\times2\\) её коммутант сильно ограничен: в недиагонализуемом случае это матрицы того же жорданова вида, а в диагонализуемом случае — матрицы в том же собственном базисе. Поэтому цепочка коммутирований заставляет появиться лишнее коммутирование.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-compressed",
+      "title": "Решение: конструкция в размерности 3 и запрет размерности 2",
+      "text": "Ответ: \\(k=3\\).\n\nСначала построим пример в \\(\\mathbb R^3\\). Выберем единичные векторы \\(u_1,\\ldots,u_{2025}\\) циклически так, чтобы \\(u_i\\perp u_{i+1}\\), но при несоседних индексах векторы не были ни ортогональны, ни коллинеарны. Это можно делать последовательно: каждый новый вектор берётся в плоскости, ортогональной предыдущему, избегая конечного числа запрещённых направлений; последний выбирается ортогональным и \\(u_{2024}\\), и \\(u_1\\), а общий выбор можно считать общим положением.\n\nПоложим \\(A_i=u_i u_i^T\\). Для таких ранговых операторов \\(A_iA_j=(u_i\\cdot u_j)u_i u_j^T\\), а \\(A_jA_i=(u_i\\cdot u_j)u_j u_i^T\\). Если \\(u_i\\perp u_j\\), оба произведения равны нулю; если векторы коллинеарны, произведения тоже коммутируют. В остальных случаях равенство невозможно, поскольку ранговые операторы имеют разные образы и ядра. По выбору векторов коммутирование возникает ровно для соседей цикла, значит \\(k\\le3\\).\n\nТеперь покажем, что \\(k=1\\) и \\(k=2\\) невозможны. При \\(k=1\\) все матрицы скалярны и коммутируют между собой. Пусть \\(k=2\\). Ни одна из матриц не может быть скалярной, иначе она коммутировала бы со всеми. Если некоторая матрица недиагонализуема над \\(\\mathbb C\\), то в подходящем базисе её коммутант состоит из матриц того же жорданова центральизатора. Тогда соседние по циклу матрицы попадают в тот же центральизатор, что создаёт лишнее коммутирование через одну вершину.\n\nОстаётся случай, когда все матрицы диагонализуемы с двумя различными собственными значениями. Тогда всякая матрица, коммутирующая с \\(A_i\\), диагональна в собственном базисе \\(A_i\\). Поэтому если \\(A_i\\) коммутирует с \\(A_{i+1}\\), а \\(A_{i+1}\\) коммутирует с \\(A_{i+2}\\), то эти три матрицы оказываются диагональными в одном и том же базисе, и \\(A_i\\) коммутирует с \\(A_{i+2}\\), что запрещено для цикла \\(C_{2025}\\). Противоречие показывает, что размерность 2 невозможна. Итак, минимальная размерность равна 3.",
+      "idea_ids": [
+        "idea-three-dimensional-cycle",
+        "idea-two-dimensional-obstruction"
+      ],
+      "standard_idea_ids": [],
+      "status": "needs_human_review",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 11,
+    "comment": "Putnam A4; условие прямо задаёт цикл как граф коммутирования, а решение сочетает конструкцию и линейно-алгебраический запрет.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "graph_symmetry",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "commutation_graph_representation",
+        "rank_one_orthogonality_construction"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2025-A4-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "url": "https://maa.org/wp-content/uploads/2026/02/2025OfficialSolutions.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Включено потому, что условие задаёт граф коммутирования, равный циклу. Детали общего положения в конструкции требуют human review."
+    ],
+    "relations_status": "base_done"
+  }
+}

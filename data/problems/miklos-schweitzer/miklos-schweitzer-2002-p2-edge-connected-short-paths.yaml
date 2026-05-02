@@ -1,0 +1,149 @@
+{
+  "id": "miklos-schweitzer-2002-p2-edge-connected-short-paths",
+  "title": "Короткие реберно-непересекающиеся пути в k-реберно-связном графе, Schweitzer 2002/2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "k_edge_connected_graph",
+      "edge_disjoint_paths",
+      "two_specified_vertices"
+    ],
+    "methods": [
+      "menger_theorem",
+      "short_path_packing",
+      "edge_connectivity"
+    ],
+    "transformations": [],
+    "goal": [
+      "existence_of_many_short_paths"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [
+      "minimum_edge_cut_at_least_k",
+      "paths_are_pairwise_edge_disjoint"
+    ],
+    "keywords": [
+      "schweitzer_2002_p2",
+      "edge_connectivity",
+      "edge_disjoint_paths",
+      "short_paths"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(G\\) - простой \\(k\\)-реберно-связный граф на \\(n\\) вершинах, а \\(u\\) и \\(v\\) - две различные вершины \\(G\\). Докажите, что существуют \\(k\\) попарно реберно-непересекающихся путей из \\(u\\) в \\(v\\), каждый из которых имеет не более \\(20n/k\\) ребер.",
+        "source_id": "src-miklos-schweitzer-2002-p2-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "graph_cut",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "В любом простом \\(k\\)-реберно-связном \\(n\\)-вершинном графе для любой пары различных вершин \\(u,v\\) можно упаковать \\(k\\) реберно-непересекающихся \\(u\\)-\\(v\\)-путей с равномерной верхней оценкой длины \\(O(n/k)\\), причем в задаче требуется явная константа 20.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "graph_cut",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-menger-plus-length-control",
+      "title": "Усилить теорему Менгера контролем длины",
+      "text": "Обычная теорема Менгера дает \\(k\\) реберно-непересекающихся путей. Содержание задачи в том, что при простоте графа и \\(k\\)-реберной связности можно выбрать такую упаковку без длинных хвостов: если слишком много выбранных путей длинные, их внутренние слои создают слишком много различных вершин или допускают замену более короткими путями.",
+      "tags": [
+        "connectivity",
+        "augmenting_path"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-cut-expansion",
+      "title": "Использовать нижнюю оценку на каждый разделяющий разрез",
+      "text": "Для множества вершин, отделяющего \\(u\\) от \\(v\\), из \\(k\\)-реберной связности следует как минимум \\(k\\) ребер через разрез. Слоевые или потоковые доказательства должны превращать это локальное условие на разрезы в упаковку коротких путей.",
+      "tags": [
+        "cut_counting",
+        "connectivity"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Условие выглядит как усиление реберной версии Менгера с количественным контролем длины путей; без опубликованного решения оставлено на ручную проверку.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "augmenting_path",
+    "cut_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "edge_disjoint_path_packing",
+        "cut_lower_bounds"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2002-p2-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2002-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие; опубликованное решение в индексе для 2002 года не указано.",
+      "Решение не добавлено, потому что требуется ручная проверка количественной константы 20."
+    ],
+    "relations_status": "not_started"
+  }
+}

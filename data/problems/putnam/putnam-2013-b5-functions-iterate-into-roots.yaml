@@ -1,0 +1,159 @@
+{
+  "id": "putnam-2013-b5-functions-iterate-into-roots",
+  "title": "Функции, итерации которых попадают в первые k точек, Putnam 2013 B5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "enumeration"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "functional_digraph",
+      "rooted_forest",
+      "fixed_root_set"
+    ],
+    "methods": [
+      "contraction",
+      "rooted_forest_count",
+      "cayley_formula"
+    ],
+    "transformations": [
+      "function_to_functional_digraph",
+      "collapse_root_set"
+    ],
+    "goal": [
+      "count_functions"
+    ],
+    "auxiliary_graph_type": [
+      "rooted_directed_forest"
+    ],
+    "invariants": [
+      "eventual_hit_of_root_set"
+    ],
+    "keywords": [
+      "putnam_2013_b5",
+      "putnam",
+      "functional_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(X=\\{1,2,\\ldots,n\\}\\), и пусть \\(k\\in X\\). Докажите, что существует ровно \\(k n^{\\,n-1}\\) функций \\(f:X\\to X\\), таких что для каждого \\(x\\in X\\) существует \\(j\\ge 0\\), для которого \\(f^{(j)}(x)\\le k\\). Здесь \\(f^{(j)}\\) обозначает \\(j\\)-ю итерацию \\(f\\), так что \\(f^{(0)}(x)=x\\) и \\(f^{(j+1)}(x)=f(f^{(j)}(x))\\).",
+        "source_id": "src-putnam-2013-B5-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Для функции \\(f:X\\to X\\) нарисуем функциональный ориентированный граф с дугой \\(x\\to f(x)\\) из каждой вершины. Сколько таких функциональных графов на \\(X=\\{1,\\ldots,n\\}\\) имеют свойство: из каждой вершины некоторый направленный путь попадает в множество \\(R=\\{1,\n\\ldots,k\\}\\)? Докажите, что число равно \\(k n^{n-1}\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-root-values-free",
+      "title": "Значения на корневом множестве можно выбрать независимо",
+      "text": "Если две функции совпадают вне \\(R=\\{1,\n\\ldots,k\\}\\), то свойство попадания в \\(R\\) одинаково для обеих: путь до первого попадания в \\(R\\) целиком лежит вне \\(R\\). Поэтому сначала можно зафиксировать значения на \\(R\\), например \\(f(1)=\\cdots=f(k)=1\\), а затем умножить счёт на \\(n^k\\).",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-contract-roots",
+      "title": "Сжатие корней превращает задачу в счёт корневых лесов",
+      "text": "После сжатия \\(R\\) в одну вершину \\(*\\) оставшиеся вершины должны в функциональном графе дойти до \\(*\\). Это ровно ориентированное к корню дерево/лес, и стандартная формула для корневых лесов даёт множитель \\(k n^{n-k-1}\\) перед свободным выбором значений на \\(R\\).",
+      "tags": [
+        "trees"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-rooted-forest",
+      "title": "Решение через функциональные графы и корневые леса",
+      "text": "Обозначим \\(R=\\{1,\n\\ldots,k\\}\\). Важное наблюдение: условие зависит только от значений функции вне \\(R\\). Действительно, если из вершины \\(x\\) путь \\(x,f(x),f^2(x),\\ldots\\) впервые попал в \\(R\\) на шаге \\(j\\), то все предыдущие вершины лежали вне \\(R\\). Поэтому изменение значений функции на самом \\(R\\) не портит и не создаёт путь до первого попадания в \\(R\\). Следовательно, достаточно посчитать функции с фиксированными значениями \\(f(1)=\\cdots=f(k)=1\\), а затем умножить ответ на \\(n^k\\).\n\nТеперь сожмём множество \\(R\\) в один корень \\(*\\). Для функции с указанной фиксацией рассмотрим только вершины \\(*,k+1,\n\\ldots,n\\). Каждая вершина вне \\(*\\) либо указывает на другую внешнюю вершину, либо на одну из \\(k\\) вершин множества \\(R\\), что после сжатия означает дугу в \\(*\\). Условие задачи становится таким: из каждой внешней вершины направленный путь должен прийти в \\(*\\). Иными словами, после забывания ориентации это корневое дерево на \\(n-k+1\\) с корнем \\(*\\), но каждое ребро, входящее в \\(*\\), можно поднять к одной из \\(k\\) исходных вершин из \\(R\\).\n\nСтандартная формула для корневых лесов на \\(n\\) помеченных вершинах с фиксированным множеством из \\(k\\) корней утверждает, что таких лесов равно\n\\[\n k n^{\\,n-k-1}.\n\\]\nЕё можно получить, например, из формулы Кэли с дополнительным корнем: добавить новую вершину \\(*\\), соединить её с каждым из \\(k\\) корней, а затем применить вариант кода Прюфера/матричной теоремы о деревьях к деревьям, в которых при удалении \\(*\\) остаётся лес, ориентированный к корням.\n\nЗначит, при фиксированных значениях на \\(R\\) число допустимых функций равно \\(k n^{n-k-1}\\). Возвращая свободный выбор \\(f(1),\n\\ldots,f(k)\\), получаем\n\\[\n n^k\\cdot k n^{n-k-1}=k n^{n-1},\n\\]\nчто и требовалось.",
+      "idea_ids": [
+        "idea-root-values-free",
+        "idea-contract-roots"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 11,
+    "comment": "Putnam B5; естественная функционально-графовая модель и стандартный счёт корневых лесов.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "trees",
+    "graph_model",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "functional_graphs",
+        "rooted_forest_count"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2013-B5-kedlaya",
+      "role": "problem_and_solutions_archive",
+      "status": "source_verified",
+      "url": "https://kskedlaya.org/putnam-archive/2013.pdf",
+      "solution_url": "https://kskedlaya.org/putnam-archive/2013s.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Архивное решение упоминает корневые деревья/леса и формулу Кэли; карточка разворачивает именно эту стандартную графовую интерпретацию."
+    ],
+    "relations_status": "base_done"
+  }
+}

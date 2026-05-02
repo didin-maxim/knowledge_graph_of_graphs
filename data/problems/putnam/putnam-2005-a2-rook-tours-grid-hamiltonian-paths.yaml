@@ -1,0 +1,152 @@
+{
+  "id": "putnam-2005-a2-rook-tours-grid-hamiltonian-paths",
+  "title": "Ладейные обходы прямоугольника 3 на n, Putnam 2005 A2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "counting"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "hamiltonian_path",
+      "rectangular_grid"
+    ],
+    "methods": [
+      "bijection",
+      "recurrence_by_last_column"
+    ],
+    "transformations": [
+      "rook_tour_to_grid_graph_hamiltonian_path"
+    ],
+    "goal": [
+      "count_paths"
+    ],
+    "auxiliary_graph_type": [
+      "three_by_n_grid_graph"
+    ],
+    "invariants": [
+      "vertical_middle_entries",
+      "endpoint_column"
+    ],
+    "keywords": [
+      "putnam_2005_a2",
+      "rook_tour",
+      "hamiltonian_paths",
+      "three_by_n_grid"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(S=\\{(a,b): a=1,2,\\ldots,n,\\ b=1,2,3\\}\\). Ладейным обходом \\(S\\) называется ломаная через точки \\(p_1,p_2,\\ldots,p_{3n}\\), в которой каждая \\(p_i\\) принадлежит \\(S\\), соседние точки находятся на расстоянии 1, и каждая точка множества \\(S\\) встречается ровно один раз. Сколько существует таких обходов, которые начинаются в \\((1,1)\\) и заканчиваются в \\((n,1)\\)?",
+        "source_id": "src-putnam-2005-A2-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Рассмотрим решеточный граф \\(P_n\\square P_3\\) с вершинами \\((a,b)\\), где \\(1\\le a\\le n\\), \\(1\\le b\\le3\\). Сколько в нем гамильтоновых путей из \\((1,1)\\) в \\((n,1)\\)?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "hamiltonian_path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-even-subset-bijection",
+      "title": "Путь кодируется четным подмножеством столбцов",
+      "text": "Для каждого обхода отмечаем столбцы, в которых путь входит в среднюю клетку вертикально сверху или снизу. Получается четное множество столбцов, обязательно содержащее \\(n\\); обратно такое множество однозначно восстанавливает змейку.",
+      "tags": [
+        "goal_counting",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kedlaya-bijection",
+      "title": "Биекция с четными подмножествами",
+      "text": "При \\(n=1\\) обходов из \\((1,1)\\) в \\((1,1)\\), проходящих все три точки ровно по одному разу, нет. Далее считаем \\(n\\ge2\\).\n\nБудем рассматривать ладейный обход как гамильтонов путь в графе \\(3\\times n\\). Для данного пути \\(P\\) отметим столбец \\(i\\), если в нем путь содержит одно из направленных вертикальных ребер \\((i,1)\\to(i,2)\\) или \\((i,3)\\to(i,2)\\). Обозначим множество отмеченных столбцов через \\(S(P)\\).\n\nДва свойства этого множества видны из формы пути. Во-первых, \\(n\\in S(P)\\): путь заканчивается в нижней клетке последнего столбца, поэтому перед финальным горизонтальным или вертикальным прохождением последний столбец вынужденно имеет вход в среднюю клетку указанного типа. Во-вторых, число отмеченных столбцов четно. Интуитивно путь переключает, по какой из двух внешних строк идет основной проход; чтобы стартовать в нижней строке и закончить снова в нижней строке, число переключений должно быть четным.\n\nОбратно пусть дано четное множество\n\\[\nS=\\{a_1<a_2<\\cdots<a_{2r}=n\\}\\subseteq\\{1,2,\n\\ldots,n\\}.\n\\]\nОно однозначно задает обход: в отмеченных столбцах путь по очереди проходит через клетки \\((a_i,2+(-1)^i)\\) и через среднюю клетку \\((a_i,2)\\), а между соседними отмеченными столбцами идет единственным возможным горизонтальным коридором, заполняя еще не использованные клетки без самопересечений. Получается ровно одна змейка из \\((1,1)\\) в \\((n,1)\\), и при построении явно восстанавливаются все ребра пути. Это обратная операция к отображению \\(P\\mapsto S(P)\\).\n\nИтак, число обходов равно числу четных подмножеств множества \\(\\{1,\n\\ldots,n\\}\\), которые содержат \\(n\\). После фиксации элемента \\(n\\) среди оставшихся \\(n-1\\) элементов надо выбрать подмножество нечетной мощности; таких подмножеств ровно половина от всех, то есть \\(2^{n-2}\\). Ответ: \\(0\\) при \\(n=1\\) и \\(2^{n-2}\\) при \\(n\\ge2\\).",
+      "idea_ids": [
+        "idea-even-subset-bijection"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "hamiltonian_path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 9,
+    "comment": "Putnam A2; основной труд - увидеть корректное кодирование гамильтоновых путей в решетке 3 на n.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bijection_with_even_subsets",
+        "hamiltonian_path_encoding"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2005-A2-kedlaya",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "The Kedlaya archive also gives a recurrence using endpoints in the last column and cites Hamiltonian paths in rectangular grid graphs."
+    ],
+    "relations_status": "base_done"
+  }
+}

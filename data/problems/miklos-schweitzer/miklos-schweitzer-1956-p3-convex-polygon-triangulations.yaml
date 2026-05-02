@@ -1,0 +1,176 @@
+{
+  "id": "miklos-schweitzer-1956-p3-convex-polygon-triangulations",
+  "title": "Триангуляции выпуклого многоугольника, Schweitzer 1956/3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "enumerative_combinatorics"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "convex_polygon",
+      "noncrossing_diagonals",
+      "triangulation",
+      "outerplanar_graph"
+    ],
+    "methods": [
+      "root_side_decomposition",
+      "recurrence",
+      "generating_functions",
+      "boundary_triangle_removal"
+    ],
+    "transformations": [
+      "triangulation_to_outerplanar_maximal_graph",
+      "triangulation_to_recursive_split"
+    ],
+    "goal": [
+      "count_all_triangulations",
+      "count_triangulations_with_each_triangle_touching_boundary"
+    ],
+    "auxiliary_graph_type": [
+      "outerplanar_graph",
+      "dual_tree"
+    ],
+    "invariants": [
+      "number_of_vertices",
+      "chosen_base_side",
+      "root_triangle"
+    ],
+    "keywords": [
+      "schweitzer_1956_p3",
+      "triangulation",
+      "convex_polygon",
+      "catalan_number",
+      "outerplanar_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Триангуляцией выпуклого замкнутого многоугольника называется разбиение его на треугольники диагоналями, не пересекающимися во внутренних точках. Найдите число всех триангуляций выпуклого \\(n\\)-угольника, а также число тех триангуляций, в которых каждый треугольник имеет хотя бы одну сторону, общую с данным \\(n\\)-угольником.",
+        "source_id": "src-miklos-schweitzer-1956-p3-old-book",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Формулировка через внешнепланарные графы",
+        "text": "Посчитать максимальные внешнепланарные графы на фиксированном цикле из \\(n\\) вершин: сначала все такие графы, а затем те, у которых каждая внутренняя грань-треугольник содержит хотя бы одно ребро исходного внешнего цикла.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-root-triangle",
+      "title": "Фиксировать сторону и корневой треугольник",
+      "text": "Выберите сторону \\(AB\\). В любой триангуляции есть единственный треугольник с этой стороной; его третья вершина \\(C_k\\) разбивает многоугольник на две независимые меньшие задачи. Так возникает свертка для чисел триангуляций.",
+      "tags": [
+        "planar_graphs",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-boundary-touching",
+      "title": "Удалять крайний треугольник",
+      "text": "Для специального условия удобно сначала считать триангуляции многоугольника с выделенной базой, где каждый треугольник имеет сторону исходного многоугольника, отличную от базы. У базы ровно два возможных крайних треугольника; удаление одного из них уменьшает число сторон на один и дает рекурсию \\(u_n=2u_{n-1}\\).",
+      "tags": [
+        "induction",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-catalan-and-boundary",
+      "title": "Рекурсии и производящая функция",
+      "text": "Обозначим через \\(a_n\\) число всех триангуляций выпуклого \\(n\\)-угольника и положим \\(a_2=1\\). Если фиксировать сторону \\(AB\\) и выбирать третью вершину \\(C_k\\) треугольника, содержащего \\(AB\\), то две оставшиеся части имеют \\(k+1\\) и \\(n-k\\) сторон. Поэтому \\(a_n=\\sum_{k=1}^{n-2} a_{k+1}a_{n-k}\\). Это стандартная рекурсия Каталана, откуда \\(a_n=\\frac{1}{n-1}\\binom{2n-4}{n-2}\\). Для второго подсчета введем \\(u_n\\): число триангуляций \\(n\\)-угольника с выделенной базой, в которых каждый треугольник имеет сторону исходного многоугольника, отличную от базы. Тогда \\(u_3=1\\), а при \\(n\\ge4\\) у базы можно удалить один из двух крайних треугольников, получая \\(u_n=2u_{n-1}\\), значит \\(u_n=2^{n-3}\\). Возвращаясь к исходному \\(n\\)-угольнику и суммируя по третьей вершине корневого треугольника при фиксированной стороне, получаем для \\(n\\ge4\\) число специальных триангуляций \\(n\\cdot 2^{n-5}\\); для \\(n=3\\) оно равно \\(1\\).",
+      "tags": [
+        "planar_graphs",
+        "double_counting",
+        "induction",
+        "goal_counting"
+      ],
+      "status": "ai_checked",
+      "source_id": "src-miklos-schweitzer-1956-p3-old-book",
+      "standard_idea_ids": [
+        "induction",
+        "double_counting"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Классическая каталанова рекурсия плюс отдельный аккуратный подсчет специального подкласса триангуляций.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "trees",
+    "induction",
+    "double_counting",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "rooted_polygon_triangulation_recurrence"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-1956-p3-old-book",
+      "role": "problem_and_solution_old_book",
+      "url": "https://real-eod.mtak.hu/14558/1/AkademiaiKiado_007070.pdf",
+      "status": "source_verified",
+      "pages": [
+        "PDF page 27: statement",
+        "PDF pages 252-254: solution"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "OCR путает латинскую n с кириллической и местами искажает формулы, но рекурсии и итоговые ответы читаются по PDF."
+    ],
+    "relations_status": "not_started"
+  }
+}

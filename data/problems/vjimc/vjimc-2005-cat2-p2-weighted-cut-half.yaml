@@ -1,0 +1,144 @@
+{
+  "id": "vjimc-2005-cat2-p2-weighted-cut-half",
+  "title": "Разрез веса не меньше половины полной суммы, VJIMC 2005 Category II P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "weighted_directed_complete_graph",
+      "cut"
+    ],
+    "methods": [
+      "maximal_cut",
+      "local_improvement",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "matrix_to_weighted_cut"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "maximum_cut_weight"
+    ],
+    "keywords": [
+      "vjimc_2005_cat2_p2",
+      "weighted_cut"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\((a_{i,j})_{i,j=1}^n\\) - вещественная матрица, причём \\(a_{i,i}=0\\) для всех \\(i\\). Докажите, что существует множество индексов \\(J\\subset\\{1,2,\\ldots,n\\}\\), для которого\n\\[\n\\sum_{i\\in J,\\ j\\notin J}a_{i,j}+\\sum_{i\\notin J,\\ j\\in J}a_{i,j}\\ge \\frac12\\sum_{i,j=1}^n a_{i,j}.\n\\]",
+        "source_id": "src-vjimc-2005-cat2-p2-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "В полном ориентированном взвешенном графе без петель вес дуги \\(i\\to j\\) равен \\(a_{i,j}\\). Докажите, что вершины можно разбить на две части так, чтобы суммарный вес дуг, идущих между частями в обе стороны, был не меньше половины суммарного веса всех дуг.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "graph_cut"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-maximal-cut-local-optimum",
+      "title": "Берём разрез максимального веса",
+      "text": "Если перенести одну вершину через максимальный разрез, вес не может увеличиться. Эти локальные неравенства для всех вершин дают оценки на веса внутри обеих частей.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-maximal-cut",
+      "title": "Максимальный разрез и перенос одной вершины",
+      "text": "Для \\(I\\subset\\{1,\\ldots,n\\}\\) обозначим через \\(F(I)\\) сумму всех элементов матрицы, стоящих по разные стороны разреза:\n\\[\nF(I)=\\sum_{i\\in I,j\\notin I}a_{i,j}+\\sum_{i\\notin I,j\\in I}a_{i,j}.\n\\]\nВыберем множество \\(J\\), на котором \\(F\\) максимально.\n\nПусть \\(k\\in J\\). Если удалить \\(k\\) из \\(J\\), значение \\(F\\) не возрастёт. Поэтому\n\\[\n0\\le F(J)-F(J\\setminus\\{k\\})=\\sum_{j\\notin J}a_{k,j}+\\sum_{i\\notin J}a_{i,k}-\\sum_{j\\in J}a_{k,j}-\\sum_{i\\in J}a_{i,k}.\n\\]\nСуммируя по всем \\(k\\in J\\), получаем\n\\[\n\\sum_{i\\in J,j\\in J}a_{i,j}\\le \\frac12F(J).\n\\]\nАналогично, если \\(k\\notin J\\), то добавление \\(k\\) к \\(J\\) не увеличивает \\(F\\), и после суммирования по всем таким \\(k\\) выходит\n\\[\n\\sum_{i\\notin J,j\\notin J}a_{i,j}\\le \\frac12F(J).\n\\]\nТеперь полная сумма всех элементов матрицы равна сумме трёх частей: внутри \\(J\\), внутри дополнения и между частями. Поэтому\n\\[\n\\sum_{i,j}a_{i,j}\\le \\frac12F(J)+\\frac12F(J)+F(J)=2F(J).\n\\]\nСледовательно, \\(F(J)\\ge\\frac12\\sum_{i,j}a_{i,j}\\), что и требовалось доказать.",
+      "idea_ids": [
+        "idea-maximal-cut-local-optimum"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Стандартный максимальный разрез с локальными неравенствами.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_choice",
+    "goal_existence",
+    "graph_model"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "maximal_cut"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vjimc-2005-cat2-p2-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Добавлено при проходе по официальному архиву VJIMC."
+    ],
+    "relations_status": "base_done"
+  }
+}

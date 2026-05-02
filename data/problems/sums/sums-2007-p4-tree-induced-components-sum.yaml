@@ -1,0 +1,132 @@
+{
+  "id": "sums-2007-p4-tree-induced-components-sum",
+  "title": "Сумма числа компонент по всем k-вершинным подмножествам дерева, SUMS 2007/4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "tree_counting"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "induced_subgraph",
+      "connected_components",
+      "k_vertex_subset"
+    ],
+    "methods": [
+      "forest_components_formula",
+      "double_counting_edges"
+    ],
+    "transformations": [
+      "components_to_vertices_minus_edges"
+    ],
+    "goal": [
+      "prove_identity"
+    ],
+    "auxiliary_graph_type": [
+      "forest"
+    ],
+    "invariants": [
+      "tree_has_n_minus_one_edges"
+    ],
+    "keywords": [
+      "SUMS_2007_4",
+      "tree",
+      "induced_forest",
+      "components"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(T\\) - дерево с \\(n\\) вершинами. Зафиксируем \\(1\\le k\\le n\\), и пусть \\(S_k\\) - множество всех \\(k\\)-элементных подмножеств множества вершин \\(T\\). Для \\(S\\in S_k\\) обозначим через \\(c(S)\\) число компонент связности подграфа, индуцированного вершинами из \\(S\\). Докажите, что \\[\\sum_{S\\in S_k} c(S)=(n-k+1)\\binom{n-1}{k-1}.\\]",
+        "source_id": "src-sums-2007-p4-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "connected_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-induced-forest-components",
+      "title": "В лесу число компонент равно вершины минус рёбра",
+      "text": "Индуцированный подграф дерева снова является лесом. Поэтому для \\(k\\)-вершинного множества \\(S\\) выполнено \\(c(S)=k-e(S)\\), где \\(e(S)\\) - число рёбер дерева с обоими концами в \\(S\\).",
+      "tags": [
+        "trees",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-edge-count",
+      "title": "Двойной подсчёт рёбер внутри выбранного множества",
+      "text": "Для каждого \\(S\\in S_k\\) индуцированный подграф является лесом, значит \\(c(S)=k-e(S)\\). Суммируя по всем \\(S\\), получаем \\[\\sum_{S\\in S_k}c(S)=k\\binom nk-\\sum_{S\\in S_k}e(S).\\] В дереве ровно \\(n-1\\) рёбер. Каждое фиксированное ребро попадает в индуцированный подграф ровно для тех \\(S\\), которые содержат оба его конца и ещё \\(k-2\\) вершин из оставшихся \\(n-2\\), то есть \\(\\binom{n-2}{k-2}\\) раз. Поэтому \\[\\sum_{S\\in S_k}e(S)=(n-1)\\binom{n-2}{k-2}.\\] Остаётся упростить: \\[k\\binom nk=n\\binom{n-1}{k-1},\\qquad (n-1)\\binom{n-2}{k-2}=(k-1)\\binom{n-1}{k-1}.\\] Разность равна \\((n-k+1)\\binom{n-1}{k-1}\\).",
+      "idea_ids": [
+        "idea-induced-forest-components"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "source_verified",
+      "source_id": "src-sums-2007-p4-official"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 3,
+    "comment": "Короткая задача на формулу для леса и двойной подсчёт.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "double_counting",
+    "degree_counting",
+    "goal_counting"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "forest_components_formula",
+        "edge_double_counting"
+      ],
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-sums-2007-p4-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "relations_status": "not_started",
+    "graph_theory_duplicate_removed": true
+  }
+}

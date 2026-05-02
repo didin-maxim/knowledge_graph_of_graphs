@@ -1,0 +1,146 @@
+{
+  "id": "miklos-schweitzer-2008-p3-tame-bipartite-graphs",
+  "title": "Максимальное число ребер в ручных двудольных графах, Schweitzer 2008/3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "ordered_bipartition",
+      "forbidden_ordered_path",
+      "edge_count"
+    ],
+    "methods": [
+      "extremal_graph_theory",
+      "forbidden_ordered_subgraph",
+      "construction_and_upper_bound"
+    ],
+    "transformations": [],
+    "goal": [
+      "determine_growth_exponent"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph",
+      "ordered_graph"
+    ],
+    "invariants": [
+      "no_forbidden_path_x_i_y_j_x_k_y_l_with_j_less_l_and_i_plus_j_greater_k_plus_l"
+    ],
+    "keywords": [
+      "schweitzer_2008_p3",
+      "tame_bipartite_graph",
+      "ordered_bipartite_graph",
+      "extremal_edges"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Двудольный граф с долями вершин \\(\\{x_1,\\ldots,x_n\\}\\) и \\(\\{y_1,\\ldots,y_n\\}\\), то есть с ребрами вида \\(x_i y_j\\), назовем ручным, если в нем нет пути \\(x_i y_j x_k y_\\ell\\), где \\(i,j,k,\\ell\\in\\{1,\\ldots,n\\}\\), \\(j<\\ell\\) и \\(i+j>k+\\ell\\). Найдите инфимум тех вещественных чисел \\(\\alpha\\), для которых существует константа \\(c=c(\\alpha)>0\\) такая, что для всех ручных графов \\(e\\le c n^\\alpha\\), где \\(e\\) - число ребер, а \\(n\\) - половина числа вершин.",
+        "source_id": "src-miklos-schweitzer-2008-p3-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Экстремальная формулировка",
+        "text": "Определить точный показатель роста максимального числа ребер в упорядоченных двудольных графах на \\(n+n\\) вершинах, запрещающих специальный упорядоченный путь длины 3.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-ordered-forbidden-path",
+      "title": "Читать запрет как условие монотонности соседств",
+      "text": "Запрещенный путь говорит: если два ребра имеют общий промежуточный переход через \\(y_j\\) и \\(x_k\\), то при переходе к большему индексу \\(\\ell\\) нельзя получить слишком большой сдвиг суммы индексов. Это должно ограничивать форму множеств соседей в матрице смежности.",
+      "tags": [
+        "extremal_graph_theory",
+        "forbidden_triangle"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-upper-and-construction",
+      "title": "Нужны обе стороны для показателя",
+      "text": "Так как требуется инфимум \\(\\alpha\\), задача просит не только верхнюю оценку на \\(e\\), но и семейство ручных графов с большим числом ребер, показывающее оптимальность показателя.",
+      "tags": [
+        "goal_exact_bound",
+        "construction"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "Экстремальная задача для упорядоченных двудольных графов с запрещенным путем; без опубликованного решения оставлена на ручную проверку.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "forbidden_ordered_path_extremal_problem"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2008-p3-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2008-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Английский PDF содержит условие; опубликованное решение в индексе для 2008 года не указано.",
+      "В идеях не зафиксирован точный показатель, потому что он требует полноценного решения."
+    ],
+    "relations_status": "not_started"
+  }
+}

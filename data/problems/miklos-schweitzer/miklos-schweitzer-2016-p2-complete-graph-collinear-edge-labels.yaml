@@ -1,0 +1,126 @@
+{
+  "id": "miklos-schweitzer-2016-p2-complete-graph-collinear-edge-labels",
+  "title": "Метки ребер полного графа и коллинеарность на треугольниках, Miklos Schweitzer 2016 P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_labeling",
+      "connected_color_classes",
+      "triangles"
+    ],
+    "methods": [
+      "graph_modeling",
+      "triangle_constraints",
+      "connectivity_argument"
+    ],
+    "goal": [
+      "prove_collinearity"
+    ],
+    "keywords": [
+      "schweitzer_2016_p2",
+      "complete_graph",
+      "edge_labels",
+      "collinear_points"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Отображение ребер в евклидово пространство",
+        "text": "Пусть \\(K=(V,E)\\) - конечный простой полный граф, а \\(d\\) - положительное целое число. Пусть \\(\\varphi:E\\to\\mathbb R^d\\) - отображение множества ребер в евклидово пространство, такое что прообраз любой точки из образа задает связный граф на всем множестве вершин \\(V\\), а точки, сопоставленные ребрам любого треугольника в \\(K\\), коллинеарны. Докажите, что образ \\(\\varphi\\) лежит на одной прямой.",
+        "source_id": "src-miklos-schweitzer-2016-p2-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+        },
+        "definition_ids": [
+          "complete_graph",
+          "connected_graph"
+        ],
+        "review_notes": "Imported from an open Schweitzer PDF; translation and self-containedness need human review."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Ребра полного графа раскрашены точками пространства \\(\\mathbb R^d\\). Каждый цветовой класс, если понимать его как остовный подграф на \\(V\\), связен. Кроме того, три цвета на ребрах любого треугольника лежат на одной прямой. Нужно доказать, что все использованные цвета лежат на одной прямой.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "chromatic_number",
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-propagate-line-through-triangles",
+      "title": "Коллинеарность распространяется по связным цветовым классам",
+      "text": "Если два цвета уже задают прямую, то связность прообразов должна позволить через треугольники протащить ограничение на третий цвет. Главная трудность - аккуратно показать, что любой новый цвет связан цепочкой треугольников с уже выбранными двумя цветами.",
+      "tags": [
+        "connectivity",
+        "graph_model",
+        "goal_proof"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Условие элементарно формулируется на полном графе, но доказательство требует сильного распространения локального треугольного ограничения.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "connectivity",
+    "coloring",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "triangle_collinearity_propagation"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2016-p2-official",
+      "role": "official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2016-eng.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Фраза PDF про прообраз точки прочитана как связность соответствующего остовного подграфа; это нужно проверить человеком по оригинальному набранному тексту/венгерской версии."
+    ],
+    "relations_status": "not_started"
+  }
+}

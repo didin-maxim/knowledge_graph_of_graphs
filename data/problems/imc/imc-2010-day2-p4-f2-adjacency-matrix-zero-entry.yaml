@@ -1,0 +1,162 @@
+{
+  "id": "imc-2010-day2-p4-f2-adjacency-matrix-zero-entry",
+  "title": "Столбцы степеней матрицы смежности над F2, IMC 2010 Day 2 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "advanced"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "symmetric_zero_diagonal_matrix",
+      "adjacency_matrix_over_f2",
+      "walk_parity_vector"
+    ],
+    "methods": [
+      "bilinear_form_over_f2",
+      "induction_on_power",
+      "contradiction"
+    ],
+    "transformations": [
+      "matrix_to_simple_graph_adjacency_matrix"
+    ],
+    "goal": [
+      "prove_no_column_is_all_ones"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph_with_f2_adjacency_matrix"
+    ],
+    "invariants": [
+      "alternating_bilinear_form_value",
+      "self_dot_equals_sum_mod_2"
+    ],
+    "keywords": [
+      "imc_2010_day2_p4",
+      "f2_adjacency_matrix",
+      "walk_parity"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(A\\) — симметричная матрица размера \\(m\\times m\\) над полем из двух элементов, причём все диагональные элементы \\(A\\) равны нулю. Докажите, что для каждого положительного целого \\(n\\) каждый столбец матрицы \\(A^n\\) содержит нулевой элемент.",
+        "source_id": "src-imc-2010-day2-p4-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Эквивалентно, пусть \\(A\\) — матрица смежности простого неориентированного графа над \\(\\mathbb F_2\\). Для любой вершины \\(v\\) и любого \\(n\\ge1\\) не все вершины являются концами нечётного числа маршрутов длины \\(n\\), начинающихся в \\(v\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-f2-form-kills-aw",
+      "title": "Нулевая диагональ делает \\((w,Aw)=0\\)",
+      "text": "Для симметричной матрицы над \\(\\mathbb F_2\\) с нулевой диагональю сумма \\(w^TAw\\) состоит из попарно равных внедиагональных слагаемых, которые взаимно уничтожаются по модулю \\(2\\).",
+      "tags": [
+        "invariant",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-all-ones-implies-isotropic",
+      "title": "Если \\(A^n v=u\\), то \\((v,v)=0\\)",
+      "text": "Индукция по \\(n\\) переносит равенство с большой степени \\(A\\) к выражениям вида \\((w,Aw)\\) или \\((w,w)\\). Это заставляет исходный вектор быть изотропным относительно формы \\((x,x)\\).",
+      "tags": [
+        "induction",
+        "invariant"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Билинейная форма над \\(\\mathbb F_2\\)",
+      "text": "Обозначим через \\(e_k\\) стандартный базисный столбец, а через \\(u\\) столбец, все элементы которого равны \\(1\\). \\(k\\)-й столбец матрицы \\(A^n\\) равен \\(A^n e_k\\), поэтому надо доказать, что \\(A^n e_k\\ne u\\) для всех \\(k\\) и \\(n\\ge1\\).\n\nВведём над \\(\\mathbb F_2^m\\) билинейную форму\n\\[\n(x,y)=x^Ty=x_1y_1+\\cdots+x_my_m.\n\\]\nДля любого \\(x\\) верно \\((x,x)=(x,u)\\), потому что в поле \\(\\mathbb F_2\\) имеем \\(x_i^2=x_i\\). Кроме того, для любого \\(w\\)\n\\[\n(w,Aw)=w^TAw=0.\n\\]\nДействительно, диагональные слагаемые равны нулю из-за нулевой диагонали \\(A\\), а внедиагональные слагаемые \\(a_{ij}w_iw_j\\) и \\(a_{ji}w_jw_i\\) попарно совпадают и в сумме дают \\(0\\) по модулю \\(2\\).\n\nДокажем лемму: если для некоторого вектора \\(v\\) и некоторого \\(n\\ge1\\) выполнено \\(A^n v=u\\), то \\((v,v)=0\\). Индукция идёт по \\(n\\). Если \\(n=2r+1\\) нечётно, положим \\(w=A^r v\\). Тогда\n\\[\n(v,v)=(v,u)=(v,A^n v)=(A^r v,A^{r+1}v)=(w,Aw)=0.\n\\]\nЕсли \\(n=2r\\) чётно, положим \\(w=A^r v\\). Из \\(A^r w=A^n v=u\\) и индукционного предположения для меньшей степени \\(r\\) получаем \\((w,w)=0\\). Поэтому\n\\[\n(v,v)=(v,u)=(v,A^n v)=(A^r v,A^r v)=(w,w)=0.\n\\]\nЛемма доказана.\n\nТеперь предположим противное: некоторый столбец \\(A^n\\) состоит из одних единиц. Тогда для некоторого \\(k\\) имеем \\(A^n e_k=u\\). По лемме \\((e_k,e_k)=0\\). Но \\((e_k,e_k)=1\\), противоречие. Значит, каждый столбец каждой положительной степени \\(A\\) имеет хотя бы один нулевой элемент.",
+      "idea_ids": [
+        "idea-f2-form-kills-aw",
+        "idea-all-ones-implies-isotropic"
+      ],
+      "standard_idea_ids": [
+        "invariant",
+        "induction"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_p6",
+    "local_score": 9,
+    "comment": "Линейная алгебра над \\(\\mathbb F_2\\); графовая интерпретация как матрица смежности полезна, но решение остаётся алгебраическим.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "parity_coloring",
+    "invariant",
+    "induction",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "f2_bilinear_form",
+        "matrix_adjacency_interpretation"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2010-day2-p4-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Included as graph_in_solution/advanced: the graph model is the simple graph whose adjacency matrix is A over F2."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": false
+  }
+}

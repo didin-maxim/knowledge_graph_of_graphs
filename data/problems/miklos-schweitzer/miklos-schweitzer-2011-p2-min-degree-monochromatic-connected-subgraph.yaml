@@ -1,0 +1,138 @@
+{
+  "id": "miklos-schweitzer-2011-p2-min-degree-monochromatic-connected-subgraph",
+  "title": "Большой одноцветный связный подграф при минимальной степени 3n/4, Miklos Schweitzer 2011 P2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "graph_in_solution"
+    ]
+  },
+  "language": "ru",
+  "status": "ai_checked",
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "edge_coloring",
+      "minimum_degree",
+      "monochromatic_connected_subgraph"
+    ],
+    "methods": [
+      "connected_components_in_color",
+      "cut_argument",
+      "degree_counting"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "keywords": [
+      "schweitzer_2011_p2",
+      "minimum_degree",
+      "monochromatic_connected_subgraph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Двухцветная раскраска ребер",
+        "text": "Пусть \\(G\\) - простой граф с \\(n\\) вершинами и минимальной степенью \\(\\delta(G)\\ge 3n/4\\). Докажите, что при любой раскраске ребер графа \\(G\\) в два цвета существует связный подграф с по крайней мере \\(\\delta(G)+1\\) вершинами, все ребра которого имеют один цвет.",
+        "source_id": "src-miklos-schweitzer-2011-p2-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "В каждом 2-раскрашенном по ребрам простом графе порядка \\(n\\) с \\(\\delta(G)\\ge 3n/4\\) одна из одноцветных компонент содержит не меньше \\(\\delta(G)+1\\) вершин.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-if-one-color-disconnected",
+      "title": "Если один цвет не связен, все ребра разреза имеют второй цвет",
+      "text": "Если красный граф не содержит остовной связной компоненты, то есть разбиение \\(V=A\\cup B\\) без красных ребер между частями. Все ребра разреза синие. Для вершины из меньшей части высокая минимальная степень заставляет ее и всех ее соседей попасть в одну синюю компоненту.",
+      "tags": [
+        "connectivity",
+        "cut_counting",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-cut-degree",
+      "title": "Разрез и общие синие соседи",
+      "text": "Если красные ребра содержат связный остовный подграф, то утверждение очевидно. Иначе вершины можно разбить на две непустые части \\(A,B\\) так, что все ребра между ними, если они есть, синие. Пусть \\(|A|\\le n/2\\), возьмем \\(x\\in A\\). Все соседи \\(x\\) в \\(B\\) соединены с \\(x\\) синими ребрами. Если \\(y\\in A\\) - сосед \\(x\\), то у каждой из вершин \\(x,y\\) не меньше \\(\\delta(G)-(|A|-1)\\) соседей в \\(B\\). Эти два множества соседей пересекаются, потому что их суммарный размер больше \\(|B|\\) при \\(\\delta(G)\\ge 3n/4\\) и \\(|A|\\le n/2\\). Значит, \\(x\\) и \\(y\\) связаны синим путем длины 2 через общую вершину из \\(B\\). Следовательно, вершина \\(x\\) и все ее соседи лежат в одной синей компоненте. Их не меньше \\(1+d(x)\\ge \\delta(G)+1\\), что и требовалось.",
+      "idea_ids": [
+        "idea-if-one-color-disconnected"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "После выбора цвета без остовной компоненты работает короткий подсчет степеней через разрез.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "connectivity",
+    "degree_counting",
+    "cut_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "monochromatic_component_cut_argument"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2011-p2-official",
+      "role": "official_statement_and_hungarian_solution",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2011-meg.pdf",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Условие сверено по английскому переводу Beni Bogosel; решение следует венгерскому официальному отчету."
+    ],
+    "relations_status": "not_started"
+  }
+}

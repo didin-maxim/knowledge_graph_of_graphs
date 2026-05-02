@@ -1,0 +1,163 @@
+{
+  "id": "imc-2018-day2-p8-frog-lattice-paths",
+  "title": "Пути лягушки в решётчатой области, IMC 2018 Day 2 P8",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Fedor Petrov",
+      "status": "ai_checked"
+    },
+    {
+      "name": "Anatoly Vershik",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_lattice_graph",
+      "lattice_path",
+      "boundary_condition"
+    ],
+    "methods": [
+      "coordinate_projection",
+      "recurrence",
+      "reflection_like_correction"
+    ],
+    "transformations": [
+      "three_dimensional_region_to_two_dimensional_lattice_graph"
+    ],
+    "goal": [
+      "count_paths"
+    ],
+    "auxiliary_graph_type": [
+      "directed_acyclic_graph"
+    ],
+    "invariants": [
+      "number_of_steps",
+      "coordinate_sum"
+    ],
+    "keywords": [
+      "imc_2018_day2_p8",
+      "lattice_paths",
+      "catalan_generalization"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(\\Omega=\\{(x,y,z)\\in\\mathbb Z^3: y+1\\ge x\\ge y\\ge z\\ge0\\}\\). Лягушка прыгает по точкам множества \\(\\Omega\\) прыжками длины \\(1\\). Для каждого положительного целого \\(n\\) определите число путей, которыми лягушка может попасть из \\((0,0,0)\\) в \\((n,n,n)\\) ровно за \\(3n\\) прыжков.",
+        "source_id": "src-imc-2018-day2-p8-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Рассмотрим ориентированный граф на точках \\((u,v)\\in\\mathbb Z^2\\), где \\(v\\ge0\\) и \\(u\\ge2v\\); из каждой точки разрешены рёбра \\((u,v)\\to(u+1,v)\\) и \\((u,v)\\to(u,v+1)\\), если новая точка остаётся в области. Найдите число ориентированных путей из \\((0,0)\\) в \\((2n,n)\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-project-to-two-coordinates",
+      "title": "Проекция сохраняет допустимые пути",
+      "text": "Отображение \\((x,y,z)\\mapsto(x+y,z)\\) переводит область в \\(v\\ge0, u\\ge2v\\) и превращает допустимые минимальные пути в обычные пути с шагами вправо и вверх.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-binomial-correction-boundary",
+      "title": "Биномиальная функция с поправкой зануляется на границе",
+      "text": "Число путей удовлетворяет рекурсии Паскаля. Комбинация \\(\\binom{u+v}{v}-2\\binom{u+v}{v-1}\\) имеет правильное начальное значение и обращается в ноль на запрещающей границе \\(u=2v-1\\).",
+      "tags": [
+        "invariant"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Рекурсия Паскаля на ориентированном решётчатом графе",
+      "text": "Ответ:\n\\\\[\n\\\\frac{1}{2n+1}\\\\binom{3n}{n}.\n\\\\]\n\nРассмотрим отображение\n\\\\[\n\\\\pi(x,y,z)=(x+y,z).\n\\\\]\nИз условий \\\\(y+1\\\\ge x\\\\ge y\\\\ge z\\\\ge0\\\\) следует, что \\\\(v=z\\\\ge0\\\\), а \\\\(u=x+y\\\\ge2z=2v\\\\). Обратно, для всякой точки \\\\((u,v)\\\\) с \\\\(v\\\\ge0\\\\), \\\\(u\\\\ge2v\\\\) можно восстановить единственную точку \\\\(\\\\Omega\\\\): берём \\\\(z=v\\\\), а \\\\(x,y\\\\) как две соседние или равные целые координаты с суммой \\\\(u\\\\) и условием \\\\(y+1\\\\ge x\\\\ge y\\\\). Поэтому \\\\(\\\\pi\\\\) является биекцией между \\\\(\\\\Omega\\\\) и областью\n\\\\[\n\\\\Psi=\\\\{(u,v)\\\\in\\\\mathbb Z^2: v\\\\ge0,\\ u\\\\ge2v\\\\}.\n\\\\]\n\nПуть длины \\\\(3n\\\\) из \\\\((0,0,0)\\\\) в \\\\((n,n,n)\\\\) не может делать лишних обратных движений: сумма координат должна увеличиться от \\\\(0\\\\) до \\\\(3n\\\\) ровно за \\\\(3n\\\\) прыжков длины \\\\(1\\\\). Значит, каждый прыжок увеличивает одну координату на \\\\(1\\\\). После проекции это даёт шаги \\\\((1,0)\\\\) и \\\\((0,1)\\\\) из \\\\((0,0)\\\\) в \\\\((2n,n)\\\\), оставаясь в \\\\(\\\\Psi\\\\).\n\nОбозначим через \\\\(f(u,v)\\\\) число таких путей из \\\\((0,0)\\\\) в \\\\((u,v)\\\\). Тогда \\\\(f(0,0)=1\\\\), а для остальных точек области\n\\\\[\nf(u,v)=f(u-1,v)+f(u,v-1).\n\\\\]\nУдобно дополнить граничные условия нулями: \\\\(f(u,-1)=0\\\\) и \\\\(f(2v-1,v)=0\\\\). Они означают, что путь не может прийти из-за нижней границы или пересечь прямую \\\\(u=2v-1\\\\).\n\nТеперь проверим явную формулу\n\\\\[\nf^*(u,v)=\\\\binom{u+v}{v}-2\\\\binom{u+v}{v-1},\n\\\\]\nгде биномиальный коэффициент считается равным нулю при недопустимом нижнем индексе. Каждое слагаемое удовлетворяет рекурсии Паскаля, значит и \\\\(f^*\\\\) удовлетворяет той же рекурсии. При \\\\((0,0)\\\\) получаем \\\\(1\\\\). При \\\\(v=-1\\\\) оба слагаемых равны нулю. На наклонной границе \\\\(u=2v-1\\\\) имеем\n\\\\[\n\\\\binom{3v-1}{v}=2\\\\binom{3v-1}{v-1},\n\\\\]\nпоэтому \\\\(f^*(2v-1,v)=0\\\\). Рекурсия вместе с этими начальными и граничными условиями однозначно задаёт \\\\(f\\\\), следовательно \\\\(f=f^*\\\\).\n\nОстаётся подставить конечную точку:\n\\\\[\nf(2n,n)=\\\\binom{3n}{n}-2\\\\binom{3n}{n-1}.\n\\\\]\nТак как \\\\(\\\\binom{3n}{n-1}=\\\\binom{3n}{n}\\\\frac{n}{2n+1}\\\\), получаем\n\\\\[\nf(2n,n)=\\\\binom{3n}{n}\\\\left(1-\\\\frac{2n}{2n+1}\\\\right)=\\\\frac{1}{2n+1}\\\\binom{3n}{n}.\n\\\\]\"\n",
+      "idea_ids": [
+        "idea-project-to-two-coordinates",
+        "idea-binomial-correction-boundary"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Существенная решётчато-графовая модель; решение сводит трёхмерные пути к двумерному DAG и решает рекурсию.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "goal_counting",
+    "dynamics",
+    "invariant"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "lattice_path_recurrence",
+        "boundary_correction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2018-day2-p8-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Official IMC 2018 Day 2 solution expanded in Russian; sources.yaml intentionally untouched."
+    ],
+    "relations_status": "base_done"
+  }
+}

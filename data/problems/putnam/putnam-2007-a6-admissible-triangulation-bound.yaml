@@ -1,0 +1,172 @@
+{
+  "id": "putnam-2007-a6-admissible-triangulation-bound",
+  "title": "Допустимая триангуляция многоугольника с внутренними степенями не меньше 6, Putnam 2007 A6",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "planar_graph"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "plane_triangulation",
+      "polygon_boundary",
+      "internal_vertex_degree"
+    ],
+    "methods": [
+      "euler_formula",
+      "degree_counting",
+      "induction_by_boundary_reduction"
+    ],
+    "transformations": [
+      "triangulation_to_planar_graph"
+    ],
+    "goal": [
+      "bound_number_of_triangles"
+    ],
+    "auxiliary_graph_type": [
+      "plane_triangulation"
+    ],
+    "invariants": [
+      "boundary_degree_sum",
+      "number_of_sides"
+    ],
+    "keywords": [
+      "putnam_2007_a6",
+      "admissible_triangulation",
+      "euler_formula",
+      "boundary_degree_sum"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Триангуляция \\(T\\) многоугольника \\(P\\) - это конечное семейство треугольников, объединение которых равно \\(P\\), причем пересечение любых двух треугольников либо пусто, либо является общей вершиной, либо общей стороной. Каждая сторона многоугольника является стороной ровно одного треугольника. Назовем триангуляцию допустимой, если каждая внутренняя вершина принадлежит как минимум шести треугольникам. Докажите, что для каждого \\(n\\) существует число \\(M_n\\), зависящее только от \\(n\\), такое что всякая допустимая триангуляция \\(n\\)-угольника имеет не более \\(M_n\\) треугольников.",
+        "source_id": "src-putnam-2007-A6-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Плоский граф является триангуляцией диска, внешняя грань имеет длину \\(n\\), а все внутренние вершины имеют степень не меньше 6. Докажите, что число внутренних треугольных граней ограничено сверху величиной, зависящей только от \\(n\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-bound-boundary-degrees",
+      "title": "Эйлерова формула ограничивает сумму степеней границы",
+      "text": "Если \\(a_i\\) - степени граничных вершин, то из \\(V-E+F=1\\), равенства \\(3F=2E-n\\) и условия на внутренние степени получается \\(a_1+\\cdots+a_n\\le 4n-6\\).",
+      "tags": [
+        "planar_graphs",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-remove-boundary-chain",
+      "title": "На границе есть удаляемая цепочка",
+      "text": "Если граничной вершины степени 2 нет, то средняя степень границы меньше 4. Поэтому встречаются граничные вершины степени 3, разделенные только вершинами степени 4; треугольники около такой цепочки можно удалить и получить допустимую триангуляцию многоугольника с меньшим числом сторон.",
+      "tags": [
+        "induction",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kedlaya-euler-induction",
+      "title": "Оценка через степени границы и индукцию",
+      "text": "Занумеруем вершины исходного \\(n\\)-угольника по порядку: \\(v_1,\n\\ldots,v_n\\). Пусть \\(a_i\\) - степень \\(v_i\\) в графе триангуляции, то есть число ребер триангуляции, выходящих из этой вершины. Очевидно, \\(a_i\\ge2\\).\n\nВыведем ключевую оценку\n\\[\na_1+\\cdots+a_n\\le 4n-6. \\tag{1}\n\\]\nПусть \\(V,E,F\\) - соответственно число вершин, ребер и треугольных граней. Для диска эйлерова формула имеет вид \\(V-E+F=1\\) (эквивалентно, если добавить внешнюю грань, \\(V-E+(F+1)=2\\)). Суммируя стороны треугольников, получаем \\(3F=2E-n\\), потому что внутренние ребра считаются дважды, а \\(n\\) граничных ребер - один раз. Наконец, сумма степеней всех вершин равна \\(2E\\); внутренние вершины имеют степень не меньше 6, поэтому\n\\[\na_1+\\cdots+a_n+6(V-n)\\le 2E.\n\\]\nПодставляя \\(V=1+E-F\\), получаем\n\\[\na_1+\\cdots+a_n\\le 2E-6(V-n)=2E-6(1+E-F-n)=6n-6-4E+6F.\n\\]\nИз \\(3F=2E-n\\) следует \\(6F=4E-2n\\), и выходит ровно (1).\n\nТеперь зададим явную верхнюю оценку рекурсией: \\(A_3=1\\), а при \\(n\\ge4\\) положим \\(A_n=A_{n-1}+2n-3\\). Докажем по индукции, что всякая допустимая триангуляция \\(n\\)-угольника имеет не больше \\(A_n\\) треугольников.\n\nПри \\(n=3\\) из (1) и \\(a_i\\ge2\\) следует \\(a_1=a_2=a_3=2\\), значит, триангуляция состоит из одного треугольника. Пусть \\(n\\ge4\\). Если для некоторой граничной вершины \\(a_i=2\\), то эта вершина входит только в один треугольник. Удалив этот треугольник, получаем допустимую триангуляцию \\((n-1)\\)-угольника; следовательно, исходных треугольников не больше \\(A_{n-1}+1\\le A_n\\).\n\nОстается случай, когда все \\(a_i\\ge3\\). Из (1) среднее значение \\(a_i\\) меньше 4, значит, вершин степени 3 больше, чем вершин степени хотя бы 5. Поэтому на циклической границе найдется цепочка последовательных вершин со степенями\n\\[\n3,4,4,\\ldots,4,3\n\\]\nдлины \\(k\\), где \\(2\\le k\\le n-1\\). Удалим все треугольники, содержащие хотя бы одну вершину этой цепочки. Их не больше \\(2k-1\\): две концевые вершины степени 3 и промежуточные степени 4 образуют вдоль границы веерную полосу. После удаления остается допустимая триангуляция \\((n-1)\\)-угольника. По индукции число оставшихся треугольников не больше \\(A_{n-1}\\), значит, всего было не больше\n\\[\nA_{n-1}+2k-1\\le A_{n-1}+2n-3=A_n.\n\\]\nТакое \\(A_n\\) и можно взять в качестве \\(M_n\\).",
+      "idea_ids": [
+        "idea-bound-boundary-degrees",
+        "idea-remove-boundary-chain"
+      ],
+      "standard_idea_ids": [
+        "face_counting",
+        "double_counting",
+        "induction"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "planar_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 14,
+    "comment": "Putnam A6; доказательство сочетает эйлеров подсчет и нетривиционную редукцию границы.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "degree_counting",
+    "induction",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "euler_formula",
+        "boundary_degree_sum",
+        "inductive_boundary_removal"
+      ],
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2007-A6-kedlaya",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-02",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "The Kedlaya solution also records a sharper asymptotic bound of order n^2/6."
+    ],
+    "relations_status": "base_done"
+  }
+}
