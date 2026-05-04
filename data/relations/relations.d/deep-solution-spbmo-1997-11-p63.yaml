@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-handshaking-spbmo-1997-p63-degree-sum",
+      "from": "handshaking-lemma",
+      "to": "spbmo-1997-11-p63-red-blue-complete-graph-two-edge-count",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о рукопожатиях является базовым входом в решение СПбМО 1997.63: равенство числа синих и красных рёбер переводится в равенство суммы синих степеней половине суммы степеней полного графа.",
+      "backward_text": "СПбМО 1997.63 использует лемму о сумме степеней не только для \\(\\sum d_v=2e\\), но и для сравнения графа с дополнением при подсчете пар смежных и непересекающихся рёбер.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-degree-sum-complement"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-imc-2022-spbmo-1997-two-colour-complete-graph-counting",
+      "from": "imc-2022-day2-p5-regular-43-coloured-triangles",
+      "to": "spbmo-1997-11-p63-red-blue-complete-graph-two-edge-count",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи считают цветные конфигурации в двухцветной раскраске полного графа через локальные степени. В IMC 2022 это одноцветные треугольники через вишни, а в СПбМО 1997.63 - одноцветные пары непересекающихся рёбер через пары смежных рёбер.",
+      "backward_text": "СПбМО 1997.63 является более коротким примером того же счетного мотива: цветная конфигурация выражается через число рёбер и степени; затем условие баланса цветов делает выражения для двух цветов одинаковыми.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-degree-sum-complement"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

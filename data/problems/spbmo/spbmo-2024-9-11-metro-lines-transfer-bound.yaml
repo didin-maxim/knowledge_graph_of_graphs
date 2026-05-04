@@ -1,0 +1,160 @@
+{
+  "id": "spbmo-2024-9-11-metro-lines-transfer-bound",
+  "title": "Линии метро и оценка числа пересадок, СПбМО 2024 (требует переидентификации)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "condition_only"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "unknown",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "path",
+      "metro_line_transfer_graph"
+    ],
+    "methods": [
+      "graph_model"
+    ],
+    "transformations": [
+      "metro_lines_to_transfer_graph"
+    ],
+    "goal": [
+      "verify_source_identity_before_solving"
+    ],
+    "auxiliary_graph_type": [
+      "connected_graph"
+    ],
+    "invariants": [
+      "graph_distance",
+      "number_of_transfers"
+    ],
+    "keywords": [
+      "spbmo_2024_9_11_metro_lines_transfer_bound",
+      "spbmo",
+      "2024",
+      "metro",
+      "transfers",
+      "source_mismatch"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Неподтвержденная формулировка",
+        "text": "В карточке была указана задача СПбМО 2024 для 9-11 классов про линии метро и оценку числа пересадок. При сверке с официальным источником PDMI для городского тура 2024 года, 9-11 классы, такой задачи в файле не найдено. Поэтому точное условие этой карточки не восстановлено и не должно использоваться как опубликованная формулировка до переидентификации источника.",
+        "source_id": "src-spbmo-pdmi-2024-c911",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Официальный TeX audit/spbmo/pdmi_downloads/2024_c_911_24.tex содержит задачи городского тура 2024 для 9, 10 и 11 классов; в них нет условия про метро, линии или пересадки."
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ],
+        "review_notes": "Нужна ручная переидентификация: либо найти другой официальный источник СПбМО 2024 с задачей про метро, либо признать карточку ошибочным дубликатом/перепутанным годом."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Предполагаемая графовая роль",
+        "text": "Если исходная задача действительно существует, ее вероятная графовая модель должна описывать граф пересадок: вершины соответствуют линиям метро, а ребро соединяет две линии при наличии общей станции пересадки; число пересадок тогда выражается через расстояние в этом графе. Эта роль не подтверждена для источника СПбМО 2024 и оставлена только как след импортированной карточки.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Графовая постановка не является проверенной теоремой из официального текста, потому что сам официальный текст задачи про метро не найден в заявленном источнике."
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "review_notes": "Проверить после нахождения правильного условия; без этого нельзя добавлять решение или связи уровня solution_transfer."
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-source-identity-first",
+      "title": "Сначала нужна переидентификация источника",
+      "text": "Главный содержательный результат проверки отрицательный: заявленный источник СПбМО 2024, 9-11 классы, не подтверждает существование задачи про метро. Поэтому любые идеи о графе пересадок, деревьях или оценке расстояний нельзя повышать до ai_checked, пока не найден правильный первоисточник.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Сложность оставлена условной: карточка не имеет подтвержденного условия. Официальный источник src-spbmo-pdmi-2024-c911 проверен и не содержит задачи про метро/пересадки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "connectivity",
+    "graph_model",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "graph_model",
+        "source_identity_check"
+      ],
+      "status": "needs_human_review"
+    },
+    "typical_olympiad_use": {
+      "value": "Предположительно задача должна была сводить пересадки между линиями метро к расстояниям в графе пересадок, но для СПбМО 2024 это не подтверждено источником.",
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-pdmi-2024-c911",
+      "role": "checked_nonmatching_source",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original",
+        "stmt-graph"
+      ],
+      "notes": "Сверен официальный PDMI TeX: audit/spbmo/pdmi_downloads/2024_c_911_24.tex и страница https://www.pdmi.ras.ru/~olymp/2024/problems.html. В городском туре 2024 для 9-11 классов нет задачи про метро, линии или пересадки."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Исправлена поврежденная кириллица и заменена заглушка на явный результат сверки источника.",
+      "Официальный источник src-spbmo-pdmi-2024-c911 указывает на PDMI c_911_24; локальная копия audit/spbmo/pdmi_downloads/2024_c_911_24.tex содержит задачи 9, 10 и 11 классов, но ни одна из них не про метро или пересадки.",
+      "Районные архивы 2024 dist24/dist2024 также были просмотрены по словам 'метро' и 'пересад'; совпадений не найдено.",
+      "Близкие карточки spbmo-1996-11-p63-metro-distant-stations и spbmo-2019-9-11-p2-metro-cover-by-simple-paths проверены только как возможные тематические ориентиры; relation-файл не создан, потому что текущая карточка не имеет подтвержденного условия."
+    ],
+    "manual_review": {
+      "target": "spbmo-2024-9-11-metro-lines-transfer-bound#source_identity",
+      "status": "needed",
+      "reason": "Заявленный официальный источник СПбМО 2024, 9-11 классы, не содержит задачи про линии метро, оценку числа пересадок, метро или пересадки. Без правильного источника нельзя восстановить условие, решение, standard_idea_ids и связи.",
+      "needed": "Найти корректный официальный источник/год/класс/номер для задачи про метро и пересадки или пометить карточку как ошибочную/дубликат другой карточки.",
+      "action_taken": "Сверен PDMI 2024 c_911 TeX, страница условий PDMI 2024 и локальные районные архивы 2024; поврежденная кириллица исправлена; public_ready не повышался.",
+      "next_agent": "human_or_source_reidentification_pass"
+    },
+    "relations_status": "reviewed_no_links"
+  }
+}

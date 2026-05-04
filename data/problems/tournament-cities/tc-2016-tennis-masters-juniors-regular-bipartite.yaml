@@ -1,0 +1,121 @@
+{
+  "id": "tc-2016-tennis-masters-juniors-regular-bipartite",
+  "title": "Теннисисты-мастера и юниоры, Турнир городов 2015/16",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "regular_bipartite_graph",
+      "matching",
+      "game_graph"
+    ],
+    "methods": [
+      "matching",
+      "degree_counting"
+    ],
+    "transformations": [
+      "matches_to_edges"
+    ],
+    "goal": [
+      "existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "regularity",
+      "matching_edges",
+      "degree"
+    ],
+    "keywords": [
+      "tennis",
+      "masters",
+      "juniors",
+      "regular_bipartite_graph"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "30 мастеров и 30 юниоров",
+        "text": "В турнире участвовали 30 мастеров и 30 юниоров. Каждый мастер сыграл с одним мастером и пятнадцатью юниорами, а каждый юниор — с одним юниором и пятнадцатью мастерами. Докажите существование двух пар теннисистов требуемого вида.",
+        "source_id": "src-tc-2016-37-oral-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Требуется ручная сверка с PDF: локально извлечённый текст условия сжат или частично восстановлен."
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching",
+          "degree"
+        ],
+        "review_notes": "Требуется ручная сверка с PDF: локально извлечённый текст условия сжат или частично восстановлен."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Два паросочетания и 15-регулярный двудольный граф",
+        "text": "Даны две доли по 30 вершин. Внутри каждой доли выделено паросочетание, а между долями задан 15-регулярный двудольный граф. Требуется доказать наличие двух внутренних пар, соединённых междолевыми рёбрами нужным образом.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-tennis-as-regular-bipartite-graph",
+      "title": "Матчи как рёбра регулярного двудольного графа",
+      "text": "Партии между мастерами и юниорами образуют 15-регулярный двудольный граф, а партии внутри каждой группы — паросочетание.",
+      "tags": [
+        "degree_counting",
+        "matching"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 4,
+    "comment": "Устный тур 37-го Турнира городов, 11 класс, задача 4; точная формулировка требует ручной сверки с PDF.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "degree_counting",
+    "matching"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2016-37-oral-official",
+      "role": "problem_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Локальный PDF содержит условие; официальное решение в локальном корпусе не найдено. Включено по явной графовой модели партий."
+    ],
+    "relations_status": "not_started"
+  }
+}

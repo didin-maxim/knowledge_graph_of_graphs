@@ -12,21 +12,23 @@
     "auxiliary_graph_type": ["path_or_cycle"],
     "invariants": ["distance_from_center_cell"],
     "keywords": ["baltic_way_2023_p6", "colour_touch_graph"],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [{
       "id": "stmt-original",
       "title": "Условие",
-      "text": "Пусть \\(n\\) — положительное целое число. Каждая клетка таблицы \\(n\times n\\) окрашена в один из \\(k\\) цветов, причём каждый цвет использован хотя бы один раз. Два разных цвета называются соприкасающимися, если существуют две клетки этих цветов с общей стороной. Раскраска такова, что каждый цвет соприкасается не более чем с двумя другими цветами. Найдите максимальное возможное значение \\(k\\) в зависимости от \\(n\\).",
+      "text": "Пусть \\(n\\) — положительное целое число. Каждая клетка таблицы \\(n\\times n\\) окрашена в один из \\(k\\) цветов, причём каждый цвет использован хотя бы один раз. Два разных цвета называются соприкасающимися, если существуют две клетки этих цветов с общей стороной. Раскраска такова, что каждый цвет соприкасается не более чем с двумя другими цветами. Найдите максимальное возможное значение \\(k\\) в зависимости от \\(n\\).",
       "source_id": "src-baltic-way-2023-official-solutions",
       "status": "ai_checked",
       "self_contained": {"status": "ai_checked"},
       "definition_ids": []
     }],
-    "graph_theory": [{
+    "graph_theory": [],
+    "graph_hint_reformulations": [{
       "id": "stmt-graph-hint",
-      "text": "Постройте граф цветов: вершины — использованные цвета, два цвета соединены ребром, если они соприкасаются по стороне клетки. Этот граф связен и имеет максимальную степень не больше 2; значит, он является путём или циклом. Используя расстояния от центральной клетки или центрального блока \\(2\times2\\), найдите наибольшее число вершин такого графа.",
+      "title": "Граф цветов и ограничение диаметра",
+      "text": "Постройте граф цветов: вершины — использованные цвета, два цвета соединены ребром, если они соприкасаются по стороне клетки. Этот граф связен и имеет максимальную степень не больше 2; значит, он является путём или циклом. Используя расстояния от центральной клетки или центрального блока \\(2\\times 2\\), найдите наибольшее число вершин такого графа.",
       "status": "ai_checked",
       "self_contained": {"status": "ai_checked"},
       "definition_ids": ["connected_graph", "degree", "path", "cycle"],
@@ -54,5 +56,5 @@
   "tags": ["connectivity", "degree_counting", "coloring", "goal_exact_bound"],
   "properties": {"central_method": {"value": ["auxiliary_colour_graph", "diameter_bound"], "status": "ai_checked"}},
   "sources": [{"source_id": "src-baltic-way-2023-official-solutions", "role": "problem_and_solutions_official", "status": "source_verified"}],
-  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "needs_human_review", "public_ready": false, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan."], "relations_status": "base_done"}
+  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "ai_checked", "public_ready": true, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan.", "2026-05-04: high-reasoning pass moved the graph construction out of graph_theory into graph_hint_reformulations, fixed \\(\\times\\) escaping, and found no confident new relation."], "relations_status": "reviewed_no_links", "graph_theory_absent_reason": "Граф цветов возникает как вспомогательная конструкция в решении, а не как самостоятельная эквивалентная постановка условия."}
 }

@@ -1,0 +1,126 @@
+{
+  "id": "tc-2022-crossword-word-cell-bipartite-graph",
+  "title": "Кроссворд и покрытие словами, Турнир городов 2021/22",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Френкин Б.Р.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "crossword",
+      "bipartite_graph",
+      "word_cell_incidence"
+    ],
+    "methods": [
+      "double_counting",
+      "degree_counting",
+      "incidence_graph"
+    ],
+    "transformations": [
+      "words_and_cells_to_bipartite_graph"
+    ],
+    "goal": [
+      "maximum_ratio"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_incidence_graph"
+    ],
+    "invariants": [
+      "degrees",
+      "edge_count"
+    ],
+    "keywords": [
+      "crossword",
+      "words",
+      "cell_incidence",
+      "bipartite_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Кроссворд в квадрате n на n",
+        "text": "Дан клетчатый квадрат \\(n\\times n\\). Кроссвордом будем называть некоторый набор его клеток. Словом называется любая горизонтальная или вертикальная полоска из клеток кроссворда, не содержащаяся ни в какой большей такой полоске. Пусть \\(x\\) — количество слов в кроссворде, а \\(y\\) — наименьшее количество слов, которыми можно покрыть все клетки кроссворда. Найдите максимум отношения \\(x/y\\) при данном \\(n\\).",
+        "source_id": "src-tc-2022-43-oral-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-crossword-incidence-graph",
+      "title": "Двудольный граф слов и клеток",
+      "text": "Официальное решение строит двудольный граф: первая доля — слова кроссворда, вторая — занятые клетки, а ребро соединяет слово с клеткой, если слово содержит эту клетку.",
+      "tags": [
+        "graph_model",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-incidence-degree-count",
+      "title": "Оценка через двудольный граф инцидентности",
+      "text": "Пример для прямоугольника \\(n\\times2\\) даёт \\(x=n+2\\) и \\(y=2\\), то есть отношение \\(1+n/2\\). Докажем, что больше нельзя. Выберем покрытие кроссворда наименьшим числом слов и назовём его слова правильными. Если в кроссворде \\(z\\) клеток, то правильные слова покрывают все клетки, поэтому сумма их длин не меньше \\(z\\). Каждое слово имеет длину не больше \\(n\\), значит, правильных слов не меньше \\(z/n\\). Для второй оценки можно удалить слова длины 1, после чего построить двудольный граф: вершины первой доли — все слова кроссворда, вершины второй — занятые клетки, ребро означает принадлежность клетки слову. Вершины-слова из минимального покрытия насыщают вторую долю; сумма их степеней не больше \\(ny\\), а каждое непокрывающее слово имеет степень хотя бы 2. Подсчёт рёбер даёт \\(x/y\\le 1+n/2\\).",
+      "idea_ids": [
+        "idea-crossword-incidence-graph"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 3,
+    "comment": "Устный тур 43-го Турнира городов, 11 класс, задача 3.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "double_counting"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2022-43-oral-solutions",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_absent_reason": "Граф не является формулировкой задачи, но является существенной конструкцией официального решения.",
+    "notes": [],
+    "relations_status": "not_started"
+  }
+}

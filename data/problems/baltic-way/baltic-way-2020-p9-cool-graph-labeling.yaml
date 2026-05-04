@@ -15,14 +15,14 @@
     "auxiliary_graph_type": [],
     "invariants": ["processed_vertex_sums"],
     "keywords": ["baltic_way_2020_p9", "cool_assignment", "1_2_3_edge_labels"],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
       {
         "id": "stmt-original",
         "title": "Условие",
-        "text": "Каждой вершине \\(v\\) и каждому ребру \\(e\\) графа \\(G\\) приписываются числа \\(f(v)\\in\\{1,2\\}\\) и \\(f(e)\\in\\{1,2,3\\}\\). Пусть \\(S(v)\\) — сумма чисел, приписанных всем рёбрам, инцидентным \\(v\\), плюс число \\(f(v)\\). Разметка \\(f\\) называется крутой, если \\(S(u)\ne S(v)\\) для любой пары соседних вершин \\(u,v\\). Докажите, что для каждого графа существует крутая разметка.",
+        "text": "Каждой вершине \\(v\\) и каждому ребру \\(e\\) графа \\(G\\) приписываются числа \\(f(v)\\in\\{1,2\\}\\) и \\(f(e)\\in\\{1,2,3\\}\\). Пусть \\(S(v)\\) — сумма чисел, приписанных всем рёбрам, инцидентным \\(v\\), плюс число \\(f(v)\\). Разметка \\(f\\) называется крутой, если \\(S(u)\\ne S(v)\\) для любой пары соседних вершин \\(u,v\\). Докажите, что для каждого графа существует крутая разметка.",
         "source_id": "src-baltic-way-2020-official-solutions",
         "status": "ai_checked",
         "self_contained": {"status": "ai_checked"},
@@ -66,10 +66,10 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-28",
-    "review_status": "needs_human_review",
-    "public_ready": false,
-    "notes": ["Imported during MAX-15 Baltic Way official archive graph scan."],
-    "relations_status": "base_done",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": ["Imported during MAX-15 Baltic Way official archive graph scan.", "2026-05-04: high-reasoning pass fixed the LaTeX escape for \\(\\ne\\), checked the local-sum-preserving greedy proof, and found no confident new relation."],
+    "relations_status": "reviewed_no_links",
     "graph_theory_duplicate_removed": true
   }
 }

@@ -1,0 +1,150 @@
+{
+  "id": "mmo-2016-linguists-kneser-edge-bound",
+  "title": "Лингвисты, три языка и нижняя оценка числа ребер в подграфе Кнезера, ММО 2015/16",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "А. М. Райгородский",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "kneser_graph",
+      "induced_subgraph",
+      "independent_set",
+      "language_triples"
+    ],
+    "methods": [
+      "graph_modeling",
+      "independent_set_argument",
+      "counting"
+    ],
+    "transformations": [
+      "linguists_to_3-subsets",
+      "cannot_talk_to_kneser_edges"
+    ],
+    "goal": [
+      "edge_lower_bound"
+    ],
+    "auxiliary_graph_type": [
+      "subgraph_of_kneser_graph_K_n_3"
+    ],
+    "invariants": [
+      "independence_number",
+      "disjoint_language_triples"
+    ],
+    "keywords": [
+      "kneser_graph",
+      "independence_number",
+      "erdos-ko-rado",
+      "language_triples"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Страна лингвистов",
+        "text": "В стране лингвистов есть n языков и m человек. Каждый человек знает ровно 3 языка, причем разные люди знают разные тройки языков. Наибольшее число людей, любые двое из которых могут поговорить без посредника, равно k. Известно, что 11n <= k <= m/2. Докажите, что найдется не менее mn пар людей, которые не могут поговорить без посредника.",
+        "source_id": "src-mmo-2016-final-8-11",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "independent_set"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Подграф графа Кнезера на тройках",
+        "text": "Пусть G - подграф графа Кнезера, вершинами которого являются 3-элементные подмножества множества {1,...,n}, а ребра соединяют непересекающиеся тройки. В графе G ровно m вершин, а его число независимости равно alpha(G)=k, где 11n <= k <= m/2. Докажите, что в G не меньше mn ребер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "independent_set"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-kneser-language-triples",
+      "title": "Люди как вершины графа Кнезера",
+      "text": "Официальный комментарий отождествляет каждого лингвиста с тройкой языков, которые он знает. Два человека, которые не могут поговорить без посредника, соответствуют непересекающимся тройкам, то есть ребру графа Кнезера K(n,3). Наибольшее множество попарно общающихся людей становится независимым множеством в этом графе.",
+      "tags": [
+        "graph_model",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-counting",
+      "title": "Официальный подсчет после выбора максимального множества попарно общающихся людей",
+      "text": "В официальном решении выбирается множество B из k людей, любые двое из которых могут поговорить без посредника. Для любого человека X вне B максимальность B дает человека X' из B, тройка языков которого не пересекается с тройкой X. Человек из B, который может говорить с X, должен иметь общий язык и с X, и с X', поэтому таких людей в B не больше 3*3*n. Значит, у X есть по крайней мере k-9n непересекающихся с ним троек внутри B. Суммируя по всем X вне B, получаем не меньше (m-k)(k-9n) >= (m/2)(2n)=mn пар людей, которые не могут поговорить без посредника. Комментарий источника затем явно переформулирует задачу как нижнюю оценку числа ребер в подграфе графа Кнезера при r=3.",
+      "idea_ids": [
+        "idea-kneser-language-triples"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "simple_graph",
+        "independent_set"
+      ],
+      "review_notes": "Текст решения является компактным переносом из официального источника; перед ai_checked/public_ready его нужно расширить."
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 6,
+    "comment": "ММО 2015/16, заключительный тур, 9 класс, задача 6; официальный сборник после решения дает графовый комментарий.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "degree_counting",
+    "graph_model"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-mmo-2016-final-8-11",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified",
+      "url": "https://mos.olimpiada.ru/upload/files/Archive_tasks_2013-.../2015-16/math/ans-math-8-11-final-15-6.pdf",
+      "local_text": "audit/_mmo_tc_text_clean/8c75a829a791e463.txt",
+      "local_pdf": "audit/_mmo_tc_pdfs/8c75a829a791e463.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Идентификатор источника временный; перед публикацией нужно добавить постоянную запись src-mmo-*.",
+      "Точный дубль не найден в data/problems и data/problems/tournament-cities при локальном текстовом поиске.",
+      "Статус решения оставлен needs_human_review, потому что карточка содержит компактный перенос из официального источника, а не полностью развернутое доказательство."
+    ],
+    "relations_status": "not_started"
+  }
+}

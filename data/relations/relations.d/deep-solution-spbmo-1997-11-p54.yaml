@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-euler-formula-spbmo-1997-p54-spherical-triangulation",
+      "from": "euler-formula-planar",
+      "to": "spbmo-1997-11-p54-triangular-polyhedron-degrees",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Формула Эйлера является первым ключевым входом в решение СПбМО 1997.54: вместе с равенством \\(3F=2E\\) для треугольных граней она дает \\(\\sum_v(6-d(v))=12\\), после чего остается локально посчитать соседства вершин степени 5 с вершинами степени хотя бы 7.",
+      "backward_text": "Задача СПбМО 1997.54 является компактным применением формулы Эйлера к сферической триангуляции: эйлеров подсчет превращается в дискретную кривизну \\(6-d(v)\\), а запрет на соседние пятерки дает противоречие через счет инцидентностей.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-euler-incidence-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-putnam-2007-a6-spbmo-1997-p54-triangulation-degree-count",
+      "from": "putnam-2007-a6-admissible-triangulation-bound",
+      "to": "spbmo-1997-11-p54-triangular-polyhedron-degrees",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Putnam 2007 A6 и СПбМО 1997.54 используют один и тот же эйлеров мотив для триангуляций с нижними ограничениями на степени. В Putnam это триангуляция диска и контроль суммы степеней на границе, а в СПбМО это триангуляция сферы и баланс зарядов \\(6-d(v)\\).",
+      "backward_text": "СПбМО 1997.54 является сферической версией того же приема: формула Эйлера и счет сторон треугольных граней дают глобальный избыток малых степеней, который затем преобразуется в локальную структуру. В Putnam 2007 A6 аналогичный эйлеров подсчет запускает индукционное удаление приграничной полосы.",
+      "anchors": {
+        "from_solution_id": "sol-kedlaya-euler-induction",
+        "to_solution_id": "sol-euler-incidence-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "id": "spbmo-2011-9-10-p4-triangle-in-every-2000-set-k4",
+  "title": "Треугольник в каждой выборке из 2000 жителей и четверо попарно знакомых, СПбМО 2011",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "А. Голованов",
+      "status": "source_verified"
+    },
+    {
+      "name": "С. Берлов",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "social_graph",
+      "clique",
+      "triangle",
+      "proper_vertex_coloring",
+      "color_classes"
+    ],
+    "methods": [
+      "graph_model",
+      "contrapositive",
+      "maximum_degree_bound",
+      "greedy_coloring",
+      "double_counting"
+    ],
+    "transformations": [
+      "acquaintance_to_graph",
+      "statement_to_graph_model",
+      "forbidden_k4_contraposition",
+      "color_classes_to_triangle_free_sets"
+    ],
+    "goal": [
+      "prove_clique_existence",
+      "rule_out_large_k4_free_graph"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph",
+      "acquaintance_graph"
+    ],
+    "invariants": [
+      "every_2000_vertices_contain_triangle",
+      "no_k4_in_contradiction",
+      "maximum_degree_at_most_1999_under_no_k4",
+      "union_of_two_color_classes_is_triangle_free",
+      "sum_of_pairwise_color_class_sizes"
+    ],
+    "keywords": [
+      "spbmo_2011_9_10_p4",
+      "ugryumov",
+      "acquaintance_graph",
+      "triangle_in_every_2000_set",
+      "k4",
+      "greedy_coloring",
+      "double_counting_color_classes"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В городе Угрюмове 2 000 000 жителей, которые мало общаются друг с другом. Тем не менее, среди любых 2000 жителей найдутся трое попарно знакомых. Докажите, что в городе есть четверо попарно знакомых друг с другом жителей.",
+        "source_id": "src-spbmo-2011-city-911-tex",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "clique"
+        ],
+        "source_note": "Сверено с официальным TeX-архивом СПбМО 2011 для городского тура 9-11 классов: файл c_911_11.tex, задача 4 для 9 и 10 класса. В источнике авторская подпись: А. Голованов, С. Берлов."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(G\\) — простой граф на 2 000 000 вершинах. Известно, что любое множество из 2000 вершин графа \\(G\\) содержит треугольник \\(K_3\\). Докажите, что граф \\(G\\) содержит полный подграф \\(K_4\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-contrapositive-degree-bound",
+      "title": "Без K4 степень каждой вершины меньше 2000",
+      "text": "Доказываем от противного. Если в графе без \\(K_4\\) у вершины было бы хотя бы 2000 соседей, то среди любых выбранных 2000 её соседей нашёлся бы треугольник; вместе с исходной вершиной он дал бы \\(K_4\\).",
+      "tags": [
+        "forbidden_clique",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-color-class-pair-count",
+      "title": "Две цветовые доли образуют множество без треугольников",
+      "text": "При максимальной степени не больше 1999 граф жадно раскрашивается в 2000 цветов. Объединение любых двух цветовых классов двудольно, значит не содержит треугольника и поэтому имеет не более 1999 вершин; суммирование этих ограничений по всем парам цветов даёт противоречие с числом жителей.",
+      "tags": [
+        "coloring",
+        "double_counting",
+        "forbidden_triangle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-contrapositive-greedy-coloring",
+      "title": "Контрапозиция, жадная раскраска и двойной счёт",
+      "text": "Построим граф знакомств: вершины — жители, ребро означает знакомство. Условие говорит, что любое множество из 2000 вершин содержит треугольник. Нужно доказать существование \\(K_4\\).\n\nПредположим противное: в графе нет \\(K_4\\). Тогда степень любой вершины не превосходит 1999. Действительно, если у вершины \\(v\\) есть хотя бы 2000 соседей, то среди каких-нибудь 2000 из них по условию найдутся три попарно смежные вершины. Вместе с \\(v\\) они образуют \\(K_4\\), противоречие.\n\nЗначит, граф можно правильно раскрасить не более чем в 2000 цветов жадным алгоритмом: когда красим очередную вершину, среди её уже окрашенных соседей занято не более 1999 цветов, так что один из 2000 цветов свободен. Обозначим размеры цветовых классов через \\(a_1,\\dots,a_{2000}\\), разрешая пустые классы.\n\nОбъединение любых двух цветовых классов является двудольным графом, поэтому в нём нет треугольника. Но по условию каждое множество из 2000 вершин содержит треугольник; следовательно, всякое множество без треугольников имеет размер не больше 1999. Значит, для любых разных \\(i,j\\) выполнено\n\\[\na_i+a_j\\le 1999.\n\\]\nПросуммируем эти неравенства по всем \\(\\binom{2000}{2}\\) парам цветов. Каждое \\(a_i\\) встретится ровно в 1999 парах, поэтому\n\\[\n1999(a_1+\\cdots+a_{2000})\\le \\binom{2000}{2}\\cdot 1999.\n\\]\nПосле сокращения получаем\n\\[\na_1+\\cdots+a_{2000}\\le \\binom{2000}{2}=1 999 000.\n\\]\nНо левая часть — это число всех жителей, равное 2 000 000. Противоречие. Значит, четверо попарно знакомых жителей обязательно существуют.",
+      "idea_ids": [
+        "idea-contrapositive-degree-bound",
+        "idea-color-class-pair-count"
+      ],
+      "standard_idea_ids": [
+        "greedy_ordering",
+        "double_counting"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "clique",
+        "degree",
+        "chromatic_number",
+        "bipartite_graph"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Задача 4 городского тура СПбМО для 9 и 10 класса: короткое решение, но нужно заметить две нетривиальные связки — запрет \\(K_4\\) ограничивает максимальную степень через условие о 2000 соседях, а затем жадная 2000-раскраска превращает пары цветовых классов в треугольник-свободные множества.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "ramsey_theory",
+    "coloring",
+    "forbidden_clique",
+    "forbidden_triangle",
+    "degree_counting",
+    "double_counting",
+    "goal_proof"
+  ],
+  "properties": {
+    "forbidden_subgraphs": {
+      "value": [
+        "K_4 в предположении от противного",
+        "K_3 в объединении двух цветовых классов"
+      ],
+      "status": "ai_checked"
+    },
+    "extremal_object": {
+      "value": "Гипотетический граф знакомств без \\(K_4\\), в котором каждое множество из 2000 вершин содержит треугольник; решение показывает, что такой граф не может иметь 2 000 000 вершин.",
+      "status": "ai_checked"
+    },
+    "central_method": {
+      "value": [
+        "contrapositive",
+        "maximum_degree_bound",
+        "greedy_coloring",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": {
+      "value": "Рамсеевский на вид запрет больших треугольник-свободных множеств здесь используется элементарно: сначала из отсутствия \\(K_4\\) получается ограничение на степень, затем цветовые классы жадной раскраски дают много двудольных, а значит треугольник-свободных, множеств для двойного счёта.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2011-city-911-tex",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-04: точное условие и авторы сверены с официальным TeX-архивом PDMI/СПбМО 2011: https://www.pdmi.ras.ru/~olymp/2011/problems/91111tex.zip, файл c_911_11.tex; задача 4 совпадает для 9 и 10 класса.",
+      "Официальное решение в проверенных источниках не найдено; добавлено самостоятельное полное решение через контрапозицию, ограничение максимальной степени, жадную раскраску и двойной счёт пар цветовых классов.",
+      "Роль Ramsey/extremal graph theory проверена: утверждение имеет рамсеевскую формулировку про запрет больших индуцированных треугольник-свободных множеств, но решение не требует тяжёлых теорем Рамсея, Турана или Эрёша--Роджерса."
+    ],
+    "relations_status": "deep_done"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "id": "spbmo-2014-10-p7-digraph-no-odd-cycles-dominating-independent",
+  "title": "Базы в ориентированном графе без нечётных направленных циклов, СПбМО 2014",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Н. Гравин",
+      "role": "reported_by",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "directed_cycle",
+      "independent_set",
+      "dominating_set",
+      "strongly_connected_component"
+    ],
+    "methods": [
+      "induction",
+      "strong_component_decomposition",
+      "parity_coloring"
+    ],
+    "transformations": [
+      "cities_to_digraph",
+      "condensation_dag",
+      "delete_dominated_vertices"
+    ],
+    "goal": [
+      "prove_existence_of_independent_out_dominating_set"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph",
+      "bipartite_graph",
+      "condensation_digraph"
+    ],
+    "invariants": [
+      "parity_of_directed_paths_inside_strong_component",
+      "absence_of_odd_directed_closed_walks"
+    ],
+    "keywords": [
+      "spbmo_2014_10_p7",
+      "directed_graph_without_odd_cycles",
+      "independent_dominating_set",
+      "kernel_theorem",
+      "richardson_lemma"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Некоторые города Триодиннадцатого царства соединены дорогами с односторонним движением. Известно, что любой замкнутый циклический маршрут по дорогам этой страны, не нарушающий правил дорожного движения, проходит по чётному числу дорог. Докажите, что царь сможет разместить в некоторых городах военные базы так, чтобы между этими городами не было дорог, но в любой город, где нет базы, можно было добраться из города, где база есть, проехав ровно одну дорогу.",
+        "source_id": "src-spbmo-2014-city-911-tex",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "cycle",
+          "independent_set",
+          "dominating_set"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Независимое исходяще доминирующее множество",
+        "text": "Пусть дан конечный ориентированный граф \\(D\\), в котором каждый замкнутый направленный маршрут имеет чётную длину. Докажите, что существует множество вершин \\(S\\) такое, что между любыми двумя вершинами из \\(S\\) нет дуги ни в одном направлении, а для каждой вершины \\(v\\notin S\\) найдётся вершина \\(s\\in S\\) с дугой \\(s\\to v\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "cycle",
+          "independent_set",
+          "dominating_set"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-strong-component-bipartition",
+      "title": "Сильная компонента без нечётных циклов двудольна по чётности пути",
+      "text": "В сильной компоненте зафиксируем вершину \\(r\\). Если два направленных пути из \\(r\\) в одну и ту же вершину имели бы разную чётность, то, добавив направленный путь обратно к \\(r\\), получили бы два замкнутых маршрута разной чётности; один из них был бы нечётным. Значит, чётность пути от \\(r\\) корректно делит компоненту на две независимые доли.",
+      "tags": [
+        "connectivity",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-delete-source-component-and-dominated",
+      "title": "Выбрать долю начальной сильной компоненты и удалить всё уже доминированное",
+      "text": "В конденсации ориентированного графа берём начальную сильную компоненту: из оставшейся части в неё нет дуг, поэтому будущие выбранные вершины не смогут быть смежны с уже выбранной долей. Одна доля этой компоненты доминирует вторую долю, а также некоторые внешние вершины; после удаления компоненты и этих внешних вершин задача сводится к меньшему графу.",
+      "tags": [
+        "induction",
+        "connectivity",
+        "goal_existence"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-strong-components-induction",
+      "title": "Сильные компоненты и индукция по числу городов",
+      "text": "Перейдём к графовой формулировке: города - вершины, дороги - направленные рёбра. Достаточно доказать утверждение для любого конечного ориентированного графа, в котором нет нечётного замкнутого направленного маршрута.\n\nСначала докажем лемму. Пусть \\(C\\) - сильная компонента такого графа. Зафиксируем вершину \\(r\\in C\\). Для каждой вершины \\(v\\in C\\) выберем какой-нибудь направленный путь из \\(r\\) в \\(v\\). Чётность длины этого пути не зависит от выбора. Действительно, если есть два пути \\(P\\) и \\(Q\\) из \\(r\\) в \\(v\\) разной чётности, то из сильной связности есть направленный путь \\(R\\) из \\(v\\) в \\(r\\). Замкнутые маршруты \\(P+R\\) и \\(Q+R\\) имеют разную чётность, значит один из них нечётный, что запрещено.\n\nРазобьём вершины \\(C\\) на две доли: в первую положим вершины, достижимые из \\(r\\) путём чётной длины, во вторую - путём нечётной длины. Если в \\(C\\) есть дуга \\(u\\to v\\), то путь из \\(r\\) в \\(u\\) вместе с этой дугой даёт путь из \\(r\\) в \\(v\\), поэтому чётности \\(u\\) и \\(v\\) различны. Следовательно, внутри каждой доли нет дуг. Кроме того, если компонента состоит более чем из одной вершины, то каждая вершина второй доли имеет входящую дугу из первой доли: у неё есть хотя бы одна входящая дуга внутри сильной компоненты, а все такие дуги идут между долями. Для одноэлементной компоненты просто выберем её единственную вершину.\n\nТеперь докажем основное утверждение индукцией по числу вершин. Если вершин нет, всё очевидно. Иначе рассмотрим конденсацию графа и возьмём начальную сильную компоненту \\(C\\), то есть такую, в которую не входит дуга из другой сильной компоненты. По лемме выберем одну из её долей \\(A\\); если \\(C\\) одноэлементна, берём \\(A=C\\). Тогда внутри \\(A\\) нет дуг, а каждая вершина из \\(C\\setminus A\\) доминируется вершиной из \\(A\\).\n\nУдалим из графа все вершины компоненты \\(C\\), а также все внешние вершины, в которые ведёт дуга из некоторой вершины \\(A\\). В оставшемся индуцированном подграфе по-прежнему нет нечётных замкнутых направленных маршрутов, поэтому по индукционному предположению в нём есть подходящее множество \\(B\\).\n\nПокажем, что \\(A\\cup B\\) подходит для исходного графа. Внутри \\(A\\) и внутри \\(B\\) дуг нет. Между \\(B\\) и \\(A\\) тоже нет дуг: дуг из внешней части в \\(C\\) нет, потому что \\(C\\) была начальной компонентой, а все вершины, в которые шла дуга из \\(A\\), мы удалили до применения индукции. Значит, базы в \\(A\\cup B\\) попарно не соединены дорогами.\n\nОсталось проверить доминирование. Вершины из \\(C\\setminus A\\) доминируются из \\(A\\) по лемме. Внешние вершины, удалённые вместе с \\(C\\), доминируются из \\(A\\) по определению удаления. Вершины, оставшиеся для индукции и не попавшие в \\(B\\), доминируются из \\(B\\). Поэтому каждая вершина без базы достижима из некоторой базы по одной дороге. Это и требовалось доказать.",
+      "idea_ids": [
+        "idea-strong-component-bipartition",
+        "idea-delete-source-component-and-dominated"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph",
+        "cycle",
+        "independent_set",
+        "dominating_set",
+        "bipartite_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 7,
+    "comment": "СПбМО 2014, городской тур, 10 класс, задача 7. Содержательно это конечная версия теоремы о существовании ядра в орграфе без нечётных направленных циклов; олимпиадное решение требует аккуратно совместить сильные компоненты, чётность направленных путей и индукционное удаление доминированных вершин.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "parity_coloring",
+    "induction",
+    "graph_model",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "strong_component_bipartition",
+        "source_component_deletion",
+        "independent_out_dominating_set"
+      ],
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": {
+      "value": "Лемма о ядре в ориентированном графе без нечётных направленных циклов: сначала разбивают сильную компоненту по чётности направленных путей, затем выбирают долю начальной компоненты и удаляют уже доминированные вершины.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2014-city-911-tex",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-04: checked against the official PDMI SPbMO 2014 city round grades 9-11 TeX archive 91114tex.zip, file c_911_14.tex, grade 10 problem 7; the same statement is also present in the official PDF c_911_14.pdf.",
+      "The official source gives only the problem statement in the checked archive; the solution here is a self-contained proof of the directed no-odd-closed-walk independent out-dominating-set lemma.",
+      "Graph role checked: roads are directed edges; bases form an independent set in the underlying graph and out-dominate every non-base vertex by one directed edge."
+    ],
+    "relations_status": "reviewed_no_links"
+  }
+}

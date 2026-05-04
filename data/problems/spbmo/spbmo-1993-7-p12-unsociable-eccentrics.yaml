@@ -1,0 +1,76 @@
+{
+  "id": "spbmo-1993-7-p12-unsociable-eccentrics",
+  "title": "Малообщительные и чудаки в графе знакомств, СПбМО 1993",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "application"]},
+  "language": "ru",
+  "authors": [{"name": "unknown", "status": "not_found_in_checked_sources"}],
+  "problem_profile": {
+    "objects": ["friendship_graph", "low_degree_vertices", "vertices_with_low_degree_neighborhood"],
+    "methods": ["degree_counting", "edge_counting_between_vertex_classes", "double_counting", "cut_counting"],
+    "transformations": ["people_to_simple_graph"],
+    "goal": ["compare_two_vertex_classes"],
+    "auxiliary_graph_type": ["simple_graph"],
+    "invariants": ["degree_threshold_10"],
+    "keywords": ["spbmo_1993", "friendship_graph", "low_degree", "degree_counting", "eccentrics"],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Оригинальная формулировка",
+      "text": "Назовем человека малообщительным, если у него менее 10 знакомых. Назовем человека чудаком, если все его знакомые малообщительны. Докажите, что количество чудаков не больше количества малообщительных.",
+      "source_id": "src-spbmo-1993-pdmi-problems",
+      "status": "source_verified",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": []
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph",
+      "title": "Эквивалентная графовая формулировка",
+      "text": "В простом графе знакомств назовем вершину малой, если ее степень меньше 10, и особой, если все ее соседи малые. Докажите, что число особых вершин не превосходит числа малых вершин.",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["simple_graph", "degree"]
+    }]
+  },
+  "ideas": [{
+    "id": "idea-count-cross-edges",
+    "title": "Считать ребра между немалыми чудаками и малыми не-чудаками",
+    "text": "Если чудак не является малообщительным, то у него хотя бы 10 знакомых, и все они малообщительны. При этом такой знакомый не может сам быть чудаком: он знаком с немалообщительным человеком. Поэтому все эти ребра идут в множество малообщительных не-чудаков.",
+    "tags": ["degree_counting", "cut_counting", "graph_model"],
+    "status": "ai_checked"
+  }],
+  "solutions": [{
+    "id": "sol-degree-counting",
+    "title": "Подсчет ребер между двумя разностями множеств",
+    "text": "Рассмотрим граф знакомств: вершины - люди, ребра - пары знакомых. Пусть L - множество малообщительных людей, то есть вершин степени меньше 10, а C - множество чудаков, то есть вершин, все соседи которых лежат в L.\n\nДостаточно сравнить части C\\L и L\\C. Возьмем вершину v из C\\L. Она не малообщительна, значит имеет как минимум 10 соседей. Так как v - чудак, все эти соседи лежат в L. Более того, ни один из них не лежит в C: если u из L был бы чудаком и был знаком с v, то среди знакомых u оказался бы немалообщительный человек v, противоречие. Значит все соседи v лежат в L\\C.\n\nПоэтому число ребер между C\\L и L\\C не меньше 10|C\\L|. С другой стороны, каждая вершина из L\\C малообщительна, значит имеет меньше 10 соседей всего, а тем более меньше 10 соседей в C\\L. Поэтому тех же ребер меньше 10|L\\C|. Получаем |C\\L| < |L\\C|, если C\\L непусто; если C\\L пусто, неравенство очевидно. В обоих случаях |C| <= |L|, что и требовалось.",
+    "idea_ids": ["idea-count-cross-edges"],
+    "standard_idea_ids": ["double_counting"],
+    "status": "ai_checked",
+    "definition_ids": ["simple_graph", "degree", "graph_cut"]
+  }],
+  "difficulty": {"main": "regional", "local_score": 3, "comment": "СПбМО 1993, 7 класс, задача 12; короткая задача на граф знакомств и счет степеней.", "status": "source_verified"},
+  "tags": ["degree_counting", "cut_counting", "double_counting", "graph_model", "goal_proof"],
+  "properties": {
+    "central_method": {
+      "value": ["degree_counting", "cut_counting", "double_counting"],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [{"source_id": "src-spbmo-1993-pdmi-problems", "role": "official_problem_statement", "status": "source_verified"}],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Официальное условие подтверждено по PDF-архиву PDMI: https://www.pdmi.ras.ru/~olymp/1993/spbmo_1993.pdf; локальные файлы: audit/_spbmo_1992_2008/spbmo_1993.pdf и audit/_spbmo_1992_2008/spbmo_1993.txt.",
+      "Роль графа: модель знакомств явно задает простой граф; решение использует степени и подсчет ребер в этом графе.",
+      "Постоянный источник src-spbmo-1993-pdmi-problems добавлен при очистке импорта СПбМО.",
+      "2026-05-04: автор задачи в проверенном PDF не указан; это зафиксировано как not_found_in_checked_sources, без блокировки public_ready.",
+      "2026-05-04: русское решение проверено и признано полным: ключевой подсчет ребер между C\\L и L\\C корректно использует строгую границу степеней меньше 10.",
+      "2026-05-04: связи проверены через tools/search.py и tools/suggest_relations.py; достаточно уверенной специфической связи для отдельного relation-файла не найдено."
+    ],
+    "relations_status": "deep_done"
+  }
+}

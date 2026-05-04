@@ -1,0 +1,187 @@
+{
+  "id": "spbmo-2012-8-p7-forty-regular-acquaintance-22-cycle",
+  "title": "Чередующаяся рассадка 22 человек в 40-регулярном графе знакомств, СПбМО 2012",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "condition_only"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Д. Карпов",
+      "status": "source_verified"
+    },
+    {
+      "name": "С. Берлов",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "regular_graph",
+      "degree",
+      "common_neighbor_condition",
+      "alternating_cycle"
+    ],
+    "methods": [
+      "graph_model",
+      "degree_counting",
+      "alternating_cycle_argument"
+    ],
+    "transformations": [
+      "acquaintance_to_graph",
+      "seating_to_alternating_cycle",
+      "statement_to_graph_model"
+    ],
+    "goal": [
+      "prove_existence",
+      "find_alternating_cycle"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph",
+      "acquaintance_graph",
+      "complement_graph",
+      "two_colored_complete_graph"
+    ],
+    "invariants": [
+      "all_degrees_equal_40",
+      "maximum_common_neighborhood_size_at_most_20",
+      "friend_nonfriend_edges_alternate_on_table_cycle"
+    ],
+    "keywords": [
+      "spbmo_2012_8_p7",
+      "regular_acquaintance_graph",
+      "degree_40",
+      "common_acquaintances_at_most_20",
+      "alternating_cycle",
+      "properly_colored_cycle",
+      "round_table_seating"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В компании из 100 человек каждый знаком ровно с 40 другими, но никакие двое не имеют более 20 общих знакомых. Докажите, что из этой компании можно выбрать 22 человека, которых можно посадить за круглый стол так, чтобы каждый из них был знаком ровно с одним из двух своих соседей.",
+        "source_id": "src-spbmo-2012-city-68-tex",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "cycle"
+        ],
+        "source_note": "Сверено с официальным TeX-архивом СПбМО 2012 на сайте PDMI: файл c_68_12.tex, городской II тур, 8 класс, задача 7; авторская подпись: Д. Карпов, С. Берлов."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(G\\) -- простой 40-регулярный граф на 100 вершинах, причём любые две вершины имеют не более 20 общих соседей. Докажите, что существуют 22 различные вершины \\(v_1,v_2,\\ldots,v_{22}\\), расположенные циклически, такие что для каждого \\(i\\) ровно одна из двух пар \\(v_{i-1}v_i\\) и \\(v_iv_{i+1}\\) является ребром \\(G\\) (индексы берутся по модулю 22). Иными словами, вдоль этого цикла в полном графе на выбранных вершинах рёбра графа \\(G\\) и рёбра его дополнения чередуются.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "cycle",
+          "complement_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "translation_note": "Это не утверждение о наличии обычного цикла длины 22 в графе знакомств: соседние пары за столом должны чередоваться по типу знаком/незнаком."
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-seating-is-alternating-cycle",
+      "title": "Рассадка означает чередующийся цикл, а не цикл знакомств",
+      "text": "Если выбранных людей записать в порядке обхода круглого стола, то у каждого человека среди двух соседей должен быть ровно один знакомый. Поэтому статусы соседних пар вокруг стола вынужденно чередуются: знакомы, не знакомы, знакомы, не знакомы, и так далее. Длина 22 важна как чётная длина такого чередующегося цикла.",
+      "tags": [
+        "graph_model",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-codegree-gives-twenty-private-neighbors",
+      "title": "Ограничение на общих знакомых даёт запас частных соседей",
+      "text": "Для любых двух вершин \\(x\\) и \\(y\\) у вершины \\(x\\) есть не менее \\(40-20=20\\) соседей, не являющихся соседями \\(y\\). Именно это отличие от одной лишь 40-регулярности должно использоваться при замыкании длинной чередующейся конструкции.",
+      "tags": [
+        "degree_counting",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 7,
+    "comment": "СПбМО 2012, 8 класс, задача 7: последняя задача комплекта с нетривиальным графовым условием на 40-регулярный граф и ограничение общих соседей. Точное решение в проверенных источниках не найдено; полная доказательная нагрузка, по-видимому, лежит в построении длинного чередующегося цикла.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "degree_counting",
+    "extremal_graph_theory",
+    "augmenting_path",
+    "goal_existence",
+    "coloring"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "alternating_cycle_construction",
+        "degree_counting_with_codegree_bound"
+      ],
+      "status": "needs_human_review",
+      "review_notes": "Нужна проверка полного доказательства существования чередующегося цикла длины 22; в официальном TeX-архиве найдено только условие."
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2012-city-68-tex",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "ai_checked": false,
+    "manual_review": {
+      "status": "hard",
+      "reason": "Точное условие, авторы и графовая интерпретация сверены с официальным TeX-архивом СПбМО, но полного самодостаточного решения в проверенных источниках не найдено и не добавлено. Нельзя повышать карточку до public_ready без доказательства существования чередующегося цикла длины 22.",
+      "needed": "Полное русское решение или проверенная локальная лемма о построении чередующегося цикла длины 22 в данном 40-регулярном графе с codegree <= 20.",
+      "action_taken": "source_verified_and_metadata_repaired",
+      "next_agent": "high_reasoning"
+    },
+    "notes": [
+      "2026-05-04: исправлена повреждённая кириллица; условие сверено с официальным архивом https://www.pdmi.ras.ru/~olymp/2012/problems/c6812tex.zip, файл c_68_12.tex.",
+      "Официальный архив содержит TeX с условиями; проверенного официального решения в нём нет.",
+      "Граф знакомств является исходным объектом задачи; требуемая рассадка соответствует чередующемуся циклу в красно-синей раскраске рёбер полного графа, где красные рёбра -- знакомства, а синие -- незнакомства.",
+      "Условие ровно 40 знакомых задаёт 40-регулярность графа на 100 вершинах; ограничение общих соседей даёт нижние оценки на число соседей одной вершины, не являющихся соседями другой.",
+      "Роль цикла исправлена: это чередующийся цикл знакомств и незнакомств при рассадке, а не обычный 22-цикл в графе знакомств.",
+      "Тег hamiltonian_cycles удалён как вводящий в заблуждение: задача не о гамильтоновом цикле и даже не о цикле только из рёбер графа знакомств."
+    ],
+    "relations_status": "deep_done"
+  }
+}

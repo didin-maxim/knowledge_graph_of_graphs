@@ -1,0 +1,109 @@
+{
+  "relations": [
+    {
+      "id": "rel-putnam-2004-imc-2022-random-colour-boundary-expectation",
+      "from": "putnam-2004-a5-random-checkerboard-components",
+      "to": "imc-2022-day2-p8-random-circle-hulls-colour-changes",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Putnam 2004 A5 и IMC 2022 Day 2 P8 обе сводят геометрически выглядящий случайный объект к локальному графовому подсчёту и затем применяют линейность ожидания. В Putnam считаются одноцветные соседства и монохромные \\(2\\times2\\)-циклы, а в IMC — смены цвета на циклическом порядке точек.",
+      "backward_text": "IMC 2022 Day 2 P8 полезна как более чистая модель того же приёма: глобальное ожидание заменяется суммой локальных индикаторов. В Putnam 2004 A5 этот механизм усилен связностью компонент и коррекцией на локальные циклы.",
+      "anchors": {
+        "from_solution_id": "sol-kedlaya-graph-expectation",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-putnam-2005-cmo-2008-three-by-n-rook-paths",
+      "from": "putnam-2005-a2-rook-tours-grid-hamiltonian-paths",
+      "to": "cmo-2008-p5-self-avoiding-rook-walks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи считают ладейные простые пути на полосе \\(3\\times n\\). Putnam 2005 A2 выделяет гамильтоновы пути с фиксированными концами, а CMO 2008 P5 считает все самоизбегающие ладейные пути между двумя углами через разбиение по первому столбцу.",
+      "backward_text": "CMO 2008 P5 является близким полосовым вариантом Putnam 2005 A2: обе задачи используют жёсткую структуру простых путей в графе \\(P_3\\square P_n\\), но одна ведёт к рекурсии, а другая к кодированию гамильтонова пути множеством столбцов.",
+      "anchors": {
+        "from_solution_id": "sol-kedlaya-bijection",
+        "to_solution_id": "sol-official-recurrence"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-putnam-2007-cmo-1995-planar-decomposition-euler-count",
+      "from": "cmo-1995-p3-polygon-quadrangulation-boomerangs",
+      "to": "putnam-2007-a6-admissible-triangulation-bound",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "CMO 1995 P3 и Putnam 2007 A6 обе работают с разбиением многоугольника как плоским графом и извлекают ограничение из формулы Эйлера вместе с подсчётом сторон внутренних граней. В CMO это четырёхугольные грани и бумеранги, в Putnam — треугольные грани и ограничения на степени внутренних вершин.",
+      "backward_text": "Putnam 2007 A6 использует тот же эйлеровский язык плоских разбиений, что и вариант решения CMO 1995 P3: подсчёт граней и граничных/внутренних вершин превращает геометрию многоугольника в неравенство для плоского графа.",
+      "anchors": {
+        "from_solution_id": "sol-euler-counting-variant",
+        "to_solution_id": "sol-kedlaya-euler-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-putnam-2012-tc-2022-bipartite-incidence-counting",
+      "from": "putnam-2012-b3-round-robin-winners-hall",
+      "to": "tc-2022-crossword-word-cell-bipartite-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Putnam 2012 B3 строит двудольный граф дней и команд, а Турнир городов 2021/22 строит двудольный граф слов и клеток. В обеих задачах основной контроль идёт через размеры соседств/инцидентностей, после чего требуемый выбор или оценка становятся графовым утверждением.",
+      "backward_text": "Кроссвордная задача Турнира городов — близкий пример того же двудольного кодирования инцидентностей: вместо Холла для выбора победителей используется подсчёт степеней слов и клеток, но переход от исходного сюжета к двудольному графу одинаково центральный.",
+      "anchors": {
+        "from_solution_id": "sol-kedlaya-hall",
+        "to_solution_id": "sol-incidence-degree-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-putnam-1990-2016-cayley-digraph-generators",
+      "from": "putnam-1990-b4-cayley-euler-tour",
+      "to": "putnam-2016-a5-cayley-digraph-short-words",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе задачи Putnam переводят утверждение о словах в конечной группе в ориентированный граф Кэли. В 1990 B4 эйлеров цикл по дугам даёт двойной обход элементов, а в 2016 A5 кратчайшие пути по специально выбранным блокам дают короткие слова.",
+      "backward_text": "Putnam 2016 A5 является близким родственником Putnam 1990 B4 по модели: элементы группы становятся вершинами графа Кэли, а допустимые множители — направленными дугами; различается только цель, эйлеров обход против оценки длины пути.",
+      "anchors": {
+        "from_solution_id": "sol-cayley-euler",
+        "to_solution_id": "sol-cayley-digraph"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-imc-2001-putnam-2021-principal-minors-acyclic-digraph",
+      "from": "imc-2001-day2-p4-zero-principal-minors-acyclic-digraph",
+      "to": "putnam-2021-b5-very-odd-matrices-dag",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "IMC 2001 Day 2 P4 и Putnam 2021 B5 обе строят ориентированный граф по ненулевым внедиагональным элементам матрицы и исключают ориентированные циклы через главный минор по вершинам минимального цикла. Затем топологический порядок превращает матрицу в треугольный вид.",
+      "backward_text": "Putnam 2021 B5 можно читать как модуль-2 вариант того же механизма, что и IMC 2001 Day 2 P4: циклы в орграфе кодируют опасные члены главного определителя, а ацикличность даёт одновременное упорядочивание строк и столбцов.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-official-dag"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-imo-1994-putnam-2025-a3-pairing-strategy",
+      "from": "imo-1994-c6-infinite-grid-pairing-strategy",
+      "to": "putnam-2025-a3-ternary-string-game-perfect-matching",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "IMO Shortlist 1994 C6 и Putnam 2025 A3 обе доказывают выигрышную стратегию второго игрока через заранее заданное паросочетание позиций. Второй игрок отвечает в парную клетку/вершину, не позволяя первому занять целиком выигрышную конфигурацию.",
+      "backward_text": "Putnam 2025 A3 даёт конечную и особенно прозрачную версию парной стратегии: совершенное паросочетание на всех ненулевых строках заменяет периодическое паросочетание клеток бесконечной решётки из IMO 1994 C6.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-official-matching"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "mmo-2008-athletes-arbiters-photos",
+  "title": "Спортсмены, арбитры и фотографии после турнира, ММО 2008",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Б. Р. Френкин",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "co_photo_graph",
+      "complete_graph_on_players",
+      "bipartite_incidence_with_arbiters",
+      "degree_counting"
+    ],
+    "methods": [
+      "degree_comparison",
+      "ambiguity_argument",
+      "two_interpretations"
+    ],
+    "transformations": [
+      "photos_to_co_occurrence_graph"
+    ],
+    "goal": [
+      "maximum_number_of_ambiguous_vertices"
+    ],
+    "auxiliary_graph_type": [
+      "co_occurrence_graph"
+    ],
+    "invariants": [
+      "co_photo_degree",
+      "player_arbitrator_partition"
+    ],
+    "keywords": [
+      "mmo_2008",
+      "athletes",
+      "arbiters",
+      "photos",
+      "co_photo_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Турнир, арбитры и стопка фотографий",
+        "text": "Турнир, в котором участвовало 20 спортсменов, судили 10 арбитров. Каждый сыграл с каждым один раз, и каждую встречу судил ровно один арбитр. После окончания каждой игры оба участника фотографировались с арбитром. Через год после турнира была найдена стопка из всех этих фотографий (по фотографии неясно, кто на ней игроки, а кто арбитр). Оказалось, что не про каждого можно определить, кем он является: спортсменом или арбитром. Сколько могло быть таких людей?",
+        "source_id": "src-mmo-2008-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Граф совместного появления на фотографиях",
+        "text": "Рассмотрим граф совместного появления людей на фотографиях: вершины -- люди, а ребро означает, что два человека есть вместе хотя бы на одной фотографии; кратности фотографий пары также существенны в решении. Игрок смежен со всеми 19 другими игроками и хотя бы одним арбитром, а арбитр смежен только с игроками. Нужно найти максимум вершин, чей класс в разбиении на игроков и арбитров не восстанавливается однозначно.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-degree-20-ambiguity",
+      "title": "Подозрительные люди имеют степень 20",
+      "text": "В официальном решении человек, чей статус не определяется, должен появляться на фотографиях ровно с 20 людьми: у арбитра не больше 20 соседей, у спортсмена не меньше 20. Если такой спортсмен имеет ровно 20 соседей, все его 19 матчей судил один и тот же арбитр, что оставляет только пару взаимозаменяемых статусов.",
+      "tags": [
+        "degree_counting",
+        "goal_classification"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-summary",
+      "title": "Официальное решение, кратко",
+      "text": "Ответ: двое. Решение вводит 'подозрительных' людей и сравнивает число людей, с которыми они сфотографированы. Любой подозрительный имеет ровно 20 таких людей. Выбрав подозрительного X и допустив, что он спортсмен, получаем человека Y, присутствующего на всех фотографиях с X; пара X,Y и есть единственная возможная неоднозначность. Второе решение сравнивает две допустимые интерпретации разбиения людей на игроков и арбитров и показывает, что они могут отличаться только двумя людьми.",
+      "source_id": "src-mmo-2008-solutions",
+      "status": "needs_human_review",
+      "standard_idea_ids": [],
+      "review_notes": "Текст решения является компактным переносом из официального источника; перед ai_checked/public_ready его нужно расширить до полного доказательства."
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "ММО 2008, 10 класс, задача 4.",
+    "status": "source_verified"
+  },
+  "tags": [
+    "degree_counting",
+    "graph_model",
+    "goal_classification"
+  ],
+  "sources": [
+    {
+      "source_id": "src-mmo-2008-solutions",
+      "role": "official_solutions",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Подтверждено по manifest family=mmo: URL http://olympiads.mccme.ru/mmo/2008/solutions.pdf, локальный PDF audit/_mmo_tc_pdfs/85624c5f252bd93c.pdf, локальный текст audit/_mmo_tc_text_clean/85624c5f252bd93c.txt.",
+      "graph_role=implicit_model_in_solution: решение использует граф/степени совместного появления на фотографиях, хотя слово «граф» не входит в исходное условие.",
+      "Нужна постоянная запись источника src-mmo-2008-solutions в data/sources/sources.yaml.",
+      "Статус решения оставлен needs_human_review, потому что карточка содержит компактный перенос из официального источника, а не полностью развернутое доказательство."
+    ],
+    "relations_status": "not_started"
+  }
+}

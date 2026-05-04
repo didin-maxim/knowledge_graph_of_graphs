@@ -1,0 +1,157 @@
+{
+  "id": "mmo-2018-acquaintance-seating-clique-chromatic",
+  "title": "Рассадка 2018 участников и кликовое хроматическое число, ММО 2017/18",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application",
+      "graph_in_solution"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "acquaintance_graph",
+      "clique",
+      "maximal_clique",
+      "clique_chromatic_number"
+    ],
+    "methods": [
+      "graph_modeling",
+      "induction",
+      "greedy_coloring",
+      "maximum_degree_split"
+    ],
+    "transformations": [
+      "participants_to_vertices",
+      "rooms_to_colors",
+      "circles_to_maximal_cliques"
+    ],
+    "goal": [
+      "coloring_bound"
+    ],
+    "auxiliary_graph_type": [
+      "acquaintance_graph"
+    ],
+    "invariants": [
+      "maximum_degree",
+      "maximal_cliques",
+      "room_partition"
+    ],
+    "keywords": [
+      "clique_chromatic_number",
+      "acquaintance_graph",
+      "maximal_clique",
+      "greedy_coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Участники олимпиады и кружки",
+        "text": "На олимпиаде 2018 участников; некоторые пары участников знакомы. Множество попарно знакомых участников называется кружком, если каждый другой участник не знаком хотя бы с одним членом этого множества. Докажите, что всех участников можно рассадить по 90 аудиториям так, чтобы ни в одной аудитории не оказались все члены какого-либо кружка.",
+        "source_id": "src-mmo-2018-grade9-final",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "clique"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Раскраска без одноцветных максимальных клик",
+        "text": "Для любого графа G не более чем на 2018 вершинах раскрасьте V(G) не более чем в 90 цветов так, чтобы ни одна максимальная клика размера хотя бы 2 не была одноцветной. Эквивалентно, требуется оценить кликовое хроматическое число в этом конечном случае числом 90.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "clique",
+          "chromatic_number"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-rooms-as-clique-coloring",
+      "title": "Аудитории как цвета",
+      "text": "Официальный комментарий говорит, что задача относится к кликовому хроматическому числу графа: участники являются вершинами, пары знакомых - ребрами, а кружок - максимальной кликой. Рассадка по аудиториям становится раскраской вершин, при которой каждая существенная максимальная клика не является одноцветной.",
+      "tags": [
+        "graph_model",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-induction-degree",
+      "title": "Официальная индукция с разбором большой и малой степени",
+      "text": "Официальное решение доказывает более сильное индукционное утверждение: не более k^2 участников можно рассадить по 2k аудиториям так, чтобы ни один кружок не оказался целиком в одной аудитории. При k=45 это покрывает 2018 участников, поскольку 2018 <= 45^2. Выберем участника v максимальной степени знакомства d. Если d >= 2k-2, посадим v отдельно, всех знакомых v - в другую аудиторию, а оставшихся не более (k-1)^2 участников рассадим по индукции в 2(k-1) аудиториях. Знакомые v не могут содержать кружок, так как v знаком со всеми ними. Если d < 2(k-1), то d+1 <= 2k аудиторий хватает жадно: перебираем участников по одному и сажаем каждого в аудиторию, где нет его знакомых. Комментарий источника явно указывает, что это задача о кликовом хроматическом числе.",
+      "idea_ids": [
+        "idea-rooms-as-clique-coloring"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "greedy_ordering"
+      ],
+      "status": "needs_human_review",
+      "definition_ids": [
+        "clique",
+        "degree"
+      ],
+      "review_notes": "Текст решения является компактным переносом из официального источника; перед ai_checked/public_ready его нужно расширить."
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 6,
+    "comment": "ММО 2017/18, заключительный тур, 9 класс, задача 6; сборник решений содержит графовый комментарий о кликовом хроматическом числе.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "graph_model",
+    "induction"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-mmo-2018-grade9-final",
+      "role": "problem_archive",
+      "status": "source_verified",
+      "url": "https://mos.olimpiada.ru/upload/files/Archive_tasks_2013-.../2017-18/math/tasks-math-9-final-17-8.pdf",
+      "local_text": "audit/_mmo_tc_text_clean/89e4f339ef8abcc1.txt",
+      "local_pdf": "audit/_mmo_tc_pdfs/89e4f339ef8abcc1.pdf"
+    },
+    {
+      "source_id": "src-mmo-2018-grade9-final-solutions",
+      "role": "solution_archive",
+      "status": "source_verified",
+      "url": "https://mos.olimpiada.ru/upload/files/Archive_tasks_2013-.../2017-18/math/ans-math-9-final-17-8.pdf",
+      "local_text": "audit/_mmo_tc_text_clean/6fb40982bcbcc4fb.txt",
+      "local_pdf": "audit/_mmo_tc_pdfs/6fb40982bcbcc4fb.pdf"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Идентификаторы источников временные; перед публикацией нужно добавить постоянные записи src-mmo-*.",
+      "Точный дубль не найден в data/problems и data/problems/tournament-cities при локальном текстовом поиске.",
+      "Статус решения оставлен needs_human_review, потому что карточка содержит компактный перенос из официального источника, а не полностью развернутое доказательство."
+    ],
+    "relations_status": "not_started"
+  }
+}

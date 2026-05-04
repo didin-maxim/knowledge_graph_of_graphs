@@ -1,0 +1,108 @@
+{
+  "id": "tc-2018-cards-4x4-neighbor-numbers-graph",
+  "title": "Карточки 1-16 в таблице 4x4 и соседние числа, Турнир городов 2017/18",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "directed_forest",
+      "hidden_permutation"
+    ],
+    "methods": [
+      "graph_modeling",
+      "acyclicity",
+      "pigeonhole"
+    ],
+    "transformations": [
+      "unopened_neighbors_to_edges"
+    ],
+    "goal": [
+      "minimum_queries"
+    ],
+    "auxiliary_graph_type": [
+      "functional_digraph"
+    ],
+    "invariants": [
+      "acyclicity",
+      "degree"
+    ],
+    "keywords": [
+      "cards_1_to_16",
+      "4x4_grid",
+      "neighboring_numbers"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Карточки в таблице 4x4",
+        "text": "В клетках таблицы 4x4 лежат карточки с числами от 1 до 16. Известно, что карточки, на которых записаны соседние числа, лежат в соседних по стороне клетках. За один вопрос можно перевернуть одну карточку и узнать её число. Требуется определить минимальное число вопросов, достаточное для гарантированного восстановления расположения.",
+        "source_id": "src-tc-2018-39-oral-solutions",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Требуется ручная сверка с PDF: локально извлечённый текст условия сжат или частично восстановлен."
+        },
+        "definition_ids": [
+          "connected_graph",
+          "tree"
+        ],
+        "review_notes": "Требуется ручная сверка с PDF: локально извлечённый текст условия сжат или частично восстановлен."
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-open-cards-functional-graph",
+      "title": "Рёбра из открытых клеток к единственной неизвестной соседней",
+      "text": "Официальное решение выделяет открытые клетки, для которых не все соседние числа открыты, и проводит ребро в единственную неперевёрнутую соседнюю клетку. Получившийся граф используется для подсчёта и исключения циклов.",
+      "tags": [
+        "graph_model",
+        "trees"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 3,
+    "comment": "Устный тур 39-го Турнира городов, 11 класс, задача 3; OCR и точная постановка требуют ручной сверки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "goal_strategy_game",
+    "trees"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2018-39-oral-solutions",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_absent_reason": "Граф появляется в официальном решении как основная конструкция; исходная формулировка требует ручной сверки по PDF.",
+    "notes": [
+      "Добавлено по отчёту агента и локальному PDF решения; нужна ручная сверка полной формулировки и ответа."
+    ],
+    "relations_status": "not_started"
+  }
+}

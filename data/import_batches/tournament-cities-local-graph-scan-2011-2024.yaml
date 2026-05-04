@@ -1,0 +1,123 @@
+{
+  "id": "tournament-cities-local-graph-scan-2011-2024",
+  "title": "Турнир городов: локальный проход по графовым задачам из PDF/text archive",
+  "status": "needs_human_review",
+  "created_at": "2026-05-03",
+  "updated_at": "2026-05-03",
+  "source_scope": {
+    "source_ids": [
+      "src-tc-2011-32-vs32sl-official",
+      "src-tc-2012-33-vs33baz-official",
+      "src-tc-2016-37-oral-official",
+      "src-tc-2017-38-oral-solutions",
+      "src-tc-2018-39-oral-solutions",
+      "src-tc-2022-43-oral-solutions",
+      "src-tc-2022-44-autumn-hard-doors-official",
+      "src-tc-2024-45-oral-solutions"
+    ],
+    "notes": [
+      "Scanned local audit/_mmo_tc_text_clean and audit/mmo-tc-clean-text-manifest.json.",
+      "Existing Tournament of Cities cards were checked to avoid duplicates.",
+      "Some early candidates remain needs_human_review because local official solutions were not present in the extracted archive."
+    ]
+  },
+  "items": [
+    {
+      "id": "2011_ants_two_hamiltonian_cycles_grid",
+      "problem_id": "tc-2011-ants-two-hamiltonian-cycles-grid",
+      "status": "added",
+      "source_ids": [
+        "src-tc-2011-32-vs32sl-official"
+      ],
+      "decision_reason": "Graph is explicit in the statement: routes along sides through all 64 board vertices are Hamiltonian cycles in the 8x8 grid graph."
+    },
+    {
+      "id": "2011_programmers_connected_hiring_game",
+      "problem_id": "tc-2011-programmers-connected-hiring-game",
+      "status": "needs_human_review",
+      "source_ids": [
+        "src-tc-2011-32-vs32sl-official"
+      ],
+      "decision_reason": "Acquaintance graph appears in the statement, but exact OCR statement and solution still need manual verification."
+    },
+    {
+      "id": "2012_polyhedron_three_equal_edges",
+      "problem_id": "tc-2012-polyhedron-three-equal-edges",
+      "status": "added",
+      "source_ids": [
+        "src-tc-2012-33-vs33baz-official"
+      ],
+      "decision_reason": "The statement is explicitly about vertices and edges of a cubic polyhedron graph."
+    },
+    {
+      "id": "2016_tennis_masters_juniors_regular_bipartite",
+      "problem_id": "tc-2016-tennis-masters-juniors-regular-bipartite",
+      "status": "needs_human_review",
+      "source_ids": [
+        "src-tc-2016-37-oral-official"
+      ],
+      "decision_reason": "Matches form a regular bipartite graph with two matching layers; exact statement should be manually verified."
+    },
+    {
+      "id": "2017_pingpong_same_pairs_tournament_graph",
+      "problem_id": "tc-2017-pingpong-same-pairs-tournament-graph",
+      "status": "added",
+      "source_ids": [
+        "src-tc-2017-38-oral-solutions"
+      ],
+      "decision_reason": "Official solution explicitly constructs the graph of played games and uses path/degree structure."
+    },
+    {
+      "id": "2018_cards_4x4_neighbor_numbers_graph",
+      "problem_id": "tc-2018-cards-4x4-neighbor-numbers-graph",
+      "status": "needs_human_review",
+      "source_ids": [
+        "src-tc-2018-39-oral-solutions"
+      ],
+      "decision_reason": "Official solution uses an edge construction on grid cells; OCR/formulation require manual verification."
+    },
+    {
+      "id": "2022_crossword_word_cell_bipartite_graph",
+      "problem_id": "tc-2022-crossword-word-cell-bipartite-graph",
+      "status": "added",
+      "source_ids": [
+        "src-tc-2022-43-oral-solutions"
+      ],
+      "decision_reason": "Official solution explicitly builds a bipartite incidence graph of words and cells."
+    },
+    {
+      "id": "2022_bug_one_way_doors_bridgeless_grid",
+      "problem_id": "tc-2022-bug-one-way-doors-bridgeless-grid",
+      "status": "added",
+      "source_ids": [
+        "src-tc-2022-44-autumn-hard-doors-official"
+      ],
+      "decision_reason": "The statement is a grid graph orientation process and the official solution notes the bridgeless graph generalization."
+    },
+    {
+      "id": "2024_connected_paper_pieces_chessboard_coloring",
+      "problem_id": "tc-2024-connected-paper-pieces-chessboard-coloring",
+      "status": "needs_human_review",
+      "source_ids": [
+        "src-tc-2024-45-oral-solutions"
+      ],
+      "decision_reason": "Connected pieces are connected subgraphs of the grid graph; exact statement from the PDF needs manual verification."
+    },
+    {
+      "id": "2016_cube_surface_coloring",
+      "status": "skipped",
+      "source_ids": [
+        "src-tc-2016-37-oral-official"
+      ],
+      "decision_reason": "Graph interpretation looks plausible but no official graph-based solution was found locally, so it was not added."
+    },
+    {
+      "id": "2016_candy_box_7x7",
+      "status": "skipped",
+      "source_ids": [
+        "src-tc-2017-38-oral-solutions"
+      ],
+      "decision_reason": "Graph interpretation looks plausible but no official graph-based solution was found locally, so it was not added."
+    }
+  ]
+}

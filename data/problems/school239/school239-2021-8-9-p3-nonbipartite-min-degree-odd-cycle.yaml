@@ -1,0 +1,60 @@
+{
+  "id": "school239-2021-8-9-p3-nonbipartite-min-degree-odd-cycle",
+  "title": "Короткий нечётный цикл в недвудольном графе на 239 вершинах, Открытая олимпиада ФМЛ 239 2021",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "condition_only"]},
+  "language": "ru",
+  "authors": [{"name": "unknown", "status": "not_found_in_checked_sources"}],
+  "problem_profile": {
+    "objects": ["non_bipartite_graph", "minimum_degree", "odd_cycle"],
+    "methods": ["extremal_graph_theory", "breadth_first_search_layers"],
+    "transformations": [],
+    "goal": ["find_best_guaranteed_bound"],
+    "auxiliary_graph_type": ["simple_graph"],
+    "invariants": ["number_of_vertices_239", "minimum_degree_at_least_3"],
+    "keywords": ["school239_2021", "non_bipartite_graph", "odd_cycle", "minimum_degree"],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Условие",
+      "text": "Дан недвудольный граф с 239 вершинами, степень каждой из которых не меньше 3. Для какого наименьшего k можно гарантировать, что есть нечётный цикл длины не больше k?",
+      "source_id": "src-school239-2021-official-conditions",
+      "status": "source_verified",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["simple_graph", "bipartite_graph", "degree", "cycle"]
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph",
+      "text": "Найти наименьшее число k, такое что в любом недвудольном простом графе на 239 вершинах с минимальной степенью не меньше 3 обязательно есть нечётный цикл длины не больше k.",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["simple_graph", "bipartite_graph", "degree", "cycle"],
+      "distinct_from": ["stmt-original"]
+    }],
+    "olympiad_reformulations": []
+  },
+  "ideas": [{
+    "id": "idea-explicit-graph",
+    "title": "Граф явно задан в условии",
+    "text": "В условии напрямую дан недвудольный граф, ограничение на минимальную степень и требуется точная гарантированная оценка длины нечётного цикла.",
+    "tags": ["graph_model", "extremal_graph_theory"],
+    "status": "ai_checked"
+  }],
+  "solutions": [],
+  "difficulty": {"main": "regional", "local_score": 6, "comment": "Открытая олимпиада ФМЛ 239 2021, параллель 8-9 классов, задача 3.", "status": "needs_human_review"},
+  "tags": ["extremal_graph_theory", "connectivity", "degree_counting", "goal_exact_bound"],
+  "sources": [{"source_id": "src-school239-2021-official-conditions", "role": "official_problem_statement", "status": "source_verified"}],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальное условие скачано по ссылке из новости 239.ru.",
+      "Роль графа: граф явно присутствует в условии.",
+      "Официальное решение в скачанном PDF не найдено; solutions оставлены пустыми до проверки ежегодного сборника или другого официального источника решений."
+    ],
+    "relations_status": "not_started"
+  }
+}

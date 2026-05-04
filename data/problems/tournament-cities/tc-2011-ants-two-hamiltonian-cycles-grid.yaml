@@ -1,0 +1,124 @@
+{
+  "id": "tc-2011-ants-two-hamiltonian-cycles-grid",
+  "title": "Два муравья и два замкнутых обхода доски 7x7, Турнир городов 2010/11",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Заславский А.А.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "hamiltonian_cycle",
+      "edge_intersection"
+    ],
+    "methods": [
+      "grid_graph_model",
+      "parity",
+      "cut_counting"
+    ],
+    "transformations": [
+      "board_vertices_to_grid_graph"
+    ],
+    "goal": [
+      "minimum_common_edges"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_two",
+      "bipartition",
+      "edge_cut"
+    ],
+    "keywords": [
+      "ants",
+      "7x7_board",
+      "64_vertices",
+      "hamiltonian_cycles"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Два муравья на вершинах клеток",
+        "text": "Два муравья проползли каждый по своему замкнутому маршруту на доске 7x7. Каждый полз только по сторонам клеток доски и побывал в каждой из 64 вершин клеток ровно один раз. Каково наименьшее возможное число таких сторон, по которым проползали и первый, и второй муравьи?",
+        "source_id": "src-tc-2011-32-vs32sl-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "cycle",
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Два гамильтоновых цикла в решётке 8 на 8",
+        "text": "В решёточном графе 8 на 8, вершинами которого являются узлы доски 7 на 7, а рёбрами - стороны единичных клеток, требуется определить наименьшее возможное число общих рёбер двух гамильтоновых циклов.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-grid-hamiltonian-cycles",
+      "title": "Маршруты как гамильтоновы циклы решётки",
+      "text": "Условие уже задаёт граф: вершины — узлы доски, рёбра — стороны клеток. Каждый маршрут муравья является гамильтоновым циклом этого графа.",
+      "tags": [
+        "hamiltonian_cycles",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "Весенний сложный вариант 32-го Турнира городов, 8-9 классы, задача 6.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "hamiltonian_cycles",
+    "goal_exact_bound"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2011-32-vs32sl-official",
+      "role": "problem_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Локальный PDF содержит условие; официальное решение в локальном корпусе не найдено. Включено, потому что графовая структура явно присутствует в условии: вершины клеток, стороны клеток, замкнутый обход всех вершин."
+    ],
+    "relations_status": "not_started"
+  }
+}

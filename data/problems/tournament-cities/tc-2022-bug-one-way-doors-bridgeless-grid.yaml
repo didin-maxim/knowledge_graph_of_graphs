@@ -1,0 +1,136 @@
+{
+  "id": "tc-2022-bug-one-way-doors-bridgeless-grid",
+  "title": "Жук и односторонние двери клетчатого квадрата, Турнир городов 2022/23",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "directed_edges",
+      "reachable_set",
+      "bridgeless_graph"
+    ],
+    "methods": [
+      "reachability",
+      "cut_argument",
+      "bridgeless_graph_argument"
+    ],
+    "transformations": [
+      "doors_to_oriented_edges"
+    ],
+    "goal": [
+      "visit_all_vertices"
+    ],
+    "auxiliary_graph_type": [
+      "oriented_grid_graph"
+    ],
+    "invariants": [
+      "reachability",
+      "edge_cut",
+      "no_bridges"
+    ],
+    "keywords": [
+      "bug",
+      "one_way_doors",
+      "grid_graph",
+      "bridgeless_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Двери между соседними клетками",
+        "text": "В клетчатом квадрате между каждыми двумя соседними по стороне клетками есть закрытая дверь. Жук начинает в одной клетке. Закрытую дверь он открывает в ту сторону, в которую идёт; через открытую дверь затем можно проходить только в этом направлении. Докажите, что жук сможет побывать во всех клетках.",
+        "source_id": "src-tc-2022-44-autumn-hard-doors-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "directed_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Ориентирование рёбер клеточного графа при первом проходе",
+        "text": "В клеточном графе квадрата вершины соответствуют клеткам, а рёбра - общим сторонам клеток. При первом проходе по неориентированному ребру оно ориентируется в сторону движения; далее по нему можно ходить только в этом направлении. Требуется доказать, что из заданной начальной вершины можно посетить все вершины.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "connected_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-reachable-cut",
+      "title": "Разрез достижимых и недостижимых клеток",
+      "text": "Если жук больше не может расширить множество достижимых клеток, все двери через границу ориентированы внутрь достижимого множества. Но в клеточном графе через такую границу есть по крайней мере два ребра, и одно из них должно было дать обратный переход.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-reachable-cut",
+      "title": "Достижимые клетки и отсутствие мостов",
+      "text": "Пусть \\(D\\) — множество клеток, в которых жук когда-либо мог оказаться, следуя уже открытым направлениям и открывая новые двери по мере движения. Предположим, что остались недостижимые клетки. Рассмотрим границу между \\(D\\) и её дополнением. Все уже открытые двери на этой границе должны быть направлены в сторону \\(D\\), иначе жук мог бы перейти наружу. В клеточном квадрате граница достижимой области не может состоять из единственного ребра-моста: между \\(D\\) и дополнением есть как минимум две соседние стороны. Значит, жук когда-то открыл одну из таких дверей, выйдя из недостижимой части в \\(D\\), а затем мог вернуться к другой граничной двери и расширить \\(D\\), противоречие. Поэтому все клетки достижимы. То же рассуждение работает для произвольного графа без мостов, если при первом проходе по ребру на нём рисуется стрелка.",
+      "idea_ids": [
+        "idea-reachable-cut"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "directed_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 4,
+    "comment": "44-й Турнир городов, осенний сложный вариант, 10-11 классы, задача 4.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "connectivity"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2022-44-autumn-hard-doors-official",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальное решение в локальном PDF прямо замечает обобщение на произвольный граф без мостов."
+    ],
+    "relations_status": "not_started"
+  }
+}

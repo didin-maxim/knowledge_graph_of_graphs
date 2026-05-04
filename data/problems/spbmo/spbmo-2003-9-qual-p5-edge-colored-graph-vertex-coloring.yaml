@@ -1,0 +1,184 @@
+{
+  "id": "spbmo-2003-9-qual-p5-edge-colored-graph-vertex-coloring",
+  "title": "Раскраска вершин графа по условию на цвета ребер, СПбМО 2003, 9 класс, отборочный тур, задача 5",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "condition_only"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "С. Берлов",
+      "status": "source_verified"
+    },
+    {
+      "name": "Д. Карпов",
+      "status": "source_verified"
+    },
+    {
+      "name": "А. Пастор",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "edge_coloring",
+      "proper_vertex_coloring",
+      "path_of_length_three",
+      "cycle_of_length_three",
+      "chromatic_number"
+    ],
+    "methods": [
+      "edge_coloring_constraints",
+      "vertex_coloring_bound"
+    ],
+    "transformations": [],
+    "goal": [
+      "chromatic_number_upper_bound",
+      "proper_vertex_coloring_existence"
+    ],
+    "auxiliary_graph_type": [
+      "edge_colored_simple_graph"
+    ],
+    "invariants": [
+      "first_and_third_edges_of_any_three_edge_path_have_distinct_colors"
+    ],
+    "keywords": [
+      "spbmo_2003_9_qual_p5",
+      "edge_colored_graph",
+      "vertex_coloring",
+      "five_color_bound",
+      "path_length_three"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальное условие",
+        "text": "Ребра графа покрашены в четыре цвета таким образом, что у любого пути из трех ребер первое и третье ребро покрашены в разные цвета (начало и конец пути могут совпадать). Докажите, что вершины этого графа можно покрасить в пять цветов таким образом, что любые две соединенные ребром вершины были покрашены в разные цвета.",
+        "source_id": "src-spbmo-2003-qual-9-tex",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path",
+          "cycle",
+          "chromatic_number"
+        ],
+        "review_notes": "Сверено с локальной копией официального PDMI TeX-архива audit/spbmo/pdmi_downloads/2003_otb03tex.zip, файл otbor03.tex, строки задачи 5 для 9 класса. Архив в кодировке cp866; текст восстановлен напрямую из TeX."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть ребра простого графа \\(G\\) окрашены в четыре цвета. Для всякого пути \\(v_0v_1v_2v_3\\) из трех ребер, а также для замкнутого случая \\(v_0=v_3\\), цвета ребер \\(v_0v_1\\) и \\(v_2v_3\\) различны. Требуется доказать, что \\(\\chi(G)\\le 5\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path",
+          "cycle",
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "review_notes": "Это не новая задача, а сжатая запись официального условия через хроматическое число."
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-same-color-distance-two-forbidden",
+      "title": "Одинаковые цвета запрещены на первом и третьем ребрах трехреберного пути",
+      "text": "Ключевое ограничение действует не на соседние ребра вообще, а на пары ребер, которые могут быть первым и третьим ребрами одного пути длины 3. В частности, в любом треугольнике два ребра одного цвета невозможны: если треугольник обходится как замкнутый путь из трех ребер, то любые два его ребра оказываются первым и третьим при подходящем выборе начала.",
+      "tags": [
+        "coloring",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-official-stronger-grade-10-variant",
+      "title": "В том же официальном TeX есть усиленный вариант для 10 класса",
+      "text": "В файле otbor03.tex та же задача дана для 10 класса как задача 7, но с требованием правильной раскраски вершин уже в четыре цвета. Это уверенно указывает на родственный усиленный вариант, однако отдельной карточки для него в текущем наборе не найдено, поэтому внешняя relation-связь не добавлена.",
+      "tags": [
+        "coloring",
+        "goal_proof"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "СПбМО, 9 класс, отборочный тур, задача 5. Условие короткое, но доказательство требует нетривиального использования ограничения на цвета ребер; официальный TeX-архив содержит условие, но не содержит решения.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "graph_model",
+    "goal_proof"
+  ],
+  "properties": {
+    "forbidden_subgraphs": {
+      "value": [
+        "three_edge_path_with_same_colors_on_first_and_third_edges",
+        "triangle_with_two_edges_of_the_same_color"
+      ],
+      "status": "ai_checked"
+    },
+    "central_method": {
+      "value": [
+        "edge_coloring_constraints",
+        "vertex_coloring_bound"
+      ],
+      "status": "needs_human_review"
+    },
+    "typical_olympiad_use": {
+      "value": "Задача о переходе от локального ограничения на раскраску ребер к глобальной верхней оценке хроматического числа графа.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2003-qual-9-tex",
+      "role": "official_problem_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Mojibake в русских полях исправлен после сверки с официальным PDMI TeX-архивом: audit/spbmo/pdmi_downloads/2003_otb03tex.zip, файл otbor03.tex, кодировка cp866.",
+      "Официальный источник подтверждает авторов: С. Берлов, Д. Карпов, А. Пастор.",
+      "В том же TeX-файле найден родственный усиленный вариант для 10 класса, задача 7: при том же условии требуется раскраска вершин в четыре цвета. В текущем data/problems отдельной карточки этого варианта не найдено, поэтому relation-файл не создавался.",
+      "Полное русское решение не внесено: официальный локальный архив для этой карточки содержит условия, но не решения, а самостоятельное доказательство в этом проходе не было доведено до уровня ai_checked."
+    ],
+    "manual_review": {
+      "target": "spbmo-2003-9-qual-p5-edge-colored-graph-vertex-coloring#solution",
+      "status": "needed",
+      "reason": "Для public_ready требуется полное проверенное доказательство оценки \\(\\chi(G)\\le 5\\). Источник условия проверен, но официальный разбор не найден; найденная в том же TeX усиленная версия для 10 класса подтверждает родственность, но не заменяет доказательство текущей карточки.",
+      "needed": "Найти официальный/надежный разбор СПбМО 2003 или дать самодостаточное доказательство без скрытых лемм; после этого заполнить solutions[], standard_idea_ids и повысить statuses.",
+      "action_taken": "Сверены источник, точный текст, авторы, graph/coloring role, tags, definitions, profile, difficulty и свойства; добавлены проверенные структурные идеи и причина неперевода в public_ready.",
+      "next_agent": "human_or_high_reasoning_solution_pass"
+    },
+    "relations_status": "reviewed_no_links"
+  }
+}

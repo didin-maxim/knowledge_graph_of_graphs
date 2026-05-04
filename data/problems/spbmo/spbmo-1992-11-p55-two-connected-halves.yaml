@@ -1,0 +1,179 @@
+{
+  "id": "spbmo-1992-11-p55-two-connected-halves",
+  "title": "Разбиение дважды связного графа на две связные половины, СПбМО 1992",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "unknown",
+      "status": "not_found_in_checked_sources",
+      "note": "В официальном PDF СПбМО 1992 индивидуальный автор задачи 1992.55 не указан."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "2_vertex_connected_graph",
+      "balanced_vertex_partition",
+      "connected_induced_subgraphs",
+      "simple_graph"
+    ],
+    "methods": [
+      "ear_decomposition",
+      "vertex_ordering",
+      "prefix_suffix_connectivity"
+    ],
+    "transformations": [
+      "roads_to_graph",
+      "ear_decomposition_to_ordering"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "auxiliary_graph_type": [
+      "connected_graph",
+      "simple_graph"
+    ],
+    "invariants": [
+      "prefix_connected",
+      "suffix_connected"
+    ],
+    "keywords": [
+      "spbmo_1992_55",
+      "spbmo_1992_11_p55_two_connected_halves",
+      "two_connected_graph",
+      "connected_halves",
+      "ear_decomposition"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В стране 100 городов, соединенных друг с другом дорогами так, что даже если любой город \\(A\\) закроет все дороги, выходящие из него, то и в этом случае из любого города можно будет проехать в любой другой (не считая, конечно, самого города \\(A\\)). Докажите, что страну можно разбить на два суверенных государства, по 50 городов в каждом, так, что в обоих государствах из любого города можно проехать в любой другой.",
+        "source_id": "src-spbmo-1992-pdmi-problems",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(G\\) - простой неориентированный граф на 100 вершинах, причём после удаления любой одной вершины оставшийся граф связен. Докажите, что множество вершин \\(G\\) можно разбить на два множества по 50 вершин так, что оба индуцированных подграфа на этих множествах связны.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "graph_cut"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-two-connected-road-graph",
+      "title": "Условие означает 2-связность дорожного графа",
+      "text": "Города являются вершинами, дороги - рёбрами. Требование, что после закрытия любого города остальные города по-прежнему связаны дорогами, ровно говорит об отсутствии разделяющей вершины.",
+      "tags": [
+        "graph_model",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-ear-ordering-prefix-suffix",
+      "title": "Ушное разложение даёт порядок со связными префиксами и суффиксами",
+      "text": "2-связный граф можно построить из цикла, последовательно добавляя пути между уже построенными вершинами. Если при каждом добавлении вставлять новые вершины пути сразу после более раннего конца, сохраняется порядок, в котором каждый начальный и каждый конечный отрезок вершин порождает связный подграф.",
+      "tags": [
+        "connectivity",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-ear-ordering",
+      "title": "Порядок вершин со связными началом и концом",
+      "text": "Переведём условие на язык графов: вершины - города, рёбра - дороги. По условию после удаления любой вершины граф остаётся связным. Докажем более общее утверждение: в любом таком графе можно занумеровать вершины \\(v_1,\\ldots,v_n\\) так, что для каждого \\(k\\) подграфы на множествах \\(\\{v_1,\\ldots,v_k\\}\\) и \\(\\{v_k,\\ldots,v_n\\}\\) связны.\n\nСначала напомним и докажем нужный факт. Такой граф имеет ушное разложение: его можно получить из некоторого цикла, последовательно добавляя пути, концы которых уже построены, а внутренние вершины ещё не построены. В самом деле, начальный цикл есть, потому что граф связен и не имеет разделяющей вершины. Возьмём максимальный уже построенный подграф \\(H\\) такого вида. Если \\(H\\ne G\\), то у некоторой компоненты графа \\(G-H\\) есть сосед в \\(H\\). У неё не может быть только одна вершина-сосед в \\(H\\), иначе эта вершина отделяла бы компоненту от остального графа. Значит, есть две разные точки присоединения к \\(H\\); кратчайший путь между ними с внутренними вершинами вне \\(H\\) является очередным ухом, что противоречит максимальности \\(H\\). Поэтому \\(H=G\\).\n\nТеперь построим нужную нумерацию по этому разложению. Для начального цикла берём порядок вершин вдоль цикла после удаления одного ребра: каждый префикс и каждый суффикс тогда является путём, значит связен. Пусть порядок уже построен для текущего подграфа, и добавляется ухо\n\\[\na=x_0,x_1,\\ldots,x_m,x_{m+1}=b,\n\\]\nгде \\(a\\) и \\(b\\) уже есть в графе, а \\(x_1,\\ldots,x_m\\) - новые вершины. Считаем, что \\(a\\) стоит в текущем порядке раньше \\(b\\), и вставим новые вершины \\(x_1,\\ldots,x_m\\) сразу после \\(a\\). Любой новый префикс связен, потому что новые вершины идут по пути от \\(a\\). Любой новый суффикс, начинающийся с одной из новых вершин, связен по хвосту этого пути до \\(b\\), а \\(b\\) лежит дальше в старом суффиксе. Старые префиксы и суффиксы тоже не теряют связности. Значит, свойство порядка сохраняется после каждого добавления уха.\n\nИтак, в исходном графе на 100 вершинах есть порядок \\(v_1,\\ldots,v_{100}\\), у которого каждый префикс и каждый суффикс связны. Берём\n\\[\nS=\\{v_1,\\ldots,v_{50}\\},\\qquad T=\\{v_{51},\\ldots,v_{100}\\}.\n\\]\nПодграф на \\(S\\) связен как префикс, а подграф на \\(T\\) связен как суффикс. Оба множества содержат по 50 городов, поэтому они и задают требуемые два суверенных государства.",
+      "idea_ids": [
+        "idea-two-connected-road-graph",
+        "idea-ear-ordering-prefix-suffix"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "connected_graph",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Задача городского уровня СПбМО для 11 класса: условие быстро переводится в 2-связность, но решение требует заметить или доказать ушное разложение и получить порядок со связными префиксами и суффиксами.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "construction",
+    "goal_existence",
+    "graph_model"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "ear_decomposition",
+        "vertex_ordering"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-1992-pdmi-problems",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-04: exact statement verified against local extraction audit/_spbmo_1992_2008/spbmo_1992.txt, lines 331-336, corresponding to official PDMI PDF https://www.pdmi.ras.ru/~olymp/1992/spbmo_1992.pdf.",
+      "Official solution was not found in the checked local/PDMI sources; the included solution is an independent self-contained proof via ear decomposition.",
+      "Relation search was run; no confident non-generic relation was added."
+    ],
+    "relations_status": "reviewed_no_links"
+  }
+}

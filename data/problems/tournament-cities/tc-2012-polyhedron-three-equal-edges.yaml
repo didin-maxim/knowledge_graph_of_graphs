@@ -1,0 +1,115 @@
+{
+  "id": "tc-2012-polyhedron-three-equal-edges",
+  "title": "Три равных ребра кубического многогранника, Турнир городов 2011/12",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "polyhedron_graph",
+      "cubic_planar_graph",
+      "edge_lengths"
+    ],
+    "methods": [
+      "local_to_global",
+      "pigeonhole"
+    ],
+    "transformations": [
+      "polyhedron_to_graph"
+    ],
+    "goal": [
+      "equal_edge_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "degree_three",
+      "edge_incidence"
+    ],
+    "keywords": [
+      "polyhedron",
+      "three_edges_from_each_vertex",
+      "equal_edges"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Рёбра выпуклого многогранника",
+        "text": "Из каждой вершины выпуклого многогранника выходят ровно три ребра, причём хотя бы два из них равны. Докажите, что многогранник имеет хотя бы три равных ребра.",
+        "source_id": "src-tc-2012-33-vs33baz-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Кубический граф многогранника с повторяющимися метками рёбер",
+        "text": "В графе выпуклого многогранника каждая вершина имеет степень 3. Рёбра помечены длинами; в каждой тройке инцидентных рёбер есть две одинаковые метки. Нужно доказать, что некоторая метка встречается хотя бы на трёх рёбрах.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "planar_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-polyhedron-edge-labels",
+      "title": "Многогранник как кубический граф с метками рёбер",
+      "text": "Вся комбинаторная часть условия относится к графу многогранника: вершины, инцидентные рёбра и повторяющиеся длины рёбер.",
+      "tags": [
+        "planar_graphs",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 3,
+    "comment": "Весенний базовый вариант 33-го Турнира городов, 10-11 классы, задача 1.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "planar_graphs",
+    "degree_counting",
+    "graph_model"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2012-33-vs33baz-official",
+      "role": "problem_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Локальный PDF содержит условие; официальное решение в локальном корпусе не найдено. Включено, потому что граф многогранника явно присутствует в условии."
+    ],
+    "relations_status": "not_started"
+  }
+}

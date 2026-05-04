@@ -1,0 +1,60 @@
+{
+  "id": "school239-2021-10-11-p8-friendship-parity-postcards",
+  "title": "Граф друзей с чётностью общих соседей и открытками, Открытая олимпиада ФМЛ 239 2021",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "condition_only"]},
+  "language": "ru",
+  "authors": [{"name": "unknown", "status": "not_found_in_checked_sources"}],
+  "problem_profile": {
+    "objects": ["friendship_graph", "common_neighbours", "partial_orientation", "parity"],
+    "methods": ["parity_argument", "linear_algebra_over_f2", "graph_model"],
+    "transformations": ["postcard_choices_to_oriented_edges"],
+    "goal": ["prove_odd_count"],
+    "auxiliary_graph_type": ["simple_graph", "directed_graph"],
+    "invariants": ["even_number_of_common_neighbours"],
+    "keywords": ["school239_2021", "friendship_graph", "common_friends_parity", "postcards"],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Условие",
+      "text": "У любых двух жителей города чётное количество общих друзей в этом городе. На День города некоторые жители посылают открытки друзьям. Каждый житель с нечётным числом друзей посылает ровно одну открытку, каждый другой — не более одной открытки. При этом каждый получает не более одной открытки. Докажите, что количество способов, которыми это может произойти, нечётно.",
+      "source_id": "src-school239-2021-official-conditions",
+      "status": "source_verified",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["simple_graph", "degree", "directed_graph"]
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph",
+      "text": "В графе друзей у любых двух вершин чётное число общих соседей. Нужно доказать нечётность числа способов выбрать и ориентировать часть рёбер так, чтобы каждая вершина нечётной степени имела ровно одно исходящее выбранное ребро, каждая вершина чётной степени имела не более одного исходящего выбранного ребра, а входящая степень каждой вершины среди выбранных рёбер была не больше 1.",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["simple_graph", "degree", "directed_graph"],
+      "distinct_from": ["stmt-original"]
+    }],
+    "olympiad_reformulations": []
+  },
+  "ideas": [{
+    "id": "idea-postcards-as-oriented-matching-like-choices",
+    "title": "Открытки как ориентированные выбранные рёбра",
+    "text": "Открытка от жителя к другу соответствует ориентированному ребру графа друзей. Условие о чётном числе общих друзей является графовым условием на пары вершин.",
+    "tags": ["graph_model", "invariant"],
+    "status": "ai_checked"
+  }],
+  "solutions": [],
+  "difficulty": {"main": "regional", "local_score": 7, "comment": "Открытая олимпиада ФМЛ 239 2021, параллель 10-11 классов, задача 8.", "status": "needs_human_review"},
+  "tags": ["graph_model", "degree_counting", "invariant", "goal_counting"],
+  "sources": [{"source_id": "src-school239-2021-official-conditions", "role": "official_problem_statement", "status": "source_verified"}],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальное условие скачано по ссылке из новости 239.ru.",
+      "Роль графа: в условии явно задан граф друзей; открытки естественно переводятся в ориентированные выбранные рёбра.",
+      "Официальное решение в скачанном PDF не найдено; solutions оставлены пустыми до проверки ежегодного сборника или другого официального источника решений."
+    ],
+    "relations_status": "not_started"
+  }
+}

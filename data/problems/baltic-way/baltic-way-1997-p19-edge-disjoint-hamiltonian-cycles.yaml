@@ -12,7 +12,7 @@
     "auxiliary_graph_type": ["complete_graph"],
     "invariants": ["edge_disjointness"],
     "keywords": ["baltic_way_1997_p19", "hamiltonian_decomposition"],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [{
@@ -26,6 +26,7 @@
     }],
     "graph_theory": [{
       "id": "stmt-graph",
+      "title": "Упаковка гамильтоновых циклов в полном графе",
       "text": "В полном графе \\(K_n\\) нужно выбрать как можно больше попарно рёберно непересекающихся гамильтоновых циклов. Докажите, что при простом \\(n\\) максимум равен \\((n-1)/2\\), и найдите максимум для \\(n=9\\).",
       "status": "ai_checked",
       "self_contained": {"status": "ai_checked"},
@@ -54,5 +55,5 @@
   "tags": ["hamiltonian_cycles", "double_counting", "construction", "goal_exact_bound"],
   "properties": {"central_method": {"value": ["edge_counting", "modular_hamiltonian_cycles"], "status": "ai_checked"}},
   "sources": [{"source_id": "src-baltic-way-1997-official-solutions", "role": "problem_and_solutions_official", "status": "source_verified"}],
-  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "needs_human_review", "public_ready": false, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan."], "relations_status": "base_done"}
+  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "ai_checked", "public_ready": true, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan.", "2026-05-04: high-reasoning pass checked the edge-count upper bound, prime modular construction, and K9 explicit construction; no confident new relation was added."], "relations_status": "reviewed_no_links"}
 }

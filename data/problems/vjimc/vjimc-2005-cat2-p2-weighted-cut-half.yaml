@@ -11,8 +11,10 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "VJIMC official archive",
+      "role": "publisher_of_official_archive",
+      "status": "source_verified",
+      "note": "Официальный PDF VJIMC 2005 не указывает индивидуального автора Category II Problem 2."
     }
   ],
   "problem_profile": {
@@ -41,7 +43,7 @@
       "vjimc_2005_cat2_p2",
       "weighted_cut"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -50,7 +52,7 @@
         "title": "Условие",
         "text": "Пусть \\((a_{i,j})_{i,j=1}^n\\) - вещественная матрица, причём \\(a_{i,i}=0\\) для всех \\(i\\). Докажите, что существует множество индексов \\(J\\subset\\{1,2,\\ldots,n\\}\\), для которого\n\\[\n\\sum_{i\\in J,\\ j\\notin J}a_{i,j}+\\sum_{i\\notin J,\\ j\\in J}a_{i,j}\\ge \\frac12\\sum_{i,j=1}^n a_{i,j}.\n\\]",
         "source_id": "src-vjimc-2005-cat2-p2-official",
-        "status": "needs_human_review",
+        "status": "source_verified",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -64,8 +66,8 @@
       {
         "id": "stmt-graph",
         "title": "Графовая формулировка",
-        "text": "В полном ориентированном взвешенном графе без петель вес дуги \\(i\\to j\\) равен \\(a_{i,j}\\). Докажите, что вершины можно разбить на две части так, чтобы суммарный вес дуг, идущих между частями в обе стороны, был не меньше половины суммарного веса всех дуг.",
-        "status": "needs_human_review",
+        "text": "В полном ориентированном графе без петель каждой дуге \\(i\\to j\\) приписан вещественный вес \\(a_{i,j}\\). Докажите, что вершины можно разбить на две части так, чтобы суммарный вес дуг, идущих между частями в обе стороны, был не меньше половины суммарного веса всех дуг.",
+        "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -88,28 +90,31 @@
       "tags": [
         "extremal_choice"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-maximal-cut",
       "title": "Максимальный разрез и перенос одной вершины",
-      "text": "Для \\(I\\subset\\{1,\\ldots,n\\}\\) обозначим через \\(F(I)\\) сумму всех элементов матрицы, стоящих по разные стороны разреза:\n\\[\nF(I)=\\sum_{i\\in I,j\\notin I}a_{i,j}+\\sum_{i\\notin I,j\\in I}a_{i,j}.\n\\]\nВыберем множество \\(J\\), на котором \\(F\\) максимально.\n\nПусть \\(k\\in J\\). Если удалить \\(k\\) из \\(J\\), значение \\(F\\) не возрастёт. Поэтому\n\\[\n0\\le F(J)-F(J\\setminus\\{k\\})=\\sum_{j\\notin J}a_{k,j}+\\sum_{i\\notin J}a_{i,k}-\\sum_{j\\in J}a_{k,j}-\\sum_{i\\in J}a_{i,k}.\n\\]\nСуммируя по всем \\(k\\in J\\), получаем\n\\[\n\\sum_{i\\in J,j\\in J}a_{i,j}\\le \\frac12F(J).\n\\]\nАналогично, если \\(k\\notin J\\), то добавление \\(k\\) к \\(J\\) не увеличивает \\(F\\), и после суммирования по всем таким \\(k\\) выходит\n\\[\n\\sum_{i\\notin J,j\\notin J}a_{i,j}\\le \\frac12F(J).\n\\]\nТеперь полная сумма всех элементов матрицы равна сумме трёх частей: внутри \\(J\\), внутри дополнения и между частями. Поэтому\n\\[\n\\sum_{i,j}a_{i,j}\\le \\frac12F(J)+\\frac12F(J)+F(J)=2F(J).\n\\]\nСледовательно, \\(F(J)\\ge\\frac12\\sum_{i,j}a_{i,j}\\), что и требовалось доказать.",
+      "text": "Для \\(I\\subset\\{1,\\ldots,n\\}\\) обозначим через \\(F(I)\\) сумму всех элементов матрицы, стоящих по разные стороны разреза:\n\\[\nF(I)=\\sum_{i\\in I,j\\notin I}a_{i,j}+\\sum_{i\\notin I,j\\in I}a_{i,j}.\n\\]\nТаких множеств \\(I\\) конечное число, поэтому можно выбрать множество \\(J\\), на котором \\(F\\) максимально.\n\nПусть \\(k\\in J\\). Если удалить \\(k\\) из \\(J\\), значение \\(F\\) не возрастёт. Поэтому\n\\[\n0\\le F(J)-F(J\\setminus\\{k\\})=\\sum_{j\\notin J}a_{k,j}+\\sum_{i\\notin J}a_{i,k}-\\sum_{j\\in J}a_{k,j}-\\sum_{i\\in J}a_{i,k}.\n\\]\nПросуммируем эти неравенства по всем \\(k\\in J\\). Слагаемые, отвечающие парам по разные стороны разреза, вместе дают ровно \\(F(J)\\). Каждое слагаемое \\(a_{i,j}\\) с \\(i,j\\in J\\) появляется дважды: один раз при \\(k=i\\) и один раз при \\(k=j\\). Так как \\(a_{i,i}=0\\), диагональ ничего не добавляет. Значит,\n\\[\n0\\le F(J)-2\\sum_{i\\in J,j\\in J}a_{i,j},\n\\]\nто есть\n\\[\n\\sum_{i\\in J,j\\in J}a_{i,j}\\le \\frac12F(J).\n\\]\nТеперь рассмотрим вершину \\(k\\notin J\\). Добавление \\(k\\) к \\(J\\) не увеличивает \\(F\\), и\n\\[\n0\\le F(J)-F(J\\cup\\{k\\})=\\sum_{j\\in J}a_{k,j}+\\sum_{i\\in J}a_{i,k}-\\sum_{j\\notin J}a_{k,j}-\\sum_{i\\notin J}a_{i,k}.\n\\]\nСуммируя это по всем \\(k\\notin J\\), получаем: слагаемые между частями снова дают \\(F(J)\\), а каждое слагаемое внутри дополнения к \\(J\\) считается дважды. Поэтому\n\\[\n\\sum_{i\\notin J,j\\notin J}a_{i,j}\\le \\frac12F(J).\n\\]\nТеперь полная сумма всех элементов матрицы равна сумме трёх частей: внутри \\(J\\), внутри дополнения и между частями. Поэтому\n\\[\n\\sum_{i,j}a_{i,j}\\le \\frac12F(J)+\\frac12F(J)+F(J)=2F(J).\n\\]\nСледовательно, \\(F(J)\\ge\\frac12\\sum_{i,j}a_{i,j}\\), что и требовалось доказать. Заметим, что в рассуждении не используется неотрицательность весов: нужна только конечность семейства подмножеств и условие \\(a_{i,i}=0\\).",
       "idea_ids": [
         "idea-maximal-cut-local-optimum"
       ],
       "standard_idea_ids": [
         "extremal_choice"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked",
+      "definition_ids": [
+        "graph_cut"
+      ]
     }
   ],
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
     "comment": "Стандартный максимальный разрез с локальными неравенствами.",
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "tags": [
     "extremal_choice",
@@ -121,7 +126,7 @@
       "value": [
         "maximal_cut"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -134,11 +139,12 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-02",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
-      "Добавлено при проходе по официальному архиву VJIMC."
+      "Добавлено при проходе по официальному архиву VJIMC.",
+      "2026-05-04: официальный PDF VJIMC 2005 Category II Problem 2 сверён; локальное доказательство максимальным разрезом проверено для вещественных ориентированных весов, включая возможные отрицательные значения."
     ],
-    "relations_status": "base_done"
+    "relations_status": "deep_done"
   }
 }

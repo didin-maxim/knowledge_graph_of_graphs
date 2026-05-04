@@ -1,0 +1,114 @@
+{
+  "id": "tc-2011-programmers-connected-hiring-game",
+  "title": "Фирмы нанимают знакомых программистов, Турнир городов 2010/11",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "acquaintance_graph",
+      "connected_subgraph",
+      "positional_game"
+    ],
+    "methods": [
+      "strategy",
+      "connected_set_game"
+    ],
+    "transformations": [
+      "acquaintances_to_graph"
+    ],
+    "goal": [
+      "second_player_strategy"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectedness"
+    ],
+    "keywords": [
+      "programmers",
+      "acquaintances",
+      "hiring_game"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Игра фирм с программистами",
+        "text": "Две фирмы по очереди нанимают программистов. Каждый следующий нанятый фирмой программист должен быть знаком хотя бы с одним из программистов, ранее нанятых этой же фирмой. Список программистов и их знакомств заранее известен. Требуется доказать существование стратегии второй фирмы, обеспечивающей ей набор нужных программистов.",
+        "source_id": "src-tc-2011-32-vs32sl-official",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Требуется ручная сверка с PDF: локально извлечённый текст условия сжат или частично восстановлен."
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph"
+        ],
+        "review_notes": "Требуется ручная сверка с PDF: локально извлечённый текст условия сжат или частично восстановлен."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Игра выбора связных множеств в графе знакомств",
+        "text": "В графе знакомств два игрока по очереди выбирают вершины так, что множество вершин, уже выбранных каждым игроком, остаётся связным. Требуется доказать существование стратегии второго игрока, гарантирующей ему выбор нужного набора вершин.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-hiring-as-connected-set-game",
+      "title": "Найм как игра на графе знакомств",
+      "text": "Ограничение на каждого следующего программиста означает, что множество уже нанятых каждой фирмой вершин должно оставаться связным в графе знакомств.",
+      "tags": [
+        "goal_strategy_game",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 10,
+    "comment": "Весенний сложный вариант 32-го Турнира городов, 10-11 классы, задача 7; точная формулировка требует ручной сверки с PDF.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "goal_strategy_game",
+    "connectivity"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2011-32-vs32sl-official",
+      "role": "problem_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Карточка добавлена как графовая по явному графу знакомств в условии, но текст условия сокращён и требует ручной сверки с PDF."
+    ],
+    "relations_status": "not_started"
+  }
+}

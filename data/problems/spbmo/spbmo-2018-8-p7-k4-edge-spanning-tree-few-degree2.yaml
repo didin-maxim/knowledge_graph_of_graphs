@@ -1,0 +1,208 @@
+{
+  "id": "spbmo-2018-8-p7-k4-edge-spanning-tree-few-degree2",
+  "title": "Остовное дерево с малым числом вершин степени 2 при каждом ребре в K4, СПбМО 2018, 8 класс",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "official_statement_checked",
+      "deep_solution"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Д. Карпов",
+      "status": "source_signature"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "connected_graph",
+      "complete_graph_k4",
+      "edge_in_k4",
+      "spanning_tree",
+      "degree_two_vertices",
+      "homeomorphically_irreducible_spanning_tree"
+    ],
+    "methods": [
+      "graph_model",
+      "theorem_application",
+      "spanning_tree_reduction"
+    ],
+    "transformations": [
+      "road_network_to_connected_graph",
+      "keep_spanning_tree_delete_other_edges",
+      "k4_edge_condition_to_two_triangles"
+    ],
+    "goal": [
+      "find_spanning_tree_with_few_degree_two_vertices",
+      "preserve_unique_paths_after_edge_deletion"
+    ],
+    "auxiliary_graph_type": [
+      "spanning_tree"
+    ],
+    "invariants": [
+      "connectivity",
+      "every_edge_lies_in_k4",
+      "every_edge_lies_in_at_least_two_triangles",
+      "number_of_degree_two_vertices_in_tree"
+    ],
+    "keywords": [
+      "СПбМО 2018",
+      "8 класс",
+      "II тур",
+      "задача 7",
+      "K4",
+      "каждое ребро в K4",
+      "остовное дерево",
+      "вершины степени 2",
+      "homeomorphically irreducible spanning tree",
+      "HIST"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Официальная олимпиадная формулировка",
+        "text": "В стране 600 городов, некоторые пары городов соединены дорогами, причем из любого города можно добраться по дорогам в любой другой. Для любых двух соединенных дорогой городов A и B найдутся еще два таких города C и D, что любые два из этих четырёх городов соединены дорогой. Докажите, что можно закрыть на ремонт несколько дорог так, чтобы количество городов, из которых выходит ровно две дороги, стало меньше 100, и при этом между любыми двумя городами остался единственный путь, не проходящий два раза по одной и той же дороге.",
+        "source_id": "src-spbmo-2018-city-68",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "complete_graph",
+          "degree",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(G\\) - конечный связный простой граф на 600 вершинах. Каждое ребро \\(AB\\) графа \\(G\\) лежит в некоторой клике \\(K_4\\): существуют вершины \\(C,D\\), такие что подграф на \\(A,B,C,D\\) полный. Докажите, что в \\(G\\) есть остовное дерево, в котором меньше 100 вершин имеют степень 2.",
+        "source_id": "src-spbmo-2018-city-68",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph",
+          "complete_graph",
+          "spanning_tree",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-k4-edge-gives-two-triangles",
+      "title": "Каждое ребро в K4 лежит в двух треугольниках",
+      "text": "Если ребро \\(AB\\) дополняется вершинами \\(C,D\\) до полного графа на четырёх вершинах, то \\(AB\\) входит как минимум в два разных треугольника: \\(ABC\\) и \\(ABD\\). Значит условие задачи сильнее стандартного условия 'каждое ребро лежит хотя бы в двух треугольниках'.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-hist-stronger-than-needed",
+      "title": "Достаточно построить остовное дерево вообще без вершин степени 2",
+      "text": "Известная теорема Чена--Шаня о HIST даёт более сильный результат: при двух треугольниках на каждом ребре существует остовное дерево без вершин степени 2. После удаления всех остальных рёбер единственность путей следует из определения дерева, а требуемая оценка становится \\(0<100\\).",
+      "tags": [
+        "trees",
+        "degree_counting",
+        "classical_theorem"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-hist-two-triangles",
+      "title": "Через остовное дерево без вершин степени 2",
+      "text": "Переведём условие на язык графов: города - вершины, дороги - рёбра. Связность страны означает связность графа \\(G\\). Фраза про города \\(A,B,C,D\\), любые два из которых соединены дорогой, означает, что каждое ребро \\(AB\\) лежит в некотором \\(K_4\\).\n\nОтсюда каждое ребро лежит хотя бы в двух треугольниках: если \\(A,B,C,D\\) образуют \\(K_4\\), то ребро \\(AB\\) входит в треугольники \\(ABC\\) и \\(ABD\\).\n\nИспользуем более сильную стандартную теорему Чена--Шаня: если в конечном связном графе каждое ребро лежит хотя бы в двух треугольниках, то в графе существует остовное дерево без вершин степени 2. Такое дерево называют homeomorphically irreducible spanning tree, или HIST.\n\nПрименяя теорему к нашему графу \\(G\\), получаем остовное дерево \\(T\\), в котором число вершин степени 2 равно нулю. Теперь закроем на ремонт все дороги, не входящие в \\(T\\). Оставшиеся дороги соединяют все 600 городов, потому что \\(T\\) остовное, и между любыми двумя городами остался ровно один путь, потому что \\(T\\) - дерево. Количество городов, из которых выходит ровно две оставленные дороги, равно \\(0\\), а значит меньше \\(100\\). Требуемое доказано.",
+      "idea_ids": [
+        "idea-k4-edge-gives-two-triangles",
+        "idea-hist-stronger-than-needed"
+      ],
+      "standard_idea_ids": [
+        "delete_to_simplify"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "connected_graph",
+        "complete_graph",
+        "spanning_tree",
+        "tree",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 7,
+    "comment": "СПбМО 2018, городской тур, 8 класс, задача 7. В школьной постановке требуется лишь меньше 100 вершин степени 2, но условие 'каждое ребро лежит в K4' допускает более сильное решение через существование HIST при двух треугольниках на каждом ребре.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "trees",
+    "degree_counting",
+    "goal_existence",
+    "classical_theorem"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "k4_edge_condition",
+        "two_triangles_per_edge",
+        "homeomorphically_irreducible_spanning_tree"
+      ],
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": {
+      "value": "Условие не запрещает K4, а требует, чтобы каждое ребро входило в некоторый K4. После ремонта должен остаться связный ациклический остовный подграф, то есть остовное дерево; оценка меньше 100 вершин степени 2 слабее результата HIST, где таких вершин нет вообще.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2018-city-68",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original",
+        "stmt-graph"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-04: официальная формулировка сверена по локальному официальному TeX audit/spbmo/pdmi_downloads/2018_c_68_18.tex и странице/PDF PDMI https://www.pdmi.ras.ru/~olymp/2018/problems/c_68_18.pdf; это городской тур 2018 года, 8 класс, задача 7.",
+      "Авторская подпись подтверждена в официальном TeX: \\dvk = Д. Карпов.",
+      "Исправлена исходная смысловая ошибка заголовка/профиля: условие не 'без K4', а 'каждое ребро лежит в K4'.",
+      "Официальное решение в локальных архивах СПбМО 2018 не найдено; добавлено корректное более сильное решение через опубликованную теорему Чена--Шаня о HIST для графов, где каждое ребро лежит хотя бы в двух треугольниках: https://www.sciencedirect.com/science/article/pii/S0095895613000178.",
+      "Роль графа существенная и явная: дороги образуют связный простой граф, ремонт означает удаление рёбер, а оставшийся единственный путь между любыми двумя вершинами означает остовное дерево.",
+      "2026-05-04: добавлены уверенные связи с базовыми свойствами деревьев и СПбМО 2022 о ремонте дорог с контролем степеней."
+    ],
+    "relations_status": "deep_done"
+  }
+}

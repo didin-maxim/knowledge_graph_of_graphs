@@ -1,0 +1,60 @@
+{
+  "id": "school239-2024-10-11-p8-empty-disk-perfect-matching",
+  "title": "Разбиение точек на пары, покрываемые пустыми кругами, Открытая олимпиада ФМЛ 239 2024",
+  "kind": {"primary": "olympiad_problem", "secondary": ["official_solution_needed", "condition_only"]},
+  "language": "ru",
+  "authors": [{"name": "unknown", "status": "not_found_in_checked_sources"}],
+  "problem_profile": {
+    "objects": ["points_in_general_position", "empty_disk_graph", "perfect_matching"],
+    "methods": ["geometric_graph_model", "matching"],
+    "transformations": ["empty_disk_adjacency_to_gabriel_like_graph"],
+    "goal": ["existence_of_perfect_matching"],
+    "auxiliary_graph_type": ["gabriel_graph", "matching"],
+    "invariants": ["2n_points", "no_four_concyclic"],
+    "keywords": ["school239_2024", "empty_disks", "perfect_matching", "gabriel_graph"],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Условие",
+      "text": "На плоскости дано 2n точек. Никакие три из них не лежат на одной прямой и никакие четыре не лежат на одной окружности. Докажите, что можно разбить эти точки на n пар и покрыть каждую пару точек кругом, не содержащим других данных точек.",
+      "source_id": "src-school239-2024-official-conditions",
+      "status": "source_verified",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["gabriel_graph", "matching"]
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph",
+      "text": "Рассмотрим граф на данных точках: две точки соединены ребром, если существует круг, содержащий эти две точки и не содержащий других данных точек. В этой графовой формулировке требуется доказать существование совершенного паросочетания.",
+      "status": "needs_human_review",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["gabriel_graph", "matching"],
+      "distinct_from": ["stmt-original"]
+    }],
+    "olympiad_reformulations": []
+  },
+  "ideas": [{
+    "id": "idea-empty-disk-graph",
+    "title": "Граф пар, покрываемых пустым кругом",
+    "text": "Хотя исходная формулировка геометрическая, её можно рассматривать как задачу о совершенном паросочетании в графе, где рёбрами являются пары точек, покрываемые пустым кругом.",
+    "tags": ["graph_model", "matching"],
+    "status": "needs_human_review"
+  }],
+  "solutions": [],
+  "difficulty": {"main": "regional", "local_score": 7, "comment": "Открытая олимпиада ФМЛ 239 2024, параллель 10-11 классов, задача 8.", "status": "needs_human_review"},
+  "tags": ["matching", "graph_model", "goal_existence"],
+  "sources": [{"source_id": "src-school239-2024-official-conditions", "role": "official_problem_statement", "status": "source_verified"}],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальное условие скачано из PDF на Яндекс.Диске, ссылка на который дана в новости 239.ru.",
+      "Роль графа: задача включена как серьёзная графовая интерпретация через совершенное паросочетание в геометрическом графе пустых кругов; для окончательного повышения уверенности нужно проверить официальное решение.",
+      "Официальное решение в скачанном PDF не найдено; solutions оставлены пустыми до проверки ежегодного сборника или другого официального источника решений."
+    ],
+    "relations_status": "not_started"
+  }
+}

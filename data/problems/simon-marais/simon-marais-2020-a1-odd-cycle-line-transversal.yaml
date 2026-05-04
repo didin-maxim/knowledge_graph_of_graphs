@@ -25,7 +25,8 @@
     "methods": [
       "degree_two_decomposition",
       "parity_argument",
-      "bipartition_obstruction"
+      "bipartition_obstruction",
+      "pigeonhole_principle"
     ],
     "transformations": [
       "segments_to_edges",
@@ -35,7 +36,7 @@
       "prove_impossibility"
     ],
     "auxiliary_graph_type": [
-      "plane_embedded_graph"
+      "straight_line_geometric_graph"
     ],
     "invariants": [
       "odd_number_of_vertices",
@@ -105,7 +106,10 @@
       "idea_ids": [
         "idea-odd-cycle-not-cut-by-one-line"
       ],
-      "standard_idea_ids": [],
+      "standard_idea_ids": [
+        "pigeonhole_principle",
+        "invariant"
+      ],
       "status": "ai_checked",
       "definition_ids": [
         "cycle",
@@ -145,10 +149,11 @@
     "created_by": "ai",
     "created_at": "2026-05-02",
     "review_status": "ai_checked",
-    "public_ready": false,
+    "public_ready": true,
     "notes": [
-      "Официальный PDF содержит несколько решений; карточка следует графовому решению через 2-регулярный граф и нечетный цикл."
+      "Официальный PDF содержит несколько решений; карточка следует графовому решению через 2-регулярный граф и нечетный цикл.",
+      "2026-05-04: сверено с официальным SMMC 2020 A1; русское решение полностью раскрывает случай прямой через данную точку, выбор нечетной циклической компоненты и препятствие чередующейся 2-раскраски. Relations-pass углублен отдельным файлом deep-solution-simon-marais-2020-a1.yaml."
     ],
-    "relations_status": "not_started"
+    "relations_status": "deep_done"
   }
 }

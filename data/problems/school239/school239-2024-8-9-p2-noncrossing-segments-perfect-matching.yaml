@@ -1,0 +1,60 @@
+{
+  "id": "school239-2024-8-9-p2-noncrossing-segments-perfect-matching",
+  "title": "Паросочетание среди непересекающихся отрезков, Открытая олимпиада ФМЛ 239 2024",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "condition_only"]},
+  "language": "ru",
+  "authors": [{"name": "unknown", "status": "not_found_in_checked_sources"}],
+  "problem_profile": {
+    "objects": ["geometric_graph", "noncrossing_edges", "matching"],
+    "methods": ["planar_graph_model", "matching"],
+    "transformations": ["segments_to_geometric_graph"],
+    "goal": ["existence_of_perfect_matching"],
+    "auxiliary_graph_type": ["simple_graph", "matching", "planar_graph"],
+    "invariants": ["2n_points", "noncrossing_segments"],
+    "keywords": ["school239_2024", "noncrossing_segments", "matching", "blocking_segments"],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Условие",
+      "text": "На плоскости дано 2n точек, никакие три из которых не лежат на одной прямой. Они соединены не пересекающимися по внутренним точкам отрезками так, что любой отрезок с концами в двух данных точках будет пересекать какой-то из проведённых во внутренней точке. Верно ли, что всегда можно выбрать n проведённых отрезков, не имеющих общих концов?",
+      "source_id": "src-school239-2024-official-conditions",
+      "status": "source_verified",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["simple_graph", "matching", "planar_graph"]
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph",
+      "text": "Дан геометрический граф на 2n точках общего положения: его рёбра изображены непересекающимися по внутренним точкам отрезками, причём любой отрезок между двумя данными точками пересекает внутренней точкой какое-то из проведённых рёбер. Нужно выяснить, обязательно ли в этом графе есть совершенное паросочетание.",
+      "status": "needs_human_review",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["simple_graph", "matching", "planar_graph"],
+      "distinct_from": ["stmt-original"]
+    }],
+    "olympiad_reformulations": []
+  },
+  "ideas": [{
+    "id": "idea-geometric-graph-perfect-matching",
+    "title": "Проведённые отрезки образуют геометрический граф",
+    "text": "Проведённые отрезки являются рёбрами непересекающегося геометрического графа, а требуемый выбор n отрезков без общих концов является совершенным паросочетанием.",
+    "tags": ["graph_model", "matching"],
+    "status": "ai_checked"
+  }],
+  "solutions": [],
+  "difficulty": {"main": "regional", "local_score": 7, "comment": "Открытая олимпиада ФМЛ 239 2024, параллель 8-9 классов, задача 2.", "status": "needs_human_review"},
+  "tags": ["matching", "planar_graphs", "graph_model", "goal_existence"],
+  "sources": [{"source_id": "src-school239-2024-official-conditions", "role": "official_problem_statement", "status": "source_verified"}],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Официальное условие скачано из PDF на Яндекс.Диске, ссылка на который дана в новости 239.ru.",
+      "Роль графа: геометрический граф явно задан проведёнными непересекающимися отрезками; требуемый выбор является совершенным паросочетанием.",
+      "Официальное решение в скачанном PDF не найдено; solutions оставлены пустыми до проверки ежегодного сборника или другого официального источника решений."
+    ],
+    "relations_status": "not_started"
+  }
+}

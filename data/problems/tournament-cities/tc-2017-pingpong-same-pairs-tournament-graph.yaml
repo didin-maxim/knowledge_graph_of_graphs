@@ -1,0 +1,132 @@
+{
+  "id": "tc-2017-pingpong-same-pairs-tournament-graph",
+  "title": "Пинг-понг навылет и кубок с теми же парами, Турнир городов 2016/17",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Френкин Б.Р.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "game_graph",
+      "tree",
+      "path",
+      "knockout_tournament"
+    ],
+    "methods": [
+      "graph_modeling",
+      "degree_argument",
+      "leaf_deletion"
+    ],
+    "transformations": [
+      "played_pairs_to_graph"
+    ],
+    "goal": [
+      "maximum_n"
+    ],
+    "auxiliary_graph_type": [
+      "played_match_graph"
+    ],
+    "invariants": [
+      "degree",
+      "leaves",
+      "path_structure"
+    ],
+    "keywords": [
+      "ping_pong",
+      "knockout",
+      "same_pairs",
+      "played_pairs_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Два турнира с одинаковыми парами",
+        "text": "В первый день \\(2n\\) школьников играли в пинг-понг навылет: сначала сыграли двое, затем победитель сыграл с третьим, победитель этой пары — с четвёртым и так далее, пока не сыграл последний школьник. Во второй день те же школьники разыграли кубок: сначала произвольно разбились на пары, проигравшие выбыли, победители снова произвольно разбились на пары и так далее. Оказалось, что наборы игравших пар в первый и во второй день были одни и те же. Найдите наибольшее возможное значение \\(n\\).",
+        "source_id": "src-tc-2017-38-oral-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path",
+          "tree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-played-pairs-graph",
+      "title": "Граф сыгранных партий",
+      "text": "Официальное решение строит граф, вершинами которого являются игроки, а рёбрами — сыгранные партии. Для игры навылет после удаления висячих вершин остаётся путь; для кубка тот же граф после удаления висячих вершин должен быть графом турнира на победителях первого этапа.",
+      "tags": [
+        "graph_model",
+        "trees",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-played-pairs-graph",
+      "title": "Граф партий и удаление висячих вершин",
+      "text": "Построим граф: вершины — игроки, рёбра — сыгранные партии. В игре первого дня выберем партии, победители которых раньше не выигрывали; соответствующие рёбра образуют путь, а остальные рёбра одним концом примыкают к этому пути. Поэтому после удаления всех висячих вершин остаётся путь без крайних вершин. Рассмотрим тот же граф как граф кубкового турнира. После удаления висячих вершин остаётся граф турнира на \\(2n-1\\) победителях первого этапа. Он может быть путём только при \\(n\\le 3\\), иначе победитель кубка имеет степень не меньше 3. Значит, \\(n\\le 3\\). При \\(n=3\\) пример дают пары кубка \\(1-2,3-4,5-6,7-8,2-4,6-8,4-8\\) и пары игры навылет \\(1-2,2-4,3-4,4-8,7-8,8-6,6-5\\).",
+      "idea_ids": [
+        "idea-played-pairs-graph"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "path",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 1,
+    "comment": "Устный тур 38-го Турнира городов, 11 класс, задача 1.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "connectivity",
+    "degree_counting"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2017-38-oral-solutions",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "graph_theory_absent_reason": "Граф появляется не в исходной формулировке, а как существенная конструкция официального решения.",
+    "notes": [],
+    "relations_status": "not_started"
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "id": "spbmo-1997-11-p63-red-blue-complete-graph-two-edge-count",
+  "title": "Равенство чисел способов удалить две одноцветные непересекающиеся связи, СПбМО 1997",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "complement_graph"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "unknown",
+      "status": "not_found_in_checked_sources"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "two_colored_complete_graph",
+      "complete_graph",
+      "simple_graph",
+      "complement_graph",
+      "two_edge_matching"
+    ],
+    "methods": [
+      "graph_model",
+      "double_counting",
+      "degree_counting",
+      "complement_graph_transition"
+    ],
+    "transformations": [
+      "wires_to_edge_colored_complete_graph",
+      "blue_edges_to_graph_red_edges_to_complement"
+    ],
+    "goal": [
+      "prove_equal_counts",
+      "count_two_edge_matchings_by_color"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph",
+      "complement_graph"
+    ],
+    "invariants": [
+      "red_edges_equal_blue_edges",
+      "degree_sum_half_of_complete_graph",
+      "disjoint_edge_pairs_equal_total_edge_pairs_minus_adjacent_edge_pairs"
+    ],
+    "keywords": [
+      "spbmo_1997_11_p63",
+      "two_colored_complete_graph",
+      "equal_red_blue_edges",
+      "disjoint_edge_pairs",
+      "degree_sum"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Оригинальная формулировка",
+        "text": "Прибор состоит из \\(4n\\) микросхем, любые две из которых соединены между собой напрямую либо красным, либо синим проводом, причём красных и синих проводов поровну. Прибор полностью выйдет из строя, если удалить какие-нибудь два одноцветных провода, протянутых между четырьмя микросхемами. Агент потенциального противника подсчитал количество способов вывести из строя упомянутый прибор выдергиванием двух синих проводов. Докажите, что существует ровно столько же способов подломить прибор, выдергивая два красных провода.",
+        "source_id": "src-spbmo-1997-pdmi-problems",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "matching"
+        ],
+        "source_note": "Сверено с официальным PDF-архивом PDMI СПбМО 1997: задача 1997.63; локальное извлечение audit/_spbmo_1992_2008/spbmo_1997.txt, строки 336-347.",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Рёбра полного графа \\(K_{4n}\\) раскрашены в красный и синий цвета, причём красных и синих рёбер поровну. Докажите, что число пар непересекающихся синих рёбер равно числу пар непересекающихся красных рёбер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-complement"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-complement",
+        "title": "Формулировка через дополнение",
+        "text": "Пусть \\(G\\) - простой граф на \\(m=4n\\) вершинах с ровно половиной всех рёбер полного графа \\(K_m\\). Докажите, что число пар непересекающихся рёбер в \\(G\\) равно числу пар непересекающихся рёбер в дополнительном графе \\(\\overline G\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complete_graph",
+          "complement_graph",
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-blue-graph-and-complement",
+      "title": "Один цвет как граф, второй как дополнение",
+      "text": "Возьмем синие провода за рёбра графа \\(G\\). Красные провода тогда являются рёбрами дополнительного графа \\(\\overline G\\), а условие равенства чисел проводов означает \\(e(G)=e(\\overline G)\\).",
+      "tags": [
+        "coloring",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-disjoint-pairs-via-degrees",
+      "title": "Непересекающиеся пары считаются через все пары и смежные пары",
+      "text": "В любом простом графе число пар непересекающихся рёбер равно \\(\\binom e2-\\sum_v\\binom{d(v)}2\\): из всех пар рёбер надо вычесть пары, имеющие общий конец.",
+      "tags": [
+        "double_counting",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-degree-sum-complement",
+      "title": "Сравнение графа с дополнением",
+      "text": "Пусть \\(m=4n\\). Рассмотрим граф \\(G\\), рёбрами которого являются синие провода. Тогда красные провода образуют дополнительный граф \\(\\overline G\\) на тех же \\(m\\) вершинах. По условию\n\\[\ne(G)=e(\\overline G)=\\frac12\\binom m2.\n\\]\nОбозначим степень вершины \\(v\\) в \\(G\\) через \\(d_v\\). Тогда ее степень в \\(\\overline G\\) равна \\(m-1-d_v\\).\n\nВ произвольном простом графе с \\(e\\) рёбрами число пар непересекающихся рёбер равно\n\\[\n\\binom e2-\\sum_v\\binom{d_v}2. \\tag{1}\n\\]\nДействительно, из всех пар различных рёбер мы вычитаем пары, имеющие общий конец. В простом графе две разные смежные пары рёбер имеют ровно один общий конец, поэтому каждая такая пара вычитается ровно один раз.\n\nУ графов \\(G\\) и \\(\\overline G\\) одинаковое число рёбер, значит в формуле (1) первые слагаемые \\(\\binom e2\\) совпадают. Осталось доказать, что совпадают суммы \\(\\sum_v\\binom{d_v}2\\) и \\(\\sum_v\\binom{m-1-d_v}2\\).\n\nПоложим \\(N=m-1\\). Для каждой вершины\n\\[\n\\binom{d_v}2-\\binom{N-d_v}2=(N-1)\\left(d_v-\\frac N2\\right).\n\\]\nСуммируя по всем вершинам, получаем\n\\[\n\\sum_v\\left(\\binom{d_v}2-\\binom{N-d_v}2\\right)=(N-1)\\left(\\sum_v d_v-\\frac{mN}{2}\\right).\n\\]\nНо \\(\\sum_v d_v=2e(G)=\\binom m2=mN/2\\), так как синих рёбер ровно половина всех рёбер \\(K_m\\). Поэтому последняя скобка равна нулю, и суммы смежных пар рёбер в \\(G\\) и \\(\\overline G\\) одинаковы.\n\nСледовательно, по формуле (1) число пар непересекающихся синих рёбер равно числу пар непересекающихся красных рёбер. Именно эти пары и являются способами вывести прибор из строя удалением двух одноцветных проводов между четырьмя микросхемами.",
+      "idea_ids": [
+        "idea-blue-graph-and-complement",
+        "idea-disjoint-pairs-via-degrees"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "complement_graph_transition"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "complete_graph",
+        "complement_graph",
+        "matching",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "СПбМО 1997, 11 класс, задача 63; короткая графовая задача на дополнение и аккуратный подсчет пар непересекающихся рёбер через степени.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "double_counting",
+    "degree_counting",
+    "goal_counting",
+    "goal_proof"
+  ],
+  "properties": {
+    "uses_complement_graph": {
+      "value": true,
+      "status": "ai_checked"
+    },
+    "central_method": {
+      "value": [
+        "double_counting",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": {
+      "value": "Один цвет полной раскраски рассматривается как граф, другой - как его дополнение; искомые пары непересекающихся рёбер выражаются через число рёбер и суммы квадратов степеней.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-1997-pdmi-problems",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-04: точное условие сверено с официальным PDF PDMI: https://www.pdmi.ras.ru/~olymp/1997/spbmo_1997.pdf; локально проверено по audit/_spbmo_1992_2008/spbmo_1997.txt, задача 1997.63.",
+      "Официальное решение в проверенных локальных источниках не найдено; добавлено самодостаточное решение через граф-дополнение и подсчет степеней.",
+      "Роль полного графа содержательная: микросхемы являются вершинами \\(K_{4n}\\), каждый провод - ребром одного из двух цветов. Это не задача Рамсея о принудительном одноцветном подграфе; рамсеевская роль ограничивается общей средой двухцветной раскраски полного графа.",
+      "Фраза 'два одноцветных провода, протянутых между четырьмя микросхемами' интерпретирована как два одноцветных провода с четырьмя различными концами, то есть как 2-рёберное паросочетание одного цвета."
+    ],
+    "relations_status": "deep_done"
+  }
+}

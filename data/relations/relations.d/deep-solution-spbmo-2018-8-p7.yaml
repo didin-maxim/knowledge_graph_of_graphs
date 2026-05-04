@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-tree-equivalent-spbmo-2018-8-p7-unique-path-spanning-tree",
+      "from": "tree-equivalent-properties",
+      "to": "spbmo-2018-8-p7-k4-edge-spanning-tree-few-degree2",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Базовая карточка о деревьях объясняет последний перевод в СПбМО 2018: после ремонта 'между любыми двумя городами остался единственный путь' означает, что оставленные дороги образуют остовное дерево. Также используется стандартный язык степени вершины в дереве.",
+      "backward_text": "СПбМО 2018 является прямым применением эквивалентных свойств деревьев: нужно удалить рёбра связного графа до остовного дерева, а затем проконтролировать число вершин степени 2 в этом дереве.",
+      "anchors": {
+        "from_solution_id": "sol-minimal-connected-subgraph",
+        "to_solution_id": "sol-hist-two-triangles"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-spbmo-2018-8-p7-spbmo-2022-big-small-road-repair-degree-control",
+      "from": "spbmo-2018-8-p7-k4-edge-spanning-tree-few-degree2",
+      "to": "spbmo-2022-big-small-cities-spanning-forest-leaves",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи СПбМО формулируются как ремонт дорог: нужно удалить часть рёбер, сохранить связность и добиться численного условия на степени в оставшемся остовном подграфе. В 2018 году контролируются вершины степени 2 через сильное локальное условие K4 на каждом ребре; в 2022 году контролируются листья через остовный лес с корнями в больших городах.",
+      "backward_text": "СПбМО 2022 является более конструктивным родственником СПбМО 2018: там явно строят остовный лес и соединяют компоненты, теряя ограниченное число листьев; здесь сильная локальная кликовая структура позволяет сразу получить остовное дерево без вершин степени 2.",
+      "anchors": {
+        "from_solution_id": "sol-hist-two-triangles",
+        "to_solution_id": "sol-official-spanning-forest"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

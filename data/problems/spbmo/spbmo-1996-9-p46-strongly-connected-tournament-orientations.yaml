@@ -1,0 +1,71 @@
+{
+  "id": "spbmo-1996-9-p46-strongly-connected-tournament-orientations",
+  "title": "Больше половины ориентаций полного графа сильно связны, СПбМО 1996",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "application"]},
+  "language": "ru",
+  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "problem_profile": {
+    "objects": ["complete_graph", "tournament", "strong_connectivity", "source_strong_component"],
+    "methods": ["count_bad_orientations", "union_bound", "strong_component_condensation", "cut_edge_orientation_counting"],
+    "transformations": ["one_way_roads_to_tournament"],
+    "goal": ["prove_more_than_half"],
+    "auxiliary_graph_type": ["directed_graph", "tournament"],
+    "invariants": ["number_of_cross_edges", "size_of_source_strong_component"],
+    "keywords": ["spbmo_1996", "tournament", "strong_connectivity", "orientation_counting", "complete_graph"],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original",
+      "title": "Оригинальная формулировка",
+      "text": "В стране 2000 городов, каждые два из которых соединены дорогой. Строительные организации представили все возможные проекты введения одностороннего движения на всех дорогах. Министерство транспорта отвергло все проекты, не обеспечивавшие возможности добраться из любого города в любой другой. Докажите, что все же осталось более половины проектов.",
+      "source_id": "src-spbmo-1996-pdmi-problems",
+      "status": "source_verified",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": []
+    }],
+    "graph_theory": [{
+      "id": "stmt-graph",
+      "text": "Докажите, что среди всех ориентаций ребер полного графа на 2000 вершинах более половины являются сильно связными ориентированными графами.",
+      "status": "ai_checked",
+      "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["complete_graph", "directed_graph", "tournament", "path"]
+    }]
+  },
+  "ideas": [{
+    "id": "idea-source-component-union-bound",
+    "title": "Плохой турнир имеет собственную начальную компоненту",
+    "text": "Если ориентация полного графа не сильно связна, то в конденсации ее сильных компонент есть начальная компонента S, из которой все ребра в дополнение направлены наружу. Для фиксированного S это фиксирует |S|(n-|S|) ребер, что делает такие ориентации очень редкими; объединение по всем возможным S дает оценку доли плохих турниров.",
+    "tags": ["connectivity", "tournaments", "cut_counting"],
+    "status": "ai_checked"
+  }],
+  "solutions": [{
+    "id": "sol-count-bad-orientations",
+    "title": "Оценка числа несильно связных турниров",
+    "text": "Пусть n=2000. Каждый проект одностороннего движения - это ориентация полного графа K_n, то есть турнир. Всего проектов 2^{n(n-1)/2}.\n\nОценим число плохих проектов, в которых не из каждого города можно добраться в каждый. В несильно связном ориентированном графе рассмотрим конденсацию сильных компонент. Это ациклический ориентированный граф; для турнира между любыми двумя компонентами все ребра направлены в одну сторону, поэтому есть начальная сильная компонента S, из которой все ребра в дополнение V\\S направлены наружу. Множество S непусто и не равно V.\n\nЕсли |S|=k, то все k(n-k) ребер между S и V\\S имеют заранее заданное направление. Остальные ребра можно ориентировать произвольно. Поэтому доля ориентаций, для которых данное S может быть такой начальной частью, равна 2^{-k(n-k)}. По объединению по всем S доля плохих проектов не превосходит\n\\[\n\\sum_{k=1}^{n-1} \\binom{n}{k}2^{-k(n-k)}.\n\\]\nСлагаемые с k и n-k одинаково оцениваются, поэтому достаточно k<=n/2 и удвоить сумму. Для таких k имеем \\binom{n}{k}<=n^k и 2^{-k(n-k)}<=2^{-kn/2}. Следовательно,\n\\[\n\\sum_{k=1}^{n-1} \\binom{n}{k}2^{-k(n-k)}\n\\le 2\\sum_{k>=1} (n2^{-n/2})^k.\n\\]\nПри n=2000 величина r=n2^{-n/2}=2000\\cdot2^{-1000}<2^{11}\\cdot2^{-1000}=2^{-989}<1/5. Поэтому правая часть меньше 2r/(1-r)<1/2. Следовательно, плохих проектов меньше половины, а оставшихся сильно связных проектов больше половины.",
+    "idea_ids": ["idea-source-component-union-bound"],
+    "standard_idea_ids": ["extremal_choice"],
+    "status": "ai_checked",
+    "definition_ids": ["complete_graph", "directed_graph", "tournament", "path"]
+  }],
+  "difficulty": {"main": "regional", "local_score": 5, "comment": "СПбМО 1996, отборочный тур, 9 класс, задача 46; сильная связность турниров и счет плохих ориентаций.", "status": "source_verified"},
+  "tags": ["tournaments", "connectivity", "cut_counting", "goal_counting", "graph_model"],
+  "properties": {
+    "central_method": {"value": ["source_strong_component_union_bound", "cut_edge_orientation_counting"], "status": "ai_checked"}
+  },
+  "sources": [{"source_id": "src-spbmo-1996-pdmi-problems", "role": "official_problem_statement", "status": "source_verified"}],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Официальное условие подтверждено по PDF-архиву PDMI: https://www.pdmi.ras.ru/~olymp/1996/spbmo_1996.pdf; локальные файлы: audit/_spbmo_1992_2008/spbmo_1996.pdf и audit/_spbmo_1992_2008/spbmo_1996.txt.",
+      "Роль графа: города образуют полный граф, а проекты движения являются ориентациями его ребер; решение использует сильную связность турниров.",
+      "Постоянный источник src-spbmo-1996-pdmi-problems добавлен при очистке импорта СПбМО.",
+      "Автор в проверенном PDF не указан; это не блокирует публикацию карточки, но авторство оставлено как needs_human_review.",
+      "2026-05-04: deep-pass проверил источник, графовую формулировку, полноту решения и связи; последняя оценка геометрической суммы сделана численно строгой."
+    ],
+    "relations_status": "deep_done"
+  }
+}

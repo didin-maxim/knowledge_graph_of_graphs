@@ -1,0 +1,118 @@
+{
+  "id": "tc-2024-connected-paper-pieces-chessboard-coloring",
+  "title": "Связные клетчатые куски и шахматная раскраска, Турнир городов 2023/24",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "grid_graph",
+      "connected_subgraph",
+      "chessboard_coloring",
+      "paths"
+    ],
+    "methods": [
+      "path_argument",
+      "color_change_counting"
+    ],
+    "transformations": [
+      "paper_piece_to_connected_grid_subgraph"
+    ],
+    "goal": [
+      "impossibility"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectedness",
+      "path_color_changes"
+    ],
+    "keywords": [
+      "connected_pieces",
+      "grid_graph",
+      "chessboard_coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Наклеивание связных кусков клетчатой бумаги",
+        "text": "Клетчатая бумага раскрашена в шахматном порядке. Разрешается вырезать связные по сторонам куски и наклеивать их на клетчатую плоскость. Докажите требуемое ограничение на получение заданной шахматной раскраски.",
+        "source_id": "src-tc-2024-45-oral-solutions",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Требуется ручная сверка с PDF: локально извлечённый текст условия сжат или частично восстановлен."
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ],
+        "review_notes": "Требуется ручная сверка с PDF: локально извлечённый текст условия сжат или частично восстановлен."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Связные подграфы решётки клеток и двудольная раскраска",
+        "text": "Каждый вырезанный кусок является связным подграфом решётчатого графа клеток, где рёбра соединяют клетки с общей стороной. Требуется доказать ограничение на получение заданной шахматной раскраски при переносе таких связных подграфов.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-connected-piece-paths",
+      "title": "Связность куска как существование путей",
+      "text": "Поскольку кусок связен по сторонам, между любыми двумя его клетками есть путь в графе соседства клеток; вдоль пути контролируется чередование цветов.",
+      "tags": [
+        "graph_model",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "45-й Турнир городов, 11 класс, устный тур, задача 6; точная формулировка требует ручной сверки с PDF.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "connectivity",
+    "coloring"
+  ],
+  "sources": [
+    {
+      "source_id": "src-tc-2024-45-oral-solutions",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Добавлено как явная задача о связных подграфах решётки клеток; нужна ручная сверка полной формулировки из PDF."
+    ],
+    "relations_status": "not_started"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "id": "spbmo-2012-7-p4-forty-regular-acquaintance-four-people",
+  "title": "40-регулярный граф знакомств и четыре человека с двумя знакомствами и двумя незнакомствами, СПбМО 2012",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "С. Берлов",
+      "status": "source_verified",
+      "source_id": "src-spbmo-2012-city-68-tex"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "regular_graph",
+      "degree",
+      "complement_graph"
+    ],
+    "methods": [
+      "graph_model",
+      "degree_counting",
+      "partition_by_neighborhood"
+    ],
+    "transformations": [
+      "acquaintance_relation_to_simple_graph",
+      "nonacquaintance_to_complement_graph"
+    ],
+    "goal": [
+      "existence_of_prescribed_four_vertex_pattern"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph",
+      "complement_graph"
+    ],
+    "invariants": [
+      "all_degrees_equal_40",
+      "each_vertex_has_59_nonneighbors"
+    ],
+    "keywords": [
+      "spbmo_2012_7_p4",
+      "regular_acquaintance_graph",
+      "forty_regular_graph",
+      "four_vertices",
+      "two_edges_two_nonedges"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие СПбМО, 7 класс, II тур, задача 4",
+        "text": "В компании 100 человек, каждый из которых знаком ровно с 40 другими. Докажите, что можно выбрать четырех человек \\(A\\), \\(B\\), \\(C\\), \\(D\\) так, что \\(A\\) и \\(B\\) будут знакомы друг с другом, \\(C\\) и \\(D\\) тоже будут знакомы, но при этом \\(A\\) и \\(D\\) будут незнакомы друг с другом и, кроме этого, \\(B\\) и \\(C\\) тоже будут незнакомы.",
+        "source_id": "src-spbmo-2012-city-68-tex",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "complement_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(G\\) - простой 40-регулярный граф на 100 вершинах. Докажите, что в \\(G\\) существуют четыре попарно различные вершины \\(A\\), \\(B\\), \\(C\\), \\(D\\), для которых \\(AB\\) и \\(CD\\) являются ребрами графа, а \\(AD\\) и \\(BC\\) не являются ребрами.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "complement_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-fix-edge-and-look-at-nonneighbors",
+      "title": "Зафиксировать одно ребро и смотреть на незнакомых с его концами",
+      "text": "Выбираем знакомую пару \\(A,B\\). Если удастся найти ребро между множеством вершин, не смежных с \\(B\\), и множеством вершин, не смежных с \\(A\\), то его концы можно взять за \\(C,D\\). Если такого ребра нет, вершины, не смежные ни с \\(A\\), ни с \\(B\\), оказываются изолированными от всех, кроме невозможных соседей \\(A,B\\).",
+      "tags": [
+        "degree_counting",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-fixed-edge-neighborhood-partition",
+      "title": "Доказательство через разбиение относительно выбранного ребра",
+      "text": "Построим граф знакомств: вершины - люди, ребро означает знакомство. По условию это простой граф на 100 вершинах, степень каждой вершины равна 40. Так как сумма степеней равна \\(100\\cdot 40\\), в графе есть ребра; выберем одно ребро и обозначим его концы через \\(A\\) и \\(B\\).\n\nПусть \\(X\\) - множество всех вершин, не смежных с \\(B\\), а \\(Y\\) - множество всех вершин, не смежных с \\(A\\). Если существует ребро \\(CD\\), где \\(C\\in X\\) и \\(D\\in Y\\), то эта четверка уже обладает нужными свойствами: \\(A\\) смежна с \\(B\\), \\(C\\) смежна с \\(D\\), вершина \\(B\\) не смежна с \\(C\\), а вершина \\(A\\) не смежна с \\(D\\). При этом вершины различны: \\(C\\ne D\\), потому что \\(CD\\) - ребро, а \\(C,D\\) не совпадают с нужными концами \\(A,B\\) из-за условий несмежности.\n\nДокажем существование такого ребра между \\(X\\) и \\(Y\\). Предположим противное: никакого ребра с одним концом в \\(X\\), а другим в \\(Y\\), нет.\n\nРазобьем остальные 98 вершин по отношению к \\(A\\) и \\(B\\). Пусть \\(S\\) - общие соседи \\(A\\) и \\(B\\), \\(P\\) - соседи \\(A\\), не смежные с \\(B\\), \\(Q\\) - соседи \\(B\\), не смежные с \\(A\\), а \\(R\\) - вершины, не смежные ни с \\(A\\), ни с \\(B\\). Если \\(|S|=s\\), то из \\(\\deg A=40\\) и наличия ребра \\(AB\\) получаем \\(|P|=39-s\\); из \\(\\deg B=40\\) получаем \\(|Q|=39-s\\). Поэтому\n\\[\n|R|=98-|S|-|P|-|Q|=98-s-2(39-s)=20+s.\n\\]\nВ частности, \\(R\\) непусто.\n\nВозьмем вершину \\(r\\in R\\). Она лежит и в \\(X\\), и в \\(Y\\), потому что не смежна ни с \\(A\\), ни с \\(B\\). По нашему предположению из \\(r\\) не может выходить ребро ни в одну вершину из \\(X\\cup Y\\). Но \\(X\\cup Y=P\\cup Q\\cup R\\), а с вершинами \\(A\\) и \\(B\\) вершина \\(r\\) тоже не смежна по определению \\(R\\). Значит, у \\(r\\) вообще нет соседей, что противоречит равенству \\(\\deg r=40\\).\n\nПротиворечие показывает, что нужное ребро \\(CD\\) между \\(X\\) и \\(Y\\) существует. Тогда четыре вершины \\(A,B,C,D\\) удовлетворяют всем условиям задачи.",
+      "idea_ids": [
+        "idea-fix-edge-and-look-at-nonneighbors"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "complement_graph_transition"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "degree",
+        "complement_graph"
+      ],
+      "properties": {
+        "uses_complement_graph": true,
+        "central_method": [
+          "degree_counting",
+          "graph_model"
+        ]
+      }
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Задача 7 класса городского тура СПбМО: короткое доказательство после выбора одного ребра, но нужен аккуратный учет множеств несоседей двух концов.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "degree_counting",
+    "graph_model",
+    "goal_existence"
+  ],
+  "properties": {
+    "extremal_object": "40-регулярный простой граф на 100 вершинах",
+    "typical_olympiad_use": "Выбрать ребро, рассмотреть множества несоседей его концов и получить противоречие со степенью вершины, не смежной ни с одним концом."
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2012-city-68-tex",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "updated_by": "codex",
+    "updated_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Точное условие сверено с официальным TeX-архивом PDMI c6812tex.zip, файл c_68_12.tex, 7 класс, II тур, задача 4.",
+      "Автор восстановлен по подписи \\be в исходном TeX: С. Берлов.",
+      "Официальное решение в источнике не найдено; добавлено самостоятельное полное доказательство, проверяющее графовую модель знакомств как простой 40-регулярный граф."
+    ],
+    "relations_status": "reviewed_no_links"
+  }
+}

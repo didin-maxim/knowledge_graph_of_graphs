@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-simon-marais-2021-a3-imc-2001-determinant-cycles",
+      "from": "simon-marais-2021-a3-determinants-cycle-components",
+      "to": "imc-2001-day2-p4-zero-principal-minors-acyclic-digraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "SMMC 2021 A3 и IMC 2001 Day 2 P4 обе контролируют детерминанты через циклы во вспомогательном графе. В SMMC строки 0-1 матрицы становятся рёбрами неориентированного мультиграфа, и циклические компоненты дают множители детерминанта; в IMC ненулевые элементы задают орграф, а ориентированный цикл создаёт опасный ненулевой член главного минора.",
+      "backward_text": "IMC 2001 Day 2 P4 является более чистой версией мотива «цикл в support-графе как член детерминанта»: там отсутствие ориентированных циклов даёт треугольную форму. В SMMC 2021 A3 тот же детерминантно-графовый язык используется для точного подсчёта возможных значений, но граф неориентированный и после pruning распадается на циклы.",
+      "anchors": {
+        "from_solution_id": "sol-official-graph-pruning",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-simon-marais-2021-a3-schweitzer-1951-determinant-support",
+      "from": "simon-marais-2021-a3-determinants-cycle-components",
+      "to": "miklos-schweitzer-1951-p13-determinant-nonzero-pattern-matchings",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "SMMC 2021 A3 и Schweitzer 1951/13 обе переводят вопрос о детерминанте в граф ненулевого паттерна матрицы. В SMMC строка с двумя единицами задаёт ребро мультиграфа столбцов, а вклад компоненты зависит от чётности цикла; в Schweitzer ненулевые члены детерминанта считаются как совершенные паросочетания в двудольном графе строк и столбцов.",
+      "backward_text": "Schweitzer 1951/13 даёт близкий базовый мотив: ненулевые позиции матрицы превращаются в графовую задачу о независимых компонентах и множителях 2. SMMC 2021 A3 усложняет этот мотив тем, что считает не только число ненулевых членов, а возможные значения самого детерминанта после удаления листьев и анализа циклических блоков.",
+      "anchors": {
+        "from_solution_id": "sol-official-graph-pruning",
+        "to_solution_id": "solution-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

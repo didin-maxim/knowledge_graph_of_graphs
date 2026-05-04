@@ -1,0 +1,160 @@
+{
+  "id": "mmo-2023-hypergraph-club-acquaintance-graph",
+  "title": "Клуб гиперграфов: минимум школьников при 100 заседаниях и условии на знакомства, ММО 2023/24, 10 класс, задача 3",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Д. Метелев",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "hypergraph_of_meetings",
+      "acquaintance_graph",
+      "degrees",
+      "incidence_counts"
+    ],
+    "methods": [
+      "construction",
+      "degree_condition",
+      "double_counting",
+      "extremal_choice"
+    ],
+    "transformations": [
+      "meetings_to_hyperedges",
+      "shared_meeting_to_acquaintance_edge"
+    ],
+    "goal": [
+      "exact_minimum_number_of_students"
+    ],
+    "auxiliary_graph_type": [
+      "2-section_of_hypergraph",
+      "simple_graph"
+    ],
+    "invariants": [
+      "acquaintance_degree",
+      "number_of_attended_meetings",
+      "maximum_attendance_count"
+    ],
+    "keywords": [
+      "mmo_2023_24",
+      "mmo_2023_24_grade_10_problem_3",
+      "hypergraph_club",
+      "meetings",
+      "acquaintance_graph",
+      "degree_condition",
+      "answer_11"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Заседания клуба гиперграфов",
+        "text": "В клуб любителей гиперграфов в начале года записались n попарно незнакомых школьников. За год клуб провел 100 заседаний, каждое посетил хотя бы один школьник. Два школьника знакомились, если было хотя бы одно заседание, которое они оба посетили. В конце года оказалось, что количество знакомых у каждого школьника не меньше, чем количество заседаний, которые он посетил. Найдите минимальное значение n, при котором такое могло случиться.",
+        "source_id": "src-mmo-2023-24-tasks-10-final",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Минимальный порядок гиперграфа с ограничением на степени 2-секции",
+        "text": "Дан гиперграф H с n вершинами и 100 непустыми гиперребрами. Пусть G - 2-секция H: две разные вершины смежны в G тогда и только тогда, когда они входят в общее гиперребро H. Найти минимальное n, для которого возможно, что для каждой вершины v степень v в G не меньше числа гиперребер H, содержащих v.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-incidence-vs-acquaintance-degree",
+      "title": "Сравнить посещения и степени в графе знакомств",
+      "text": "Заседания образуют гиперребра, а знакомства - обычный граф на тех же вершинах. Нижняя оценка получается из выбора школьника с максимальным числом посещений: общее число посещений не меньше числа заседаний, а условие задачи превращает число посещений этого школьника в нижнюю оценку на его степень в графе знакомств.",
+      "tags": [
+        "graph_model",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-hypergraph-club",
+      "title": "Оценка и конструкция на 11 школьниках",
+      "text": "Ответ: 11. Сначала докажем, что меньше 11 школьников быть не могло. Для каждого школьника посчитаем, сколько заседаний он посетил, и выберем школьника A, у которого это число максимально; обозначим его через k. Каждое из 100 заседаний посетил хотя бы один школьник, поэтому общее число посещений всех школьников по всем заседаниям не меньше 100. С другой стороны, по выбору A каждый из n школьников посетил не более k заседаний, значит общее число посещений не больше nk. Следовательно, nk >= 100, то есть k >= 100/n. По условию у школьника A число знакомых не меньше числа посещенных им заседаний, значит у A есть по крайней мере k знакомых. Вместе с самим A это дает по крайней мере k + 1 различных школьников, поэтому n >= k + 1. Совмещая это с k >= 100/n, получаем n >= 100/n + 1. При n <= 10 правая часть строго больше n, поскольку 100/n + 1 >= 11, а значит такое n невозможно. Следовательно, n >= 11. Теперь построим пример при n = 11. Пронумеруем школьников числами 1, 2, ..., 11. Первое заседание посетят все 11 школьников. Оставшиеся 99 заседаний разобьем на 11 групп по 9 заседаний. Для каждого i от 1 до 11 все 9 заседаний i-й группы посетит только школьник i. Тогда каждое из 100 заседаний непусто. Каждый школьник посетил ровно 10 заседаний: одно общее и 9 своих одиночных. На первом заседании каждый школьник познакомился со всеми остальными 10 школьниками, а одиночные заседания новых знакомств не добавляют. Поэтому у каждого школьника ровно 10 знакомых и ровно 10 посещенных заседаний, так что требуемое условие выполнено. Значит n = 11 достижимо, а по нижней оценке это минимальное значение.",
+      "idea_ids": [
+        "idea-incidence-vs-acquaintance-degree"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "ММО 2023/24, заключительный этап, 10 класс, задача 3; ответ 11 получается из короткой нижней оценки по максимальному числу посещений и явной конструкции.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "degree_counting",
+    "double_counting",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "sources": [
+    {
+      "source_id": "src-mmo-2023-24-tasks-10-final",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-mmo-2023-24-sol-10-final",
+      "role": "official_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Условие сверено по локальному файлу tasks-math-10-final-23-24.pdf и extracted text audit/_mmo_tc_text_clean/9c3c3a2e4b9dbcbb.txt.",
+      "Решение сверено по официальному локальному файлу sol-math-10-final-23-24.pdf и extracted text audit/_mmo_tc_text_clean/6c132d88b67c590f.txt: ответ 11, нижняя оценка через самого активного школьника и конструкция из одного общего заседания плюс 11 групп по 9 одиночных заседаний.",
+      "Связь rel-mmo-2023-hypergraph-club-mmo-2024-symposium проверена как слабый same_motif: общий граф знакомств и двойной счет, но разные ограничения и нет переноса решения. Новые уверенные связи не добавлялись; предложения suggest_relations в основном являются общими совпадениями по double_counting/degree_counting."
+    ],
+    "relations_status": "reviewed_no_links"
+  }
+}

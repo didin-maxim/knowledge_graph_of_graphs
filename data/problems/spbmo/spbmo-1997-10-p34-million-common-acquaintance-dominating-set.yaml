@@ -1,0 +1,187 @@
+{
+  "id": "spbmo-1997-10-p34-million-common-acquaintance-dominating-set",
+  "title": "5000 жителей, знакомых со всеми остальными через общий выбор, СПбМО 1997",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "probabilistic_method"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "unknown",
+      "status": "not_found_in_checked_sources"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "social_graph",
+      "common_neighbor_condition",
+      "dominating_set"
+    ],
+    "methods": [
+      "graph_model",
+      "degree_split",
+      "random_choice",
+      "union_bound",
+      "exponential_estimate"
+    ],
+    "transformations": [
+      "acquaintance_to_graph",
+      "statement_to_graph_model"
+    ],
+    "goal": [
+      "construct_small_dominating_set",
+      "prove_existence"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph",
+      "acquaintance_graph"
+    ],
+    "invariants": [
+      "every_pair_has_common_neighbor",
+      "neighborhood_of_low_degree_vertex_dominates",
+      "minimum_degree_large_enough_for_random_sample"
+    ],
+    "keywords": [
+      "spbmo_1997_10_p34",
+      "nezakomsk",
+      "common_acquaintance",
+      "common_neighbor",
+      "dominating_set",
+      "random_sample_5000"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В городе Незнакомске миллион жителей, причём любые два из них имеют общего знакомого среди остальных. Докажите, что можно выбрать 5000 жителей города так, чтобы любой из оставшихся имел хотя бы одного знакомого среди выбранных.",
+        "source_id": "src-spbmo-1997-pdmi-problems",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "dominating_set"
+        ],
+        "source_note": "Сверено с локальным текстом, извлеченным из официального PDF СПбМО 1997: audit/_spbmo_1992_2008/spbmo_1997.txt, задача 34."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(G\\) — простой граф на \\(10^6\\) вершинах, в котором у любых двух различных вершин есть общий сосед, отличный от них обеих. Докажите, что существует множество \\(S\\) из не более чем 5000 вершин, такое что каждая вершина вне \\(S\\) смежна хотя бы с одной вершиной из \\(S\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "dominating_set",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-low-degree-neighborhood",
+      "title": "Соседи малой степени уже покрывают всех",
+      "text": "Если у некоторой вершины не больше 5000 соседей, то множество всех ее соседей подходит: любую вершину вне этого множества покрывает общий сосед с выбранной вершиной.",
+      "tags": [
+        "graph_model",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-random-sample-large-degree",
+      "title": "При больших степенях случайные 5000 вершин почти наверняка покрывают граф",
+      "text": "Если все степени больше 5000, то для фиксированной невыбранной вершины вероятность не попасть ни в одного ее соседа при 5000 случайных выборах меньше \\(e^{-25}\\). Сумма этих вероятностей по миллиону вершин меньше 1, значит существует удачный выбор.",
+      "tags": [
+        "goal_existence",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-degree-split-random-choice",
+      "title": "Разбор по минимальной степени и случайный выбор",
+      "text": "Переведем условие на язык графов: вершины — жители, ребро означает знакомство. Условие говорит, что у любых двух вершин есть общий сосед, отличный от них.\n\nРассмотрим сначала случай, когда в графе есть вершина \\(v\\) степени не больше 5000. Возьмем в качестве \\(S\\) всех соседей вершины \\(v\\). Тогда \\(|S|\\le 5000\\). Сама вершина \\(v\\) имеет соседа в \\(S\\), так как при миллионе жителей условие, примененное к паре \\(v,u\\), гарантирует наличие знакомых у \\(v\\). Если вершина \\(x\\) не лежит в \\(S\\) и \\(x\\ne v\\), то у пары \\(x,v\\) есть общий сосед \\(y\\). Этот сосед смежен с \\(v\\), значит \\(y\\in S\\), и одновременно смежен с \\(x\\). Поэтому каждая вершина вне \\(S\\) знакома с кем-то из \\(S\\).\n\nОсталось разобрать случай, когда степень каждой вершины больше 5000. Выберем 5000 раз независимо и равновероятно одного из миллиона жителей; повторения пока разрешим. Для фиксированной вершины \\(x\\) вероятность того, что за все 5000 выборов не выбран ни один сосед \\(x\\), не превосходит\n\\[\n\\left(1-\\frac{5001}{10^6}\\right)^{5000}<e^{-5000\\cdot 5001/10^6}<e^{-25}.\n\\]\nЗначит математическое ожидание числа вершин, у которых среди выбранных нет ни одного соседа, меньше \\(10^6e^{-25}<1\\). Следовательно, существует конкретный набор из 5000 выборов, для которого таких вершин нет вообще. Удалив из этого набора возможные повторения, получим множество \\(S\\) размера не больше 5000; удаление повторов не меняет множество выбранных жителей. Тогда каждый невыбранный житель имеет знакомого в \\(S\\). В обоих случаях требуемые 5000 жителей существуют.",
+      "idea_ids": [
+        "idea-low-degree-neighborhood",
+        "idea-random-sample-large-degree"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Задача 10 класса СПбМО: короткое графовое решение, но требуется заметить сильный случай малой степени и применить вероятностный метод с численной оценкой \\(10^6e^{-25}<1\\).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "connectivity",
+    "degree_counting",
+    "extremal_choice",
+    "goal_existence",
+    "goal_bound"
+  ],
+  "properties": {
+    "extremal_object": {
+      "value": "Малое множество жителей, доминирующее всех невыбранных в графе знакомств.",
+      "status": "ai_checked"
+    },
+    "central_method": {
+      "value": [
+        "low_degree_neighborhood",
+        "random_sample_union_bound"
+      ],
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": {
+      "value": "Разделить граф по наличию вершины малой степени; при большой минимальной степени доказать существование малой доминирующей выборки случайным выбором и объединенной оценкой вероятностей.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-1997-pdmi-problems",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-04: точное условие сверено с локальным извлечением из официального PDF СПбМО 1997, задача 34.",
+      "Официальное решение в проверенных источниках не найдено; добавлено самодостаточное решение через разбор по степени и вероятностный выбор.",
+      "Связи проверены отдельно; уверенная близкая связь есть с задачей СПбМО 1997 для 9 класса о выборе представителей при общем знакомом."
+    ],
+    "relations_status": "deep_done"
+  }
+}

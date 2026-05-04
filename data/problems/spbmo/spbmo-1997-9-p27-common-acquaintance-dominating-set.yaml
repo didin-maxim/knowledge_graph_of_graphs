@@ -1,0 +1,187 @@
+{
+  "id": "spbmo-1997-9-p27-common-acquaintance-dominating-set",
+  "title": "Выбор трети жителей при общем знакомом, СПбМО 1997",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "probabilistic_method"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "unknown",
+      "status": "not_found_in_checked_sources"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "social_graph",
+      "common_neighbor_condition",
+      "dominating_set"
+    ],
+    "methods": [
+      "graph_model",
+      "degree_split",
+      "random_choice",
+      "expectation_bound"
+    ],
+    "transformations": [
+      "acquaintance_to_graph",
+      "statement_to_graph_model"
+    ],
+    "goal": [
+      "construct_small_dominating_set",
+      "prove_existence",
+      "prove_upper_bound"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph",
+      "acquaintance_graph"
+    ],
+    "invariants": [
+      "every_pair_has_common_neighbor",
+      "neighborhood_of_low_degree_vertex_dominates",
+      "minimum_degree_large_enough_for_random_sample"
+    ],
+    "keywords": [
+      "spbmo_1997_9_p27",
+      "nezнакомsk",
+      "common_acquaintance",
+      "common_neighbor",
+      "dominating_set",
+      "one_third_domination"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В городе Незнакомске живут \\(3n\\) человек, причём любые два жителя имеют общего знакомого. Докажите, что можно указать \\(n\\) человек таких, что каждый из остальных знаком хотя бы с одним человеком из этих \\(n\\).",
+        "source_id": "src-spbmo-1997-pdmi-problems",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "dominating_set"
+        ],
+        "source_note": "Сверено с официальным PDF СПбМО 1997 на сайте PDMI и локальным извлечением audit/_spbmo_1992_2008/spbmo_1997.txt, задача 1997.27."
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(G\\) — простой граф на \\(3n\\) вершинах, в котором у любых двух различных вершин есть общий сосед. Докажите, что существует множество \\(S\\) из не более чем \\(n\\) вершин, такое что каждая вершина вне \\(S\\) смежна хотя бы с одной вершиной из \\(S\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "dominating_set",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-low-degree-neighborhood",
+      "title": "Соседи вершины малой степени покрывают всех",
+      "text": "Если у некоторого жителя не больше \\(n\\) знакомых, то все его знакомые подходят: любой другой человек имеет с ним общего знакомого, а значит знаком с кем-то из этого множества.",
+      "tags": [
+        "graph_model",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-random-choice-high-degree",
+      "title": "При больших степенях случайная треть доминирует с положительной вероятностью",
+      "text": "Если у каждого больше \\(n\\) знакомых, выберем случайно \\(n\\) жителей. Для фиксированного жителя вероятность остаться вне выбора и без знакомого среди выбранных мала; сумма этих вероятностей по всем \\(3n\\) жителям меньше 1.",
+      "tags": [
+        "goal_existence",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-degree-split-random-choice",
+      "title": "Разбор по степени и случайный выбор",
+      "text": "Рассмотрим граф знакомств: вершины — жители, а ребра — пары знакомых. Условие означает, что у любых двух вершин есть общий сосед. Достаточно найти множество из не более чем \\(n\\) вершин, смежное с каждой вершиной вне этого множества; если вершин окажется меньше \\(n\\), его можно дополнить произвольными жителями.\n\nСначала пусть есть вершина \\(v\\), степень которой не превосходит \\(n\\). Возьмем в качестве \\(S\\) всех соседей \\(v\\). Тогда \\(|S|\\le n\\). Сама вершина \\(v\\) имеет соседа в \\(S\\). Если же вершина \\(x\\) не лежит в \\(S\\) и \\(x\\ne v\\), то у \\(x\\) и \\(v\\) есть общий сосед \\(y\\). Поскольку \\(y\\) смежен с \\(v\\), он лежит в \\(S\\); поскольку \\(y\\) смежен с \\(x\\), вершина \\(x\\) тоже имеет соседа в \\(S\\). Значит, в этом случае требуемое множество найдено.\n\nОстается случай, когда степень каждой вершины не меньше \\(n+1\\). Выберем равновероятно среди всех \\(n\\)-элементных подмножеств вершин множество \\(S\\). Назовем вершину \\(x\\) плохой, если \\(x\\notin S\\) и у \\(x\\) нет соседей в \\(S\\). Чтобы \\(x\\) была плохой, все выбранные вершины должны лежать среди не-соседей \\(x\\), отличных от самой \\(x\\). Таких вершин не больше\n\\[\n3n-1-(n+1)=2n-2.\n\\]\nПоэтому\n\\[\n\\Pr(x\\text{ плохая})\\le \\frac{\\binom{2n-2}{n}}{\\binom{3n}{n}}.\n\\]\nМатематическое ожидание числа плохих вершин не превосходит\n\\[\n3n\\frac{\\binom{2n-2}{n}}{\\binom{3n}{n}}.\n\\]\nЭта величина меньше 1. Действительно, при \\(n=1\\) она равна 0, при \\(n=2\\) равна \\(2/5\\), при \\(n=3\\) равна \\(3/7\\), а начиная с \\(n=3\\) при переходе от \\(n\\) к \\(n+1\\) она умножается на\n\\[\n\\frac{4(2n-1)(n+1)(2n+1)}{3(n-1)(3n+2)(3n+1)}<1,\n\\]\nпоскольку\n\\[\n3(n-1)(3n+2)(3n+1)-4(2n-1)(n+1)(2n+1)\n=11n^3-16n^2-17n-2>0\n\\]\nдля \\(n\\ge3\\).\n\nСледовательно, существует выбор \\(S\\), для которого плохих вершин нет вообще. Тогда каждая вершина вне \\(S\\) имеет соседа в \\(S\\), то есть выбранные \\(n\\) жителей удовлетворяют требованию задачи.",
+      "idea_ids": [
+        "idea-low-degree-neighborhood",
+        "idea-random-choice-high-degree"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "dominating_set",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "СПбМО 1997, 9 класс, задача 27: графовая задача о доминирующем множестве размера не больше трети вершин. Основная идея проста в случае малой степени, а общий случай закрывается коротким вероятностным аргументом.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "degree_counting",
+    "extremal_choice",
+    "goal_existence",
+    "goal_bound"
+  ],
+  "properties": {
+    "extremal_object": "Множество из не более чем трети жителей, доминирующее всех остальных в графе знакомств.",
+    "central_method": {
+      "value": [
+        "degree_split",
+        "random_choice",
+        "expectation_bound"
+      ],
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": "Если окрестность вершины мала, она сама дает доминирующее множество; иначе большая минимальная степень позволяет выбрать малое доминирующее множество вероятностным методом."
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-1997-pdmi-problems",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-03",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-04: точное условие сверено с официальным PDF СПбМО 1997 на сайте PDMI и локальным извлечением audit/_spbmo_1992_2008/spbmo_1997.txt, строки задачи 1997.27.",
+      "Официальное решение в проверенных источниках не найдено; добавлено самодостаточное решение через разбор по степени и вероятностный выбор.",
+      "Роль графа: это прямой граф знакомств; искомые жители образуют доминирующее множество размера не больше n в графе на 3n вершинах.",
+      "Уверенная близкая связь с задачей СПбМО 1997 для 10 класса уже записана в data/relations/relations.d/deep-solution-spbmo-1997-10-p34.yaml; новый relation-файл не создан, чтобы не дублировать существующую связь."
+    ],
+    "relations_status": "deep_done"
+  }
+}
