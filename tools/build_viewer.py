@@ -108,7 +108,8 @@ def build_html(data):
       flex-direction: column;
       min-width: 0;
       min-height: 0;
-      overflow: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
     }}
 
     .shell.sidebar-hidden .sidebar {{
@@ -170,9 +171,8 @@ def build_html(data):
     }}
 
     .list {{
-      flex: 1;
+      flex: 1 0 auto;
       min-height: 0;
-      overflow: auto;
       padding: 8px;
     }}
 
