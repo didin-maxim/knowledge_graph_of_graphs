@@ -20,14 +20,21 @@
       "hamiltonian_path"
     ],
     "methods": [
-      "extremal_argument"
+      "extremal_argument",
+      "regular_tournament_cycle_theorem",
+      "degree_counting",
+      "strong_tournament_hamiltonian_path_count"
     ],
     "transformations": [],
     "goal": [
       "proof"
     ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "outdegree",
+      "number_of_arcs",
+      "hamiltonian_path_count"
+    ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2009",
@@ -65,9 +72,38 @@
         "hamiltonian_cycles"
       ],
       "status": "needs_human_review"
+    },
+    {
+      "id": "idea-strong-tournament-count",
+      "title": "Свести к сильному турниру",
+      "text": "Регулярный турнир автоматически сильно связен: иначе начальная и конечная компоненты сильной связности одновременно требуют больше половины вершин. После этого можно применить нижнюю оценку Busch для числа гамильтоновых путей в сильном турнире.",
+      "tags": [
+        "tournaments",
+        "hamiltonian_cycles",
+        "goal_counting"
+      ],
+      "status": "ai_checked"
     }
   ],
-  "solutions": [],
+  "solutions": [
+    {
+      "id": "sol-ai-busch-strong-tournament-bound",
+      "title": "ИИ-решение через нижнюю оценку для сильных турниров",
+      "text": "Сначала проверим, что данный турнир T сильно связен. Предположим противное и рассмотрим конденсацию T по компонентам сильной связности. В турнире между двумя различными компонентами все рёбра направлены в одну сторону, поэтому компоненты можно линейно упорядочить так, что все рёбра между более ранней и более поздней компонентой идут вперёд. Пусть A — первая компонента, B — последняя. У вершины из A нет входящих рёбер извне A, значит её входящая степень не превосходит |A|-1. Но в нашем регулярном турнире на 2009 вершинах входящая степень каждой вершины равна 1004, поэтому |A|>=1005. Аналогично у вершины из B нет исходящих рёбер вне B, значит |B|-1>=1004 и |B|>=1005. Компоненты A и B различны и не пересекаются, что невозможно, так как всего вершин 2009. Значит T сильно связен.\n\nТеперь используем внешнюю теорему Arthur H. Busch: любой сильный турнир порядка n имеет не менее 5^((n-1)/3) различных гамильтоновых ориентированных путей; точная нижняя оценка в случае n≡2 (mod 3) равна 9*5^((n-5)/3). Для n=2009 получаем как минимум 9*5^668 гамильтоновых путей, а это заведомо больше 2500. Следовательно, в исходном турнире есть не менее 2500 гамильтоновых ориентированных путей.",
+      "idea_ids": [
+        "idea-strong-tournament-count"
+      ],
+      "status": "needs_human_review",
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "definition_ids": [
+        "directed_graph",
+        "tournament",
+        "hamiltonian_path"
+      ]
+    }
+  ],
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
@@ -77,7 +113,9 @@
   "tags": [
     "tournaments",
     "hamiltonian_cycles",
-    "goal_exact_bound"
+    "goal_counting",
+    "goal_bound",
+    "degree_counting"
   ],
   "properties": {},
   "sources": [
@@ -100,7 +138,9 @@
     "notes": [
       "Импортировано по итогам аудита пропущенных графовых задач КОЛМ: файлы final/candidates показали, что 2009 год не был преобразован в карточки базы данных.",
       "Файл-источник: work/kolm/text/2009/tur4_13.txt.",
-      "Роль графа: явно присутствует в условии."
+      "Роль графа: явно присутствует в условии.",
+      "2026-05-04: no-solution high-reasoning pass found no exact published solution. The agent gave a short derivation from Alspach's theorem that every arc of a regular tournament lies on cycles of all lengths, hence on a Hamiltonian cycle, but this is not self-contained under current card rules. Do not add it as a full solution unless a separate prerequisite card for Alspach's theorem is added or a sourced non-self-contained solution policy is accepted.",
+      "2026-05-04: ИИ-решение добавлено как теоремное и оставлено в status=needs_human_review: используется внешняя оценка Busch (2006) для числа гамильтоновых путей в сильном турнире; source_id для этой статьи пока нет в общем реестре."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

@@ -11,23 +11,42 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "unknown",
+      "status": "not_found_in_checked_sources"
     }
   ],
   "problem_profile": {
-    "objects": [],
-    "methods": [],
+    "objects": [
+      "simple_graph",
+      "cycles_pairwise_intersecting",
+      "girth_at_least_5",
+      "number_of_edges"
+    ],
+    "methods": [
+      "minimal_counterexample",
+      "low_degree_reduction"
+    ],
     "transformations": [],
-    "goal": [],
-    "auxiliary_graph_type": [],
-    "invariants": [],
+    "goal": [
+      "prove_edge_upper_bound"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [
+      "no_two_vertex_disjoint_cycles",
+      "no_cycles_of_length_3_or_4"
+    ],
     "keywords": [
       "yumt",
       "2025_unior_round3_problem1",
-      "yumt_2025"
+      "yumt_2025",
+      "cycles_pairwise_intersecting",
+      "girth_at_least_5",
+      "edge_bound_2n_minus_1",
+      "непросто_для_ИИ"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -40,13 +59,27 @@
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": []
+        "definition_ids": [
+          "simple_graph",
+          "cycle"
+        ]
       }
     ],
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [],
+  "ideas": [
+    {
+      "id": "idea-minimal-counterexample-low-degree",
+      "title": "Минимальный контрпример должен сводиться к вершине степени не больше 2",
+      "text": "Если в графе есть вершина степени 0 или 1, её можно удалить и применить индукцию; если есть вершина степени 2, после удаления оценка тоже сохраняется с точностью ровно до \\(2n-1\\). Поэтому естественный путь к решению: доказать, что в графе без треугольников и 4-циклов, где любые два цикла пересекаются по вершинам, обязательно есть вершина степени не больше 2. Эквивалентная трудная лемма: граф минимальной степени хотя бы 3 и обхвата хотя бы 5 содержит два непересекающихся по вершинам цикла.",
+      "tags": [
+        "minimal_counterexample",
+        "extremal_graph_theory"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
   "solutions": [],
   "difficulty": {
     "main": "regional",
@@ -56,12 +89,13 @@
   },
   "tags": [
     "extremal_graph_theory",
+    "minimal_counterexample",
     "goal_proof"
   ],
   "sources": [
     {
       "source_id": "src-yumt-2025-unior-round3-problem1-official",
-      "role": "problem_and_solutions_official",
+      "role": "official_problem_statement",
       "status": "source_verified"
     }
   ],
@@ -71,9 +105,11 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [
-      "Импортировано из проверенной рабочей карточки ЮМТ 2025_unior_round3_problem1.md."
+      "Импортировано из проверенной рабочей карточки ЮМТ 2025_unior_round3_problem1.md.",
+      "2026-05-05: проверен официальный PDF условий https://adygmath.ru/content/files/umt25/problems/3tur_usl_unior.pdf; публичный официальный разбор, автор или proposer в проверенных источниках не найдены.",
+      "2026-05-05: непросто для ИИ. Найден естественный индукционный маршрут через лемму о двух непересекающихся циклах в графе минимальной степени хотя бы 3 и обхвата хотя бы 5, но самодостаточное школьное доказательство этой леммы быстро не получено, поэтому решение в solutions[] не добавлено."
     ],
-    "relations_status": "deep_done",
+    "relations_status": "reviewed_no_links",
     "graph_theory_duplicate_removed": true
   }
 }

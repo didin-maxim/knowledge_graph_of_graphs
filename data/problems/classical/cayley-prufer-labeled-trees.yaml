@@ -1,0 +1,174 @@
+{
+  "id": "cayley-prufer-labeled-trees",
+  "title": "Формула Кэли для помеченных деревьев через код Прюфера",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Arthur Cayley",
+      "status": "source_verified"
+    },
+    {
+      "name": "Heinz Prüfer",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "labeled_tree",
+      "tree",
+      "leaf",
+      "sequence"
+    ],
+    "methods": [
+      "bijection",
+      "induction",
+      "leaf_deletion"
+    ],
+    "transformations": [
+      "delete_smallest_leaf",
+      "encode_neighbor_sequence",
+      "reconstruct_tree_from_sequence"
+    ],
+    "goal": [
+      "count_labeled_trees",
+      "construct_bijection"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "number_of_vertices",
+      "remaining_labels",
+      "leaf_count"
+    ],
+    "keywords": [
+      "cayley_formula",
+      "prufer_code",
+      "labeled_trees"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Число помеченных деревьев",
+        "text": "Для любого \\(n\\ge 2\\) число деревьев с вершинами \\(1,2,\\ldots,n\\) равно \\(n^{n-2}\\).",
+        "source_id": "src-wikipedia-cayley-formula",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-prufer-code",
+        "title": "Код Прюфера",
+        "text": "Каждому дереву на вершинах \\(1,2,\\ldots,n\\) можно взаимно однозначно сопоставить последовательность длины \\(n-2\\), каждый член которой является числом от 1 до \\(n\\).",
+        "source_id": "src-wikipedia-prufer-sequence",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-delete-smallest-leaf",
+      "title": "Удалять наименьший лист",
+      "text": "Пока в дереве больше двух вершин, удаляем лист с наименьшей меткой и записываем метку его единственного соседа. Получается последовательность длины \\(n-2\\).",
+      "tags": [
+        "trees",
+        "induction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-reconstruct-leaf",
+      "title": "Восстанавливать первый отсутствующий лист",
+      "text": "При восстановлении очередной удаляемый лист — это наименьшая метка, которая еще не использована как оставшаяся вершина и не встречается в оставшейся части кода.",
+      "tags": [
+        "trees",
+        "goal_construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-prufer-bijection",
+      "title": "Биекция с последовательностями",
+      "text": "Опишем кодирование дерева. Пока в дереве осталось больше двух вершин, возьмем лист с наименьшей меткой, запишем метку его единственного соседа и удалим этот лист. За один шаг число вершин уменьшается на 1, поэтому после \\(n-2\\) шагов останутся две вершины, а записанный код будет последовательностью длины \\(n-2\\) из чисел от 1 до \\(n\\).\n\nТеперь покажем, что по любой такой последовательности код восстанавливается единственным образом. Пусть дана последовательность \\(a_1,a_2,\\ldots,a_{n-2}\\). На первом шаге лист, который был удален при кодировании, не может встречаться в последовательности: если вершина когда-либо записывается, значит в тот момент она была соседом удаляемого листа и сама еще не удалялась. Поэтому первым удаленным листом должна быть наименьшая метка, не встречающаяся среди \\(a_1,\\ldots,a_{n-2}\\). Соединим эту вершину с \\(a_1\\) и удалим ее из списка оставшихся меток. Затем забудем первый член кода и повторим ту же операцию для хвоста \\(a_2,\\ldots,a_{n-2}\\). Когда код закончится, останутся две метки; соединим их последним ребром.\n\nПостроенный граф имеет \\(n\\) вершин и ровно \\(n-1\\) ребро. Он связен: каждая удаленная на каком-то шаге вершина получает ребро к вершине, которая на тот момент остается жить дальше, а две последние вершины соединяются между собой; двигаясь по этим ребрам, из любой вершины можно дойти до одной из последних двух. Следовательно, это дерево.\n\nОсталось проверить, что процедуры обратны друг другу. В восстановленном дереве вершина, выбранная на первом шаге восстановления, является листом и имеет наименьшую метку среди всех листьев: остальные метки, не встречающиеся в коде, не меньше ее, а метки, встречающиеся в коде, еще должны быть записаны как соседи и потому не могут быть удалены раньше. Значит кодирование восстановленного дерева сначала удалит именно эту вершину и запишет \\(a_1\\). После удаления первого ребра остается та же задача для хвоста кода. По индукции все последующие шаги также совпадают. Поэтому деревья на метках \\(1,\\ldots,n\\) взаимно однозначно соответствуют \\(n^{n-2}\\) последовательностям длины \\(n-2\\), и число таких деревьев равно \\(n^{n-2}\\).",
+      "idea_ids": [
+        "idea-delete-smallest-leaf",
+        "idea-reconstruct-leaf"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "definition_ids": [
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Формула выглядит неожиданно, но доказательство через код Прюфера является чистой школьной биекцией с удалением листьев.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "classical_theorem",
+    "induction",
+    "goal_counting",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bijection",
+        "leaf_deletion"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-cayley-formula",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-prufer-sequence",
+      "role": "standard_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено как классическая школьная биекция для подсчета помеченных деревьев; решение написано на русском, даже если справочные источники англоязычные."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

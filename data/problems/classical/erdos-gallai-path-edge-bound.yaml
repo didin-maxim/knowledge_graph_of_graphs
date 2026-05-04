@@ -1,0 +1,161 @@
+{
+  "id": "erdos-gallai-path-edge-bound",
+  "title": "Теорема Эрдёша-Галлая о числе рёбер без длинного пути",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Paul Erdős",
+      "status": "source_verified"
+    },
+    {
+      "name": "Tibor Gallai",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "path",
+      "edge_count"
+    ],
+    "methods": [
+      "induction",
+      "longest_path_argument",
+      "component_decomposition"
+    ],
+    "transformations": [
+      "take_longest_path",
+      "split_component",
+      "delete_component"
+    ],
+    "goal": [
+      "extremal_edge_bound_without_long_path"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "number_of_edges",
+      "number_of_vertices",
+      "path_length"
+    ],
+    "keywords": [
+      "erdos_gallai_path_theorem",
+      "forbidden_path",
+      "extremal_graph_theory"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Оценка для графа без длинного пути",
+        "text": "Пусть \\(G\\) — простой граф на \\(n\\) вершинах, в котором нет простого пути с \\(k+1\\) вершинами. Тогда в \\(G\\) не больше \\((k-1)n/2\\) рёбер.",
+        "source_id": "src-wikipedia-erdos-gallai-theorem",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-average-degree",
+        "title": "Форма через среднюю степень",
+        "text": "Если средняя степень простого графа больше \\(k-1\\), то в графе существует простой путь с \\(k+1\\) вершинами.",
+        "source_id": "src-wikipedia-erdos-gallai-theorem",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path",
+          "degree"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-longest-path-component",
+      "title": "Длиннейший путь контролирует компоненту",
+      "text": "Если нельзя удалить вершину малой степени, то концы длиннейшего пути имеют много соседей на этом пути и вынуждают цикл через все его вершины; связность тогда не позволяет иметь внешние вершины.",
+      "tags": [
+        "extremal_graph_theory",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-induction-longest-cycle-free",
+      "title": "Индукционное доказательство",
+      "text": "Докажем утверждение индукцией по числу вершин \\(n\\). При \\(n=0\\) и \\(n=1\\) рёбер нет. Пусть утверждение уже доказано для меньших графов.\n\nЕсли \\(G\\) несвязен, применим индукционное предположение к каждой компоненте: каждая компонента тоже не содержит пути с \\(k+1\\) вершинами. Складывая оценки по компонентам, получаем нужное неравенство для всего графа. Поэтому далее считаем \\(G\\) связным.\n\nЕсли в \\(G\\) есть вершина \\(v\\) степени \\(d(v)\\le (k-1)/2\\), то граф \\(G-v\\) также не содержит пути с \\(k+1\\) вершинами. По индукции \\(e(G-v)\\le (k-1)(n-1)/2\\), откуда\n\\[e(G)=e(G-v)+d(v)\\le \\frac{(k-1)(n-1)}2+\\frac{k-1}2=\\frac{(k-1)n}2.\\]\n\nОстаётся случай, когда каждая вершина имеет степень больше \\((k-1)/2\\). Возьмем в \\(G\\) длиннейший простой путь \\(P=v_1v_2\\ldots v_m\\). По условию \\(m\\le k\\). Все соседи концов \\(v_1\\) и \\(v_m\\) лежат на этом пути, иначе путь можно было бы продлить.\n\nРассмотрим множества индексов\n\\[A=\\{i:1\\le i\\le m-1,\\ v_1v_{i+1}\\in E(G)\\}\\]\nи\n\\[B=\\{i:1\\le i\\le m-1,\\ v_iv_m\\in E(G)\\}.\\]\nИмеем \\(|A|=d(v_1)\\) и \\(|B|=d(v_m)\\), поэтому \\(|A|+|B|>k-1\\ge m-1\\). Оба множества лежат в множестве из \\(m-1\\) индексов, значит они пересекаются. Пусть \\(i\\in A\\cap B\\). Тогда есть рёбра \\(v_1v_{i+1}\\) и \\(v_iv_m\\), а вершины пути образуют цикл\n\\[v_1,v_{i+1},v_{i+2},\\ldots,v_m,v_i,v_{i-1},\\ldots,v_1,\\]\nкоторый проходит через все \\(m\\) вершин пути.\n\nЕсли бы существовала вершина вне \\(P\\), то из связности графа была бы вершина вне этого цикла, соединённая ребром с некоторой вершиной цикла, возможно после выбора ближайшей к циклу вершины на пути из внешней вершины к циклу. Тогда, войдя в цикл по этому ребру и обойдя цикл почти целиком, мы получили бы простой путь на \\(m+1\\) вершине. Это противоречит максимальности \\(P\\). Значит все вершины графа лежат на \\(P\\), то есть \\(n=m\\le k\\).\n\nВ этом последнем случае \\(e(G)\\le \\binom n2=n(n-1)/2\\le n(k-1)/2\\). Индукция завершена.",
+      "idea_ids": [
+        "idea-longest-path-component"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction",
+        "extremal_choice"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "path",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Классическая экстремальная оценка: доказательство школьное, но требует аккуратного анализа концов длиннейшего пути.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "classical_theorem",
+    "goal_bound",
+    "induction",
+    "extremal_choice"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "longest_path_argument",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-erdos-gallai-theorem",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Доказательство заменено после high-reasoning проверки: оставлена школьная индукция через вершину малой степени и концы длиннейшего пути. Карточка утверждает верхнюю оценку, а не точный экстремум для всех n."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

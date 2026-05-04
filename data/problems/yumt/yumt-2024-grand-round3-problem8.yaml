@@ -16,18 +16,32 @@
     }
   ],
   "problem_profile": {
-    "objects": [],
-    "methods": [],
+    "objects": [
+      "simple_graph",
+      "induced_subgraph",
+      "vertex_deletion"
+    ],
+    "methods": [
+      "edge_count_invariant",
+      "degree_extremal_argument"
+    ],
     "transformations": [],
-    "goal": [],
+    "goal": [
+      "proof"
+    ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "number_of_edges_after_deletion",
+      "degree_sum_minus_adjacency"
+    ],
     "keywords": [
       "yumt",
       "2024_grand_round3_problem8",
-      "yumt_2024"
+      "yumt_2024",
+      "vertex_deletion",
+      "degree_counting"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -46,8 +60,34 @@
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [],
-  "solutions": [],
+  "ideas": [
+    {
+      "id": "idea-two-deletion-edge-count-degree-sums",
+      "title": "Сравнить число рёбер после удаления пары",
+      "text": "Так как после удаления любой пары вершин получается один и тот же граф, число оставшихся рёбер не зависит от пары. Значит, величина d(u)+d(v)-eps(u,v), где eps(u,v) показывает наличие ребра uv, постоянна для всех пар вершин. Сравнение вершин минимальной и максимальной степени почти сразу вынуждает регулярность графа, а регулярный граф не может одновременно иметь ребро и неребро.",
+      "tags": [
+        "degree_counting",
+        "invariant"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-ai-edge-count-degree-extremes",
+      "title": "ИИ-решение через число рёбер после удаления",
+      "text": "Пусть в исходном графе G ровно n >= 4 вершин, d(v) — степень вершины v, а eps(u,v) равно 1, если u и v соединены ребром, и 0 иначе.\n\nПосле удаления вершин u и v остаётся один и тот же граф, поэтому число оставшихся рёбер не зависит от пары {u,v}. При удалении u и v исчезает d(u)+d(v)-eps(u,v) рёбер: ребро uv, если оно было, посчитано в d(u)+d(v) дважды. Следовательно, существует постоянная K такая, что для любых разных u,v выполнено\n\nd(u)+d(v)-eps(u,v)=K. (*).\n\nВозьмём вершину x минимальной степени delta и вершину y максимальной степени Delta. Если delta=Delta, граф регулярный. Тогда при наличии одновременно ребра и неребра величина (*) для ребра равна 2delta-1, а для неребра равна 2delta, что невозможно. Значит, регулярный граф при условии задачи либо полный, либо вообще не имеет рёбер.\n\nОсталось исключить случай delta<Delta. Для любой вершины z, отличной от x и y, сравним (*) для пар {x,z} и {y,z}:\n\ndelta+d(z)-eps(x,z)=Delta+d(z)-eps(y,z).\n\nОтсюда Delta-delta=eps(y,z)-eps(x,z). Левая часть положительна, а правая может быть только -1, 0 или 1; значит, Delta=delta+1, причём y соединена с каждым таким z, а x не соединена ни с одним таким z.\n\nТеперь сравним (*) для пар {x,y} и {y,z}. Получаем d(z)=delta+1-eps(x,y) для всех z, отличных от x и y.\n\nЕсли x и y соединены, то x не соединена ни с кем, кроме y, поэтому delta=1. Но y соединена с x и со всеми n-2 вершинами z, значит Delta=n-1. Так как Delta=delta+1=2, получаем n=3, противоречие с n>=4.\n\nЕсли x и y не соединены, то x не соединена вообще ни с кем, поэтому delta=0. Вершина y соединена со всеми n-2 вершинами z и не соединена с x, значит Delta=n-2. Так как Delta=delta+1=1, снова n=3, противоречие.\n\nСледовательно, случай delta<Delta невозможен. Граф регулярный, а значит, как было показано выше, он полный или состоит только из изолированных вершин.",
+      "idea_ids": [
+        "idea-two-deletion-edge-count-degree-sums"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "double_counting",
+        "invariant"
+      ],
+      "definition_ids": []
+    }
+  ],
   "difficulty": {
     "main": "regional",
     "local_score": 6,
@@ -55,6 +95,8 @@
     "status": "ai_checked"
   },
   "tags": [
+    "degree_counting",
+    "invariant",
     "goal_proof"
   ],
   "sources": [
@@ -70,7 +112,8 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [
-      "Импортировано из проверенной рабочей карточки ЮМТ 2024_grand_round3_problem8.md."
+      "Импортировано из проверенной рабочей карточки ЮМТ 2024_grand_round3_problem8.md.",
+      "2026-05-05: добавлено ИИ-решение через инвариант числа рёбер после удаления двух вершин; готовый публичный разбор и автор по точным интернет-запросам не найдены."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true

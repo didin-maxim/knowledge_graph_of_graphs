@@ -1,0 +1,198 @@
+{
+  "id": "ramsey-r34",
+  "title": "Двухцветная раскраска \\(K_9\\): треугольник или независимая четвёрка",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "special_case"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Frank P. Ramsey",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "two_colored_complete_graph",
+      "simple_graph",
+      "complement_graph",
+      "clique",
+      "independent_set"
+    ],
+    "methods": [
+      "pigeonhole_principle",
+      "degree_case_analysis",
+      "complement_graph_transition",
+      "explicit_extremal_construction"
+    ],
+    "transformations": [
+      "two_coloring_to_graph_and_complement"
+    ],
+    "goal": [
+      "ramsey_number_exact_value",
+      "monochromatic_clique_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "maximum_degree",
+      "eight_vertex_mobius_ladder"
+    ],
+    "keywords": [
+      "r34",
+      "r43",
+      "ramsey_bridge",
+      "mobius_ladder"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Точное значение \\(R(3,4)\\)",
+        "text": "В любой красно-синей раскраске рёбер полного графа \\(K_9\\) найдётся либо красный треугольник, либо синяя клика из 4 вершин. При этом для \\(K_8\\) такое утверждение неверно, поэтому \\(R(3,4)=9\\).",
+        "source_ids": [
+          "src-wikipedia-ramsey",
+          "src-small-ramsey-ds1"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-graph-1"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "title": "Форма через граф и дополнение",
+        "text": "Любой простой граф на 9 вершинах содержит треугольник, или его дополнительный граф содержит \\(K_4\\). Эквивалентно, любой простой граф на 9 вершинах содержит \\(K_3\\) или независимое множество из 4 вершин; на 8 вершинах это неверно.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complement_graph",
+          "complete_graph",
+          "clique",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original-1"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-party-1",
+        "title": "Вечеринка: трое знакомых или четверо незнакомых",
+        "text": "Среди любых 9 человек найдутся либо трое попарно знакомых, либо четверо попарно незнакомых. Для 8 человек это уже не гарантировано.",
+        "source_ids": [
+          "src-wikipedia-ramsey",
+          "src-small-ramsey-ds1"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "independent_set",
+          "complement_graph"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-degree-or-complement-degree",
+      "title": "Большая степень или большая степень в дополнении",
+      "text": "Если вершина имеет хотя бы 4 соседа, её окрестность сразу проверяет треугольник или независимую четвёрку. Если таких вершин нет, из нечётности суммы степеней появляется вершина степени не больше 2, то есть степени хотя бы 6 в дополнении.",
+      "tags": [
+        "ramsey_theory",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-eight-vertex-construction",
+      "title": "Восьмивершинная конструкция",
+      "text": "Нижнюю оценку даёт граф, полученный из цикла \\(C_8\\) добавлением четырёх противоположных хорд. В нём нет треугольников, а независимая четвёрка в \\(C_8\\) неизбежно содержит одну из добавленных хорд.",
+      "tags": [
+        "ramsey_theory",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-exact-r34",
+      "title": "Доказательство верхней и нижней оценки",
+      "text": "Докажем сначала верхнюю оценку. Пусть \\(G\\) — простой граф на 9 вершинах. Достаточно доказать, что в \\(G\\) есть треугольник или независимое множество из 4 вершин.\n\nЕсли у некоторой вершины \\(v\\) есть хотя бы 4 соседа, возьмём четыре из них. Если среди этих четырёх соседей есть ребро, то вместе с \\(v\\) оно образует треугольник. Если же рёбер между ними нет, то эти четыре вершины образуют независимое множество.\n\nОстаётся случай, когда все степени в \\(G\\) не превосходят 3. Сумма степеней равна удвоенному числу рёбер, поэтому она чётна. Если бы все 9 степеней были равны 3, сумма была бы равна 27, что невозможно. Значит, найдётся вершина \\(v\\) степени не больше 2. Тогда в дополнительном графе \\(\\overline G\\) вершина \\(v\\) имеет не меньше 6 соседей. По уже известному факту \\(R(3,3)=6\\), среди этих 6 соседей в \\(\\overline G\\) есть либо треугольник, либо независимая тройка. Треугольник в \\(\\overline G\\) вместе с \\(v\\) даёт независимое множество из 4 вершин в \\(G\\). Независимая тройка в \\(\\overline G\\) означает треугольник в \\(G\\). Верхняя оценка доказана.\n\nТеперь построим пример на 8 вершинах. Возьмём цикл \\(0,1,2,\\ldots,7,0\\) и добавим четыре ребра между противоположными вершинами: \\((0,4),(1,5),(2,6),(3,7)\\). Треугольника нет: две соседние вершины цикла не имеют общего соседа, который дал бы третью сторону треугольника, а противоположная хорда соединяет вершины одной чётности и не замыкается с двумя рёбрами цикла в треугольник. Независимое множество из 4 вершин в одном цикле \\(C_8\\) могло бы быть только одним из двух классов чётности: \\(\\{0,2,4,6\\}\\) или \\(\\{1,3,5,7\\}\\). Но в каждом из них есть добавленная хорда: соответственно \\((0,4),(2,6)\\) или \\((1,5),(3,7)\\). Значит, независимой четвёрки тоже нет. Поэтому \\(R(3,4)>8\\), а вместе с верхней оценкой \\(R(3,4)=9\\).",
+      "idea_ids": [
+        "idea-degree-or-complement-degree",
+        "idea-eight-vertex-construction"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "pigeonhole_principle",
+        "complement_graph_transition"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "complement_graph",
+        "complete_graph",
+        "clique",
+        "independent_set",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 5,
+    "comment": "Классический малый пример Рамсея: доказательство использует только степени, дополнение и случай \\(R(3,3)=6\\).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "classical_theorem",
+    "goal_exact_bound"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-ramsey",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-small-ramsey-ds1",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено как школьный мост от \\(R(3,3)=6\\) к \\(R(3,5)=14\\) и \\(R(4,4)=18\\)."
+    ],
+    "relations_status": "base_done"
+  }
+}

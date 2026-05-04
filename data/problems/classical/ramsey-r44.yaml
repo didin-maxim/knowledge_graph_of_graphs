@@ -1,0 +1,206 @@
+{
+  "id": "ramsey-r44",
+  "title": "Двухцветная раскраска \\(K_{18}\\): одноцветная четвёрка",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "special_case"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Frank P. Ramsey",
+      "status": "source_verified"
+    },
+    {
+      "name": "Robert E. Greenwood",
+      "status": "source_verified"
+    },
+    {
+      "name": "Andrew M. Gleason",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "two_colored_complete_graph",
+      "simple_graph",
+      "complement_graph",
+      "clique",
+      "independent_set",
+      "paley_graph"
+    ],
+    "methods": [
+      "pigeonhole_principle",
+      "ramsey_recurrence",
+      "cyclic_construction",
+      "finite_residue_check"
+    ],
+    "transformations": [
+      "two_coloring_to_graph_and_complement"
+    ],
+    "goal": [
+      "ramsey_number_exact_value",
+      "monochromatic_clique_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "quadratic_residues_mod_17",
+      "paley_self_complementarity"
+    ],
+    "keywords": [
+      "r44",
+      "ramsey_number_18",
+      "paley_graph_17",
+      "super_symmetric_construction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Точное значение \\(R(4,4)\\)",
+        "text": "В любой красно-синей раскраске рёбер полного графа \\(K_{18}\\) найдётся одноцветная клика из 4 вершин. При этом для \\(K_{17}\\) такое утверждение неверно, поэтому \\(R(4,4)=18\\).",
+        "source_ids": [
+          "src-wikipedia-ramsey",
+          "src-small-ramsey-ds1"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-graph-1"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "title": "Форма через граф и дополнение",
+        "text": "Любой простой граф на 18 вершинах содержит \\(K_4\\), или его дополнительный граф содержит \\(K_4\\). На 17 вершинах это неверно.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complement_graph",
+          "complete_graph",
+          "clique",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original-1"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-party-1",
+        "title": "Вечеринка: четверо знакомых или четверо незнакомых",
+        "text": "Среди любых 18 человек найдутся либо четверо попарно знакомых, либо четверо попарно незнакомых. Для 17 человек это не гарантировано.",
+        "source_ids": [
+          "src-wikipedia-ramsey",
+          "src-small-ramsey-ds1"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "independent_set",
+          "complement_graph"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-r34-from-one-vertex",
+      "title": "Девять соседей одного цвета",
+      "text": "У выбранной вершины среди 17 рёбер хотя бы 9 одного цвета. После этого применяется точное значение \\(R(3,4)=9\\).",
+      "tags": [
+        "ramsey_theory",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-paley-seventeen",
+      "title": "Симметричный граф Пэли на 17 вершинах",
+      "text": "Нижнюю оценку даёт граф на остатках по модулю 17: две вершины соединены, если их разность является квадратичным вычетом. Такой граф изоморфен своему дополнению и не содержит \\(K_4\\).",
+      "tags": [
+        "ramsey_theory",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-exact-r44",
+      "title": "Доказательство через \\(R(3,4)=9\\) и граф Пэли",
+      "text": "Докажем верхнюю оценку. Рассмотрим красно-синюю раскраску рёбер \\(K_{18}\\) и выберем вершину \\(v\\). Из \\(v\\) выходит 17 рёбер, поэтому хотя бы 9 из них имеют один цвет; пусть для определённости это красные рёбра к множеству \\(A\\) из 9 вершин.\n\nПо \\(R(3,4)=9\\) внутри \\(A\\) найдётся либо красный треугольник, либо синяя \\(K_4\\). Если есть синяя \\(K_4\\), цель достигнута. Если есть красный треугольник, то вместе с вершиной \\(v\\) он образует красную \\(K_4\\), потому что все три ребра от \\(v\\) к этому треугольнику красные. Случай, когда у \\(v\\) есть 9 синих соседей, полностью симметричен. Значит, \\(R(4,4)\\le 18\\).\n\nДля нижней оценки построим раскраску на 17 вершинах без одноцветной \\(K_4\\). Возьмём вершины \\(\\mathbb Z_{17}\\). Соединим две вершины красным ребром, если их разность по модулю 17 лежит в множестве квадратичных вычетов\n\\[Q=\\{1,2,4,8,9,13,15,16\\}.\\]\nОстальные рёбра покрасим синим. Так как \\(-1=16\\in Q\\), правило не зависит от порядка вершин.\n\nПокажем, что красной \\(K_4\\) нет. Если такая клика есть, вычтем из всех её вершин одну и ту же вершину; тогда можно считать, что клика содержит 0. Остальные три вершины должны лежать в \\(Q\\), и разности между любыми двумя из них тоже должны лежать в \\(Q\\). Для каждой пары из \\(Q\\), которая вообще имеет общий третий красный сосед внутри \\(Q\\), этот общий сосед задаётся следующим списком:\n\\((1,4)\\to\\{2\\}\\), \\((1,8)\\to\\{9,16\\}\\), \\((1,13)\\to\\{9\\}\\), \\((1,15)\\to\\{2,16\\}\\), \\((2,8)\\to\\{4\\}\\), \\((2,9)\\to\\{1\\}\\), \\((2,13)\\to\\{4,15\\}\\), \\((2,16)\\to\\{1,15\\}\\), \\((4,9)\\to\\{8,13\\}\\), \\((4,15)\\to\\{2,13\\}\\), \\((4,16)\\to\\{8\\}\\), \\((8,13)\\to\\{4,9\\}\\), \\((8,15)\\to\\{16\\}\\), \\((9,15)\\to\\{13\\}\\), \\((9,16)\\to\\{1,8\\}\\), \\((13,16)\\to\\{15\\}\\). В каждой строке либо общий кандидат единственный, либо два кандидата не соединены красным ребром между собой. Поэтому выбрать три попарно красно соединённые вершины из \\(Q\\) нельзя; красной \\(K_4\\) нет.\n\nСиней \\(K_4\\) тоже нет. Действительно, если умножить все вершины на 3, то красные разности \\(Q\\) переходят в невычеты, потому что 3 не является квадратичным вычетом по модулю 17. Значит, умножение на 3 переводит красный граф в синий граф. Синий граф изоморфен красному, а в красном нет \\(K_4\\); следовательно, и в синем нет \\(K_4\\).\n\nМы построили раскраску \\(K_{17}\\) без одноцветной \\(K_4\\), значит, \\(R(4,4)>17\\). Вместе с верхней оценкой получаем \\(R(4,4)=18\\).",
+      "idea_ids": [
+        "idea-r34-from-one-vertex",
+        "idea-paley-seventeen"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "pigeonhole_principle",
+        "complement_graph_transition"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "complement_graph",
+        "complete_graph",
+        "clique",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Верхняя оценка школьная; нижняя оценка остаётся школьной, но требует аккуратной проверки симметричной 17-вершинной конструкции.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "classical_theorem",
+    "goal_exact_bound"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-ramsey",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-small-ramsey-ds1",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено как классический суперсимметричный пример: нижняя оценка дана через самодополнительный граф Пэли на 17 вершинах."
+    ],
+    "relations_status": "base_done"
+  }
+}

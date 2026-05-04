@@ -1120,6 +1120,300 @@
       },
       "status": "ai_checked",
       "confidence": 0.86
+    },
+    {
+      "id": "rel-ramsey-r33-r34",
+      "from": "ramsey-r33",
+      "to": "ramsey-r34",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "\\(R(3,3)=6\\) используется в школьном доказательстве \\(R(3,4)=9\\), когда вершина имеет малую степень и в дополнительном графе остаётся 6 соседей.",
+      "backward_text": "\\(R(3,4)=9\\) является следующим малым точным числом Рамсея после \\(R(3,3)=6\\) и усиливает тот же приём выбора вершины.",
+      "anchors": {
+        "from_solution_id": "sol-pigeonhole",
+        "to_solution_id": "sol-exact-r34"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-ramsey-theorem-r34",
+      "from": "ramsey-theorem",
+      "to": "ramsey-r34",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "\\(R(3,4)=9\\) — точный малый частный случай двухцветной теоремы Рамсея.",
+      "backward_text": "Общая теорема Рамсея даёт язык и рекурсивный приём, частный случай \\(R(3,4)\\) доводит оценку до точного значения.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-exact-r34"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-ramsey-r34-cmo-1976-p8",
+      "from": "ramsey-r34",
+      "to": "cmo-1976-p8-red-blue-k9-clique",
+      "type": "solution_transfer",
+      "distance": 1,
+      "forward_text": "CMO 1976 P8 является олимпиадной формой верхней оценки \\(R(3,4)\\le 9\\): запрет синего треугольника вынуждает красную \\(K_4\\).",
+      "backward_text": "Классическая карточка \\(R(3,4)=9\\) добавляет к CMO 1976 P8 точное значение и нижнюю 8-вершинную конструкцию.",
+      "anchors": {
+        "from_solution_id": "sol-exact-r34"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-ramsey-r34-r35",
+      "from": "ramsey-r34",
+      "to": "ramsey-r35",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "\\(R(3,4)=9\\) входит в верхнюю оценку \\(R(3,5)\\le R(2,5)+R(3,4)=14\\).",
+      "backward_text": "\\(R(3,5)=14\\) — следующий off-diagonal шаг после \\(R(3,4)=9\\): верхняя оценка опирается на него, а нижняя требует новой 13-вершинной конструкции.",
+      "anchors": {
+        "from_solution_id": "sol-exact-r34",
+        "to_solution_id": "sol-exact-r35"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-ramsey-r34-r44",
+      "from": "ramsey-r34",
+      "to": "ramsey-r44",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "\\(R(3,4)=9\\) даёт верхнюю оценку \\(R(4,4)\\le 18\\): у выбранной вершины есть 9 соседей одного цвета.",
+      "backward_text": "\\(R(4,4)=18\\) — диагональный шаг, в котором \\(R(3,4)=9\\) применяется внутри одноцветной окрестности.",
+      "anchors": {
+        "from_solution_id": "sol-exact-r34",
+        "to_solution_id": "sol-exact-r44"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-ramsey-theorem-r35",
+      "from": "ramsey-theorem",
+      "to": "ramsey-r35",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "\\(R(3,5)=14\\) — классический малый off-diagonal частный случай теоремы Рамсея.",
+      "backward_text": "Общая теорема Рамсея объясняет конечность \\(R(3,5)\\), а эта карточка фиксирует точное значение и явную нижнюю конструкцию.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-exact-r35"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-ramsey-theorem-r44",
+      "from": "ramsey-theorem",
+      "to": "ramsey-r44",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "\\(R(4,4)=18\\) — первый серьёзный диагональный точный пример после \\(R(3,3)=6\\).",
+      "backward_text": "Общая теорема Рамсея даёт существование диагональных чисел, а эта карточка показывает точное значение \\(R(4,4)\\) и симметричную 17-вершинную нижнюю конструкцию.",
+      "anchors": {
+        "from_solution_id": "sol-recursive-bound",
+        "to_solution_id": "sol-exact-r44"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-ramsey-r35-r44",
+      "from": "ramsey-r35",
+      "to": "ramsey-r44",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки сочетают короткую верхнюю оценку через меньшие числа Рамсея с явной циклической нижней конструкцией.",
+      "backward_text": "\\(R(4,4)=18\\) использует более симметричную 17-вершинную конструкцию; \\(R(3,5)=14\\) — более простой off-diagonal аналог с 13 вершинами.",
+      "anchors": {
+        "from_solution_id": "sol-exact-r35",
+        "to_solution_id": "sol-exact-r44"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-tree-properties-cayley-prufer",
+      "from": "tree-equivalent-properties",
+      "to": "cayley-prufer-labeled-trees",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Код Прюфера использует базовые свойства деревьев: существование листа в нетривиальном дереве и сохранение дерева после удаления листа.",
+      "backward_text": "Формула Кэли является классическим счётным применением листовой структуры дерева.",
+      "anchors": {
+        "to_solution_id": "sol-prufer-bijection"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-handshaking-havel-hakimi",
+      "from": "handshaking-lemma",
+      "to": "havel-hakimi-graphical-degree-sequence",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Лемма о рукопожатиях даёт базовое необходимое условие для последовательностей степеней, а Хавел-Хакими даёт полный алгоритмический критерий графичности.",
+      "backward_text": "Критерий Хавела-Хакими развивает степенной язык леммы о рукопожатиях до конструктивной проверки существования графа.",
+      "anchors": {
+        "to_solution_id": "sol-switching-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-erdos-gallai-path-turan",
+      "from": "erdos-gallai-path-edge-bound",
+      "to": "turan-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе теоремы дают верхнюю оценку на число рёбер при запрещённом подграфе; у Эрдёша-Галлая запрещён длинный путь, у Турана — большая клика.",
+      "backward_text": "Теорема Турана является кликовым эталоном экстремальной теории графов, а оценка Эрдёша-Галлая показывает аналогичную философию для запрещённых путей.",
+      "anchors": {
+        "from_solution_id": "sol-induction-longest-cycle-free",
+        "to_solution_id": "sol-symmetrization"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-erdos-gallai-path-dirac",
+      "from": "erdos-gallai-path-edge-bound",
+      "to": "dirac-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В доказательстве оценки Эрдёша-Галлая и в теореме Дирака ключевым локальным объектом является длиннейший путь и анализ соседей его концов.",
+      "backward_text": "Теорема Дирака использует более сильное условие минимальной степени, чтобы замкнуть длиннейший путь в гамильтонов цикл; Эрдёш-Галлай применяет похожий анализ для оценки числа рёбер.",
+      "anchors": {
+        "from_solution_id": "sol-induction-longest-cycle-free",
+        "to_solution_id": "sol-longest-path"
+      },
+      "status": "ai_draft",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-handshaking-c4-kst",
+      "from": "handshaking-lemma",
+      "to": "c4-free-kovari-sos-turan-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В C4-свободной оценке используется сумма степеней \\(\\sum_v d(v)=2e\\), то есть базовый подсчёт леммы о рукопожатиях.",
+      "backward_text": "Оценка Кёвари-Шоша-Турана для \\(C_4\\)-свободных графов является более тонким двойным счётом поверх суммы степеней.",
+      "anchors": {
+        "to_solution_id": "sol-common-neighbor-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-c4-kst-mantel",
+      "from": "c4-free-kovari-sos-turan-bound",
+      "to": "mantel-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются школьными экстремальными оценками для графов с запрещённым малым подграфом и доказываются через степени и двойной счёт.",
+      "backward_text": "Теорема Мантеля запрещает треугольник, а C4-оценка запрещает четырёхцикл; вместе они дают два базовых образца экстремального подсчёта.",
+      "anchors": {
+        "from_solution_id": "sol-common-neighbor-count",
+        "to_solution_id": "sol-degree-sum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-degeneracy-brooks",
+      "from": "degeneracy-greedy-coloring",
+      "to": "brooks-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Вырожденность даёт базовую жадную раскраску по порядку удаления; Брукс усиливает грубую жадную границу для графов с ограниченной максимальной степенью, кроме стандартных исключений.",
+      "backward_text": "Теорема Брукса является более тонкой раскрасочной теоремой, которая начинается с той же идеи удаления и возвращения вершин, но требует локального анализа препятствий.",
+      "anchors": {
+        "from_solution_id": "sol-deletion-order"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-planar-bound-degeneracy",
+      "from": "planar-edge-bound",
+      "to": "degeneracy-greedy-coloring",
+      "type": "solution_transfer",
+      "distance": 2,
+      "forward_text": "Планарная оценка рёбер даёт в каждом подграфе планарного графа вершину степени не больше 5; жадная лемма о вырожденности сразу даёт 6-раскрашиваемость.",
+      "backward_text": "Вырожденность превращает любую наследственную оценку на малую степень, в частности планарную, в алгоритм раскраски.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-deletion-order"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-hall-konig-line-coloring",
+      "from": "hall-marriage-theorem",
+      "to": "konig-line-coloring-bipartite",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Доказательство рёберной раскраски двудольного графа использует Холла, чтобы найти совершенное паросочетание в регулярном двудольном графе.",
+      "backward_text": "Теорема Кёнига о рёберной раскраске является каноническим применением Холла: регулярный двудольный граф раскладывается на совершенные паросочетания.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-regularization-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-konig-line-konig-cover",
+      "from": "konig-line-coloring-bipartite",
+      "to": "konig-vertex-cover-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе теоремы Кёнига показывают, что в двудольных графах задачи про рёбра и покрытия имеют точные минимаксные ответы, управляемые паросочетаниями.",
+      "backward_text": "Теорема Кёнига о вершинном покрытии — другой центральный двудольный минимакс рядом с рёберной раскраской через разложение на паросочетания.",
+      "anchors": {
+        "from_solution_id": "sol-regularization-hall",
+        "to_solution_id": "sol-alternating"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-ghrv-degeneracy",
+      "from": "gallai-hasse-roy-vitaver-theorem",
+      "to": "degeneracy-greedy-coloring",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки строят раскраску из порядка или потенциала на вершинах: у GHRV потенциалом служит длина максимального ориентированного пути к вершине.",
+      "backward_text": "Вырожденность — жадная раскраска по порядку удаления, а GHRV характеризует хроматическое число через ориентации и длины ориентированных путей.",
+      "anchors": {
+        "from_solution_id": "sol-path-length-potentials",
+        "to_solution_id": "sol-deletion-order"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-ghrv-digraph-outdegree-coloring",
+      "from": "gallai-hasse-roy-vitaver-theorem",
+      "to": "digraph-outdegree-greedy-coloring-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки связывают раскраску с ориентированным графом: GHRV через длины ориентированных путей, а жадная орграфовая оценка через ограничение исходящей степени.",
+      "backward_text": "Жадная оценка для орграфа и GHRV дают два школьных способа извлекать раскраску из направленной структуры.",
+      "anchors": {
+        "from_solution_id": "sol-path-length-potentials"
+      },
+      "status": "ai_draft",
+      "confidence": 0.78
     }
   ]
 }

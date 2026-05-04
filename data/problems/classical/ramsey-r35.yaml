@@ -1,0 +1,206 @@
+{
+  "id": "ramsey-r35",
+  "title": "Двухцветная раскраска \\(K_{14}\\): треугольник или пятёрка",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "special_case"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Frank P. Ramsey",
+      "status": "source_verified"
+    },
+    {
+      "name": "Robert E. Greenwood",
+      "status": "source_verified"
+    },
+    {
+      "name": "Andrew M. Gleason",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "two_colored_complete_graph",
+      "simple_graph",
+      "complement_graph",
+      "clique",
+      "independent_set",
+      "cyclic_graph"
+    ],
+    "methods": [
+      "pigeonhole_principle",
+      "ramsey_recurrence",
+      "cyclic_construction",
+      "gap_argument"
+    ],
+    "transformations": [
+      "two_coloring_to_graph_and_complement"
+    ],
+    "goal": [
+      "ramsey_number_exact_value",
+      "monochromatic_clique_existence"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "cyclic_distances_mod_13",
+      "gaps_between_chosen_vertices"
+    ],
+    "keywords": [
+      "r35",
+      "r53",
+      "ramsey_number_14",
+      "cyclic_lower_bound"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Точное значение \\(R(3,5)\\)",
+        "text": "В любой красно-синей раскраске рёбер полного графа \\(K_{14}\\) найдётся либо красный треугольник, либо синяя клика из 5 вершин. При этом для \\(K_{13}\\) такое утверждение неверно, поэтому \\(R(3,5)=R(5,3)=14\\).",
+        "source_ids": [
+          "src-wikipedia-ramsey",
+          "src-small-ramsey-ds1"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-graph-1"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-1",
+        "title": "Форма через граф и дополнение",
+        "text": "Любой простой граф на 14 вершинах содержит треугольник, или его дополнительный граф содержит \\(K_5\\). Эквивалентно, любой простой граф на 14 вершинах содержит \\(K_3\\) или независимое множество из 5 вершин; на 13 вершинах это неверно.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "complement_graph",
+          "complete_graph",
+          "clique",
+          "independent_set"
+        ],
+        "distinct_from": [
+          "stmt-original-1"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-party-1",
+        "title": "Вечеринка: трое знакомых или пятеро незнакомых",
+        "text": "Среди любых 14 человек найдутся либо трое попарно знакомых, либо пятеро попарно незнакомых. Для 13 человек это не гарантировано.",
+        "source_ids": [
+          "src-wikipedia-ramsey",
+          "src-small-ramsey-ds1"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "independent_set",
+          "complement_graph"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-recursive-upper-bound",
+      "title": "Разделение соседей одной вершины",
+      "text": "Верхняя оценка получается из рекурсии Рамсея: около выбранной вершины либо достаточно много рёбер одного цвета для \\(R(2,5)\\), либо достаточно много рёбер другого цвета для \\(R(3,4)\\).",
+      "tags": [
+        "ramsey_theory",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-cyclic-thirteen",
+      "title": "Тринадцать точек на окружности",
+      "text": "Для нижней оценки удобно взять вершины \\(\\mathbb Z_{13}\\) и соединять две вершины, если их циклическое расстояние равно 1 или 5. Такой граф не содержит треугольника, а пять независимых вершин невозможны из-за ограничения на циклические промежутки.",
+      "tags": [
+        "ramsey_theory",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-exact-r35",
+      "title": "Доказательство верхней оценки и циклический пример",
+      "text": "Докажем верхнюю оценку \\(R(3,5)\\le 14\\). Рассмотрим красно-синюю раскраску рёбер \\(K_{14}\\) и выберем вершину \\(v\\). Среди остальных 13 вершин либо хотя бы 5 соединены с \\(v\\) красным ребром, либо хотя бы 9 соединены с \\(v\\) синим ребром.\n\nВ первом случае рассмотрим 5 красных соседей вершины \\(v\\). Если между двумя из них есть красное ребро, то вместе с \\(v\\) оно даёт красный треугольник. Если красных рёбер между этими пятью вершинами нет, то все рёбра между ними синие, и это синяя \\(K_5\\).\n\nВо втором случае рассмотрим 9 синих соседей вершины \\(v\\). По \\(R(3,4)=9\\) среди них есть либо красный треугольник, либо синяя \\(K_4\\). Красный треугольник уже подходит, а синяя \\(K_4\\) вместе с \\(v\\) даёт синюю \\(K_5\\). Значит, \\(R(3,5)\\le 14\\).\n\nТеперь покажем, что 13 вершин недостаточно. Возьмём вершины \\(0,1,\\ldots,12\\) по модулю 13. Соединим две вершины ребром графа \\(G\\), если их разность по модулю 13 равна \\(\\pm 1\\) или \\(\\pm 5\\). В языке раскрасок это будут, например, красные рёбра; остальные рёбра считаем синими.\n\nВ \\(G\\) нет треугольника. Действительно, если треугольник содержит вершину 0, то две другие вершины должны лежать среди \\(\\pm1,\\pm5\\). Но разность любых двух различных чисел из \\(\\{1,12,5,8\\}\\) не равна \\(\\pm1\\) или \\(\\pm5\\) по модулю 13. Переносом всех вершин на одно и то же число любой предполагаемый треугольник сводится к этому случаю.\n\nОсталось проверить, что в \\(G\\) нет независимого множества из 5 вершин. Предположим, что выбраны 5 независимых вершин, и запишем по кругу промежутки между соседними выбранными вершинами. Сумма пяти промежутков равна 13. Ни один промежуток не равен 1 или 5, иначе две выбранные вершины были бы соединены ребром. Значит, все промежутки не меньше 2, а их сумма равна 13. Возможны только наборы промежутков \\(2,2,2,2,5\\), \\(2,2,2,3,4\\) или \\(2,2,3,3,3\\) с точностью до порядка. Первый набор сразу запрещён из-за промежутка 5. Во втором и третьем наборах на круге обязательно найдутся соседние промежутки 2 и 3; их сумма равна 5, значит, две выбранные вершины через одну стоят на циклическом расстоянии 5 и тоже соединены ребром. Противоречие.\n\nИтак, построен граф на 13 вершинах без треугольника и без независимой пятёрки. Следовательно, \\(R(3,5)>13\\). Вместе с верхней оценкой получаем \\(R(3,5)=R(5,3)=14\\).",
+      "idea_ids": [
+        "idea-recursive-upper-bound",
+        "idea-cyclic-thirteen"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "pigeonhole_principle",
+        "complement_graph_transition"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "complement_graph",
+        "complete_graph",
+        "clique",
+        "independent_set"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 6,
+    "comment": "Верхняя оценка короткая; нижняя оценка требует аккуратной, но школьной проверки циклической конструкции.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "classical_theorem",
+    "goal_exact_bound"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-ramsey",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-small-ramsey-ds1",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено как классический off-diagonal Ramsey пример; доказательства уникальности критического графа намеренно не включались."
+    ],
+    "relations_status": "base_done"
+  }
+}

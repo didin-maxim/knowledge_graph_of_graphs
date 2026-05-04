@@ -1,0 +1,190 @@
+{
+  "id": "spbmo-2024-9-11-metric-path-with-shortcuts",
+  "title": "Разбиение связного метро на простые линии с ограничением пересадок, СПбМО 2024, 9 класс",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "condition_only"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "unknown",
+      "status": "not_found_in_checked_sources"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "path",
+      "edge_partition",
+      "path_intersection_graph",
+      "spanning_tree"
+    ],
+    "methods": [
+      "graph_model",
+      "spanning_tree_reduction",
+      "path_decomposition",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "metro_to_connected_graph",
+      "metro_lines_to_edge_partition_into_simple_paths",
+      "line_transfers_to_distance_in_line_intersection_graph"
+    ],
+    "goal": [
+      "exact_largest_number_of_vertices_guaranteed"
+    ],
+    "auxiliary_graph_type": [
+      "connected_graph",
+      "tree",
+      "line_intersection_graph"
+    ],
+    "invariants": [
+      "number_of_transfers",
+      "diameter_of_line_intersection_graph",
+      "simple_path_line_cover"
+    ],
+    "keywords": [
+      "spbmo_2024_9_p7",
+      "metro_lines",
+      "transfers",
+      "path_partition",
+      "connected_graph",
+      "spanning_tree",
+      "metric_path_with_shortcuts"
+    ],
+    "status": "needs_human_review"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В очень большом Городе строят метро: много станций, некоторые пары которых соединены тоннелями, причем от любой станции можно добраться по тоннелям до любой другой. Все тоннели метро требуется разбить на <<линии>>: каждая линия состоит из нескольких последовательных тоннелей, все станции в которых различны (в частности, линия не должна быть кольцевой); допускаются и линии, состоящие из одного тоннеля. По закону требуется, чтобы от любой станции до любой другой можно было доехать, сделав не более 100 пересадок с линии на линию. При каком наибольшем \\(N\\) любое связное метро с \\(N\\) станциями можно разбить на линии, соблюдая закон?",
+        "source_id": "src-spbmo-pdmi-2024-c911",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ],
+        "source_note": "Сверено с официальным PDF PDMI/СПбМО 2024 для городского тура 9-11 классов; в источнике это задача 7 выводной аудитории 9 класса.",
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Найдите наибольшее \\(N\\), для которого у любого связного простого графа \\(G\\) на \\(N\\) вершинах существует разбиение множества рёбер на простые пути такое, что для любых двух вершин \\(u,v\\) можно пройти из \\(u\\) в \\(v\\), сменив путь разбиения не более 100 раз. Рёбра вне выбранного маршрута также должны входить ровно в один путь разбиения.",
+        "status": "needs_human_review",
+        "self_contained": {
+          "status": "needs_human_review",
+          "review_notes": "Графовая модель естественна, но нуждается в финальной ручной проверке терминологии пересадок: число пересадок соответствует числу смен пути-линии на маршруте."
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path",
+          "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "review_notes": "Графовая модель естественна, но нуждается в финальной ручной проверке терминологии пересадок: число пересадок соответствует числу смен пути-линии на маршруте."
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-spanning-tree-reduction",
+      "title": "Достаточно контролировать остовное дерево",
+      "text": "Для верхней гарантии естественно выбрать остовное дерево и разбивать его рёбра на простые пути; остальные рёбра исходного графа можно положить в однотоннельные линии и не использовать в маршрутах. Поэтому содержательная часть задачи сводится к разбиению рёбер произвольного дерева на пути с малым числом переходов между путями.",
+      "tags": [
+        "trees",
+        "construction",
+        "graph_model"
+      ],
+      "status": "needs_human_review"
+    },
+    {
+      "id": "idea-line-intersection-diameter",
+      "title": "Пересадки как расстояние между линиями",
+      "text": "Если построить вспомогательный граф, вершины которого соответствуют линиям, а две линии соединены при наличии общей станции, то число пересадок между двумя станциями контролируется расстоянием между подходящими вершинами этого вспомогательного графа. Полное решение, вероятно, должно дать точную экстремальную оценку диаметра такого графа при оптимальном разбиении дерева на пути.",
+      "tags": [
+        "graph_model",
+        "connectivity",
+        "goal_bound"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 8,
+    "comment": "Задача 7 городского тура СПбМО 2024 для 9 класса. Условие короткое, но точное значение N требует нетривиального экстремального анализа path-разбиений деревьев; быстрый поиск решения и самостоятельный проход не закрыли строгую верхнюю и нижнюю оценки.",
+    "status": "needs_human_review"
+  },
+  "tags": [
+    "graph_model",
+    "trees",
+    "connectivity",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "spanning_tree_reduction",
+        "path_decomposition",
+        "auxiliary_line_intersection_graph"
+      ],
+      "status": "needs_human_review"
+    },
+    "typical_olympiad_use": {
+      "value": "Модель метро переводится в задачу о разбиении рёбер связного графа, фактически остовного дерева, на простые пути с ограниченным диаметром графа пересадок.",
+      "status": "needs_human_review"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-pdmi-2024-c911",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ],
+      "notes": "Официальный PDF PDMI/СПбМО 2024, городской тур 9-11 классов, задача 7 выводной аудитории 9 класса. Официальное решение в проверенных источниках не найдено."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "2026-05-04: запрошенный файл отсутствовал в рабочей копии; карточка создана по официальному источнику src-spbmo-pdmi-2024-c911.",
+      "Внешний поиск по точному условию, фразам про разбиение тоннелей на линии и официальным материалам PDMI нашёл только условие; опубликованное решение, автор или официальный разбор не найдены.",
+      "непросто для ИИ: быстрые самостоятельные попытки сводят задачу к оптимальному разбиению дерева на пути и диаметру графа пересадок, но точная экстремальная оценка N не была строго доказана.",
+      "Возможные инструменты для будущего решения: разбиение дерева на тяжёлые пути, рекурсивный путь-сепаратор, а для контрпримера - семейство деревьев с вынужденным большим диаметром графа пересадок.",
+      "Соседняя карточка spbmo-2024-9-11-metro-lines-transfer-bound выглядит устаревшей переидентификацией той же официальной задачи, но она вне разрешённой зоны правок и не редактировалась."
+    ],
+    "manual_review": {
+      "target": "spbmo-2024-9-11-metric-path-with-shortcuts#solution",
+      "status": "needed",
+      "reason": "Нужно либо найти официальный/авторский разбор, либо дописать строгую экстремальную оценку для разбиений деревьев на простые пути.",
+      "needed": "Проверить точный ответ N и добавить самодостаточное решение; отдельно решить, является ли карточка spbmo-2024-9-11-metro-lines-transfer-bound дубликатом.",
+      "action_taken": "Сверено официальное условие, добавлены графовая модель, идеи редукции и редакционная пометка 'непросто для ИИ'.",
+      "next_agent": "human_or_deep_solution_pass"
+    },
+    "relations_status": "base_done"
+  }
+}

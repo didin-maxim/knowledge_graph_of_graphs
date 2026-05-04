@@ -1,0 +1,184 @@
+{
+  "id": "gallai-hasse-roy-vitaver-theorem",
+  "title": "Теорема Галлаи-Хассе-Роя-Витавера о раскраске и ориентированных путях",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Tibor Gallai",
+      "status": "source_verified"
+    },
+    {
+      "name": "Maria Hasse",
+      "status": "source_verified"
+    },
+    {
+      "name": "Bernard Roy",
+      "status": "source_verified"
+    },
+    {
+      "name": "L. M. Vitaver",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "orientation",
+      "directed_path",
+      "chromatic_number"
+    ],
+    "methods": [
+      "potential_function",
+      "coloring_by_path_length",
+      "orientation_by_coloring"
+    ],
+    "transformations": [
+      "orient_edges_by_color",
+      "assign_longest_path_length_to_vertex"
+    ],
+    "goal": [
+      "characterize_chromatic_number_by_directed_paths"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "longest_directed_path_length",
+      "chromatic_number",
+      "path_end_potential"
+    ],
+    "keywords": [
+      "gallai_hasse_roy_vitaver",
+      "chromatic_number",
+      "directed_path"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Хроматическое число через ориентации",
+        "text": "Пусть \\(G\\) — конечный простой граф. Для ориентации \\(D\\) графа \\(G\\) обозначим через \\(L(D)\\) наибольшее число рёбер в ориентированном пути в \\(D\\). Тогда \\(\\chi(G)=1+\\min_D L(D)\\), где минимум берётся по всем ориентациям рёбер графа \\(G\\).",
+        "source_id": "src-wikipedia-gallai-hasse-roy-vitaver",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "directed_graph",
+          "path",
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-two-sided-form",
+        "title": "Две неравенства",
+        "text": "В любой ориентации графа \\(G\\) есть ориентированный путь длины хотя бы \\(\\chi(G)-1\\). С другой стороны, существует ориентация, в которой каждый ориентированный путь имеет длину не больше \\(\\chi(G)-1\\).",
+        "source_id": "src-wikipedia-gallai-hasse-roy-vitaver",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "directed_graph",
+          "path",
+          "chromatic_number"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-color-by-longest-path-ending",
+      "title": "Красить длиной максимального пути к вершине",
+      "text": "В фиксированной ориентации значение \\(a(v)\\), равное максимальной длине ориентированного пути, заканчивающегося в \\(v\\), строго возрастает вдоль каждой дуги.",
+      "tags": [
+        "coloring",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-orient-by-color",
+      "title": "Ориентировать по возрастанию цвета",
+      "text": "Если рёбра ориентировать от меньшего цвета к большему, то вдоль любого ориентированного пути цвета строго возрастают, поэтому путь не может быть длиннее числа цветов минус 1.",
+      "tags": [
+        "coloring",
+        "goal_characterization"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-path-length-potentials",
+      "title": "Доказательство через длины путей",
+      "text": "Возьмем произвольную ориентацию \\(D\\) графа \\(G\\). Для каждой вершины \\(v\\) обозначим через \\(a(v)\\) максимальное число рёбер в ориентированном пути, который заканчивается в \\(v\\). Если есть дуга \\(u\\to v\\), то любой максимальный путь, заканчивающийся в \\(u\\), можно продолжить этой дугой, поэтому \\(a(v)\\ge a(u)+1\\). Значит, концы каждой дуги имеют разные значения \\(a\\), и раскраска вершины \\(v\\) в цвет \\(a(v)+1\\) является правильной раскраской исходного неориентированного графа. Все значения \\(a(v)\\) не превосходят \\(L(D)\\), поэтому использовано не больше \\(L(D)+1\\) цветов. Следовательно, \\(\\chi(G)\\le L(D)+1\\) для любой ориентации \\(D\\), то есть \\(L(D)\\ge \\chi(G)-1\\).\n\nДокажем обратное неравенство. Возьмем правильную раскраску графа \\(G\\) ровно в \\(\\chi(G)\\) цветов, пронумерованных \\(1,2,\\ldots,\\chi(G)\\). Ориентируем каждое ребро из вершины меньшего цвета в вершину большего цвета. Вдоль любого ориентированного пути цвета строго возрастают. Поэтому такой путь содержит не больше \\(\\chi(G)\\) вершин и имеет не больше \\(\\chi(G)-1\\) рёбер. Для этой ориентации \\(L(D)\\le \\chi(G)-1\\).\n\nМы доказали, что в любой ориентации \\(L(D)\\ge \\chi(G)-1\\), и построили ориентацию с \\(L(D)\\le \\chi(G)-1\\). Значит \\(\\min_D L(D)=\\chi(G)-1\\), или, что то же самое, \\(\\chi(G)=1+\\min_D L(D)\\).",
+      "idea_ids": [
+        "idea-color-by-longest-path-ending",
+        "idea-orient-by-color"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "directed_graph",
+        "path",
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Короткая классическая характеристика: нужно только аккуратно различать длину пути в рёбрах и число его вершин.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "classical_theorem",
+    "goal_characterization",
+    "extremal_choice"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "coloring_by_potential",
+        "orientation_by_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-gallai-hasse-roy-vitaver",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено после отдельной high-reasoning проверки; формулировка использует длину ориентированного пути как число рёбер."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

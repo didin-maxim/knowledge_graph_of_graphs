@@ -1,0 +1,158 @@
+{
+  "id": "konig-line-coloring-bipartite",
+  "title": "Теорема Кёнига о рёберной раскраске двудольного графа",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Dénes Kőnig",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "edge_coloring",
+      "matching",
+      "regular_bipartite_graph"
+    ],
+    "methods": [
+      "hall_theorem",
+      "induction",
+      "regularization"
+    ],
+    "transformations": [
+      "add_dummy_vertices_and_edges",
+      "decompose_into_perfect_matchings",
+      "remove_matching_color_class"
+    ],
+    "goal": [
+      "edge_chromatic_number_bipartite_graph"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "maximum_degree",
+      "perfect_matching_count",
+      "edge_colors"
+    ],
+    "keywords": [
+      "konig_line_coloring",
+      "bipartite_edge_coloring",
+      "one_factorization"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Рёберная раскраска двудольного графа",
+        "text": "Если \\(G\\) — конечный двудольный граф с максимальной степенью \\(\\Delta\\), то его рёбра можно правильно раскрасить в \\(\\Delta\\) цветов: любые два ребра с общей вершиной получают разные цвета.",
+        "source_id": "src-wikipedia-konig-line-coloring",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-regular-decomposition",
+        "title": "Разложение регулярного двудольного графа",
+        "text": "Всякий \\(k\\)-регулярный двудольный граф с равными долями раскладывается на \\(k\\) непересекающихся совершенных паросочетаний.",
+        "source_id": "src-wikipedia-konig-line-coloring",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching",
+          "degree"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-regularize-and-hall",
+      "title": "Свести к регулярному графу",
+      "text": "Двудольный граф максимальной степени \\(\\Delta\\) можно дополнить фиктивными вершинами и рёбрами до \\(\\Delta\\)-регулярного двудольного графа; затем каждое совершенное паросочетание становится одним цветом.",
+      "tags": [
+        "matching",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-regularization-hall",
+      "title": "Доказательство через Холла",
+      "text": "Пусть \\(k=\\Delta(G)\\). Нижняя оценка очевидна: все рёбра, выходящие из вершины степени \\(k\\), должны иметь разные цвета, поэтому нужно не меньше \\(k\\) цветов.\n\nДокажем верхнюю оценку. Сначала докажем лемму: всякий \\(k\\)-регулярный двудольный граф с долями \\(X\\) и \\(Y\\) имеет совершенное паросочетание. Так как сумма степеней в обеих долях равна числу рёбер, имеем \\(k|X|=k|Y|\\), значит при \\(k>0\\) доли равны по размеру. Проверим условие Холла. Для любого \\(A\\subseteq X\\) из вершин \\(A\\) выходит ровно \\(k|A|\\) рёбер. Все они приходят в множество соседей \\(N(A)\\), а каждая вершина из \\(N(A)\\) принимает не больше \\(k\\) таких рёбер. Поэтому \\(k|A|\\le k|N(A)|\\), то есть \\(|N(A)|\\ge |A|\\). По теореме Холла существует паросочетание, покрывающее всю долю \\(X\\), а значит и всю долю \\(Y\\).\n\nТеперь из \\(k\\)-регулярного двудольного графа удалим найденное совершенное паросочетание. Степень каждой вершины уменьшится ровно на 1, поэтому останется \\((k-1)\\)-регулярный двудольный граф. Повторяя, разложим все рёбра на \\(k\\) совершенных паросочетаний. Если каждому паросочетанию дать свой цвет, то рёбра одного цвета не имеют общих концов, то есть получена правильная рёберная раскраска в \\(k\\) цветов.\n\nОсталось свести общий двудольный граф \\(G=(X,Y,E)\\) максимальной степени \\(\\Delta\\) к регулярному случаю. При необходимости добавим фиктивные вершины в меньшую долю, чтобы доли стали равными. Затем будем добавлять фиктивные рёбра между вершинами степени меньше \\(\\Delta\\) из разных долей. Если нужное ребро уже было, временно разрешим параллельное фиктивное ребро; это безвредно для рёберной раскраски, потому что параллельные рёбра всё равно должны получить разные цвета. Суммарный дефицит степеней в двух долях одинаков после выравнивания долей, поэтому процесс заканчивается \\(\\Delta\\)-регулярным двудольным мультиграфом. Его рёбра раскрашиваются в \\(\\Delta\\) цветов тем же рассуждением через Холла, которое работает и для двудольных мультиграфов. Удалив фиктивные рёбра и вершины, получаем раскраску исходного графа теми же \\(\\Delta\\) цветами.",
+      "idea_ids": [
+        "idea-regularize-and-hall"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "definition_ids": [
+        "bipartite_graph",
+        "matching",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 7,
+    "comment": "Доказательство школьное при условии, что теорема Холла уже доступна как предыдущий инструмент.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "coloring",
+    "classical_theorem",
+    "goal_exact_bound",
+    "induction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "hall_theorem",
+        "regularization",
+        "perfect_matching_decomposition"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-konig-line-coloring",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Карточка зависит от теоремы Холла; доказательство включает регулярный случай и стандартную регуляризацию общего двудольного графа."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

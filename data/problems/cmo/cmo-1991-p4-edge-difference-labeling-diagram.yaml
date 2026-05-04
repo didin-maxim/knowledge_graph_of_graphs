@@ -136,7 +136,29 @@
       "status": "ai_checked"
     }
   ],
-  "solutions": [],
+  "solutions": [
+    {
+      "id": "sol-parity-cut",
+      "title": "Чётность разреза",
+      "text": "Ответ: нет.\n\nПредположим, что такую разметку удалось сделать. Все 10 чисел различны, поэтому ни одна из 14 указанных разностей не равна нулю. Каждая разность лежит между 1 и 14. Так как разностей ровно 14 и они попарно различны, они обязаны быть ровно числами \\(1,2,\\ldots,14\\) в некотором порядке. Значит, среди них ровно 7 нечётных разностей.\n\nПосмотрим на чётность другим способом. Нечётная разность возникает тогда и только тогда, когда два числа на концах соответствующего ребра имеют разную чётность. Рассмотрим граф из условия: две копии \\(K_{2,3}\\), соединённые двумя дополнительными рёбрами. Вершины \\(t_1,t_2,b_1,b_2\\) имеют степень 4, а остальные шесть вершин имеют степень 2. Значит, степень каждой вершины графа чётна.\n\nРазобьём вершины на две группы: с чётными метками и с нечётными метками. Рёбра с нечётной разностью — это ровно рёбра, пересекающие этот разрез. В любом графе, где все степени чётны, каждый разрез имеет чётное число рёбер: если взять одну сторону разреза и сложить степени всех её вершин, то внутренние рёбра посчитаются дважды, а рёбра разреза — один раз; левая часть чётна, значит и число рёбер разреза чётно.\n\nПолучается, число нечётных разностей должно быть чётным. Но выше мы получили, что оно равно 7. Противоречие. Следовательно, требуемую разметку сделать невозможно.",
+      "idea_ids": [
+        "idea-odd-differences-as-cut",
+        "idea-even-degree-cut-parity"
+      ],
+      "status": "ai_checked",
+      "source_ids": [
+        "src-school-exercise-books-cmo-1991-p4",
+        "src-mse-cmo-1991-p4-edge-difference"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    }
+  ],
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 8,
@@ -147,7 +169,8 @@
     "coloring",
     "double_counting",
     "eulerian_graphs",
-    "goal_impossibility"
+    "goal_impossibility",
+    "parity_coloring"
   ],
   "properties": {
     "central_method": {
@@ -167,6 +190,16 @@
       "statement_ids": [
         "stmt-original"
       ]
+    },
+    {
+      "source_id": "src-school-exercise-books-cmo-1991-p4",
+      "role": "community_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-mse-cmo-1991-p4-edge-difference",
+      "role": "community_hint",
+      "status": "source_verified"
     }
   ],
   "editorial": {
@@ -177,8 +210,8 @@
     "notes": [
       "Официальный PDF CMS с задачами CMO 1991 содержит эту задачу в виде диаграммы; исходное условие здесь явно описывает диаграмму, чтобы карточка была самодостаточной.",
       "Обычная запись graph_theory является эквивалентной самодостаточной задачей о разметке графа. Препятствие через четность разреза оставлено отдельно в graph_hint_reformulations, потому что оно сильно подсказывает решение.",
-      "В манифесте источников указан PDF CMS с решениями за 1991 год, но архивный URL не открылся во время этого прохода и локально извлеченное решение CMO 1991 найдено не было; поэтому solutions намеренно оставлен пустым.",
-      "2026-05-04: high-reasoning relation pass confirmed the existing handshaking-cut-parity prerequisite and Eulerian-parity motif links; no new relation was added."
+      "В манифесте источников указан PDF CMS с решениями за 1991 год, но архивный URL не открылся во время первого прохода и локально извлеченное решение CMO 1991 найдено не было.",
+      "2026-05-04: high-reasoning no-solution pass found a community solution and an MSE hint; solution added in Russian and marked as community-sourced."
     ],
     "relations_status": "deep_done"
   }

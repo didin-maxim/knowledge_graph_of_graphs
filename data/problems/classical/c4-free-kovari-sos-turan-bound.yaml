@@ -1,0 +1,170 @@
+{
+  "id": "c4-free-kovari-sos-turan-bound",
+  "title": "Оценка Кёвари-Шоша-Турана для графа без четырёхциклов",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "special_case"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Tamás Kővári",
+      "status": "source_verified"
+    },
+    {
+      "name": "Vera T. Sós",
+      "status": "source_verified"
+    },
+    {
+      "name": "Pál Turán",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "cycle_of_length_four",
+      "common_neighbors",
+      "degree_sequence"
+    ],
+    "methods": [
+      "double_counting",
+      "convexity",
+      "forbidden_subgraph_counting"
+    ],
+    "transformations": [
+      "count_pairs_of_neighbors",
+      "sum_binomial_degrees"
+    ],
+    "goal": [
+      "upper_bound_edges_without_c4"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "edge_count",
+      "sum_of_degrees",
+      "pairs_of_common_neighbors"
+    ],
+    "keywords": [
+      "kovari_sos_turan",
+      "c4_free_graph",
+      "zarankiewicz_bound"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Школьная C4-свободная оценка",
+        "text": "Пусть \\(G\\) — простой граф на \\(n\\) вершинах, в котором нет цикла длины 4. Тогда число его рёбер \\(e\\) удовлетворяет неравенству \\(e\\le \\frac n4\\bigl(1+\\sqrt{4n-3}\\bigr)\\). В частности, \\(e=O(n^{3/2})\\).",
+        "source_id": "src-wikipedia-kovari-sos-turan",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-common-neighbor-form",
+        "title": "Форма про общих соседей",
+        "text": "Если в простом графе любые две вершины имеют не более одного общего соседа, то число рёбер графа не превосходит \\(\\frac n4(1+\\sqrt{4n-3})\\).",
+        "source_id": "src-wikipedia-kovari-sos-turan",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-count-two-step-paths",
+      "title": "Считать пути длины 2",
+      "text": "Сумма \\(\\sum_v \\binom{d(v)}2\\) считает пары соседей с общим центром. В графе без \\(C_4\\) каждая пара концов может иметь не больше одного общего центра.",
+      "tags": [
+        "double_counting",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-common-neighbor-count",
+      "title": "Доказательство двойным счётом",
+      "text": "Обозначим степени вершин через \\(d_1,\\ldots,d_n\\), а число рёбер через \\(e\\). Посчитаем тройки \\((x,v,y)\\), где \\(x\\) и \\(y\\) — две различные соседние с \\(v\\) вершины. Для фиксированного центра \\(v\\) таких троек \\(\\binom{d(v)}2\\), поэтому всего их \\(\\sum_v \\binom{d(v)}2\\).\n\nС другой стороны, каждая такая тройка задаёт пару концов \\(x,y\\), имеющих общего соседа \\(v\\). Если какая-то пара вершин \\(x,y\\) имела бы двух разных общих соседей \\(u\\) и \\(v\\), то вершины \\(x,u,y,v\\) образовали бы цикл длины 4. Поэтому в графе без \\(C_4\\) каждая неупорядоченная пара концов встречается не более одного раза. Значит\n\\[\\sum_v \\binom{d(v)}2\\le \\binom n2.\\]\n\nРаскроем левую часть: \\(\\sum_v \\binom{d(v)}2=\\frac12\\sum_v d(v)^2-e\\), потому что \\(\\sum_v d(v)=2e\\). По неравенству Коши \\(\\sum_v d(v)^2\\ge (2e)^2/n\\). Поэтому\n\\[\\frac12\\cdot\\frac{4e^2}{n}-e\\le \\frac{n(n-1)}2.\\]\nУмножая на \\(2n\\), получаем \\(4e^2-2ne\\le n^2(n-1)\\). Это квадратное неравенство относительно \\(e\\). Из него следует\n\\[e\\le \\frac n4\\bigl(1+\\sqrt{4n-3}\\bigr).\\]\nВ частности, при больших \\(n\\) число рёбер не превосходит константы порядка \\(n^{3/2}\\).",
+      "idea_ids": [
+        "idea-count-two-step-paths"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "cycle",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Это один из самых школьных фрагментов теоремы Кёвари-Шоша-Турана: вся работа сводится к двойному счёту общих соседей и неравенству Коши.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "double_counting",
+    "classical_theorem",
+    "goal_bound"
+  ],
+  "properties": {
+    "forbidden_subgraphs": {
+      "value": [
+        "\\( C_4 \\)"
+      ],
+      "status": "ai_checked"
+    },
+    "central_method": {
+      "value": [
+        "double_counting",
+        "cauchy_inequality"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-kovari-sos-turan",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлен только школьный случай запрета C4, а не полная K_{s,t}-форма теоремы."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

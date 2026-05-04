@@ -1,0 +1,156 @@
+{
+  "id": "degeneracy-greedy-coloring",
+  "title": "Вырожденность графа и жадная раскраска",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "standard folklore",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "vertex_coloring",
+      "degeneracy",
+      "subgraph_minimum_degree"
+    ],
+    "methods": [
+      "greedy_coloring",
+      "induction",
+      "vertex_deletion_order"
+    ],
+    "transformations": [
+      "delete_low_degree_vertex",
+      "reverse_coloring_order"
+    ],
+    "goal": [
+      "upper_bound_chromatic_number"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "maximum_number_of_later_neighbors",
+      "available_colors"
+    ],
+    "keywords": [
+      "degeneracy",
+      "greedy_coloring",
+      "coloring_order"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "title": "Раскраска вырожденного графа",
+        "text": "Пусть \\(d\\) — неотрицательное целое число. Если в каждом непустом подграфе простого графа \\(G\\) есть вершина степени не больше \\(d\\), то вершины \\(G\\) можно правильно раскрасить в \\(d+1\\) цвет.",
+        "source_id": "src-wikipedia-degeneracy-graph-theory",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-order-form",
+        "title": "Форма через порядок вершин",
+        "text": "Если вершины графа можно упорядочить так, что у каждой вершины не больше \\(d\\) соседей, стоящих после неё, то граф \\((d+1)\\)-раскрашиваем.",
+        "source_id": "src-wikipedia-degeneracy-graph-theory",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "chromatic_number"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-delete-then-return",
+      "title": "Удалить, потом вернуть",
+      "text": "Сначала удаляем вершины малой степени, запоминая порядок удаления. Затем возвращаем их в обратном порядке: при возвращении у вершины уже раскрашено не больше \\(d\\) соседей.",
+      "tags": [
+        "coloring",
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-deletion-order",
+      "title": "Доказательство обратной жадной раскраской",
+      "text": "Будем удалять вершины из графа. Пока граф непуст, по условию в текущем подграфе есть вершина степени не больше \\(d\\); удалим одну такую вершину и запишем ее в список. После удаления снова смотрим на оставшийся подграф и повторяем процесс. В конце все вершины удалены.\n\nТеперь раскрасим вершины в обратном порядке: сначала последнюю удаленную, затем предпоследнюю и так далее. Когда мы возвращаем некоторую вершину \\(v\\), среди уже возвращенных и раскрашенных вершин находятся только те ее соседи, которые оставались в графе после удаления \\(v\\). В момент удаления таких соседей было не больше \\(d\\). Значит среди \\(d+1\\) цветов занято не более \\(d\\), и для \\(v\\) остается хотя бы один свободный цвет. Выберем его.\n\nТак получаем правильную раскраску всего графа: каждое ребро проверяется в момент, когда красится более ранний по восстановлению конец, и этот конец получает цвет, отличный от уже раскрашенного соседа. Следовательно, граф можно раскрасить в \\(d+1\\) цвет.",
+      "idea_ids": [
+        "idea-delete-then-return"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "degree",
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Базовая, но чрезвычайно полезная школьная лемма о раскраске: весь механизм — порядок удаления вершин.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "classical_theorem",
+    "goal_bound",
+    "goal_algorithm",
+    "induction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "greedy_coloring",
+        "vertex_deletion_order"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-degeneracy-graph-theory",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-04",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено как отдельная каноническая форма жадной раскраски; не дублирует специализированную карточку про орграф с ограниченной исходящей степенью."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

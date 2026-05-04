@@ -1,17 +1,17 @@
 {
   "id": "school239-2024-10-11-p8-empty-disk-perfect-matching",
   "title": "Разбиение точек на пары, покрываемые пустыми кругами, Открытая олимпиада ФМЛ 239 2024",
-  "kind": {"primary": "olympiad_problem", "secondary": ["official_solution_needed", "condition_only"]},
+  "kind": {"primary": "olympiad_problem", "secondary": ["official_solution_needed"]},
   "language": "ru",
   "authors": [{"name": "unknown", "status": "not_found_in_checked_sources"}],
   "problem_profile": {
     "objects": ["points_in_general_position", "empty_disk_graph", "perfect_matching"],
-    "methods": ["geometric_graph_model", "matching"],
-    "transformations": ["empty_disk_adjacency_to_gabriel_like_graph"],
+    "methods": ["geometric_graph_model", "matching", "delaunay_triangulation", "tutte_theorem"],
+    "transformations": ["empty_disk_adjacency_to_delaunay_graph"],
     "goal": ["existence_of_perfect_matching"],
-    "auxiliary_graph_type": ["gabriel_graph", "matching"],
+    "auxiliary_graph_type": ["delaunay_triangulation", "matching"],
     "invariants": ["2n_points", "no_four_concyclic"],
-    "keywords": ["school239_2024", "empty_disks", "perfect_matching", "gabriel_graph"],
+    "keywords": ["school239_2024", "empty_disks", "perfect_matching", "delaunay_triangulation", "tutte_theorem"],
     "status": "needs_human_review"
   },
   "statements": {
@@ -22,14 +22,14 @@
       "source_id": "src-school239-2024-official-conditions",
       "status": "source_verified",
       "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["gabriel_graph", "matching"]
+      "definition_ids": ["matching"]
     }],
     "graph_theory": [{
       "id": "stmt-graph",
-      "text": "Рассмотрим граф на данных точках: две точки соединены ребром, если существует круг, содержащий эти две точки и не содержащий других данных точек. В этой графовой формулировке требуется доказать существование совершенного паросочетания.",
+      "text": "Рассмотрим граф на данных точках: две точки соединены ребром, если существует круг, содержащий эти две точки и не содержащий других данных точек. В этой графовой формулировке требуется доказать существование совершенного паросочетания; достаточно доказать это для подграфа из рёбер триангуляции Делоне.",
       "status": "needs_human_review",
       "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["gabriel_graph", "matching"],
+      "definition_ids": ["matching"],
       "distinct_from": ["stmt-original"]
     }],
     "olympiad_reformulations": []
@@ -37,11 +37,19 @@
   "ideas": [{
     "id": "idea-empty-disk-graph",
     "title": "Граф пар, покрываемых пустым кругом",
-    "text": "Хотя исходная формулировка геометрическая, её можно рассматривать как задачу о совершенном паросочетании в графе, где рёбрами являются пары точек, покрываемые пустым кругом.",
+    "text": "Хотя исходная формулировка геометрическая, её можно рассматривать как задачу о совершенном паросочетании в графе, где рёбрами являются пары точек, покрываемые пустым кругом. Удобно взять не весь этот граф, а триангуляцию Делоне: каждое её ребро уже имеет пустой круг, а известная теорема Делленкура даёт совершенное паросочетание при чётном числе вершин.",
     "tags": ["graph_model", "matching"],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   }],
-  "solutions": [],
+  "solutions": [{
+    "id": "sol-ai-delaunay-tutte",
+    "title": "ИИ-решение через триангуляцию Делоне и теорему Татта",
+    "text": "Построим на данных \\(2n\\) точках триангуляцию Делоне \\(T\\). Из-за условия общего положения её можно понимать так: ребро \\(pq\\) входит в \\(T\\), если существует замкнутый круг, на границе которого лежат только \\(p\\) и \\(q\\), а внутри и на границе нет других данных точек. Поэтому любое ребро триангуляции Делоне является допустимой парой для исходной задачи.\n\nВоспользуемся стандартным результатом Делленкура: триангуляция Делоне конечного множества точек общего положения на плоскости является 1-жёсткой. То есть для любого множества вершин \\(S\\) граф \\(T-S\\) имеет не больше \\(|S|\\) компонент связности. Тогда для любого \\(S\\) число нечётных компонент графа \\(T-S\\) тем более не превосходит \\(|S|\\). При \\(S=\\varnothing\\) нечётных компонент нет, потому что \\(T\\) связен и имеет \\(2n\\) вершин.\n\nПо теореме Татта это ровно условие существования совершенного паросочетания в графе \\(T\\). Значит, вершины \\(T\\), то есть исходные точки, можно разбить на \\(n\\) пар, соответствующих рёбрам \\(T\\). Для каждого выбранного ребра \\(pq\\) по определению триангуляции Делоне есть пустой круг, содержащий \\(p\\) и \\(q\\) и не содержащий других данных точек. Эти \\(n\\) кругов и дают требуемое покрытие пар.",
+    "idea_ids": ["idea-empty-disk-graph"],
+    "standard_idea_ids": [],
+    "status": "ai_checked",
+    "definition_ids": ["matching"]
+  }],
   "difficulty": {"main": "regional", "local_score": 7, "comment": "Открытая олимпиада ФМЛ 239 2024, параллель 10-11 классов, задача 8.", "status": "needs_human_review"},
   "tags": ["matching", "graph_model", "goal_existence"],
   "sources": [{"source_id": "src-school239-2024-official-conditions", "role": "official_problem_statement", "status": "source_verified"}],
@@ -53,7 +61,7 @@
     "notes": [
       "Официальное условие скачано из PDF на Яндекс.Диске, ссылка на который дана в новости 239.ru.",
       "Роль графа: задача включена как серьёзная графовая интерпретация через совершенное паросочетание в геометрическом графе пустых кругов; для окончательного повышения уверенности нужно проверить официальное решение.",
-      "Официальное решение в скачанном PDF не найдено; solutions оставлены пустыми до проверки ежегодного сборника или другого официального источника решений."
+      "2026-05-04: добавлено ИИ-решение через триангуляцию Делоне, 1-жёсткость триангуляций Делоне (теорема Делленкура) и теорему Татта. Официальное решение в скачанном PDF не найдено; внешний источник для теоремы нужно добавить в sources.yaml отдельной правкой."
     ],
     "relations_status": "not_started"
   }

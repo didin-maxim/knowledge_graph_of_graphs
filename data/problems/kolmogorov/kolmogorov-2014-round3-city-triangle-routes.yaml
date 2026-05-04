@@ -10,8 +10,8 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "Д. Карпов",
+      "status": "source_verified"
     }
   ],
   "problem_profile": {
@@ -21,14 +21,20 @@
       "cycle"
     ],
     "methods": [
-      "double_counting"
+      "double_counting",
+      "neighborhood_graph",
+      "matching_obstruction"
     ],
     "transformations": [],
     "goal": [
       "proof"
     ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "triangles_through_vertex",
+      "edges_inside_neighborhood",
+      "parity_mod_3"
+    ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2014",
@@ -87,7 +93,26 @@
       "status": "needs_human_review"
     }
   ],
-  "solutions": [],
+  "solutions": [
+    {
+      "id": "sol-neighborhood-matching-count",
+      "title": "Окрестность каждой вершины вынуждает паросочетание",
+      "text": "Переведём условие на язык графов: города — вершины, дороги — рёбра. Граф 8-регулярный, и каждое ребро лежит хотя бы в одном треугольнике. Предположим противное: каждая вершина лежит не более чем в четырёх треугольниках.\n\nВозьмём произвольную вершину \\(v\\) и рассмотрим её 8 соседей. Треугольники, проходящие через \\(v\\), взаимно однозначно соответствуют рёбрам между соседями \\(v\\): если два соседа соединены ребром, они вместе с \\(v\\) дают треугольник, и наоборот. Поэтому между 8 соседями вершины \\(v\\) есть не более 4 рёбер.\n\nС другой стороны, каждое ребро \\(vu\\), выходящее из \\(v\\), лежит в некотором треугольнике \\(vuw\\). Значит, сосед \\(u\\) соединён ребром с каким-то другим соседом \\(w\\) вершины \\(v\\). Следовательно, в графе на 8 соседях вершины \\(v\\) нет изолированных вершин. Но граф на 8 вершинах без изолированных вершин имеет хотя бы 4 ребра. Значит, у него ровно 4 ребра, и эти 4 ребра образуют паросочетание.\n\nИтак, для каждой вершины \\(v\\) число треугольников, проходящих через \\(v\\), равно ровно 4. Тогда сумма по всем вершинам числа треугольников через вершину равна \\(2014\\cdot 4=8056\\). Но каждый треугольник при таком подсчёте считается ровно три раза, по числу своих вершин. Следовательно, \\(8056\\) должно делиться на 3, что неверно. Противоречие. Значит, существует город, входящий хотя бы в пять циклических маршрутов по трём городам.",
+      "idea_ids": [
+        "idea-graph-role"
+      ],
+      "status": "ai_checked",
+      "source_ids": [],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "degree",
+        "cycle"
+      ]
+    }
+  ],
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
@@ -97,7 +122,8 @@
   "tags": [
     "double_counting",
     "extremal_graph_theory",
-    "goal_counting"
+    "goal_counting",
+    "matching"
   ],
   "properties": {},
   "sources": [
@@ -120,7 +146,8 @@
     "notes": [
       "Импортировано по итогам аудита пропущенных графовых задач КОЛМ: файлы final/candidates показали, что 2014 год не был преобразован в карточки базы данных.",
       "Файл-источник: work/kolm/text/2014/tur3_18.txt.",
-      "Роль графа: явно присутствует в условии."
+      "Роль графа: явно присутствует в условии.",
+      "2026-05-04: high-reasoning no-solution pass found no published solution but produced a complete AI solution via neighborhood matching and counting triangles modulo 3. Official source lists the problem author as Д. Карпов."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": false

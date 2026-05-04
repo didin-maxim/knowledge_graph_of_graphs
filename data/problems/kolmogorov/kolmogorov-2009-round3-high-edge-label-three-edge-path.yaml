@@ -40,7 +40,7 @@
       {
         "id": "stmt-original",
         "title": "Оригинальная формулировка",
-        "text": "Рёбра полного графа на \\(n\\) вершинах помечены различными последовательными положительными целыми числами. Докажите, что при всех достаточно больших \\(n\\) существует, возможно замкнутый, путь из трёх рёбер, сумма меток которого не превосходит \\(3n-1000\\).",
+        "text": "На рёбрах полного графа на \\(n\\) вершинах расставлены числа \\(1,2,\\ldots,\\binom n2\\). Докажите, что при всех достаточно больших \\(n\\) найдётся, возможно замкнутый, путь из трёх рёбер, сумма чисел на которых не больше \\(3n-1000\\).",
         "source_id": "src-kolmogorov-2009-official",
         "status": "ai_checked",
         "self_contained": {
@@ -76,7 +76,8 @@
   },
   "tags": [
     "extremal_graph_theory",
-    "goal_exact_bound"
+    "goal_bound",
+    "goal_existence"
   ],
   "properties": {},
   "sources": [
@@ -99,7 +100,9 @@
     "notes": [
       "Импортировано по итогам аудита пропущенных графовых задач КОЛМ: файлы final/candidates показали, что 2009 год не был преобразован в карточки базы данных.",
       "Файл-источник: work/kolm/text/2009/tur3_13.txt.",
-      "Роль графа: явно присутствует в условии."
+      "Роль графа: явно присутствует в условии.",
+      "2026-05-04: no-solution high-reasoning pass found no public solution and did not complete a reliable AI solution. Marked as 'непросто для ИИ'. The tag goal_exact_bound was downgraded to goal_bound because the statement asks for an upper-bound existence result and does not assert sharpness. The exact meaning of 'possibly closed path' should be rechecked before another attempt.",
+      "2026-05-04: повторная проверка официального архива src-kolmogorov-2009-official подтвердила, что метки — именно числа \\(1,2,\\ldots,\\binom n2\\), а не произвольный сдвинутый интервал последовательных положительных целых чисел. Публичное решение или официальный разбор не найдены; самостоятельная попытка сводится к нетривиальной взвешенной экстремальной оценке для ранних рёбер полного графа. Пометка 'непросто для ИИ' оставлена."
     ],
     "relations_status": "reviewed_no_links",
     "graph_theory_duplicate_removed": true
