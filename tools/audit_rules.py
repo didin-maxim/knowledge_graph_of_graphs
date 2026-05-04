@@ -17,6 +17,19 @@ SOLUTION_RED_FLAGS = [
     ("external-solution narration", re.compile(r"(официальн\w*\s+решени\w*|автор\w*\s+решени\w*)", re.IGNORECASE)),
     ("handwave marker", re.compile(r"\b(аналогично|стандартно|легко видеть)\b", re.IGNORECASE)),
 ]
+PUBLIC_TEXT_KEYS = {"title", "text", "comment"}
+NON_PUBLIC_TEXT_BRANCHES = {
+    "problem_profile",
+    "tags",
+    "sources",
+    "relations",
+    "definition_ids",
+    "idea_ids",
+    "standard_idea_ids",
+}
+CYRILLIC_RE = re.compile(r"[А-Яа-яЁё]")
+ENGLISH_WORD_RE = re.compile(r"\b[A-Za-z]{4,}\b")
+URL_OR_PATH_RE = re.compile(r"https?://\S+|[A-Za-z]:[\\/]\S+|%TEMP%[\\/]\S+|audit/[A-Za-z0-9_./-]+")
 
 
 def rel(path):
@@ -51,6 +64,44 @@ def load_json_file(path, report):
     return None
 
 
+def scrub_for_language_check(text):
+    return URL_OR_PATH_RE.sub("", text)
+
+
+def is_public_text_path(path_parts):
+    if any(part in NON_PUBLIC_TEXT_BRANCHES for part in path_parts):
+        return False
+    return any(part in PUBLIC_TEXT_KEYS for part in path_parts)
+
+
+def iter_public_texts(value, path_parts=()):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            yield from iter_public_texts(child, path_parts + (str(key),))
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            yield from iter_public_texts(child, path_parts + (str(index),))
+    elif isinstance(value, str) and is_public_text_path(path_parts):
+        yield path_parts, value
+
+
+def check_language_policy(problem, path, report):
+    if problem.get("language") != "ru":
+        return
+    for path_parts, text in iter_public_texts(problem):
+        scrubbed = scrub_for_language_check(text)
+        english_words = ENGLISH_WORD_RE.findall(scrubbed)
+        cyrillic_chars = CYRILLIC_RE.findall(scrubbed)
+        if len(english_words) >= 6 and len(english_words) > len(cyrillic_chars) / 4:
+            add(
+                report,
+                "warning",
+                "language_policy",
+                rel(path),
+                f"Russian card has English-heavy public text at {'.'.join(path_parts)}",
+            )
+
+
 def iter_problem_files():
     return sorted((DATA / "problems").rglob("*.yaml"))
 
@@ -76,6 +127,8 @@ def check_core_bom(report):
 
 
 def check_problem(problem, path, report):
+    check_language_policy(problem, path, report)
+
     editorial = problem.get("editorial", {})
     if editorial.get("public_ready") is True:
         problems = []

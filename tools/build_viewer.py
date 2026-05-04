@@ -1001,7 +1001,7 @@ def build_html(data):
       const tags = problem.tags || [];
       if (tags.includes('classical_theorem')) return 'classical_theorem';
       const primary = problem.kind?.primary || 'olympiad_problem';
-      if (['theorem', 'lemma', 'corollary'].includes(primary)) return primary;
+      if (['theorem', 'lemma', 'corollary', 'problem_family'].includes(primary)) return primary;
       if ((problem.kind?.secondary || []).includes('classical_tool')) return 'classical_tool';
       return 'olympiad_problem';
     }}
@@ -1012,6 +1012,7 @@ def build_html(data):
         theorem: 'Теорема',
         lemma: 'Лемма',
         corollary: 'Следствие',
+        problem_family: 'Семейство задач',
         classical_theorem: 'Классическая теорема',
         classical_tool: 'Классический инструмент'
       }};
@@ -1312,7 +1313,7 @@ def build_html(data):
         const type = problemTypeKey(problem);
         counts[type] = (counts[type] || 0) + 1;
       }});
-      const order = ['olympiad_problem', 'theorem', 'lemma', 'corollary', 'classical_theorem', 'classical_tool'];
+      const order = ['olympiad_problem', 'problem_family', 'theorem', 'lemma', 'corollary', 'classical_theorem', 'classical_tool'];
       const types = Object.keys(counts).sort((a, b) => {{
         const indexA = order.includes(a) ? order.indexOf(a) : order.length;
         const indexB = order.includes(b) ? order.indexOf(b) : order.length;
