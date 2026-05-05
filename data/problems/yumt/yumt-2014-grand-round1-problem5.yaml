@@ -16,18 +16,33 @@
     }
   ],
   "problem_profile": {
-    "objects": [],
-    "methods": [],
+    "objects": [
+      "simple_graph",
+      "cycle",
+      "spanning_forest",
+      "fundamental_cycle",
+      "theta_graph"
+    ],
+    "methods": [
+      "spanning_forest",
+      "cycle_counting",
+      "double_counting",
+      "pigeonhole_principle"
+    ],
     "transformations": [],
-    "goal": [],
+    "goal": [
+      "proof"
+    ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "cycle_length"
+    ],
     "keywords": [
       "yumt",
       "2014_grand_round1_problem5",
       "yumt_2014"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -51,16 +66,38 @@
   },
   "ideas": [
     {
-      "id": "idea-spanning-forest-and-extra-edges",
-      "title": "Остовный лес и лишние рёбра",
-      "text": "После выбора остовного леса каждое дополнительное ребро порождает фундаментальный цикл; при достаточном числе лишних рёбер две такие длины неизбежно совпадут.",
+      "id": "idea-spanning-forest-theta-counting",
+      "title": "Остовный лес, фундаментальные циклы и тета-графы",
+      "text": "Если все длины циклов различны, то фундаментальные циклы относительно остовного леса уже имеют разные длины. Их древесные части в сумме достаточно длинны, поэтому одно ребро леса лежит во многих таких циклах; пары этих циклов дают новые циклы в тета-графах, и общее число циклов становится больше числа возможных длин.",
       "tags": [
-        "extremal_graph_theory"
+        "extremal_graph_theory",
+        "double_counting",
+        "pigeonhole_principle"
       ],
-      "status": "ai_draft"
+      "status": "ai_checked"
     }
   ],
-  "solutions": [],
+  "solutions": [
+    {
+      "id": "sol-external-rmm-spanning-forest-counting",
+      "title": "Адаптация решения RMM 2019: остовный лес и подсчёт циклов",
+      "text": "Докажем от противного. Пусть G - простой граф с 3n вершинами и 5n рёбрами, в котором все простые циклы имеют попарно различные длины. При n=1 такого простого графа нет, потому что между тремя вершинами может быть не более трёх рёбер; далее считаем n>=2.\n\nВ простом графе на 3n вершинах длина простого цикла может быть только одним из чисел 3,4,...,3n. Поэтому, если длины всех циклов различны, всего циклов в G не больше 3n-2.\n\nВыберем в каждой компоненте G остовное дерево и объединим их в остовный лес F. Пусть c - число компонент. Тогда в F ровно 3n-c рёбер. Остальные рёбра обозначим через B; их число равно\nq=|B|=5n-(3n-c)=2n+c,\nзначит q>=2n+1.\n\nДля каждого ребра b из B добавление b к лесу F создаёт единственный простой цикл C_b. Пусть S_b - множество рёбер леса F, лежащих на этом цикле, то есть путь в F между концами b. Длина C_b равна |S_b|+1. По предположению все длины циклов различны, значит числа |S_b| для b из B тоже различны. Так как G прост, каждое ребро b соединяет две не смежные в F вершины, поэтому |S_b|>=2. Следовательно,\n\nsum_{b in B} |S_b| >= 2+3+...+(q+1)=q(q+3)/2.\n\nЭти вхождения рёбер леса в множества S_b распределены по 3n-c рёбрам леса. Поэтому некоторое ребро a леса входит в k множеств S_b, где\n\nk >= q(q+3)/(2(3n-c)) >= (2n+1)(2n+4)/(2(3n-1)) = (2n^2+5n+2)/(3n-1) > (2n+5)/3.\n\nОбозначим через B0 множество тех рёбер b из B, для которых a входит в S_b; тогда |B0|=k.\n\nВозьмём любые два различных ребра b1,b2 из B0. Два пути S_{b1} и S_{b2} в лесу F имеют общую часть, содержащую ребро a. Объединение циклов C_{b1} и C_{b2} образует тета-граф и содержит третий простой цикл D_{b1,b2}, проходящий через оба ребра b1 и b2. Этот цикл состоит из b1, b2 и рёбер леса, поэтому среди рёбер B0 он содержит ровно b1 и b2. Значит, разные пары {b1,b2} дают разные циклы D_{b1,b2}. Кроме того, эти циклы отличаются от фундаментальных циклов C_b, потому что C_b содержит ровно одно ребро из B, а D_{b1,b2} содержит два.\n\nИтак, в G есть по крайней мере q фундаментальных циклов и ещё k(k-1)/2 новых циклов. Поэтому число циклов строго больше\n\n2n+1 + ((2n+5)/3)((2n+2)/3)/2 = (2n^2+25n+14)/9.\n\nНо\n(2n^2+25n+14)/9 - (3n-2) = (2n^2-2n+32)/9 > 0,\nто есть циклов больше, чем 3n-2. Это противоречит тому, что при попарно различных длинах циклов их может быть не больше 3n-2. Следовательно, в G существуют два простых цикла равной длины.",
+      "idea_ids": [
+        "idea-spanning-forest-theta-counting"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "cycle",
+        "tree",
+        "spanning_tree"
+      ]
+    }
+  ],
   "difficulty": {
     "main": "regional",
     "local_score": 6,
@@ -69,18 +106,21 @@
   },
   "tags": [
     "extremal_graph_theory",
+    "double_counting",
+    "pigeonhole_principle",
     "goal_proof"
   ],
   "sources": [
     {
       "source_id": "src-yumt-2014-grand-round1-problem5-official",
-      "role": "problem_and_solutions_official",
+      "role": "problem_official",
       "status": "source_verified"
     },
     {
       "source_id": "src-rmm-2019-problems",
       "role": "related_external_source",
-      "status": "source_verified"
+      "status": "source_verified",
+      "note": "RMM 2019 Problem 3 is a stronger related statement; official solutions PDF checked separately at https://imomath.com/srb/zadaci/2019_rmm_resenja_e.pdf."
     },
     {
       "source_id": "src-luoboshen-rmm-2019-p3",
@@ -91,17 +131,25 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-25",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Импортировано из проверенной рабочей карточки ЮМТ 2014_grand_round1_problem5.md.",
-      "Официальное решение ЮМТ пока не найдено.",
-      "Есть сильный внешний родственник уровня RMM 2019; перенос решения частичный.",
-      "Внешний разбор просмотрен, но его адаптация к точной формулировке ЮМТ оказалась не короткой.",
-      "2026-04-26: повторно проверен кандидат на перенос из RMM 2019. Утверждение RMM является более сильным по смыслу, но текущая карточка не содержит самодостаточной формулировки сильной леммы и её доказательства. Переносить в solutions[] пока рано; безопаснее оставить как related_external_source/идею до выписывания полной леммы.",
-      "2026-05-05: точное готовое решение ЮМТ в открытом поиске не найдено. Пометка: непросто для ИИ. Простая идея с остовным лесом не даёт немедленного pigeonhole: число фундаментальных циклов может быть меньше числа возможных длин. Найденные внешние материалы относятся к более сильной задаче RMM 2019 и требуют отдельной сильной леммы о плотных графах большого обхвата; без её самодостаточного доказательства решение в solutions[] не добавлено."
+      "2026-05-05: официальная формулировка сверена по PDF ЮМТ 2014 Гранд-лига, 1 тур: https://adygmath.ru/content/files/smena2014/1turgrand.pdf. В открытом каталоге smena2014 отдельного решения Гранд-лиги 1 тура не найдено.",
+      "2026-05-05: найдено официальное решение сильной родственной задачи RMM 2019 Problem 3, автор Fedor Petrov, Russia: https://imomath.com/srb/zadaci/2019_rmm_resenja_e.pdf. Первое решение адаптировано к точной конечной формулировке ЮМТ с явными константами.",
+      "Недоведённая черновая идея про остовный лес заменена проверенной идеей с тета-графами; решение выписано самодостаточно.",
+      "Проверены локальные refs: definition_ids simple_graph, cycle, tree, spanning_tree существуют; теги extremal_graph_theory, double_counting, pigeonhole_principle, goal_proof существуют; source_id в карточке существуют в data/sources/sources.yaml.",
+      "Автор исходной задачи ЮМТ в найденных материалах не указан; поле authors оставлено needs_human_review."
     ],
     "relations_status": "deep_done",
-    "graph_theory_duplicate_removed": true
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "external_published_solution_adapted",
+      "label": "опубликованное внешнее решение адаптировано",
+      "status": "ai_checked",
+      "confidence": 0.92,
+      "basis": "very-high reasoning pass with official YUMT statement check and RMM 2019 official solution adaptation",
+      "notes": "Полное самодостаточное решение добавлено; оно является конечной константной адаптацией первого официального решения RMM 2019 Problem 3."
+    }
   }
 }

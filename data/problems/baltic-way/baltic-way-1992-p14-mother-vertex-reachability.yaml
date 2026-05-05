@@ -1,51 +1,136 @@
 {
   "id": "baltic-way-1992-p14-mother-vertex-reachability",
   "title": "Город, из которого достижимы все остальные, Baltic Way 1992 P14",
-  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement"]},
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
   "language": "ru",
-  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
   "problem_profile": {
-    "objects": ["directed_graph", "reachability"],
-    "methods": ["extremal_choice"],
-    "transformations": ["towns_to_directed_graph"],
-    "goal": ["prove_existence"],
+    "objects": [
+      "directed_graph",
+      "reachability"
+    ],
+    "methods": [
+      "extremal_choice"
+    ],
+    "transformations": [
+      "towns_to_directed_graph"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
     "auxiliary_graph_type": [],
-    "invariants": ["reachable_set_size"],
-    "keywords": ["baltic_way_1992_p14", "mother_vertex"],
+    "invariants": [
+      "reachable_set_size"
+    ],
+    "keywords": [
+      "baltic_way_1992_p14",
+      "mother_vertex"
+    ],
     "status": "ai_checked"
   },
   "statements": {
-    "original": [{
-      "id": "stmt-original",
-      "title": "Условие",
-      "text": "В стране конечное число городов. Некоторые пары городов соединены односторонними дорогами. Известно, что для любых двух городов из одного из них можно добраться до другого. Докажите, что существует город, из которого можно добраться до всех остальных городов.",
-      "source_id": "src-baltic-way-1992-official-solutions",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["directed_graph"]
-    }],
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В стране конечное число городов. Некоторые пары городов соединены односторонними дорогами. Известно, что для любых двух городов из одного из них можно добраться до другого. Докажите, что существует город, из которого можно добраться до всех остальных городов.",
+        "source_id": "src-baltic-way-1992-official-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph"
+        ]
+      }
+    ],
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [{
-    "id": "idea-maximal-reachable-set",
-    "title": "Выбор вершины с максимальным множеством достижимости",
-    "text": "Если из выбранной вершины \\(A\\) не достижима вершина \\(B\\), то по условию \\(A\\) достижима из \\(B\\), а значит из \\(B\\) достижимы все вершины, достижимые из \\(A\\), и ещё сама \\(A\\).",
-    "tags": ["extremal_choice", "connectivity"],
+  "ideas": [
+    {
+      "id": "idea-maximal-reachable-set",
+      "title": "Выбор вершины с максимальным множеством достижимости",
+      "text": "Если из выбранной вершины \\(A\\) не достижима вершина \\(B\\), то по условию \\(A\\) достижима из \\(B\\), а значит из \\(B\\) достижимы все вершины, достижимые из \\(A\\), и ещё сама \\(A\\).",
+      "tags": [
+        "extremal_choice",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Максимальное число достижимых городов",
+      "text": "Выберем город \\(A\\), из которого достижимо максимальное возможное число городов. Предположим, что есть город \\(B\\), до которого из \\(A\\) добраться нельзя. По условию для пары \\(A,B\\) один из этих городов достижим из другого; так как \\(B\\) не достижим из \\(A\\), город \\(A\\) достижим из \\(B\\).\n\nТогда из \\(B\\) можно добраться до \\(A\\), а затем из \\(A\\) — до каждого города, достижимого из \\(A\\). Кроме того, из \\(B\\) достижим сам \\(A\\), который не входил в множество городов, достижимых из \\(A\\) как новый конечный город в этом сравнении. Поэтому из \\(B\\) достижимо больше городов, чем из \\(A\\), что противоречит выбору \\(A\\). Следовательно, такого \\(B\\) нет, и из \\(A\\) достижимы все остальные города.",
+      "idea_ids": [
+        "idea-maximal-reachable-set"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Короткая, но чистая задача на достижимость в ориентированном графе.",
     "status": "ai_checked"
-  }],
-  "solutions": [{
-    "id": "sol-official-expanded",
-    "title": "Максимальное число достижимых городов",
-    "text": "Выберем город \\(A\\), из которого достижимо максимальное возможное число городов. Предположим, что есть город \\(B\\), до которого из \\(A\\) добраться нельзя. По условию для пары \\(A,B\\) один из этих городов достижим из другого; так как \\(B\\) не достижим из \\(A\\), город \\(A\\) достижим из \\(B\\).\n\nТогда из \\(B\\) можно добраться до \\(A\\), а затем из \\(A\\) — до каждого города, достижимого из \\(A\\). Кроме того, из \\(B\\) достижим сам \\(A\\), который не входил в множество городов, достижимых из \\(A\\) как новый конечный город в этом сравнении. Поэтому из \\(B\\) достижимо больше городов, чем из \\(A\\), что противоречит выбору \\(A\\). Следовательно, такого \\(B\\) нет, и из \\(A\\) достижимы все остальные города.",
-    "idea_ids": ["idea-maximal-reachable-set"],
-    "standard_idea_ids": ["extremal_choice"],
-    "status": "ai_checked",
-    "definition_ids": ["directed_graph"]
-  }],
-  "difficulty": {"main": "regional", "local_score": 3, "comment": "Короткая, но чистая задача на достижимость в ориентированном графе.", "status": "ai_checked"},
-  "tags": ["connectivity", "extremal_choice", "goal_existence"],
-  "properties": {"central_method": {"value": ["maximal_reachable_set"], "status": "ai_checked"}},
-  "sources": [{"source_id": "src-baltic-way-1992-official-solutions", "role": "problem_and_solutions_official", "status": "source_verified"}],
-  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "ai_checked", "public_ready": true, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan.", "2026-05-04: high-reasoning pass checked the short extremal reachability proof and added a prerequisite relation to the dual reachability lemma used in UTYUM 2008."], "relations_status": "deep_done", "graph_theory_duplicate_removed": true}
+  },
+  "tags": [
+    "connectivity",
+    "extremal_choice",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "maximal_reachable_set"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-baltic-way-1992-official-solutions",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-28",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Imported during MAX-15 Baltic Way official archive graph scan.",
+      "2026-05-04: high-reasoning pass checked the short extremal reachability proof and added a prerequisite relation to the dual reachability lemma used in UTYUM 2008."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "??????????? ??????/????? ??????",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "agent medium-reasoning audit",
+      "notes": "Official source present, public_ready true, and ai_checked. Short extremal reachability proof appears self-contained.",
+      "audit_source": "agent-western-olympiads.json"
+    }
+  }
 }

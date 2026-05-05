@@ -1,66 +1,163 @@
 {
   "id": "spbmo-2009-11-6-monochromatic-long-cycle",
   "title": "Длинный одноцветный цикл при минимальной степени 2008, СПбМО 2009, 11 класс, II тур, задача 6",
-  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement"]},
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
   "language": "ru",
-  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
   "problem_profile": {
-    "objects": ["edge_coloured_graph", "cycle"],
-    "methods": ["erdos_gallai_circumference_bound", "depth_first_search", "averaging"],
-    "transformations": ["roads_to_edge_coloured_graph"],
-    "goal": ["prove_existence"],
+    "objects": [
+      "edge_coloured_graph",
+      "cycle"
+    ],
+    "methods": [
+      "erdos_gallai_circumference_bound",
+      "depth_first_search",
+      "averaging"
+    ],
+    "transformations": [
+      "roads_to_edge_coloured_graph"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
     "auxiliary_graph_type": [],
-    "invariants": ["minimum_degree", "average_degree"],
-    "keywords": ["spbmo_2009_11_6", "monochromatic_cycle", "minimum_degree_2008"],
+    "invariants": [
+      "minimum_degree",
+      "average_degree"
+    ],
+    "keywords": [
+      "spbmo_2009_11_6",
+      "monochromatic_cycle",
+      "minimum_degree_2008"
+    ],
     "status": "ai_checked"
   },
   "statements": {
-    "original": [{
-      "id": "stmt-original",
-      "title": "Условие",
-      "text": "В стране некоторые пары городов соединены дорогами, причем из каждого города выходит не менее 2008 дорог. Каждую дорогу покрасили в один из двух цветов. Докажите, что существует несамопересекающийся циклический маршрут, в котором не менее 504 дорог и все дороги одного цвета.",
-      "source_id": "src-spbmo-2009-city-911-tex",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["simple_graph", "degree", "cycle"]
-    }],
-    "graph_theory": [{
-      "id": "stmt-graph",
-      "title": "Длинный одноцветный цикл в двухцветном графе",
-      "text": "Пусть ребра простого графа с минимальной степенью не меньше 2008 окрашены в два цвета. Докажите, что в одном из цветовых подграфов есть простой цикл длины не меньше 504.",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["simple_graph", "degree", "cycle"],
-      "distinct_from": ["stmt-original"]
-    }],
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В стране некоторые пары городов соединены дорогами, причем из каждого города выходит не менее 2008 дорог. Каждую дорогу покрасили в один из двух цветов. Докажите, что существует несамопересекающийся циклический маршрут, в котором не менее 504 дорог и все дороги одного цвета.",
+        "source_id": "src-spbmo-2009-city-911-tex",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Длинный одноцветный цикл в двухцветном графе",
+        "text": "Пусть ребра простого графа с минимальной степенью не меньше 2008 окрашены в два цвета. Докажите, что в одном из цветовых подграфов есть простой цикл длины не меньше 504.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
     "olympiad_reformulations": []
   },
-  "ideas": [{
-    "id": "idea-average-color-and-erdos-gallai",
-    "title": "Один цвет имеет достаточно много ребер",
-    "text": "Суммарно в графе не меньше 1004n ребер, поэтому один из цветов содержит не меньше 502n ребер. Нужный частный случай оценки Эрдеша--Галлаи доказывается через лес поиска в глубину: если нет цикла длины хотя бы 504, каждое ребро идет только к одному из 502 ближайших предков в DFS-лесе, откуда всего ребер меньше 502n.",
-    "tags": ["double_counting", "extremal_graph_theory"],
+  "ideas": [
+    {
+      "id": "idea-average-color-and-erdos-gallai",
+      "title": "Один цвет имеет достаточно много ребер",
+      "text": "Суммарно в графе не меньше 1004n ребер, поэтому один из цветов содержит не меньше 502n ребер. Нужный частный случай оценки Эрдеша--Галлаи доказывается через лес поиска в глубину: если нет цикла длины хотя бы 504, каждое ребро идет только к одному из 502 ближайших предков в DFS-лесе, откуда всего ребер меньше 502n.",
+      "tags": [
+        "double_counting",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-expanded",
+      "title": "Средняя степень и DFS-оценка для длинного цикла",
+      "text": "Пусть в стране \\(n\\) городов. Так как из каждого города выходит не меньше 2008 дорог, сумма степеней не меньше \\(2008n\\), а значит, всего дорог не меньше \\(1004n\\). Поэтому дорог одного из двух цветов не меньше \\(502n\\). Рассмотрим подграф \\(H\\), образованный дорогами этого цвета.\n\nДокажем, что всякий простой граф на \\(n\\) вершинах с не менее чем \\(502n\\) ребрами содержит простой цикл длины не меньше 504. Запустим в таком графе поиск в глубину в каждой компоненте и получим DFS-лес. В неориентированном графе каждое ребро соединяет вершину с ее предком или потомком в этом лесе: если два конца ребра не находятся в отношении предок-потомок, то при просмотре ребра из той вершины, которая была открыта раньше, второй конец был бы еще не завершенной внешней вершиной и попал бы в то же DFS-поддерево.\n\nПрипишем каждое ребро его более глубокой вершине. Если ребро соединяет вершину \\(v\\) с предком \\(u\\), находящимся на расстоянии хотя бы 503 по дереву, то путь дерева от \\(u\\) до \\(v\\) вместе с ребром \\(uv\\) дает простой цикл длины хотя бы 504. Значит, при отсутствии таких циклов к каждой вершине могут быть приписаны только ребра, ведущие к одному из ее 502 ближайших предков. Таких ребер у вершины не больше 502, а у корней DFS-леса их вообще нет. Поэтому общее число ребер было бы строго меньше \\(502n\\).\n\nНо у выбранного цветового подграфа \\(H\\) ребер не меньше \\(502n\\), противоречие. Следовательно, в \\(H\\) есть простой цикл длины не меньше 504. В исходной формулировке это и есть несамопересекающийся циклический маршрут из не менее чем 504 дорог одного цвета.",
+      "idea_ids": [
+        "idea-average-color-and-erdos-gallai"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Короткая экстремальная графовая задача; ключевой шаг - получить оценку на число ребер в графе без длинного цикла через DFS-лес.",
     "status": "ai_checked"
-  }],
-  "solutions": [{
-    "id": "sol-expanded",
-    "title": "Средняя степень и DFS-оценка для длинного цикла",
-    "text": "Пусть в стране \\(n\\) городов. Так как из каждого города выходит не меньше 2008 дорог, сумма степеней не меньше \\(2008n\\), а значит, всего дорог не меньше \\(1004n\\). Поэтому дорог одного из двух цветов не меньше \\(502n\\). Рассмотрим подграф \\(H\\), образованный дорогами этого цвета.\n\nДокажем, что всякий простой граф на \\(n\\) вершинах с не менее чем \\(502n\\) ребрами содержит простой цикл длины не меньше 504. Запустим в таком графе поиск в глубину в каждой компоненте и получим DFS-лес. В неориентированном графе каждое ребро соединяет вершину с ее предком или потомком в этом лесе: если два конца ребра не находятся в отношении предок-потомок, то при просмотре ребра из той вершины, которая была открыта раньше, второй конец был бы еще не завершенной внешней вершиной и попал бы в то же DFS-поддерево.\n\nПрипишем каждое ребро его более глубокой вершине. Если ребро соединяет вершину \\(v\\) с предком \\(u\\), находящимся на расстоянии хотя бы 503 по дереву, то путь дерева от \\(u\\) до \\(v\\) вместе с ребром \\(uv\\) дает простой цикл длины хотя бы 504. Значит, при отсутствии таких циклов к каждой вершине могут быть приписаны только ребра, ведущие к одному из ее 502 ближайших предков. Таких ребер у вершины не больше 502, а у корней DFS-леса их вообще нет. Поэтому общее число ребер было бы строго меньше \\(502n\\).\n\nНо у выбранного цветового подграфа \\(H\\) ребер не меньше \\(502n\\), противоречие. Следовательно, в \\(H\\) есть простой цикл длины не меньше 504. В исходной формулировке это и есть несамопересекающийся циклический маршрут из не менее чем 504 дорог одного цвета.",
-    "idea_ids": ["idea-average-color-and-erdos-gallai"],
-    "standard_idea_ids": ["double_counting"],
-    "status": "ai_checked",
-    "definition_ids": ["simple_graph", "degree", "cycle"]
-  }],
-  "difficulty": {"main": "regional", "local_score": 5, "comment": "Короткая экстремальная графовая задача; ключевой шаг - получить оценку на число ребер в графе без длинного цикла через DFS-лес.", "status": "ai_checked"},
-  "tags": ["extremal_graph_theory", "coloring", "double_counting", "goal_existence"],
-  "properties": {"central_method": {"value": ["averaging_over_colours", "dfs_proof_of_erdos_gallai_cycle_bound"], "status": "ai_checked"}},
-  "sources": [{"source_id": "src-spbmo-2009-city-911-tex", "role": "problem_official_statement", "status": "source_verified"}],
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "coloring",
+    "double_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "averaging_over_colours",
+        "dfs_proof_of_erdos_gallai_cycle_bound"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2009-city-911-tex",
+      "role": "problem_official_statement",
+      "status": "source_verified"
+    }
+  ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-03",
     "review_status": "ai_checked",
     "public_ready": true,
-    "notes": ["СПбМО 2009, городской тур 9-11, TeX/PDF с официального сайта; официальное решение в найденных файлах отсутствует, приведено локальное решение.", "Ключевая экстремальная оценка для порога 504 доказана локально через DFS-лес; отдельный prerequisite не нужен."],
-    "relations_status": "reviewed_no_links"
+    "notes": [
+      "СПбМО 2009, городской тур 9-11, TeX/PDF с официального сайта; официальное решение в найденных файлах отсутствует, приведено локальное решение.",
+      "Ключевая экстремальная оценка для порога 504 доказана локально через DFS-лес; отдельный prerequisite не нужен."
+    ],
+    "relations_status": "reviewed_no_links",
+    "solution_classification": {
+      "type": "ai_original",
+      "label": "??????? ?? ? ????",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "agent medium-reasoning audit",
+      "notes": "solution appears AI-authored/reconstructed, with no official solution marker",
+      "audit_source": "agent-russian-archives.json"
+    }
   }
 }

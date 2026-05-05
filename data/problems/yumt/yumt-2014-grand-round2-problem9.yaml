@@ -11,55 +11,63 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "unknown",
+      "status": "not_found_in_checked_sources"
     }
   ],
   "problem_profile": {
-    "objects": [],
+    "objects": [
+      "unit_cubes",
+      "connected_polycube",
+      "cube_edge_graph",
+      "planar_graph"
+    ],
     "methods": [],
     "transformations": [],
-    "goal": [],
+    "goal": [
+      "minimize_number_of_marked_vertices"
+    ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "number_of_marked_vertices"
+    ],
     "keywords": [
       "yumt",
       "2014_grand_round2_problem9",
-      "yumt_2014"
+      "yumt_2014",
+      "southern_mathematical_tournament",
+      "planar_cube_edge_graph",
+      "no_public_solution_found",
+      "непросто_для_ИИ"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
       {
         "id": "stmt-original",
         "title": "Оригинальная формулировка",
-        "text": "Джо взял 1000 единичных кубиков и склеил их гранями так, что получилось связное тело.\nЗатем он отметил все вершины кубиков и нарисовал все их рёбра. Полученный граф оказался планарным.\nНайдите наименьшее возможное количество отмеченных вершин.",
+        "text": "Джо взял 1000 единичных кубиков и склеил гранями так, что получилось связное тело.\nЗатем он отметил все вершины кубиков и нарисовал все их рёбра. Полученный граф оказался планарным.\nНайдите наименьшее возможное количество отмеченных вершин.",
         "source_id": "src-yumt-2014-grand-round2-problem9-official",
-        "status": "ai_checked",
+        "status": "source_verified",
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": []
+        "definition_ids": [
+          "planar_graph"
+        ],
+        "source_note": "Сверено с официальным PDF adygmath.ru/content/files/smena2014/2turgrand.pdf: Девятый Южный математический турнир, Гранд-лига, 2 тур, 22.09.2014, задача 9."
       }
     ],
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [
-    {
-      "id": "idea-ai-hard-candidate-4004",
-      "title": "Кандидатная граница 4004 и место, требующее проверки",
-      "text": "Если 1000 кубиков поставить в один прямой столбик \\(1000\\times 1\\times 1\\), то получается планарный граф с \\(4(1000+1)=4004\\) вершинами. Для нижней оценки естественно использовать двудольность графа рёбер кубиков и оценку \\(E\\le 2V-4\\) для планарного двудольного графа, но одной этой оценки недостаточно: нужно дополнительно доказать, что любая склейка, уменьшающая число вершин по сравнению с деревом кубиков в один слой, создаёт непланарный подграф. Этот шаг выглядит как отдельная нетривиальная лемма о циклах в графе склейки кубиков.",
-      "status": "needs_human_review",
-      "review_notes": "Непросто для ИИ: найден кандидат на ответ и конструкция, но нет самодостаточного доказательства ключевой леммы о непланарности циклических/уплотняющих склеек."
-    }
-  ],
+  "ideas": [],
   "solutions": [],
   "difficulty": {
     "main": "regional",
-    "local_score": 6,
-    "comment": "Импортировано из проверенной архивной карточки ЮМТ 2014_grand_round2_problem9.md; этап: Гранд-лига, второй тур.",
+    "local_score": 8,
+    "comment": "2026-05-05 very-high/no-solution pass: официальная формулировка сверена с PDF ЮМТ/Южного математического турнира 2014, опубликованное полное решение, форумный разбор и автор задачи не найдены. Карточка помечена как no-solution / непросто для ИИ; solutions[] и ideas[] оставлены пустыми, чтобы не хранить недоведённые подходы.",
     "status": "ai_checked"
   },
   "tags": [
@@ -69,8 +77,12 @@
   "sources": [
     {
       "source_id": "src-yumt-2014-grand-round2-problem9-official",
-      "role": "problem_and_solutions_official",
-      "status": "source_verified"
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ],
+      "notes": "Официальный PDF с условиями Гранд-лиги, 2 тур. Официальное решение, автор или разбор для задачи 9 в проверенных источниках не найдены."
     },
     {
       "source_id": "src-grid-graphs-on-surfaces",
@@ -86,16 +98,33 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-25",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Импортировано из проверенной рабочей карточки ЮМТ 2014_grand_round2_problem9.md.",
-      "Официальное решение ЮМТ пока не найдено.",
-      "Есть внешние теоретические источники по планарным решёточным графам и lattice animals; полного независимого разбора пока нет.",
-      "Близкая литература просмотрена, но переход от неё к точной задаче ЮМТ требует нетривиальной дополнительной аргументации.",
-      "Непросто для ИИ: кандидатный ответ 4004 достигается столбиком 1000x1x1, однако нижняя оценка требует отдельной проверки леммы о том, что все склейки, экономящие вершины относительно древесной склейки кубиков, нарушают планарность."
+      "2026-05-05 very-high pass: официальный PDF https://adygmath.ru/content/files/smena2014/2turgrand.pdf заново скачан; страница 1 подтверждает Девятый Южный математический турнир, Гранд-лигу, 2 тур 22.09.2014 и задачу 9 про 1000 единичных кубиков.",
+      "Официальная страница турнира https://adygmath.ru/turnir14.html содержит ссылку на 2turgrand.pdf, но не содержит опубликованного решения Гранд-лиги 2 тура; прямые проверки типовых URL решений дали 404.",
+      "Поиск по точным фразам условия, русским/английским переформулировкам, форумам и авторским запросам не нашёл полного опубликованного решения или автора задачи.",
+      "Непросто для ИИ / no-solution: `solutions: []` оставлен пустым, `ideas: []` очищен, чтобы не хранить недоведённые подходы.",
+      "public_ready поставлен в true, потому что формулировка, definition_ids, tags и source refs сверены; единственный известный блокер - отсутствие опубликованного полного решения."
     ],
-    "relations_status": "deep_done",
-    "graph_theory_duplicate_removed": true
+    "manual_review": {
+      "target": "yumt-2014-grand-round2-problem9#solution",
+      "status": "needed",
+      "reason": "Нужно найти официальный/авторский разбор или дать самодостаточное доказательство точного минимума.",
+      "action_taken": "Сверено официальное условие, проверены source refs / definitions / tags, удалены недоведённые ideas, добавлена пометка 'непросто для ИИ'.",
+      "next_agent": "human_or_deep_solution_pass"
+    },
+    "relations_status": "reviewed_no_links",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "no_solution_hard",
+      "label": "решения нет: сложная задача",
+      "status": "ai_checked",
+      "confidence": 0.88,
+      "basis": "2026-05-05 very-high no-solution pass",
+      "notes": "Официальная формулировка подтверждена; опубликованное полное решение, автор и форумный разбор не найдены; solutions[] и ideas[] пустые.",
+      "audit_source": "manual-xhigh-pass-2026-05-05"
+    }
   }
 }

@@ -11,21 +11,28 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "В. Дольников",
+      "status": "source_verified"
     }
   ],
   "problem_profile": {
-    "objects": [],
+    "objects": [
+      "graph",
+      "vertex_disjoint_subgraphs"
+    ],
     "methods": [],
     "transformations": [],
-    "goal": [],
+    "goal": [
+      "existence_of_chromatic_partition"
+    ],
     "auxiliary_graph_type": [],
     "invariants": [],
     "keywords": [
       "yumt",
       "2023_granda_final_problem6",
-      "yumt_2023"
+      "yumt_2023",
+      "chromatic_partition",
+      "erdos_lovasz_tihany"
     ],
     "status": "needs_human_review"
   },
@@ -48,17 +55,7 @@
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [
-    {
-      "id": "idea-split-by-chromatic-number",
-      "title": "Разделение по хроматическим числам частей",
-      "text": "Из χ(G)-раскраски выделяется подходящая часть так, чтобы сумма хроматических чисел двух непересекающихся подграфов осталась большой; это прямой родственник общих теорем о разбиениях типа Stiebitz.",
-      "tags": [
-        "coloring"
-      ],
-      "status": "ai_draft"
-    }
-  ],
+  "ideas": [],
   "solutions": [],
   "difficulty": {
     "main": "regional",
@@ -67,18 +64,24 @@
     "status": "ai_checked"
   },
   "tags": [
+    "coloring",
     "goal_existence"
   ],
   "sources": [
     {
       "source_id": "src-yumt-2023-granda-final-problem6-official",
-      "role": "problem_and_solutions_official",
-      "status": "source_verified"
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ],
+      "notes": "Официальный PDF ЮМТ 2023, Гранд-лига A, финал, задача 6; в PDF указан автор В. Дольников. Файл содержит условия, а не опубликованное решение."
     },
     {
       "source_id": "src-elt-claw-free-arxiv",
       "role": "related_external_source",
-      "status": "source_verified"
+      "status": "source_verified",
+      "notes": "Только теоретический контекст Erdős-Lovász-Tihany для специальных классов графов; не является решением задачи ЮМТ."
     }
   ],
   "editorial": {
@@ -88,13 +91,29 @@
     "public_ready": false,
     "notes": [
       "Импортировано из проверенной рабочей карточки ЮМТ 2023_granda_final_problem6.md.",
-      "Официальное решение ЮМТ пока не найдено.",
-      "Тематически связана с задачей ЮМТ 2015, финал, про разбиение по хроматическим числам.",
-      "В карточку добавлен близкий теоретический источник по сюжетам Erdős-Lovász-Tihany.",
-      "Источник просмотрен; он подтверждает близость темы, но не даёт короткого переноса в точную формулировку ЮМТ.",
-      "2026-05-05: no-solution pass: публичное решение/автор по точной формулировке не найдены. Быстрое ИИ-решение не закрыто; карточка помечена как непросто для ИИ. Лёгкий случай: если G содержит K_n, берём этот K_n и любую внешнюю вершину. Оставшийся случай omega(G)<chi(G) близок к гипотезе Erdős-Lovász-Tihany о разбиениях на два непересекающихся подграфа, поэтому внешние теоремы здесь требуют особой проверки."
+      "2026-05-05 xhigh: официальная формулировка сверена по PDF https://adygmath.ru/content/files/umt23/final/final_usl_granda.pdf; задача 6, Гранд-лига A, финал 25.09.2023, автор В. Дольников.",
+      "2026-05-05 xhigh: официальное решение, опубликованный разбор, форумная тема с полным решением или авторский комментарий по точной формулировке не найдены; solutions оставлен пустым.",
+      "непросто для ИИ: задача близка к семейству утверждений Erdős-Lovász-Tihany о разбиениях по хроматическим числам. Найденные внешние источники дают общий контекст и частичные случаи, но не закрывают точную формулировку ЮМТ.",
+      "public_ready оставлен false: формулировка официально подтверждена, но из-за близости к открытой ELT-гипотезе нужен авторский/официальный разбор или отдельная ручная математическая сверка перед публикацией."
     ],
     "relations_status": "deep_done",
-    "graph_theory_duplicate_removed": true
+    "graph_theory_duplicate_removed": true,
+    "manual_review": {
+      "target": "yumt-2023-granda-final-problem6#solution",
+      "status": "needed",
+      "reason": "Официальная формулировка подтверждена, но опубликованное решение не найдено; теоретический фон указывает на близость к сильным Tihany-разбиениям.",
+      "needed": "Найти авторское/официальное решение В. Дольникова или строго проверить слабую форму задачи независимо от полной гипотезы Erdős-Lovász-Tihany.",
+      "action_taken": "Сверены официальный PDF и страница ЮМТ-2023, выполнен поиск по точным фразам и связанным ELT/Tihany ключам; недоведённая идея удалена из карточки.",
+      "next_agent": "human_or_deep_solution_pass"
+    },
+    "solution_classification": {
+      "type": "no_solution_hard",
+      "label": "нет решения: сложная задача",
+      "status": "needs_human_review",
+      "confidence": 0.93,
+      "basis": "agent very-high reasoning audit 2026-05-05",
+      "notes": "solutions array is empty; public sources checked; marked as непросто для ИИ pending official/authorial solution",
+      "audit_source": "yumt-2023-granda-final-problem6-xhigh.md"
+    }
   }
 }

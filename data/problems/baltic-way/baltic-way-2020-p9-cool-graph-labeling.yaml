@@ -3,18 +3,40 @@
   "title": "Крутая разметка вершин и рёбер графа, Baltic Way 2020 P9",
   "kind": {
     "primary": "olympiad_problem",
-    "secondary": ["graph_in_statement"]
+    "secondary": [
+      "graph_in_statement"
+    ]
   },
   "language": "ru",
-  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
   "problem_profile": {
-    "objects": ["simple_graph", "vertex_labeling", "edge_labeling"],
-    "methods": ["greedy_ordering", "local_adjustment"],
+    "objects": [
+      "simple_graph",
+      "vertex_labeling",
+      "edge_labeling"
+    ],
+    "methods": [
+      "greedy_ordering",
+      "local_adjustment"
+    ],
     "transformations": [],
-    "goal": ["construct_labeling"],
+    "goal": [
+      "construct_labeling"
+    ],
     "auxiliary_graph_type": [],
-    "invariants": ["processed_vertex_sums"],
-    "keywords": ["baltic_way_2020_p9", "cool_assignment", "1_2_3_edge_labels"],
+    "invariants": [
+      "processed_vertex_sums"
+    ],
+    "keywords": [
+      "baltic_way_2020_p9",
+      "cool_assignment",
+      "1_2_3_edge_labels"
+    ],
     "status": "ai_checked"
   },
   "statements": {
@@ -25,8 +47,12 @@
         "text": "Каждой вершине \\(v\\) и каждому ребру \\(e\\) графа \\(G\\) приписываются числа \\(f(v)\\in\\{1,2\\}\\) и \\(f(e)\\in\\{1,2,3\\}\\). Пусть \\(S(v)\\) — сумма чисел, приписанных всем рёбрам, инцидентным \\(v\\), плюс число \\(f(v)\\). Разметка \\(f\\) называется крутой, если \\(S(u)\\ne S(v)\\) для любой пары соседних вершин \\(u,v\\). Докажите, что для каждого графа существует крутая разметка.",
         "source_id": "src-baltic-way-2020-official-solutions",
         "status": "ai_checked",
-        "self_contained": {"status": "ai_checked"},
-        "definition_ids": ["degree"]
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree"
+        ]
       }
     ],
     "graph_theory": [],
@@ -37,7 +63,10 @@
       "id": "idea-backward-edges-give-k-plus-one-sums",
       "title": "У вершины с \\(k\\) обработанными соседями есть \\(k+1\\) возможная сумма",
       "text": "При обработке очередной вершины каждое ребро к уже обработанному соседу можно локально изменить так, чтобы сумма у соседа не изменилась, а сумма у новой вершины менялась на 0 или 1.",
-      "tags": ["coloring", "graph_model"],
+      "tags": [
+        "coloring",
+        "graph_model"
+      ],
       "status": "ai_checked"
     }
   ],
@@ -46,10 +75,17 @@
       "id": "sol-official-expanded",
       "title": "Жадная обработка вершин",
       "text": "Зафиксируем произвольный порядок вершин \\(v_1,\\ldots,v_n\\). Сначала положим \\(f(v)=1\\) для всех вершин и \\(f(e)=2\\) для всех рёбер. Удобно думать, что на каждой вершине лежит одна фишка, а на каждом ребре — две фишки.\n\nБудем обрабатывать вершины по порядку. На шаге \\(i\\) пусть \\(x_1,\\ldots,x_k\\) — уже обработанные соседи вершины \\(v_i\\), то есть соседи с меньшими индексами, а \\(e_j=v_ix_j\\). Для каждого такого ребра есть ровно два допустимых действия, сохраняющих сумму \\(S(x_j)\\). Если на \\(x_j\\) лежит одна фишка, можно либо ничего не делать, либо перенести одну фишку с \\(e_j\\) на \\(x_j\\). Тогда вклад ребра в сумму \\(x_j\\) уменьшается на 1, а вклад вершины \\(x_j\\) увеличивается на 1. Если на \\(x_j\\) лежат две фишки, можно либо ничего не делать, либо перенести одну фишку с \\(x_j\\) на \\(e_j\\); сумма \\(S(x_j)\\) снова сохраняется.\n\nПри каждом из \\(k\\) независимых выборов сумма \\(S(v_i)\\) меняется на 0 или 1 относительно текущего значения. Поэтому возможны все \\(k+1\\) значения, получающиеся по числу выполненных изменений. Среди уже обработанных соседей есть только \\(k\\) чисел \\(S(x_1),\\ldots,S(x_k)\\), значит можно выбрать действия так, чтобы итоговое \\(S(v_i)\\) отличалось от всех этих \\(k\\) чисел. После этого фиксируем шаг и переходим дальше.\n\nОсталось проверить допустимость. Значение вершины всегда остаётся равным 1 или 2. Каждое ребро \\(v_mv_i\\) с \\(m<i\\) рассматривается только на шаге \\(i\\), поэтому его значение из начального 2 меняется не более чем на 1 и остаётся в множестве \\(\\{1,2,3\\}\\). Сумма \\(S(v_i)\\) после шага \\(i\\) больше не меняется: будущие шаги могут трогать ребро к \\(v_i\\), но одновременно компенсируют это переносом фишки на \\(v_i\\) или с \\(v_i\\). На шаге \\(i\\) мы сделали \\(S(v_i)\\) отличной от сумм всех ранее обработанных соседей, поэтому в конце у любых соседних вершин суммы различны. Получена крутая разметка.",
-      "idea_ids": ["idea-backward-edges-give-k-plus-one-sums"],
-      "standard_idea_ids": ["greedy_ordering", "pigeonhole_principle"],
+      "idea_ids": [
+        "idea-backward-edges-give-k-plus-one-sums"
+      ],
+      "standard_idea_ids": [
+        "greedy_ordering",
+        "pigeonhole_principle"
+      ],
       "status": "ai_checked",
-      "definition_ids": ["degree"]
+      "definition_ids": [
+        "degree"
+      ]
     }
   ],
   "difficulty": {
@@ -58,18 +94,46 @@
     "comment": "Конструктивная графовая разметка; официальный proof полностью основан на жадном порядке.",
     "status": "ai_checked"
   },
-  "tags": ["coloring", "graph_model", "goal_construction"],
+  "tags": [
+    "coloring",
+    "graph_model",
+    "goal_construction"
+  ],
   "properties": {
-    "central_method": {"value": ["greedy_ordering", "local_sum_preservation"], "status": "ai_checked"}
+    "central_method": {
+      "value": [
+        "greedy_ordering",
+        "local_sum_preservation"
+      ],
+      "status": "ai_checked"
+    }
   },
-  "sources": [{"source_id": "src-baltic-way-2020-official-solutions", "role": "problem_and_solutions_official", "status": "source_verified"}],
+  "sources": [
+    {
+      "source_id": "src-baltic-way-2020-official-solutions",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-28",
     "review_status": "ai_checked",
     "public_ready": true,
-    "notes": ["Imported during MAX-15 Baltic Way official archive graph scan.", "2026-05-04: high-reasoning pass fixed the LaTeX escape for \\(\\ne\\), checked the local-sum-preserving greedy proof, and found no confident new relation."],
+    "notes": [
+      "Imported during MAX-15 Baltic Way official archive graph scan.",
+      "2026-05-04: high-reasoning pass fixed the LaTeX escape for \\(\\ne\\), checked the local-sum-preserving greedy proof, and found no confident new relation."
+    ],
     "relations_status": "reviewed_no_links",
-    "graph_theory_duplicate_removed": true
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "??????????? ??????/????? ??????",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "agent medium-reasoning audit",
+      "notes": "Official source present, public_ready true, and ai_checked. Greedy local-sum-preserving proof appears complete.",
+      "audit_source": "agent-western-olympiads.json"
+    }
   }
 }

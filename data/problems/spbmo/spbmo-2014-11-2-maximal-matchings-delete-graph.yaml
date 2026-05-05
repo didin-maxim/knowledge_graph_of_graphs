@@ -1,66 +1,152 @@
 {
   "id": "spbmo-2014-11-2-maximal-matchings-delete-graph",
   "title": "Удаление максимальных паросочетаний при степени не больше 100, СПбМО 2014, 11 класс, II тур, задача 2",
-  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement"]},
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
   "language": "ru",
-  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
   "problem_profile": {
-    "objects": ["graph", "maximal_matching"],
-    "methods": ["charging", "degree_bound"],
-    "transformations": ["roads_to_graph", "ideal_set_to_maximal_matching"],
-    "goal": ["prove_process_termination"],
+    "objects": [
+      "graph",
+      "maximal_matching"
+    ],
+    "methods": [
+      "charging",
+      "degree_bound"
+    ],
+    "transformations": [
+      "roads_to_graph",
+      "ideal_set_to_maximal_matching"
+    ],
+    "goal": [
+      "prove_process_termination"
+    ],
     "auxiliary_graph_type": [],
-    "invariants": ["edges_adjacent_to_fixed_edge"],
-    "keywords": ["spbmo_2014_11_2", "maximal_matching", "bounded_degree"],
+    "invariants": [
+      "edges_adjacent_to_fixed_edge"
+    ],
+    "keywords": [
+      "spbmo_2014_11_2",
+      "maximal_matching",
+      "bounded_degree"
+    ],
     "status": "ai_checked"
   },
   "statements": {
-    "original": [{
-      "id": "stmt-original",
-      "title": "Условие",
-      "text": "В стране некоторые пары городов соединены дорогами, причем из каждого города выходит не более 100 дорог. Набор дорог называется идеальным, если эти дороги не имеют общих концов, но больше ни одной дороги с сохранением этого условия добавить к этому набору нельзя. Министерство транспорта каждый день выбирает какой-нибудь идеальный набор дорог и полностью разрушает их. Новых дорог министерство не строит. Докажите, что не более чем через 199 таких операций в стране вообще не останется дорог.",
-      "source_id": "src-spbmo-2014-city-911-tex",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["matching"]
-    }],
-    "graph_theory": [{
-      "id": "stmt-graph",
-      "title": "Удаление максимальных по включению паросочетаний",
-      "text": "В графе максимальной степени не больше 100 на каждом шаге удаляют произвольное максимальное по включению паросочетание. Докажите, что после не более чем 199 шагов ребер не останется.",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["matching"],
-      "distinct_from": ["stmt-original"]
-    }],
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В стране некоторые пары городов соединены дорогами, причем из каждого города выходит не более 100 дорог. Набор дорог называется идеальным, если эти дороги не имеют общих концов, но больше ни одной дороги с сохранением этого условия добавить к этому набору нельзя. Министерство транспорта каждый день выбирает какой-нибудь идеальный набор дорог и полностью разрушает их. Новых дорог министерство не строит. Докажите, что не более чем через 199 таких операций в стране вообще не останется дорог.",
+        "source_id": "src-spbmo-2014-city-911-tex",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Удаление максимальных по включению паросочетаний",
+        "text": "В графе максимальной степени не больше 100 на каждом шаге удаляют произвольное максимальное по включению паросочетание. Докажите, что после не более чем 199 шагов ребер не останется.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
     "olympiad_reformulations": []
   },
-  "ideas": [{
-    "id": "idea-each-surviving-edge-charges-neighbour",
-    "title": "Выжившее ребро каждый день теряет соседнее ребро",
-    "text": "Если ребро uv не попало в удаляемое максимальное паросочетание, то максимальность заставляет удалить какое-то ребро, инцидентное u или v. Таких соседних с uv ребер изначально не больше 198.",
-    "tags": ["matching", "degree_counting"],
+  "ideas": [
+    {
+      "id": "idea-each-surviving-edge-charges-neighbour",
+      "title": "Выжившее ребро каждый день теряет соседнее ребро",
+      "text": "Если ребро uv не попало в удаляемое максимальное паросочетание, то максимальность заставляет удалить какое-то ребро, инцидентное u или v. Таких соседних с uv ребер изначально не больше 198.",
+      "tags": [
+        "matching",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-expanded",
+      "title": "Фиксируем последнее ребро",
+      "text": "Рассмотрим произвольную дорогу uv, которая пока не разрушена. В день, когда выбирается идеальный набор, если uv не входит в этот набор, то из максимальности набора следует: какая-то выбранная дорога имеет общий конец с uv. Иначе uv можно было бы добавить к набору, что противоречило бы его идеальности.\n\nУ вершины u кроме uv есть не более 99 других дорог, и у v тоже не более 99. Значит, всего дорог, отличных от uv и имеющих с ней общий конец, не больше 198. Каждый день, пока uv остается неразрушенной, разрушается по крайней мере одна из этих соседних дорог, причем повторно разрушить ее уже нельзя. Поэтому uv не может пережить 199 операций. Поскольку это верно для любой исходной дороги, через 199 операций дорог не останется.",
+      "idea_ids": [
+        "idea-each-surviving-edge-charges-neighbour"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Чистая задача на максимальные паросочетания и локальный подсчет вокруг фиксированного ребра.",
     "status": "ai_checked"
-  }],
-  "solutions": [{
-    "id": "sol-expanded",
-    "title": "Фиксируем последнее ребро",
-    "text": "Рассмотрим произвольную дорогу uv, которая пока не разрушена. В день, когда выбирается идеальный набор, если uv не входит в этот набор, то из максимальности набора следует: какая-то выбранная дорога имеет общий конец с uv. Иначе uv можно было бы добавить к набору, что противоречило бы его идеальности.\n\nУ вершины u кроме uv есть не более 99 других дорог, и у v тоже не более 99. Значит, всего дорог, отличных от uv и имеющих с ней общий конец, не больше 198. Каждый день, пока uv остается неразрушенной, разрушается по крайней мере одна из этих соседних дорог, причем повторно разрушить ее уже нельзя. Поэтому uv не может пережить 199 операций. Поскольку это верно для любой исходной дороги, через 199 операций дорог не останется.",
-    "idea_ids": ["idea-each-surviving-edge-charges-neighbour"],
-    "standard_idea_ids": [],
-    "status": "ai_checked",
-    "definition_ids": ["matching"]
-  }],
-  "difficulty": {"main": "regional", "local_score": 4, "comment": "Чистая задача на максимальные паросочетания и локальный подсчет вокруг фиксированного ребра.", "status": "ai_checked"},
-  "tags": ["matching", "degree_counting", "goal_proof"],
-  "properties": {"central_method": {"value": ["maximal_matching_local_charging"], "status": "ai_checked"}},
-  "sources": [{"source_id": "src-spbmo-2014-city-911-tex", "role": "problem_official_statement", "status": "source_verified"}],
+  },
+  "tags": [
+    "matching",
+    "degree_counting",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "maximal_matching_local_charging"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2014-city-911-tex",
+      "role": "problem_official_statement",
+      "status": "source_verified"
+    }
+  ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-03",
     "review_status": "ai_checked",
     "public_ready": true,
-    "notes": ["СПбМО 2014, городской тур 9-11, TeX/PDF с официального сайта; официальное решение в найденных файлах отсутствует, приведено самодостаточное решение.", "2026-05-04: high-reasoning pass checked the maximal-matching neighbour-count argument; no confident new relation was added."],
-    "relations_status": "reviewed_no_links"
+    "notes": [
+      "СПбМО 2014, городской тур 9-11, TeX/PDF с официального сайта; официальное решение в найденных файлах отсутствует, приведено самодостаточное решение.",
+      "2026-05-04: high-reasoning pass checked the maximal-matching neighbour-count argument; no confident new relation was added."
+    ],
+    "relations_status": "reviewed_no_links",
+    "solution_classification": {
+      "type": "ai_original",
+      "label": "??????? ?? ? ????",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "agent medium-reasoning audit",
+      "notes": "solution appears AI-authored/reconstructed, with no official solution marker",
+      "audit_source": "agent-russian-archives.json"
+    }
   }
 }

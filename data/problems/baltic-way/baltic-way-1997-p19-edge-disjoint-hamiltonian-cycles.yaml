@@ -1,59 +1,159 @@
 {
   "id": "baltic-way-1997-p19-edge-disjoint-hamiltonian-cycles",
   "title": "Непересекающиеся гамильтоновы циклы в полном графе, Baltic Way 1997 P19",
-  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_solution", "application"]},
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
   "language": "ru",
-  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
   "problem_profile": {
-    "objects": ["complete_graph", "hamiltonian_cycle", "edge_disjoint_cycles"],
-    "methods": ["edge_counting", "modular_construction"],
-    "transformations": ["caves_and_paths_to_complete_graph"],
-    "goal": ["find_exact_maximum"],
-    "auxiliary_graph_type": ["complete_graph"],
-    "invariants": ["edge_disjointness"],
-    "keywords": ["baltic_way_1997_p19", "hamiltonian_decomposition"],
+    "objects": [
+      "complete_graph",
+      "hamiltonian_cycle",
+      "edge_disjoint_cycles"
+    ],
+    "methods": [
+      "edge_counting",
+      "modular_construction"
+    ],
+    "transformations": [
+      "caves_and_paths_to_complete_graph"
+    ],
+    "goal": [
+      "find_exact_maximum"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "edge_disjointness"
+    ],
+    "keywords": [
+      "baltic_way_1997_p19",
+      "hamiltonian_decomposition"
+    ],
     "status": "ai_checked"
   },
   "statements": {
-    "original": [{
-      "id": "stmt-original",
-      "title": "Условие",
-      "text": "В лесу каждое из \\(n\\) животных, \\(n\\ge3\\), живёт в своей пещере, и между любыми двумя пещерами есть ровно одна отдельная тропа. Перед выборами короля леса некоторые животные проводят кампанию. Каждое такое животное посещает каждую из остальных пещер ровно один раз, передвигается только по тропам, нигде между пещерами не сворачивает с одной тропы на другую и в конце возвращается в свою пещеру. Известно также, что никакая тропа между двумя пещерами не используется более чем одним агитирующим животным. (a) Докажите, что для простого \\(n\\) максимальное число агитирующих животных равно \\((n-1)/2\\). (b) Найдите максимум при \\(n=9\\).",
-      "source_id": "src-baltic-way-1997-official-solutions",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["hamiltonian_cycle"]
-    }],
-    "graph_theory": [{
-      "id": "stmt-graph",
-      "title": "Упаковка гамильтоновых циклов в полном графе",
-      "text": "В полном графе \\(K_n\\) нужно выбрать как можно больше попарно рёберно непересекающихся гамильтоновых циклов. Докажите, что при простом \\(n\\) максимум равен \\((n-1)/2\\), и найдите максимум для \\(n=9\\).",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["hamiltonian_cycle"],
-      "distinct_from": ["stmt-original"]
-    }],
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В лесу каждое из \\(n\\) животных, \\(n\\ge3\\), живёт в своей пещере, и между любыми двумя пещерами есть ровно одна отдельная тропа. Перед выборами короля леса некоторые животные проводят кампанию. Каждое такое животное посещает каждую из остальных пещер ровно один раз, передвигается только по тропам, нигде между пещерами не сворачивает с одной тропы на другую и в конце возвращается в свою пещеру. Известно также, что никакая тропа между двумя пещерами не используется более чем одним агитирующим животным. (a) Докажите, что для простого \\(n\\) максимальное число агитирующих животных равно \\((n-1)/2\\). (b) Найдите максимум при \\(n=9\\).",
+        "source_id": "src-baltic-way-1997-official-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Упаковка гамильтоновых циклов в полном графе",
+        "text": "В полном графе \\(K_n\\) нужно выбрать как можно больше попарно рёберно непересекающихся гамильтоновых циклов. Докажите, что при простом \\(n\\) максимум равен \\((n-1)/2\\), и найдите максимум для \\(n=9\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "hamiltonian_cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
     "olympiad_reformulations": []
   },
-  "ideas": [{
-    "id": "idea-complete-graph-cycle-packing",
-    "title": "Подсчёт рёбер и циклы по модулю",
-    "text": "Каждый гамильтонов цикл в \\(K_n\\) использует \\(n\\) рёбер, а всего рёбер \\(n(n-1)/2\\). Для простого \\(n\\) циклы \\(0,a,2a,\\ldots,(n-1)a,0\\) по модулю \\(n\\) дают \\((n-1)/2\\) рёберно непересекающихся циклов.",
-    "tags": ["hamiltonian_cycles", "double_counting", "construction"],
+  "ideas": [
+    {
+      "id": "idea-complete-graph-cycle-packing",
+      "title": "Подсчёт рёбер и циклы по модулю",
+      "text": "Каждый гамильтонов цикл в \\(K_n\\) использует \\(n\\) рёбер, а всего рёбер \\(n(n-1)/2\\). Для простого \\(n\\) циклы \\(0,a,2a,\\ldots,(n-1)a,0\\) по модулю \\(n\\) дают \\((n-1)/2\\) рёберно непересекающихся циклов.",
+      "tags": [
+        "hamiltonian_cycles",
+        "double_counting",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-expanded",
+      "title": "Упаковка гамильтоновых циклов",
+      "text": "Переведём условие на язык графов. Пещеры — вершины полного графа \\(K_n\\), тропы — его рёбра, а кампания одного животного — гамильтонов цикл. Условие о том, что одна тропа не используется двумя животными, означает рёберную непересекаемость выбранных циклов.\n\nКаждый гамильтонов цикл содержит \\(n\\) рёбер. В \\(K_n\\) всего \\(n(n-1)/2\\) рёбер, поэтому число таких циклов не превосходит \\((n-1)/2\\).\n\nПусть теперь \\(n\\) — простое. Пронумеруем вершины вычетами \\(0,1,\\ldots,n-1\\) по модулю \\(n\\). Для каждого \\(a=1,2,\\ldots,(n-1)/2\\) рассмотрим цикл \\(0,a,2a,\\ldots,(n-1)a,0\\). Так как \\(n\\) простое, ненулевой шаг \\(a\\) проходит через все вычеты, поэтому это гамильтонов цикл. Его рёбра соединяют пары вершин, разность которых равна \\(\\pm a\\). Для разных \\(a\\) из выбранного диапазона эти множества разностей различны, значит циклы не имеют общих рёбер. Получены \\((n-1)/2\\) циклов, и оценка точна.\n\nДля \\(n=9\\) верхняя оценка даёт не больше 4 циклов. Официальная конструкция из четырёх циклов такова:\n\\(0,1,2,8,3,7,4,6,5,0\\),\n\\(0,2,3,1,4,8,5,7,6,0\\),\n\\(0,3,4,2,5,1,6,8,7,0\\),\n\\(0,4,5,3,6,2,7,1,8,0\\).\nПрямая проверка показывает, что каждое из этих четырёх перечислений проходит через все девять вершин и возвращается в начало, а никакое ребро не повторяется в двух циклах. Следовательно, при \\(n=9\\) максимум равен 4.",
+      "idea_ids": [
+        "idea-complete-graph-cycle-packing"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "hamiltonian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Классическая рёберная упаковка гамильтоновых циклов в полном графе.",
     "status": "ai_checked"
-  }],
-  "solutions": [{
-    "id": "sol-official-expanded",
-    "title": "Упаковка гамильтоновых циклов",
-    "text": "Переведём условие на язык графов. Пещеры — вершины полного графа \\(K_n\\), тропы — его рёбра, а кампания одного животного — гамильтонов цикл. Условие о том, что одна тропа не используется двумя животными, означает рёберную непересекаемость выбранных циклов.\n\nКаждый гамильтонов цикл содержит \\(n\\) рёбер. В \\(K_n\\) всего \\(n(n-1)/2\\) рёбер, поэтому число таких циклов не превосходит \\((n-1)/2\\).\n\nПусть теперь \\(n\\) — простое. Пронумеруем вершины вычетами \\(0,1,\\ldots,n-1\\) по модулю \\(n\\). Для каждого \\(a=1,2,\\ldots,(n-1)/2\\) рассмотрим цикл \\(0,a,2a,\\ldots,(n-1)a,0\\). Так как \\(n\\) простое, ненулевой шаг \\(a\\) проходит через все вычеты, поэтому это гамильтонов цикл. Его рёбра соединяют пары вершин, разность которых равна \\(\\pm a\\). Для разных \\(a\\) из выбранного диапазона эти множества разностей различны, значит циклы не имеют общих рёбер. Получены \\((n-1)/2\\) циклов, и оценка точна.\n\nДля \\(n=9\\) верхняя оценка даёт не больше 4 циклов. Официальная конструкция из четырёх циклов такова:\n\\(0,1,2,8,3,7,4,6,5,0\\),\n\\(0,2,3,1,4,8,5,7,6,0\\),\n\\(0,3,4,2,5,1,6,8,7,0\\),\n\\(0,4,5,3,6,2,7,1,8,0\\).\nПрямая проверка показывает, что каждое из этих четырёх перечислений проходит через все девять вершин и возвращается в начало, а никакое ребро не повторяется в двух циклах. Следовательно, при \\(n=9\\) максимум равен 4.",
-    "idea_ids": ["idea-complete-graph-cycle-packing"],
-    "standard_idea_ids": ["double_counting"],
-    "status": "ai_checked",
-    "definition_ids": ["hamiltonian_cycle"]
-  }],
-  "difficulty": {"main": "regional", "local_score": 5, "comment": "Классическая рёберная упаковка гамильтоновых циклов в полном графе.", "status": "ai_checked"},
-  "tags": ["hamiltonian_cycles", "double_counting", "construction", "goal_exact_bound"],
-  "properties": {"central_method": {"value": ["edge_counting", "modular_hamiltonian_cycles"], "status": "ai_checked"}},
-  "sources": [{"source_id": "src-baltic-way-1997-official-solutions", "role": "problem_and_solutions_official", "status": "source_verified"}],
-  "editorial": {"created_by": "ai", "created_at": "2026-04-28", "review_status": "ai_checked", "public_ready": true, "notes": ["Imported during MAX-15 Baltic Way official archive graph scan.", "2026-05-04: high-reasoning pass checked the edge-count upper bound, prime modular construction, and K9 explicit construction; no confident new relation was added."], "relations_status": "reviewed_no_links"}
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "double_counting",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "edge_counting",
+        "modular_hamiltonian_cycles"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-baltic-way-1997-official-solutions",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-04-28",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Imported during MAX-15 Baltic Way official archive graph scan.",
+      "2026-05-04: high-reasoning pass checked the edge-count upper bound, prime modular construction, and K9 explicit construction; no confident new relation was added."
+    ],
+    "relations_status": "reviewed_no_links",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "??????????? ??????/????? ??????",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "agent medium-reasoning audit",
+      "notes": "Official source present, public_ready true, and ai_checked. Edge-count upper bound plus modular/explicit constructions are included.",
+      "audit_source": "agent-western-olympiads.json"
+    }
+  }
 }

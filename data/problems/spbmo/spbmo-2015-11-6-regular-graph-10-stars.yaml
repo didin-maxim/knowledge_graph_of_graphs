@@ -1,66 +1,157 @@
 {
   "id": "spbmo-2015-11-6-regular-graph-10-stars",
   "title": "Разбиение 100-регулярного графа на пучки по 10 ребер, СПбМО 2015, 11 класс, II тур, задача 6",
-  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement"]},
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
   "language": "ru",
-  "authors": [{"name": "?", "status": "needs_human_review"}],
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
   "problem_profile": {
-    "objects": ["regular_graph", "star_decomposition"],
-    "methods": ["eulerian_orientation", "star_decomposition"],
-    "transformations": ["roads_to_regular_graph", "bundles_to_oriented_indegrees"],
-    "goal": ["prove_decomposition"],
-    "auxiliary_graph_type": ["oriented_graph"],
-    "invariants": ["balanced_indegree_outdegree"],
-    "keywords": ["spbmo_2015_11_6", "100_regular_graph", "10_stars"],
+    "objects": [
+      "regular_graph",
+      "star_decomposition"
+    ],
+    "methods": [
+      "eulerian_orientation",
+      "star_decomposition"
+    ],
+    "transformations": [
+      "roads_to_regular_graph",
+      "bundles_to_oriented_indegrees"
+    ],
+    "goal": [
+      "prove_decomposition"
+    ],
+    "auxiliary_graph_type": [
+      "oriented_graph"
+    ],
+    "invariants": [
+      "balanced_indegree_outdegree"
+    ],
+    "keywords": [
+      "spbmo_2015_11_6",
+      "100_regular_graph",
+      "10_stars"
+    ],
     "status": "ai_checked"
   },
   "statements": {
-    "original": [{
-      "id": "stmt-original",
-      "title": "Условие",
-      "text": "В стране Центумии некоторые пары городов соединены дорогами, причем из каждого города выходит ровно 100 дорог. Пучком называется набор из 10 дорог, выходящих из одного города. Докажите, что все дороги можно разбить на несколько пучков.",
-      "source_id": "src-spbmo-2015-city-911-tex",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["simple_graph"]
-    }],
-    "graph_theory": [{
-      "id": "stmt-graph",
-      "title": "Разбиение 100-регулярного графа на 10-звёзды",
-      "text": "Докажите, что ребра любого 100-регулярного графа можно разбить на звезды K_{1,10}; центр каждой звезды является одним из концов всех ее десяти ребер.",
-      "status": "ai_checked",
-      "self_contained": {"status": "ai_checked"},
-      "definition_ids": ["simple_graph"],
-      "distinct_from": ["stmt-original"]
-    }],
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "В стране Центумии некоторые пары городов соединены дорогами, причем из каждого города выходит ровно 100 дорог. Пучком называется набор из 10 дорог, выходящих из одного города. Докажите, что все дороги можно разбить на несколько пучков.",
+        "source_id": "src-spbmo-2015-city-911-tex",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Разбиение 100-регулярного графа на 10-звёзды",
+        "text": "Докажите, что ребра любого 100-регулярного графа можно разбить на звезды K_{1,10}; центр каждой звезды является одним из концов всех ее десяти ребер.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
     "olympiad_reformulations": []
   },
-  "ideas": [{
-    "id": "idea-orient-to-multiple-of-ten",
-    "title": "Эйлерова ориентация даёт по 50 входящих рёбер",
-    "text": "В каждой компоненте 100-регулярного графа все степени чётны, поэтому её рёбра можно пройти эйлеровым циклом и ориентировать по ходу обхода. Тогда в каждую вершину входит ровно 50 рёбер, а их можно разбить на пятёрку пучков по 10.",
-    "tags": ["eulerian_graphs", "graph_model"],
+  "ideas": [
+    {
+      "id": "idea-orient-to-multiple-of-ten",
+      "title": "Эйлерова ориентация даёт по 50 входящих рёбер",
+      "text": "В каждой компоненте 100-регулярного графа все степени чётны, поэтому её рёбра можно пройти эйлеровым циклом и ориентировать по ходу обхода. Тогда в каждую вершину входит ровно 50 рёбер, а их можно разбить на пятёрку пучков по 10.",
+      "tags": [
+        "eulerian_graphs",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-expanded",
+      "title": "Эйлерова ориентация",
+      "text": "Достаточно ориентировать все дороги так, чтобы в каждый город входило число дорог, кратное 10: после этого входящие в один город дороги можно произвольно разбить на десятки, и каждая десятка будет пучком с центром в этом городе.\n\nРассмотрим одну связную компоненту графа. В ней степень каждой вершины равна 100, то есть чётна, поэтому все рёбра компоненты можно пройти одним замкнутым эйлеровым обходом. Ориентируем каждое ребро по направлению этого обхода. Каждый раз, когда обход приходит в вершину, он затем из неё выходит; поэтому число входящих рёбер в этой ориентации равно числу исходящих. Так как всего с вершиной инцидентно 100 рёбер, в неё входит ровно 50 рёбер.\n\nЧисло 50 делится на 10. Значит, для каждой вершины можно разбить все входящие в неё рёбра на группы по 10. Каждая такая группа является пучком дорог, выходящих из соответствующего города, если смотреть на неориентированные дороги исходной задачи. Каждое ребро входит ровно в одну вершину, значит попадает ровно в один пучок. Получено требуемое разбиение всех дорог.",
+      "idea_ids": [
+        "idea-orient-to-multiple-of-ten"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "eulerian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Графовая декомпозиция через эйлерову ориентацию регулярного графа.",
     "status": "ai_checked"
-  }],
-  "solutions": [{
-    "id": "sol-expanded",
-    "title": "Эйлерова ориентация",
-    "text": "Достаточно ориентировать все дороги так, чтобы в каждый город входило число дорог, кратное 10: после этого входящие в один город дороги можно произвольно разбить на десятки, и каждая десятка будет пучком с центром в этом городе.\n\nРассмотрим одну связную компоненту графа. В ней степень каждой вершины равна 100, то есть чётна, поэтому все рёбра компоненты можно пройти одним замкнутым эйлеровым обходом. Ориентируем каждое ребро по направлению этого обхода. Каждый раз, когда обход приходит в вершину, он затем из неё выходит; поэтому число входящих рёбер в этой ориентации равно числу исходящих. Так как всего с вершиной инцидентно 100 рёбер, в неё входит ровно 50 рёбер.\n\nЧисло 50 делится на 10. Значит, для каждой вершины можно разбить все входящие в неё рёбра на группы по 10. Каждая такая группа является пучком дорог, выходящих из соответствующего города, если смотреть на неориентированные дороги исходной задачи. Каждое ребро входит ровно в одну вершину, значит попадает ровно в один пучок. Получено требуемое разбиение всех дорог.",
-    "idea_ids": ["idea-orient-to-multiple-of-ten"],
-    "standard_idea_ids": [],
-    "status": "ai_checked",
-    "definition_ids": ["simple_graph", "eulerian_cycle"]
-  }],
-  "difficulty": {"main": "regional", "local_score": 5, "comment": "Графовая декомпозиция через эйлерову ориентацию регулярного графа.", "status": "ai_checked"},
-  "tags": ["eulerian_graphs", "graph_model", "invariant", "goal_proof"],
-  "properties": {"central_method": {"value": ["eulerian_orientation", "star_decomposition"], "status": "ai_checked"}},
-  "sources": [{"source_id": "src-spbmo-2015-city-911-tex", "role": "problem_official_statement", "status": "source_verified"}],
+  },
+  "tags": [
+    "eulerian_graphs",
+    "graph_model",
+    "invariant",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "eulerian_orientation",
+        "star_decomposition"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-spbmo-2015-city-911-tex",
+      "role": "problem_official_statement",
+      "status": "source_verified"
+    }
+  ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-03",
     "review_status": "ai_checked",
     "public_ready": true,
-    "notes": ["СПбМО 2015, городской тур 9-11, TeX/PDF с официального сайта; официальное решение в найденных файлах отсутствует, приведено самодостаточное решение.", "2026-05-04: high-reasoning pass replaced the invalid modulo-spanning-tree orientation with a self-contained Eulerian-orientation proof; no confident new relation was added."],
-    "relations_status": "reviewed_no_links"
+    "notes": [
+      "СПбМО 2015, городской тур 9-11, TeX/PDF с официального сайта; официальное решение в найденных файлах отсутствует, приведено самодостаточное решение.",
+      "2026-05-04: high-reasoning pass replaced the invalid modulo-spanning-tree orientation with a self-contained Eulerian-orientation proof; no confident new relation was added."
+    ],
+    "relations_status": "reviewed_no_links",
+    "solution_classification": {
+      "type": "ai_original",
+      "label": "??????? ?? ? ????",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "agent medium-reasoning audit",
+      "notes": "solution appears AI-authored/reconstructed, with no official solution marker",
+      "audit_source": "agent-russian-archives.json"
+    }
   }
 }

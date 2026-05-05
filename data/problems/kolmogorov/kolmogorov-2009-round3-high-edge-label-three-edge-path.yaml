@@ -10,14 +10,23 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "И. Богданов",
+      "status": "source_verified"
+    },
+    {
+      "name": "Г. Челноков",
+      "status": "source_verified"
+    },
+    {
+      "name": "К. Кноп",
+      "status": "source_verified"
     }
   ],
   "problem_profile": {
     "objects": [
       "complete_graph",
-      "path"
+      "path",
+      "cycle"
     ],
     "methods": [
       "extremal_argument"
@@ -31,7 +40,9 @@
     "keywords": [
       "kolmogorov",
       "kolmogorov_2009",
-      "round_3_higher_league"
+      "round_3_higher_league",
+      "komal_a537",
+      "ai_hard_no_public_solution"
     ],
     "status": "ai_checked"
   },
@@ -49,7 +60,8 @@
         "definition_ids": [
           "simple_graph",
           "complete_graph",
-          "path"
+          "path",
+          "cycle"
         ]
       }
     ],
@@ -60,24 +72,25 @@
     {
       "id": "idea-graph-role",
       "title": "Графовая роль",
-      "text": "Карточка фиксирует задачу как явно графовую: графовая модель присутствует уже в условии или в сохранённых заметках к официальному решению.",
+      "text": "Карточка фиксирует задачу как явно графовую: полный граф, путь и метки рёбер присутствуют уже в условии; дополнительных идей решения карточка не фиксирует.",
       "tags": [
         "extremal_graph_theory"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   ],
   "solutions": [],
   "difficulty": {
-    "main": "national_final_medium",
-    "local_score": 6,
-    "comment": "Импортировано из дополнительного графового прохода по КОЛМ 2009; исходный файл:  tur3_13.txt.",
-    "status": "needs_human_review"
+    "main": "national_final_hard",
+    "local_score": 9,
+    "comment": "Very-high no-solution pass 2026-05-05: опубликованное полное решение не найдено; самостоятельное надёжное решение не получено. Пометка: непросто для ИИ.",
+    "status": "ai_checked"
   },
   "tags": [
     "extremal_graph_theory",
     "goal_bound",
-    "goal_existence"
+    "goal_existence",
+    "goal_proof"
   ],
   "properties": {},
   "sources": [
@@ -95,16 +108,26 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Импортировано по итогам аудита пропущенных графовых задач КОЛМ: файлы final/candidates показали, что 2009 год не был преобразован в карточки базы данных.",
       "Файл-источник: work/kolm/text/2009/tur3_13.txt.",
       "Роль графа: явно присутствует в условии.",
       "2026-05-04: no-solution high-reasoning pass found no public solution and did not complete a reliable AI solution. Marked as 'непросто для ИИ'. The tag goal_exact_bound was downgraded to goal_bound because the statement asks for an upper-bound existence result and does not assert sharpness. The exact meaning of 'possibly closed path' should be rechecked before another attempt.",
-      "2026-05-04: повторная проверка официального архива src-kolmogorov-2009-official подтвердила, что метки — именно числа \\(1,2,\\ldots,\\binom n2\\), а не произвольный сдвинутый интервал последовательных положительных целых чисел. Публичное решение или официальный разбор не найдены; самостоятельная попытка сводится к нетривиальной взвешенной экстремальной оценке для ранних рёбер полного графа. Пометка 'непросто для ИИ' оставлена."
+      "2026-05-04: повторная проверка официального архива src-kolmogorov-2009-official подтвердила, что метки — именно числа \\(1,2,\\ldots,\\binom n2\\), а не произвольный сдвинутый интервал последовательных положительных целых чисел. Публичное решение или официальный разбор не найдены; самостоятельная попытка сводится к нетривиальной взвешенной экстремальной оценке для ранних рёбер полного графа. Пометка 'непросто для ИИ' оставлена.",
+      "2026-05-05: very-high no-solution pass сверил официальный zip src-kolmogorov-2009-official, файл kolm13/tur3_13.doc, и независимую публикацию KöMaL A.537. KöMaL подтверждает формулировку с метками \\(1,2,\\ldots,\\binom n2\\), переводит фразу как 'possible cyclic path', указывает авторов I. Bogdanov, G. Chelnokov, K. Knop и даёт только статистику отправленных решений без опубликованного текста решения. Поиск по точным фразам, KöMaL/forum и авторам полного публичного решения не нашёл. Так как сомнений в формулировке не осталось, а единственная проблема — сложность и отсутствие опубликованного решения, карточка оставлена с solutions: [] и public_ready: true как 'непросто для ИИ'."
     ],
     "relations_status": "reviewed_no_links",
-    "graph_theory_duplicate_removed": true
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "no_solution_hard",
+      "label": "??????? ???: ??????? ??????",
+      "status": "needs_human_review",
+      "confidence": 0.9,
+      "basis": "agent medium-reasoning audit",
+      "notes": "solutions array is empty in the card",
+      "audit_source": "agent-russian-archives.json"
+    }
   }
 }

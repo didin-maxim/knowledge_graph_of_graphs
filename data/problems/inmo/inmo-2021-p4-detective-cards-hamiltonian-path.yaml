@@ -3,7 +3,10 @@
   "title": "Детектив, карты и гамильтонов путь после удаления рёбер, INMO 2021 P4",
   "kind": {
     "primary": "olympiad_problem",
-    "secondary": ["graph_in_solution", "application"]
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
   },
   "language": "ru",
   "authors": [
@@ -15,13 +18,40 @@
     }
   ],
   "problem_profile": {
-    "objects": ["cards_numbered_1_to_52", "queries_about_consecutive_numbers", "complete_graph", "deleted_edges", "hamiltonian_path"],
-    "methods": ["adversary_strategy", "complete_graph_deletion", "longest_path_argument", "degree_sum_common_neighbor"],
-    "transformations": ["questions_to_deleted_edges", "safe_negative_answers_to_hamiltonian_labeling"],
-    "goal": ["determine_minimum_number_of_queries"],
-    "auxiliary_graph_type": ["dense_simple_graph"],
-    "invariants": ["at_most_N_minus_2_deleted_edges", "existence_of_spanning_path"],
-    "keywords": ["inmo_2021_p4", "detective_cards", "hamiltonian_path", "complete_graph_minus_few_edges", "official_solution_graph"],
+    "objects": [
+      "cards_numbered_1_to_52",
+      "queries_about_consecutive_numbers",
+      "complete_graph",
+      "deleted_edges",
+      "hamiltonian_path"
+    ],
+    "methods": [
+      "adversary_strategy",
+      "complete_graph_deletion",
+      "longest_path_argument",
+      "degree_sum_common_neighbor"
+    ],
+    "transformations": [
+      "questions_to_deleted_edges",
+      "safe_negative_answers_to_hamiltonian_labeling"
+    ],
+    "goal": [
+      "determine_minimum_number_of_queries"
+    ],
+    "auxiliary_graph_type": [
+      "dense_simple_graph"
+    ],
+    "invariants": [
+      "at_most_N_minus_2_deleted_edges",
+      "existence_of_spanning_path"
+    ],
+    "keywords": [
+      "inmo_2021_p4",
+      "detective_cards",
+      "hamiltonian_path",
+      "complete_graph_minus_few_edges",
+      "official_solution_graph"
+    ],
     "status": "ai_checked"
   },
   "statements": {
@@ -32,9 +62,13 @@
         "text": "Фокусник и Детектив играют в игру. Фокусник кладёт на стол лицом вниз карты, пронумерованные числами от \\(1\\) до \\(52\\). За один ход Детектив может указать на две карты и спросить, стоят ли написанные на них числа рядом. Фокусник отвечает правдиво. После конечного числа ходов Детектив указывает на две карты. Она выигрывает, если числа на этих двух картах соседние, и проигрывает иначе.\n\nДокажите, что Детектив может гарантировать победу тогда и только тогда, когда ей разрешено задать не менее \\(50\\) вопросов.",
         "source_id": "src-inmo-2021-official-solutions",
         "status": "ai_checked",
-        "self_contained": {"status": "ai_checked"},
+        "self_contained": {
+          "status": "ai_checked"
+        },
         "definition_ids": [],
-        "distinct_from": ["stmt-graph-hint"]
+        "distinct_from": [
+          "stmt-graph-hint"
+        ]
       }
     ],
     "graph_theory": [],
@@ -44,9 +78,16 @@
         "title": "Подсказочная графовая формулировка",
         "text": "Для нижней оценки замените \\(52\\) на произвольное \\(N>3\\). После каждого вопроса, на который Фокусник отвечает «нет», удаляйте из полного графа \\(K_N\\) ребро между соответствующими картами. Докажите, что после удаления любых \\(N-2\\) рёбер в оставшемся графе всё ещё есть гамильтонов путь. Тогда карты можно пронумеровать вдоль этого пути числами \\(1,2,\\ldots,N\\), и все отрицательные ответы будут правдивыми.",
         "status": "ai_checked",
-        "self_contained": {"status": "ai_checked"},
-        "definition_ids": ["simple_graph", "path"],
-        "distinct_from": ["stmt-original"]
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
       }
     ],
     "olympiad_reformulations": []
@@ -56,21 +97,27 @@
       "id": "idea-upper-strategy",
       "title": "Одна фиксированная карта даёт стратегию за 50 вопросов",
       "text": "Детектив выбирает карту \\(A\\) и спрашивает про пары \\(A\\) со всеми остальными картами, кроме одной. Если получен ответ «да», нужная пара найдена. Если все \\(50\\) ответов отрицательны, единственная не спрошенная карта должна быть соседней с \\(A\\).",
-      "tags": ["goal_strategy_game"],
+      "tags": [
+        "goal_strategy_game"
+      ],
       "status": "ai_checked"
     },
     {
       "id": "idea-negative-answers-as-deleted-edges",
       "title": "Отрицательные ответы кодируются удалёнными рёбрами",
       "text": "Если после \\(q\\) вопросов без ответа «да» можно пронумеровать карты так, чтобы все спрошенные пары не были соседними числами, то Фокусник мог правдиво отвечать «нет» все \\(q\\) раз. Для \\(q\\le N-2\\) такую нумерацию даёт гамильтонов путь в графе не спрошенных пар.",
-      "tags": ["graph_model"],
+      "tags": [
+        "graph_model"
+      ],
       "status": "ai_checked"
     },
     {
       "id": "idea-longest-path-after-few-deletions",
       "title": "Мало удалённых рёбер оставляет гамильтонов путь",
       "text": "В графе, полученном из \\(K_N\\) удалением не более \\(N-2\\) рёбер, любые две вершины имеют общего соседа, поэтому граф связен. Длиннейший путь затем замыкается в цикл с помощью соседей его концов; связность не позволяет оставить вершину вне этого цикла.",
-      "tags": ["hamiltonian_cycles"],
+      "tags": [
+        "hamiltonian_cycles"
+      ],
       "status": "ai_checked"
     }
   ],
@@ -79,10 +126,21 @@
       "id": "sol-official-expanded",
       "title": "Решение через удаление рёбер из полного графа",
       "text": "Сначала покажем, что \\(50\\) вопросов достаточно. Детектив выбирает карту \\(A\\) и спрашивает, соседнее ли число на ней с числом на каждой из \\(50\\) других карт, оставляя непроверенной только одну карту \\(B\\). Если на каком-то вопросе Фокусник отвечает «да», Детектив сразу указывает найденную пару. Если все \\(50\\) ответов были «нет», то карта \\(B\\) обязана быть соседней с \\(A\\): у числа на карте \\(A\\) среди чисел \\(1,2,\\ldots,52\\) есть хотя бы один сосед, и все карты, кроме \\(B\\), уже проверены и не подходят.\n\nДокажем, что \\(49\\) вопросов недостаточно. Рассмотрим более общий случай с \\(N>3\\) картами. Построим граф на картах. Сначала это полный граф \\(K_N\\). Каждый вопрос, на который Фокусник хочет ответить «нет», удаляет ребро между двумя спрошенными картами. Если после не более чем \\(N-2\\) вопросов в оставшемся графе есть гамильтонов путь, то Фокусник нумерует карты вдоль этого пути числами \\(1,2,\\ldots,N\\). Тогда карты с соседними номерами соединены ребром пути, то есть такая пара раньше не спрашивалась; все ответы «нет» правдивы.\n\nОсталось доказать лемму: удаление не более \\(N-2\\) рёбер из \\(K_N\\) оставляет граф с гамильтоновым путём. Возьмём любые две вершины \\(a,b\\). Так как удалено не более \\(N-2\\) рёбер, имеем \\(\\deg a+\\deg b\\ge 2(N-1)-(N-2)=N\\). Поэтому у \\(a\\) и \\(b\\) есть общий сосед; иначе сумма их степеней была бы не больше \\(N-1\\). В частности, граф связен.\n\nПусть \\(P:u=u_0,u_1,\\ldots,u_k=v\\) — длиннейший простой путь. Все соседи концов \\(u\\) и \\(v\\) лежат на \\(P\\), иначе путь можно продлить. Запишем соседей \\(u\\) как \\(u_{i_1},\\ldots,u_{i_x}\\), а соседей \\(v\\) как \\(u_{j_1},\\ldots,u_{j_y}\\). Из \\(x+y=\\deg u+\\deg v\\ge N\\) следует, что найдётся индекс \\(i\\), для которого есть оба ребра \\(u u_{i+1}\\) и \\(u_i v\\). Иначе индексы соседей \\(u\\) и индексы, следующие за соседями \\(v\\), не пересекались бы и не поместились бы на пути.\n\nЭти два ребра замыкают все вершины пути \\(P\\) в цикл. Если бы существовала вершина \\(w\\), не лежащая на \\(P\\), то по связности из \\(w\\) был бы путь к этому циклу; пройдя от \\(w\\) до цикла, а затем почти весь цикл, мы получили бы простой путь длиннее \\(P\\). Противоречие. Значит, \\(P\\) содержит все \\(N\\) вершин.\n\nДля исходной задачи \\(N=52\\). После \\(49\\) вопросов удалено не более \\(49<N-2\\) рёбер, поэтому Фокусник мог правдиво отвечать «нет» на все вопросы. Детектив не может гарантировать выигрыш за \\(49\\) вопросов, а за \\(50\\) может. Ответ: \\(50\\).",
-      "idea_ids": ["idea-upper-strategy", "idea-negative-answers-as-deleted-edges", "idea-longest-path-after-few-deletions"],
-      "standard_idea_ids": ["longest_path", "extremal_choice"],
+      "idea_ids": [
+        "idea-upper-strategy",
+        "idea-negative-answers-as-deleted-edges",
+        "idea-longest-path-after-few-deletions"
+      ],
+      "standard_idea_ids": [
+        "longest_path",
+        "extremal_choice"
+      ],
       "status": "ai_checked",
-      "definition_ids": ["simple_graph", "connected_graph", "path"],
+      "definition_ids": [
+        "simple_graph",
+        "connected_graph",
+        "path"
+      ],
       "source_id": "src-inmo-2021-official-solutions"
     }
   ],
@@ -92,10 +150,20 @@
     "comment": "INMO 2021 P4; верхняя стратегия короткая, нижняя оценка требует увидеть граф не запрещённых пар и доказать существование гамильтонова пути после малого числа удалений.",
     "status": "ai_checked"
   },
-  "tags": ["hamiltonian_cycles", "connectivity", "extremal_graph_theory", "goal_exact_bound", "goal_strategy_game"],
+  "tags": [
+    "hamiltonian_cycles",
+    "connectivity",
+    "extremal_graph_theory",
+    "goal_exact_bound",
+    "goal_strategy_game"
+  ],
   "properties": {
     "central_method": {
-      "value": ["complete_graph_deletion_model", "hamiltonian_path_from_longest_path", "adversary_strategy"],
+      "value": [
+        "complete_graph_deletion_model",
+        "hamiltonian_path_from_longest_path",
+        "adversary_strategy"
+      ],
       "status": "ai_checked"
     }
   },
@@ -104,7 +172,9 @@
       "source_id": "src-inmo-2021-official-solutions",
       "role": "problem_and_solutions_official",
       "status": "source_verified",
-      "statement_ids": ["stmt-original"],
+      "statement_ids": [
+        "stmt-original"
+      ],
       "note": "Официальный PDF HBCSE с условиями и решениями INMO 2021; доказательство здесь разворачивает первый графовый вариант официального решения."
     },
     {
@@ -124,6 +194,14 @@
       "2026-04-28: графовая подсказочная формулировка добавлена, так как исходное условие сводится к ней одним прозрачным шагом; обычная graph_theory-формулировка не добавлялась, чтобы не превращать нижнюю оценку в подсказку."
     ],
     "relations_status": "deep_done",
-    "graph_theory_duplicate_removed": false
+    "graph_theory_duplicate_removed": false,
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "status": "ai_checked",
+      "confidence": 0.82,
+      "basis": "official solution source and non-compressed solution text",
+      "notes": "Текущий текст основан на официальном источнике и выглядит полным или почти полным.",
+      "label": "официальное полное/почти полное"
+    }
   }
 }
