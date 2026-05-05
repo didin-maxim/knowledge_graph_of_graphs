@@ -1,0 +1,212 @@
+{
+  "id": "kolmogorov-2024-t1-seniors-2-shortest-paths-even-degree",
+  "title": "Максимум числа кратчайших путей при степени 2m, Кубок Колмогорова 2024 T1 seniors 2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application",
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "multigraph",
+      "shortest_path",
+      "distance_layers",
+      "parallel_edges"
+    ],
+    "methods": [
+      "bfs_layering",
+      "entropy_method",
+      "extremal_construction"
+    ],
+    "transformations": [
+      "prune_to_shortest_path_subgraph",
+      "replace_edges_by_parallel_edges"
+    ],
+    "goal": [
+      "maximize_number_of_shortest_paths",
+      "prove_exact_bound"
+    ],
+    "auxiliary_graph_type": [
+      "layered_multigraph"
+    ],
+    "invariants": [
+      "maximum_degree",
+      "distance",
+      "path_count"
+    ],
+    "keywords": [
+      "kolmogorov_2024_t1_seniors_2",
+      "benjamini_tzalik_application",
+      "shortest_paths",
+      "bounded_degree",
+      "even_degree_exact_case"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-kolmogorov-even-degree-exact",
+        "title": "Условие Кубка Колмогорова",
+        "text": "Пусть \\(m\\) и \\(t\\) — положительные целые числа. Рассмотрим мультиграф, максимальная степень которого не превосходит \\(2m\\). Две вершины \\(x\\) и \\(y\\) находятся на расстоянии \\(t\\). Каково наибольшее возможное число путей длины \\(t\\) из \\(x\\) в \\(y\\)?",
+        "source_id": "src-kolmogorov-2024-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "path",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-graph-exact-answer"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-exact-answer",
+        "title": "Точная графовая формулировка",
+        "text": "Для любых положительных целых \\(m,t\\) среди всех конечных мультиграфов без петель с \\(\\Delta(G)\\le2m\\) и двумя вершинами \\(x,y\\) на расстоянии \\(t\\) максимальное число кратчайших \\(x\\)-\\(y\\)-путей равно \\(2m^t\\).",
+        "source_id": "src-kolmogorov-2024-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "path",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-kolmogorov-even-degree-exact"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-benjamini-tzalik-upper-bound",
+      "title": "Верхняя оценка из слоёв",
+      "text": "Кратчайшие пути можно читать как проходы по слоям расстояния. Ограничение \\(in(v)+out(v)\\le2m\\) даёт максимум произведения входов и выходов при \\(in(v)=out(v)=m\\).",
+      "tags": [
+        "extremal_graph_theory",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-two-parallel-chains",
+      "title": "Две цепочки с параллельными рёбрами",
+      "text": "Равенство достигается на двух внутренне непересекающихся путях длины \\(t\\), где каждое ребро заменено на \\(m\\) параллельных рёбер.",
+      "tags": [
+        "construction",
+        "goal_exact_bound"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-even-degree-exact",
+      "title": "Точный ответ \\(2m^t\\)",
+      "text": "Ответ: \\(2m^t\\).\n\nСначала докажем верхнюю оценку самодостаточно. Оставим в графе только рёбра, лежащие на кратчайших путях из \\(x\\) в \\(y\\), и разобьём вершины на слои \\(L_i=\\{v:\\operatorname{dist}(x,v)=i\\}\\), \\(0\\le i\\le t\\). Параллельные рёбра считаем различными. Для вершины \\(v\\in L_i\\) обозначим через \\(a(v)\\) число рёбер из \\(L_{i-1}\\) в \\(v\\), а через \\(b(v)\\) число рёбер из \\(v\\) в \\(L_{i+1}\\). Тогда для внутренних слоёв \\(a(v)+b(v)\\le2m\\), поэтому \\(a(v)b(v)\\le m^2\\).\n\nПусть всего кратчайших путей \\(N\\), и выберем один равновероятно. Энтропия выбранного пути равна \\(\\log N\\). При чтении слева направо следующий шаг из вершины \\(v\\) имеет не более \\(b(v)\\) вариантов, а при чтении справа налево предыдущий шаг имеет не более \\(a(v)\\) вариантов. Складывая две оценки цепного правила для энтропии, получаем\n\\[2\\log N\\le \\log b(x)+\\log a(y)+\\mathbb E\\sum_{i=1}^{t-1}\\log(a(X_i)b(X_i)).\\]\nЗдесь \\(b(x)\\le2m\\), \\(a(y)\\le2m\\), а каждое внутреннее произведение не больше \\(m^2\\). Следовательно,\n\\[2\\log N\\le2\\log(2m)+2(t-1)\\log m,\\]\nто есть \\(N\\le2m^t\\).\n\nОсталось построить пример. Возьмём две внутренне непересекающиеся цепочки длины \\(t\\) от \\(x\\) к \\(y\\). Если \\(t=1\\), это просто две параллельные группы рёбер между \\(x\\) и \\(y\\). Каждое ребро каждой цепочки заменим на \\(m\\) параллельных рёбер. У концов степень равна \\(2m\\), у внутренних вершин — тоже \\(2m\\), расстояние между \\(x\\) и \\(y\\) равно \\(t\\). На каждой из двух цепочек можно независимо выбрать одно из \\(m\\) параллельных рёбер на каждом шаге, значит каждая цепочка даёт \\(m^t\\) кратчайших путей. Всего получается \\(2m^t\\) кратчайших путей. Верхняя оценка и пример совпали, поэтому максимум равен \\(2m^t\\).",
+      "idea_ids": [
+        "idea-benjamini-tzalik-upper-bound",
+        "idea-two-parallel-chains"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "multigraph",
+        "path",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 12,
+    "comment": "Точный олимпиадный случай классической оценки: верхняя граница компактна через слои/энтропию, а достижимость задаётся явной экстремальной конструкцией.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "connectivity",
+    "degree_counting",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bfs_layering",
+        "entropy_method",
+        "extremal_construction"
+      ],
+      "status": "ai_checked"
+    },
+    "extremal_object": {
+      "value": "Две внутренне непересекающиеся цепочки длины t, каждое ребро которых заменено на m параллельных рёбер.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2024-official",
+      "role": "problem_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-kolmogorov-even-degree-exact",
+        "stmt-graph-exact-answer"
+      ]
+    },
+    {
+      "source_id": "src-kolmogorov-archive",
+      "role": "official_archive_index",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-kolmogorov-even-degree-exact"
+      ]
+    },
+    {
+      "source_id": "src-benjamini-tzalik-shortest-paths",
+      "role": "classical_tool_used_for_upper_bound",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Разделено из merged-card benjamini-tzalik-shortest-paths-kolmogorov-merged: здесь оставлена самостоятельная задача Кубка Колмогорова.",
+      "Карточка соответствует точному чётному случаю \\(\\Delta=2m\\) оценки Беньямини — Цалика; олимпиадная часть добавляет экстремальную конструкцию.",
+      "Решение сделано самодостаточным: верхняя оценка приведена через тот же послойный энтропийный аргумент, а не только ссылкой на теорему."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "split from source-verified merged Kolmogorov card with complete solution",
+      "notes": "Официальный источник фиксирует условие; точный ответ закрыт верхней оценкой Беньямини — Цалика и явной конструкцией.",
+      "audit_source": "agent-split-benjamini-tzalik-kolmogorov"
+    }
+  }
+}

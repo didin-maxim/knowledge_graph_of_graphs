@@ -1,0 +1,196 @@
+{
+  "id": "imc-2011-day2-p2b-tripartite-three-quarter-perfect-cover",
+  "title": "Совершенное покрытие треугольниками при \\(k\\ge 3n/4\\), IMC 2011 Day 2 P2(b)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Fedor Duzhin",
+      "status": "source_verified"
+    },
+    {
+      "name": "Nick Gravin",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tripartite_graph",
+      "triangle",
+      "triangle_factor",
+      "perfect_matching",
+      "auxiliary_bipartite_graph"
+    ],
+    "methods": [
+      "hall_marriage_theorem",
+      "degree_counting",
+      "two_stage_matching",
+      "common_neighborhood_bound"
+    ],
+    "transformations": [
+      "likes_relation_to_tripartite_graph",
+      "triangle_factor_as_perfect_matching_in_auxiliary_bipartite_graph"
+    ],
+    "goal": [
+      "prove_triangle_factor_existence",
+      "cover_all_vertices"
+    ],
+    "auxiliary_graph_type": [
+      "tripartite_graph",
+      "bipartite_matching_graph"
+    ],
+    "invariants": [
+      "minimum_degree_to_each_other_part",
+      "hall_neighborhood_size",
+      "common_neighbors_of_matched_pair"
+    ],
+    "keywords": [
+      "imc_2011_day2_p2b",
+      "tripartite_graph",
+      "triangle_factor",
+      "hall_theorem",
+      "perfect_cover",
+      "married_triples"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-three-quarter",
+        "title": "Условие, часть (b)",
+        "text": "У инопланетной расы три пола: мужской, женский и эмальский. Брачная тройка состоит из трех представителей разных полов, которые все нравятся друг другу; симпатии взаимны. В экспедиции есть \\(n\\) мужчин, \\(n\\) женщин и \\(n\\) эмалей. Каждый участник симпатизирует хотя бы \\(k\\) представителям каждого из двух других полов. Докажите, что если \\(k\\ge 3n/4\\), то всегда можно создать \\(n\\) попарно непересекающихся брачных троек, то есть включить в них всех участников экспедиции.",
+        "source_id": "src-imc-2011-day2-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-three-quarter",
+        "title": "Фактор из треугольников в плотном трехдольном графе",
+        "text": "Пусть \\(G\\) — простой трехдольный граф с долями \\(M,F,E\\), каждая размера \\(n\\). Предположим, что каждая вершина имеет не меньше \\(k\\) соседей в каждой из двух чужих долей, где \\(k\\ge 3n/4\\). Докажите, что \\(G\\) содержит \\(n\\) попарно непересекающихся треугольников, покрывающих все вершины.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "bipartite_graph",
+          "matching",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original-three-quarter"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-first-match-two-parts",
+      "title": "Сначала сопоставить две доли",
+      "text": "Так как каждая вершина имеет больше половины возможных соседей в чужой доле, теорема Холла дает совершенное паросочетание между двумя выбранными долями.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-match-pairs-to-third-part",
+      "title": "Пары сопоставляются с общей третьей вершиной",
+      "text": "После фиксации пар \\((m,f)\\) строим двудольный граф между этими парами и третьей долей. Ребро означает, что третья вершина соединена и с \\(m\\), и с \\(f\\); условие \\(k\\ge3n/4\\) ровно закрывает проверку Холла.",
+      "tags": [
+        "matching",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-two-stage-hall",
+      "title": "Два применения теоремы Холла",
+      "text": "Работаем в графовой формулировке. Сначала докажем, что между долями \\(M\\) и \\(F\\) есть совершенное паросочетание. По теореме Холла достаточно проверить, что для любого \\(A\\subseteq M\\) его множество соседей \\(N_F(A)\\) имеет размер хотя бы \\(|A|\\). Если бы \\(|N_F(A)|<|A|\\), то, с одной стороны, из степени вершин \\(A\\) следовало бы \\(|N_F(A)|\\ge k\\). С другой стороны, любая вершина \\(f\\in F\\setminus N_F(A)\\) не соединена ни с одной вершиной из \\(A\\), поэтому ее степень в \\(M\\) не превосходит \\(n-|A|\\). Значит, \\(k\\le n-|A|\\), то есть \\(|A|\\le n-k\\). Получаем \\(k\\le |N_F(A)|<|A|\\le n-k\\), что невозможно, поскольку \\(k\\ge3n/4>n/2\\). Значит, совершенное паросочетание между \\(M\\) и \\(F\\) существует.\n\nЗафиксируем такое паросочетание и обозначим через \\(P\\) множество его \\(n\\) пар. Построим двудольный граф \\(H\\) с долями \\(P\\) и \\(E\\): пару \\(p=(m,f)\\) соединяем с вершиной \\(e\\in E\\), если в исходном графе есть оба ребра \\(em\\) и \\(ef\\). Совершенное паросочетание в \\(H\\) превратит каждую пару \\((m,f)\\) в треугольник \\((m,f,e)\\), а все выбранные вершины \\(e\\) будут различны. Поэтому осталось снова проверить условие Холла.\n\nПусть \\(A\\subseteq P\\), \\(|A|=l\\), а \\(B=N_H(A)\\subseteq E\\). Предположим противное: \\(|B|<l\\). Каждая пара \\((m,f)\\) имеет в \\(H\\) не меньше\n\\[\n|N_E(m)\\cap N_E(f)|\\ge k+k-n=2k-n\n\\]\nсоседей, поэтому \\(|B|\\ge2k-n\\), и значит \\(l>2k-n\\).\n\nВозьмем вершину \\(e\\in E\\setminus B\\). Для каждой пары из \\(A\\) вершина \\(e\\) не может быть соединена сразу с обоими ее концами, иначе она лежала бы в \\(B\\). Значит, по этим \\(l\\) парам она дает не более \\(l\\) ребер к \\(M\\cup F\\). По остальным \\(n-l\\) парам она дает не более \\(2(n-l)\\) ребер. Следовательно,\n\\[\nd_M(e)+d_F(e)\\le l+2(n-l)=2n-l.\n\\]\nНо по условию \\(d_M(e)+d_F(e)\\ge2k\\), откуда \\(l\\le2n-2k\\).\n\nИтак, из нарушения Холла следовало бы\n\\[\n2k-n<l\\le2n-2k.\n\\]\nПри \\(k\\ge3n/4\\) левая граница не меньше правой: \\(2k-n\\ge2n-2k\\). Противоречие. Следовательно, в \\(H\\) выполнено условие Холла, значит, существует совершенное паросочетание между \\(P\\) и \\(E\\).\n\nОбъединяя каждую пару \\((m,f)\\in P\\) с назначенной ей вершиной \\(e\\in E\\), получаем \\(n\\) попарно непересекающихся треугольников, покрывающих все вершины трех долей. В исходном языке это и есть \\(n\\) брачных троек, включающих всех участников.",
+      "idea_ids": [
+        "idea-first-match-two-parts",
+        "idea-match-pairs-to-third-part"
+      ],
+      "standard_idea_ids": [
+        "augmenting_path_method",
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "bipartite_graph",
+        "matching",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p2_p5",
+    "local_score": 8,
+    "comment": "Самостоятельная плотностная теорема о факторе треугольников: после первого паросочетания нужна аккуратная вторая проверка Холла, где порог \\(3n/4\\) появляется из неравенств \\(2k-n<l\\le2n-2k\\).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "degree_counting",
+    "graph_model",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "hall_marriage_theorem",
+        "two_stage_matching",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2011-day2-p2-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original-three-quarter"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split from compound parent imc-2011-day2-p2-tripartite-married-triples.",
+      "Self-contained part (b): proves the positive perfect-cover theorem directly by two applications of Hall's theorem; it does not rely on the threshold counterexample from part (a)."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "high-reasoning split audit",
+      "notes": "The proof is the Hall-theorem version of the official argument, expanded so the card proves exactly the positive theorem.",
+      "audit_source": "agent-imc-2011-p2-split"
+    }
+  }
+}

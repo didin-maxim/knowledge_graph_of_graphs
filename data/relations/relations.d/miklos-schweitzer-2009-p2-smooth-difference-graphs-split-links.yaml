@@ -1,0 +1,109 @@
+{
+  "relations": [
+    {
+      "id": "rel-miklos-2009-p2-parent-complete-child",
+      "from": "miklos-schweitzer-2009-p2-smooth-difference-graphs",
+      "to": "miklos-schweitzer-2009-p2-complete-smooth-difference-graphs-impossible",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Новая карточка выделяет из составной задачи Miklos Schweitzer 2009 P2 только часть (i): вопрос о реализации полного графа разностей при фиксированном конечном наборе разрешенных простых.",
+      "backward_text": "Исходная карточка объединяет невозможность полного графа с отдельной конструкцией связного графа степени не больше 2; эта дочерняя карточка доказывает только невозможностную половину.",
+      "anchors": {
+        "from_solution_id": "sol-komal-expanded-ai",
+        "to_solution_id": "sol-new-prime-pigeonhole"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-miklos-2009-p2-parent-bounded-degree-child",
+      "from": "miklos-schweitzer-2009-p2-smooth-difference-graphs",
+      "to": "miklos-schweitzer-2009-p2-bounded-degree-smooth-difference-path",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Новая карточка выделяет из составной задачи Miklos Schweitzer 2009 P2 только часть (ii): построение связного графа разностей с максимальной степенью не больше 2.",
+      "backward_text": "Исходная карточка содержит обе части оригинального вопроса; эта дочерняя карточка является конструктивной специализацией, реализующей путь на m вершинах.",
+      "anchors": {
+        "from_solution_id": "sol-komal-expanded-ai",
+        "to_solution_id": "sol-power-sum-induced-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-miklos-2009-p2-complete-bounded-paired",
+      "from": "miklos-schweitzer-2009-p2-complete-smooth-difference-graphs-impossible",
+      "to": "miklos-schweitzer-2009-p2-bounded-degree-smooth-difference-path",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это две самостоятельные половины одной задачи о графах разностей с фиксированными простыми делителями: полный граф запрещается остатками modulo нового простого, а связный граф ограниченной степени строится как индуцированный путь из сумм степеней произведения разрешенных простых.",
+      "backward_text": "Конструктивная bounded-degree часть дополняет невозможностную complete-graph часть: обе работают с тем же difference graph, но используют разные механизмы и дают противоположные типы ответа.",
+      "anchors": {
+        "from_solution_id": "sol-new-prime-pigeonhole",
+        "to_solution_id": "sol-power-sum-induced-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-miklos-2009-p2-complete-cmo-1991-edge-differences",
+      "from": "miklos-schweitzer-2009-p2-complete-smooth-difference-graphs-impossible",
+      "to": "cmo-1991-p4-edge-difference-labeling-diagram",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки переводят арифметику разностей целых меток в ограничение на ребра графа. В Miklos 2009 P2(i) запрещенный простой делитель рушит большую клику в difference graph; в CMO 1991 P4 паритет разностей на ребрах рушит разметку диаграммы.",
+      "backward_text": "CMO 1991 P4 является близким edge-difference родственником: там разности являются метками уже заданных ребер, а в Miklos 2009 P2(i) разрешенные разности сами определяют ребра и запрещают полный граф большого размера.",
+      "anchors": {
+        "from_solution_id": "sol-new-prime-pigeonhole",
+        "to_solution_id": "sol-parity-cut"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-miklos-2009-p2-bounded-baltic-2023-degree-two",
+      "from": "miklos-schweitzer-2009-p2-bounded-degree-smooth-difference-path",
+      "to": "baltic-way-2023-p6-colour-touch-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют структуру связного графа максимальной степени 2: в Miklos 2009 P2(ii) такой граф явно реализуется как путь разностей, а в Baltic Way 2023 P6 граф цветов со степенями не больше 2 ограничивается как путь или цикл.",
+      "backward_text": "Baltic Way 2023 P6 является bounded-degree соседом: там степень не больше 2 возникает у вспомогательного графа цветов, тогда как в Miklos 2009 P2(ii) она является требуемым свойством построенного difference graph.",
+      "anchors": {
+        "from_solution_id": "sol-power-sum-induced-path",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-miklos-2009-p2-bounded-baltic-1997-differences",
+      "from": "miklos-schweitzer-2009-p2-bounded-degree-smooth-difference-path",
+      "to": "baltic-way-1997-p19a-prime-edge-disjoint-hamiltonian-cycles",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе конструкции организуют ребра через арифметические разности. В Miklos 2009 P2(ii) целочисленные разности между выбранными числами создают только соседние ребра пути; в Baltic Way 1997 P19(a) разности modulo простого числа разбивают ребра полного графа на гамильтоновы циклы.",
+      "backward_text": "Baltic Way 1997 P19(a) - модульный graph-realization родственник: там difference classes дают реберное разбиение полного графа, а здесь power-sum differences дают индуцированный путь в графе допустимых разностей.",
+      "anchors": {
+        "from_solution_id": "sol-power-sum-induced-path",
+        "to_solution_id": "sol-prime-modular-differences"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-miklos-2009-p2-complete-utyum-edge-weights",
+      "from": "miklos-schweitzer-2009-p2-complete-smooth-difference-graphs-impossible",
+      "to": "complete-graph-triangle-edge-weights-minimum-parametric",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки относятся к задачам на полный граф с арифметическими данными на парах вершин: здесь вопрос в том, могут ли все попарные разности быть разрешенными и дать \\(K_m\\), а в УТЮМ-задаче веса ребер полного графа ограничиваются треугольными условиями.",
+      "backward_text": "Параметрическая задача о весах ребер полного графа является более слабым тематическим соседом: она не является difference graph, но использует edge weights on complete graph как основной объект, что близко к поиску полной реализации в Miklos 2009 P2(i).",
+      "anchors": {
+        "from_solution_id": "sol-new-prime-pigeonhole",
+        "to_solution_id": "sol-parametric"
+      },
+      "status": "ai_checked",
+      "confidence": 0.68
+    }
+  ]
+}

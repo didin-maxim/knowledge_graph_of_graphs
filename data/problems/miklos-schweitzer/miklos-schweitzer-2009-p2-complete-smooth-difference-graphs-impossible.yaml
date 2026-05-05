@@ -1,0 +1,168 @@
+{
+  "id": "miklos-schweitzer-2009-p2-complete-smooth-difference-graphs-impossible",
+  "title": "Невозможность полного графа разностей с фиксированными простыми делителями, Miklos Schweitzer 2009 P2(i)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "split_child",
+      "graph_in_statement",
+      "number_theoretic_graph",
+      "impossibility"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "finite_integer_set",
+      "difference_graph",
+      "complete_graph",
+      "smooth_numbers"
+    ],
+    "methods": [
+      "residue_classes",
+      "pigeonhole_principle",
+      "forbidden_prime_divisor"
+    ],
+    "goal": [
+      "disprove_universal_existence",
+      "prove_impossibility"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "residue_classes_mod_new_prime",
+      "prime_divisors_of_differences"
+    ],
+    "keywords": [
+      "schweitzer_2009_p2",
+      "smooth_numbers",
+      "difference_graph",
+      "complete_graph_obstruction",
+      "integer_difference_graph_realization"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-complete-part",
+        "title": "Полная часть исходной задачи",
+        "text": "Пусть \\(p_1,\\ldots,p_k\\) - фиксированные простые числа, а \\(S\\) - множество ненулевых целых чисел, все простые делители которых принадлежат множеству \\(\\{p_1,\\ldots,p_k\\}\\). Для конечного множества целых чисел \\(A\\) построим граф \\(\\mathcal G(A)\\) с вершинами из \\(A\\), где две различные вершины \\(a,b\\) соединены ребром тогда и только тогда, когда \\(a-b\\in S\\). Верно ли, что для каждого \\(m\\ge3\\) можно выбрать \\(m\\)-элементное множество \\(A\\), для которого \\(\\mathcal G(A)\\) является полным графом?",
+        "source_id": "src-miklos-schweitzer-2009-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph-complete"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-complete",
+        "title": "Клика в графе целочисленных разностей",
+        "text": "Зафиксирован конечный набор простых чисел \\(p_1,\\ldots,p_k\\). Между двумя целыми числами проводится ребро, если их ненулевая разность имеет только эти простые делители. Может ли этот бесконечный граф содержать клики любого конечного размера \\(m\\ge3\\)?",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-complete-part"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-new-prime-residues",
+      "title": "Новый простой ограничивает размер клики",
+      "text": "Если взять простой \\(q\\), которого нет среди разрешенных, то в полной реализации нельзя иметь две вершины с одинаковым остатком по модулю \\(q\\): их разность делилась бы на запрещенный простой \\(q\\). Значит, клика имеет не больше \\(q\\) вершин.",
+      "tags": [
+        "graph_model",
+        "pigeonhole_principle",
+        "goal_impossibility"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-new-prime-pigeonhole",
+      "title": "Остатки по простому вне списка",
+      "text": "Ответ отрицательный.\n\nВыберем простое число \\(q\\), отличное от всех \\(p_1,\\ldots,p_k\\). Такое простое существует, потому что простых чисел бесконечно много. Рассмотрим любое множество \\(A\\) из \\(q+1\\) целых чисел. По принципу Дирихле среди этих \\(q+1\\) чисел найдутся два различных элемента \\(a,b\\), сравнимых по модулю \\(q\\).\n\nТогда \\(q\\mid a-b\\), причем \\(a-b\\ne0\\). Следовательно, у разности \\(a-b\\) есть простой делитель \\(q\\), которого нет в разрешенном наборе \\(\\{p_1,\\ldots,p_k\\}\\). Поэтому \\(a-b\\notin S\\), и вершины \\(a\\) и \\(b\\) не соединены ребром в \\(\\mathcal G(A)\\).\n\nИтак, ни одно \\((q+1)\\)-элементное множество \\(A\\) не дает полный граф \\(\\mathcal G(A)\\). Значит, утверждение о существовании полного графа для каждого \\(m\\ge3\\) ложно.",
+      "idea_ids": [
+        "idea-new-prime-residues"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Самостоятельная невозможностная часть: ключевой шаг - выбрать новый простой и применить принцип Дирихле к остаткам modulo q.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "degree_counting",
+    "pigeonhole_principle",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "new_prime_residue_obstruction",
+        "integer_difference_graph_realization"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2009-p2-official",
+      "role": "derived_subproblem_from_official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2009-eng.pdf",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-complete-part"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split child of miklos-schweitzer-2009-p2-smooth-difference-graphs. This card isolates only part (i), the complete-graph question.",
+      "High-reasoning split note: this part is a self-contained impossibility result using residues modulo a prime outside the fixed list; it does not use the path construction from part (ii)."
+    ],
+    "parent_problem_id": "miklos-schweitzer-2009-p2-smooth-difference-graphs",
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "high-reasoning split audit from parent card",
+      "notes": "The proof is the complete-graph obstruction from the parent solution, rewritten as a standalone child card.",
+      "audit_source": "agent-miklos-schweitzer-2009-p2-split"
+    }
+  }
+}

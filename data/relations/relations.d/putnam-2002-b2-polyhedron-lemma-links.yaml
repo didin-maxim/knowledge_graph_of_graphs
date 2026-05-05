@@ -1,0 +1,94 @@
+{
+  "relations": [
+    {
+      "id": "rel-cubic-polyhedron-large-face-fork-putnam-2002-b2",
+      "from": "cubic-polyhedron-large-face-fork-strategy-lemma",
+      "to": "putnam-2002-b2-polyhedron-face-game-four-edge-face",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма является вынесенным структурно-игровым ядром решения Putnam 2002 B2: она сначала гарантирует грань длины хотя бы 4 в кубическом многограннике с не менее чем пятью гранями, а затем превращает первый ход в такую грань в вилку и выигрыш не позднее третьего хода.",
+      "backward_text": "Putnam 2002 B2 — прямое применение lemma-card о большой грани и вилке: условия задачи ровно дают кубический многогранник с F>=5, поэтому первый игрок открывает большую грань и следует локальной стратегии леммы.",
+      "anchors": {
+        "from_solution_id": "sol-euler-large-face-and-fork",
+        "to_solution_id": "sol-kedlaya-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-euler-formula-cubic-polyhedron-large-face-fork",
+      "from": "euler-formula-planar",
+      "to": "cubic-polyhedron-large-face-fork-strategy-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Формула Эйлера является счетным инструментом первой половины леммы: вместе с равенствами 3V=2E и 3F=2E для полностью треугольного кубического полиэдра она дает F=4 и тем самым вынуждает большую грань при F>=5.",
+      "backward_text": "Лемма о большой грани и вилке использует формулу Эйлера не как фоновый факт, а как конкретный face-counting шаг, отделяющий тетраэдр от всех кубических многогранников с пятью и более гранями.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-euler-large-face-and-fork"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-planar-edge-bound-cubic-polyhedron-large-face-fork",
+      "from": "planar-edge-bound",
+      "to": "cubic-polyhedron-large-face-fork-strategy-lemma",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют один и тот же планарный мотив: формула Эйлера плюс двойной счет длин граней переводят локальное ограничение на грани в глобальное структурное следствие.",
+      "backward_text": "Лемма о большой грани и вилке является более специализированным face-counting применением того же эйлерова механизма, который в planar-edge-bound дает общую оценку числа ребер простого планарного графа.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-euler-large-face-and-fork"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-cubic-four-cycle-bound-cubic-polyhedron-large-face-fork",
+      "from": "cubic-graph-four-cycle-bound",
+      "to": "cubic-polyhedron-large-face-fork-strategy-lemma",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе леммы эксплуатируют жесткость 3-регулярных графов через локальный двойной счет; первая ограничивает число 4-циклов в произвольном кубическом графе, а вторая соединяет кубичность с планарным подсчетом граней и игровой вилкой.",
+      "backward_text": "Лемма о большой грани и вилке — планарно-полиэдральный родственник кубической counting-леммы: степень 3 задает исходные равенства, но затем добавляются грани и стратегия на их циклическом порядке.",
+      "anchors": {
+        "from_solution_id": "sol-double-count-incident-edge-pairs",
+        "to_solution_id": "sol-euler-large-face-and-fork"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-cubic-polyhedron-large-face-fork-tc-2012-polyhedron",
+      "from": "cubic-polyhedron-large-face-fork-strategy-lemma",
+      "to": "tc-2012-polyhedron-three-equal-edges",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки переводят условие о выпуклом многограннике в язык кубического полиэдрального графа. В лемме ключевыми становятся грани и Эйлерова характеристика, а в задаче Турнира городов — инцидентные тройки ребер и подсчет выбранных равных пар.",
+      "backward_text": "Задача о трех равных ребрах — соседняя кубическая-полиэдральная задача: она использует ту же модель скелета степени 3, но не задействует циклический порядок граней и игровую вилку.",
+      "anchors": {
+        "from_solution_id": "sol-euler-large-face-and-fork",
+        "to_solution_id": "sol-ai-selected-equal-pairs-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-cubic-polyhedron-large-face-fork-cmo-2019-game",
+      "from": "cubic-polyhedron-large-face-fork-strategy-lemma",
+      "to": "cmo-2019-p5-odd-cycle-edge-game",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе карточки являются графовыми стратегическими играми, где выигрыш достигается не перебором ходов, а созданием позиции, в которой один ответ соперника не может закрыть все угрозы. В полиэдральной игре это локальная вилка на двух соседних вершинах; в CMO 2019 это долгий инвариант двудольности и паросочетания.",
+      "backward_text": "CMO 2019 P5 — более глобальная графовая игра; она родственна лемме о полиэдральной вилке только по стратегическому мотиву управления угрозами и безопасными ходами, а не по планарной геометрии.",
+      "anchors": {
+        "from_solution_id": "sol-euler-large-face-and-fork",
+        "to_solution_id": "sol-official-ru-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

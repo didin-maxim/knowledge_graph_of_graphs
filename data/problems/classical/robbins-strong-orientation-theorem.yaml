@@ -1,0 +1,139 @@
+{
+  "id": "robbins-strong-orientation-theorem",
+  "title": "Теорема Роббинса о сильной ориентации графа без мостов",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Herbert Robbins",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "bridgeless_graph",
+      "strong_orientation",
+      "directed_graph"
+    ],
+    "methods": [
+      "ear_decomposition",
+      "cycle_orientation",
+      "bridge_obstruction"
+    ],
+    "transformations": [
+      "orient_cycle",
+      "add_ears"
+    ],
+    "goal": [
+      "strong_orientation_criterion"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "bridge_freeness",
+      "strong_connectivity"
+    ],
+    "keywords": [
+      "robbins_theorem",
+      "strong_orientation",
+      "bridgeless_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Конечный связный неориентированный граф можно ориентировать так, чтобы получился сильно связный орграф, тогда и только тогда, когда в исходном графе нет мостов.",
+        "source_id": "src-wikipedia-robbins-theorem",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "directed_graph",
+          "path",
+          "bridge"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-ears-orient-one-way",
+      "title": "Ориентировать цикл и последовательно добавлять уши",
+      "text": "Цикл ориентируется по кругу. Если уже ориентированная часть сильно связна, то новое ухо между двумя ее вершинами можно направить от одного конца к другому: до начала уха и от конца уха внутри старой части уже есть направленные пути.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-ear-decomposition",
+      "title": "Доказательство через добавление ушей",
+      "text": "Необходимость очевидна: если неориентированное ребро \\(e\\) было мостом, то после любой ориентации дуга, соответствующая \\(e\\), остается единственным переходом между двумя частями графа. В одну из сторон по этой дуге можно перейти только в одном направлении, поэтому сильной связности быть не может.\n\nДокажем достаточность. Пусть \\(G\\) связен и не имеет мостов. Начнем с любого цикла и ориентируем его циклически; полученный подграф сильно связен. Будем расширять уже построенный сильно связный ориентированный подграф \\(H\\). Если есть ребро с обоими концами в \\(H\\), его можно ориентировать произвольно: сильная связность не испортится. Если есть вершины вне \\(H\\), рассмотрим компоненту \\(K\\) графа \\(G-V(H)\\), смежную с \\(H\\). Так как мостов нет, эта компонента не может присоединяться к \\(H\\) единственным ребром: такое ребро было бы мостом. Значит, из \\(H\\) в \\(K\\) входят по крайней мере два ребра, и внутри \\(K\\) можно выбрать простой путь между соответствующими точками присоединения; вместе с двумя ребрами к \\(H\\) он дает путь, концы которого лежат в \\(H\\), а внутренние вершины лежат вне \\(H\\). Ориентируем весь этот путь от одного конца к другому и добавим его к \\(H\\). Новые вершины достижимы из старой части через начало пути, а из них можно пройти дальше до конца пути и затем куда угодно по сильной связности старого \\(H\\). Значит, сильная связность сохраняется.\n\nПовторяя этот шаг, включим все вершины и затем все оставшиеся ребра. Получим сильную ориентацию всего графа.",
+      "idea_ids": [
+        "idea-ears-orient-one-way"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "directed_graph",
+        "path",
+        "cycle",
+        "bridge"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 7,
+    "comment": "Классический критерий сильной ориентируемости; доказательство через уши удобно для олимпиадного применения.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "classical_theorem",
+    "goal_characterization"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "ear_decomposition",
+        "bridge_obstruction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-robbins-theorem",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Вынесено как самостоятельный инструмент для задачи Kolmogorov 2021 T1 про критическую сильную ориентацию."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

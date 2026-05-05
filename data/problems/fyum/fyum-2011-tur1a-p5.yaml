@@ -59,7 +59,30 @@
       }
     ],
     "graph_theory": [],
-    "olympiad_reformulations": []
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-tur1b-original",
+        "title": "??? 2011 ??? 1B: ?? ?? ????????????",
+        "text": "Дан связный граф, который остается связным при удалении любого ребра,\n\nи в котором любые две вершины либо соединены ребром, либо имеют общего соседа.\n\nВерно ли, что ребра этого графа можно покрасить \n\nв четыре цвета так, чтобы между любыми двумя\n\nвершинами нашелся путь, все ребра в котором покрашены в разные цвета?",
+        "source_id": "src-fyum-2011-tur1b-p5-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "shared_statement_group": {
+          "id": "grp-fyum-2011-tur1a-tur1b-rainbow-counterexample",
+          "case_id": "fyum-2011-tur1a-p5",
+          "note": "duplicate-level statement retained during soft merge/canonicalization"
+        }
+      }
+    ]
   },
   "ideas": [],
   "solutions": [
@@ -93,6 +116,17 @@
       "source_id": "src-fyum-2011-tur1a-p5-official",
       "role": "problem_and_solutions_official",
       "status": "source_verified"
+    },
+    {
+      "source_id": "src-fyum-2011-tur1b-p5-official",
+      "role": "parallel_official_reprint",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-tur1b-original"
+      ],
+      "solution_ids": [
+        "sol-official-archive"
+      ]
     }
   ],
   "editorial": {
@@ -102,7 +136,8 @@
     "public_ready": false,
     "graph_theory_duplicate_removed": true,
     "notes": [
-      "Редакционная заметка: явный английский служебный текст заменен русским."
+      "Редакционная заметка: явный английский служебный текст заменен русским.",
+      "2026-05-05 merge: FYUM 2011 tur1b p5 is the same official problem as tur1a p5 with only wording/line-break differences; tur1b source occurrence is preserved here."
     ],
     "relations_status": "deep_done",
     "solution_classification": {

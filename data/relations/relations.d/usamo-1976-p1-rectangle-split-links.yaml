@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-usamo-1976-parent-p1a-forcing",
+      "from": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+      "to": "usamo-1976-p1a-4x7-monochromatic-rectangle-forcing",
+      "type": "same_source",
+      "distance": 1,
+      "forward_text": "The original USAMO 1976 P1 card is a compound/source parent containing the 4x7 forcing part and the 4x6 construction part. This child isolates the 4x7 forcing assertion with a self-contained double-counting proof.",
+      "backward_text": "This 4x7 forcing card is the part (a) split child of the original combined USAMO 1976 P1 card; it intentionally omits the separate 4x6 construction.",
+      "anchors": {
+        "from_solution_id": "sol-column-pair-double-counting",
+        "to_solution_id": "sol-column-row-pair-double-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-usamo-1976-parent-p1b-construction",
+      "from": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+      "to": "usamo-1976-p1b-4x6-rectangle-free-coloring-construction",
+      "type": "same_source",
+      "distance": 1,
+      "forward_text": "The original USAMO 1976 P1 card is a compound/source parent containing both the forcing threshold and the sharp example. This child isolates the 4x6 rectangle-free construction.",
+      "backward_text": "This 4x6 construction card is the part (b) split child of the original combined USAMO 1976 P1 card; it intentionally omits the separate 4x7 forcing proof.",
+      "anchors": {
+        "from_solution_id": "sol-column-pair-double-counting",
+        "to_solution_id": "sol-all-two-subsets-construction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-usamo-1976-p1a-p1b-sharp-threshold",
+      "from": "usamo-1976-p1a-4x7-monochromatic-rectangle-forcing",
+      "to": "usamo-1976-p1b-4x6-rectangle-free-coloring-construction",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "The 4x7 forcing result is sharp in the number of columns: the paired 4x6 construction shows that one fewer column does not force a monochromatic rectangle.",
+      "backward_text": "The 4x6 construction is the lower-bound half paired with the 4x7 forcing result; together they identify the exact threshold for four rows.",
+      "anchors": {
+        "from_solution_id": "sol-column-row-pair-double-counting",
+        "to_solution_id": "sol-all-two-subsets-construction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-usamo-1976-p1a-vosh-2014-rainbow-rectangle",
+      "from": "usamo-1976-p1a-4x7-monochromatic-rectangle-forcing",
+      "to": "vosh-2014-15-regional-grid-rainbow-rectangle",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Both cards encode cells of a rectangular grid as edges of a complete bipartite graph whose parts are rows and columns, and both look for a special 4-cycle corresponding to a 2-by-2 rectangle. USAMO forces a monochromatic 4-cycle in a two-coloring; the VOSH problem forces a rainbow 4-cycle under a sharp color threshold.",
+      "backward_text": "The VOSH rainbow-rectangle problem is a close row-column bipartite analogue of the USAMO monochromatic rectangle forcing argument, with the same rectangle/4-cycle dictionary but a different color condition and proof mechanism.",
+      "anchors": {
+        "from_solution_id": "sol-column-row-pair-double-counting",
+        "to_solution_id": "sol-rainbow-cycle-threshold"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-usamo-1976-p1b-c4-free-kst",
+      "from": "usamo-1976-p1b-4x6-rectangle-free-coloring-construction",
+      "to": "c4-free-kovari-sos-turan-bound",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "The 4x6 construction decomposes the edges of `K_{4,6}` into two color classes with no monochromatic `C_4`; each color class is a small explicit `C_4`-free bipartite graph controlled by unique common-neighbor counts.",
+      "backward_text": "The Kővári-Sós-Turán `C_4`-free bound is a broader extremal-graph relative of the USAMO construction: both are governed by counting pairs with a common neighbor, but USAMO uses a sharp finite two-color construction rather than an asymptotic edge bound.",
+      "anchors": {
+        "from_solution_id": "sol-all-two-subsets-construction",
+        "to_solution_id": "sol-common-neighbor-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+  ]
+}

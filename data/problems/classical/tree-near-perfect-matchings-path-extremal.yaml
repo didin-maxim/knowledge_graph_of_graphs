@@ -18,7 +18,6 @@
     "objects": [
       "tree",
       "matching",
-      "near_perfect_matching",
       "bipartition",
       "path"
     ],
@@ -48,7 +47,6 @@
     ],
     "keywords": [
       "tree_matchings",
-      "near_perfect_matching",
       "path_extremal",
       "utyum_2025"
     ],
@@ -71,7 +69,26 @@
         ]
       }
     ],
-    "graph_theory": [],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-tree-near-perfect-matchings-extremal",
+        "title": "Теоретико-графовая формулировка",
+        "text": "Пусть \\(n\\ge 2\\), а \\(T\\) — конечное дерево на \\(2n\\) вершинах. Обозначим через \\(m_{n-1}(T)\\) число паросочетаний в \\(T\\), состоящих из \\(n-1\\) рёбер. Тогда \\(m_{n-1}(T)\\le \\binom{n+1}{2}\\). Если \\(n\\ge 3\\) и \\(m_{n-1}(T)=\\binom{n+1}{2}\\), то \\(T\\) является путём. Путь \\(P_{2n}\\) действительно достигает этой оценки.",
+        "source_id": "src-utyum-2025_komol64_8_7_tree_matchings_path-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "matching",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-original-1"
+        ]
+      }
+    ],
     "olympiad_reformulations": []
   },
   "ideas": [
@@ -111,14 +128,14 @@
         "extremal_choice",
         "delete_to_simplify"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
         "tree",
         "matching",
         "path",
         "bipartite_graph"
       ],
-      "review_notes": "Доказательство адаптировано и исправлено из карточки UTYUM; из-за длины и технического разбора случая равенства оставлено на проверке человеком."
+      "review_notes": "2026-05-05: проверен индукционный разбор долей, случай равенства и подсчёт для пути; доказательство оставлено развёрнутым, чтобы лемма была самодостаточной."
     }
   ],
   "difficulty": {
@@ -133,36 +150,41 @@
     "induction",
     "extremal_choice",
     "goal_exact_bound",
-    "goal_characterization"
+    "goal_characterization",
+    "classical_lemma"
   ],
   "properties": {},
   "sources": [
     {
       "source_id": "src-utyum-2025_komol64_8_7_tree_matchings_path-official",
       "role": "extracted_from_solution_tool",
-      "status": "source_verified"
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original-1",
+        "stmt-graph-tree-near-perfect-matchings-extremal"
+      ]
     }
   ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-27",
-    "review_status": "needs_human_review",
+    "review_status": "ai_checked",
     "public_ready": false,
     "notes": [
-      "Вынесено как общая экстремальная лемма, используемая в utyum-2025_komol64_8_7_tree_matchings_path; исходная карточка UTYUM намеренно не редактировалась.",
+      "Вынесено как общая экстремальная лемма, используемая в utyum-2025_komol64_8_7_tree_matchings_path.",
       "Авторство оставлено на проверку: карточка извлечена из решения задачи, а не из отдельного опубликованного источника.",
-      "Доказательство самодостаточно, но длинное; статус решения оставлен needs_human_review."
+      "Доказательство самодостаточно: отдельно разобраны несбалансированные доли дерева, сбалансированный индукционный шаг, случай равенства и точность на пути.",
+      "2026-05-05: добавлена явная graph_theory-формулировка; исходная карточка UTYUM теперь ссылается на эту лемму через uses_lemma_ids/extracted_lemma_ids и relation-файл."
     ],
     "relations_status": "deep_done",
-    "graph_theory_duplicate_removed": true,
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "label": "официальный план, нужна доработка",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "At least one solution is marked needs_human_review, so it reads as an outline or unverified solution draft.",
-      "audit_source": "agent-imo-us-classical.json"
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "manual high-reasoning extraction audit",
+      "notes": "Лемма извлечена из официального решения UTYUM и развёрнута в самостоятельное доказательство.",
+      "audit_source": "manual-high-reasoning-2026-05-05"
     }
   }
 }

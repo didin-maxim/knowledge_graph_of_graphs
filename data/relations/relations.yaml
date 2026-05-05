@@ -1039,7 +1039,7 @@
       "id": "rel-usamo-2023-p3-usajmo-2023-p3",
       "from": "usamo-2023-p3-domino-slides-special-square-digraph",
       "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
-      "type": "same_motif",
+      "type": "paired_variant",
       "distance": 1,
       "forward_text": "Это фактически старшая и младшая версии одного и того же сюжета. В обеих задачах строится один и тот же ориентированный граф специальных клеток, а разница только в финальной цели: в USAMO классифицируются все возможные `k(C)`, а в USAJMO требуется лишь найти максимум.",
       "backward_text": "USAJMO 2023 P3 читайте рядом с USAMO 2023 P3 как сокращённую версию с теми же идеями графического ядра: тот же ориентированный граф, то же самое дерево достижимых отверстий, но более лёгкая конечная классификация.",
@@ -1095,7 +1095,7 @@
       "id": "rel-cmo-1977-p7-cmo-2008-p5-self-avoiding-grid-paths",
       "from": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
       "to": "cmo-2008-p5-self-avoiding-rook-walks",
-      "type": "same_motif",
+      "type": "false_friend",
       "distance": 2,
       "forward_text": "В обеих CMO-задачах основной объект - простой путь на прямоугольной решетке. CMO 1977 дает верхнюю оценку через кодирование областей, а CMO 2008 считает узкое семейство таких путей через рекурсию.",
       "backward_text": "CMO 1977 P7 стоит рядом с CMO 2008 P5 как более общий прямоугольный вариант про самоизбегающиеся пути; вместо рекурсии по ширине доски используется инъекция в подмножества клеток.",
@@ -1414,6 +1414,66 @@
       },
       "status": "ai_draft",
       "confidence": 0.78
+    },
+    {
+      "id": "rel-tree-properties-near-perfect-matchings",
+      "from": "tree-equivalent-properties",
+      "to": "tree-near-perfect-matchings-path-extremal",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Экстремальная лемма о почти совершенных паросочетаниях постоянно использует базовую листовую структуру деревьев: существование листа, удаление висячего ребра и то, что оставшийся связный ациклический граф снова является деревом.",
+      "backward_text": "Лемма о паросочетаниях является более тонким счётным применением свойств деревьев: листы не только задают индукцию, но и вынуждают единственность совершенного паросочетания в лесу после фиксации непокрытых вершин.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-induction-bipartition"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-handshaking-near-perfect-tree-matchings",
+      "from": "handshaking-lemma",
+      "to": "tree-near-perfect-matchings-path-extremal",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "В несбалансированном двудольном случае доказательство леммы считает сумму степеней малой доли дерева: из \\(\\sum_{v\\in B} d(v)=|E(T)|=2n-1\\) следует существование вершины степени не больше 2.",
+      "backward_text": "Экстремальная лемма показывает типичное применение суммы степеней внутри более длинного структурного доказательства про деревья и паросочетания.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-induction-bipartition"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-near-perfect-tree-matchings-utyum-2025",
+      "from": "tree-near-perfect-matchings-path-extremal",
+      "to": "utyum-2025_komol64_8_7_tree_matchings_path",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Исходная задача UTYUM является частным случаем леммы при \\(n=40\\): оценка даёт не более \\(\\binom{41}{2}=820\\) толстых паросочетаний, а достижение равенства при \\(n\\ge3\\) заставляет дерево быть путём.",
+      "backward_text": "Задача UTYUM служит олимпиадным источником и числовым приложением общей экстремальной леммы о почти совершенных паросочетаниях в дереве.",
+      "anchors": {
+        "from_solution_id": "sol-induction-bipartition",
+        "to_solution_id": "sol-official"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-near-perfect-tree-matchings-yumt-2021",
+      "from": "tree-near-perfect-matchings-path-extremal",
+      "to": "yumt-2021-grand-round4-problem3",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки связывают деревья с почти/совершенными паросочетаниями и используют идею вынужденности паросочетания в древовидной структуре; в UTYUM это даёт точный экстремальный подсчёт, а в YUMT — запрет единственного синего совершенного паросочетания через мост.",
+      "backward_text": "YUMT 2021 — соседний сюжет про дерево и паросочетание: вместо подсчёта почти совершенных паросочетаний он использует симметрическую разность и лемму Котцига о единственном совершенном паросочетании.",
+      "anchors": {
+        "from_solution_id": "sol-induction-bipartition",
+        "to_solution_id": "sol-ai-kotzig-unique-perfect-matching"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
     }
   ]
 }

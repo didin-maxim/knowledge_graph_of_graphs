@@ -1,0 +1,185 @@
+{
+  "id": "all-union-1981-final-9-football-independent-triple",
+  "title": "Три команды без сыгранных матчей, Всесоюзная олимпиада 1981",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "С. Конягин",
+      "role": "proposer",
+      "status": "source_verified",
+      "note": "Автор указан в публикации «XV Всесоюзная математическая олимпиада» в журнале «Математика в школе», 1981."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "regular_graph",
+      "perfect_matching_decomposition",
+      "independent_set",
+      "clique",
+      "football_rounds"
+    ],
+    "methods": [
+      "degree_counting",
+      "pigeonhole_principle",
+      "matching_capacity_counting",
+      "complement_graph_transition"
+    ],
+    "transformations": [
+      "matches_to_graph",
+      "unplayed_matches_to_complement",
+      "rounds_to_matchings"
+    ],
+    "goal": [
+      "independent_triple_existence"
+    ],
+    "auxiliary_graph_type": [
+      "match_graph",
+      "nonmatch_graph"
+    ],
+    "invariants": [
+      "degree",
+      "number_of_vertices",
+      "maximum_edges_per_round_inside_odd_set"
+    ],
+    "keywords": [
+      "football_tournament",
+      "independent_set_size_three",
+      "eight_rounds",
+      "regular_graph_with_matching_decomposition"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "18 команд после 8 туров",
+        "text": "В футбольном турнире 18 команд сыграли между собой 8 туров: каждая команда сыграла с восемью разными командами. Докажите, что найдутся три команды, не сыгравшие между собой пока ни одного матча.",
+        "source_ids": [
+          "src-mathru-vsesoyuznye-1988",
+          "src-djvuonline-vseross-9-1997"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Независимая тройка в графе сыгранных матчей с разбиением на 8 туров",
+        "text": "Пусть \\(G\\) — простой граф на 18 вершинах, ребра которого разбиты на 8 паросочетаний, причем каждая вершина инцидентна ровно одному ребру каждого паросочетания. Докажите, что в \\(G\\) существует независимое множество из трех вершин.",
+        "source_ids": [
+          "src-mathru-vsesoyuznye-1988",
+          "src-djvuonline-vseross-9-1997"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "matching"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-nine-nonopponents-round-capacity",
+      "title": "Взять девять команд, не игравших с фиксированной командой",
+      "text": "Если фиксированная команда не играла с девятью командами, то достаточно найти среди этих девяти две команды, которые тоже не играли друг с другом. Все \\(\\binom{9}{2}=36\\) матчей внутри такой девятки нельзя провести за 8 туров: в одном туре внутри 9 команд возможно не более 4 матчей.",
+      "tags": [
+        "matching",
+        "pigeonhole_principle",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-published-nine-nonopponents",
+      "title": "Подсчет матчей внутри девяти несыгравших с фиксированной командой",
+      "text": "Выберем произвольную команду \\(A\\). За 8 туров она сыграла с 8 командами, поэтому осталось ровно 9 команд, с которыми \\(A\\) еще не встречалась.\n\nПокажем, что среди этих 9 команд найдутся две, также не игравшие друг с другом. Действительно, если бы каждые две из них уже сыграли, то внутри этой девятки были бы проведены все \\(\\binom{9}{2}=36\\) матчей. Но за один тур внутри 9 команд можно провести не более 4 матчей, потому что в одном туре каждая команда участвует не более чем в одном матче, а одна из 9 команд неизбежно остается без соперника из этой же девятки. Значит, за 8 туров внутри девятки могло быть проведено не более \\(8\\cdot4=32\\) матчей, что меньше 36.\n\nИтак, найдутся две команды \\(B\\) и \\(C\\) из этой девятки, которые еще не играли между собой. Команда \\(A\\) не играла ни с \\(B\\), ни с \\(C\\) по выбору девятки. Следовательно, \\(A,B,C\\) — три команды, между которыми пока не было ни одного матча.",
+      "idea_ids": [
+        "idea-nine-nonopponents-round-capacity"
+      ],
+      "status": "ai_checked",
+      "source_ids": [
+        "src-djvuonline-vseross-9-1997",
+        "src-mathru-vsesoyuznye-1988"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "definition_ids": [
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 4,
+    "comment": "Всесоюзная математическая олимпиада 1981 года, заключительный этап, 9 класс, задача 135, первый день.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "matching",
+    "degree_counting",
+    "pigeonhole_principle",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "matching_capacity_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-mathru-vsesoyuznye-1988",
+      "role": "published_collection_scan",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-djvuonline-vseross-9-1997",
+      "role": "ocr_statement_and_solution_check",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Statement checked against the 1997 OCR copy and the Math.ru page for the 1988 Nauka collection; the key wording is the 8-round tournament structure, not merely 8-regularity.",
+      "Previous pure 8-regular graph reformulation was too strong: two disjoint copies of \\(K_9\\) give an 8-regular graph without an independent triple, but it is not realizable as 8 full rounds on 18 teams.",
+      "Author/proposer checked in the contemporaneous «Математика в школе», 1981 publication of the XV All-Union Olympiad, where problem 7 for grade 9 is attributed to С. Конягин."
+    ],
+    "relations_status": "reviewed_no_links",
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.86,
+      "basis": "deep high-reasoning pass, 2026-05-05",
+      "notes": "A complete short solution is present in published OCR/scan sources. It is not marked official in the local source registry, so the card uses unofficial_published rather than an official classification.",
+      "audit_source": "docs/archive/vosh-official-sweep/deep/all-union-1981-final-9-football-independent-triple.md"
+    }
+  }
+}

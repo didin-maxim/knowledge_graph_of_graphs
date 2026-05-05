@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-usamo-2009-p3-existence-uniqueness-false-friend",
+      "from": "usamo-2009-p3-tasteful-domino-tiling-existence",
+      "to": "usamo-2009-p3-tasteful-domino-tiling-uniqueness",
+      "type": "false_friend",
+      "distance": 1,
+      "forward_text": "Обе карточки говорят о том же локальном tasteful-условии для домино, но часть существования решается индукцией по площади и локальным поворотом у крайней клетки. Этот метод не объясняет единственность.",
+      "backward_text": "Часть единственности использует симметрическую разность двух разбиений и запрет alternating cycle. Это самостоятельный механизм невозможности множественности, а не усиление индукционного построения из части существования.",
+      "anchors": {
+        "from_solution_id": "sol-corner-induction",
+        "to_solution_id": "sol-alternating-cycle-obstruction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-usamo-2009-p3-uniqueness-augmenting-path-symdiff",
+      "from": "usamo-2009-p3-tasteful-domino-tiling-uniqueness",
+      "to": "augmenting-path-matching-lemma",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Решение единственности напрямую использует стандартный инструмент сравнения двух паросочетаний: симметрическая разность раскладывается на чередующиеся циклы. Это тот же базовый каркас, что в лемме об увеличивающем пути, но здесь все вершины покрыты и остаются только циклы.",
+      "backward_text": "Лемма об увеличивающем пути даёт общий язык симметрической разности паросочетаний. В USAMO 2009 P3(b) этот язык применяется к двум домино-разбиениям, а затем усиливается локальным tasteful-запретом на существование цикла.",
+      "anchors": {
+        "from_solution_id": "sol-alternating-cycle-obstruction",
+        "to_solution_id": "sol-symmetric-difference"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-usamo-2009-p3-uniqueness-imo-2016-c8-domino-cycles",
+      "from": "usamo-2009-p3-tasteful-domino-tiling-uniqueness",
+      "to": "imo-2016-c8-domino-unique-tiling-cycles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи переводят домино-разбиения в совершенные паросочетания и сравнивают два разбиения через чередующиеся циклы. В USAMO 2009 P3(b) цикл запрещается локальным tasteful-условием; в IMO 2016 C8 цикл используется для переключения и разрушения единственности.",
+      "backward_text": "IMO 2016 C8 является близким домино-родственником: там alternating cycle между разбиением и его отражением даёт новое допустимое разбиение. В USAMO 2009 P3(b) тот же объект доказывается невозможным из-за цветного `2x2`-ограничения.",
+      "anchors": {
+        "from_solution_id": "sol-alternating-cycle-obstruction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-usamo-2009-p3-uniqueness-yumt-2021-alternating-cycle",
+      "from": "usamo-2009-p3-tasteful-domino-tiling-uniqueness",
+      "to": "yumt-2021-grand-round4-problem3",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки находятся вокруг одного критерия: если два совершенных паросочетания различаются, их симметрическая разность даёт цветочередующийся цикл. В USAMO этот цикл запрещается локальным анализом доски; в ЮМТ его существование выводится из невозможности единственного совершенного паросочетания в графе с остовным деревом.",
+      "backward_text": "ЮМТ 2021 — графовая версия той же темы alternating cycle/perfect matching uniqueness. Она показывает, как отсутствие цветочередующегося цикла связано с единственностью паросочетания; USAMO 2009 P3(b) использует обратную сторону мотива, доказывая отсутствие такого цикла для tasteful-разбиений.",
+      "anchors": {
+        "from_solution_id": "sol-alternating-cycle-obstruction",
+        "to_solution_id": "sol-ai-kotzig-unique-perfect-matching"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

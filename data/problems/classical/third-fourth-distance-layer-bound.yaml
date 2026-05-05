@@ -63,7 +63,25 @@
       }
     ],
     "graph_theory": [],
-    "olympiad_reformulations": []
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-imo-2013-c6-m100-instance",
+        "title": "IMO 2013 C6: случай M=100",
+        "text": "При \\(M=100\\): если в связном графе для каждой вершины на расстоянии 3 от неё находится не более 100 вершин, то на расстоянии 4 от любой вершины находится не более \\(\\left\\lfloor 101^2/4\\right\\rfloor=2550\\) вершин.",
+        "source_id": "src-imo-2013-shortlist",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "path"
+        ],
+        "distinct_from": [
+          "stmt-distance-layer-bound"
+        ]
+      }
+    ]
   },
   "ideas": [
     {
@@ -138,6 +156,14 @@
       "source_id": "src-imo-2013-shortlist",
       "role": "source_problem_instance",
       "status": "source_verified"
+    },
+    {
+      "source_id": "src-imo-2013-shortlist",
+      "role": "official_numeric_instance",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-imo-2013-c6-m100-instance"
+      ]
     }
   ],
   "editorial": {
@@ -147,7 +173,8 @@
     "public_ready": false,
     "notes": [
       "Вынесено как самостоятельная лемма о слоях расстояний из imo-2013-c6-flight-distance-layers; исходная карточка IMO намеренно не редактировалась.",
-      "Доказательство является параметризованной версией короткого аргумента с разбиением по соседям; в случае IMO параметр M=100 и получается floor(101^2/4)=2550."
+      "Доказательство является параметризованной версией короткого аргумента с разбиением по соседям; в случае IMO параметр M=100 и получается floor(101^2/4)=2550.",
+      "2026-05-05 merge: IMO 2013 C6 is the M=100 numeric instance of this distance-layer bound; the MSE partition proof is the same parameterized argument."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,

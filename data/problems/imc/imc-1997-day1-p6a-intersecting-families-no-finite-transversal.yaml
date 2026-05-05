@@ -1,0 +1,162 @@
+{
+  "id": "imc-1997-day1-p6a-intersecting-families-no-finite-transversal",
+  "title": "Пересекающееся семейство без конечного носителя попарных пересечений, IMC 1997 Day 1 P6(a)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "intersecting_family",
+      "finite_hypergraph_edges",
+      "pairwise_intersection_transversal",
+      "non_uniform_hypergraph"
+    ],
+    "methods": [
+      "counterexample_construction",
+      "moving_singleton_intersections"
+    ],
+    "transformations": [
+      "sets_as_hyperedges",
+      "finite_witness_to_avoidance"
+    ],
+    "goal": [
+      "disprove_existence"
+    ],
+    "auxiliary_graph_type": [
+      "hypergraph"
+    ],
+    "invariants": [
+      "pairwise_intersection",
+      "escaping_intersection_point"
+    ],
+    "keywords": [
+      "imc_1997_day1_p6a",
+      "intersecting_family",
+      "finite_intersection_witness",
+      "transversal",
+      "non_uniform_hypergraph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Постройте семейство \\(\\mathcal F\\) конечных подмножеств множества натуральных чисел \\(\\mathbb N\\), такое что любые два множества из \\(\\mathcal F\\) имеют непустое пересечение, но не существует конечного множества \\(Y\\subset\\mathbb N\\), для которого \\(A\\cap B\\cap Y\\ne\\varnothing\\) при любых \\(A,B\\in\\mathcal F\\).",
+        "source_id": "src-imc-1997-day1-p6-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-hypergraph",
+        "title": "Гиперграфовая формулировка",
+        "text": "Постройте гиперграф \\(\\mathcal H\\) на множестве вершин \\(\\mathbb N\\), все ребра которого конечны и попарно пересекаются, но для которого никакое конечное множество вершин \\(Y\\) не пересекает все множества вида \\(E\\cap E'\\), где \\(E,E'\\) - ребра \\(\\mathcal H\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "definition_ids": []
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-moving-singleton-intersections",
+      "title": "Единственное пересечение пары уходит на бесконечность",
+      "text": "Две бесконечные серии множеств можно сделать так, чтобы все множества внутри одной серии имели общий малый элемент, а диагональная пара \\(A_n,B_n\\) пересекалась только в точке \\(2n\\). Любое конечное \\(Y\\) пропустит такую точку при подходящем \\(n\\).",
+      "tags": [
+        "construction",
+        "goal_impossibility"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-explicit-counterexample",
+      "title": "Явный контрпример",
+      "text": "Для каждого \\(n\\ge1\\) положим\n\\[\nA_n=\\{1,3,5,\\ldots,2n-1,2n\\},\\qquad\nB_n=\\{2,4,6,\\ldots,2n,2n+1\\}.\n\\]\nПусть \\(\\mathcal F=\\{A_n:n\\ge1\\}\\cup\\{B_n:n\\ge1\\}\\). Все множества в \\(\\mathcal F\\) конечны.\n\nПроверим попарное пересечение. Любые два множества вида \\(A_n,A_m\\) содержат \\(1\\). Любые два множества вида \\(B_n,B_m\\) содержат \\(2\\). Если взяты \\(A_n\\) и \\(B_m\\), то при \\(n\\le m\\) число \\(2n\\) лежит в обоих множествах, а при \\(n>m\\) число \\(2m+1\\) лежит в обоих множествах. Следовательно, \\(\\mathcal F\\) действительно является пересекающимся семейством.\n\nТеперь рассмотрим диагональные пары. По построению\n\\[\nA_n\\cap B_n=\\{2n\\}.\n\\]\nПусть \\(Y\\subset\\mathbb N\\) конечно. Тогда можно выбрать \\(n\\) так, что \\(2n\\notin Y\\). Для этой пары получаем\n\\[\nA_n\\cap B_n\\cap Y=\\varnothing.\n\\]\nЗначит, никакое конечное множество \\(Y\\) не может пересекать все попарные пересечения множеств из \\(\\mathcal F\\).",
+      "idea_ids": [
+        "idea-moving-singleton-intersections"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Короткий, но нетривиальный контрпример: нужно сохранить попарное пересечение всего бесконечного семейства и одновременно увести некоторые конкретные пересечения за любой конечный свидетель.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "construction",
+    "graph_model",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "explicit_counterexample",
+        "moving_singleton_intersections",
+        "hypergraph_model"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-1997-day1-p6-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ],
+      "solution_ids": [
+        "sol-explicit-counterexample"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-05: выделено из составной карточки imc-1997-day1-p6-intersecting-families-finite-transversal как самостоятельная часть (a).",
+      "Карточка доказывает только отрицательный ответ в общем, неравномерном случае; положительная равномерная теорема вынесена в отдельную карточку."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "agent high-reasoning split audit",
+      "notes": "Выделенная часть официальной задачи с самодостаточным контрпримером.",
+      "audit_source": "agent-imc-1997-p6-split"
+    }
+  }
+}

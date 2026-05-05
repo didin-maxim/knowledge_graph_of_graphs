@@ -1,0 +1,206 @@
+{
+  "id": "vosh-1992-zonal-airlines-route-transfer",
+  "title": "Авиакомпании и передача рейсов, XVIII Всероссийская олимпиада 1992",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Яковлев Г. Н. и др.",
+      "status": "source_verified",
+      "note": "Указаны как авторы публикации XVIII Всероссийской олимпиады в журнале «Квант»; индивидуальный составитель задачи в проверенном источнике не выделен. Решение задачи М1367 в «Кванте» 1993 № 9/10 подписано Б. Кукушкиным."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "proper_edge_colored_multigraph",
+      "color_classes_as_matchings",
+      "two_color_alternating_components"
+    ],
+    "methods": [
+      "graph_model",
+      "two_color_exchange",
+      "kempe_chain",
+      "balancing_process"
+    ],
+    "transformations": [
+      "flights_to_edge_colored_graph",
+      "airline_to_color_class",
+      "two_airlines_to_alternating_subgraph"
+    ],
+    "goal": [
+      "equitable_edge_recoloring",
+      "balance_color_class_sizes"
+    ],
+    "auxiliary_graph_type": [
+      "edge_colored_multigraph",
+      "two_color_path_cycle_subgraph"
+    ],
+    "invariants": [
+      "proper_edge_coloring",
+      "total_number_of_edges",
+      "number_of_edges_in_two_chosen_colors"
+    ],
+    "keywords": [
+      "vserossiyskaya_1992_9_8",
+      "kvant_M1367",
+      "airlines",
+      "edge_coloring",
+      "equitable_edge_coloring",
+      "kempe_chain"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Рейсы разных авиакомпаний",
+        "text": "В некоторой стране между городами существует авиационное сообщение. В стране \\(2k+1\\) авиакомпания, причем первая осуществляет один рейс, вторая - два рейса и т. д. Каждый рейс связывает между собой два города. В стране существует закон, согласно которому из каждого города не может выполняться более одного рейса каждой авиакомпании. Компании решили по-новому поделить между собой все рейсы так, чтобы каждая авиакомпания осуществляла одинаковое число рейсов. Докажите, что это можно сделать, не нарушая закона.",
+        "source_id": "src-kvant-digital-1992-10-vseros-math",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть ребра конечного мультиграфа без петель правильно раскрашены в \\(2k+1\\) цветов: в каждой вершине любые два инцидентных ребра имеют разные цвета, а цвет \\(i\\) встречается ровно \\(i\\) раз. Докажите, что эти же ребра можно правильно перекрасить теми же \\(2k+1\\) цветами так, чтобы каждый цвет встречался ровно \\(k+1\\) раз.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "degree",
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-airlines-edge-coloring",
+      "title": "Авиакомпании как цвета ребер",
+      "text": "Города являются вершинами, рейсы - ребрами, а авиакомпании - цветами. Закон о не более чем одном рейсе каждой авиакомпании из города означает правильность реберной раскраски: у одной вершины нет двух инцидентных ребер одного цвета.",
+      "tags": [
+        "graph_model",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-two-color-alternating-path",
+      "title": "Выравнивание двух цветов по чередующейся цепи",
+      "text": "Если один цвет встречается чаще другого, то в подграфе из ребер этих двух цветов компоненты являются чередующимися путями или циклами. Циклы содержат поровну ребер двух цветов, поэтому избыток одного цвета обнаруживается на пути; обмен цветов на таком пути уменьшает дисбаланс на 1.",
+      "tags": [
+        "coloring",
+        "augmenting_path"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kvant-m1367-two-color-exchange",
+      "title": "Опубликованное решение М1367 через двухцветные цепи",
+      "text": "Всего рейсов \\(1+2+\\cdots+(2k+1)=(2k+1)(k+1)\\), значит в новой раскладке каждая авиакомпания должна получить по \\(k+1\\) рейсу. Пока есть авиакомпания \\(A\\) с числом рейсов больше \\(k+1\\) и авиакомпания \\(B\\) с числом рейсов меньше \\(k+1\\), рассмотрим только рейсы этих двух компаний.\n\nИзобразим рейсы \\(A\\) красными ребрами, а рейсы \\(B\\) синими. Из-за закона в каждой вершине выходит не более одного красного и не более одного синего ребра, поэтому двухцветный подграф распадается на чередующиеся циклы и цепи. В каждом цикле красных и синих ребер поровну. Так как у \\(A\\) ребер больше, чем у \\(B\\), существует цепь, в которой красных ребер на одно больше, чем синих. Поменяем на этой цепи красный и синий цвета местами. Правильность раскраски сохраняется: в вершинах цепи по-прежнему инцидентно не более одного ребра каждого из двух цветов, а остальные цвета не затронуты. При этом число рейсов \\(A\\) уменьшается на 1, а число рейсов \\(B\\) увеличивается на 1.\n\nПовторяя такой обмен, каждый раз уменьшаем суммарный избыток компаний, у которых больше \\(k+1\\) рейсов. Процесс конечен, и в конце у всех \\(2k+1\\) компаний ровно по \\(k+1\\) рейсу; закон при всех обменах сохранялся.",
+      "idea_ids": [
+        "idea-airlines-edge-coloring",
+        "idea-two-color-alternating-path"
+      ],
+      "standard_idea_ids": [
+        "alternating_paths",
+        "kempe_chains"
+      ],
+      "status": "source_verified",
+      "definition_ids": [
+        "multigraph",
+        "matching",
+        "alternating_path",
+        "cycle"
+      ],
+      "source_id": "src-kvant-digital-1993-09-10-m1367-solution",
+      "source_note": "Paraphrase of the published Kvant solution to problem M1367, Kvant 1993 № 9/10, p. 31; signed Б. Кукушкин."
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "XVIII Всероссийская олимпиада по математике, 1992, 9 класс, второй день, задача 8; в публикации указано 11 баллов. В «Задачнике Кванта» переопубликована как М1367.",
+    "status": "source_verified"
+  },
+  "tags": [
+    "coloring",
+    "graph_model",
+    "augmenting_path",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "two_color_exchange",
+        "alternating_paths",
+        "kempe_chains"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kvant-digital-1992-10-vseros-math",
+      "role": "primary_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    },
+    {
+      "source_id": "src-kvant-digital-1993-09-10-m1367-solution",
+      "role": "published_solution",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-kvant-m1367-two-color-exchange"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Added during VMO/VsOSh zonal pre-1992 official/primary sweep. Statement was read from Kvant Digital page image 61 of issue 1992-10.",
+      "Deep audit 2026-05-05: the word 'сообщение' in the original is not a connectivity hypothesis; the correct graph target is equitable proper edge recoloring, not preservation of connectedness.",
+      "Kvant 1992 № 10 Zadachnik states that M1366-M1370 were proposed at the 1992 Vserossiyskaya Olympiad; this card's olympiad statement is the same as M1367.",
+      "A published Kvant solution appears in 1993 № 9/10, p. 31, signed Б. Кукушкин; the card solution is a paraphrase of that official/house solution.",
+      "The 1992 VMO/MCCME prize page states that this Vserossiyskaya Olympiad was the then-penultimate stage before the Interrepublican Olympiad.",
+      "No global source registry edit was made in this pass because the allowed file scope excluded data/sources/sources.yaml; the 1993 solution URL is recorded in the deep audit."
+    ],
+    "relations_status": "reviewed_no_links",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.93,
+      "basis": "agent high-reasoning audit",
+      "notes": "Kvant published a complete solution to the same problem as M1367 in 1993 № 9/10. The solution gives the full two-airline alternating-chain exchange and the finite balancing process; no heavy external theorem is needed.",
+      "audit_source": "deep/vosh-1992-zonal-airlines-route-transfer.md"
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "id": "imc-2011-day2-p2a-tripartite-half-threshold-counterexample",
+  "title": "Контрпример без треугольников при пороге \\(k=n/2\\), IMC 2011 Day 2 P2(a)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Fedor Duzhin",
+      "status": "source_verified"
+    },
+    {
+      "name": "Nick Gravin",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tripartite_graph",
+      "triangle",
+      "minimum_degree_to_each_other_part",
+      "balanced_bipartition"
+    ],
+    "methods": [
+      "extremal_construction",
+      "parity_obstruction",
+      "degree_check"
+    ],
+    "transformations": [
+      "likes_relation_to_tripartite_graph"
+    ],
+    "goal": [
+      "construct_no_triangle_example",
+      "show_threshold_not_enough"
+    ],
+    "auxiliary_graph_type": [
+      "tripartite_graph"
+    ],
+    "invariants": [
+      "binary_part_labels",
+      "minimum_degree_to_each_other_part"
+    ],
+    "keywords": [
+      "imc_2011_day2_p2a",
+      "tripartite_graph",
+      "threshold_counterexample",
+      "forbidden_triangle",
+      "married_triples"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-half-threshold",
+        "title": "Условие, часть (a)",
+        "text": "У инопланетной расы три пола: мужской, женский и эмальский. Брачная тройка состоит из трех представителей разных полов, которые все нравятся друг другу; симпатии взаимны. В экспедиции есть \\(n\\) мужчин, \\(n\\) женщин и \\(n\\) эмалей. Каждый участник симпатизирует хотя бы \\(k\\) представителям каждого из двух других полов. Докажите, что если \\(n\\) четно и \\(k=n/2\\), то может быть невозможно создать даже одну брачную тройку.",
+        "source_id": "src-imc-2011-day2-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-half-threshold",
+        "title": "Сбалансированный трехдольный граф без треугольников",
+        "text": "Пусть \\(n\\) четно. Постройте простой трехдольный граф с долями \\(M,F,E\\), каждая размера \\(n\\), такой что каждая вершина имеет ровно \\(n/2\\) соседей в каждой из двух чужих долей, но граф не содержит треугольника с одной вершиной в каждой доле.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original-half-threshold"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-binary-label-obstruction",
+      "title": "Несовместимые двоичные метки на трех долях",
+      "text": "Разбиваем каждую долю пополам и разрешаем ребра \\(M_iF_i\\), \\(F_iE_i\\), \\(E_iM_{1-i}\\). Любые два первых типа ребер заставляют три метки совпасть, а третий тип требует противоположности.",
+      "tags": [
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-half-threshold-construction",
+      "title": "Двухцветная конструкция без треугольников",
+      "text": "Пусть \\(n\\) четно. Разобьем каждую из трех долей на две равные части:\n\\[\nM=M_0\\sqcup M_1,\\qquad F=F_0\\sqcup F_1,\\qquad E=E_0\\sqcup E_1,\n\\]\nгде каждая часть имеет размер \\(n/2\\).\n\nПроведем все ребра между \\(M_i\\) и \\(F_i\\), все ребра между \\(F_i\\) и \\(E_i\\), а также все ребра между \\(E_i\\) и \\(M_{1-i}\\), где \\(i=0,1\\). Других ребер нет. Тогда каждая вершина из любой доли соединена ровно с одной половиной каждой из двух других долей, то есть имеет ровно \\(n/2\\) соседей в каждой чужой доле.\n\nПроверим, что треугольника нет. Если вершины предполагаемого треугольника лежат в \\(M_a\\), \\(F_b\\), \\(E_c\\), то ребро между \\(M_a\\) и \\(F_b\\) возможно только при \\(a=b\\), а ребро между \\(F_b\\) и \\(E_c\\) возможно только при \\(b=c\\). Значит, эти два ребра требуют \\(a=b=c\\). Но ребро между \\(E_c\\) и \\(M_a\\) возможно только при \\(a=1-c\\), что противоречит \\(a=c\\). Поэтому треугольников нет.\n\nВ исходном языке это означает, что при \\(k=n/2\\) можно выполнить все индивидуальные условия симпатий, но не получить ни одной брачной тройки.",
+      "idea_ids": [
+        "idea-binary-label-obstruction"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Короткая, но самостоятельная экстремальная конструкция: нужно увидеть правильное несовместимое разбиение трех долей пополам и проверить степень ровно до каждой чужой доли.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "construction",
+    "forbidden_triangle",
+    "extremal_graph_theory",
+    "graph_model",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "extremal_construction",
+        "binary_label_obstruction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2011-day2-p2-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original-half-threshold"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split from compound parent imc-2011-day2-p2-tripartite-married-triples.",
+      "Self-contained threshold counterexample: it uses only the binary partition construction and does not use Hall's theorem or the perfect-cover argument from part (b)."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.92,
+      "basis": "high-reasoning split audit",
+      "notes": "Part (a) is exactly the official threshold construction, expanded with the degree and no-triangle checks.",
+      "audit_source": "agent-imc-2011-p2-split"
+    }
+  }
+}

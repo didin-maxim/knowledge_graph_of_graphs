@@ -1,0 +1,221 @@
+{
+  "id": "cmo-2006-p4-max-cycle-triplets-tournament",
+  "title": "Максимум циклических троек в турнире, CMO 2006 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "split_child",
+      "graph_reformulation",
+      "extremal_counting"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Olympiad",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "directed_triangle",
+      "transitive_triple",
+      "regular_tournament"
+    ],
+    "methods": [
+      "degree_counting",
+      "double_counting",
+      "cauchy_schwarz",
+      "regular_tournament_construction"
+    ],
+    "transformations": [
+      "round_robin_to_tournament",
+      "noncyclic_triples_to_dominated_triples"
+    ],
+    "goal": [
+      "find_maximum",
+      "exact_extremal_count"
+    ],
+    "auxiliary_graph_type": [
+      "complete_oriented_graph"
+    ],
+    "invariants": [
+      "outdegrees",
+      "dominated_triples",
+      "sum_of_outdegrees",
+      "sum_of_squared_outdegrees"
+    ],
+    "keywords": [
+      "cmo_2006_p4",
+      "cycle_triplet",
+      "maximum_cycle_triplets",
+      "regular_tournament",
+      "directed_3_cycle",
+      "outdegree_counting"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Максимальная часть официальной задачи",
+        "text": "В круговом турнире участвуют \\(2n+1\\) команд, где \\(n\\ge1\\), каждая команда играет с каждой другой командой ровно один раз, и ничьих нет. Три команды \\(X,Y,Z\\) образуют циклическую тройку, если \\(X\\) побеждает \\(Y\\), \\(Y\\) побеждает \\(Z\\), а \\(Z\\) побеждает \\(X\\). Найдите максимально возможное число циклических троек.",
+        "source_id": "src-cmo-2006-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(T\\) — турнир на \\(2n+1\\) вершинах, где \\(n\\ge1\\), то есть ориентация полного графа, в которой между любыми двумя различными вершинами проведена ровно одна дуга. Определите максимально возможное число направленных циклов длины \\(3\\) в таком турнире.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "directed_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-degree-count"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-degree-count",
+        "title": "Формулировка через исходящие степени",
+        "text": "Пусть \\(x_v\\) — исходящая степень вершины \\(v\\) турнира на \\(2n+1\\) вершинах. Число нециклических троек равно \\(\\sum_v \\binom{x_v}{2}\\), поэтому задача о максимуме направленных \\(3\\)-циклов эквивалентна минимизации этой суммы при условии \\(\\sum_v x_v=\\binom{2n+1}{2}\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "outdegree"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-transitive-triples",
+      "title": "Нециклические тройки считаются по победителю",
+      "text": "Каждая нециклическая тройка в турнире транзитивна и имеет единственную вершину, побеждающую две остальные. Поэтому число таких троек равно \\(\\sum_v\\binom{d^+(v)}2\\).",
+      "tags": [
+        "tournaments",
+        "double_counting",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-balanced-outdegrees",
+      "title": "Для максимума степени должны быть сбалансированы",
+      "text": "При фиксированной сумме исходящих степеней выпуклая сумма \\(\\sum_v\\binom{d^+(v)}2\\) минимальна, когда степени как можно равнее. На нечетном числе вершин это означает регулярный турнир с \\(d^+(v)=n\\) для всех вершин.",
+      "tags": [
+        "tournaments",
+        "extremal_graph_theory",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-degree-count-maximum",
+      "title": "Подсчет транзитивных троек и регулярный турнир",
+      "text": "Ответ:\n\\[\n\\frac{n(n+1)(2n+1)}6.\n\\]\n\nРассмотрим произвольный турнир на \\(2n+1\\) командах. Обозначим через \\(c\\) число циклических троек, а через \\(d\\) число остальных троек. Тогда\n\\[\nc+d=\\binom{2n+1}{3}.\n\\]\nЛюбая нециклическая тройка в турнире является транзитивной: в ней есть ровно одна команда, которая побеждает две другие. Обратно, если в тройке есть команда, побеждающая две остальные, то эта тройка не циклическая.\n\nПусть \\(x_i\\) — число побед команды \\(T_i\\), то есть ее исходящая степень. Команда \\(T_i\\) является победителем ровно в \\(\\binom{x_i}{2}\\) нециклических троек, потому что две остальные команды можно выбрать среди тех, кого она победила. Каждая нециклическая тройка имеет единственного такого победителя, значит\n\\[\nd=\\sum_{i=1}^{2n+1}\\binom{x_i}{2}.\n\\]\nТакже\n\\[\n\\sum_{i=1}^{2n+1}x_i=\\binom{2n+1}{2}=n(2n+1),\n\\]\nпоскольку каждая игра дает ровно одну победу.\n\nТеперь оценим \\(d\\) снизу. Имеем\n\\[\n\\sum_i\\binom{x_i}{2}=\\frac12\\sum_i x_i^2-\\frac12\\sum_i x_i.\n\\]\nПо неравенству Коши\n\\[\n(2n+1)\\sum_i x_i^2\\ge \\left(\\sum_i x_i\\right)^2=n^2(2n+1)^2,\n\\]\nпоэтому \\(\\sum_i x_i^2\\ge n^2(2n+1)\\). Следовательно,\n\\[\nd\\ge \\frac12 n^2(2n+1)-\\frac12 n(2n+1)=(2n+1)\\binom n2.\n\\]\nТогда\n\\[\nc=\\binom{2n+1}{3}-d\n\\le \\binom{2n+1}{3}-(2n+1)\\binom n2\n=\\frac{n(n+1)(2n+1)}6.\n\\]\n\nПокажем достижимость. Расположим \\(2n+1\\) команд по кругу. Пусть каждая команда побеждает следующие \\(n\\) команд по часовой стрелке и проигрывает оставшимся \\(n\\) командам. Для каждой пары это правило задает ровно один результат.\n\nВ построенном турнире каждая команда имеет ровно \\(n\\) побед. Поэтому\n\\[\nd=(2n+1)\\binom n2,\n\\]\nи число циклических троек равно\n\\[\n\\binom{2n+1}{3}-(2n+1)\\binom n2=\\frac{n(n+1)(2n+1)}6.\n\\]\nЗначит, найденная верхняя оценка точна.",
+      "idea_ids": [
+        "idea-count-transitive-triples",
+        "idea-balanced-outdegrees"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tournament",
+        "outdegree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "Максимальная часть CMO 2006 P4: точная верхняя оценка через подсчет транзитивных троек по исходящим степеням, Коши и регулярную циклическую конструкцию.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "tournaments",
+    "extremal_graph_theory",
+    "double_counting",
+    "degree_counting",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "degree_counting",
+        "double_counting",
+        "regular_tournament_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-2006-official",
+      "role": "derived_subproblem_from_official_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    },
+    {
+      "source_id": "src-cmo-2006-solutions",
+      "role": "official_solution_crosscheck",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-degree-count-maximum"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split child of cmo-2006-p4-cycle-triplets-tournament. This card records only the maximum part of CMO 2006 P4 as a self-contained exact-extremum problem.",
+      "High-reasoning split note: this is not the same proof as the minimum child; the core is the degree-counting identity for transitive triples plus a Cauchy lower bound and regular tournament construction."
+    ],
+    "parent_problem_id": "cmo-2006-p4-cycle-triplets-tournament",
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "status": "ai_checked",
+      "confidence": 0.86,
+      "basis": "official solution source split into a self-contained subproblem",
+      "notes": "The maximum proof is the degree-counting portion of the official solution, rewritten as a standalone card.",
+      "label": "официальное полное/почти полное"
+    }
+  }
+}

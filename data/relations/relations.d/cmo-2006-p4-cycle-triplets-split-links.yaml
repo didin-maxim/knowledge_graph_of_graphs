@@ -1,0 +1,94 @@
+{
+  "relations": [
+    {
+      "id": "rel-cmo-2006-cycle-triplets-parent-min-child",
+      "from": "cmo-2006-p4-cycle-triplets-tournament",
+      "to": "cmo-2006-p4-min-cycle-triplets-tournament",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Минимальная карточка является самостоятельной подзадачей исходной compound-карточки CMO 2006 P4: она оставляет тот же турнир и циклические тройки, но спрашивает только нижний экстремум.",
+      "backward_text": "Исходная CMO 2006 P4 объединяет минимальную конструктивную часть с отдельной максимальной частью; эта дочерняя карточка фиксирует только минимум \\(0\\).",
+      "anchors": {
+        "from_solution_id": "sol-official-degree-count",
+        "to_solution_id": "sol-transitive-construction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-cmo-2006-cycle-triplets-parent-max-child",
+      "from": "cmo-2006-p4-cycle-triplets-tournament",
+      "to": "cmo-2006-p4-max-cycle-triplets-tournament",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Максимальная карточка является самостоятельной подзадачей исходной compound-карточки CMO 2006 P4: она оставляет тот же турнир и циклические тройки, но спрашивает только верхний экстремум.",
+      "backward_text": "Исходная CMO 2006 P4 объединяет максимум с отдельной минимальной конструкцией; эта дочерняя карточка фиксирует только максимум \\(n(n+1)(2n+1)/6\\).",
+      "anchors": {
+        "from_solution_id": "sol-official-degree-count",
+        "to_solution_id": "sol-degree-count-maximum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-cmo-2006-cycle-triplets-min-max-pair",
+      "from": "cmo-2006-p4-min-cycle-triplets-tournament",
+      "to": "cmo-2006-p4-max-cycle-triplets-tournament",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это парные экстремальные варианты одного объекта: минимум циклических троек достигается транзитивным турниром и равен \\(0\\), а максимум требует балансировки исходящих степеней и регулярного турнира.",
+      "backward_text": "Максимальная подзадача выглядит как соседняя половина той же CMO-задачи, но ее доказательство существенно другое: вместо простой транзитивной конструкции используется подсчет нециклических троек по степеням.",
+      "anchors": {
+        "from_solution_id": "sol-transitive-construction",
+        "to_solution_id": "sol-degree-count-maximum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-cmo-2006-max-cycle-triplets-imo-2010-c5",
+      "from": "cmo-2006-p4-max-cycle-triplets-tournament",
+      "to": "imo-2010-c5-bad-company-tournament",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе задачи используют турнир без ничьих и подсчет малых подтурниров через исходящие степени. В максимальной части CMO 2006 P4 считаются циклические и транзитивные тройки; в IMO Shortlist 2010 C5 те же циклические тройки входят в условие о плохих четверках.",
+      "backward_text": "IMO Shortlist 2010 C5 является более сложным родственником максимальной части CMO 2006 P4: вместо чистой максимизации числа циклических троек она использует подсчет локальных чемпионов и проигравших в тройках и четверках турнира.",
+      "anchors": {
+        "from_solution_id": "sol-degree-count-maximum",
+        "to_solution_id": "sol-degree-sum-full"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-cmo-2006-max-cycle-triplets-all-union-score-squares",
+      "from": "all-union-1987-final-9-tournament-score-squares",
+      "to": "cmo-2006-p4-max-cycle-triplets-tournament",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи являются задачами о турнирах и степенях вершин. Всесоюзная задача использует баланс побед и поражений для тождества сумм квадратов, а максимальная часть CMO 2006 P4 использует исходящие степени для точного подсчета транзитивных троек.",
+      "backward_text": "Максимальная часть CMO 2006 P4 развивает тот же язык степеней турнира в экстремальную задачу: нужно не только сбалансировать суммы степеней, но и получить точную верхнюю границу на число циклических троек.",
+      "anchors": {
+        "from_solution_id": "sol-published-degree-balance",
+        "to_solution_id": "sol-degree-count-maximum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-cmo-2006-max-cycle-triplets-tournament-king",
+      "from": "cmo-2006-p4-max-cycle-triplets-tournament",
+      "to": "tournament-king-radius-two",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют исходящие степени в турнирах. Здесь степени суммируются для подсчета транзитивных троек, а в лемме о короле выбирается вершина максимальной исходящей степени и анализируются ее исходящие соседи.",
+      "backward_text": "Лемма о короле радиуса 2 — базовый пример техники исходящих степеней в турнирах; максимальная часть CMO 2006 P4 использует тот же язык уже для точного экстремального подсчета циклических троек.",
+      "anchors": {
+        "from_solution_id": "sol-degree-count-maximum",
+        "to_solution_id": "sol-max-outdegree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

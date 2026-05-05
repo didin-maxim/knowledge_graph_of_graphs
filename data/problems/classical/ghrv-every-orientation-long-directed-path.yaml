@@ -1,0 +1,153 @@
+{
+  "id": "ghrv-every-orientation-long-directed-path",
+  "title": "Длинный ориентированный путь в любой ориентации графа",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "direction_of_theorem"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Tibor Gallai",
+      "status": "source_verified"
+    },
+    {
+      "name": "Maria Hasse",
+      "status": "source_verified"
+    },
+    {
+      "name": "Bernard Roy",
+      "status": "source_verified"
+    },
+    {
+      "name": "L. M. Vitaver",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "orientation",
+      "directed_path",
+      "chromatic_number"
+    ],
+    "methods": [
+      "potential_function",
+      "coloring_by_path_length"
+    ],
+    "transformations": [
+      "assign_longest_path_length_to_vertex"
+    ],
+    "goal": [
+      "lower_bound_for_directed_path_length"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "longest_directed_path_ending_at_vertex"
+    ],
+    "keywords": [
+      "gallai_hasse_roy_vitaver",
+      "chromatic_number",
+      "directed_path",
+      "one_direction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Нижняя оценка на путь",
+        "text": "Пусть \\(G\\) — конечный простой граф с хроматическим числом \\(\\chi(G)\\). Тогда в любой ориентации рёбер графа \\(G\\) есть ориентированный путь, содержащий не меньше \\(\\chi(G)-1\\) рёбер.",
+        "source_id": "src-wikipedia-gallai-hasse-roy-vitaver",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "directed_graph",
+          "path",
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-longest-path-potential",
+      "title": "Длина пути как потенциал",
+      "text": "Для каждой вершины берём максимальную длину ориентированного пути, который в ней заканчивается; вдоль каждой дуги этот потенциал строго возрастает.",
+      "tags": [
+        "coloring",
+        "potential_function"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-path-potential-coloring",
+      "title": "Раскраска длинами путей",
+      "text": "Зафиксируем произвольную ориентацию \\(D\\) графа \\(G\\). Для вершины \\(v\\) обозначим через \\(a(v)\\) максимальное число рёбер в ориентированном пути, который заканчивается в \\(v\\). Если в \\(D\\) есть дуга \\(u\\to v\\), то любой максимальный путь, заканчивающийся в \\(u\\), можно продолжить этой дугой, поэтому \\(a(v)\\ge a(u)+1\\). Значит, значения \\(a\\) на концах любого ребра различны. Следовательно, раскраска вершины \\(v\\) в цвет \\(a(v)+1\\) является правильной раскраской графа \\(G\\). Если бы все ориентированные пути имели меньше \\(\\chi(G)-1\\) рёбер, то все значения \\(a(v)\\) были бы не больше \\(\\chi(G)-2\\), и мы получили бы правильную раскраску графа в не более чем \\(\\chi(G)-1\\) цветов. Это противоречит определению хроматического числа. Поэтому в данной ориентации существует ориентированный путь длины хотя бы \\(\\chi(G)-1\\).",
+      "idea_ids": [
+        "idea-longest-path-potential"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "directed_graph",
+        "path",
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Одна сторона теоремы Галлаи-Хассе-Роя-Витавера; доказательство короткое, но полезно как отдельный инструмент.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "classical_lemma",
+    "goal_bound",
+    "potential_function"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "coloring_by_path_length"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-gallai-hasse-roy-vitaver",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Вынесено из GHRV как самостоятельное направление после false-friends lemma-split аудита."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

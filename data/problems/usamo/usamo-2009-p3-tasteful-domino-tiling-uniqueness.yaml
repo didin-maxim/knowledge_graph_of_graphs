@@ -1,0 +1,198 @@
+{
+  "id": "usamo-2009-p3-tasteful-domino-tiling-uniqueness",
+  "title": "Единственность вкусного домино-разбиения через чередующиеся циклы, USAMO 2009 P3(b)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Sam Vandervelde",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "chessboard_polygon",
+      "domino_tiling",
+      "tasteful_tiling",
+      "perfect_matching",
+      "alternating_cycle"
+    ],
+    "methods": [
+      "symmetric_difference_of_tilings",
+      "alternating_cycle_argument",
+      "extremal_boundary_choice",
+      "local_forbidden_pattern"
+    ],
+    "transformations": [
+      "domino_tilings_to_perfect_matchings",
+      "compare_two_perfect_matchings",
+      "cycle_switching_obstruction"
+    ],
+    "goal": [
+      "uniqueness_of_tasteful_tiling"
+    ],
+    "auxiliary_graph_type": [
+      "2_colored_2_regular_graph",
+      "cycle_decomposition"
+    ],
+    "invariants": [
+      "symmetric_difference_splits_into_alternating_cycles",
+      "tasteful_local_constraint_blocks_cycle_switching",
+      "white_to_black_orientation_contradiction"
+    ],
+    "keywords": [
+      "usamo_2009_p3b",
+      "domino_tiling",
+      "unique_tasteful_tiling",
+      "alternating_cycles",
+      "symmetric_difference"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-uniqueness",
+        "title": "Единственность tasteful-разбиения",
+        "text": "Шахматным многоугольником назовём многоугольник, стороны которого лежат на прямых `x=a` или `y=b`, где `a,b` — целые; его внутренность разбивается этими прямыми на единичные клетки шахматной раскраски. Домино-разбиение такого многоугольника — это точное покрытие неперекрывающимися прямоугольниками `1x2` и `2x1`. В каждом `2x2`-блоке запрещены два цветных локальных рисунка: две вертикальные домино, если нижняя левая клетка блока чёрная, и две горизонтальные домино, если нижняя левая клетка блока белая. Назовём разбиение tasteful, если ни один из этих двух рисунков в нём не встречается. Докажите, что у каждого шахматного многоугольника существует не более одного tasteful-домино-разбиения.",
+        "source_id": "src-usamo-2009-p3-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-uniqueness",
+        "text": "Дан конечный связный клеточный подграф квадратной решётки, соответствующий шахматному многоугольнику: вершины — единичные клетки, а рёбра соединяют клетки с общей стороной. Клетки раскрашены шахматно. Совершенное паросочетание этого графа назовём аккуратным, если ни в одном `2 x 2`-блоке оно не содержит две вертикальные пары при чёрной нижней левой клетке и не содержит две горизонтальные пары при белой нижней левой клетке. Докажите, что в таком графе существует не более одного аккуратного совершенного паросочетания.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-two-tilings-give-alternating-cycles",
+      "title": "Симметрическая разность двух разбиений — набор alternating cycles",
+      "text": "Если два совершенных паросочетания различны, то после удаления общих домино каждая оставшаяся клетка имеет степень `2`: одно ребро из первого разбиения и одно из второго. Поэтому появляется хотя бы один чётный цикл с чередованием разбиений.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-boundary-wb-domino-climbs",
+      "title": "Нижний `WB`-домино вынуждает подъём к верхней границе",
+      "text": "На нижней строке области, ограниченной чередующимся циклом, можно найти горизонтальное домино с белой клеткой слева. Tasteful-условие запрещает оба простых покрытия пары клеток над ним, поэтому такой же объект вынужденно появляется строкой выше.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-orientation-contradiction",
+      "title": "Ориентация от белого к чёрному несовместима на верхней границе",
+      "text": "Повторяя подъём, доходим до `WB`-домино на верхней границе области. Обход цикла с внутренностью слева заставляет нижнее и верхнее граничные `WB`-домино иметь противоположные направления относительно ориентации белый-чёрный.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-alternating-cycle-obstruction",
+      "title": "Запрет чередующегося цикла",
+      "text": "Предположим, что существуют два разных tasteful-разбиения `T` и `M`. Рассмотрим граф на клетках многоугольника, где каждое домино даёт ребро между двумя соседними клетками. В симметрической разности `T Δ M` каждая участвующая клетка имеет степень `2`: к ней инцидентно одно домино из `T` и одно домино из `M`. Следовательно, `T Δ M` распадается на непересекающиеся чётные циклы, в которых рёбра из `T` и `M` чередуются. Возьмём один такой цикл `C`, а через `R` обозначим область, ограниченную `C` вместе с внутренностью.\n\nНа самой нижней строке области `R` цикл содержит горизонтальное домино. Если таких горизонтальных домино на этой строке несколько, среди них есть домино типа `WB`, то есть с белой клеткой слева и чёрной справа. Если горизонтальное домино на нижней строке единственное, то две соседние вертикальные домино другого разбиения, с которыми оно чередуется, и локальная tasteful-проверка того же `2x2`-блока снова дают горизонтальное `WB`-домино на нижней строке в одном из двух разбиений. Зафиксируем разбиение, которому принадлежит найденное `WB`-домино.\n\nДве клетки прямо над этим `WB`-домино лежат в `R`; иначе цикл уже выходил бы через верхнюю сторону нижнего домино. Эти две клетки не могут быть покрыты одним горизонтальным домино выбранного разбиения, потому что вместе с нижним `WB`-домино получилась бы запрещённая пара горизонтальных домино в `2x2`-блоке. Они также не могут быть покрыты двумя вертикальными домино, потому что тогда возникла бы запрещённая пара вертикальных домино. Значит хотя бы одна из этих верхних клеток покрыта горизонтальным домино, выступающим влево или вправо, и на следующей строке возникает новое горизонтальное `WB`-домино того же выбранного разбиения.\n\nПовторяя этот подъём, мы неизбежно доходим до `WB`-домино на верхней границе области `R`, над которым уже не обе клетки принадлежат `R`; это домино лежит на самом цикле `C`. Теперь обойдём `C` так, чтобы область `R` оставалась слева, и ориентируем каждое домино выбранного разбиения от белой клетки к чёрной. На нижнем `WB`-домино направление обхода согласуется с этой ориентацией. Из-за чередования вдоль цикла такая согласованность сохраняется для всех домино выбранного разбиения на `C`. Но верхнее граничное `WB`-домино при обходе с внутренностью слева проходится справа налево, то есть от чёрной клетки к белой. Противоречие.\n\nЗначит чередующегося цикла в `T Δ M` быть не может, поэтому симметрическая разность пуста и `T=M`. Следовательно, tasteful-разбиение, если оно существует, единственно.",
+      "idea_ids": [
+        "idea-two-tilings-give-alternating-cycles",
+        "idea-boundary-wb-domino-climbs",
+        "idea-orientation-contradiction"
+      ],
+      "standard_idea_ids": [
+        "alternating_paths",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching",
+        "cycle",
+        "alternating_path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 8,
+    "comment": "Самостоятельная часть единственности: существование tasteful-разбиения не используется; вся сложность в запрете ненулевой симметрической разности через alternating cycles и граничный анализ.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "planar_graphs",
+    "extremal_choice",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "alternating_cycle_argument",
+        "symmetric_difference_of_tilings"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-2009-p3-aops-wiki",
+      "role": "problem_archive",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2009-evan-chen-notes",
+      "role": "secondary_solution",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-usamo-2009-p3-shen-fu-tsai",
+      "role": "community_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split из compound-карточки USAMO 2009 P3: эта карточка содержит только часть единственности/невозможности множественности и не опирается на доказательство существования.",
+      "Самодостаточность проверена: формулировка доказывает `не более одного`, поэтому часть существования оформлять как prerequisite не нужно."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.82,
+      "basis": "agent high-reasoning split audit",
+      "notes": "Part (b) is a self-contained uniqueness statement with a complete alternating-cycle obstruction proof.",
+      "audit_source": "manual-split-2026-05-05"
+    }
+  }
+}

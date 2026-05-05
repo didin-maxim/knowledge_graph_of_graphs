@@ -1,0 +1,109 @@
+{
+  "relations": [
+    {
+      "id": "rel-sums-2012-p7-parent-minimum-split",
+      "from": "sums-2012-p7-tree-connected-subsets-extrema",
+      "to": "sums-2012-p7-tree-connected-subsets-minimum",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Исходная карточка SUMS 2012/7 является compound-задачей с двумя экстремумами; эта дочерняя карточка изолирует только минимум \\(s(T)\\) и доказательство через пути между парами вершин.",
+      "backward_text": "Минимальная версия является самостоятельной половиной исходной SUMS 2012/7: она использует путь как экстремальное дерево и не требует оценки через множества рёбер для максимума.",
+      "anchors": {
+        "from_solution_id": "sol-official-path-and-star",
+        "to_solution_id": "sol-minimum-paths"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-sums-2012-p7-parent-maximum-split",
+      "from": "sums-2012-p7-tree-connected-subsets-extrema",
+      "to": "sums-2012-p7-tree-connected-subsets-maximum",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Исходная карточка SUMS 2012/7 является compound-задачей с двумя экстремумами; эта дочерняя карточка изолирует только максимум \\(s(T)\\) и доказательство через непустые множества рёбер.",
+      "backward_text": "Максимальная версия является самостоятельной половиной исходной SUMS 2012/7: она использует звезду как экстремальное дерево и не требует нижней оценки через пути для минимума.",
+      "anchors": {
+        "from_solution_id": "sol-official-path-and-star",
+        "to_solution_id": "sol-maximum-star"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-sums-2012-p7-minimum-maximum-paired-extrema",
+      "from": "sums-2012-p7-tree-connected-subsets-minimum",
+      "to": "sums-2012-p7-tree-connected-subsets-maximum",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Обе карточки экстремизируют одно и то же число связных индуцированных подмножеств дерева, но минимум достигается на пути и доказывается через пары вершин.",
+      "backward_text": "Парная максимальная версия достигается на звезде и доказывается через кодирование поддеревьев множествами рёбер; это другой экстремальный механизм для того же параметра \\(s(T)\\).",
+      "anchors": {
+        "from_solution_id": "sol-minimum-paths",
+        "to_solution_id": "sol-maximum-star"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-sums-2012-p7-minimum-sums-2007-tree-subsets",
+      "from": "sums-2012-p7-tree-connected-subsets-minimum",
+      "to": "sums-2007-p4-tree-induced-components-sum",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Минимальная версия SUMS 2012/7 считает связные индуцированные подмножества дерева; SUMS 2007/4 считает компоненты по всем индуцированным подмножествам дерева.",
+      "backward_text": "SUMS 2007/4 даёт родственный язык индуцированных лесов: связное подмножество в минимальной версии 2012/7 является случаем индуцированного леса с одной компонентой.",
+      "anchors": {
+        "from_solution_id": "sol-minimum-paths",
+        "to_solution_id": "sol-official-edge-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-sums-2012-p7-maximum-sums-2007-tree-subsets",
+      "from": "sums-2012-p7-tree-connected-subsets-maximum",
+      "to": "sums-2007-p4-tree-induced-components-sum",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Максимальная версия SUMS 2012/7 считает связные индуцированные подмножества дерева через рёбра поддерева; SUMS 2007/4 также переводит подсчёт индуцированных подмножеств дерева к подсчёту рёбер.",
+      "backward_text": "SUMS 2007/4 является родственной задачей о подмножествах вершин дерева: там суммируется число компонент, а здесь максимизируется число подмножеств с одной компонентой.",
+      "anchors": {
+        "from_solution_id": "sol-maximum-star",
+        "to_solution_id": "sol-official-edge-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-sums-2012-p7-minimum-tree-near-perfect-path",
+      "from": "sums-2012-p7-tree-connected-subsets-minimum",
+      "to": "tree-near-perfect-matchings-path-extremal",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "В минимальной версии SUMS 2012/7 путь является экстремальным деревом: любая ветвящаяся вершина создаёт дополнительное связное подмножество сверх путей между парами.",
+      "backward_text": "В лемме о почти совершенных паросочетаниях путь также выступает экстремальной структурой дерева, хотя контролируемый параметр и техника доказательства другие.",
+      "anchors": {
+        "from_solution_id": "sol-minimum-paths",
+        "to_solution_id": "sol-induction-bipartition"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.55
+    },
+    {
+      "id": "rel-sums-2012-p7-maximum-pairwise-intersecting-edges",
+      "from": "sums-2012-p7-tree-connected-subsets-maximum",
+      "to": "pairwise-intersecting-edges-star-or-triangle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Максимум в SUMS 2012/7 достигается, когда все рёбра дерева попарно пересекаются, то есть образуют звезду; это частный древесный след мотива 'попарно пересекающиеся рёбра'.",
+      "backward_text": "Лемма о попарно пересекающихся рёбрах классифицирует общий графовый мотив как звезду или треугольник; в дереве треугольник невозможен, поэтому остаётся звезда.",
+      "anchors": {
+        "from_solution_id": "sol-maximum-star",
+        "to_solution_id": "sol-star-or-triangle"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.68
+    }
+  ]
+}

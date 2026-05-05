@@ -1,0 +1,190 @@
+{
+  "id": "maximum-spanning-tree-cycle-shortest-edge-lemma",
+  "title": "Строго кратчайшее ребро цикла не входит в максимальный остов",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "weighted_complete_graph",
+      "maximum_weight_spanning_tree",
+      "cycle",
+      "closed_polygonal_chain"
+    ],
+    "methods": [
+      "extremal_choice",
+      "exchange_argument",
+      "cycle_property"
+    ],
+    "transformations": [
+      "delete_tree_edge",
+      "add_longer_crossing_edge"
+    ],
+    "goal": [
+      "exclude_edge_from_maximum_tree"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "spanning_tree_connectivity",
+      "edge_count"
+    ],
+    "keywords": [
+      "maximum_spanning_tree",
+      "cycle_property",
+      "strict_shortest_edge",
+      "closed_polygonal_chain",
+      "kolmogorov_2022_lemma"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-closed-polygonal-chain",
+        "title": "Геометрическая формулировка через замкнутую ломаную",
+        "text": "Пусть \\(S\\) — конечное множество точек на плоскости, а \\(T\\) — дерево на вершинах \\(S\\), у которого сумма евклидовых длин рёбер максимальна среди всех деревьев на \\(S\\). Рассмотрим замкнутую ломаную с вершинами в \\(S\\). Если одно её ребро \\(AB\\) имеет длину строго меньше длины каждого другого ребра этой ломаной, то отрезок \\(AB\\) не является ребром дерева \\(T\\).",
+        "source_id": "src-kolmogorov-2022-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree"
+        ],
+        "distinct_from": [
+          "stmt-weighted-complete-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-weighted-complete-graph",
+        "title": "Взвешенный полный граф",
+        "text": "Пусть \\(K\\) — конечный полный граф с действительными весами рёбер, а \\(T\\) — остовное дерево максимального суммарного веса в \\(K\\). Если в некотором цикле графа \\(K\\) ребро \\(e\\) имеет вес строго меньше веса каждого другого ребра этого цикла, то \\(e\\notin E(T)\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "spanning_tree",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-closed-polygonal-chain"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cut-after-deleting-short-edge",
+      "title": "Разрез после удаления короткого ребра",
+      "text": "Если короткое ребро максимального дерева удалить, дерево распадается на две компоненты. Остальная часть цикла или замкнутой ломаной идёт из одной компоненты в другую, поэтому содержит ребро через этот разрез.",
+      "tags": [
+        "trees",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-strictness-needed-for-improvement",
+      "title": "Строгость даёт увеличение веса",
+      "text": "Обмен запрещён экстремальностью только тогда, когда новое ребро строго тяжелее удаляемого. Поэтому условие выделяет именно строго кратчайшее ребро цикла.",
+      "tags": [
+        "extremal_graph_theory",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-cycle-exchange",
+      "title": "Обмен по циклу",
+      "text": "Докажем графовую формулировку. Предположим противное: строго самое лёгкое ребро \\(e=uv\\) некоторого цикла \\(C\\) входит в максимальный по суммарному весу остов \\(T\\). Удалим \\(e\\) из \\(T\\). Получатся две компоненты, одна содержит \\(u\\), другая содержит \\(v\\).\n\nПройдём по циклу \\(C\\) от \\(u\\) к \\(v\\), не используя ребро \\(e\\). В начале мы находимся в компоненте вершины \\(u\\), а в конце — в другой компоненте, значит на этом пути есть ребро \\(f\\), соединяющее две компоненты дерева \\(T-e\\). По условию \\(e\\) строго легче любого другого ребра цикла, поэтому \\(w(f)>w(e)\\).\n\nТогда \\(T-e+f\\) снова является остовным деревом: ребро \\(f\\) соединяет две компоненты, возникшие после удаления \\(e\\). Его суммарный вес больше веса \\(T\\), что противоречит максимальности \\(T\\). Следовательно, \\(e\\) не может входить в \\(T\\).\n\nГеометрическая версия получается из той же идеи. Замкнутая ломаная задаёт замкнутый обход в полном графе на точках \\(S\\), веса рёбер равны евклидовым длинам. Если \\(AB\\in T\\), то после удаления \\(AB\\) остальные звенья ломаной ведут из компоненты точки \\(B\\) в компоненту точки \\(A\\), поэтому среди них есть звено, пересекающее этот разрез. Оно строго длиннее \\(AB\\), и замена снова увеличивает суммарную длину дерева. Противоречие.",
+      "idea_ids": [
+        "idea-cut-after-deleting-short-edge",
+        "idea-strictness-needed-for-improvement"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "spanning_tree",
+        "cycle",
+        "tree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 2,
+    "comment": "Короткая cycle-property лемма для максимального остовного дерева; в геометрических задачах применяется к замкнутой ломаной с единственным строго кратчайшим звеном.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "extremal_graph_theory",
+    "extremal_choice",
+    "goal_proof",
+    "classical_lemma"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "maximum_spanning_tree_cycle_property",
+        "tree_edge_exchange",
+        "cut_after_deleting_tree_edge"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kolmogorov-2022-official",
+      "role": "extracted_from_solution_step",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-closed-polygonal-chain"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-05: выделено из решения задачи Кубка Колмогорова 2022, раунд 4, высшая лига, как самостоятельная лемма про цикл/замкнутую ломаную и максимальное по весу дерево.",
+      "Строгое неравенство в условии сохранено намеренно: при равных весах обмен не даёт противоречия максимальности."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false,
+    "solution_classification": {
+      "type": "official_solution_lemma_extracted",
+      "label": "лемма из официального решения",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "extracted from the existing Kolmogorov 2022 official-solution card and expanded self-contained",
+      "notes": "The proof is the standard maximum-spanning-tree cycle exchange specialized to the closed polygonal chain used in the source solution.",
+      "audit_source": "agent-kolmogorov-2022-round4-high-diameter-circles-lemma-split-2026-05-05"
+    }
+  }
+}

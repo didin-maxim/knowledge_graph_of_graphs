@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-ghrv-long-path-direction-ghrv-theorem",
+      "from": "ghrv-every-orientation-long-directed-path",
+      "to": "gallai-hasse-roy-vitaver-theorem",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Эта карточка выделяет нижнюю сторону теоремы GHRV: в любой ориентации графа есть ориентированный путь длины хотя бы \\(\\chi(G)-1\\). В полной теореме она соединяется с конструктивной обратной стороной.",
+      "backward_text": "Теорема GHRV использует эту лемму как одну из двух самостоятельных половин равенства между хроматическим числом и минимальной максимальной длиной ориентированного пути.",
+      "anchors": {
+        "from_solution_id": "sol-path-potential-coloring",
+        "to_solution_id": "sol-path-length-potentials"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-ghrv-short-path-orientation-direction-ghrv-theorem",
+      "from": "ghrv-coloring-orientation-short-path",
+      "to": "gallai-hasse-roy-vitaver-theorem",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Эта карточка выделяет конструктивную сторону теоремы GHRV: правильная раскраска задаёт ориентацию, в которой все ориентированные пути имеют длину не больше числа цветов минус 1.",
+      "backward_text": "Теорема GHRV сшивает эту конструкцию с обратной нижней оценкой для произвольной ориентации.",
+      "anchors": {
+        "from_solution_id": "sol-monotone-colors",
+        "to_solution_id": "sol-path-length-potentials"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-regular-bipartite-decomposition-konig-line-coloring",
+      "from": "regular-bipartite-perfect-matching-decomposition",
+      "to": "konig-line-coloring-bipartite",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Разложение регулярного двудольного графа на совершенные паросочетания является ключевым регулярным случаем в доказательстве теоремы Кёнига о рёберной раскраске двудольных графов.",
+      "backward_text": "В доказательстве теоремы Кёнига общий двудольный граф сначала дополняют до регулярного, после чего применяют эту лемму и читают совершенные паросочетания как цветовые классы рёбер.",
+      "anchors": {
+        "from_solution_id": "sol-hall-induction",
+        "to_solution_id": "sol-regularization-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-regular-bipartite-decomposition-hall-marriage",
+      "from": "hall-marriage-theorem",
+      "to": "regular-bipartite-perfect-matching-decomposition",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Теорема Холла даёт совершенное паросочетание в регулярном двудольном графе: для любого множества левой доли число соседей не меньше его размера по подсчёту инцидентных рёбер.",
+      "backward_text": "Лемма о разложении регулярного двудольного графа применяет теорему Холла на каждом шаге, затем удаляет найденное совершенное паросочетание и продолжает индукцию по степени.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-hall-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    }
+  ]
+}

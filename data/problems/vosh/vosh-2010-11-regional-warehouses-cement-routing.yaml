@@ -1,0 +1,177 @@
+{
+  "id": "vosh-2010-11-regional-warehouses-cement-routing",
+  "title": "Перевозка цемента по связной сети складов, Всероссийская олимпиада 2010/11",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Карасёв Р.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "vertex_weights",
+      "transport_on_edges",
+      "spanning_tree_leaf"
+    ],
+    "methods": [
+      "induction",
+      "leaf_deletion",
+      "reversal_argument"
+    ],
+    "transformations": [
+      "warehouses_to_vertices",
+      "roads_to_edges",
+      "cement_amounts_to_vertex_weights",
+      "shipping_trip_to_edge_weight_transfer"
+    ],
+    "goal": [
+      "minimum_number_of_edge_transfers"
+    ],
+    "auxiliary_graph_type": [
+      "connected_graph",
+      "spanning_tree"
+    ],
+    "invariants": [
+      "total_weight",
+      "connected_after_leaf_deletion"
+    ],
+    "keywords": [
+      "vosh_2010_11_regional",
+      "grade_11_problem_4",
+      "connected_graph",
+      "transport_on_graph",
+      "n_minus_one_moves"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "11.4",
+        "text": "2011 складов соединены дорогами так, что от любого склада можно проехать к любому другому, возможно, проехав по нескольким дорогам. На складах находится по \\(x_1,\\ldots,x_{2011}\\) кг цемента соответственно. За один рейс можно провезти с произвольного склада на другой склад по соединяющей их дороге произвольное количество цемента. В итоге на складах по плану должно оказаться по \\(y_1,\\ldots,y_{2011}\\) кг цемента соответственно, причём \\(x_1+\\cdots+x_{2011}=y_1+\\cdots+y_{2011}\\). За какое минимальное количество рейсов можно выполнить план при любых значениях чисел \\(x_i\\), \\(y_i\\) и любой схеме дорог?",
+        "source_id": "src-vosh-2010-11-regional-day1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть \\(G\\) — связный простой граф на \\(n\\) вершинах. В вершинах заданы начальные неотрицательные веса \\(x_v\\) и требуемые неотрицательные веса \\(y_v\\), причём \\(\\sum_v x_v=\\sum_v y_v\\). За один ход можно перенести произвольный неотрицательный вес вдоль одного ребра. Докажите, что для любых \\(x_v\\), \\(y_v\\) и любого связного \\(G\\) достаточно \\(n-1\\) ходов, и что в общем случае меньшего числа ходов гарантировать нельзя.",
+        "source_id": "src-vosh-2010-11-regional-day1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-delete-last-visited-vertex",
+      "title": "Удаление вершины, последней впервые встреченной на обходе",
+      "text": "В связном графе можно выбрать вершину, удаление которой не нарушает связность оставшегося графа: достаточно взять маршрут, проходящий по всем вершинам, и вершину, впервые появившуюся последней. Это даёт индукционный шаг.",
+      "tags": [
+        "connectivity",
+        "induction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-reverse-transfer-for-deficit",
+      "title": "Обратный порядок перевозок для дефицитной вершины",
+      "text": "Если у удаляемой вершины избыток, его вывозят сразу. Если у неё дефицит, сначала решают обратную задачу от целевого распределения к начальному, а затем разворачивают найденные перевозки.",
+      "tags": [
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-induction-leaf-routing",
+      "title": "Индукция по числу складов",
+      "text": "Сначала покажем, что \\(n-1\\) ходов в общем случае необходимы. Возьмём любую связную схему, поместим весь цемент в одну вершину \\(s\\), а в требуемом распределении зададим положительное количество цемента в каждой вершине. Тогда в каждую из остальных \\(n-1\\) вершин цемент должен хотя бы один раз зайти по некоторому ребру. Эти последние заходы происходят в разных рейсах, значит меньше \\(n-1\\) рейсов не хватит.\n\nДокажем достаточность индукцией по \\(n\\). При \\(n=1\\) делать ничего не нужно. Пусть \\(n>1\\). Так как граф связен, существует маршрут, проходящий через все вершины. Выберем вершину \\(a\\), которая впервые появляется на таком маршруте позже всех остальных. После удаления \\(a\\) оставшийся граф остаётся связным: для любой другой вершины участок маршрута до её первого появления проходит только через вершины, впервые появившиеся раньше \\(a\\), и даёт связь внутри оставшегося графа.\n\nЕсли \\(x_a\\ge y_a\\), перевезём из \\(a\\) в любую соседнюю вершину \\(x_a-y_a\\) единиц цемента, если разность положительна; если она равна нулю, этот рейс можно считать неиспользованным. После этого вершина \\(a\\) уже имеет нужное количество цемента. В оставшемся связном графе на \\(n-1\\) вершинах суммарный начальный вес равен суммарному требуемому, поэтому по индукции план для остальных вершин выполняется не более чем за \\(n-2\\) рейса. Всего получается не более \\(n-1\\) рейсов.\n\nЕсли \\(x_a<y_a\\), применим уже доказанный случай избытка к обратной задаче: стартовым распределением считаем \\((y_v)\\), а требуемым — \\((x_v)\\). Для вершины \\(a\\) в этой обратной задаче есть избыток \\(y_a-x_a\\), значит распределение \\((x_v)\\) можно получить из \\((y_v)\\) не более чем за \\(n-1\\) рейсов. Развернув эти рейсы в обратном порядке и по обратным направлениям, получаем требуемый план из \\((x_v)\\) в \\((y_v)\\). Следовательно, \\(n-1\\) рейсов всегда достаточно, а для \\(n=2011\\) ответ равен \\(2010\\).",
+      "idea_ids": [
+        "idea-delete-last-visited-vertex",
+        "idea-reverse-transfer-for-deficit"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Региональный этап 2010/11, 11 класс, задача 4; официальное решение использует индукцию по связной дорожной сети.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "induction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction",
+        "connected_graph_leaf_deletion"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-2010-11-regional-day1-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-05 deep-аудит: официальный PDF решений для регионального этапа 2010/11, 11 класс, первый день подтверждает условие 11.4, автора Р. Карасёва, ответ 2010 и полное индукционное решение. Графовая модель как перенос неотрицательных весов по рёбрам связного простого графа сверена с текстом."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.92,
+      "basis": "agent high-reasoning official PDF audit",
+      "notes": "Official VOSH PDF contains the statement, proposer, answer, lower-bound example, and self-contained induction proving the upper bound.",
+      "audit_source": "docs/archive/vosh-official-sweep/deep/vosh-2010-11-regional-warehouses-cement-routing.md"
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "id": "vosh-2000-01-final-tree-leaves-bridge-proof",
+  "title": "Дерево со 100 листьями и 50 новых дорог, Всероссийская олимпиада 2000/01",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Карпов Д.В.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "leaf",
+      "bridge",
+      "leaf_pairing"
+    ],
+    "methods": [
+      "extremal_choice",
+      "tree_metric",
+      "pairing_maximization"
+    ],
+    "transformations": [
+      "roads_to_tree",
+      "pair_leaves_by_maximum_distance_sum",
+      "bridge_contradiction"
+    ],
+    "goal": [
+      "make_graph_2_edge_connected"
+    ],
+    "auxiliary_graph_type": [
+      "tree"
+    ],
+    "invariants": [
+      "number_of_leaves",
+      "sum_of_paired_leaf_distances",
+      "cut_after_edge_deletion"
+    ],
+    "keywords": [
+      "tree_leaves",
+      "bridges",
+      "pairing_leaves",
+      "edge_connectivity"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Страна с единственными путями между городами",
+        "text": "В стране несколько городов, некоторые пары городов соединены дорогами, причем между любыми двумя городами существует единственный несамопересекающийся путь по дорогам. Известно, что в стране ровно 100 городов, из которых выходит по одной дороге. Докажите, что можно построить 50 новых дорог так, что после этого даже при закрытии любой дороги можно будет из любого города попасть в любой другой.",
+        "source_id": "src-vosh-1993-2006-mccme-book",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Попарное соединение листьев дерева",
+        "text": "Пусть \\(T\\) — дерево, у которого ровно 100 листьев. Докажите, что можно добавить 50 новых ребер так, чтобы в полученном графе не было мостов. Более того, достаточно попарно соединить этими ребрами все листья дерева.",
+        "source_id": "src-vosh-1993-2006-mccme-book",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "connected_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-maximize-paired-leaf-distances",
+      "title": "Максимизировать сумму расстояний в парах листьев",
+      "text": "Разобьем листья на пары так, чтобы сумма расстояний между листьями в парах была максимальной. Если после добавления таких ребер старое ребро осталось мостом, две пары листьев по разные стороны разреза можно перепарить крест-накрест и увеличить сумму расстояний.",
+      "tags": [
+        "extremal_choice",
+        "trees"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-max-distance-pairing",
+      "title": "Официальное решение через максимальную сумму расстояний",
+      "text": "Построим граф городов и дорог. Условие о единственном простом пути между любыми двумя городами означает, что это дерево; города степени 1 являются листьями. Обозначим листья через \\(A_1,\\ldots,A_{100}\\). Среди всех разбиений этих 100 листьев на 50 пар выберем такое, при котором сумма расстояний между листьями в парах максимальна. Добавим новые ребра между листьями каждой выбранной пары.\n\nДокажем, что после этого удаление любого ребра не нарушает связность. Новое ребро не может быть мостом, потому что его концы уже соединены старым путем в дереве. Предположим, что мостом осталось старое ребро \\(BC\\). После его удаления дерево распадается на две части. Каждая часть содержит хотя бы один лист исходного дерева. Кроме того, если новое ребро соединяло бы листья из разных частей, то оно сразу связывало бы эти части; значит все новые ребра целиком лежат внутри одной из двух частей. Поэтому в каждой части есть хотя бы одна выбранная пара листьев: пусть в одной части это \\(A_i,A_j\\), а в другой \\(A_k,A_m\\).\n\nВ дереве путь между листьями из разных частей обязан проходить через удаленное ребро \\(BC\\), а пути внутри одной части через него не проходят. Поэтому при перепаривании этих четырех листьев крест-накрест выполняется строгое неравенство \\(d(A_i,A_j)+d(A_k,A_m)<d(A_i,A_k)+d(A_j,A_m)\\). Тогда сумма расстояний в парах увеличилась бы, что противоречит выбору максимального разбиения. Значит старого моста тоже нет, и после удаления любой одной дороги граф остается связным.",
+      "idea_ids": [
+        "idea-maximize-paired-leaf-distances"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Заключительный этап 2000/01, 10 класс, задача 628 в книге МЦНМО; ключевой шаг — экстремальное разбиение листьев дерева на пары.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "connectivity",
+    "extremal_choice",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "maximum_distance_pairing",
+        "bridge_contradiction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-1993-2006-mccme-book",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified",
+      "problem_code": "2000/01 final, grade 10; MCCME book problem 628; Kvant 2001 N5 grade 10 problem 4"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено в ходе официального sweep по архиву МЦНМО/Math.ru; условие, автор и решение сверены по книге 1993–2006.",
+      "Deep-аудит 2026-05-05: источник, автор Д. Карпов/Карпов Д.В. и полное решение подтверждены по PDF МЦНМО/Math.ru; графовая формулировка уточнена как эквивалентная исходной с явным конструктивным усилением про попарное соединение листьев."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.94,
+      "basis": "MCCME/Math.ru official book PDF with statement, author, and full solution",
+      "notes": "Книга МЦНМО/Math.ru содержит условие задачи 628, автора Д. Карпова и полное решение; текущий текст является самостоятельным, корректным пересказом этого решения.",
+      "audit_source": "deep-audit-2026-05-05"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "id": "vosh-2025-26-regional-common-neighborhood-red-pairs",
+  "title": "100 знакомых и 50 пар незнакомых в окрестности, региональный этап ВсОШ 2025/26",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review",
+      "note": "Индивидуальный автор/proposer задачи 9.10 не указан в официальном PDF второго дня регионального этапа ВсОШ 2025/26; источник сообщает только, что задания подготовлены Центральной предметно-методической комиссией по математике."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "regular_graph",
+      "complement_edges",
+      "neighborhood"
+    ],
+    "methods": [
+      "extremal_counterexample",
+      "neighborhood_intersection_counting",
+      "double_counting",
+      "degree_counting"
+    ],
+    "transformations": [
+      "friendship_to_blue_edges",
+      "non_friendship_to_red_edges",
+      "count_red_edges_inside_neighborhoods"
+    ],
+    "goal": [
+      "exact_bound"
+    ],
+    "auxiliary_graph_type": [
+      "two_colored_complete_graph",
+      "friendship_graph"
+    ],
+    "invariants": [
+      "blue_degree_100",
+      "red_edge_in_each_blue_neighborhood",
+      "red_edge_upper_bound_49_contradiction"
+    ],
+    "keywords": [
+      "vosh_2025_26_regional",
+      "grade_9_problem_10",
+      "common_neighborhood",
+      "regular_friendship_graph",
+      "red_pairs"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "9.10",
+        "text": "В большой компании у каждого человека ровно 100 знакомых в этой же компании; знакомство взаимно. У любого человека среди его 100 знакомых есть хотя бы одна пара людей, не знакомых друг с другом. При каком наибольшем \\(k\\) можно утверждать, что найдётся человек, среди 100 знакомых которого найдутся хотя бы \\(k\\) различных пар людей, в каждой из которых люди не знакомы друг с другом? Один человек может входить в несколько таких пар.",
+        "source_id": "src-vosh-2025-26-regional-day2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть в конечном простом графе каждая вершина имеет степень 100, а окрестность каждой вершины не является кликой. Найдите наибольшее \\(k\\), для которого обязательно существует вершина, в окрестности которой есть хотя бы \\(k\\) пар несмежных вершин.",
+        "source_id": "src-vosh-2025-26-regional-day2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-blue-red-complement-neighborhoods",
+      "title": "Считать незнакомства внутри окрестностей",
+      "text": "Удобно дополнить граф знакомств до раскраски полного графа двумя цветами: синие рёбра — знакомства, красные — незнакомства. Тогда надо найти окрестность по синим рёбрам, в которой много красных рёбер.",
+      "tags": [
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-intersect-red-nonneighbors",
+      "title": "Две красно соединённые вершины с общим синим соседом",
+      "text": "Если в каждой синей окрестности меньше 50 красных рёбер, то для красной пары с общим синим соседом пересечение двух синих окрестностей даёт слишком много красных рёбер, что противоречит предположению.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-neighborhood-intersection",
+      "title": "Окрестности двух незнакомых людей",
+      "text": "Ответ: \\(k=50\\).\n\nСначала покажем, что больше гарантировать нельзя. Рассмотрим 102 человека, разбитых на 51 пару. Люди внутри каждой пары не знакомы, а любые двое из разных пар знакомы. Тогда у каждого человека ровно 100 знакомых: это все люди, кроме него самого и его напарника. Среди этих 100 знакомых ровно 50 пар незнакомых людей, а именно оставшиеся 50 исходных пар. Значит, \\(k\\ge 51\\) не гарантируется.\n\nДокажем, что 50 гарантируется. Переведём условие в граф: вершины — люди, синие рёбра — знакомства, красные рёбра — незнакомства. Из каждой вершины выходит ровно 100 синих рёбер. Пусть \\(N(v)\\) — множество синих соседей вершины \\(v\\). По условию в каждом \\(N(v)\\) есть хотя бы одно красное ребро.\n\nПредположим противное: в каждом множестве \\(N(v)\\) не более 49 красных рёбер. Возьмём произвольную вершину \\(v\\). В \\(N(v)\\) найдутся две вершины \\(u_1,u_2\\), соединённые красным ребром. У вершины \\(u_1\\) ровно 100 синих соседей; один из них — \\(v\\), а \\(u_2\\) с ней не соединён синим ребром, поэтому среди 100 синих соседей \\(u_1\\) есть вершина \\(w\\), не лежащая в \\(N(v)\\cup\\{v\\}\\). Тогда \\(v\\) и \\(w\\) соединены красным ребром, но их синие окрестности пересекаются хотя бы по вершине \\(u_1\\).\n\nПусть \\(P=N(v)\\cap N(w)\\), \\(|P|=t\\), где \\(1\\le t\\le 100\\). Пусть \\(Q=N(v)\\setminus P\\), \\(R=N(w)\\setminus P\\). Обозначим через \\(a\\) число красных рёбер внутри \\(P\\), через \\(b\\) число красных рёбер между \\(P\\) и \\(Q\\), а через \\(c\\) число красных рёбер между \\(P\\) и \\(R\\).\n\nРассмотрим вершину \\(p\\in P\\). В множестве \\(P\\cup Q\\cup R\\) всего \\(200-t\\) вершин. Из \\(p\\) идут синие рёбра в \\(v\\) и \\(w\\), а всего синих рёбер из \\(p\\) ровно 100, значит внутри \\(P\\cup Q\\cup R\\) у неё не более 98 синих соседей. Поэтому из \\(p\\) идёт не менее \\((200-t)-1-98=101-t\\) красных рёбер к другим вершинам этого множества. Суммируя по всем \\(p\\in P\\), получаем \\(2a+b+c\\ge t(101-t)\\).\n\nС другой стороны, в \\(N(v)=P\\cup Q\\) есть по предположению не более 49 красных рёбер, значит \\(a+b\\le 49\\). Аналогично из \\(N(w)=P\\cup R\\) получаем \\(a+c\\le 49\\). Следовательно, \\(2a+b+c\\le 98\\). Но \\(t(101-t)\\ge 100\\) для всех целых \\(t\\) от 1 до 100, потому что минимум на этом отрезке достигается на концах. Противоречие. Значит, в некоторой окрестности есть хотя бы 50 красных рёбер, то есть хотя бы 50 пар незнакомых людей.",
+      "idea_ids": [
+        "idea-blue-red-complement-neighborhoods",
+        "idea-intersect-red-nonneighbors"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 7,
+    "comment": "Региональный этап 2025/26, 9 класс, задача 10; точная оценка через пример и подсчёт красных рёбер в пересечениях окрестностей.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "double_counting",
+    "degree_counting",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "neighborhood_intersection_counting",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-2025-26-regional-day2-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Автор задачи не указан в просмотренном официальном PDF регионального этапа 2025/26."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "deep high-reasoning pass, 2026-05-05",
+      "notes": "Официальный PDF второго дня регионального этапа ВсОШ 2025/26 содержит условие, ответ k=50, экстремальный пример на 102 вершинах, два доказательства оценки и критерии оценивания. Локальная карточка разворачивает первое официальное доказательство через пересечение синих окрестностей; второе лемматическое доказательство в карточку не дублировалось.",
+      "audit_source": "docs/archive/vosh-official-sweep/deep/vosh-2025-26-regional-common-neighborhood-red-pairs.md"
+    }
+  }
+}

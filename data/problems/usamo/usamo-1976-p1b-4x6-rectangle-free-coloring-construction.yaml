@@ -1,0 +1,163 @@
+{
+  "id": "usamo-1976-p1b-4x6-rectangle-free-coloring-construction",
+  "title": "Раскраска доски 4x6 без монохроматического прямоугольника, USAMO 1976 P1b",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application",
+      "split_child"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_coloring",
+      "complete_bipartite_graph",
+      "monochromatic_rectangle",
+      "four_cycle",
+      "extremal_construction"
+    ],
+    "methods": [
+      "explicit_construction",
+      "set_system_encoding",
+      "bipartite_graph_modeling"
+    ],
+    "transformations": [
+      "columns_to_two_element_subsets_of_rows",
+      "board_to_edge_coloring_of_bipartite_graph"
+    ],
+    "goal": [
+      "construct_rectangle_free_coloring",
+      "avoid_monochromatic_c4"
+    ],
+    "auxiliary_graph_type": [
+      "complete_bipartite_graph"
+    ],
+    "invariants": [
+      "unique_column_for_each_same_color_row_pair",
+      "pairwise_intersections_of_two_subsets"
+    ],
+    "keywords": [
+      "usamo_1976_p1b",
+      "monochromatic_rectangle",
+      "rectangle_free_coloring",
+      "sharp_4_by_6_construction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Раскраска 4x6 без прямоугольника одного цвета",
+        "text": "Постройте раскраску каждой клетки доски `4x6` в черный или белый цвет, в которой не существует двух строк и двух столбцов, такие что четыре клетки на их пересечениях имеют один и тот же цвет.",
+        "source_id": "src-usamo-1976-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Постройте двухцветную раскраску ребер полного двудольного графа `K_{4,6}`, в которой нет одноцветного цикла длины `4`.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-columns-as-two-subsets",
+      "title": "Взять столбцы как все пары строк",
+      "text": "Если каждый столбец имеет ровно две черные клетки и эти пары пробегают все двухэлементные подмножества четырех строк, то любая пара строк встречается вместе черной ровно в одном столбце. То же верно для белого цвета, потому что дополнения к этим парам снова пробегают все пары строк.",
+      "tags": [
+        "construction",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-all-two-subsets-construction",
+      "title": "Шесть столбцов, соответствующих всем парам строк",
+      "text": "Занумеруем строки числами `1,2,3,4`. Шесть столбцов обозначим парами строк `12,13,14,23,24,34`. В столбце `ij` покрасим клетки строк `i` и `j` в черный цвет, а две остальные клетки - в белый. Например, столбец `12` имеет черные клетки в строках `1` и `2`, а белые в строках `3` и `4`.\n\nПроверим, что монохроматического прямоугольника нет. Черный прямоугольник с двумя фиксированными строками `r,s` существовал бы тогда и только тогда, когда есть два разных столбца, в которых обе клетки строк `r` и `s` черные. Но столбец с такой парой черных строк ровно один, а именно `rs`. Значит, черного прямоугольника нет.\n\nБелый прямоугольник с двумя фиксированными строками `r,s` существовал бы тогда и только тогда, когда есть два разных столбца, в которых обе клетки строк `r` и `s` белые. В нашей конструкции это означает, что черная пара соответствующего столбца равна дополнению к `{r,s}` в множестве `{1,2,3,4}`. Такое дополнение тоже единственно, поэтому и белого прямоугольника нет. Следовательно, описанная раскраска доски `4x6` удовлетворяет требованию.",
+      "idea_ids": [
+        "idea-columns-as-two-subsets"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 3,
+    "comment": "Самостоятельная construction-половина USAMO 1976 P1: компактная экстремальная раскраска через все пары строк.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "construction",
+    "ramsey_theory",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "explicit_construction",
+        "set_system_encoding",
+        "bipartite_graph_modeling"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-1976-aops-wiki",
+      "role": "community_wiki_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Split child extracted from the compound USAMO 1976 P1 card. This card proves only the 4x6 construction assertion and does not use the 4x7 forcing argument."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "high-reasoning split audit from the compound USAMO 1976 P1 card",
+      "notes": "Statement is supported by the existing USAMO archive source; solution is an independently checked explicit construction for the construction half.",
+      "audit_source": "agent-high-reasoning-split"
+    }
+  }
+}

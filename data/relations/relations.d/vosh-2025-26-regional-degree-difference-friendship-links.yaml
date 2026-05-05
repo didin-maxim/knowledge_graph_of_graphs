@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-handshaking-vosh-2025-degree-difference-friendship",
+      "from": "handshaking-lemma",
+      "to": "vosh-2025-26-regional-degree-difference-friendship",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В верхней оценке для случая максимальной степени не выше k-1 используется лемма о сумме степеней: из \\(2|E|=\\sum_v \\deg v\\le 2k(k-1)\\) сразу следует \\(|E|\\le k(k-1)\\).",
+      "backward_text": "Задача ВсОШ 2025/26 даёт прямое олимпиадное применение леммы о рукопожатиях внутри более тонкой экстремальной оценки, где остальные случаи разбираются слоями по степеням.",
+      "anchors": {
+        "from_solution_id": "sol-double-counting",
+        "to_solution_id": "sol-degree-layers"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-vosh-2025-common-neighborhood-degree-difference-friendship",
+      "from": "vosh-2025-26-regional-common-neighborhood-red-pairs",
+      "to": "vosh-2025-26-regional-degree-difference-friendship",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи второго дня регионального этапа ВсОШ 2025/26 переводят социальную формулировку про знакомства или дружбу в простой граф и ищут точную экстремальную оценку. В задаче 9.10 ключевым является подсчёт красных рёбер в окрестностях, а в задаче 10.8 — слои вершин по степеням.",
+      "backward_text": "Задача 10.8 является соседним официальным примером того же социально-графового языка: пары друзей становятся рёбрами, а ограничение на числа друзей превращается в ограничение на степени смежных вершин. В отличие от задачи 9.10, здесь не используются пересечения окрестностей, а работает разбиение по степеням.",
+      "anchors": {
+        "from_solution_id": "sol-official-neighborhood-intersection",
+        "to_solution_id": "sol-degree-layers"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    }
+  ]
+}

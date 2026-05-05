@@ -1,0 +1,150 @@
+{
+  "id": "ghrv-coloring-orientation-short-path",
+  "title": "Ориентация раскрашенного графа без слишком длинных ориентированных путей",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "direction_of_theorem"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Tibor Gallai",
+      "status": "source_verified"
+    },
+    {
+      "name": "Maria Hasse",
+      "status": "source_verified"
+    },
+    {
+      "name": "Bernard Roy",
+      "status": "source_verified"
+    },
+    {
+      "name": "L. M. Vitaver",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_simple_graph",
+      "proper_coloring",
+      "orientation",
+      "directed_path"
+    ],
+    "methods": [
+      "orientation_by_coloring",
+      "monotone_potential"
+    ],
+    "transformations": [
+      "orient_edges_by_increasing_color"
+    ],
+    "goal": [
+      "construct_orientation_with_short_paths"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "color_increases_along_path"
+    ],
+    "keywords": [
+      "gallai_hasse_roy_vitaver",
+      "chromatic_number",
+      "orientation_by_coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Верхняя оценка через раскраску",
+        "text": "Пусть \\(G\\) — конечный простой граф, правильно раскрашенный в \\(k\\) цветов. Тогда рёбра графа \\(G\\) можно ориентировать так, что каждый ориентированный путь содержит не больше \\(k-1\\) рёбер. В частности, существует ориентация графа \\(G\\), в которой каждый ориентированный путь имеет длину не больше \\(\\chi(G)-1\\).",
+        "source_id": "src-wikipedia-gallai-hasse-roy-vitaver",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "directed_graph",
+          "path",
+          "chromatic_number"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-orient-up-colors",
+      "title": "Ориентировать по возрастанию цвета",
+      "text": "Если каждое ребро направить от меньшего цвета к большему, то вдоль ориентированного пути цвета строго возрастают.",
+      "tags": [
+        "coloring",
+        "potential_function"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-monotone-colors",
+      "title": "Монотонность цветов",
+      "text": "Пронумеруем цвета числами \\(1,2,\\ldots,k\\). Каждое ребро между вершинами цветов \\(i\\) и \\(j\\) ориентируем от вершины меньшего цвета к вершине большего цвета. Правильность раскраски гарантирует, что концы ребра имеют разные цвета, поэтому ориентация определена корректно. Вдоль любого ориентированного пути цвет вершины на каждом шаге строго увеличивается. Значит, такой путь проходит через вершины попарно различных цветов в возрастающем порядке и содержит не больше \\(k\\) вершин, то есть не больше \\(k-1\\) рёбер. Применяя это к правильной раскраске в \\(\\chi(G)\\) цветов, получаем ориентацию, в которой все ориентированные пути имеют длину не больше \\(\\chi(G)-1\\).",
+      "idea_ids": [
+        "idea-orient-up-colors"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "directed_graph",
+        "path",
+        "chromatic_number"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 2,
+    "comment": "Конструктивная сторона GHRV: направление рёбер по цветам.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "classical_lemma",
+    "goal_construction",
+    "potential_function"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "orientation_by_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-gallai-hasse-roy-vitaver",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Вынесено из GHRV как самостоятельное конструктивное направление после false-friends lemma-split аудита."
+    ],
+    "relations_status": "base_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "relations": [
+    {
+      "id": "rel-ms2012-p10-parent-to-small-tait-classification",
+      "from": "miklos-schweitzer-2012-p10-knot-black-graph-spanning-trees",
+      "to": "miklos-schweitzer-2012-p10a-knot-black-graph-at-most-three-spanning-trees",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Составная карточка Miklos Schweitzer 2012 P10 содержит часть (a) о классификации узлов, у которых некоторый черный Tait-граф имеет не более трех остовных деревьев; дочерняя карточка выделяет эту классификацию в самостоятельную задачу.",
+      "backward_text": "Эта карточка является part (a) исходной составной задачи: она сохраняет модель knot Tait graph / spanning tree count, но доказывает только классификацию случаев \\(\\tau\\le3\\).",
+      "anchors": {
+        "from_solution_id": "solution-ai-shank-small-tait-graphs",
+        "to_solution_id": "sol-small-tait-graphs-classification"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-ms2012-p10-parent-to-odd-tait-spanning-trees",
+      "from": "miklos-schweitzer-2012-p10-knot-black-graph-spanning-trees",
+      "to": "miklos-schweitzer-2012-p10b-knot-black-graph-odd-spanning-trees",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Составная карточка Miklos Schweitzer 2012 P10 содержит часть (b) о нечетности числа остовных деревьев черного графа любой диаграммы узла; дочерняя карточка выделяет эту parity-теорему отдельно.",
+      "backward_text": "Эта карточка является part (b) исходной составной задачи: она доказывает только нечетность \\(\\tau(\\Gamma_B(D))\\), используя Matrix Tree / Goeritz background.",
+      "anchors": {
+        "from_solution_id": "solution-ai-shank-small-tait-graphs",
+        "to_solution_id": "sol-goeritz-kirchhoff-parity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-ms2012-p10-small-classification-uses-parity",
+      "from": "miklos-schweitzer-2012-p10a-knot-black-graph-at-most-three-spanning-trees",
+      "to": "miklos-schweitzer-2012-p10b-knot-black-graph-odd-spanning-trees",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Классификационная карточка использует нечетность числа остовных деревьев Tait-графа узла, чтобы из условия \\(\\tau\\le3\\) оставить только случаи \\(\\tau=1\\) и \\(\\tau=3\\).",
+      "backward_text": "Паритетная карточка является инструментом для классификации малых Tait-графов: сама она не классифицирует узлы, но дает решающее исключение четного случая \\(\\tau=2\\).",
+      "anchors": {
+        "from_solution_id": "sol-small-tait-graphs-classification",
+        "to_solution_id": "sol-goeritz-kirchhoff-parity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-ms2012-p10a-p10b-paired-knot-tait",
+      "from": "miklos-schweitzer-2012-p10a-knot-black-graph-at-most-three-spanning-trees",
+      "to": "miklos-schweitzer-2012-p10b-knot-black-graph-odd-spanning-trees",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Обе карточки являются самостоятельными частями одной задачи про knot Tait graph и spanning tree count: part (a) классифицирует малые значения, а part (b) доказывает общий паритет.",
+      "backward_text": "Паритетная часть парна классификационной: она дает глобальное свойство всех диаграмм узлов, тогда как классификация разбирает специальный порог \\(\\tau\\le3\\).",
+      "anchors": {
+        "from_solution_id": "sol-small-tait-graphs-classification",
+        "to_solution_id": "sol-goeritz-kirchhoff-parity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-ms2012-p10b-kolmogorov-2006-matrix-tree",
+      "from": "miklos-schweitzer-2012-p10b-knot-black-graph-odd-spanning-trees",
+      "to": "kolmogorov-2006-team-olympiad-seniors-problem-9",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки используют Matrix Tree / Kirchhoff viewpoint для числа остовных деревьев. В Miklos Schweitzer 2012 P10(b) нужен только паритет Tait-графа узла через Goeritz-матрицу, а в задаче Колмогорова 2006 считается точное число остовных деревьев колеса.",
+      "backward_text": "Подсчет остовных деревьев колеса через редуцированный лапласиан является чисто графовым родственником паритетной Tait-задачи: там тот же Matrix Tree механизм, но без knot Tait graph и Goeritz background.",
+      "anchors": {
+        "from_solution_id": "sol-goeritz-kirchhoff-parity",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-ms2012-p10a-kolmogorov-2006-spanning-tree-count",
+      "from": "miklos-schweitzer-2012-p10a-knot-black-graph-at-most-three-spanning-trees",
+      "to": "kolmogorov-2006-team-olympiad-seniors-problem-9",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе задачи организованы вокруг spanning tree count. В классификационной Tait-задаче важны только значения \\(1\\) и \\(3\\) и структура малых мультиграфов, а задача Колмогорова 2006 вычисляет точную формулу для графа-колеса.",
+      "backward_text": "Задача про колесо является счетным родственником классификации малых Tait-графов: обе говорят об остовных деревьях, но используют разные режимы - точную формулу против классификации очень малых значений.",
+      "anchors": {
+        "from_solution_id": "sol-small-tait-graphs-classification",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.7
+    }
+  ]
+}

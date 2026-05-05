@@ -1,0 +1,184 @@
+{
+  "id": "vosh-2014-15-regional-grid-rainbow-rectangle",
+  "title": "Четыре разных цвета в прямоугольнике доски, Всероссийская олимпиада 2014/15",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Д. Храмцов",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_bipartite_grid_graph",
+      "edge_coloring",
+      "rainbow_cycle",
+      "grid_rectangle"
+    ],
+    "methods": [
+      "bipartite_graph_model",
+      "cycle_existence",
+      "shortest_rainbow_cycle",
+      "cycle_shortening",
+      "construction"
+    ],
+    "transformations": [
+      "rows_columns_to_bipartite_vertices",
+      "colored_cells_to_colored_edges",
+      "rainbow_rectangle_to_rainbow_4_cycle"
+    ],
+    "goal": [
+      "sharp_color_threshold"
+    ],
+    "auxiliary_graph_type": [
+      "edge_colored_bipartite_graph",
+      "complete_bipartite_graph"
+    ],
+    "invariants": [
+      "number_of_used_colors",
+      "shortest_rainbow_cycle_length"
+    ],
+    "keywords": [
+      "vosh_2014_15_regional",
+      "grade_10_problem_8",
+      "rainbow_rectangle",
+      "bipartite_graph",
+      "rainbow_cycle",
+      "K_n_n"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "10.8",
+        "text": "Дано натуральное число \\(n\\ge 2\\). Рассмотрим все покраски клеток доски \\(n\\times n\\) в \\(k\\) цветов такие, что каждая клетка покрашена ровно в один цвет, и все \\(k\\) цветов встречаются. При каком наименьшем \\(k\\) в любой такой покраске найдутся четыре окрашенные в четыре разных цвета клетки, расположенные в пересечении двух строк и двух столбцов?",
+        "source_id": "src-vosh-2014-15-regional-day2-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая переформулировка",
+        "text": "Рёбра полного двудольного графа \\(K_{n,n}\\) раскрашены в \\(k\\) цветов, причём каждый цвет используется хотя бы на одном ребре. Найдите наименьшее \\(k\\), при котором в любой такой раскраске обязательно существует цикл длины 4, все четыре ребра которого имеют попарно разные цвета.",
+        "source_id": "src-vosh-2014-15-regional-day2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-one-edge-per-color-cycle",
+      "title": "Один представитель каждого цвета даёт разноцветный цикл",
+      "text": "Если цветов хотя бы \\(2n\\), выберем по одному ребру каждого цвета. Получится подграф на \\(2n\\) вершинах с не меньшим числом рёбер, поэтому в нём есть цикл. Все его рёбра имеют разные цвета по построению.",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-shortest-rainbow-cycle-is-four",
+      "title": "Кратчайший разноцветный цикл стягивается до четырёхцикла",
+      "text": "В полном двудольном графе кратчайший разноцветный цикл не может иметь длину больше 4: диагональное ребро между первой строковой и второй столбцовой вершиной либо сразу даёт разноцветный четырёхцикл, либо заменяет часть цикла и даёт более короткий разноцветный цикл.",
+      "tags": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-rainbow-cycle-threshold",
+      "title": "Порог через разноцветные циклы в \\(K_{n,n}\\)",
+      "text": "Сначала построим раскраску в \\(2n-1\\) цветов без нужной четвёрки. Занумеруем строки числами \\(0,2,4,\\ldots,2n-2\\), а столбцы числами \\(1,3,5,\\ldots,2n-1\\). Последовательно красим все клетки строки или столбца с номером \\(0,1,\\ldots,2n-1\\) в цвет этого номера, каждый раз перекрашивая уже окрашенные клетки. В итоговой раскраске цвет 0 исчезает, а остальные \\(2n-1\\) цветов встречаются. Любые две строки и два столбца задают четыре клетки; среди этих четырёх линий есть линия, покрашенная последней, и две её клетки имеют одинаковый цвет. Значит, четырёх попарно разных цветов там нет.\n\nДокажем, что \\(2n\\) цветов всегда достаточно. Построим двудольный граф: одна доля соответствует строкам, другая - столбцам, а клетка становится ребром между своей строкой и своим столбцом, окрашенным в цвет клетки. Нужно найти разноцветный цикл длины 4.\n\nВыберем по одному ребру каждого цвета. Получился подграф на \\(2n\\) вершинах с не менее чем \\(2n\\) рёбрами, поэтому в нём есть цикл. Поскольку выбранные рёбра имеют разные цвета, в исходном графе есть хотя бы один разноцветный цикл.\n\nВозьмём среди всех разноцветных циклов кратчайший и запишем его как \\(a_1b_1a_2b_2\\ldots a_sb_sa_1\\), где \\(a_i\\) - вершины строковой доли, а \\(b_i\\) - вершины столбцовой доли. Если \\(s=2\\), это искомый четырёхцикл. Пусть \\(s>2\\). Рассмотрим ребро \\(a_1b_2\\), которое существует в полном двудольном графе. Если его цвет отличен от цветов трёх рёбер \\(a_1b_1\\), \\(b_1a_2\\), \\(a_2b_2\\), то \\(a_1b_1a_2b_2a_1\\) - разноцветный четырёхцикл. Иначе цвет ребра \\(a_1b_2\\) совпадает с одним из этих трёх цветов и потому не встречается на остальных рёбрах исходного разноцветного цикла; тогда цикл \\(a_1b_2a_3b_3\\ldots a_sb_sa_1\\) разноцветен и короче, что противоречит выбору. Значит, кратчайший разноцветный цикл имеет длину 4. Ответ: \\(k=2n\\).",
+      "source_id": "src-vosh-2014-15-regional-day2-official",
+      "idea_ids": [
+        "idea-one-edge-per-color-cycle",
+        "idea-shortest-rainbow-cycle-is-four"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Региональный этап 2014/15, 10 класс, задача 8; ключевой переход - раскраска клеток как раскраска рёбер \\(K_{n,n}\\) и минимальный разноцветный цикл.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "extremal_graph_theory",
+    "extremal_choice",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "edge_colored_bipartite_graph",
+        "shortest_rainbow_cycle"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-2014-15-regional-day2-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "deep high-reasoning audit against the official MCCME PDF for VOSH 2014/15 regional day 2",
+      "notes": "The card follows the first official solution: construction with 2n-1 colors, then the row-column bipartite graph, one edge per color, and the shortest rainbow-cycle argument forcing a 4-cycle."
+    },
+    "notes": [
+      "Official PDF MCCME contains the statement, answer, author marker '(Д. Храмцов)', two solutions, comments, and grading criteria. The first official solution uses an explicit bipartite graph model, not just a graph-theory analogy.",
+      "The graph_theory statement is a faithful reformulation of the first official solution: cells are edges of \\(K_{n,n}\\), and a desired 2-by-2 rectangle is a rainbow 4-cycle.",
+      "Deep relation pass added only close local relatives: monochromatic rectangles in a row-column bipartite model and a more distant rainbow edge-coloring card."
+    ],
+    "relations_status": "deep_done"
+  }
+}

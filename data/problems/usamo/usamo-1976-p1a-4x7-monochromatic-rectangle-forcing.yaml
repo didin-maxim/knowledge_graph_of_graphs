@@ -1,0 +1,161 @@
+{
+  "id": "usamo-1976-p1a-4x7-monochromatic-rectangle-forcing",
+  "title": "Неизбежный монохроматический прямоугольник на доске 4x7, USAMO 1976 P1a",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application",
+      "split_child"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "grid_coloring",
+      "complete_bipartite_graph",
+      "monochromatic_rectangle",
+      "four_cycle"
+    ],
+    "methods": [
+      "double_counting",
+      "pigeonhole_principle",
+      "bipartite_graph_modeling"
+    ],
+    "transformations": [
+      "board_to_edge_coloring_of_bipartite_graph",
+      "columns_to_color_patterns_on_rows"
+    ],
+    "goal": [
+      "force_monochromatic_rectangle",
+      "force_monochromatic_c4"
+    ],
+    "auxiliary_graph_type": [
+      "complete_bipartite_graph"
+    ],
+    "invariants": [
+      "same_color_row_pairs_in_columns"
+    ],
+    "keywords": [
+      "usamo_1976_p1a",
+      "monochromatic_rectangle",
+      "bipartite_coloring",
+      "sharp_4_by_7_threshold"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Прямоугольник одного цвета на доске 4x7",
+        "text": "Каждая клетка доски `4x7` окрашена в черный или белый цвет. Докажите, что найдутся две строки и два столбца, такие что четыре клетки на их пересечениях имеют один и тот же цвет.",
+        "source_id": "src-usamo-1976-aops-wiki",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Ребра полного двудольного графа `K_{4,7}` раскрашены в два цвета. Докажите, что в этой раскраске обязательно существует одноцветный цикл длины `4`.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "cycle"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-count-row-pairs-by-columns",
+      "title": "Считать одноцветные пары строк внутри каждого столбца",
+      "text": "В одном столбце четыре клетки дают как минимум две пары строк, в которых цвета совпадают. Если прямоугольника нет, то каждая пара строк в каждом цвете может появиться не более чем в одном столбце.",
+      "tags": [
+        "double_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-column-row-pair-double-counting",
+      "title": "Подсчет одноцветных пар строк по столбцам",
+      "text": "Предположим, что монохроматического прямоугольника нет. В каждом столбце посмотрим на пары строк, в которых две клетки этого столбца имеют один цвет. Если в столбце `k` черных клеток, то таких пар равно `C(k,2)+C(4-k,2)`. При `k=0,1,2,3,4` это число соответственно равно `6,3,2,3,6`, поэтому в каждом столбце есть как минимум `2` одноцветные пары строк.\n\nНа семи столбцах получаем не меньше `14` объектов вида `(пара строк, цвет, столбец)`, где в данном столбце две клетки выбранных строк имеют указанный цвет. С другой стороны, если для одной и той же пары строк и одного и того же цвета нашлись бы два разных столбца, то четыре клетки на пересечении этих двух строк и двух столбцов образовали бы монохроматический прямоугольник. Значит, при нашем предположении каждая из `C(4,2) * 2 = 12` пар `(пара строк, цвет)` может встретиться не более одного раза. Это противоречит нижней оценке `14`. Следовательно, монохроматический прямоугольник обязательно существует.",
+      "idea_ids": [
+        "idea-count-row-pairs-by-columns"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 4,
+    "comment": "Самостоятельная forcing-половина USAMO 1976 P1: короткий, но не совсем прямолинейный подсчет по столбцам и парам строк.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "double_counting",
+    "coloring",
+    "ramsey_theory",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "double_counting",
+        "bipartite_graph_modeling"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-usamo-1976-aops-wiki",
+      "role": "community_wiki_statement",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Split child extracted from the compound USAMO 1976 P1 card. This card proves only the 4x7 forcing assertion and does not use the 4x6 construction."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "high-reasoning split audit from the compound USAMO 1976 P1 card",
+      "notes": "Statement is supported by the existing USAMO archive source; solution is an independently checked double-counting proof of the forcing half.",
+      "audit_source": "agent-high-reasoning-split"
+    }
+  }
+}

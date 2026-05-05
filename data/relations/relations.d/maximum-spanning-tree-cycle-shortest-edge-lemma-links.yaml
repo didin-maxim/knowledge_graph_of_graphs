@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-maximum-spanning-tree-cycle-shortest-edge-kolmogorov-2022-diameter-circles",
+      "from": "maximum-spanning-tree-cycle-shortest-edge-lemma",
+      "to": "kolmogorov-2022-round4-high-maximum-length-tree-diameter-circles",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма является вынесенным локальным инструментом решения задачи Колмогорова: после построения графа из рёбер, более длинных чем \\(XY\\), связность этого графа даёт замкнутую ломаную, где \\(XY\\) строго кратчайшее звено, а значит \\(XY\\) не может быть ребром максимального дерева.",
+      "backward_text": "В задаче про окружности на диаметрах эта лемма используется ровно в момент исключения ребра \\(XY\\) с острым углом \\(\\angle XOY\\): геометрическая часть строит нужную замкнутую ломаную, а графовый обмен запрещает \\(XY\\) в экстремальном дереве.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-exchange",
+        "to_solution_id": "sol-official-restored"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-tree-equivalent-properties-maximum-spanning-tree-cycle-shortest-edge",
+      "from": "tree-equivalent-properties",
+      "to": "maximum-spanning-tree-cycle-shortest-edge-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Доказательство леммы использует базовые свойства деревьев: удаление ребра дерева разбивает его на две компоненты, а добавление ребра через получившийся разрез снова даёт дерево.",
+      "backward_text": "Лемма является первым весовым приложением элементарных свойств дерева: ацикличность и связность превращаются в обменное правило для максимального остова.",
+      "anchors": {
+        "from_solution_id": "sol-minimal-connected-subgraph",
+        "to_solution_id": "sol-cycle-exchange"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-minimal-half-subset-exchange-maximum-spanning-tree-cycle-shortest-edge",
+      "from": "minimal-half-subset-exchange-lemma",
+      "to": "maximum-spanning-tree-cycle-shortest-edge-lemma",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе леммы являются короткими сертификатами экстремальности через один обмен. В лемме о подмножестве меняется вершина внутри выбранного множества, а здесь меняется ребро дерева через разрез после удаления короткого ребра.",
+      "backward_text": "Лемма о максимальном остове — весовой вариант того же мотива: если локальная замена улучшает выбранный объект, то экстремальный выбор запрещает исходную конфигурацию.",
+      "anchors": {
+        "from_solution_id": "sol-one-swap",
+        "to_solution_id": "sol-cycle-exchange"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-augmenting-path-matching-maximum-spanning-tree-cycle-shortest-edge",
+      "from": "augmenting-path-matching-lemma",
+      "to": "maximum-spanning-tree-cycle-shortest-edge-lemma",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки распознают неоптимальность через локальную замену вдоль пути или цикла. Увеличивающий путь меняет статус чередующихся рёбер паросочетания, а цикл в максимальном остове даёт замену короткого ребра более тяжёлым.",
+      "backward_text": "Лемма о кратчайшем ребре цикла является деревообразным аналогом увеличивающего критерия: наличие специальной замкнутой структуры показывает, что текущий экстремальный объект можно улучшить.",
+      "anchors": {
+        "from_solution_id": "sol-symmetric-difference",
+        "to_solution_id": "sol-cycle-exchange"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-maximum-spanning-tree-cycle-shortest-edge-rmm-2023-spanning-tree-exchange",
+      "from": "maximum-spanning-tree-cycle-shortest-edge-lemma",
+      "to": "rmm-2023-p6-colored-spanning-tree-suspicious-edges",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют обмены в остовных деревьях. Здесь один цикл запрещает строго лёгкое ребро в максимальном остове, а в RMM 2023 P6 циклы и разрезы синхронно меняют остовы семейства, уменьшая число подозрительных рёбер.",
+      "backward_text": "RMM 2023 P6 является более сложным родственником этой леммы: вместо одного максимального по весу дерева там экстремально выбирается семейство остовов, но локальный механизм остаётся тем же — удалить ребро дерева и добавить ребро через цикл или разрез.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-exchange",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    }
+  ]
+}

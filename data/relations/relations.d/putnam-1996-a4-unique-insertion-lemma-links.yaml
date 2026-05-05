@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-unique-insertion-oriented-triples-putnam-1996-a4",
+      "from": "unique-insertion-interval-oriented-triples",
+      "to": "putnam-1996-a4-oriented-triples-order",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма является вынесенным ключевым инструментом решения Putnam 1996 A4: после удаления вершины она гарантирует единственный промежуток, куда новая вершина вставляется в уже построенный циклический порядок ориентированных троек.",
+      "backward_text": "В решении Putnam 1996 A4 эта лемма применяется на индукционном шаге: ограничение на \\(A\\setminus\\{z\\}\\) уже представлено порядком, а четырехточечное правило дает единственную корректную вставку \\(z\\).",
+      "anchors": {
+        "from_solution_id": "sol-transitive-view-from-new-vertex",
+        "to_solution_id": "sol-inductive-insertion-via-unique-interval-lemma"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-unique-insertion-oriented-triples-tournament-hamiltonian-path",
+      "from": "unique-insertion-interval-oriented-triples",
+      "to": "tournament-hamiltonian-path",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют вставку новой вершины в уже построенный порядок. В турнире Редеи место ищется по смене направлений ребер вдоль пути, а в лемме для ориентированных троек место определяется более жестким четырехточечным правилом и отношением \\((z,x,y)\\).",
+      "backward_text": "Теорема о гамильтоновом пути в турнире является более простой парной моделью вставки: там локальны ориентированные пары, тогда как лемма работает с ориентированными тройками и восстанавливает единственный разрез циклического порядка.",
+      "anchors": {
+        "from_solution_id": "sol-transitive-view-from-new-vertex",
+        "to_solution_id": "sol-insertion"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-unique-insertion-oriented-triples-redei-order-tournament",
+      "from": "unique-insertion-interval-oriented-triples",
+      "to": "redei-odd-hamiltonian-paths-tournament",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки связывают tournament/order-мотив с существованием глобального порядка. В лемме из ориентированных троек относительно новой вершины извлекается транзитивный турнир на старых вершинах, а теорема Редеи изучает гамильтоновы порядки в обычных турнирах.",
+      "backward_text": "Теорема Редеи родственна по языку турниров и порядков, но работает с ориентациями пар и паритетом гамильтоновых путей; лемма для ориентированных троек использует вспомогательный транзитивный турнир только как механизм единственной вставки.",
+      "anchors": {
+        "from_solution_id": "sol-transitive-view-from-new-vertex",
+        "to_solution_id": "sol-complement-and-edge-reversal"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

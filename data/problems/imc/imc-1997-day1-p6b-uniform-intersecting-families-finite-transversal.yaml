@@ -1,0 +1,182 @@
+{
+  "id": "imc-1997-day1-p6b-uniform-intersecting-families-finite-transversal",
+  "title": "Конечный носитель попарных пересечений для равномерного пересекающегося семейства, IMC 1997 Day 1 P6(b)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "advanced"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "intersecting_family",
+      "uniform_hypergraph",
+      "finite_hypergraph_edges",
+      "pairwise_intersection_transversal",
+      "cross_intersecting_families"
+    ],
+    "methods": [
+      "induction_on_uniformities",
+      "finite_partition_by_trace",
+      "cross_intersecting_reduction"
+    ],
+    "transformations": [
+      "sets_as_hyperedges",
+      "trace_partition_on_fixed_union",
+      "one_family_to_two_cross_intersecting_families"
+    ],
+    "goal": [
+      "prove_existence"
+    ],
+    "auxiliary_graph_type": [
+      "uniform_hypergraph"
+    ],
+    "invariants": [
+      "edge_size",
+      "cross_intersection",
+      "finite_number_of_traces"
+    ],
+    "keywords": [
+      "imc_1997_day1_p6b",
+      "uniform_intersecting_family",
+      "finite_intersection_witness",
+      "transversal",
+      "cross_intersecting_families",
+      "hypergraph_matching_number_one"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Условие",
+        "text": "Пусть \\(\\mathcal F\\) - семейство конечных подмножеств множества натуральных чисел \\(\\mathbb N\\). Предположим, что любые два множества из \\(\\mathcal F\\) имеют непустое пересечение и что все множества из \\(\\mathcal F\\) имеют один и тот же размер. Докажите, что существует конечное множество \\(Y\\subset\\mathbb N\\), такое что \\(A\\cap B\\cap Y\\ne\\varnothing\\) для любых \\(A,B\\in\\mathcal F\\).",
+        "source_id": "src-imc-1997-day1-p6-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-hypergraph",
+        "title": "Гиперграфовая формулировка",
+        "text": "Пусть \\(\\mathcal H\\) - равномерный гиперграф на множестве вершин \\(\\mathbb N\\), все ребра которого конечны и попарно пересекаются. Докажите, что существует конечное множество вершин \\(Y\\), пересекающее каждое множество вида \\(E\\cap E'\\), где \\(E,E'\\) - ребра \\(\\mathcal H\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "distinct_from": [
+          "stmt-original"
+        ],
+        "definition_ids": []
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-cross-intersecting-lemma",
+      "title": "Усилить задачу до двух перекрестно пересекающихся семейств",
+      "text": "Вместо одного равномерного пересекающегося семейства доказывается более сильная лемма для двух семейств фиксированных размеров \\(r\\) и \\(s\\), где каждое множество первого пересекает каждое множество второго.",
+      "tags": [
+        "induction",
+        "goal_proof"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-finite-trace-partition",
+      "title": "Разбить по следам на фиксированном конечном множестве",
+      "text": "Фиксируем \\(A_0\\) и \\(B_0\\), кладем \\(U=A_0\\cup B_0\\) и разбиваем оба семейства по непустым следам на \\(U\\). Если следы пересекаются, одна точка из \\(U\\) уже работает; если следы не пересекаются, удаление следов уменьшает оба размера и запускает индукцию.",
+      "tags": [
+        "induction",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-cross-intersecting-induction",
+      "title": "Индукция для перекрестно пересекающихся равномерных семейств",
+      "text": "Докажем более сильное утверждение. Пусть \\(\\mathcal F\\) и \\(\\mathcal G\\) - два семейства конечных подмножеств \\(\\mathbb N\\), каждое множество из \\(\\mathcal F\\) имеет размер \\(r\\), каждое множество из \\(\\mathcal G\\) имеет размер \\(s\\), и для любых \\(A\\in\\mathcal F\\), \\(B\\in\\mathcal G\\) выполнено \\(A\\cap B\\ne\\varnothing\\). Тогда существует конечное множество \\(Y\\subset\\mathbb N\\), такое что \\(A\\cap B\\cap Y\\ne\\varnothing\\) для всех \\(A\\in\\mathcal F\\), \\(B\\in\\mathcal G\\). Искомая теорема получается из этого утверждения при \\(\\mathcal G=\\mathcal F\\) и \\(r=s\\).\n\nЕсли одно из семейств пусто, можно взять \\(Y=\\varnothing\\). Далее считаем оба семейства непустыми и доказываем утверждение индукцией по \\(r+s\\).\n\nБаза. Если \\(r=1\\), зафиксируем любое \\(B_0\\in\\mathcal G\\). Всякое \\(A\\in\\mathcal F\\) имеет вид \\(\\{a\\}\\) и должно пересекать \\(B_0\\), значит \\(a\\in B_0\\). Для любого \\(B\\in\\mathcal G\\) из \\(A\\cap B\\ne\\varnothing\\) следует \\(a\\in B\\). Поэтому \\(A\\cap B\\cap B_0\\ne\\varnothing\\), и подходит \\(Y=B_0\\). Случай \\(s=1\\) симметричен: фиксируем \\(A_0\\in\\mathcal F\\) и берем \\(Y=A_0\\).\n\nПусть теперь \\(r,s>1\\), и утверждение уже доказано для всех положительных пар размеров с меньшей суммой. Зафиксируем \\(A_0\\in\\mathcal F\\) и \\(B_0\\in\\mathcal G\\), положим \\(U=A_0\\cup B_0\\). Для непустых \\(C,D\\subset U\\) рассмотрим классы следов\n\\[\n\\mathcal F(C)=\\{A\\in\\mathcal F: A\\cap U=C\\},\\qquad\n\\mathcal G(D)=\\{B\\in\\mathcal G: B\\cap U=D\\}.\n\\]\nСледы каждого \\(A\\in\\mathcal F\\) и каждого \\(B\\in\\mathcal G\\) на \\(U\\) непусты, потому что \\(A\\) пересекает \\(B_0\\), а \\(B\\) пересекает \\(A_0\\). Значит, исходные семейства разбиты на конечное число таких классов.\n\nДостаточно для каждой пары следов \\(C,D\\) построить конечное множество \\(Y_{C,D}\\), пересекающее все \\(A\\cap B\\) при \\(A\\in\\mathcal F(C)\\), \\(B\\in\\mathcal G(D)\\). Тогда конечное объединение всех \\(Y_{C,D}\\) будет работать для \\(\\mathcal F\\) и \\(\\mathcal G\\).\n\nФиксируем непустые \\(C,D\\subset U\\). Если одно из семейств \\(\\mathcal F(C),\\mathcal G(D)\\) пусто, берем \\(Y_{C,D}=\\varnothing\\). Если оба непусты и \\(C\\cap D\\ne\\varnothing\\), выбираем \\(x\\in C\\cap D\\) и берем \\(Y_{C,D}=\\{x\\}\\). Тогда \\(x\\in A\\cap B\\) для всех \\(A\\in\\mathcal F(C)\\), \\(B\\in\\mathcal G(D)\\).\n\nОстается случай, когда оба класса непусты и \\(C\\cap D=\\varnothing\\). Для любых \\(A\\in\\mathcal F(C)\\), \\(B\\in\\mathcal G(D)\\) пересечение \\((A\\cap B)\\cap U\\) пусто. Но \\(A\\cap B\\ne\\varnothing\\), значит множества \\(A\\setminus C\\) и \\(B\\setminus D\\) пересекаются вне \\(U\\). Рассмотрим семейства\n\\[\n\\widetilde{\\mathcal F}(C)=\\{A\\setminus C:A\\in\\mathcal F(C)\\},\\qquad\n\\widetilde{\\mathcal G}(D)=\\{B\\setminus D:B\\in\\mathcal G(D)\\}.\n\\]\nОни снова перекрестно пересекаются. Все множества первого семейства имеют размер \\(r-|C|\\), все множества второго - размер \\(s-|D|\\). Эти размеры положительны: если бы, например, \\(A=C\\subset U\\), то из \\(A\\cap B\\ne\\varnothing\\) и \\((A\\cap B)\\cap U=C\\cap D=\\varnothing\\) получилось бы противоречие. Кроме того, сумма размеров строго меньше \\(r+s\\), так как \\(C\\) и \\(D\\) непусты.\n\nПо индукционному предположению существует конечное \\(Y_{C,D}\\), пересекающее каждое \\((A\\setminus C)\\cap(B\\setminus D)\\). Такое \\(Y_{C,D}\\) тем более пересекает каждое \\(A\\cap B\\) в рассматриваемой паре классов.\n\nМы построили конечные множества \\(Y_{C,D}\\) для всех конечного числа пар следов. Их объединение конечно и пересекает \\(A\\cap B\\) для любых \\(A\\in\\mathcal F\\), \\(B\\in\\mathcal G\\). Сильное утверждение доказано, а вместе с ним и исходная равномерная теорема.",
+      "idea_ids": [
+        "idea-cross-intersecting-lemma",
+        "idea-finite-trace-partition"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 12,
+    "comment": "Положительная часть существенно сложнее контрпримера: полезно усилить задачу до двух перекрестно пересекающихся равномерных семейств и провести индукцию по сумме размеров через конечное разбиение по следам.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "induction",
+    "goal_proof",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "cross_intersecting_uniform_lemma",
+        "induction_on_uniformities",
+        "finite_trace_partition",
+        "hypergraph_model"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-1997-day1-p6-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ],
+      "solution_ids": [
+        "sol-cross-intersecting-induction"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-05: выделено из составной карточки imc-1997-day1-p6-intersecting-families-finite-transversal как самостоятельная часть (b).",
+      "Решение включает полную перекрестно-пересекающуюся лемму, необходимую для доказательства равномерного случая, поэтому карточка самодостаточна."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "agent high-reasoning split audit",
+      "notes": "Выделенная часть официальной задачи с самодостаточным усиленным доказательством.",
+      "audit_source": "agent-imc-1997-p6-split"
+    }
+  }
+}

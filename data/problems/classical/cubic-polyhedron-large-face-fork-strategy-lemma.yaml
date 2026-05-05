@@ -1,0 +1,192 @@
+{
+  "id": "cubic-polyhedron-large-face-fork-strategy-lemma",
+  "title": "Большая грань и вилка в игре на гранях кубического многогранника",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "convex_polyhedron_skeleton",
+      "cubic_planar_graph",
+      "face_boundary_cycle",
+      "face_selection_game"
+    ],
+    "methods": [
+      "euler_formula",
+      "face_edge_double_counting",
+      "degree_counting",
+      "fork_strategy",
+      "winning_strategy"
+    ],
+    "transformations": [
+      "polyhedron_to_embedded_graph_game",
+      "large_face_to_two_threats"
+    ],
+    "goal": [
+      "find_large_face",
+      "build_first_player_fork",
+      "force_win_by_third_move"
+    ],
+    "auxiliary_graph_type": [
+      "polyhedral_embedding",
+      "face_incidence_hypergraph"
+    ],
+    "invariants": [
+      "degree_three",
+      "three_faces_around_vertex",
+      "euler_characteristic",
+      "face_size",
+      "edge_face_incidence",
+      "one_reply_blocks_at_most_one_neighbor"
+    ],
+    "keywords": [
+      "cubic_polyhedral_graph",
+      "face_with_at_least_four_edges",
+      "polyhedron_face_game",
+      "fork_strategy",
+      "euler_formula"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-large-face-fork",
+        "title": "Лемма о большой грани и вилке",
+        "text": "Пусть дан скелет выпуклого многогранника с фиксированным вложением на сфере; в каждой его вершине сходятся ровно три ребра. Рассмотрим игру на гранях: два игрока по очереди выбирают ранее не выбранную грань, а игрок выигрывает, если после своего хода владеет всеми тремя гранями, инцидентными некоторой вершине. Тогда выполнены два утверждения. (1) Если у многогранника не меньше пяти граней, то существует грань, ограниченная не менее чем четырьмя ребрами. (2) Если первый игрок первым ходом выбирает любую грань \\(A\\), ограниченную \\(k\\ge4\\) ребрами, то после любого первого ответа второго игрока первый игрок может создать две одновременные угрозы и выиграть не позднее своего третьего хода.",
+        "source_id": "src-putnam-2002-B2-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree",
+          "cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-euler-forces-large-face",
+      "title": "Только треугольные грани дали бы тетраэдр",
+      "text": "В кубическом полиэдральном графе равенство \\(3V=2E\\). Если все грани треугольные, то еще и \\(3F=2E\\), а формула Эйлера тогда дает \\(F=4\\). Поэтому при \\(F\\ge5\\) хотя бы одна грань имеет длину не меньше 4.",
+      "tags": [
+        "planar_graphs",
+        "degree_counting",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-three-free-neighbors",
+      "title": "Три свободные соседние грани подряд",
+      "text": "После первого ответа соперника среди соседей выбранной большой грани занята не более одна грань, поэтому в циклическом списке ее соседей длины хотя бы 4 есть три подряд свободные позиции.",
+      "tags": [
+        "planar_graphs",
+        "goal_strategy_game"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-middle-neighbor-fork",
+      "title": "Средняя грань создает две угрозы",
+      "text": "Если свободные соседи большой грани идут подряд как \\(B,C,D\\), то ход в \\(C\\) оставляет две разные завершающие грани: \\(B\\) дает тройку вокруг одной вершины, а \\(D\\) — вокруг соседней.",
+      "tags": [
+        "goal_strategy_game"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-euler-large-face-and-fork",
+      "title": "Доказательство через Эйлера и локальную вилку",
+      "text": "Сначала докажем существование большой грани. Обозначим через \\(V,E,F\\) числа вершин, ребер и граней многогранника. Так как в каждой вершине сходятся ровно три ребра, двойной счет концов ребер дает \\(3V=2E\\). Предположим, что все грани треугольные. Тогда сумма длин границ граней равна \\(3F\\), а каждое ребро при таком счете входит в границы двух граней, значит \\(3F=2E\\). По формуле Эйлера для связного скелета выпуклого многогранника \\(V-E+F=2\\). Из \\(V=2E/3\\) и \\(F=2E/3\\) получаем \\(2E/3-E+2E/3=2\\), то есть \\(E=6\\) и \\(F=4\\). Следовательно, если \\(F\\ge5\\), не все грани треугольные; поскольку каждая грань имеет хотя бы три стороны, есть грань \\(A\\) длины \\(k\\ge4\\).\n\nТеперь докажем игровую часть для любой такой грани \\(A\\). Пусть первый игрок первым ходом выбирает \\(A\\). Перечислим грани, соседние с \\(A\\) по ее сторонам, в циклическом порядке обхода границы: \\(H_1,H_2,\\ldots,H_k\\). Эти грани попарно различны: у двух разных граней выпуклого многогранника не может быть двух разных общих ребер. После первого хода второго игрока среди \\(H_1,\\ldots,H_k\\) занята не более одна грань. В цикле длины \\(k\\ge4\\) с не более чем одной занятой позицией найдутся три подряд свободные позиции. Назовем соответствующие грани \\(B,C,D\\), где \\(C\\) стоит между \\(B\\) и \\(D\\). Вторым ходом первый игрок выбирает \\(C\\).\n\nГрани \\(B\\) и \\(C\\) примыкают к двум соседним сторонам грани \\(A\\); эти стороны имеют общий конец, и в этой вершине, из-за степени 3, инцидентны ровно три грани: \\(A,B,C\\). Поэтому ход первого игрока в \\(B\\) сразу завершил бы выигрышную тройку. Аналогично \\(A,C,D\\) имеют общую вершину на другом конце стороны, общей для \\(A\\) и \\(C\\), так что ход в \\(D\\) тоже сразу выигрывает. Второй игрок своим вторым ходом еще не может выиграть, потому что после него владеет только двумя гранями, и этим ходом может занять не более одной из граней \\(B,D\\). Значит, третьим ходом первый игрок выбирает оставшуюся свободной грань из \\(B,D\\) и выигрывает.",
+      "idea_ids": [
+        "idea-euler-forces-large-face",
+        "idea-three-free-neighbors",
+        "idea-middle-neighbor-fork"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "face_counting",
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph",
+        "degree",
+        "cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 5,
+    "comment": "Самостоятельная структурно-игровая лемма: эйлеров подсчет на кубическом многограннике сочетается с локальной стратегией вилки на соседях большой грани.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "degree_counting",
+    "double_counting",
+    "goal_strategy_game",
+    "classical_lemma"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "euler_formula",
+        "face_edge_double_counting",
+        "fork_strategy"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2002-B2-kedlaya",
+      "role": "extracted_lemma",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-large-face-fork"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-05: high-reasoning extraction from putnam-2002-b2-polyhedron-face-game-four-edge-face. The isolated ingredient is not merely the small Euler count; it packages the reusable large-face existence statement together with the local face-game fork strategy.",
+      "The statement is intentionally phrased for convex polyhedra/polyhedral embeddings so that face boundaries are cycles and neighboring faces along the chosen face are distinct."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "extracted from published Putnam solution archive and independently expanded",
+      "notes": "The lemma is a self-contained extraction of the structural and strategic core used in Putnam 2002 B2.",
+      "audit_source": "manual-high-reasoning-2026-05-05"
+    }
+  }
+}

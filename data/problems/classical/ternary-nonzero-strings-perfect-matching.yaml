@@ -1,0 +1,186 @@
+{
+  "id": "ternary-nonzero-strings-perfect-matching",
+  "title": "Совершенное паросочетание на ненулевых троичных строках",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "graph_in_statement",
+      "matching"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "ternary_strings",
+      "grid_graph",
+      "ternary_hypercube",
+      "perfect_matching",
+      "fixed_point_free_involution"
+    ],
+    "methods": [
+      "explicit_involution",
+      "pairing_by_first_nonzero_coordinate"
+    ],
+    "transformations": [
+      "nonzero_string_to_partner_string",
+      "ternary_strings_to_grid_graph_vertices"
+    ],
+    "goal": [
+      "construct_perfect_matching"
+    ],
+    "auxiliary_graph_type": [
+      "induced_grid_graph_on_nonzero_ternary_strings"
+    ],
+    "invariants": [
+      "first_nonzero_coordinate",
+      "all_preceding_coordinates_are_zero"
+    ],
+    "keywords": [
+      "ternary_strings",
+      "perfect_matching",
+      "fixed_point_free_involution",
+      "pairing_strategy",
+      "putnam_2025_a3_lemma"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-nonzero-ternary-strings",
+        "title": "Лемма о ненулевых троичных строках",
+        "text": "Пусть \\(n\\ge1\\). Рассмотрим все строки длины \\(n\\) над алфавитом \\(\\{0,1,2\\}\\), кроме строки \\(0^n\\). Две строки считаются соседними, если они отличаются ровно в одной координате, причём значения в этой координате отличаются на 1. Тогда все ненулевые строки можно разбить на пары соседних строк.",
+        "source_id": "src-putnam-2025-A3-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Формулировка через индуцированный граф",
+        "text": "Пусть \\(G_n\\) — граф на множестве вершин \\(\\{0,1,2\\}^n\\setminus\\{0^n\\}\\), где две вершины смежны тогда и только тогда, когда соответствующие строки отличаются ровно в одной координате на 1. Докажите, что \\(G_n\\) имеет совершенное паросочетание.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-nonzero-ternary-strings"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-first-nonzero-coordinate",
+      "title": "Первая ненулевая координата задаёт пару",
+      "text": "У ненулевой строки первая ненулевая координата равна 1 или 2; если заменить в ней 1 на 2 или 2 на 1, все предыдущие координаты останутся нулевыми, поэтому у партнёра первая ненулевая координата та же.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-fixed-point-free-involution",
+      "title": "Инволюция без неподвижных точек даёт паросочетание",
+      "text": "Операция смены 1 и 2 в первой ненулевой координате обратна сама себе и никогда не оставляет строку на месте. Поэтому её орбиты — пары, а каждая пара соединена ребром графа.",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-first-nonzero-involution",
+      "title": "Явное разбиение на пары",
+      "text": "Возьмём произвольную ненулевую строку \\(x=(x_1,\\ldots,x_n)\\). Пусть \\(i\\) — первая координата, в которой \\(x_i\\ne0\\). Тогда \\(x_i\\) равно либо 1, либо 2. Определим строку \\(f(x)\\): все координаты, кроме \\(i\\)-й, оставим прежними, а в \\(i\\)-й заменим 1 на 2 или 2 на 1.\n\nСтрока \\(f(x)\\) тоже ненулевая. Она отличается от \\(x\\) ровно в одной координате, и значение в этой координате изменилось на 1, значит \\(x\\) и \\(f(x)\\) смежны в \\(G_n\\). Кроме того, у \\(f(x)\\) первая ненулевая координата снова равна \\(i\\), поскольку все координаты перед \\(i\\) остались нулевыми, а \\(i\\)-я осталась ненулевой. Поэтому повторное применение той же операции возвращает исходную строку: \\(f(f(x))=x\\).\n\nНаконец, \\(f(x)\\ne x\\) для любой ненулевой строки. Значит, \\(f\\) является инволюцией без неподвижных точек на множестве вершин \\(G_n\\). Разобьём вершины на двухэлементные орбиты \\(\\{x,f(x)\\}\\). Каждая такая орбита является ребром графа, и разные орбиты не пересекаются, поэтому эти рёбра образуют совершенное паросочетание.",
+      "idea_ids": [
+        "idea-first-nonzero-coordinate",
+        "idea-fixed-point-free-involution"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Короткая явная matching-лемма: вся трудность в выборе первой ненулевой координаты, после чего паросочетание задаётся инволюцией.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "graph_model",
+    "goal_existence",
+    "classical_lemma"
+  ],
+  "properties": {
+    "typical_olympiad_use": {
+      "value": "Даёт готовую парную стратегию во finite path-avoidance играх на троичных строках после удаления начальной вершины.",
+      "status": "ai_checked"
+    },
+    "central_method": {
+      "value": [
+        "fixed_point_free_involution",
+        "explicit_perfect_matching",
+        "pairing_by_first_nonzero_coordinate"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2025-A3-official",
+      "role": "extracted_lemma",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-nonzero-ternary-strings"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-05: extracted from Putnam 2025 A3. The original card remains an olympiad game problem; this card isolates the reusable perfect-matching lemma on nonzero ternary strings.",
+      "The proof is independent of Hall's theorem: the matching is given by an explicit fixed-point-free involution."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.86,
+      "basis": "agent high-reasoning extraction audit",
+      "notes": "The lemma is exactly the pairing construction used in the official Putnam 2025 A3 solution.",
+      "audit_source": "manual-split-2026-05-05"
+    }
+  }
+}

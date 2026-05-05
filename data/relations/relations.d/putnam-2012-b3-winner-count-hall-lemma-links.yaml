@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-winner-count-lemma-putnam-2012-b3-prerequisite",
+      "from": "round-robin-winner-count-hall-lemma",
+      "to": "putnam-2012-b3-round-robin-winners-hall",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма дает ключевую оценку для Putnam 2012 B3: у любого множества дней число различных команд-победителей не меньше числа этих дней. После этого условие Холла для двудольного графа дней и команд выполняется немедленно.",
+      "backward_text": "Putnam 2012 B3 является прямым применением леммы: расписание турнира задает множества возможных победителей по дням, а лемма проверяет все подмножества дней в условии Холла.",
+      "anchors": {
+        "from_solution_id": "sol-count-losses",
+        "to_solution_id": "sol-kedlaya-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-winner-count-lemma-hall-marriage-neighborhood",
+      "from": "round-robin-winner-count-hall-lemma",
+      "to": "hall-marriage-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Лемма не доказывает теорему Холла, но производит ровно холловскую нижнюю оценку соседства для двудольного графа дней и команд-победителей.",
+      "backward_text": "Теорема Холла превращает такие оценки соседства в систему различных представителей; лемма является специализированным источником условия Холла для round-robin schedules.",
+      "anchors": {
+        "from_solution_id": "sol-count-losses",
+        "to_solution_id": "sol-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-winner-count-lemma-imo-1998-one-factorization-scheduling",
+      "from": "round-robin-winner-count-hall-lemma",
+      "to": "imo-1998-c6-k-ge-6-one-factorization",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки используют 1-факторизации полного графа как расписание попарных встреч. Здесь произвольно ориентированные 1-факторы дают оценку числа победителей, а в IMO 1998 C6 1-факторизация используется как конструкция раскраски.",
+      "backward_text": "IMO 1998 C6 — конструктивное применение one-factorization полного графа; лемма о победителях является соседним scheduling-инструментом, где те же совершенные паросочетания интерпретируются как дни турнира.",
+      "anchors": {
+        "from_solution_id": "sol-count-losses",
+        "to_solution_id": "sol-k-ge-6-one-factorization"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-winner-count-lemma-all-union-1987-tournament-loss-counting",
+      "from": "round-robin-winner-count-hall-lemma",
+      "to": "all-union-1987-final-9-tournament-score-squares",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки считают победы и поражения в полном турнире без ничьих. Лемма использует тот факт, что поражения выбранной команды происходят от разных соперников, а всесоюзная задача переводит тот же баланс побед и поражений в равенство степенных сумм.",
+      "backward_text": "Всесоюзная задача является более алгебраическим родственником: она работает с общей score sequence турнира, тогда как лемма извлекает локальную нижнюю оценку для выбранного набора дней расписания.",
+      "anchors": {
+        "from_solution_id": "sol-count-losses",
+        "to_solution_id": "sol-published-degree-balance"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-winner-count-lemma-imc2011-hall-applications",
+      "from": "round-robin-winner-count-hall-lemma",
+      "to": "imc-2011-day2-p2b-tripartite-three-quarter-perfect-cover",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки являются приложениями Холла, где основная работа состоит в доказательстве нижней оценки на множество соседей. Лемма делает это подсчетом поражений в расписании, а IMC 2011 P2(b) — плотностными оценками в трехдольном графе.",
+      "backward_text": "IMC 2011 P2(b) использует более сложную двухступенчатую Hall-схему; лемма о победителях — компактный scheduling-пример того же способа проверить условие Холла.",
+      "anchors": {
+        "from_solution_id": "sol-count-losses",
+        "to_solution_id": "sol-two-stage-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    }
+  ]
+}

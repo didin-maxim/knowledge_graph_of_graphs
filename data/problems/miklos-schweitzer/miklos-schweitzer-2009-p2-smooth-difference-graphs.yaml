@@ -4,6 +4,7 @@
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
+      "compound_problem",
       "graph_in_statement",
       "number_theoretic_graph"
     ]
@@ -134,9 +135,15 @@
     "public_ready": true,
     "notes": [
       "Английский PDF содержит условие; решение найдено на странице KöMaL A.494, но отдельного source_id для этой страницы в data/sources/sources.yaml пока нет.",
-      "2026-05-04: добавлено ИИ-решение, расширяющее найденный разбор KöMaL в самодостаточное доказательство."
+      "2026-05-04: добавлено ИИ-решение, расширяющее найденный разбор KöMaL в самодостаточное доказательство.",
+      "2026-05-05: high-reasoning split confirmed. This card is kept as the compound parent for the complete-graph impossibility and the connected bounded-degree construction. The split is meaningful because part (i) uses a residue-class obstruction modulo a new prime, while part (ii) uses an explicit power-sum construction that realizes an induced path and eliminates chords by a geometric-sum divisor."
     ],
-    "relations_status": "not_started",
+    "compound_parent": true,
+    "split_children": [
+      "miklos-schweitzer-2009-p2-complete-smooth-difference-graphs-impossible",
+      "miklos-schweitzer-2009-p2-bounded-degree-smooth-difference-path"
+    ],
+    "relations_status": "deep_done",
     "solution_classification": {
       "type": "unofficial_published",
       "label": "опубликованное неофициальное",

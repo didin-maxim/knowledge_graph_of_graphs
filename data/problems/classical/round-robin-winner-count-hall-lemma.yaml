@@ -1,0 +1,210 @@
+{
+  "id": "round-robin-winner-count-hall-lemma",
+  "title": "Число разных победителей в произвольном наборе дней кругового турнира",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "graph_in_statement",
+      "matching"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "round_robin_tournament_schedule",
+      "complete_graph",
+      "one_factorization",
+      "oriented_edges",
+      "winner_set"
+    ],
+    "methods": [
+      "counting_losses",
+      "neighborhood_lower_bound",
+      "hall_condition_verification"
+    ],
+    "transformations": [
+      "selected_days_to_winner_neighborhood",
+      "round_robin_schedule_to_oriented_one_factorization"
+    ],
+    "goal": [
+      "lower_bound_winner_count",
+      "verify_hall_condition"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_incidence_graph",
+      "complete_oriented_graph"
+    ],
+    "invariants": [
+      "each_pair_plays_once",
+      "one_game_per_team_per_day",
+      "losing_opponents_are_distinct"
+    ],
+    "keywords": [
+      "round_robin",
+      "winner_count",
+      "hall_condition",
+      "one_factorization",
+      "tournament_schedule"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-winner-count-days",
+        "title": "Лемма о числе победителей",
+        "text": "Пусть \\(2n\\) команд играют полный круговой турнир за \\(2n-1\\) дней: в каждый день каждая команда играет ровно одну игру, в каждой игре есть один победитель и один проигравший, а за весь турнир каждая пара команд встречается ровно один раз. Для произвольного множества \\(D\\) дней обозначим через \\(W(D)\\) множество команд, которые выиграли хотя бы одну игру в один из дней из \\(D\\). Тогда \\(|W(D)|\\ge |D|\\).",
+        "source_id": "src-putnam-2012-B3-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching",
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-one-factorization"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-one-factorization",
+        "title": "Формулировка через ориентированную 1-факторизацию",
+        "text": "Пусть ребра полного графа \\(K_{2n}\\) разбиты на \\(2n-1\\) совершенных паросочетаний \\(M_1,\\ldots,M_{2n-1}\\), и каждое ребро ориентировано. Для любого множества индексов \\(I\\) пусть \\(S(I)\\) — множество начальных вершин всех ориентированных ребер, принадлежащих паросочетаниям \\(M_i\\) с \\(i\\in I\\). Тогда \\(|S(I)|\\ge |I|\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "matching",
+          "directed_graph"
+        ],
+        "distinct_from": [
+          "stmt-winner-count-days"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-outsider-loses-to-all-days",
+      "title": "Команда вне множества победителей проигрывает каждый выбранный день",
+      "text": "Если выбранные дни имеют слишком мало разных победителей, то найдется команда, которая не выигрывала ни в один из этих дней; она обязана проиграть в каждый выбранный день.",
+      "tags": [
+        "tournaments",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-distinct-opponents-force-count",
+      "title": "Соперники в этих поражениях различны",
+      "text": "В полном круговом турнире одна и та же пара команд встречается только один раз, поэтому поражения одной команды в \\(m\\) выбранных дней происходят от \\(m\\) различных победителей.",
+      "tags": [
+        "tournaments",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-hall-neighborhood",
+      "title": "Оценка является готовым условием Холла",
+      "text": "Если дни соединить с командами-победителями, то лемма утверждает, что любое множество левых вершин имеет не меньше соседей, чем его размер.",
+      "tags": [
+        "matching",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-count-losses",
+      "title": "Подсчет поражений выбранной внешней команды",
+      "text": "Возьмем произвольное множество \\(D\\) из \\(m\\) дней. При \\(m=0\\) утверждение пусто, поэтому считаем \\(1\\le m\\le 2n-1\\). Пусть \\(W=W(D)\\) — множество команд, которые хотя бы раз выиграли в эти дни. Предположим, что \\(|W|<m\\). Тогда \\(|W|<2n\\), так что существует команда \\(x\\), не входящая в \\(W\\).\n\nВ каждый день из \\(D\\) команда \\(x\\) играла ровно одну игру. Она не могла выиграть такую игру, иначе входила бы в \\(W\\). Значит, в каждый из \\(m\\) выбранных дней команда \\(x\\) проиграла. Ее соперники в этих \\(m\\) играх попарно различны, потому что в полном круговом турнире команда \\(x\\) встречается с каждой другой командой не более одного раза. Каждый из этих соперников выиграл соответствующую игру, а значит принадлежит \\(W\\). Получается, что в \\(W\\) лежат по крайней мере \\(m\\) различных команд, противоречие с \\(|W|<m\\). Следовательно, \\(|W(D)|\\ge |D|\\).\n\nГрафовая формулировка получается тем же доказательством: паросочетания \\(M_i\\) — это дни, а начальные вершины ориентированных ребер — победители соответствующих игр.",
+      "idea_ids": [
+        "idea-outsider-loses-to-all-days",
+        "idea-distinct-opponents-force-count",
+        "idea-hall-neighborhood"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "matching",
+        "complete_graph",
+        "directed_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 4,
+    "comment": "Короткая, но самостоятельная scheduling/matching-лемма: она упаковывает нетривиальную нижнюю оценку соседства для любых выбранных дней, которая затем напрямую подает условие Холла.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "tournaments",
+    "double_counting",
+    "goal_existence",
+    "classical_lemma"
+  ],
+  "properties": {
+    "typical_olympiad_use": {
+      "value": "Используется для проверки условия Холла в задачах, где нужно выбрать разных представителей среди победителей дней полного кругового расписания.",
+      "status": "ai_checked"
+    },
+    "central_method": {
+      "value": [
+        "counting_losses",
+        "neighborhood_lower_bound",
+        "hall_condition_verification"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-2012-B3-kedlaya",
+      "role": "extracted_lemma",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-winner-count-days"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-05: high-reasoning extraction from putnam-2012-b3-round-robin-winners-hall. The isolated result is not merely a line inside Hall's theorem; it is a reusable lower bound on winner-neighborhood size for arbitrary subcollections of days in a complete round-robin schedule.",
+      "The statement is self-contained in both schedule language and oriented one-factorization language."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false,
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "agent high-reasoning extraction audit",
+      "notes": "Extracted from a published/unofficial Putnam solution archive and expanded into a self-contained classical lemma.",
+      "audit_source": "agent-putnam-extraction-2026-05-05"
+    }
+  }
+}

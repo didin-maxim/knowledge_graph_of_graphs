@@ -1,0 +1,141 @@
+{
+  "id": "edge-critical-bridgeless-graphs-give-critical-strong-orientations",
+  "title": "Критическая сильная ориентация из мостов после удаления каждого ребра",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "bridgeless_graph",
+      "strong_orientation",
+      "edge_critical_strong_digraph"
+    ],
+    "methods": [
+      "robbins_theorem",
+      "bridge_obstruction",
+      "edge_deletion"
+    ],
+    "transformations": [
+      "orient_edges",
+      "delete_edge"
+    ],
+    "goal": [
+      "construct_edge_critical_strong_orientation"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "bridge_freeness",
+      "bridge_after_every_edge_deletion"
+    ],
+    "keywords": [
+      "critical_strong_orientation",
+      "minimally_bridgeless",
+      "robbins_theorem"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть \\(G\\) — конечный связный граф без мостов, причем для каждого ребра \\(e\\) граф \\(G-e\\) имеет мост. Тогда \\(G\\) допускает такую сильную ориентацию, что после удаления любого ориентированного ребра сильная связность нарушается. Более того, это верно для любой сильной ориентации \\(G\\).",
+        "source_id": "src-wikipedia-robbins-theorem",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "directed_graph",
+          "bridge"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-underlying-graph-obstruction",
+      "title": "Сильная ориентация невозможна поверх моста",
+      "text": "Если после удаления ребра в неориентированной основе появился мост, то никакая ориентация оставшегося графа не может быть сильно связной.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-robbins-plus-criticality",
+      "title": "Роббинс и препятствие-мост",
+      "text": "Так как в \\(G\\) нет мостов, по теореме Роббинса у \\(G\\) существует сильная ориентация. Возьмем любую такую ориентацию и любое ребро \\(e\\). По условию неориентированный граф \\(G-e\\) имеет мост. Если бы после удаления соответствующей дуги ориентированный граф оставался сильно связным, то его неориентированная основа \\(G-e\\) допускала бы сильную ориентацию. Но граф с мостом сильной ориентации не допускает: через мост можно пройти между двумя частями только в одном направлении. Противоречие. Значит, удаление любой дуги разрушает сильную связность.",
+      "idea_ids": [
+        "idea-underlying-graph-obstruction"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "directed_graph",
+        "bridge"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Короткая, но полезная упаковка теоремы Роббинса с критичностью по ребрам.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "classical_lemma",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "robbins_theorem",
+        "bridge_obstruction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-robbins-theorem",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-bridge-graph-theory",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Эта карточка фиксирует точное условие, достаточное для критичности сильной ориентации: после удаления каждого ребра в неориентированной основе должен появляться мост."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

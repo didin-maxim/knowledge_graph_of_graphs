@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-ternary-nonzero-matching-hall-explicit-vs-existence",
+      "from": "ternary-nonzero-strings-perfect-matching",
+      "to": "hall-marriage-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Лемма строит совершенное паросочетание явно, через инволюцию на ненулевых строках, поэтому она является маленьким контрастным примером к задачам, где существование паросочетания доказывают условием Холла.",
+      "backward_text": "Теорема Холла даёт общий критерий существования паросочетания; в троичной лемме общий критерий не нужен, потому что партнер каждой вершины выписан напрямую.",
+      "anchors": {
+        "from_solution_id": "sol-first-nonzero-involution",
+        "to_solution_id": "sol-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-ternary-nonzero-matching-imo-1994-pairing-strategy",
+      "from": "ternary-nonzero-strings-perfect-matching",
+      "to": "imo-1994-c6-infinite-grid-pairing-strategy",
+      "type": "solution_transfer",
+      "distance": 2,
+      "forward_text": "Лемма даёт чистую конечную версию парной стратегии: если ходы соперника попадают в одну вершину пары, ответ идет во вторую. В IMO 1994 C6 тот же принцип применяется к бесконечной решётке с периодически заданными парами клеток.",
+      "backward_text": "IMO 1994 C6 показывает более сложную геометрическую реализацию той же идеи: сначала строится паросочетание клеток, затем второй игрок отвечает в парную клетку, чтобы разрушать все угрозы.",
+      "anchors": {
+        "from_solution_id": "sol-first-nonzero-involution",
+        "to_solution_id": "sol-reviewed-secondary"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-ternary-nonzero-matching-regular-bipartite-decomposition",
+      "from": "ternary-nonzero-strings-perfect-matching",
+      "to": "regular-bipartite-perfect-matching-decomposition",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки производят совершенное паросочетание, но делают это разными способами: троичная лемма задаёт партнера каждой вершины явной инволюцией, а регулярная двудольная лемма извлекает паросочетание из Холла и затем удаляет его.",
+      "backward_text": "Разложение регулярного двудольного графа является общей matching-техникой; троичная лемма — специальный случай, где симметрия строк настолько сильна, что matching можно записать без общего аппарата.",
+      "anchors": {
+        "from_solution_id": "sol-first-nonzero-involution",
+        "to_solution_id": "sol-hall-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-ternary-nonzero-matching-simon-marais-2024-tripairable",
+      "from": "ternary-nonzero-strings-perfect-matching",
+      "to": "simon-marais-2024-a2-tripairable-perfect-matching",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки связывают троичную структуру с совершенным паросочетанием. В лемме первая ненулевая троичная координата задаёт явную пару, а в SMMC 2024 A2 троичная запись управляет вынужденными парами в графе сумм степеней тройки.",
+      "backward_text": "SMMC 2024 A2 — более арифметический родственник: там perfect matching существует не всегда и распознаётся по троичным цифрам, тогда как в троичной лемме matching существует для всех \\(n\\) после удаления нулевой строки.",
+      "anchors": {
+        "from_solution_id": "sol-first-nonzero-involution",
+        "to_solution_id": "sol-ternary-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-ternary-nonzero-matching-egmo-2022-domino-parity",
+      "from": "ternary-nonzero-strings-perfect-matching",
+      "to": "egmo-2022-p5-domino-parity-bipartite-matching",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Лемма и EGMO 2022 P5 оба используют идею попарного учета объектов через симметрию: здесь вершины паруются инволюцией, а в EGMO отражение попарно уничтожает несимметричные домино-разбиения по модулю 2.",
+      "backward_text": "EGMO 2022 P5 работает с чётностью числа совершенных паросочетаний в решёточном графе; троичная лемма является более элементарной matching-карточкой, где инволюция не считает паросочетания, а строит одно конкретное.",
+      "anchors": {
+        "from_solution_id": "sol-first-nonzero-involution",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

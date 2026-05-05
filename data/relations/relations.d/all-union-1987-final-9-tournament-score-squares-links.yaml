@@ -1,0 +1,48 @@
+{
+  "relations": [
+    {
+      "id": "rel-all-union-1987-score-squares-polish-mo-2022-badminton",
+      "from": "all-union-1987-final-9-tournament-score-squares",
+      "to": "polish-mo-2022-ii-p6-badminton-euler-cycles",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи переводят спортивный турнир в подсчёт побед и поражений. Всесоюзная задача заканчивается тождеством \\(x_i+y_i=9\\) и равенством общих сумм побед/поражений; польская задача развивает тот же баланс до графа ничейных двухматчевых встреч с чётными степенями.",
+      "backward_text": "Польская задача является более сложным родственником: после баланса побед и поражений она требует разложения чётного графа на циклы, тогда как всесоюзная задача сводится к одной алгебраической строке.",
+      "anchors": {
+        "from_solution_id": "sol-published-degree-balance",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-all-union-1987-score-squares-imo-2010-c5",
+      "from": "all-union-1987-final-9-tournament-score-squares",
+      "to": "imo-2010-c5-bad-company-tournament",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки работают с турниром без ничьих и используют числа побед и поражений как исходящие и входящие степени. Во всесоюзной задаче нужен только баланс первых и вторых степенных сумм, а IMO Shortlist 2010 C5 считает более тонкие выражения через локальные подтурниры.",
+      "backward_text": "IMO Shortlist 2010 C5 можно рассматривать как существенно более глубокое продолжение техники score sequence: вместо немедленного равенства сумм квадратов она использует ограничения на четвёрки и степенные суммы.",
+      "anchors": {
+        "from_solution_id": "sol-published-degree-balance"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-all-union-1987-score-squares-cmo-2006-cycle-triplets",
+      "from": "all-union-1987-final-9-tournament-score-squares",
+      "to": "cmo-2006-p4-cycle-triplets-tournament",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи являются задачами о конечных турнирах и степенях вершин. Здесь используется постоянство \\(d^+(v)+d^-(v)\\) и глобальный баланс степеней; CMO 2006 P4 суммирует локальные выражения от исходящих степеней для подсчёта циклических троек.",
+      "backward_text": "CMO 2006 P4 использует тот же язык исходящих степеней, но в более содержательной экстремальной задаче о тройках турнира.",
+      "anchors": {
+        "from_solution_id": "sol-published-degree-balance",
+        "to_solution_id": "sol-official-degree-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    }
+  ]
+}

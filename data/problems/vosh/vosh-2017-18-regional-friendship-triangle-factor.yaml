@@ -1,0 +1,189 @@
+{
+  "id": "vosh-2017-18-regional-friendship-triangle-factor",
+  "title": "Минимум дружб при разбиении после удаления ребёнка на тройки, Всероссийская олимпиада 2017/18",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Берлов С.",
+      "status": "source_verified"
+    },
+    {
+      "name": "Власова Н.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "triangle_factor_after_vertex_deletion",
+      "minimum_edges",
+      "low_degree_vertex"
+    ],
+    "methods": [
+      "construction",
+      "induction",
+      "double_counting",
+      "degree_counting",
+      "graph_compression"
+    ],
+    "transformations": [
+      "children_to_vertices",
+      "friendship_to_edges",
+      "friendly_triples_to_triangle_factor"
+    ],
+    "goal": [
+      "minimum_edge_count"
+    ],
+    "auxiliary_graph_type": [
+      "simple_graph"
+    ],
+    "invariants": [
+      "good_graph_property",
+      "edge_count_decrease_under_compression"
+    ],
+    "keywords": [
+      "vosh_2017_18_regional",
+      "grade_11_problem_9",
+      "triangle_factor",
+      "friendship_graph",
+      "minimum_edges",
+      "low_degree_k4_compression"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "11.9",
+        "text": "В компании 100 детей, некоторые дети дружат, причём дружба всегда взаимна. Известно, что при выделении любого ребёнка оставшихся 99 детей можно разбить на 33 группы по три человека так, чтобы в каждой группе все трое попарно дружили. Найдите наименьшее возможное количество пар дружащих детей.",
+        "source_id": "src-vosh-2017-18-regional-day2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Назовём простой граф на \\(3k+1\\) вершинах хорошим, если после удаления любой вершины остальные \\(3k\\) вершин можно разбить на \\(k\\) троек, каждая из которых порождает треугольник. Докажите, что в хорошем графе не меньше \\(6k\\) рёбер, и что эта оценка достижима. В частности, при \\(k=33\\) минимум равен 198.",
+        "source_id": "src-vosh-2017-18-regional-day2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "clique",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-star-over-disjoint-triangles",
+      "title": "Звезда к набору непересекающихся треугольников",
+      "text": "Конструкция с \\(6k\\) рёбрами: взять \\(k\\) непересекающихся треугольников и одну дополнительную вершину, соединённую со всеми остальными. После удаления центра остаются треугольники, а после удаления другой вершины её заменяет центр.",
+      "tags": [
+        "construction"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-contract-low-degree-k4",
+      "title": "Сжатие вершины степени 3 вместе с её соседями",
+      "text": "Если в хорошем графе есть вершина степени меньше 4, то на самом деле её степень равна 3, а три её соседа попарно соединены. Удаление этой четвёрки и замена трёх соседей одной вершиной сохраняет хорошесть и уменьшает число рёбер как минимум на 6.",
+      "tags": [
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-induction-good-graphs",
+      "title": "Индукция по числу троек",
+    "text": "Построим пример. Возьмём вершину \\(A\\), а остальные \\(99\\) вершин разобьём на \\(33\\) тройки и внутри каждой тройки проведём все три ребра. Затем соединим \\(A\\) со всеми остальными вершинами. Рёбер получилось \\(33\\cdot3+99=198\\). Если удалить \\(A\\), остаются исходные треугольники; если удалить другую вершину \\(B\\), то в её тройке можно заменить \\(B\\) на \\(A\\), а остальные тройки оставить прежними. Значит 198 достижимо.\n\nДокажем нижнюю оценку в общей форме. Пусть граф на \\(3k+1\\) вершинах хорош, то есть после удаления любой вершины оставшиеся вершины разбиваются на \\(k\\) треугольников. Докажем индукцией по \\(k\\), что в нём не меньше \\(6k\\) рёбер. При \\(k=1\\) после удаления любой вершины три оставшиеся должны образовывать треугольник, значит весь граф есть \\(K_4\\), и рёбер 6.\n\nПусть \\(k>1\\). Если степень каждой вершины хотя бы 4, то по лемме о рукопожатиях число рёбер не меньше \\((3k+1)\\cdot4/2=6k+2>6k\\). Иначе найдётся вершина \\(A\\) степени не более 3. У неё не может быть степени 0 или 1: если удалить вершину, отличную от \\(A\\), то \\(A\\) должна попасть в треугольник и иметь среди оставшихся хотя бы двух соседей. Значит степень \\(A\\) хотя бы 2. Если соседей ровно два, удалим одного из них; тогда у \\(A\\) останется только один сосед и она не сможет лежать в треугольнике. Поэтому степень \\(A\\) равна 3; обозначим её соседей через \\(B,C,D\\).\n\nПри удалении \\(B\\) вершина \\(A\\) должна попасть в треугольник с двумя своими оставшимися соседями, то есть \\(C\\) и \\(D\\) соединены. Аналогично, удаляя \\(C\\) и \\(D\\), получаем рёбра \\(BD\\) и \\(BC\\). Следовательно, вершины \\(A,B,C,D\\) образуют \\(K_4\\).\n\nПостроим новый граф: удалим \\(A,B,C,D\\), добавим одну вершину \\(X\\) и соединим \\(X\\) со всеми вершинами, которые в исходном графе были соединены хотя бы с одной из \\(B,C,D\\). Рёбра внутри \\(K_4\\) исчезли, поэтому число рёбер уменьшилось как минимум на 6. Покажем, что новый граф хорош на \\(3(k-1)+1\\) вершинах. Если удалена вершина \\(Y\\ne X\\), то в исходном графе после удаления \\(Y\\) есть разбиение на треугольники. В этом разбиении вершина \\(A\\) лежит в треугольнике вместе с двумя из \\(B,C,D\\); третья вершина из \\(B,C,D\\) лежит в некотором другом треугольнике. Удалим треугольник с \\(A\\) и заменим в другом треугольнике эту третью вершину на \\(X\\). По определению \\(X\\) смежна с двумя другими вершинами этого треугольника, поэтому получаем разбиение нового графа без \\(Y\\) на \\(k-1\\) треугольников. Если же удалён \\(X\\), рассмотрим исходный граф после удаления \\(D\\). Тогда \\(A\\), имея только соседей \\(B,C,D\\), обязана лежать в треугольнике с \\(B\\) и \\(C\\); удалив этот треугольник из разбиения, получаем нужное разбиение нового графа без \\(X\\).\n\nПо индукции новый граф имеет не меньше \\(6(k-1)\\) рёбер. Исходный имел как минимум на 6 рёбер больше, значит в нём не меньше \\(6k\\) рёбер. При \\(k=33\\) получаем нижнюю оценку \\(198\\), совпадающую с конструкцией.",
+      "idea_ids": [
+        "idea-star-over-disjoint-triangles",
+        "idea-contract-low-degree-k4"
+      ],
+    "standard_idea_ids": [
+      "induction",
+      "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "clique",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Региональный этап 2017/18, 11 класс, задача 9; официальный ответ 198, решение — конструкция и индукция для хороших графов на \\(3k+1\\) вершинах.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "extremal_graph_theory",
+    "induction",
+    "degree_counting",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "construction",
+        "induction",
+        "low_degree_compression"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-2017-18-regional-day2-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Deep-аудит 2026-05-05: официальный PDF решений для регионального этапа 2017/18, 11 класс, второй день подтверждает условие 11.9, авторов С. Берлова и Н. Власову, ответ 198 и полное графовое решение. Индукционный шаг сжатия K4 сверён с официальным текстом."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.94,
+      "basis": "agent high-reasoning official VOSH PDF audit",
+      "notes": "Official VOSH PDF contains the statement, authors, answer 198, graph translation, extremal construction, and self-contained induction via low-degree K4 compression; no heavy external theorem is used.",
+      "audit_source": "docs/archive/vosh-official-sweep/deep/vosh-2017-18-regional-friendship-triangle-factor.md"
+    }
+  }
+}

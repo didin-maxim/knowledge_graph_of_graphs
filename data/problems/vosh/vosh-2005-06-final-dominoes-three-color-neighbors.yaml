@@ -1,0 +1,174 @@
+{
+  "id": "vosh-2005-06-final-dominoes-three-color-neighbors",
+  "title": "Трехцветная раскраска доминошек с малым числом одноцветных соседей, Всероссийская олимпиада 2005/06",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Пастор А.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "domino_tiling",
+      "grid_graph",
+      "adjacency_graph",
+      "edge_coloring_of_cells"
+    ],
+    "methods": [
+      "periodic_coloring",
+      "checkerboard_coloring",
+      "local_degree_bound"
+    ],
+    "transformations": [
+      "dominoes_to_adjacency_graph",
+      "color_domino_by_black_cell",
+      "periodic_6_by_6_coloring"
+    ],
+    "goal": [
+      "balanced_three_coloring",
+      "bounded_same_color_neighbors"
+    ],
+    "auxiliary_graph_type": [
+      "domino_adjacency_graph",
+      "grid_graph"
+    ],
+    "invariants": [
+      "equal_number_of_black_cells_of_each_color",
+      "local_same_color_black_cell_neighbors"
+    ],
+    "keywords": [
+      "domino_tiling",
+      "three_coloring",
+      "same_color_neighbors",
+      "periodic_coloring"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Квадрат 3000 на 3000 разбит на доминошки",
+        "text": "Квадрат \\(3000\\times3000\\) произвольным образом разбит на доминошки, то есть прямоугольники \\(1\\times2\\) клетки. Докажите, что доминошки можно раскрасить в три цвета так, чтобы доминошек каждого цвета было поровну и у каждой доминошки было не более двух соседей ее цвета. Доминошки считаются соседними, если они содержат клетки, соседние по стороне.",
+        "source_id": "src-vosh-1993-2006-mccme-book",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Раскраска графа соседства доминошек",
+        "text": "Пусть \\(G\\) — граф соседства доминошек произвольного разбиения доски \\(3000\\times3000\\): вершины \\(G\\) соответствуют доминошкам, а две вершины соединены, если соответствующие доминошки имеют соседние по стороне клетки. Докажите, что вершины \\(G\\) можно раскрасить в три цвета с равными размерами цветовых классов так, чтобы у каждой вершины было не более двух соседей своего цвета.",
+        "source_id": "src-vosh-1993-2006-mccme-book",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-color-by-black-cell",
+      "title": "Красить доминошку по ее черной клетке",
+      "text": "В шахматной раскраске каждая доминошка содержит ровно одну черную клетку. Если периодически раскрасить черные клетки в три цвета поровну и цвет доминошки взять по ее черной клетке, баланс цветов будет автоматическим.",
+      "tags": [
+        "coloring",
+        "graph_model"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-local-periodic-bound",
+      "title": "Локальная периодическая раскраска ограничивает одноцветных соседей",
+      "text": "В официальной раскраске одного периода \\(6\\times6\\) каждая черная клетка имеет среди локально возможных черных клеток соседних доминошек не более одной клетки того же цвета.",
+      "tags": [
+        "coloring",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-periodic-black-cells",
+      "title": "Официальное решение через периодическую раскраску черных клеток",
+      "text": "Раскрасим клетки доски в шахматном порядке. Каждая доминошка покрывает ровно одну черную клетку, поэтому достаточно раскрасить черные клетки в три цвета и присвоить доминошке цвет ее черной клетки.\n\nРазобьем доску \\(3000\\times3000\\) на блоки \\(6\\times6\\). В каждом блоке повторим следующий официальный период; точки обозначают белые клетки шахматной раскраски, а числа \\(1,2,3\\) — цвета черных клеток:\n\n\\[\n\\begin{array}{cccccc}\n1&.&2&.&3&.\\\\\n.&1&.&2&.&3\\\\\n2&.&3&.&1&.\\\\\n.&2&.&3&.&1\\\\\n3&.&1&.&2&.\\\\\n.&3&.&1&.&2\n\\end{array}\n\\]\n\nВ каждом блоке по шесть черных клеток каждого из трех цветов; поскольку \\(3000\\) делится на 6, доминошек каждого цвета получится поровну.\n\nОсталось проверить соседей. Пусть две соседние доминошки имеют черные клетки \\(B\\) и \\(B'\\). Из того, что каждая доминошка состоит из соседних черной и белой клеток, а сами доминошки соприкасаются по стороне, следует, что в координатах доски вектор \\(B'-B\\) может быть только одним из \\((\\pm2,0)\\), \\((0,\\pm2)\\), \\((\\pm1,\\pm1)\\). В указанном периодическом узоре клетки одного цвета среди этих локально возможных позиций встречаются только по одной диагонали: для каждой черной клетки есть не более одной такой черной клетки того же цвета. Значит у каждой доминошки есть даже не более одного, а значит и не более двух, соседей ее цвета.",
+      "idea_ids": [
+        "idea-color-by-black-cell",
+        "idea-local-periodic-bound"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "review_notes": "Официальный рисунок 325 развернут текстом как один период 6x6; локальная проверка векторов соседства дана в решении.",
+      "definition_ids": [
+        "simple_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "Заключительный этап 2005/06, 10 класс, задача 752 в книге МЦНМО; официальный 6x6-узор перенесен текстом.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "graph_model",
+    "construction",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "periodic_coloring",
+        "domino_adjacency_graph"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-1993-2006-mccme-book",
+      "role": "problem_and_solution_archive",
+      "status": "source_verified",
+      "problem_code": "2005/06 final, grade 10, problem 752"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено в ходе официального sweep по архиву МЦНМО/Math.ru. Условие, автор и решение сверены; официальный рисунок 325 перенесен в карточку как текстовая 6x6-таблица."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.94,
+      "basis": "deep high-reasoning pass, 2026-05-05",
+      "notes": "Официальный PDF МЦНМО/Math.ru содержит полное решение. Единственный прежний риск был рисунок локального узора; он развернут текстом по рис. 325, поэтому классификация остается official_complete_or_near_complete, а не official_outline_needs_work.",
+      "audit_source": "docs/archive/vosh-official-sweep/deep/vosh-2005-06-final-dominoes-three-color-neighbors.md"
+    }
+  }
+}

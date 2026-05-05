@@ -1,0 +1,94 @@
+{
+  "relations": [
+    {
+      "id": "rel-imc2011-p2-parent-to-half-threshold-counterexample",
+      "from": "imc-2011-day2-p2-tripartite-married-triples",
+      "to": "imc-2011-day2-p2a-tripartite-half-threshold-counterexample",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Составная карточка IMC 2011 Day 2 P2 содержит часть (a) о пороге \\(k=n/2\\); дочерняя карточка выделяет ее как самостоятельный контрпример в трехдольном графе без треугольников.",
+      "backward_text": "Контрпример при \\(k=n/2\\) является выделенной частью составной IMC 2011 Day 2 P2 и сохраняет только механизм двоичного разбиения долей.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-half-threshold-construction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-imc2011-p2-parent-to-three-quarter-perfect-cover",
+      "from": "imc-2011-day2-p2-tripartite-married-triples",
+      "to": "imc-2011-day2-p2b-tripartite-three-quarter-perfect-cover",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Составная карточка IMC 2011 Day 2 P2 содержит часть (b) о полном покрытии брачными тройками при \\(k\\ge3n/4\\); дочерняя карточка выделяет ее как самостоятельную теорему о факторе треугольников.",
+      "backward_text": "Положительная теорема при \\(k\\ge3n/4\\) является выделенной частью составной IMC 2011 Day 2 P2 и разворачивает только matching/Hall-механизм.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-two-stage-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-imc2011-p2-half-threshold-three-quarter-paired",
+      "from": "imc-2011-day2-p2a-tripartite-half-threshold-counterexample",
+      "to": "imc-2011-day2-p2b-tripartite-three-quarter-perfect-cover",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это две стороны одной пороговой истории: при \\(k=n/2\\) плотность к каждой чужой доле еще допускает трехдольный граф без единого треугольника, а при \\(k\\ge3n/4\\) уже гарантируется совершенное покрытие треугольниками.",
+      "backward_text": "Положительная теорема при \\(3n/4\\) дополняет контрпример при \\(n/2\\), но использует другой механизм: не конструкцию с двоичными метками, а два применения теоремы Холла.",
+      "anchors": {
+        "from_solution_id": "sol-half-threshold-construction",
+        "to_solution_id": "sol-two-stage-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-hall-marriage-imc2011-three-quarter-perfect-cover",
+      "from": "hall-marriage-theorem",
+      "to": "imc-2011-day2-p2b-tripartite-three-quarter-perfect-cover",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Теорема Холла является явным инструментом положительной части IMC 2011 P2: сначала она дает паросочетание между двумя долями, затем паросочетание между этими парами и третьей долей.",
+      "backward_text": "Карточка IMC 2011 P2(b) является плотностным применением теоремы Холла, где условие Холла проверяется через минимальные степени и оценки общих соседей.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-two-stage-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-putnam-2012-b3-imc2011-three-quarter-hall-applications",
+      "from": "putnam-2012-b3-round-robin-winners-hall",
+      "to": "imc-2011-day2-p2b-tripartite-three-quarter-perfect-cover",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки превращают исходную сюжетную задачу в выбор системы различных представителей через двудольный граф и проверяют условие Холла подсчетом соседей.",
+      "backward_text": "IMC 2011 P2(b) использует более сложную двухступенчатую версию того же Hall-мотива: сначала выбираются пары двух долей, затем к ним подбирается третья доля.",
+      "anchors": {
+        "from_solution_id": "sol-kedlaya-hall",
+        "to_solution_id": "sol-two-stage-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-vosh-2017-triangle-factor-imc2011-three-quarter-perfect-cover",
+      "from": "vosh-2017-18-regional-friendship-triangle-factor",
+      "to": "imc-2011-day2-p2b-tripartite-three-quarter-perfect-cover",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки работают с покрытием вершин непересекающимися треугольниками после графовой формализации дружбы или симпатий.",
+      "backward_text": "IMC 2011 P2(b) — трехдольный плотностный вариант triangle-factor мотива: вместо индукционного сжатия хороших графов используется matching/Hall-построение.",
+      "anchors": {
+        "from_solution_id": "sol-induction-good-graphs",
+        "to_solution_id": "sol-two-stage-hall"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+  ]
+}

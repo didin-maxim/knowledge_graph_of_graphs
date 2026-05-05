@@ -542,6 +542,42 @@ def build_html(data):
       max-width: 900px;
     }}
 
+    .home-solution-grid {{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }}
+
+    .home-solution-button {{
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+    }}
+
+    .home-solution-button:hover {{
+      background: var(--soft);
+      border-color: #9ccfc5;
+    }}
+
+    .home-solution-button strong {{
+      display: block;
+      font-size: 20px;
+      line-height: 1.1;
+    }}
+
+    .home-solution-button span {{
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }}
+
     .home-stat, .home-panel, .home-chip {{
       border: 1px solid var(--line);
       background: #fff;
@@ -671,7 +707,7 @@ def build_html(data):
         display: none;
       }}
 
-      .home-stats, .home-grid, .home-search-map {{
+      .home-stats, .home-grid, .home-search-map, .home-solution-grid {{
         grid-template-columns: 1fr;
       }}
 
@@ -1052,28 +1088,53 @@ def build_html(data):
         || /официальн|архив|опубликован|источник|форум|aops/i.test(blob);
     }}
 
-    function solutionLooksHeavy(solution) {{
-      const blob = solutionBlob(solution);
-      return /heavy|external|advanced|research|non[- ]?elementary|внешн|тяж[её]л|нешкольн|исследовательск|теорем[ауы]\\s+(ч[еэ]ня|stiebitz|стибиц|kotzig|коциг|tihany|тихани|brooks|брукс|turan|туран|menger|менгер)/i.test(blob);
+  function solutionLooksHeavy(solution) {{
+     const blob = solutionBlob(solution);
+     return /heavy|external|advanced|research|non[- ]?elementary|внешн|тяж[её]л|нешкольн|исследовательск|теорем[ауы]\\s+(ч[еэ]ня|stiebitz|стибиц|kotzig|коциг|tihany|тихани|brooks|брукс|turan|туран|menger|менгер)/i.test(blob);
+   }}
+
+  function normalizedSolutionStatusKey(key) {{
+    const aliases = {{
+      external_published_solution_adapted: 'unofficial_published',
+      published: 'unofficial_published',
+      ai: 'ai_original',
+      heavy: 'ai_heavy_external_theorem',
+      missing: 'no_solution_hard'
+    }};
+    return aliases[key] || key;
+  }}
+
+  function solutionStatusKey(problem) {{
+    const classification = normalizedSolutionStatusKey(problem.editorial?.solution_classification?.type);
+    const known = new Set([
+      'official_complete_or_near_complete',
+      'official_outline_needs_work',
+      'unofficial_published',
+      'ai_original',
+      'ai_heavy_external_theorem',
+      'no_solution_hard'
+    ]);
+    if (known.has(classification)) return classification;
+    const solutions = realSolutions(problem);
+    if (!solutions.length) return 'no_solution_hard';
+    if (solutions.some(solutionLooksHeavy)) return 'ai_heavy_external_theorem';
+    if (solutions.some(solutionLooksPublished)) return 'unofficial_published';
+    return 'ai_original';
+  }}
+
+  function solutionStatusBroadKey(problem) {{
+    const key = normalizedSolutionStatusKey(solutionStatusKey(problem));
+      if (key === 'no_solution_hard' || key === 'missing') return 'missing';
+      if (key === 'ai_original' || key === 'ai') return 'ai';
+      if (key === 'ai_heavy_external_theorem' || key === 'heavy') return 'heavy';
+      return 'published';
     }}
 
-    function solutionStatusKey(problem) {{
-      const classification = problem.editorial?.solution_classification?.type;
-      const classificationMap = {{
-        official_complete_or_near_complete: 'published',
-        official_outline_needs_work: 'published',
-        unofficial_published: 'published',
-        external_published_solution_adapted: 'published',
-        ai_original: 'ai',
-        ai_heavy_external_theorem: 'heavy',
-        no_solution_hard: 'missing'
-      }};
-      if (classificationMap[classification]) return classificationMap[classification];
-      const solutions = realSolutions(problem);
-      if (!solutions.length) return 'missing';
-      if (solutions.some(solutionLooksHeavy)) return 'heavy';
-      if (solutions.some(solutionLooksPublished)) return 'published';
-      return 'ai';
+    function solutionStatusMatches(problem, selected) {{
+      if (selected === 'all') return true;
+      if (selected === 'with') return problemHasRealSolution(problem);
+      if (selected === 'without') return !problemHasRealSolution(problem);
+      return selected === solutionStatusKey(problem) || selected === solutionStatusBroadKey(problem);
     }}
 
     function solutionStatusLabel(key) {{
@@ -1087,7 +1148,9 @@ def build_html(data):
         unofficial_published: 'опубликованное неофициальное',
         ai_original: 'решение ИИ с нуля',
         ai_heavy_external_theorem: 'ИИ/решение с тяжёлыми внешними теоремами',
-        no_solution_hard: 'решения нет: сложная задача'
+        no_solution_hard: 'решения нет: сложная задача',
+        with: 'есть решение',
+        without: 'решения нет'
       }};
       return labels[key] || key;
     }}
@@ -1170,10 +1233,7 @@ def build_html(data):
         if (!yearOk) return false;
       }}
       if (!options.excludeSolution) {{
-        const solutionOk = state.solution === 'all'
-          || state.solution === solutionStatusKey(problem)
-          || (state.solution === 'with' && problemHasRealSolution(problem))
-          || (state.solution === 'without' && !problemHasRealSolution(problem));
+        const solutionOk = solutionStatusMatches(problem, state.solution);
         if (!solutionOk) return false;
       }}
       if (!options.excludeQuery) {{
@@ -1548,17 +1608,19 @@ def build_html(data):
         ai_original: 0,
         ai_heavy_external_theorem: 0,
         no_solution_hard: 0,
-        published: 0,
-        ai: 0,
-        heavy: 0,
-        missing: 0
+        with: 0,
+        without: 0
       }};
       matching.forEach(problem => {{
         const key = solutionStatusKey(problem);
         counts[key] = (counts[key] || 0) + 1;
+        if (problemHasRealSolution(problem)) counts.with += 1;
+        else counts.without += 1;
       }});
       select.innerHTML = [
         `<option value="all">Все задачи (${{matching.length}})</option>`,
+        `<option value="with">Есть решение (${{counts.with}})</option>`,
+        `<option value="without">Решения нет (${{counts.without}})</option>`,
         `<option value="official_complete_or_near_complete">Официальное полное/почти полное (${{counts.official_complete_or_near_complete}})</option>`,
         `<option value="official_outline_needs_work">Официальный план, нужна доработка (${{counts.official_outline_needs_work}})</option>`,
         `<option value="unofficial_published">Опубликованное неофициальное (${{counts.unofficial_published}})</option>`,
@@ -1849,36 +1911,61 @@ def build_html(data):
     function renderHome() {{
       const problemList = Object.values(problems);
       const solutionCounts = {{
-        published: 0,
-        ai: 0,
-        heavy: 0,
-        missing: 0
+        official_complete_or_near_complete: 0,
+        official_outline_needs_work: 0,
+        unofficial_published: 0,
+        ai_original: 0,
+        ai_heavy_external_theorem: 0,
+        no_solution_hard: 0
       }};
       problemList.forEach(problem => {{
-        solutionCounts[solutionStatusKey(problem)] += 1;
+        const key = solutionStatusKey(problem);
+        solutionCounts[key] = (solutionCounts[key] || 0) + 1;
       }});
-      const solvedCount = problemList.length - solutionCounts.missing;
-      const reviewCount = problemList.filter(problem => problem.editorial?.review_status === 'needs_human_review').length;
+      const solvedCount = problemList.filter(problemHasRealSolution).length;
+      const noSolutionCount = problemList.length - solvedCount;
+      const aiAssistedCount = solutionCounts.ai_original + solutionCounts.ai_heavy_external_theorem;
       const graphStatements = problemList.reduce((total, problem) =>
         total + (problem.statements?.graph_theory?.length || 0) + (problem.statements?.graph_hint_reformulations?.length || 0), 0);
       const filteredCount = filteredProblems().length;
       const selectedProblem = filteredProblems()[0] || sortedProblems()[0];
       const selectedHref = selectedProblem ? `#${{encodeURIComponent(selectedProblem.id)}}` : '#home';
       const sourceCount = new Set(problemList.map(problem => sourceInfo(problem).key).filter(Boolean)).size;
+      const solutionTypes = [
+        'official_complete_or_near_complete',
+        'official_outline_needs_work',
+        'unofficial_published',
+        'ai_original',
+        'ai_heavy_external_theorem',
+        'no_solution_hard'
+      ];
+      const solutionButtonHtml = solutionTypes.map(type => `
+        <button class="home-solution-button solution-status-${{esc(type)}}" type="button" data-home-solution="${{esc(type)}}">
+          <strong>${{solutionCounts[type] || 0}}</strong>
+          <span>${{esc(solutionStatusLabel(type))}}</span>
+        </button>
+      `).join('');
       byId('content').innerHTML = `
         <section class="home-hero">
           <div class="home-kicker">
             <span class="pill">черновая исследовательская база</span>
             <span>${{esc(sourceCount)}} источниковых семейств</span>
             <span>${{esc(relations.length)}} родственных связей</span>
+            <span>${{esc(aiAssistedCount)}} ИИ-классифицированных/ИИ-решений</span>
           </div>
           <h2 class="home-title">Графовые задачи, связи и идеи в одном рабочем поле</h2>
           <p class="home-lead">
             Это база олимпиадных и классических задач по теории графов: с оригинальными условиями, графовыми формулировками,
             решениями, идеями, источниками и картой родства между карточками.
           </p>
+          <p class="home-note">
+            База создаётся при активной помощи ИИ: он помогает извлекать задачи из архивов, переводить и разворачивать решения,
+            проставлять теги, искать родственные связи и помечать степень надёжности решений. Эти пометки не заменяют
+            человеческую редактуру: спорные решения и тяжёлые внешние теоремы специально выделены отдельными категориями.
+          </p>
           <div class="home-actions">
             <a class="home-action primary" href="${{selectedHref}}">Открыть найденные карточки: ${{filteredCount}}</a>
+            <button class="home-action" type="button" data-home-view="problems">Все задачи</button>
             <button class="home-action" type="button" data-home-view="definitions">Определения</button>
             <button class="home-action" type="button" data-home-view="ideas">Идеи</button>
             <button class="home-action" type="button" data-home-view="comments">Комментарии</button>
@@ -1888,8 +1975,18 @@ def build_html(data):
             <div class="home-stat"><strong>${{solvedCount}}</strong><span>с решениями</span></div>
             <div class="home-stat"><strong>${{graphStatements}}</strong><span>графовых формулировок</span></div>
             <div class="home-stat"><strong>${{Object.keys(definitions).length}}</strong><span>определений</span></div>
-            <div class="home-stat"><strong>${{solutionCounts.missing}}</strong><span>без решения</span></div>
+            <div class="home-stat"><strong>${{noSolutionCount}}</strong><span>без решения</span></div>
           </div>
+        </section>
+
+        <section class="home-band">
+          <h3>Навигация по типу решения</h3>
+          <div class="home-solution-grid">${{solutionButtonHtml}}</div>
+          <p class="home-note">
+            Эти кнопки выставляют тот же фильтр, что и выпадающий список «Решения» слева: можно быстро отделить полные
+            официальные решения от кратких официальных планов, неофициальных публикаций, ИИ-решений, решений с тяжёлыми
+            внешними теоремами и задач без решения.
+          </p>
         </section>
 
         <section class="home-band">
@@ -1898,7 +1995,7 @@ def build_html(data):
             <div class="home-chip"><strong>Строка поиска</strong><span>Ищет по названию, условию, решению, источнику, автору и служебным ключам.</span></div>
             <div class="home-chip"><strong>Источник и год</strong><span>Отфильтруйте КОЛМ, ФЮМ, УТЮМ, ЮМТ, IMO, USAMO и другие серии.</span></div>
             <div class="home-chip"><strong>Цель, объект, метод</strong><span>Разделяйте “оценка+пример”, “дерево”, “индукция” и похожие роли задачи.</span></div>
-            <div class="home-chip"><strong>Тип и решения</strong><span>Оставьте только задачи, теоремы, леммы, карточки с решением или без решения.</span></div>
+            <div class="home-chip"><strong>Тип и решения</strong><span>Оставьте только задачи, теоремы, леммы или один из шести типов происхождения решения.</span></div>
           </div>
           <p class="home-note">Фильтры слева работают вместе: можно, например, искать задачи КОЛМ про деревья с методом индукции и сразу открыть первую подходящую карточку.</p>
         </section>
@@ -1942,9 +2039,28 @@ def build_html(data):
       document.querySelectorAll('[data-home-view]').forEach(button => {{
         button.addEventListener('click', () => {{
           const view = button.dataset.homeView;
-          if (view === 'definitions') setDefinition(sortedDefinitions()[0]?.id);
+          if (view === 'problems') {{
+            state.query = '';
+            state.goal = 'all';
+            state.object = 'all';
+            state.method = 'all';
+            state.type = 'all';
+            state.source = 'all';
+            state.author = 'all';
+            state.year = 'all';
+            state.solution = 'all';
+            byId('search-input').value = '';
+            selectFirstVisibleRoute();
+          }}
+          else if (view === 'definitions') setDefinition(sortedDefinitions()[0]?.id);
           else if (view === 'ideas') setStandardIdea(sortedStandardIdeas()[0]?.id);
           else if (view === 'comments') setComment(sortedComments()[0]?.id || null);
+        }});
+      }});
+      document.querySelectorAll('[data-home-solution]').forEach(button => {{
+        button.addEventListener('click', () => {{
+          state.solution = button.dataset.homeSolution;
+          selectFirstVisibleRoute();
         }});
       }});
     }}

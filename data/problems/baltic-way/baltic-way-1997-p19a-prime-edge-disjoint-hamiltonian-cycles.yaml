@@ -1,0 +1,181 @@
+{
+  "id": "baltic-way-1997-p19a-prime-edge-disjoint-hamiltonian-cycles",
+  "title": "Непересекающиеся гамильтоновы циклы при простом числе вершин, Baltic Way 1997 P19(a)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "hamiltonian_cycle",
+      "edge_disjoint_cycles",
+      "prime_number_of_vertices"
+    ],
+    "methods": [
+      "edge_counting",
+      "modular_difference_classes",
+      "cyclic_group_construction"
+    ],
+    "transformations": [
+      "caves_and_paths_to_complete_graph"
+    ],
+    "goal": [
+      "find_exact_maximum"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "edge_disjointness",
+      "cyclic_differences_mod_n"
+    ],
+    "keywords": [
+      "baltic_way_1997_p19a",
+      "hamiltonian_decomposition",
+      "complete_graph_decomposition",
+      "prime_modular_construction"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-prime",
+        "title": "Условие, часть (a)",
+        "text": "В лесу каждое из \\(n\\) животных, где \\(n\\ge3\\) и \\(n\\) простое, живёт в своей пещере, и между любыми двумя пещерами есть ровно одна отдельная тропа. Перед выборами короля леса некоторые животные проводят кампанию. Каждое такое животное посещает каждую из остальных пещер ровно один раз, передвигается только по тропам, нигде между пещерами не сворачивает с одной тропы на другую и в конце возвращается в свою пещеру. Никакая тропа между двумя пещерами не используется более чем одним агитирующим животным. Докажите, что максимальное число агитирующих животных равно \\((n-1)/2\\).",
+        "source_id": "src-baltic-way-1997-official-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-prime",
+        "title": "Упаковка гамильтоновых циклов в \\(K_n\\), простое \\(n\\)",
+        "text": "Пусть \\(n\\ge3\\) — простое число. В полном графе \\(K_n\\) найдите максимальное число попарно рёберно непересекающихся гамильтоновых циклов и докажите, что этот максимум равен \\((n-1)/2\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "hamiltonian_cycle"
+        ],
+        "distinct_from": [
+          "stmt-original-prime"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-edge-upper-bound",
+      "title": "Общая рёберная верхняя оценка",
+      "text": "Каждый гамильтонов цикл в \\(K_n\\) содержит \\(n\\) рёбер, а всего в \\(K_n\\) есть \\(n(n-1)/2\\) рёбер. Поэтому рёберно непересекающихся гамильтоновых циклов не может быть больше \\((n-1)/2\\).",
+      "tags": [
+        "hamiltonian_cycles",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-prime-difference-cycles",
+      "title": "Циклы по ненулевым разностям",
+      "text": "Если вершины — вычеты по модулю простого \\(n\\), то для каждого шага \\(a=1,\\ldots,(n-1)/2\\) последовательность \\(0,a,2a,\\ldots,(n-1)a,0\\) является гамильтоновым циклом. Его рёбра имеют разность \\(\\pm a\\), поэтому разные шаги дают непересекающиеся множества рёбер.",
+      "tags": [
+        "hamiltonian_cycles",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-prime-modular-differences",
+      "title": "Модульная конструкция для простого \\(n\\)",
+      "text": "Переведём условие на язык графов. Пещеры — вершины полного графа \\(K_n\\), тропы — его рёбра, а маршрут одного агитирующего животного — гамильтонов цикл. Требование, что одна тропа не используется двумя животными, означает рёберную непересекаемость выбранных циклов.\n\nСначала получим верхнюю оценку. Каждый гамильтонов цикл проходит по всем \\(n\\) вершинам и содержит ровно \\(n\\) рёбер. В полном графе \\(K_n\\) всего \\(n(n-1)/2\\) рёбер. Если выбрано \\(m\\) попарно рёберно непересекающихся гамильтоновых циклов, то \\(mn\\le n(n-1)/2\\), откуда \\(m\\le (n-1)/2\\).\n\nОсталось построить \\((n-1)/2\\) таких циклов. Пронумеруем вершины вычетами \\(0,1,\\ldots,n-1\\) по модулю \\(n\\). Для каждого \\(a=1,2,\\ldots,(n-1)/2\\) рассмотрим цикл\n\\[\n0, a, 2a, \\ldots, (n-1)a, 0 \\pmod n.\n\\]\nТак как \\(n\\) простое, умножение на ненулевой вычет \\(a\\) переставляет все вычеты, поэтому эта последовательность действительно проходит через все вершины ровно по одному разу и возвращается в начало.\n\nРёбра этого цикла соединяют пары вершин, разность которых равна \\(a\\) или \\(-a\\) по модулю \\(n\\). Для разных \\(a\\) из диапазона \\(1,\\ldots,(n-1)/2\\) множества \\(\\{a,-a\\}\\) различны, значит никакое неориентированное ребро не встречается в двух построенных циклах. Мы получили ровно \\((n-1)/2\\) рёберно непересекающихся гамильтоновых циклов, что совпадает с верхней оценкой. Поэтому максимум равен \\((n-1)/2\\).",
+      "idea_ids": [
+        "idea-edge-upper-bound",
+        "idea-prime-difference-cycles"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "hamiltonian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Точная упаковка гамильтоновых циклов в \\(K_n\\) для простого \\(n\\): верхняя оценка проста, ключевая конструкция использует ненулевые разности по модулю \\(n\\).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "double_counting",
+    "construction",
+    "goal_exact_bound",
+    "graph_model"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "edge_counting",
+        "modular_hamiltonian_cycles",
+        "cyclic_difference_classes"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-baltic-way-1997-official-solutions",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original-prime"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split from compound parent baltic-way-1997-p19-edge-disjoint-hamiltonian-cycles.",
+      "Self-contained part (a): includes the common edge-count upper bound and the prime-specific modular difference construction."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "high-reasoning split audit",
+      "notes": "The proof expands the official edge-count upper bound and modular construction for prime n.",
+      "audit_source": "agent-baltic-way-1997-p19-split"
+    }
+  }
+}

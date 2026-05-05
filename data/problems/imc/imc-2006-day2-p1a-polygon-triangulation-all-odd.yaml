@@ -1,0 +1,165 @@
+{
+  "id": "imc-2006-day2-p1a-polygon-triangulation-all-odd",
+  "title": "Триангуляция многоугольника: все вершины инцидентны нечетному числу треугольников, IMC 2006 Day 2 P1a",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "planar_graphs",
+      "split_child"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "convex_polygon",
+      "triangulation",
+      "plane_graph",
+      "vertex_triangle_incidence"
+    ],
+    "methods": [
+      "induction_by_three_vertices",
+      "base_case",
+      "parity_tracking"
+    ],
+    "transformations": [
+      "triangulation_to_plane_graph"
+    ],
+    "goal": [
+      "construct_triangulation_with_all_vertex_incidences_odd"
+    ],
+    "auxiliary_graph_type": [
+      "maximal_outerplanar_graph"
+    ],
+    "invariants": [
+      "parity_of_triangle_count_at_vertices",
+      "n_mod_3"
+    ],
+    "keywords": [
+      "imc_2006_day2_p1a",
+      "polygon_triangulation",
+      "parity",
+      "all_odd_vertex_triangle_incidence"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Случай делимости числа вершин на 3",
+        "text": "Пусть \\(V\\) - выпуклый многоугольник с \\(n\\) вершинами, где \\(3\\mid n\\). Докажите, что \\(V\\) можно триангулировать непересекающимися диагоналями так, чтобы каждая вершина \\(V\\) была вершиной нечетного числа треугольников этой триангуляции.",
+        "source_id": "src-imc-2006-day2-p1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Максимальный внешнепланарный граф",
+        "text": "Дан цикл \\(C_n\\), где \\(3\\mid n\\). Нужно добавить непересекающиеся хорды до максимального внешнепланарного графа так, чтобы каждая вершина была инцидентна нечетному числу внутренних треугольных граней.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-add-three-vertices-preserves-all-odd",
+      "title": "Добавлять три вершины, не меняя четность старых вершин",
+      "text": "Если нужная триангуляция построена для \\(k\\)-угольника, то к стороне между двумя старыми вершинами можно пристроить три новые вершины и три новых треугольника. Две старые вершины получают по два новых инцидентных треугольника, а три новые вершины получают соответственно \\(1,3,1\\) треугольников; поэтому все вершины остаются нечетными.",
+      "tags": [
+        "induction",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-add-three-vertices-all-odd",
+      "title": "Индукция с шагом на три вершины",
+      "text": "Проведем индукцию по \\(n\\) среди чисел, кратных \\(3\\).\n\nБаза \\(n=3\\) очевидна: единственный треугольник инцидентен каждой из трех вершин ровно один раз, то есть нечетное число раз.\n\nПусть утверждение доказано для некоторого \\(k\\)-угольника \\(P_1P_2\\ldots P_k\\), где \\(3\\mid k\\). Рассмотрим выпуклый \\((k+3)\\)-угольник \\(P_1P_2\\ldots P_{k+3}\\). По предположению индукции триангулируем подмногоугольник \\(P_1P_2\\ldots P_k\\) так, что каждая его вершина входит в нечетное число треугольников. Оставшаяся часть большого многоугольника - пятиугольник \\(P_1P_kP_{k+1}P_{k+2}P_{k+3}\\). Разобьем его на три треугольника\n\\[\nP_1P_kP_{k+2},\\qquad P_kP_{k+1}P_{k+2},\\qquad P_1P_{k+2}P_{k+3}.\n\\]\nЭти треугольники вместе со старой триангуляцией дают триангуляцию всего \\((k+3)\\)-угольника.\n\nТеперь проверим четности. Вершины \\(P_1\\) и \\(P_k\\) получили по два новых инцидентных треугольника, поэтому их четность не изменилась. Все остальные старые вершины не получили новых треугольников. Новые вершины \\(P_{k+1}\\), \\(P_{k+2}\\), \\(P_{k+3}\\) входят соответственно в \\(1\\), \\(3\\), \\(1\\) новых треугольников, то есть тоже имеют нечетную инцидентность.\n\nЗначит, из подходящей триангуляции для \\(k\\) вершин получается подходящая триангуляция для \\(k+3\\) вершин. Вместе с базой \\(n=3\\) это доказывает утверждение для всех \\(n\\), кратных \\(3\\).",
+      "idea_ids": [
+        "idea-add-three-vertices-preserves-all-odd"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p1_p4",
+    "local_score": 5,
+    "comment": "Самостоятельная половина IMC 2006 Day 2 P1: конструктивная индукция по числу вершин с шагом 3 и аккуратным учетом четности инцидентных треугольников.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "induction",
+    "parity_coloring",
+    "construction",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction_by_three_vertices",
+        "parity_tracking"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2006-day2-p1-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split child extracted from the compound IMC 2006 Day 2 P1 card. This card proves only the case \\(3\\mid n\\), where all vertex-triangle incidence counts are required to be odd.",
+      "High-reasoning split audit: this case is self-contained and nontrivial; it uses the same add-three-vertices mechanism as the complementary case, but has its own base residue and its own all-odd target."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.8,
+      "basis": "high-reasoning split audit from the compound IMC 2006 Day 2 P1 card",
+      "notes": "Solution is a self-contained expansion of the official induction step restricted to the divisible-by-3 case.",
+      "audit_source": "agent-high-reasoning-split"
+    }
+  }
+}

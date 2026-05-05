@@ -1,0 +1,94 @@
+{
+  "relations": [
+    {
+      "id": "rel-bw1997-p19-parent-to-prime-child",
+      "from": "baltic-way-1997-p19-edge-disjoint-hamiltonian-cycles",
+      "to": "baltic-way-1997-p19a-prime-edge-disjoint-hamiltonian-cycles",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Составная карточка Baltic Way 1997 P19 содержит часть (a) о простом \\(n\\); дочерняя карточка выделяет этот случай как самостоятельную задачу с полной верхней оценкой и модульной конструкцией.",
+      "backward_text": "Карточка part (a) является выделенной частью составной Baltic Way 1997 P19: она сохраняет исходную модель с пещерами и тропами, но рассматривает только простой порядок полного графа.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-prime-modular-differences"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-bw1997-p19-parent-to-k9-child",
+      "from": "baltic-way-1997-p19-edge-disjoint-hamiltonian-cycles",
+      "to": "baltic-way-1997-p19b-k9-edge-disjoint-hamiltonian-cycles",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Составная карточка Baltic Way 1997 P19 содержит часть (b) о \\(n=9\\); дочерняя карточка выделяет этот случай как самостоятельную задачу с полной верхней оценкой и явной упаковкой четырёх циклов.",
+      "backward_text": "Карточка part (b) является выделенной частью составной Baltic Way 1997 P19: она фиксирует отдельный случай \\(K_9\\), где нужна не простая модульная конструкция по постоянным простым шагам, а явный список циклов.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-k9-explicit-four-cycles"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-bw1997-p19-prime-k9-paired-variant",
+      "from": "baltic-way-1997-p19a-prime-edge-disjoint-hamiltonian-cycles",
+      "to": "baltic-way-1997-p19b-k9-edge-disjoint-hamiltonian-cycles",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Обе карточки решают одну задачу об упаковке гамильтоновых циклов в полном графе и используют одну верхнюю оценку по числу рёбер, но в простом случае нижняя оценка достигается циклическими разностями в \\(\\mathbb Z_n\\).",
+      "backward_text": "Случай \\(K_9\\) парен простому случаю из той же задачи, но его конструкция другая: шаг \\(3\\) по модулю \\(9\\) не гамильтонов, поэтому вместо разностных классов предъявляется явное разложение на четыре цикла.",
+      "anchors": {
+        "from_solution_id": "sol-prime-modular-differences",
+        "to_solution_id": "sol-k9-explicit-four-cycles"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-bw1997-p19-prime-imo1998-one-factorization",
+      "from": "baltic-way-1997-p19a-prime-edge-disjoint-hamiltonian-cycles",
+      "to": "imo-1998-c6-k-ge-6-one-factorization",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Baltic Way 1997 P19(a) для простого \\(n\\) раскладывает рёбра нечётного полного графа на гамильтоновы 2-факторы через циклические классы разностей. IMO 1998 C6 использует соседний мотив разложения полного графа: \\(K_{10}\\) разбивается на 1-факторы.",
+      "backward_text": "1-факторизация в IMO 1998 C6 — это разложение полного графа через совершенные паросочетания; Baltic Way 1997 P19(a) является гамильтоновым аналогом для нечётного полного графа, где вместо паросочетаний работают циклические разности.",
+      "anchors": {
+        "from_solution_id": "sol-prime-modular-differences",
+        "to_solution_id": "sol-k-ge-6-one-factorization"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-bw1997-p19-k9-imo1998-one-factorization",
+      "from": "baltic-way-1997-p19b-k9-edge-disjoint-hamiltonian-cycles",
+      "to": "imo-1998-c6-k-ge-6-one-factorization",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Карточка про \\(K_9\\) даёт явное разложение всех рёбер нечётного полного графа на гамильтоновы циклы. IMO 1998 C6 родственна через тему разложений полного графа, но использует 1-факторизацию \\(K_{10}\\) для конструкции раскраски.",
+      "backward_text": "Конструкция 1-факторизации \\(K_{10}\\) близка к гамильтонову разложению \\(K_9\\): в обоих случаях рёбра полного графа разбиваются на однородные остовные структуры, хотя здесь это совершенные паросочетания, а там гамильтоновы циклы.",
+      "anchors": {
+        "from_solution_id": "sol-k9-explicit-four-cycles",
+        "to_solution_id": "sol-k-ge-6-one-factorization"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-bw1997-p19-k9-imc2013-complete-graph-cover",
+      "from": "baltic-way-1997-p19b-k9-edge-disjoint-hamiltonian-cycles",
+      "to": "imc-2013-day1-p3-six-trips-cover-pairs",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Baltic Way 1997 P19(b) partitions the edges of \\(K_9\\) into four Hamiltonian cycles. IMC 2013 Day 1 P3 has a looser but related complete-graph edge-cover viewpoint, where all pairs of students are covered by selected cliques.",
+      "backward_text": "The IMC trip problem covers all edges of a complete graph by structured vertex blocks rather than decomposing them exactly; Baltic Way 1997 P19(b) is a tighter edge-disjoint Hamiltonian-cycle decomposition problem.",
+      "anchors": {
+        "from_solution_id": "sol-k9-explicit-four-cycles",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

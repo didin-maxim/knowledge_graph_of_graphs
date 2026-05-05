@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-vosh-2014-rainbow-rectangle-usamo-1976-monochromatic-rectangle",
+      "from": "vosh-2014-15-regional-grid-rainbow-rectangle",
+      "to": "usamo-1976-p1-monochromatic-rectangle-bipartite",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи переводят клетки прямоугольной доски в рёбра полного двудольного графа строк и столбцов, а выбранные две строки и два столбца - в 4-цикл. В задаче ВОШ нужно форсировать разноцветный 4-цикл при большом числе цветов; в USAMO 1976 нужно форсировать одноцветный 4-цикл в двухцветной раскраске.",
+      "backward_text": "USAMO 1976 является близким прямоугольным родственником: та же row-column bipartite encoding and 4-cycle/rectangle dictionary, но метод другой - двойной счёт одноцветных пар столбцов вместо выбора одного ребра каждого цвета и кратчайшего разноцветного цикла.",
+      "anchors": {
+        "from_solution_id": "sol-rainbow-cycle-threshold",
+        "to_solution_id": "sol-column-pair-double-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-vosh-2014-rainbow-rectangle-imo-1998-c6-rainbow-edge-coloring",
+      "from": "vosh-2014-15-regional-grid-rainbow-rectangle",
+      "to": "imo-1998-c6-k-le-4-rainbow-edges-impossible",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки работают с требованиями на попарно разные цвета в рёберно раскрашенном полном графе. ВОШ 2014/15 использует полный двудольный граф и ищет rainbow 4-cycle, тогда как IMO Shortlist 1998 C6 рассматривает complete graph and rainbow edges among selected vertices.",
+      "backward_text": "IMO Shortlist 1998 C6 - более дальний rainbow edge-coloring родственник: общий язык цветов рёбер и запрета/наличия полного набора цветов сохраняется, но структура подграфа, порог и доказательство существенно отличаются от двудольного прямоугольника ВОШ.",
+      "anchors": {
+        "from_solution_id": "sol-rainbow-cycle-threshold",
+        "to_solution_id": "sol-k-le-4-impossible"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-disk-triangulation-boundary-degree-chain-putnam-2007-a6",
+      "from": "disk-triangulation-boundary-degree-chain-reduction",
+      "to": "putnam-2007-a6-admissible-triangulation-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма является вынесенным инструментом для Putnam 2007 A6: она дает оценку суммы граничных степеней и индукционную редукцию граничного уха или цепи степеней \\(3,4,\\ldots,4,3\\).",
+      "backward_text": "Putnam 2007 A6 применяет эту граничную лемму к допустимой триангуляции многоугольника, чтобы уменьшать длину внешней границы и рекурсивно ограничить число треугольников.",
+      "anchors": {
+        "from_solution_id": "sol-euler-count-and-boundary-strip",
+        "to_solution_id": "sol-kedlaya-euler-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-disk-boundary-chain-euler-formula-planar",
+      "from": "disk-triangulation-boundary-degree-chain-reduction",
+      "to": "euler-formula-planar",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Доказательство леммы начинается с формулы Эйлера для плоского графа, примененной к триангулированному диску в виде \\(V-E+F=1\\).",
+      "backward_text": "Формула Эйлера является базовым инструментом для этой леммы: после подсчета сторон треугольных граней она превращается в ограничение на сумму степеней граничных вершин.",
+      "anchors": {
+        "from_solution_id": "sol-euler-count-and-boundary-strip",
+        "to_solution_id": "sol-reduce-to-tree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-disk-boundary-chain-planar-edge-bound",
+      "from": "disk-triangulation-boundary-degree-chain-reduction",
+      "to": "planar-edge-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют эйлерово face counting в планарном графе. Здесь подсчет граней дает граничную кривизну триангулированного диска, а в классической оценке — верхнюю границу на число ребер простого планарного графа.",
+      "backward_text": "Оценка \\(e\\le3v-6\\) — более базовый родственник: тот же подсчет ребер по граням в этой лемме уточнен под диск с треугольными внутренними гранями и нижней оценкой внутренних степеней.",
+      "anchors": {
+        "from_solution_id": "sol-euler-count-and-boundary-strip",
+        "to_solution_id": "sol-face-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-disk-boundary-chain-quadrangulation-face-count",
+      "from": "disk-triangulation-boundary-degree-chain-reduction",
+      "to": "quadrangulation-euler-face-count",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе леммы являются самостоятельными эйлеровыми подсчетами для разбиений диска: одна работает с треугольными гранями и граничными степенями, другая с четырехугольными гранями и числом внутренних вершин.",
+      "backward_text": "Лемма о четырехугольном разбиении — близкий face-counting родственник: в обоих случаях внешняя граница диска учитывается отдельно от внутренних ребер.",
+      "anchors": {
+        "from_solution_id": "sol-euler-count-and-boundary-strip",
+        "to_solution_id": "sol-euler-face-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-disk-boundary-chain-planar-large-girth-degree-two-path",
+      "from": "disk-triangulation-boundary-degree-chain-reduction",
+      "to": "planar-large-girth-degree-two-path",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе леммы извлекают локально удаляемую структуру из планарного эйлерова подсчета. В триангулированном диске это граничное ухо или цепь \\(3,4,\\ldots,4,3\\); в графе большого обхвата — длинный путь с внутренними вершинами степени 2.",
+      "backward_text": "Лемма о длинном 2-пути является родственной индукционной редукцией: глобальный planar face-counting запрещает отсутствие нужной локальной структуры.",
+      "anchors": {
+        "from_solution_id": "sol-euler-count-and-boundary-strip",
+        "to_solution_id": "sol-contract-two-paths-and-euler"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "id": "baltic-way-1997-p19b-k9-edge-disjoint-hamiltonian-cycles",
+  "title": "Четыре непересекающихся гамильтоновых цикла в \\(K_9\\), Baltic Way 1997 P19(b)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "hamiltonian_cycle",
+      "edge_disjoint_cycles",
+      "nine_vertices"
+    ],
+    "methods": [
+      "edge_counting",
+      "explicit_cycle_packing",
+      "edge_inventory_check"
+    ],
+    "transformations": [
+      "caves_and_paths_to_complete_graph"
+    ],
+    "goal": [
+      "find_exact_maximum"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "edge_disjointness",
+      "total_edge_count"
+    ],
+    "keywords": [
+      "baltic_way_1997_p19b",
+      "k9",
+      "hamiltonian_decomposition",
+      "complete_graph_decomposition",
+      "explicit_hamiltonian_cycles"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-k9",
+        "title": "Условие, часть (b)",
+        "text": "В лесу каждое из 9 животных живёт в своей пещере, и между любыми двумя пещерами есть ровно одна отдельная тропа. Перед выборами короля леса некоторые животные проводят кампанию. Каждое такое животное посещает каждую из остальных пещер ровно один раз, передвигается только по тропам, нигде между пещерами не сворачивает с одной тропы на другую и в конце возвращается в свою пещеру. Никакая тропа между двумя пещерами не используется более чем одним агитирующим животным. Найдите максимальное число агитирующих животных.",
+        "source_id": "src-baltic-way-1997-official-solutions",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-k9",
+        "title": "Упаковка гамильтоновых циклов в \\(K_9\\)",
+        "text": "В полном графе \\(K_9\\) найдите максимальное число попарно рёберно непересекающихся гамильтоновых циклов.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "hamiltonian_cycle"
+        ],
+        "distinct_from": [
+          "stmt-original-k9"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-k9-edge-upper-bound",
+      "title": "В \\(K_9\\) хватает места не более чем на четыре цикла",
+      "text": "В \\(K_9\\) всего \\(36\\) рёбер, а каждый гамильтонов цикл использует \\(9\\) рёбер. Поэтому больше четырёх рёберно непересекающихся гамильтоновых циклов быть не может.",
+      "tags": [
+        "hamiltonian_cycles",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-k9-explicit-decomposition",
+      "title": "Явная упаковка четырёх циклов",
+      "text": "Чтобы достичь верхней оценки, достаточно предъявить четыре гамильтоновых цикла, суммарно использующие все \\(36\\) рёбер \\(K_9\\). Простая модульная конструкция по постоянным шагам для простого числа здесь не применима: шаг \\(3\\) по модулю \\(9\\) не проходит через все вершины.",
+      "tags": [
+        "hamiltonian_cycles",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-k9-explicit-four-cycles",
+      "title": "Явные четыре цикла",
+      "text": "Переведём условие на язык графов: пещеры — вершины \\(K_9\\), тропы — рёбра, а маршрут одного агитирующего животного — гамильтонов цикл. Условие о неповторении троп означает, что выбранные циклы должны быть попарно рёберно непересекающимися.\n\nВерхняя оценка следует из подсчёта рёбер. В \\(K_9\\) есть \\(9\\cdot8/2=36\\) рёбер, а каждый гамильтонов цикл содержит \\(9\\) рёбер. Поэтому число таких циклов не превосходит \\(36/9=4\\).\n\nПокажем, что четыре цикла возможны. Пронумеруем вершины числами \\(0,1,\\ldots,8\\) и возьмём следующие циклы:\n\\[\n0,1,2,8,3,7,4,6,5,0,\n\\]\n\\[\n0,2,3,1,4,8,5,7,6,0,\n\\]\n\\[\n0,3,4,2,5,1,6,8,7,0,\n\\]\n\\[\n0,4,5,3,6,2,7,1,8,0.\n\\]\nКаждая строка содержит все девять вершин ровно по одному разу, а затем возвращается в начальную вершину, значит каждая строка задаёт гамильтонов цикл.\n\nОстаётся проверить, что рёбра не повторяются. Удобно сгруппировать рёбра по первому числу пары, записывая каждое ребро как неупорядоченную пару. Первый цикл даёт\n\\((0,1),(1,2),(2,8),(3,8),(3,7),(4,7),(4,6),(5,6),(0,5)\\).\nВторой даёт\n\\((0,2),(2,3),(1,3),(1,4),(4,8),(5,8),(5,7),(6,7),(0,6)\\).\nТретий даёт\n\\((0,3),(3,4),(2,4),(2,5),(1,5),(1,6),(6,8),(7,8),(0,7)\\).\nЧетвёртый даёт\n\\((0,4),(4,5),(3,5),(3,6),(2,6),(2,7),(1,7),(1,8),(0,8)\\).\nВ этих четырёх списках ровно \\(4\\cdot9=36\\) пар, и они попарно различны. Но всего рёбер в \\(K_9\\) тоже \\(36\\), поэтому построенные циклы действительно рёберно непересекаются и вместе покрывают все рёбра \\(K_9\\). Верхняя оценка достигнута, значит максимум равен \\(4\\).",
+      "idea_ids": [
+        "idea-k9-edge-upper-bound",
+        "idea-k9-explicit-decomposition"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "hamiltonian_cycle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 4,
+    "comment": "Небольшой, но самостоятельный случай: верхняя оценка мгновенна, а достижение требует отдельной явной упаковки четырёх гамильтоновых циклов в \\(K_9\\).",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "double_counting",
+    "construction",
+    "goal_exact_bound",
+    "graph_model"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "edge_counting",
+        "explicit_hamiltonian_cycle_packing",
+        "complete_graph_decomposition"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-baltic-way-1997-official-solutions",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original-k9"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split from compound parent baltic-way-1997-p19-edge-disjoint-hamiltonian-cycles.",
+      "Self-contained part (b): includes the common edge-count upper bound and a separate explicit K9 construction. This is not just the prime modular construction, since constant step 3 modulo 9 splits into 3-cycles."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "high-reasoning split audit",
+      "notes": "The proof expands the official K9 construction and verifies all 36 edges are covered without repetition.",
+      "audit_source": "agent-baltic-way-1997-p19-split"
+    }
+  }
+}

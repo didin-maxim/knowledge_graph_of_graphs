@@ -1,0 +1,164 @@
+{
+  "id": "vosh-2025-26-regional-degree-difference-friendship",
+  "title": "Максимум рёбер при разности степеней соседей 1, Всероссийская олимпиада 2025/26",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_solution",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review",
+      "note": "Индивидуальный автор/proposer задачи 10.8 не указан в официальном PDF второго дня регионального этапа ВсОШ 2025/26; источник сообщает только, что задания подготовлены Центральной предметно-методической комиссией по математике."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "degree_partition",
+      "complete_bipartite_graph"
+    ],
+    "methods": [
+      "degree_counting",
+      "extremal_construction",
+      "partition_by_degree"
+    ],
+    "transformations": [
+      "friendship_to_graph",
+      "degree_layers"
+    ],
+    "goal": [
+      "maximum_edge_count"
+    ],
+    "auxiliary_graph_type": [
+      "friendship_graph",
+      "degree_layered_graph"
+    ],
+    "invariants": [
+      "edges_only_between_consecutive_degree_layers",
+      "maximum_degree_cases"
+    ],
+    "keywords": [
+      "vosh_2025_26_regional",
+      "grade_10_problem_8",
+      "degree_difference_one",
+      "degree_layers",
+      "friendship_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "10.8",
+        "text": "В конференции участвуют 2026 математиков, у каждого из которых есть некоторое количество друзей, возможно ни одного. Дружба взаимна. Известно, что если двое математиков дружат, то количества друзей у них отличаются ровно на 1. Найдите наибольшее возможное количество пар друзей.",
+        "source_id": "src-vosh-2025-26-regional-day2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "text": "Пусть \\(G\\) — простой граф на 2026 вершинах, в котором степени любых двух смежных вершин отличаются ровно на 1. Найдите максимальное возможное число рёбер графа \\(G\\).",
+        "source_id": "src-vosh-2025-26-regional-day2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-degree-layer-bound",
+      "title": "Рёбра идут только между соседними слоями степеней",
+      "text": "Разобьём вершины на множества \\(X_i\\) по степени. Тогда каждое ребро может соединять только \\(X_{i-1}\\) и \\(X_i\\), что позволяет оценивать число рёбер через чётные и нечётные слои.",
+      "tags": [
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-degree-layers",
+      "title": "Слои по степеням",
+      "text": "Ответ: \\(1013\\cdot1012\\).\n\nОбозначим \\(k=1013\\), так что всего вершин \\(2k\\). Пример с \\(k(k-1)\\) рёбрами устроен так: одна вершина изолирована, остальные вершины разбиты на два множества \\(X\\) и \\(Y\\) размеров \\(k\\) и \\(k-1\\), и каждая вершина из \\(X\\) соединена со всеми вершинами из \\(Y\\). Тогда степени вершин из \\(X\\) равны \\(k-1\\), степени вершин из \\(Y\\) равны \\(k\\), поэтому условие выполнено, а число рёбер равно \\(k(k-1)\\).\n\nДокажем верхнюю оценку. Для каждого \\(i\\) пусть \\(X_i\\) — множество вершин степени \\(i\\). По условию любое ребро соединяет вершины из двух соседних слоёв \\(X_{i-1}\\) и \\(X_i\\). Пусть \\(m\\) — максимальная степень вершины.\n\nЕсли \\(m\\le k-1\\), то сумма степеней не превосходит \\((k-1)\\cdot 2k\\), поэтому \\(|E|\\le k(k-1)\\).\n\nЕсли \\(m\\ge k+1\\), возьмём вершину \\(A\\) степени \\(m\\). Все её соседи лежат в \\(X_{m-1}\\), значит \\(|X_{m-1}|\\ge m\\). Любая вершина \\(B\\in X_{m-1}\\) имеет \\(m-1\\) соседей, и все они лежат в \\(X_m\\cup X_{m-2}\\). Поэтому вместе слои \\(X_{m-1}\\), \\(X_m\\) и \\(X_{m-2}\\) содержат как минимум \\(m+(m-1)>2k\\) вершин, что невозможно. Значит, этот случай не бывает.\n\nОстаётся \\(m=k\\). Разобьём слои на две группы: \\(Y=X_k\\cup X_{k-2}\\cup X_{k-4}\\cup\\cdots\\) и \\(Z=X_{k-1}\\cup X_{k-3}\\cup X_{k-5}\\cup\\cdots\\). Каждое ребро идёт между \\(Y\\) и \\(Z\\). Считая рёбра по концам в \\(Y\\), получаем \\(|E|\\le k|Y|\\); считая по концам в \\(Z\\), получаем \\(|E|\\le (k-1)|Z|\\). Если \\(|Y|\\le k-1\\), то \\(|E|\\le k(k-1)\\). Если же \\(|Y|\\ge k\\), то \\(|Z|=2k-|Y|\\le k\\), и \\(|E|\\le (k-1)k\\). Во всех случаях больше \\(k(k-1)\\) рёбер быть не может.",
+      "idea_ids": [
+        "idea-degree-layer-bound"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "source_id": "src-vosh-2025-26-regional-day2-official",
+      "definition_ids": [
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 6,
+    "comment": "Региональный этап 2025/26, 10 класс, задача 8; экстремальная задача на степени соседних вершин.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "degree_counting",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "partition_by_degree",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-2025-26-regional-day2-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Автор задачи не указан в просмотренном официальном PDF регионального этапа 2025/26; в источнике указана только Центральная предметно-методическая комиссия как подготовившая задания."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "deep high-reasoning pass, 2026-05-05",
+      "notes": "Официальный PDF второго дня регионального этапа ВсОШ 2025/26 содержит условие, ответ 1013*1012, экстремальный пример, полное доказательство верхней оценки по случаям для максимальной степени и критерии оценивания. Карточка является локально развёрнутым пересказом официального решения.",
+      "audit_source": "docs/archive/vosh-official-sweep/deep/vosh-2025-26-regional-degree-difference-friendship.md"
+    }
+  }
+}

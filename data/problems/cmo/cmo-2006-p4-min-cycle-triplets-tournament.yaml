@@ -1,0 +1,195 @@
+{
+  "id": "cmo-2006-p4-min-cycle-triplets-tournament",
+  "title": "Минимум циклических троек в турнире, CMO 2006 P4",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "split_child",
+      "graph_reformulation",
+      "extremal_counting"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Canadian Mathematical Olympiad",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "directed_triangle",
+      "transitive_tournament"
+    ],
+    "methods": [
+      "explicit_construction",
+      "transitive_ordering"
+    ],
+    "transformations": [
+      "round_robin_to_tournament",
+      "linear_order_to_acyclic_tournament"
+    ],
+    "goal": [
+      "find_minimum",
+      "exact_extremal_count",
+      "construction"
+    ],
+    "auxiliary_graph_type": [
+      "complete_oriented_graph"
+    ],
+    "invariants": [
+      "number_of_cycle_triplets"
+    ],
+    "keywords": [
+      "cmo_2006_p4",
+      "cycle_triplet",
+      "minimum_cycle_triplets",
+      "transitive_tournament",
+      "acyclic_tournament"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Минимальная часть официальной задачи",
+        "text": "В круговом турнире участвуют \\(2n+1\\) команд, где \\(n\\ge1\\), каждая команда играет с каждой другой командой ровно один раз, и ничьих нет. Три команды \\(X,Y,Z\\) образуют циклическую тройку, если \\(X\\) побеждает \\(Y\\), \\(Y\\) побеждает \\(Z\\), а \\(Z\\) побеждает \\(X\\). Найдите минимально возможное число циклических троек.",
+        "source_id": "src-cmo-2006-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "Пусть \\(T\\) — турнир на \\(2n+1\\) вершинах, где \\(n\\ge1\\), то есть ориентация полного графа, в которой между любыми двумя различными вершинами проведена ровно одна дуга. Определите минимально возможное число направленных циклов длины \\(3\\) в таком турнире.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "directed_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "graph_hint_reformulations": [
+      {
+        "id": "stmt-transitive-hint",
+        "title": "Конструктивная переформулировка",
+        "text": "Можно ли ориентировать все ребра полного графа на \\(2n+1\\) вершинах так, чтобы ни одна тройка вершин не образовывала направленный цикл? Если да, это сразу даст минимальное число циклических троек.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "directed_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original",
+          "stmt-graph"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-transitive-tournament",
+      "title": "Транзитивный турнир не содержит циклических троек",
+      "text": "Если команды линейно упорядочены и каждая более высокая в порядке команда побеждает каждую более низкую, то в любой тройке есть наибольшая команда, побеждающая две остальные. Такая тройка не может быть циклической.",
+      "tags": [
+        "tournaments",
+        "construction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-transitive-construction",
+      "title": "Конструкция без циклических троек",
+      "text": "Число циклических троек не может быть отрицательным, поэтому минимально возможное значение не меньше \\(0\\).\n\nОсталось построить турнир, где циклических троек нет. Пронумеруем команды \\(T_1,T_2,\\ldots,T_{2n+1}\\) и зададим результаты так: команда с большим номером всегда побеждает команду с меньшим номером. Это корректный круговой турнир без ничьих, потому что для каждой пары команд задан ровно один победитель.\n\nВозьмем любые три команды. Среди их номеров есть наибольший; соответствующая команда побеждает две остальные. В циклической тройке каждая команда имеет ровно одну победу и одно поражение внутри тройки, поэтому команда, побеждающая обе другие, невозможна. Значит, ни одна тройка в построенном турнире не является циклической.\n\nСледовательно, минимально возможное число циклических троек равно \\(0\\).",
+      "idea_ids": [
+        "idea-transitive-tournament"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tournament"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 1,
+    "comment": "Минимальная часть CMO 2006 P4: нижняя граница 0 тривиальна, достижимость дается транзитивной ориентацией полного графа.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "tournaments",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "transitive_tournament_construction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-cmo-2006-official",
+      "role": "derived_subproblem_from_official_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    },
+    {
+      "source_id": "src-cmo-2006-solutions",
+      "role": "official_solution_crosscheck",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-transitive-construction"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split child of cmo-2006-p4-cycle-triplets-tournament. This card records only the minimum part of CMO 2006 P4 as a self-contained exact-extremum construction.",
+      "High-reasoning split note: this solution is intentionally independent of the maximum proof; it uses only the transitive tournament construction and the tautological lower bound."
+    ],
+    "parent_problem_id": "cmo-2006-p4-cycle-triplets-tournament",
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "status": "ai_checked",
+      "confidence": 0.84,
+      "basis": "official solution source split into a self-contained subproblem",
+      "notes": "The minimum proof is the construction portion of the official solution, rewritten as a standalone card.",
+      "label": "официальное полное/почти полное"
+    }
+  }
+}

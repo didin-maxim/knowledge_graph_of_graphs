@@ -1,0 +1,127 @@
+{
+  "id": "two-vertex-connected-graphs-have-no-bridges",
+  "title": "В 2-вершинно-связном графе нет мостов",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "connected_graph",
+      "vertex_2_connected_graph",
+      "bridge"
+    ],
+    "methods": [
+      "cut_after_bridge",
+      "delete_endpoint"
+    ],
+    "transformations": [
+      "remove_bridge",
+      "remove_vertex"
+    ],
+    "goal": [
+      "prove_bridge_freeness"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "connectedness_after_vertex_deletion",
+      "components_after_bridge_deletion"
+    ],
+    "keywords": [
+      "biconnected_graph",
+      "no_bridges",
+      "2_vertex_connected"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "text": "Пусть \\(G\\) — конечный связный граф хотя бы с тремя вершинами, и удаление любой вершины оставляет граф связным. Тогда в \\(G\\) нет мостов.",
+        "source_id": "src-wikipedia-biconnected-graph",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "bridge"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-delete-bridge-endpoint",
+      "title": "Удалить конец предполагаемого моста",
+      "text": "Мост разделяет граф на две стороны. Если удалить один из его концов, другая сторона моста уже не может быть соединена с оставшейся частью противоположной стороны.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-delete-endpoint",
+      "title": "Короткое доказательство от противного",
+      "text": "Предположим, что \\(e=uv\\) — мост. После удаления \\(e\\) граф распадается на две компоненты: \\(U\\), содержащую \\(u\\), и \\(V\\), содержащую \\(v\\). Так как в графе хотя бы три вершины, хотя бы одна из множеств \\(U\\setminus\\{u\\}\\) и \\(V\\setminus\\{v\\}\\) непуста; без ограничения общности пусть \\(U\\setminus\\{u\\}\\) непуста. Тогда после удаления вершины \\(v\\) вершины из \\(U\\setminus\\{u\\}\\) не могут быть соединены с вершинами из \\(V\\setminus\\{v\\}\\), если такие есть, а если \\(V=\\{v\\}\\), то после удаления \\(u\\) вершина \\(v\\) отделяется от непустой части \\(U\\setminus\\{u\\}\\). В обоих случаях удаление некоторой вершины делает граф несвязным. Это противоречит условию, значит мостов нет.",
+      "idea_ids": [
+        "idea-delete-bridge-endpoint"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "bridge"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 2,
+    "comment": "Элементарное следствие 2-вершинной связности.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "connectivity",
+    "classical_lemma",
+    "goal_characterization"
+  ],
+  "properties": {},
+  "sources": [
+    {
+      "source_id": "src-wikipedia-biconnected-graph",
+      "role": "standard_reference",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-bridge-graph-theory",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Вынесено как самостоятельный мостик от условия Kolmogorov 2021 T1 к применимости теоремы Роббинса."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true
+  }
+}

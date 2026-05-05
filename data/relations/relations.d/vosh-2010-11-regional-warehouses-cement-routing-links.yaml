@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-tree-equivalent-properties-vosh-2010-cement-routing",
+      "from": "tree-equivalent-properties",
+      "to": "vosh-2010-11-regional-warehouses-cement-routing",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Базовые свойства деревьев и листовая индукция дают стандартный способ заменить связный граф остовным деревом и выбрать вершину, удаление которой сохраняет связность оставшейся части. В задаче о цементе этот факт используется в эквивалентной форме: выбирается вершина, впервые появившаяся последней на маршруте через все вершины.",
+      "backward_text": "Задача о перевозке цемента является прикладным использованием удаления вершины без потери связности: после балансировки выбранного склада задача сводится к меньшему связному графу.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-induction-leaf-routing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-vosh-2010-cement-routing-vosh-2022-country-cut",
+      "from": "vosh-2010-11-regional-warehouses-cement-routing",
+      "to": "vosh-2022-23-regional-connected-country-cut",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе региональные задачи ВОШ используют индукцию по связному графу и структурный шаг удаления локальной части с сохранением связности. В задаче о цементе удаляется один сбалансированный склад, а в задаче о разбиении страны удаляются две вершины или две висячие вершины.",
+      "backward_text": "Задача 2022/23 развивает тот же индукционный мотив для более сложной цели: вместо переноса веса нужно докрасить удалённые вершины так, чтобы выросла разность между рёбрами разреза и внутренними рёбрами.",
+      "anchors": {
+        "from_solution_id": "sol-induction-leaf-routing",
+        "to_solution_id": "sol-induction-two-vertices"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.78
+    }
+  ]
+}

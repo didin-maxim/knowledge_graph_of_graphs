@@ -1,0 +1,228 @@
+{
+  "id": "benjamini-tzalik-shortest-paths",
+  "title": "Теорема Беньямини — Цалика о числе кратчайших путей",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Itai Benjamini",
+      "status": "source_verified"
+    },
+    {
+      "name": "Elad Tzalik",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "multigraph",
+      "shortest_path",
+      "distance_layers",
+      "degree"
+    ],
+    "methods": [
+      "bfs_layering",
+      "entropy_method",
+      "am_gm"
+    ],
+    "transformations": [
+      "prune_to_shortest_path_subgraph",
+      "orient_edges_between_distance_layers"
+    ],
+    "goal": [
+      "upper_bound_number_of_shortest_paths"
+    ],
+    "auxiliary_graph_type": [
+      "layered_multigraph"
+    ],
+    "invariants": [
+      "maximum_degree",
+      "distance",
+      "path_count"
+    ],
+    "keywords": [
+      "benjamini_tzalik",
+      "shortest_paths",
+      "bounded_degree",
+      "entropy_proof",
+      "layered_multigraph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-benjamini-tzalik-bound",
+        "title": "Теорема Беньямини — Цалика",
+        "text": "Пусть \\(G\\) — конечный неориентированный мультиграф без петель, степени всех вершин которого не превосходят \\(\\Delta\\). Если две различные вершины \\(x,y\\) находятся на расстоянии \\(t\\ge1\\), то число кратчайших путей из \\(x\\) в \\(y\\), где параллельные рёбра считаются различными, не превосходит \\(2(\\Delta/2)^t\\).",
+        "source_id": "src-benjamini-tzalik-shortest-paths",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "path",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-graph-layered-bound"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-layered-bound",
+        "title": "Формулировка через слои расстояний",
+        "text": "В конечном мультиграфе без петель зафиксированы вершины \\(x\\) и \\(y\\) с \\(\\operatorname{dist}(x,y)=t\\ge1\\). Оставим только рёбра, лежащие на кратчайших \\(x\\)-\\(y\\)-путях, и разобьём вершины на слои по расстоянию от \\(x\\). Если суммарная степень каждой вершины исходного графа не больше \\(\\Delta\\), то число проходов от слоя \\(0\\) к слою \\(t\\), то есть число кратчайших \\(x\\)-\\(y\\)-путей, не больше \\(2(\\Delta/2)^t\\).",
+        "source_id": "src-benjamini-tzalik-shortest-paths",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "path",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-benjamini-tzalik-bound"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-even-degree-corollary",
+        "title": "Чётная степень",
+        "text": "При \\(\\Delta=2m\\) из теоремы следует, что между двумя вершинами на расстоянии \\(t\\) в мультиграфе максимальной степени не больше \\(2m\\) существует не более \\(2m^t\\) кратчайших путей.",
+        "source_id": "src-kolmogorov-2024-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "multigraph",
+          "path",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-benjamini-tzalik-bound",
+          "stmt-graph-layered-bound"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-prune-to-shortest-path-layers",
+      "title": "Слои кратчайших путей",
+      "text": "Удаляем все рёбра и вершины, которые не лежат на кратчайших путях из \\(x\\) в \\(y\\). Оставшийся граф естественно ориентирован от слоя \\(i\\) к слою \\(i+1\\).",
+      "tags": [
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-forward-backward-entropy",
+      "title": "Посчитать случайный путь с двух сторон",
+      "text": "Для равномерно выбранного кратчайшего пути энтропия следующего ребра контролируется выходящей степенью слоя, а энтропия предыдущего ребра — входящей степенью. Сложение двух оценок превращает ограничение \\(in(v)+out(v)\\le\\Delta\\) в произведение \\(in(v)out(v)\\le(\\Delta/2)^2\\).",
+      "tags": [
+        "extremal_graph_theory",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-entropy-bound",
+      "title": "Энтропийное доказательство верхней оценки",
+      "text": "Будем считать параллельные рёбра различными. Удалим из \\(G\\) всё, что не лежит на кратчайших путях из \\(x\\) в \\(y\\). В оставшемся мультиграфе каждая вершина лежит в некотором слое \\(L_i=\\{v:\\operatorname{dist}(x,v)=i\\}\\), а каждое ребро кратчайшего пути идёт из \\(L_i\\) в \\(L_{i+1}\\). Для вершины \\(v\\in L_i\\) обозначим через \\(a(v)\\) число рёбер из \\(L_{i-1}\\) в \\(v\\), а через \\(b(v)\\) число рёбер из \\(v\\) в \\(L_{i+1}\\). Для внутренних слоёв имеем \\(a(v)+b(v)\\le\\deg(v)\\le\\Delta\\), поэтому \\(a(v)b(v)\\le(\\Delta/2)^2\\).\n\nПусть всего кратчайших путей \\(N\\), и выберем один из них равновероятно. Его энтропия равна \\(\\log N\\). Если читать путь слева направо, то при известном префиксе следующий шаг выбирается среди не более чем \\(b(v)\\) рёбер, где \\(v\\) — текущая вершина. Значит\n\\[\\log N\\le \\mathbb E\\sum_{i=0}^{t-1}\\log b(X_i),\\]\nгде \\(X_i\\) — вершина пути в слое \\(i\\). Если читать тот же путь справа налево, получаем\n\\[\\log N\\le \\mathbb E\\sum_{i=1}^{t}\\log a(X_i).\\]\nСкладываем эти две оценки. Для концов используем только \\(b(x)\\le\\Delta\\) и \\(a(y)\\le\\Delta\\), а для каждой внутренней вершины — \\(a(X_i)b(X_i)\\le(\\Delta/2)^2\\). Тогда\n\\[2\\log N\\le 2\\log\\Delta+2(t-1)\\log(\\Delta/2).\\]\nСледовательно,\n\\[N\\le \\Delta(\\Delta/2)^{t-1}=2(\\Delta/2)^t.\\]\nЭто и требовалось доказать.",
+      "idea_ids": [
+        "idea-prune-to-shortest-path-layers",
+        "idea-forward-backward-entropy"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "multigraph",
+        "path",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 13,
+    "comment": "Классическая оценка с коротким, но не совсем олимпиадным энтропийным доказательством через чтение случайного кратчайшего пути в двух направлениях.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "connectivity",
+    "degree_counting",
+    "classical_theorem",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "bfs_layering",
+        "entropy_method",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": {
+      "value": "Даёт верхнюю оценку в задачах о числе кратчайших путей при ограниченной максимальной степени; при чётной степени \\(\\Delta=2m\\) вместе с простой конструкцией даёт точный ответ \\(2m^t\\).",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-benjamini-tzalik-shortest-paths",
+      "role": "original_source",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-benjamini-tzalik-bound",
+        "stmt-graph-layered-bound"
+      ]
+    },
+    {
+      "source_id": "src-kolmogorov-2024-official",
+      "role": "source_problem_application",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-even-degree-corollary"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Разделено из merged-card benjamini-tzalik-shortest-paths-kolmogorov-merged: здесь оставлена самостоятельная теорема Беньямини — Цалика.",
+      "Формулировка дана для мультиграфов без петель, поскольку олимпиадное применение Кубка Колмогорова использует параллельные рёбра; энтропийное доказательство считает параллельные рёбра различными.",
+      "Имя второго автора исправлено по source title: Elad Tzalik."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": false,
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "split from source-verified merged card with self-contained proof",
+      "notes": "Карточка опирается на arXiv-источник и содержит самодостаточное доказательство основной оценки.",
+      "audit_source": "agent-split-benjamini-tzalik-kolmogorov"
+    }
+  }
+}

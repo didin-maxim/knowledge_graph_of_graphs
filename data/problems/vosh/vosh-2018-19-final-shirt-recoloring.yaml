@@ -1,0 +1,189 @@
+{
+  "id": "vosh-2018-19-final-shirt-recoloring",
+  "title": "Перекраска правильной 7-раскраски 11-регулярного графа, Всероссийская олимпиада 2018/19",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "application"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Магазинов А.",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "regular_graph",
+      "proper_vertex_coloring",
+      "two_color_induced_subgraph",
+      "connected_component",
+      "fixed_vertices"
+    ],
+    "methods": [
+      "component_color_swap",
+      "pigeonhole_principle",
+      "double_counting",
+      "degree_counting"
+    ],
+    "transformations": [
+      "friends_to_vertices",
+      "colors_to_vertex_coloring",
+      "restrict_to_two_colors",
+      "swap_colors_on_component"
+    ],
+    "goal": [
+      "nontrivial_recoloring_preserving_properness"
+    ],
+    "auxiliary_graph_type": [
+      "two_color_induced_subgraph"
+    ],
+    "invariants": [
+      "proper_coloring",
+      "fixed_vertex_colors",
+      "number_of_components_in_two_color_subgraphs",
+      "sum_of_two_color_vertices_and_edges"
+    ],
+    "keywords": [
+      "vosh_2018_19_final",
+      "vmo_2019_9_4",
+      "proper_coloring",
+      "color_swap",
+      "kempe_component",
+      "regular_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Футболки семи цветов",
+        "text": "В лагерь приехали 10000 детей, каждый дружит ровно с 11 другими детьми в лагере, дружба взаимна. Каждый ребенок носит футболку одного из семи цветов радуги, причем у любых двух друзей цвета различны. Вожатые потребовали, чтобы какие-нибудь дети, хотя бы один, надели футболки других цветов из тех же семи. Опрос показал, что 100 детей менять цвет не намерены. Докажите, что некоторые из остальных детей все же могут изменить цвета своих футболок так, чтобы по-прежнему у любых двух друзей цвета были различны.",
+        "source_id": "src-vosh-2018-19-final-day1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Правильная 7-раскраска 11-регулярного графа со 100 фиксированными вершинами",
+        "text": "Пусть простой граф \\(G\\) имеет 10000 вершин, каждая вершина имеет степень 11, и вершины \\(G\\) правильно раскрашены в 7 цветов. Выделены 100 вершин, цвет которых менять нельзя. Докажите, что можно изменить цвет хотя бы одной невыделенной вершины так, чтобы получилась правильная раскраска теми же 7 цветами, а цвета всех выделенных вершин остались прежними.",
+        "source_id": "src-vosh-2018-19-final-day1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "chromatic_number"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-swap-component-of-two-colors",
+      "title": "Компоненту двух цветов можно поменять местами",
+      "text": "Если в подграфе, порожденном двумя цветами, есть компонента без фиксированных вершин, то в этой компоненте можно поменять два цвета местами. Правильность раскраски сохранится, фиксированные вершины не изменятся, а хотя бы одна нефиксированная вершина получит другой цвет.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-count-two-color-components",
+      "title": "Компонент слишком мало, чтобы покрыть нужное число ребер",
+      "text": "Если перекраска невозможна, то каждый двухцветный подграф имеет не более 100 компонент связности. Значит, в таком подграфе число ребер не меньше числа вершин минус 100. Суммирование по 21 паре цветов противоречит точному подсчету вершинных и реберных вхождений.",
+      "tags": [
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-two-color-component-count",
+      "title": "Двухцветные компоненты и двойной счет",
+      "text": "Рассмотрим граф дружбы: вершины соответствуют детям, ребра - парам друзей. Имеющаяся раскраска футболок является правильной 7-раскраской графа, а 100 детей, которые не хотят менять цвет, считаем фиксированными вершинами.\n\nПредположим, что требуемая перекраска невозможна. Для любой пары цветов \\(i<j\\) рассмотрим подграф \\(G_{ij}\\), порожденный вершинами этих двух цветов. Пусть \\(c_{ij}\\), \\(v_{ij}\\), \\(e_{ij}\\) - соответственно число его компонент связности, вершин и ребер. Если бы \\(c_{ij}>100\\), то одна из компонент \\(G_{ij}\\) не содержала бы фиксированных вершин. Тогда в этой компоненте можно было бы поменять цвета \\(i\\) и \\(j\\) местами: внутри компоненты правильность сохраняется, к вершинам других цветов конфликтов не появляется, а фиксированные вершины не меняются. Это дало бы допустимую нетривиальную перекраску, противоречие. Значит, \\(c_{ij}\\le 100\\) для всех пар цветов.\n\nВ каждой компоненте связности с \\(x\\) вершинами есть хотя бы \\(x-1\\) ребро, поэтому \\(e_{ij}\\ge v_{ij}-c_{ij}\\ge v_{ij}-100\\). Просуммируем эти неравенства по всем \\(\\binom{7}{2}=21\\) парам цветов. Каждая вершина исходного графа входит ровно в 6 двухцветных подграфов, значит \\(\\sum v_{ij}=6\\cdot 10000=60000\\). Каждое ребро соединяет вершины разных цветов и поэтому входит ровно в один двухцветный подграф. Так как граф 11-регулярен на 10000 вершинах, ребер в нем \\(11\\cdot10000/2=55000\\), то есть \\(\\sum e_{ij}=55000\\).\n\nИз неравенств получаем \\(55000=\\sum e_{ij}\\ge \\sum v_{ij}-21\\cdot100=60000-2100=57900\\), что невозможно. Противоречие показывает, что допустимая нетривиальная перекраска существует.",
+      "idea_ids": [
+        "idea-swap-component-of-two-colors",
+        "idea-count-two-color-components"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "local_recoloring"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "degree"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Заключительный этап 2018/19, 9 класс, задача 9.4; ключевой ход - компоненты двухцветных подграфов и двойной счет по 21 паре цветов.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "double_counting",
+    "pigeonhole_principle",
+    "degree_counting",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "two_color_component_swap",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-vosh-2018-19-final-day1-official",
+      "role": "problem_and_solution_official",
+      "status": "source_verified",
+      "problem_code": "2018/19 final, grade 9, problem 9.4"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Добавлено в официальном проходе по финалам ВсОШ 2010-2026; source PDF явно дает автора и полное решение.",
+      "Deep-аудит 2026-05-05: официальный PDF MCCME/ВМО первого дня финала 2018/19 подтверждает условие 9.4, автора А. Магазинова и полный графовый разбор через правильную 7-раскраску, 100 фиксированных вершин, двухцветные компоненты и двойной счет. Графовая формулировка оставлена как эквивалентная исходной модели дружбы."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.96,
+      "basis": "official MCCME/VMO final PDF with statement, author, and complete solution",
+      "notes": "Официальный разбор содержит полный графовый аргумент; текущий текст является самостоятельным пересказом того же доказательства без содержательных пробелов.",
+      "audit_source": "deep-audit-2026-05-05"
+    }
+  }
+}

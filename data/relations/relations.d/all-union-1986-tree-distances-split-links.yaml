@@ -1,0 +1,94 @@
+{
+  "relations": [
+    {
+      "id": "rel-all-union-1986-tree-distances-n6-n1986-paired",
+      "from": "all-union-1986-final-9-tree-distances-n6-construction",
+      "to": "all-union-1986-final-9-tree-distances-n1986-impossible",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это две самостоятельные части одной задачи Всесоюзной олимпиады 1986 о взвешенном дереве, у которого все попарные расстояния должны быть полным набором последовательных чисел. Случай n=6 решается явной конструкцией, а случай n=1986 — чётностным препятствием.",
+      "backward_text": "Невозможностная часть для n=1986 дополняет конструктивную часть для n=6: та же формулировка про полный набор расстояний в дереве ведет к противоположному ответу из-за паритетного ограничения.",
+      "anchors": {
+        "from_solution_id": "sol-explicit-six-vertex-tree",
+        "to_solution_id": "sol-parity-square-obstruction-n1986"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-all-union-1986-n6-parent-compound",
+      "from": "all-union-1986-final-9-tree-distances-one-to-nchoose2",
+      "to": "all-union-1986-final-9-tree-distances-n6-construction",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Новая карточка выделяет из составной всесоюзной задачи только случай n=6 и делает конструкцию взвешенного дерева полностью самостоятельной.",
+      "backward_text": "Исходная карточка содержит обе части оригинального условия; эта карточка является её конструктивной специализацией для шести вершин.",
+      "anchors": {
+        "from_solution_id": "sol-published-parity-and-construction",
+        "to_solution_id": "sol-explicit-six-vertex-tree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-all-union-1986-n1986-parent-compound",
+      "from": "all-union-1986-final-9-tree-distances-one-to-nchoose2",
+      "to": "all-union-1986-final-9-tree-distances-n1986-impossible",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Новая карточка выделяет из составной всесоюзной задачи только случай n=1986 и доказывает невозможность через паритет попарных расстояний дерева.",
+      "backward_text": "Исходная карточка содержит обе части оригинального условия; эта карточка является её невозможностной специализацией для 1986 вершин.",
+      "anchors": {
+        "from_solution_id": "sol-published-parity-and-construction",
+        "to_solution_id": "sol-parity-square-obstruction-n1986"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-all-union-1986-n1986-cmo-1991-complete-set-parity",
+      "from": "all-union-1986-final-9-tree-distances-n1986-impossible",
+      "to": "cmo-1991-p4-edge-difference-labeling-diagram",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи получают противоречие из полного набора последовательных величин и их нечётной половины. В дереве это полный набор попарных расстояний и паритетная окраска вершин; в CMO 1991 это полный набор разностей на рёбрах и разрез между чётными и нечётными метками.",
+      "backward_text": "CMO 1991 P4 является близким паритетным родственником: нечётные элементы полного набора превращаются в число рёбер разреза, тогда как во всесоюзной задаче нечётные расстояния превращаются в произведение размеров двух цветовых классов дерева.",
+      "anchors": {
+        "from_solution_id": "sol-parity-square-obstruction-n1986",
+        "to_solution_id": "sol-parity-cut"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-all-union-1986-tree-distances-tree-properties",
+      "from": "all-union-1986-final-9-tree-distances-n6-construction",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В конструктивной карточке используется базовый факт о деревьях: связный граф на шести вершинах с пятью рёбрами является деревом, а между двумя вершинами дерева есть единственный путь, по которому и считается расстояние.",
+      "backward_text": "Классические эквивалентные свойства деревьев дают непосредственный язык для проверки взвешенной конструкции: пять рёбер на шести связных вершинах и единственность пути между парами.",
+      "anchors": {
+        "from_solution_id": "sol-explicit-six-vertex-tree",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-all-union-1986-n1986-tree-properties",
+      "from": "all-union-1986-final-9-tree-distances-n1986-impossible",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Чётностное доказательство использует уникальность пути в дереве: расстояния от корня и между двумя вершинами складываются по единственному пути, поэтому паритет расстояния задаёт корректную двуцветную структуру.",
+      "backward_text": "Эквивалентные свойства деревьев являются базовой предпосылкой для паритетной окраски по расстоянию от корня в невозможностной части всесоюзной задачи.",
+      "anchors": {
+        "from_solution_id": "sol-parity-square-obstruction-n1986",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    }
+  ]
+}

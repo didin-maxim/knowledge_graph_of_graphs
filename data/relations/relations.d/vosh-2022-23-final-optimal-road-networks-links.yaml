@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-tree-equivalent-properties-vosh-2022-optimal-road-networks",
+      "from": "tree-equivalent-properties",
+      "to": "vosh-2022-23-final-optimal-road-networks",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Доказательство напрямую использует базовую характеризацию лесов через число рёбер и компонент: допустимая k-сеть на N вершинах с N-k рёбрами имеет ровно k компонент, и каждая компонента становится деревом с единственным корнем.",
+      "backward_text": "Эта задача является продвинутым примером применения элементарных свойств лесов: после распознавания корневого леса основной шаг становится обменом подлесов между двумя оптимальными сетями.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-exchange-rooted-forests"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-putnam-2013-b5-vosh-2022-optimal-road-networks-rooted-forests",
+      "from": "putnam-2013-b5-functions-iterate-into-roots",
+      "to": "vosh-2022-23-final-optimal-road-networks",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих карточках условие 'из каждой вершины можно дойти до выбранного корневого множества' превращается в ориентированный к корням лес. Putnam 2013 B5 считает такие леса при фиксированном множестве корней, а задача ВсОШ оптимизирует взвешенный выбор корней и рёбер и доказывает существование вложенной цепочки оптимумов.",
+      "backward_text": "Задача ВсОШ использует тот же корневой лес как структурный объект, но вместо подсчёта вводит веса и обмен между соседними оптимальными k- и (k+1)-сетями. Putnam 2013 B5 можно рассматривать как перечислительный родственник той же модели достижимости корней.",
+      "anchors": {
+        "from_solution_id": "sol-rooted-forest",
+        "to_solution_id": "sol-exchange-rooted-forests"
+      },
+      "status": "ai_checked",
+      "confidence": 0.87
+    }
+  ]
+}

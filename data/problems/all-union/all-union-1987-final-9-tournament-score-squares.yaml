@@ -1,0 +1,169 @@
+{
+  "id": "all-union-1987-final-9-tournament-score-squares",
+  "title": "Равенство сумм квадратов побед и поражений в турнире, Всесоюзная олимпиада 1987",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_theory_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Не указан в проверенном OCR-фрагменте источника",
+      "status": "not_found"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tournament",
+      "outdegree_sequence",
+      "indegree_sequence"
+    ],
+    "methods": [
+      "degree_counting",
+      "algebraic_identity"
+    ],
+    "transformations": [
+      "round_robin_to_tournament"
+    ],
+    "goal": [
+      "score_sequence_identity"
+    ],
+    "auxiliary_graph_type": [
+      "tournament"
+    ],
+    "invariants": [
+      "outdegree",
+      "indegree",
+      "number_of_games"
+    ],
+    "keywords": [
+      "tournament_score_sequence",
+      "sum_of_squares",
+      "outdegree_indegree"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "10 спортсменов в круговом турнире",
+        "text": "Десять спортсменов участвовали в турнире по настольному теннису. Каждые два из них сыграли между собой ровно одну партию. Первый игрок одержал в ходе турнира \\(x_1\\) побед и потерпел \\(y_1\\) поражений, второй одержал \\(x_2\\) побед и потерпел \\(y_2\\) поражений и т. д. Доказать, что \\(x_1^2+\\cdots+x_{10}^2=y_1^2+\\cdots+y_{10}^2\\).",
+        "source_ids": [
+          "src-mathru-vsesoyuznye-1988",
+          "src-djvuonline-vseross-9-1997"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Суммы квадратов полустепеней турнира",
+        "text": "В турнире на 10 вершинах обозначим через \\(d^+(v)\\) и \\(d^-(v)\\) исходящую и входящую степени вершины \\(v\\). Докажите, что \\(\\sum_v (d^+(v))^2=\\sum_v (d^-(v))^2\\).",
+        "source_ids": [
+          "src-mathru-vsesoyuznye-1988",
+          "src-djvuonline-vseross-9-1997"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tournament",
+          "degree",
+          "outdegree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-indegree-outdegree-complement",
+      "title": "У каждой вершины сумма побед и поражений постоянна",
+      "text": "В турнире на 10 вершинах для каждой вершины \\(d^+(v)+d^-(v)=9\\); равенство сумм квадратов сводится к равенству сумм входящих и исходящих степеней.",
+      "tags": [
+        "tournaments",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-published-degree-balance",
+      "title": "Баланс побед и поражений",
+      "text": "Каждый спортсмен сыграл ровно 9 партий, поэтому для каждого \\(i\\) выполнено\n\\[\nx_i+y_i=9.\n\\]\nКроме того, в каждой партии есть ровно один победитель и ровно один проигравший. Значит, общее число побед равно общему числу поражений:\n\\[\nx_1+\\cdots+x_{10}=y_1+\\cdots+y_{10}.\n\\]\nТеперь вычтем суммы квадратов:\n\\[\n\\sum_{i=1}^{10}x_i^2-\\sum_{i=1}^{10}y_i^2=\\sum_{i=1}^{10}(x_i-y_i)(x_i+y_i)=9\\sum_{i=1}^{10}(x_i-y_i)=0.\n\\]\nСледовательно,\n\\[\nx_1^2+\\cdots+x_{10}^2=y_1^2+\\cdots+y_{10}^2.\n\\]",
+      "idea_ids": [
+        "idea-indegree-outdegree-complement"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": []
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 3,
+    "comment": "Всесоюзная математическая олимпиада 1987 года, заключительный этап, 9 класс, задача 177, первый день.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "tournaments",
+    "degree_counting",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "degree_counting",
+        "constant_total_degree"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-mathru-vsesoyuznye-1988",
+      "role": "published_collection_scan",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-djvuonline-vseross-9-1997",
+      "role": "ocr_statement_check",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Statement verified against the OCR access copy as problem 177, Olympiad 1987, first day, 9th-grade all-union section.",
+      "Published solution found in the same OCR access copy; the local solution is a self-contained adaptation of the printed degree-balance proof.",
+      "Math.ru bibliographic page confirms the 1988 Nauka collection by N.B. Vasilyev and A.A. Egorov contains USSR final-round problems in chronological order with solutions.",
+      "Kvant 1987 no. 11 has an article on the XXI All-Union Olympiad by V.V. Vavilov, S.V. Reznichenko, and A.M. Slinko; these are article authors, not confirmed problem proposers.",
+      "Provenance: author/proposer was not visible in the checked source fragments; recorded as not_found rather than inferred."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.84,
+      "basis": "published collection OCR solution and local self-contained adaptation",
+      "notes": "A complete published solution for problem 177 was found in the OCR access copy. The source is a reliable published collection, but not an official olympiad solution site.",
+      "audit_source": "manual-deep-pass-2026-05-05"
+    }
+  }
+}

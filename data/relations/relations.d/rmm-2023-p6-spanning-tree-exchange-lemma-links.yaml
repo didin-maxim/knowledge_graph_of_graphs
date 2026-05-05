@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-tree-basics-to-colored-spanning-tree-exchange-lemma",
+      "from": "tree-equivalent-properties",
+      "to": "colored-spanning-tree-good-family-exchange-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма об exchange-семействе использует базовые свойства остовных деревьев: добавление внешнего ребра создаёт единственный цикл, а удаление ребра дерева задаёт разрез на две компоненты, через который можно восстановить остов.",
+      "backward_text": "Эта lemma-card является прямым применением элементарных свойств деревьев к семейству остовов: на основе цикла и разреза строятся синхронные обмены, уменьшающие число suspicious edges.",
+      "anchors": {
+        "from_solution_id": "sol-minimal-connected-subgraph",
+        "to_solution_id": "sol-minimal-suspicious-edge-exchange"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-colored-spanning-tree-exchange-lemma-to-rmm-2023-p6",
+      "from": "colored-spanning-tree-good-family-exchange-lemma",
+      "to": "rmm-2023-p6-colored-spanning-tree-suspicious-edges",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма является основным exchange-инструментом RMM 2023 P6: семейство всех остовов хорошее, потому что условие даёт отдельные остовы с нужным числом красных, зелёных и синих рёбер, а лемма превращает это в один остов с полной тройкой \\((r,g,b)\\).",
+      "backward_text": "RMM 2023 P6 является прямым применением леммы: исходные три остова нужны только для проверки хорошести семейства всех остовов, после чего минимизация suspicious edges уже гарантирует целевой цветовой профиль.",
+      "anchors": {
+        "from_solution_id": "sol-minimal-suspicious-edge-exchange",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    }
+  ]
+}

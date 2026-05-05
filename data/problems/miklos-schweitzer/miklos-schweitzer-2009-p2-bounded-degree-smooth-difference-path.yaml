@@ -1,0 +1,178 @@
+{
+  "id": "miklos-schweitzer-2009-p2-bounded-degree-smooth-difference-path",
+  "title": "Путь как граф разностей с фиксированными простыми делителями, Miklos Schweitzer 2009 P2(ii)",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "split_child",
+      "graph_in_statement",
+      "number_theoretic_graph",
+      "construction"
+    ]
+  },
+  "language": "ru",
+  "status": "needs_human_review",
+  "problem_profile": {
+    "objects": [
+      "finite_integer_set",
+      "difference_graph",
+      "path_graph",
+      "connected_graph",
+      "bounded_degree",
+      "smooth_numbers"
+    ],
+    "methods": [
+      "explicit_construction",
+      "geometric_progression",
+      "forbidden_prime_divisor",
+      "chord_elimination"
+    ],
+    "goal": [
+      "prove_existence",
+      "construct_graph_realization"
+    ],
+    "auxiliary_graph_type": [
+      "path_or_cycle"
+    ],
+    "invariants": [
+      "adjacent_differences_are_powers_of_P",
+      "nonadjacent_differences_have_forbidden_prime_divisor",
+      "maximum_degree_two"
+    ],
+    "keywords": [
+      "schweitzer_2009_p2",
+      "smooth_numbers",
+      "difference_graph",
+      "bounded_degree",
+      "path_realization",
+      "integer_difference_graph_realization"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-bounded-degree-part",
+        "title": "Связная часть исходной задачи",
+        "text": "Пусть \\(p_1,\\ldots,p_k\\) - фиксированные простые числа, \\(P=p_1p_2\\cdots p_k\\), а \\(S\\) - множество ненулевых целых чисел, все простые делители которых принадлежат множеству \\(\\{p_1,\\ldots,p_k\\}\\). Для конечного множества целых чисел \\(A\\) построим граф \\(\\mathcal G(A)\\) с вершинами из \\(A\\), где две различные вершины \\(a,b\\) соединены ребром тогда и только тогда, когда \\(a-b\\in S\\). Докажите, что для каждого \\(m\\ge3\\) существует \\(m\\)-элементное множество \\(A\\), для которого \\(\\mathcal G(A)\\) связен и все его степени не превосходят \\(2\\).",
+        "source_id": "src-miklos-schweitzer-2009-p2-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "degree",
+          "connected_graph"
+        ],
+        "distinct_from": [
+          "stmt-path-realization"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-path-realization",
+        "title": "Реализация пути",
+        "text": "Зафиксирован конечный набор простых чисел \\(p_1,\\ldots,p_k\\). Между двумя целыми числами проводится ребро, если их ненулевая разность имеет только эти простые делители. Докажите, что для каждого \\(m\\ge3\\) в этом графе можно найти индуцированный путь на \\(m\\) вершинах.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "path",
+          "connected_graph",
+          "degree"
+        ],
+        "distinct_from": [
+          "stmt-bounded-degree-part"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-power-sum-path",
+      "title": "Соседние разности - степени произведения разрешенных простых",
+      "text": "Если положить \\(a_n=P+P^2+\\cdots+P^n\\), то соседняя разность равна \\(P^{n+1}\\) и разрешена. А дальняя разность содержит множитель \\(1+P+\\cdots+P^r\\), который сравним с \\(1\\) по каждому \\(p_i\\), поэтому имеет новый простой делитель.",
+      "tags": [
+        "graph_model",
+        "construction",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-power-sum-induced-path",
+      "title": "Путь из сумм степеней \\(P\\)",
+      "text": "Зафиксируем \\(m\\ge3\\) и положим\n\\[\na_n=P+P^2+\\cdots+P^n\\qquad(1\\le n\\le m).\n\\]\nВозьмем \\(A=\\{a_1,a_2,\\ldots,a_m\\}\\). Эти числа различны, так как последовательность строго возрастает.\n\nДля соседних индексов имеем\n\\[\na_{n+1}-a_n=P^{n+1}.\n\\]\nВсе простые делители числа \\(P^{n+1}\\) лежат среди \\(p_1,\\ldots,p_k\\), поэтому \\(a_n\\) и \\(a_{n+1}\\) соединены ребром в \\(\\mathcal G(A)\\).\n\nПокажем, что других ребер нет. Пусть \\(N\\ge n+2\\). Тогда\n\\[\na_N-a_n=P^{n+1}(1+P+\\cdots+P^{N-n-1}).\n\\]\nВторой множитель больше \\(1\\). При этом для каждого \\(i\\) выполнено \\(P\\equiv0\\pmod {p_i}\\), значит\n\\[\n1+P+\\cdots+P^{N-n-1}\\equiv1\\pmod {p_i}.\n\\]\nСледовательно, этот второй множитель не делится ни на одно из чисел \\(p_i\\). Так как он больше \\(1\\), у него есть некоторый простой делитель; этот делитель не равен ни одному из \\(p_1,\\ldots,p_k\\). Поэтому разность \\(a_N-a_n\\) имеет запрещенный простой делитель и не принадлежит \\(S\\).\n\nЗначит, ребра в \\(\\mathcal G(A)\\) идут ровно между соседними членами последовательности \\(a_1,a_2,\\ldots,a_m\\). Полученный граф является путем на \\(m\\) вершинах. В частности, он связен, а степени его вершин равны \\(1,2,\\ldots,2,1\\) и не превосходят \\(2\\).",
+      "idea_ids": [
+        "idea-power-sum-path"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "path",
+        "degree",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 7,
+    "comment": "Самостоятельная конструктивная часть: нужно не только сделать разрешенные соседние разности, но и запретить все хорды через новый простой делитель геометрической суммы.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "graph_model",
+    "degree_counting",
+    "connectivity",
+    "construction",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "power_sum_path_construction",
+        "integer_difference_graph_realization",
+        "chord_elimination_by_forbidden_prime"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-miklos-schweitzer-2009-p2-official",
+      "role": "derived_subproblem_from_official_statement",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2009-eng.pdf",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-bounded-degree-part"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split child of miklos-schweitzer-2009-p2-smooth-difference-graphs. This card isolates only part (ii), the connected maximum-degree-two realization.",
+      "High-reasoning split note: this part is a self-contained constructive result. It realizes an induced path and does not use the residue-class obstruction from part (i), except for the general notion of forbidden prime divisors."
+    ],
+    "parent_problem_id": "miklos-schweitzer-2009-p2-smooth-difference-graphs",
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "high-reasoning split audit from parent card",
+      "notes": "The proof is the bounded-degree construction from the parent solution, rewritten as a standalone child card.",
+      "audit_source": "agent-miklos-schweitzer-2009-p2-split"
+    }
+  }
+}

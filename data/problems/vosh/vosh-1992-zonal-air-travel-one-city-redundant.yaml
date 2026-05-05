@@ -1,0 +1,177 @@
+{
+  "id": "vosh-1992-zonal-air-travel-one-city-redundant",
+  "title": "Отделившаяся часть городов при односторонних авиаперелётах, XVIII Всероссийская олимпиада 1992",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Яковлев Г. Н., Куперман А. Б., Ковалёва Л. Г., Зурабов О. Р., Городецкий П. И., Кабанова М. В., Аматуни Г. А.",
+      "status": "source_verified",
+      "note": "Указаны в цифровом архиве «Кванта» как авторы публикации XVIII Всероссийской олимпиады по математике; индивидуальный составитель задачи в проверенных источниках не выделен."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "directed_graph",
+      "reachable_set",
+      "one_way_cut"
+    ],
+    "methods": [
+      "graph_model",
+      "connectivity",
+      "unreachable_set"
+    ],
+    "transformations": [
+      "cities_and_flights_to_graph"
+    ],
+    "goal": [
+      "find_separated_city_subset"
+    ],
+    "auxiliary_graph_type": [
+      "directed_graph"
+    ],
+    "invariants": [
+      "reachability_from_fixed_vertex",
+      "no_incoming_edge_to_unreachable_set"
+    ],
+    "keywords": [
+      "vserossiyskaya_1992_11_3",
+      "air_travel",
+      "source_closed_subset",
+      "directed_cut"
+    ],
+    "status": "source_verified"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Отделившаяся часть городов",
+        "text": "В стране несколько городов. Между некоторыми из них в одном направлении летают самолеты. Известно, что существует город, вылетев из которого нельзя, перелетая из города в город, побывать в каждом городе страны. Докажите, что часть городов может отделиться так, что ни в один из отделившихся городов нельзя будет попасть с помощью авиаперелетов ни из какого города оставшейся части.",
+        "source_id": "src-kvant-digital-1992-10-vseros-math",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph"
+        ],
+        "distinct_from": [
+          "stmt-graph"
+        ]
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Графовая формулировка",
+        "text": "В конечном ориентированном графе есть вершина, из которой достижимы не все вершины. Докажите, что существует непустое собственное множество вершин \\(S\\), в которое не входит ни одно ребро из дополнения \\(V\\setminus S\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-unreachable-set-has-no-incoming-edge",
+      "title": "Недостижимая часть не имеет входящих ребер снаружи",
+      "text": "Если из выбранной вершины достижимы не все вершины, то множество недостижимых вершин непусто. В него не может входить ребро из достижимой вершины, иначе его конец тоже стал бы достижимым.",
+      "tags": [
+        "graph_model",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-published-unreachable-set",
+      "title": "Множество городов, недостижимых из выбранного",
+      "text": "Выберем город \\(A\\), из которого нельзя, перелетая из города в город, побывать во всех городах страны. Пусть \\(S\\) - множество городов, в которые нельзя попасть из \\(A\\). По условию это множество непусто. При этом \\(A\\notin S\\), так что \\(S\\) не совпадает со всем множеством городов.\n\nДокажем, что именно эти города могут отделиться. Предположим противное: из некоторого города \\(B\\), не входящего в \\(S\\), есть прямой авиарейс в город \\(C\\in S\\). Так как \\(B\\notin S\\), из \\(A\\) можно попасть в \\(B\\). Тогда, долетев из \\(A\\) до \\(B\\), а затем одним рейсом из \\(B\\) в \\(C\\), мы попали бы из \\(A\\) в город \\(C\\). Это противоречит определению множества \\(S\\).\n\nЗначит, ни в один город из \\(S\\) нельзя попасть прямым рейсом из города вне \\(S\\). Тем более туда нельзя попасть и цепочкой авиаперелетов из оставшейся части: первый момент входа такой цепочки в \\(S\\) дал бы прямой рейс из города вне \\(S\\) в город из \\(S\\). Следовательно, множество \\(S\\) можно объявить отделившейся частью.",
+      "idea_ids": [
+        "idea-unreachable-set-has-no-incoming-edge"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "directed_graph"
+      ],
+      "source_id": "src-djvuonline-gorbachev-olympiad-2004",
+      "source_note": "Полное опубликованное решение той же задачи: Н. В. Горбачёв, «Сборник олимпиадных задач по математике», 2004, задача 6.15 (ВО 92)."
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 2,
+    "comment": "XVIII Всероссийская олимпиада по математике, 1992, 11 класс, первый день, задача 3; в публикации указано 8 баллов.",
+    "status": "source_verified"
+  },
+  "tags": [
+    "connectivity",
+    "graph_model",
+    "goal_existence"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "reachable_set"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-kvant-digital-1992-10-vseros-math",
+      "role": "primary_problem_statement",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ]
+    },
+    {
+      "source_id": "src-djvuonline-gorbachev-olympiad-2004",
+      "role": "published_solution",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-published-unreachable-set"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": false,
+    "notes": [
+      "Added during VMO/VsOSh zonal pre-1992 official/primary sweep. Statement was read from Kvant Digital page image 61 of issue 1992-10.",
+      "Deep audit 2026-05-05: exact statement checked against Kvant 1992 № 10 page image 61; corrected the first sentence to include 'Между некоторыми из них'.",
+      "Kvant Digital attributes the olympiad publication to G. N. Yakovlev, A. B. Kuperman, L. G. Kovaleva, O. R. Zurabov, P. I. Gorodetsky, M. V. Kabanova and G. A. Amatuni; no individual problem proposer was found.",
+      "A complete published solution was found in N. V. Gorbachev's 2004 olympiad problem collection as problem 6.15 (ВО 92), but no official solution source was located in this pass.",
+      "The 1992 VMO/MCCME prize page states that this Vserossiyskaya Olympiad was the then-penultimate stage before the Interrepublican Olympiad."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.86,
+      "basis": "high-reasoning audit of Kvant statement and published Gorbachev collection solution",
+      "notes": "The checked Kvant source gives the statement and publication authors but no official solution. A complete elementary solution is published in Gorbachev's 2004 collection; the local solution is a self-contained adaptation.",
+      "audit_source": "docs/archive/vosh-official-sweep/deep/vosh-1992-zonal-air-travel-one-city-redundant.md"
+    }
+  }
+}

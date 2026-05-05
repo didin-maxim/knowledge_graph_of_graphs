@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-imc1997-p6-parent-to-a-counterexample",
+      "from": "imc-1997-day1-p6-intersecting-families-finite-transversal",
+      "to": "imc-1997-day1-p6a-intersecting-families-no-finite-transversal",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Составная карточка IMC 1997 Day 1 P6 содержит часть (a) с отрицательным ответом в общем случае; дочерняя карточка выделяет ровно контрпример для неравномерного пересекающегося семейства.",
+      "backward_text": "Карточка part (a) является выделенной отрицательной частью IMC 1997 Day 1 P6: она сохраняет гиперграфовую модель попарно пересекающихся конечных ребер, но доказывает только отсутствие конечного трансверсаля для всех попарных пересечений.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-explicit-counterexample"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-imc1997-p6-parent-to-b-uniform-theorem",
+      "from": "imc-1997-day1-p6-intersecting-families-finite-transversal",
+      "to": "imc-1997-day1-p6b-uniform-intersecting-families-finite-transversal",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Составная карточка IMC 1997 Day 1 P6 содержит часть (b) о равномощных множествах; дочерняя карточка выделяет положительную теорему для равномерного пересекающегося гиперграфа.",
+      "backward_text": "Карточка part (b) является выделенной положительной частью IMC 1997 Day 1 P6: она доказывает существование конечного трансверсаля для попарных пересечений при условии равномерности.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-cross-intersecting-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-imc1997-p6a-p6b-paired-variant",
+      "from": "imc-1997-day1-p6a-intersecting-families-no-finite-transversal",
+      "to": "imc-1997-day1-p6b-uniform-intersecting-families-finite-transversal",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Контрпример part (a) показывает, что попарная пересекаемость конечных гиперребер сама по себе не дает конечного трансверсаля для всех пересечений; равномерная карточка добавляет ровно условие одинакового размера ребер, которое меняет ответ на положительный.",
+      "backward_text": "Равномерная теорема part (b) парна отрицательной части: ее индукционный механизм объясняет, почему конструкция с убегающими одноточечными пересечениями невозможна при фиксированном размере всех множеств.",
+      "anchors": {
+        "from_solution_id": "sol-explicit-counterexample",
+        "to_solution_id": "sol-cross-intersecting-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-imc1997-p6b-imc2003-uniform-hypergraph",
+      "from": "imc-1997-day1-p6b-uniform-intersecting-families-finite-transversal",
+      "to": "imc-2003-day2-p4-steiner-triples-elementary-abelian-2-group",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "IMC 1997 P6(b) and IMC 2003 Day 2 P4 both use uniform hypergraph language: finite edges of equal size are central. The mechanisms differ strongly, since P6(b) proves a finite transversal theorem by trace induction, while the Steiner-triple problem algebraizes a 3-uniform design.",
+      "backward_text": "The Steiner-triple card is another uniform-hypergraph problem in the IMC set. Unlike the transversal theorem for intersecting families, it relies on unique pair completion and an \\(\\mathbb F_2\\)-group structure rather than on cross-intersecting induction.",
+      "anchors": {
+        "from_solution_id": "sol-cross-intersecting-induction",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    },
+    {
+      "id": "rel-imc1997-p6b-imc2011-hypergraph-matching-transversal",
+      "from": "imc-1997-day1-p6b-uniform-intersecting-families-finite-transversal",
+      "to": "imc-2011-day2-p2-tripartite-married-triples",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "In hypergraph terms, IMC 1997 P6(b) studies a uniform family with matching number one and proves a finite transversal for pairwise intersections. IMC 2011 Day 2 P2 is nearby in the matching/transversal vocabulary, but aims for a perfect matching of 3-partite triples under density assumptions.",
+      "backward_text": "The married-triples problem is related by the hypergraph matching viewpoint: it seeks a spanning matching of allowed triples, whereas IMC 1997 P6(b) starts from an intersecting uniform hypergraph and builds a finite set hitting all pairwise intersections.",
+      "anchors": {
+        "from_solution_id": "sol-cross-intersecting-induction",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.68
+    }
+  ]
+}

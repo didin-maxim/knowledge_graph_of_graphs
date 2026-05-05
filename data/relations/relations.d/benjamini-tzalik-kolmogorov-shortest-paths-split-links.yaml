@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-benjamini-tzalik-kolmogorov-2024-shortest-paths-prerequisite",
+      "from": "benjamini-tzalik-shortest-paths",
+      "to": "kolmogorov-2024-t1-seniors-2-shortest-paths-even-degree",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Теорема Беньямини — Цалика даёт верхнюю оценку \\(2(\\Delta/2)^t\\); при \\(\\Delta=2m\\) это ровно верхняя граница \\(2m^t\\), нужная в задаче Кубка Колмогорова.",
+      "backward_text": "Задача Кубка Колмогорова является прямым олимпиадным применением чётного случая теоремы Беньямини — Цалика: после верхней оценки остаётся только предъявить две цепочки с \\(m\\) параллельными рёбрами на каждом шаге.",
+      "anchors": {
+        "from_solution_id": "sol-entropy-bound",
+        "to_solution_id": "sol-even-degree-exact"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-benjamini-tzalik-kolmogorov-2024-even-specialization",
+      "from": "benjamini-tzalik-shortest-paths",
+      "to": "kolmogorov-2024-t1-seniors-2-shortest-paths-even-degree",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Колмогоровская формулировка фиксирует специальный параметр \\(\\Delta=2m\\) и спрашивает точный максимум, а не только верхнюю оценку.",
+      "backward_text": "Общая теорема охватывает не только чётные максимальные степени и не утверждает достижимость в каждой числовой ситуации; колмогоровская карточка выделяет точный чётный вариант.",
+      "anchors": {
+        "from_solution_id": "sol-entropy-bound",
+        "to_solution_id": "sol-even-degree-exact"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-benjamini-tzalik-third-fourth-distance-layer-bound",
+      "from": "benjamini-tzalik-shortest-paths",
+      "to": "third-fourth-distance-layer-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки превращают кратчайшие пути в слои расстояний и получают верхнюю оценку из локальных ограничений на соседние слои; у Беньямини — Цалика считается число путей, а в лемме о четвёртом слое — число вершин слоя.",
+      "backward_text": "Лемма о третьем и четвёртом слоях является более элементарным послойным родственником оценки Беньямини — Цалика: в обеих ситуациях BFS-структура заменяет исходный граф на контролируемый слоистый объект.",
+      "anchors": {
+        "from_solution_id": "sol-entropy-bound",
+        "to_solution_id": "sol-mse-neighbor-partition"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-kolmogorov-2024-shortest-paths-imo-2013-c6-layers",
+      "from": "kolmogorov-2024-t1-seniors-2-shortest-paths-even-degree",
+      "to": "third-fourth-distance-layer-bound",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе олимпиадные задачи используют BFS-слои и кратчайшие пути как основной язык оценки: Колмогоров считает число кратчайших путей между двумя вершинами, IMO 2013 C6 ограничивает размер четвёртого слоя.",
+      "backward_text": "IMO 2013 C6 даёт навигационно близкий слойный подсчёт для задач о кратчайших расстояниях, хотя её объектом является количество вершин слоя, а не количество путей.",
+      "anchors": {
+        "from_solution_id": "sol-even-degree-exact",
+        "to_solution_id": "sol-mse-neighbor-partition"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-kolmogorov-2024-shortest-paths-chen-yu-2024-classical-tools",
+      "from": "kolmogorov-2024-t1-seniors-2-shortest-paths-even-degree",
+      "to": "chen-yu-independent-cutset-kolmogorov-merged",
+      "type": "same_source",
+      "distance": 2,
+      "forward_text": "Обе карточки относятся к Кубку Колмогорова 2024 и являются олимпиадными задачами, тесно связанными с современными графовыми теоремами: здесь используется оценка Беньямини — Цалика, а в соседней карточке — теорема Чэня — Юя о независимом разрезе.",
+      "backward_text": "Карточка Чэня — Юя и задача о кратчайших путях образуют пару колмогоровских применений внешних графовых результатов; первая касается разрезов в разреженных графах, вторая — экстремального числа кратчайших путей при ограниченной степени.",
+      "anchors": {
+        "from_solution_id": "sol-even-degree-exact",
+        "to_solution_id": "sol-chen-yu-reference"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "id": "sums-2012-p7-tree-connected-subsets-minimum",
+  "title": "Минимум числа связных подмножеств вершин дерева, SUMS 2012/7",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "tree_extremal"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "connected_vertex_subset",
+      "subtree",
+      "path"
+    ],
+    "methods": [
+      "subtree_counting",
+      "path_lower_bound",
+      "extremal_example"
+    ],
+    "transformations": [
+      "connected_subset_to_subtree",
+      "vertex_pair_to_unique_path"
+    ],
+    "goal": [
+      "find_minimum"
+    ],
+    "auxiliary_graph_type": [
+      "tree"
+    ],
+    "invariants": [
+      "unique_path_between_two_vertices",
+      "maximum_degree_at_most_two_characterizes_path"
+    ],
+    "keywords": [
+      "SUMS_2012_7",
+      "tree",
+      "connected_induced_subsets",
+      "subtrees",
+      "path_extremal"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-minimum",
+        "title": "Минимум",
+        "text": "Для дерева \\(T\\) обозначим через \\(s(T)\\) число непустых подмножеств \\(X\\) множества вершин \\(T\\), таких что любые две вершины из \\(X\\) соединяются в \\(T\\) путём, проходящим только через вершины из \\(X\\). Для данного положительного целого \\(n\\) найдите минимальное возможное значение \\(s(T)\\) по всем деревьям с \\(n\\) вершинами.",
+        "source_id": "src-sums-2012-p7-official",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree",
+          "path"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-pairs-give-distinct-paths",
+      "title": "Одноэлементные множества и пути между парами уже дают нижнюю оценку",
+      "text": "В дереве между двумя различными вершинами есть единственный путь. Множества вершин этих путей различны для разных пар концов, поэтому в любом дереве есть как минимум \\(n\\) одноэлементных связных подмножеств и \\(\\binom n2\\) связных подмножеств, заданных парами вершин.",
+      "tags": [
+        "trees",
+        "goal_bound"
+      ],
+      "status": "source_verified"
+    },
+    {
+      "id": "idea-path-intervals-are-all-connected-subsets",
+      "title": "В пути связные подмножества - это интервалы",
+      "text": "Если дерево само является путём, то каждое связное подмножество его вершин является непрерывным отрезком пути и однозначно задаётся своими концами или одной вершиной.",
+      "tags": [
+        "trees",
+        "construction"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-minimum-paths",
+      "title": "Путь даёт минимум",
+      "text": "Докажем, что минимум равен \\(n+\\binom n2=\\frac{n(n+1)}2\\). Связные подмножества вершин дерева - это ровно множества вершин его связных поддеревьев. В любом дереве есть \\(n\\) одноэлементных связных подмножеств. Кроме того, каждая неупорядоченная пара различных вершин \\(u,v\\) задаёт единственный путь от \\(u\\) к \\(v\\), а множество вершин этого пути связно. Разные пары дают разные множества: у пути, содержащего хотя бы две вершины, концы восстанавливаются как его две крайние вершины. Поэтому для любого дерева \\(T\\) выполнено \\[s(T)\\ge n+\\binom n2.\\]\n\nОстаётся показать достижимость. Пусть \\(T=P_n\\) - путь на \\(n\\) вершинах. Его связные подмножества - это ровно интервалы подряд идущих вершин. Интервал либо состоит из одной вершины, либо задаётся парой своих концов, значит их ровно \\(n+\\binom n2\\). Следовательно, минимальное значение равно \\(\\frac{n(n+1)}2\\).\n\nБолее того, если дерево не является путём, то в нём есть вершина \\(v\\) степени хотя бы \\(3\\). Взяв \\(v\\) и трёх её соседей, получаем связное подмножество, которое не является ни одной вершиной, ни множеством вершин пути между двумя концами. Значит вне путей нижняя оценка строгая.",
+      "idea_ids": [
+        "idea-pairs-give-distinct-paths",
+        "idea-path-intervals-are-all-connected-subsets"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "definition_ids": [
+        "tree",
+        "path"
+      ],
+      "status": "source_verified",
+      "source_id": "src-sums-2012-p7-official"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_easy",
+    "local_score": 4,
+    "comment": "Самостоятельная половина SUMS 2012/7: нижняя оценка через уникальные пути и точность на пути.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "extremal_choice",
+    "construction",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "path_lower_bound",
+        "path_extremal_example",
+        "branching_vertex_strictness"
+      ],
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-sums-2012-p7-official",
+      "role": "problem_and_solution_official_parent_problem",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Split from the compound SUMS 2012/7 card after high-reasoning check: the minimum half has a self-contained path-based lower bound and path construction, independent from the edge-subset upper bound used for the maximum."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.82,
+      "basis": "agent high-reasoning split audit",
+      "notes": "The original official solution contains this complete minimum argument; the split card isolates only the minimum extremum.",
+      "audit_source": "manual-split-2026-05-05"
+    }
+  }
+}

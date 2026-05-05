@@ -1,0 +1,212 @@
+{
+  "id": "all-union-1986-final-9-tree-distances-n1986-impossible",
+  "title": "Невозможность расстояний 1,2,...,C(1986,2) в дереве, Всесоюзная олимпиада 1986",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "application",
+      "impossibility"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Не указан в проверенном OCR-фрагменте источника",
+      "status": "not_found"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "tree",
+      "weighted_tree",
+      "pairwise_distances",
+      "parity_coloring"
+    ],
+    "methods": [
+      "parity",
+      "tree_metric",
+      "counting_odd_distances",
+      "square_obstruction"
+    ],
+    "transformations": [
+      "cities_roads_to_weighted_tree",
+      "rooted_tree_to_parity_coloring"
+    ],
+    "goal": [
+      "disprove_existence_for_n_1986"
+    ],
+    "auxiliary_graph_type": [
+      "tree",
+      "complete_graph_on_vertices_as_pairs"
+    ],
+    "invariants": [
+      "tree_distances",
+      "number_of_odd_distances",
+      "bipartition_product"
+    ],
+    "keywords": [
+      "weighted_tree",
+      "tree_metric",
+      "all_pair_distances",
+      "complete_set_of_distances",
+      "parity_obstruction",
+      "n_1986_impossible"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-n1986",
+        "title": "1986 городов и все расстояния от 1 до C(1986,2)",
+        "text": "В одном государстве король хочет построить \\(1986\\) городов и \\(1985\\) дорог между ними так, чтобы из каждого города можно было проехать в любой другой. Каждая дорога соединяет два города, дороги не пересекаются и не проходят через другие города. Можно ли сделать так, чтобы кратчайшие расстояния по сети дорог между всеми парами городов равнялись \\(1\\) км, \\(2\\) км, \\(3\\) км, ..., \\(\\binom{1986}{2}\\) км?",
+        "source_ids": [
+          "src-mathru-vsesoyuznye-1988",
+          "src-djvuonline-vseross-9-1997"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph-n1986",
+        "title": "Запрет для взвешенного дерева на 1986 вершинах",
+        "text": "Докажите, что не существует взвешенного дерева на \\(1986\\) вершинах, в котором расстояния между всеми \\(\\binom{1986}{2}\\) парами вершин, взятые как мультимножество, равны \\(1,2,3,\\ldots,\\binom{1986}{2}\\).",
+        "source_ids": [
+          "src-mathru-vsesoyuznye-1988",
+          "src-djvuonline-vseross-9-1997"
+        ],
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "tree"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-parity-coloring-from-root",
+      "title": "Покрасить вершины по чётности расстояния от корня",
+      "text": "Все реберные длины целые, потому что каждое ребро само задаёт одно из попарных расстояний. Поэтому чётность расстояния от выбранного корня корректно делит вершины на два цвета, а расстояние между двумя вершинами нечётно тогда и только тогда, когда их цвета различны.",
+      "tags": [
+        "trees",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-odd-distance-product",
+      "title": "Число нечётных расстояний равно произведению размеров цветов",
+      "text": "Если в двух цветах \\(x\\) и \\(y\\) вершин, то нечётных расстояний среди всех пар ровно \\(xy\\); с другой стороны, среди чисел \\(1,2,\\ldots,N\\) их количество известно явно.",
+      "tags": [
+        "parity_coloring",
+        "invariant"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-square-obstruction",
+      "title": "Получить квадратное необходимое условие",
+      "text": "Из уравнений \\(x+y=n\\) и подсчёта нечётных расстояний получается, что при нечётном \\(N=\\binom n2\\) число \\(n-2\\) должно быть квадратом; для \\(n=1986\\) это неверно.",
+      "tags": [
+        "parity_coloring",
+        "goal_impossibility"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-parity-square-obstruction-n1986",
+      "title": "Чётностное препятствие",
+      "text": "Ответ: нельзя.\n\nПредположим, что такое дерево существует. Длина каждого ребра целая: ребро соединяет две соседние вершины, значит его длина сама является расстоянием между парой вершин и потому входит в набор \\(1,2,\\ldots,\\binom{1986}{2}\\).\n\nДокажем сначала общее необходимое условие для дерева на \\(n\\) вершинах. Выберем корень \\(r\\) и покрасим вершину \\(v\\) в белый цвет, если расстояние от \\(r\\) до \\(v\\) чётно, и в чёрный цвет, если оно нечётно. Так как все реберные длины целые, при переходе по ребру цвет меняется ровно тогда, когда длина этого ребра нечётна. Следовательно, для любых двух вершин расстояние между ними нечётно тогда и только тогда, когда вершины имеют разные цвета.\n\nПусть в двух цветах \\(x\\) и \\(y\\) вершин, \\(x+y=n\\). Тогда число пар вершин с нечётным расстоянием равно \\(xy\\). Но все расстояния по условию - это ровно числа \\(1,2,3,\\ldots,N\\), где \\(N=\\binom n2\\). Если \\(N\\) нечётно, то среди этих чисел \\((N+1)/2\\) нечётных, поэтому\n\\[\nxy=\\frac{N+1}{2}=\\frac{n^2-n+2}{4}.\n\\]\nТогда\n\\[\n(x-y)^2=(x+y)^2-4xy=n^2-(n^2-n+2)=n-2.\n\\]\nЗначит, при нечётном \\(N\\) число \\(n-2\\) обязано быть квадратом целого числа.\n\nТеперь подставим \\(n=1986\\). Имеем\n\\[\nN=\\binom{1986}{2}=993\\cdot1985,\n\\]\nэто нечётное число. Поэтому необходимо, чтобы \\(1986-2=1984\\) было квадратом. Но\n\\[\n44^2=1936<1984<2025=45^2.\n\\]\nПротиворечие. Следовательно, требуемого дерева, а значит и требуемой сети дорог для \\(1986\\) городов, не существует.",
+      "idea_ids": [
+        "idea-parity-coloring-from-root",
+        "idea-odd-distance-product",
+        "idea-square-obstruction"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree"
+      ],
+      "source_ids": [
+        "src-mathru-vsesoyuznye-1988",
+        "src-djvuonline-vseross-9-1997"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 5,
+    "comment": "Самостоятельная невозможностная половина задачи 172 Всесоюзной математической олимпиады 1986 года, заключительный этап, 9 класс, первый день; ключевой шаг - чётностная окраска дерева с целыми весами.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "trees",
+    "parity_coloring",
+    "invariant",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "parity_coloring",
+        "odd_distance_count",
+        "square_obstruction"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-mathru-vsesoyuznye-1988",
+      "role": "published_collection_problem_and_solution_scan",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original-n1986",
+        "stmt-graph-n1986"
+      ]
+    },
+    {
+      "source_id": "src-djvuonline-vseross-9-1997",
+      "role": "published_collection_ocr_statement_and_solution_check",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original-n1986",
+        "stmt-graph-n1986"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split child of all-union-1986-final-9-tree-distances-one-to-nchoose2, retaining only the n=1986 impossibility case.",
+      "This card is self-contained: the proof establishes the needed parity obstruction directly and does not depend on the n=6 construction or on the old combined statement.",
+      "High-reasoning split audit: the n=1986 part is nontrivial because it derives a square obstruction from the parity count of all pairwise tree distances."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.86,
+      "basis": "split from high-reasoning audited published collection solution",
+      "notes": "The local impossibility proof is expanded from the published 1988/1997 collection solution; the source registry does not mark these as official olympiad solution sources.",
+      "audit_source": "manual-split-pass-2026-05-05"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "id": "imc-2006-day2-p1b-polygon-triangulation-two-even",
+  "title": "Триангуляция многоугольника: ровно две вершины четной инцидентности, IMC 2006 Day 2 P1b",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "planar_graphs",
+      "split_child"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "convex_polygon",
+      "triangulation",
+      "plane_graph",
+      "vertex_triangle_incidence"
+    ],
+    "methods": [
+      "induction_by_three_vertices",
+      "base_cases_by_residue",
+      "parity_tracking"
+    ],
+    "transformations": [
+      "triangulation_to_plane_graph"
+    ],
+    "goal": [
+      "construct_triangulation_with_exactly_two_even_vertex_incidences"
+    ],
+    "auxiliary_graph_type": [
+      "maximal_outerplanar_graph"
+    ],
+    "invariants": [
+      "number_of_even_vertex_triangle_incidences",
+      "n_mod_3"
+    ],
+    "keywords": [
+      "imc_2006_day2_p1b",
+      "polygon_triangulation",
+      "parity",
+      "two_even_vertex_triangle_incidences"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Случай, когда число вершин не делится на 3",
+        "text": "Пусть \\(V\\) - выпуклый многоугольник с \\(n\\) вершинами, где \\(3\\nmid n\\). Докажите, что \\(V\\) можно триангулировать непересекающимися диагоналями так, чтобы ровно две вершины \\(V\\) были вершинами четного числа треугольников этой триангуляции.",
+        "source_id": "src-imc-2006-day2-p1-official",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [
+      {
+        "id": "stmt-graph",
+        "title": "Максимальный внешнепланарный граф",
+        "text": "Дан цикл \\(C_n\\), где \\(3\\nmid n\\). Нужно добавить непересекающиеся хорды до максимального внешнепланарного графа так, чтобы ровно две вершины были инцидентны четному числу внутренних треугольных граней.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "cycle"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-add-three-vertices-preserves-two-even",
+      "title": "Добавление трех вершин сохраняет число четных вершин",
+      "text": "При пристройке трех вершин к стороне уже триангулированного многоугольника две старые вершины получают по два новых треугольника, а новые вершины получают \\(1,3,1\\) треугольников. Поэтому множество старых четных вершин не меняется, а новые вершины не добавляют четных инцидентностей.",
+      "tags": [
+        "induction",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-add-three-vertices-two-even",
+      "title": "Две базы и индукция с шагом 3",
+      "text": "Проведем индукцию отдельно по двум остаткам \\(n\\equiv 1\\pmod 3\\) и \\(n\\equiv 2\\pmod 3\\).\n\nБаза \\(n=4\\): любая диагональ разбивает четырехугольник на два треугольника. Две вершины проведенной диагонали входят в два треугольника, а две остальные - в один. Значит, ровно две вершины имеют четное число инцидентных треугольников.\n\nБаза \\(n=5\\): возьмем веерную триангуляцию из одной вершины. Эта вершина входит в три треугольника; две соседние с ней вершины входят в один треугольник; две оставшиеся вершины входят в два треугольника. Значит, снова ровно две вершины имеют четную инцидентность.\n\nТеперь пусть утверждение доказано для некоторого \\(k\\)-угольника \\(P_1P_2\\ldots P_k\\), где \\(3\\nmid k\\). Рассмотрим выпуклый \\((k+3)\\)-угольник \\(P_1P_2\\ldots P_{k+3}\\). По предположению индукции триангулируем подмногоугольник \\(P_1P_2\\ldots P_k\\) так, что ровно две его вершины имеют четную инцидентность. Оставшийся пятиугольник \\(P_1P_kP_{k+1}P_{k+2}P_{k+3}\\) разобьем на три треугольника\n\\[\nP_1P_kP_{k+2},\\qquad P_kP_{k+1}P_{k+2},\\qquad P_1P_{k+2}P_{k+3}.\n\\]\nВместе со старой триангуляцией они дают триангуляцию всего \\((k+3)\\)-угольника.\n\nПри этом вершины \\(P_1\\) и \\(P_k\\) получили по два новых инцидентных треугольника, так что их четность не изменилась; остальные старые вершины не изменились вовсе. Новые вершины \\(P_{k+1}\\), \\(P_{k+2}\\), \\(P_{k+3}\\) входят соответственно в \\(1\\), \\(3\\), \\(1\\) новых треугольников, то есть все они нечетные. Поэтому число четных вершин осталось тем же, а именно равным двум.\n\nШаг увеличивает число вершин на \\(3\\), не меняя остаток по модулю \\(3\\). Базы \\(4\\) и \\(5\\) покрывают все \\(n\\), не делящиеся на \\(3\\), следовательно требуемая триангуляция существует для каждого такого \\(n\\).",
+      "idea_ids": [
+        "idea-add-three-vertices-preserves-two-even"
+      ],
+      "standard_idea_ids": [
+        "induction",
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p1_p4",
+    "local_score": 5,
+    "comment": "Самостоятельная половина IMC 2006 Day 2 P1: две малые базы для остатков 1 и 2 по модулю 3 плюс общий шаг, сохраняющий ровно две четные вершины.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "induction",
+    "parity_coloring",
+    "construction",
+    "goal_construction"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "induction_by_three_vertices",
+        "parity_tracking",
+        "base_cases_by_residue"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-imc-2006-day2-p1-official",
+      "role": "problem_and_solutions_official",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Split child extracted from the compound IMC 2006 Day 2 P1 card. This card proves only the case \\(3\\nmid n\\), where exactly two vertex-triangle incidence counts must be even.",
+      "High-reasoning split audit: this case is self-contained and nontrivial; it shares the add-three-vertices invariant with the divisible case, but has distinct base cases \\(n=4,5\\) and a distinct two-even target."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное/почти полное",
+      "status": "ai_checked",
+      "confidence": 0.8,
+      "basis": "high-reasoning split audit from the compound IMC 2006 Day 2 P1 card",
+      "notes": "Solution is a self-contained expansion of the official induction step restricted to the non-divisible-by-3 case.",
+      "audit_source": "agent-high-reasoning-split"
+    }
+  }
+}

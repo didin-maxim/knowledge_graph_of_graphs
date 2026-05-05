@@ -1,0 +1,165 @@
+{
+  "id": "unique-insertion-interval-oriented-triples",
+  "title": "Единственный промежуток вставки для ориентированных троек",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "?",
+      "status": "needs_human_review"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_set",
+      "oriented_three_uniform_hypergraph",
+      "cyclic_order",
+      "linear_order",
+      "insertion_interval"
+    ],
+    "methods": [
+      "transitive_tournament_from_triples",
+      "cyclic_order_argument",
+      "insert_new_vertex"
+    ],
+    "transformations": [
+      "view_from_new_vertex",
+      "oriented_triples_to_linear_order",
+      "linear_order_to_cyclic_cut"
+    ],
+    "goal": [
+      "unique_insertion_place",
+      "cyclic_order_extension"
+    ],
+    "auxiliary_graph_type": [
+      "tournament"
+    ],
+    "invariants": [
+      "cyclic_symmetry",
+      "orientation_reversal",
+      "four_point_compatibility"
+    ],
+    "keywords": [
+      "oriented_triples",
+      "unique_insertion_interval",
+      "cyclic_order",
+      "insertion",
+      "transitive_tournament"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-unique-insertion",
+        "text": "Пусть на конечном множестве \\(A\\) задана ориентация троек: для любых трех различных элементов ровно один из двух циклических порядков считается положительным, то есть \\((x,y,z)\\) положительна тогда и только тогда, когда положительны ее циклические сдвиги \\((y,z,x)\\), \\((z,x,y)\\), а при перестановке двух элементов ориентация меняется. Предположим также четырехточечное правило: для любых четырех различных \\(a,b,c,d\\) пары условий \\((a,b,c)\\), \\((c,d,a)\\) одновременно положительны тогда и только тогда, когда \\((b,c,d)\\), \\((d,a,b)\\) одновременно положительны. Пусть \\(B=A\\setminus\\{z\\}\\), \\(|B|\\ge3\\), и ориентации всех троек из \\(B\\) задаются циклическим порядком \\(a_1,a_2,\\ldots,a_m\\): если три элемента встречаются на этом цикле в порядке \\(x,y,w\\), то \\((x,y,w)\\) положительна. Тогда существует единственный промежуток между соседними элементами этого цикла, в который можно вставить \\(z\\), чтобы полученный циклический порядок задавал все ориентации троек из \\(A\\). В частности, существует единственный индекс \\(i\\) по модулю \\(m\\), для которого \\((a_i,z,a_{i+1})\\) положительна.",
+        "source_id": "src-putnam-1996-A4-kedlaya",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": []
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-view-from-z",
+      "title": "Посмотреть из новой точки",
+      "text": "На старых вершинах вводится турнир: \\(x\\prec y\\), если \\((z,x,y)\\) положительна. Четырехточечное правило заставляет этот турнир быть транзитивным.",
+      "tags": [
+        "tournaments"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-transitive-order-is-cyclic-cut",
+      "title": "Транзитивный порядок является разрезом цикла",
+      "text": "Полученный линейный порядок старых вершин согласован со всеми тройками исходного цикла, поэтому он может отличаться от циклического порядка только выбором начальной точки.",
+      "tags": [
+        "induction"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-transitive-view-from-new-vertex",
+      "title": "Доказательство через порядок, видимый из \\(z\\)",
+      "text": "Будем писать \\((x,y,w)>0\\), если тройка положительна. На множестве \\(B\\) зададим отношение \\(x\\prec y\\) условием \\((z,x,y)>0\\). Из смены ориентации при обращении следует, что для любых различных \\(x,y\\in B\\) выполнено ровно одно из \\(x\\prec y\\), \\(y\\prec x\\).\n\nДокажем транзитивность. Пусть \\(x\\prec y\\) и \\(y\\prec w\\). Если на данном цикле для \\(B\\) тройка \\((x,w,y)>0\\), то применим четырехточечное правило к четверке \\((z,x,w,y)\\). Левая пара содержит \\((w,y,z)\\), а она отрицательна, потому что \\((z,y,w)>0\\). Правая пара, наоборот, положительна: \\((x,w,y)>0\\) по предположению о циклическом порядке, а \\((y,z,x)>0\\) является циклическим сдвигом \\((z,x,y)>0\\). Получается противоречие. Значит на цикле обязательно \\((x,y,w)>0\\).\n\nТеперь применим четырехточечное правило к четверке \\((z,x,y,w)\\). Тройки \\((z,x,y)\\) и \\((y,w,z)\\) положительны, причем вторая является циклическим сдвигом \\((z,y,w)>0\\). Поэтому положительны и \\((x,y,w)\\), \\((w,z,x)\\); отсюда \\((z,x,w)>0\\), то есть \\(x\\prec w\\). Отношение \\(\\prec\\) транзитивно, а значит упорядочивает \\(B\\) линейно: \\(b_1\\prec b_2\\prec\\cdots\\prec b_m\\).\n\nДля любых \\(r<s<t\\) из уже доказанного запрета на порядок \\((b_r,b_t,b_s)\\) следует, что на исходном цикле положительна \\((b_r,b_s,b_t)\\). Следовательно, если смотреть на исходный цикл от вершины \\(b_1\\), остальные вершины идут именно в порядке \\(b_2,b_3,\\ldots,b_m\\). То есть линейный порядок \\(b_1,\\ldots,b_m\\) является разрезом данного циклического порядка.\n\nВставим \\(z\\) непосредственно перед \\(b_1\\), или, что то же самое, между \\(b_m\\) и \\(b_1\\). Тройки без \\(z\\) уже согласованы с исходным циклом. Если тройка содержит \\(z\\) и две старые вершины \\(b_r,b_s\\), где \\(r<s\\), то по определению \\(b_r\\prec b_s\\), значит \\((z,b_r,b_s)>0\\), ровно как в новом циклическом порядке \\(z,b_1,\\ldots,b_m\\). Поэтому вставка корректна.\n\nНаконец, она единственна. Любая корректная вставка должна давать после \\(z\\) именно тот порядок старых вершин, который определяется отношением \\((z,x,y)>0\\), а этот порядок уже единственно равен \\(b_1,\\ldots,b_m\\). Значит \\(z\\) можно поставить только между \\(b_m\\) и \\(b_1\\). В обозначениях исходного цикла это ровно один промежуток между соседними \\(a_i\\) и \\(a_{i+1}\\), и только для него \\((a_i,z,a_{i+1})>0\\).",
+      "idea_ids": [
+        "idea-view-from-z",
+        "idea-transitive-order-is-cyclic-cut"
+      ],
+      "standard_idea_ids": [
+        "induction"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "tournament"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 6,
+    "comment": "Нетривиальная вставочная лемма: основная работа состоит в извлечении транзитивного турнира из четырехточечного правила для ориентированных троек.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "tournaments",
+    "induction",
+    "classical_lemma",
+    "goal_existence",
+    "goal_characterization"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "view_from_new_vertex",
+        "transitive_tournament",
+        "cyclic_order_cut"
+      ],
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": {
+      "value": "Индуктивное расширение порядка в задачах, где ориентации троек удовлетворяют четырехточечному правилу совместимости.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-putnam-1996-A4-kedlaya",
+      "role": "extracted_from_archival_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-05",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Вынесено из Putnam 1996 A4 как самостоятельная нетривиальная лемма об одновершинном расширении циклического порядка для ориентированных троек.",
+      "Формулировка намеренно самодостаточна: ориентация троек, циклическая симметрия, обращение ориентации и четырехточечное правило повторены в условии."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.78,
+      "basis": "agent high-reasoning extraction from Putnam 1996 A4 archival solution",
+      "notes": "The lemma is isolated from the published unofficial archive solution and expanded into a self-contained proof.",
+      "audit_source": "manual-codex-2026-05-05"
+    }
+  }
+}
