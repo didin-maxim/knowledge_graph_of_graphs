@@ -22,10 +22,7 @@
       "girth_at_least_5",
       "number_of_edges"
     ],
-    "methods": [
-      "minimal_counterexample",
-      "low_degree_reduction"
-    ],
+    "methods": [],
     "transformations": [],
     "goal": [
       "prove_edge_upper_bound"
@@ -41,9 +38,11 @@
       "yumt",
       "2025_unior_round3_problem1",
       "yumt_2025",
+      "southern_mathematical_tournament",
       "cycles_pairwise_intersecting",
       "girth_at_least_5",
       "edge_bound_2n_minus_1",
+      "no_public_solution_found",
       "непросто_для_ИИ"
     ],
     "status": "ai_checked"
@@ -55,70 +54,73 @@
         "title": "Оригинальная формулировка",
         "text": "Дан граф на n вершинах, все циклы в котором имеют непустое пересечение по вершинам и длину не менее 5.\nДокажите, что в этом графе не более чем 2n - 1 ребро.",
         "source_id": "src-yumt-2025-unior-round3-problem1-official",
-        "status": "ai_checked",
+        "status": "source_verified",
         "self_contained": {
           "status": "ai_checked"
         },
         "definition_ids": [
           "simple_graph",
           "cycle"
-        ]
+        ],
+        "source_note": "Сверено с официальным PDF https://adygmath.ru/content/files/umt25/problems/3tur_usl_unior.pdf: XX Южный математический турнир, тур 3, Юниор-лига, 25.09.2025, задача 1."
       }
     ],
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [
-    {
-      "id": "idea-minimal-counterexample-low-degree",
-      "title": "Минимальный контрпример должен сводиться к вершине степени не больше 2",
-      "text": "Если в графе есть вершина степени 0 или 1, её можно удалить и применить индукцию; если есть вершина степени 2, после удаления оценка тоже сохраняется с точностью ровно до \\(2n-1\\). Поэтому естественный путь к решению: доказать, что в графе без треугольников и 4-циклов, где любые два цикла пересекаются по вершинам, обязательно есть вершина степени не больше 2. Эквивалентная трудная лемма: граф минимальной степени хотя бы 3 и обхвата хотя бы 5 содержит два непересекающихся по вершинам цикла.",
-      "tags": [
-        "minimal_counterexample",
-        "extremal_graph_theory"
-      ],
-      "status": "needs_human_review"
-    }
-  ],
+  "ideas": [],
   "solutions": [],
   "difficulty": {
     "main": "regional",
     "local_score": 6,
-    "comment": "Импортировано из проверенной архивной карточки ЮМТ 2025_unior_round3_problem1.md; этап: Юниор-лига, третий тур.",
+    "comment": "2026-05-05 very-high/no-solution pass: официальная формулировка сверена с PDF ЮМТ/Южного математического турнира 2025; опубликованное полное решение, форумный разбор и автор задачи не найдены. Карточка помечена как no-solution / непросто для ИИ; solutions[] и ideas[] оставлены пустыми, чтобы не хранить недоведённые подходы.",
     "status": "ai_checked"
   },
   "tags": [
     "extremal_graph_theory",
-    "minimal_counterexample",
-    "goal_proof"
+    "goal_bound"
   ],
   "sources": [
     {
       "source_id": "src-yumt-2025-unior-round3-problem1-official",
       "role": "official_problem_statement",
-      "status": "source_verified"
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original"
+      ],
+      "notes": "Официальный PDF с условиями Юниор-лиги, 3 тур. Официальное решение, автор или разбор для задачи 1 в проверенных источниках не найдены."
     }
   ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-25",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Импортировано из проверенной рабочей карточки ЮМТ 2025_unior_round3_problem1.md.",
-      "2026-05-05: проверен официальный PDF условий https://adygmath.ru/content/files/umt25/problems/3tur_usl_unior.pdf; публичный официальный разбор, автор или proposer в проверенных источниках не найдены.",
-      "2026-05-05: непросто для ИИ. Найден естественный индукционный маршрут через лемму о двух непересекающихся циклах в графе минимальной степени хотя бы 3 и обхвата хотя бы 5, но самодостаточное школьное доказательство этой леммы быстро не получено, поэтому решение в solutions[] не добавлено."
+      "2026-05-05 very-high pass: официальный PDF https://adygmath.ru/content/files/umt25/problems/3tur_usl_unior.pdf заново скачан; он подтверждает XX Южный математический турнир, тур 3, Юниор-лигу, 25.09.2025 и задачу 1 про циклы длины не меньше 5.",
+      "Официальная страница турнира https://adygmath.ru/umt2025.html содержит ссылку на 3tur_usl_unior.pdf, но не содержит опубликованных решений; прямые проверки типовых URL решений для 3 тура Юниор-лиги дали 404.",
+      "Поиск по точным фразам условия, русским/английским переформулировкам, форумам и авторским запросам не нашёл полного опубликованного решения или автора задачи.",
+      "Непросто для ИИ / no-solution: `solutions: []` оставлен пустым, `ideas: []` очищен, чтобы не хранить недоведённые подходы.",
+      "public_ready поставлен в true, потому что формулировка, definition_ids, tags и source refs сверены; единственный известный блокер - отсутствие опубликованного полного решения."
     ],
+    "manual_review": {
+      "target": "yumt-2025-unior-round3-problem1#solution",
+      "status": "needed",
+      "reason": "Нужно найти официальный/авторский разбор или дать самодостаточное доказательство оценки 2n - 1.",
+      "action_taken": "Сверено официальное условие, проверены source refs / definitions / tags, удалены недоведённые ideas, добавлена пометка 'непросто для ИИ'.",
+      "next_agent": "human_or_deep_solution_pass"
+    },
     "relations_status": "reviewed_no_links",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
       "type": "no_solution_hard",
-      "label": "??????? ???: ??????? ??????",
-      "status": "needs_human_review",
+      "label": "решения нет: сложная задача",
+      "status": "ai_checked",
       "confidence": 0.9,
-      "basis": "agent medium-reasoning audit",
-      "notes": "solutions array is empty in the card",
-      "audit_source": "agent-russian-archives.json"
+      "basis": "2026-05-05 very-high no-solution pass",
+      "notes": "Официальная формулировка подтверждена; опубликованное полное решение, автор и форумный разбор не найдены; solutions[] и ideas[] пустые.",
+      "audit_source": "manual-xhigh-pass-2026-05-05"
     }
   }
 }

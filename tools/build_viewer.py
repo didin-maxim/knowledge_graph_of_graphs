@@ -291,6 +291,61 @@ def build_html(data):
       background: var(--bad);
     }}
 
+    .solution-status {{
+      border: 1px solid transparent;
+      font-weight: 650;
+    }}
+
+    .solution-status-published {{
+      background: #e6f4ef;
+      border-color: #a8d5c5;
+    }}
+
+    .solution-status-official_complete_or_near_complete {{
+      background: #e6f4ef;
+      border-color: #a8d5c5;
+    }}
+
+    .solution-status-official_outline_needs_work {{
+      background: var(--warn);
+      border-color: #e2c76d;
+    }}
+
+    .solution-status-unofficial_published {{
+      background: #edf0f7;
+      border-color: #bac4d6;
+    }}
+
+    .solution-status-ai {{
+      background: #e8f0ff;
+      border-color: #b9c9ef;
+    }}
+
+    .solution-status-ai_original {{
+      background: #e8f0ff;
+      border-color: #b9c9ef;
+    }}
+
+    .solution-status-heavy {{
+      background: #f5ead4;
+      border-color: #d8ba78;
+    }}
+
+    .solution-status-ai_heavy_external_theorem {{
+      background: #f5ead4;
+      border-color: #d8ba78;
+    }}
+
+    .solution-status-missing {{
+      background: var(--warn);
+      border-color: #e2c76d;
+    }}
+
+    .solution-status-no_solution_hard {{
+      background: var(--warn);
+      border-color: #e2c76d;
+    }}
+
     .section {{
       border-top: 1px solid var(--line);
       padding-top: 4px;
@@ -961,8 +1016,8 @@ def build_html(data):
       }};
     }}
 
-    function problemHasRealSolution(problem) {{
-      return (problem.solutions || []).some(solution => {{
+    function realSolutions(problem) {{
+      return (problem.solutions || []).filter(solution => {{
         const text = String(solution.text || '').trim();
         const title = String(solution.title || '').trim();
         return text
@@ -971,15 +1026,91 @@ def build_html(data):
       }});
     }}
 
+    function problemHasRealSolution(problem) {{
+      return realSolutions(problem).length > 0;
+    }}
+
+    function solutionBlob(solution) {{
+      return [
+        solution.id,
+        solution.title,
+        solution.text,
+        solution.status,
+        solution.source_id,
+        ...(solution.source_ids || []),
+        ...(solution.tags || []),
+        ...(solution.review_notes ? [solution.review_notes] : [])
+      ].join(' ').toLowerCase();
+    }}
+
+    function solutionLooksPublished(solution) {{
+      const blob = solutionBlob(solution);
+      return solution.status === 'source_verified'
+        || Boolean(solution.source_id)
+        || (solution.source_ids || []).length > 0
+        || /\\b(official|archive|aops|forum|published|source|secondary|reviewed)\\b/i.test(blob)
+        || /официальн|архив|опубликован|источник|форум|aops/i.test(blob);
+    }}
+
+    function solutionLooksHeavy(solution) {{
+      const blob = solutionBlob(solution);
+      return /heavy|external|advanced|research|non[- ]?elementary|внешн|тяж[её]л|нешкольн|исследовательск|теорем[ауы]\\s+(ч[еэ]ня|stiebitz|стибиц|kotzig|коциг|tihany|тихани|brooks|брукс|turan|туран|menger|менгер)/i.test(blob);
+    }}
+
+    function solutionStatusKey(problem) {{
+      const classification = problem.editorial?.solution_classification?.type;
+      const classificationMap = {{
+        official_complete_or_near_complete: 'published',
+        official_outline_needs_work: 'published',
+        unofficial_published: 'published',
+        external_published_solution_adapted: 'published',
+        ai_original: 'ai',
+        ai_heavy_external_theorem: 'heavy',
+        no_solution_hard: 'missing'
+      }};
+      if (classificationMap[classification]) return classificationMap[classification];
+      const solutions = realSolutions(problem);
+      if (!solutions.length) return 'missing';
+      if (solutions.some(solutionLooksHeavy)) return 'heavy';
+      if (solutions.some(solutionLooksPublished)) return 'published';
+      return 'ai';
+    }}
+
+    function solutionStatusLabel(key) {{
+      const labels = {{
+        published: 'опубликованное решение',
+        ai: 'ИИ-решение',
+        heavy: 'решение с тяжёлыми внешними теоремами',
+        missing: 'решения нет',
+        official_complete_or_near_complete: 'официальное полное/почти полное',
+        official_outline_needs_work: 'официальный план, нужна доработка',
+        unofficial_published: 'опубликованное неофициальное',
+        ai_original: 'решение ИИ с нуля',
+        ai_heavy_external_theorem: 'ИИ/решение с тяжёлыми внешними теоремами',
+        no_solution_hard: 'решения нет: сложная задача'
+      }};
+      return labels[key] || key;
+    }}
+
+    function solutionStatusPill(problem) {{
+      const key = solutionStatusKey(problem);
+      const detail = problem.editorial?.solution_classification?.label;
+      const title = detail ? ` title="${{esc(detail)}}"` : '';
+      return '<span class="pill solution-status solution-status-' + esc(key) + '"' + title + '>' + esc(solutionStatusLabel(key)) + '</span>';
+    }}
+
     function problemSearchBlob(problem) {{
       const info = sourceInfo(problem);
+      const solutionState = solutionStatusKey(problem);
       const extra = {{
         source_key: info.key,
         source_label: info.label,
         source_aliases: info.aliases,
         authors: problemAuthors(problem),
         year: info.year,
-        solution_state: problemHasRealSolution(problem) ? 'with_solution' : 'without_solution'
+        solution_state: solutionState,
+        solution_state_label: solutionStatusLabel(solutionState),
+        has_solution: problemHasRealSolution(problem) ? 'with_solution' : 'without_solution'
       }};
       return searchBlob({{ ...problem, _search_meta: extra }});
     }}
@@ -1039,10 +1170,10 @@ def build_html(data):
         if (!yearOk) return false;
       }}
       if (!options.excludeSolution) {{
-        const hasSolution = problemHasRealSolution(problem);
         const solutionOk = state.solution === 'all'
-          || (state.solution === 'with' && hasSolution)
-          || (state.solution === 'without' && !hasSolution);
+          || state.solution === solutionStatusKey(problem)
+          || (state.solution === 'with' && problemHasRealSolution(problem))
+          || (state.solution === 'without' && !problemHasRealSolution(problem));
         if (!solutionOk) return false;
       }}
       if (!options.excludeQuery) {{
@@ -1243,7 +1374,7 @@ def build_html(data):
         list.innerHTML = filteredProblems().map(item => `
           <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#${{encodeURIComponent(item.id)}}" data-list-route="problem" data-list-id="${{esc(item.id)}}">
             <div>${{esc(item.title)}}</div>
-            <div class="id">${{esc(item.id)}}</div>
+            <div class="id">${{esc(item.id)}} · ${{esc(solutionStatusLabel(solutionStatusKey(item)))}}</div>
           </a>
         `).join('');
       }}
@@ -1410,14 +1541,33 @@ def build_html(data):
       }}
       select.disabled = false;
       const matching = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeSolution: true }}));
-      const withSolution = matching.filter(problem => problemHasRealSolution(problem)).length;
-      const withoutSolution = matching.length - withSolution;
+      const counts = {{
+        official_complete_or_near_complete: 0,
+        official_outline_needs_work: 0,
+        unofficial_published: 0,
+        ai_original: 0,
+        ai_heavy_external_theorem: 0,
+        no_solution_hard: 0,
+        published: 0,
+        ai: 0,
+        heavy: 0,
+        missing: 0
+      }};
+      matching.forEach(problem => {{
+        const key = solutionStatusKey(problem);
+        counts[key] = (counts[key] || 0) + 1;
+      }});
       select.innerHTML = [
         `<option value="all">Все задачи (${{matching.length}})</option>`,
-        `<option value="with">С решением (${{withSolution}})</option>`,
-        `<option value="without">Без решения (${{withoutSolution}})</option>`
+        `<option value="official_complete_or_near_complete">Официальное полное/почти полное (${{counts.official_complete_or_near_complete}})</option>`,
+        `<option value="official_outline_needs_work">Официальный план, нужна доработка (${{counts.official_outline_needs_work}})</option>`,
+        `<option value="unofficial_published">Опубликованное неофициальное (${{counts.unofficial_published}})</option>`,
+        `<option value="ai_original">Решение ИИ с нуля (${{counts.ai_original}})</option>`,
+        `<option value="ai_heavy_external_theorem">Тяжёлые внешние теоремы (${{counts.ai_heavy_external_theorem}})</option>`,
+        `<option value="no_solution_hard">Решения нет: сложная задача (${{counts.no_solution_hard}})</option>`
       ].join('');
       select.value = state.solution;
+      if (select.value !== state.solution) select.value = 'all';
     }}
 
     function renderStatements(problem) {{
@@ -1475,16 +1625,32 @@ def build_html(data):
 
     function renderSolutions(problem) {{
       const solutions = problem.solutions || [];
+      const classification = problem.editorial?.solution_classification;
+      const classificationDetails = classification ? `
+        <div class="subtle">
+          ${{esc(classification.basis || '')}}
+          ${{classification.confidence ? ` · confidence=${{esc(classification.confidence)}}` : ''}}
+          ${{classification.notes ? `<br>${{esc(classification.notes)}}` : ''}}
+          ${{(classification.external_theorem_ids || []).length ? `<br>Внешние теоремы: ${{classification.external_theorem_ids.map(esc).join(', ')}}` : ''}}
+        </div>
+      ` : '';
       if (!problemHasRealSolution(problem)) {{
         return `
           <div class="card">
             <div class="pill-row">
-              <span class="pill status-needs_human_review">Решение не найдено</span>
+              ${{solutionStatusPill(problem)}}
             </div>
+            ${{classificationDetails}}
           </div>
         `;
       }}
       if (!solutions.length) return '<div class="empty">Решений пока нет.</div>';
+      const statusSummary = `
+        <div class="card">
+          <div class="pill-row">${{solutionStatusPill(problem)}}</div>
+          ${{classificationDetails}}
+        </div>
+      `;
       const content = solutions.map(solution => `
         <div class="card">
           <div class="item-title">
@@ -1500,7 +1666,7 @@ def build_html(data):
           </div>
         </div>
       `).join('');
-      return reveal('Показать решение', content);
+      return statusSummary + reveal('Показать решение', content);
     }}
 
     function renderRelations(problem) {{
@@ -1682,7 +1848,16 @@ def build_html(data):
 
     function renderHome() {{
       const problemList = Object.values(problems);
-      const solvedCount = problemList.filter(problem => problemHasRealSolution(problem)).length;
+      const solutionCounts = {{
+        published: 0,
+        ai: 0,
+        heavy: 0,
+        missing: 0
+      }};
+      problemList.forEach(problem => {{
+        solutionCounts[solutionStatusKey(problem)] += 1;
+      }});
+      const solvedCount = problemList.length - solutionCounts.missing;
       const reviewCount = problemList.filter(problem => problem.editorial?.review_status === 'needs_human_review').length;
       const graphStatements = problemList.reduce((total, problem) =>
         total + (problem.statements?.graph_theory?.length || 0) + (problem.statements?.graph_hint_reformulations?.length || 0), 0);
@@ -1713,7 +1888,7 @@ def build_html(data):
             <div class="home-stat"><strong>${{solvedCount}}</strong><span>с решениями</span></div>
             <div class="home-stat"><strong>${{graphStatements}}</strong><span>графовых формулировок</span></div>
             <div class="home-stat"><strong>${{Object.keys(definitions).length}}</strong><span>определений</span></div>
-            <div class="home-stat"><strong>${{reviewCount}}</strong><span>на проверке</span></div>
+            <div class="home-stat"><strong>${{solutionCounts.missing}}</strong><span>без решения</span></div>
           </div>
         </section>
 
@@ -1780,6 +1955,7 @@ def build_html(data):
       byId('content').innerHTML = `
         <div class="topline">
           <span class="pill code">${{esc(problem.id)}}</span>
+          ${{solutionStatusPill(problem)}}
           ${{statusPill(problem.editorial?.review_status)}}
           <span class="pill">${{esc(label(taxonomy.difficulty_levels, problem.difficulty?.main))}}</span>
         </div>
