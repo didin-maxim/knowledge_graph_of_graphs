@@ -1,0 +1,148 @@
+{
+  "id": "min-degree-common-neighborhood-clique",
+  "title": "Клика из большой минимальной степени через общих соседей",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "school_provable_special_case"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "minimum_degree",
+      "clique",
+      "common_neighborhood"
+    ],
+    "methods": [
+      "union_bound",
+      "greedy_clique_extension"
+    ],
+    "transformations": [],
+    "goal": [
+      "force_clique"
+    ],
+    "keywords": [
+      "minimum_degree",
+      "common_neighbors",
+      "turan_special_case"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-general",
+        "text": "Пусть \\(r\\ge2\\), а \\(G\\) — простой граф на \\(N\\) вершинах. Если \\(\\delta(G)\\ge N-\\lceil N/r\\rceil+1\\), то в \\(G\\) есть клика \\(K_{r+1}\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "clique"
+        ]
+      }
+    ],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-1991-5",
+        "text": "В частности, если в графе на 1991 вершине степень каждой вершины не меньше 1593, то в нём есть шесть попарно смежных вершин.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "degree",
+          "complete_graph",
+          "clique"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-nonneighbors-do-not-cover",
+      "title": "Несоседи выбранной клики не покрывают все оставшиеся вершины",
+      "text": "У каждой вершины мало несоседей. Для клики из \\(s\\le r\\) вершин объединение их множеств несоседей всё ещё меньше множества всех возможных продолжений.",
+      "tags": [
+        "extremal_graph_theory",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-union-bound",
+      "title": "Доказательство через объединение множеств несоседей",
+      "text": "Обозначим \\(q=\\lceil N/r\\rceil\\). Если \\(N\\le r\\) и \\(N\\ge1\\), то \\(q=1\\), а условие требовало бы \\(\\delta(G)\\ge N\\), что невозможно в простом графе на \\(N\\) вершинах. Поэтому невакуозен только случай \\(N\\ge r+1\\); далее работаем в нём.\n\nИз условия следует, что у каждой вершины не больше \\(q-2\\) несоседей: всего кроме самой вершины есть \\(N-1\\) других вершин, а соседей среди них не меньше \\(N-q+1\\).\n\nПокажем, что любую клику размера \\(s<r+1\\) можно продолжить. Пусть \\(C\\) — клика из \\(s\\) вершин, где \\(1\\le s\\le r\\). Вершина вне \\(C\\) не является общей соседкой всех вершин \\(C\\) только если она является несоседкой хотя бы одной вершины из \\(C\\). Таких плохих вершин не больше \\(s(q-2)\\). Поэтому общих соседей клики \\(C\\) вне самой \\(C\\) не меньше\n\\[\nN-s-s(q-2)=N-sq+s.\n\\]\nЕсли \\(N=ar+b\\), \\(0\\le b<r\\), то при \\(b=0\\) имеем \\(q=a\\), и для \\(s\\le r\\) получаем \\(N-sq+s=a(r-s)+s>0\\). При \\(b>0\\) имеем \\(q=a+1\\), и \\(N-sq+s=a(r-s)+b>0\\) для всех \\(s\\le r\\). Значит общий сосед существует, и клику можно увеличить на одну вершину.\n\nНачав с любой вершины и повторив этот шаг \\(r\\) раз, получаем клику размера \\(r+1\\).",
+      "idea_ids": [
+        "idea-nonneighbors-do-not-cover"
+      ],
+      "standard_idea_ids": [
+        "double_counting",
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "simple_graph",
+        "degree",
+        "clique"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 4,
+    "comment": "Школьно доказываемая минимально-степенная частная форма турановского порога.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "forbidden_clique",
+    "degree_counting",
+    "double_counting",
+    "classical_lemma",
+    "goal_proof"
+  ],
+  "sources": [
+    {
+      "source_id": "src-wikipedia-turan",
+      "role": "context_reference_for_full_theorem",
+      "status": "source_verified",
+      "note": "Полная теорема Турана является контекстом; доказательство этой карточки самодостаточно и использует только подсчёт общих соседей."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-06",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Создано в ходе external theorem audit group A как школьно-доказуемая замена полной теоремы Турана для задач с большой минимальной степенью.",
+      "2026-05-06: повторно проверены JSON-синтаксис, источник-контекст src-wikipedia-turan и самодостаточное доказательство; явно добавлен вакуозный случай N <= r."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "самодостаточная лемма",
+      "status": "ai_checked",
+      "confidence": 0.95,
+      "basis": "external theorem audit group A, 2026-05-06",
+      "notes": "Полное доказательство приведено в карточке; внешняя теорема Турана не используется как чёрный ящик.",
+      "audit_source": "external-theorem-audit-group-a"
+    }
+  }
+}

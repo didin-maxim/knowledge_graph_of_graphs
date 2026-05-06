@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-offplan-imo-2020-c4-tree-properties",
+      "from": "tree-equivalent-properties",
+      "to": "imo-2020-c4-fibonacci-difference-forest",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Классический факт о лесах даёт финальный переход нижней оценки: если вспомогательный граф ацикличен и имеет \\(d\\) рёбер, то на его вершинах должно быть как минимум \\(d+1\\) элементов.",
+      "backward_text": "IMO 2020 C4 является прямым применением свойства леса \\(|E|\\le |V|-1\\): вся содержательная часть состоит в том, чтобы доказать ацикличность графа фибоначчиевых разностей.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-offplan-imo-2020-c4-imo-2024-c8-cycle-forest-obstruction",
+      "from": "imo-2020-c4-fibonacci-difference-forest",
+      "to": "imo-2024-c8-board-coloring-tree",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих shortlist-задачах вспомогательный граф появляется не в условии, а в доказательстве: выбранные разности или выполненные операции становятся рёбрами/узлами, а запрет цикла превращает задачу в оценку через лес или дерево.",
+      "backward_text": "IMO 2024 C8 использует временной порядок операций, чтобы запретить цикл в графе крестов; IMO 2020 C4 использует рост нечётных чисел Фибоначчи, чтобы запретить обход самого длинного ребра.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-x-graph-halving"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-offplan-imo-2020-c4-no-two-color-cycle-edge-bound",
+      "from": "imo-2020-c4-fibonacci-difference-forest",
+      "to": "no-two-color-cycle-edge-bound",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки получают линейную оценку на число рёбер после доказательства, что некоторый вспомогательный граф или семейство подграфов является лесом. В C4 лес получается из числового запрета на обход длинного ребра; в двухцветном bound лес получается из запрета циклов с малым числом цветов.",
+      "backward_text": "Лемма про двухцветные подграфы показывает общий паттерн: как только запрещены циклы нужного типа, стандартная лесная оценка даёт подсчёт. В IMO 2020 C4 роль запрета цикла играет фибоначчиева сверхсуммарность выбранных длин.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-general-pair-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-offplan-imo-2020-c4-euler-trail-extension-forest",
+      "from": "imo-2020-c4-fibonacci-difference-forest",
+      "to": "euler-trail-extension-center-forest",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи выделяют лес как запрещение определённых циклов: в C4 цикл невозможен из-за длины самого большого фибоначчиева ребра, а в эйлеровой лемме циклы вне центра ровно мешают продолжать произвольный начальный путь.",
+      "backward_text": "Эйлерова лемма является более структурным примером forest obstruction: условие сводится к тому, что вне одной вершины циклов нет. В C4 аналогичный obstruction строится на числовой прямой и даёт нижнюю оценку на размер множества.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-cycle-obstruction-and-unused-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-offplan-imo-2020-c4-imo-2014-c9-auxiliary-tree",
+      "from": "imo-2020-c4-fibonacci-difference-forest",
+      "to": "imo-2014-c9-snail-circles-tree",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе shortlist-задачи используют скрытый вспомогательный граф, который становится деревом или лесом после запрета циклов. В C4 вершины — числа множества, а рёбра — выбранные разности; в C9 вершины/рёбра кодируют геометрическую структуру областей и пересечений.",
+      "backward_text": "IMO 2014 C9 — геометрический родственник мотива auxiliary tree: доказательство извлекает ацикличную связную структуру из неграфового условия. В C4 та же идея работает в дискретной числовой форме через фибоначчиевы длины.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.7
+    }
+  ]
+}

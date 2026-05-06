@@ -20,17 +20,22 @@
       "s_t_paths",
       "vertex_cut",
       "internally_disjoint_paths",
-      "flow_network"
+      "flow_network",
+      "directed_graph",
+      "edge_cut",
+      "edge_disjoint_paths"
     ],
     "methods": [
       "max_flow_min_cut",
       "vertex_splitting",
-      "integral_flow_decomposition"
+      "integral_flow_decomposition",
+      "edge_menger_theorem"
     ],
     "transformations": [
       "split_vertices",
       "reduce_to_flow",
-      "orient_edges_both_ways"
+      "orient_edges_both_ways",
+      "unit_capacity_edges"
     ],
     "goal": [
       "path_cut_minimax",
@@ -43,13 +48,16 @@
       "cut_capacity",
       "path_disjointness",
       "separator_size",
-      "flow_integrality"
+      "flow_integrality",
+      "edge_cut_size"
     ],
     "keywords": [
       "menger_theorem",
       "vertex_connectivity",
       "disjoint_paths",
-      "separator"
+      "separator",
+      "edge_menger_theorem",
+      "directed_edge_disjoint_paths"
     ],
     "status": "ai_checked"
   },
@@ -68,6 +76,20 @@
           "connected_graph",
           "simple_graph"
         ]
+      },
+      {
+        "id": "stmt-edge-directed",
+        "text": "Ориентированная реберная форма. В конечном ориентированном графе максимальное число попарно дугово-непересекающихся путей из \\(s\\) в \\(t\\) равно минимальному числу дуг, удаление которых уничтожает все ориентированные пути из \\(s\\) в \\(t\\). Неориентированная реберная форма получается тем же аргументом через поток с единичными пропускными способностями.",
+        "source_id": "src-wikipedia-menger",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "directed_graph",
+          "path",
+          "graph_cut"
+        ]
       }
     ],
     "graph_theory": [],
@@ -78,6 +100,15 @@
       "id": "idea-min-cut-max-path",
       "title": "Пути против разделителей",
       "text": "Каждый разделитель должен пересекать каждый путь; теорема утверждает, что это очевидное верхнее ограничение точно.",
+      "tags": [
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-edge-cut-flow",
+      "title": "Ребра как единичные емкости",
+      "text": "Для реберной версии расщеплять вершины не нужно: достаточно поставить емкость 1 на каждую дугу. Целочисленный максимальный поток раскладывается в дугово-непересекающиеся пути, а минимальный разрез считает ровно удаляемые дуги.",
       "tags": [
         "connectivity"
       ],
@@ -100,6 +131,23 @@
         "path",
         "simple_graph",
         "directed_graph"
+      ]
+    },
+    {
+      "id": "sol-edge-form-by-flow",
+      "title": "Реберная форма через единичный поток",
+      "text": "Поставим емкость 1 на каждую дугу ориентированного графа и применим конечный целочисленный аргумент max-flow/min-cut, уже доказанный в этой карточке. Целочисленный поток значения \\(r\\) раскладывается в \\(r\\) единичных \\(s\\)-\\(t\\) путей; поскольку каждая дуга имеет емкость 1, эти пути попарно не пересекаются по дугам. Обратно, любое семейство дугово-непересекающихся путей пересекает каждый \\(s\\)-\\(t\\) разрез в различных дугах, поэтому число путей не превосходит размера разреза. Значит максимальное число таких путей равно минимальному размеру дугового разреза. Неориентированная реберная версия получается тем же аргументом с единичными емкостями на ребрах.",
+      "idea_ids": [
+        "idea-edge-cut-flow"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "augmenting_path_method"
+      ],
+      "definition_ids": [
+        "path",
+        "directed_graph",
+        "graph_cut"
       ]
     }
   ],
@@ -139,7 +187,9 @@
     "notes": [
       "2026-04-26 проход по метаданным: потоковое доказательство отмечено как проверенное, добавлен центральный метод vertex-splitting/max-flow и расширены определения path/cut.",
       "2026-04-27 серьёзный ремонт после полного повторного прохода: sol-flow-sketch сделан самодостаточным за счёт доказательства внутри решения конечного целочисленного факта max-flow/min-cut и целочисленного разложения на пути.",
-      "Аудит 2026-04-27: условие сверено с потоковым доказательством через расщепление вершин; локальный неопределённый статус условия снят."
+      "Аудит 2026-04-27: условие сверено с потоковым доказательством через расщепление вершин; локальный неопределённый статус условия снят.",
+      "2026-05-06 аудит group C: добавлена ориентированная реберная форма, используемая в IMO 2021 C4 и Schweitzer 2002/2; доказательство опирается на тот же конечный целочисленный аргумент max-flow/min-cut, поэтому обычный Менгер локально покрыт.",
+      "2026-05-06 расширение official-plan: sol-flow-sketch признан самодостаточным, публичные поля ориентированной реберной формы русифицированы без смены solution_id."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,

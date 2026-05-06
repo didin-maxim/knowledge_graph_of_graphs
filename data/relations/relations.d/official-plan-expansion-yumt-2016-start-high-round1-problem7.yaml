@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-yumt-2016-start-high-r1-p7-imo-1996-c1-r73-knight-move-graph-expanded",
+      "from": "yumt-2016-start-high-round1-problem7",
+      "to": "imo-1996-c1-grid-knight-reachability-r73-path",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки переводят клеточную формулировку в граф разрешённых ходов: здесь это граф ходов обычного коня на доске 8×8 и подсчёт больших независимых множеств, а в IMO 1996 C1 - граф ходов с векторами длины sqrt(73) и явная связность.",
+      "backward_text": "IMO 1996 C1 показывает соседний способ работать с графом ходов на клеточной доске: вместо подсчёта независимых множеств требуется предъявить путь в том же типе конечного move graph.",
+      "anchors": {
+        "from_solution_id": "sol-archive-card",
+        "to_solution_id": "sol-explicit-r73-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-yumt-2016-start-high-r1-p7-regular-bipartite-matching-decomposition",
+      "from": "regular-bipartite-perfect-matching-decomposition",
+      "to": "yumt-2016-start-high-round1-problem7",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Классическая лемма о разложении двудольного регулярного графа на совершенные паросочетания является общим фоном для приёма разбиения вершин на конфликтующие пары: в задаче ЮМТ достаточно явного паросочетания клеток, соединённых ходом коня.",
+      "backward_text": "ЮМТ 2016 даёт маленький олимпиадный пример того, как паросочетание в двудольном конфликтном графе сразу ограничивает размер независимого множества: из каждой пары атакующих клеток можно взять не более одной.",
+      "anchors": {
+        "from_solution_id": "sol-hall-induction",
+        "to_solution_id": "sol-archive-card"
+      },
+      "status": "ai_checked",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-yumt-2016-start-high-r1-p7-caro-wei-independent-set-bound",
+      "from": "yumt-2016-start-high-round1-problem7",
+      "to": "caro-wei-independent-set-bound",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки работают с независимыми множествами в конечном графе. Задача ЮМТ является точным подсчётом почти максимальных независимых множеств в конкретном графе ходов коня, тогда как лемма Каро-Вея даёт общий нижний предел размера независимого множества через степени.",
+      "backward_text": "Лемма Каро-Вея задаёт общий словарь независимых множеств; карточка ЮМТ показывает более точный, структурный подсчёт независимых множеств в специальном клеточном графе, где вместо вероятностной оценки работает раскраска и паросочетание.",
+      "anchors": {
+        "from_solution_id": "sol-archive-card",
+        "to_solution_id": "sol-random-order"
+      },
+      "status": "ai_checked",
+      "confidence": 0.62
+    }
+  ]
+}

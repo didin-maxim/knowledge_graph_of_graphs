@@ -10,7 +10,16 @@
     ]
   },
   "language": "ru",
-  "status": "needs_human_review",
+  "status": "heavy_external_theorem",
+  "authors": [
+    {
+      "name": "Stipsicz András",
+      "role": "proposer",
+      "status": "source_verified",
+      "source_id": "src-miklos-schweitzer-2012-report",
+      "note": "The official 2012 Schweitzer report lists Stipsicz András as proposer of problem 10."
+    }
+  ],
   "problem_profile": {
     "objects": [
       "knot_diagram",
@@ -24,11 +33,13 @@
       "matrix_tree_theorem",
       "Goeritz_matrix",
       "mod_2_reduction",
-      "knot_determinant_parity"
+      "knot_determinant_parity",
+      "Shank_theorem"
     ],
     "transformations": [
       "checkerboard_graph_to_laplacian",
-      "signed_Goeritz_to_unsigned_laplacian_mod_2"
+      "signed_Goeritz_to_unsigned_laplacian_mod_2",
+      "Tait_graph_to_link_component_parity"
     ],
     "goal": [
       "prove_odd_spanning_tree_count"
@@ -40,7 +51,8 @@
     "invariants": [
       "spanning_tree_count",
       "knot_determinant",
-      "Alexander_polynomial_mod_2"
+      "Alexander_polynomial_mod_2",
+      "link_component_number"
     ],
     "keywords": [
       "miklos_schweitzer_2012_p10b",
@@ -50,9 +62,10 @@
       "Matrix_Tree",
       "Kirchhoff",
       "Goeritz",
+      "Shank_theorem",
       "odd_determinant"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -60,8 +73,8 @@
         "id": "stmt-original-p10b",
         "title": "Нечетное число остовных деревьев черного графа",
         "text": "Пусть \\(K\\) - узел, а \\(D\\) - любая его диаграмма. Раскрасим области дополнения диаграммы в шахматном порядке и построим черный граф \\(\\Gamma_B(D)\\): вершины соответствуют черным областям, а ребра соответствуют перекресткам, в которых две черные области имеют общую точку. Докажите, что граф \\(\\Gamma_B(D)\\) имеет нечетное число остовных деревьев.",
-        "source_id": "src-miklos-schweitzer-2012-p10-official",
-        "status": "ai_checked",
+        "source_id": "src-miklos-schweitzer-2012-p10-official-eng",
+        "status": "source_verified",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -74,7 +87,7 @@
       {
         "id": "stmt-graph-p10b",
         "title": "Паритет числа остовных деревьев Tait-графа",
-        "text": "Пусть \\(G\\) - Tait-граф шахматно раскрашенной диаграммы узла. Докажите, что \\(\\tau(G)\\), число остовных деревьев \\(G\\), нечетно, сравнив по модулю \\(2\\) редуцированный лапласиан \\(G\\) с матрицей Гёрлица диаграммы.",
+        "text": "Пусть \\(G\\) - Tait-граф шахматно раскрашенной диаграммы узла. Докажите, что \\(\\tau(G)\\), число остовных деревьев \\(G\\), нечетно, сравнив по модулю \\(2\\) редуцированный лапласиан \\(G\\) с матрицей Гёрлица диаграммы или применив теорему Шенка о Tait-графах диаграмм однокомпонентных ссылок.",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
@@ -104,12 +117,13 @@
     {
       "id": "idea-goeritz-mod-two",
       "title": "Матрица Гёрлица совпадает с лапласианом по модулю \\(2\\)",
-      "text": "Знаки перекрестков в матрице Гёрлица равны \\(\\pm1\\), поэтому по модулю \\(2\\) они превращаются в обычные единичные веса ребер Tait-графа. Следовательно, редуцированная матрица Гёрлица и редуцированный лапласиан имеют одинаковый определитель по модулю \\(2\\).",
+      "text": "Знаки перекрестков в матрице Гёрлица равны \\(\\pm1\\), поэтому по модулю \\(2\\) они превращаются в обычные единичные веса ребер Tait-графа. Следовательно, редуцированная матрица Гёрлица и редуцированный лапласиан имеют одинаковый определитель по модулю \\(2\\). Это стандартный Goeritz/Tait-факт, а не школьная лемма.",
       "tags": [
         "planar_graphs",
-        "invariant"
+        "invariant",
+        "goal_other"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     },
     {
       "id": "idea-knot-determinant-odd",
@@ -117,7 +131,19 @@
       "text": "Определитель узла равен \\(|\\Delta_K(-1)|\\), где \\(\\Delta_K(t)\\) - нормированный многочлен Александера. Так как \\(-1\\equiv1\\pmod2\\) и \\(\\Delta_K(1)=\\pm1\\), этот определитель нечетен.",
       "tags": [
         "invariant",
-        "goal_proof"
+        "goal_proof",
+        "goal_other"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-shank-theorem",
+      "title": "Теорема Шенка сразу дает паритет",
+      "text": "Теорема Шенка в форме для Tait-графов утверждает: диаграмма ссылки имеет одну компоненту тогда и только тогда, когда число остовных деревьев ее Tait-графа нечетно. Так как узел - это однокомпонентная ссылка, задача следует немедленно. Полное доказательство этой теоремы является внешней теорией плоских графов/узлов.",
+      "tags": [
+        "trees",
+        "invariant",
+        "goal_other"
       ],
       "status": "ai_checked"
     }
@@ -126,76 +152,168 @@
     {
       "id": "sol-goeritz-kirchhoff-parity",
       "title": "Через матрицу Гёрлица и теорему Кирхгофа",
-      "text": "Обозначим \\(G=\\Gamma_B(D)\\). Будем считать \\(G\\) плоским мультиграфом; петли возможны, но они не входят ни в одно остовное дерево и не влияют на редуцированный лапласиан.\n\nПо матричной теореме Кирхгофа о деревьях число остовных деревьев \\(G\\) равно\n\\[\n\\tau(G)=\\det L^{\\ast},\n\\]\nгде \\(L^{\\ast}\\) - матрица, полученная из лапласиана \\(G\\) удалением одной строки и одного столбца.\n\nТеперь вспомним стандартный факт из теории диаграмм узлов. После выбора шахматной раскраски диаграмме соответствует знаковая матрица Гёрлица \\(Q^{\\ast}\\), тоже редуцированная удалением одной области, и\n\\[\n|\\det Q^{\\ast}|=\\det K,\n\\]\nгде \\(\\det K=|\\Delta_K(-1)|\\) - определитель узла. В матрице Гёрлица каждое ребро Tait-графа входит с коэффициентом \\(+1\\) или \\(-1\\) в зависимости от локального знака перекрестка. Поэтому по модулю \\(2\\) знаки исчезают, и \\(Q^{\\ast}\\) совпадает с редуцированным лапласианом \\(L^{\\ast}\\) графа \\(G\\):\n\\[\nQ^{\\ast}\\equiv L^{\\ast}\\pmod2.\n\\]\nСледовательно,\n\\[\n\\tau(G)=\\det L^{\\ast}\\equiv\\det Q^{\\ast}\\equiv\\det K\\pmod2.\n\\]\n\nОстается отметить, что определитель любого узла нечетен. Действительно, для нормированного многочлена Александера \\(\\Delta_K(t)\\) имеем \\(\\Delta_K(1)=\\pm1\\). По модулю \\(2\\) значения при \\(t=-1\\) и при \\(t=1\\) совпадают, потому что \\(-1\\equiv1\\pmod2\\). Значит\n\\[\n\\Delta_K(-1)\\equiv\\Delta_K(1)\\equiv1\\pmod2,\n\\]\nи \\(\\det K=|\\Delta_K(-1)|\\) нечетен.\n\nИз сравнения \\(\\tau(G)\\equiv\\det K\\pmod2\\) получаем, что \\(\\tau(\\Gamma_B(D))\\) нечетно для любой диаграммы узла.",
+      "text": "Обозначим \\(G=\\Gamma_B(D)\\). Будем считать \\(G\\) плоским мультиграфом; петли возможны, но они не входят ни в одно остовное дерево и не влияют на редуцированный лапласиан.\n\nПо матричной теореме Кирхгофа о деревьях число остовных деревьев \\(G\\) равно\n\\[\n\\tau(G)=\\det L^{\\ast},\n\\]\nгде \\(L^{\\ast}\\) - матрица, полученная из лапласиана \\(G\\) удалением одной строки и одного столбца.\n\nТеперь используем стандартный факт из теории диаграмм узлов. После выбора шахматной раскраски диаграмме соответствует знаковая матрица Гёрлица \\(Q^{\\ast}\\), тоже редуцированная удалением одной области, и\n\\[\n|\\det Q^{\\ast}|=\\det K,\n\\]\nгде \\(\\det K=|\\Delta_K(-1)|\\) - определитель узла. В матрице Гёрлица каждое ребро Tait-графа входит с коэффициентом \\(+1\\) или \\(-1\\) в зависимости от локального знака перекрестка. Поэтому по модулю \\(2\\) знаки исчезают, и \\(Q^{\\ast}\\) совпадает с редуцированным лапласианом \\(L^{\\ast}\\) графа \\(G\\):\n\\[\nQ^{\\ast}\\equiv L^{\\ast}\\pmod2.\n\\]\nСледовательно,\n\\[\n\\tau(G)=\\det L^{\\ast}\\equiv\\det Q^{\\ast}\\equiv\\det K\\pmod2.\n\\]\n\nОстается отметить, что определитель любого узла нечетен. Действительно, для нормированного многочлена Александера \\(\\Delta_K(t)\\) имеем \\(\\Delta_K(1)=\\pm1\\). По модулю \\(2\\) значения при \\(t=-1\\) и при \\(t=1\\) совпадают, потому что \\(-1\\equiv1\\pmod2\\). Значит\n\\[\n\\Delta_K(-1)\\equiv\\Delta_K(1)\\equiv1\\pmod2,\n\\]\nи \\(\\det K=|\\Delta_K(-1)|\\) нечетен.\n\nИз сравнения \\(\\tau(G)\\equiv\\det K\\pmod2\\) получаем, что \\(\\tau(\\Gamma_B(D))\\) нечетно для любой диаграммы узла.\n\nВажно: это не школьное решение. Внешние входы - матричная теорема о деревьях, Goeritz-матрица/определитель узла и базовые свойства многочлена Александера.",
       "idea_ids": [
         "idea-kirchhoff-reduced-laplacian",
         "idea-goeritz-mod-two",
         "idea-knot-determinant-odd"
       ],
       "standard_idea_ids": [],
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
         "planar_graph",
         "spanning_tree"
       ],
       "source_ids": [
-        "src-miklos-schweitzer-2012-p10-official"
+        "src-miklos-schweitzer-2012-p10-official-eng",
+        "src-matrix-tree-mathworld",
+        "src-przytycki-goeritz-survey",
+        "src-kolay-goeritz-colorings"
+      ]
+    },
+    {
+      "id": "sol-shank-theorem-one-line",
+      "title": "Коротко через теорему Шенка",
+      "text": "Рассмотрим \\(G=\\Gamma_B(D)\\) как Tait-граф диаграммы. Теорема Шенка в топологической формулировке говорит: для диаграммы ссылки \\(L\\) число компонент \\(\\mu(L)\\) равно \\(1\\) тогда и только тогда, когда число остовных деревьев ее Tait-графа нечетно. В нашей задаче \\(L=K\\) - узел, то есть \\(\\mu(K)=1\\). Поэтому \\(\\tau(\\Gamma_B(D))\\) нечетно.\n\nЭто наиболее короткий найденный путь, но он полностью опирается на внешнюю теорему Шенка. Поэтому он годится как ссылка на известный результат, а не как самостоятельное школьное доказательство.",
+      "idea_ids": [
+        "idea-shank-theorem"
+      ],
+      "standard_idea_ids": [],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph",
+        "spanning_tree"
+      ],
+      "source_ids": [
+        "src-ge-zhang-shank"
       ]
     }
   ],
   "difficulty": {
     "main": "national_final_hard",
     "local_score": 7,
-    "comment": "Чётностная половина короткая после внешних инструментов, но требует матричной теоремы о деревьях и стандартной связи Goeritz-матрицы с определителем узла.",
-    "status": "needs_human_review"
+    "comment": "Чётностная половина становится короткой только после внешних инструментов: Matrix Tree, Goeritz determinant theorem, Alexander polynomial determinant parity или напрямую Shank theorem.",
+    "status": "ai_checked"
   },
   "tags": [
     "planar_graphs",
     "trees",
     "invariant",
     "goal_counting",
-    "goal_proof"
+    "goal_proof",
+    "goal_other"
   ],
   "properties": {
     "central_method": {
       "value": [
         "matrix_tree_theorem",
         "Goeritz_matrix_mod_2",
-        "knot_determinant_parity"
+        "knot_determinant_parity",
+        "Shank_theorem"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
     {
-      "source_id": "src-miklos-schweitzer-2012-p10-official",
-      "role": "official_statement",
-      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2012-eng.pdf",
+      "source_id": "src-miklos-schweitzer-2012-index",
+      "role": "official_archive_index",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/index.html",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-miklos-schweitzer-2012-p10-official-hu",
+      "role": "official_statement_original_hungarian",
+      "url": "https://www.math.u-szeged.hu/~mmaroti/schweitzer/schweitzer-2012.pdf",
       "status": "source_verified",
       "statement_ids": [
         "stmt-original-p10b"
+      ]
+    },
+    {
+      "source_id": "src-miklos-schweitzer-2012-p10-official-eng",
+      "role": "official_statement_english_translation",
+      "url": "https://www.math.u-szeged.hu/~mmaroti/schweitzer/schweitzer-2012-eng.pdf",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-original-p10b"
+      ]
+    },
+    {
+      "source_id": "src-miklos-schweitzer-2012-report",
+      "role": "official_report_proposer_and_results",
+      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2012-meg.pdf",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-ge-zhang-shank",
+      "role": "external_theorem_reference",
+      "title": "Jun Ge and Lianzhu Zhang, Determinant of links, spanning trees, and a theorem of Shank",
+      "url": "https://doi.org/10.1142/S0218216516410054",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-shank-theorem-one-line"
+      ]
+    },
+    {
+      "source_id": "src-matrix-tree-mathworld",
+      "role": "external_theorem_reference",
+      "title": "Matrix Tree Theorem, MathWorld",
+      "url": "https://mathworld.wolfram.com/MatrixTreeTheorem.html",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-goeritz-kirchhoff-parity"
+      ]
+    },
+    {
+      "source_id": "src-przytycki-goeritz-survey",
+      "role": "external_background_reference",
+      "title": "Jozef H. Przytycki, From Goeritz matrices to quasi-alternating links",
+      "url": "https://arxiv.org/abs/0909.1118",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-goeritz-kirchhoff-parity"
+      ]
+    },
+    {
+      "source_id": "src-kolay-goeritz-colorings",
+      "role": "external_background_reference",
+      "title": "Sudipta Kolay, Knot Colorings: Coloring and Goeritz matrices",
+      "url": "https://arxiv.org/abs/1910.08044",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-goeritz-kirchhoff-parity"
       ]
     }
   ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-05",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Split child of miklos-schweitzer-2012-p10-knot-black-graph-spanning-trees, retaining only part (b).",
-      "High-reasoning split audit: this part is self-contained as a parity theorem once the standard Kirchhoff/Goeritz/Alexander background is stated; it is not merely a corollary of the small-graph classification.",
-      "The proof is deliberately limited to the parity claim and does not classify the cases \\(\\tau\\le3\\)."
+      "2026-05-06 source audit: the Hungarian original and the English translation on the Maróti/Szeged Schweitzer archive confirm the statement. The archive index labels a 2012 link as 'solution', but the linked PDF is the official report, not a detailed solution text.",
+      "2026-05-06 proposer audit: the official report lists problem 10 proposer as Stipsicz András. It also records that several contestants solved problem 10 or part 10(b), but it does not publish their solutions.",
+      "2026-05-06 solution audit: no separate official solution text was found online. The expanded Goeritz/Kirchhoff proof and the one-line Shank proof are mathematically standard but rely on non-school external theory.",
+      "Do not present this as a school-level solution: Matrix Tree is undergraduate linear algebra/graph theory, while Goeritz/Alexander/Shank facts are knot theory. The card is public-ready only as a verified statement with a heavy-external-theorem solution classification.",
+      "2026-05-06 group E audit: retained as a deliberate heavy external theorem application; no elementary graph-only parity proof was identified for Tait graphs of arbitrary knot diagrams."
     ],
     "relations_status": "deep_done",
     "solution_classification": {
-      "type": "ai_heavy_external_theorem",
+      "type": "heavy_external_theorem_application",
       "label": "решение с тяжёлыми внешними теоремами",
-      "status": "needs_human_review",
-      "confidence": 0.82,
-      "basis": "manual high-reasoning split pass",
-      "notes": "Uses the Matrix Tree theorem, the Goeritz determinant theorem for knot diagrams, and the standard parity of the Alexander determinant of a knot.",
-      "audit_source": "manual-split-pass-2026-05-05"
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "official statement/proposer verified; no official solution found; external theorem references checked",
+      "external_theorem_ids": [
+        "matrix_tree_theorem",
+        "Goeritz_determinant_theorem",
+        "Alexander_polynomial_determinant_parity",
+        "Shank_theorem"
+      ],
+      "notes": "The parity proof is complete only after accepting Matrix Tree plus Goeritz/Alexander determinant facts, or equivalently Shank's theorem for Tait graphs. These are not school-level lemmas; this is intentionally a heavy external theorem application.",
+      "audit_source": "official-plan-expansion-pass-2026-05-06"
     }
   }
 }

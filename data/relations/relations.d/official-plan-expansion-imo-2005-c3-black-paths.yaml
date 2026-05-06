@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-imo-2005-c3-cmo-1977-grid-path-injection",
+      "from": "imo-2005-c3-black-paths-injection",
+      "to": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "IMO 2005 C3 и CMO 1977 P7 используют одну и ту же планарно-решёточную идею: путь фиксирует область клеток по одну сторону от него, а затем эта область служит кодом или областью обмена в инъекции. В IMO область нижнего чёрного пути меняется между двумя раскрасками, в CMO множество клеток слева от пути кодирует сам путь.",
+      "backward_text": "CMO 1977 P7 является более чистым примером инъекции через область по одну сторону решёточного пути; IMO 2005 C3 добавляет к этому выбор экстремального нижнего прохода и обмен двух раскрасок.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-left-cells-injection"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-imo-2005-c3-alternating-boundary-separation",
+      "from": "imo-2005-c3-black-paths-injection",
+      "to": "alternating-boundary-pairs-noncrossing-arcs",
+      "type": "prerequisite",
+      "distance": 3,
+      "forward_text": "В доказательстве IMO 2005 C3 используется плоское разделение: лево-правый путь в прямоугольнике отделяет клетки под ним от клеток над ним, поэтому непересекающийся лево-правый путь не может перейти с одной стороны на другую. Классическая лемма о чередующихся концах даёт тот же топологический принцип в минимальной форме.",
+      "backward_text": "Лемма о непересекающихся дугах является базовым топологическим языком для шага разделения в IMO 2005 C3; сама задача дальше превращает это разделение в инъекцию между раскрасками.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-jordan-separation"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-imo-2005-c3-cmo-2008-grid-self-avoiding-paths",
+      "from": "imo-2005-c3-black-paths-injection",
+      "to": "cmo-2008-p5-self-avoiding-rook-walks",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе задачи работают с простыми путями в графе клеток прямоугольной доски. В IMO 2005 C3 простота и планарный порядок путей нужны для выбора нижнего прохода и инъекции раскрасок, а в CMO 2008 P5 узкая полоса 3 x n позволяет разобрать все самоизбегающиеся ладейные пути рекурсией.",
+      "backward_text": "CMO 2008 P5 даёт подсчётный решёточный сосед IMO 2005 C3: там структура простого пути в прямоугольной доске разбирается напрямую, тогда как IMO использует только экстремальную сторону пути как барьер для раскрасок.",
+      "anchors": {
+        "from_solution_id": "sol-reviewed-secondary",
+        "to_solution_id": "sol-official-recurrence"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    }
+  ]
+}

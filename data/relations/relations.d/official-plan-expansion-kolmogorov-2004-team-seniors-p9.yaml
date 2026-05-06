@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolmogorov-2004-p9-konig-vertex-cover-prerequisite",
+      "from": "konig-vertex-cover-theorem",
+      "to": "kolmogorov-2004-team-olympiad-seniors-problem-9",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Теорема Кёнига является главным инструментом восстановленного решения: в двудольном графе она переводит падение числа вершинного покрытия после удаления важного ребра в падение размера максимального паросочетания.",
+      "backward_text": "Задача Кубка Колмогорова 2004 даёт короткое олимпиадное применение теоремы Кёнига: важное ребро в двудольном графе обязано входить во все максимальные паросочетания, поэтому два смежных важных ребра невозможны.",
+      "anchors": {
+        "from_solution_id": "sol-alternating",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-kolmogorov-2004-p9-augmenting-path-background",
+      "from": "augmenting-path-matching-lemma",
+      "to": "kolmogorov-2004-team-olympiad-seniors-problem-9",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Критерий Бержа через увеличивающие пути лежит под коротким доказательством двудольной леммы Кёнига, которое включено прямо в решение задачи.",
+      "backward_text": "В решении задачи увеличивающий путь появляется как локальная проверка максимальности паросочетания при построении минимального вершинного покрытия в двудольном графе.",
+      "anchors": {
+        "from_solution_id": "sol-symmetric-difference",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-kolmogorov-2004-p9-konig-line-coloring-bipartite-tool-neighborhood",
+      "from": "kolmogorov-2004-team-olympiad-seniors-problem-9",
+      "to": "konig-line-coloring-bipartite",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки используют структурную силу двудольных графов и паросочетаний: здесь через вершинные покрытия и максимальные паросочетания, а в теореме о раскраске рёбер — через разложение двудольного графа на контролируемые слои/паросочетания.",
+      "backward_text": "Теорема о рёберной раскраске двудольного графа является более сильным инструментальным соседом: она тоже показывает, что двудольность превращает локальные ограничения на рёбра в глобальную matching-структуру.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-regularization-hall"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.64
+    }
+  ]
+}

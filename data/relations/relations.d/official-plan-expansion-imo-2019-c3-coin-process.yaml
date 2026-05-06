@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-imo-2019-c3-cmo-2025-p1-functional-digraph-dynamics",
+      "from": "imo-2019-c3-coin-process-digraph",
+      "to": "cmo-2025-p1-voting-functional-graph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В IMO 2019 C3 и CMO 2025 P1 конечный дискретный процесс переводится в функциональный ориентированный граф: каждое состояние или каждая вершина имеет единственный следующий указатель, а доказательство контролирует движение к единственному устойчивому объекту.",
+      "backward_text": "CMO 2025 P1 является более структурной задачей о pointer-jumping в функциональном орграфе; IMO 2019 C3 использует тот же язык outdegree-one dynamics для графа состояний монет и усреднения расстояний до стока.",
+      "anchors": {
+        "from_solution_id": "sol-official-graph-recursion",
+        "to_solution_id": "sol-official-cycle-and-path-halving"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-imo-2019-c3-cmo-1994-p3-finite-dynamics",
+      "from": "imo-2019-c3-coin-process-digraph",
+      "to": "cmo-1994-p3-voting-stabilizes-cycle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи доказывают стабилизацию конечного процесса, заданного простым локальным правилом. В IMO 2019 C3 состояние идёт по единственному ребру графа состояний к стоку, а в CMO 1994 P3 синхронная динамика 2-раскраски цикла приходит к неподвижному состоянию.",
+      "backward_text": "CMO 1994 P3 полезна как соседняя модель конечной динамики на цикле: вместо среднего времени до стока она доказывает неизбежную неподвижность через монотонное множество уже закрепившихся вершин.",
+      "anchors": {
+        "from_idea_id": "idea-state-digraph",
+        "to_solution_id": "sol-official-stabilizing-set"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-imo-2019-c3-bounded-forward-rays-state-potential",
+      "from": "imo-2019-c3-coin-process-digraph",
+      "to": "bounded-forward-rays-balanced-sums",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Связь не в формулировке, а в стиле решения: обе карточки превращают дискретный процесс в направленную структуру и затем считают прогресс через высоты или расстояния. В IMO 2019 C3 это расстояния до стока и потенциал позиций орлов; в bounded-forward-rays-balanced-sums — сумма высот активных стрелок.",
+      "backward_text": "Лемма об ограниченных лучах является более абстрактным примером потенциального учёта в функциональном орграфе; IMO 2019 C3 даёт олимпиадный конечный процесс, где похожий учёт приводит к точному среднему времени.",
+      "anchors": {
+        "from_solution_id": "sol-official-head-position-formula",
+        "to_solution_id": "sol-pool-of-balls"
+      },
+      "status": "ai_checked",
+      "confidence": 0.66
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-eulerian-criterion-imo-2020-c6",
+      "from": "eulerian-graph-criterion",
+      "to": "imo-2020-c6-colored-coins-eulerian-multigraph",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Критерий эйлерова цикла по чётности степеней является непосредственным инструментом официального решения IMO 2020 C6: после кодирования пар монет рёбрами 4-регулярного мультиграфа каждая компонента обходится эйлеровым циклом.",
+      "backward_text": "В IMO 2020 C6 критерий применяется к компонентам мультиграфа цветов; попеременная раскраска эйлерова цикла даёт по две монеты каждого цвета в каждой из двух групп.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-splicing",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-balanced-edge-coloring-imo-2020-c6",
+      "from": "balanced-bipartite-edge-coloring-two-colors",
+      "to": "imo-2020-c6-colored-coins-eulerian-multigraph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют одну и ту же эйлерову идею: добиться локального баланса двух цветов у каждой вершины через попеременную раскраску эйлеровых циклов. В двудольной задаче баланс допускает разность 1, а в IMO 2020 C6 исходный мультиграф уже 4-регулярен, поэтому баланс точный.",
+      "backward_text": "IMO 2020 C6 можно рассматривать как недвудольный 4-регулярный вариант балансирующей двухцветной раскраски рёбер: вершины — цвета монет, а инцидентные полурёбра считают монеты данного цвета.",
+      "anchors": {
+        "from_solution_id": "sol-balanced-edge-coloring",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.91
+    }
+  ]
+}

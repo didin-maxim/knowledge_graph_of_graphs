@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-brooks-yumt-2023-granda-final-p6",
+      "from": "brooks-theorem",
+      "to": "yumt-2023-granda-final-problem6",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В теореме Брукса и в задаче ЮМТ максимальная клика играет роль исключительного объекта для раскраски: когда граф не является только этой кликой, появляется возможность понизить число цветов за счёт порядка или локальной перекраски.",
+      "backward_text": "Задача ЮМТ 2023 GF P6 — короткий олимпиадный родственник кликового исключения из теоремы Брукса: максимальность клики гарантирует несмежность внешней вершины с одним из её цветов и запускает перекраску.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-kvant-maximum-clique"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-protected-recoloring-yumt-2023-granda-final-p6",
+      "from": "protected-color-recoloring-lemma",
+      "to": "yumt-2023-granda-final-problem6",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют локальную перекраску цветовых классов для противоречия минимальности хроматического числа: в лемме защищаются цвета, а в задаче ЮМТ последний цвет остатка поглощается цветами максимальной клики.",
+      "backward_text": "В задаче ЮМТ появляется короткая версия того же мотива перекраски: если остаток после максимальной клики красится слишком малоцветно, один цвет можно удалить и тем самым понизить число цветов всего графа.",
+      "anchors": {
+        "from_solution_id": "sol-protected-singleton-recoloring",
+        "to_solution_id": "sol-kvant-maximum-clique"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-yumt-2023-granda-final-p6-stiebitz-double-critical-k5",
+      "from": "yumt-2023-granda-final-problem6",
+      "to": "stiebitz-double-critical-k5",
+      "type": "false_friend",
+      "distance": 3,
+      "forward_text": "Задача ЮМТ внешне похожа на сюжеты Erdős-Lovász-Tihany и double-critical графов, но её точная слабая формулировка обходится без критической классификации: максимальная клика и остаток уже дают нужную сумму хроматических чисел.",
+      "backward_text": "Теорема Штибица о double-critical 5-хроматических графах относится к гораздо более жёстким разбиениям после удаления концов ребра; задача ЮМТ 2023 GF P6 является полезным контрастом, где достаточно отделить максимальную клику.",
+      "anchors": {
+        "from_solution_id": "sol-kvant-maximum-clique",
+        "to_solution_id": "sol-stiebitz-proof"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    }
+  ]
+}

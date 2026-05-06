@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm-2016-team-p6-ghrv-longest-path-coloring",
+      "from": "kolmogorov-2016-team-olympiad-juniors-problem-6",
+      "to": "ghrv-every-orientation-long-directed-path",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Нижняя оценка в задаче Колмогорова является конкретной олимпиадной версией одной стороны теоремы Галлаи-Хассе-Роя-Витавера: ориентируем ребра графа близких вершин от меньшего номера к большему и красим вершину длиной максимального направленного пути, начинающегося в ней. Соседние вершины получают разные значения, поэтому малая максимальная длина дала бы невозможную раскраску.",
+      "backward_text": "Лемма GHRV объясняет абстрактный механизм нижней оценки: длины максимальных ориентированных путей превращаются в правильную раскраску. В задаче с 2017-угольником этот механизм совмещен с явной 12-раскраской конкретной степени цикла.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-path-potential-coloring"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-kolm-2016-team-p6-ghrv-two-sided-coloring",
+      "from": "kolmogorov-2016-team-olympiad-juniors-problem-6",
+      "to": "gallai-hasse-roy-vitaver-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе стороны решения задачи повторяют две стороны GHRV в прикладной форме: правильная раскраска графа ограничивает длину монотонного маршрута, а длины максимальных маршрутов дают правильную раскраску. Отличие в том, что для конкретного графа близких вершин 2017-угольника хроматическое число фактически зажато явной раскраской и подсчетом на цикле.",
+      "backward_text": "Теорема GHRV является общей рамкой для таких задач о возрастающих путях: раскраски и ориентированные пути взаимно контролируют друг друга. Карточка Колмогорова показывает, как эта рамка превращается в точный численный ответ для степени цикла.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-path-length-potentials"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-kolm-2016-team-p6-kolm-2016-ind-junior-p7-auxiliary-graph",
+      "from": "kolmogorov-2016-team-olympiad-juniors-problem-6",
+      "to": "kolmogorov-2016-individual-olympiad-juniors-problem-7",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки Кубка Колмогорова 2016 превращают неграфовую формулировку в вспомогательный граф или орграф и затем используют порядок на вершинах. В командной задаче порядок номеров ориентирует граф близких вершин и приводит к возрастающим цепочкам; в индивидуальной задаче отношения делимости дают направленное покрытие независимым множеством.",
+      "backward_text": "Индивидуальная задача 2016 года является соседним примером того же приема официальных решений: сначала извлечь скрытый граф из условия, затем доказывать существование нужного объекта уже графовым языком.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-restored"
+      },
+      "status": "ai_checked",
+      "confidence": 0.6
+    },
+    {
+      "id": "rel-kolm-2016-team-p6-kolm-2007-chromatic-coloring-control",
+      "from": "kolmogorov-2016-team-olympiad-juniors-problem-6",
+      "to": "kolmogorov-2007-round-2-high-and-first-league-chromatic-number-problem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи используют правильную раскраску как способ контролировать допустимые структуры в графе. В задаче 2016 года цветовые классы ограничивают длину возрастающего маршрута, а в задаче 2007 года раскраска нормализуется так, чтобы каждый цветовой класс был достаточно большим.",
+      "backward_text": "Задача 2007 года полезна как сосед по технике работы с цветовым классом: там раскраску перестраивают, здесь явную раскраску строят для степени цикла и затем используют порядок цветов.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.56
+    }
+  ]
+}

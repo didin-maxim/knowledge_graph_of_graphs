@@ -177,17 +177,13 @@
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": false,
     "solution_classification": {
-      "type": "ai_heavy_external_theorem",
-      "label": "решение с тяжёлыми внешними теоремами",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "Official/mirror sources are present, but the expanded solution relies on a strong classification of one-layer tilings of Z^2 by Lee balls/diamonds of radius 24, equivalently a perfect Lee code lattice structure. The card has source ids for the olympiad solution but no separate definition/link/source for this external classification, and the local proof of the classification is quite compressed.",
-      "audit_source": "agent-western-olympiads.json",
-      "missing_links": [
-        "classification of perfect Lee codes / one-layer diamond tilings in Z^2",
-        "definition or reference for perfect Lee code / Lee sphere tiling"
-      ]
+      "type": "official_complete",
+      "label": "official complete olympiad solution",
+      "status": "ai_checked",
+      "confidence": 0.88,
+      "basis": "BMO 2016 shortlist/official solution plus Group D audit 2026-05-06",
+      "notes": "The official solution uses the diamond tiling argument directly: each color class gives a one-layer tiling by radius-24 diamonds, and the local uniqueness of this tiling is treated as the olympiad step. No separate perfect Lee code classification theorem is needed.",
+      "audit_source": "group-d-hamiltonian-brooks-ramsey-chromatic-audit"
     }
   }
 }

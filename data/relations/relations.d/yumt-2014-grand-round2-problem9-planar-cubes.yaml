@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-yumt-2014-gr2-p9-euler-planar-quadrangulation",
+      "from": "euler-formula-planar",
+      "to": "yumt-2014-grand-round2-problem9",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Формула Эйлера и её планарные следствия являются фоном для задачи ЮМТ: граф рёбер кубиков двудолен, а планарные двудольные графы естественно контролируются квадратными гранями. В решении ЮМТ этот язык проявляется через запрет замкнутых поясов кубических рёбер.",
+      "backward_text": "Задача ЮМТ 2014 показывает геометрическое применение планарных ограничений: из планарности 1-скелета склейки кубов извлекается листовая декомпозиция, после чего подсчёт вершин становится индукцией.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-leaf-cube-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-yumt-2014-gr2-p9-tree-leaf-induction",
+      "from": "tree-equivalent-properties",
+      "to": "yumt-2014-grand-round2-problem9",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Классическая индукция по листу дерева переносится на планарную склейку кубиков: планарность заставляет существовать кубик-лист, удаление которого сохраняет связность и уменьшает число отмеченных вершин ровно на четыре.",
+      "backward_text": "ЮМТ 2014 P9 является объёмной геометрической версией мотива листовой индукции: вместо абстрактного листа дерева используется кубик, отделяемый по одной грани в планарном 1-скелете.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-leaf-cube-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-yumt-2014-gr2-p9-cmo-2025-planar-obstruction",
+      "from": "yumt-2014-grand-round2-problem9",
+      "to": "cmo-2025-p5-ant-planar-graph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи используют планарность как запрет на две несовместимые связи. В ЮМТ замкнутый пояс кубических рёбер дал бы непланарный минор, а в CMO 2025 чередующиеся граничные пары заставляют пересечение дуг.",
+      "backward_text": "CMO 2025 P5 — плоский родственник ЮМТ 2014 P9: там непересекающиеся дуги в прямоугольнике играют роль планарного препятствия, похожего на запрет замкнутого пояса в склейке кубов.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-cube-induction",
+        "to_solution_id": "sol-official-planar-arcs"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

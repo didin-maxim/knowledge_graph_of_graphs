@@ -1,0 +1,109 @@
+{
+  "relations": [
+    {
+      "id": "rel-five-color-euler-formula-edge-bound",
+      "from": "euler-formula-planar",
+      "to": "five-color-theorem",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Формула Эйлера является базовым источником оценки \\(e\\le 3v-6\\) для простых планарных графов. В пятицветной теореме этот подсчет нужен, чтобы гарантировать вершину степени не больше 5 перед индукционным удалением.",
+      "backward_text": "Пятицветная теорема показывает одно из главных раскрасочных применений формулы Эйлера: из эйлерова подсчета получается малая степень, а затем цепи Кемпе усиливают грубую жадную 6-раскраску до 5-раскраски.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-five-color-planar-edge-bound-low-degree",
+      "from": "planar-edge-bound",
+      "to": "five-color-theorem",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Оценка \\(e\\le 3v-6\\) сразу дает среднюю степень меньше 6 и поэтому вершину степени не больше 5. Это ровно первый шаг индукции в доказательстве пятицветной теоремы.",
+      "backward_text": "Пятицветная теорема использует planar-edge-bound как низкостепенной вход, после чего единственное препятствие к продолжению раскраски устраняется цепями Кемпе.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-five-color-degeneracy-greedy-six-color",
+      "from": "degeneracy-greedy-coloring",
+      "to": "five-color-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Жадная лемма о вырожденности вместе с тем же низкостепенным фактом для планарных графов дает простую 6-раскраску. Пятицветная теорема начинается так же, но в критическом случае пяти занятых цветов добавляет цепи Кемпе и освобождает один цвет.",
+      "backward_text": "Пятицветная теорема является естественным следующим шагом после жадной раскраски вырожденных графов: она показывает, как локальная перекраска улучшает общий планарный результат с 6 цветов до 5.",
+      "anchors": {
+        "from_solution_id": "sol-deletion-order",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-five-color-brooks-local-recoloring-checked",
+      "from": "brooks-theorem",
+      "to": "five-color-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе классические теоремы уточняют наивную жадную раскраску: сначала удаляется или откладывается вершина, а затем локальная структура графа позволяет обойти единственное препятствие к свободному цвету.",
+      "backward_text": "В пятицветной теореме препятствие снимается цепями Кемпе и планарным разделением, тогда как в теореме Брукса роль тонкого шага играет специальный порядок раскраски и склейка по блокам.",
+      "anchors": {
+        "from_solution_id": "sol-sketch",
+        "to_solution_id": "sol-kempe-sketch"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-five-color-vosh-2018-kempe-swap",
+      "from": "five-color-theorem",
+      "to": "vosh-2018-19-final-shirt-recoloring",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Пятицветная теорема является каноническим примером обмена двух цветов внутри компоненты Кемпе: такой обмен сохраняет правильность раскраски и освобождает нужный цвет у вершины.",
+      "backward_text": "Задача ВсОШ 2018/19 использует тот же безопасный обмен цветов в двухцветной компоненте, но без планарного разделения: там компонентный подсчет контролирует, где обмен разрешен.",
+      "anchors": {
+        "from_solution_id": "sol-kempe-sketch",
+        "to_solution_id": "sol-two-color-component-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-five-color-cmo-2022-map-coloring",
+      "from": "five-color-theorem",
+      "to": "cmo-2022-p4-region-adjacency-coloring",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Пятицветная теорема дает общий язык раскраски областей плоской карты через планарный граф смежности. CMO 2022 P4 рассматривает специальную карту из прямых, где вместо общей теоремы строится явная модульная раскраска.",
+      "backward_text": "CMO 2022 P4 является более структурным и явным вариантом картографической раскраски; пятицветная теорема полезна как общий фон для перехода от областей к планарному графу.",
+      "anchors": {
+        "from_solution_id": "sol-kempe-sketch",
+        "to_solution_id": "sol-official-russian"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-five-color-vosh-2025-local-recoloring",
+      "from": "five-color-theorem",
+      "to": "vosh-2025-26-final-regions-friendship-coloring",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки восстанавливают или улучшают раскраску локальным изменением двух цветов в контролируемом подграфе. В пятицветной теореме это компонента Кемпе в планарном графе, а во ВсОШ 2025/26 - двухцветный подграф областей.",
+      "backward_text": "Задача ВсОШ 2025/26 дает свежий олимпиадный родственник приема локальной перекраски; пятицветная теорема остается классическим модельным примером этого приема.",
+      "anchors": {
+        "from_solution_id": "sol-kempe-sketch",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    }
+  ]
+}

@@ -108,6 +108,14 @@
       "source_id": "src-kolmogorov-archive",
       "role": "official_archive_index",
       "status": "source_verified"
+    },
+    {
+      "source_id": "src-wikipedia-pancyclic-graph",
+      "role": "external_theorem_reference",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-ai-bondy-pancyclic-theorem"
+      ]
     }
   ],
   "editorial": {
@@ -120,18 +128,19 @@
       "Файл-источник: work/kolm/text/2009/tur1_13.txt.",
       "Роль графа: явно присутствует в условии.",
       "2026-05-04: no-solution high-reasoning pass did not find a published solution of this Kolmogorov problem.",
-      "2026-05-04: ИИ-решение добавлено как короткое применение внешней теоремы Бонди о панцикличности гамильтоновых графов с e(G) >= n^2/4; доказательство самой теоремы Бонди не включено в карточку и желательно вынести в отдельную карточку-теорему."
+      "2026-05-04: ИИ-решение добавлено как короткое применение внешней теоремы Бонди о панцикличности гамильтоновых графов с e(G) >= n^2/4; доказательство самой теоремы Бонди не включено в карточку и желательно вынести в отдельную карточку-теорему.",
+      "2026-05-06 Group D audit: retained the short Bondy-theorem solution as an external theorem application and added a dedicated theorem-card/relation; no elementary replacement was confirmed."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
-      "type": "ai_heavy_external_theorem",
-      "label": "решение с тяжёлыми внешними теоремами",
+      "type": "external_theorem_application",
+      "label": "external theorem application",
       "status": "needs_human_review",
       "confidence": 0.9,
-      "basis": "agent medium-reasoning audit",
-      "notes": "AI solution explicitly uses Bondy pancyclic theorem",
-      "audit_source": "agent-russian-archives.json"
+      "basis": "Group D external-theorem audit 2026-05-06",
+      "notes": "The short solution directly applies Bondy's pancyclic theorem for dense Hamiltonian graphs. This external theorem application is retained and linked to a dedicated theorem card.",
+      "audit_source": "group-d-hamiltonian-brooks-ramsey-chromatic-audit"
     }
   }
 }

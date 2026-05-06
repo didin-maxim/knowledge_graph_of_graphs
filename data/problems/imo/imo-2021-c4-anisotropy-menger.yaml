@@ -10,50 +10,67 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "Warut Suksompong",
+      "country": "Thailand",
+      "status": "source_verified",
+      "source_id": "src-aops-imo-2021-shortlist"
     }
   ],
   "problem_profile": {
     "objects": [
       "tournament",
       "edge_disjoint_paths",
-      "directed_cut"
+      "directed_cut",
+      "short_directed_paths"
     ],
     "methods": [
+      "path_recombination",
       "menger_theorem",
-      "cut_counting"
+      "cut_counting",
+      "edge_menger_theorem"
     ],
     "transformations": [
-      "roads_to_tournament"
+      "roads_to_tournament",
+      "short_path_saturation",
+      "paired_cut_swap"
     ],
     "goal": [
-      "compare_path_packings"
+      "compare_path_packings",
+      "characterize_equal_outdegrees"
     ],
-    "auxiliary_graph_type": [],
+    "auxiliary_graph_type": [
+      "tournament"
+    ],
     "invariants": [
       "outdegree",
-      "minimum_cut"
+      "minimum_cut",
+      "number_of_short_paths"
     ],
     "keywords": [
       "imo_2021_c4",
       "imo_shortlist",
-      "official_solution_graph"
+      "official_solution_graph",
+      "official_solution_elementary",
+      "tournament_cut_counting"
     ],
-    "status": "ai_checked"
+    "status": "source_verified"
   },
   "statements": {
     "original": [
       {
         "id": "stmt-original",
         "title": "Условие",
-        "text": "В королевстве \\(n\\) городов, и между каждой парой городов есть ровно одна направленная дорога. Путь не возвращается в уже посещённый город. Коллекция путей называется разнообразной, если ни одна дорога не входит в два пути. Для городов \\(A,B\\) пусть \\(N_{AB}\\) — максимальное число попарно различных по рёбрам путей из \\(A\\) в \\(B\\), а \\(N_{BA}\\) определяется аналогично. Докажите, что \\(N_{AB}=N_{BA}\\) тогда и только тогда, когда исходящая степень \\(A\\) равна исходящей степени \\(B\\).",
+        "text": "В королевстве \\(n\\) городов, и между каждой парой городов есть ровно одна направленная дорога. Путь не возвращается в уже посещённый город. Коллекция путей называется разнообразной, если ни одна дорога не входит в два пути. Для городов \\(A,B\\) пусть \\(N_{AB}\\) — максимальное число путей в разнообразной коллекции путей из \\(A\\) в \\(B\\), а \\(N_{BA}\\) определяется аналогично. Докажите, что \\(N_{AB}=N_{BA}\\) тогда и только тогда, когда исходящая степень \\(A\\) равна исходящей степени \\(B\\).",
         "source_id": "src-imo-2021-shortlist",
-        "status": "needs_human_review",
+        "status": "source_verified",
         "self_contained": {
           "status": "ai_checked"
         },
-        "definition_ids": [],
+        "definition_ids": [
+          "directed_graph",
+          "path",
+          "degree"
+        ],
         "distinct_from": [
           "stmt-graph"
         ]
@@ -63,7 +80,7 @@
       {
         "id": "stmt-graph",
         "text": "Пусть \\(T\\) — турнир на \\(n\\) вершинах. Для вершин \\(A,B\\) обозначим через \\(N_{AB}\\) максимальное число попарно рёберно-непересекающихся направленных путей из \\(A\\) в \\(B\\). Докажите, что \\(N_{AB}=N_{BA}\\) тогда и только тогда, когда \\(d^+(A)=d^+(B)\\).",
-        "status": "needs_human_review",
+        "status": "source_verified",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -82,29 +99,58 @@
   },
   "ideas": [
     {
+      "id": "idea-short-path-saturation",
+      "title": "Насыщение короткими путями",
+      "text": "Любую максимальную разнообразную коллекцию путей из \\(A\\) в \\(B\\) можно перестроить так, чтобы она содержала все пути длины 1 или 2 из \\(A\\) в \\(B\\), не уменьшая числа путей.",
+      "tags": [
+        "tournaments"
+      ],
+      "status": "source_verified"
+    },
+    {
       "id": "idea-menger-cut",
       "title": "Пути и разрезы",
       "text": "Максимальное число рёберно-непересекающихся путей равно минимальному размеру направленного разреза.",
       "tags": [
         "connectivity"
       ],
-      "status": "ai_checked"
+      "status": "source_verified"
     },
     {
       "id": "idea-tournament-degree",
       "title": "Степени в турнире",
-      "text": "В турнире размеры специальных разрезов выражаются через исходящие степени двух выбранных вершин.",
+      "text": "В турнире размеры специальных разрезов и числа коротких путей выражаются через исходящие степени двух выбранных вершин.",
       "tags": [
-        "tournaments"
+        "tournaments",
+        "cut_counting"
       ],
-      "status": "ai_checked"
+      "status": "source_verified"
     }
   ],
   "solutions": [
     {
+      "id": "sol-official-elementary-short-paths",
+      "title": "Официальное элементарное решение через перестройку коротких путей",
+      "text": "Будем писать \\(X\\to Y\\), если дорога между \\(X\\) и \\(Y\\) направлена от \\(X\\) к \\(Y\\). Сначала заметим простой факт: если есть маршрут из \\(X\\) в \\(Y\\), в котором вершины могли повторяться, то из него можно удалить циклы и получить простой путь из \\(X\\) в \\(Y\\). Поэтому при перестройках ниже достаточно строить маршруты; после удаления циклов они становятся допустимыми путями и не используют новых дорог.\n\nНазовём путь коротким, если он состоит из одной или двух дорог. Докажем лемму. Пусть \\(\\mathcal P\\) — разнообразная коллекция из \\(p\\) путей из \\(A\\) в \\(B\\). Тогда существует разнообразная коллекция из \\(A\\) в \\(B\\), содержащая не меньше \\(p\\) путей и все короткие пути из \\(A\\) в \\(B\\).\n\nЕсли существует дорога \\(A\\to B\\), но одноэлементного пути \\(A\\to B\\) нет в \\(\\mathcal P\\), то эта дорога вообще не используется ни одним путём из \\(A\\) в \\(B\\): иначе путь уже пришёл бы в конечную вершину \\(B\\). Значит, этот путь можно просто добавить.\n\nТеперь пусть \\(C\\) — город, для которого \\(A\\to C\\to B\\), но короткого пути \\(A\\to C\\to B\\) нет в коллекции. Рассмотрим пути коллекции, использующие дороги \\(A\\to C\\) или \\(C\\to B\\). Таких путей не больше двух: дорога \\(A\\to C\\) может быть только первой дорогой пути из \\(A\\), а дорога \\(C\\to B\\) — только последней дорогой пути в \\(B\\); из-за разнообразия каждая из двух дорог используется не более одного раза. Если таких путей не больше одного, удалим его, если он есть, и добавим короткий путь \\(A\\to C\\to B\\). Число путей не уменьшается, а разнообразие сохраняется.\n\nОстаётся случай, когда есть два пути вида \\(A\\to C\\rightsquigarrow B\\) и \\(A\\rightsquigarrow C\\to B\\). Заменим их на короткий путь \\(A\\to C\\to B\\) и маршрут \\(A\\rightsquigarrow C\\rightsquigarrow B\\), составленный из оставшихся частей старых путей. Если во втором маршруте возникли циклы, удалим их. Полученный путь использует только дороги старых двух путей, кроме \\(A\\to C\\) и \\(C\\to B\\), которые теперь заняты коротким путём. Поэтому разнообразие сохраняется, а число путей не уменьшается. Повторив операцию для всех таких \\(C\\), получаем лемму.\n\nТеперь докажем задачу. Достаточно рассмотреть случай \\(A\\to B\\); случай \\(B\\to A\\) получается тем же рассуждением после перестановки букв \\(A,B\\). Разобьём все города, кроме \\(A,B\\), на четыре класса:\n\\[\n\\mathcal I=\\{C: A\\to C\\leftarrow B\\},\\quad\n\\mathcal O=\\{C: A\\leftarrow C\\to B\\},\n\\]\n\\[\n\\mathcal A=\\{C: A\\to C\\to B\\},\\quad\n\\mathcal B=\\{C: A\\leftarrow C\\leftarrow B\\}.\n\\]\nПусть \\(a=d^+(A)\\), \\(b=d^+(B)\\). При \\(A\\to B\\) имеем\n\\[\na=|\\mathcal I|+|\\mathcal A|+1,\\qquad b=|\\mathcal I|+|\\mathcal B|,\n\\]\nто есть \\(b-a=|\\mathcal B|-|\\mathcal A|-1\\).\n\nВозьмём разнообразную коллекцию \\(\\mathcal P\\) из \\(N_{AB}\\) путей из \\(A\\) в \\(B\\) и по лемме заменим её коллекцией \\(\\mathcal P_1\\), содержащей не меньше \\(N_{AB}\\) путей и все короткие пути из \\(A\\) в \\(B\\). Таких коротких путей ровно \\(|\\mathcal A|+1\\): это путь \\(A\\to B\\) и пути \\(A\\to C\\to B\\) при \\(C\\in\\mathcal A\\).\n\nПути из \\(\\mathcal P_1\\) не используют дороги коротких путей из \\(B\\) в \\(A\\). Действительно, при \\(A\\to B\\) прямой дороги \\(B\\to A\\) нет, а двухреберные короткие пути из \\(B\\) в \\(A\\) имеют вид \\(B\\to C\\to A\\) для \\(C\\in\\mathcal B\\); путь из \\(A\\) в \\(B\\) не может выйти из уже достигнутого \\(B\\) и не может войти в уже покинутый \\(A\\). Кроме того, все дороги коротких путей из \\(A\\) в \\(B\\) уже заняты самими этими короткими путями, так что никакой другой путь коллекции их не использует.\n\nСледовательно, каждый не короткий путь из \\(\\mathcal P_1\\) имеет вид\n\\[\nA\\to C\\rightsquigarrow D\\to B,\n\\]\nгде \\(C\\in\\mathcal I\\), \\(D\\in\\mathcal O\\). В самом деле, первая дорога не может вести в \\(B\\) или в \\(\\mathcal A\\), потому что это была бы дорога короткого пути из \\(A\\) в \\(B\\); значит, она ведёт в \\(\\mathcal I\\). Аналогично последняя дорога в \\(B\\) не может выходить из \\(\\mathcal A\\), поэтому её начало лежит в \\(\\mathcal O\\).\n\nПостроим коллекцию \\(\\mathcal Q\\) путей из \\(B\\) в \\(A\\). Для каждого не короткого пути \\(A\\to C\\rightsquigarrow D\\to B\\) из \\(\\mathcal P_1\\) возьмём путь \\(B\\to C\\rightsquigarrow D\\to A\\): дороги \\(B\\to C\\) и \\(D\\to A\\) существуют именно потому, что \\(C\\in\\mathcal I\\), \\(D\\in\\mathcal O\\). Также добавим все короткие пути из \\(B\\) в \\(A\\), то есть \\(|\\mathcal B|\\) путей \\(B\\to C\\to A\\) при \\(C\\in\\mathcal B\\). Дороги в \\(\\mathcal Q\\) не пересекаются: средние части пришли из разнообразной коллекции \\(\\mathcal P_1\\), новые начальные и конечные дороги принадлежат разным классам вершин, а короткие пути из \\(B\\) в \\(A\\) ранее не использовались.\n\nПоэтому\n\\[\n|\\mathcal Q|=|\\mathcal P_1|-(|\\mathcal A|+1)+|\\mathcal B|\n\\ge N_{AB}+b-a.\n\\]\nОтсюда \\(N_{BA}\\ge N_{AB}+b-a\\). Применив тот же аргумент с переставленными \\(A\\) и \\(B\\), получаем \\(N_{AB}\\ge N_{BA}+a-b\\), то есть \\(N_{BA}\\le N_{AB}+b-a\\). Следовательно,\n\\[\nN_{BA}-N_{AB}=b-a=d^+(B)-d^+(A).\n\\]\nВ частности, \\(N_{AB}=N_{BA}\\) тогда и только тогда, когда \\(d^+(A)=d^+(B)\\).",
+      "idea_ids": [
+        "idea-short-path-saturation",
+        "idea-tournament-degree"
+      ],
+      "standard_idea_ids": [
+        "double_counting"
+      ],
+      "status": "source_verified",
+      "definition_ids": [
+        "directed_graph",
+        "tournament",
+        "path",
+        "degree"
+      ]
+    },
+    {
       "id": "sol-official-compressed",
-      "title": "Доказательство через разрезы в турнире",
-      "text": "Рассмотрим турнир как ориентированный граф. По рёберной форме теоремы Менгера число \\(N_{AB}\\) равно минимуму размера \\((A,B)\\)-разреза: разбиения вершин на \\(S_A\\sqcup T_A\\), где \\(A\\in S_A\\), \\(B\\in T_A\\), а считаются дуги из \\(S_A\\) в \\(T_A\\). Число \\(N_{BA}\\) тем же способом равно минимуму размера \\((B,A)\\)-разреза.\n\nОбозначим через \\(a=d^+(A)\\), \\(b=d^+(B)\\). Для произвольного \\((A,B)\\)-разреза \\((S_A,T_A)\\) построим парный \\((B,A)\\)-разрез\n\\[\nS_B=(S_A\\setminus\\{A\\})\\cup\\{B\\},\\qquad T_B=(T_A\\setminus\\{B\\})\\cup\\{A\\}.\n\\]\nПокажем, что его размер больше ровно на \\(b-a\\). Дуги, не инцидентные ни \\(A\\), ни \\(B\\), либо пересекают оба разреза, либо не пересекают ни один; пусть таких общих дуг \\(c\\). Пусть \\(a_S\\) и \\(a_T\\) — числа дуг из \\(A\\) соответственно в \\(S_A\\) и \\(T_A\\), так что \\(a_S+a_T=a\\). Пусть \\(b_S\\) и \\(b_T\\) — числа дуг из \\(B\\) соответственно в \\(S_B\\) и \\(T_B\\), так что \\(b_S+b_T=b\\).\n\nВ первом разрезе, кроме общих \\(c\\) дуг, есть дуги из \\(A\\) в \\(T_A\\), их \\(a_T\\), и дуги из \\(S_A\\setminus\\{A\\}\\) в \\(B\\). Последних ровно \\(|S_A|-1-b_S=|S_B|-1-b_S\\), потому что для каждой вершины из \\(S_A\\setminus\\{A\\}=S_B\\setminus\\{B\\}\\) в турнире ровно одна из двух дуг направлена между ней и \\(B\\). Значит\n\\[\ne(S_A,T_A)=c+a_T+(|S_B|-1-b_S).\n\\]\nВо втором разрезе, кроме тех же \\(c\\), есть дуги из \\(B\\) в \\(T_B\\), их \\(b_T\\), и дуги из \\(S_B\\setminus\\{B\\}\\) в \\(A\\). Последних \\(|S_A|-1-a_S\\). Поэтому\n\\[\ne(S_B,T_B)=c+b_T+(|S_A|-1-a_S).\n\\]\nТак как \\(|S_A|=|S_B|\\), вычитание даёт\n\\[\ne(S_B,T_B)-e(S_A,T_A)=(b_T+b_S)-(a_T+a_S)=b-a.\n\\]\n\nБерём минимальный \\((A,B)\\)-разрез. Из построения получаем \\(N_{BA}\\le N_{AB}+b-a\\). Применяя тот же аргумент в обратную сторону, получаем \\(N_{AB}\\le N_{BA}+a-b\\), то есть \\(N_{BA}\\ge N_{AB}+b-a\\). Следовательно\n\\[\nN_{BA}-N_{AB}=b-a.\n\\]\nИтак, разность максимальных чисел рёберно-непересекающихся путей имеет тот же знак, что и \\(d^+(B)-d^+(A)\\) (эквивалентно, \\(N_{AB}-N_{BA}\\) имеет знак \\(d^+(A)-d^+(B)\\)). В частности, \\(N_{AB}=N_{BA}\\) тогда и только тогда, когда \\(d^+(A)=d^+(B)\\).",
+      "title": "Официальное решение через разрезы в турнире",
+      "text": "Рассмотрим турнир как ориентированный граф. По рёберной форме теоремы Менгера число \\(N_{AB}\\) равно минимуму размера \\((A,B)\\)-разреза: разбиения вершин на \\(S_A\\sqcup T_A\\), где \\(A\\in S_A\\), \\(B\\in T_A\\), а считаются дуги из \\(S_A\\) в \\(T_A\\). Число \\(N_{BA}\\) тем же способом равно минимуму размера \\((B,A)\\)-разреза.\n\nОбозначим через \\(a=d^+(A)\\), \\(b=d^+(B)\\). Для произвольного \\((A,B)\\)-разреза \\((S_A,T_A)\\) построим парный \\((B,A)\\)-разрез\n\\[\nS_B=(S_A\\setminus\\{A\\})\\cup\\{B\\},\\qquad T_B=(T_A\\setminus\\{B\\})\\cup\\{A\\}.\n\\]\nПокажем, что его размер больше ровно на \\(b-a\\). Дуги, не инцидентные ни \\(A\\), ни \\(B\\), либо пересекают оба разреза, либо не пересекают ни один; пусть таких общих дуг \\(c\\). Пусть \\(a_S\\) и \\(a_T\\) — числа дуг из \\(A\\) соответственно в \\(S_A\\) и \\(T_A\\), так что \\(a_S+a_T=a\\). Пусть \\(b_S\\) и \\(b_T\\) — числа дуг из \\(B\\) соответственно в \\(S_B\\) и \\(T_B\\), так что \\(b_S+b_T=b\\).\n\nВ первом разрезе, кроме общих \\(c\\) дуг, есть дуги из \\(A\\) в \\(T_A\\), их \\(a_T\\), и дуги из \\(S_A\\setminus\\{A\\}\\) в \\(B\\). Последних ровно \\(|S_A|-1-b_S=|S_B|-1-b_S\\), потому что для каждой вершины из \\(S_A\\setminus\\{A\\}=S_B\\setminus\\{B\\}\\) в турнире ровно одна из двух дуг направлена между ней и \\(B\\). Значит\n\\[\ne(S_A,T_A)=c+a_T+(|S_B|-1-b_S).\n\\]\nВо втором разрезе, кроме тех же \\(c\\), есть дуги из \\(B\\) в \\(T_B\\), их \\(b_T\\), и дуги из \\(S_B\\setminus\\{B\\}\\) в \\(A\\). Последних \\(|S_A|-1-a_S\\). Поэтому\n\\[\ne(S_B,T_B)=c+b_T+(|S_A|-1-a_S).\n\\]\nТак как \\(|S_A|=|S_B|\\), вычитание даёт\n\\[\ne(S_B,T_B)-e(S_A,T_A)=(b_T+b_S)-(a_T+a_S)=b-a.\n\\]\n\nБерём минимальный \\((A,B)\\)-разрез. Из построения получаем \\(N_{BA}\\le N_{AB}+b-a\\). Применяя тот же аргумент в обратную сторону, получаем \\(N_{AB}\\le N_{BA}+a-b\\), то есть \\(N_{BA}\\ge N_{AB}+b-a\\). Следовательно\n\\[\nN_{BA}-N_{AB}=b-a.\n\\]\nИтак, разность максимальных чисел рёберно-непересекающихся путей имеет тот же знак, что и \\(d^+(B)-d^+(A)\\). В частности, \\(N_{AB}=N_{BA}\\) тогда и только тогда, когда \\(d^+(A)=d^+(B)\\).",
       "idea_ids": [
         "idea-menger-cut",
         "idea-tournament-degree"
@@ -112,11 +158,12 @@
       "standard_idea_ids": [
         "double_counting"
       ],
-      "status": "ai_checked",
+      "status": "source_verified",
       "definition_ids": [
         "degree",
         "path",
-        "complete_graph",
+        "directed_graph",
+        "graph_cut",
         "tournament"
       ]
     }
@@ -124,21 +171,24 @@
   "difficulty": {
     "main": "imo_p3_plus",
     "local_score": 12,
-    "comment": "IMO Shortlist 2021 C4, страна неизвестна; графовый слой существенен в официальном решении.",
-    "status": "needs_human_review"
+    "comment": "IMO Shortlist 2021 C4; официальный shortlist содержит элементарное решение через перестройку путей и второе решение через рёберную форму Менгера.",
+    "status": "source_verified"
   },
   "tags": [
     "tournaments",
     "connectivity",
+    "cut_counting",
     "goal_characterization"
   ],
   "properties": {
     "central_method": {
       "value": [
+        "path_recombination",
         "menger_theorem",
-        "cut_counting"
+        "cut_counting",
+        "edge_menger_theorem"
       ],
-      "status": "ai_checked"
+      "status": "source_verified"
     }
   },
   "sources": [
@@ -149,32 +199,33 @@
     },
     {
       "source_id": "src-aops-imo-2021-shortlist",
-      "role": "community_wiki",
+      "role": "proposer_and_community_statement",
       "status": "source_verified"
     }
   ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-20",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
-      "Проход по метаданным IMO: профиль теоремы Менгера и подсчёта разрезов подтверждён для полного решения; сжатый идентификатор сохранён для связей."
+      "Проход по метаданным IMO: профиль теоремы Менгера и подсчёта разрезов подтверждён для полного решения; сжатый идентификатор заменён на два официальных самодостаточных решения.",
+      "2026-05-06 group C audit: the only external connectivity tool is the ordinary directed edge form of Menger; it is covered by data/problems/classical/menger-theorem.yaml#stmt-edge-directed and #sol-edge-form-by-flow.",
+      "2026-05-06 official-plan expansion: statement and both official solutions checked against IMO2021SL.pdf, pp. 29-30; proposer Warut Suksompong, Thailand checked against AoPS printable shortlist collection."
     ],
     "relations_status": "deep_done",
     "solution_classification": {
-      "type": "ai_heavy_external_theorem",
-      "label": "решение с тяжёлыми внешними теоремами",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "Solution invokes Menger theorem; definitions do not include Menger/connectivity theorem and sources are only shortlist/AoPS for the problem.",
-      "audit_source": "agent-imo-us-classical.json",
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное решение",
+      "status": "source_verified",
+      "confidence": 0.96,
+      "basis": "IMO 2021 Shortlisted Problems with Solutions, C4, Solutions 1 and 2",
+      "notes": "The card now contains the official elementary path-recombination solution and the official Menger/min-cut solution. The Menger theorem dependency is locally covered.",
       "external_theorem_ids": [
-        "Menger's theorem"
+        "menger-theorem#stmt-edge-directed"
       ],
-      "missing_links": [
-        "heavy_external_theorem_without_explicit_reference"
+      "local_tool_solution_ids": [
+        "menger-theorem#sol-edge-form-by-flow"
       ]
     }
   }

@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-spbmo2024-metric-path-shortcuts-metro-lines-same-source",
+      "from": "spbmo-2024-9-11-metric-path-with-shortcuts",
+      "to": "spbmo-2024-9-11-metro-lines-transfer-bound",
+      "type": "same_source",
+      "distance": 1,
+      "forward_text": "Обе карточки фиксируют одно и то же официальное условие СПбМО 2024 про разбиение метро на линии с не более чем 100 пересадками. В этой карточке акцент сделан на метрической модели путей с пересадками, а в соседней — на ранговом решении через ветви дерева.",
+      "backward_text": "Соседняя карточка является фактическим дублем по условию и решению: тот же ответ \\(3\\cdot2^{51}-3\\) получается через сведение к остовному дереву, локальные склейки рёбер и ранги ветвей.",
+      "anchors": {
+        "from_solution_id": "sol-branch-rank-exact-threshold",
+        "to_solution_id": "sol-branch-rank-exact-threshold"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-tree-properties-spbmo2024-metric-path-shortcuts",
+      "from": "tree-equivalent-properties",
+      "to": "spbmo-2024-9-11-metric-path-with-shortcuts",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Решение задачи про метро использует два базовых свойства деревьев: в связном графе можно выбрать остовное дерево, а в самом дереве между двумя вершинами есть единственный путь. Благодаря этому число пересадок становится суммой локальных несклеек на этом единственном пути.",
+      "backward_text": "Задача СПбМО является сильным олимпиадным применением классических свойств деревьев: после перехода к остову вся транспортная задача превращается в точную экстремальную оценку для единственных путей дерева.",
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-branch-rank-exact-threshold"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-spbmo2024-metric-path-shortcuts-tree-matching-extremal",
+      "from": "spbmo-2024-9-11-metric-path-with-shortcuts",
+      "to": "tree-near-perfect-matchings-path-extremal",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В решении СПбМО разбиение рёбер дерева на линии кодируется локальными паросочетаниями инцидентных рёбер в вершинах; точная граница затем получается из экстремального анализа таких локальных выборов на дереве. Это родственно лемме о почти совершенных паросочетаниях, где также нужно извлечь точную оценку из структуры дерева и вынужденных пар.",
+      "backward_text": "Лемма о почти совершенных паросочетаниях является более чистой задачей о матчингах в дереве. СПбМО 2024 использует похожий язык паросочетаний локально, но не между вершинами, а между направлениями рёбер в каждой станции, чтобы минимизировать число пересадок на путях.",
+      "anchors": {
+        "from_solution_id": "sol-branch-rank-exact-threshold",
+        "to_solution_id": "sol-induction-bipartition"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-apmo-2016-p4-digraph-outdegree-greedy-coloring-bound",
+      "from": "apmo-2016-p4-dreamland-28-step-coloring",
+      "to": "digraph-outdegree-greedy-coloring-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Верхняя оценка в APMO 2016 P4 прямо применяет лемму: если у орграфа исходящая степень каждой вершины не больше \\(r\\), то его вершины можно раскрасить в \\(2r+1\\) цветов так, чтобы концы каждой дуги имели разные цвета. В задаче вспомогательный граф достижимости имеет \\(r=28\\), откуда сразу получается 57 групп.",
+      "backward_text": "Лемма digraph-outdegree-greedy-coloring-bound выделена именно из этого решения APMO: она абстрагирует индукционный шаг с выбором вершины малой входящей степени и жадным возвращением вершины в один из \\(2r+1\\) цветов.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-low-indegree-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-apmo-2016-p4-degeneracy-greedy-coloring",
+      "from": "apmo-2016-p4-dreamland-28-step-coloring",
+      "to": "degeneracy-greedy-coloring",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Индукционная раскраска в APMO 2016 P4 является ориентированной версией стандартной раскраски вырожденного графа: из ограничения на исходящие степени следует существование вершины с суммарно не более \\(2r\\) конфликтными соседями после удаления, поэтому жадно хватает \\(2r+1\\) цветов.",
+      "backward_text": "Теорема о вырожденности даёт общий язык для леммы APMO: конфликтный неориентированный граф оказывается \\(2r\\)-вырожденным благодаря подсчёту входящих и исходящих соседей в исходном орграфе.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-deletion-order"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-apmo-2016-p4-bounded-forward-rays-functional-digraph",
+      "from": "apmo-2016-p4-dreamland-28-step-coloring",
+      "to": "bounded-forward-rays-balanced-sums",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе карточки используют функциональный ориентированный граф и контролируют ограниченное движение вперёд. В APMO 2016 P4 из каждой вершины рассматриваются первые 28 итераций функции-преемника и строится конфликтная раскраска; в bounded-forward-rays-balanced-sums контролируется семейство ограниченных вперёд стрелок через инвариант активных лучей.",
+      "backward_text": "Bounded-forward-rays-balanced-sums является более технической бесконечной моделью того же мотива: локально ограниченные направленные переходы превращаются в глобальное утверждение после выбора правильного вспомогательного объекта. В APMO таким объектом является граф достижимости, а там -- пул активных стрелок.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-pool-of-balls"
+      },
+      "status": "ai_checked",
+      "confidence": 0.76
+    }
+  ]
+}

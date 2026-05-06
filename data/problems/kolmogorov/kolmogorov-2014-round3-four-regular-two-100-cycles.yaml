@@ -26,21 +26,26 @@
       "disjoint_cycles"
     ],
     "methods": [
-      "connectivity_argument"
+      "connectivity_argument",
+      "structural_classification",
+      "modular_partition"
     ],
     "transformations": [],
     "goal": [
       "proof"
     ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "order_modulo_3"
+    ],
     "keywords": [
       "kolmogorov",
       "kolmogorov_2014",
       "round_3_higher_league",
       "two_disjoint_100_cycles",
-      "непросто_для_ИИ",
-      "no_public_solution_found"
+      "quartic_triangle_property",
+      "square_of_cycle",
+      "line_graph_obstruction"
     ],
     "status": "ai_checked"
   },
@@ -66,18 +71,55 @@
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [],
-  "solutions": [],
+  "ideas": [
+    {
+      "id": "idea-classify-quartic-triangle-graphs",
+      "title": "Свести граф к квадрату цикла",
+      "text": "Ключевой структурный шаг: простой 4-регулярный граф, в котором каждое ребро лежит в треугольнике, либо является квадратом цикла, либо получается из линейного мультиграфа кубического мультиграфа заменами треугольников на \\(K_{1,1,3}\\). Условие 4-вершинной связности запрещает такие замены, а число 200 не подходит для линейного графа кубического мультиграфа.",
+      "tags": [
+        "connectivity",
+        "construction",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-structural-classification-square-cycle",
+      "title": "Структурная классификация 4-регулярных треугольных графов",
+      "text": "Будем пользоваться следующей структурной леммой Pfender--Royle для простых 4-регулярных графов, в которых каждое ребро лежит в треугольнике: такой связный граф либо является квадратом цикла \\(C_n^2\\), либо получается из линейного мультиграфа \\(L(M)\\) некоторого кубического мультиграфа \\(M\\) последовательной заменой некоторых треугольников на копии \\(K_{1,1,3}\\) так, что в итоге все кратные рёбра исчезают. Здесь \\(C_n^2\\) означает граф на вершинах \\(0,1,\\ldots,n-1\\), где соединены вершины, отличающиеся по модулю \\(n\\) на \\(1\\) или \\(2\\); а \\(K_{1,1,3}\\) — полный трёхдольный граф с долями размеров \\(1,1,3\\).\n\nПрименим эту лемму к нашему графу \\(G\\). Сначала покажем, что в \\(G\\) не могла появиться замена треугольника на \\(K_{1,1,3}\\). В такой копии обозначим две одновершинные доли через \\(a,b\\), а трёхвершинную долю через \\(X\\). Внутри \\(K_{1,1,3}\\) вершины \\(a\\) и \\(b\\) смежны друг с другом и с каждой вершиной из \\(X\\); значит, их степень уже равна 4. Поэтому в исходном 4-регулярном графе у \\(a\\) и \\(b\\) нет соседей вне этой копии. Если удалить три вершины множества \\(X\\), то оставшиеся вершины \\(a,b\\) образуют отдельную компоненту. Так как в нашем графе 200 вершин, вне \\(\\{a,b\\}\\cup X\\) есть ещё вершины, и граф после удаления этих трёх вершин стал бы несвязным. Это противоречит условию задачи. Следовательно, замен типа \\(K_{1,1,3}\\) не было.\n\nОстаются две возможности: либо \\(G=C_n^2\\), либо \\(G\\) является линейным мультиграфом кубического мультиграфа \\(M\\). Во втором случае вершины \\(L(M)\\) соответствуют рёбрам \\(M\\), то есть \\(|V(G)|=|E(M)|\\). Если \\(M\\) кубический, то сумма степеней в \\(M\\) равна \\(3|V(M)|=2|E(M)|\\), откуда \\(|E(M)|\\) делится на 3. Но \\(|V(G)|=200\\), а 200 на 3 не делится. Значит, линейный случай невозможен.\n\nИтак, \\(G=C_{200}^2\\). Пронумеруем вершины по модулю 200: \\(0,1,\\ldots,199\\), причём в квадрате цикла соединены вершины с разностью \\(\\pm1\\) или \\(\\pm2\\). Тогда все чётные вершины\n\\[\n0,2,4,\\ldots,198\n\\]\nобразуют простой цикл длины 100, потому что соседние в этом списке вершины отличаются на 2 по модулю 200. Аналогично все нечётные вершины\n\\[\n1,3,5,\\ldots,199\n\\]\nобразуют второй простой цикл длины 100. Эти два цикла не имеют общих вершин. Что и требовалось доказать.",
+      "idea_ids": [
+        "idea-classify-quartic-triangle-graphs"
+      ],
+      "status": "ai_checked",
+      "source_ids": [],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "cycle",
+        "degree",
+        "connected_graph",
+        "line_graph",
+        "multigraph",
+        "graph_cut"
+      ]
+    }
+  ],
   "difficulty": {
     "main": "national_final_hard",
     "local_score": 9,
-    "comment": "2026-05-05 x-high pass: официальная формулировка и автор Д. Карпов подтверждены по kolm18/tur3_18.doc; опубликованное олимпиадное решение не найдено. Карточка помечена как no-solution / непросто для ИИ; внешний структурный маршрут через классификацию Pfender-Royle не добавлен в solutions[], так как не является самодостаточным школьным доказательством.",
+    "comment": "2026-05-06 high-reasoning pass: задача закрыта через структурную классификацию Pfender--Royle для 4-регулярных графов, каждое ребро которых лежит в треугольнике. Связность после удаления любых трёх вершин исключает замены на K_{1,1,3}; линейный граф кубического мультиграфа исключается по модулю 3; остаётся квадрат 200-цикла.",
     "status": "ai_checked"
   },
   "tags": [
     "connectivity",
     "extremal_graph_theory",
-    "goal_proof"
+    "goal_proof",
+    "construction",
+    "hamiltonian_cycles"
   ],
   "properties": {},
   "sources": [
@@ -101,19 +143,23 @@
       "Импортировано по итогам аудита пропущенных графовых задач КОЛМ: файлы final/candidates показали, что 2014 год не был преобразован в карточки базы данных.",
       "Файл-источник: work/kolm/text/2014/tur3_18.txt.",
       "Роль графа: явно присутствует в условии.",
-      "2026-05-04: no-solution high-reasoning pass found no public solution and marked the task as 'непросто для ИИ'. The official archive confirms the author as Д. Карпов. Do not add a proof without a separate structural lemma or source; plausible 2-factor/Hamiltonian-cycle arguments are risky here.",
-      "2026-05-04: repeat no-solution pass checked exact web queries and the official kolm18 archive listing. No self-contained AI proof was completed; the likely hard point is a structural theorem/lemma turning 4-connectivity plus the triangle condition into a controlled 2-factor or two equal-order cycles.",
-      "2026-05-05: x-high pass extracted the official kolm18/tur3_18.doc text and confirmed the exact statement as Высшая лига, third round, problem 10, author Д. Карпов. Exact Russian searches, author queries, AoPS/MSE/MO checks, and general English searches found no published olympiad solution. A relevant Pfender-Royle structural classification of quartic graphs with every edge in a triangle was found, but it is a research-level external theorem rather than a self-contained solution under the current card rules; solutions[] is intentionally left empty and the card is marked 'непросто_для_ИИ'."
+      "2026-05-04: earlier high-reasoning passes found no published olympiad solution and identified the missing hard point as a structural lemma for 4-regular graphs with the triangle property.",
+      "2026-05-05: x-high pass extracted the official kolm18/tur3_18.doc text and confirmed the exact statement as Высшая лига, third round, problem 10, author Д. Карпов. Exact Russian searches, author queries, AoPS/MSE/MO checks, and general English searches found no published olympiad solution.",
+      "2026-05-06: added a complete solution conditional on the Pfender--Royle structural classification of simple quartic graphs with every edge in a triangle (arXiv:1308.0081 / J. Graph Theory 82(2), 154-164). The final deductions from the classification are elementary and rule out all non-square-cycle cases for order 200 and 4-vertex-connectivity.",
+      "2026-05-06 group E audit: no school-level replacement for the Pfender--Royle classification was found. This card is deliberately kept as a heavy external theorem application, with the elementary post-classification deductions left explicit."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
-      "type": "no_solution_hard",
-      "label": "решения нет: сложная задача",
-      "status": "needs_human_review",
-      "confidence": 0.9,
-      "basis": "agent medium-reasoning audit",
-      "notes": "solutions array is empty in the card",
+      "type": "heavy_external_theorem_application",
+      "label": "решение через структурную классификацию",
+      "status": "ai_checked",
+      "confidence": 0.86,
+      "basis": "group E targeted audit with Pfender--Royle classification",
+      "notes": "Deliberate application of the Pfender--Royle quartic triangle-property classification; no elementary private case was identified.",
+      "external_theorem_ids": [
+        "Pfender--Royle quartic triangle-property classification"
+      ],
       "audit_source": "agent-russian-archives.json"
     }
   }

@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-yumt-2025-unior-r3p1-dense-theta",
+      "from": "yumt-2025-unior-round3-problem1",
+      "to": "dense-graph-long-theta-subgraph",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки работают с тем, что плотность графа вынуждает заметную циклическую структуру. В задаче ЮМТ эта структура запрещается условием о попарном пересечении циклов и большим обхватом, что приводит к верхней оценке на число ребер; в dense-graph-long-theta-subgraph плотность напрямую извлекает theta-подграф через удаление малых степеней и длиннейший путь.",
+      "backward_text": "Лемма о плотном theta-подграфе является полезным соседним ориентиром: она показывает типичный способ превращать избыток ребер в несколько связанных циклов. Задача ЮМТ идет другим путем - использует отсутствие двух непересекающихся циклов, малое множество, пересекающее все циклы, и затем считает ребра к лесу.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-blocker-and-forest-counting",
+        "to_solution_id": "sol-pruning-longest-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-yumt-2025-unior-r3p1-planar-girth-forest-count",
+      "from": "yumt-2025-unior-round3-problem1",
+      "to": "planar-large-girth-degree-two-path",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих задачах нижняя граница на длины циклов превращается в структурное ограничение после удаления или сжатия простых частей графа. В ЮМТ удаляется малое множество, пересекающее все циклы, и остается лес; в planar-large-girth-degree-two-path сжимаются короткие 2-пути, а большой обхват вместе с подсчетом степеней дает противоречие.",
+      "backward_text": "Планарная лемма о большом обхвате близка по технике контроля коротких циклов: там запрет коротких циклов используется через формулу Эйлера и степени, здесь - через запрет 4-циклов, который инъективно ограничивает лишние ребра между blocker-множеством и лесом.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-blocker-and-forest-counting",
+        "to_solution_id": "sol-contract-two-paths-and-euler"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-yumt-2025-unior-r3p1-cubic-four-cycle-bound",
+      "from": "yumt-2025-unior-round3-problem1",
+      "to": "cubic-graph-four-cycle-bound",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Связь идет через локальный запрет 4-циклов и подсчет пар. В ЮМТ одна и та же пара вершин из blocker-множества не может иметь двух общих соседей в лесу, иначе возник бы 4-цикл; в cubic-graph-four-cycle-bound сами 4-циклы считаются через пары инцидентных ребер в 3-регулярном графе.",
+      "backward_text": "Лемма о числе 4-циклов в кубическом графе является соседним примером того, как короткие циклы контролируются парным подсчетом. В задаче ЮМТ короткие циклы запрещены полностью, и тот же тип локального рассуждения дает верхнюю оценку на ребра между малым множеством вершин и лесом.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-blocker-and-forest-counting",
+        "to_solution_id": "sol-double-count-incident-edge-pairs"
+      },
+      "status": "ai_checked",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-yumt-2025-unior-r3p1-imc-1999-forest-edge-bound",
+      "from": "yumt-2025-unior-round3-problem1",
+      "to": "imc-1999-day1-p5-marked-grid-cycle",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе карточки используют базовую оценку числа ребер в лесу как счетовой фундамент. В IMC 1999 избыток \\(2n\\) ребер над лесной границей сразу дает цикл; в ЮМТ после удаления blocker-множества остается лес, и задача сводится к аккуратному подсчету ребер, выходящих из удаленных вершин.",
+      "backward_text": "IMC 1999 P5 - более простой эталон применения лесной оценки: если циклов нет, ребер меньше числа вершин. В ЮМТ эта же оценка применяется не ко всему графу, а к графу после удаления малого множества, пересекающего все циклы.",
+      "anchors": {
+        "from_solution_id": "sol-cycle-blocker-and-forest-counting",
+        "to_solution_id": "sol-official-graph"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    }
+  ]
+}

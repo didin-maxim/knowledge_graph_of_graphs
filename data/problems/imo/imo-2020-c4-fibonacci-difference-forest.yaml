@@ -11,48 +11,56 @@
   "language": "ru",
   "authors": [
     {
-      "name": "?",
-      "status": "needs_human_review"
+      "name": "Croatia",
+      "role": "proposer_country",
+      "status": "source_verified",
+      "note": "Официальный IMO 2020 Shortlist указывает страну-предложителя Croatia; индивидуальный автор в проверенных источниках не найден."
     }
   ],
   "problem_profile": {
     "objects": [
       "integer_set",
+      "fibonacci_numbers",
       "edge_lengths",
       "forest"
     ],
     "methods": [
       "acyclicity",
       "longest_edge",
-      "fibonacci_estimate"
+      "fibonacci_odd_sum_identity",
+      "forest_edge_bound"
     ],
     "transformations": [
       "differences_to_graph"
     ],
     "goal": [
-      "minimum_set_size"
+      "minimum_set_size",
+      "exact_bound"
     ],
     "auxiliary_graph_type": [
       "forest"
     ],
     "invariants": [
-      "edge_length_order"
+      "distinct_edge_lengths",
+      "longest_edge_exceeds_sum_of_smaller_odd_fibonacci_lengths"
     ],
     "keywords": [
       "imo_2020_c4",
       "imo_shortlist",
-      "official_solution_graph"
+      "fibonacci_differences",
+      "official_solution_graph",
+      "forest_lower_bound"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
       {
         "id": "stmt-original",
         "title": "Условие",
-        "text": "Числа Фибоначчи заданы \\(F_0=0,F_1=1,F_{n+1}=F_n+F_{n-1}\\). Для \\(n\\ge2\\) найдите наименьший размер множества целых чисел \\(S\\), такого что для каждого \\(k=2,3,\\ldots,n\\) существуют \\(x,y\\in S\\) с \\(x-y=F_k\\).",
+        "text": "Числа Фибоначчи заданы \\(F_0=0,F_1=1,F_{n+1}=F_n+F_{n-1}\\) для \\(n\\ge1\\). Для \\(n\\ge2\\) найдите наименьший размер множества целых чисел \\(S\\), такого что для каждого \\(k=2,3,\\ldots,n\\) существуют \\(x,y\\in S\\) с \\(x-y=F_k\\).",
         "source_id": "src-imo-2020-shortlist",
-        "status": "needs_human_review",
+        "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -65,50 +73,69 @@
   "ideas": [
     {
       "id": "idea-fibonacci-edges",
-      "title": "Рёбра заданных длин",
-      "text": "Для выбранных разностей Фибоначчи строится граф на элементах \\(S\\), где длины рёбер различны.",
+      "title": "Рёбра заданных нечётных фибоначчиевых длин",
+      "text": "Для нижней оценки достаточно выбрать по одному представлению разностей \\(F_1,F_3,F_5,\\ldots,F_{2d-1}\\), где \\(d=\\lceil n/2\\rceil\\), и сделать эти пары рёбрами графа на вершинах \\(S\\). Условие даёт все эти разности: \\(F_1=F_2\\), а остальные нечётные индексы не превосходят \\(n\\).",
       "tags": [
-        "extremal_graph_theory"
+        "extremal_graph_theory",
+        "graph_model"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     },
     {
       "id": "idea-longest-edge-cycle",
       "title": "Цикл запрещён самым длинным ребром",
-      "text": "В любом цикле самое длинное ребро не может быть компенсировано суммой остальных из-за свойств чисел Фибоначчи.",
+      "text": "Если в таком графе был бы цикл, самое длинное ребро длины \\(F_{2m+1}\\) должно было бы обходиться путём из меньших нечётных фибоначчиевых длин. Но сумма всех меньших возможных длин равна \\(F_1+F_3+\\cdots+F_{2m-1}=F_{2m}<F_{2m+1}\\), что невозможно на числовой прямой.",
       "tags": [
-        "trees"
+        "trees",
+        "extremal_choice"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-even-fibonacci-construction",
+      "title": "Конструкция из чётных чисел Фибоначчи",
+      "text": "Множество \\(\\{F_0,F_2,F_4,\\ldots,F_{2d}\\}\\) реализует все требуемые разности: чётная разность \\(F_{2r}\\) получается от \\(F_{2r}-F_0\\), а нечётная \\(F_{2r+1}\\) — от соседних чётных членов \\(F_{2r+2}-F_{2r}\\).",
+      "tags": [
+        "construction",
+        "construction"
+      ],
+      "status": "ai_checked"
     }
   ],
   "solutions": [
     {
       "id": "sol-official-compressed",
-      "title": "Решение через лес фибоначчиевых разностей",
-      "text": "Ответ: \\(\\lceil n/2\\rceil+1\\). Пусть \\(d=\\lceil n/2\\rceil\\). Для нижней оценки выберем для каждого \\(k=1,\\ldots,d\\) пару элементов \\(x,y\\in S\\) с \\(x-y=F_{2k-1}\\); для \\(k=1\\) это допустимо, потому что \\(F_1=F_2\\), а разность \\(F_2\\) требуется условием. Построим граф на вершинах \\(S\\), добавив эти \\(d\\) рёбер. В нём нет цикла: если цикл есть, возьмём в нём самое длинное ребро длины \\(F_{2m+1}\\). Остальные рёбра цикла имеют различные длины из множества \\(F_1,F_3,\\ldots,F_{2m-1}\\), и потому сумма их длин не превосходит \\(F_1+F_3+\\cdots+F_{2m-1}=F_{2m}<F_{2m+1}\\). Но путь по остальным рёбрам должен соединять концы самого длинного ребра, что невозможно по неравенству треугольника на числовой прямой. Значит, граф является лесом, поэтому \\(d\\le |S|-1\\). Для достижения возьмём \\(S=\\{F_0,F_2,F_4,\\ldots,F_{2d}\\}\\). Тогда \\(F_{2k}=F_{2k}-F_0\\), а \\(F_{2k-1}=F_{2k}-F_{2k-2}\\), так что все разности \\(F_2,F_3,\\ldots,F_n\\) реализуются.",
+      "title": "Официальное решение через лес фибоначчиевых разностей",
+      "text": "Ответ: \\(\\lceil n/2\\rceil+1\\).\n\nПусть \\(d=\\lceil n/2\\rceil\\). Сначала докажем, что меньше чем \\(d+1\\) элементов быть не может. Возьмём произвольное множество \\(S\\), удовлетворяющее условию. Для каждого \\(r=1,2,\\ldots,d\\) выберем пару \\(x_r,y_r\\in S\\), для которой\n\\[\nx_r-y_r=F_{2r-1}.\n\\]\nТакую пару действительно можно выбрать: при \\(r=1\\) имеем \\(F_1=F_2\\), а разность \\(F_2\\) требуется условием; при \\(r\\ge2\\) индекс \\(2r-1\\) лежит между \\(3\\) и \\(2d-1\\), причём \\(2d-1\\le n\\), поэтому разность \\(F_{2r-1}\\) тоже требуется условием.\n\nПостроим граф \\(G\\) с множеством вершин \\(S\\), добавив для каждого \\(r\\) ребро между \\(x_r\\) и \\(y_r\\). Эти \\(d\\) рёбер различны. Действительно, их длины на числовой прямой равны \\(F_1,F_3,\\ldots,F_{2d-1}\\), а эти числа различны: \\(F_1=1\\), \\(F_3=2\\), и дальше последовательность строго возрастает.\n\nДокажем, что \\(G\\) не содержит циклов. Предположим обратное и рассмотрим произвольный цикл. Среди его рёбер выберем самое длинное; пусть его длина равна \\(F_{2m+1}\\). Удалив это ребро из цикла, получаем путь между теми же двумя вершинами. Каждое ребро этого пути имеет одну из меньших нечётных фибоначчиевых длин \\(F_1,F_3,\\ldots,F_{2m-1}\\), причём каждая такая длина может встретиться не более одного раза, потому что в граф мы добавляли ровно одно ребро каждой выбранной длины. Поэтому сумма длин рёбер пути не превосходит\n\\[\nF_1+F_3+\\cdots+F_{2m-1}.\n\\]\nДля полноты докажем нужное тождество. При \\(m=0\\) пустая сумма равна \\(0=F_0\\), а при \\(m\\ge1\\) из рекуррентности следует индукцией\n\\[\nF_1+F_3+\\cdots+F_{2m-1}=F_{2m}.\n\\]\nНапример, переход от \\(m\\) к \\(m+1\\) даёт \\(F_{2m}+F_{2m+1}=F_{2m+2}\\). Следовательно, сумма длин обходного пути не больше \\(F_{2m}<F_{2m+1}\\). Но на числовой прямой расстояние между концами самого длинного ребра равно \\(F_{2m+1}\\), а любой путь между этими концами должен иметь суммарную длину хотя бы это расстояние по неравенству треугольника. Получили противоречие. Значит, \\(G\\) является лесом.\n\nВ лесу на \\(|S|\\) вершинах не больше \\(|S|-1\\) рёбер, если \\(S\\ne\\varnothing\\). У нас рёбер \\(d\\), поэтому \\(d\\le |S|-1\\), то есть \\(|S|\\ge d+1=\\lceil n/2\\rceil+1\\).\n\nОсталось показать, что эта оценка достигается. Возьмём\n\\[\nS=\\{F_0,F_2,F_4,\\ldots,F_{2d}\\}.\n\\]\nВ этом множестве ровно \\(d+1\\) элемент. Если требуемый индекс чётный, \\(k=2r\\le n\\), то\n\\[\nF_k=F_{2r}=F_{2r}-F_0,\n\\]\nи обе точки лежат в \\(S\\). Если требуемый индекс нечётный, \\(k=2r+1\\le n\\), то \\(r\\ge1\\) и \\(2r+2\\le 2d\\); значит, оба числа \\(F_{2r+2}\\) и \\(F_{2r}\\) есть в \\(S\\), а\n\\[\nF_{2r+2}-F_{2r}=F_{2r+1}.\n\\]\nТем самым реализуются все разности \\(F_2,F_3,\\ldots,F_n\\). Минимальный размер множества равен \\(\\lceil n/2\\rceil+1\\).",
       "idea_ids": [
         "idea-fibonacci-edges",
-        "idea-longest-edge-cycle"
+        "idea-longest-edge-cycle",
+        "idea-even-fibonacci-construction"
       ],
       "standard_idea_ids": [
         "extremal_choice"
       ],
       "status": "ai_checked",
+      "repair_status": "expanded_official_solution_and_fixed_odd_construction_index",
       "definition_ids": [
-        "cycle"
-      ]
+        "simple_graph",
+        "cycle",
+        "path",
+        "tree"
+      ],
+      "source_id": "src-imo-2020-shortlist"
     }
   ],
   "difficulty": {
     "main": "imo_p3_plus",
     "local_score": 12,
-    "comment": "IMO Shortlist 2020 C4, Хорватия; графовый слой существенен в официальном решении.",
-    "status": "needs_human_review"
+    "comment": "IMO Shortlist 2020 C4, предложена Хорватией; графовый слой существенен в официальном решении.",
+    "status": "ai_checked"
   },
   "tags": [
     "trees",
     "extremal_graph_theory",
+    "graph_model",
     "goal_exact_bound"
   ],
   "properties": {
@@ -116,39 +143,45 @@
       "value": [
         "acyclicity",
         "longest_edge",
-        "fibonacci_estimate"
+        "fibonacci_odd_sum_identity",
+        "forest_edge_bound"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
     {
       "source_id": "src-imo-2020-shortlist",
       "role": "problem_and_solutions_official",
-      "status": "source_verified"
+      "status": "source_verified",
+      "note": "Официальный PDF подтверждает формулировку, страну Croatia и решение с графом-лесом."
     },
     {
       "source_id": "src-aops-imo-2020-shortlist",
-      "role": "community_wiki",
-      "status": "source_verified"
+      "role": "statement_and_proposer_crosscheck",
+      "status": "source_verified",
+      "note": "AoPS shortlist page/community copy подтверждает формулировку и proposer country Croatia; найденные Math StackExchange обсуждения используют тот же ответ и графовый мотив, но отдельный source_id в карточку не добавлялся."
     }
   ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-20",
-    "review_status": "needs_human_review",
-    "public_ready": false,
-    "notes": [],
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-06: official-plan/sketch expansion. Проверены официальный IMO 2020 Shortlist PDF, AoPS shortlist/community copy и два обсуждения Math StackExchange; индивидуальный автор не найден, только страна-предложитель Croatia.",
+      "2026-05-06: исправлена сжатая верхняя конструкция: нечётные разности реализуются как \\(F_{2r+2}-F_{2r}=F_{2r+1}\\), а не сдвигом назад, который терял бы максимальную нечётную разность при нечётном \\(n\\)."
+    ],
     "graph_theory_absent_reason": "Графовая структура используется в официальном решении, но не является самостоятельной переформулировкой исходного условия.",
     "relations_status": "deep_done",
     "solution_classification": {
       "type": "official_complete_or_near_complete",
       "label": "официальное полное/почти полное",
       "status": "ai_checked",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "Olympiad card has official/shortlist/compendium-style sources and an ai_checked solution.",
-      "audit_source": "agent-imo-us-classical.json"
+      "confidence": 0.95,
+      "basis": "official IMO 2020 shortlist solution plus independent public cross-check",
+      "notes": "Решение полностью самодостаточно: нижняя оценка через лес и верхняя конструкция из чётных чисел Фибоначчи доведены с проверкой индексов.",
+      "audit_source": "official-plan-expansion-2026-05-06"
     }
   }
 }

@@ -110,9 +110,16 @@
         "extremal_choice"
       ],
       "status": "ai_checked",
+      "application_type": "external_theorem_application",
+      "external_theorem_ids": [
+        "hall-marriage-theorem"
+      ],
       "definition_ids": [
         "bipartite_graph",
         "matching"
+      ],
+      "uses_results": [
+        "hall-marriage-theorem"
       ]
     }
   ],
@@ -160,19 +167,13 @@
     ],
     "relations_status": "deep_done",
     "solution_classification": {
-      "type": "ai_heavy_external_theorem",
-      "label": "решение с тяжёлыми внешними теоремами",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "Solution invokes Hall theorem; definitions cover bipartite graph/matching, but there is no Hall theorem definition/source in the card.",
-      "audit_source": "agent-imo-us-classical.json",
-      "external_theorem_ids": [
-        "Hall's marriage theorem"
-      ],
-      "missing_links": [
-        "heavy_external_theorem_without_explicit_reference"
-      ]
+      "type": "classical_tool_application",
+      "label": "применение доказанного школьного инструмента",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "group B matching/Konig audit 2026-05-06",
+      "notes": "Решение применяет теорему Холла в стандартной форме; подходящая classical-карточка с полным индукционным доказательством уже есть и добавлена в uses_results/relation.",
+      "audit_source": "manual-matching-konig-hall-group-b-2026-05-06"
     }
   }
 }

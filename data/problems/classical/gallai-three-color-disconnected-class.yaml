@@ -1,0 +1,147 @@
+{
+  "id": "gallai-three-color-disconnected-class",
+  "title": "Gallai lemma: a three-coloring without rainbow triangles has a disconnected color",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "external_tool"
+    ]
+  },
+  "language": "en",
+  "authors": [
+    {
+      "name": "Tibor Gallai",
+      "status": "source_verified"
+    },
+    {
+      "name": "Andras Gyarfas and Gabor Simonyi",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "connected_color_classes",
+      "triangles"
+    ],
+    "methods": [
+      "minimal_counterexample",
+      "gallai_coloring"
+    ],
+    "transformations": [
+      "delete_vertex",
+      "color_components"
+    ],
+    "goal": [
+      "prove_disconnected_color_class"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "absence_of_rainbow_triangle"
+    ],
+    "keywords": [
+      "gallai_coloring",
+      "no_rainbow_triangle",
+      "disconnected_color_class"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "In every edge-coloring of a complete graph with three colors, if no triangle has three pairwise distinct edge colors, then at least one of the three color classes is disconnected as a spanning graph.",
+        "source_id": "src-gyarfas-simonyi-gallai-colorings-2004",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "connected_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-no-three-connected-colors",
+      "title": "Three connected colors force a rainbow triangle",
+      "text": "The contrapositive form is useful in applications: a three-coloring of a complete graph with all three color classes connected must contain a rainbow triangle.",
+      "tags": [
+        "coloring",
+        "connectivity"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-gyarfas-simonyi-lemma-a",
+      "title": "Reference proof",
+      "text": "Gyarfás and Simonyi state this as Lemma A and give a short minimal-counterexample proof: delete a vertex, take the disconnected color components in the smaller Gallai coloring, and use the homogeneity of colors between components to force the same color to remain disconnected after the vertex is restored.",
+      "idea_ids": [
+        "idea-no-three-connected-colors"
+      ],
+      "status": "source_verified",
+      "standard_idea_ids": [
+        "minimal_counterexample"
+      ],
+      "definition_ids": [
+        "complete_graph",
+        "connected_graph"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 6,
+    "comment": "A small special case of Gallai coloring structure; suitable as a linked theorem-card rather than a hidden heavy marker.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "coloring",
+    "connectivity",
+    "classical_theorem",
+    "goal_proof"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "minimal_counterexample"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-gyarfas-simonyi-gallai-colorings-2004",
+      "role": "published_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-06",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Created during Group D audit as the exact small theorem used by Miklos-Schweitzer 2016 P2."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "published_reference",
+      "label": "published theorem reference",
+      "status": "ai_checked",
+      "confidence": 0.88,
+      "basis": "Gyarfas-Simonyi 2004 Lemma A",
+      "notes": "This is the three-color disconnected-color lemma for Gallai colorings.",
+      "audit_source": "group-d-hamiltonian-brooks-ramsey-chromatic-audit"
+    }
+  }
+}

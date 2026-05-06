@@ -23,6 +23,8 @@
     ],
     "methods": [
       "menger_theorem",
+      "short_length_menger_theorem",
+      "min_cost_flow",
       "short_path_packing",
       "edge_connectivity"
     ],
@@ -86,24 +88,73 @@
     ],
     "olympiad_reformulations": []
   },
-  "ideas": [],
-  "solutions": [],
+  "ideas": [
+    {
+      "id": "idea-short-length-menger",
+      "title": "Короткая форма теоремы Менгера",
+      "text": "Нужное утверждение является прямым следствием короткой формы теоремы Менгера Галиля--Ю: если в простом \\(N\\)-вершинном графе между двумя вершинами есть \\(q\\) реберно-непересекающихся путей и минимальная степень графа не меньше \\(q\\), то эти \\(q\\) путей можно выбрать так, что каждый имеет длину не больше \\(20N/q\\). В данной задаче \\(q=k\\), существование \\(k\\) путей дает реберная форма Менгера, а минимальная степень не меньше \\(k\\) следует из \\(k\\)-реберной связности.",
+      "tags": [
+        "connectivity",
+        "degree_counting",
+        "goal_existence"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-short-length-menger-galil-yu",
+      "title": "Применение короткой формы теоремы Менгера Галиля--Ю",
+      "text": "Используем короткую форму теоремы Менгера Галиля--Ю как внешний инструмент: если в простом \\(N\\)-вершинном графе есть \\(q\\) попарно реберно-непересекающихся путей между \\(a\\) и \\(b\\), а \\(\\delta(H)\\ge q\\), то эти \\(q\\) путей можно выбрать так, что каждый имеет длину не больше \\(20N/q\\). В этой карточке этот результат не считается школьной леммой: известное доказательство использует поток минимальной стоимости, двойственность и специальный подсчет по уровням.\n\nОстается проверить только редукцию. Так как \\(G\\) является \\(k\\)-реберно-связным, каждый разрез, отделяющий \\(u\\) от \\(v\\), содержит хотя бы \\(k\\) ребер. По обычной реберной форме теоремы Менгера существуют \\(k\\) попарно реберно-непересекающихся \\(u\\)-\\(v\\)-путей. Кроме того, \\(\\delta(G)\\ge k\\): иначе разрез, отделяющий вершину степени меньше \\(k\\) от остального графа, содержал бы меньше \\(k\\) ребер.\n\nПрименяем теорему Галиля--Ю к \\(H=G\\), \\(a=u\\), \\(b=v\\), \\(q=k\\), \\(N=n\\). Получаем \\(k\\) попарно реберно-непересекающихся \\(u\\)-\\(v\\)-путей, каждый длины не больше \\(20n/k\\).",
+      "idea_ids": [
+        "idea-short-length-menger"
+      ],
+      "status": "ai_checked",
+      "standard_idea_ids": [
+        "augmenting_path_method"
+      ],
+      "definition_ids": [
+        "simple_graph",
+        "connected_graph",
+        "graph_cut",
+        "path",
+        "degree"
+      ],
+      "review_notes": "Аудит группы C от 2026-05-06: короткая форма Менгера Галиля--Ю намеренно считается тяжелой внешней теоремой и не доказывается локально; элементарна только редукция из k-реберной связности плюс обычная реберная форма Менгера."
+    }
+  ],
   "difficulty": {
     "main": "national_final_hard",
     "local_score": 9,
-    "comment": "2026-05-05 x-high pass: официальная формулировка сверена, опубликованное решение и автор задачи не найдены. Пометка no-solution / непросто для ИИ; solutions[] и ideas[] оставлены пустыми, чтобы не хранить недоведенные подходы.",
-    "status": "needs_human_review"
+    "comment": "Решение опирается на короткую форму теоремы Менгера Галиля--Ю о реберно-непересекающихся путях малой длины; сама задача становится прямым применением после проверки \\(\\delta(G)\\ge k\\) и обычной реберной формы Менгера.",
+    "status": "ai_checked"
   },
   "tags": [
     "connectivity",
+    "degree_counting",
+    "cut_counting",
     "goal_existence"
   ],
-  "properties": {},
+  "properties": {
+    "central_method": {
+      "value": [
+        "short_length_menger_theorem",
+        "edge_menger_theorem",
+        "min_cost_flow_duality"
+      ],
+      "status": "ai_checked"
+    }
+  },
   "sources": [
     {
       "source_id": "src-miklos-schweitzer-2002-p2-official",
       "role": "official_statement",
       "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2002-eng.pdf",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-galil-yu-short-length-menger-stoc-1995",
+      "role": "external_theorem_used",
       "status": "source_verified"
     }
   ],
@@ -115,17 +166,25 @@
     "notes": [
       "Английский PDF Szeged archive содержит задачу 2 с константой \\(20n/k\\); формулировка карточки сверена с официальным текстом.",
       "Индекс Szeged для 2002 года содержит только ссылки на Hungarian/English problem PDFs без решения; страница Bolyai János Mathematical Society публикует задачи/решения в основном для более поздних лет и не дает решения 2002/2.",
-      "2026-05-05 x-high pass: опубликованное решение, форумный разбор и автор задачи не найдены по точным английским и венгерским запросам. Карточка помечена как no-solution / непросто для ИИ; недоведенные идеи из ideas[] удалены."
+      "2026-05-05 x-high pass: опубликованное решение, форумный разбор и автор задачи не найдены по точным английским и венгерским запросам; недоведенные идеи из ideas[] были удалены.",
+      "2026-05-06 high-reasoning pass: добавлено решение через short-length Menger theorem Галиля--Ю. Константа 20 соответствует формулировке задачи; карточка больше не классифицируется как no-solution, но решение помечено как использующее внешний тяжелый инструмент.",
+      "2026-05-06 group C audit: kept as an application of the heavy Galil--Yu short-length Menger theorem; removed the local proof claim and retained only the elementary reduction plus ordinary edge Menger."
     ],
-    "relations_status": "base_done",
+    "relations_status": "deep_done",
     "solution_classification": {
-      "type": "no_solution_hard",
-      "label": "решения нет: сложная задача",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "agent grouped classification",
-      "audit_source": "agent-university-archives.json"
+      "type": "ai_complete_heavy_external_theorem_application",
+      "label": "применение тяжелой внешней теоремы",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "group C audit 2026-05-06 plus Galil--Yu STOC 1995 reference",
+      "external_theorem_ids": [
+        "menger-theorem#stmt-edge-directed",
+        "Galil--Yu short-length Menger theorem"
+      ],
+      "local_tool_solution_ids": [
+        "menger-theorem#sol-edge-form-by-flow"
+      ],
+      "notes": "Требуемая равномерная оценка 20n/k не следует из обычной теоремы Менгера. Это именно короткая форма Менгера, которая здесь считается существенной внешней теоремой."
     }
   }
 }

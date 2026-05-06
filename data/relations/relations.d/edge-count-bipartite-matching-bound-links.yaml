@@ -1,0 +1,139 @@
+{
+  "relations": [
+    {
+      "id": "rel-konig-cover-edge-count-bipartite-matching-bound",
+      "from": "konig-vertex-cover-theorem",
+      "to": "edge-count-bipartite-matching-bound",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма о числе рёбер является коротким следствием теоремы Кёнига: если паросочетания размера r нет, то минимальное вершинное покрытие имеет не более r-1 вершин, и каждая из них покрывает не более n рёбер.",
+      "backward_text": "Эта лемма показывает, как использовать минимакс Кёнига в олимпиадной форме: равенство matching/vertex-cover превращается в простую плотностную оценку для двудольного графа или доски строк и столбцов.",
+      "anchors": {
+        "from_solution_id": "sol-alternating",
+        "to_solution_id": "sol-konig-cover-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-augmenting-path-edge-count-bipartite-matching-bound",
+      "from": "augmenting-path-matching-lemma",
+      "to": "edge-count-bipartite-matching-bound",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Доказательство леммы через Кёнига опирается на тот же механизм чередующихся путей: максимальность паросочетания проверяется отсутствием увеличивающего пути, после чего из достижимых вершин строится малое покрытие рёбер.",
+      "backward_text": "В плотностной лемме augmenting-path техника видна не как алгоритм увеличения, а как сертификат оптимальности: малое максимальное паросочетание порождает малое вершинное покрытие, которое уже невозможно совместить с большим числом рёбер.",
+      "anchors": {
+        "from_solution_id": "sol-symmetric-difference",
+        "to_solution_id": "sol-konig-cover-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-hall-edge-count-bipartite-matching-bound",
+      "from": "hall-marriage-theorem",
+      "to": "edge-count-bipartite-matching-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются стандартными способами гарантировать большое двудольное паросочетание. Теорема Холла делает это через нижние оценки окрестностей, а лемма о числе рёбер делает это через плотность и покрытие рёбер.",
+      "backward_text": "Плотностная лемма полезна как грубая, но быстрая замена проверки всех условий Холла: вместо анализа каждого подмножества достаточно большого общего числа рёбер и ограничения размера долей.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-konig-cover-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-edge-count-bound-usamo-2022-amber-bronze-transversal",
+      "from": "edge-count-bipartite-matching-bound",
+      "to": "usamo-2022-p1-amber-bronze-transversal",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "USAMO 2022 P1 применяет лемму отдельно к янтарным и бронзовым клеткам: число клеток каждого цвета превышает порог \\((r-1)n\\), поэтому в каждом цвете существует паросочетание нужного размера.",
+      "backward_text": "Задача USAMO является прямым приложением досочной формы леммы: клетки становятся рёбрами между строками и столбцами, а непересекающийся набор клеток становится паросочетанием.",
+      "anchors": {
+        "from_solution_id": "sol-konig-cover-count",
+        "to_solution_id": "sol-hall-matchings-and-uncrossing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-edge-count-bound-imo-2010-c2-hall-matching",
+      "from": "edge-count-bipartite-matching-bound",
+      "to": "imo-2010-c2-flags-diagonal-matching",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи переводят выбор диагонали/трансверсали в паросочетание двудольного графа. В лемме большое число рёбер принуждает matching, а в IMO 2010 C2 паросочетание принуждается через условие Холла для графов цвет-позиция.",
+      "backward_text": "IMO 2010 C2 показывает более тонкую версию той же matching-парадигмы: вместо одной плотностной оценки приходится контролировать окрестности плохих множеств, но конечная цель та же - выбрать попарно различные позиции.",
+      "anchors": {
+        "from_solution_id": "sol-konig-cover-count",
+        "to_solution_id": "sol-hall-extremal-full"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-edge-count-bound-rmm-2017-sieve-sticks",
+      "from": "edge-count-bipartite-matching-bound",
+      "to": "rmm-2017-p5-sieve-sticks-bipartite-matching",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют модель, где клетки доски являются рёбрами двудольного графа, а требуемый непересекающийся выбор является matching. Лемма даёт такой выбор из плотности, а RMM 2017 доказывает совершенное matching проверкой Холла.",
+      "backward_text": "RMM 2017 является более структурным соседом досочной формы леммы: вместо строк и столбцов берутся максимальные горизонтальные и вертикальные палочки, но выбранные клетки снова читаются как паросочетание в графе инцидентности.",
+      "anchors": {
+        "from_solution_id": "sol-konig-cover-count",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-edge-count-bound-cmo-2004-rooks-matching",
+      "from": "edge-count-bipartite-matching-bound",
+      "to": "cmo-2004-p2-rooks-same-colour",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих карточках непересекающиеся клетки доски интерпретируются как паросочетание в графе строк и столбцов. Лемма отвечает на вопрос существования большого matching из числа отмеченных клеток, а CMO 2004 считает такие matchings после разбиения доски по цвету и чётности.",
+      "backward_text": "CMO 2004 - счётный родственник леммы: здесь плотностная гарантия уже не нужна, но та же row-column модель превращает расстановку небьющих ладей одного цвета в монохроматическое паросочетание.",
+      "anchors": {
+        "from_solution_id": "sol-konig-cover-count",
+        "to_solution_id": "sol-official-parity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-edge-count-bound-imc-1999-marked-grid-cycle",
+      "from": "edge-count-bipartite-matching-bound",
+      "to": "imc-1999-day1-p5-marked-grid-cycle",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки начинают с одинакового перевода: отмеченная клетка или точка становится ребром между своей строкой и своим столбцом. Лемма извлекает из многих рёбер большое паросочетание, а IMC 1999 извлекает из равенства числа рёбер и вершин цикл.",
+      "backward_text": "IMC 1999 - близкий досочный сосед по модели row-column graph: вместо трансверсали здесь требуется чередующийся цикл отмеченных точек, но решающий ход снова состоит в том, что отмеченные объекты становятся рёбрами двудольного графа.",
+      "anchors": {
+        "from_solution_id": "sol-konig-cover-count",
+        "to_solution_id": "sol-official-graph"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-edge-count-bound-egmo-2016-blue-cells-incidence",
+      "from": "edge-count-bipartite-matching-bound",
+      "to": "egmo-2016-p3-blue-cells-bipartite-incidence",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи превращают отмеченные клетки в рёбра между строками и столбцами и затем доказывают нижнюю оценку через свойства этого двудольного графа. В лемме нижняя оценка на рёбра заставляет matching; в EGMO 2016 условия на связанные с клеткой синие клетки заставляют достаточно много рёбер через компоненты.",
+      "backward_text": "EGMO 2016 является более дальним родственником: оно не ищет паросочетание, но использует тот же словарь строк, столбцов, степеней и числа рёбер, который лежит в досочной форме леммы.",
+      "anchors": {
+        "from_solution_id": "sol-konig-cover-count",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    }
+  ]
+}

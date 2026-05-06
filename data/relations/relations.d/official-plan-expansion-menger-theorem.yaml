@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-official-expansion-menger-imo-2021-c4-directed-edge",
+      "from": "menger-theorem",
+      "to": "imo-2021-c4-anisotropy-menger",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Ориентированная реберная форма теоремы Менгера именно переводит максимум дугово-непересекающихся путей из \\(A\\) в \\(B\\) в минимум соответствующего ориентированного разреза. Это потоково-разрезный шаг во втором официальном решении IMO 2021 C4.",
+      "backward_text": "IMO 2021 C4 является чистым олимпиадным применением реберной формы Менгера: после равенства путей и разрезов остается турнирное сравнение парных разрезов.",
+      "anchors": {
+        "from_solution_id": "sol-edge-form-by-flow",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-official-expansion-menger-schweitzer-2002-p2-short-edge-version",
+      "from": "menger-theorem",
+      "to": "miklos-schweitzer-2002-p2-edge-connected-short-paths",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Обычная реберная форма Менгера дает существование нужного числа реберно-непересекающихся путей из размера минимального реберного разреза. В задаче Schweitzer 2002/2 это базовая часть языка, но для полного результата требуется более сильная короткая версия Менгера.",
+      "backward_text": "Schweitzer 2002/2 показывает ограничение обычной теоремы Менгера: она гарантирует кратность непересекающихся путей, но не контролирует их длины, поэтому карточка переходит к короткой форме Галиля--Ю.",
+      "anchors": {
+        "from_solution_id": "sol-edge-form-by-flow",
+        "to_solution_id": "sol-short-length-menger-galil-yu"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-official-expansion-menger-spbmo-2013-p5-vertex-disjoint",
+      "from": "menger-theorem",
+      "to": "spbmo-2013-8-p5-capital-directed-disjoint-paths",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Вершинная форма Менгера является стандартным способом заменить отсутствие малого разделителя существованием нескольких внутренне непересекающихся путей. Именно такой язык лежит за задачами о доминаторах и двух независимых маршрутах в ориентированных графах.",
+      "backward_text": "СПбМО 2013/8 P5 можно читать как олимпиадную тренировку вершинного Менгера: вместо общей теоремы там явно разбирается структура, препятствующая двум внутренне непересекающимся путям.",
+      "anchors": {
+        "from_solution_id": "sol-flow-sketch",
+        "to_solution_id": "sol-dominators-transitivity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.76
+    }
+  ]
+}

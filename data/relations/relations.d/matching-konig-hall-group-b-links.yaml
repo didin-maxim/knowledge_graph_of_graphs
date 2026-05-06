@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-konig-vertex-cover-edge-count-bipartite-matching-bound",
+      "from": "konig-vertex-cover-theorem",
+      "to": "edge-count-bipartite-matching-bound",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Лемма о числе рёбер является удобной олимпиадной формой теоремы Кёнига: если максимальное паросочетание мало, то малое вершинное покрытие ограничивает число рёбер.",
+      "backward_text": "В доказательстве леммы используется тот же чередующийся-путь сертификат минимального вершинного покрытия, что и в теореме Кёнига, но итог записан как простой подсчёт рёбер в двудольном графе с ограниченными долями.",
+      "anchors": {
+        "from_solution_id": "sol-alternating",
+        "to_solution_id": "sol-konig-cover-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-edge-count-bipartite-matching-bound-usamo-2022-p1",
+      "from": "edge-count-bipartite-matching-bound",
+      "to": "usamo-2022-p1-amber-bronze-transversal",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Эта лемма ровно даёт первый шаг решения USAMO 2022 P1: из нижних оценок на число янтарных и бронзовых клеток следуют паросочетания размеров \\(a\\) и \\(b\\).",
+      "backward_text": "USAMO 2022 P1 является естественным применением леммы о числе рёбер: отмеченные клетки читаются как рёбра между строками и столбцами, а паросочетание становится выбором клеток без общих строк и столбцов.",
+      "anchors": {
+        "from_solution_id": "sol-konig-cover-count",
+        "to_solution_id": "sol-hall-matchings-and-uncrossing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-konig-vertex-cover-usamo-2022-p1-short-solution",
+      "from": "konig-vertex-cover-theorem",
+      "to": "usamo-2022-p1-amber-bronze-transversal",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Теорема Кёнига даёт короткий внешний вариант первого шага: отсутствие паросочетания нужного размера превращается в малое вершинное покрытие и немедленную оценку числа цветных клеток.",
+      "backward_text": "В USAMO 2022 P1 сохранён короткий вариант решения через теорему Кёнига как external theorem application; рядом есть школьная выделенная лемма для того же шага.",
+      "anchors": {
+        "from_solution_id": "sol-alternating",
+        "to_solution_id": "sol-konig-short-and-uncrossing"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-hall-marriage-imo-2010-c2-flags-diagonal-matching",
+      "from": "hall-marriage-theorem",
+      "to": "imo-2010-c2-flags-diagonal-matching",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Теорема Холла является точным инструментом в доказательстве IMO Shortlist 2010 C2: для одного из двух цветовых графов нужно получить паросочетание, покрывающее все диагональные позиции.",
+      "backward_text": "IMO Shortlist 2010 C2 даёт содержательное применение Холла: неудача условия Холла для обоих цветов приводит к экстремальному подсчёту двоичных флагов.",
+      "anchors": {
+        "from_solution_id": "sol-induction",
+        "to_solution_id": "sol-hall-extremal-full"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    }
+  ]
+}

@@ -158,10 +158,10 @@
       "distance": 2,
       "forward_text": "Оба решения начинаются с кодирования процесса в виде однонаправленного графа состояний или индексов. В IMO 2015 C5 этот граф затем суммируется с помощью ограниченного пула/потенциала, а в IMO 2019 C3 используются рекурсивные копии орграфа конечных состояний.",
       "backward_text": "Процесс монеты 2019 года решается путем явной рекурсии на орграфе состояний, тогда как IMO 2015 C5 сжимает ту же структуру с одним преемником в инвариант при пересечении стрелок; Точка зрения функционального орграфа является распространенной.",
-      "anchors": {
-        "from_solution_id": "sol-pool-of-balls",
-        "to_solution_id": "sol-official-compressed"
-      },
+  "anchors": {
+    "from_solution_id": "sol-pool-of-balls",
+    "to_solution_id": "sol-official-graph-recursion"
+  },
       "status": "needs_human_review",
       "confidence": 0.82
     },
@@ -241,17 +241,17 @@
       "confidence": 0.86
     },
     {
-      "id": "rel-tree-imo-2019-c3-functional-digraph",
+  "id": "rel-tree-imo-2019-c3-functional-digraph",
       "from": "tree-equivalent-properties",
       "to": "imo-2019-c3-coin-process-digraph",
       "type": "same_motif",
       "distance": 3,
       "forward_text": "После ориентации каждого нетерминального состояния на его преемника граф процесса ведет себя как корневое направленное дерево/DAG в направлении приемника; решение считает расстояния рекурсивно.",
       "backward_text": "Процесс монеты не является теоремой о ненаправленном дереве, но его граф состояний использует ту же идею учета без цикла к корню.",
-      "anchors": {
-        "from_solution_id": "sol-leaf-induction",
-        "to_solution_id": "sol-official-compressed"
-      },
+  "anchors": {
+    "from_solution_id": "sol-leaf-induction",
+    "to_solution_id": "sol-official-graph-recursion"
+  },
       "status": "needs_human_review",
       "confidence": 0.64
     },

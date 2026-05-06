@@ -1,0 +1,134 @@
+{
+  "id": "planar-large-girth-degree-two-chain",
+  "title": "В планарном графе большого обхвата есть длинная цепочка вершин степени 2",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool",
+      "school_provable_special_case"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "classical folklore",
+      "status": "ai_checked"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "planar_graph",
+      "girth",
+      "degree_two_path",
+      "euler_formula"
+    ],
+    "methods": [
+      "suppress_degree_two_paths",
+      "euler_formula",
+      "minimal_degree_counting"
+    ],
+    "transformations": [
+      "contract_maximal_degree_two_chains"
+    ],
+    "goal": [
+      "find_long_degree_two_chain"
+    ],
+    "keywords": [
+      "planar_graph",
+      "large_girth",
+      "degree_two_vertices",
+      "euler_lemma"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-degree-two-chain",
+        "text": "Пусть \\(m\\ge1\\). Если планарный граф \\(H\\) имеет минимальную степень хотя бы \\(2\\) и обхват не меньше \\(5m+1\\), то в \\(H\\) есть простой путь \\(v_0v_1\\ldots v_{m+1}\\), у которого все внутренние вершины \\(v_1,\\ldots,v_m\\) имеют степень \\(2\\) в \\(H\\).",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "planar_graph",
+          "degree",
+          "cycle",
+          "path"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-suppress-short-chains",
+      "title": "Если длинной цепочки нет, стягиваем все короткие цепочки степени 2",
+      "text": "После стягивания максимальных путей с внутренними вершинами степени 2 получился бы планарный граф минимальной степени хотя бы 3 и обхвата хотя бы 6, что противоречит формуле Эйлера.",
+      "tags": [
+        "planar_graphs",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-euler-suppression",
+      "title": "Доказательство стягиванием цепочек",
+      "text": "Если весь граф \\(H\\) является циклом, то утверждение очевидно: обхват не меньше \\(5m+1\\), значит на цикле можно взять \\(m\\) подряд идущих внутренних вершин степени \\(2\\).\n\nПусть теперь \\(H\\) не цикл и предположим, что нужного пути нет. Рассмотрим все максимальные простые пути, внутренние вершины которых имеют степень \\(2\\), а концы имеют степень не равную \\(2\\) или совпадают с точками ветвления. Стянем каждый такой путь в одно ребро. По предположению ни один из этих путей не содержит \\(m\\) внутренних вершин степени \\(2\\), поэтому каждое новое ребро заменяет путь длины не больше \\(m\\).\n\nОбозначим полученный граф через \\(H'\\). Он планарен. В нём нет вершин степени \\(1\\), потому что в \\(H\\) минимальная степень была хотя бы \\(2\\), а все вершины степени \\(2\\) были подавлены. Значит минимальная степень \\(H'\\) не меньше \\(3\\). Кроме того, в \\(H'\\) нет цикла длины не больше \\(5\\): такой цикл после разворачивания стянутых рёбер дал бы в \\(H\\) цикл длины не больше \\(5m\\), что запрещено обхватом \\(5m+1\\). В частности, петель и кратных рёбер, образующих циклы длины \\(1\\) или \\(2\\), тоже нет.\n\nИтак, \\(H'\\) — простой планарный граф минимальной степени хотя бы \\(3\\) и обхвата хотя бы \\(6\\). Пусть в нём \\(V\\) вершин, \\(E\\) рёбер и \\(F\\) граней. Из минимальной степени следует \\(2E\\ge3V\\). С другой стороны, каждая грань имеет длину не меньше \\(6\\), поэтому \\(2E\\ge6F\\), то есть \\(F\\le E/3\\). Формула Эйлера даёт \\(V-E+F=2\\), откуда \\(2\\le V-E+E/3=V-2E/3\\). Значит \\(E\\le3V/2-3\\), что противоречит \\(E\\ge3V/2\\). Противоречие доказывает существование требуемого пути.",
+      "idea_ids": [
+        "idea-suppress-short-chains"
+      ],
+      "standard_idea_ids": [
+        "extremal_choice"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "planar_graph",
+        "degree",
+        "cycle",
+        "path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 4,
+    "comment": "Стандартная эйлерова лемма о планарных графах большого обхвата.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "planar_graphs",
+    "extremal_graph_theory",
+    "goal_existence"
+  ],
+  "sources": [
+    {
+      "source_id": "src-ntu-strong-edge-coloring-planar-large-girth-2013",
+      "role": "context_reference_for_application",
+      "status": "source_verified",
+      "note": "Лемма используется как школьный эйлеров фрагмент в самодостаточном специальном случае сильной рёберной раскраски."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-06",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Создано в ходе external theorem audit group A как вынесенная планарная лемма для FYUM 2013 tur2a P1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "graph_theory_absent_reason": "Исходная формулировка уже является графовой леммой.",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "самодостаточная лемма",
+      "status": "ai_checked",
+      "confidence": 0.92,
+      "basis": "external theorem audit group A, 2026-05-06",
+      "notes": "Полное доказательство приведено в карточке; используется только формула Эйлера.",
+      "audit_source": "external-theorem-audit-group-a"
+    }
+  }
+}

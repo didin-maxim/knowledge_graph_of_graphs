@@ -15,20 +15,36 @@
       "simple_graph",
       "chromatic_number",
       "edge_coloring",
-      "monochromatic_tree"
+      "monochromatic_tree",
+      "monochromatic_connected_component",
+      "bipartite_multigraph"
     ],
     "methods": [
       "monochromatic_components",
-      "intersection_graph",
-      "coloring_argument"
+      "component_intersection_multigraph",
+      "konig_line_coloring",
+      "vertex_coloring_from_edge_coloring"
+    ],
+    "transformations": [
+      "red_blue_components_to_bipartite_multigraph",
+      "edge_coloring_auxiliary_graph_to_vertex_coloring"
     ],
     "goal": [
       "prove_existence"
     ],
+    "auxiliary_graph_type": [
+      "bipartite_multigraph"
+    ],
+    "invariants": [
+      "degree_of_component_node_equals_component_size",
+      "disjoint_auxiliary_edges_give_nonadjacent_original_vertices"
+    ],
     "keywords": [
       "schweitzer_2012_p3",
       "chromatic_number",
-      "monochromatic_tree"
+      "monochromatic_tree",
+      "bialostocki_gyarfas_2015",
+      "erdos_rado_tree_extension"
     ],
     "status": "ai_checked"
   },
@@ -39,7 +55,7 @@
         "title": "Два цвета на ребрах",
         "text": "Пусть дан простой граф, хроматическое число которого равно \\(k\\). Все его ребра раскрашены в два цвета. Докажите, что существует одноцветное дерево с \\(k\\) вершинами.",
         "source_id": "src-miklos-schweitzer-2012-p3-official",
-        "status": "needs_human_review",
+        "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -53,14 +69,15 @@
       {
         "id": "stmt-graph",
         "title": "Графовая формулировка",
-        "text": "В любой 2-раскраске ребер графа \\(G\\) с \\(\\chi(G)=k\\) одна из одноцветных компонент имеет не меньше \\(k\\) вершин; взяв в ней остовное дерево на \\(k\\) вершинах, получаем требуемое одноцветное дерево.",
+        "text": "В любой 2-раскраске ребер графа \\(G\\) с \\(\\chi(G)=k\\) одна из одноцветных компонент имеет не меньше \\(k\\) вершин; взяв ее остовное дерево и при необходимости удаляя листья, получаем одноцветное дерево ровно на \\(k\\) вершинах.",
         "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
         },
         "definition_ids": [
           "connected_graph",
-          "tree"
+          "tree",
+          "chromatic_number"
         ],
         "distinct_from": [
           "stmt-original"
@@ -71,9 +88,9 @@
   },
   "ideas": [
     {
-      "id": "idea-components-color-vertices",
-      "title": "Малые одноцветные компоненты дали бы правильную раскраску вершин",
-      "text": "Если каждая одноцветная компонента имеет меньше \\(k\\) вершин, можно попытаться закодировать вершину парой ее красной и синей компонент и получить раскраску исходного графа менее чем в \\(k\\) цветов. Противоречие с \\(\\chi(G)=k\\) заставляет одну компоненту иметь хотя бы \\(k\\) вершин.",
+      "id": "idea-components-as-bipartite-multigraph",
+      "title": "Одноцветные компоненты становятся вершинами двудольного мультиграфа",
+      "text": "Вершину исходного графа можно рассматривать как ребро между ее красной и синей компонентами. Если все одноцветные компоненты имеют меньше \\(k\\) вершин, то этот двудольный мультиграф имеет максимальную степень меньше \\(k\\); по теореме Кёнига его ребра раскрашиваются в меньше чем \\(k\\) цветов. Такая раскраска ребер дает правильную раскраску вершин исходного графа, противореча \\(\\chi(G)=k\\).",
       "tags": [
         "coloring",
         "connectivity",
@@ -84,27 +101,37 @@
   ],
   "solutions": [
     {
-      "id": "sol-gyarfas-simonsovits",
-      "title": "Компонента размера не меньше хроматического числа",
-      "text": "Используем стандартную лемму: в любой раскраске ребер графа в два цвета существует одноцветная связная компонента, содержащая не меньше \\(\\chi(G)\\) вершин. Действительно, если все одноцветные компоненты меньше \\(\\chi(G)\\), то сжатие компонент одного цвета и рассмотрение пересечений с компонентами другого цвета дает правильную вершинную раскраску с меньшим числом цветов; это противоречит определению хроматического числа. Поэтому есть одноцветная компонента \\(C\\) с \\(|C|\\ge k\\). В связном графе \\(C\\) выберем любые \\(k\\) вершин и минимальный связный подграф, который их содержит; из него удалением циклов получаем одноцветное дерево с \\(k\\) вершинами.",
+      "id": "sol-bialostocki-gyarfas-konig-components",
+      "title": "Двудольный мультиграф красных и синих компонент",
+      "text": "Случай \\(k=1\\) тривиален: любая вершина является деревом на одной вершине. Далее считаем \\(k\\ge 2\\).\n\nРассмотрим красный подграф, состоящий из всех вершин \\(G\\) и только красных ребер, и синий подграф, состоящий из всех вершин \\(G\\) и только синих ребер. Пусть \\(R_1,R_2,\\ldots\\) - красные компоненты связности, а \\(B_1,B_2,\\ldots\\) - синие компоненты связности. Построим вспомогательный двудольный мультиграф \\(H\\): в одной доле стоят все красные компоненты \\(R_i\\), в другой - все синие компоненты \\(B_j\\), а каждой вершине \\(v\\in V(G)\\) соответствует ребро \\(e_v\\), соединяющее ту красную компоненту и ту синюю компоненту, которым принадлежит \\(v\\). Если несколько вершин лежат в одной и той же паре компонент, в \\(H\\) появляются параллельные ребра, что разрешено.\n\nСтепень вершины \\(R_i\\) в \\(H\\) равна \\(|R_i|\\), потому что ровно вершины красной компоненты \\(R_i\\) дают ребра, инцидентные \\(R_i\\). Аналогично степень вершины \\(B_j\\) равна \\(|B_j|\\). Предположим от противного, что каждая одноцветная компонента имеет не более \\(k-1\\) вершин. Тогда максимальная степень \\(\\Delta(H)\\le k-1\\).\n\nПо теореме Кёнига о рёберной раскраске двудольного мультиграфа ребра \\(H\\) можно правильно раскрасить в \\(\\Delta(H)\\le k-1\\) цветов: любые два ребра с общим концом получают разные цвета. Перенесем эту раскраску обратно на вершины \\(G\\): вершине \\(v\\) дадим цвет ребра \\(e_v\\). Это правильная раскраска вершин исходного графа. В самом деле, если \\(uv\\) - красное ребро в \\(G\\), то \\(u\\) и \\(v\\) лежат в одной красной компоненте, значит ребра \\(e_u\\) и \\(e_v\\) имеют общий конец \\(R_i\\) в \\(H\\) и потому окрашены различно. Для синего ребра рассуждение такое же через общий конец \\(B_j\\). Следовательно, \\(G\\) можно правильно раскрасить не более чем в \\(k-1\\) цветов, что противоречит \\(\\chi(G)=k\\).\n\nЗначит, некоторая красная или синяя компонента \\(C\\) содержит хотя бы \\(k\\) вершин. Возьмем остовное дерево этой компоненты; все его ребра имеют один цвет. Если в нем больше \\(k\\) вершин, будем удалять листья, пока не останется ровно \\(k\\) вершин. После удаления листа дерево остается деревом, а цвет всех оставшихся ребер не меняется. Получаем одноцветное дерево на \\(k\\) вершинах.",
       "idea_ids": [
-        "idea-components-color-vertices"
+        "idea-components-as-bipartite-multigraph"
       ],
       "standard_idea_ids": [
-        "invariant"
+        "minimal_counterexample"
       ],
-      "status": "needs_human_review",
+      "status": "ai_checked",
+      "application_type": "external_theorem_application",
+      "external_theorem_ids": [
+        "konig-line-coloring-bipartite"
+      ],
       "definition_ids": [
         "chromatic_number",
-        "tree"
+        "connected_graph",
+        "tree",
+        "bipartite_graph",
+        "degree"
+      ],
+      "uses_results": [
+        "konig-line-coloring-bipartite"
       ]
     }
   ],
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
-    "comment": "Ключ - известная лемма о большой одноцветной компоненте в терминах хроматического числа.",
-    "status": "needs_human_review"
+    "comment": "Ключ - заменить вершины исходного графа ребрами между красными и синими компонентами и применить теорему Кёнига о рёберной раскраске двудольного мультиграфа.",
+    "status": "ai_checked"
   },
   "tags": [
     "coloring",
@@ -116,36 +143,41 @@
   "properties": {
     "central_method": {
       "value": [
-        "monochromatic_component_chromatic_bound"
+        "monochromatic_component_chromatic_bound",
+        "component_intersection_bipartite_multigraph",
+        "konig_line_coloring",
+        "edge_coloring_to_vertex_coloring"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
     {
       "source_id": "src-miklos-schweitzer-2012-p3-official",
       "role": "official_statement",
-      "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2012-eng.pdf",
+      "url": "https://www.math.u-szeged.hu/~mmaroti/schweitzer/schweitzer-2012-eng.pdf",
       "status": "source_verified"
     }
   ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-02",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
-      "Добавлено стандартное решение-идея; желательно сверить с официальным венгерским решением."
+      "Условие сверено по английскому официальному листку Schweitzer 2012.",
+      "Полное доказательство восстановлено по Theorem 1 из препринта Bialostocki--Gyárfás 2015; это ровно данная задача в обозначении \\(n=k\\).",
+      "Официальный венгерский файл решений для Schweitzer 2012 в открытом поиске не найден; published_generalization_and_solution покрывает доказательство."
     ],
-    "relations_status": "not_started",
+    "relations_status": "deep_done",
     "solution_classification": {
-      "type": "ai_heavy_external_theorem",
-      "label": "решение с тяжёлыми внешними теоремами",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "agent grouped classification",
-      "audit_source": "agent-university-archives.json"
+      "type": "unofficial_published",
+      "label": "опубликованное неофициальное",
+      "status": "ai_checked",
+      "confidence": 0.95,
+      "basis": "Theorem 1 of Bialostocki--Gyárfás, arXiv:1506.04495, proves the same statement for every n-chromatic host graph.",
+      "notes": "Доказательство использует стандартную теорему Кёнига о рёберной раскраске двудольного мультиграфа; соответствующая classical-карточка уже есть в базе.",
+      "audit_source": "manual-official-plan-expansion-2026-05-06"
     }
   }
 }

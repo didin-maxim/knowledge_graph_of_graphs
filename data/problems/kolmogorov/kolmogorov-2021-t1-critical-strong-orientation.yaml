@@ -136,18 +136,27 @@
     "public_ready": false,
     "notes": [
       "2026-05-05 split-lemma pass: вынесены теорема Роббинса, отсутствие мостов из 2-вершинной связности и точный критерий критической сильной ориентации через мост в \\(G-e\\).",
-      "2026-05-05 audit: прежний шаг про бесхордные циклы не является корректным в указанной общности; карточка помечена как disputed до сверки исходной формулировки или добавления недостающего условия."
+      "2026-05-05 audit: прежний шаг про бесхордные циклы не является корректным в указанной общности; карточка помечена как disputed до сверки исходной формулировки или добавления недостающего условия.",
+      "2026-05-06 group C audit: Robbins and the bridge lemmas cover strong orientability once bridgelessness is known, but the disputed step \"chordless cycles imply every G-e has a bridge\" is still not proved from the stated hypotheses; no school closure was added."
     ],
     "graph_theory_duplicate_removed": true,
     "relations_status": "deep_done",
     "solution_classification": {
-      "type": "ai_heavy_external_theorem",
-      "label": "решение с тяжёлыми внешними теоремами",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "solution depends materially on a named external theorem/reference rather than only archive text",
-      "audit_source": "agent-russian-archives.json"
+      "type": "disputed_external_theorem_application",
+      "label": "analysis with an unclosed disputed gap",
+      "status": "disputed",
+      "confidence": 0.82,
+      "basis": "group C audit 2026-05-06",
+      "external_theorem_ids": [
+        "robbins-strong-orientation-theorem",
+        "edge-critical-bridgeless-graphs-give-critical-strong-orientations"
+      ],
+      "local_tool_solution_ids": [
+        "two-vertex-connected-graphs-have-no-bridges#sol-delete-endpoint",
+        "edge-critical-bridgeless-graphs-give-critical-strong-orientations#sol-robbins-plus-criticality"
+      ],
+      "gap_status": "unclosed_disputed_step",
+      "notes": "The local lemmas prove the Robbins setup and the criticality criterion, but not the missing hypothesis that G-e has a bridge for every edge e under the current statement."
     }
   }
 }

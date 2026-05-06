@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-bounded-forward-rays-apmo-2016-functional-digraph",
+      "from": "bounded-forward-rays-balanced-sums",
+      "to": "apmo-2016-p4-dreamland-28-step-coloring",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе карточки переводят условие в функциональный ориентированный граф с ограниченным движением вперед. В лемме IMO 2015 C5 важны ограниченные длины стрелок \\(i\\to i+a_i\\), инъективность концов и учет активных стрелок через вертикальные высоты; в APMO 2016 P4 важен конечный outdegree-1 граф и ограниченная достижимость за 28 шагов.",
+      "backward_text": "APMO 2016 P4 является более обычной конечной задачей о функциональном графе и графе ограниченной достижимости, тогда как bounded-forward-rays добавляет линейный порядок, инъективность правых концов и телескопирование суммы длин стрелок.",
+      "anchors": {
+        "from_solution_id": "sol-pool-of-balls",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-bounded-forward-rays-cmo-2025-functional-digraph-dynamics",
+      "from": "bounded-forward-rays-balanced-sums",
+      "to": "cmo-2025-p1-voting-functional-graph",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе задачи используют outdegree-1 ориентированный граф и доказывают стабилизацию через ограниченную монотонную величину. Здесь число активных стрелок \\(B_t\\) не убывает и ограничено \\(L\\), после чего телескопируется сумма высот; в CMO 2025 P1 длина единственного цикла, а затем длины путей к петле, убывают при pointer-jumping.",
+      "backward_text": "CMO 2025 P1 дает динамическую модель функционального орграфа, где прогресс измеряется сжатием цикла и путей. В лемме IMO 2015 C5 динамика искусственная: окно движется вправо по фиксированному графу, но тот же стиль учета ограниченной стабилизации приводит к глобальному выводу.",
+      "anchors": {
+        "from_idea_id": "idea-eventual-pool-size",
+        "to_idea_id": "idea-halving"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

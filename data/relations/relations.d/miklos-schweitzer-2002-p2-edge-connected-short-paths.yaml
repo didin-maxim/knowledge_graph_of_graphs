@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-miklos-2002-p2-menger-theorem-short-edge-version",
+      "from": "menger-theorem",
+      "to": "miklos-schweitzer-2002-p2-edge-connected-short-paths",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Обычная теорема Менгера дает только существование \\(k\\) реберно-непересекающихся \\(u\\)-\\(v\\)-путей из \\(k\\)-реберной связности. Задача Schweitzer 2002/2 является количественным усилением: нужно выбрать такие пути одновременно короткими, что достигается короткой формой Менгера Галиля--Ю.",
+      "backward_text": "Schweitzer 2002/2 показывает, зачем нужна короткая версия Менгера: простого равенства между разрезами и числом непересекающихся путей недостаточно, требуется контролировать длину каждого пути через минимальную степень и min-cost-flow аргумент.",
+      "anchors": {
+        "from_solution_id": "sol-edge-form-by-flow",
+        "to_solution_id": "sol-short-length-menger-galil-yu"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-miklos-2002-p2-imo-2021-c4-edge-menger",
+      "from": "miklos-schweitzer-2002-p2-edge-connected-short-paths",
+      "to": "imo-2021-c4-anisotropy-menger",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют реберную форму теоремы Менгера как язык между числом непересекающихся путей и разрезами. В Schweitzer 2002/2 Менгер дает стартовые \\(k\\) путей, после чего применяется короткая версия; в IMO 2021 C4 вся задача решается сравнением минимальных ориентированных разрезов.",
+      "backward_text": "IMO 2021 C4 — близкая тренировочная карточка по реберному Менгеру: там важно точно считать разрезы в турнире, тогда как в Schweitzer 2002/2 к той же базе добавляется количественный контроль длины путей.",
+      "anchors": {
+        "from_solution_id": "sol-short-length-menger-galil-yu",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-miklos-2002-p2-spbmo-2013-8-p5-menger-dominators",
+      "from": "miklos-schweitzer-2002-p2-edge-connected-short-paths",
+      "to": "spbmo-2013-8-p5-capital-directed-disjoint-paths",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи превращают условие связности в утверждение о непересекающихся путях через форму теоремы Менгера. В Schweitzer 2002/2 это реберно-непересекающиеся пути с дополнительной оценкой длины, а в СПбМО 2013/8 P5 — двухпутевая вершинная форма, переформулированная через доминаторы.",
+      "backward_text": "СПбМО 2013/8 P5 полезна как более элементарная пара к Schweitzer 2002/2: она показывает, как Менгер создает структурный язык для непересекающихся путей, хотя не содержит коротко-длинностного слоя Галиля--Ю.",
+      "anchors": {
+        "from_solution_id": "sol-short-length-menger-galil-yu",
+        "to_solution_id": "sol-dominators-transitivity"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-miklos-2002-p2-kolmogorov-2014-diameter-connectivity",
+      "from": "miklos-schweitzer-2002-p2-edge-connected-short-paths",
+      "to": "kolmogorov-2014-round4-diameter-cycle-length",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки извлекают длинностную информацию из повышенной связности. Schweitzer 2002/2 доказывает существование многих коротких реберно-непересекающихся путей в сильно реберно-связном графе; задача Колмогорова использует отсутствие точек сочленения и Менгера, чтобы получить цикл длины не меньше удвоенного диаметра.",
+      "backward_text": "Задача Колмогорова — родственная по мотиву 'связность плюс расстояния': там Менгер применяется в 2-связном графе для длинного цикла, а в Schweitzer 2002/2 короткая форма Менгера контролирует длины сразу \\(k\\) реберно-непересекающихся путей.",
+      "anchors": {
+        "from_solution_id": "sol-short-length-menger-galil-yu",
+        "to_solution_id": "sol-ai-two-connected-diameter"
+      },
+      "status": "ai_checked",
+      "confidence": 0.73
+    },
+    {
+      "id": "rel-menger-theorem-imo-2021-c4-directed-edge-version",
+      "from": "menger-theorem",
+      "to": "imo-2021-c4-anisotropy-menger",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "The directed edge form of Menger converts the maximum number of arc-disjoint directed paths from A to B into the minimum size of the corresponding directed cut. This is the connectivity step used in the IMO 2021 C4 tournament solution.",
+      "backward_text": "IMO 2021 C4 is a clean application of ordinary edge Menger: after invoking the cut/path equality, the remaining work is an elementary comparison of paired cuts in a tournament.",
+      "anchors": {
+        "from_solution_id": "sol-edge-form-by-flow",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    }
+  ]
+}

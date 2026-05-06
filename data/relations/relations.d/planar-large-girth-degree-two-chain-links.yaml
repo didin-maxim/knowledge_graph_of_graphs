@@ -1,0 +1,139 @@
+{
+  "relations": [
+    {
+      "id": "rel-planar-large-girth-degree-two-chain-path-duplicate",
+      "from": "planar-large-girth-degree-two-chain",
+      "to": "planar-large-girth-degree-two-path",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Новая карточка формулирует тот же эйлеров инструмент, что и более ранняя карточка про длинный 2-путь: после подавления коротких цепочек вершин степени 2 остается невозможный простой планарный граф с минимальной степенью хотя бы 3 и обхватом хотя бы 6.",
+      "backward_text": "Старая карточка является тем же результатом в чуть более развернутой записи: ее \"2-путь\" и новая \"цепочка\" совпадают как локальная структура, а доказательство использует то же сжатие максимальных degree-2 paths.",
+      "anchors": {
+        "from_solution_id": "sol-euler-suppression",
+        "to_solution_id": "sol-contract-two-paths-and-euler"
+      },
+      "status": "ai_checked",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-euler-formula-planar-degree-two-chain",
+      "from": "euler-formula-planar",
+      "to": "planar-large-girth-degree-two-chain",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Формула Эйлера является финальным подсчетным входом: в сжатом графе girth at least 6 дает \\(F\\le E/3\\), а вместе с \\(V-E+F=2\\) получается верхняя оценка \\(E\\le 3V/2-3\\).",
+      "backward_text": "Лемма о длинной цепочке вершин степени 2 показывает типичное применение формулы Эйлера после локальной редукции: сначала подавляются короткие 2-цепочки, затем face count противоречит минимальной степени 3.",
+      "anchors": {
+        "from_solution_id": "sol-reduce-to-tree",
+        "to_solution_id": "sol-euler-suppression"
+      },
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-planar-edge-bound-degree-two-chain",
+      "from": "planar-edge-bound",
+      "to": "planar-large-girth-degree-two-chain",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Обе карточки используют один и тот же planar edge bound по граням; в этой лемме он применяется в форме для графа обхвата не меньше 6, где \\(E\\le 3V/2-3\\).",
+      "backward_text": "Лемма о degree-2 chain является уточненным применением planar edge bounds: оценка на число ребер запускается не на исходном графе, а на ядре после suppression/subdivision редукции.",
+      "anchors": {
+        "from_solution_id": "sol-face-counting",
+        "to_solution_id": "sol-euler-suppression"
+      },
+      "status": "ai_checked",
+      "confidence": 0.91
+    },
+    {
+      "id": "rel-fyum-2013-tur2a-p1-degree-two-chain",
+      "from": "planar-large-girth-degree-two-chain",
+      "to": "fyum-2013-tur2a-p1",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Эта лемма является структурным входом для FYUM 2013: в планарном графе большого обхвата она находит длинную цепочку внутренних вершин степени 2, после чего решение может удалять и докрашивать путь.",
+      "backward_text": "FYUM 2013 использует результат не как самостоятельную цель, а как первый шаг strong edge coloring: длинная degree-2 chain создает участок, который удобно временно убрать и затем восстановить раскраску.",
+      "anchors": {
+        "from_solution_id": "sol-euler-suppression",
+        "to_solution_id": "sol-official-archive"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-degree-two-chain-greedy-strong-edge-coloring-bound",
+      "from": "planar-large-girth-degree-two-chain",
+      "to": "greedy-strong-edge-coloring-bound",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Связь идет через область strong edge coloring: degree-2 chain lemma дает планарную редукцию для больших обхватов, а greedy bound является более грубым универсальным счетом конфликтов на расстоянии два.",
+      "backward_text": "Жадная strong edge coloring оценка не использует планарность и обхват, но служит соседним базовым инструментом той же темы: обе карточки готовят локальный участок, где ребра можно раскрашивать после подсчета запрещенных цветов.",
+      "anchors": {
+        "from_solution_id": "sol-euler-suppression",
+        "to_solution_id": "sol-greedy-distance-two-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.68
+    },
+    {
+      "id": "rel-disk-boundary-chain-degree-two-chain",
+      "from": "disk-triangulation-boundary-degree-chain-reduction",
+      "to": "planar-large-girth-degree-two-chain",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе леммы являются школьными planar curvature редукциями: эйлеров подсчет заставляет существовать локально удаляемую цепочку, только в диске это граничная цепь степеней \\(3,4,\\ldots,4,3\\), а здесь цепочка внутренних вершин степени 2.",
+      "backward_text": "Лемма о degree-2 chain является бескраевой large-girth версией того же discharging-like мотива: отсутствие нужной локальной конфигурации сжимается в глобальное противоречие формуле Эйлера.",
+      "anchors": {
+        "from_solution_id": "sol-euler-count-and-boundary-strip",
+        "to_solution_id": "sol-euler-suppression"
+      },
+      "status": "ai_checked",
+      "confidence": 0.81
+    },
+    {
+      "id": "rel-quadrangulation-face-count-degree-two-chain",
+      "from": "quadrangulation-euler-face-count",
+      "to": "planar-large-girth-degree-two-chain",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки изолируют чистый эйлеров face count: нижняя граница на длины граней переводится в неравенство для \\(E,F,V\\), а затем сравнивается с локальной степенной информацией.",
+      "backward_text": "Degree-2 chain lemma применяет такой face count после suppression коротких цепочек; quadrangulation lemma делает похожий подсчет напрямую для дискового разбиения на четырехугольники.",
+      "anchors": {
+        "from_solution_id": "sol-euler-face-count",
+        "to_solution_id": "sol-euler-suppression"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-cubic-polyhedron-large-face-degree-two-chain",
+      "from": "cubic-polyhedron-large-face-fork-strategy-lemma",
+      "to": "planar-large-girth-degree-two-chain",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе леммы используют Euler/discharging-like школьный счет, чтобы принудить локальную конфигурацию в планарном графе: там большую грань в кубическом многограннике, здесь длинную цепочку degree-2 вершин после подавления коротких цепей.",
+      "backward_text": "Лемма о degree-2 chain родственна large-face fork lemma как planar reducible-configuration argument: если нужной локальной структуры нет, сумма степеней и граней нарушает эйлерову формулу.",
+      "anchors": {
+        "from_solution_id": "sol-euler-large-face-and-fork",
+        "to_solution_id": "sol-euler-suppression"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    },
+    {
+      "id": "rel-five-color-low-degree-degree-two-chain",
+      "from": "five-color-theorem",
+      "to": "planar-large-girth-degree-two-chain",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Пятикрасочная теорема использует классическое эйлерово следствие о вершине малой степени; лемма о degree-2 chain использует тот же стиль, но после suppression коротких цепочек получает противоречие с отсутствием малой степени в ядре.",
+      "backward_text": "Degree-2 chain lemma можно читать как более специализированную reducible-configuration лемму для планарных графов большого обхвата: вместо вершины степени не выше 5 она вынуждает длинную цепочку вершин степени 2.",
+      "anchors": {
+        "from_solution_id": "sol-kempe-sketch",
+        "to_solution_id": "sol-euler-suppression"
+      },
+      "status": "ai_checked",
+      "confidence": 0.7
+    }
+  ]
+}

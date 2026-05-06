@@ -1,0 +1,154 @@
+{
+  "relations": [
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-utyum-2021-k5-free",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "utyum-2021_komol_7_no_k5_many_acquaintances",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Лемма напрямую даёт нижнюю оценку в задаче УТЮМ 2021: если при минимальной степени 2021 вершин было бы не больше 2694, то случай \\(r=4\\) вынудил бы клику \\(K_5\\), запрещённую условием.",
+      "backward_text": "УТЮМ 2021 является числовым вариантом той же идеи: чтобы избежать \\(K_5\\) при большой минимальной степени, надо почти разбить граф на четыре независимые доли; доказательство снизу совпадает с жадным продолжением клики через малое число несоседей.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-official"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-mantel",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "mantel-theorem",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются школьными экстремальными формами запрета клики: здесь большая минимальная степень вынуждает \\(K_{r+1}\\), а у Мантеля слишком большое число рёбер вынуждает треугольник.",
+      "backward_text": "Теорема Мантеля даёт ближайший треугольный аналог: вместо жадного продолжения клики через общих соседей она использует суммы степеней и отсутствие общих соседей у концов ребра в треугольник-свободном графе.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-degree-sum"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-kst-c4",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "c4-free-kovari-sos-turan-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Родство в локальном подсчёте общих соседей: лемма гарантирует непустое пересечение окрестностей выбранной клики, а оценка Кёвари-Шоша-Турана ограничивает число таких пересечений, потому что две общие вершины дали бы \\(C_4\\).",
+      "backward_text": "В KST-оценке та же техника работает в противоположную сторону: подсчёт пар соседей и общих соседей запрещает слишком плотный \\(C_4\\)-свободный граф, тогда как минимально-степенная лемма использует плотность для принудительного продолжения клики.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-common-neighbor-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.93
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-complete-minus-few-edges",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "complete-graph-minus-n-minus-2-edges-hamiltonian-path",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи переводят плотность графа в существование общих соседей. В лемме это пересечение окрестностей целой клики, а в задаче о \\(K_n\\) без немногих рёбер сумма степеней даёт общего соседа любой пары вершин.",
+      "backward_text": "Гамильтонов путь после удаления малого числа рёбер использует близкую локальную плотностную оценку: если две вершины не имели бы общего соседа, их суммарная степень была бы слишком мала.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-official-longest-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.87
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-vosh-2008-common-neighborhood",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "vosh-2008-regional-bureaucrats-common-neighborhood",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Связь идёт через общие окрестности: в лемме они получаются из большой минимальной степени и объединения множеств несоседей, а во ВсОШ 2008 большая общая окрестность пары возникает из двойного счёта троек.",
+      "backward_text": "Задача про бюрократов является трёхдольным вариантом поиска большой общей окрестности; вместо кликового продолжения она усредняет пары из двух комиссий по третьей комиссии.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-double-counting-triples"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-usamo-2022-mathbook",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "usamo-2022-p6-mathbook-two-common-friends-closure",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки используют общих друзей как механизм достраивания полной структуры: здесь общий сосед продолжает клику, а в USAMO 2022 две общие вершины позволяют добавить ребро и постепенно достраивать \\(K_4\\).",
+      "backward_text": "Mathbook-задача развивает близкую идею замыкания по общим соседям: наличие двух общих друзей превращает \\(C_4\\) в \\(K_4\\), то есть локальное пересечение окрестностей порождает новые кликовые рёбра.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-c4-closure-extremal"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-vosh-2025-red-pairs",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "vosh-2025-26-regional-common-neighborhood-red-pairs",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Родство в плотном локальном счёте окрестностей: лемма ищет вершину в общем пересечении соседств уже выбранной клики, а задача ВсОШ 2025/26 считает красные пары внутри синих окрестностей регулярного графа.",
+      "backward_text": "ВсОШ 2025/26 использует тот же язык окрестностей в плотном графе, но цель другая: не вынудить клику, а показать, что в некоторой окрестности накопится много пар несмежных вершин.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-official-neighborhood-intersection"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-imc-2011-tripartite",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "imc-2011-day2-p2-tripartite-married-triples",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки являются плотностными условиями на минимальные степени, вынуждающими кликовые объекты: в лемме это обычная клика, а в IMC 2011 треугольники в трёхдольном графе и затем треугольный фактор.",
+      "backward_text": "IMC 2011 можно читать как multipartite-родственника: большая степень в каждую другую долю создаёт достаточно много локальных продолжений треугольников, после чего подключаются обмены и Холл.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-shortest-odd-cycle-k4-free",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "shortest-odd-cycle-external-neighbor-bound",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе карточки контролируют локальное расширение клики в графе с запрещённой кликой: лемма доказывает, что при достаточно большой степени продолжение возможно, а лемма о кратчайшем нечётном цикле показывает, что три соседа внешней вершины привели бы к \\(K_4\\) или более короткому нечётному циклу.",
+      "backward_text": "Кратчайший нечётный цикл даёт локальное ограничение в \\(K_4\\)-свободном графе: вершина не может иметь слишком много соседей на цикле, потому что это сразу создаёт запрещённую клику или нарушает минимальность цикла.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-odd-arc-or-k4"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-min-degree-common-neighborhood-clique-yumt-2021-clique-count",
+      "from": "min-degree-common-neighborhood-clique",
+      "to": "yumt-2021-grand-round1-problem2",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе связи лежат в зоне forbidden clique и турановских экстремальных графов: лемма даёт минимально-степенной порог существования большой клики, а задача ЮМТ 2021 оценивает суммарное число клик при запрете \\(K_{k+1}\\).",
+      "backward_text": "ЮМТ 2021 является более глобальным экстремальным родственником: вместо одной вынужденной клики он сравнивает все числа клик с полным почти равнодольным графом Турана.",
+      "anchors": {
+        "from_solution_id": "sol-union-bound",
+        "to_solution_id": "sol-ai-zykov-turan-product-bound"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    }
+  ]
+}

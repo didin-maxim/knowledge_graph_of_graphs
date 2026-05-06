@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-spbmo2003-p5-to-strong-edge-coloring-conflict-distance",
+      "from": "spbmo-2003-9-qual-p5-edge-colored-graph-vertex-coloring",
+      "to": "greedy-strong-edge-coloring-bound",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В задаче СПбМО реберная раскраска уже дана и запрещает совпадение цветов на первом и третьем ребрах пути длины 3; это близко к конфликтному графу ребер на расстоянии два, который используется в сильной реберной раскраске. Отличие в том, что здесь из локального реберного ограничения извлекается верхняя оценка для вершинной раскраски исходного графа.",
+      "backward_text": "Жадная оценка сильной реберной раскраски строит раскраску ребер, запрещая одинаковые цвета на близких ребрах. СПбМО 2003 P5 использует родственное ограничение как входное условие и переводит его в структурное утверждение о множествах инцидентных цветов у вершин.",
+      "anchors": {
+        "from_solution_id": "sol-incident-color-sets-and-reserved-color-stars",
+        "to_solution_id": "sol-greedy-distance-two-counting"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-spbmo2003-p5-to-mmo2012-subset-intersection-coloring",
+      "from": "spbmo-2003-9-qual-p5-edge-colored-graph-vertex-coloring",
+      "to": "mmo-2012-three-subsets-coloring",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Решение СПбМО 2003 P5 кодирует вершину множеством инцидентных цветов и сводит основную часть раскраски к конечному графу типов подмножеств, где смежность определяется одноэлементным пересечением. ММО 2012 также изучает хроматическое число графа на подмножествах с пересечениями, но делает это в точной экстремальной постановке для троек.",
+      "backward_text": "ММО 2012 является более чистой задачей о графе на подмножествах и их пересечениях. В СПбМО 2003 P5 такой граф типов появляется как вспомогательный объект после анализа исходной реберной раскраски; затем одноэлементные типы требуют дополнительной докраски звезд зарезервированным цветом.",
+      "anchors": {
+        "from_solution_id": "sol-incident-color-sets-and-reserved-color-stars",
+        "to_solution_id": "sol-official-summary"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-spbmo2003-p5-to-imc2022-auxiliary-chromatic-model",
+      "from": "spbmo-2003-9-qual-p5-edge-colored-graph-vertex-coloring",
+      "to": "imc-2022-day1-p4-triples-chromatic-loglog",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Обе задачи получают оценку хроматического числа не прямой жадной раскраской исходного графа, а через вспомогательную модель: в СПбМО это конечный граф типов инцидентных цветов, в IMC 2022 - последовательность shift/de Bruijn-подобных графов для раскрасок троек.",
+      "backward_text": "IMC 2022 использует вспомогательные графы, чтобы итеративно контролировать хроматические числа. СПбМО 2003 P5 является более олимпиадно-конечной версией того же приема: локальное условие сначала превращается в маленькую типовую модель, после чего остается докраска звездных одноцветных компонент.",
+      "anchors": {
+        "from_solution_id": "sol-incident-color-sets-and-reserved-color-stars",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    }
+  ]
+}

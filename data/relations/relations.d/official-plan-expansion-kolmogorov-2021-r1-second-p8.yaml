@@ -1,0 +1,34 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm-2021-p8-kolm-2023-monochromatic-bipartite-components",
+      "from": "kolmogorov-2021-round1-second-league-problem-8",
+      "to": "kolmogorov-2023-lichol-large-monochromatic-bipartite-component",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи работают с раскраской рёбер полного двудольного графа и с одноцветными компонентами. В задаче 2021 года компоненты всех цветов подсчитываются через величины e_i-1, а в задаче 2023 года выбирается самый плотный цвет и большая компонента извлекается из суммы степеней.",
+      "backward_text": "Задача 2023 года является более локальной родственницей: она тоже ищет структуру внутри одноцветной компоненты полного двудольного графа, но вместо глобального подсчёта всех цветовых компонент использует один цвет максимальной плотности.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-degree-sum-component"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-kolm-2021-p8-kolm-2002-rare-colors-components",
+      "from": "kolmogorov-2021-round1-second-league-problem-8",
+      "to": "kolmogorov-2002-individual-olympiad-10-11-output-problem-5",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи используют раскраску рёбер полного графового объекта и запрещённую структуру, чтобы получить противоречие из локального учёта цветов. В 2021 году локальный учёт идёт по компонентам цветов вокруг фиксированной вершины, в 2002 году - по максимальному одноцветному пучку из вершины.",
+      "backward_text": "Задача 2002 года является близкой по цветовой экстремальной логике, но проще по структуре: она работает с треугольниками в полном графе, тогда как задача 2021 года требует учитывать одноцветные компоненты в полном двудольном графе.",
+      "anchors": {
+        "from_solution_id": "sol-official-expanded",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    }
+  ]
+}

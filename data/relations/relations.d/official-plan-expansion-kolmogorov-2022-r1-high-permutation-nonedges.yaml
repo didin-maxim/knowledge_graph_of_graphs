@@ -1,0 +1,48 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm-2022-r1-nonedges-tree-components",
+      "from": "kolmogorov-2022-round1-high-edge-count-permutation-nonedges",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "В восстановленном доказательстве после перехода к дополнительному графу используется базовый факт о деревьях: в разреженном графе с не более чем n-2 рёбрами есть либо удобная изолированная вершина, либо две древесные компоненты, из которых берутся листья для индукционного удаления.",
+      "backward_text": "Классические свойства деревьев дают непосредственный язык для задачи KOLM 2022: древесные компоненты, листья и удаление листа превращают условие о перестановках не-рёбер в индукционную лемму о разреженном графе.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-kolm-2022-r1-nonedges-turan-complement-extremal",
+      "from": "turan-theorem",
+      "to": "kolmogorov-2022-round1-high-edge-count-permutation-nonedges",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Теорема Турана является классическим ориентиром для экстремальных задач, где условие удобно читать в дополнительном графе. В KOLM 2022 дополнение тоже переводит исходное условие в ограничение на структуру и число рёбер, но вместо запрещённой клики работает упаковка разреженного графа с самим собой.",
+      "backward_text": "Задача KOLM 2022 полезна как олимпиадный родственник турановской перспективы: максимальное число рёбер исходного графа доказывается через минимальное число рёбер в дополнении и экстремальный аргумент, хотя инструмент не симметризация, а индукционная упаковка.",
+      "anchors": {
+        "from_solution_id": "sol-symmetrization",
+        "to_solution_id": "sol-official-restored"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-kolm-2022-r1-nonedges-baltic-way-edge-packing",
+      "from": "kolmogorov-2022-round1-high-edge-count-permutation-nonedges",
+      "to": "baltic-way-1997-p19-edge-disjoint-hamiltonian-cycles",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Ключевая лемма KOLM 2022 строит перестановку вершин, при которой копия разреженного графа не пересекается с исходным графом по рёбрам. Baltic Way 1997 P19 является более конструктивным родственником того же мотива реберной упаковки, где нужно разложить рёбра полного графа на непересекающиеся гамильтоновы циклы.",
+      "backward_text": "Задача Baltic Way о непересекающихся гамильтоновых циклах показывает явную сторону мотива edge-packing; в KOLM 2022 тот же язык применяется не к полному разложению, а к нахождению одной переставленной копии, реберно не пересекающейся с исходным разреженным графом.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored"
+      },
+      "status": "ai_checked",
+      "confidence": 0.7
+    }
+  ]
+}

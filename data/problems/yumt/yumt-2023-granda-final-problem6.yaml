@@ -18,10 +18,19 @@
   "problem_profile": {
     "objects": [
       "graph",
-      "vertex_disjoint_subgraphs"
+      "vertex_disjoint_subgraphs",
+      "clique",
+      "proper_vertex_coloring"
     ],
-    "methods": [],
-    "transformations": [],
+    "methods": [
+      "maximal_clique",
+      "local_recoloring",
+      "contradiction"
+    ],
+    "transformations": [
+      "split_off_maximum_clique",
+      "absorb_last_color_into_clique_colors"
+    ],
     "goal": [
       "existence_of_chromatic_partition"
     ],
@@ -32,9 +41,11 @@
       "2023_granda_final_problem6",
       "yumt_2023",
       "chromatic_partition",
-      "erdos_lovasz_tihany"
+      "erdos_lovasz_tihany",
+      "maximum_clique",
+      "recoloring"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -48,15 +59,43 @@
           "status": "ai_checked"
         },
         "definition_ids": [
-          "chromatic_number"
+          "chromatic_number",
+          "clique"
         ]
       }
     ],
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [],
-  "solutions": [],
+  "ideas": [
+    {
+      "id": "idea-maximum-clique-remainder",
+      "title": "Максимальная клика и остаток",
+      "text": "Если \\(K\\) — максимальная клика размера \\(k\\), то достаточно доказать, что остаток \\(G\\setminus K\\) нельзя покрасить в \\(n-k\\) цветов. Иначе один цвет остатка можно перекрасить в цвета клики: каждая внешняя вершина не смежна хотя бы с одной вершиной максимальной клики.",
+      "tags": [
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-kvant-maximum-clique",
+      "title": "Отделить максимальную клику",
+      "text": "Выберем в \\(G\\) клику \\(K\\) наибольшего размера; пусть \\(V(K)=\\{A_1,\\ldots,A_k\\}\\). Тогда \\(\\chi(K)=k\\), причём \\(k\\le n\\). Так как в \\(G\\) больше чем \\(n\\) вершин, клика \\(K\\) не совпадает со всем графом: если бы \\(K=G\\), то число вершин было бы \\(k\\le n\\).\n\nПоложим \\(G_1=K\\), а \\(G_2=G\\setminus K\\), то есть возьмём подграф, индуцированный всеми вершинами вне \\(K\\). Эти два подграфа не пересекаются по вершинам. Если \\(k=n\\), то \\(G_2\\) непуст, поэтому \\(\\chi(G_1)+\\chi(G_2)\\ge n+1\\). Остаётся случай \\(k<n\\).\n\nДокажем, что \\(\\chi(G_2)>n-k\\). Предположим противное: вершины \\(G_2\\) правильно раскрашены не более чем в \\(n-k\\) цветов. Обозначим эти цвета через \\(c_{k+1},\\ldots,c_n\\) (неиспользованные цвета можно просто добавить к списку), а вершину \\(A_i\\) клики покрасим в цвет \\(c_i\\) для \\(i=1,\\ldots,k\\). Получилась правильная \\(n\\)-раскраска всего графа.\n\nТеперь избавимся от цвета \\(c_n\\). Возьмём любую вершину \\(v\\) цвета \\(c_n\\). Она лежит вне \\(K\\). Если бы \\(v\\) была смежна со всеми вершинами \\(A_1,\\ldots,A_k\\), то \\(K\\cup\\{v\\}\\) была бы кликой большего размера, что невозможно. Значит, для этой вершины найдётся \\(A_i\\), не смежная с \\(v\\); перекрасим \\(v\\) в цвет \\(c_i\\). Сделаем так для всех вершин цвета \\(c_n\\).\n\nПосле перекраски правильность не нарушится. Действительно, до перекраски цвета \\(c_1,\\ldots,c_k\\) встречались только на соответствующих вершинах \\(A_1,\\ldots,A_k\\); каждая новая вершина цвета \\(c_i\\) специально выбрана не смежной с \\(A_i\\), а любые две перекрашенные вершины раньше имели общий цвет \\(c_n\\), значит, не были смежны между собой. Цвет \\(c_n\\) исчез, и мы получили правильную раскраску графа \\(G\\) в \\(n-1\\) цвет, противореча \\(\\chi(G)=n\\).\n\nСледовательно, \\(\\chi(G_2)\\ge n-k+1\\), и потому\n\\[\n\\chi(G_1)+\\chi(G_2)\\ge k+(n-k+1)=n+1.\n\\]\nИскомые непересекающиеся по вершинам подграфы найдены.",
+      "idea_ids": [
+        "idea-maximum-clique-remainder"
+      ],
+      "standard_idea_ids": [
+        "local_recoloring"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "chromatic_number",
+        "clique"
+      ]
+    }
+  ],
   "difficulty": {
     "main": "regional",
     "local_score": 6,
@@ -67,6 +106,15 @@
     "coloring",
     "goal_existence"
   ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "maximal_clique",
+        "local_recoloring"
+      ],
+      "status": "ai_checked"
+    }
+  },
   "sources": [
     {
       "source_id": "src-yumt-2023-granda-final-problem6-official",
@@ -82,38 +130,43 @@
       "role": "related_external_source",
       "status": "source_verified",
       "notes": "Только теоретический контекст Erdős-Lovász-Tihany для специальных классов графов; не является решением задачи ЮМТ."
+    },
+    {
+      "source_id": "src-kvant-2024-04-m2780-solution",
+      "role": "published_solution",
+      "status": "source_verified",
+      "url": "https://www.kvant.digital/issues/2024/4/",
+      "notes": "Журнал «Квант», 2024, №4, решения задач М2778—М2781; опубликовано решение задачи M2780 П. Кожевниковым. Текст M2780 совпадает с задачей ЮМТ 2023 GF P6, автор указан В. Дольников."
+    },
+    {
+      "source_id": "src-kvant-2024-01-m2780-statement",
+      "role": "published_problem_statement",
+      "status": "source_verified",
+      "url": "https://kvant.mccme.ru/pdf/2024/2024-01.pdf",
+      "notes": "Журнал «Квант», 2024, №1: задача M2780, указано, что задачи M2780 и M2781 предлагались на XVII Южном математическом турнире."
     }
   ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-25",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Импортировано из проверенной рабочей карточки ЮМТ 2023_granda_final_problem6.md.",
       "2026-05-05 xhigh: официальная формулировка сверена по PDF https://adygmath.ru/content/files/umt23/final/final_usl_granda.pdf; задача 6, Гранд-лига A, финал 25.09.2023, автор В. Дольников.",
-      "2026-05-05 xhigh: официальное решение, опубликованный разбор, форумная тема с полным решением или авторский комментарий по точной формулировке не найдены; solutions оставлен пустым.",
-      "непросто для ИИ: задача близка к семейству утверждений Erdős-Lovász-Tihany о разбиениях по хроматическим числам. Найденные внешние источники дают общий контекст и частичные случаи, но не закрывают точную формулировку ЮМТ.",
-      "public_ready оставлен false: формулировка официально подтверждена, но из-за близости к открытой ELT-гипотезе нужен авторский/официальный разбор или отдельная ручная математическая сверка перед публикацией."
+      "2026-05-06 high-reasoning pass: найден опубликованный разбор в «Кванте» 2024 №4 для задачи M2780; решение перенесено в самодостаточном виде.",
+      "Прежняя пометка «непросто для ИИ» снята: точная формулировка решается элементарно через максимальную клику и перекраску последнего цвета остатка; близость к Tihany/ELT является только внешним контекстом, а не препятствием для этой слабой формы."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
-    "manual_review": {
-      "target": "yumt-2023-granda-final-problem6#solution",
-      "status": "needed",
-      "reason": "Официальная формулировка подтверждена, но опубликованное решение не найдено; теоретический фон указывает на близость к сильным Tihany-разбиениям.",
-      "needed": "Найти авторское/официальное решение В. Дольникова или строго проверить слабую форму задачи независимо от полной гипотезы Erdős-Lovász-Tihany.",
-      "action_taken": "Сверены официальный PDF и страница ЮМТ-2023, выполнен поиск по точным фразам и связанным ELT/Tihany ключам; недоведённая идея удалена из карточки.",
-      "next_agent": "human_or_deep_solution_pass"
-    },
     "solution_classification": {
-      "type": "no_solution_hard",
-      "label": "решения нет: сложная задача",
-      "status": "needs_human_review",
-      "confidence": 0.93,
-      "basis": "agent very-high reasoning audit 2026-05-05",
-      "notes": "solutions array is empty; public sources checked; marked as непросто для ИИ pending official/authorial solution",
-      "audit_source": "yumt-2023-granda-final-problem6-xhigh.md"
+      "type": "published_complete",
+      "label": "опубликованное полное решение",
+      "status": "ai_checked",
+      "confidence": 0.96,
+      "basis": "Kvant 2024 №4 M2780 published solution plus independent high-reasoning verification 2026-05-06",
+      "notes": "The solution is elementary and self-contained: split off a maximum clique and recolor the final color of the remainder into nonadjacent clique colors.",
+      "audit_source": "src-kvant-2024-04-m2780-solution"
     }
   }
 }

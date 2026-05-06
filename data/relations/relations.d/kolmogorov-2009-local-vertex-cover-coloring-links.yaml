@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolmogorov-2009-local-cover-dolnikov-lemma",
+      "from": "kolmogorov-2009-round2-high-local-vertex-cover-coloring",
+      "to": "dolnikov-deletion-independent-set-lemma",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Решение исправленной версии задачи прямо использует лемму Дольникова: условие о независимых множествах после удаления каждой вершины превращается в независимое множество на одну вершину больше.",
+      "backward_text": "Лемма Дольникова здесь работает как локально-глобальный усилитель: из независимых множеств размера \\(t-1-d\\) во всех одноточечных удалениях индуцированного подграфа получается независимое множество размера \\(t-d\\).",
+      "anchors": {
+        "from_solution_id": "sol-corrected-size-assumption",
+        "to_solution_id": "sol-hall-minimal-counterexample"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-kolmogorov-2009-local-cover-kolmogorov-2002-dolnikov",
+      "from": "kolmogorov-2009-round2-high-local-vertex-cover-coloring",
+      "to": "kolmogorov-2002-team-olympiad-seniors-problem-8",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи Кубка Колмогорова используют одну и ту же лемму Дольникова о независимых множествах после удаления вершины, но в 2009 году она превращает локальное покрытие в глобальное покрытие, а в 2002 году контролирует пересечения больших клик.",
+      "backward_text": "Решение задачи 2002 года содержит более развернутую официальную версию леммы Дольникова; задача 2009 года применяет тот же механизм в более чистой форме для наращивания независимых множеств.",
+      "anchors": {
+        "from_solution_id": "sol-corrected-size-assumption",
+        "to_solution_id": "sol-official-full"
+      },
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-kolmogorov-2009-local-cover-degeneracy-coloring",
+      "from": "kolmogorov-2009-round2-high-local-vertex-cover-coloring",
+      "to": "degeneracy-greedy-coloring",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки дают верхнюю оценку хроматического числа через структурную информацию о графе. В задаче 2009 года структура сильнее: найденное глобальное вершинное покрытие размера \\(d\\) сразу дает раскраску в \\(d+1\\) цвет.",
+      "backward_text": "Жадная раскраска вырожденного графа является базовым инструментом для оценок хроматического числа; локальная задача 2009 года идет другим путем и сначала доказывает существование малого глобального вершинного покрытия.",
+      "anchors": {
+        "from_solution_id": "sol-corrected-size-assumption",
+        "to_solution_id": "sol-deletion-order"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-kolmogorov-2009-local-cover-konig-cover-language",
+      "from": "kolmogorov-2009-round2-high-local-vertex-cover-coloring",
+      "to": "konig-vertex-cover-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих карточках центральным объектом является вершинное покрытие, но задача 2009 года не сводится к двудольному минимаксу Кёнига: покрытие получается через независимые множества и лемму Дольникова.",
+      "backward_text": "Теорема Кёнига дает классический способ распознавать минимальные вершинные покрытия в двудольных графах; локальная задача 2009 года показывает другой, недвудольный локально-глобальный механизм появления малого покрытия.",
+      "anchors": {
+        "from_solution_id": "sol-corrected-size-assumption",
+        "to_solution_id": "sol-alternating"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

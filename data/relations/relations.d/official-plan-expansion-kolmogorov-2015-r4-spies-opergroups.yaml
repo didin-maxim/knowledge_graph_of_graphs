@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm-2015-spies-tree-equivalent-noncut-leaf",
+      "from": "kolmogorov-2015-round-4-spies-and-opergroups-problem",
+      "to": "tree-equivalent-properties",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "В восстановленном решении нужен стандартный факт, что в конечном связном графе есть вершина, удаление которой не нарушает связность. Его удобно доказывать через лист остовного дерева или через конец максимального пути; это тот же базовый листовой язык, что и в карточке эквивалентных свойств дерева.",
+      "backward_text": "Свойства деревьев дают мягкий инструмент для задачи об опергруппах: лист остовного дерева позволяет найти не-точку сочленения, а затем соответствующая вершина степени 1 во вспомогательном графе запускает рекурсивное восстановление.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-leaf-induction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-kolm-2015-spies-2004-tree-reconstruction",
+      "from": "kolmogorov-2015-round-4-spies-and-opergroups-problem",
+      "to": "kolmogorov-2004-round1-higher-league-problem-3",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи являются задачами восстановления исходного графа по косвенным данным о его подструктурах. В задаче 2015 года восстанавливается весь граф по графу связных индуцированных подмножеств, а в задаче 2004 года дерево восстанавливается по наборам удалённых фрагментов.",
+      "backward_text": "Задача 2004 года служит близким родственником по реконструкционному мышлению: в обеих карточках надо распознать исходные вершины среди вспомогательных объектов и затем восстановить смежность.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    },
+    {
+      "id": "rel-kolm-2015-spies-cayley-prufer-leaf-reconstruction",
+      "from": "kolmogorov-2015-round-4-spies-and-opergroups-problem",
+      "to": "cayley-prufer-labeled-trees",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Связь дальняя, но методологически полезная: оба восстановления идут итеративным удалением распознанной вершины. В коде Прюфера удаляется лист с минимальной меткой; в задаче об опергруппах удаляется найденный уникум \\(\\{v\\}\\), после чего оставшийся граф опергрупп соответствует \\(G-\\{v\\}\\).",
+      "backward_text": "Код Прюфера показывает чистую модель реконструкции через последовательное удаление распознаваемых вершин; задача об опергруппах реализует тот же принцип в значительно более сложном вспомогательном графе.",
+      "anchors": {
+        "from_solution_id": "sol-official-restored",
+        "to_solution_id": "sol-prufer-bijection"
+      },
+      "status": "ai_checked",
+      "confidence": 0.62
+    }
+  ]
+}

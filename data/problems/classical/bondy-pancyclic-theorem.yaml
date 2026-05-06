@@ -1,0 +1,145 @@
+{
+  "id": "bondy-pancyclic-theorem",
+  "title": "Bondy pancyclic theorem for dense Hamiltonian graphs",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "external_tool"
+    ]
+  },
+  "language": "en",
+  "authors": [
+    {
+      "name": "J. A. Bondy",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "simple_graph",
+      "hamiltonian_cycle",
+      "cycle",
+      "edge_count",
+      "complete_bipartite_graph"
+    ],
+    "methods": [
+      "external_theorem"
+    ],
+    "transformations": [],
+    "goal": [
+      "pancyclicity"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "edge_count_threshold"
+    ],
+    "keywords": [
+      "bondy_pancyclic_theorem",
+      "dense_hamiltonian_graph",
+      "pancyclic_graph"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original-1",
+        "text": "Let G be a simple Hamiltonian graph on n vertices. If G has at least n^2/4 edges, then G is pancyclic, unless n is even and G is the complete bipartite graph K_{n/2,n/2}.",
+        "source_id": "src-wikipedia-pancyclic-graph",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "cycle",
+          "hamiltonian_cycle",
+          "bipartite_graph",
+          "complete_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-dense-hamiltonian-forces-all-cycles",
+      "title": "Dense Hamiltonian graphs are almost pancyclic",
+      "text": "The theorem upgrades a Hamiltonian cycle plus the edge threshold n^2/4 to cycles of every length; the only extremal obstruction is the balanced complete bipartite graph.",
+      "tags": [
+        "hamiltonian_cycles",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-mantel-threshold-with-hamiltonian-cycle",
+      "title": "Mantel threshold with a Hamiltonian cycle",
+      "text": "The same n^2/4 threshold as Mantel's theorem becomes much stronger when a Hamiltonian cycle is already present: except for the balanced bipartite extremal graph, it forces every cycle length, not just a triangle.",
+      "tags": [
+        "extremal_graph_theory",
+        "hamiltonian_cycles"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 9,
+    "comment": "Serious external theorem. Known proofs use a delicate Hamiltonian-cycle chord and extremal equality analysis; no short school/olympiad proof is recorded here.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "hamiltonian_cycles",
+    "extremal_graph_theory",
+    "classical_theorem",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "external_theorem"
+      ],
+      "status": "ai_checked"
+    },
+    "extremal_object": {
+      "value": "complete_balanced_bipartite_graph",
+      "status": "ai_checked"
+    },
+    "typical_olympiad_use": {
+      "value": "Use only as an explicitly named external theorem: a dense Hamiltonian graph with e(G) >= n^2/4 is pancyclic unless it is the balanced complete bipartite extremal graph.",
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-pancyclic-graph",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-06",
+    "review_status": "needs_human_review",
+    "public_ready": false,
+    "notes": [
+      "Created during Group D audit to make the external theorem application in Kolmogorov 2009 R1 explicit.",
+      "2026-05-06 audit: proof intentionally omitted. The available proof route is elementary in ingredients but long and delicate, with Hamiltonian-cycle chord bookkeeping and extremal equality analysis; it should not be presented as a routine school lemma without a carefully sourced full proof."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "external_theorem_reference",
+      "label": "external theorem reference",
+      "status": "needs_human_review",
+      "confidence": 0.84,
+      "basis": "Group D external-theorem audit 2026-05-06",
+      "notes": "The theorem statement is recorded with a standard reference; proof is intentionally not included because this is a serious external pancyclicity theorem, not a compact olympiad lemma.",
+      "audit_source": "group-d-hamiltonian-brooks-ramsey-chromatic-audit"
+    }
+  }
+}

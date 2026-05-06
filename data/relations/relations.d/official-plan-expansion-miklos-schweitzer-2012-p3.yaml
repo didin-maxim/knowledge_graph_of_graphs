@@ -1,0 +1,79 @@
+{
+  "relations": [
+    {
+      "id": "rel-ms2012-p3-konig-line-coloring-prerequisite",
+      "from": "konig-line-coloring-bipartite",
+      "to": "miklos-schweitzer-2012-p3-two-colored-k-chromatic-tree",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Теорема Кёнига о рёберной раскраске двудольного мультиграфа является главным инструментом решения Schweitzer 2012 P3: после замены исходных вершин ребрами между красными и синими компонентами она дает вершинную раскраску исходного графа слишком малым числом цветов.",
+      "backward_text": "Schweitzer 2012 P3 является прямым олимпиадным применением теоремы Кёнига о рёберной раскраске: компоненты двух цветов образуют двудольный мультиграф, а его рёберная раскраска превращается в раскраску вершин исходного графа.",
+      "anchors": {
+        "from_solution_id": "sol-regularization-hall",
+        "to_solution_id": "sol-bialostocki-gyarfas-konig-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-ms2012-p3-regular-bipartite-decomposition-toolchain",
+      "from": "regular-bipartite-perfect-matching-decomposition",
+      "to": "miklos-schweitzer-2012-p3-two-colored-k-chromatic-tree",
+      "type": "prerequisite",
+      "distance": 2,
+      "forward_text": "Разложение регулярного двудольного графа на совершенные паросочетания лежит внутри стандартного доказательства теоремы Кёнига, которая затем применяется в решении Schweitzer 2012 P3 к мультиграфу одноцветных компонент.",
+      "backward_text": "Решение Schweitzer 2012 P3 использует не само разложение напрямую, а его следствие - рёберную раскраску двудольного мультиграфа; поэтому эта связь отмечает более глубокий уровень цепочки инструментов.",
+      "anchors": {
+        "from_solution_id": "sol-hall-induction",
+        "to_solution_id": "sol-bialostocki-gyarfas-konig-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-ms2012-p3-ms2011-p2-monochromatic-component",
+      "from": "miklos-schweitzer-2012-p3-two-colored-k-chromatic-tree",
+      "to": "miklos-schweitzer-2011-p2-min-degree-monochromatic-connected-subgraph",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи Miklós Schweitzer сводят требуемый одноцветный связный подграф к существованию большой одноцветной компоненты в 2-раскрашенном по ребрам графе. В задаче 2012 года размер компоненты контролируется хроматическим числом через теорему Кёнига, а в задаче 2011 года - минимальной степенью и разрезом.",
+      "backward_text": "Miklos Schweitzer 2011 P2 является родственной задачей о большой одноцветной компоненте: вместо хроматического числа и вспомогательной рёберной раскраски там работает высокий минимум степени и подсчет общих соседей через разрез.",
+      "anchors": {
+        "from_solution_id": "sol-bialostocki-gyarfas-konig-components",
+        "to_solution_id": "sol-cut-degree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-ms2012-p3-kolmogorov2023-large-monochromatic-component",
+      "from": "miklos-schweitzer-2012-p3-two-colored-k-chromatic-tree",
+      "to": "kolmogorov-2023-lichol-large-monochromatic-bipartite-component",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе задачи ищут большую одноцветную компоненту в раскрашенном графе, но используют разные параметры: Schweitzer 2012 P3 связывает размер компоненты с хроматическим числом произвольного графа, а задача Колмогорова 2023 - с размерами долей полного двудольного графа через плотный цвет и сумму квадратов степеней.",
+      "backward_text": "Задача Колмогорова 2023 является более счетным двудольным родственником мотива больших одноцветных компонент; в отличие от Schweitzer 2012 P3, она не использует хроматическое число и теорему Кёнига о рёберной раскраске.",
+      "anchors": {
+        "from_solution_id": "sol-bialostocki-gyarfas-konig-components",
+        "to_solution_id": "sol-degree-sum-component"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-ms2012-p3-spbmo2003-edge-to-vertex-coloring",
+      "from": "miklos-schweitzer-2012-p3-two-colored-k-chromatic-tree",
+      "to": "spbmo-2003-9-qual-p5-edge-colored-graph-vertex-coloring",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих задачах локальная информация о раскраске ребер переводится в правильную раскраску вершин. В Schweitzer 2012 P3 это делается через рёберную раскраску вспомогательного двудольного мультиграфа компонент, а в СПбМО 2003 - через множества инцидентных цветов и конечную таблицу типов.",
+      "backward_text": "СПбМО 2003 является далеким родственником по приему edge-coloring-to-vertex-coloring: там условие на цвета трехреберных путей дает явную 5-раскраску вершин, тогда как Schweitzer 2012 P3 использует этот перевод для противоречия с хроматическим числом.",
+      "anchors": {
+        "from_solution_id": "sol-bialostocki-gyarfas-konig-components",
+        "to_solution_id": "sol-incident-color-sets-and-reserved-color-stars"
+      },
+      "status": "ai_checked",
+      "confidence": 0.76
+    }
+  ]
+}

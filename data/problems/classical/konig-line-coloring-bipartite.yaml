@@ -52,7 +52,7 @@
       {
         "id": "stmt-original-1",
         "title": "Рёберная раскраска двудольного графа",
-        "text": "Если \\(G\\) — конечный двудольный граф с максимальной степенью \\(\\Delta\\), то его рёбра можно правильно раскрасить в \\(\\Delta\\) цветов: любые два ребра с общей вершиной получают разные цвета.",
+        "text": "Если \\(G\\) — конечный двудольный мультиграф с максимальной степенью \\(\\Delta\\), то его рёбра можно правильно раскрасить в \\(\\Delta\\) цветов: любые два ребра с общей вершиной получают разные цвета.",
         "source_id": "src-wikipedia-konig-line-coloring",
         "status": "ai_checked",
         "self_contained": {
@@ -60,6 +60,7 @@
         },
         "definition_ids": [
           "bipartite_graph",
+          "multigraph",
           "degree"
         ]
       }
@@ -109,8 +110,13 @@
       ],
       "definition_ids": [
         "bipartite_graph",
+        "multigraph",
         "matching",
         "degree"
+      ],
+      "uses_results": [
+        "hall-marriage-theorem",
+        "regular-bipartite-perfect-matching-decomposition"
       ]
     }
   ],
@@ -150,7 +156,8 @@
     "review_status": "ai_checked",
     "public_ready": true,
     "notes": [
-      "Карточка зависит от теоремы Холла; доказательство включает регулярный случай и стандартную регуляризацию общего двудольного графа."
+      "Карточка зависит от теоремы Холла; доказательство включает регулярный случай и стандартную регуляризацию общего двудольного графа.",
+      "2026-05-06 аудит matching/Konig: формулировка расширена до двудольных мультиграфов, поскольку именно эта стандартная форма нужна в Schweitzer 2012 P3."
     ],
     "relations_status": "base_done",
     "graph_theory_duplicate_removed": true,

@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-putnam-1996-a4-tournament-hamiltonian-path-order",
+      "from": "putnam-1996-a4-oriented-triples-order",
+      "to": "tournament-hamiltonian-path",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Putnam 1996 A4 восстанавливает глобальный линейный порядок из локальных ориентаций троек: фиксированный элемент задает турнироподобное сравнение на остальных вершинах, а четырехточечное правило делает его транзитивным. Теорема о гамильтоновом пути в турнире является более простой парной моделью того же мотива: локальные ориентации пар дают порядок-путь.",
+      "backward_text": "Турнирная теорема Редеи о гамильтоновом пути работает с ориентациями пар и строит порядок через вставку вершины; Putnam 1996 A4 поднимает мотив к ориентациям троек и требует дополнительного четырехточечного правила, чтобы получить настоящий линейный порядок.",
+      "anchors": {
+        "from_solution_id": "sol-published-fixed-base-order",
+        "to_solution_id": "sol-insertion"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-putnam-1996-a4-cmo-2006-min-transitive-tournament",
+      "from": "putnam-1996-a4-oriented-triples-order",
+      "to": "cmo-2006-p4-min-cycle-triplets-tournament",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В решении Putnam 1996 A4 после фиксации базового элемента возникает транзитивный порядок на остальных элементах; в минимальной части CMO 2006 P4 транзитивный турнир используется как явная конструкция без циклических троек. Обе карточки используют идею, что линейный порядок устраняет локальные циклические несогласованности.",
+      "backward_text": "CMO 2006 P4-min демонстрирует базовую роль транзитивного турнира как порядка без циклических троек; Putnam 1996 A4 решает обратную задачу в более богатой структуре ориентированных троек, доказывая, что заданные локальные правила уже вынуждают такой порядок.",
+      "anchors": {
+        "from_solution_id": "sol-published-fixed-base-order",
+        "to_solution_id": "sol-transitive-construction"
+      },
+      "status": "ai_checked",
+      "confidence": 0.8
+    },
+    {
+      "id": "rel-putnam-1996-a4-redei-odd-hamiltonian-paths-order-motif",
+      "from": "putnam-1996-a4-oriented-triples-order",
+      "to": "redei-odd-hamiltonian-paths-tournament",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Обе карточки связаны с извлечением глобального порядка из конечной ориентированной структуры. В Putnam 1996 A4 порядок получается напрямую из отношения \\((a,x,y)\\in S\\), а усиленная теорема Редеи изучает гамильтоновы порядки в обычных турнирах и их четность.",
+      "backward_text": "Теорема Редеи родственна Putnam 1996 A4 только на уровне order/tournament-мотива: она считает гамильтоновы пути в ориентациях пар, тогда как Putnam-задача восстанавливает строгий порядок из ориентаций троек с четырехточечной совместимостью.",
+      "anchors": {
+        "from_solution_id": "sol-published-fixed-base-order",
+        "to_solution_id": "sol-complement-and-edge-reversal"
+      },
+      "status": "ai_checked",
+      "confidence": 0.7
+    }
+  ]
+}

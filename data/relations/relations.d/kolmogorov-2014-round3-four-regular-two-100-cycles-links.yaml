@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm2014-4regular-cycles-city-triangle-routes",
+      "from": "kolmogorov-2014-round3-four-regular-two-100-cycles",
+      "to": "kolmogorov-2014-round3-city-triangle-routes",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи из третьего тура Кубка Колмогорова 2014 используют условие, что каждое ребро регулярного графа лежит в треугольнике. В задаче про 8-регулярный граф достаточно локального счёта рёбер в окрестностях; здесь тот же локальный мотив усилен 4-вершинной связностью и приводит к структурной классификации 4-регулярных графов.",
+      "backward_text": "Задача о городах и треугольных маршрутах является более мягкой счётной версией треугольного условия: вместо классификации всего графа там хватает паросочетаний в окрестностях и делимости по модулю 3.",
+      "anchors": {
+        "from_solution_id": "sol-structural-classification-square-cycle",
+        "to_solution_id": "sol-neighborhood-matching-count"
+      },
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-kolm2014-4regular-cycles-bw1997-hamiltonian-decomposition",
+      "from": "kolmogorov-2014-round3-four-regular-two-100-cycles",
+      "to": "baltic-way-1997-p19-edge-disjoint-hamiltonian-cycles",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих карточках требуется найти несколько циклов одинакового масштаба, не пересекающихся по вершинам или рёбрам. В Колмогоровской задаче два 100-цикла появляются как чётная и нечётная половины квадрата 200-цикла; в Baltic Way задача решается упаковкой гамильтоновых циклов в полном графе.",
+      "backward_text": "Baltic Way 1997 P19 — задача о разложении плотного полного графа на рёберно непересекающиеся гамильтоновы циклы. Колмогоровская задача родственна по цели упаковки циклов, но её основная трудность не в плотности, а в распознавании квадратов циклов среди 4-регулярных треугольных графов.",
+      "anchors": {
+        "from_solution_id": "sol-structural-classification-square-cycle",
+        "to_solution_id": "sol-official-expanded"
+      },
+      "status": "ai_checked",
+      "confidence": 0.78
+    },
+    {
+      "id": "rel-kolm2014-4regular-cycles-dirac-hamiltonian-contrast",
+      "from": "kolmogorov-2014-round3-four-regular-two-100-cycles",
+      "to": "dirac-theorem",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Теорема Дирака даёт гамильтонов цикл из большой минимальной степени, а здесь степень всего 4, поэтому гамильтоновские методы по степеням неприменимы. Вместо этого работает жёсткая локальная структура: каждое ребро лежит в треугольнике, и классификация сводит граф к квадрату цикла.",
+      "backward_text": "По сравнению с теоремой Дирака эта задача показывает другой источник длинных циклов: не высокая плотность, а малая степень вместе с сильной локальной треугольностью и вершинной связностью.",
+      "anchors": {
+        "from_solution_id": "sol-structural-classification-square-cycle",
+        "to_solution_id": "sol-longest-path"
+      },
+      "status": "ai_checked",
+      "confidence": 0.74
+    }
+  ]
+}

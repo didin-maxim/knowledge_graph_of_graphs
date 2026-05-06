@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-ms2019-p4-ms1951-p13-row-column-bipartite-model",
+      "from": "miklos-schweitzer-2019-p4-nice-matrices-bipartite-shellings",
+      "to": "miklos-schweitzer-1951-p13-determinant-nonzero-pattern-matchings",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи Schweitzer переводят матричные строки и столбцы в доли двудольного графа: в 2019 P4 клетки становятся ребрами полного двудольного графа с порядком появления, а в 1951/13 ненулевые позиции становятся ребрами, совершенные паросочетания которых считают ненулевые члены детерминанта.",
+      "backward_text": "Schweitzer 1951/13 является более простой матрично-двудольной моделью: там достаточно разложить граф на компоненты и посчитать паросочетания, тогда как 2019 P4 считает порядки ребер с условием связных префиксов или, эквивалентно, хорошие заполнения матрицы.",
+      "anchors": {
+        "from_solution_id": "sol-geupel-block-probability",
+        "to_solution_id": "solution-components"
+      },
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-ms2019-p4-balanced-bipartite-row-column-encoding",
+      "from": "miklos-schweitzer-2019-p4-nice-matrices-bipartite-shellings",
+      "to": "balanced-bipartite-edge-coloring-two-colors",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "В обеих карточках прямоугольная/координатная структура кодируется двудольным графом строк и столбцов: клетка или точка становится ребром. В 2019 P4 важен линейный порядок ребер и связность начальных префиксов, а в balanced edge coloring важен локальный баланс цветов у вершин.",
+      "backward_text": "Балансирующая раскраска рёбер является школьным родственником того же row-column graph encoding: она показывает, как условия по строкам и столбцам естественно превращаются в локальные условия на вершинах двудольного графа.",
+      "anchors": {
+        "from_solution_id": "sol-geupel-block-probability",
+        "to_solution_id": "sol-balanced-edge-coloring"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-ms2019-p4-caro-wei-random-ordering",
+      "from": "miklos-schweitzer-2019-p4-nice-matrices-bipartite-shellings",
+      "to": "caro-wei-independent-set-bound",
+      "type": "same_motif",
+      "distance": 4,
+      "forward_text": "Решение 2019 P4 и лемма Каро-Вея оба используют случайный порядок как счетный инструмент: в 2019 P4 условная вероятность хорошего продолжения удовлетворяет рекурсии по следующему минимальному внешнему элементу, а в Каро-Вее случайный порядок напрямую дает математическое ожидание размера независимого множества.",
+      "backward_text": "Каро-Вей является более базовым примером вероятностного подсчета по случайному порядку. Для 2019 P4 тот же общий язык порядка появляется в более тонком виде: нужно считать не выбранные вершины, а все допустимые линейные порядки клеток.",
+      "anchors": {
+        "from_solution_id": "sol-geupel-block-probability",
+        "to_solution_id": "sol-random-order"
+      },
+      "status": "ai_checked",
+      "confidence": 0.68
+    }
+  ]
+}

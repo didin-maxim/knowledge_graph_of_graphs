@@ -1,0 +1,64 @@
+{
+  "relations": [
+    {
+      "id": "rel-official-expansion-imo-2021-c4-menger-directed-edge",
+      "from": "menger-theorem",
+      "to": "imo-2021-c4-anisotropy-menger",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Directed edge Menger is exactly the tool used in the second official solution: it turns the maximum number of edge-disjoint directed A-B paths into the minimum size of a directed A-B cut.",
+      "backward_text": "IMO 2021 C4 is a clean olympiad application of the directed edge form of Menger; after the path-cut equality, the rest is a tournament-specific comparison of paired cuts.",
+      "anchors": {
+        "from_solution_id": "sol-edge-form-by-flow",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "source_verified",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-official-expansion-imo-2021-c4-imo-2010-c5-tournament-degree",
+      "from": "imo-2010-c5-bad-company-tournament",
+      "to": "imo-2021-c4-anisotropy-menger",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both are IMO shortlist tournament problems where outdegree bookkeeping is the structural core. IMO 2010 C5 uses tournament degree sums and induction, while IMO 2021 C4 compares either short path counts or directed cuts around two vertices.",
+      "backward_text": "IMO 2021 C4 is the connectivity analogue of the same tournament-degree language: the objects counted are edge-disjoint paths and cuts rather than local win-loss patterns.",
+      "anchors": {
+        "from_solution_id": "sol-degree-sum-full",
+        "to_solution_id": "sol-official-elementary-short-paths"
+      },
+      "status": "ai_checked",
+      "confidence": 0.76
+    },
+    {
+      "id": "rel-official-expansion-imo-2021-c4-miklos-2002-p2-edge-menger",
+      "from": "imo-2021-c4-anisotropy-menger",
+      "to": "miklos-schweitzer-2002-p2-edge-connected-short-paths",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "IMO 2021 C4 uses ordinary edge Menger to compare the exact number of edge-disjoint paths in opposite directions. Miklos Schweitzer 2002 P2 starts from the same edge-disjoint path language but adds the much stronger requirement that the paths be short.",
+      "backward_text": "Miklos Schweitzer 2002 P2 is a harder quantitative relative of IMO 2021 C4: ordinary Menger supplies path multiplicity, but the Schweitzer problem needs additional length control.",
+      "anchors": {
+        "from_solution_id": "sol-official-compressed",
+        "to_solution_id": "sol-short-length-menger-galil-yu"
+      },
+      "status": "ai_checked",
+      "confidence": 0.84
+    },
+    {
+      "id": "rel-official-expansion-imo-2021-c4-imo-2023-c7-tournament-paths",
+      "from": "imo-2021-c4-anisotropy-menger",
+      "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Both problems live in complete directed structures and ask for path information forced by the tournament-like orientation. IMO 2021 C4 counts edge-disjoint directed paths via cuts; IMO 2023 C7 studies Hamiltonian paths under an edge-colour constraint.",
+      "backward_text": "IMO 2023 C7 is a more Hamiltonian/colouring-oriented neighbour, whereas IMO 2021 C4 is a connectivity/cut-counting problem, but both exploit the rigidity of paths in complete directed graphs.",
+      "anchors": {
+        "from_solution_id": "sol-official-elementary-short-paths",
+        "to_solution_id": "sol-official-compressed"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

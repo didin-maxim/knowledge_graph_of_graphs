@@ -1,0 +1,166 @@
+{
+  "id": "edge-count-bipartite-matching-bound",
+  "title": "Много рёбер в двудольном графе дают большое паросочетание",
+  "kind": {
+    "primary": "lemma",
+    "secondary": [
+      "classical_tool"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Dénes Kőnig",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "bipartite_graph",
+      "matching",
+      "vertex_cover",
+      "edge_count"
+    ],
+    "methods": [
+      "matching_cover_equality",
+      "degree_bound"
+    ],
+    "transformations": [
+      "maximum_matching_to_minimum_vertex_cover"
+    ],
+    "goal": [
+      "force_large_matching_from_many_edges"
+    ],
+    "auxiliary_graph_type": [
+      "bipartite_graph"
+    ],
+    "invariants": [
+      "part_size",
+      "matching_number",
+      "edge_count"
+    ],
+    "keywords": [
+      "bipartite_matching",
+      "edge_count",
+      "konig_corollary"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Оценка через число рёбер",
+        "text": "Пусть \\(G\\) — конечный двудольный граф, обе доли которого имеют не более \\(n\\) вершин. Если в \\(G\\) больше \\((r-1)n\\) рёбер, то в \\(G\\) есть паросочетание размера \\(r\\).",
+        "source_id": "src-wikipedia-konig",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "bipartite_graph",
+          "matching",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-grid-transversal-form",
+        "title": "Форма для доски",
+        "text": "Если на доске \\(n\\times n\\) отмечено больше \\((r-1)n\\) клеток, то можно выбрать \\(r\\) отмеченных клеток так, чтобы никакие две из них не лежали в одной строке или одном столбце.",
+        "status": "ai_checked",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "matching"
+        ],
+        "distinct_from": [
+          "stmt-original"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-cover-count",
+      "title": "Покрыть все рёбра малым числом вершин",
+      "text": "Если паросочетания размера \\(r\\) нет, то по двудольной лемме Кёнига все рёбра касаются не более \\(r-1\\) вершин; каждая такая вершина имеет степень не больше \\(n\\).",
+      "tags": [
+        "matching"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-konig-cover-count",
+      "title": "Доказательство через покрытие рёбер",
+      "text": "Докажем утверждение от противного. Пусть в \\(G\\) нет паросочетания размера \\(r\\), и пусть \\(M\\) — максимальное паросочетание. Тогда \\(|M|\\le r-1\\).\n\nНужен стандартный двудольный факт: в двудольном графе размер максимального паросочетания равен минимальному размеру вершинного покрытия. Напомним его короткое доказательство. Пусть доли равны \\(X,Y\\). От всех непокрытых паросочетанием \\(M\\) вершин доли \\(X\\) отметим вершины, достижимые чередующимися путями: из \\(X\\) идём по рёбрам не из \\(M\\), из \\(Y\\) — по рёбрам из \\(M\\). Если бы отметилась непокрытая вершина доли \\(Y\\), получился бы увеличивающий путь и паросочетание \\(M\\) не было бы максимальным. Пусть \\(Z\\) — множество отмеченных вершин. Тогда \\(C=(X\\setminus Z)\\cup(Y\\cap Z)\\) покрывает все рёбра: ребро из отмеченной вершины \\(X\\) в неотмеченную вершину \\(Y\\) либо сразу отметило бы правый конец, либо, если оно лежит в \\(M\\), показывало бы, что левый конец был достигнут из уже отмеченного правого. Каждое ребро из \\(M\\) имеет ровно один конец в \\(C\\), а непокрытые вершины в \\(C\\) не входят, значит \\(|C|=|M|\\). Меньшее покрытие невозможно, потому что оно должно касаться каждого ребра паросочетания \\(M\\).\n\nИтак, все рёбра \\(G\\) можно покрыть не более чем \\(r-1\\) вершинами. Каждая вершина двудольного графа с долями размера не больше \\(n\\) инцидентна не более чем \\(n\\) рёбрам. Поэтому всего рёбер не больше \\((r-1)n\\), что противоречит условию. Следовательно, паросочетание размера \\(r\\) существует.",
+      "idea_ids": [
+        "idea-cover-count"
+      ],
+      "standard_idea_ids": [
+        "augmenting_path_method"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "bipartite_graph",
+        "matching",
+        "vertex_cover",
+        "degree",
+        "path",
+        "alternating_path",
+        "augmenting_path"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 5,
+    "comment": "Удобный частный случай двудольной теоремы Кёнига для олимпиадных задач на досках и трансверсали.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "matching",
+    "classical_lemma",
+    "goal_exact_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "matching_cover_equality",
+        "edge_counting"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-wikipedia-konig",
+      "role": "standard_reference",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-05-06",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Выделено при аудите matching/Konig как школьный частный случай, используемый в USAMO 2022 P1."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "classical_tool",
+      "label": "классический школьный инструмент",
+      "status": "ai_checked",
+      "confidence": 0.92,
+      "basis": "self-contained proof via alternating paths and vertex covers",
+      "notes": "Это частный случай теоремы Кёнига о паросочетании и вершинном покрытии, записанный в форме подсчета рёбер."
+    }
+  }
+}

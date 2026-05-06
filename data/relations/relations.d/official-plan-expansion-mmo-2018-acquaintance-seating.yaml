@@ -1,0 +1,49 @@
+{
+  "relations": [
+    {
+      "id": "rel-degeneracy-greedy-to-mmo-2018-clique-coloring",
+      "from": "degeneracy-greedy-coloring",
+      "to": "mmo-2018-acquaintance-seating-clique-chromatic",
+      "type": "prerequisite",
+      "distance": 1,
+      "forward_text": "Малостепенный случай в решении ММО-2018 является прямым применением стандартной жадной раскраски: если максимальная степень равна d, то d+1 цветов хватает для правильной раскраски, а значит внутри одного цвета нет клики размера хотя бы 2.",
+      "backward_text": "В задаче ММО-2018 базовая жадная раскраска используется как один из двух случаев индукции: при малой максимальной степени она дает даже обычную правильную раскраску, что сильнее требуемой кликовой раскраски.",
+      "anchors": {
+        "from_solution_id": "sol-deletion-order",
+        "to_solution_id": "sol-official-induction-degree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-bmo-2013-rooms-to-mmo-2018-rooms-coloring",
+      "from": "bmo-2013-p4-weakly-friendly-cycles-three-rooms",
+      "to": "mmo-2018-acquaintance-seating-clique-chromatic",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи переводят рассадку участников по комнатам в раскраску графа знакомств или недружбы; затем графовое условие гарантирует, что каждая цветовая доля избегает запрещенной социальной конфигурации.",
+      "backward_text": "В ММО-2018, как и в BMO 2013 P4, аудитории становятся цветами, но запрещенная конфигурация слабее обычного ребра: нужно разрушать только максимальные клики знакомств, а не все пары недрузей.",
+      "anchors": {
+        "from_solution_id": "sol-nonfriend-graph-induced-path",
+        "to_solution_id": "sol-official-induction-degree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-mmo-2010-unit-distance-context-to-mmo-2018-clique-chromatic",
+      "from": "mmo-2010-unit-distance-segments",
+      "to": "mmo-2018-acquaintance-seating-clique-chromatic",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Официальный комментарий к ММО-2018 обсуждает геометрические графы и прямо указывает, что задачи такого типа уже встречались на ММО, в частности в задаче 6 для 10 класса 2010 года; обе карточки используют перевод олимпийского условия в конечный граф.",
+      "backward_text": "ММО-2010 работает с графом единичных расстояний и независимыми множествами, а ММО-2018 - с произвольным графом знакомств и кликовым хроматическим числом; связь контекстная, через официальный графовый комментарий и общую технику моделирования.",
+      "anchors": {
+        "from_solution_id": "sol-official-summary",
+        "to_solution_id": "sol-official-induction-degree"
+      },
+      "status": "ai_checked",
+      "confidence": 0.72
+    }
+  ]
+}

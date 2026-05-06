@@ -128,24 +128,22 @@
     "review_status": "ai_checked",
     "public_ready": true,
     "notes": [
-      "2026-04-27: выделено из шага о планарном разделении в CMO 2025 P5; сформулировано как самостоятельная лемма о непересекающихся дугах для будущих задач о планарных графах."
+      "2026-04-27: выделено из шага о планарном разделении в CMO 2025 P5; сформулировано как самостоятельная лемма о непересекающихся дугах для будущих задач о планарных графах.",
+      "2026-05-06 аудит external theorem A: школьной замены для такой общей топологической формулировки не добавлено; решение существенно использует разделение жордановой кривой."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "graph_theory_absent_reason": "Исходная формулировка уже является графово-топологической формулировкой леммы.",
     "solution_classification": {
-      "type": "ai_heavy_external_theorem",
-      "label": "решение с тяжёлыми внешними теоремами",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "agent medium-reasoning audit",
-      "notes": "Solution invokes Jordan curve theorem; source points to Euler characteristic and definitions only mention planar_graph.",
-      "audit_source": "agent-imo-us-classical.json",
+      "type": "external_theorem_application",
+      "label": "heavy external theorem application",
+      "status": "ai_checked",
+      "confidence": 0.93,
+      "basis": "external theorem audit group A, 2026-05-06",
+      "notes": "Это интересный пример применения теоремы Жордана: утверждение является частной формой топологического разделения, а не школьной заменой без внешней теоремы.",
+      "audit_source": "external-theorem-audit-group-a",
       "external_theorem_ids": [
         "Jordan curve theorem"
-      ],
-      "missing_links": [
-        "heavy_external_theorem_without_explicit_reference"
       ]
     }
   }
