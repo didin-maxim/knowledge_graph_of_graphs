@@ -943,9 +943,10 @@ def build_html(data):
       const authors = problem.authors || [];
       if (!authors.length) return '';
       const items = authors.map(author => {{
-        const name = esc(author.name || '?');
-        const review = author.status && author.status !== 'source_verified'
-          ? `<span class="pill">${{esc(label(taxonomy.statuses, author.status) || author.status)}}</span>`
+        const authorData = typeof author === 'string' ? {{ name: author }} : (author || {{}});
+        const name = esc(authorData.name || '?');
+        const review = authorData.status && authorData.status !== 'source_verified'
+          ? `<span class="pill">${{esc(label(taxonomy.statuses, authorData.status) || authorData.status)}}</span>`
           : '';
         return `<span class="author-entry"><span>${{name}}</span>${{review}}</span>`;
       }}).join('');
@@ -993,7 +994,8 @@ def build_html(data):
     }}
 
     function problemYear(problem) {{
-      return firstYear(problem.title) || firstYear(problem.id);
+      const idMatch = String(problem.id || '').match(/^[a-z0-9-]+-((19|20)\\d{{2}})(?:-|$)/);
+      return idMatch ? idMatch[1] : firstYear(problem.id) || firstYear(problem.title);
     }}
 
     function normalizeAuthor(value) {{
@@ -1002,7 +1004,7 @@ def build_html(data):
 
     function problemAuthors(problem) {{
       return (problem.authors || [])
-        .map(author => String(author.name || '').trim())
+        .map(author => String((typeof author === 'string' ? author : author.name) || '').trim())
         .filter(name => name && name !== '?');
     }}
 
@@ -1057,6 +1059,7 @@ def build_html(data):
         const text = String(solution.text || '').trim();
         const title = String(solution.title || '').trim();
         return text
+          && solution.status !== 'needs_human_review'
           && !/^решение пока не найдено[.!]?$/i.test(text)
           && !/близк\\w*\\s+решени\\w*/i.test(title);
       }});
@@ -1238,8 +1241,12 @@ def build_html(data):
       }}
       if (!options.excludeQuery) {{
         const compactQuery = normalizeCompact(query);
+        const queryWords = query.split(/\\s+/).filter(Boolean);
+        const blob = problemSearchBlob(problem);
+        const wordsOk = queryWords.every(word => blob.includes(word));
         const queryOk = !query
-          || problemSearchBlob(problem).includes(query)
+          || blob.includes(query)
+          || wordsOk
           || (compactQuery && info.aliases.some(alias => alias.includes(compactQuery)));
         if (!queryOk) return false;
       }}
@@ -1252,17 +1259,29 @@ def build_html(data):
 
     function filteredDefinitions() {{
       const query = state.query.trim().toLowerCase();
-      return sortedDefinitions().filter(item => !query || searchBlob(item).includes(query));
+      const words = query.split(/\\s+/).filter(Boolean);
+      return sortedDefinitions().filter(item => {{
+        const blob = searchBlob(item);
+        return !query || blob.includes(query) || words.every(word => blob.includes(word));
+      }});
     }}
 
     function filteredStandardIdeas() {{
       const query = state.query.trim().toLowerCase();
-      return sortedStandardIdeas().filter(item => !query || searchBlob(item).includes(query));
+      const words = query.split(/\\s+/).filter(Boolean);
+      return sortedStandardIdeas().filter(item => {{
+        const blob = searchBlob(item);
+        return !query || blob.includes(query) || words.every(word => blob.includes(word));
+      }});
     }}
 
     function filteredComments() {{
       const query = state.query.trim().toLowerCase();
-      return sortedComments().filter(item => !query || searchBlob(item).includes(query));
+      const words = query.split(/\\s+/).filter(Boolean);
+      return sortedComments().filter(item => {{
+        const blob = searchBlob(item);
+        return !query || blob.includes(query) || words.every(word => blob.includes(word));
+      }});
     }}
 
     function currentRoute() {{
@@ -1475,7 +1494,10 @@ def build_html(data):
         `<option value="${{esc(tag)}}">${{esc(label(taxonomy.tags, tag))}} (${{counts[tag]}})</option>`
       ).join('');
       select.value = state[stateKey];
-      if (select.value !== state[stateKey]) select.value = 'all';
+      if (select.value !== state[stateKey]) {{
+        state[stateKey] = 'all';
+        select.value = 'all';
+      }}
     }}
 
     function renderGoalFilter() {{
@@ -1515,7 +1537,10 @@ def build_html(data):
         `<option value="${{esc(type)}}">${{esc(problemTypeLabel(type))}} (${{counts[type]}})</option>`
       ).join('');
       select.value = state.type;
-      if (select.value !== state.type) select.value = 'all';
+      if (select.value !== state.type) {{
+        state.type = 'all';
+        select.value = 'all';
+      }}
     }}
     function renderSourceFilter() {{
       const select = byId('source-filter');
@@ -1539,6 +1564,10 @@ def build_html(data):
         `<option value="${{esc(key)}}">${{esc(labels[key])}} (${{counts[key]}})</option>`
       ).join('');
       select.value = state.source;
+      if (select.value !== state.source) {{
+        state.source = 'all';
+        select.value = 'all';
+      }}
     }}
 
     function renderAuthorFilter() {{
@@ -1566,7 +1595,10 @@ def build_html(data):
         `<option value="${{esc(key)}}">${{esc(labels[key])}} (${{counts[key]}})</option>`
       ).join('');
       select.value = state.author;
-      if (select.value !== state.author) select.value = 'all';
+      if (select.value !== state.author) {{
+        state.author = 'all';
+        select.value = 'all';
+      }}
     }}
 
     function renderYearFilter() {{
@@ -1590,6 +1622,10 @@ def build_html(data):
         `<option value="${{esc(year)}}">${{esc(year)}} (${{counts[year]}})</option>`
       ).join('');
       select.value = state.year;
+      if (select.value !== state.year) {{
+        state.year = 'all';
+        select.value = 'all';
+      }}
     }}
 
     function renderSolutionFilter() {{
@@ -2246,7 +2282,6 @@ def build_html(data):
       const route = currentRoute();
       state.view = route.type === 'definition' ? 'definitions' : route.type === 'idea' ? 'ideas' : route.type === 'comment' ? 'comments' : 'problems';
       applySidebarState();
-      renderSidebar();
       renderSourceFilter();
       renderAuthorFilter();
       renderYearFilter();
@@ -2255,6 +2290,7 @@ def build_html(data):
       renderObjectFilter();
       renderMethodFilter();
       renderTypeFilter();
+      renderSidebar();
       if (route.type === 'home') renderHome();
       else if (route.type === 'definition') renderDefinition();
       else if (route.type === 'idea') renderStandardIdea();
@@ -2332,10 +2368,22 @@ def build_html(data):
     }});
 
     byId('mode-home').addEventListener('click', setHome);
-    byId('mode-problems').addEventListener('click', () => setProblem(sortedProblems()[0]?.id));
-    byId('mode-definitions').addEventListener('click', () => setDefinition(sortedDefinitions()[0]?.id));
-    byId('mode-ideas').addEventListener('click', () => setStandardIdea(sortedStandardIdeas()[0]?.id));
-    byId('mode-comments').addEventListener('click', () => setComment(sortedComments()[0]?.id || null));
+    byId('mode-problems').addEventListener('click', () => {{
+      state.view = 'problems';
+      selectFirstVisibleRoute();
+    }});
+    byId('mode-definitions').addEventListener('click', () => {{
+      state.view = 'definitions';
+      selectFirstVisibleRoute();
+    }});
+    byId('mode-ideas').addEventListener('click', () => {{
+      state.view = 'ideas';
+      selectFirstVisibleRoute();
+    }});
+    byId('mode-comments').addEventListener('click', () => {{
+      state.view = 'comments';
+      selectFirstVisibleRoute();
+    }});
 
     byId('sidebar-toggle').addEventListener('click', () => {{
       state.sidebarHidden = !state.sidebarHidden;

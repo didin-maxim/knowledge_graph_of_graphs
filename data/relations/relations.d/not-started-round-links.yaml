@@ -1,66 +1,6 @@
 {
   "relations": [
     {
-      "id": "rel-five-color-brooks-local-recoloring",
-      "from": "brooks-theorem",
-      "to": "five-color-theorem",
-      "type": "same_motif",
-      "distance": 2,
-      "forward_text": "Оба доказательства уменьшают раскраску за счет удаления вершины, а затем восстанавливают раскраску посредством тщательно контролируемого этапа локального перекрашивания.",
-      "backward_text": "Теорема о пяти цветах представляет собой плоскую версию с цепочками Кемпе, а Брукс работает с общими графами, но обе используют одну и ту же раскраску после появления локального препятствия.",
-      "anchors": {
-        "from_solution_id": "sol-sketch",
-        "to_solution_id": "sol-kempe-sketch"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.86
-    },
-    {
-      "id": "rel-planar-edge-bound-five-color-low-degree",
-      "from": "planar-edge-bound",
-      "to": "five-color-theorem",
-      "type": "prerequisite",
-      "distance": 2,
-      "forward_text": "Пятицветная индукция начинается с плоского факта, что некоторая вершина имеет степень не выше пяти, что является в точности стандартным следствием плоской границы ребра.",
-      "backward_text": "Теорема о пятицветной раскраске использует границу ребра в качестве входных данных низкой степени перед этапом перекрашивания цепочки Кемпе.",
-      "anchors": {
-        "from_solution_id": "sol-face-counting",
-        "to_solution_id": "sol-kempe-sketch"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.93
-    },
-    {
-      "id": "rel-konig-augmenting-lemma-alternating-reachability",
-      "from": "augmenting-path-matching-lemma",
-      "to": "konig-vertex-cover-theorem",
-      "type": "same_motif",
-      "distance": 1,
-      "forward_text": "Теорема Кенига построена на той же структуре альтернативных путей, что и лемма о увеличивающем пути: если увеличивающего пути не существует, альтернативная достижимость становится минимаксным сертификатом.",
-      "backward_text": "Теорема о равенстве вершинных покрытий является каноническим следующим шагом после декомпозиции увеличивающего пути задачи сопоставления.",
-      "anchors": {
-        "from_solution_id": "sol-symmetric-difference",
-        "to_solution_id": "sol-alternating"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.94
-    },
-    {
-      "id": "rel-ore-dirac-hamiltonian-degree",
-      "from": "dirac-theorem",
-      "to": "ore-theorem",
-      "type": "same_motif",
-      "distance": 1,
-      "forward_text": "Оба классических критерия гамильтоновости закрывают самый длинный путь, используя информацию о степени в его конечных точках; Руда — это уточнение парадигмы Дирака по сумме степеней.",
-      "backward_text": "Теорема Ора обобщает теорему Дирака, заменяя условие минимальной степени условием на каждом неребре.",
-      "anchors": {
-        "from_solution_id": "sol-longest-path",
-        "to_solution_id": "sol-closure-sketch"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.96
-    },
-    {
       "id": "rel-imo-1986-sl12-dirac-longest-path",
       "from": "dirac-theorem",
       "to": "imo-1986-sl12-increasing-edge-trail",
@@ -74,21 +14,6 @@
       },
       "status": "needs_human_review",
       "confidence": 0.78
-    },
-    {
-      "id": "rel-tc-2009-dirac-even-cycle-longest-path",
-      "from": "dirac-theorem",
-      "to": "tc-2009-10-acquaintances-even-cycle",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Оба доказательства начинаются с самого длинного пути и выводят ограничения на то, как его конечные точки могут снова соединиться с графом.",
-      "backward_text": "В задаче «Турнир городов» используется четность самого длинного пути для обеспечения четного цикла, в то время как Дирак использует ту же точку зрения экстремального пути для создания гамильтонова цикла.",
-      "anchors": {
-        "from_solution_id": "sol-longest-path",
-        "to_solution_id": "sol-longest-path-parity"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.83
     },
     {
       "id": "rel-tc-2010-eulerian-parity-subgraph",
@@ -121,21 +46,6 @@
       "confidence": 0.72
     },
     {
-      "id": "rel-tc-2017-handshaking-parity",
-      "from": "handshaking-lemma",
-      "to": "tc-2017-18-polyhedron-three-colors-parity",
-      "type": "prerequisite",
-      "distance": 2,
-      "forward_text": "Аргумент о раскраске многогранника начинается с того же учета четности степеней, что и лемма о согласовании: подсчет нечетных степеней и пары путей контролируются путем подсчета инцидентностей ребер.",
-      "backward_text": "Задача «Турнир городов» представляет собой цветное многогранное применение принципа четности квитирования.",
-      "anchors": {
-        "from_solution_id": "sol-double-counting",
-        "to_solution_id": "sol-handshaking"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.88
-    },
-    {
       "id": "rel-vosh-2008-apmo-2010-common-neighbor-counting",
       "from": "apmo-2010-p3-common-acquaintance-extremal",
       "to": "vosh-2008-regional-bureaucrats-common-neighborhood",
@@ -149,21 +59,6 @@
       },
       "status": "needs_human_review",
       "confidence": 0.84
-    },
-    {
-      "id": "rel-vosh-2010-brooks-minimal-odd-cycle",
-      "from": "brooks-theorem",
-      "to": "vosh-2010-11-final-nonbreakable-company",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Оба доказательства решают задачу раскраски, выбирая минимальную плохую конфигурацию, а затем показывая, что локальная структура вызывает противоречие перекраски.",
-      "backward_text": "В задаче VOSH используется минимальный нечетный цикл в графе, не раскрашиваемом в 3 цвета, без K4, а в задаче Брукса используется минимальный нераскрашиваемый контрпример, но философия локальной перекраски тесно связана с ней.",
-      "anchors": {
-        "from_solution_id": "sol-sketch",
-        "to_solution_id": "sol-minimal-odd-cycle"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.79
     }
   ]
 }

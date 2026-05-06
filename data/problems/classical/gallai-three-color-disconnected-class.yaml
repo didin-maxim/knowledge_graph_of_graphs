@@ -1,6 +1,6 @@
 {
   "id": "gallai-three-color-disconnected-class",
-  "title": "Gallai lemma: a three-coloring without rainbow triangles has a disconnected color",
+  "title": "Лемма Галлаи: в 3-раскраске без радужных треугольников есть несвязный цвет",
   "kind": {
     "primary": "theorem",
     "secondary": [
@@ -8,7 +8,7 @@
       "external_tool"
     ]
   },
-  "language": "en",
+  "language": "ru",
   "authors": [
     {
       "name": "Tibor Gallai",
@@ -52,7 +52,7 @@
     "original": [
       {
         "id": "stmt-original-1",
-        "text": "In every edge-coloring of a complete graph with three colors, if no triangle has three pairwise distinct edge colors, then at least one of the three color classes is disconnected as a spanning graph.",
+        "text": "В любой раскраске рёбер полного графа в три цвета, если ни один треугольник не имеет три попарно различных цвета рёбер, то хотя бы один из трёх цветовых классов несвязен как остовный граф.",
         "source_id": "src-gyarfas-simonyi-gallai-colorings-2004",
         "status": "source_verified",
         "self_contained": {
@@ -70,8 +70,8 @@
   "ideas": [
     {
       "id": "idea-no-three-connected-colors",
-      "title": "Three connected colors force a rainbow triangle",
-      "text": "The contrapositive form is useful in applications: a three-coloring of a complete graph with all three color classes connected must contain a rainbow triangle.",
+      "title": "Три связных цвета вынуждают радужный треугольник",
+      "text": "Удобна контрапозитивная форма: если в трёхцветной раскраске рёбер полного графа все три цветовых класса связны, то существует радужный треугольник.",
       "tags": [
         "coloring",
         "connectivity"
@@ -82,8 +82,8 @@
   "solutions": [
     {
       "id": "sol-gyarfas-simonyi-lemma-a",
-      "title": "Reference proof",
-      "text": "Gyarfás and Simonyi state this as Lemma A and give a short minimal-counterexample proof: delete a vertex, take the disconnected color components in the smaller Gallai coloring, and use the homogeneity of colors between components to force the same color to remain disconnected after the vertex is restored.",
+      "title": "Доказательство по опубликованной лемме",
+      "text": "Гьярфаш и Шимони формулируют это как лемму A и доказывают минимальным контрпримером. Удаляют вершину, рассматривают несвязные компоненты одного цвета в меньшей раскраске Галлаи и используют однородность цветов между такими компонентами. При возвращении удалённой вершины тот же цвет остаётся несвязным, что даёт требуемый несвязный цветовой класс.",
       "idea_ids": [
         "idea-no-three-connected-colors"
       ],
@@ -100,7 +100,7 @@
   "difficulty": {
     "main": "classical_tool",
     "local_score": 6,
-    "comment": "A small special case of Gallai coloring structure; suitable as a linked theorem-card rather than a hidden heavy marker.",
+    "comment": "Небольшой частный случай структуры раскрасок Галлаи; подходит как отдельная связанная карточка теоремы, а не как скрытый тяжёлый маркер.",
     "status": "ai_checked"
   },
   "tags": [
@@ -130,17 +130,17 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [
-      "Created during Group D audit as the exact small theorem used by Miklos-Schweitzer 2016 P2."
+      "Создано во время аудита группы D как точная малая теорема, используемая в Miklos-Schweitzer 2016 P2."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
       "type": "published_reference",
-      "label": "published theorem reference",
+      "label": "ссылка на опубликованную теорему",
       "status": "ai_checked",
       "confidence": 0.88,
-      "basis": "Gyarfas-Simonyi 2004 Lemma A",
-      "notes": "This is the three-color disconnected-color lemma for Gallai colorings.",
+      "basis": "Gyarfas-Simonyi 2004, лемма A",
+      "notes": "Это лемма о несвязном цвете в 3-раскрасках Галлаи.",
       "audit_source": "group-d-hamiltonian-brooks-ramsey-chromatic-audit"
     }
   }

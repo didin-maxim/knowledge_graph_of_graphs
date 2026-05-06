@@ -1,4 +1,5 @@
 import argparse
+import sys
 from collections import deque
 
 from lib import (
@@ -12,6 +13,13 @@ from lib import (
     problem_source_values,
     relation_neighbors,
 )
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
+
+def query_matches(text, words):
+    return all(word in text for word in words)
 
 
 def cmd_query(args):
@@ -31,6 +39,8 @@ def cmd_query(args):
         if args.solution == "without" and has_real_solution(problem):
             continue
         text = problem_text(problem)
+        if not query_matches(text, words):
+            continue
         score = sum(text.count(word) for word in words)
         if score:
             matches.append((score, problem))

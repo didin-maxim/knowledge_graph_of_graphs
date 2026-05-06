@@ -1,6 +1,6 @@
 {
   "id": "bondy-pancyclic-theorem",
-  "title": "Bondy pancyclic theorem for dense Hamiltonian graphs",
+  "title": "Теорема Бонди о панцикличности плотных гамильтоновых графов",
   "kind": {
     "primary": "theorem",
     "secondary": [
@@ -8,7 +8,7 @@
       "external_tool"
     ]
   },
-  "language": "en",
+  "language": "ru",
   "authors": [
     {
       "name": "J. A. Bondy",
@@ -45,7 +45,7 @@
     "original": [
       {
         "id": "stmt-original-1",
-        "text": "Let G be a simple Hamiltonian graph on n vertices. If G has at least n^2/4 edges, then G is pancyclic, unless n is even and G is the complete bipartite graph K_{n/2,n/2}.",
+        "text": "Пусть G — простой гамильтонов граф на n вершинах. Если в G не меньше n^2/4 рёбер, то G панцикличен, за исключением случая, когда n чётно и G является полным двудольным графом K_{n/2,n/2}.",
         "source_id": "src-wikipedia-pancyclic-graph",
         "status": "source_verified",
         "self_contained": {
@@ -66,8 +66,8 @@
   "ideas": [
     {
       "id": "idea-dense-hamiltonian-forces-all-cycles",
-      "title": "Dense Hamiltonian graphs are almost pancyclic",
-      "text": "The theorem upgrades a Hamiltonian cycle plus the edge threshold n^2/4 to cycles of every length; the only extremal obstruction is the balanced complete bipartite graph.",
+      "title": "Плотные гамильтоновы графы почти панцикличны",
+      "text": "Теорема усиливает наличие гамильтонова цикла при пороге e(G) >= n^2/4: за исключением сбалансированного полного двудольного графа, в графе появляются циклы всех длин.",
       "tags": [
         "hamiltonian_cycles",
         "extremal_graph_theory"
@@ -76,8 +76,8 @@
     },
     {
       "id": "idea-mantel-threshold-with-hamiltonian-cycle",
-      "title": "Mantel threshold with a Hamiltonian cycle",
-      "text": "The same n^2/4 threshold as Mantel's theorem becomes much stronger when a Hamiltonian cycle is already present: except for the balanced bipartite extremal graph, it forces every cycle length, not just a triangle.",
+      "title": "Порог Мантеля при наличии гамильтонова цикла",
+      "text": "Тот же порог n^2/4, что и в теореме Мантеля, становится гораздо сильнее при уже заданном гамильтоновом цикле: он заставляет не только треугольник, но и циклы всех возможных длин, кроме единственного двудольного экстремального случая.",
       "tags": [
         "extremal_graph_theory",
         "hamiltonian_cycles"
@@ -89,7 +89,7 @@
   "difficulty": {
     "main": "classical_tool",
     "local_score": 9,
-    "comment": "Serious external theorem. Known proofs use a delicate Hamiltonian-cycle chord and extremal equality analysis; no short school/olympiad proof is recorded here.",
+    "comment": "Серьёзная внешняя теорема. Известные доказательства используют тонкий анализ хорд гамильтонова цикла и экстремального случая; короткое школьное доказательство в карточке не зафиксировано.",
     "status": "ai_checked"
   },
   "tags": [
@@ -110,7 +110,7 @@
       "status": "ai_checked"
     },
     "typical_olympiad_use": {
-      "value": "Use only as an explicitly named external theorem: a dense Hamiltonian graph with e(G) >= n^2/4 is pancyclic unless it is the balanced complete bipartite extremal graph.",
+      "value": "Использовать только как явно названную внешнюю теорему: плотный гамильтонов граф с e(G) >= n^2/4 панцикличен, если он не является сбалансированным полным двудольным экстремальным графом.",
       "status": "ai_checked"
     }
   },
@@ -127,18 +127,18 @@
     "review_status": "needs_human_review",
     "public_ready": false,
     "notes": [
-      "Created during Group D audit to make the external theorem application in Kolmogorov 2009 R1 explicit.",
-      "2026-05-06 audit: proof intentionally omitted. The available proof route is elementary in ingredients but long and delicate, with Hamiltonian-cycle chord bookkeeping and extremal equality analysis; it should not be presented as a routine school lemma without a carefully sourced full proof."
+      "Создано во время аудита группы D, чтобы явно выделить применение внешней теоремы в Kolmogorov 2009 R1.",
+      "Аудит 2026-05-06: доказательство намеренно опущено. Доступный путь доказательства элементарен по используемым ингредиентам, но длинен и тонок: требуется учет хорд гамильтонова цикла и анализ экстремального равенства; без аккуратно сверенного полного источника его не следует представлять как рутинную школьную лемму."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
       "type": "external_theorem_reference",
-      "label": "external theorem reference",
+      "label": "ссылка на внешнюю теорему",
       "status": "needs_human_review",
       "confidence": 0.84,
-      "basis": "Group D external-theorem audit 2026-05-06",
-      "notes": "The theorem statement is recorded with a standard reference; proof is intentionally not included because this is a serious external pancyclicity theorem, not a compact olympiad lemma.",
+      "basis": "аудит группы D по внешним теоремам 2026-05-06",
+      "notes": "Формулировка теоремы записана со стандартным источником; доказательство намеренно не включено, потому что это серьёзная внешняя теорема о панцикличности, а не компактная олимпиадная лемма.",
       "audit_source": "group-d-hamiltonian-brooks-ramsey-chromatic-audit"
     }
   }

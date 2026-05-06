@@ -1,22 +1,6 @@
 {
   "relations": [
     {
-      "id": "rel-audit-a-common-neighborhood-imo-1991-sl9",
-      "from": "min-degree-common-neighborhood-clique",
-      "to": "imo-1991-sl9-min-degree-for-k6",
-      "type": "prerequisite",
-      "distance": 1,
-      "forward_text": "Лемма даёт самодостаточную школьную замену полной теоремы Турана в задаче IMO Shortlist 1991 SL9: большая минимальная степень позволяет последовательно продолжить клику до размера 6.",
-      "backward_text": "В решении IMO 1991 SL9 применяется частный случай леммы при \\(N=1991\\) и \\(r=5\\): у каждой выбранной вершины не больше 397 несоседей, поэтому общие соседи пятивершинной клики ещё существуют.",
-      "anchors": {
-        "from_solution_id": "sol-union-bound",
-        "to_solution_id": "sol-graph-review",
-        "from_statement_id": "stmt-1991-5"
-      },
-      "status": "ai_checked",
-      "confidence": 0.96
-    },
-    {
       "id": "rel-audit-a-turan-imo-1991-sl9-short-external",
       "from": "turan-theorem",
       "to": "imo-1991-sl9-min-degree-for-k6",
@@ -30,53 +14,6 @@
       },
       "status": "ai_checked",
       "confidence": 0.94
-    },
-    {
-      "id": "rel-audit-a-turan-flashlight-short-external",
-      "from": "turan-theorem",
-      "to": "flashlight-batteries-tournament-cities-2015",
-      "type": "prerequisite",
-      "distance": 1,
-      "forward_text": "Теорема Турана даёт компактное внешнее чтение нижней оценки через дополнительный граф и запрет клики размера \\(n\\).",
-      "backward_text": "В карточке про фонарик основное решение школьное, но короткий вариант через дополнительный граф и теорему Турана сохранён как явно помеченное external theorem application.",
-      "anchors": {
-        "from_solution_id": "sol-symmetrization",
-        "to_solution_id": "sol-short-turan-context"
-      },
-      "status": "ai_checked",
-      "confidence": 0.9
-    },
-    {
-      "id": "rel-audit-a-theta-fyum-2009-tur3a",
-      "from": "dense-graph-long-theta-subgraph",
-      "to": "fyum-2009-tur3a-p7",
-      "type": "prerequisite",
-      "distance": 1,
-      "forward_text": "Вынесенная theta-лемма является школьно-доказуемым плотностным шагом решения: после удаления малых степеней конец длиннейшего пути строит ребро и две длинные ветви.",
-      "backward_text": "FYUM 2009 tur3a P7 использует не полную теорему Bondy--Simonovits, а этот доказанный частный случай для получения theta-подграфа и дальнейшей арифметики периодов.",
-      "anchors": {
-        "from_solution_id": "sol-pruning-longest-path",
-        "to_solution_id": "sol-official-archive",
-        "from_statement_id": "stmt-dense-long-theta"
-      },
-      "status": "ai_checked",
-      "confidence": 0.96
-    },
-    {
-      "id": "rel-audit-a-planar-chain-fyum-2013-tur2a",
-      "from": "planar-large-girth-degree-two-chain",
-      "to": "fyum-2013-tur2a-p1",
-      "type": "prerequisite",
-      "distance": 1,
-      "forward_text": "Эйлерова лемма о длинной цепочке вершин степени 2 является школьно-доказуемым планарным инструментом в самодостаточном переносе специального случая сильной рёберной раскраски.",
-      "backward_text": "В FYUM 2013 tur2a P1 эта лемма применяется к графу после удаления листьев: большой обхват даёт длинный путь, на котором затем выполняется локальная докраска.",
-      "anchors": {
-        "from_solution_id": "sol-euler-suppression",
-        "to_solution_id": "sol-official-archive",
-        "from_statement_id": "stmt-degree-two-chain"
-      },
-      "status": "ai_checked",
-      "confidence": 0.95
     }
   ]
 }

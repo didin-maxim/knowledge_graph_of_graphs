@@ -31,21 +31,6 @@
       "confidence": 0.72
     },
     {
-      "id": "rel-imo-2010-c5-imo-2021-c4-tournament-counting",
-      "from": "imo-2010-c5-bad-company-tournament",
-      "to": "imo-2021-c4-anisotropy-menger",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе задачи представляют собой турнирные задачи, решение которых изучает дисбаланс степеней в разных частях турнира. C5 использует суммы степеней выигрыша-проигрыша; C4 оценивает направленные разрезы и количество путей.",
-      "backward_text": "В задаче 2021 года используется язык Менгера/сокращения, а в задаче C5 2010 года используются индукция и суммы степеней, но обе используют ограничения турнирной ориентации.",
-      "anchors": {
-        "from_solution_id": "sol-degree-sum-full",
-        "to_solution_id": "sol-official-compressed"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.7
-    },
-    {
       "id": "rel-imo-2012-c7-flashlight-independent-set",
       "from": "flashlight-batteries-tournament-cities-2015",
       "to": "imo-2012-c7-equal-sum-chords-independent-set",
@@ -151,21 +136,6 @@
       "confidence": 0.7
     },
     {
-      "id": "rel-imo-2015-c5-imo-2019-c3-functional-digraph",
-      "from": "bounded-forward-rays-balanced-sums",
-      "to": "imo-2019-c3-coin-process-digraph",
-      "type": "same_motif",
-      "distance": 2,
-      "forward_text": "Оба решения начинаются с кодирования процесса в виде однонаправленного графа состояний или индексов. В IMO 2015 C5 этот граф затем суммируется с помощью ограниченного пула/потенциала, а в IMO 2019 C3 используются рекурсивные копии орграфа конечных состояний.",
-      "backward_text": "Процесс монеты 2019 года решается путем явной рекурсии на орграфе состояний, тогда как IMO 2015 C5 сжимает ту же структуру с одним преемником в инвариант при пересечении стрелок; Точка зрения функционального орграфа является распространенной.",
-  "anchors": {
-    "from_solution_id": "sol-pool-of-balls",
-    "to_solution_id": "sol-official-graph-recursion"
-  },
-      "status": "needs_human_review",
-      "confidence": 0.82
-    },
-    {
       "id": "rel-ferry-network-lemma-imo-2016-c6",
       "from": "ferry-network-repartition-lemma",
       "to": "imo-2016-c6-ferry-graph-dynamics",
@@ -241,17 +211,17 @@
       "confidence": 0.86
     },
     {
-  "id": "rel-tree-imo-2019-c3-functional-digraph",
+      "id": "rel-tree-imo-2019-c3-functional-digraph",
       "from": "tree-equivalent-properties",
       "to": "imo-2019-c3-coin-process-digraph",
       "type": "same_motif",
       "distance": 3,
       "forward_text": "После ориентации каждого нетерминального состояния на его преемника граф процесса ведет себя как корневое направленное дерево/DAG в направлении приемника; решение считает расстояния рекурсивно.",
       "backward_text": "Процесс монеты не является теоремой о ненаправленном дереве, но его граф состояний использует ту же идею учета без цикла к корню.",
-  "anchors": {
-    "from_solution_id": "sol-leaf-induction",
-    "to_solution_id": "sol-official-graph-recursion"
-  },
+      "anchors": {
+        "from_solution_id": "sol-leaf-induction",
+        "to_solution_id": "sol-official-graph-recursion"
+      },
       "status": "needs_human_review",
       "confidence": 0.64
     },
@@ -269,51 +239,6 @@
       },
       "status": "needs_human_review",
       "confidence": 0.68
-    },
-    {
-      "id": "rel-tree-imo-2020-c4",
-      "from": "tree-equivalent-properties",
-      "to": "imo-2020-c4-fibonacci-difference-forest",
-      "type": "prerequisite",
-      "distance": 2,
-      "forward_text": "Нижняя граница создает граф, выбранные ребра которого с разностью Фибоначчи не могут содержать цикл, поэтому граница ребра леса становится основным фактом графа.",
-      "backward_text": "IMO 2020 C4 — это олимпиадное применение лесной ацикличности, в котором рост Фибоначчи доказывает, что самое длинное ребро невозможно обойти в рамках цикла.",
-      "anchors": {
-        "from_solution_id": "sol-leaf-induction",
-        "to_solution_id": "sol-official-compressed"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.9
-    },
-    {
-      "id": "rel-imo-2020-c4-imo-2024-c8-cycle-forest-obstruction",
-      "from": "imo-2020-c4-fibonacci-difference-forest",
-      "to": "imo-2024-c8-board-coloring-tree",
-      "type": "same_motif",
-      "distance": 2,
-      "forward_text": "Оба решения строят вспомогательный граф из выбранных объектов/действий и доказывают, что любой цикл противоречит определяющему правилу роста или раскраски; результатом является граница леса/дерева.",
-      "backward_text": "C8 кодирует операции на доске в виде дерева, а C4 кодирует выбранные различия в виде леса; в обоих случаях циклы являются запрещенным сертификатом.",
-      "anchors": {
-        "from_solution_id": "sol-official-compressed",
-        "to_solution_id": "sol-x-graph-halving"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.86
-    },
-    {
-      "id": "rel-imo-2021-c4-imo-2023-c7-tournament-paths",
-      "from": "imo-2021-c4-anisotropy-menger",
-      "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе задачи изучают пути в турнироподобных полных направленных структурах: 2021 подсчитывает непересекающиеся по ребрам направленные пути через разрезы, а 2023 контролирует гамильтоновы пути при раскраске.",
-      "backward_text": "Задача 2023 года — это препятствие раскраске/гамильтонову пути, тогда как задача 2021 года — это задача подсчета разрезов Менгера; оба используют структуру турнирного пути.",
-      "anchors": {
-        "from_solution_id": "sol-official-compressed",
-        "to_solution_id": "sol-official-compressed"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.7
     },
     {
       "id": "rel-dirac-imo-2023-c7-hamiltonian-paths",

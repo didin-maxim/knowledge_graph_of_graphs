@@ -149,11 +149,17 @@ def collect_text(value):
     return "\n".join(part for part in parts if part)
 
 
+def author_name(author):
+    if isinstance(author, dict):
+        return str(author.get("name", ""))
+    return str(author)
+
+
 def problem_text(problem):
     fields = [
         problem.get("id", ""),
         problem.get("title", ""),
-        " ".join(author.get("name", "") for author in problem.get("authors", [])),
+        " ".join(author_name(author) for author in problem.get("authors", [])),
         infer_source_key(problem),
         infer_source_label(problem),
         " ".join(problem_search_tokens(problem)),
@@ -167,7 +173,10 @@ def problem_text(problem):
 
 
 def extract_problem_year(problem):
-    match = YEAR_RE.search(problem.get("title", "")) or YEAR_RE.search(problem.get("id", ""))
+    match = ID_YEAR_RE.match(problem.get("id", ""))
+    if match:
+        return match.group("year")
+    match = YEAR_RE.search(problem.get("id", "")) or YEAR_RE.search(problem.get("title", ""))
     return match.group(0) if match else ""
 
 
@@ -205,6 +214,8 @@ def has_real_solution(problem):
     for solution in problem.get("solutions", []):
         text = (solution.get("text") or "").strip()
         title = (solution.get("title") or "").strip()
+        if solution.get("status") == "needs_human_review":
+            continue
         if not text or MISSING_SOLUTION_RE.match(text):
             continue
         if NON_TRANSFERRED_NOTE_RE.search(title):
@@ -239,7 +250,7 @@ def problem_search_tokens(problem):
         if compact_label:
             tokens.add(f"{compact_label}{year}")
     for author in problem.get("authors", []):
-        name = author.get("name", "")
+        name = author_name(author)
         if not name or name == "?":
             continue
         tokens.add(name.lower())

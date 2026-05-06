@@ -31,21 +31,6 @@
       "confidence": 0.96
     },
     {
-      "id": "rel-planar-bound-five-color",
-      "from": "planar-edge-bound",
-      "to": "five-color-theorem",
-      "type": "prerequisite",
-      "distance": 2,
-      "forward_text": "Оценка числа ребер в планарном графе дает существование вершины степени не больше 5, с чего начинается индукционное доказательство пятицветной теоремы.",
-      "backward_text": "Пятицветная теорема использует планарную оценку ребер как способ найти вершину малой степени.",
-      "anchors": {
-        "from_solution_id": "sol-face-counting",
-        "to_solution_id": "sol-kempe-sketch"
-      },
-      "status": "ai_checked",
-      "confidence": 0.9
-    },
-    {
       "id": "rel-ramsey-r33",
       "from": "ramsey-theorem",
       "to": "ramsey-r33",
@@ -209,21 +194,6 @@
       },
       "status": "ai_draft",
       "confidence": 0.65
-    },
-    {
-      "id": "rel-brooks-five-color",
-      "from": "brooks-theorem",
-      "to": "five-color-theorem",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе теоремы ищут раскраску через жадный порядок и контроль последней вершины; в пятицветной теореме дополнительную работу делают планарность и цепи Кемпе.",
-      "backward_text": "Пятицветная теорема является планарным раскрасочным инструментом, родственным Бруксу по идее жадной раскраски с исключительными конфигурациями.",
-      "anchors": {
-        "from_solution_id": "sol-sketch",
-        "to_solution_id": "sol-kempe-sketch"
-      },
-      "status": "ai_draft",
-      "confidence": 0.72
     },
     {
       "id": "rel-turan-flashlight-batteries-2015",
@@ -409,10 +379,10 @@
       "id": "rel-tree-distinct-rows-1980",
       "from": "tree-equivalent-properties",
       "to": "tc-1980-distinct-rows-delete-column",
-      "type": "solution_transfer",
+      "type": "prerequisite",
       "distance": 1,
-      "forward_text": "Задача о таблице напрямую использует критерий леса: если каждому столбцу сопоставить пару строк, которую склеит только его удаление, то невозможность цикла даёт не больше N-1 существенных столбцов.",
-      "backward_text": "Это очень чистое применение свойства леса: граф без циклов на N вершинах имеет не больше N-1 рёбер.",
+      "forward_text": "Свойство леса «на N вершинах не больше N-1 рёбер» является инструментом решения задачи о таблице: каждому существенному столбцу сопоставляется ребро между двумя строками.",
+      "backward_text": "Задача Турнира городов 1980 является чистым применением оценки числа рёбер в лесу.",
       "anchors": {
         "from_solution_id": "sol-leaf-induction",
         "to_solution_id": "sol-essential-column-forest"
@@ -886,21 +856,6 @@
       "confidence": 0.83
     },
     {
-      "id": "rel-menger-usamo-2004-p4",
-      "from": "menger-theorem",
-      "to": "usamo-2004-p4-black-path-grid-game",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Хотя USAMO 2004 P4 не использует Менгера буквально, вся задача решается в той же дихотомии путь против сепаратора: Алиса хочет верхне-нижний путь, а Боб строит разрезающий барьер.",
-      "backward_text": "USAMO 2004 P4 можно читать как игровую и дискретную тень теоремы Менгера: вместо абстрактного минимума разделителей здесь явно конструируется набор клеток, перерезающий все допустимые пути сверху вниз.",
-      "anchors": {
-        "from_solution_id": "sol-flow-sketch",
-        "to_solution_id": "sol-bob-useless-squares"
-      },
-      "status": "ai_checked",
-      "confidence": 0.82
-    },
-    {
       "id": "rel-imo-1994-c6-usamo-2004-p4",
       "from": "imo-1994-c6-infinite-grid-pairing-strategy",
       "to": "usamo-2004-p4-black-path-grid-game",
@@ -989,21 +944,6 @@
       },
       "status": "ai_checked",
       "confidence": 0.92
-    },
-    {
-      "id": "rel-egmo-2022-p5-usamo-2009-p3",
-      "from": "egmo-2022-p5-domino-parity-bipartite-matching",
-      "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе карточки показывают один и тот же перевод мира домино на языке графов и паросочетаний. EGMO 2022 P5 показывает чётность чисел идеальных совпадений, а USAMO 2009 P3 — уникальность со вкусом подобранных совпадений через отсутствие чередующихся циклов.",
-      "backward_text": "USAMO 2009 P3 хорошо соседствует с EGMO 2022 P5 как ещё один сюжет доски-двудольного графа: меняется вопрос, но базовый объект тот же — мозаика домино как идеальные соответствия грида-графа.",
-      "anchors": {
-        "from_solution_id": "sol-official-compressed",
-        "to_solution_id": "sol-induction-plus-alternating-cycles"
-      },
-      "status": "ai_checked",
-      "confidence": 0.83
     },
     {
       "id": "rel-usamo-2009-p3-usamo-2023-p3",
@@ -1105,21 +1045,6 @@
       },
       "status": "ai_checked",
       "confidence": 0.88
-    },
-    {
-      "id": "rel-cmo-1977-p7-imo-2005-c3-grid-path-injection",
-      "from": "cmo-1977-p7-rectangular-city-self-avoiding-paths",
-      "to": "imo-2005-c3-black-paths-injection",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе задачи используют решеточные пути и инъективный подсчет через области около пути. В CMO 1977 один путь кодируется множеством клеток слева от него, а в IMO 2005 C3 пары раскрасок кодируются обменом области относительно выбранного пути.",
-      "backward_text": "CMO 1977 P7 является более прямым примером той же идеи: граница решеточного пути задает область, и эта область используется как код для подсчета.",
-      "anchors": {
-        "from_solution_id": "sol-left-cells-injection",
-        "to_solution_id": "sol-reviewed-secondary"
-      },
-      "status": "ai_checked",
-      "confidence": 0.86
     },
     {
       "id": "rel-ramsey-r33-r34",
@@ -1328,20 +1253,6 @@
       "confidence": 0.88
     },
     {
-      "id": "rel-degeneracy-brooks",
-      "from": "degeneracy-greedy-coloring",
-      "to": "brooks-theorem",
-      "type": "same_motif",
-      "distance": 2,
-      "forward_text": "Вырожденность даёт базовую жадную раскраску по порядку удаления; Брукс усиливает грубую жадную границу для графов с ограниченной максимальной степенью, кроме стандартных исключений.",
-      "backward_text": "Теорема Брукса является более тонкой раскрасочной теоремой, которая начинается с той же идеи удаления и возвращения вершин, но требует локального анализа препятствий.",
-      "anchors": {
-        "from_solution_id": "sol-deletion-order"
-      },
-      "status": "ai_checked",
-      "confidence": 0.86
-    },
-    {
       "id": "rel-planar-bound-degeneracy",
       "from": "planar-edge-bound",
       "to": "degeneracy-greedy-coloring",
@@ -1446,34 +1357,19 @@
       "confidence": 0.88
     },
     {
-      "id": "rel-near-perfect-tree-matchings-utyum-2025",
-      "from": "tree-near-perfect-matchings-path-extremal",
-      "to": "utyum-2025_komol64_8_7_tree_matchings_path",
-      "type": "prerequisite",
-      "distance": 1,
-      "forward_text": "Исходная задача UTYUM является частным случаем леммы при \\(n=40\\): оценка даёт не более \\(\\binom{41}{2}=820\\) толстых паросочетаний, а достижение равенства при \\(n\\ge3\\) заставляет дерево быть путём.",
-      "backward_text": "Задача UTYUM служит олимпиадным источником и числовым приложением общей экстремальной леммы о почти совершенных паросочетаниях в дереве.",
-      "anchors": {
-        "from_solution_id": "sol-induction-bipartition",
-        "to_solution_id": "sol-official"
-      },
-      "status": "ai_checked",
-      "confidence": 0.98
-    },
-    {
       "id": "rel-near-perfect-tree-matchings-yumt-2021",
       "from": "tree-near-perfect-matchings-path-extremal",
       "to": "yumt-2021-grand-round4-problem3",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Обе карточки связывают деревья с почти/совершенными паросочетаниями и используют идею вынужденности паросочетания в древовидной структуре; в UTYUM это даёт точный экстремальный подсчёт, а в YUMT — запрет единственного синего совершенного паросочетания через мост.",
-      "backward_text": "YUMT 2021 — соседний сюжет про дерево и паросочетание: вместо подсчёта почти совершенных паросочетаний он использует симметрическую разность и лемму Котцига о единственном совершенном паросочетании.",
+      "forward_text": "Обе карточки связаны деревьями и почти/совершенными паросочетаниями, но YUMT 2021 использует лемму Котцига о единственном совершенном паросочетании. Пока локальной карточки этой леммы нет, связь оставлена как требующая проверки.",
+      "backward_text": "YUMT 2021 соседствует с экстремальными задачами о паросочетаниях в деревьях, но его ключевой внешний инструмент — лемма Котцига; без отдельной карточки этой леммы перенос метода не считается верифицированным.",
       "anchors": {
         "from_solution_id": "sol-induction-bipartition",
         "to_solution_id": "sol-ai-kotzig-unique-perfect-matching"
       },
-      "status": "ai_checked",
-      "confidence": 0.82
+      "status": "needs_human_review",
+      "confidence": 0.7
     }
   ]
 }

@@ -6,8 +6,8 @@
       "to": "imo-2021-c4-anisotropy-menger",
       "type": "prerequisite",
       "distance": 1,
-      "forward_text": "Directed edge Menger is exactly the tool used in the second official solution: it turns the maximum number of edge-disjoint directed A-B paths into the minimum size of a directed A-B cut.",
-      "backward_text": "IMO 2021 C4 is a clean olympiad application of the directed edge form of Menger; after the path-cut equality, the rest is a tournament-specific comparison of paired cuts.",
+      "forward_text": "Ориентированная рёберная форма Менгера — ровно тот инструмент, который используется во втором официальном решении: она превращает максимальное число рёберно непересекающихся ориентированных A-B путей в минимальный размер ориентированного A-B разреза.",
+      "backward_text": "IMO 2021 C4 — чистое олимпиадное применение ориентированной рёберной формы теоремы Менгера; после равенства путь-разрез остаток решения — специфическое для турнира сравнение парных разрезов.",
       "anchors": {
         "from_solution_id": "sol-edge-form-by-flow",
         "to_solution_id": "sol-official-compressed"
@@ -21,29 +21,14 @@
       "to": "imo-2021-c4-anisotropy-menger",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both are IMO shortlist tournament problems where outdegree bookkeeping is the structural core. IMO 2010 C5 uses tournament degree sums and induction, while IMO 2021 C4 compares either short path counts or directed cuts around two vertices.",
-      "backward_text": "IMO 2021 C4 is the connectivity analogue of the same tournament-degree language: the objects counted are edge-disjoint paths and cuts rather than local win-loss patterns.",
+      "forward_text": "Обе задачи шорт-листа IMO являются турнирными задачами, где структурным ядром служит учёт исходящих степеней. IMO 2010 C5 использует суммы степеней в турнире и индукцию, тогда как IMO 2021 C4 сравнивает либо числа коротких путей, либо ориентированные разрезы вокруг двух вершин.",
+      "backward_text": "IMO 2021 C4 — аналог того же турнирно-степенного языка для связности: считаются рёберно непересекающиеся пути и разрезы, а не локальные схемы побед и поражений.",
       "anchors": {
         "from_solution_id": "sol-degree-sum-full",
         "to_solution_id": "sol-official-elementary-short-paths"
       },
-      "status": "ai_checked",
+      "status": "needs_human_review",
       "confidence": 0.76
-    },
-    {
-      "id": "rel-official-expansion-imo-2021-c4-miklos-2002-p2-edge-menger",
-      "from": "imo-2021-c4-anisotropy-menger",
-      "to": "miklos-schweitzer-2002-p2-edge-connected-short-paths",
-      "type": "same_motif",
-      "distance": 2,
-      "forward_text": "IMO 2021 C4 uses ordinary edge Menger to compare the exact number of edge-disjoint paths in opposite directions. Miklos Schweitzer 2002 P2 starts from the same edge-disjoint path language but adds the much stronger requirement that the paths be short.",
-      "backward_text": "Miklos Schweitzer 2002 P2 is a harder quantitative relative of IMO 2021 C4: ordinary Menger supplies path multiplicity, but the Schweitzer problem needs additional length control.",
-      "anchors": {
-        "from_solution_id": "sol-official-compressed",
-        "to_solution_id": "sol-short-length-menger-galil-yu"
-      },
-      "status": "ai_checked",
-      "confidence": 0.84
     },
     {
       "id": "rel-official-expansion-imo-2021-c4-imo-2023-c7-tournament-paths",
@@ -51,13 +36,13 @@
       "to": "imo-2023-c7-ferry-companies-hamiltonian-paths",
       "type": "same_motif",
       "distance": 3,
-      "forward_text": "Both problems live in complete directed structures and ask for path information forced by the tournament-like orientation. IMO 2021 C4 counts edge-disjoint directed paths via cuts; IMO 2023 C7 studies Hamiltonian paths under an edge-colour constraint.",
-      "backward_text": "IMO 2023 C7 is a more Hamiltonian/colouring-oriented neighbour, whereas IMO 2021 C4 is a connectivity/cut-counting problem, but both exploit the rigidity of paths in complete directed graphs.",
+      "forward_text": "Обе задачи живут в полных ориентированных структурах и спрашивают о путевой информации, принуждаемой турнирной ориентацией. IMO 2021 C4 считает рёберно непересекающиеся ориентированные пути через разрезы; IMO 2023 C7 изучает гамильтоновы пути при ограничении на цвета рёбер.",
+      "backward_text": "IMO 2023 C7 — более гамильтоново-раскрасочный сосед, тогда как IMO 2021 C4 — задача о связности и подсчёте разрезов, но обе используют жёсткость путей в полных ориентированных графах.",
       "anchors": {
         "from_solution_id": "sol-official-elementary-short-paths",
         "to_solution_id": "sol-official-compressed"
       },
-      "status": "ai_checked",
+      "status": "needs_human_review",
       "confidence": 0.72
     }
   ]

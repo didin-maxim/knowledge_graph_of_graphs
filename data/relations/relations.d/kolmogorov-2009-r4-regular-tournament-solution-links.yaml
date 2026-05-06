@@ -1,0 +1,33 @@
+{
+  "relations": [
+    {
+      "id": "rel-kolm-2009-r4-regular-tournament-kolm-2009-r1-pancyclic",
+      "from": "kolmogorov-2009-round4-high-regular-tournament-hamiltonian-paths",
+      "to": "kolmogorov-2009-round1-high-dense-hamiltonian-pancyclic",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "Обе задачи KOLM 2009 закрываются пансциклическим внешним результатом: в туре 1 используется теорема Бонди для плотных неориентированных гамильтоновых графов, а в туре 4 - теорема Алспача о циклах всех длин через каждую дугу регулярного турнира.",
+      "backward_text": "Задача тура 1 является близким фоном для задачи тура 4: там пансцикличность дает циклы всех длин в плотном графе, а здесь арк-панцикличность регулярного турнира превращается в нижнюю оценку числа гамильтоновых путей.",
+      "anchors": {
+        "from_solution_id": "sol-alspach-arc-pancyclicity",
+        "to_solution_id": "sol-ai-bondy-pancyclic-theorem"
+      },
+      "status": "ai_checked",
+      "confidence": 0.82
+    },
+    {
+      "id": "rel-kolm-2009-r4-regular-tournament-bondy-pancyclic-contrast",
+      "from": "kolmogorov-2009-round4-high-regular-tournament-hamiltonian-paths",
+      "to": "bondy-pancyclic-theorem",
+      "type": "same_motif",
+      "distance": 3,
+      "forward_text": "Решение задачи про регулярный турнир не применяет теорему Бонди напрямую, но находится в том же семействе внешних пансциклических инструментов: вместо плотности неориентированного графа используется регулярность турнира и требование цикла через заданную дугу.",
+      "backward_text": "Теорема Бонди полезна как соседний ориентир: она показывает, как сильная глобальная гипотеза о гамильтоновом графе превращается в спектр циклов; задача KOLM 2009 R4 требует аналогичного, но ориентированного и арк-локального результата.",
+      "anchors": {
+        "from_solution_id": "sol-alspach-arc-pancyclicity"
+      },
+      "status": "needs_human_review",
+      "confidence": 0.7
+    }
+  ]
+}

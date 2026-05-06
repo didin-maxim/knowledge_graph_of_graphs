@@ -112,8 +112,8 @@
     },
     {
       "id": "idea-tait-core-to-knot-type",
-      "title": "Tait-ядро с тремя ребрами дает трехперекрестковый shadow",
-      "text": "Петли, мосты и древесные придатки Tait-графа соответствуют nugatory-перекресткам диаграммы и могут быть сняты без изменения типа узла. Нетривиальное ядро с тремя ребрами дает трехперекрестковую двухниточную twist-диаграмму: это трилистник при трех одинаковых знаках и тривиальный узел иначе.",
+      "title": "Tait-ядро с тремя рёбрами даёт трёхперекрёстковую схему",
+      "text": "Петли, мосты и древесные придатки Tait-графа соответствуют отсекаемым перекрёсткам диаграммы и могут быть сняты без изменения типа узла. Нетривиальное ядро с тремя ребрами дает трехперекрестковую двухниточную диаграмму скручивания: это трилистник при трех одинаковых знаках и тривиальный узел иначе.",
       "tags": [
         "planar_graphs",
         "goal_classification"
@@ -124,8 +124,8 @@
   "solutions": [
     {
       "id": "sol-small-tait-graphs-classification",
-      "title": "Классификация через малые Tait-графы с внешними knot-фактами",
-      "text": "Ответ: тривиальный узел и два хиральных трилистника; если зеркальные узлы в принятой конвенции не различаются, то это тривиальный узел и трилистник.\n\nОбозначим \\(G=\\Gamma_B(D)\\), а через \\(\\tau(G)\\) - число его остовных деревьев. В карточке `miklos-schweitzer-2012-p10b-knot-black-graph-odd-spanning-trees` доказано, что для любой диаграммы узла \\(\\tau(G)\\) нечетно. Поэтому из условия \\(\\tau(G)\\le 3\\) следует \\(\\tau(G)=1\\) или \\(\\tau(G)=3\\).\n\nСначала нужна чисто графовая классификация. Петли можно удалить: они не входят ни в одно остовное дерево. Каждый мост входит во всякое остовное дерево. Более общо, если связный граф разложен по мостам и точкам сочленения на блоки, то число его остовных деревьев равно произведению чисел остовных деревьев нетривиальных блоков; деревообразные части дают множитель \\(1\\).\n\nЕсли \\(\\tau(G)=1\\), то после удаления петель все ребра являются мостами, то есть существенная часть графа - дерево. Если \\(\\tau(G)=3\\), то, поскольку \\(3\\) простое, после удаления петель и всех древесных частей остается ровно один блок \\(H\\) с \\(\\tau(H)=3\\). Покажем, что \\(H\\) - либо треугольник, либо две вершины с тремя параллельными ребрами. Возьмем остовное дерево \\(T\\) блока \\(H\\). Каждое ребро \\(e\\notin T\\) вместе с \\(T\\) образует фундаментальный цикл; заменяя на этом цикле одно ребро дерева на \\(e\\), получаем остовные деревья. Если вне \\(T\\) только одно ребро, то \\(H\\) уницикличен, а \\(\\tau(H)\\) равно длине единственного цикла, значит цикл имеет длину \\(3\\). Если вне \\(T\\) хотя бы два ребра, то для \\(\\tau(H)=3\\) возможны только два таких ребра, и оба должны образовывать с одним и тем же ребром дерева циклы длины \\(2\\); иначе уже получается не менее четырех различных остовных деревьев. Значит, \\(H\\) состоит из двух вершин и трех параллельных ребер.\n\nТеперь вернемся к диаграмме узла. Петля или мост в Tait-графе соответствует отсекаемому, то есть nugatory, перекрестку диаграммы: через этот перекресток проходит окружность на сфере диаграммы, не пересекающая диаграмму в других точках. Такой перекресток можно удалить ходом Рейдемейстера I или обратным элементарным упрощением без изменения типа узла. Поэтому древесные придатки и петли в описанной графовой классификации не меняют тип узла.\n\nПри \\(\\tau(G)=1\\) после снятия всех nugatory-перекрестков диаграмма не имеет существенных перекрестков, значит задает тривиальный узел. При \\(\\tau(G)=3\\) остается один из двух двойственных Tait-графов с тремя ребрами: треугольник или три параллельных ребра. Оба описывают один и тот же трехперекрестковый twist-shadow. С учетом знаков перекрестков это замыкание двухниточной косы \\(\\sigma_1^{\\varepsilon_1}\\sigma_1^{\\varepsilon_2}\\sigma_1^{\\varepsilon_3}\\), где \\(\\varepsilon_i=\\pm1\\). Если все знаки одинаковы, получается правый или левый трилистник. Если знаки не все одинаковы, сумма показателей равна \\(\\pm1\\), и после одного хода Рейдемейстера II остается одно перекрещивание, то есть тривиальный узел.\n\nОбратно, тривиальный узел имеет диаграмму без перекрестков, и ее черный граф имеет одно остовное дерево. Стандартная трехперекрестковая диаграмма правого или левого трилистника имеет Tait-граф треугольник, а у треугольника ровно \\(3\\) остовных дерева. Следовательно, список полон.",
+      "title": "Классификация через малые Tait-графы с внешними фактами о узлах",
+      "text": "Ответ: тривиальный узел и два хиральных трилистника; если зеркальные узлы в принятой конвенции не различаются, то это тривиальный узел и трилистник.\n\nОбозначим \\(G=\\Gamma_B(D)\\), а через \\(\\tau(G)\\) - число его остовных деревьев. В карточке `miklos-schweitzer-2012-p10b-knot-black-graph-odd-spanning-trees` доказано, что для любой диаграммы узла \\(\\tau(G)\\) нечетно. Поэтому из условия \\(\\tau(G)\\le 3\\) следует \\(\\tau(G)=1\\) или \\(\\tau(G)=3\\).\n\nСначала нужна чисто графовая классификация. Петли можно удалить: они не входят ни в одно остовное дерево. Каждый мост входит во всякое остовное дерево. Более общо, если связный граф разложен по мостам и точкам сочленения на блоки, то число его остовных деревьев равно произведению чисел остовных деревьев нетривиальных блоков; деревообразные части дают множитель \\(1\\).\n\nЕсли \\(\\tau(G)=1\\), то после удаления петель все ребра являются мостами, то есть существенная часть графа - дерево. Если \\(\\tau(G)=3\\), то, поскольку \\(3\\) простое, после удаления петель и всех древесных частей остается ровно один блок \\(H\\) с \\(\\tau(H)=3\\). Покажем, что \\(H\\) - либо треугольник, либо две вершины с тремя параллельными ребрами. Возьмем остовное дерево \\(T\\) блока \\(H\\). Каждое ребро \\(e\\notin T\\) вместе с \\(T\\) образует фундаментальный цикл; заменяя на этом цикле одно ребро дерева на \\(e\\), получаем остовные деревья. Если вне \\(T\\) только одно ребро, то \\(H\\) уницикличен, а \\(\\tau(H)\\) равно длине единственного цикла, значит цикл имеет длину \\(3\\). Если вне \\(T\\) хотя бы два ребра, то для \\(\\tau(H)=3\\) возможны только два таких ребра, и оба должны образовывать с одним и тем же ребром дерева циклы длины \\(2\\); иначе уже получается не менее четырех различных остовных деревьев. Значит, \\(H\\) состоит из двух вершин и трех параллельных ребер.\n\nТеперь вернемся к диаграмме узла. Петля или мост в Tait-графе соответствует отсекаемому перекрёстку диаграммы: через этот перекресток проходит окружность на сфере диаграммы, не пересекающая диаграмму в других точках. Такой перекресток можно удалить ходом Рейдемейстера I или обратным элементарным упрощением без изменения типа узла. Поэтому древесные придатки и петли в описанной графовой классификации не меняют тип узла.\n\nПри \\(\\tau(G)=1\\) после снятия всех отсекаемых перекрёстков диаграмма не имеет существенных перекрестков, значит задает тривиальный узел. При \\(\\tau(G)=3\\) остается один из двух двойственных Tait-графов с тремя ребрами: треугольник или три параллельных ребра. Оба описывают одну и ту же трёхперекрёстковую схему скручивания. С учетом знаков перекрестков это замыкание двухниточной косы \\(\\sigma_1^{\\varepsilon_1}\\sigma_1^{\\varepsilon_2}\\sigma_1^{\\varepsilon_3}\\), где \\(\\varepsilon_i=\\pm1\\). Если все знаки одинаковы, получается правый или левый трилистник. Если знаки не все одинаковы, сумма показателей равна \\(\\pm1\\), и после одного хода Рейдемейстера II остается одно перекрещивание, то есть тривиальный узел.\n\nОбратно, тривиальный узел имеет диаграмму без перекрестков, и ее черный граф имеет одно остовное дерево. Стандартная трёхперекрёстковая диаграмма правого или левого трилистника имеет Tait-граф треугольник, а у треугольника ровно \\(3\\) остовных дерева. Следовательно, список полон.",
       "idea_ids": [
         "idea-use-parity-child",
         "idea-classify-tau-three-multigraphs",
@@ -191,14 +191,14 @@
       "statement_ids": [
         "stmt-original-p10a"
       ],
-      "note": "Hosted in the Maróti/Szeged Schweitzer archive; the PDF notes that the translation was downloaded from Art of Problem Solving."
+      "note": "Размещено в архиве Maróti/Szeged Schweitzer; в PDF указано, что перевод был скачан с Art of Problem Solving."
     },
     {
       "source_id": "src-miklos-schweitzer-2012-report",
       "role": "official_report_proposer_and_results",
       "url": "https://www.math.u-szeged.hu/tagok/mmaroti/schweitzer/schweitzer-2012-meg.pdf",
       "status": "source_verified",
-      "note": "The archive labels this as a solution link, but the PDF is the official contest report. It lists problem 10 proposer as Stipsicz András and records contestants solving problem 10; it does not contain a detailed official solution."
+      "note": "The archive labels this as a solution link, but the PDF is the официальный contest report. It lists задача 10 proposer as Stipsicz András and records contestants solving задача 10; it does not contain a detailed официальное решение."
     },
     {
       "source_id": "src-ge-zhang-shank",
@@ -227,12 +227,12 @@
     "review_status": "ai_checked",
     "public_ready": true,
     "notes": [
-      "Split child of miklos-schweitzer-2012-p10-knot-black-graph-spanning-trees, retaining only part (a).",
-      "High-reasoning split audit: this part is nontrivial independently of the parity theorem, because it needs the classification of connected multigraphs with very small spanning-tree count and a knot-diagram reduction from Tait cores to the unknot/trefoil list.",
-      "The solution uses the parity child as a prerequisite and then proves the small-count classification, but the topological nugatory-crossing step is recorded as an accepted external knot-diagram fact rather than as a school-level proof.",
-      "2026-05-06 group E audit: this is the separated small-case card. The multigraph classification is expanded locally, but the application to knots still relies on the external P10(b) parity theorem and standard Tait/nugatory facts.",
-      "2026-05-06 source audit: the Hungarian original and the English translation on the Maróti/Szeged Schweitzer archive confirm the statement. The archive index labels a 2012 link as 'solution', but the linked PDF is the official report, not a detailed solution text.",
-      "2026-05-06 proposer audit: the official report lists problem 10 proposer as Stipsicz András. No separate official solution for part (a) was found online.",
+      "Дочерняя карточка, отделённая от miklos-schweitzer-2012-p10-knot-black-graph-spanning-trees и сохраняющая только пункт (a).",
+      "High-reasoning split аудит: this part is nontrivial independently of the parity theorem, because it needs the classification of connected multigraphs with very small spanning-tree count and a knot-diagram reduction from Tait cores to the unknot/trefoil list.",
+      "Решение использует дочернюю карточку о чётности как предпосылку, а затем доказывает классификацию малых чисел; топологический шаг про отсекаемые перекрёстки зафиксирован как принятый внешний факт о диаграммах узлов, а не как школьное доказательство.",
+      "2026-05-06 проверка группы E: это отделённая карточка малого случая. Классификация мультиграфов локально развёрнута, но применение к узлам всё ещё опирается на внешнюю теорему о чётности из P10(b) и стандартные факты Tait/об отсекаемых перекрёстках.",
+      "2026-05-06 проверка источников: венгерский оригинал и английский перевод в архиве Maróti/Szeged Schweitzer подтверждают условие. Индекс архива помечает ссылку 2012 года как 'solution', но связанный PDF является официальным отчётом, а не подробным текстом решения.",
+      "2026-05-06 проверка автора: в официальном отчёте автором задачи 10 указан Stipsicz András. Отдельного официального решения пункта (a) онлайн не найдено.",
       "Do not present this as a school-level solution: the small multigraph classification is elementary, but the parity input, the Tait graph/link-component interpretation, and the nugatory-crossing reduction are external knot-theory facts."
     ],
     "relations_status": "deep_done",
@@ -241,12 +241,12 @@
       "label": "решение с внешними топологическими фактами",
       "status": "ai_checked",
       "confidence": 0.9,
-      "basis": "official statement/proposer verified; no official solution found; external theorem references checked",
-      "notes": "The classification proof is complete only after accepting the P10(b) parity theorem and standard Tait/nugatory diagram facts. These are not school-level lemmas; this is intentionally a heavy external theorem application.",
+      "basis": "официальное условие/proposer verified; no официальное решение found; внешняя теорема references checked",
+      "notes": "The classification proof is complete only after accepting the P10(b) parity theorem and standard Tait/nugatory diagram facts. These are not school-level lemmas; this is intentionally a heavy применение внешней теоремы.",
       "external_theorem_ids": [
         "Shank_theorem",
         "P10(b) Tait graph odd spanning-tree theorem",
-        "standard Tait graph nugatory-crossing reduction",
+        "стандартная редукция Tait-графа по отсекаемым перекрёсткам",
         "two_strand_braid_three_crossing_classification"
       ],
       "audit_source": "official-plan-expansion-pass-2026-05-06"
