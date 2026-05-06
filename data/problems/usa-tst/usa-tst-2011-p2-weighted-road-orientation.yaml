@@ -103,7 +103,8 @@
         "idea-make-everything-even"
       ],
       "standard_idea_ids": [],
-      "status": "ai_checked",
+      "status": "needs_human_review",
+      "review_notes": "Решение пока не найдено в самодостаточном виде: замена ребра веса 2 путём из двух единичных рёбер не сохраняет вклад веса 2 в баланс исходной вершины, поэтому стягивание обратно требует отдельного доказательства или другой конструкции.",
       "definition_ids": [
         "cycle",
         "directed_graph"
@@ -117,7 +118,8 @@
         "idea-make-everything-even"
       ],
       "standard_idea_ids": [],
-      "status": "ai_checked",
+      "status": "needs_human_review",
+      "review_notes": "Решение пока не найдено в самодостаточном виде: замена ребра веса 2 двумя параллельными единичными рёбрами не гарантирует, что две копии ориентированы одинаково и потому стягиваются в одно исходное ребро веса 2.",
       "definition_ids": [
         "cycle",
         "directed_graph"
@@ -160,7 +162,9 @@
     "created_at": "2026-04-24",
     "review_status": "needs_human_review",
     "public_ready": false,
-    "notes": [],
+    "notes": [
+      "2026-05-06: аудит сжатых решений; оба существующих решения понижены до needs_human_review. Обнаружена скрытая проблема переноса: подразделение ребра веса 2 или замена двумя параллельными единичными рёбрами не дают автоматически ориентацию исходного взвешенного ребра с тем же вкладом в баланс."
+    ],
     "relations_status": "deep_done",
     "solution_classification": {
       "type": "unofficial_published",

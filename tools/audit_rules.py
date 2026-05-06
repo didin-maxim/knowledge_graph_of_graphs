@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 CORE_TEXT_SUFFIXES = {".json", ".md", ".py", ".yaml", ".html"}
 CORE_DIRS = ["docs", "tools", "schemas"]
-UNCERTAIN_STATUSES = {"needs_review", "needs_human_review", "disputed"}
+UNCERTAIN_STATUSES = {"ai_draft", "needs_review", "needs_human_review", "disputed"}
 PLACEHOLDER_SOLUTION_RE = re.compile(r"^\s*решение пока не найдено[.!]?\s*$", re.IGNORECASE)
 SOLUTION_RED_FLAGS = [
     ("outline/sketch title", re.compile(r"\b(outline|sketch|plan|summary|compressed)\b", re.IGNORECASE)),

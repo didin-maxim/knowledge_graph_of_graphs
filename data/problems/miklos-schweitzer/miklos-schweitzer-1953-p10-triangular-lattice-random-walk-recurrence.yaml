@@ -95,7 +95,7 @@
         "classical_lemma",
         "goal_proof"
       ],
-      "status": "ai_checked"
+      "status": "needs_human_review"
     },
     {
       "id": "idea-two-dimensional-lower-bound",
@@ -105,7 +105,7 @@
         "graph_model",
         "classical_lemma"
       ],
-      "status": "ai_checked"
+      "status": "needs_human_review"
     }
   ],
   "solutions": [
@@ -118,7 +118,8 @@
         "classical_lemma",
         "goal_proof"
       ],
-      "status": "ai_checked",
+      "status": "needs_human_review",
+      "review_notes": "Текст использует стандартный критерий возвратности и гауссову нижнюю оценку постоянного члена без локального вывода; OCR источника теряет часть формул.",
       "standard_idea_ids": []
     }
   ],
@@ -162,20 +163,21 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-02",
-    "review_status": "ai_checked",
-    "public_ready": true,
+    "review_status": "needs_human_review",
+    "public_ready": false,
     "notes": [
       "В книге это задача P.5. Условие явно задаёт случайное блуждание на графе треугольной решётки.",
-      "OCR теряет часть формул в интегральной оценке, поэтому решение передано как проверенный структурный конспект, без восстановления всех промежуточных формул."
+      "OCR теряет часть формул в интегральной оценке, поэтому решение передано как проверенный структурный конспект, без восстановления всех промежуточных формул.",
+      "2026-05-06 аудит сжатых решений: карточка снята с public_ready, потому что доказательство использует неразвёрнутые аналитические факты о производящих функциях и нижней оценке \\(P_{2n}\\ge c/n\\)."
     ],
     "relations_status": "not_started",
     "solution_classification": {
-      "type": "official_complete_or_near_complete",
-      "label": "официальное полное/почти полное",
-      "status": "ai_checked",
+      "type": "official_outline_needs_work",
+      "label": "официальный план, нужна доработка",
+      "status": "needs_human_review",
       "confidence": 0.78,
       "basis": "агентский аудит средней сложности",
-      "notes": "агент grouped classification",
+      "notes": "Текущий текст является структурным конспектом: критерий возвратности и интегральная оценка вероятностей возврата не доказаны внутри карточки.",
       "audit_source": "agent-university-archives.json"
     }
   }
