@@ -174,19 +174,33 @@
     {
       "id": "sol-shank-theorem-one-line",
       "title": "Коротко через теорему Шенка",
-      "text": "Рассмотрим \\(G=\\Gamma_B(D)\\) как Tait-граф диаграммы. Теорема Шенка в топологической формулировке говорит: для диаграммы ссылки \\(L\\) число компонент \\(\\mu(L)\\) равно \\(1\\) тогда и только тогда, когда число остовных деревьев ее Tait-графа нечетно. В нашей задаче \\(L=K\\) - узел, то есть \\(\\mu(K)=1\\). Поэтому \\(\\tau(\\Gamma_B(D))\\) нечетно.\n\nЭто наиболее короткий найденный путь, но он полностью опирается на внешнюю теорему Шенка. Поэтому он годится как ссылка на известный результат, а не как самостоятельное школьное доказательство.",
+      "text": "Рассмотрим \\(G=\\Gamma_B(D)\\) как Tait-граф шахматно раскрашенной диаграммы. Используем внешнюю теорему Шенка в форме, приведённой, например, в работе Jun Ge and Lianzhu Zhang, \"Determinant of links, spanning trees, and a theorem of Shank\", DOI: https://doi.org/10.1142/S0218216516410054 . Она утверждает: для диаграммы ссылки \\(L\\) число компонент \\(\\mu(L)\\) равно \\(1\\) тогда и только тогда, когда число остовных деревьев соответствующего Tait-графа нечётно.\n\nВ нашей задаче \\(L=K\\) — узел, то есть однокомпонентная ссылка, поэтому \\(\\mu(K)=1\\). Подставляя это в теорему Шенка, сразу получаем, что \\(\\tau(\\Gamma_B(D))\\), число остовных деревьев чёрного Tait-графа диаграммы, нечётно.\n\nЭто не самостоятельное доказательство задачи: весь нетривиальный шаг перенесён во внешнюю топологическую теорему Шенка. Для самодостаточного пути в карточке оставлено другое решение через матричную теорему Кирхгофа, матрицу Гёрлица и нечётность определителя узла; оно тоже использует тяжёлые внешние факты.",
       "idea_ids": [
         "idea-shank-theorem"
       ],
       "standard_idea_ids": [],
-      "status": "ai_checked",
+      "status": "source_verified",
       "definition_ids": [
         "planar_graph",
         "spanning_tree"
       ],
       "source_ids": [
         "src-ge-zhang-shank"
-      ]
+      ],
+      "repair_status": "high_reasoning_repaired_2026_05_07",
+      "review_notes": "High-reasoning repair 2026-05-07: classified as hard_external_theorem_no_proof; the solution is valid only after accepting Shank's theorem, with DOI source explicitly named.",
+      "solution_classification": {
+        "type": "hard_external_theorem_no_proof",
+        "label": "тяжёлая внешняя теорема без доказательства",
+        "status": "source_verified",
+        "external_theorem_ids": [
+          "Shank_theorem"
+        ],
+        "notes": "The one-line proof is intentionally a reference proof: Shank's theorem gives exactly the parity of the number of spanning trees of a Tait graph for one-component links. The theorem is not reproduced because it belongs to external knot/Tait-graph theory.",
+        "source_ids": [
+          "src-ge-zhang-shank"
+        ]
+      }
     }
   ],
   "difficulty": {
@@ -290,7 +304,7 @@
     "created_by": "ai",
     "created_at": "2026-05-05",
     "review_status": "ai_checked",
-    "public_ready": true,
+    "public_ready": false,
     "notes": [
       "Дочерняя карточка, отделённая от miklos-schweitzer-2012-p10-knot-black-graph-spanning-trees и сохраняющая только пункт (b).",
       "2026-05-06 проверка источников: венгерский оригинал и английский перевод в архиве Maróti/Szeged Schweitzer подтверждают условие. Индекс архива помечает ссылку 2012 года как 'solution', но связанный PDF является официальным отчётом, а не подробным текстом решения.",

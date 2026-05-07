@@ -311,6 +311,11 @@ def build_html(data):
       border-color: #e2c76d;
     }}
 
+    .solution-status-official_plan_completed_by_ai {{
+      background: #dff6ec;
+      border-color: #82c7ad;
+    }}
+
     .solution-status-unofficial_published {{
       background: #edf0f7;
       border-color: #bac4d6;
@@ -336,14 +341,19 @@ def build_html(data):
       border-color: #d8ba78;
     }}
 
+    .solution-status-hard_external_theorem_no_proof {{
+      background: #f5ead4;
+      border-color: #d8ba78;
+    }}
+
     .solution-status-missing {{
-      background: var(--warn);
-      border-color: #e2c76d;
+      background: #f0e6df;
+      border-color: #d0b6a8;
     }}
 
     .solution-status-no_solution_hard {{
-      background: var(--warn);
-      border-color: #e2c76d;
+      background: #f4d7d7;
+      border-color: #d78b8b;
     }}
 
     .section {{
@@ -1099,10 +1109,17 @@ def build_html(data):
   function normalizedSolutionStatusKey(key) {{
     const aliases = {{
       external_published_solution_adapted: 'unofficial_published',
+      official_complete: 'official_complete_or_near_complete',
+      official_solution: 'official_complete_or_near_complete',
+      official_solution_expanded: 'official_plan_completed_by_ai',
+      official_solution_restored: 'official_plan_completed_by_ai',
+      official_expanded_full_solution: 'official_plan_completed_by_ai',
+      official_solution_lemma_extracted: 'official_plan_completed_by_ai',
       published: 'unofficial_published',
       ai: 'ai_original',
       heavy: 'ai_heavy_external_theorem',
-      missing: 'no_solution_hard'
+      external_theorem_reference: 'hard_external_theorem_no_proof',
+      missing: 'missing'
     }};
     return aliases[key] || key;
   }}
@@ -1112,14 +1129,17 @@ def build_html(data):
     const known = new Set([
       'official_complete_or_near_complete',
       'official_outline_needs_work',
+      'official_plan_completed_by_ai',
       'unofficial_published',
       'ai_original',
       'ai_heavy_external_theorem',
+      'hard_external_theorem_no_proof',
+      'missing',
       'no_solution_hard'
     ]);
     if (known.has(classification)) return classification;
     const solutions = realSolutions(problem);
-    if (!solutions.length) return 'no_solution_hard';
+    if (!solutions.length) return 'missing';
     if (solutions.some(solutionLooksHeavy)) return 'ai_heavy_external_theorem';
     if (solutions.some(solutionLooksPublished)) return 'unofficial_published';
     return 'ai_original';
@@ -1148,10 +1168,12 @@ def build_html(data):
         missing: 'решения нет',
         official_complete_or_near_complete: 'официальное полное/почти полное',
         official_outline_needs_work: 'официальный план, нужна доработка',
+        official_plan_completed_by_ai: 'официальный план, доведённый ИИ',
         unofficial_published: 'опубликованное неофициальное',
         ai_original: 'решение ИИ с нуля',
         ai_heavy_external_theorem: 'ИИ/решение с тяжёлыми внешними теоремами',
-        no_solution_hard: 'решения нет: сложная задача',
+        hard_external_theorem_no_proof: 'доказательство не приведено: тяжёлая внешняя теорема',
+        no_solution_hard: 'решения нет, гроб',
         with: 'есть решение',
         without: 'решения нет'
       }};
@@ -1640,9 +1662,12 @@ def build_html(data):
       const counts = {{
         official_complete_or_near_complete: 0,
         official_outline_needs_work: 0,
+        official_plan_completed_by_ai: 0,
         unofficial_published: 0,
         ai_original: 0,
         ai_heavy_external_theorem: 0,
+        hard_external_theorem_no_proof: 0,
+        missing: 0,
         no_solution_hard: 0,
         with: 0,
         without: 0
@@ -1659,10 +1684,12 @@ def build_html(data):
         `<option value="without">Решения нет (${{counts.without}})</option>`,
         `<option value="official_complete_or_near_complete">Официальное полное/почти полное (${{counts.official_complete_or_near_complete}})</option>`,
         `<option value="official_outline_needs_work">Официальный план, нужна доработка (${{counts.official_outline_needs_work}})</option>`,
+        `<option value="official_plan_completed_by_ai">Официальный план, доведённый ИИ (${{counts.official_plan_completed_by_ai}})</option>`,
         `<option value="unofficial_published">Опубликованное неофициальное (${{counts.unofficial_published}})</option>`,
         `<option value="ai_original">Решение ИИ с нуля (${{counts.ai_original}})</option>`,
         `<option value="ai_heavy_external_theorem">Тяжёлые внешние теоремы (${{counts.ai_heavy_external_theorem}})</option>`,
-        `<option value="no_solution_hard">Решения нет: сложная задача (${{counts.no_solution_hard}})</option>`
+        `<option value="hard_external_theorem_no_proof">Доказательство не приведено: тяжёлая внешняя теорема (${{counts.hard_external_theorem_no_proof}})</option>`,
+        `<option value="no_solution_hard">Решения нет, гроб (${{counts.no_solution_hard}})</option>`
       ].join('');
       select.value = state.solution;
       if (select.value !== state.solution) select.value = 'all';

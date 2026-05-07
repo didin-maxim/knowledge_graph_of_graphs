@@ -21,7 +21,8 @@
       "hamiltonian_cycle"
     ],
     "methods": [
-      "closure_argument"
+      "chvatal_degree_sequence_theorem",
+      "bondy_chvatal_closure"
     ],
     "transformations": [
       "ore_closure"
@@ -62,15 +63,39 @@
     "graph_theory": [],
     "olympiad_reformulations": []
   },
-  "ideas": [],
+  "ideas": [
+    {
+      "id": "idea-chvatal-condition",
+      "title": "Условие является частным случаем теоремы Хватала",
+      "text": "Если при некотором \\(i<n/2\\) выполнено \\(d_i\\le i\\), то из \\(d_i+d_{n-i}\\ge n\\) следует \\(d_{n-i}\\ge n-i\\). Это ровно альтернатива, требуемая в теореме Хватала о гамильтоновых степенных последовательностях.",
+      "tags": [
+        "hamiltonian_cycles"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-closure-external",
+      "title": "Замыкание Бонди--Хватала как внешний инструмент",
+      "text": "Стандартное доказательство использует замыкание: добавление ребра между несмежными вершинами с суммой степеней не меньше \\(n\\) сохраняет гамильтоновость; затем условие на степени заставляет замыкание стать полным графом.",
+      "tags": [
+        "hamiltonian_cycles"
+      ],
+      "status": "needs_human_review"
+    }
+  ],
   "solutions": [
     {
       "id": "sol-official-archive",
-      "title": "Архивное решение",
-      "text": "Решение пока не найдено в самодостаточном виде.\n\nСтарый архивный набросок использовал лемму о замыкании Бонди--Хватала: если две несмежные вершины \\(u\\) и \\(v\\) удовлетворяют \\(\\deg(u)+\\deg(v)\\ge n\\), то добавление ребра \\(uv\\) не меняет гамильтоновость. После последовательного добавления всех таких рёбер нужно доказать, что условие на последовательность степеней \\(d_i+d_{n-i}\\ge n\\) заставляет замыкание быть гамильтоновым.\n\nЭтот последний шаг является по сути теоремой Хватала о гамильтоновых графах с заданной последовательностью степеней. В текущей карточке полное локальное доказательство этой теоремы не восстановлено, поэтому прежний текст был только ссылкой на внешний/стандартный результат, а не самостоятельным решением.",
-      "idea_ids": [],
+      "title": "Сведение к теореме Хватала о степенях",
+      "text": "Это решение опирается на внешнюю теорему Хватала о гамильтоновых степенных последовательностях.\n\nТеорема Хватала. Пусть степени вершин \\(n\\)-вершинного графа равны\n\\(d_1\\le d_2\\le\\cdots\\le d_n\\). Если для каждого \\(i<n/2\\) выполнено\n\\[\nd_i>i \\quad\\text{или}\\quad d_{n-i}\\ge n-i,\n\\]\nто граф гамильтонов.\n\nПроверим, что условие задачи влечёт гипотезу этой теоремы. Зафиксируем \\(i<n/2\\). Если \\(d_i>i\\), первая альтернатива уже выполнена. Если же \\(d_i\\le i\\), то по условию задачи\n\\[\nd_i+d_{n-i}\\ge n,\n\\]\nа значит \\(d_{n-i}\\ge n-d_i\\ge n-i\\). Следовательно, альтернатива Хватала выполнена для каждого \\(i<n/2\\), и граф содержит гамильтонов цикл.\n\nКарточка не считается полной локальной записью доказательства, потому что сама теорема Хватала является существенным классическим внешним результатом. Обычное доказательство проходит через замыкание Бонди--Хватала: добавление ребра между двумя несмежными вершинами с суммой степеней не меньше \\(n\\) сохраняет гамильтоновость, а условие на степенную последовательность затем заставляет замыкание стать полным графом.",
+      "idea_ids": [
+        "idea-chvatal-condition",
+        "idea-closure-external"
+      ],
       "standard_idea_ids": [],
-      "status": "needs_human_review"
+      "status": "needs_human_review",
+      "repair_status": "hard_external_theorem_no_proof",
+      "review_notes": "High-reasoning repair 2026-05-07: exact reduction to Chvatal theorem is written out; local proof of the external theorem is not included, so classification is hard_external_theorem_no_proof."
     }
   ],
   "difficulty": {
@@ -98,16 +123,17 @@
     "graph_theory_duplicate_removed": true,
     "notes": [
       "Редакционная заметка: явный английский служебный текст заменен русским.",
-      "2026-05-06: короткое решение проверено как несамодостаточное; ключевой шаг сводится к теореме Хватала/замыканию Бонди--Хватала, локальное доказательство пока не восстановлено."
+      "2026-05-06: короткое решение проверено как несамодостаточное; ключевой шаг сводится к теореме Хватала/замыканию Бонди--Хватала, локальное доказательство пока не восстановлено.",
+      "2026-05-07 high-reasoning pass: wrote the precise reduction to Chvatal theorem; kept the card out of ai_checked because the external theorem proof is not included."
     ],
     "relations_status": "deep_done",
     "solution_classification": {
-      "type": "official_complete_or_near_complete",
-      "label": "официальное полное/почти полное",
+      "type": "hard_external_theorem_no_proof",
+      "label": "external theorem required; no local proof",
       "status": "needs_human_review",
-      "confidence": 0.35,
+      "confidence": 0.9,
       "basis": "агентский аудит средней сложности",
-      "notes": "2026-05-06: прежний текст оказался outline-ссылкой на теорему Хватала; полное локальное решение пока не восстановлено",
+      "notes": "Reduction to Chvatal theorem is short and correct; the full proof of Chvatal degree sequence theorem remains an external heavy tool.",
       "audit_source": "agent-russian-archives.json"
     }
   }

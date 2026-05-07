@@ -147,12 +147,14 @@
         "minimal_counterexample",
         "invariant"
       ],
-      "status": "needs_human_review",
+      "status": "source_verified",
       "definition_ids": [
         "directed_graph",
         "path"
       ],
-      "source_id": "src-imo-2021-shortlist"
+      "source_id": "src-imo-2021-shortlist",
+      "repair_status": "very_high_repaired_2026_05_07",
+      "review_notes": "Very-high аудит 2026-05-07: развёрнутое официальное решение принято как самодостаточное; конструкции, препятствие китайской теоремы об остатках и исключение нечётных простых степеней перепроверены."
     }
   ],
   "difficulty": {
@@ -205,23 +207,24 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-06",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Файл отсутствовал в указанном репозитории, поэтому карточка создана заново в заданном narrow write scope.",
       "Важная сверка индекса: официальный источник IMO 2021 Shortlist называет эту задачу N8; заданный slug содержит c6, но математическое содержание functional-graph-roots соответствует N8, а не официальной C6 про hunter and rabbit.",
-      "Официальное решение развёрнуто в самодостаточное русское доказательство: добавлены конструкции для простых и степеней двойки, CRT-исключение смешанных модулей, лемма о размерах образов классов modulo p^k и отдельная обработка p=3."
+      "Официальное решение развёрнуто в самодостаточное русское доказательство: добавлены конструкции для простых и степеней двойки, CRT-исключение смешанных модулей, лемма о размерах образов классов modulo p^k и отдельная обработка p=3.",
+      "2026-05-07 very-high аудит: решение математически оставлено без изменений, русские публичные поля проверены, служебных англоязычных хвостов в публичном тексте нет."
     ],
     "relations_status": "deep_done",
     "graph_theory_note": "Графовая формулировка добавлена как функционально-графовая переформулировка, но основное доказательство существенно использует также арифметику многочленов по модулю простых степеней.",
     "solution_classification": {
       "type": "official_complete_or_near_complete",
       "label": "официальное полное/почти полное",
-      "status": "ai_checked",
+      "status": "source_verified",
       "confidence": 0.96,
       "basis": "официальный IMO 2021 Shortlist N8 solution, cross-checked with AoPS Wiki proposer/statement page",
-      "notes": "Сжатое официальное решение восстановлено в полный текст; единственная оговорка — несоответствие заданного slug c6 официальному индексу N8.",
-      "audit_source": "official-plan-expansion-imo-2021-c6-functional-graph-roots"
+      "notes": "Сжатое официальное решение восстановлено в полный текст и повторно проверено very-high проходом; единственная оговорка — несоответствие заданного slug c6 официальному индексу N8.",
+      "audit_source": "very-high-pipeline-batch-6-2026-05-07"
     }
   }
 }

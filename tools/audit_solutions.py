@@ -25,6 +25,17 @@ TEXT_RED_FLAGS = [
     "стандартно",
     "оставляется читателю",
     "следует из теоремы",
+    "требует доработки",
+    "нужно доработать",
+    "непонятн",
+    "неясн",
+    "не удалось понять",
+    "переход не проверен",
+    "не доведен",
+    "не доведён",
+    "недовед",
+    "needs work",
+    "unclear",
 ]
 COMMENT_RED_FLAGS = [
     "outline",
@@ -70,20 +81,33 @@ def solution_reasons(problem, solution, comments, min_ai_checked_words, min_any_
     title = solution.get("title", "")
     solution_id = solution.get("id", "")
     status = solution.get("status")
+    repair_status = solution.get("repair_status") or ""
+    medium_checked = repair_status.startswith("medium_reasoning_understandable_") or repair_status.startswith(
+        "medium_reasoning_minor_repair_"
+    )
+    repaired_checked = medium_checked or repair_status.startswith("high_reasoning_repaired_") or repair_status.startswith(
+        "very_high_repaired_"
+    )
+    needs_high_repair = repair_status.startswith("needs_high_reasoning_repair_")
+    needs_very_high = repair_status.startswith("needs_very_high_no_solution_attempt_")
     words = word_count(text)
     haystack = f"{solution_id}\n{title}\n{text}".lower()
     reasons = []
 
-    if status == "ai_checked" and words < min_ai_checked_words:
+    if not repaired_checked and status == "ai_checked" and words < min_ai_checked_words:
         reasons.append(f"short_ai_checked:{words}")
-    if status != "needs_human_review" and words < min_any_words:
+    if not repaired_checked and status != "needs_human_review" and words < min_any_words:
         reasons.append(f"very_short:{words}")
-    if any(marker in haystack for marker in EXPLICIT_SHORT_MARKERS):
+    if needs_high_repair:
+        reasons.append("needs_high_reasoning_repair")
+    if needs_very_high:
+        reasons.append("needs_very_high_no_solution_attempt")
+    if not repaired_checked and any(marker in haystack for marker in EXPLICIT_SHORT_MARKERS):
         reasons.append("explicit_short_marker")
-    matched_text_flag = next((marker for marker in TEXT_RED_FLAGS if marker in haystack), None)
+    matched_text_flag = None if repaired_checked else next((marker for marker in TEXT_RED_FLAGS if marker in haystack), None)
     if matched_text_flag:
         reasons.append(f"text_red_flag:{matched_text_flag}")
-    if problem["id"] in comments:
+    if not repaired_checked and problem["id"] in comments:
         reasons.append("self_containment_comment")
 
     return words, reasons

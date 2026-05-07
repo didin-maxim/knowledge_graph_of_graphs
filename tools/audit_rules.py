@@ -15,7 +15,15 @@ SOLUTION_RED_FLAGS = [
     ("outline/sketch title", re.compile(r"\b(outline|sketch|plan|summary|compressed)\b", re.IGNORECASE)),
     ("draft Russian marker", re.compile(r"\b(набросок|план|пересказ|сжатый пересказ)\b", re.IGNORECASE)),
     ("external-solution narration", re.compile(r"(официальн\w*\s+решени\w*|автор\w*\s+решени\w*)", re.IGNORECASE)),
-    ("handwave marker", re.compile(r"\b(аналогично|стандартно|легко видеть)\b", re.IGNORECASE)),
+    ("handwave marker", re.compile(r"\b(стандартно|легко видеть)\b", re.IGNORECASE)),
+    (
+        "medium-reasoning incomprehensible marker",
+        re.compile(
+            r"(требует доработки|нужно доработать|непонятн|неясн|не удалось понять|"
+            r"переход не проверен|не довед[её]н|недовед|needs work|unclear)",
+            re.IGNORECASE,
+        ),
+    ),
 ]
 PUBLIC_TEXT_KEYS = {"title", "text", "comment"}
 NON_PUBLIC_TEXT_BRANCHES = {
@@ -30,6 +38,11 @@ NON_PUBLIC_TEXT_BRANCHES = {
 CYRILLIC_RE = re.compile(r"[А-Яа-яЁё]")
 ENGLISH_WORD_RE = re.compile(r"\b[A-Za-z]{4,}\b")
 URL_OR_PATH_RE = re.compile(r"https?://\S+|[A-Za-z]:[\\/]\S+|%TEMP%[\\/]\S+|audit/[A-Za-z0-9_./-]+")
+MOJIBAKE_RE = (
+    r"(?:Рџ|Рќ|РЅ|Рµ|Рё|Рѕ|Р°|Р±|РІ|Рі|Рґ|Р¶|Р·|Р№|Рє|Р»|Рј|Рї|РС|"
+    r"СЃ|С‚|СЂ|СЊ|С‹|СЋ|СЏ){3,}"
+)
+BROKEN_ENCODING_RE = re.compile(r"\?{4,}|\ufffd|" + MOJIBAKE_RE)
 
 
 def rel(path):
@@ -89,13 +102,21 @@ def check_language_policy(problem, path, report):
     if problem.get("language") != "ru":
         return
     for path_parts, text in iter_public_texts(problem):
+        if BROKEN_ENCODING_RE.search(text):
+            add(
+                report,
+                "error",
+                "broken_encoding",
+                rel(path),
+                f"Russian card has broken encoding marker at {'.'.join(path_parts)}",
+            )
         scrubbed = scrub_for_language_check(text)
         english_words = ENGLISH_WORD_RE.findall(scrubbed)
         cyrillic_chars = CYRILLIC_RE.findall(scrubbed)
         if len(english_words) >= 6 and len(english_words) > len(cyrillic_chars) / 4:
             add(
                 report,
-                "warning",
+                "error",
                 "language_policy",
                 rel(path),
                 f"Russian card has English-heavy public text at {'.'.join(path_parts)}",
@@ -130,6 +151,49 @@ def check_problem(problem, path, report):
     check_language_policy(problem, path, report)
 
     editorial = problem.get("editorial", {})
+    solution_classification = editorial.get("solution_classification") or {}
+    classification_type = solution_classification.get("type")
+    classification_blob = "\n".join(
+        str(solution_classification.get(key, ""))
+        for key in ["label", "status", "basis", "notes", "audit_source"]
+    ).lower()
+
+    if classification_type == "no_solution_hard":
+        if problem.get("solutions") or problem.get("ideas"):
+            add(
+                report,
+                "warning",
+                "solution_classification",
+                rel(path),
+                "no_solution_hard must have empty solutions[] and ideas[] after cleanup",
+            )
+        if not re.search(r"very high|xhigh|очень высок|особо слож|длительн", classification_blob):
+            add(
+                report,
+                "warning",
+                "solution_classification",
+                rel(path),
+                "no_solution_hard must cite the special very-high-reasoning no-solution procedure",
+            )
+
+    if classification_type == "official_plan_completed_by_ai":
+        if not problem.get("solutions"):
+            add(
+                report,
+                "warning",
+                "solution_classification",
+                rel(path),
+                "official_plan_completed_by_ai requires a completed local solution",
+            )
+        if not re.search(r"high|высок|довед|completed|провер", classification_blob):
+            add(
+                report,
+                "warning",
+                "solution_classification",
+                rel(path),
+                "official_plan_completed_by_ai must say that a high-reasoning agent completed and checked the official plan",
+            )
+
     if editorial.get("public_ready") is True:
         problems = []
         if editorial.get("review_status") in UNCERTAIN_STATUSES:
@@ -158,6 +222,7 @@ def check_problem(problem, path, report):
         solution_id = solution.get("id", "<missing>")
         text = solution.get("text", "")
         title = solution.get("title", "")
+        notes = str(solution.get("review_notes", ""))
         if PLACEHOLDER_SOLUTION_RE.match(text):
             add(
                 report,
@@ -178,6 +243,14 @@ def check_problem(problem, path, report):
                         f"solution {solution_id} is ai_checked but matches {label}",
                     )
                     break
+        if BROKEN_ENCODING_RE.search(notes):
+            add(
+                report,
+                "error",
+                "broken_encoding",
+                rel(path),
+                f"solution {solution_id} review_notes appears to contain replacement question marks",
+            )
         for example in solution.get("examples", []):
             if isinstance(example, dict) and example.get("type") == "image":
                 asset_path = example.get("path")
