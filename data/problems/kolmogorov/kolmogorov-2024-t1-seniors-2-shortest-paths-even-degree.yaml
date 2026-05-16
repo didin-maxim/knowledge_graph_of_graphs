@@ -1,6 +1,6 @@
 {
   "id": "kolmogorov-2024-t1-seniors-2-shortest-paths-even-degree",
-  "title": "Максимум числа кратчайших путей при степени 2m, Кубок Колмогорова 2024 T1 seniors 2",
+  "title": "Кратчайшие пути в мультиграфе степени не выше 2m, Кубок Колмогорова 2024",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -67,32 +67,10 @@
           "multigraph",
           "path",
           "degree"
-        ],
-        "distinct_from": [
-          "stmt-graph-exact-answer"
         ]
       }
     ],
-    "graph_theory": [
-      {
-        "id": "stmt-graph-exact-answer",
-        "title": "Точная графовая формулировка",
-        "text": "Для любых положительных целых \\(m,t\\) среди всех конечных мультиграфов без петель с \\(\\Delta(G)\\le2m\\) и двумя вершинами \\(x,y\\) на расстоянии \\(t\\) максимальное число кратчайших \\(x\\)-\\(y\\)-путей равно \\(2m^t\\).",
-        "source_id": "src-kolmogorov-2024-official",
-        "status": "ai_checked",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "multigraph",
-          "path",
-          "degree"
-        ],
-        "distinct_from": [
-          "stmt-kolmogorov-even-degree-exact"
-        ]
-      }
-    ],
+    "graph_theory": [],
     "olympiad_reformulations": []
   },
   "ideas": [
@@ -170,8 +148,7 @@
       "role": "problem_official",
       "status": "source_verified",
       "statement_ids": [
-        "stmt-kolmogorov-even-degree-exact",
-        "stmt-graph-exact-answer"
+        "stmt-kolmogorov-even-degree-exact"
       ]
     },
     {
@@ -207,6 +184,7 @@
       "basis": "выделено из сверенной объединённой карточки Колмогорова с полным решением",
       "notes": "Официальный источник фиксирует условие; точный ответ закрыт верхней оценкой Беньямини — Цалика и явной конструкцией.",
       "audit_source": "agent-split-benjamini-tzalik-kolmogorov"
-    }
+    },
+    "graph_theory_duplicate_removed": true
   }
 }

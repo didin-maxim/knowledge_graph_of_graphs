@@ -74,25 +74,7 @@
         ]
       }
     ],
-    "graph_theory": [
-      {
-        "id": "stmt-corrected-size-assumption",
-        "title": "Исправленная форма с явным числом вершин",
-        "text": "Пусть \\(G\\) — конечный простой граф, \\(|V(G)|\\ge 2d+2\\), и в каждом множестве из \\(2d+2\\) вершин графа можно выбрать \\(d\\) вершин, покрывающих все рёбра с обоими концами в этом множестве. Тогда \\(G\\) можно правильно раскрасить в \\(d+2\\) цвета; более того, у \\(G\\) есть вершинное покрытие размера не больше \\(d\\), поэтому достаточно \\(d+1\\) цвета.",
-        "source_id": "src-kolmogorov-2009-official",
-        "status": "ai_checked",
-        "review_notes": "Это естественная исправленная версия официальной формулировки: без условия \\(|V(G)|\\ge 2d+2\\) исходный текст ложен, например \\(K_5\\) при \\(d=2\\).",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "simple_graph",
-          "vertex_cover",
-          "independent_set",
-          "chromatic_number"
-        ]
-      }
-    ],
+    "graph_theory": [],
     "olympiad_reformulations": []
   },
   "ideas": [
@@ -183,7 +165,7 @@
       "2026-05-06: high-reasoning pass нашел полное самодостаточное решение естественной исправленной версии с условием |V(G)| >= 2d+2. Исходная официальная запись оставлена в статусе needs_human_review, потому что без этого условия утверждение ложно; public_ready остается false."
     ],
     "relations_status": "deep_done",
-    "graph_theory_duplicate_removed": false,
+    "graph_theory_duplicate_removed": true,
     "solution_classification": {
       "type": "conditional_corrected_statement_solution",
       "label": "полное решение исправленной формулировки",

@@ -1,6 +1,6 @@
 {
   "id": "imo-2012-c7-equal-sum-chords-independent-set",
-  "title": "Равные суммы на хордах и независимое множество, IMO Shortlist 2012 C7",
+  "title": "Равные суммы на непересекающихся хордах, IMO Shortlist 2012 C7",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -57,25 +57,11 @@
         },
         "definition_ids": [],
         "distinct_from": [
-          "stmt-graph",
           "stmt-graph-intersection"
         ]
       }
     ],
     "graph_theory": [
-      {
-        "id": "stmt-graph",
-        "text": "Вершины полного графа \\(K_{2^{500}}\\) расположены на окружности и помечены числами \\(1,2,\\ldots,2^{500}\\). Докажите, что найдётся такое число \\(s\\), что среди хорд \\(ij\\) с условием \\(i+j=s\\) можно выбрать 100 попарно непересекающихся.",
-        "status": "needs_human_review",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [],
-        "distinct_from": [
-          "stmt-original",
-          "stmt-graph-intersection"
-        ]
-      },
       {
         "id": "stmt-graph-intersection",
         "text": "Для каждого числа \\(s\\in\\{3,4,\\ldots,2^{501}-1\\}\\) рассмотрим все хорды \\(ij\\) окружности, где вершины помечены числами \\(1,2,\\ldots,2^{500}\\) по кругу и \\(i+j=s\\). Определим граф \\(H_s\\), вершинами которого являются эти хорды, а две вершины смежны тогда и только тогда, когда соответствующие хорды пересекаются. Докажите, что найдётся такое \\(s\\), для которого граф \\(H_s\\) содержит независимое множество размера не меньше 100.",
@@ -87,9 +73,9 @@
           "independent_set"
         ],
         "distinct_from": [
-          "stmt-original",
-          "stmt-graph"
-        ]
+          "stmt-original"
+        ],
+        "title": "Граф пересечений хорд"
       }
     ],
     "olympiad_reformulations": []

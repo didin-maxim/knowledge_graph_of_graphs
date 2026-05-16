@@ -1,6 +1,6 @@
 {
   "id": "imo-2005-c3-black-paths-injection",
-  "title": "Чёрные пути на доске и инъекция, IMO Shortlist 2005 C3",
+  "title": "Чёрные пути через прямоугольную доску, IMO Shortlist 2005 C3",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -54,28 +54,10 @@
           "path"
         ],
         "title": "Условие",
-        "source_id": "src-secondary-imo-2005-shortlist",
-        "distinct_from": [
-          "stmt-graph"
-        ]
+        "source_id": "src-secondary-imo-2005-shortlist"
       }
     ],
-    "graph_theory": [
-      {
-        "id": "stmt-graph",
-        "text": "Рассмотрим решётчатый граф клеток доски \\(m\\times n\\), где соседние по стороне клетки соединены ребром. Каждая вершина окрашивается в чёрный или белый цвет. Пусть \\(N\\) — число раскрасок, в которых существует чёрный путь из левого края доски в правый, а \\(M\\) — число раскрасок, в которых существуют два вершинно непересекающихся таких чёрных пути. Докажите, что \\(N^2\\ge M\\cdot 2^{mn}\\).",
-        "status": "ai_checked",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "path"
-        ],
-        "distinct_from": [
-          "stmt-original"
-        ]
-      }
-    ],
+    "graph_theory": [],
     "olympiad_reformulations": []
   },
   "ideas": [
@@ -162,6 +144,8 @@
     "created_at": "2026-04-20",
     "review_status": "ai_checked",
     "public_ready": true,
+    "graph_theory_absent_reason": "Графовая структура используется в официальном решении, но не является самостоятельной переформулировкой исходного условия.",
+    "graph_theory_duplicate_removed": true,
     "notes": [
       "2026-05-06: условие сверено по AoPS Wiki и вторичному архиву IMO Shortlist 2005; на официальной странице imo-official.org/problems.aspx для 2005 года PDF шортлиста не опубликован.",
       "Сжатый эскиз заменён самодостаточным доказательством инъекции: нижний путь строится как нижний контур объединения проходов и лежит не выше любого другого прохода; обмен выполняется по D(P), обратимость восстанавливается по нижнему пути второй раскраски."

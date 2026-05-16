@@ -54,6 +54,46 @@ ENGLISH_TAIL_RE = re.compile(
     r")\b",
     re.IGNORECASE,
 )
+GRAPH_TERMS_RE = re.compile(
+    r"(граф|орграф|гиперграф|вершин|реб[её]р|ребро|ребра|смежн|инцидент|"
+    r"клик|цикл|путь|дерев|степен|паросочет|сочетан|двудол|связн|компонент|"
+    r"гамильтон|эйлер|турнир|ориентац|раскраск[аи]?\s+р[её]бер|разрез)",
+    re.IGNORECASE,
+)
+GRAPH_STORY_RE = re.compile(
+    r"(игрок|клет|реш[её]тк|доск|строк|столб|диагон|город|люд|человек|знаком|"
+    r"команд|шахмат|ферз|ладь|домино|лягуш|остров|мост|дорог|авиал|метро|"
+    r"комнат|провод|ламп|монет|карточ|таблиц|многоугольник|точк|отрез)",
+    re.IGNORECASE,
+)
+GENERIC_GRAPH_TITLE_RE = re.compile(r"^\s*(графовая\s+формулировка|на\s+языке\s+графов)\s*$", re.IGNORECASE)
+WORD_RE = re.compile(r"[A-Za-zА-Яа-яЁё0-9]+")
+SIMILARITY_STOP_WORDS = {
+    "если",
+    "или",
+    "для",
+    "при",
+    "что",
+    "это",
+    "как",
+    "так",
+    "все",
+    "всех",
+    "каждый",
+    "каждая",
+    "каждое",
+    "докажите",
+    "найдите",
+    "может",
+    "можно",
+    "существует",
+    "имеет",
+    "имеются",
+    "который",
+    "которая",
+    "которое",
+    "которые",
+}
 
 
 def rel(path):
@@ -138,6 +178,66 @@ def check_language_policy(problem, path, report):
             )
 
 
+def text_words(text):
+    scrubbed = scrub_for_language_check(text).lower().replace("ё", "е")
+    words = {word for word in WORD_RE.findall(scrubbed) if len(word) >= 4}
+    return words - SIMILARITY_STOP_WORDS
+
+
+def text_similarity(left, right):
+    left_words = text_words(left)
+    right_words = text_words(right)
+    if not left_words or not right_words:
+        return 0.0
+    return len(left_words & right_words) / len(left_words | right_words)
+
+
+def check_graph_theory_quality(problem, path, report):
+    statements = problem.get("statements") or {}
+    graph_statements = statements.get("graph_theory") or []
+    if not graph_statements:
+        return
+    originals = statements.get("original") or []
+    original_texts = [statement.get("text", "") for statement in originals if isinstance(statement, dict)]
+    for index, statement in enumerate(graph_statements):
+        statement_id = statement.get("id", f"#{index}")
+        title = str(statement.get("title", ""))
+        text = str(statement.get("text", ""))
+        graph_terms = GRAPH_TERMS_RE.findall(text)
+        story_terms = GRAPH_STORY_RE.findall(text)
+        where = f"graph_theory/{statement_id}"
+        if not title.strip():
+            add(report, "warning", "graph_theory_quality", rel(path), f"{where} has no title")
+        elif GENERIC_GRAPH_TITLE_RE.match(title):
+            add(report, "warning", "graph_theory_quality", rel(path), f"{where} has a generic title")
+        if not graph_terms:
+            add(
+                report,
+                "warning",
+                "graph_theory_quality",
+                rel(path),
+                f"{where} has no obvious graph-theory vocabulary; check whether it is only a restatement",
+            )
+        elif len(story_terms) >= 3 and len(story_terms) > len(graph_terms):
+            add(
+                report,
+                "warning",
+                "graph_theory_quality",
+                rel(path),
+                f"{where} still has heavy story vocabulary; check whether graph language really simplifies the statement",
+            )
+        for original_text in original_texts:
+            if len(text) >= 0.85 * len(original_text) and text_similarity(text, original_text) >= 0.72:
+                add(
+                    report,
+                    "warning",
+                    "graph_theory_quality",
+                    rel(path),
+                    f"{where} is close in length and wording to original; prefer removing cosmetic graph restatements",
+                )
+                break
+
+
 def iter_problem_files():
     return sorted((DATA / "problems").rglob("*.yaml"))
 
@@ -164,6 +264,7 @@ def check_core_bom(report):
 
 def check_problem(problem, path, report):
     check_language_policy(problem, path, report)
+    check_graph_theory_quality(problem, path, report)
 
     editorial = problem.get("editorial", {})
     solution_classification = editorial.get("solution_classification") or {}
