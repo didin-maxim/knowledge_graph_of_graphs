@@ -94,7 +94,9 @@
         },
         "definition_ids": [
           "planar_graph",
-          "spanning_tree"
+          "spanning_tree",
+          "multigraph",
+          "tree"
         ],
         "distinct_from": [
           "stmt-original-p10b"
@@ -120,8 +122,7 @@
       "text": "Знаки перекрестков в матрице Гёрлица равны \\(\\pm1\\), поэтому по модулю \\(2\\) они превращаются в обычные единичные веса ребер Tait-графа. Следовательно, редуцированная матрица Гёрлица и редуцированный лапласиан имеют одинаковый определитель по модулю \\(2\\). Это стандартный Goeritz/Tait-факт, а не школьная лемма.",
       "tags": [
         "planar_graphs",
-        "invariant",
-        "goal_other"
+        "invariant"
       ],
       "status": "ai_checked"
     },
@@ -131,8 +132,7 @@
       "text": "Определитель узла равен \\(|\\Delta_K(-1)|\\), где \\(\\Delta_K(t)\\) - нормированный многочлен Александера. Так как \\(-1\\equiv1\\pmod2\\) и \\(\\Delta_K(1)=\\pm1\\), этот определитель нечетен.",
       "tags": [
         "invariant",
-        "goal_proof",
-        "goal_other"
+        "goal_proof"
       ],
       "status": "ai_checked"
     },
@@ -142,8 +142,7 @@
       "text": "Теорема Шенка в форме для Tait-графов утверждает: диаграмма ссылки имеет одну компоненту тогда и только тогда, когда число остовных деревьев ее Tait-графа нечетно. Так как узел - это однокомпонентная ссылка, задача следует немедленно. Полное доказательство этой теоремы является внешней теорией плоских графов/узлов.",
       "tags": [
         "trees",
-        "invariant",
-        "goal_other"
+        "invariant"
       ],
       "status": "ai_checked"
     }
@@ -162,7 +161,9 @@
       "status": "ai_checked",
       "definition_ids": [
         "planar_graph",
-        "spanning_tree"
+        "spanning_tree",
+        "multigraph",
+        "tree"
       ],
       "source_ids": [
         "src-miklos-schweitzer-2012-p10-official-eng",
@@ -182,7 +183,8 @@
       "status": "source_verified",
       "definition_ids": [
         "planar_graph",
-        "spanning_tree"
+        "spanning_tree",
+        "tree"
       ],
       "source_ids": [
         "src-ge-zhang-shank"
@@ -214,8 +216,7 @@
     "trees",
     "invariant",
     "goal_counting",
-    "goal_proof",
-    "goal_other"
+    "goal_proof"
   ],
   "properties": {
     "central_method": {

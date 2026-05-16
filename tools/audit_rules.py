@@ -25,6 +25,51 @@ SOLUTION_RED_FLAGS = [
         ),
     ),
 ]
+WEAK_RELATION_TEXT_RE = re.compile(
+    r"(общ(ая|ей)\s+(метаинформация|тема|цель)|"
+    r"общ(ий|им)\s+(мотив|объект|фон)|"
+    r"перевод\w*\s+социальн\w*\s+формулировк\w*|"
+    r"социально-графов\w*|"
+    r"социальн\w*\s+граф|"
+    r"social\s+graph|"
+    r"story\s+wrapper|"
+    r"graph\s+model|"
+    r"ВсОШ/российск\w*\s+традиц\w*|"
+    r"олимпиадн\w*\s+традиц\w*|"
+    r"того\s+же\s+социально-графов\w*\s+язык\w*|"
+    r"сюжет\w*\s+о\s+знакомств\w*|"
+    r"знакомств\w*/дружб\w*|"
+    r"тот\s+же\s+сюжет|"
+    r"продолжа\w*\s+тот\s+же\s+сюжет|"
+    r"прям\w*\s+усилен\w*\s+сюжет|"
+    r"сюжетн\w*\s+оболоч|"
+    r"словесн\w*\s+оболоч|"
+    r"контекстн\w*\s+связ|"
+    r"официальн\w*\s+комментар|"
+    r"общ\w*\s+техник\w*\s+моделирован|"
+    r"относят\w*\s+к\s+.*олимпиад|"
+    r"одн(ого|ой)\s+(блока|олимпиад[ыа]|источник\w*)|"
+    r"той\s+же\s+олимпиад[ыа]|"
+    r"отмечен[аы]?\s+(тегами|метаданными)|"
+    r"помеча[ею]т.*(тег|метаданн)|"
+    r"не\s+является\s+прям|не\s+прям(ое|ым)|"
+    r"ближайш(ая|ий)\s+классическ|"
+    r"естественн(ый|ым)\s+сосед|"
+    r"стандартн(ый|ым)\s+эталон|"
+    r"классическ(ий|им)\s+ориентир|"
+    r"полезн(ая|ый)\s+(карта|сосед)|"
+    r"полезно\s+(держать\s+рядом|сравнивать)|"
+    r"хорошо\s+рифмуется|"
+    r"друг(ой|им)\s+способ\w*\s+графизировать|"
+    r"клеточн\w*\s+сюжет\w*|"
+    r"объект\s+один\s+и\s+тот\s+же,\s+но|"
+    r"графическ\w*\s+инструмент\w*\s+.*совсем\s+друг|"
+    r"находится\s+.*территории|"
+    r"уровн(е|ем)\s+мотива|"
+    r"goal_(exact_)?bound|goal_bound|"
+    r"extremal_graph_theory)",
+    re.IGNORECASE,
+)
 PUBLIC_TEXT_KEYS = {"title", "text", "comment", "notes", "basis", "label", "review_notes", "preference_note"}
 NON_PUBLIC_TEXT_BRANCHES = {
     "problem_profile",
@@ -238,6 +283,65 @@ def check_graph_theory_quality(problem, path, report):
                 break
 
 
+def check_graph_model_tags(problem, path, report):
+    tags = set(problem.get("tags") or [])
+    secondary = set((problem.get("kind") or {}).get("secondary") or [])
+    statements = problem.get("statements") or {}
+    editorial = problem.get("editorial") or {}
+    has_graph_statement = bool(statements.get("graph_theory") or statements.get("graph_hint_reformulations"))
+    has_absent_reason = bool(editorial.get("graph_theory_absent_reason"))
+
+    if "graph_in_solution" in tags:
+        if "graph_in_solution" not in secondary:
+            add(
+                report,
+                "warning",
+                "graph_model_tag_consistency",
+                rel(path),
+                "graph_in_solution tag should be mirrored in kind.secondary",
+            )
+        if "graph_model" in tags:
+            add(
+                report,
+                "warning",
+                "graph_model_tag_consistency",
+                rel(path),
+                "use either graph_model or graph_in_solution as the top-level model tag, not both",
+            )
+        if has_graph_statement:
+            add(
+                report,
+                "warning",
+                "graph_model_tag_consistency",
+                rel(path),
+                "graph_in_solution tag is for cards without an independent graph statement",
+            )
+
+    if "graph_model" in tags and "graph_in_solution" in secondary and not has_graph_statement and has_absent_reason:
+        add(
+            report,
+            "warning",
+            "graph_model_tag_consistency",
+            rel(path),
+            "graph appears only in the solution; prefer graph_in_solution over graph_model",
+        )
+
+    if (
+        "graph_model" in tags
+        and "graph_in_statement" in secondary
+        and editorial.get("graph_theory_duplicate_removed")
+        and not has_graph_statement
+        and not has_absent_reason
+    ):
+        add(
+            report,
+            "warning",
+            "graph_model_tag_consistency",
+            rel(path),
+            "direct graph statement with duplicate graph_theory removed should not keep graph_model only as a topic duplicate",
+        )
+
+
 def iter_problem_files():
     return sorted((DATA / "problems").rglob("*.yaml"))
 
@@ -265,6 +369,7 @@ def check_core_bom(report):
 def check_problem(problem, path, report):
     check_language_policy(problem, path, report)
     check_graph_theory_quality(problem, path, report)
+    check_graph_model_tags(problem, path, report)
 
     editorial = problem.get("editorial", {})
     solution_classification = editorial.get("solution_classification") or {}
@@ -387,6 +492,32 @@ def check_relation(relation, path, report):
     relation_type = relation.get("type")
     status = relation.get("status")
     confidence = relation.get("confidence")
+    relation_text = f"{relation.get('forward_text', '')}\n{relation.get('backward_text', '')}"
+    same_source_allowed = re.search(
+        r"(то\s+же\s+официальн\w*\s+услови\w*|фактическ\w*\s+дубл\w*|"
+        r"перепечат|родительск\w*\s+карточк\w*|дочерн\w*\s+карточк\w*|"
+        r"выделя\w*\s+(случай|часть|утверждение|конструкцию)|составн\w*\s+родительск\w*)",
+        relation_text,
+        re.IGNORECASE,
+    )
+    if relation_type == "same_source" and not same_source_allowed:
+        add(
+            report,
+            "warning",
+            "weak_relation_text",
+            rel(path),
+            f"{relation.get('id')}: same_source should be reserved for a reprint, split case, exact source duplicate, or true version; otherwise name the shared mechanism and use another type",
+        )
+    if relation_type in {"same_motif", "paired_variant", "solution_transfer", "prerequisite"} and WEAK_RELATION_TEXT_RE.search(
+        relation_text
+    ):
+        add(
+            report,
+            "warning",
+            "weak_relation_text",
+            rel(path),
+            f"{relation.get('id')}: relation text looks based on a tag/goal/topic/social-wrapper/source tradition; name a shared mechanism or remove it",
+        )
     try:
         confidence_value = float(confidence)
     except (TypeError, ValueError):

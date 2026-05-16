@@ -181,21 +181,6 @@
       "confidence": 0.98
     },
     {
-      "id": "rel-dirac-tournament-path",
-      "from": "dirac-theorem",
-      "to": "tournament-hamiltonian-path",
-      "type": "same_motif",
-      "distance": 4,
-      "forward_text": "В обеих задачах центральный объект — путь через много вершин; но в теореме Дирака путь замыкается за счет степеней, а в турнире строится вставкой вершины.",
-      "backward_text": "Гамильтонов путь в турнире является более простой моделью работы с длинными путями, которая тематически соседствует с гамильтоновыми критериями.",
-      "anchors": {
-        "from_solution_id": "sol-longest-path",
-        "to_solution_id": "sol-insertion"
-      },
-      "status": "ai_draft",
-      "confidence": 0.65
-    },
-    {
       "id": "rel-turan-flashlight-batteries-2015",
       "from": "turan-theorem",
       "to": "flashlight-batteries-tournament-cities-2015",
@@ -419,21 +404,6 @@
       },
       "status": "ai_checked",
       "confidence": 0.82
-    },
-    {
-      "id": "rel-vosh-universal-common-grandfather",
-      "from": "vosh-2000-01-final-universal-acquaintance",
-      "to": "tc-1994-95-common-grandfather-intersecting-edges",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе задачи формулируются как утверждения о компании и ищут сильную глобальную вершину из локальных условий на знакомства. В ВСОШ-задаче это универсальная вершина, в задаче про дедов — вершина, покрывающая много рёбер.",
-      "backward_text": "Задача про общего деда является более локальной экстремальной версией той же социальной интуиции: сильное графическое условие на пару приводит к появлению почти универсального объекта.",
-      "anchors": {
-        "from_solution_id": "sol-clique-extension",
-        "to_solution_id": "sol-three-grandfathers"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.72
     },
     {
       "id": "rel-vosh-bureaucrats-ramsey-r33",
@@ -751,28 +721,13 @@
       "confidence": 0.61
     },
     {
-      "id": "rel-usamo-2008-p6-usamo-2022-p6",
-      "from": "usamo-2008-p6-even-friends-two-rooms",
-      "to": "usamo-2022-p6-mathbook-two-common-friends-closure",
-      "type": "same_motif",
-      "distance": 2,
-      "forward_text": "Обе задачи формулируются на социальном графе, но используют разные графовые механики: в 2008 это паритет соседей и линейная алгебра над `F_2`, а в 2022 — процесс замыкания по двум общим друзьям, то есть по `C_4`.",
-      "backward_text": "USAMO 2022 P6 хорошо сочетается с USAMO 2008 P6 как пара задач на один и тот же повествовательный объект — граф дружбы — но с совершенно разными инструментами.",
-      "anchors": {
-        "from_solution_id": "sol-adjacency-matrix-over-f2",
-        "to_solution_id": "sol-c4-closure-extremal"
-      },
-      "status": "ai_checked",
-      "confidence": 0.92
-    },
-    {
       "id": "rel-usamo-1999-p1-imo-1999-c5",
       "from": "usamo-1999-p1-checkers-board-graph-rank",
       "to": "imo-1999-c5-grid-total-domination",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Обе задачи переводят доску в решёточный граф и дальше считают не клетки как таковые, а локальное соседство в графе. В USAMO 1999 используется связное множество занятых клеток, доминирующее всю доску, а в IMO 1999 C5 требуется минимальное тотально доминирующее множество.",
-      "backward_text": "IMO 1999 C5 можно рассматривать как более чистую экстремальную версию того же языка графов доски и сетки, которая в USAMO 1999 возникает вместе с дополнительными условиями связности.",
+      "forward_text": "В обеих задачах рабочий объект — доминирование в решёточном графе клеток: в USAMO 1999 занятые клетки образуют связное множество, покрывающее соседями всю доску, а в IMO 1999 C5 минимизируется тотально доминирующее множество.",
+      "backward_text": "IMO 1999 C5 оставлена рядом с USAMO 1999 P1 из-за того же локального отношения доминирования в клеточном графе; отличие в том, что USAMO добавляет связность выбранных клеток, а IMO считает чистый тотально-доминирующий минимум.",
       "anchors": {
         "from_solution_id": "sol-john-scholes-connected-induction",
         "to_solution_id": "sol-reviewed-web"
@@ -801,8 +756,8 @@
       "to": "imo-2010-c2-flags-diagonal-matching",
       "type": "same_motif",
       "distance": 1,
-      "forward_text": "Обе задачи созданы к двудольному графу «объекты против позиций» и существованию большого количества совпадений. В USAMO 2022 нужно развести янтарные и бронзовые соответствия, а в шорт-листе IMO 2010 C2 — выбрать флаги так, чтобы расстояние стало одноцветным.",
-      "backward_text": "Shortlist IMO 2010 C2 — очень близкий зал/соответствующий родственникам USAMO 2022 P1: табличная или бинарная постановка прячута одна и ту же двудольную логику SDR и паросочетаний.",
+      "forward_text": "Обе задачи используют двудольную модель выбора и теорему Холла: в USAMO 2022 надо развести два семейства соответствий через паросочетания строк и столбцов, а в IMO Shortlist 2010 C2 выбор флагов сводится к SDR в двудольном графе допустимых позиций.",
+      "backward_text": "IMO Shortlist 2010 C2 оставлена рядом с USAMO 2022 P1 из-за общего Hall/SDR-механизма: строится двудольный граф допустимых соответствий, затем экстремальное tight-множество или паросочетание контролирует выбор.",
       "anchors": {
         "from_solution_id": "sol-hall-matchings-and-uncrossing",
         "to_solution_id": "sol-hall-extremal-full"
@@ -901,36 +856,6 @@
       "confidence": 0.88
     },
     {
-      "id": "rel-imo-2016-c8-usamo-2023-p3",
-      "from": "imo-2016-c8-domino-unique-tiling-cycles",
-      "to": "usamo-2023-p3-domino-slides-special-square-digraph",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе задачи начинаются как задачи по доске клетчатки, а затем переходят к вспомогательному графу, который кодирует не сами клетки, а схему допустимых конфигураций. В IMO 2016 C8 — это граф чередующегося цикла из двух разбиений, а в USAMO 2023 P3 — ориентированный граф достижимых специальных квадратов.",
-      "backward_text": "USAMO 2023 P3 хорошо рифмуется с IMO 2016 C8 как другой способ графизировать мир домино: не через сравнение двух укладок и чередующихся циклов, а через динамику ходов и древовидную структуру пустой клетки.",
-      "anchors": {
-        "from_solution_id": "sol-official-compressed",
-        "to_solution_id": "sol-special-square-digraph"
-      },
-      "status": "ai_checked",
-      "confidence": 0.82
-    },
-    {
-      "id": "rel-egmo-2022-p5-usamo-2023-p3",
-      "from": "egmo-2022-p5-domino-parity-bipartite-matching",
-      "to": "usamo-2023-p3-domino-slides-special-square-digraph",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе карты показывают, что задача домино на доске часто по-настоящему решается только после перевода на графический язык. В EGMO 2022 P5 — двудольный граф и паросочетания, а в USAMO 2023 P3 — ориентированный граф и дерево достижимых отверстий.",
-      "backward_text": "USAMO 2023 P3 полезно держать рядом с EGMO 2022 P5 как соседний пример преобразования доски в граф для домино: объект один и тот же, но графический инструмент уже совсем другой — не соответствующая четность, ходы древовидной динамики.",
-      "anchors": {
-        "from_solution_id": "sol-official-compressed",
-        "to_solution_id": "sol-special-square-digraph"
-      },
-      "status": "ai_checked",
-      "confidence": 0.8
-    },
-    {
       "id": "rel-imo-2016-c8-usamo-2009-p3",
       "from": "imo-2016-c8-domino-unique-tiling-cycles",
       "to": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
@@ -944,21 +869,6 @@
       },
       "status": "ai_checked",
       "confidence": 0.92
-    },
-    {
-      "id": "rel-usamo-2009-p3-usamo-2023-p3",
-      "from": "usamo-2009-p3-tasteful-domino-tiling-alternating-cycles",
-      "to": "usamo-2023-p3-domino-slides-special-square-digraph",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обе задачи USAMO начинаются как клеточные сюжеты про домино, но ядро ​​графа становится только после явного преобразования в граф. В 2009 году это наложение двух мозаик и чередующихся циклов, в 2023 году — специальные квадраты орграфа и дерево достижимых пустых клеток.",
-      "backward_text": "USAMO 2023 P3 полезно сравнивать с USAMO 2009 P3: обе задачи про домино действительно графовые, но одна идёт через совершенные паросочетания и симметрическую разность, а другая — через ориентированный граф ходов.",
-      "anchors": {
-        "from_solution_id": "sol-induction-plus-alternating-cycles",
-        "to_solution_id": "sol-special-square-digraph"
-      },
-      "status": "ai_checked",
-      "confidence": 0.81
     },
     {
       "id": "rel-tree-usajmo-2023-p3",
@@ -981,29 +891,14 @@
       "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
       "type": "paired_variant",
       "distance": 1,
-      "forward_text": "Это фактически старшая и младшая версии одного и того же сюжета. В обеих задачах строится один и тот же ориентированный граф специальных клеток, а разница только в финальной цели: в USAMO классифицируются все возможные `k(C)`, а в USAJMO требуется лишь найти максимум.",
-      "backward_text": "USAJMO 2023 P3 читайте рядом с USAMO 2023 P3 как сокращённую версию с теми же идеями графического ядра: тот же ориентированный граф, то же самое дерево достижимых отверстий, но более лёгкая конечная классификация.",
+      "forward_text": "Это старшая и младшая версии одной конструкции: в обеих задачах строится тот же ориентированный граф специальных клеток, компонента пустой клетки доказывается деревом, а разница только в финальной цели — классифицировать все возможные `k(C)` или найти максимум.",
+      "backward_text": "USAJMO 2023 P3 является сокращённой версией USAMO 2023 P3 с тем же ориентированным графом специальных клеток и тем же деревом достижимых отверстий; изменена только конечная классификация.",
       "anchors": {
         "from_solution_id": "sol-special-square-digraph",
         "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
       },
       "status": "ai_checked",
       "confidence": 0.99
-    },
-    {
-      "id": "rel-imo-2016-c8-usajmo-2023-p3",
-      "from": "imo-2016-c8-domino-unique-tiling-cycles",
-      "to": "usajmo-2023-p3-domino-slides-special-square-digraph",
-      "type": "same_motif",
-      "distance": 3,
-      "forward_text": "Обещаем, что мир домино станет ядром графа только после явного вспомогательного графа. В IMO 2016 C8 — это граф чередующегося цикла из двух мозаик, а в USAJMO 2023 P3 — специальные квадраты орграфа и дерево достижимых дырок.",
-      "backward_text": "USAJMO 2023 P3 полезно держать рядом с IMO 2016 C8 как другой способ графизировать задачу домино: не через сравнение двух укладок, а через динамик ходов и древовидную составляющую пустой клетки.",
-      "anchors": {
-        "from_solution_id": "sol-official-compressed",
-        "to_solution_id": "sol-directed-graph-and-spanning-tree-bound"
-      },
-      "status": "ai_checked",
-      "confidence": 0.82
     },
     {
       "id": "rel-cmo-1977-p7-cmo-1979-p5-self-avoiding-grid-paths",
@@ -1313,20 +1208,6 @@
       "confidence": 0.84
     },
     {
-      "id": "rel-ghrv-digraph-outdegree-coloring",
-      "from": "gallai-hasse-roy-vitaver-theorem",
-      "to": "digraph-outdegree-greedy-coloring-bound",
-      "type": "same_motif",
-      "distance": 2,
-      "forward_text": "Обе карточки связывают раскраску с ориентированным графом: GHRV через длины ориентированных путей, а жадная орграфовая оценка через ограничение исходящей степени.",
-      "backward_text": "Жадная оценка для орграфа и GHRV дают два школьных способа извлекать раскраску из направленной структуры.",
-      "anchors": {
-        "from_solution_id": "sol-path-length-potentials"
-      },
-      "status": "ai_draft",
-      "confidence": 0.78
-    },
-    {
       "id": "rel-tree-properties-near-perfect-matchings",
       "from": "tree-equivalent-properties",
       "to": "tree-near-perfect-matchings-path-extremal",
@@ -1355,21 +1236,6 @@
       },
       "status": "ai_checked",
       "confidence": 0.88
-    },
-    {
-      "id": "rel-near-perfect-tree-matchings-yumt-2021",
-      "from": "tree-near-perfect-matchings-path-extremal",
-      "to": "yumt-2021-grand-round4-problem3",
-      "type": "same_motif",
-      "distance": 2,
-      "forward_text": "Обе карточки связаны деревьями и почти/совершенными паросочетаниями, но YUMT 2021 использует лемму Котцига о единственном совершенном паросочетании. Пока локальной карточки этой леммы нет, связь оставлена как требующая проверки.",
-      "backward_text": "YUMT 2021 соседствует с экстремальными задачами о паросочетаниях в деревьях, но его ключевой внешний инструмент — лемма Котцига; без отдельной карточки этой леммы перенос метода не считается верифицированным.",
-      "anchors": {
-        "from_solution_id": "sol-induction-bipartition",
-        "to_solution_id": "sol-ai-kotzig-unique-perfect-matching"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.7
     }
   ]
 }
