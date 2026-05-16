@@ -54,26 +54,11 @@
         },
         "definition_ids": [],
         "distinct_from": [
-          "stmt-graph"
+          "stmt-graph-cut"
         ]
       }
     ],
     "graph_theory": [
-      {
-        "id": "stmt-graph",
-        "text": "Пусть \\(G\\) — связный простой граф на \\(n\\ge 3\\) вершинах. Разрешена следующая операция над ребром \\(xy\\): удалить ребро \\(xy\\), а затем для каждой вершины, смежной ровно с одной из вершин \\(x,y\\), изменить инцидентность к этим вершинам так, чтобы после операции она стала смежна с другой из вершин \\(x,y\\) и не смежна с прежней. Известно, что для любого разбиения множества вершин на две непустые части в некоторый момент процесса применяется операция к ребру, соединяющему эти части. Докажите, что через конечное число шагов появится вершина степени \\(n-1\\).",
-        "status": "needs_human_review",
-        "self_contained": {
-          "status": "ai_checked"
-        },
-        "definition_ids": [
-          "simple_graph",
-          "connected_graph"
-        ],
-        "distinct_from": [
-          "stmt-original"
-        ]
-      },
       {
         "id": "stmt-graph-cut",
         "title": "Формулировка через инвариант разрезов",
@@ -129,7 +114,7 @@
         "connected_graph"
       ],
       "repair_status": "medium_reasoning_understandable_2026_05_06",
-      "review_notes": "Medium audit 2026-05-06: understandable for a medium-reasoning AI; no hidden unchecked transition was found during reading."
+      "review_notes": "Аудит средней сложности 2026-05-06: решение понятно агенту со средним уровнем рассуждения; при чтении не найдено скрытого непроверенного перехода."
     }
   ],
   "difficulty": {
@@ -173,7 +158,7 @@
       "status": "ai_checked",
       "confidence": 0.78,
       "basis": "агентский аудит средней сложности",
-      "notes": "Olympiad card has официальный/shortlist/compendium-style sources and an ai_checked solution.",
+      "notes": "Олимпиадная карточка опирается на официальный источник, шорт-лист или справочник и содержит решение со статусом ai_checked.",
       "audit_source": "agent-imo-us-classical.json"
     }
   }

@@ -833,6 +833,52 @@ def build_html(data):
       return value.replace(/[.*+?^${{}}()|[\\]\\\\]/g, '\\\\$&');
     }}
 
+    function isTermChar(char) {{
+      return /[А-Яа-яA-Za-z0-9_]/.test(char || '');
+    }}
+
+    function linkTerms(html, replacements, className, hrefForId) {{
+      replacements.sort((a, b) => b.alias.length - a.alias.length);
+      const used = new Set();
+      let result = '';
+      let index = 0;
+      while (index < html.length) {{
+        if (html.startsWith('<a ', index)) {{
+          const end = html.indexOf('</a>', index);
+          if (end !== -1) {{
+            result += html.slice(index, end + 4);
+            index = end + 4;
+            continue;
+          }}
+        }}
+        if (html[index] === '<') {{
+          const end = html.indexOf('>', index);
+          if (end !== -1) {{
+            result += html.slice(index, end + 1);
+            index = end + 1;
+            continue;
+          }}
+        }}
+        const match = replacements.find(item => {{
+          if (used.has(item.id)) return false;
+          const alias = esc(item.alias);
+          if (html.slice(index, index + alias.length).toLocaleLowerCase('ru') !== alias.toLocaleLowerCase('ru')) return false;
+          return !isTermChar(html[index - 1]) && !isTermChar(html[index + alias.length]);
+        }});
+        if (match) {{
+          const alias = esc(match.alias);
+          const text = html.slice(index, index + alias.length);
+          result += `<a class="${{className}}" href="${{hrefForId(match.id)}}">${{text}}</a>`;
+          used.add(match.id);
+          index += alias.length;
+        }} else {{
+          result += html[index];
+          index += 1;
+        }}
+      }}
+      return result;
+    }}
+
     function linkDefinitions(html, definitionIds = []) {{
       const replacements = [];
       definitionIds.forEach(id => {{
@@ -842,18 +888,7 @@ def build_html(data):
           if (!alias.includes('\\\\')) replacements.push({{ id, alias }});
         }});
       }});
-      replacements.sort((a, b) => b.alias.length - a.alias.length);
-      let result = html;
-      const used = new Set();
-      replacements.forEach(item => {{
-        if (used.has(item.id)) return;
-        const pattern = new RegExp(`(^|[^А-Яа-яA-Za-z0-9_])(${{escapeRegExp(esc(item.alias))}})(?=$|[^А-Яа-яA-Za-z0-9_])`, 'i');
-        if (pattern.test(result)) {{
-          result = result.replace(pattern, `$1<a class="def-link" href="#def-${{encodeURIComponent(item.id)}}">$2</a>`);
-          used.add(item.id);
-        }}
-      }});
-      return result;
+      return linkTerms(html, replacements, 'def-link', id => `#def-${{encodeURIComponent(id)}}`);
     }}
 
     function linkStandardIdeas(html, ideaIds = []) {{
@@ -863,18 +898,7 @@ def build_html(data):
         if (!idea) return;
         (idea.aliases || []).forEach(alias => replacements.push({{ id, alias }}));
       }});
-      replacements.sort((a, b) => b.alias.length - a.alias.length);
-      let result = html;
-      const used = new Set();
-      replacements.forEach(item => {{
-        if (used.has(item.id)) return;
-        const pattern = new RegExp(`(^|[^А-Яа-яA-Za-z0-9_])(${{escapeRegExp(esc(item.alias))}})(?=$|[^А-Яа-яA-Za-z0-9_])`, 'i');
-        if (pattern.test(result)) {{
-          result = result.replace(pattern, `$1<a class="idea-link" href="#stdidea-${{encodeURIComponent(item.id)}}">$2</a>`);
-          used.add(item.id);
-        }}
-      }});
-      return result;
+      return linkTerms(html, replacements, 'idea-link', id => `#stdidea-${{encodeURIComponent(id)}}`);
     }}
 
     function textBlock(text, definitionIds = [], standardIdeaIds = []) {{
@@ -1022,43 +1046,83 @@ def build_html(data):
       return problemAuthors(problem).map(normalizeAuthor).filter(Boolean);
     }}
 
-    function sourceAliasMap() {{
-      return {{
-        yumt: ['yumt', 'юмт'],
-        fyum: ['fyum', 'фюм'],
-        imo: ['imo'],
-        apmo: ['apmo'],
-        bmo: ['bmo'],
-        egmo: ['egmo'],
-        usamo: ['usamo'],
-        rmm: ['rmm']
-      }};
+    function sourceFamilies() {{
+      return [
+        {{ key: 'all-union', prefixes: ['all-union'], label: 'Всесоюзная олимпиада', aliases: ['всесоюзная'] }},
+        {{ key: 'apmo', prefixes: ['apmo'], label: 'APMO', aliases: ['apmo'] }},
+        {{ key: 'baltic-way', prefixes: ['baltic-way'], label: 'Baltic Way', aliases: ['balticway'] }},
+        {{ key: 'bmo', prefixes: ['bmo'], label: 'BMO', aliases: ['bmo'] }},
+        {{ key: 'cmo', prefixes: ['cmo'], label: 'CMO', aliases: ['cmo'] }},
+        {{ key: 'egmo', prefixes: ['egmo'], label: 'EGMO', aliases: ['egmo'] }},
+        {{ key: 'fyum', prefixes: ['fyum'], label: 'ФЮМ', aliases: ['fyum', 'фюм'] }},
+        {{ key: 'imc', prefixes: ['imc'], label: 'IMC', aliases: ['imc'] }},
+        {{ key: 'imo', prefixes: ['imo'], label: 'IMO Shortlist', aliases: ['imo'] }},
+        {{ key: 'inmo', prefixes: ['inmo'], label: 'INMO', aliases: ['inmo'] }},
+        {{ key: 'kolmogorov', prefixes: ['kolmogorov'], label: 'Кубок Колмогорова', aliases: ['kolmogorov', 'колмогоров'] }},
+        {{ key: 'memo', prefixes: ['memo'], label: 'MEMO', aliases: ['memo'] }},
+        {{ key: 'miklos-schweitzer', prefixes: ['miklos-schweitzer'], label: 'Schweitzer', aliases: ['schweitzer', 'миклош'] }},
+        {{ key: 'mmo', prefixes: ['mmo'], label: 'ММО', aliases: ['mmo', 'ммо'] }},
+        {{ key: 'polish-mo', prefixes: ['polish-mo'], label: 'Польская MO', aliases: ['polishmo', 'польская'] }},
+        {{ key: 'putnam', prefixes: ['putnam'], label: 'Putnam', aliases: ['putnam'] }},
+        {{ key: 'rmm', prefixes: ['rmm'], label: 'RMM', aliases: ['rmm'] }},
+        {{ key: 'school239', prefixes: ['school239'], label: 'Открытая олимпиада ФМЛ 239', aliases: ['239', 'фмл239'] }},
+        {{ key: 'simon-marais', prefixes: ['simon-marais'], label: 'Simon Marais', aliases: ['simonmarais'] }},
+        {{ key: 'smmc', prefixes: ['smmc'], label: 'SMMC', aliases: ['smmc'] }},
+        {{ key: 'spbmo', prefixes: ['spbmo'], label: 'СПбМО', aliases: ['spbmo', 'спбмо'] }},
+        {{ key: 'sums', prefixes: ['sums'], label: 'SUMS', aliases: ['sums'] }},
+        {{ key: 'tc', prefixes: ['tc'], label: 'Турнир городов', aliases: ['tc', 'турниргородов'] }},
+        {{ key: 'usa-tst', prefixes: ['usa-tst'], label: 'USA TST', aliases: ['usatst'] }},
+        {{ key: 'usajmo', prefixes: ['usajmo'], label: 'USAJMO', aliases: ['usajmo'] }},
+        {{ key: 'usamo', prefixes: ['usamo'], label: 'USAMO', aliases: ['usamo'] }},
+        {{ key: 'utyum', prefixes: ['utyum'], label: 'УТЮМ', aliases: ['utyum', 'утюм'] }},
+        {{ key: 'vjimc', prefixes: ['vjimc'], label: 'VJIMC', aliases: ['vjimc'] }},
+        {{ key: 'vosh', prefixes: ['vosh'], label: 'Всероссийская олимпиада', aliases: ['vosh', 'вош'] }},
+        {{ key: 'yumt', prefixes: ['yumt'], label: 'ЮМТ', aliases: ['yumt', 'юмт'] }}
+      ];
+    }}
+
+    const SOURCE_FAMILIES = sourceFamilies();
+    const SOURCE_FAMILY_BY_KEY = Object.fromEntries(SOURCE_FAMILIES.map(item => [item.key, item]));
+
+    function sourceFamilyFromId(problem) {{
+      const id = String(problem.id || '').toLowerCase();
+      for (const family of SOURCE_FAMILIES) {{
+        for (const prefix of family.prefixes) {{
+          if (id === prefix || id.startsWith(`${{prefix}}-`) || id.startsWith(`${{prefix}}_`)) return family;
+        }}
+      }}
+      return null;
+    }}
+
+    function sourceFamilyFromTitle(problem) {{
+      const compactTitle = normalizeCompact(problem.title || '');
+      if (compactTitle.includes('турниргородов')) return SOURCE_FAMILY_BY_KEY.tc;
+      for (const family of SOURCE_FAMILIES) {{
+        if (family.aliases.some(alias => compactTitle.includes(normalizeCompact(alias)))) return family;
+      }}
+      return null;
+    }}
+
+    function fallbackSourceKey(problem) {{
+      const idMatch = String(problem.id || '').match(/^([a-z0-9-]+)[-_]((19|20)\\d{{2}})(?:[-_]|$)/);
+      if (idMatch) return idMatch[1].split('-')[0];
+      return 'misc';
     }}
 
     function sourceInfo(problem) {{
       const title = String(problem.title || '');
-      const chunks = title.split(',').map(item => item.trim()).filter(Boolean);
-      let labelText = '';
-      for (const chunk of chunks) {{
-        const match = chunk.match(/(19|20)\\d{{2}}/);
-        if (!match) continue;
-        labelText = chunk.slice(0, match.index).replace(/[-, ]+$/, '').trim();
-        if (labelText) break;
-      }}
-      const idMatch = String(problem.id || '').match(/^([a-z0-9-]+)-((19|20)\\d{{2}})(?:-|$)/);
-      const key = idMatch ? idMatch[1].split('-')[0] : normalizeCompact(labelText) || 'misc';
-      const labelTextCompact = normalizeCompact(labelText);
+      const family = sourceFamilyFromId(problem) || sourceFamilyFromTitle(problem);
+      const key = family?.key || fallbackSourceKey(problem);
       const year = problemYear(problem);
-      const aliases = new Set([key, labelTextCompact]);
-      (sourceAliasMap()[key] || []).forEach(alias => aliases.add(alias));
+      const aliases = new Set([key, normalizeCompact(title)]);
+      (family?.aliases || []).forEach(alias => aliases.add(alias));
       if (year) {{
         aliases.add(`${{key}}${{year}}`);
-        if (labelTextCompact) aliases.add(`${{labelTextCompact}}${{year}}`);
-        (sourceAliasMap()[key] || []).forEach(alias => aliases.add(`${{alias}}${{year}}`));
+        (family?.aliases || []).forEach(alias => aliases.add(`${{normalizeCompact(alias)}}${{year}}`));
       }}
       return {{
         key,
-        label: labelText || (key !== 'misc' ? key.toUpperCase() : 'Прочее'),
+        label: family?.label || (key !== 'misc' ? key.toUpperCase() : 'Прочее'),
         year,
         aliases: Array.from(aliases).filter(Boolean)
       }};
@@ -1069,7 +1133,6 @@ def build_html(data):
         const text = String(solution.text || '').trim();
         const title = String(solution.title || '').trim();
         return text
-          && solution.status !== 'needs_human_review'
           && !/^решение пока не найдено[.!]?$/i.test(text)
           && !/близк\\w*\\s+решени\\w*/i.test(title);
       }});
@@ -1692,7 +1755,10 @@ def build_html(data):
         `<option value="no_solution_hard">Решения нет, гроб (${{counts.no_solution_hard}})</option>`
       ].join('');
       select.value = state.solution;
-      if (select.value !== state.solution) select.value = 'all';
+      if (select.value !== state.solution) {{
+        state.solution = 'all';
+        select.value = 'all';
+      }}
     }}
 
     function renderStatements(problem) {{

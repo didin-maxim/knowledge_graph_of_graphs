@@ -25,7 +25,7 @@ SOLUTION_RED_FLAGS = [
         ),
     ),
 ]
-PUBLIC_TEXT_KEYS = {"title", "text", "comment"}
+PUBLIC_TEXT_KEYS = {"title", "text", "comment", "notes", "basis", "label", "review_notes", "preference_note"}
 NON_PUBLIC_TEXT_BRANCHES = {
     "problem_profile",
     "tags",
@@ -38,11 +38,22 @@ NON_PUBLIC_TEXT_BRANCHES = {
 CYRILLIC_RE = re.compile(r"[А-Яа-яЁё]")
 ENGLISH_WORD_RE = re.compile(r"\b[A-Za-z]{4,}\b")
 URL_OR_PATH_RE = re.compile(r"https?://\S+|[A-Za-z]:[\\/]\S+|%TEMP%[\\/]\S+|audit/[A-Za-z0-9_./-]+")
+CODE_SPAN_RE = re.compile(r"`[^`\n]+`")
+TEX_MATH_RE = re.compile(r"\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$\$[\s\S]*?\$\$")
+TEX_COMMAND_RE = re.compile(r"\\[A-Za-z]+")
 MOJIBAKE_RE = (
     r"(?:Рџ|Рќ|РЅ|Рµ|Рё|Рѕ|Р°|Р±|РІ|Рі|Рґ|Р¶|Р·|Р№|Рє|Р»|Рј|Рї|РС|"
     r"СЃ|С‚|СЂ|СЊ|С‹|СЋ|СЏ){3,}"
 )
 BROKEN_ENCODING_RE = re.compile(r"\?{4,}|\ufffd|" + MOJIBAKE_RE)
+ENGLISH_TAIL_RE = re.compile(
+    r"\b("
+    r"Answer|Construction|Sharpness|Clarification|Complete|Official source present|"
+    r"Medium audit|High-reasoning repair|Very-high|public solution|downclassed|"
+    r"solution is identified|archive-derived|not downgraded|The agent"
+    r")\b",
+    re.IGNORECASE,
+)
 
 
 def rel(path):
@@ -78,7 +89,11 @@ def load_json_file(path, report):
 
 
 def scrub_for_language_check(text):
-    return URL_OR_PATH_RE.sub("", text)
+    scrubbed = URL_OR_PATH_RE.sub("", text)
+    scrubbed = CODE_SPAN_RE.sub("", scrubbed)
+    scrubbed = TEX_MATH_RE.sub("", scrubbed)
+    scrubbed = TEX_COMMAND_RE.sub("", scrubbed)
+    return scrubbed
 
 
 def is_public_text_path(path_parts):
@@ -113,7 +128,7 @@ def check_language_policy(problem, path, report):
         scrubbed = scrub_for_language_check(text)
         english_words = ENGLISH_WORD_RE.findall(scrubbed)
         cyrillic_chars = CYRILLIC_RE.findall(scrubbed)
-        if len(english_words) >= 6 and len(english_words) > len(cyrillic_chars) / 4:
+        if (len(english_words) >= 6 and len(english_words) > len(cyrillic_chars) / 4) or ENGLISH_TAIL_RE.search(scrubbed):
             add(
                 report,
                 "error",
