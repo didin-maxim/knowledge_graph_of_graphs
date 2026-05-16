@@ -7,8 +7,11 @@ from lib import (
     has_real_solution,
     infer_source_key,
     infer_source_label,
+    load_sources,
     load_problems,
     load_relations,
+    problem_author_names,
+    problem_source_labels,
     problem_text,
     problem_source_values,
     relation_neighbors,
@@ -24,6 +27,7 @@ def query_matches(text, words):
 
 def cmd_query(args):
     problems = load_problems()
+    sources = load_sources()
     words = [word.lower() for word in args.text.split()]
     matches = []
     for problem in problems.values():
@@ -46,14 +50,21 @@ def cmd_query(args):
             matches.append((score, problem))
     for score, problem in sorted(matches, key=lambda item: (-item[0], item[1]["id"]))[: args.limit]:
         print(f"{problem['id']}: {problem['title']} ({score})")
+        authors = ", ".join(problem_author_names(problem)) or "?"
+        source_labels = "; ".join(problem_source_labels(problem, sources)) or infer_source_label(problem)
+        print(f"  authors: {authors}")
+        print(f"  sources: {source_labels}")
         print(f"  {problem['_path']}")
 
 
 def cmd_problem(args):
     problems = load_problems()
+    sources = load_sources()
     problem = problems[args.id]
     print(f"{problem['id']}: {problem['title']}")
     print(f"file: {problem['_path']}")
+    print(f"authors: {', '.join(problem_author_names(problem)) or '?'}")
+    print(f"sources: {'; '.join(problem_source_labels(problem, sources)) or infer_source_label(problem)}")
     print()
     for statement in problem["statements"].get("graph_theory", []):
         print("Графовая формулировка:")

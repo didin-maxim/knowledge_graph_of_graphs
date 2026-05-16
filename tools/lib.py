@@ -155,13 +155,70 @@ def author_name(author):
     return str(author)
 
 
+def problem_author_names(problem, include_unknown=True):
+    names = []
+    for author in problem.get("authors", []):
+        name = author_name(author).strip()
+        if not name:
+            continue
+        if not include_unknown and name.lower() in {"?", "unknown"}:
+            continue
+        names.append(name)
+    return names
+
+
+def iter_problem_source_ids(problem):
+    seen = set()
+    for source in problem.get("sources", []):
+        source_id = source.get("source_id")
+        if source_id and source_id not in seen:
+            seen.add(source_id)
+            yield source_id
+    for statements in problem.get("statements", {}).values():
+        for statement in statements:
+            source_ids = []
+            if statement.get("source_id"):
+                source_ids.append(statement["source_id"])
+            source_ids.extend(statement.get("source_ids", []))
+            for source_id in source_ids:
+                if source_id and source_id not in seen:
+                    seen.add(source_id)
+                    yield source_id
+
+
+def problem_source_labels(problem, sources=None):
+    if sources is None:
+        sources = load_sources()
+    labels = []
+    for source_id in iter_problem_source_ids(problem):
+        source = sources.get(source_id)
+        labels.append(source.get("title", source_id) if source else source_id)
+    return labels
+
+
+def problem_source_search_values(problem, sources=None):
+    if sources is None:
+        sources = load_sources()
+    values = {infer_source_key(problem), infer_source_label(problem)}
+    for source_id in iter_problem_source_ids(problem):
+        values.add(source_id)
+        source = sources.get(source_id)
+        if source:
+            values.add(source.get("title", ""))
+            values.add(source.get("url", ""))
+            values.add(source.get("type", ""))
+    return {str(value).lower() for value in values if value}
+
+
 def problem_text(problem):
+    source_labels = problem_source_labels(problem)
     fields = [
         problem.get("id", ""),
         problem.get("title", ""),
-        " ".join(author_name(author) for author in problem.get("authors", [])),
+        " ".join(problem_author_names(problem)),
         infer_source_key(problem),
         infer_source_label(problem),
+        " ".join(source_labels),
         " ".join(problem_search_tokens(problem)),
         " ".join(external_problem_refs(problem)),
         collect_text(problem.get("statements", {})),
@@ -249,14 +306,12 @@ def problem_search_tokens(problem):
             tokens.add(f"{compact_key}{year}")
         if compact_label:
             tokens.add(f"{compact_label}{year}")
-    for author in problem.get("authors", []):
-        name = author_name(author)
-        if not name or name == "?":
-            continue
+    for name in problem_author_names(problem, include_unknown=False):
         tokens.add(name.lower())
         compact_author = re.sub(r"[^a-z0-9Р°-СЏС‘]+", "", name.lower())
         if compact_author:
             tokens.add(compact_author)
+    tokens.update(problem_source_search_values(problem))
     tokens.add("with_solution" if has_real_solution(problem) else "without_solution")
     tokens.update(external_problem_refs(problem))
     return sorted(token for token in tokens if token)
@@ -294,16 +349,7 @@ def external_problem_refs(problem):
 
 
 def problem_source_values(problem):
-    values = {
-        infer_source_key(problem).lower(),
-        infer_source_label(problem).lower(),
-        *problem_search_tokens(problem),
-    }
-    for source in problem.get("sources", []):
-        source_id = source.get("source_id")
-        if source_id:
-            values.add(source_id.lower())
-    return {value for value in values if value}
+    return problem_source_search_values(problem)
 
 
 def relation_neighbors(problem_id, relations):

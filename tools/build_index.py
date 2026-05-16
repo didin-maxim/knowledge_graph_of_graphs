@@ -11,7 +11,10 @@ from lib import (
     load_import_batches,
     load_problems,
     load_relations,
+    load_sources,
     load_standard_ideas,
+    problem_author_names,
+    problem_source_labels,
 )
 
 
@@ -23,8 +26,8 @@ def main():
         db_path.unlink()
 
     con = sqlite3.connect(db_path)
-    con.execute("create table problems(id text primary key, title text, path text, source text, year text, has_solution int, text text)")
-    con.execute("create virtual table problem_fts using fts5(id, title, source, year, solution_state, text)")
+    con.execute("create table problems(id text primary key, title text, path text, source text, authors text, sources text, year text, has_solution int, text text)")
+    con.execute("create virtual table problem_fts using fts5(id, title, source, authors, sources, year, solution_state, text)")
     con.execute("create table definitions(id text primary key, title text, text text)")
     con.execute("create virtual table definition_fts using fts5(id, title, text)")
     con.execute("create table standard_ideas(id text primary key, title text, text text)")
@@ -33,17 +36,23 @@ def main():
     con.execute("create table import_batches(id text primary key, title text, status text, text text)")
 
     problems = load_problems()
+    sources = load_sources()
     for problem in problems.values():
-        text = collect_text(problem)
+        authors_text = "; ".join(problem_author_names(problem))
+        sources_text = "; ".join(problem_source_labels(problem, sources))
+        text = "\n".join(part for part in [collect_text(problem), authors_text, sources_text] if part)
         source = infer_source_key(problem)
         year = extract_problem_year(problem)
         has_solution = 1 if has_real_solution(problem) else 0
         solution_state = "with_solution" if has_solution else "without_solution"
         con.execute(
-            "insert into problems values(?, ?, ?, ?, ?, ?, ?)",
-            (problem["id"], problem["title"], problem["_path"], source, year, has_solution, text),
+            "insert into problems values(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            (problem["id"], problem["title"], problem["_path"], source, authors_text, sources_text, year, has_solution, text),
         )
-        con.execute("insert into problem_fts values(?, ?, ?, ?, ?, ?)", (problem["id"], problem["title"], source, year, solution_state, text))
+        con.execute(
+            "insert into problem_fts values(?, ?, ?, ?, ?, ?, ?, ?)",
+            (problem["id"], problem["title"], source, authors_text, sources_text, year, solution_state, text),
+        )
 
     for relation in load_relations():
         text = relation["forward_text"] + "\n" + relation["backward_text"]
