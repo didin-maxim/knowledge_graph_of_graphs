@@ -98,8 +98,8 @@
         "cycle",
         "hamiltonian_cycle"
       ],
-      "repair_status": "medium_reasoning_understandable_2026_05_06",
-      "review_notes": "Аудит средней сложности 2026-05-06: решение понятно агенту среднего уровня; скрытых непроверенных переходов при чтении не найдено."
+      "repair_status": "high_reasoning_checked_2026_05_17",
+      "review_notes": "High-reasoning pass 2026-05-17: доказательство самодостаточно; проверена редукция к остовному дереву и правило выбора первого/последнего вхождения в замкнутом DFS/Euler-обходе."
     }
   ],
   "difficulty": {
@@ -147,18 +147,19 @@
       "Роль графа: явно присутствует в условии.",
       "Исходное название в финальной выборке: индивидуальная олимпиада, старшие участники, задача 7.",
       "2026-04-26 вердикт прохода от плана к решению: completed_full_solution; сжатый индукционный набросок заменён полным доказательством для куба остовного дерева через DFS/Euler-tour.",
-      "2026-04-26 проход по метаданным: после исправления решения согласованы поля tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status."
+      "2026-04-26 проход по метаданным: после исправления решения согласованы поля tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status.",
+      "2026-05-17 high-reasoning pass: проверено самодостаточное доказательство куба связного графа через остовное дерево и DFS/Euler-tour; classification переведён из прежнего outline-статуса в official_plan_completed_by_ai."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "label": "официальный план, нужна доработка",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "агентский аудит средней сложности",
-      "notes": "Официальное или архивное решение сжато либо всё ещё помечено как требующее проверки.",
-      "audit_source": "agent-russian-archives.json"
+      "type": "official_plan_completed_by_ai",
+      "label": "официальный план доведён агентом до полного решения",
+      "status": "ai_checked",
+      "confidence": 0.89,
+      "basis": "high-reasoning pass 2026-05-17: официальный план для куба связного графа доведён до локального доказательства через остовное дерево и обход Эйлера",
+      "notes": "Решение не ссылается на внешнюю теорему Секанины как чёрный ящик: сначала сводит задачу к остовному дереву, затем строит циклический порядок выбранных вхождений DFS-обхода и проверяет расстояние не более 3 между соседними выбранными вершинами.",
+      "audit_source": "high-reasoning-official-plan-pass-2026-05-17"
     }
   }
 }

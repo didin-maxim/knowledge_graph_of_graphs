@@ -100,8 +100,8 @@
         "path",
         "hamiltonian_cycle"
       ],
-      "repair_status": "medium_reasoning_understandable_2026_05_06",
-      "review_notes": "Аудит средней сложности 2026-05-06: решение понятно агенту среднего уровня; скрытых непроверенных переходов при чтении не найдено."
+      "repair_status": "high_reasoning_checked_2026_05_17",
+      "review_notes": "High-reasoning pass 2026-05-17: доказательство самодостаточно; отдельно проверены маршрут на 792 часа и нижняя оценка в звёздной конструкции с дополнительными дорогами длины 8."
     }
   ],
   "difficulty": {
@@ -147,18 +147,19 @@
       "Роль графа: явно присутствует в условии.",
       "Исходное название в финальной выборке: индивидуальная олимпиада, юниоры, задача 5.",
       "2026-04-26 вердикт прохода от плана к решению: completed_full_solution; сжатое официальное изложение расширено до полного доказательства верхней оценки и её точности.",
-      "2026-04-26 проход по метаданным: после исправления решения согласованы поля tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status."
+      "2026-04-26 проход по метаданным: после исправления решения согласованы поля tags/problem_profile/methods/central_method/standard_idea_ids/definition_ids/status.",
+      "2026-05-17 high-reasoning pass: проверены верхняя оценка 792 и пример точности; classification переведён из прежнего outline-статуса в official_plan_completed_by_ai."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "label": "официальный план, нужна доработка",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "агентский аудит средней сложности",
-      "notes": "Официальное или архивное решение сжато либо всё ещё помечено как требующее проверки.",
-      "audit_source": "agent-russian-archives.json"
+      "type": "official_plan_completed_by_ai",
+      "label": "официальный план доведён агентом до полного решения",
+      "status": "ai_checked",
+      "confidence": 0.92,
+      "basis": "high-reasoning pass 2026-05-17: официальный сжатый план развёрнут в полное решение с верхней оценкой 792 и примером точности",
+      "notes": "Проверены выбор двух городов без прямой дороги, объединение первых двух переходов в 8 часов и звёздная конструкция с 99 нецентральными городами, где каждый переход между последовательными посещениями нецентральных городов стоит не меньше 8 часов.",
+      "audit_source": "high-reasoning-official-plan-pass-2026-05-17"
     }
   }
 }

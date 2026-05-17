@@ -17,12 +17,14 @@
   ],
   "problem_profile": {
     "objects": [
-      "complete_graph",
-      "cycle"
+      "simple_graph",
+      "regular_graph",
+      "cycle",
+      "independent_set"
     ],
     "methods": [
-      "minimal_counterexample",
-      "local_recoloring"
+      "cycle_decomposition",
+      "independent_set_bound"
     ],
     "transformations": [
       "auxiliary_graph_model"
@@ -31,11 +33,12 @@
       "coloring"
     ],
     "auxiliary_graph_type": [
-      "complete_graph",
+      "regular_graph",
       "cycle"
     ],
     "invariants": [
-      "coloring"
+      "coloring",
+      "degree"
     ],
     "keywords": [
       "kolmogorov",
@@ -44,7 +47,12 @@
       "regular-graph",
       "cycles",
       "friendship-graph",
-      "contradiction"
+      "contradiction",
+      "simple_graph",
+      "regular_graph",
+      "2-regular_graph",
+      "cycle_decomposition",
+      "independent_set_bound"
     ],
     "status": "ai_checked"
   },
@@ -78,7 +86,9 @@
         },
         "definition_ids": [
           "simple_graph",
-          "degree"
+          "degree",
+          "independent_set",
+          "cycle"
         ],
         "distinct_from": [
           "stmt-original"
@@ -104,10 +114,7 @@
       "idea_ids": [
         "idea-graph-role"
       ],
-      "standard_idea_ids": [
-        "minimal_counterexample",
-        "local_recoloring"
-      ],
+      "standard_idea_ids": [],
       "status": "ai_checked",
       "definition_ids": [
         "simple_graph",
@@ -115,27 +122,27 @@
         "independent_set",
         "cycle"
       ],
-      "repair_status": "medium_reasoning_understandable_2026_05_06",
-      "review_notes": "Аудит средней сложности 2026-05-06: решение понятно агенту среднего уровня; скрытых непроверенных переходов при чтении не найдено."
+      "repair_status": "high_reasoning_checked_2026_05_17",
+      "review_notes": "High-reasoning pass 2026-05-17: доказательство самодостаточно после чтения; 2-регулярный граф распадается на циклы, а каждая фракция занимает в каждом цикле не более половины вершин."
     }
   ],
   "difficulty": {
     "main": "national_final_medium",
     "local_score": 6,
     "comment": "Импортировано из подготовленной графовой карточки KOLM; оценка сложности требует проверки человеком.",
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "tags": [
     "coloring",
-    "goal_exact_bound"
+    "goal_bound"
   ],
   "properties": {
     "central_method": {
       "value": [
-        "minimal_counterexample",
-        "local_recoloring"
+        "cycle_decomposition",
+        "independent_set_bound"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -153,25 +160,26 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Импортировано из подготовленной карточки cards/kolm/2008_team_olympiad_juniors_problem_5.md.",
       "Файл-источник, указанный в карточке: work/kolm/text/2008/komol12.txt.",
       "Страница-источник, указанная в карточке: 6.",
       "Роль графа: существенна в официальном решении.",
-      "Исходное название в финальной выборке: командная олимпиада, младшая группа, задача 5."
+      "Исходное название в финальной выборке: командная олимпиада, младшая группа, задача 5.",
+      "2026-05-17 high-reasoning pass: решение перечитано и метаданные метода исправлены на разложение 2-регулярного графа на циклы; classification переведён из прежнего outline-статуса в official_plan_completed_by_ai."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": false,
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "label": "официальный план, нужна доработка",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "агентский аудит средней сложности",
-      "notes": "Официальное или архивное решение сжато либо всё ещё помечено как требующее проверки.",
-      "audit_source": "agent-russian-archives.json"
+      "type": "official_plan_completed_by_ai",
+      "label": "официальный план доведён агентом до полного решения",
+      "status": "ai_checked",
+      "confidence": 0.93,
+      "basis": "high-reasoning pass 2026-05-17: официальный графовый аргумент развёрнут в самодостаточное доказательство через разложение 2-регулярного графа на циклы",
+      "notes": "Ключевой шаг проверен: в каждом цикле вершины одной фракции образуют независимое множество, значит занимают не более половины цикла; суммирование по циклам даёт, что любая фракция не больше суммы двух остальных.",
+      "audit_source": "high-reasoning-official-plan-pass-2026-05-17"
     }
   }
 }

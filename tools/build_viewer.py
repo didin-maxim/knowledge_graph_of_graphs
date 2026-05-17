@@ -306,11 +306,6 @@ def build_html(data):
       border-color: #a8d5c5;
     }}
 
-    .solution-status-official_outline_needs_work {{
-      background: var(--warn);
-      border-color: #e2c76d;
-    }}
-
     .solution-status-official_plan_completed_by_ai {{
       background: #dff6ec;
       border-color: #82c7ad;
@@ -1263,7 +1258,6 @@ def build_html(data):
     const classification = normalizedSolutionStatusKey(problem.editorial?.solution_classification?.type);
     const known = new Set([
       'official_complete_or_near_complete',
-      'official_outline_needs_work',
       'official_plan_completed_by_ai',
       'unofficial_published',
       'ai_original',
@@ -1796,7 +1790,6 @@ def build_html(data):
       const matching = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeSolution: true }}));
       const counts = {{
         official_complete_or_near_complete: 0,
-        official_outline_needs_work: 0,
         official_plan_completed_by_ai: 0,
         unofficial_published: 0,
         ai_original: 0,
@@ -1818,7 +1811,6 @@ def build_html(data):
         `<option value="with">Есть решение (${{counts.with}})</option>`,
         `<option value="without">Решения нет (${{counts.without}})</option>`,
         `<option value="official_complete_or_near_complete">Официальное полное/почти полное (${{counts.official_complete_or_near_complete}})</option>`,
-        `<option value="official_outline_needs_work">Официальный план, нужна доработка (${{counts.official_outline_needs_work}})</option>`,
         `<option value="official_plan_completed_by_ai">Официальный план, доведённый ИИ (${{counts.official_plan_completed_by_ai}})</option>`,
         `<option value="unofficial_published">Опубликованное неофициальное (${{counts.unofficial_published}})</option>`,
         `<option value="ai_original">Решение ИИ с нуля (${{counts.ai_original}})</option>`,
@@ -2113,7 +2105,7 @@ def build_html(data):
       const problemList = Object.values(problems);
       const solutionCounts = {{
         official_complete_or_near_complete: 0,
-        official_outline_needs_work: 0,
+        official_plan_completed_by_ai: 0,
         unofficial_published: 0,
         ai_original: 0,
         ai_heavy_external_theorem: 0,
@@ -2134,7 +2126,7 @@ def build_html(data):
       const sourceCount = new Set(problemList.map(problem => sourceInfo(problem).key).filter(Boolean)).size;
       const solutionTypes = [
         'official_complete_or_near_complete',
-        'official_outline_needs_work',
+        'official_plan_completed_by_ai',
         'unofficial_published',
         'ai_original',
         'ai_heavy_external_theorem',
