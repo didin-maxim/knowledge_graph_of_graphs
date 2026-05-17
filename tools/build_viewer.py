@@ -404,8 +404,21 @@ def build_html(data):
     }}
 
     .text {{
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
+      overflow-wrap: break-word;
+    }}
+
+    .text-paragraph {{
+      margin: 0 0 0.85em;
+    }}
+
+    .text-display-math {{
+      margin: 0.9em 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }}
+
+    .text > :last-child {{
+      margin-bottom: 0;
     }}
 
     .example-stack {{
@@ -901,10 +914,69 @@ def build_html(data):
       return linkTerms(html, replacements, 'idea-link', id => `#stdidea-${{encodeURIComponent(id)}}`);
     }}
 
-    function textBlock(text, definitionIds = [], standardIdeaIds = []) {{
-      let html = prettyText(text || '');
+    function textSegments(text) {{
+      const lines = String(text || '').replace(/\\r\\n?/g, '\\n').split('\\n');
+      const segments = [];
+      let paragraph = [];
+      let displayMath = [];
+      let inDisplayMath = false;
+
+      const flushParagraph = () => {{
+        if (!paragraph.length) return;
+        segments.push({{ type: 'paragraph', text: paragraph.join('\\n') }});
+        paragraph = [];
+      }};
+
+      const flushDisplayMath = () => {{
+        if (!displayMath.length) return;
+        segments.push({{ type: 'display-math', text: displayMath.join('\\n') }});
+        displayMath = [];
+      }};
+
+      lines.forEach(line => {{
+        const trimmed = line.trim();
+        if (inDisplayMath) {{
+          displayMath.push(line);
+          if (trimmed.endsWith('\\\\]')) {{
+            flushDisplayMath();
+            inDisplayMath = false;
+          }}
+          return;
+        }}
+        if (trimmed.startsWith('\\\\[')) {{
+          flushParagraph();
+          displayMath.push(line);
+          if (trimmed.endsWith('\\\\]')) {{
+            flushDisplayMath();
+          }} else {{
+            inDisplayMath = true;
+          }}
+          return;
+        }}
+        if (!trimmed) {{
+          flushParagraph();
+          return;
+        }}
+        paragraph.push(line);
+      }});
+
+      flushParagraph();
+      flushDisplayMath();
+      return segments;
+    }}
+
+    function renderTextSegment(segment, definitionIds = [], standardIdeaIds = []) {{
+      let html = prettyText(segment.text);
       html = linkDefinitions(html, definitionIds);
       html = linkStandardIdeas(html, standardIdeaIds);
+      const className = segment.type === 'display-math' ? 'text-display-math' : 'text-paragraph';
+      return `<div class="${{className}}">${{html}}</div>`;
+    }}
+
+    function textBlock(text, definitionIds = [], standardIdeaIds = []) {{
+      const html = textSegments(text || '')
+        .map(segment => renderTextSegment(segment, definitionIds, standardIdeaIds))
+        .join('');
       return `<div class="text">${{html}}</div>`;
     }}
 

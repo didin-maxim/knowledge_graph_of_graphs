@@ -1,51 +1,6 @@
 {
   "relations": [
     {
-      "id": "rel-robbins-strong-orientation-kolmogorov-2021-t1",
-      "from": "robbins-strong-orientation-theorem",
-      "to": "kolmogorov-2021-t1-critical-strong-orientation",
-      "type": "prerequisite",
-      "distance": 1,
-      "forward_text": "Теорема Роббинса является главным внешним инструментом карточки Kolmogorov 2021 T1: после доказательства отсутствия мостов она дает существование сильной ориентации исходного графа.",
-      "backward_text": "Колмогоровская задача использует теорему Роббинса как критерий существования сильной ориентации графа без мостов; без этого инструмента решение не получает саму сильную ориентацию.",
-      "anchors": {
-        "from_solution_id": "sol-ear-decomposition",
-        "to_solution_id": "sol-robbins-critical"
-      },
-      "status": "ai_checked",
-      "confidence": 0.98
-    },
-    {
-      "id": "rel-two-vertex-connected-no-bridges-kolmogorov-2021-t1",
-      "from": "two-vertex-connected-graphs-have-no-bridges",
-      "to": "kolmogorov-2021-t1-critical-strong-orientation",
-      "type": "prerequisite",
-      "distance": 1,
-      "forward_text": "Эта лемма ровно закрывает первый элементарный шаг решения: условие, что удаление любой вершины оставляет граф связным, исключает мосты и тем самым разрешает применить теорему Роббинса.",
-      "backward_text": "В задаче Kolmogorov 2021 T1 отсутствие мостов не дано явно; оно выводится из 2-вершинной связности именно этой короткой леммой.",
-      "anchors": {
-        "from_solution_id": "sol-delete-endpoint",
-        "to_solution_id": "sol-robbins-critical"
-      },
-      "status": "ai_checked",
-      "confidence": 0.97
-    },
-    {
-      "id": "rel-critical-bridgeless-criterion-kolmogorov-2021-t1",
-      "from": "edge-critical-bridgeless-graphs-give-critical-strong-orientations",
-      "to": "kolmogorov-2021-t1-critical-strong-orientation",
-      "type": "prerequisite",
-      "distance": 1,
-      "forward_text": "Критерий формулирует точное условие, которое нужно после Роббинса: если удаление каждого ребра создает мост в неориентированной основе, то любая сильная ориентация становится критической по всем дугам.",
-      "backward_text": "Колмогоровская карточка стремится применить именно этот критерий критичности. Текущий аудит отмечает, что для исходного условия про бесхордные циклы мост в \\(G-e\\) еще должен быть доказан или условие должно быть уточнено.",
-      "anchors": {
-        "from_solution_id": "sol-robbins-plus-criticality",
-        "to_solution_id": "sol-robbins-critical"
-      },
-      "status": "needs_human_review",
-      "confidence": 0.9
-    },
-    {
       "id": "rel-robbins-critical-bridgeless-criterion",
       "from": "robbins-strong-orientation-theorem",
       "to": "edge-critical-bridgeless-graphs-give-critical-strong-orientations",
@@ -66,8 +21,8 @@
       "to": "kolmogorov-2003-team-olympiad-seniors-problem-8",
       "type": "same_motif",
       "distance": 2,
-      "forward_text": "Обе карточки работают с критичностью сильной связности по дугам. В задаче 2021 года существенность ребер выводится через неориентированные мосты и теорему Роббинса, а в задаче 2003 года оценивается число дуг в минимально сильно связном орграфе.",
-      "backward_text": "Kolmogorov 2003 изолирует экстремальную сторону минимально сильно связного орграфа: каждая дуга должна быть существенной, как и в ориентационном разборе Kolmogorov 2021 T1.",
+      "forward_text": "Обе карточки работают с минимально сильными орграфами: в задаче 2021 года внешняя теорема дает ориентацию, где каждая дуга существенна, а в задаче 2003 года оценивается число дуг в таком минимальном сильно связном орграфе.",
+      "backward_text": "Kolmogorov 2003 изолирует экстремальную сторону минимально сильно связного орграфа: каждая дуга должна быть существенной, как и в ориентации, получаемой для Kolmogorov 2021 T1.",
       "anchors": {
         "from_solution_id": "sol-robbins-critical",
         "to_solution_id": "sol-official-expanded"

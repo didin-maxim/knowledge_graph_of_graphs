@@ -44,7 +44,7 @@
       "official_solution_graph",
       "colored_spanning_tree_good_family_exchange_lemma"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -53,7 +53,7 @@
         "title": "Условие",
         "text": "Дан связный граф на \\(r+g+b+1\\) вершинах с красными, зелёными и синими рёбрами. Известно, что у него есть остов с ровно \\(r\\) красными рёбрами, остов с ровно \\(g\\) зелёными и остов с ровно \\(b\\) синими. Докажите, что существует остов, в котором одновременно ровно \\(r\\) красных, \\(g\\) зелёных и \\(b\\) синих рёбер.",
         "source_id": "src-rmm-2023-official",
-        "status": "needs_human_review",
+        "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -72,7 +72,7 @@
       "tags": [
         "trees"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     },
     {
       "id": "idea-suspicious-edges",
@@ -81,7 +81,7 @@
       "tags": [
         "extremal_choice"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   ],
   "solutions": [
@@ -112,7 +112,7 @@
     "main": "national_final_hard",
     "local_score": 10,
     "comment": "RMM 2023 P6; полностью графовая задача на остовы, циклы, разрезы и экстремальный выбор семейства.",
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "tags": [
     "trees",
@@ -126,7 +126,7 @@
         "tree_exchange_argument",
         "colored_spanning_tree_good_family_exchange_lemma"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -144,20 +144,23 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-20",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
-      "2026-05-05: exchange-часть решения вынесена в самостоятельную lemma-карточку `colored-spanning-tree-good-family-exchange-lemma`; текущая карточка ссылается на неё через lemma_card_ids и relations.d."
+      "2026-05-05: exchange-часть решения вынесена в самостоятельную lemma-карточку `colored-spanning-tree-good-family-exchange-lemma`; текущая карточка ссылается на неё через lemma_card_ids и relations.d.",
+      "2026-05-16: карточка проверена в хвостовом срезе official_outline_needs_work; решение признано полным.",
+      "2026-05-16: официальный план доведён до самодостаточного решения; карточка обновлена после статуса official_outline_needs_work."
     ],
     "graph_theory_duplicate_removed": true,
     "relations_status": "deep_done",
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "официальный источник и пометка о сжатом, набросочном решении",
-      "notes": "Официальное решение или его краткая версия найдено, но текущий текст похож на план и требует разворачивания.",
-      "label": "официальный план, нужна доработка"
+      "type": "official_plan_completed_by_ai",
+      "label": "официальный план доведён до полного",
+      "status": "ai_checked",
+      "confidence": 0.86,
+      "basis": "официальный источник и повторная проверка развёрнутого решения из хвоста очереди official-plan-needs-completion",
+      "notes": "Сжатый официальный план раскрыт в полное доказательство через минимальное хорошее семейство, подозрительные рёбра, обмен по разрезу и обмен по циклу.",
+      "audit_source": "official-plan-tail-pass-2026-05-16"
     }
   }
 }

@@ -16,18 +16,31 @@
     }
   ],
   "problem_profile": {
-    "objects": [],
-    "methods": [],
-    "transformations": [],
-    "goal": [],
+    "objects": [
+      "tree",
+      "intersection_graph_of_polynomial_graphs",
+      "subdivided_claw"
+    ],
+    "methods": [
+      "ordering_of_disjoint_graphs",
+      "forbidden_induced_subtree"
+    ],
+    "transformations": [
+      "tree_to_intersection_graph_model"
+    ],
+    "goal": [
+      "counterexample"
+    ],
     "auxiliary_graph_type": [],
-    "invariants": [],
+    "invariants": [
+      "vertical_order_of_disjoint_polynomial_graphs"
+    ],
     "keywords": [
       "yumt",
       "2025_grand_round1_problem4",
       "yumt_2025"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -65,8 +78,11 @@
         "idea-subdivided-claw-obstruction"
       ],
       "standard_idea_ids": [],
-      "status": "needs_human_review",
-      "definition_ids": []
+      "status": "ai_checked",
+      "definition_ids": [
+        "tree"
+      ],
+      "repair_status": "high_reasoning_checked_2026_05_17"
     }
   ],
   "difficulty": {
@@ -76,7 +92,8 @@
     "status": "ai_checked"
   },
   "tags": [
-    "goal_characterization"
+    "construction",
+    "goal_impossibility"
   ],
   "sources": [
     {
@@ -88,10 +105,11 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-25",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "2026-05-05: добавлено ИИ-решение с отрицательным ответом; открытый поиск не выявил готового решения или автора. Доказательство использует элементарный порядок непересекающихся графиков многочленов.",
+      "2026-05-17: high-reasoning проверка закрыла решение: контрпример через подразбиение звезды самодостаточен, внешний результат не используется.",
       "Импортировано из проверенной рабочей карточки ЮМТ 2025_grand_round1_problem4.md."
     ],
     "relations_status": "deep_done",

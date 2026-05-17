@@ -102,7 +102,7 @@
     "main": "national_final_medium",
     "local_score": 6,
     "comment": "Импортировано из подготовленной графовой карточки KOLM; оценка сложности требует проверки человеком.",
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "tags": [
     "extremal_graph_theory",
@@ -133,7 +133,7 @@
     "created_by": "ai",
     "created_at": "2026-04-26",
     "review_status": "ai_checked",
-    "public_ready": false,
+    "public_ready": true,
     "notes": [
       "Импортировано из подготовленной карточки cards/kolm/2004_round2_higher_league_problem_9.md.",
       "Файл-источник, указанный в карточке: work/kolm/text/2004/tur2.txt.",
@@ -142,18 +142,19 @@
       "Исходное название в финальной выборке: тур 2, высшая лига, задача 9.",
       "2026-04-26 вердикт прохода от плана к решению: deferred_needs_source_or_reconstruction; сжатое официальное изложение даёт стратегию, но не оценки, нужные для подтверждения полноты решения.",
       "2026-04-26 вердикт глубокого финального прохода: completed_ai_checked; восстановлено полное прямое доказательство двойным подсчётом. Прежний числовой пробел закрыт подсчётом каждой пары позиций в 5-членной прогрессии: фиксированное ребро покрывает не более 10 прогрессий.",
-      "2026-04-26 проход по метаданным: после исправления решения согласованы tags, problem_profile, central_method, standard_idea_ids, definition_ids, статусы и служебные данные исправления."
+      "2026-04-26 проход по метаданным: после исправления решения согласованы tags, problem_profile, central_method, standard_idea_ids, definition_ids, статусы и служебные данные исправления.",
+      "2026-05-16: решение перечитано; численные оценки для 5-членных прогрессий и C4-свободного графа признаны полными, classification/public_ready обновлены."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "label": "официальный план, нужна доработка",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "агентский аудит средней сложности",
-      "notes": "Официальное или архивное решение сжато либо всё ещё помечено как требующее проверки.",
-      "audit_source": "agent-russian-archives.json"
+      "type": "official_plan_completed_by_ai",
+      "label": "официальный план, доведённый ИИ",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "официальный архивный план развёрнут в самодостаточное доказательство двойным счётом",
+      "notes": "Проверены подсчёт 5-членных арифметических прогрессий, верхняя кратность покрытия одной прогрессии ребром и стандартная оценка числа рёбер в C4-свободном графе через 2-пути.",
+      "audit_source": "official-outline-cleanup-2026-05-16"
     }
   }
 }

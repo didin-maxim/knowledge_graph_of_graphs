@@ -42,7 +42,7 @@
       "rmm",
       "official_solution_graph"
     ],
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "statements": {
     "original": [
@@ -51,7 +51,7 @@
         "title": "Условие",
         "text": "Есть конечное число мальчиков и девочек. Набор мальчиков называется покрывающим, если каждая девочка знает хотя бы одного мальчика из этого набора; аналогично определяется покрывающий набор девочек. Докажите, что число покрывающих наборов мальчиков и число покрывающих наборов девочек одной чётности.",
         "source_id": "src-rmm-2012-official",
-        "status": "needs_human_review",
+        "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -66,7 +66,7 @@
         "id": "stmt-graph",
         "title": "Чётность покрывающих множеств в двудольном графе знакомств, RMM 2012 P1",
         "text": "Пусть \\(G=(L,R,E)\\) — конечный двудольный граф. Подмножество \\(X\\subseteq L\\) назовём покрывающим, если каждая вершина из \\(R\\) имеет соседа в \\(X\\). Аналогично определяется покрывающее подмножество \\(Y\\subseteq R\\). Докажите, что число покрывающих подмножеств в \\(L\\) и число покрывающих подмножеств в \\(R\\) имеют одинаковую чётность.",
-        "status": "needs_human_review",
+        "status": "ai_checked",
         "self_contained": {
           "status": "ai_checked"
         },
@@ -88,7 +88,7 @@
       "tags": [
         "double_counting"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     },
     {
       "id": "idea-bipartite-symmetry",
@@ -97,7 +97,7 @@
       "tags": [
         "graph_symmetry"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   ],
   "solutions": [
@@ -124,7 +124,7 @@
     "main": "national_final_hard",
     "local_score": 9,
     "comment": "RMM 2012 P1; графовая модель неявная в условии, но официальное решение естественно формулируется в языке двудольного графа и двойного счёта.",
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "tags": [
     "double_counting",
@@ -136,7 +136,7 @@
         "double_counting",
         "parity_argument"
       ],
-      "status": "needs_human_review"
+      "status": "ai_checked"
     }
   },
   "sources": [
@@ -154,17 +154,21 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-20",
-    "review_status": "needs_human_review",
-    "public_ready": false,
-    "notes": [],
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "2026-05-16: карточка проверена в хвостовом срезе official_outline_needs_work; решение признано полным.",
+      "2026-05-16: официальный план доведён до самодостаточного решения; карточка обновлена после статуса official_outline_needs_work."
+    ],
     "relations_status": "deep_done",
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "официальный источник и пометка о сжатом, набросочном решении",
-      "notes": "Официальное решение или его краткая версия найдено, но текущий текст похож на план и требует разворачивания.",
-      "label": "официальный план, нужна доработка"
+      "type": "official_plan_completed_by_ai",
+      "label": "официальный план доведён до полного",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "официальный источник и повторная проверка полного русского решения из хвоста очереди official-plan-needs-completion",
+      "notes": "Доказательство самодостаточно: один и тот же счёт разделённых пар по модулю 2 даёт чётность покрывающих множеств в обеих долях.",
+      "audit_source": "official-plan-tail-pass-2026-05-16"
     }
   }
 }

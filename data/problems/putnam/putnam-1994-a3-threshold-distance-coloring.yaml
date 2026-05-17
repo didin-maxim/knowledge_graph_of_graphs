@@ -75,7 +75,8 @@
           "status": "ai_checked"
         },
         "definition_ids": [
-          "chromatic_number"
+          "chromatic_number",
+          "proper_coloring"
         ],
         "distinct_from": [
           "stmt-original"
@@ -119,10 +120,13 @@
         "pigeonhole_principle"
       ],
       "source_id": "src-kalva-putnam-1994-a3-solution",
-      "status": "needs_human_review",
+      "status": "ai_checked",
       "definition_ids": [
-        "chromatic_number"
-      ]
+        "chromatic_number",
+        "proper_coloring"
+      ],
+      "repair_status": "high_reasoning_checked_2026_05_17",
+      "review_notes": "Аудит 2026-05-17: проверены координаты семи точек, все пороговые расстояния \\(\\ge2-\\sqrt2\\) и финальное принуждение цветов; внешние теоремы не используются."
     }
   ],
   "difficulty": {
@@ -152,17 +156,26 @@
       "source_id": "src-putnam-1994-A3-kedlaya",
       "role": "archived_statement",
       "status": "source_verified"
+    },
+    {
+      "source_id": "src-kalva-putnam-1994-a3-solution",
+      "role": "solution_archive",
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-seven-point-distance-graph"
+      ]
     }
   ],
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-05-02",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Kedlaya archive для 1994 года содержит условие; опубликованное неофициальное решение сверено с открытой версией Kalva/John Scholes.",
       "2026-05-06: формулировка дополнительно сверена с листом Putnam Competition 1994A у UPenn: 'points of an isosceles right triangle of side length 1'. Русская карточка трактует это как весь треугольник с катетами 1; доказательство использует только семь точек на сторонах, поэтому покрывает и версию про все точки, и более узкую транскрипцию Kalva про точки на сторонах.",
-      "2026-05-06: решение развернуто до самодостаточного координатного доказательства; отдельно проверены расстояния AE, CF, DG, DF, EG, BE, BF и запреты цветов."
+      "2026-05-06: решение развернуто до самодостаточного координатного доказательства; отдельно проверены расстояния AE, CF, DG, DF, EG, BE, BF и запреты цветов.",
+      "2026-05-17: high-reasoning аудит закрыл решение как самодостаточное; источник решения добавлен в problem.sources."
     ],
     "relations_status": "deep_done",
     "solution_classification": {

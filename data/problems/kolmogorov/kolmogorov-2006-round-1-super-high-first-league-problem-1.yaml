@@ -108,7 +108,7 @@
     "main": "national_final_medium",
     "local_score": 6,
     "comment": "Импортировано из подготовленной графовой карточки KOLM; оценка сложности требует проверки человеком.",
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "tags": [
     "coloring",
@@ -140,7 +140,7 @@
     "created_by": "ai",
     "created_at": "2026-04-26",
     "review_status": "ai_checked",
-    "public_ready": false,
+    "public_ready": true,
     "notes": [
       "Импортировано из подготовленной карточки cards/kolm/2006_round_1_super_high_first_league_problem_1.md.",
       "Файл-источник, указанный в карточке: work/kolm/text/2006/tur1_10sol.txt.",
@@ -148,18 +148,19 @@
       "Роль графа: явно присутствует в условии.",
       "Исходное название в финальной выборке: тур 1, суперлига / высшая лига / первая лига, задача 1.",
       "2026-04-26 вердикт прохода от плана к решению: completed_ai_checked; сжатого официального изложения хватило, чтобы развернуть элементарное доказательство через кратчайший нечётный цикл.",
-      "2026-04-26 проход по метаданным: после исправления решения согласованы tags, problem_profile, central_method, standard_idea_ids, definition_ids, статусы и служебные данные исправления."
+      "2026-04-26 проход по метаданным: после исправления решения согласованы tags, problem_profile, central_method, standard_idea_ids, definition_ids, статусы и служебные данные исправления.",
+      "2026-05-16: решение перечитано; разбор минимального нечётного цикла и оценка диаметра признаны полными, classification/public_ready обновлены."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "label": "официальный план, нужна доработка",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "агентский аудит средней сложности",
-      "notes": "Официальное или архивное решение сжато либо всё ещё помечено как требующее проверки.",
-      "audit_source": "agent-russian-archives.json"
+      "type": "official_plan_completed_by_ai",
+      "label": "официальный план, доведённый ИИ",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "официальный архивный план развёрнут в самодостаточное доказательство через минимальный нечётный цикл",
+      "notes": "Проверены случаи 5- и 7-цикла, отсутствие хорд, лемма о пути длины не больше 3 между любыми двумя вершинами и финальное противоречие для цикла длины не меньше 9.",
+      "audit_source": "official-outline-cleanup-2026-05-16"
     }
   }
 }

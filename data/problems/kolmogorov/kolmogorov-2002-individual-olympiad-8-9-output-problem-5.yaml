@@ -45,7 +45,10 @@
           "status": "ai_checked"
         },
         "definition_ids": [
-          "simple_graph"
+          "simple_graph",
+          "complete_graph",
+          "cycle",
+          "triangle"
         ]
       }
     ],
@@ -72,7 +75,10 @@
       "standard_idea_ids": [],
       "status": "ai_checked",
       "definition_ids": [
-        "simple_graph"
+        "simple_graph",
+        "complete_graph",
+        "cycle",
+        "triangle"
       ],
       "repair_status": "medium_reasoning_understandable_2026_05_06",
       "review_notes": "Аудит средней сложности 2026-05-06: решение понятно агенту среднего уровня; скрытых непроверенных переходов при чтении не найдено."
@@ -82,10 +88,11 @@
     "main": "national_final_medium",
     "local_score": 6,
     "comment": "Импортировано из подготовленной графовой карточки KOLM; оценка сложности требует проверки человеком.",
-    "status": "needs_human_review"
+    "status": "ai_checked"
   },
   "tags": [
-    "goal_counting"
+    "goal_counting",
+    "coloring"
   ],
   "properties": {},
   "sources": [
@@ -103,25 +110,26 @@
   "editorial": {
     "created_by": "ai",
     "created_at": "2026-04-26",
-    "review_status": "needs_human_review",
-    "public_ready": false,
+    "review_status": "ai_checked",
+    "public_ready": true,
     "notes": [
       "Импортировано из подготовленной карточки cards/kolm/2002_individual_olympiad_8_9_output_problem_5.md.",
       "Файл-источник, указанный в карточке: work/kolm/text/2002/OLYMPVI_??_tex.txt.",
       "Страница-источник, указанная в карточке: индивидуальная олимпиада, 8-9 классы, выходная работа, задача 5.",
       "Роль графа: явно присутствует в условии.",
-      "Исходное название в финальной выборке: индивидуальная олимпиада, 8-9 классы, выходная работа, задача 5."
+      "Исходное название в финальной выборке: индивидуальная олимпиада, 8-9 классы, выходная работа, задача 5.",
+      "2026-05-16: решение перечитано; минимальный разноцветный цикл даёт полный короткий вывод разноцветного треугольника, classification/public_ready обновлены."
     ],
     "relations_status": "deep_done",
     "graph_theory_duplicate_removed": true,
     "solution_classification": {
-      "type": "official_outline_needs_work",
-      "label": "официальный план, нужна доработка",
-      "status": "needs_human_review",
-      "confidence": 0.78,
-      "basis": "агентский аудит средней сложности",
-      "notes": "Официальное или архивное решение сжато либо всё ещё помечено как требующее проверки.",
-      "audit_source": "agent-russian-archives.json"
+      "type": "official_plan_completed_by_ai",
+      "label": "официальный план, доведённый ИИ",
+      "status": "ai_checked",
+      "confidence": 0.9,
+      "basis": "официальный архивный план развёрнут в самодостаточное доказательство через разноцветный цикл",
+      "notes": "Проверены выбор по одному ребру каждого цвета, существование цикла из-за не менее n рёбер и минимальный разноцветный цикл, который обязан быть треугольником.",
+      "audit_source": "official-outline-cleanup-2026-05-16"
     }
   }
 }
