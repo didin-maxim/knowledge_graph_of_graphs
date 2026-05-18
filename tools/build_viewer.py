@@ -161,6 +161,27 @@ def build_html(data):
       border-color: #9ccfc5;
     }}
 
+    .small-button {{
+      border: 1px solid #8abfb6;
+      background: var(--soft);
+      color: var(--ink);
+      padding: 7px 10px;
+      border-radius: 6px;
+      min-height: 34px;
+      cursor: pointer;
+    }}
+
+    .small-button:disabled {{
+      opacity: .55;
+      cursor: not-allowed;
+    }}
+
+    .local-data-actions {{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }}
+
     .search input, .search select, .comment-form textarea {{
       width: 100%;
       border: 1px solid var(--line);
@@ -688,6 +709,80 @@ def build_html(data):
       cursor: pointer;
     }}
 
+    .local-panel {{
+      display: grid;
+      gap: 10px;
+      background: #fbfdfb;
+    }}
+
+    .local-row {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }}
+
+    .local-row label {{
+      color: var(--muted);
+      font-size: 14px;
+    }}
+
+    .local-row select, .local-row input, .local-panel textarea {{
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 10px;
+    }}
+
+    .local-row select {{
+      min-width: 170px;
+    }}
+
+    .local-panel textarea {{
+      width: 100%;
+      min-height: 96px;
+      resize: vertical;
+    }}
+
+    .local-muted {{
+      color: var(--muted);
+      font-size: 13px;
+    }}
+
+    .local-save-status {{
+      min-width: 92px;
+      color: var(--muted);
+      font-size: 13px;
+    }}
+
+    .report-form {{
+      display: grid;
+      gap: 10px;
+    }}
+
+    .report-form label {{
+      display: grid;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }}
+
+    .report-form select, .report-form input, .report-form textarea {{
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 10px;
+    }}
+
+    .report-output {{
+      min-height: 150px;
+      font-family: Consolas, "Cascadia Mono", monospace;
+      font-size: 13px;
+    }}
+
     textarea {{
       min-height: 150px;
       resize: vertical;
@@ -760,6 +855,13 @@ def build_html(data):
           <button class="mode-button" id="mode-comments" type="button">Комментарии</button>
         </div>
         <input id="search-input" type="search" placeholder="Поиск">
+        <select id="local-progress-filter"></select>
+        <div class="local-data-actions" aria-label="Локальные данные">
+          <button class="small-button" id="local-export" type="button">Экспорт</button>
+          <button class="small-button" id="local-import" type="button">Импорт</button>
+          <button class="small-button" id="local-reset" type="button">Сброс</button>
+          <input id="local-import-file" type="file" accept="application/json,.json" hidden>
+        </div>
         <select id="source-filter"></select>
         <select id="author-filter"></select>
         <select id="year-filter"></select>
@@ -786,8 +888,101 @@ def build_html(data):
     const definitions = DB.definitions;
     const standardIdeas = DB.standard_ideas;
     const taxonomy = DB.taxonomy;
+
+    function storageGet(key) {{
+      try {{ return window.localStorage?.getItem(key) ?? null; }}
+      catch (_error) {{ return null; }}
+    }}
+
+    function storageSet(key, value) {{
+      try {{ window.localStorage?.setItem(key, value); }}
+      catch (_error) {{}}
+    }}
+
+    function storageRemove(key) {{
+      try {{ window.localStorage?.removeItem(key); }}
+      catch (_error) {{}}
+    }}
+
+    const LOCAL_DATA_KEY = 'graph-db:local-user-data:v1';
+    const LOCAL_DATA_VERSION = 1;
+    const FEEDBACK_CONFIG = {{
+      email: '',
+      subjectPrefix: '[graph-db] Ошибка в карточке'
+    }};
+    const PROGRESS_OPTIONS = [
+      {{ value: 'not_started', label: 'не решал' }},
+      {{ value: 'tried', label: 'пробовал' }},
+      {{ value: 'solved', label: 'решил' }},
+      {{ value: 'later', label: 'вернуться позже' }}
+    ];
+    const PROGRESS_LABELS = Object.fromEntries(PROGRESS_OPTIONS.map(item => [item.value, item.label]));
+
+    function emptyLocalData() {{
+      return {{ version: LOCAL_DATA_VERSION, problems: {{}}, updated_at: null }};
+    }}
+
+    function normalizeLocalEntry(entry) {{
+      if (!entry || typeof entry !== 'object') return {{}};
+      const progress = PROGRESS_LABELS[entry.progress] ? entry.progress : 'not_started';
+      const note = typeof entry.note === 'string' ? entry.note : '';
+      const updated_at = typeof entry.updated_at === 'string' ? entry.updated_at : undefined;
+      const result = {{}};
+      if (progress !== 'not_started') result.progress = progress;
+      if (note) result.note = note;
+      if (updated_at && (result.progress || result.note)) result.updated_at = updated_at;
+      return result;
+    }}
+
+    function loadLocalData() {{
+      const raw = storageGet(LOCAL_DATA_KEY);
+      if (!raw) return emptyLocalData();
+      try {{
+        const parsed = JSON.parse(raw);
+        const result = emptyLocalData();
+        const entries = parsed?.problems && typeof parsed.problems === 'object' ? parsed.problems : {{}};
+        for (const [id, entry] of Object.entries(entries)) {{
+          const normalized = normalizeLocalEntry(entry);
+          if (normalized.progress || normalized.note) result.problems[id] = normalized;
+        }}
+        result.updated_at = typeof parsed?.updated_at === 'string' ? parsed.updated_at : null;
+        return result;
+      }} catch (_error) {{
+        return emptyLocalData();
+      }}
+    }}
+
+    let localData = loadLocalData();
+
+    function saveLocalData() {{
+      localData.version = LOCAL_DATA_VERSION;
+      localData.updated_at = new Date().toISOString();
+      storageSet(LOCAL_DATA_KEY, JSON.stringify(localData));
+    }}
+
+    function localEntry(problemId) {{
+      return localData.problems[problemId] || {{}};
+    }}
+
+    function localProgress(problemId) {{
+      return localEntry(problemId).progress || 'not_started';
+    }}
+
+    function localNote(problemId) {{
+      return localEntry(problemId).note || '';
+    }}
+
+    function setLocalEntry(problemId, patch) {{
+      const current = {{ ...localEntry(problemId), ...patch }};
+      const normalized = normalizeLocalEntry({{ ...current, updated_at: new Date().toISOString() }});
+      if (normalized.progress || normalized.note) localData.problems[problemId] = normalized;
+      else delete localData.problems[problemId];
+      saveLocalData();
+    }}
+
     const state = {{
       query: '',
+      localProgress: 'all',
       goal: 'all',
       object: 'all',
       method: 'all',
@@ -797,7 +992,7 @@ def build_html(data):
       year: 'all',
       solution: 'all',
       view: 'problems',
-      sidebarHidden: localStorage.getItem('kg-sidebar-hidden') === '1'
+      sidebarHidden: storageGet('kg-sidebar-hidden') === '1'
     }};
 
     const byId = (id) => document.getElementById(id);
@@ -1370,6 +1565,7 @@ def build_html(data):
     function problemMatchesFilters(problem, options = {{}}) {{
       const query = state.query.trim().toLowerCase();
       const info = sourceInfo(problem);
+      if (!options.excludeLocalProgress && state.localProgress !== 'all' && localProgress(problem.id) !== state.localProgress) return false;
       if (!options.excludeGoal && !categoryFilterOk(problem, 'goal')) return false;
       if (!options.excludeObject && !categoryFilterOk(problem, 'object')) return false;
       if (!options.excludeMethod && !categoryFilterOk(problem, 'method')) return false;
@@ -1604,7 +1800,12 @@ def build_html(data):
         list.innerHTML = filteredProblems().map(item => `
           <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#${{encodeURIComponent(item.id)}}" data-list-route="problem" data-list-id="${{esc(item.id)}}">
             <div>${{esc(item.title)}}</div>
-            <div class="id">${{esc(item.id)}} · ${{esc(solutionStatusLabel(solutionStatusKey(item)))}}</div>
+            <div class="id">${{[
+              item.id,
+              solutionStatusLabel(solutionStatusKey(item)),
+              localProgress(item.id) !== 'not_started' ? `прогресс: ${{PROGRESS_LABELS[localProgress(item.id)]}}` : '',
+              localNote(item.id) ? 'есть заметка' : ''
+            ].filter(Boolean).map(esc).join(' · ')}}</div>
           </a>
         `).join('');
       }}
@@ -1693,6 +1894,31 @@ def build_html(data):
         select.value = 'all';
       }}
     }}
+
+    function renderLocalProgressFilter() {{
+      const select = byId('local-progress-filter');
+      if (state.view !== 'problems') {{
+        select.disabled = true;
+        select.innerHTML = `<option>${{inactiveFilterLabel()}}</option>`;
+        return;
+      }}
+      select.disabled = false;
+      const matching = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeLocalProgress: true }}));
+      const counts = Object.fromEntries(PROGRESS_OPTIONS.map(item => [item.value, 0]));
+      matching.forEach(problem => {{
+        const key = localProgress(problem.id);
+        counts[key] = (counts[key] || 0) + 1;
+      }});
+      select.innerHTML = `<option value="all">Любой локальный прогресс (${{matching.length}})</option>` + PROGRESS_OPTIONS.map(item =>
+        `<option value="${{esc(item.value)}}">${{esc(item.label)}} (${{counts[item.value] || 0}})</option>`
+      ).join('');
+      select.value = state.localProgress;
+      if (select.value !== state.localProgress) {{
+        state.localProgress = 'all';
+        select.value = 'all';
+      }}
+    }}
+
     function renderSourceFilter() {{
       const select = byId('source-filter');
       if (state.view !== 'problems') {{
@@ -2101,6 +2327,244 @@ def build_html(data):
       }});
     }}
 
+    function renderLocalTools(problem) {{
+      const progress = localProgress(problem.id);
+      const note = localNote(problem.id);
+      const progressOptions = PROGRESS_OPTIONS.map(item => `
+        <option value="${{esc(item.value)}}" ${{item.value === progress ? 'selected' : ''}}>${{esc(item.label)}}</option>
+      `).join('');
+      const reportTypeOptions = [
+        ['typo', 'Опечатка или язык'],
+        ['statement', 'Проблема в условии'],
+        ['solution', 'Проблема в решении'],
+        ['source', 'Источник или ссылка'],
+        ['relation', 'Связи, метки или тип'],
+        ['other', 'Другое']
+      ].map(([value, labelText]) => `<option value="${{esc(value)}}">${{esc(labelText)}}</option>`).join('');
+      const mailNote = FEEDBACK_CONFIG.email
+        ? 'Кнопка почты откроет письмо в вашем почтовом клиенте.'
+        : 'Почта не настроена; используйте копирование отчета. Адрес можно задать в FEEDBACK_CONFIG.email.';
+      return `
+        <div class="card local-panel" data-local-panel data-problem-id="${{esc(problem.id)}}">
+          <div class="local-row">
+            <label>Локальный прогресс
+              <select data-local-progress>${{progressOptions}}</select>
+            </label>
+            <button class="small-button" type="button" data-toggle-note>Заметка</button>
+            <button class="small-button" type="button" data-toggle-report>Сообщить об ошибке</button>
+            <span class="local-muted">Хранится только в этом браузере.</span>
+          </div>
+          <div data-note-block ${{note ? '' : 'hidden'}}>
+            <textarea data-local-note placeholder="Личная заметка к карточке">${{esc(note)}}</textarea>
+            <div class="local-row">
+              <span class="local-save-status" data-local-save-status>${{note ? 'сохранено' : ''}}</span>
+              <span class="local-muted">Автосохранение в localStorage.</span>
+            </div>
+          </div>
+          <div data-report-block hidden>
+            <div class="report-form">
+              <label>Тип проблемы
+                <select data-report-type>${{reportTypeOptions}}</select>
+              </label>
+              <label>Комментарий
+                <textarea data-report-comment placeholder="Что именно нужно проверить?"></textarea>
+              </label>
+              <label>Контакт, необязательно
+                <input data-report-contact type="text" placeholder="email или другой способ связи">
+              </label>
+              <label>Текст отчета
+                <textarea class="report-output" data-report-output readonly></textarea>
+              </label>
+              <div class="local-row">
+                <button class="small-button" type="button" data-copy-report>Скопировать</button>
+                <button class="small-button" type="button" data-mail-report ${{FEEDBACK_CONFIG.email ? '' : 'disabled'}}>Отправить по почте</button>
+                <span class="local-save-status" data-report-status></span>
+              </div>
+              <div class="local-muted">${{esc(mailNote)}} Копирование и mailto не отправляют отчет автоматически.</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }}
+
+    function reportProblemUrl(problem) {{
+      return `${{window.location.href.split('#')[0]}}#${{encodeURIComponent(problem.id)}}`;
+    }}
+
+    function currentReportText(problem, panel) {{
+      const typeSelect = panel.querySelector('[data-report-type]');
+      const typeLabel = typeSelect?.selectedOptions?.[0]?.textContent || typeSelect?.value || '';
+      const comment = panel.querySelector('[data-report-comment]')?.value.trim() || '';
+      const contact = panel.querySelector('[data-report-contact]')?.value.trim() || '';
+      return [
+        'Отчет об ошибке в graph-db',
+        '',
+        `ID карточки: ${{problem.id}}`,
+        `Название: ${{problem.title || ''}}`,
+        `URL: ${{reportProblemUrl(problem)}}`,
+        `Тип проблемы: ${{typeLabel}}`,
+        '',
+        'Комментарий:',
+        comment || '(не заполнен)',
+        '',
+        `Контакт: ${{contact || '(не указан)'}}`,
+        `Сформировано: ${{new Date().toISOString()}}`
+      ].join('\\n');
+    }}
+
+    function updateReportOutput(problem, panel) {{
+      const output = panel.querySelector('[data-report-output]');
+      if (output) output.value = currentReportText(problem, panel);
+    }}
+
+    async function copyText(text) {{
+      if (navigator.clipboard?.writeText) {{
+        await navigator.clipboard.writeText(text);
+        return;
+      }}
+      const helper = document.createElement('textarea');
+      helper.value = text;
+      helper.style.position = 'fixed';
+      helper.style.left = '-9999px';
+      document.body.appendChild(helper);
+      helper.focus();
+      helper.select();
+      document.execCommand('copy');
+      helper.remove();
+    }}
+
+    function bindProblemLocalControls(problem) {{
+      const panel = document.querySelector('[data-local-panel]');
+      if (!panel) return;
+      const progressSelect = panel.querySelector('[data-local-progress]');
+      const noteBlock = panel.querySelector('[data-note-block]');
+      const noteTextarea = panel.querySelector('[data-local-note]');
+      const noteStatus = panel.querySelector('[data-local-save-status]');
+      const reportBlock = panel.querySelector('[data-report-block]');
+      const reportStatus = panel.querySelector('[data-report-status]');
+      let noteTimer = null;
+
+      progressSelect?.addEventListener('change', event => {{
+        setLocalEntry(problem.id, {{ progress: event.target.value }});
+        if (state.localProgress !== 'all' && state.localProgress !== event.target.value) selectFirstVisibleRoute();
+        else {{
+          renderLocalProgressFilter();
+          renderSidebar();
+        }}
+      }});
+
+      panel.querySelector('[data-toggle-note]')?.addEventListener('click', () => {{
+        noteBlock.hidden = !noteBlock.hidden;
+        if (!noteBlock.hidden) noteTextarea?.focus();
+      }});
+
+      noteTextarea?.addEventListener('input', () => {{
+        if (noteStatus) noteStatus.textContent = 'сохраняю...';
+        window.clearTimeout(noteTimer);
+        noteTimer = window.setTimeout(() => {{
+          setLocalEntry(problem.id, {{ note: noteTextarea.value }});
+          if (noteStatus) noteStatus.textContent = 'сохранено';
+          renderLocalProgressFilter();
+          renderSidebar();
+        }}, 350);
+      }});
+
+      panel.querySelector('[data-toggle-report]')?.addEventListener('click', () => {{
+        reportBlock.hidden = !reportBlock.hidden;
+        if (!reportBlock.hidden) updateReportOutput(problem, panel);
+      }});
+
+      for (const field of panel.querySelectorAll('[data-report-type], [data-report-comment], [data-report-contact]')) {{
+        field.addEventListener('input', () => updateReportOutput(problem, panel));
+        field.addEventListener('change', () => updateReportOutput(problem, panel));
+      }}
+
+      panel.querySelector('[data-copy-report]')?.addEventListener('click', async () => {{
+        updateReportOutput(problem, panel);
+        try {{
+          await copyText(panel.querySelector('[data-report-output]').value);
+          if (reportStatus) reportStatus.textContent = 'скопировано';
+        }} catch (_error) {{
+          if (reportStatus) reportStatus.textContent = 'не удалось скопировать';
+        }}
+      }});
+
+      panel.querySelector('[data-mail-report]')?.addEventListener('click', () => {{
+        if (!FEEDBACK_CONFIG.email) return;
+        updateReportOutput(problem, panel);
+        const subject = `${{FEEDBACK_CONFIG.subjectPrefix}}: ${{problem.id}}`;
+        const body = panel.querySelector('[data-report-output]').value;
+        window.location.href = `mailto:${{encodeURIComponent(FEEDBACK_CONFIG.email)}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(body)}}`;
+      }});
+    }}
+
+    function exportLocalData() {{
+      const payload = {{
+        app: 'graph-db',
+        version: LOCAL_DATA_VERSION,
+        exported_at: new Date().toISOString(),
+        local_storage_key: LOCAL_DATA_KEY,
+        problems: localData.problems
+      }};
+      const blob = new Blob([JSON.stringify(payload, null, 2)], {{ type: 'application/json' }});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `graph-db-local-${{new Date().toISOString().slice(0, 10)}}.json`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }}
+
+    function normalizedImportedProblems(payload) {{
+      const rawProblems = payload?.problems && typeof payload.problems === 'object'
+        ? payload.problems
+        : payload;
+      if (!rawProblems || typeof rawProblems !== 'object' || Array.isArray(rawProblems)) return null;
+      const result = {{}};
+      for (const [id, entry] of Object.entries(rawProblems)) {{
+        if (!problems[id]) continue;
+        const normalized = normalizeLocalEntry(entry);
+        if (normalized.progress || normalized.note) result[id] = normalized;
+      }}
+      return result;
+    }}
+
+    async function importLocalDataFile(file) {{
+      let parsed;
+      try {{
+        parsed = JSON.parse(await file.text());
+      }} catch (_error) {{
+        window.alert('Не удалось прочитать JSON.');
+        return;
+      }}
+      const imported = normalizedImportedProblems(parsed);
+      if (!imported) {{
+        window.alert('JSON не похож на экспорт локальных данных.');
+        return;
+      }}
+      const count = Object.keys(imported).length;
+      if (!count) {{
+        window.alert('В файле нет заметок или прогресса для карточек этой базы.');
+        return;
+      }}
+      const ok = window.confirm(`Импортировать локальные данные для ${{count}} карточек? Записи с теми же id будут заменены.`);
+      if (!ok) return;
+      localData.problems = {{ ...localData.problems, ...imported }};
+      saveLocalData();
+      render();
+      window.alert('Локальные данные импортированы.');
+    }}
+
+    function resetLocalData() {{
+      const ok = window.confirm('Удалить весь локальный прогресс и заметки из этого браузера? Это не затронет репозиторий.');
+      if (!ok) return;
+      localData = emptyLocalData();
+      storageRemove(LOCAL_DATA_KEY);
+      render();
+    }}
+
     function renderHome() {{
       const problemList = Object.values(problems);
       const solutionCounts = {{
@@ -2234,6 +2698,7 @@ def build_html(data):
           const view = button.dataset.homeView;
           if (view === 'problems') {{
             state.query = '';
+            state.localProgress = 'all';
             state.goal = 'all';
             state.object = 'all';
             state.method = 'all';
@@ -2269,6 +2734,7 @@ def build_html(data):
           <span class="pill">${{esc(label(taxonomy.difficulty_levels, problem.difficulty?.main))}}</span>
         </div>
         <h2>${{esc(problem.title)}}</h2>
+        ${{renderLocalTools(problem)}}
         <div class="subtle">${{esc(problem.difficulty?.comment || '')}}</div>
         <div class="pill-row">${{(problem.tags || []).map(tagPill).join('')}}</div>
 
@@ -2316,6 +2782,7 @@ def build_html(data):
         </div>
       `;
       attachCommentForms();
+      bindProblemLocalControls(problem);
       if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([byId('content')]);
     }}
 
@@ -2439,6 +2906,7 @@ def build_html(data):
       const route = currentRoute();
       state.view = route.type === 'definition' ? 'definitions' : route.type === 'idea' ? 'ideas' : route.type === 'comment' ? 'comments' : 'problems';
       applySidebarState();
+      renderLocalProgressFilter();
       renderSourceFilter();
       renderAuthorFilter();
       renderYearFilter();
@@ -2458,6 +2926,11 @@ def build_html(data):
 
     byId('search-input').addEventListener('input', event => {{
       state.query = event.target.value;
+      selectFirstVisibleRoute();
+    }});
+
+    byId('local-progress-filter').addEventListener('change', event => {{
+      state.localProgress = event.target.value;
       selectFirstVisibleRoute();
     }});
 
@@ -2500,6 +2973,15 @@ def build_html(data):
       state.solution = event.target.value;
       selectFirstVisibleRoute();
     }});
+
+    byId('local-export').addEventListener('click', exportLocalData);
+    byId('local-import').addEventListener('click', () => byId('local-import-file').click());
+    byId('local-import-file').addEventListener('change', event => {{
+      const file = event.target.files?.[0];
+      if (file) importLocalDataFile(file);
+      event.target.value = '';
+    }});
+    byId('local-reset').addEventListener('click', resetLocalData);
 
     byId('list').addEventListener('pointerdown', event => {{
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -2544,7 +3026,7 @@ def build_html(data):
 
     byId('sidebar-toggle').addEventListener('click', () => {{
       state.sidebarHidden = !state.sidebarHidden;
-      localStorage.setItem('kg-sidebar-hidden', state.sidebarHidden ? '1' : '0');
+      storageSet('kg-sidebar-hidden', state.sidebarHidden ? '1' : '0');
       applySidebarState();
     }});
 
