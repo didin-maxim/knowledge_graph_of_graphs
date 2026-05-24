@@ -38,9 +38,10 @@ python tools/comments.py --status open
 Viewer хранит личный прогресс и заметки только в браузере пользователя
 (`localStorage`, ключ `graph-db:local-user-data:v1`). Эти данные не попадают в
 репозиторий; их можно экспортировать/importировать JSON-файлом или сбросить в
-интерфейсе. Кнопка `Сообщить об ошибке` формирует текст отчёта для копирования;
-почтовый канал по умолчанию не настроен и задаётся в `FEEDBACK_CONFIG.email` в
-`tools/build_viewer.py`.
+интерфейсе. Кнопки комментариев и `Сообщить об ошибке` отправляют данные в базу
+только через настроенный backend endpoint (`GRAPH_DB_FEEDBACK_ENDPOINT` или
+`FEEDBACK_ENDPOINT` при сборке viewer). Без endpoint статический GitHub Pages
+не может создавать файлы в `data/comments/`.
 
 ## Текущее состояние
 

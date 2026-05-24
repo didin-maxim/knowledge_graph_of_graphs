@@ -1,4 +1,5 @@
 import json
+import os
 import shutil
 
 from lib import (
@@ -44,8 +45,22 @@ def copy_example_assets():
         shutil.copytree(source, target)
 
 
+def feedback_config():
+    endpoint = (
+        os.environ.get("GRAPH_DB_FEEDBACK_ENDPOINT")
+        or os.environ.get("FEEDBACK_ENDPOINT")
+        or ""
+    ).strip()
+    return {
+        "endpoint": endpoint,
+        "project": "graph-db",
+        "subjectPrefix": "[graph-db] Ошибка в карточке",
+    }
+
+
 def build_html(data):
     payload = json.dumps(data, ensure_ascii=False, indent=2)
+    feedback_config_js = json.dumps(feedback_config(), ensure_ascii=False, separators=(",", ":"))
     return f"""<!doctype html>
 <html lang="ru">
 <head>
@@ -906,10 +921,7 @@ def build_html(data):
 
     const LOCAL_DATA_KEY = 'graph-db:local-user-data:v1';
     const LOCAL_DATA_VERSION = 1;
-    const FEEDBACK_CONFIG = {{
-      email: '',
-      subjectPrefix: '[graph-db] Ошибка в карточке'
-    }};
+    const FEEDBACK_CONFIG = {feedback_config_js};
     const PROGRESS_OPTIONS = [
       {{ value: 'not_started', label: 'не решал' }},
       {{ value: 'tried', label: 'пробовал' }},
@@ -2240,9 +2252,10 @@ def build_html(data):
 
     function renderCommentForm(targetType, problemId = '') {{
       const title = targetType === 'problem' ? 'Новый комментарий к задаче' : 'Новый комментарий по архитектуре';
-      const note = targetType === 'problem'
-        ? 'Комментарий будет открыт как обсуждение на GitHub с привязкой к этой задаче.'
-        : 'Комментарий будет открыт как обсуждение на GitHub по архитектуре базы.';
+      const feedbackReady = Boolean(FEEDBACK_CONFIG.endpoint);
+      const note = feedbackReady
+        ? 'Комментарий будет отправлен в настроенный backend и попадет в data/comments только после подтверждения записи.'
+        : 'Автоматическая запись в базу не настроена: статический GitHub Pages не может сам создавать файлы data/comments. Нужен backend endpoint без регистрации пользователя.';
       const options = targetType === 'problem' ? problemCommentKindOptions() : architectureCommentKindOptions();
       return `
         <form class="comment-form" data-comment-form data-target-type="${{esc(targetType)}}" data-problem-id="${{esc(problemId)}}">
@@ -2252,7 +2265,8 @@ def build_html(data):
           <input name="title" type="text" placeholder="Короткий заголовок" required>
           <textarea name="text" placeholder="Текст комментария" required></textarea>
           <div class="subtle">${{note}}</div>
-          <button type="submit">Отправить комментарий в базу</button>
+          <button type="submit" ${{feedbackReady ? '' : 'disabled'}}>Отправить комментарий в базу</button>
+          <div class="subtle" data-comment-status></div>
         </form>
       `;
     }}
@@ -2278,36 +2292,18 @@ def build_html(data):
       }};
     }}
 
-    function commentIssueBody(payload) {{
-      const target = payload.target.type === 'problem'
-        ? `problem_id: ${{payload.target.problem_id}}`
-        : 'target: architecture';
-      return [
-        'Комментарий доверенного эксперта к черновой базе.',
-        '',
-        '```json',
-        JSON.stringify(payload, null, 2),
-        '```',
-        '',
-        `Тип: ${{payload.kind}}`,
-        target,
-        `Автор: ${{payload.author}}`,
-        '',
-        payload.text
-      ].join('\\n');
-    }}
-
     async function persistCommentPayload(payload) {{
-      const issueTitle = `[comment] ${{payload.title}}`;
-      const params = new URLSearchParams({{
-        title: issueTitle,
-        body: commentIssueBody(payload),
-        labels: 'comment'
+      if (!FEEDBACK_CONFIG.endpoint) {{
+        throw new Error('Автоматическая запись в базу не настроена.');
+      }}
+      const response = await fetch(FEEDBACK_CONFIG.endpoint, {{
+        method: 'POST',
+        headers: {{ 'Content-Type': 'application/json' }},
+        body: JSON.stringify({{ project: FEEDBACK_CONFIG.project || 'graph-db', comment: payload }})
       }});
-      const url = `https://github.com/didin-maxim/knowledge_graph_of_graphs/issues/new?${{params.toString()}}`;
-      const opened = window.open(url, '_blank', 'noopener,noreferrer');
-      if (!opened) {{
-        window.location.href = url;
+      if (!response.ok) {{
+        const message = await response.text().catch(() => '');
+        throw new Error(message || `Endpoint вернул HTTP ${{response.status}}.`);
       }}
     }}
 
@@ -2317,11 +2313,14 @@ def build_html(data):
           event.preventDefault();
           const formData = new FormData(form);
           const payload = buildCommentPayload(form.dataset.targetType, form.dataset.problemId || '', formData);
+          const status = form.querySelector('[data-comment-status]');
+          if (status) status.textContent = 'отправляю...';
           try {{
             await persistCommentPayload(payload);
             form.reset();
+            if (status) status.textContent = 'записано в базу';
           }} catch (error) {{
-            alert(`Не удалось открыть обсуждение на GitHub: ${{error.message || error}}`);
+            if (status) status.textContent = error.message || 'не удалось отправить';
           }}
         }});
       }});
@@ -2341,9 +2340,10 @@ def build_html(data):
         ['relation', 'Связи, метки или тип'],
         ['other', 'Другое']
       ].map(([value, labelText]) => `<option value="${{esc(value)}}">${{esc(labelText)}}</option>`).join('');
-      const mailNote = FEEDBACK_CONFIG.email
-        ? 'Кнопка почты откроет письмо в вашем почтовом клиенте.'
-        : 'Почта не настроена; используйте копирование отчета. Адрес можно задать в FEEDBACK_CONFIG.email.';
+      const feedbackReady = Boolean(FEEDBACK_CONFIG.endpoint);
+      const feedbackNote = feedbackReady
+        ? 'Отчет будет отправлен в настроенный backend и попадет в data/comments только после подтверждения записи.'
+        : 'Автоматическая запись в базу не настроена: статический GitHub Pages не может сам создавать файлы data/comments. Нужен backend endpoint без регистрации пользователя.';
       return `
         <div class="card local-panel" data-local-panel data-problem-id="${{esc(problem.id)}}">
           <div class="local-row">
@@ -2376,11 +2376,10 @@ def build_html(data):
                 <textarea class="report-output" data-report-output readonly></textarea>
               </label>
               <div class="local-row">
-                <button class="small-button" type="button" data-copy-report>Скопировать</button>
-                <button class="small-button" type="button" data-mail-report ${{FEEDBACK_CONFIG.email ? '' : 'disabled'}}>Отправить по почте</button>
+                <button class="small-button" type="button" data-submit-report ${{feedbackReady ? '' : 'disabled'}}>Отправить в базу</button>
                 <span class="local-save-status" data-report-status></span>
               </div>
-              <div class="local-muted">${{esc(mailNote)}} Копирование и mailto не отправляют отчет автоматически.</div>
+              <div class="local-muted">${{esc(feedbackNote)}}</div>
             </div>
           </div>
         </div>
@@ -2412,9 +2411,50 @@ def build_html(data):
       ].join('\\n');
     }}
 
+    function currentReportPayload(problem, panel) {{
+      const typeSelect = panel.querySelector('[data-report-type]');
+      const typeLabel = typeSelect?.selectedOptions?.[0]?.textContent || typeSelect?.value || '';
+      const comment = panel.querySelector('[data-report-comment]')?.value.trim() || '';
+      const contact = panel.querySelector('[data-report-contact]')?.value.trim() || '';
+      const createdAt = new Date().toISOString();
+      return {{
+        project: FEEDBACK_CONFIG.project || 'graph-db',
+        kind: typeSelect?.value || 'bug_report',
+        title: `${{typeLabel}}: ${{problem.title || problem.id}}`,
+        text: comment,
+        contact,
+        created_at: createdAt,
+        page_url: reportProblemUrl(problem),
+        user_agent: navigator.userAgent || '',
+        target: {{ type: 'problem', problem_id: problem.id }},
+        problem: {{ id: problem.id, title: problem.title || '' }},
+        report_text: currentReportText(problem, panel)
+      }};
+    }}
+
     function updateReportOutput(problem, panel) {{
       const output = panel.querySelector('[data-report-output]');
       if (output) output.value = currentReportText(problem, panel);
+    }}
+
+    async function submitReport(problem, panel) {{
+      if (!FEEDBACK_CONFIG.endpoint) {{
+        throw new Error('Автоматическая запись в базу не настроена.');
+      }}
+      const payload = currentReportPayload(problem, panel);
+      if (!payload.text) {{
+        throw new Error('Заполните комментарий перед отправкой.');
+      }}
+      const response = await fetch(FEEDBACK_CONFIG.endpoint, {{
+        method: 'POST',
+        headers: {{ 'Content-Type': 'application/json' }},
+        body: JSON.stringify(payload)
+      }});
+      if (!response.ok) {{
+        const message = await response.text().catch(() => '');
+        throw new Error(message || `Endpoint вернул HTTP ${{response.status}}.`);
+      }}
+      return response;
     }}
 
     async function copyText(text) {{
@@ -2479,22 +2519,15 @@ def build_html(data):
         field.addEventListener('change', () => updateReportOutput(problem, panel));
       }}
 
-      panel.querySelector('[data-copy-report]')?.addEventListener('click', async () => {{
+      panel.querySelector('[data-submit-report]')?.addEventListener('click', async () => {{
         updateReportOutput(problem, panel);
+        if (reportStatus) reportStatus.textContent = 'отправляю...';
         try {{
-          await copyText(panel.querySelector('[data-report-output]').value);
-          if (reportStatus) reportStatus.textContent = 'скопировано';
-        }} catch (_error) {{
-          if (reportStatus) reportStatus.textContent = 'не удалось скопировать';
+          await submitReport(problem, panel);
+          if (reportStatus) reportStatus.textContent = 'записано в базу';
+        }} catch (error) {{
+          if (reportStatus) reportStatus.textContent = error.message || 'не удалось отправить';
         }}
-      }});
-
-      panel.querySelector('[data-mail-report]')?.addEventListener('click', () => {{
-        if (!FEEDBACK_CONFIG.email) return;
-        updateReportOutput(problem, panel);
-        const subject = `${{FEEDBACK_CONFIG.subjectPrefix}}: ${{problem.id}}`;
-        const body = panel.querySelector('[data-report-output]').value;
-        window.location.href = `mailto:${{encodeURIComponent(FEEDBACK_CONFIG.email)}}?subject=${{encodeURIComponent(subject)}}&body=${{encodeURIComponent(body)}}`;
       }});
     }}
 
@@ -2670,7 +2703,7 @@ def build_html(data):
             </div>
             <div class="home-panel">
               <h3>Комментируйте как редактор</h3>
-              <p>Кнопка комментария открывает обсуждение на GitHub. Комментарии экспертов считаются рабочими инструкциями к базе, а не отзывами для модерации.</p>
+              <p>Кнопка комментария отправляет запись в базу только через настроенный backend endpoint. Комментарии экспертов считаются рабочими инструкциями к базе, а не отзывами для модерации.</p>
             </div>
           </div>
         </section>
