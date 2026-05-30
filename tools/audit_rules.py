@@ -70,7 +70,20 @@ WEAK_RELATION_TEXT_RE = re.compile(
     r"extremal_graph_theory)",
     re.IGNORECASE,
 )
-PUBLIC_TEXT_KEYS = {"title", "text", "comment", "notes", "basis", "label", "review_notes", "preference_note"}
+PUBLIC_TEXT_KEYS = {
+    "title",
+    "text",
+    "comment",
+    "notes",
+    "basis",
+    "label",
+    "review_notes",
+    "preference_note",
+    "forward_text",
+    "backward_text",
+    "caption",
+    "alt",
+}
 NON_PUBLIC_TEXT_BRANCHES = {
     "problem_profile",
     "tags",
@@ -85,6 +98,7 @@ ENGLISH_WORD_RE = re.compile(r"\b[A-Za-z]{4,}\b")
 URL_OR_PATH_RE = re.compile(r"https?://\S+|[A-Za-z]:[\\/]\S+|%TEMP%[\\/]\S+|audit/[A-Za-z0-9_./-]+")
 CODE_SPAN_RE = re.compile(r"`[^`\n]+`")
 TEX_MATH_RE = re.compile(r"\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$\$[\s\S]*?\$\$")
+RENDERED_MATH_RE = re.compile(r"\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$\$[\s\S]*?\$\$|(?<!\\)\$[\s\S]*?(?<!\\)\$")
 TEX_COMMAND_RE = re.compile(r"\\[A-Za-z]+")
 MOJIBAKE_RE = (
     r"(?:Рџ|Рќ|РЅ|Рµ|Рё|Рѕ|Р°|Р±|РІ|Рі|Рґ|Р¶|Р·|Р№|Рє|Р»|Рј|Рї|РС|"
@@ -139,6 +153,25 @@ SIMILARITY_STOP_WORDS = {
     "которое",
     "которые",
 }
+TEXT_LETTER = r"A-Za-z0-9\u0400-\u04ff"
+TEXT_RENDERING_ANYWHERE_PATTERNS = [
+    (
+        "double_escaped_tex_command",
+        re.compile(
+            r"\\\\(?:sqrt|frac|binom|left|right|sum|prod|lim|int|operatorname|mathbb|"
+            r"le|ge|ne|to|cdot|times|alpha|beta|gamma|theta|lambda|mu|pi|infty)\b"
+        ),
+    ),
+    ("raw_dollar_tex_delimiter", re.compile(r"(?<!\\)\${1,2}")),
+    ("inline_math_glued_to_text_before", re.compile(rf"(?<=[{TEXT_LETTER}])\\\(")),
+    ("inline_math_glued_to_text_after", re.compile(rf"\\\)(?=[{TEXT_LETTER}])")),
+]
+TEXT_RENDERING_VISIBLE_PATTERNS = [
+    ("raw_math_caret", re.compile(r"\b[A-Za-z](?:\^\{?[A-Za-z0-9]|\^\([^)]{1,40}\))")),
+    ("raw_math_underscore", re.compile(r"\b[A-Za-z](?:_\{?[A-Za-z0-9])")),
+    ("plain_tex_function_call", re.compile(r"(?<![\\A-Za-z])\b(?:sqrt|sin|cos|tan|log|ln|exp)\s*\(")),
+    ("broken_text_marker", BROKEN_ENCODING_RE),
+]
 
 
 def rel(path):
@@ -181,6 +214,16 @@ def scrub_for_language_check(text):
     return scrubbed
 
 
+def scrub_for_text_rendering_check(text):
+    scrubbed = URL_OR_PATH_RE.sub("", text)
+    scrubbed = CODE_SPAN_RE.sub("", scrubbed)
+    return scrubbed
+
+
+def strip_rendered_math(text):
+    return RENDERED_MATH_RE.sub(" ", text)
+
+
 def is_public_text_path(path_parts):
     if any(part in NON_PUBLIC_TEXT_BRANCHES for part in path_parts):
         return False
@@ -196,6 +239,37 @@ def iter_public_texts(value, path_parts=()):
             yield from iter_public_texts(child, path_parts + (str(index),))
     elif isinstance(value, str) and is_public_text_path(path_parts):
         yield path_parts, value
+
+
+def check_text_rendering_quality_in_text(text, where, path, report):
+    raw = scrub_for_text_rendering_check(str(text or ""))
+    for kind, pattern in TEXT_RENDERING_ANYWHERE_PATTERNS:
+        match = pattern.search(raw)
+        if match:
+            add(
+                report,
+                "warning",
+                "text_rendering_quality",
+                rel(path),
+                f"{where} has {kind}: {match.group(0)!r}",
+            )
+    visible = strip_rendered_math(raw)
+    for kind, pattern in TEXT_RENDERING_VISIBLE_PATTERNS:
+        match = pattern.search(visible)
+        if match:
+            severity = "error" if kind == "broken_text_marker" else "warning"
+            add(
+                report,
+                severity,
+                "text_rendering_quality",
+                rel(path),
+                f"{where} has {kind}: {match.group(0)!r}",
+            )
+
+
+def check_text_rendering_quality(value, path, report):
+    for path_parts, text in iter_public_texts(value):
+        check_text_rendering_quality_in_text(text, ".".join(path_parts), path, report)
 
 
 def check_language_policy(problem, path, report):
@@ -368,6 +442,7 @@ def check_core_bom(report):
 
 def check_problem(problem, path, report):
     check_language_policy(problem, path, report)
+    check_text_rendering_quality(problem, path, report)
     check_graph_theory_quality(problem, path, report)
     check_graph_model_tags(problem, path, report)
 
@@ -489,6 +564,7 @@ def check_problem(problem, path, report):
 
 
 def check_relation(relation, path, report):
+    check_text_rendering_quality(relation, path, report)
     relation_type = relation.get("type")
     status = relation.get("status")
     confidence = relation.get("confidence")
@@ -554,6 +630,16 @@ def build_report():
         if payload is not None:
             for relation in payload.get("relations", []):
                 check_relation(relation, path, report)
+
+    for path in [
+        DATA / "definitions" / "definitions.yaml",
+        DATA / "standard_ideas" / "standard-ideas.yaml",
+    ]:
+        if not path.exists():
+            continue
+        payload = load_json_file(path, report)
+        if payload is not None:
+            check_text_rendering_quality(payload, path, report)
 
     return report
 

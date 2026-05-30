@@ -704,6 +704,23 @@ def build_html(data):
       color: #51431f;
     }}
 
+    .page-nav {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 14px;
+    }}
+
+    .page-nav a {{
+      text-decoration: none;
+    }}
+
+    .page-nav .small-button {{
+      display: inline-flex;
+      align-items: center;
+    }}
+
     .comment-form {{
       background: var(--panel);
       border: 1px solid var(--line);
@@ -1042,6 +1059,29 @@ def build_html(data):
         .replaceAll('&lt;=', '≤')
         .replaceAll('&gt;=', '≥')
         .replaceAll('-&gt;', '→');
+    }}
+
+    function titleText(value) {{
+      return prettyText(value);
+    }}
+
+    function safeDecodeHash(value) {{
+      try {{ return decodeURIComponent(value); }}
+      catch (_error) {{ return ''; }}
+    }}
+
+    function renderPageNav() {{
+      return `
+        <div class="page-nav">
+          <a class="small-button" href="#home">Главная</a>
+          <button class="small-button" type="button" data-go-back>Назад</button>
+        </div>
+      `;
+    }}
+
+    function typesetRenderedMath() {{
+      if (!window.MathJax?.typesetPromise) return;
+      window.MathJax.typesetPromise([byId('content'), byId('list')]).catch(() => {{}});
     }}
 
     function escapeRegExp(value) {{
@@ -1644,7 +1684,7 @@ def build_html(data):
     }}
 
     function currentRoute() {{
-      const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+      const id = safeDecodeHash(location.hash.replace(/^#/, ''));
       if (!id || id === 'home') return {{ type: 'home', id: 'home' }};
       if (id === 'comments') return {{ type: 'comment', id: null }};
       if (id.startsWith('def-')) {{
@@ -1784,14 +1824,14 @@ def build_html(data):
       if (state.view === 'definitions') {{
         list.innerHTML = filteredDefinitions().map(item => `
           <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#def-${{encodeURIComponent(item.id)}}" data-list-route="definition" data-list-id="${{esc(item.id)}}">
-            <div>${{esc(item.title)}}</div>
+            <div>${{titleText(item.title)}}</div>
             <div class="id">${{esc(item.id)}} · задач: ${{definitionUsage(item.id).length}}</div>
           </a>
         `).join('');
       }} else if (state.view === 'ideas') {{
         list.innerHTML = filteredStandardIdeas().map(item => `
           <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#stdidea-${{encodeURIComponent(item.id)}}" data-list-route="idea" data-list-id="${{esc(item.id)}}">
-            <div>${{esc(item.title)}}</div>
+            <div>${{titleText(item.title)}}</div>
             <div class="id">${{esc(item.id)}} · задач: ${{standardIdeaUsage(item.id).length}}</div>
           </a>
         `).join('');
@@ -1803,15 +1843,15 @@ def build_html(data):
             : 'Архитектура базы';
           return `
             <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#comment-${{encodeURIComponent(item.id)}}" data-list-route="comment" data-list-id="${{esc(item.id)}}">
-              <div>${{esc(item.title)}}</div>
-              <div class="id">${{esc(item.id)}} · ${{esc(targetTitle)}}</div>
+              <div>${{titleText(item.title)}}</div>
+              <div class="id">${{esc(item.id)}} · ${{titleText(targetTitle)}}</div>
             </a>
           `;
         }}).join('') : `<div class="empty" style="padding:10px;">Комментариев пока нет.</div>`;
       }} else {{
         list.innerHTML = filteredProblems().map(item => `
           <a class="list-button ${{item.id === route.id ? 'active' : ''}}" href="#${{encodeURIComponent(item.id)}}" data-list-route="problem" data-list-id="${{esc(item.id)}}">
-            <div>${{esc(item.title)}}</div>
+            <div>${{titleText(item.title)}}</div>
             <div class="id">${{[
               item.id,
               solutionStatusLabel(solutionStatusKey(item)),
@@ -2079,7 +2119,7 @@ def build_html(data):
             ...(statement.source_ids || [])
           ];
           const sourceLinks = sourceIds.map(sourceId => sources[sourceId]).filter(Boolean).map(source =>
-            `<a class="subtle" href="${{esc(source.url)}}" target="_blank" rel="noreferrer">${{esc(source.title)}}</a>`
+            `<a class="subtle" href="${{esc(source.url)}}" target="_blank" rel="noreferrer">${{titleText(source.title)}}</a>`
           ).join(' ');
           return `
             <div class="card">
@@ -2173,7 +2213,7 @@ def build_html(data):
         return `
           <div class="card">
             <div class="item-title">
-              <a class="relation-link" href="#${{encodeURIComponent(otherId)}}">${{esc(other?.title || otherId)}}</a>
+              <a class="relation-link" href="#${{encodeURIComponent(otherId)}}">${{titleText(other?.title || otherId)}}</a>
               <span class="pill">${{esc(label(taxonomy.relation_types, rel.type))}}</span>
               <span class="pill">длина ${{esc(rel.distance)}}</span>
               ${{statusPill(rel.status)}}
@@ -2193,7 +2233,7 @@ def build_html(data):
         return `
           <div class="card">
             <div class="item-title">
-              <a href="${{esc(source.url)}}" target="_blank" rel="noreferrer">${{esc(source.title)}}</a>
+              <a href="${{esc(source.url)}}" target="_blank" rel="noreferrer">${{titleText(source.title)}}</a>
               ${{statusPill(item.status)}}
             </div>
             <div class="subtle">${{esc(source.type)}} · ${{esc(source.language)}} · ${{source.official ? 'официальный' : 'справочный'}}</div>
@@ -2223,12 +2263,12 @@ def build_html(data):
 
     function renderCommentCard(comment) {{
       const targetHtml = comment.target?.type === 'problem'
-        ? `<a class="relation-link" href="#${{encodeURIComponent(comment.target.problem_id)}}">${{esc(problems[comment.target.problem_id]?.title || comment.target.problem_id)}}</a>`
+        ? `<a class="relation-link" href="#${{encodeURIComponent(comment.target.problem_id)}}">${{titleText(problems[comment.target.problem_id]?.title || comment.target.problem_id)}}</a>`
         : '<span class="pill">Архитектура базы</span>';
       return `
         <div class="card">
           <div class="item-title">
-            <span>${{esc(comment.title)}}</span>
+            <span>${{titleText(comment.title)}}</span>
             <span class="pill">${{esc(label(taxonomy.comment_kinds, comment.kind))}}</span>
             ${{commentStatusPill(comment.status)}}
           </div>
@@ -2760,13 +2800,14 @@ def build_html(data):
       const route = currentRoute();
       const problem = problems[route.id];
       byId('content').innerHTML = `
+        ${{renderPageNav()}}
         <div class="topline">
           <span class="pill code">${{esc(problem.id)}}</span>
           ${{solutionStatusPill(problem)}}
           ${{statusPill(problem.editorial?.review_status)}}
           <span class="pill">${{esc(label(taxonomy.difficulty_levels, problem.difficulty?.main))}}</span>
         </div>
-        <h2>${{esc(problem.title)}}</h2>
+        <h2>${{titleText(problem.title)}}</h2>
         ${{renderLocalTools(problem)}}
         <div class="subtle">${{esc(problem.difficulty?.comment || '')}}</div>
         <div class="pill-row">${{(problem.tags || []).map(tagPill).join('')}}</div>
@@ -2816,7 +2857,6 @@ def build_html(data):
       `;
       attachCommentForms();
       bindProblemLocalControls(problem);
-      if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([byId('content')]);
     }}
 
     function renderDefinition() {{
@@ -2824,12 +2864,13 @@ def build_html(data):
       const item = definitions[route.id];
       const usage = definitionUsage(item.id);
       byId('content').innerHTML = `
+        ${{renderPageNav()}}
         <div class="topline">
           <span class="pill code">${{esc(item.id)}}</span>
           ${{statusPill(item.status)}}
           <span class="pill">стандартное определение</span>
         </div>
-        <h2>${{esc(item.title)}}</h2>
+        <h2>${{titleText(item.title)}}</h2>
         <div class="section">
           <h3>Формулировка</h3>
           <div class="card">${{textBlock(item.text)}}</div>
@@ -2842,13 +2883,12 @@ def build_html(data):
           <h3>Используется в задачах</h3>
           ${{usage.length ? usage.map(problem => `
             <div class="card">
-              <a class="relation-link" href="#${{encodeURIComponent(problem.id)}}">${{esc(problem.title)}}</a>
+              <a class="relation-link" href="#${{encodeURIComponent(problem.id)}}">${{titleText(problem.title)}}</a>
               <div class="id">${{esc(problem.id)}}</div>
             </div>
           `).join('') : '<div class="empty">Пока не используется.</div>'}}
         </div>
       `;
-      if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([byId('content')]);
     }}
 
     function renderStandardIdea() {{
@@ -2856,12 +2896,13 @@ def build_html(data):
       const item = standardIdeas[route.id];
       const usage = standardIdeaUsage(item.id);
       byId('content').innerHTML = `
+        ${{renderPageNav()}}
         <div class="topline">
           <span class="pill code">${{esc(item.id)}}</span>
           ${{statusPill(item.status)}}
           <span class="pill">стандартная идея</span>
         </div>
-        <h2>${{esc(item.title)}}</h2>
+        <h2>${{titleText(item.title)}}</h2>
         <div class="section">
           <h3>Описание</h3>
           <div class="card">${{textBlock(item.text)}}</div>
@@ -2874,13 +2915,12 @@ def build_html(data):
           <h3>Используется в решениях</h3>
           ${{usage.length ? usage.map(entry => `
             <div class="card">
-              <a class="relation-link" href="#${{encodeURIComponent(entry.problem.id)}}">${{esc(entry.problem.title)}}</a>
+              <a class="relation-link" href="#${{encodeURIComponent(entry.problem.id)}}">${{titleText(entry.problem.title)}}</a>
               <div class="subtle">${{esc(entry.solution.title || entry.solution.id)}} · <span class="code">${{esc(entry.problem.id)}}</span></div>
             </div>
           `).join('') : '<div class="empty">Пока не используется.</div>'}}
         </div>
       `;
-      if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([byId('content')]);
     }}
 
     function renderCommentPage() {{
@@ -2888,6 +2928,7 @@ def build_html(data):
       const comment = route.id ? comments[route.id] : null;
       if (!comment) {{
         byId('content').innerHTML = `
+          ${{renderPageNav()}}
           <div class="topline">
             <span class="pill">Комментарии</span>
           </div>
@@ -2902,15 +2943,16 @@ def build_html(data):
         return;
       }}
       const target = comment.target?.type === 'problem'
-        ? `<a class="relation-link" href="#${{encodeURIComponent(comment.target.problem_id)}}">${{esc(problems[comment.target.problem_id]?.title || comment.target.problem_id)}}</a>`
+        ? `<a class="relation-link" href="#${{encodeURIComponent(comment.target.problem_id)}}">${{titleText(problems[comment.target.problem_id]?.title || comment.target.problem_id)}}</a>`
         : '<span class="pill">Архитектура базы</span>';
       byId('content').innerHTML = `
+        ${{renderPageNav()}}
         <div class="topline">
           <span class="pill code">${{esc(comment.id)}}</span>
           <span class="pill">${{esc(label(taxonomy.comment_kinds, comment.kind))}}</span>
           ${{commentStatusPill(comment.status)}}
         </div>
-        <h2>${{esc(comment.title)}}</h2>
+        <h2>${{titleText(comment.title)}}</h2>
         <div class="subtle">${{esc(comment.author)}} · ${{esc(comment.created_at || '')}}</div>
         <div class="section">
           <h3>Цель комментария</h3>
@@ -2955,6 +2997,7 @@ def build_html(data):
       else if (route.type === 'comment') renderCommentPage();
       else renderProblem();
       enhanceReveals();
+      typesetRenderedMath();
     }}
 
     byId('search-input').addEventListener('input', event => {{
@@ -3037,6 +3080,14 @@ def build_html(data):
       if (!link) return;
       event.preventDefault();
       activateListRoute(link);
+    }});
+
+    document.addEventListener('click', event => {{
+      const backButton = event.target.closest('[data-go-back]');
+      if (!backButton) return;
+      event.preventDefault();
+      if (window.history.length > 1) window.history.back();
+      else location.hash = 'home';
     }});
 
     byId('mode-home').addEventListener('click', setHome);
