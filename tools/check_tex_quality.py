@@ -1,6 +1,8 @@
 import argparse
 import json
 import re
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -64,6 +66,12 @@ TEXT_LETTER = r"A-Za-z0-9\u0400-\u04ff"
 MATH_RE = re.compile(
     r"\\\[(?:.|\n)*?\\\]|\\\((?:.|\n)*?\\\)|\$\$(?:.|\n)*?\$\$|(?<!\\)\$(?:.|\n)*?(?<!\\)\$"
 )
+MATH_FRAGMENT_RE = re.compile(
+    r"(?P<dd>\$\$(?P<dd_tex>.*?)\$\$)|"
+    r"(?P<bracket>\\\[(?P<bracket_tex>.*?)\\\])|"
+    r"(?P<paren>\\\((?P<paren_tex>.*?)\\\))",
+    re.DOTALL,
+)
 CODE_SPAN_RE = re.compile(r"`[^`\n]+`")
 URL_RE = re.compile(r"https?://\S+")
 FILE_RE = re.compile(r"\b[\w.-]+(?:[/\\][\w.-]+)+\b|\b[\w.-]+\.(?:tex|zip|pdf|html|yaml|json)\b")
@@ -83,14 +91,27 @@ DOUBLE_ESCAPED_TEX_RE = re.compile(
 )
 BARE_TEX_RE = re.compile(r"(?<!\\)\\[A-Za-z]+(?:\s*\([^)]*\))?")
 LITERAL_NEWLINE_RE = re.compile(r"\\n(?![A-Za-z])")
+RAW_SUBSUP_RE = re.compile(
+    r"(?<![\w/.])(?:"
+    r"[A-Za-z]+_\{[^}\n]{1,80}\}|"
+    r"[A-Za-z]+_[0-9][A-Za-z0-9]*|"
+    r"[A-Za-z]+_[A-Z][A-Za-z0-9]*|"
+    r"[A-Za-z]_[a-z][A-Za-z0-9]*|"
+    r"[a-z]{2,}_[a-z](?![a-z])|"
+    r"[A-Za-z]+\^\{[^}\n]{1,80}\}|"
+    r"[A-Za-z]+\^[A-Za-z0-9]+"
+    r")"
+)
 FORMULA_TEXT_GLUE_RE = re.compile(
     rf"(?<=[{TEXT_LETTER}])\\\(|\\\)(?=[{TEXT_LETTER}])|"
     rf"(?<=[{TEXT_LETTER}])\\\[|\\\](?=[{TEXT_LETTER}])"
 )
 NON_PUBLIC_BRANCHES = {
     "authors",
+    "difficulty",
     "editorial",
     "review_notes",
+    "sources",
     "source_note",
 }
 
@@ -142,8 +163,62 @@ def iter_visible_strings(obj, path=(), force_visible=False):
         yield ".".join(path), obj
 
 
+def iter_math_fragments(text):
+    for match in MATH_FRAGMENT_RE.finditer(str(text or "")):
+        if match.group("dd") is not None:
+            yield match.group("dd_tex"), True
+        elif match.group("bracket") is not None:
+            yield match.group("bracket_tex"), True
+        elif match.group("paren") is not None:
+            yield match.group("paren_tex"), False
+
+
+def check_katex_fragments(fragments):
+    script = ROOT / "tools" / "parse_tex_with_katex.js"
+    if not fragments or not script.exists() or shutil.which("node") is None:
+        return []
+    try:
+        completed = subprocess.run(
+            ["node", str(script)],
+            input=json.dumps(fragments, ensure_ascii=False),
+            text=True,
+            encoding="utf-8",
+            capture_output=True,
+            cwd=ROOT,
+            timeout=20,
+        )
+    except (OSError, subprocess.SubprocessError) as exc:
+        return [("error", Path("tools/parse_tex_with_katex.js"), "<katex>", "katex-runner-failed", str(exc))]
+    if completed.returncode:
+        message = (completed.stderr or completed.stdout or "").strip()
+        return [("error", Path("tools/parse_tex_with_katex.js"), "<katex>", "katex-runner-failed", message)]
+    try:
+        errors = json.loads(completed.stdout or "[]")
+    except json.JSONDecodeError as exc:
+        return [("error", Path("tools/parse_tex_with_katex.js"), "<katex>", "katex-runner-invalid-json", str(exc))]
+    reports = []
+    for error in errors:
+        tex = str(error.get("tex", ""))
+        snippet = tex[:120].replace("\n", "\\n")
+        message = str(error.get("message", "")).replace("\n", " ")
+        reports.append(
+            (
+                "error",
+                ROOT / str(error.get("path", "")),
+                str(error.get("place", "")),
+                "katex-parse-error",
+                f"{snippet}: {message}",
+            )
+        )
+    return reports
+
+
 def is_non_public_context(place):
     return any(part in NON_PUBLIC_BRANCHES for part in place.split("."))
+
+
+def is_statement_context(place):
+    return place.startswith("statements.")
 
 
 def find_hits(text, place):
@@ -160,8 +235,11 @@ def find_hits(text, place):
         ("double-escaped-tex-command", DOUBLE_ESCAPED_TEX_RE, scrubbed),
         ("literal-backslash-n", LITERAL_NEWLINE_RE, outside),
         ("bare-tex-command-outside-math", BARE_TEX_RE, outside_without_literal_newlines),
+        ("raw-subscript-or-superscript-outside-math", RAW_SUBSUP_RE, outside),
         ("formula-text-glue", FORMULA_TEXT_GLUE_RE, scrubbed),
     ]
+    if is_statement_context(place):
+        checks.append(("markdown-code-span-in-statement", CODE_SPAN_RE, original))
     if is_non_public_context(place):
         checks = [
             (kind, pattern, value)
@@ -185,6 +263,7 @@ def main():
     args = parser.parse_args()
 
     hits = []
+    math_fragments = []
     for path in iter_data_files(args.paths):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -195,6 +274,17 @@ def main():
         for place, text in iter_visible_strings(data):
             for severity, kind, snippet in find_hits(text, place):
                 hits.append((severity, path, place, kind, snippet))
+            for tex, display in iter_math_fragments(text):
+                math_fragments.append(
+                    {
+                        "path": str(path.relative_to(ROOT)),
+                        "place": place,
+                        "tex": tex,
+                        "display": display,
+                    }
+                )
+
+    hits.extend(check_katex_fragments(math_fragments))
 
     errors = [hit for hit in hits if hit[0] == "error"]
     warnings = [hit for hit in hits if hit[0] == "warning"]
