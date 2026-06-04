@@ -67,6 +67,8 @@ def build_html(data):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>База графовых задач</title>
+  <link rel="alternate" type="text/html" href="agent/" title="Machine-readable agent access">
+  <link rel="alternate" type="application/json" href="agent/catalog.json" title="Agent catalog">
   <script>
     window.MathJax = {{
       tex: {{ inlineMath: [['\\\\(', '\\\\)']], displayMath: [['\\\\[', '\\\\]']] }},
@@ -146,6 +148,13 @@ def build_html(data):
     .brand .meta {{
       color: var(--muted);
       margin-top: 4px;
+      font-size: 14px;
+    }}
+
+    .agent-access {{
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--accent);
       font-size: 14px;
     }}
 
@@ -877,6 +886,7 @@ def build_html(data):
       <div class="brand">
         <h1><a href="#home" style="color:inherit;text-decoration:none;">Графы</a></h1>
         <div class="meta" id="db-meta"></div>
+        <a class="agent-access" href="agent/">Agent access</a>
       </div>
       <div class="search">
         <button class="mode-button" id="mode-home" type="button">Главная</button>
