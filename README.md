@@ -27,6 +27,7 @@ python tools/check_links.py
 python tools/audit_rules.py
 python tools/build_index.py
 python tools/build_viewer.py
+python tools/build_agent_access.py
 python tools/search.py query "matching"
 python tools/search.py neighbors five-color-theorem --depth 2
 python tools/comments.py --status open
@@ -42,6 +43,19 @@ Viewer хранит личный прогресс и заметки только
 только через настроенный backend endpoint (`GRAPH_DB_FEEDBACK_ENDPOINT` или
 `FEEDBACK_ENDPOINT` при сборке viewer). Без endpoint статический GitHub Pages
 не может создавать файлы в `data/comments/`.
+
+## Доступ для внешних браузерных агентов
+
+Для агентов, которым неудобно читать большой JavaScript viewer или пользоваться GitHub code search,
+генерируется отдельный лёгкий слой в `docs/agent/`:
+
+- `docs/agent/README.md` — правила работы с базой как с источником информации;
+- `docs/agent/catalog.json` — компактные метаданные и список чанков;
+- `docs/agent/problems.jsonl` — одна задача на строку JSON;
+- `docs/agent/problems-by-source/*.jsonl` — меньшие чанки по источникам;
+- `docs/agent/problems.md` — простой Markdown-каталог.
+
+Эти файлы предназначены только для поиска и навигации. Источник истины остаётся в `data/`.
 
 ## Текущее состояние
 

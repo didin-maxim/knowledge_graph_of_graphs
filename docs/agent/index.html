@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Graph DB Agent Access</title>
+  <style>
+    body {
+      margin: 0;
+      font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1f2933;
+      background: #f7f7f4;
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1, h2 {
+      line-height: 1.2;
+    }
+    code {
+      background: #ecebe5;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    a {
+      color: #155e75;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .link-card {
+      display: block;
+      padding: 14px;
+      border: 1px solid #d7d4c8;
+      border-radius: 6px;
+      background: white;
+      text-decoration: none;
+    }
+    .link-card strong {
+      display: block;
+      color: #123;
+    }
+    .link-card span {
+      display: block;
+      color: #52606d;
+      margin-top: 4px;
+    }
+    ul.columns {
+      columns: 3 180px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Graph DB Agent Access</h1>
+    <p>
+      Lightweight entry point for remote browser agents. This layer is generated from
+      <code>data/</code>; source-of-truth records remain the raw YAML files.
+      The human viewer is still <a href="../index.html">../index.html</a>.
+    </p>
+
+    <div class="grid">
+      <a class="link-card" href="catalog.json"><strong>catalog.json</strong><span>Counts, entry points, and source chunks.</span></a>
+      <a class="link-card" href="problems-compact.jsonl"><strong>problems-compact.jsonl</strong><span>Small all-problem manifest for first-pass search.</span></a>
+      <a class="link-card" href="problems.jsonl"><strong>problems.jsonl</strong><span>All problem cards, one JSON object per line.</span></a>
+      <a class="link-card" href="problems.md"><strong>problems.md</strong><span>Plain Markdown catalog for quick browsing.</span></a>
+      <a class="link-card" href="README.md"><strong>README.md</strong><span>Rules for using the database as an information source.</span></a>
+      <a class="link-card" href="topics/game-strategy.jsonl"><strong>topics/game-strategy.jsonl</strong><span>Curated graph game and strategy tasks.</span></a>
+      <a class="link-card" href="topics/game-strategy-candidates.jsonl"><strong>topics/game-strategy-candidates.jsonl</strong><span>Wider text/profile matches for missing-tag audits.</span></a>
+    </div>
+
+    <h2>Rules</h2>
+    <ol>
+      <li>Use this directory for discovery; cite the problem <code>id</code> and <code>path</code>.</li>
+      <li>Source of truth: open a record's <code>raw_github_url</code> for the authoritative YAML card.</li>
+      <li>Do not treat GitHub code search or viewer load failures as evidence that a task is absent.</li>
+      <li>Start with <code>problems-compact.jsonl</code>; use source chunks when full files are too large for the browser tool.</li>
+      <li>For graph games and strategy tasks, use <code>topics/game-strategy.jsonl</code>. Use the candidates file only for an audit, not as the final answer.</li>
+    </ol>
+
+    <h2>Source Chunks</h2>
+    <ul class="columns">
+      <li><a href="problems-by-source/all.jsonl">all</a></li>
+<li><a href="problems-by-source/apmo.jsonl">apmo</a></li>
+<li><a href="problems-by-source/baltic.jsonl">baltic</a></li>
+<li><a href="problems-by-source/bmo.jsonl">bmo</a></li>
+<li><a href="problems-by-source/cmo.jsonl">cmo</a></li>
+<li><a href="problems-by-source/egmo.jsonl">egmo</a></li>
+<li><a href="problems-by-source/flashlight.jsonl">flashlight</a></li>
+<li><a href="problems-by-source/fyum.jsonl">fyum</a></li>
+<li><a href="problems-by-source/imc.jsonl">imc</a></li>
+<li><a href="problems-by-source/imo.jsonl">imo</a></li>
+<li><a href="problems-by-source/inmo.jsonl">inmo</a></li>
+<li><a href="problems-by-source/k5.jsonl">k5</a></li>
+<li><a href="problems-by-source/kolmogorov.jsonl">kolmogorov</a></li>
+<li><a href="problems-by-source/memo.jsonl">memo</a></li>
+<li><a href="problems-by-source/miklos.jsonl">miklos</a></li>
+<li><a href="problems-by-source/misc.jsonl">misc</a></li>
+<li><a href="problems-by-source/mmo.jsonl">mmo</a></li>
+<li><a href="problems-by-source/polish.jsonl">polish</a></li>
+<li><a href="problems-by-source/putnam.jsonl">putnam</a></li>
+<li><a href="problems-by-source/rmm.jsonl">rmm</a></li>
+<li><a href="problems-by-source/school239.jsonl">school239</a></li>
+<li><a href="problems-by-source/simon.jsonl">simon</a></li>
+<li><a href="problems-by-source/spbmo.jsonl">spbmo</a></li>
+<li><a href="problems-by-source/sums.jsonl">sums</a></li>
+<li><a href="problems-by-source/tc.jsonl">tc</a></li>
+<li><a href="problems-by-source/usa.jsonl">usa</a></li>
+<li><a href="problems-by-source/usajmo.jsonl">usajmo</a></li>
+<li><a href="problems-by-source/usamo.jsonl">usamo</a></li>
+<li><a href="problems-by-source/vjimc.jsonl">vjimc</a></li>
+<li><a href="problems-by-source/vosh.jsonl">vosh</a></li>
+<li><a href="problems-by-source/yumt.jsonl">yumt</a></li>
+    </ul>
+  </main>
+</body>
+</html>
