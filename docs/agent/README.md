@@ -20,6 +20,7 @@ It is generated from `data/`; it is not the source of truth.
 - `problems.jsonl`: one JSON object per problem card. Best for text search.
 - `problems.md`: simple Markdown table for browser reading.
 - `problems-by-source/*.jsonl`: smaller source-specific chunks for agents that fail on large files.
+- `topics/game-strategy.html`: browser-readable dump of graph game and strategy tasks.
 - `topics/game-strategy.jsonl`: tasks curated with `goal_strategy_game`.
 - `topics/game-strategy-candidates.jsonl`: wider text/profile matches to audit for missing tags.
 
@@ -28,7 +29,7 @@ It is generated from `data/`; it is not the source of truth.
 1. Fetch `catalog.json`.
 2. Fetch `problems-compact.jsonl` and search ids, titles, tags, years, and transliterated text.
 3. If the query mentions a source, year, or contest family, fetch the relevant source chunk from `problems-by-source/`.
-4. For "games", "strategy", "winning strategy", or similar queries, fetch `topics/game-strategy.jsonl`; use `topics/game-strategy-candidates.jsonl` only to audit possible missing tags.
+4. For "games", "strategy", "winning strategy", or similar queries, open `topics/game-strategy.html` or fetch `topics/game-strategy.jsonl`; use `topics/game-strategy-candidates.jsonl` only to audit possible missing tags.
 5. Use `problems.jsonl` only when source chunks, topic chunks, and the compact manifest are insufficient.
 6. Open the matching record's `raw_github_url`.
 7. If relations matter, use the record's `relations` list, then fetch neighbor raw cards.

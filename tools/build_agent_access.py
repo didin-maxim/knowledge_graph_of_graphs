@@ -283,6 +283,61 @@ def write_markdown_catalog(path, records):
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def write_topic_html(path, title, records, description):
+    items = "\n".join(
+        f"""      <li>
+        <a href="{record['raw_github_url']}"><strong>{record['id']}</strong></a>
+        <span>{record['title']}</span>
+        <code>{record['path']}</code>
+      </li>"""
+        for record in records
+    )
+    html = f"""<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <style>
+    body {{
+      margin: 0;
+      font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1f2933;
+      background: #f7f7f4;
+    }}
+    main {{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }}
+    a {{ color: #155e75; }}
+    code {{
+      display: block;
+      margin-top: 4px;
+      color: #52606d;
+      overflow-wrap: anywhere;
+    }}
+    li {{ margin: 0 0 14px; }}
+    .meta {{ color: #52606d; }}
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="../index.html">Agent access</a></p>
+    <h1>{title}</h1>
+    <p class="meta">{description}</p>
+    <p class="meta">Count: {len(records)}. Source of truth: linked raw YAML cards.</p>
+    <ol>
+{items}
+    </ol>
+  </main>
+</body>
+</html>
+"""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(html, encoding="utf-8")
+
+
 def write_agent_readme(path, source_keys):
     source_list = "\n".join(f"- `problems-by-source/{key}.jsonl`" for key in source_keys)
     text = f"""# External Agent Access
@@ -307,6 +362,7 @@ It is generated from `data/`; it is not the source of truth.
 - `problems.jsonl`: one JSON object per problem card. Best for text search.
 - `problems.md`: simple Markdown table for browser reading.
 - `problems-by-source/*.jsonl`: smaller source-specific chunks for agents that fail on large files.
+- `topics/game-strategy.html`: browser-readable dump of graph game and strategy tasks.
 - `topics/game-strategy.jsonl`: tasks curated with `goal_strategy_game`.
 - `topics/game-strategy-candidates.jsonl`: wider text/profile matches to audit for missing tags.
 
@@ -315,7 +371,7 @@ It is generated from `data/`; it is not the source of truth.
 1. Fetch `catalog.json`.
 2. Fetch `problems-compact.jsonl` and search ids, titles, tags, years, and transliterated text.
 3. If the query mentions a source, year, or contest family, fetch the relevant source chunk from `problems-by-source/`.
-4. For "games", "strategy", "winning strategy", or similar queries, fetch `topics/game-strategy.jsonl`; use `topics/game-strategy-candidates.jsonl` only to audit possible missing tags.
+4. For "games", "strategy", "winning strategy", or similar queries, open `topics/game-strategy.html` or fetch `topics/game-strategy.jsonl`; use `topics/game-strategy-candidates.jsonl` only to audit possible missing tags.
 5. Use `problems.jsonl` only when source chunks, topic chunks, and the compact manifest are insufficient.
 6. Open the matching record's `raw_github_url`.
 7. If relations matter, use the record's `relations` list, then fetch neighbor raw cards.
@@ -415,6 +471,7 @@ def write_agent_index_html(path, source_keys):
       <a class="link-card" href="problems.jsonl"><strong>problems.jsonl</strong><span>All problem cards, one JSON object per line.</span></a>
       <a class="link-card" href="problems.md"><strong>problems.md</strong><span>Plain Markdown catalog for quick browsing.</span></a>
       <a class="link-card" href="README.md"><strong>README.md</strong><span>Rules for using the database as an information source.</span></a>
+      <a class="link-card" href="topics/game-strategy.html"><strong>topics/game-strategy.html</strong><span>Browser-readable dump of graph game and strategy tasks.</span></a>
       <a class="link-card" href="topics/game-strategy.jsonl"><strong>topics/game-strategy.jsonl</strong><span>Curated graph game and strategy tasks.</span></a>
       <a class="link-card" href="topics/game-strategy-candidates.jsonl"><strong>topics/game-strategy-candidates.jsonl</strong><span>Wider text/profile matches for missing-tag audits.</span></a>
     </div>
@@ -425,7 +482,7 @@ def write_agent_index_html(path, source_keys):
       <li>Source of truth: open a record's <code>raw_github_url</code> for the authoritative YAML card.</li>
       <li>Do not treat GitHub code search or viewer load failures as evidence that a task is absent.</li>
       <li>Start with <code>problems-compact.jsonl</code>; use source chunks when full files are too large for the browser tool.</li>
-      <li>For graph games and strategy tasks, use <code>topics/game-strategy.jsonl</code>. Use the candidates file only for an audit, not as the final answer.</li>
+      <li>For graph games and strategy tasks, use <code>topics/game-strategy.html</code> for browser reading or <code>topics/game-strategy.jsonl</code> for structured data. Use the candidates file only for an audit, not as the final answer.</li>
     </ol>
 
     <h2>Source Chunks</h2>
@@ -458,14 +515,18 @@ def main():
     write_jsonl(out_dir / "problems.jsonl", records)
     write_jsonl(out_dir / "problems-compact.jsonl", [make_compact_record(record) for record in records])
     write_markdown_catalog(out_dir / "problems.md", records)
-    write_jsonl(
-        out_dir / "topics" / "game-strategy.jsonl",
-        [record for record in records if "game_strategy" in record["agent_topics"]],
+    game_strategy_records = [record for record in records if "game_strategy" in record["agent_topics"]]
+    game_strategy_candidates = [
+        record for record in records if "game_strategy_candidate" in record["agent_topics"]
+    ]
+    write_topic_html(
+        out_dir / "topics" / "game-strategy.html",
+        "Graph Games and Strategy Tasks",
+        game_strategy_records,
+        "Curated tasks tagged with goal_strategy_game. Use this page as a direct dump for browser agents.",
     )
-    write_jsonl(
-        out_dir / "topics" / "game-strategy-candidates.jsonl",
-        [record for record in records if "game_strategy_candidate" in record["agent_topics"]],
-    )
+    write_jsonl(out_dir / "topics" / "game-strategy.jsonl", game_strategy_records)
+    write_jsonl(out_dir / "topics" / "game-strategy-candidates.jsonl", game_strategy_candidates)
     for source_key in source_keys:
         write_jsonl(out_dir / "problems-by-source" / f"{source_key}.jsonl", by_source[source_key])
 
@@ -479,6 +540,7 @@ def main():
             "compact_jsonl": "problems-compact.jsonl",
             "markdown_catalog": "problems.md",
             "source_chunks_dir": "problems-by-source/",
+            "game_strategy_html": "topics/game-strategy.html",
             "game_strategy_topic": "topics/game-strategy.jsonl",
             "game_strategy_candidates": "topics/game-strategy-candidates.jsonl",
             "human_viewer": "../index.html",
