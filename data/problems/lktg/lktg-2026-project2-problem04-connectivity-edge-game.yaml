@@ -1,0 +1,171 @@
+{
+  "id": "lktg-2026-project2-problem04-connectivity-edge-game",
+  "title": "Добавление рёбер до первой связности",
+  "kind": {
+    "primary": "problem",
+    "secondary": [
+      "game",
+      "connectivity"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "L. Csirmaz",
+      "role": "author_of_source_problem",
+      "status": "source_verified",
+      "note": "Имя и название Connected Graph Game приведены в официальном PDF проекта именно в этой форме; полное имя там не указано."
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "edge_adding_game",
+      "graph_components",
+      "maximal_disconnected_graph"
+    ],
+    "methods": [
+      "terminal_position_characterization",
+      "parity",
+      "component_invariant",
+      "reply_strategy"
+    ],
+    "transformations": [
+      "maximal_disconnected_graph_to_two_cliques",
+      "safe_move_to_component_merge_or_internal_edge"
+    ],
+    "goal": [
+      "classify_winner_by_n_mod_4"
+    ],
+    "auxiliary_graph_type": [
+      "disjoint_union_of_two_cliques"
+    ],
+    "invariants": [
+      "odd_component_count_mod_4",
+      "missing_internal_edges_mod_2"
+    ],
+    "keywords": [
+      "connected_graph_game",
+      "first_connectivity_loses",
+      "component_parity"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-problem04",
+        "title": "Кто первым сделает граф связным",
+        "text": "На фиксированном множестве из \\(n\\ge3\\) вершин изначально нет рёбер. Петя и Вася по очереди добавляют по одному отсутствующему ребру; начинает Петя. Игрок, после хода которого граф впервые становится связным, немедленно проигрывает. Определите победителя при каждом \\(n\\ge3\\).",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "connected_graph",
+          "complete_graph"
+        ]
+      }
+    ]
+  },
+  "ideas": [
+    {
+      "id": "idea-terminal-two-cliques",
+      "title": "Максимальный несвязный граф состоит из двух клик",
+      "text": "В максимальной безопасной позиции не может быть трёх компонент и не может отсутствовать ребро внутри компоненты, поэтому позиция имеет вид \\(K_a\\sqcup K_b\\).",
+      "tags": [
+        "connectivity",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-even-n-two-coordinate-invariant",
+      "title": "Два параметра для чётного числа вершин",
+      "text": "Поддерживаются сравнения \\(O\\equiv0\\pmod4\\) для числа нечётных компонент и \\(R\\equiv0\\pmod2\\) для числа недостающих рёбер внутри компонент.",
+      "tags": [
+        "invariant",
+        "parity_coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-problem04-complete",
+      "title": "Полная классификация по модулю 4",
+      "text": "Ответ: при \\(n\\equiv0,1\\pmod4\\) выигрывает Вася, а при \\(n\\equiv2,3\\pmod4\\) выигрывает Петя.\n\nМаксимальный граф, который ещё несвязен, состоит из двух полных компонент \\(K_a\\sqcup K_b\\), где \\(a+b=n\\). Действительно, при трёх или более компонентах можно безопасно соединить две из них, а при недостающем ребре внутри компоненты можно безопасно добавить это ребро. Число сделанных безопасных ходов в такой конечной позиции равно\n\\[\\binom a2+\\binom b2=\\binom n2-ab.\\]\nЕсли \\(n\\) нечётно, числа \\(a,b\\) имеют разную чётность, поэтому \\(ab\\) чётно и чётность числа безопасных ходов не зависит от разбиения. При \\(n\\equiv1\\pmod4\\) число \\(\\binom n2\\) чётно. Вася всегда выбирает безопасный ход: перед его ходом добавлено нечётное число рёбер, поэтому конечная позиция с чётным числом рёбер ещё не достигнута. Следовательно, связный граф первым вынужден сделать Петя и проигрывает. При \\(n\\equiv3\\pmod4\\) число \\(\\binom n2\\) нечётно; тем же рассуждением Петя всегда имеет безопасный ход, и проигрывает Вася.\n\nПусть теперь \\(n\\) чётно. В текущем несвязном графе обозначим через \\(O\\) число компонент нечётного порядка, а через \\(R\\) - суммарное число недостающих рёбер внутри компонент:\n\\[R=\\sum_C\\left(\\binom{|C|}{2}-e(C)\\right).\\]\nЧисло \\(O\\) чётно. Каждый безопасный ход имеет один из двух типов. Тип I соединяет две нечётные компоненты. Тогда \\(O\\) уменьшается на 2, а чётность \\(R\\) не меняется: при слиянии добавляется \\(|C||D|-1\\) новых недостающих внутренних рёбер, и это число чётно. Тип II - любой другой безопасный ход. Тогда \\(O\\) не меняется, а чётность \\(R\\) меняется. Для внутреннего ребра \\(R\\) уменьшается на 1; при слиянии, где хотя бы одна компонента чётна, число \\(|C||D|-1\\) нечётно.\n\nВыбранный игрок после каждого своего хода поддерживает инвариант\n\\[O\\equiv0\\pmod4,\\qquad R\\equiv0\\pmod2.\\]\nЕсли соперник сделал ход типа I, стало \\(O\\equiv2\\pmod4\\). Выбранный игрок соединяет ещё две нечётные компоненты. Такой ход безопасен: перед ходом соперника нечётных компонент было по меньшей мере четыре; после первого слияния остаётся созданная чётная компонента, поэтому второе слияние не может сделать весь граф связным. Если соперник сделал ход типа II, число \\(R\\) стало нечётным и, следовательно, положительным. Выбранный игрок добавляет любое недостающее ребро внутри одной компоненты. Оба ответа безопасны и восстанавливают инвариант.\n\nПри \\(n=4k\\) инвариант выполнен в пустом графе, и выбранным игроком является Вася: он начинает отвечать после первого хода Пети. При \\(n=4k+2\\) Петя первым ходом соединяет две изолированные вершины. Тогда \\(O\\) уменьшается с \\(4k+2\\) до \\(4k\\), а \\(R\\) остаётся чётным, поэтому после этого отвечает Петя. Выбранный игрок никогда не делает граф связным. Игра конечна, значит, связный граф первым вынужден сделать его соперник. Это даёт заявленную таблицу победителей.",
+      "idea_ids": [
+        "idea-terminal-two-cliques",
+        "idea-even-n-two-coordinate-invariant"
+      ],
+      "standard_idea_ids": [
+        "invariant"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "connected_graph",
+        "complete_graph"
+      ],
+      "source_id": "src-lktg-2026-project2-solutions-ru"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 8,
+    "comment": "Официальная сложность 4/5. Для нечётного n достаточно чётности конечной позиции, а чётный случай требует двухкомпонентного инварианта.",
+    "status": "source_verified"
+  },
+  "tags": [
+    "connectivity",
+    "invariant",
+    "parity_coloring",
+    "extremal_choice",
+    "goal_classification",
+    "goal_strategy_game"
+  ],
+  "sources": [
+    {
+      "source_id": "src-lktg-2026-project2-page",
+      "role": "project_page",
+      "status": "source_verified",
+      "title": "Официальная страница проекта ЛКТГ 2026"
+    },
+    {
+      "source_id": "src-lktg-2026-project2-problems-ru",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "title": "Официальные условия, задача 4",
+      "statement_ids": [
+        "stmt-problem04"
+      ],
+      "note": "PDF указывает первоисточник как L. Csirmaz, Connected Graph Game."
+    },
+    {
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "role": "official_complete_solution",
+      "status": "source_verified",
+      "title": "Официальные решения, задача 4"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "graph_theory_duplicate_removed": true,
+    "notes": [
+      "Исходная постановка уже полностью графовая.",
+      "Полное имя L. Csirmaz не раскрыто, поскольку официальный PDF его не приводит."
+    ],
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное решение",
+      "status": "ai_checked",
+      "confidence": 0.98,
+      "basis": "Официальный PDF решений полностью доказывает классификацию для всех n по модулю 4.",
+      "notes": "Оба инварианта чётного случая определены и проверены для каждого типа безопасного хода."
+    }
+  }
+}

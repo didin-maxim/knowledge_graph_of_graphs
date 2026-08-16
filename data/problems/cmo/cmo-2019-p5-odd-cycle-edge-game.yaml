@@ -1,6 +1,6 @@
 {
   "id": "cmo-2019-p5-odd-cycle-edge-game",
-  "title": "Игра в добавление рёбер до первого нечётного цикла, CMO 2019 P5",
+  "title": "Игра в добавление рёбер до первого нечётного цикла и её варианты",
   "kind": {
     "primary": "olympiad_problem",
     "secondary": [
@@ -22,21 +22,31 @@
       "edge_adding_game",
       "odd_cycle",
       "bipartite_graph",
-      "matching"
+      "matching",
+      "complete_bipartite_graph",
+      "isolated_vertices"
     ],
     "methods": [
       "strategy",
       "bipartite_graph_invariant",
       "parity_argument",
-      "matching_preservation"
+      "matching_preservation",
+      "terminal_position_characterization",
+      "parity",
+      "matching_invariant",
+      "involution_pairing_strategy"
     ],
     "transformations": [
       "points_to_vertices",
       "segments_to_edges",
-      "odd_cycle_avoidance_to_bipartiteness"
+      "odd_cycle_avoidance_to_bipartiteness",
+      "odd_cycle_free_to_bipartite",
+      "terminal_safe_graph_to_complete_bipartite"
     ],
     "goal": [
-      "winning_strategy_classification"
+      "winning_strategy_classification",
+      "classify_winner_by_n_mod_4",
+      "prove_modified_game_first_player_win"
     ],
     "auxiliary_graph_type": [
       "bipartite_graph",
@@ -45,13 +55,20 @@
     "invariants": [
       "bipartiteness_before_losing_move",
       "parity_of_number_of_edges",
-      "matching_covering_nonisolated_vertices"
+      "matching_covering_nonisolated_vertices",
+      "matching_covers_nonisolated_vertices",
+      "graph_invariant_under_involution",
+      "paired_vertices_share_bipartition_class"
     ],
     "keywords": [
       "cmo_2019_p5",
       "odd_cycle_game",
       "edge_adding_game",
-      "complete_graph_game"
+      "complete_graph_game",
+      "cmo_2019_problem5",
+      "odd_cycle_avoidance_game",
+      "safe_edge",
+      "new_part_c"
     ],
     "status": "ai_checked"
   },
@@ -112,7 +129,23 @@
         ]
       }
     ],
-    "olympiad_reformulations": []
+    "olympiad_reformulations": [
+      {
+        "id": "stmt-lktg-no-isolated-pair",
+        "title": "Вариант с запретом соединять две изолированные вершины",
+        "text": "Изменим правила: после первого хода Пети запрещается соединять ребром две изолированные вершины. Докажите, что при каждом чётном \\(n\\) выигрывает Петя.",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "cycle",
+          "bipartite_graph",
+          "matching"
+        ]
+      }
+    ]
   },
   "ideas": [
     {
@@ -143,6 +176,16 @@
         "goal_strategy_game"
       ],
       "status": "ai_checked"
+    },
+    {
+      "id": "idea-involution-symmetry",
+      "title": "Инволюция после первого ребра",
+      "text": "В изменённой игре Петя фиксирует концы первого ребра и попарно переставляет остальные вершины, отвечая образом хода Васи; активная компонента остаётся единственной, а размеры долей в конце нечётны.",
+      "tags": [
+        "symmetrization",
+        "graph_symmetry"
+      ],
+      "status": "ai_checked"
     }
   ],
   "solutions": [
@@ -163,6 +206,24 @@
         "matching",
         "cycle"
       ]
+    },
+    {
+      "id": "sol-lktg-no-isolated-pair",
+      "title": "Симметрическая стратегия в варианте без новых компонент",
+      "text": "Пусть \\(n\\) чётно. Первым ходом Петя добавляет ребро \\(ab\\). Он фиксирует инволюцию \\(\\sigma\\): вершины \\(a,b\\) неподвижны, а все остальные разбиты на пары \\(x,\\sigma(x)\\). После каждого своего хода Петя поддерживает инварианты: граф сохраняется преобразованием \\(\\sigma\\); обе вершины каждой уже активной пары \\(x,\\sigma(x)\\) лежат в одной доле двудольного графа; все неизолированные вершины образуют одну компоненту. Последнее верно, потому что после первого хода правила запрещают начинать новую компоненту ребром между двумя изолированными вершинами.\n\nПусть Вася сделал безопасный ход. Если он присоединил изолированную вершину \\(x\\) ребром \\(vx\\), Петя добавляет \\(\\sigma(v)\\sigma(x)\\). Вершина \\(\\sigma(x)\\) тоже была изолирована, поэтому ход разрешён и безопасен. Если Вася добавил ребро \\(uv\\) между активными вершинами, Петя добавляет \\(\\sigma(u)\\sigma(v)\\). Это другое ещё не добавленное ребро. Ребро, совпадающее со своим образом, было бы либо первым ребром \\(ab\\), либо соединяло бы парные вершины \\(x,\\sigma(x)\\); но активные парные вершины лежат в одной доле, поэтому такой ход Васи уже создавал бы нечётный цикл. Образ безопасного ребра безопасен, поскольку \\(\\sigma\\) сохраняет доли. Так Петя отвечает на каждый безопасный ход Васи.\n\nПока есть изолированная вершина, её можно безопасно присоединить к активной компоненте, поэтому игра заканчивается только после активации всех вершин. Тогда в каждой доле лежит одна из вершин \\(a,b\\) и некоторое число полных \\(\\sigma\\)-пар, так что размеры обеих долей нечётны. Конечный полный двудольный граф имеет нечётное число рёбер. Следовательно, последний безопасный ход делает Петя, после чего Вася вынужден создать нечётный цикл. Петя выигрывает при каждом чётном \\(n\\).",
+      "idea_ids": [
+        "idea-involution-symmetry"
+      ],
+      "standard_idea_ids": [
+        "symmetrization"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "cycle",
+        "bipartite_graph",
+        "matching"
+      ],
+      "source_id": "src-lktg-2026-project2-solutions-ru"
     }
   ],
   "difficulty": {
@@ -174,7 +235,12 @@
   "tags": [
     "goal_strategy_game",
     "coloring",
-    "matching"
+    "matching",
+    "extremal_graph_theory",
+    "symmetrization",
+    "graph_symmetry",
+    "invariant",
+    "goal_classification"
   ],
   "properties": {
     "central_method": {
@@ -198,7 +264,35 @@
     {
       "source_id": "src-cmo-2019-solutions",
       "role": "official_solutions",
-      "status": "source_verified"
+      "status": "source_verified",
+      "solution_ids": [
+        "sol-official-ru-expanded"
+      ]
+    },
+    {
+      "source_id": "src-lktg-2026-project2-page",
+      "role": "project_page",
+      "status": "source_verified",
+      "title": "Официальная страница проекта ЛКТГ 2026"
+    },
+    {
+      "source_id": "src-lktg-2026-project2-problems-ru",
+      "role": "official_problem_statement",
+      "status": "source_verified",
+      "title": "Официальные условия, задача 3",
+      "statement_ids": [
+        "stmt-lktg-no-isolated-pair"
+      ],
+      "note": "PDF прямо указывает: пункты а, б - Canadian Mathematical Olympiad 2019, задача 5; пункт в - новое предложение соавтора, имя которого не приведено."
+    },
+    {
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "role": "official_complete_solution",
+      "status": "source_verified",
+      "title": "Официальные решения, задача 3",
+      "solution_ids": [
+        "sol-lktg-no-isolated-pair"
+      ]
     }
   ],
   "editorial": {
@@ -209,7 +303,8 @@
     "notes": [
       "2026-04-27: официальные условие и решение сверены с PDF CMS CMO 2019; отдельный автор задачи там не указан.",
       "2026-04-27: исходная и графовая формулировки явно говорят, что проигрывает игрок, чей ход первым создаёт нечётный цикл; более сильная переформулировка через двудольную игру оставлена как графовая подсказка.",
-      "2026-04-27: русское решение переписано по официальному решению; сжатый шаг о сохранении паросочетания раскрыт."
+      "2026-04-27: русское решение переписано по официальному решению; сжатый шаг о сохранении паросочетания раскрыт.",
+      "2026-08-15: проектная перепечатка CMO не вынесена в отдельную карточку; сюда добавлен только новый вариант с запретом соединять две изолированные вершины и его решение."
     ],
     "relations_status": "deep_done",
     "solution_classification": {

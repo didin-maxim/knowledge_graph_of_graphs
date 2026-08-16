@@ -1,0 +1,155 @@
+{
+  "id": "lktg-2026-project2-problem12-biased-game-one-two",
+  "title": "Смещённая кликовая игра \\(1:2\\) на \\(K_n\\), ЛКТГ 2026",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_coloring",
+      "clique",
+      "independent_set"
+    ],
+    "methods": [
+      "complement_graph",
+      "explicit_strategy",
+      "small_case_analysis"
+    ],
+    "transformations": [
+      "black_graph_as_complement_of_white_graph"
+    ],
+    "goal": [
+      "prove_identity",
+      "winning_strategy_for_n4"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "white_graph_has_two_adjacent_edges"
+    ],
+    "keywords": [
+      "lktg_2026_project2_problem12",
+      "biased_game_1_2",
+      "black_clique_white_independent_set"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Смещённая игра Беллы и Чингиза",
+        "text": "Пусть \\(n\\ge3\\). Белла и Чингиз играют на рёбрах полного графа \\(K_n\\); начинает Белла. В каждом раунде Белла красит одно свободное ребро белым, после чего Чингиз красит два свободных ребра чёрным, а если их осталось меньше двух — все оставшиеся. После окраски всех рёбер Чингиз выигрывает, если наибольшая чёрная клика строго больше наибольшей белой; иначе выигрывает Белла.\n\nа) Если \\(W\\) — граф белых рёбер, объясните равенство \\(\\omega(\\text{чёрного графа})=\\alpha(W)\\).\n\nб) При \\(n=4\\) постройте явную выигрышную стратегию Чингиза.",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "independent_set",
+          "complement_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-complement-white-graph",
+      "title": "Чёрный граф как дополнение белого",
+      "text": "После окончания партии каждое небелое ребро чёрное, поэтому чёрные клики — в точности независимые множества белого графа.",
+      "tags": [
+        "complement_graph_transition",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-block-disjoint-edge-k4",
+      "title": "Запрет второго несмежного белого ребра",
+      "text": "После первого белого ребра на \\(K_4\\) Чингиз сразу красит чёрным единственное ребро, не имеющее с ним общего конца. Тогда два белых хода Беллы обязательно образуют путь длины два.",
+      "tags": [
+        "goal_strategy_game",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-complement-and-k4",
+      "title": "Дополнение белого графа и стратегия на \\(K_4\\)",
+      "text": "а) После окончания игры каждое ребро \\(K_n\\), не принадлежащее белому графу \\(W\\), окрашено чёрным. Множество вершин образует чёрную клику тогда и только тогда, когда никакие две его вершины не соединены белым ребром, то есть когда это множество независимо в \\(W\\). Поэтому \\(\\omega(\\text{чёрного графа})=\\alpha(W)\\).\n\nб) Пусть первое белое ребро равно \\(uv\\), а две остальные вершины обозначены \\(x,y\\). Чингиз сразу красит чёрным \\(xy\\) и любое другое свободное ребро. Теперь любое последующее белое ребро имеет общий конец с \\(uv\\), потому что единственное ребро, не имеющее с \\(uv\\) общего конца, уже чёрное.\n\nВсего в \\(K_4\\) шесть рёбер, а за полный раунд окрашиваются три, поэтому Белла делает ровно два хода. Её итоговый граф состоит из двух смежных рёбер и одной изолированной вершины. Следовательно, \\(\\omega(W)=2\\). В нём есть независимое множество из трёх вершин: из двух концов пути выбираем его концы и добавляем изолированную вершину, поэтому \\(\\alpha(W)=3\\). По пункту а) чёрная клика имеет размер 3, что строго больше 2; Чингиз выигрывает.",
+      "idea_ids": [
+        "idea-complement-white-graph",
+        "idea-block-disjoint-edge-k4"
+      ],
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "standard_idea_ids": [],
+      "definition_ids": [
+        "complete_graph",
+        "clique",
+        "independent_set",
+        "complement_graph"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "regional",
+    "local_score": 3,
+    "comment": "Официальная сложность: а) 1/5; б) 2/5.",
+    "status": "source_verified"
+  },
+  "tags": [
+    "coloring",
+    "goal_strategy_game",
+    "complement_graph_transition"
+  ],
+  "sources": [
+    {
+      "source_id": "src-lktg-2026-project2-page",
+      "role": "official_project_page",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-lktg-2026-project2-problems-ru",
+      "role": "official_problem_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "role": "official_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Условие сверено со страницами 4–5 официального PDF; решение — со страницей 20 PDF решений.",
+      "В PDF задача названа составительской, но конкретный автор не указан, поэтому authors оставлен пустым."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное решение",
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "basis": "официальный PDF решений, русская редакция 7",
+      "notes": "Оба подпункта доказаны полностью."
+    }
+  }
+}

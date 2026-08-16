@@ -1,0 +1,393 @@
+{
+  "id": "lktg-2026-project2-games-on-changing-graphs",
+  "title": "ЛКТГ 2026, проект 2: игры на меняющихся графах",
+  "status": "ai_checked",
+  "created_at": "2026-08-15",
+  "updated_at": "2026-08-15",
+  "source_scope": {
+    "source_ids": [
+      "src-lktg-2026-project2-page",
+      "src-lktg-2026-project2-problems-ru",
+      "src-lktg-2026-project2-solutions-ru",
+      "src-yumt-2025-grand-final-problem3-official",
+      "src-hse-2024-final-math-11",
+      "src-fraenkel-scheinerman-ullman-undirected-geography",
+      "src-bollobas-szabo-oriented-cycle-game",
+      "src-malekshahian-spiro-clique-building-game",
+      "src-simmons-sim-game",
+      "src-nowakowski-winkler-cop-win-graphs",
+      "src-lehman-shannon-switching-game"
+    ],
+    "notes": [
+      "Все 29 позиций проекта просмотрены по русской редакции 7 от 11 августа 2026 года; перепечатки и тривиальные обобщения слиты с каноническими задачами.",
+      "Официально открытые подпункты сохранены как открытые и не получили вымышленных решений.",
+      "Редакторские версии игры Беллы и Чингиза 1:2 и 1:3 объединены, поскольку используют одну и ту же стратегию.",
+      "Отдельные карточки сохранены для существенно более простых частных случаев и вариантов с другим решением."
+    ]
+  },
+  "items": [
+    {
+      "id": "project2-problem01",
+      "problem_id": "lktg-2026-project2-problem01-no-return-game",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная задача проекта 1; граф и совершенное паросочетание существенны в условии и решении."
+    },
+    {
+      "id": "project2-problem02",
+      "problem_id": "lktg-2026-project2-problem02-coins-on-graph",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная задача проекта 2 о движении монет по графу."
+    },
+    {
+      "id": "project2-problem03",
+      "problem_id": "cmo-2019-p5-odd-cycle-edge-game",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Пункты а-б уже представлены карточкой CMO; новый пункт в и его отдельное решение присоединены к ней."
+    },
+    {
+      "id": "project2-problem04",
+      "problem_id": "lktg-2026-project2-problem04-connectivity-edge-game",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная задача проекта 4 о первом моменте связности."
+    },
+    {
+      "id": "project2-problem05",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Составная задача является точной склейкой древесного и циклического случаев Турнира городов; официальные источники присоединены к двум каноническим карточкам.",
+      "canonical_problem_ids": [
+        "tc-2018-19-simple-state-tree-game",
+        "tc-2018-19-complex-state-cycle-game"
+      ]
+    },
+    {
+      "id": "project2-problem06",
+      "problem_id": "lktg-2026-project2-problem06-two-tokens-reversing-arcs",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная двухфишечная игра проекта с изменяющейся ориентацией."
+    },
+    {
+      "id": "project2-problem07",
+      "problem_id": "lktg-2026-project2-problem07-two-degenerate-orientation-game",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная задача проекта о 2-вырожденности и игре до ориентированного цикла."
+    },
+    {
+      "id": "project2-problem08",
+      "problem_id": "lktg-2026-project2-problem07-two-degenerate-orientation-game",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Решётки являются геометрическими формулировками той же парной стратегии для 2-вырожденных графов."
+    },
+    {
+      "id": "project2-problem09",
+      "problem_id": "lktg-2026-project2-problem09-bollobas-szabo-oriented-cycle-game",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru",
+        "src-bollobas-szabo-oriented-cycle-game"
+      ],
+      "decision_reason": "Официальный проектный разбор игры Боллобаша–Сабо с явно зарегистрированным первоисточником."
+    },
+    {
+      "id": "project2-problem10",
+      "problem_id": "simon-marais-2017-a1-pentagon-triangle-game",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Обобщение с K_5 до K_n использует только пять вершин и присоединено к канонической карточке SMMC."
+    },
+    {
+      "id": "project2-problem11",
+      "problem_id": "lktg-2026-project2-problem11-symmetric-erdos-game",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru",
+        "src-malekshahian-spiro-clique-building-game"
+      ],
+      "decision_reason": "Официальная симметричная игра Эрдёша; закрытые и открытые подпункты размечены раздельно."
+    },
+    {
+      "id": "project2-problem12",
+      "problem_id": "lktg-2026-project2-problem12-biased-game-one-two",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная базовая задача о смещённой игре 1:2."
+    },
+    {
+      "id": "project2-problem13",
+      "problem_id": "lktg-2026-project2-problem13-bella-chingiz-complete-graph",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная параметрическая редакция игры Беллы и Чингиза, включающая материал ЮМТ 2025 и открытый режим 1:2."
+    },
+    {
+      "id": "project2-problem14",
+      "problem_id": "lktg-2026-project2-problem14-white-clique-infinite-board",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная бесконечная Maker–Breaker-игра; открытая граница сохранена без решения."
+    },
+    {
+      "id": "project2-problem15",
+      "problem_id": "lktg-2026-project2-problem15-game-transfer-one-two-to-one",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная задача проекта о переносе стратегии между смещённой и симметричной играми."
+    },
+    {
+      "id": "project2-problem16",
+      "problem_id": "lktg-2026-project2-problem16-biconnected-red-board",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru",
+        "src-malekshahian-spiro-clique-building-game"
+      ],
+      "decision_reason": "Официальная задача о двусвязных досках для симметричной игры Эрдёша."
+    },
+    {
+      "id": "project2-problem17",
+      "problem_id": "lktg-2026-project2-problem17-firms-and-geniuses",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальное обобщение игры фирм и программистов из ММО и Турнира городов."
+    },
+    {
+      "id": "project2-problem18",
+      "problem_id": "lktg-2026-project2-problem20-white-target-family",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Кликовая оценка является прямой подстановкой в общую весовую лемму задачи 20."
+    },
+    {
+      "id": "project2-problem19",
+      "problem_id": "lktg-2026-project2-problem20-white-target-family",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Гамильтонова оценка является прямой подстановкой в общую весовую лемму задачи 20."
+    },
+    {
+      "id": "project2-problem20",
+      "problem_id": "lktg-2026-project2-problem20-white-target-family",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная общая лемма о семействе белых целей."
+    },
+    {
+      "id": "project2-problem21",
+      "problem_id": "lktg-2026-project2-problem21-black-minimum-degree",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная асимптотическая гарантия минимальной чёрной степени."
+    },
+    {
+      "id": "project2-problem22",
+      "problem_id": "lktg-2026-project2-problem22-density-in-large-subsets",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная гарантия чёрной плотности внутри больших множеств."
+    },
+    {
+      "id": "project2-problem23",
+      "problem_id": "lktg-2026-project2-problem22-density-in-large-subsets",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Двухмножественный вариант отличается только семейством целей и объединён с задачей 22."
+    },
+    {
+      "id": "project2-problem24",
+      "problem_id": "lktg-2026-project2-problem24-white-clique-black-degrees",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная совместная гарантия для белой клики и чёрных степеней."
+    },
+    {
+      "id": "project2-problem25",
+      "problem_id": "lktg-2026-project2-problem26-golden-ratio-biased-game",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Количественная игра 1:2 является случаем p=2, q=1 общей многотипной стратегии задачи 26."
+    },
+    {
+      "id": "project2-problem26",
+      "problem_id": "lktg-2026-project2-problem26-golden-ratio-biased-game",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная параметрическая игра p:q с достаточным условием через золотое сечение."
+    },
+    {
+      "id": "project2-problem27",
+      "problem_id": "lktg-2026-project2-problem13-bella-chingiz-complete-graph",
+      "status": "duplicate",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Точная открытая гипотеза 1:2 является граничной формулировкой семейства задачи 13."
+    },
+    {
+      "id": "project2-problem28",
+      "problem_id": "lktg-2026-project2-problem28-rock-paper-scissors-dynamics",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru",
+        "src-hse-2024-final-math-11"
+      ],
+      "decision_reason": "Официальное расширение задачи «Высшей пробы» о синхронной динамике на графах."
+    },
+    {
+      "id": "project2-problem29",
+      "problem_id": "lktg-2026-project2-problem29-two-leagues-tournament",
+      "status": "added",
+      "source_ids": [
+        "src-lktg-2026-project2-problems-ru",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Официальная задача проекта о последовательном выборе команд двух лиг."
+    },
+    {
+      "id": "bella-chingiz-perfect-matching-1-2",
+      "problem_id": "lktg-2026-bella-chingiz-perfect-matching-bias-1-2-and-1-3",
+      "status": "added",
+      "source_ids": [
+        "src-yumt-2025-grand-final-problem3-official",
+        "src-lktg-2026-project2-problems-ru"
+      ],
+      "decision_reason": "Запрошенный редакторский вариант: чётное число вершин, начальное чёрное совершенное паросочетание и квота 1:2."
+    },
+    {
+      "id": "bella-chingiz-perfect-matching-1-3",
+      "problem_id": "lktg-2026-bella-chingiz-perfect-matching-bias-1-2-and-1-3",
+      "status": "duplicate",
+      "source_ids": [
+        "src-yumt-2025-grand-final-problem3-official",
+        "src-lktg-2026-project2-problems-ru"
+      ],
+      "decision_reason": "Версии 1:2 и 1:3 имеют одну стратегию; обе формулировки хранятся в одной карточке."
+    },
+    {
+      "id": "hse-2024-rock-paper-scissors-tree",
+      "problem_id": "hse-2024-final-11-p5-rock-paper-scissors-tree",
+      "status": "added",
+      "source_ids": [
+        "src-hse-2024-final-math-11",
+        "src-lktg-2026-project2-solutions-ru"
+      ],
+      "decision_reason": "Исходная олимпиадная задача для древесного подпункта проекта 28."
+    },
+    {
+      "id": "biased-clique-building-game",
+      "problem_id": "malekshahian-spiro-biased-clique-building-game",
+      "status": "added",
+      "source_ids": [
+        "src-malekshahian-spiro-clique-building-game"
+      ],
+      "decision_reason": "Каноническая внешняя модель для блока задач 11–16 и 26–27; границы асимптотической теоремы сформулированы явно."
+    },
+    {
+      "id": "sim-k6",
+      "problem_id": "sim-k6-no-draw",
+      "status": "added",
+      "source_ids": [
+        "src-simmons-sim-game"
+      ],
+      "decision_reason": "Классическая парная версия игры до одноцветного треугольника."
+    },
+    {
+      "id": "cops-and-robber",
+      "problem_id": "cops-and-robber-dismantlable-characterization",
+      "status": "added",
+      "source_ids": [
+        "src-nowakowski-winkler-cop-win-graphs"
+      ],
+      "decision_reason": "Классическая игра на графе состояний с переносимым методом обратного аттрактора."
+    },
+    {
+      "id": "shannon-switching-game",
+      "problem_id": "lehman-shannon-switching-game-two-spanning-trees",
+      "status": "added",
+      "source_ids": [
+        "src-lehman-shannon-switching-game"
+      ],
+      "decision_reason": "Классическая игра сохранения и разрушения связности через пути, разрезы и остовные деревья."
+    }
+  ]
+}

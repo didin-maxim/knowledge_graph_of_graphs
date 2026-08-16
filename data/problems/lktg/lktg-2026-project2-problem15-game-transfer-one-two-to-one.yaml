@@ -1,0 +1,168 @@
+{
+  "id": "lktg-2026-project2-problem15-game-transfer-one-two-to-one",
+  "title": "Перенос белой клики из игры \\(1:2\\) в игру \\(1:1\\), ЛКТГ 2026",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "game",
+      "reduction"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "ChatGPT",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "white_clique",
+      "black_graph",
+      "independent_set"
+    ],
+    "methods": [
+      "strategy_simulation",
+      "imaginary_moves",
+      "probabilistic_independent_set_bound",
+      "star_construction"
+    ],
+    "transformations": [
+      "biased_game_1_1_to_1_2",
+      "sparse_black_subgraph_to_independent_set"
+    ],
+    "goal": [
+      "transfer_winning_strategy",
+      "increase_target_clique_size"
+    ],
+    "auxiliary_graph_type": [
+      "black_graph_on_white_neighborhood"
+    ],
+    "invariants": [
+      "every_real_black_edge_is_imaginarily_black"
+    ],
+    "keywords": [
+      "lktg_2026_project2_problem15",
+      "game_transfer_1_2_to_1_1",
+      "white_star",
+      "caro_wei_bound"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Связь игр \\(1:2\\) и \\(1:1\\)",
+        "text": "Пусть \\(N\\ge r\\ge2\\). На рёбрах \\(K_N\\) Белла красит за раунд одно свободное ребро белым, затем Чингиз красит два свободных ребра чёрным; если свободных рёбер осталось меньше двух, он красит все оставшиеся. Белла выигрывает сразу после появления белой клики \\(K_r\\), а если все рёбра окрашены и её нет, выигрывает Чингиз. Предположим, что Белла имеет выигрышную стратегию в этой игре.\n\nДокажите, что при тех же правилах, но с одним чёрным ребром Чингиза за раунд, Белла может гарантировать белую клику \\(K_{r+1}\\) на каждом полном графе \\(K_M\\), где \\(M\\ge6N+1\\).",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "independent_set",
+          "degree"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-large-white-neighborhood",
+      "title": "Большая белая звезда с разреженным чёрным графом",
+      "text": "Белла сначала полностью разыгрывает звезду с центром \\(z\\). Среди не менее \\(3N\\) белых соседей чёрный граф имеет не больше одного ребра на вершину в среднем и содержит независимое множество размера хотя бы \\(N\\).",
+      "tags": [
+        "goal_proof",
+        "double_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-simulate-extra-black-edge",
+      "title": "Дополнение реального чёрного хода воображаемым",
+      "text": "На найденных \\(N\\) вершинах Белла запускает известную стратегию игры \\(1:2\\), считая реальный чёрный ход первым, а недостающий второй чёрный ход выбирая мысленно.",
+      "tags": [
+        "goal_strategy_game",
+        "coloring"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-white-star-reduction",
+      "title": "Белая звезда, независимое множество и симуляция",
+      "text": "Выберем вершину \\(z\\). На первом этапе Белла всякий раз красит свободное ребро из \\(z\\) и продолжает, пока звезда не будет полностью окрашена. Из \\(M-1\\ge6N\\) рёбер звезды Чингиз за каждый раунд отнимает не больше одного, поэтому Белла получает множество \\(S\\) не менее чем из \\(3N\\) белых соседей \\(z\\). Обозначим \\(|S|=s\\). Во время этого этапа Чингиз сделал не больше \\(s\\) ходов, следовательно, в чёрном графе, порождённом \\(S\\), не больше \\(s\\) рёбер.\n\nДокажем вспомогательную оценку: в графе на \\(s\\) вершинах с \\(e\\) рёбрами существует независимое множество размера не меньше\n\\[\n\\frac{s^2}{2e+s}. \\tag{1}\n\\]\nВозьмём случайный порядок вершин и выберем вершину, если она стоит раньше всех своих соседей. Две смежные вершины не могут быть выбраны одновременно, поэтому выбранное множество независимо. Вершина степени \\(d\\) выбирается с вероятностью \\(1/(d+1)\\); среднее число выбранных вершин равно \\(\\sum_v1/(d(v)+1)\\). По неравенству Коши\n\\[\n\\left(\\sum_v(d(v)+1)\\right)\\left(\\sum_v\\frac1{d(v)+1}\\right)\\ge s^2.\n\\]\nПервая сумма равна \\(2e+s\\), откуда математическое ожидание не меньше правой части (1). Значит, хотя бы для одного порядка выбранное независимое множество имеет такой размер.\n\nВ нашем случае \\(e\\le s\\), поэтому внутри \\(S\\) есть независимое в чёрном графе множество размера не меньше \\(s^2/(3s)=s/3\\ge N\\). Выберем в нём ровно \\(N\\) вершин и обозначим их через \\(X\\). Между вершинами \\(X\\) пока нет чёрных рёбер.\n\nНа втором этапе Белла разыгрывает на \\(X\\) свою выигрышную стратегию из игры \\(1:2\\). Настоящий Чингиз за раунд красит одно ребро. Если оно лежит в \\(X\\) и ещё свободно воображаемо, Белла считает его первым из двух воображаемых чёрных рёбер. Если оно вне \\(X\\) или было мысленно окрашено раньше, настоящий ход считается пропуском во внутренней игре. После этого Белла мысленно красит произвольные свободные рёбра внутри \\(X\\), пока не наберутся два чёрных хода воображаемого раунда или пока доска не закончится.\n\nКаждое настоящее чёрное ребро внутри \\(X\\) учтено воображаемой игрой. Поэтому белое ребро, предписанное исходной выигрышной стратегией, свободно и в настоящей партии: воображаемая игра может иметь дополнительные чёрные рёбра, но не пропускает реальных. Следуя стратегии, Белла получает белый \\(K_r\\) внутри \\(X\\). Все его вершины с первого этапа бело соединены с \\(z\\), так что вместе с \\(z\\) они образуют белый \\(K_{r+1}\\).",
+      "idea_ids": [
+        "idea-large-white-neighborhood",
+        "idea-simulate-extra-black-edge"
+      ],
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "standard_idea_ids": [],
+      "definition_ids": [
+        "complete_graph",
+        "clique",
+        "independent_set",
+        "degree"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_medium",
+    "local_score": 6,
+    "comment": "В официальном PDF проекта указана сложность 3/5.",
+    "status": "source_verified"
+  },
+  "tags": [
+    "coloring",
+    "goal_proof",
+    "goal_strategy_game",
+    "double_counting"
+  ],
+  "sources": [
+    {
+      "source_id": "src-lktg-2026-project2-page",
+      "role": "official_project_page",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-lktg-2026-project2-problems-ru",
+      "role": "official_problem_statement",
+      "status": "source_verified"
+    },
+    {
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "role": "official_solution",
+      "status": "source_verified"
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Условие сверено со страницей 5 официального PDF; решение — со страницей 30 PDF решений.",
+      "Автор «ChatGPT, 2026» указан непосредственно в заголовке задачи в PDF и перенесён без дополнений.",
+      "Оценка независимого множества доказана внутри решения случайным порядком и не оставлена внешней ссылкой."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "label": "официальное полное решение",
+      "status": "ai_checked",
+      "confidence": 0.98,
+      "basis": "официальный PDF решений, русская редакция 7",
+      "notes": "Полностью перенесены оба этапа стратегии и доказательство независимого множества нужного размера."
+    }
+  }
+}

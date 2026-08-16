@@ -1,0 +1,47 @@
+{
+  "id": "lktg-2026-project2-problem24-white-clique-black-degrees",
+  "title": "Одна стратегия против белой клики и малых чёрных степеней, ЛКТГ 2026 №24",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "game"]},
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": ["complete_graph", "white_cliques", "black_vertex_degrees"],
+    "methods": ["multi_type_weighted_potential", "greedy_maximum_danger_strategy", "parameter_perturbation"],
+    "transformations": ["cliques_and_stars_to_two_target_types"],
+    "goal": ["simultaneous_clique_and_degree_bounds"],
+    "auxiliary_graph_type": ["complete_graph"],
+    "invariants": ["nonincreasing_combined_potential"],
+    "keywords": ["lktg_2026_project2_problem24", "simultaneous_weight_strategy", "biased_edge_coloring_game"],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original", "title": "Белая клика и чёрные степени",
+      "text": "В игре \\(p:1\\) каждого раунда Чингиз первым красит \\(p\\) свободных рёбер чёрным, а затем Белла красит одно свободное ребро белым. Если свободных рёбер не хватает, игрок красит все оставшиеся. Через \\(B\\) и \\(W\\) обозначим итоговые графы. а) Докажите, что для каждого \\(\\varepsilon>0\\) при всех достаточно больших \\(n\\) Чингиз в игре \\(1:1\\) может одной стратегией одновременно гарантировать \\[\\omega(W)\\le\\lceil2\\log_2n\\rceil+1\\quad\\text{и}\\quad\\delta(B)\\ge\\left(\\frac12-\\varepsilon\\right)(n-1).\\] б) Докажите, что для любых фиксированных \\(p\\ge1\\) и \\(\\varepsilon>0\\) при всех достаточно больших \\(n\\) Чингиз в игре \\(p:1\\) может одной стратегией одновременно гарантировать \\[\\omega(W)\\le\\lceil2\\log_{p+1}n\\rceil+1\\quad\\text{и}\\quad\\delta(B)\\ge\\left(\\frac{p}{p+1}-\\varepsilon\\right)(n-1).\\]",
+      "source_id": "src-lktg-2026-project2-problems-ru", "status": "source_verified", "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["complete_graph", "clique", "degree"]
+    }],
+    "graph_theory": [], "graph_hint_reformulations": [], "olympiad_reformulations": []
+  },
+  "ideas": [{"id": "idea-combined-clique-star-potential", "title": "Единый потенциал кликовых целей и звёзд", "text": "В один потенциал складываются веса живых \\(k\\)-клик и экспоненциальные веса звёзд вершин. Для каждого типа отдельно проверяется одно и то же условие баланса между белым ростом и чёрным падением.", "tags": ["potential_function", "degree_counting"], "status": "ai_checked"}],
+  "solutions": [{
+    "id": "sol-official-combined-potential", "title": "Многотипная весовая лемма и две одновременные оценки",
+    "text": "Докажем пункт б); пункт а) получится при \\(p=1\\). Сначала докажем весовую лемму для нескольких типов целей в игре \\(p:1\\). Пусть чёрное ребро цели типа \\(i\\) умножает её вес на \\(\\alpha_i\\in[0,1)\\), а белое — на \\(\\beta_i>1\\), причём \\(\\beta_i-1\\le p(1-\\alpha_i)\\). Потенциал — сумма весов всех целей, а опасность свободного ребра равна \\(D(e)=\\sum_{i,A\\ni e}(1-\\alpha_i)w_A\\). Чингиз последовательно выбирает \\(p\\) рёбер наибольшей текущей опасности. Чёрная окраска уменьшает потенциал ровно на опасность ребра и не увеличивает другие опасности. Если после его хода максимальная опасность равна \\(D\\), потеря потенциала не меньше \\(pD\\). Следующее белое ребро увеличивает потенциал не более чем на \\(\\sum_{i,A\\ni e}(\\beta_i-1)w_A\\le pD(e)\\le pD\\). Значит, потенциал не растёт; неполный последний раунд оценки не портит.\n\nПоложим \\(a=p+1\\), \\(t=\\lceil2\\log_a n\\rceil\\), \\(k=t+2\\). Первый тип целей — все \\(k\\)-вершинные множества. Пока такая цель не содержит чёрного ребра и в ней остаётся \\(r\\) свободных рёбер, её вес равен \\(a^{-r}\\); после чёрного ребра вес становится нулём. Здесь \\(\\alpha=0\\), \\(\\beta=a\\), и \\(\\beta-1=p(1-\\alpha)\\).\n\nВторой тип целей — звёзды вершин. Выберем \\(c>1/p\\), а затем \\(s>1\\) достаточно близким к \\(1\\), чтобы \\(s-1\\le p(1-s^{-c})\\). Звезде вершины \\(v\\) дадим вес \\(n^{-2}s^{d_W(v)-c d_B(v)}\\). Для этих целей \\(\\alpha=s^{-c}\\), \\(\\beta=s\\), так что условие леммы также выполнено.\n\nНачальный вес кликовых целей не превосходит\n\\[\n{n\\choose k}a^{-{k\\choose2}}\\le n^ka^{-k(k-1)/2}\\le\\frac1{an}.\n\\]\nПоследнее неравенство следует из \\(k-1\\ge2\\log_a n+1\\). Начальный вес всех звёзд равен \\(n\\cdot n^{-2}=1/n\\). Поэтому начальный потенциал не больше \\((1+1/a)/n<1\\) и по лемме не растёт.\n\nПолностью белая \\(k\\)-клика имела бы вес \\(1\\), что невозможно. Следовательно,\n\\[\n\\omega(W)\\le k-1=\\lceil2\\log_{p+1}n\\rceil+1.\n\\]\nДля каждой вершины в конце\n\\[\n n^{-2}s^{n-1-(c+1)d_B(v)}\\le\\frac{1+1/a}{n},\n\\]\nоткуда\n\\[\n d_B(v)\\ge\\frac{n-1-\\log_s((1+1/a)n)}{c+1}.\\tag{1}\n\\]\nВыберем \\(c\\) достаточно близко справа к \\(1/p\\), чтобы \\(1/(c+1)>p/(p+1)-\\varepsilon/2\\), а затем возьмём \\(n\\) настолько большим, чтобы логарифмический член в (1), делённый на \\((c+1)(n-1)\\), был меньше \\(\\varepsilon/2\\). Тогда \\(d_B(v)\\ge(p/(p+1)-\\varepsilon)(n-1)\\) для каждой вершины. Обе оценки получены одной и той же стратегией максимальной опасности. При \\(p=1\\) получаем пункт а).",
+    "idea_ids": ["idea-combined-clique-star-potential"], "standard_idea_ids": [], "definition_ids": ["complete_graph", "clique", "degree"],
+    "source_id": "src-lktg-2026-project2-solutions-ru", "status": "ai_checked"
+  }],
+  "difficulty": {"main": "national_final_hard", "local_score": 8, "comment": "Подпункты имеют сложность 3/5 и 4/5; нужно совместить два потенциала в одной стратегии.", "status": "ai_checked"},
+  "tags": ["extremal_graph_theory", "coloring", "potential_function", "degree_counting", "goal_bound", "goal_strategy_game"],
+  "properties": {"central_method": {"value": ["multi_type_weighted_potential", "maximum_danger_greedy_strategy"], "status": "ai_checked"}},
+  "sources": [
+    {"source_id": "src-lktg-2026-project2-page", "role": "official_project_page", "status": "source_verified", "note": "Официальная страница проекта ЛКТГ 2026."},
+    {"source_id": "src-lktg-2026-project2-problems-ru", "role": "problem_statement_official", "statement_ids": ["stmt-original"], "status": "source_verified", "note": "Официальный PDF называет задачу составительской."},
+    {"source_id": "src-lktg-2026-project2-solutions-ru", "role": "official_solutions", "solution_ids": ["sol-official-combined-potential"], "status": "source_verified", "note": "Официальное решение через весовую лемму III."}
+  ],
+  "editorial": {
+    "created_by": "ai", "created_at": "2026-08-15", "updated_at": "2026-08-15", "review_status": "ai_checked", "public_ready": true,
+    "notes": ["Условие и решение сверены с официальными PDF редакции 7.", "Индивидуальный автор составительской задачи в PDF не указан.", "Многотипная весовая лемма для нужного случая полностью доказана внутри решения."],
+    "graph_theory_duplicate_removed": true, "relations_status": "deep_done",
+    "solution_classification": {"type": "official_complete_or_near_complete", "status": "ai_checked", "confidence": 0.99, "basis": "официальный PDF содержит полное доказательство", "notes": "Оба подпункта полностью покрыты общей стратегией.", "label": "официальное полное"}
+  }
+}

@@ -102,7 +102,10 @@
       "status": "ai_checked",
       "definition_ids": [
         "connected_graph",
-        "directed_graph"
+        "directed_graph",
+        "strongly_connected_digraph",
+        "bridge",
+        "cycle"
       ],
       "repair_status": "high_reasoning_repaired_2026_05_07",
       "review_notes": "Аудит высокой сложности 2026-05-07: сжатый эскиз через разрез заменён конструктивным доказательством расширения по уху для графов без мостов; случай клетчатого квадрата следует сразу."
@@ -116,7 +119,8 @@
   },
   "tags": [
     "graph_model",
-    "connectivity"
+    "connectivity",
+    "graph_cut"
   ],
   "sources": [
     {
@@ -129,19 +133,19 @@
     "created_by": "ai",
     "created_at": "2026-05-03",
     "review_status": "ai_checked",
-    "public_ready": false,
+    "public_ready": true,
     "notes": [
       "Официальное решение в локальном PDF прямо замечает обобщение на произвольный граф без мостов.",
       "2026-05-07 аудит высокой сложности: решение развёрнуто до самодостаточного уровня; ключевые скрытые переходы явно проверены."
     ],
-    "relations_status": "not_started",
+    "relations_status": "base_done",
     "solution_classification": {
-      "type": "complete_ai_checked",
+      "type": "official_plan_completed_by_ai",
       "status": "ai_checked",
-      "confidence": 0.9,
-      "basis": "официальный источник и признак сжатого/эскизного решения",
+      "confidence": 0.97,
+      "basis": "официальный план развёрнут ИИ и проверен high-reasoning проходом 2026-05-07",
       "notes": "Аудит высокой сложности 2026-05-07: сжатый эскиз через разрез заменён конструктивным доказательством расширения по уху для графов без мостов; случай клетчатого квадрата следует сразу.",
-      "label": "официальный план, нужна доработка"
+      "label": "официальный план, доведённый ИИ"
     }
   }
 }

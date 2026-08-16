@@ -1,0 +1,47 @@
+{
+  "id": "lktg-2026-project2-problem21-black-minimum-degree",
+  "title": "Почти пропорциональная нижняя оценка чёрной степени каждой вершины, ЛКТГ 2026 №21",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "game"]},
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": ["complete_graph", "black_graph", "vertex_stars"],
+    "methods": ["weighted_potential", "greedy_maximum_danger_strategy", "parameter_perturbation"],
+    "transformations": ["vertex_degree_to_star_target"],
+    "goal": ["minimum_degree_lower_bound"],
+    "auxiliary_graph_type": ["complete_graph"],
+    "invariants": ["nonincreasing_total_exponential_weight"],
+    "keywords": ["lktg_2026_project2_problem21", "black_minimum_degree", "biased_edge_coloring_game"],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original", "title": "Чёрная степень каждой вершины",
+      "text": "Пусть \\(p,q\\ge1\\) — целые числа. Игра идёт по раундам на рёбрах \\(K_n\\): сначала Чингиз красит \\(p\\) свободных рёбер чёрным, затем Белла красит \\(q\\) свободных рёбер белым; при нехватке свободных рёбер игрок красит все оставшиеся. Через \\(B\\) обозначим итоговый граф чёрных рёбер, а через \\(\\delta(B)\\) — его минимальную степень. а) Докажите, что для каждого \\(\\varepsilon>0\\) при всех достаточно больших \\(n\\) Чингиз в игре \\(1:1\\) может гарантировать \\[\\delta(B)\\ge\\left(\\frac12-\\varepsilon\\right)(n-1).\\] б) Докажите, что для любых фиксированных \\(p,q\\ge1\\) и \\(\\varepsilon>0\\) при всех достаточно больших \\(n\\) Чингиз может гарантировать \\[\\delta(B)\\ge\\left(\\frac{p}{p+q}-\\varepsilon\\right)(n-1).\\]",
+      "source_id": "src-lktg-2026-project2-problems-ru", "status": "source_verified",
+      "self_contained": {"status": "ai_checked"}, "definition_ids": ["complete_graph", "degree"]
+    }],
+    "graph_theory": [], "graph_hint_reformulations": [], "olympiad_reformulations": []
+  },
+  "ideas": [{"id": "idea-star-exponential-weight", "title": "Экспоненциальные веса звёзд вершин", "text": "Звезде вершины присваивается вес \\(s^{d_W(v)-c d_B(v)}\\). При \\(c>q/p\\) можно выбрать \\(s>1\\) так, что жадный чёрный ход компенсирует рост потенциала от \\(q\\) белых рёбер.", "tags": ["potential_function", "degree_counting"], "status": "ai_checked"}],
+  "solutions": [{
+    "id": "sol-official-star-weight-potential", "title": "Весовая лемма для звёзд вершин",
+    "text": "Докажем общий пункт б); пункт а) получится при \\(p=q=1\\). Выберем число \\(c>q/p\\), а затем \\(s>1\\) настолько близким к \\(1\\), чтобы\n\\[\ns^q-1\\le p(1-s^{-c}).\\tag{1}\n\\]\nТакое \\(s\\) существует: после деления на \\(s-1\\) левая и правая части при \\(s\\downarrow1\\) стремятся соответственно к \\(q\\) и \\(pc>q\\).\n\nДля каждой вершины \\(v\\) рассмотрим цель, состоящую из всех \\(n-1\\) инцидентных ей рёбер. Если к настоящему моменту среди этих рёбер \\(w_v\\) белых и \\(b_v\\) чёрных, дадим цели вес\n\\[\ns^{w_v-cb_v}.\n\\]\nПотенциал — сумма весов всех \\(n\\) целей. Опасностью свободного ребра \\(e\\) назовём\n\\[\nD(e)=(1-s^{-c})\\sum_{v:\\,e\\text{ входит в звезду }v}s^{w_v-cb_v}.\n\\]\nОкраска \\(e\\) в чёрный цвет умножает веса содержащих его целей на \\(s^{-c}\\), поэтому уменьшает потенциал ровно на \\(D(e)\\). Чингиз последовательно выбирает \\(p\\) рёбер наибольшей текущей опасности. Чёрные рёбра могут только уменьшать опасности. Если после его хода наибольшая опасность свободного ребра равна \\(D\\), то каждое выбранное ребро в момент выбора имело опасность не меньше \\(D\\), и потенциал уменьшился не менее чем на \\(pD\\).\n\nБелое ребро умножает соответствующие веса на \\(s\\). Перед последовательными выборами Беллы опасность любого свободного ребра не превосходит \\(D,sD,\\ldots,s^{q-1}D\\). Поэтому прирост потенциала не больше\n\\[\n\\frac{s-1}{1-s^{-c}}D(1+s+\\cdots+s^{q-1})=\\frac{s^q-1}{1-s^{-c}}D\\le pD\n\\]\nпо (1). Таким образом, за полный раунд потенциал не растёт. Если последний ход Чингиза неполон, он красит все оставшиеся рёбра и Белла уже не ходит; неполный ход Беллы лишь уменьшает прирост.\n\nНачальный потенциал равен \\(n\\). Поэтому в конце вес каждой отдельной звезды не превосходит \\(n\\):\n\\[\ns^{d_W(v)-c d_B(v)}\\le n.\n\\]\nВсе рёбра уже окрашены, так что \\(d_W(v)+d_B(v)=n-1\\). Следовательно,\n\\[\nd_B(v)\\ge\\frac{n-1-\\log_s n}{c+1}.\\tag{2}\n\\]\nТеперь выберем \\(c>q/p\\) настолько близко к \\(q/p\\), чтобы\n\\[\n\\frac1{c+1}>\\frac{p}{p+q}-\\frac{\\varepsilon}{2}.\n\\]\nПосле этого зафиксируем соответствующее \\(s\\) и возьмём \\(n\\) настолько большим, чтобы \\(\\log_s n/((c+1)(n-1))<\\varepsilon/2\\). Из (2) для каждой вершины получаем требуемое\n\\[\nd_B(v)\\ge\\left(\\frac{p}{p+q}-\\varepsilon\\right)(n-1).\n\\]\nПри \\(p=q=1\\) это даёт пункт а).",
+    "idea_ids": ["idea-star-exponential-weight"], "standard_idea_ids": [], "definition_ids": ["complete_graph", "degree"],
+    "source_id": "src-lktg-2026-project2-solutions-ru", "status": "ai_checked"
+  }],
+  "difficulty": {"main": "national_final_hard", "local_score": 8, "comment": "Подпункты имеют сложность 3/5 и 4/5; ключевой шаг — настройка экспоненциального потенциала под смещение \\(p:q\\).", "status": "ai_checked"},
+  "tags": ["extremal_graph_theory", "coloring", "potential_function", "degree_counting", "goal_bound", "goal_strategy_game"],
+  "properties": {"central_method": {"value": ["exponential_star_weight", "maximum_danger_greedy_strategy"], "status": "ai_checked"}},
+  "sources": [
+    {"source_id": "src-lktg-2026-project2-page", "role": "official_project_page", "status": "source_verified", "note": "Официальная страница проекта ЛКТГ 2026."},
+    {"source_id": "src-lktg-2026-project2-problems-ru", "role": "problem_statement_official", "statement_ids": ["stmt-original"], "status": "source_verified", "note": "Официальный PDF указывает весовой метод Эрдёша–Селфриджа и составительскую задачу."},
+    {"source_id": "src-lktg-2026-project2-solutions-ru", "role": "official_solutions", "solution_ids": ["sol-official-star-weight-potential"], "status": "source_verified", "note": "Официальное решение через весовую лемму II."}
+  ],
+  "editorial": {
+    "created_by": "ai", "created_at": "2026-08-15", "updated_at": "2026-08-15", "review_status": "ai_checked", "public_ready": true,
+    "notes": ["Условие и решение сверены с официальными PDF редакции 7.", "Индивидуальный автор составительской задачи в PDF не указан.", "Общая весовая лемма доказана внутри карточки, а не оставлена внешней ссылкой."],
+    "graph_theory_duplicate_removed": true, "relations_status": "deep_done",
+    "solution_classification": {"type": "official_complete_or_near_complete", "status": "ai_checked", "confidence": 0.99, "basis": "официальный PDF содержит полное доказательство", "notes": "Оба подпункта следуют из приведённого общего доказательства.", "label": "официальное полное"}
+  }
+}

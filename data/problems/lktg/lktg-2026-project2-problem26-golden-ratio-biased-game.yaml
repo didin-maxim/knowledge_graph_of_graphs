@@ -1,0 +1,240 @@
+{
+  "id": "lktg-2026-project2-problem26-golden-ratio-biased-game",
+  "title": "Смещённая игра в клики: общая теорема и количественный случай 1:2",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Максим Дидин",
+      "note": "В официальном PDF источник указан как «М. Дидин, М. Пименов, 2026».",
+      "status": "source_verified"
+    },
+    {
+      "name": "Марк Пименов",
+      "note": "В официальном PDF источник указан как «М. Дидин, М. Пименов, 2026».",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "black_and_white_clique_numbers",
+      "biased_edge_coloring_game",
+      "white_clique_number",
+      "black_density_on_large_subsets"
+    ],
+    "methods": [
+      "multi_type_weighted_potential",
+      "continuity_parameter_choice",
+      "nested_neighborhood_clique",
+      "greedy_maximum_danger_strategy"
+    ],
+    "transformations": [
+      "clique_avoidance_and_density_to_two_target_types",
+      "density_to_clique",
+      "cliques_and_large_subsets_to_two_target_types",
+      "density_to_clique_via_nested_neighborhoods"
+    ],
+    "goal": [
+      "strict_clique_number_comparison",
+      "simultaneous_bounds",
+      "compare_black_and_white_clique_numbers"
+    ],
+    "auxiliary_graph_type": [
+      "induced_subgraphs"
+    ],
+    "invariants": [
+      "combined_potential_below_one"
+    ],
+    "keywords": [
+      "lktg_2026_project2_problem26",
+      "golden_ratio",
+      "biased_erdos_game",
+      "lktg_2026_project2_problem25",
+      "erdos_game",
+      "black_clique_larger_than_white"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Игра \\(p:q\\) и золотое сечение",
+        "text": "Пусть \\(\\varphi=(1+\\sqrt5)/2\\). Зафиксируем целые \\(p,q\\ge1\\), для которых \\[p>\\varphi,\\qquad p+1>\\left(1+\\frac qp\\right)^{2q}.\\] Белла и Чингиз играют на рёбрах \\(K_n\\). Белла ходит первой и каждый раз красит \\(q\\) свободных рёбер белым; после каждого её хода Чингиз красит \\(p\\) свободных рёбер чёрным. Если перед ходом игрока свободных рёбер меньше, чем ему разрешено покрасить, он красит все оставшиеся. Через \\(B\\) и \\(W\\) обозначим итоговые графы. Докажите, что при всех достаточно больших \\(n\\) Чингиз может гарантировать \\(\\omega(B)>\\omega(W)\\).",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique"
+        ],
+        "distinct_from": [
+          "stmt-two-to-one-quantitative"
+        ]
+      },
+      {
+        "id": "stmt-two-to-one-quantitative",
+        "title": "Количественная версия для игры 1:2",
+        "text": "Зафиксируем число \\(0<\\beta<2/3\\). Белла и Чингиз играют на рёбрах \\(K_n\\). Белла ходит первой и каждый раз красит одно свободное ребро белым; после каждого её хода Чингиз красит два свободных ребра чёрным. Если перед ходом Чингиза свободных рёбер меньше двух, он красит все оставшиеся. Через \\(B\\) и \\(W\\) обозначим итоговые графы. а) Докажите, что существуют постоянная \\(C=C(\\beta)\\) и число \\(n_0\\), такие, что при каждом \\(n\\ge n_0\\) Чингиз может одной стратегией одновременно гарантировать \\[\\omega(W)\\le\\lceil2\\log_3n\\rceil+1\\] и \\[e_B(U)\\ge\\beta{|U|\\choose2}\\] для каждого множества \\(U\\), содержащего не менее \\(\\lceil C\\log n\\rceil\\) вершин. б) Выведите, что при всех достаточно больших \\(n\\) выполнено \\(\\omega(B)>\\omega(W)\\).",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique",
+          "induced_subgraph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "graph_hint_reformulations": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-rho-coefficient-gap",
+      "title": "Плотность \\(\\rho\\) выбирается с запасом по главным коэффициентам",
+      "text": "Условие на \\(p,q\\) позволяет выбрать \\(\\rho<p/(p+q)\\), для которого гарантируемая чёрная клика растёт быстрее по \\(\\log n\\), чем верхняя оценка белой клики.",
+      "tags": [
+        "extremal_graph_theory",
+        "degree_counting"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-q-white-multitype-potential",
+      "title": "Многотипный потенциал для \\(q\\) белых рёбер",
+      "text": "Вклад цели, задетой \\(t\\) белыми рёбрами, оценивается по выпуклости множителя \\(\\beta^t-1\\), что позволяет одним пакетным неравенством контролировать весь белый ход.",
+      "tags": [
+        "potential_function",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-two-type-potential-after-first-white",
+      "title": "Два типа целей после вынесенного первого белого хода",
+      "text": "После первого хода Беллы общий вес живых \\(k\\)-клик и всех больших множеств всё ещё меньше единицы. Затем одна стратегия максимальной опасности одновременно сохраняет обе оценки.",
+      "tags": [
+        "potential_function",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-density-to-clique",
+      "title": "Плотность превращается в длинную цепочку вложенных окрестностей",
+      "text": "В каждом достаточно большом индуцированном подграфе выбирается вершина степени не меньше средней, после чего множество заменяется её окрестностью. Выбранные вершины образуют клику, а размеры множеств убывают геометрически.",
+      "tags": [
+        "degree_counting",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-golden-ratio-game",
+      "title": "Общая многотипная стратегия и количественная версия 1:2",
+      "text": "Положим \\(A=p+1\\). Второе условие задачи эквивалентно неравенству \\(1/\\log(1+q/p)>2q/\\log A\\). По непрерывности выберем \\(\\rho<p/(p+q)\\) настолько близко к \\(p/(p+q)\\), чтобы\n\\[\n\\frac1{\\log(1/\\rho)}>\\frac{2q}{\\log A}.\\tag{1}\n\\]\nТак как \\(\\rho<p/(p+q)\\), имеем \\(q/p<1/\\rho-1\\). Выберем \\(c\\) между этими числами, затем \\(s>1\\) настолько близким к \\(1\\), чтобы\n\\[\ns^q-1\\le p(1-s^{-c}).\\tag{2}\n\\]\nЭто возможно, поскольку после деления на \\(s-1\\) пределы частей при \\(s\\downarrow1\\) равны \\(q\\) и \\(pc>q\\). Положим \\(\\Delta=1/(c+1)-\\rho>0\\), выберем \\(C\\) так, чтобы \\(8/((c+1)C\\log s)<\\Delta\\), и обозначим \\(k=\\lceil2q\\log_A n\\rceil+2\\), \\(m=\\lceil C\\log n\\rceil\\).\n\nДокажем нужную многотипную весовую лемму. Пусть чёрное ребро умножает вес цели типа \\(i\\) на \\(\\alpha_i\\in[0,1)\\), белое — на \\(\\beta_i>1\\), причём\n\\[\n\\beta_i^q-1\\le p(1-\\alpha_i).\\tag{3}\n\\]\nОпасность свободного ребра равна \\(D(e)=\\sum_{i,A\\ni e}(1-\\alpha_i)w_A\\). Чингиз последовательно выбирает \\(p\\) рёбер максимальной текущей опасности. Если после них максимальная опасность равна \\(D\\), потеря потенциала не меньше \\(pD\\).\n\nОценим следующий белый ход сразу. Если цель \\(A\\) типа \\(i\\) содержала \\(t\\) из выбранных Беллой рёбер, её прирост равен \\(w_A(\\beta_i^t-1)\\), где \\(w_A\\) — вес до хода Беллы. По выпуклости функции \\(x\\mapsto\\beta_i^x-1\\) на \\([0,q]\\)\n\\[\n\\beta_i^t-1\\le\\frac tq(\\beta_i^q-1)\\le\\frac{pt}{q}(1-\\alpha_i).\n\\]\nСуммируя по целям и затем по белым рёбрам, получаем прирост не больше \\((p/q)\\sum_eD(e)\\le pD\\), потому что до белого хода опасность каждого оставшегося ребра не превосходит \\(D\\), а Белла выбирает не более \\(q\\) рёбер. Следовательно, полный раунд не увеличивает потенциал; неполный последний раунд также безопасен.\n\nПрименим лемму к двум типам целей. Для каждого \\(k\\)-множества берём все его внутренние рёбра. Пока цель жива и имеет \\(r\\) свободных рёбер, её вес равен \\(A^{-r/q}\\); чёрное ребро умножает вес на \\(0\\), белое — на \\(A^{1/q}\\). Условие (3) здесь обращается в равенство \\((A^{1/q})^q-1=p\\). Для каждого \\(U\\), \\(|U|=u\\ge m\\), берём вес \\(n^{-2u}s^{e_W(U)-ce_B(U)}\\); множители равны \\(s^{-c}\\) и \\(s\\), а (3) совпадает с (2).\n\nБелла ходит первой. До её первых \\(q\\) белых рёбер сумма кликовых весов не превосходит\n\\[\n{n\\choose k}A^{-{k\\choose2}/q}\\le n^kA^{-k(k-1)/(2q)}\\le\\frac{A^{-1/q}}n,\n\\]\nа сумма весов целей второго типа не превосходит \\(\\sum_{u=m}^n{n\\choose u}n^{-2u}\\le1/(n-1)\\). Первый ход Беллы умножает эти суммы не более чем на \\(A\\) и \\(s^q\\). Поэтому после него общий потенциал не больше \\(A^{1-1/q}/n+s^q/(n-1)<1\\) при достаточно большом \\(n\\). Далее он остаётся меньше единицы.\n\nПолностью белая \\(k\\)-клика имела бы вес \\(1\\), следовательно,\n\\[\n\\omega(W)\\le k-1=\\lceil2q\\log_{p+1}n\\rceil+1.\\tag{4}\n\\]\nДля каждого \\(U\\), \\(u\\ge m\\), вес второй цели меньше \\(1\\), поэтому\n\\[\n\\frac{e_B(U)}{{u\\choose2}}>\\frac1{c+1}-\\frac{4\\log_s n}{(c+1)(u-1)}>\\rho\\tag{5}\n\\]\nпри достаточно большом \\(n\\), по выбору \\(C\\) и \\(\\Delta\\).\n\nПостроим чёрную клику. Начиная с \\(U_0=V\\), пока \\(|U_i|\\ge m\\), выбираем в \\(B[U_i]\\) вершину степени не меньше \\(\\rho(|U_i|-1)\\) и заменяем \\(U_i\\) множеством её соседей. Выбранные вершины попарно смежны. Если \\(r_i=|U_i|\\) и \\(a_0=\\rho/(1-\\rho)\\), то \\(r_{i+1}+a_0\\ge\\rho(r_i+a_0)\\). Поэтому\n\\[\n\\omega(B)\\ge\\left\\lfloor\\frac{\\log((n+a_0)/(m+a_0))}{\\log(1/\\rho)}\\right\\rfloor=\\frac{\\log n-\\log\\log n-O(1)}{\\log(1/\\rho)}.\\tag{6}\n\\]\nПо (1) коэффициент при \\(\\log n\\) в (6) строго больше \\(2q/\\log(p+1)\\), тогда как (4) имеет именно этот главный коэффициент. Запас линейного по \\(\\log n\\) члена сильнее потери \\(O(\\log\\log n)\\), поэтому для всех достаточно больших \\(n\\) имеем \\(\\omega(B)>\\omega(W)\\).\n\nНаконец, первое условие задачи формально следует из второго: \\((1+q/p)^{2q}\\ge(1+1/p)^2\\), так что \\(p+1>(1+1/p)^2\\). После умножения на \\(p^2\\) это равносильно \\((p+1)(p^2-p-1)>0\\), то есть \\(p>\\varphi\\). Золотое сечение является точной границей этого следствия при \\(q=1\\).\n\nКоличественная версия для игры 1:2.\n\nИспользуем многотипную весовую стратегию из общей части этого решения при \\(p=2\\), \\(q=1\\). Пусть заранее задано \\(0<\\beta<2/3\\). Выберем число \\(\\rho\\) так, чтобы\n\\[\\max\\{\\beta,1/\\sqrt3\\}<\\rho<2/3.\\]\nТогда \\(1/\\log(1/\\rho)>2/\\log3\\), поэтому выбор параметров \\(c,s,C\\) из общего доказательства одновременно запрещает белую клику размера \\(\\lceil2\\log_3n\\rceil+2\\) и обеспечивает \\(e_B(U)\\ge\\rho{|U|\\choose2}>\\beta{|U|\\choose2}\\) для каждого \\(|U|\\ge\\lceil C\\log n\\rceil\\). Это доказывает пункт а количественной формулировки.\n\nДля пункта б применяем построение вложенных чёрных окрестностей из заключительной части общего доказательства. Оно даёт чёрную клику размера не меньше \\((\\log n-\\log\\log n-O(1))/\\log(1/\\rho)\\). Выбор \\(\\rho>1/\\sqrt3\\) делает главный коэффициент строго больше \\(2/\\log3\\), тогда как белая клика имеет размер не больше \\(2\\log_3n+O(1)\\). Следовательно, при всех достаточно больших \\(n\\) выполнено \\(\\omega(B)>\\omega(W)\\).",
+      "idea_ids": [
+        "idea-rho-coefficient-gap",
+        "idea-q-white-multitype-potential"
+      ],
+      "standard_idea_ids": [],
+      "definition_ids": [
+        "complete_graph",
+        "clique",
+        "degree",
+        "induced_subgraph",
+        "neighborhood"
+      ],
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 10,
+    "comment": "Сложность 5/5; требуется многотипная весовая лемма для пакетного белого хода и точное сравнение асимптотик двух клик.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "coloring",
+    "ramsey_theory",
+    "potential_function",
+    "degree_counting",
+    "goal_strategy_game",
+    "goal_bound"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "multi_type_weighted_potential",
+        "coefficient_gap",
+        "nested_neighborhood_clique"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-lktg-2026-project2-page",
+      "role": "official_project_page",
+      "status": "source_verified",
+      "note": "Официальная страница проекта ЛКТГ 2026."
+    },
+    {
+      "source_id": "src-lktg-2026-project2-problems-ru",
+      "role": "problem_statement_official",
+      "statement_ids": [
+        "stmt-original",
+        "stmt-two-to-one-quantitative"
+      ],
+      "status": "source_verified",
+      "note": "Официальный PDF указывает М. Дидина и М. Пименова, 2026, и называет задачу составительским обобщением."
+    },
+    {
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "role": "official_solutions",
+      "solution_ids": [
+        "sol-official-golden-ratio-game"
+      ],
+      "status": "source_verified",
+      "note": "Официальное полное решение через весовую лемму III."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "updated_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Количественная задача для квот 1:2 является прямой подстановкой p=2, q=1 в общую многотипную стратегию и хранится в этой карточке.",
+      "Отдельно выписан только выбор параметра rho и вывод требуемых количественных оценок."
+    ],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "basis": "официальный PDF содержит полное доказательство",
+      "notes": "Решение самодостаточно; ссылки на задачи 24–25 не требуются.",
+      "label": "официальное полное"
+    }
+  }
+}

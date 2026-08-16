@@ -1,0 +1,150 @@
+{
+  "id": "sim-k6-no-draw",
+  "title": "Игра SIM на \\(K_6\\): ничья невозможна",
+  "kind": {
+    "primary": "classical_problem",
+    "secondary": [
+      "game",
+      "graph_in_statement"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Gustavus J. Simmons",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "two_edge_coloring",
+      "triangle",
+      "avoidance_game"
+    ],
+    "methods": [
+      "pigeonhole_principle",
+      "ramsey_argument"
+    ],
+    "transformations": [
+      "completed_play_to_two_coloring"
+    ],
+    "goal": [
+      "exclude_draw"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "absence_of_own_monochromatic_triangle_before_loss"
+    ],
+    "keywords": [
+      "sim_game",
+      "k6",
+      "monochromatic_triangle",
+      "r_3_3"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-sim-no-draw",
+        "title": "В полной партии SIM обязательно появляется проигравший",
+        "text": "На рёбрах полного графа \\(K_6\\) два игрока по очереди красят по одному ещё не окрашенному ребру, каждый -- своим цветом. Игрок немедленно проигрывает, если после его хода три ребра его цвета образуют треугольник. Докажите, что ничья невозможна: не удастся окрасить все рёбра, не создав одноцветного треугольника.",
+        "source_id": "src-simmons-sim-game",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "triangle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-r33-forces-loss",
+      "title": "Последняя позиция была бы двухцветной раскраской \\(K_6\\)",
+      "text": "Если бы партия дошла до полной раскраски без проигрыша, два цвета дали бы раскраску рёбер \\(K_6\\) без одноцветного треугольника. Это невозможно по элементарному доказательству \\(R(3,3)\\le6\\).",
+      "tags": [
+        "ramsey_theory",
+        "forbidden_triangle"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-ramsey-r33",
+      "title": "Доказательство через шесть рёбер из одной вершины",
+      "text": "Предположим, что все рёбра \\(K_6\\) удалось окрасить двумя цветами без одноцветного треугольника. Выберем вершину \\(v\\). Из неё выходят пять рёбер, поэтому по принципу Дирихле не менее трёх из них имеют один цвет. Пусть, например, рёбра \\(va,vb,vc\\) красные.\n\nЕсли хотя бы одно из рёбер \\(ab,bc,ca\\) красное, то оно вместе с двумя красными рёбрами из \\(v\\) образует красный треугольник. Если ни одно из них не красное, то все три рёбра \\(ab,bc,ca\\) синие и образуют синий треугольник. В обоих случаях получено противоречие. Значит, всякая двухцветная раскраска рёбер \\(K_6\\) содержит одноцветный треугольник.\n\nТеперь вернёмся к игре. Если бы никто не проиграл раньше, после окраски последнего ребра получилась бы полная двухцветная раскраска \\(K_6\\), а потому в ней имелся бы одноцветный треугольник. Рассмотрим первый ход, после которого такой треугольник появился. На этом ходу меняется только набор рёбер цвета сделавшего ход игрока, поэтому новый треугольник имеет именно его цвет; по правилам этот игрок немедленно проигрывает. Следовательно, ничья невозможна.",
+      "idea_ids": [
+        "idea-r33-forces-loss"
+      ],
+      "standard_idea_ids": [
+        "pigeonhole_principle"
+      ],
+      "status": "ai_checked",
+      "definition_ids": [
+        "complete_graph",
+        "triangle"
+      ]
+    }
+  ],
+  "difficulty": {
+    "main": "exercise",
+    "local_score": 3,
+    "comment": "Классическое игровое следствие элементарного случая теоремы Рамсея \\(R(3,3)=6\\). Карточка доказывает невозможность ничьей, но не утверждает, какой игрок выигрывает при оптимальной игре.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "ramsey_theory",
+    "coloring",
+    "forbidden_triangle",
+    "pigeonhole_principle",
+    "goal_impossibility",
+    "goal_strategy_game"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "ramsey_r33_upper_bound"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-simmons-sim-game",
+      "role": "primary_game_source",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-sim-no-draw"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Карточка намеренно фиксирует элементарное замкнутое утверждение о невозможности ничьей.",
+      "Более сильное утверждение о победе второго игрока при оптимальной игре требует отдельной стратегии или полного разбора позиций и здесь не заявляется."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "ai_original",
+      "label": "полное ИИ-решение",
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "basis": "Самодостаточное стандартное доказательство \\(R(3,3)\\le6\\) и явный перенос в правила игры.",
+      "notes": "Все шаги доказаны внутри карточки; внешняя вычислительная стратегия не используется.",
+      "audit_source": "manual-proof-review-2026-08-15"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "id": "malekshahian-spiro-biased-clique-building-game",
+  "title": "Смещённая игра в клики: асимптотическая победа второго игрока",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "external_tool",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Alexandru Malekshahian",
+      "status": "source_verified"
+    },
+    {
+      "name": "Sam Spiro",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "edge_claiming_game",
+      "clique",
+      "biased_positional_game"
+    ],
+    "methods": [
+      "maker_breaker_estimates",
+      "strategy_combination",
+      "external_theorem"
+    ],
+    "transformations": [],
+    "goal": [
+      "winning_strategy",
+      "asymptotic_bias_bound"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "largest_claimed_clique"
+    ],
+    "keywords": [
+      "biased_clique_building_game",
+      "erdos_clique_game",
+      "player_2_win",
+      "asymptotic_threshold"
+    ],
+    "status": "source_verified"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-asymptotic-player-two-win",
+        "title": "Теорема Малекшахяна--Спиро для смещённой игры",
+        "text": "Пусть \\(n,p,q\\ge 1\\) -- целые числа. На рёбрах полного графа \\(K_n\\) играют двое, первым ходит игрок 1. За свой ход игрок 1 забирает \\(p\\) ещё не занятых рёбер, а игрок 2 -- \\(q\\) таких рёбер; если перед ходом осталось меньше положенного числа рёбер, игрок забирает все оставшиеся. После заполнения графа через \\(G_1\\) и \\(G_2\\) обозначим графы из рёбер соответствующих игроков. Если \\(p<q\\), игрок 2 выигрывает ровно тогда, когда \\(\\omega(G_2)>\\omega(G_1)\\); при равенстве размеров наибольших клик выигрывает игрок 1. Для каждого \\(p\\ge1\\) существует целое \\(n_0=n_0(p)\\) такое, что при всех \\(n\\ge n_0\\) игрок 2 имеет выигрышную стратегию, если\n\\[\nq\\ge\\left(2+\\frac{12\\log_2\\log_2(p+1)}{\\log_2(p+1)}\\right)p+2.\n\\]\nВ частности, при всех достаточно больших \\(n\\) игрок 2 выигрывает игру с параметрами \\((p,q)=(1,4)\\).",
+        "source_id": "src-malekshahian-spiro-clique-building-game",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-build-and-block",
+      "title": "Часть ходов строит, а часть блокирует",
+      "text": "Доказательство статьи разделяет запас ходов второго игрока между двумя самостоятельными задачами: ограничить размер клики первого игрока и одновременно гарантировать собственную большую клику. Для обеих частей применяются серьёзные результаты об играх Мейкера--Брейкера.",
+      "tags": [
+        "extremal_graph_theory",
+        "goal_strategy_game"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 10,
+    "comment": "Тяжёлая внешняя теорема о позиционных играх. Доказательство использует смещённый критерий Эрдёша--Селфриджа--Бека и теорему Гебауэр об игре в клику; школьного самодостаточного доказательства в карточке нет.",
+    "status": "source_verified"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "ramsey_theory",
+    "goal_strategy_game",
+    "goal_bound",
+    "classical_theorem"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "building_by_blocking",
+        "maker_breaker_theorems"
+      ],
+      "status": "source_verified"
+    },
+    "result": {
+      "value": "Порог \\(n_0(p)\\) в формулировке существует, но карточка не утверждает явного численного значения.",
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-malekshahian-spiro-clique-building-game",
+      "role": "primary_theorem_source",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-asymptotic-player-two-win"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Формулировка сверена с Theorem 3 версии статьи от 11 мая 2026 года.",
+      "Теорема асимптотическая: она не даёт в карточке явного значения \\(n_0\\). В частности, из неё без дополнительной оценки нельзя заключать победу для конкретного \\(n=2024\\).",
+      "Доказательство намеренно не пересказано: его ключевые инструменты являются внешними результатами исследовательского уровня."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "hard_external_theorem_no_proof",
+      "label": "доказательство не приведено: тяжёлая внешняя теорема",
+      "status": "source_verified",
+      "confidence": 0.99,
+      "basis": "Точная формулировка и область кванторов сверены по первичной статье Малекшахяна--Спиро.",
+      "notes": "Внешняя теорема сформулирована полностью; неизвестный численный порог не подменён явным значением.",
+      "audit_source": "manual-primary-source-review-2026-08-15"
+    }
+  }
+}

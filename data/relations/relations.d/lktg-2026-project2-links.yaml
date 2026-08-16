@@ -1,0 +1,257 @@
+{
+  "relations": [
+    {
+      "id": "rel-lktg-2026-p09-p07-oriented-cycle-game",
+      "from": "lktg-2026-project2-problem09-bollobas-szabo-oriented-cycle-game",
+      "to": "lktg-2026-project2-problem07-two-degenerate-orientation-game",
+      "type": "generalization",
+      "distance": 2,
+      "forward_text": "Игра Боллобаша–Сабо рассматривает ту же поочерёдную ориентацию до первого направленного цикла на существенно более широком классе досок и устанавливает точный порог по числу рёбер.",
+      "backward_text": "Задача о 2-вырожденных графах даёт элементарный класс досок, где Ациклист выигрывает парной стратегией без общей пороговой теоремы.",
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-lktg-2026-p14-p20-weight-transfer",
+      "from": "lktg-2026-project2-problem20-white-target-family",
+      "to": "lktg-2026-project2-problem14-white-clique-infinite-board",
+      "type": "solution_transfer",
+      "distance": 2,
+      "forward_text": "Общая весовая оценка для семейства белых целей является конечным вариантом метода Эрдёша–Селфриджа, который в задаче 14 применяется к семейству всех копий \\(K_r\\) на бесконечной доске.",
+      "backward_text": "Бесконечная кликовая игра показывает содержательное применение того же веса целей, дополненное ограничением игры конечным числом ходов.",
+      "status": "ai_checked",
+      "confidence": 0.91
+    },
+    {
+      "id": "rel-lktg-2026-p24-p21-combination",
+      "from": "lktg-2026-project2-problem24-white-clique-black-degrees",
+      "to": "lktg-2026-project2-problem21-black-minimum-degree",
+      "type": "solution_transfer",
+      "distance": 1,
+      "forward_text": "Вторая половина совместной стратегии задачи 24 контролирует минимальную чёрную степень тем же семейством локальных плохих событий, что и задача 21.",
+      "backward_text": "Локальная степенная гарантия задачи 21 объединяется с кликовой гарантией в одном потенциале задачи 24.",
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-classical-cops-yumt-state-attractor",
+      "from": "cops-and-robber-dismantlable-characterization",
+      "to": "yumt-2025-grand-round4-problem3",
+      "type": "solution_transfer",
+      "distance": 2,
+      "forward_text": "Обе игры переводятся в ориентированный граф состояний из упорядоченных позиций игроков; выигрышная область находится обратным распространением от состояний захвата или финиша.",
+      "backward_text": "Олимпиадная задача использует тот же конечный аттрактор состояний, что и классическая игра преследования, хотя конкретные допустимые ходы различаются.",
+      "status": "ai_checked",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-classical-shannon-spbmo-road-destruction",
+      "from": "lehman-shannon-switching-game-two-spanning-trees",
+      "to": "spbmo-2018-10-p1-complete-graph-road-destruction-path",
+      "type": "same_motif",
+      "distance": 2,
+      "forward_text": "В обеих дорожных играх один участник сохраняет соединение, а другой уничтожает доступные рёбра; стратегии организуются вокруг путей, разрезов и попарных ответов.",
+      "backward_text": "Олимпиадная игра на полном графе является конечным дорожным родственником игры Шеннона, но использует иной порядок удаления и движения.",
+      "status": "ai_checked",
+      "confidence": 0.86
+    },
+    {
+      "id": "rel-lktg-2026-p16-p11-board-variant",
+      "from": "lktg-2026-project2-problem16-biconnected-red-board",
+      "to": "lktg-2026-project2-problem11-symmetric-erdos-game",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Задача 16 сохраняет симметричное поочерёдное окрашивание и сравнение кликовых чисел, но вместо полного графа строит специальную сколь угодно большую двусвязную доску.",
+      "backward_text": "Симметричная игра на полном графе задаёт исходное правило; специальная доска показывает, что победа первого игрока возможна даже при сильной связности.",
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-lktg-2026-p28-hse-2024-generalization",
+      "from": "lktg-2026-project2-problem28-rock-paper-scissors-dynamics",
+      "to": "hse-2024-final-11-p5-rock-paper-scissors-tree",
+      "type": "generalization",
+      "distance": 1,
+      "forward_text": "Пункт 28а воспроизводит задачу «Высшей пробы» о стабилизации трёх состояний на дереве, а следующие пункты находят точное время и исследуют циклы и нечётное число состояний.",
+      "backward_text": "Задача «Высшей пробы» является исходным древесным случаем синхронной динамики; её целочисленный подъём цветов используется в расширении проекта.",
+      "status": "ai_checked",
+      "confidence": 1.0
+    },
+    {
+      "id": "rel-lktg-2026-p26-biased-clique-family",
+      "from": "lktg-2026-project2-problem26-golden-ratio-biased-game",
+      "to": "malekshahian-spiro-biased-clique-building-game",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе карточки исследуют общую игру \\(p:q\\) по кликовым числам; задача проекта даёт явное достаточное условие через золотое сечение, а статья — асимптотический результат в другом диапазоне параметров.",
+      "backward_text": "Статья и проект используют одну модель смещённой раскраски рёбер, но их теоремы имеют разные кванторы и не должны отождествляться.",
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-lktg-2026-p13-perfect-matching-variants",
+      "from": "lktg-2026-project2-problem13-bella-chingiz-complete-graph",
+      "to": "lktg-2026-bella-chingiz-perfect-matching-bias-1-2-and-1-3",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Редакторская карточка сохраняет игру Беллы и Чингиза, но до первого хода даёт Чингизу чёрное совершенное паросочетание и рассматривает обе квоты 1:2 и 1:3.",
+      "backward_text": "Обе версии с начальным паросочетанием решаются одной копирующей стратегией; без этой форы режим 1:2 остаётся открытым.",
+      "status": "ai_checked",
+      "confidence": 1.0
+    },
+    {
+      "id": "rel-simon-marais-sim-paired",
+      "from": "simon-marais-2017-a1-pentagon-triangle-game",
+      "to": "sim-k6-no-draw",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "В обеих играх игроки красят рёбра полного графа своими цветами; в первой свой треугольник приносит победу, а в SIM -- немедленное поражение.",
+      "backward_text": "SIM сохраняет ту же доску и треугольный мотив, но меняет цель на избегание собственного треугольника, поэтому требует другого решения.",
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-lktg-2026-p11-biased-clique-model",
+      "from": "lktg-2026-project2-problem11-symmetric-erdos-game",
+      "to": "malekshahian-spiro-biased-clique-building-game",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Симметричная игра проекта и смещённая игра статьи сравнивают кликовые числа итоговых цветовых графов, но имеют разные кванторы и режимы квот.",
+      "backward_text": "Асимптотическая теорема для p<q не является обобщением симметрического режима 1:1; карточки связаны общей моделью, а не отношением частного случая.",
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-lktg-2026-p13-p12-solved-small-case",
+      "from": "lktg-2026-project2-problem13-bella-chingiz-complete-graph",
+      "to": "lktg-2026-project2-problem12-biased-game-one-two",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Общая карточка содержит открытую гипотезу для игры 1:2 при всех n не меньше 4; задача 12 полностью решает существенно более простой базовый случай n=4.",
+      "backward_text": "Случай n=4 решается короткой классификацией независимости белого графа и не переносит автоматически стратегию на общий открытый параметр.",
+      "status": "ai_checked",
+      "confidence": 1.0
+    },
+    {
+      "id": "rel-lktg-2026-p20-p21-transfer",
+      "from": "lktg-2026-project2-problem20-white-target-family",
+      "to": "lktg-2026-project2-problem21-black-minimum-degree",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе задачи используют стратегию максимальной опасности, но для степеней чёрное ребро лишь уменьшает экспоненциальный вес звезды, а не уничтожает белую цель.",
+      "backward_text": "Степенной потенциал родствен весу белых целей по механизму выбора опасного ребра, однако не является подстановкой в лемму задачи 20.",
+      "status": "ai_checked",
+      "confidence": 0.96
+    },
+    {
+      "id": "rel-lktg-2026-p20-p22-transfer",
+      "from": "lktg-2026-project2-problem20-white-target-family",
+      "to": "lktg-2026-project2-problem22-density-in-large-subsets",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе карточки используют потенциал и выбор рёбер максимальной опасности; плотностная задача допускает чёрные рёбра внутри каждой цели с понижающим множителем.",
+      "backward_text": "Стратегии обеих карточек ранжируют свободные рёбра по суммарному изменению экспоненциального потенциала, но используют разные правила обновления веса цели.",
+      "status": "ai_checked",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-lktg-2026-p24-p20-combination",
+      "from": "lktg-2026-project2-problem24-white-clique-black-degrees",
+      "to": "lktg-2026-project2-problem20-white-target-family",
+      "type": "solution_transfer",
+      "distance": 1,
+      "forward_text": "Кликовая часть совместной стратегии задачи 24 использует приложение общей леммы задачи 20 к семейству всех k-клик.",
+      "backward_text": "Кликовое приложение общей леммы становится одним из двух типов целей в совместном потенциале задачи 24.",
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-lktg-2026-p26-p22-density-component",
+      "from": "lktg-2026-project2-problem26-golden-ratio-biased-game",
+      "to": "lktg-2026-project2-problem22-density-in-large-subsets",
+      "type": "solution_transfer",
+      "distance": 1,
+      "forward_text": "Плотностный компонент общей смещённой стратегии использует тот же экспоненциальный вес больших подмножеств, что карточка 22.",
+      "backward_text": "Карточка плотности поставляет один тип целей для многотипного потенциала, который затем сравнивает размеры чёрной и белой клик.",
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-lktg-2026-p15-p12-strategy-transfer",
+      "from": "lktg-2026-project2-problem15-game-transfer-one-two-to-one",
+      "to": "lktg-2026-project2-problem12-biased-game-one-two",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Обе задачи относятся к игре 1:2, но задача 15 переносит предполагаемую стратегию Беллы в симметричную игру, тогда как задача 12 решает малый случай напрямую.",
+      "backward_text": "Решённый случай n=4 служит конкретной моделью той же смещённой игры; теорема переноса использует другую симуляцию и не переносит стратегию Чингиза.",
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-lktg-2026-p17-mmo-2011-specialization",
+      "from": "lktg-2026-project2-problem17-firms-and-geniuses",
+      "to": "mmo-2011-firms-programmers-geniuses",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Общая координатная конструкция решает задачу для любого числа гениев; версия ММО с четырьмя гениями сохранена отдельно из-за существенно другой конструкции через частные пути и расстояния.",
+      "backward_text": "Версия ММО имеет тот же игровой каркас и параметр r=4, но её отдельное решение не является простой подстановкой общей координатной стратегии.",
+      "status": "ai_checked",
+      "confidence": 1.0
+    },
+    {
+      "id": "rel-lktg-2026-p13-biased-clique-family",
+      "from": "lktg-2026-project2-problem13-bella-chingiz-complete-graph",
+      "to": "malekshahian-spiro-biased-clique-building-game",
+      "type": "same_motif",
+      "distance": 1,
+      "forward_text": "Обе карточки сравнивают кликовые числа в смещённой раскраске рёбер полного графа; проект изучает точные малые квоты, а статья даёт асимптотический результат в другом диапазоне.",
+      "backward_text": "Теорема статьи не решает точную открытую границу 1:2 и связана с проектной карточкой общей моделью, а не отношением прямой специализации.",
+      "status": "ai_checked",
+      "confidence": 0.98
+    },
+    {
+      "id": "rel-tc-tree-p06-reversal-paired",
+      "from": "tc-2018-19-simple-state-tree-game",
+      "to": "lktg-2026-project2-problem06-two-tokens-reversing-arcs",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Однофишечная древесная игра поддерживает ориентацию к движущемуся корню; двухфишечный вариант сохраняет разворот пройденного ребра, но меняет условие выигрыша.",
+      "backward_text": "Двухфишечная игра развивает тот же локальный механизм разворота, однако требует отдельного анализа взаимного движения фишек.",
+      "status": "ai_checked",
+      "confidence": 0.94
+    },
+    {
+      "id": "rel-tc-cycle-p06-reversal-paired",
+      "from": "tc-2018-19-complex-state-cycle-game",
+      "to": "lktg-2026-project2-problem06-two-tokens-reversing-arcs",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "В обеих играх пройденные или инцидентные рёбра разворачиваются во время движения; циклический однофишечный случай решается индукцией, а двухфишечный -- другим инвариантом.",
+      "backward_text": "Две фишки меняют достижимые состояния и цель, поэтому задача родственна циклической однофишечной игре, но не является её перепечаткой.",
+      "status": "ai_checked",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-lktg-p01-putnam-2025-a3-state-graph",
+      "from": "lktg-2026-project2-problem01-no-return-game",
+      "to": "putnam-2025-a3-ternary-string-game-perfect-matching",
+      "type": "specialization",
+      "distance": 1,
+      "forward_text": "Критерий через совершенное паросочетание применяется к графу состояний троичных строк после удаления начальной позиции; там паросочетание задаётся явной координатной инволюцией.",
+      "backward_text": "Задача Putnam является существенно более простой конкретной реализацией общей игры без возвращений и имеет короткое явное решение.",
+      "status": "ai_checked",
+      "confidence": 0.97
+    },
+    {
+      "id": "rel-tc-2018-19-tree-cycle-dichotomy",
+      "from": "tc-2018-19-simple-state-tree-game",
+      "to": "tc-2018-19-complex-state-cycle-game",
+      "type": "paired_variant",
+      "distance": 1,
+      "forward_text": "Это две половины одной дихотомии: на дереве Петя поддерживает ориентацию к движущемуся корню, а наличие цикла позволяет Васе остановить фишку существенно более сложной индукцией.",
+      "backward_text": "Циклический случай меняет победителя и метод решения; поэтому он хранится отдельно от древесного, хотя обе формулировки происходят из одной исходной задачи.",
+      "status": "ai_checked",
+      "confidence": 1.0
+    }
+  ]
+}

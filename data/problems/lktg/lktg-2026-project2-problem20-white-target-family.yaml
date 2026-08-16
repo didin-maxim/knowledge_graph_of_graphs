@@ -1,0 +1,232 @@
+{
+  "id": "lktg-2026-project2-problem20-white-target-family",
+  "title": "Весовая лемма для белых целей, клик и гамильтоновых циклов",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "family_of_edge_sets",
+      "two_colored_edges",
+      "white_cliques",
+      "hamiltonian_cycles"
+    ],
+    "methods": [
+      "weighted_potential",
+      "greedy_maximum_danger_strategy",
+      "exponential_weights",
+      "count_hamiltonian_cycles"
+    ],
+    "transformations": [
+      "winning_configuration_to_edge_target",
+      "clique_to_edge_target_family",
+      "hamiltonian_cycle_to_edge_target"
+    ],
+    "goal": [
+      "universal_upper_bound",
+      "upper_bound",
+      "clique_number_bound",
+      "avoid_hamiltonian_cycle"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph"
+    ],
+    "invariants": [
+      "nonincreasing_total_weight"
+    ],
+    "keywords": [
+      "lktg_2026_project2_problem20",
+      "erdos_selfridge_lemma",
+      "biased_game",
+      "lktg_2026_project2_problem18",
+      "erdos_selfridge_weight_method",
+      "biased_edge_coloring_game",
+      "lktg_2026_project2_problem19",
+      "hamiltonian_game"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Семейство белых целей",
+        "text": "Пусть \\(p,q\\ge1\\) — целые числа. Игра идёт по раундам на рёбрах \\(K_n\\): сначала Чингиз красит \\(p\\) свободных рёбер чёрным, затем Белла красит \\(q\\) свободных рёбер белым; при нехватке свободных рёбер игрок красит все оставшиеся. Пусть \\(\\mathcal F\\) — произвольное семейство непустых наборов рёбер графа \\(K_n\\). Через \\(N_{\\mathcal F}\\) обозначим число наборов \\(F\\in\\mathcal F\\), все рёбра которых в конце игры белые. а) Докажите, что в игре \\(1:1\\) Чингиз может гарантировать \\[N_{\\mathcal F}\\le\\left\\lfloor\\sum_{F\\in\\mathcal F}2^{-|F|}\\right\\rfloor.\\] б) Докажите, что в игре \\(p:q\\) Чингиз может гарантировать \\[N_{\\mathcal F}\\le\\left\\lfloor\\sum_{F\\in\\mathcal F}(p+1)^{-|F|/q}\\right\\rfloor.\\]",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ],
+        "distinct_from": [
+          "stmt-white-cliques",
+          "stmt-white-hamiltonian-cycles"
+        ]
+      },
+      {
+        "id": "stmt-white-cliques",
+        "title": "Приложение к белым кликам",
+        "text": "Пусть \\(p,q\\ge 1\\) — целые числа. Игра идёт по раундам на рёбрах \\(K_n\\). В каждом раунде сначала Чингиз красит \\(p\\) свободных рёбер чёрным, а затем Белла красит \\(q\\) свободных рёбер белым. Если перед ходом игрока свободных рёбер меньше, чем ему разрешено покрасить, он красит все оставшиеся. Через \\(W\\) обозначим итоговый граф белых рёбер. В игре \\(1:1\\) полагается \\(p=q=1\\). Для \\(2\\le k\\le n\\) через \\(N_k\\) обозначим число множеств из \\(k\\) вершин, все рёбра между которыми в конце игры белые. Логарифм без указанного основания является натуральным. а) В игре \\(1:1\\) докажите, что Чингиз может гарантировать \\[N_k\\le \\left\\lfloor {n\\choose k}2^{-{k\\choose 2}}\\right\\rfloor.\\] б) В игре \\(p:q\\) докажите, что Чингиз может гарантировать \\[N_k\\le \\left\\lfloor {n\\choose k}(p+1)^{-{k\\choose 2}/q}\\right\\rfloor.\\] в) Выведите соответственно оценки \\[\\omega(W)\\le \\lceil 2\\log_2 n\\rceil+1\\quad\\text{и}\\quad \\omega(W)\\le \\lceil 2q\\log_{p+1}n\\rceil+1.\\]",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "clique"
+        ]
+      },
+      {
+        "id": "stmt-white-hamiltonian-cycles",
+        "title": "Приложение к белым гамильтоновым циклам",
+        "text": "Пусть \\(n\\ge3\\). В игре \\(p:q\\) на рёбрах \\(K_n\\) в каждом раунде сначала Чингиз красит \\(p\\) свободных рёбер чёрным, затем Белла красит \\(q\\) свободных рёбер белым; при нехватке свободных рёбер игрок красит все оставшиеся. Через \\(W\\) обозначим итоговый белый граф, а через \\(h(W)\\) — число его гамильтоновых циклов; циклы, отличающиеся только выбором начальной вершины или направлением обхода, считаются одинаковыми. а) Докажите, что в игре \\(1:1\\) Чингиз может гарантировать \\[h(W)\\le\\left\\lfloor\\frac{(n-1)!}{2^{n+1}}\\right\\rfloor.\\] б) Докажите, что в игре \\(p:q\\) Чингиз может гарантировать \\[h(W)\\le\\left\\lfloor\\frac{(n-1)!}{2(p+1)^{n/q}}\\right\\rfloor.\\] в) Выведите, что при \\((p+1)^{n/q}>(n-1)!/2\\) Чингиз может не допустить появления белого гамильтонова цикла.",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "hamiltonian_cycle"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "graph_hint_reformulations": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-danger-potential",
+      "title": "Живые цели и опасность свободного ребра",
+      "text": "Вес цели экспоненциально зависит от числа оставшихся свободных рёбер. Чингиз гасит рёбра максимальной суммарной опасности; потеря веса на его ходе покрывает возможный рост на ходе Беллы.",
+      "tags": [
+        "potential_function",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-weighted-live-targets",
+      "title": "Вес живой кликовой цели и опасность ребра",
+      "text": "Каждому \\(k\\)-множеству сопоставляется цель из всех его рёбер. Живой цели с \\(r\\) свободными рёбрами даётся вес \\((p+1)^{-r/q}\\); опасность ребра равна сумме весов содержащих его живых целей. Жадный выбор чёрных рёбер максимальной опасности не даёт суммарному весу расти.",
+      "tags": [
+        "potential_function",
+        "extremal_choice"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-cycles-as-weighted-targets",
+      "title": "Гамильтонов цикл как весовая цель",
+      "text": "Каждый гамильтонов цикл рассматривается как цель из \\(n\\) рёбер. Весовая стратегия максимальной опасности ограничивает число целей, оставшихся полностью белыми.",
+      "tags": [
+        "potential_function",
+        "hamiltonian_cycles"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-white-target-lemma",
+      "title": "Общая весовая лемма и приложения к кликам и гамильтоновым циклам",
+      "text": "Сначала докажем пункт б). Цель \\(F\\in\\mathcal F\\) назовём живой, пока ни одно её ребро не окрашено чёрным. Положим \\(\\lambda=(p+1)^{1/q}\\). Если в живой цели осталось \\(r(F)\\) свободных рёбер, дадим ей вес \\(w(F)=\\lambda^{-r(F)}\\); неживая цель имеет вес \\(0\\). Потенциалом назовём сумму весов целей, а опасностью свободного ребра — сумму весов всех живых целей, которые его содержат.\n\nНа своём ходу Чингиз последовательно выбирает \\(p\\) свободных рёбер максимальной текущей опасности, пересчитывая опасности после каждого выбора. Пусть опасности выбранных рёбер равны \\(d_1\\ge\\cdots\\ge d_p\\), а после хода Чингиза наибольшая опасность свободного ребра равна \\(d\\). Тогда \\(d\\le d_p\\), а окраска выбранных рёбер в чёрный цвет уничтожила все содержащие их живые цели и уменьшила потенциал на \\(d_1+\\cdots+d_p\\ge pd\\).\n\nКогда Белла красит свободное ребро белым, вес каждой содержащей его живой цели умножается на \\(\\lambda\\). Перед её \\(j\\)-м выбором опасность любого ребра не превосходит \\(\\lambda^{j-1}d\\), потому что каждый предыдущий белый выбор мог увеличить любой вес не более чем в \\(\\lambda\\) раз. Поэтому общий прирост потенциала за не более чем \\(q\\) белых рёбер не превосходит\n\\[\n(\\lambda-1)d(1+\\lambda+\\cdots+\\lambda^{q-1})=(\\lambda^q-1)d=pd.\n\\]\nСледовательно, полный раунд не увеличивает потенциал. Если последний ход Чингиза неполон, он забирает все оставшиеся рёбра и Белла уже не ходит. Если неполон последний ход Беллы, её прирост лишь меньше оценённого. Значит, итоговый потенциал не превосходит начального\n\\[\n\\sum_{F\\in\\mathcal F}\\lambda^{-|F|}=\\sum_{F\\in\\mathcal F}(p+1)^{-|F|/q}.\n\\]\nВ конце живая цель не имеет свободных рёбер, то есть целиком белая, и её вес равен \\(1\\); все остальные цели имеют вес \\(0\\). Поэтому \\(N_{\\mathcal F}\\) не превосходит целой части начального потенциала, что доказывает б). При \\(p=q=1\\) имеем \\(\\lambda=2\\), и формула превращается в утверждение а).\n\nПриложения к кликам и гамильтоновым циклам.\n\nДля каждого \\(k\\)-вершинного множества возьмём целью все \\({k\\choose2}\\) рёбер между его вершинами. Таких целей \\({n\\choose k}\\). Полученная общая оценка сразу даёт пункт б), а её специализация \\(p=q=1\\) — пункт а).\n\nДля пункта в) положим \\(k=\\lceil2q\\log_{p+1}n\\rceil+2\\). Тогда \\(k-1>2q\\log_{p+1}n\\), и\n\\[\n{n\\choose k}(p+1)^{-{k\\choose2}/q}\\le n^k(p+1)^{-k(k-1)/(2q)}<1.\n\\]\nЕсли \\(k\\le n\\), пункт б) показывает, что белой \\(k\\)-клики нет; если \\(k>n\\), это и так очевидно. Значит, \\(\\omega(W)\\le k-1=\\lceil2q\\log_{p+1}n\\rceil+1\\). При \\(p=q=1\\) получаем \\(\\omega(W)\\le\\lceil2\\log_2n\\rceil+1\\).\n\nВ \\(K_n\\) имеется \\((n-1)!/2\\) гамильтоновых циклов: фиксируем начальную вершину, упорядочиваем остальные \\(n-1\\) вершин и делим на \\(2\\), поскольку два направления обхода задают один цикл. Каждый цикл содержит \\(n\\) рёбер. В общем случае весовая оценка даёт\n\\[\nh(W)\\le\\left\\lfloor\\frac{(n-1)!}{2}(p+1)^{-n/q}\\right\\rfloor=\\left\\lfloor\\frac{(n-1)!}{2(p+1)^{n/q}}\\right\\rfloor,\n\\]\nчто доказывает б). При \\(p=q=1\\) знаменатель равен \\(2\\cdot2^n=2^{n+1}\\), и получаем а). Если \\((p+1)^{n/q}>(n-1)!/2\\), выражение под знаком пола меньше \\(1\\), поэтому \\(h(W)=0\\); это пункт в).",
+      "idea_ids": [
+        "idea-danger-potential"
+      ],
+      "standard_idea_ids": [],
+      "definition_ids": [
+        "complete_graph",
+        "clique",
+        "hamiltonian_cycle"
+      ],
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "national_final_hard",
+    "local_score": 7,
+    "comment": "Подпункты имеют сложность 2/5 и 4/5; общий случай требует аккуратно оценить последовательный рост опасностей за \\(q\\) белых рёбер.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "coloring",
+    "potential_function",
+    "extremal_choice",
+    "goal_bound",
+    "goal_strategy_game",
+    "hamiltonian_cycles",
+    "goal_impossibility"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "erdos_selfridge_weight_method",
+        "maximum_danger_greedy_strategy"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-lktg-2026-project2-page",
+      "role": "official_project_page",
+      "status": "source_verified",
+      "note": "Официальная страница проекта ЛКТГ 2026."
+    },
+    {
+      "source_id": "src-lktg-2026-project2-problems-ru",
+      "role": "problem_statement_official",
+      "statement_ids": [
+        "stmt-original",
+        "stmt-white-cliques",
+        "stmt-white-hamiltonian-cycles"
+      ],
+      "status": "source_verified",
+      "note": "Официальный PDF называет источниками Erdős–Selfridge, 1973, и составительское обобщение."
+    },
+    {
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "role": "official_solutions",
+      "solution_ids": [
+        "sol-official-white-target-lemma"
+      ],
+      "status": "source_verified",
+      "note": "Официальное полное доказательство весовой леммы I."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "updated_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Задачи проекта о белых кликах и белых гамильтоновых циклах являются прямыми подстановками в общую лемму и хранятся как формулировки и приложения этой карточки.",
+      "Общее доказательство потенциала не повторяется; отдельно выписаны только подсчёты соответствующих семейств целей."
+    ],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "basis": "официальный PDF содержит полное доказательство",
+      "notes": "Оба подпункта полностью доказаны.",
+      "label": "официальное полное"
+    }
+  }
+}

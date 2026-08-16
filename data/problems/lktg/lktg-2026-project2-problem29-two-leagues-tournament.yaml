@@ -1,0 +1,52 @@
+{
+  "id": "lktg-2026-project2-problem29-two-leagues-tournament",
+  "title": "Выбор команд в две лиги и большинство межлиговых побед, ЛКТГ 2026 №29",
+  "kind": {"primary": "olympiad_problem", "secondary": ["graph_in_statement", "game"]},
+  "language": "ru",
+  "authors": [
+    {"name": "Марк Пименов", "note": "Официальный PDF прямо указывает: «Автор: Марк Пименов, 2026».", "status": "source_verified"}
+  ],
+  "problem_profile": {
+    "objects": ["tournament", "alternating_vertex_draft", "cross_league_matches", "score_balance"],
+    "methods": ["greedy_maximum_score_choice", "pairing_strategy", "cyclic_regular_tournament_construction"],
+    "transformations": ["cross_match_difference_to_sum_of_vertex_balances"],
+    "goal": ["guarantee_half", "classify_strict_majority_cases"],
+    "auxiliary_graph_type": ["regular_tournament"],
+    "invariants": ["total_score_balance_zero", "cross_win_difference_identity"],
+    "keywords": ["lktg_2026_project2_problem29", "two_leagues", "tournament_draft_game"],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [{
+      "id": "stmt-original", "title": "Две лиги",
+      "text": "В однокруговом турнире без ничьих участвовали \\(n\\) команд: каждые две команды сыграли один матч, и в каждом матче одна из команд победила. После объявления всех результатов две лиги по очереди выбирают ещё не выбранную команду и принимают её к себе. Первой ходит Первая лига, пропускать ход нельзя. Межлиговыми называются матчи, участники которых попали в разные лиги. а) Пусть \\(n\\) чётно. Докажите, что Первая лига может гарантировать: её команды выиграли не менее половины межлиговых матчей. б) Для каких чётных \\(n\\) Первая лига при любых результатах турнира может гарантировать, что её команды выиграли строго больше половины межлиговых матчей?",
+      "source_id": "src-lktg-2026-project2-problems-ru", "status": "source_verified", "self_contained": {"status": "ai_checked"},
+      "definition_ids": ["tournament"]
+    }],
+    "graph_theory": [], "graph_hint_reformulations": [], "olympiad_reformulations": []
+  },
+  "ideas": [
+    {"id": "idea-tournament-balance-greedy", "title": "Жадный выбор максимального турнирного баланса", "text": "Сумма балансов команд лиги равна разности её межлиговых побед и поражений. В каждой паре последовательных ходов Первая лига берёт команду не меньшего баланса, чем ответ Второй.", "tags": ["extremal_choice", "double_counting"], "status": "ai_checked"},
+    {"id": "idea-pair-equal-balance-classes", "title": "Парная защита в турнире с балансами \\(+1\\) и \\(-1\\)", "text": "После удаления вершины из правильного турнира команды делятся поровну на балансы \\(+1\\) и \\(-1\\). При чётных размерах классов Вторая лига заранее спаривает каждый класс и отвечает партнёром.", "tags": ["construction", "tournaments"], "status": "ai_checked"}
+  ],
+  "solutions": [{
+    "id": "sol-official-balances-and-pairs", "title": "Баланс команды, жадная стратегия и правильный турнир",
+    "text": "Для команды \\(v\\) обозначим через \\(s(v)\\) число её побед минус число поражений во всём турнире. Сумма всех балансов равна нулю, потому что каждый матч даёт победителю \\(+1\\), а проигравшему \\(-1\\).\n\nа) Пусть после распределения множества команд Первой и Второй лиг равны \\(A\\) и \\(B\\). В сумме \\(\\sum_{v\\in A}s(v)\\) вклады матчей между двумя командами из \\(A\\) взаимно уничтожаются. Остаются только межлиговые матчи, поэтому\n\\[\n\\sum_{v\\in A}s(v)=\\#\\{\\text{межлиговые победы Первой лиги}\\}-\\#\\{\\text{межлиговые победы Второй лиги}\\}.\\tag{1}\n\\]\nСтратегия Первой лиги: на каждом ходу выбирать среди оставшихся команд команду с наибольшим балансом. Объединим каждый её ход со следующим ходом Второй лиги. Если выбраны \\(a_i\\) и \\(b_i\\), то \\(s(a_i)\\ge s(b_i)\\), поскольку \\(b_i\\) ещё была доступна при выборе \\(a_i\\). Так как \\(n\\) чётно, все ходы разбиваются на такие пары. Суммируя, получаем \\(\\sum_{a\\in A}s(a)\\ge\\sum_{b\\in B}s(b)\\). Общая сумма равна нулю, следовательно, \\(\\sum_{a\\in A}s(a)\\ge0\\). По (1) Первая лига выиграла не меньше половины межлиговых матчей.\n\nб) Ответ: ровно \\(n\\equiv2\\pmod4\\). Пусть \\(n=2m\\). Каждая лига получает по \\(m\\) команд, поэтому межлиговых матчей ровно \\(m^2\\). Если \\(m\\) нечётно, это число нечётно, и ровно половина невозможна. Стратегия пункта а), гарантирующая не меньше половины, тем самым гарантирует строго больше. Это случай \\(n\\equiv2\\pmod4\\).\n\nПусть теперь \\(m\\) чётно, то есть \\(n\\equiv0\\pmod4\\). Построим результаты, при которых строгого большинства гарантировать нельзя. Возьмём правильный турнир на \\(2m+1\\) командах: занумеруем их по кругу, и пусть команда \\(i\\) побеждает следующие \\(m\\) команд. Каждая команда имеет \\(m\\) побед и \\(m\\) поражений. Удалим одну команду. Среди оставшихся \\(2m\\) команд ровно \\(m\\) команд, которые проиграли удалённой, потеряли одно поражение и имеют баланс \\(+1\\); остальные \\(m\\), которые её победили, потеряли одну победу и имеют баланс \\(-1\\).\n\nТак как \\(m\\) чётно, заранее разобьём команды баланса \\(+1\\) на пары и отдельно команды баланса \\(-1\\) на пары. Вторая лига отвечает на каждый ход Первой выбором партнёра только что выбранной команды. Из каждой пары одна команда попадает в каждую лигу. Поэтому обе лиги получают по \\(m/2\\) команд каждого баланса, и сумма балансов каждой лиги равна нулю. По (1) числа межлиговых побед лиг равны. Значит, при \\(n\\equiv0\\pmod4\\) Первая лига не может гарантировать строгое большинство.",
+    "idea_ids": ["idea-tournament-balance-greedy", "idea-pair-equal-balance-classes"], "standard_idea_ids": [],
+    "definition_ids": ["tournament"], "source_id": "src-lktg-2026-project2-solutions-ru", "status": "ai_checked"
+  }],
+  "difficulty": {"main": "national_final_medium", "local_score": 6, "comment": "Подпункты имеют сложность 2/5 и 3/5; характеризация использует баланс турнира и парную контрстратегию.", "status": "ai_checked"},
+  "tags": ["tournaments", "double_counting", "extremal_choice", "construction", "goal_strategy_game", "goal_classification"],
+  "properties": {"central_method": {"value": ["tournament_score_balance", "pairing_strategy"], "status": "ai_checked"}},
+  "sources": [
+    {"source_id": "src-lktg-2026-project2-page", "role": "official_project_page", "status": "source_verified", "note": "Официальная страница проекта ЛКТГ 2026."},
+    {"source_id": "src-lktg-2026-project2-problems-ru", "role": "problem_statement_official", "statement_ids": ["stmt-original"], "status": "source_verified", "note": "Официальный PDF прямо указывает автора: Марк Пименов, 2026."},
+    {"source_id": "src-lktg-2026-project2-solutions-ru", "role": "official_solutions", "solution_ids": ["sol-official-balances-and-pairs"], "status": "source_verified", "note": "Официальное полное решение обоих подпунктов."}
+  ],
+  "editorial": {
+    "created_by": "ai", "created_at": "2026-08-15", "updated_at": "2026-08-15", "review_status": "ai_checked", "public_ready": true,
+    "notes": ["Условие, авторство и решение сверены с официальными PDF редакции 7.", "Оба подпункта перенесены полностью, включая конструкцию правильного турнира для отрицательного случая."],
+    "graph_theory_duplicate_removed": true, "relations_status": "deep_done",
+    "solution_classification": {"type": "official_complete_or_near_complete", "status": "ai_checked", "confidence": 0.99, "basis": "официальный PDF содержит полные школьные решения", "notes": "Решение самодостаточно.", "label": "официальное полное"}
+  }
+}

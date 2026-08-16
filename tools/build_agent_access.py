@@ -11,6 +11,7 @@ from lib import (
     has_real_solution,
     infer_source_key,
     infer_source_label,
+    iter_problem_source_ids,
     load_problems,
     load_relations,
     load_sources,
@@ -222,6 +223,24 @@ def make_problem_record(problem, sources, relations_by_problem):
     }
 
 
+def source_keys_for_problem(problem, known_source_keys):
+    primary = infer_source_key(problem)
+    result = [primary]
+    candidates = sorted(
+        (key for key in known_source_keys if key != "misc"),
+        key=len,
+        reverse=True,
+    )
+    for source_id in iter_problem_source_ids(problem):
+        normalized = str(source_id).lower().removeprefix("src-")
+        for key in candidates:
+            if normalized == key or normalized.startswith(f"{key}-"):
+                if key not in result:
+                    result.append(key)
+                break
+    return result
+
+
 def make_compact_record(record):
     compact_text = " ".join(
         [
@@ -241,6 +260,7 @@ def make_compact_record(record):
         "raw_github_url": record["raw_github_url"],
         "viewer_url": record["viewer_url"],
         "source_key": record["source_key"],
+        "source_keys": record["source_keys"],
         "source_label": record["source_label"],
         "year": record["year"],
         "tags": record["tags"],
@@ -362,6 +382,7 @@ It is generated from `data/`; it is not the source of truth.
 - `problems.jsonl`: one JSON object per problem card. Best for text search.
 - `problems.md`: simple Markdown table for browser reading.
 - `problems-by-source/*.jsonl`: smaller source-specific chunks for agents that fail on large files.
+  A canonical card with several contest sources appears in every relevant source chunk.
 - `topics/game-strategy.html`: browser-readable dump of graph game and strategy tasks.
 - `topics/game-strategy.jsonl`: tasks curated with `goal_strategy_game`.
 - `topics/game-strategy-candidates.jsonl`: wider text/profile matches to audit for missing tags.
@@ -506,10 +527,15 @@ def main():
         make_problem_record(problem, sources, relations_by_problem)
         for problem in sorted(problems.values(), key=lambda item: item["id"])
     ]
+    known_source_keys = {record["source_key"] for record in records}
+    for record in records:
+        problem = problems[record["id"]]
+        record["source_keys"] = source_keys_for_problem(problem, known_source_keys)
     out_dir = ROOT / "docs" / "agent"
     by_source = defaultdict(list)
     for record in records:
-        by_source[record["source_key"]].append(record)
+        for source_key in record["source_keys"]:
+            by_source[source_key].append(record)
 
     source_keys = sorted(by_source)
     write_jsonl(out_dir / "problems.jsonl", records)

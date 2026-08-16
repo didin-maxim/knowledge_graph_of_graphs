@@ -351,6 +351,16 @@ def build_html(data):
       border-color: #a8d5c5;
     }}
 
+    .solution-status-official_partial_with_open_subproblems {{
+      background: #edf3dd;
+      border-color: #b8ca83;
+    }}
+
+    .solution-status-official_open_problem_without_solution {{
+      background: #f3e8d5;
+      border-color: #d4b37a;
+    }}
+
     .solution-status-official_plan_completed_by_ai {{
       background: #dff6ec;
       border-color: #82c7ad;
@@ -1375,6 +1385,7 @@ def build_html(data):
         {{ key: 'all-union', prefixes: ['all-union'], label: 'Всесоюзная олимпиада', aliases: ['всесоюзная'] }},
         {{ key: 'apmo', prefixes: ['apmo'], label: 'APMO', aliases: ['apmo'] }},
         {{ key: 'baltic-way', prefixes: ['baltic-way'], label: 'Baltic Way', aliases: ['balticway'] }},
+        {{ key: 'jbmo', prefixes: ['jbmo'], label: 'JBMO', aliases: ['jbmo'] }},
         {{ key: 'bmo', prefixes: ['bmo'], label: 'BMO', aliases: ['bmo'] }},
         {{ key: 'cmo', prefixes: ['cmo'], label: 'CMO', aliases: ['cmo'] }},
         {{ key: 'egmo', prefixes: ['egmo'], label: 'EGMO', aliases: ['egmo'] }},
@@ -1498,6 +1509,7 @@ def build_html(data):
       external_published_solution_adapted: 'unofficial_published',
       official_complete: 'official_complete_or_near_complete',
       official_solution: 'official_complete_or_near_complete',
+      ai_solution: 'ai_original',
       official_solution_expanded: 'official_plan_completed_by_ai',
       official_solution_restored: 'official_plan_completed_by_ai',
       official_expanded_full_solution: 'official_plan_completed_by_ai',
@@ -1515,6 +1527,8 @@ def build_html(data):
     const classification = normalizedSolutionStatusKey(problem.editorial?.solution_classification?.type);
     const known = new Set([
       'official_complete_or_near_complete',
+      'official_partial_with_open_subproblems',
+      'official_open_problem_without_solution',
       'official_plan_completed_by_ai',
       'unofficial_published',
       'ai_original',
@@ -1533,7 +1547,7 @@ def build_html(data):
 
   function solutionStatusBroadKey(problem) {{
     const key = normalizedSolutionStatusKey(solutionStatusKey(problem));
-      if (key === 'no_solution_hard' || key === 'missing') return 'missing';
+      if (key === 'no_solution_hard' || key === 'missing' || key === 'official_open_problem_without_solution') return 'missing';
       if (key === 'ai_original' || key === 'ai') return 'ai';
       if (key === 'ai_heavy_external_theorem' || key === 'heavy') return 'heavy';
       return 'published';
@@ -1553,6 +1567,8 @@ def build_html(data):
         heavy: 'решение с тяжёлыми внешними теоремами',
         missing: 'решения нет',
         official_complete_or_near_complete: 'официальное полное/почти полное',
+        official_partial_with_open_subproblems: 'официальные решения закрытых частей; есть открытые пункты',
+        official_open_problem_without_solution: 'официальная открытая задача',
         official_outline_needs_work: 'официальный план, нужна доработка',
         official_plan_completed_by_ai: 'официальный план, доведённый ИИ',
         unofficial_published: 'опубликованное неофициальное',
@@ -2078,6 +2094,8 @@ def build_html(data):
       const matching = Object.values(problems).filter(problem => problemMatchesFilters(problem, {{ excludeSolution: true }}));
       const counts = {{
         official_complete_or_near_complete: 0,
+        official_partial_with_open_subproblems: 0,
+        official_open_problem_without_solution: 0,
         official_plan_completed_by_ai: 0,
         unofficial_published: 0,
         ai_original: 0,
@@ -2099,6 +2117,8 @@ def build_html(data):
         `<option value="with">Есть решение (${{counts.with}})</option>`,
         `<option value="without">Решения нет (${{counts.without}})</option>`,
         `<option value="official_complete_or_near_complete">Официальное полное/почти полное (${{counts.official_complete_or_near_complete}})</option>`,
+        `<option value="official_partial_with_open_subproblems">Официальные решения закрытых частей; есть открытые пункты (${{counts.official_partial_with_open_subproblems}})</option>`,
+        `<option value="official_open_problem_without_solution">Официальные открытые задачи (${{counts.official_open_problem_without_solution}})</option>`,
         `<option value="official_plan_completed_by_ai">Официальный план, доведённый ИИ (${{counts.official_plan_completed_by_ai}})</option>`,
         `<option value="unofficial_published">Опубликованное неофициальное (${{counts.unofficial_published}})</option>`,
         `<option value="ai_original">Решение ИИ с нуля (${{counts.ai_original}})</option>`,
@@ -2652,6 +2672,8 @@ def build_html(data):
       const problemList = Object.values(problems);
       const solutionCounts = {{
         official_complete_or_near_complete: 0,
+        official_partial_with_open_subproblems: 0,
+        official_open_problem_without_solution: 0,
         official_plan_completed_by_ai: 0,
         unofficial_published: 0,
         ai_original: 0,
@@ -2673,6 +2695,8 @@ def build_html(data):
       const sourceCount = new Set(problemList.map(problem => sourceInfo(problem).key).filter(Boolean)).size;
       const solutionTypes = [
         'official_complete_or_near_complete',
+        'official_partial_with_open_subproblems',
+        'official_open_problem_without_solution',
         'official_plan_completed_by_ai',
         'unofficial_published',
         'ai_original',
@@ -2735,7 +2759,7 @@ def build_html(data):
             <div class="home-chip"><strong>Строка поиска</strong><span>Ищет по названию, условию, решению, источнику, автору и служебным ключам.</span></div>
             <div class="home-chip"><strong>Источник и год</strong><span>Отфильтруйте КОЛМ, ФЮМ, УТЮМ, ЮМТ, IMO, USAMO и другие серии.</span></div>
             <div class="home-chip"><strong>Цель, объект, метод</strong><span>Разделяйте “оценка+пример”, “дерево”, “индукция” и похожие роли задачи.</span></div>
-            <div class="home-chip"><strong>Тип и решения</strong><span>Оставьте только задачи, теоремы, леммы или один из шести типов происхождения решения.</span></div>
+            <div class="home-chip"><strong>Тип и решения</strong><span>Оставьте только задачи, теоремы, леммы или один из поддерживаемых типов происхождения решения.</span></div>
           </div>
           <p class="home-note">Фильтры слева работают вместе: можно, например, искать задачи КОЛМ про деревья с методом индукции и сразу открыть первую подходящую карточку.</p>
         </section>

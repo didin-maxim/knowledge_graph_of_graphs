@@ -106,6 +106,10 @@ FORMULA_TEXT_GLUE_RE = re.compile(
     rf"(?<=[{TEXT_LETTER}])\\\(|\\\)(?=[{TEXT_LETTER}])|"
     rf"(?<=[{TEXT_LETTER}])\\\[|\\\](?=[{TEXT_LETTER}])"
 )
+INLINE_MATH_BROKEN_ESCAPE_RE = re.compile(
+    r"\\\((?:(?!\\\)).)*[\n\t\r\b\f][A-Za-z](?:(?!\\\)).)*\\\)",
+    re.DOTALL,
+)
 NON_PUBLIC_BRANCHES = {
     "authors",
     "difficulty",
@@ -237,6 +241,7 @@ def find_hits(text, place):
         ("bare-tex-command-outside-math", BARE_TEX_RE, outside_without_literal_newlines),
         ("raw-subscript-or-superscript-outside-math", RAW_SUBSUP_RE, outside),
         ("formula-text-glue", FORMULA_TEXT_GLUE_RE, scrubbed),
+        ("broken-json-escape-inside-inline-math", INLINE_MATH_BROKEN_ESCAPE_RE, scrubbed),
     ]
     if is_statement_context(place):
         checks.append(("markdown-code-span-in-statement", CODE_SPAN_RE, original))

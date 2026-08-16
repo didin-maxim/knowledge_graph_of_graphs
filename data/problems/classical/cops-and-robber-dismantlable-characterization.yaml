@@ -1,0 +1,144 @@
+{
+  "id": "cops-and-robber-dismantlable-characterization",
+  "title": "Один полицейский и разбойник: критерий разбираемого графа",
+  "kind": {
+    "primary": "theorem",
+    "secondary": [
+      "classical_tool",
+      "external_tool",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [
+    {
+      "name": "Richard Nowakowski",
+      "status": "source_verified"
+    },
+    {
+      "name": "Peter Winkler",
+      "status": "source_verified"
+    }
+  ],
+  "problem_profile": {
+    "objects": [
+      "finite_graph",
+      "pursuit_evasion_game",
+      "closed_neighborhood",
+      "dismantling_order"
+    ],
+    "methods": [
+      "dominated_vertex_elimination",
+      "retraction",
+      "external_theorem"
+    ],
+    "transformations": [
+      "delete_dominated_vertex"
+    ],
+    "goal": [
+      "characterize_one_cop_win"
+    ],
+    "auxiliary_graph_type": [],
+    "invariants": [
+      "closed_neighborhood_containment"
+    ],
+    "keywords": [
+      "cops_and_robber",
+      "cop_win_graph",
+      "dismantlable_graph",
+      "dominated_vertex"
+    ],
+    "status": "source_verified"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-cop-win-iff-dismantlable",
+        "title": "Характеризация графов, где хватает одного полицейского",
+        "text": "Пусть \\(G\\) -- конечный непустой простой граф. Сначала полицейский выбирает начальную вершину, затем разбойник выбирает свою. После этого они ходят по очереди, начиная с полицейского; за ход разрешается остаться на месте или перейти в соседнюю вершину. Оба игрока всегда видят положение друг друга. Полицейский выигрывает, как только оказывается в одной вершине с разбойником.\n\nДля вершины \\(v\\) обозначим через \\(N[v]\\) её замкнутую окрестность: саму вершину и всех её соседей. Граф называется разбираемым, если его вершины можно занумеровать \\(v_1,\\ldots,v_m\\) так, что для каждого \\(i<m\\) в подграфе, индуцированном вершинами \\(v_i,\\ldots,v_m\\), найдётся \\(j>i\\), для которого \\(N[v_i]\\subseteq N[v_j]\\) в этом подграфе.\n\nТеорема Новаковского--Винклера: один полицейский имеет выигрышную стратегию на \\(G\\) тогда и только тогда, когда \\(G\\) разбираем.",
+        "source_id": "src-nowakowski-winkler-cop-win-graphs",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "simple_graph",
+          "neighborhood",
+          "induced_subgraph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-dominated-vertex-fold",
+      "title": "Доминируемую вершину можно свернуть",
+      "text": "Условие \\(N[v_i]\\subseteq N[v_j]\\) означает, что вершина \\(v_j\\) может служить тенью вершины \\(v_i\\): всякий допустимый ход из \\(v_i\\) можно отразить ходом из \\(v_j\\). Последовательное удаление таких вершин и даёт структурный сертификат победы одного полицейского.",
+      "tags": [
+        "goal_strategy_game",
+        "induction"
+      ],
+      "status": "source_verified"
+    }
+  ],
+  "solutions": [],
+  "difficulty": {
+    "main": "classical_tool",
+    "local_score": 8,
+    "comment": "Классическая характеризация игр преследования. Направление от порядка разборки к стратегии доказывается индуктивно, но полная обратная импликация требует нетривиального анализа выигрышных позиций и в карточке не воспроизводится.",
+    "status": "source_verified"
+  },
+  "tags": [
+    "connectivity",
+    "induction",
+    "goal_strategy_game",
+    "goal_characterization",
+    "classical_theorem"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "dominated_vertex_elimination",
+        "dismantling_order"
+      ],
+      "status": "source_verified"
+    },
+    "result": {
+      "value": "Порядок последовательного удаления доминируемых вершин до одной вершины.",
+      "status": "source_verified"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-nowakowski-winkler-cop-win-graphs",
+      "role": "primary_theorem_source",
+      "status": "source_verified",
+      "statement_ids": [
+        "stmt-cop-win-iff-dismantlable"
+      ]
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Правила игры и характеризация сверены с первичной статьёй Nowakowski--Winkler, Discrete Mathematics 43 (1983), 235--239.",
+      "Доказательство намеренно не помещено в solutions[]: карточка используется как явно сформулированная внешняя теорема, а не как олимпиадное упражнение с пропущенной обратной импликацией."
+    ],
+    "relations_status": "deep_done",
+    "graph_theory_duplicate_removed": true,
+    "solution_classification": {
+      "type": "hard_external_theorem_no_proof",
+      "label": "доказательство не приведено: тяжёлая внешняя теорема",
+      "status": "source_verified",
+      "confidence": 0.98,
+      "basis": "Полная характеризация сверена по первичной публикации и современной библиографии по cop-win графам.",
+      "notes": "Внешняя теорема сформулирована со всеми правилами игры и точным определением разбираемости.",
+      "audit_source": "manual-primary-source-review-2026-08-15"
+    }
+  }
+}

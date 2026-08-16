@@ -1,0 +1,197 @@
+{
+  "id": "lktg-2026-project2-problem22-density-in-large-subsets",
+  "title": "Чёрная плотность во всех больших множествах и между ними",
+  "kind": {
+    "primary": "olympiad_problem",
+    "secondary": [
+      "graph_in_statement",
+      "game"
+    ]
+  },
+  "language": "ru",
+  "authors": [],
+  "problem_profile": {
+    "objects": [
+      "complete_graph",
+      "large_vertex_subsets",
+      "black_induced_edges",
+      "disjoint_large_vertex_sets",
+      "black_bipartite_edges"
+    ],
+    "methods": [
+      "weighted_potential",
+      "greedy_maximum_danger_strategy",
+      "union_bound_by_initial_weights"
+    ],
+    "transformations": [
+      "subset_density_to_weighted_edge_target",
+      "bipartite_density_to_weighted_edge_target"
+    ],
+    "goal": [
+      "simultaneous_density_lower_bound",
+      "simultaneous_bipartite_density_lower_bound"
+    ],
+    "auxiliary_graph_type": [
+      "complete_graph",
+      "induced_subgraphs",
+      "complete_bipartite_subgraphs"
+    ],
+    "invariants": [
+      "nonincreasing_total_exponential_weight"
+    ],
+    "keywords": [
+      "lktg_2026_project2_problem22",
+      "quasirandom_density",
+      "logarithmic_subset_threshold",
+      "lktg_2026_project2_problem23",
+      "density_between_sets"
+    ],
+    "status": "ai_checked"
+  },
+  "statements": {
+    "original": [
+      {
+        "id": "stmt-original",
+        "title": "Плотность внутри больших множеств",
+        "text": "Пусть \\(p,q\\ge1\\) — целые числа. Игра идёт по раундам на рёбрах \\(K_n\\): сначала Чингиз красит \\(p\\) свободных рёбер чёрным, затем Белла красит \\(q\\) свободных рёбер белым; при нехватке свободных рёбер игрок красит все оставшиеся. Через \\(e_B(U)\\) обозначим число чёрных рёбер с обоими концами в \\(U\\). а) Докажите, что для каждого \\(\\varepsilon>0\\) существует постоянная \\(C=C(\\varepsilon)\\), для которой при всех достаточно больших \\(n\\) Чингиз в игре \\(1:1\\) может гарантировать \\[e_B(U)\\ge\\left(\\frac12-\\varepsilon\\right){|U|\\choose2}\\] для каждого множества \\(U\\), содержащего не менее \\(\\lceil C\\log n\\rceil\\) вершин. б) Докажите, что для любых фиксированных \\(p,q\\ge1\\) и \\(\\varepsilon>0\\) существует постоянная \\(C=C(p,q,\\varepsilon)\\), для которой при всех достаточно больших \\(n\\) Чингиз может гарантировать \\[e_B(U)\\ge\\left(\\frac{p}{p+q}-\\varepsilon\\right){|U|\\choose2}\\] для каждого множества \\(U\\), содержащего не менее \\(\\lceil C\\log n\\rceil\\) вершин.",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph",
+          "induced_subgraph"
+        ],
+        "distinct_from": [
+          "stmt-density-between-large-sets"
+        ]
+      },
+      {
+        "id": "stmt-density-between-large-sets",
+        "title": "Плотность между двумя большими множествами",
+        "text": "Пусть \\(p,q\\ge1\\) — целые числа. Игра идёт по раундам на рёбрах \\(K_n\\): сначала Чингиз красит \\(p\\) свободных рёбер чёрным, затем Белла красит \\(q\\) свободных рёбер белым; при нехватке свободных рёбер игрок красит все оставшиеся. Для непересекающихся множеств вершин \\(X,Y\\) через \\(e_B(X,Y)\\) обозначим число чёрных рёбер, соединяющих \\(X\\) с \\(Y\\). а) Докажите, что для каждого \\(\\varepsilon>0\\) существует постоянная \\(C=C(\\varepsilon)\\), для которой при всех достаточно больших \\(n\\) Чингиз в игре \\(1:1\\) может гарантировать \\[e_B(X,Y)\\ge\\left(\\frac12-\\varepsilon\\right)|X||Y|\\] для любых непересекающихся \\(X,Y\\), каждое из которых содержит не менее \\(\\lceil C\\log n\\rceil\\) вершин. б) Докажите, что для любых фиксированных \\(p,q\\ge1\\) и \\(\\varepsilon>0\\) существует постоянная \\(C=C(p,q,\\varepsilon)\\), для которой при всех достаточно больших \\(n\\) Чингиз может гарантировать \\[e_B(X,Y)\\ge\\left(\\frac{p}{p+q}-\\varepsilon\\right)|X||Y|\\] для любых таких \\(X,Y\\).",
+        "source_id": "src-lktg-2026-project2-problems-ru",
+        "status": "source_verified",
+        "self_contained": {
+          "status": "ai_checked"
+        },
+        "definition_ids": [
+          "complete_graph"
+        ]
+      }
+    ],
+    "graph_theory": [],
+    "graph_hint_reformulations": [],
+    "olympiad_reformulations": []
+  },
+  "ideas": [
+    {
+      "id": "idea-subset-weight-normalization",
+      "title": "Малые начальные коэффициенты для всех больших множеств",
+      "text": "Цели \\(U\\) получают коэффициенты \\(n^{-2|U|}\\), благодаря чему сумма начальных весов меньше единицы. Весовая стратегия затем даёт отдельное неравенство для каждого \\(U\\) одновременно.",
+      "tags": [
+        "potential_function",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    },
+    {
+      "id": "idea-pair-target-normalization",
+      "title": "Вес каждой пары множеств подавляет число возможных пар",
+      "text": "Для пары \\((X,Y)\\) берётся цель из всех рёбер между множествами и коэффициент \\(n^{-2(|X|+|Y|)}\\). Сумма начальных весов всех пар меньше единицы, после чего весовая лемма даёт оценку каждой пары.",
+      "tags": [
+        "potential_function",
+        "extremal_graph_theory"
+      ],
+      "status": "ai_checked"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "sol-official-large-subset-density",
+      "title": "Единая весовая стратегия для внутренних и двудольных срезов",
+      "text": "Докажем пункт б); пункт а) является случаем \\(p=q=1\\). Сначала сформулируем и докажем используемую весовую лемму. Выберем \\(c>q/p\\), а затем \\(s>1\\) настолько близким к \\(1\\), чтобы\n\\[\ns^q-1\\le p(1-s^{-c}).\\tag{1}\n\\]\nЭто возможно, поскольку после деления на \\(s-1\\) обе части при \\(s\\downarrow1\\) стремятся к \\(q\\) и \\(pc>q\\).\n\nПусть каждой цели \\(A\\), состоящей из некоторого набора рёбер, дан коэффициент \\(a_A>0\\). Если в ней уже \\(w_A\\) белых и \\(b_A\\) чёрных рёбер, дадим ей вес \\(a_As^{w_A-cb_A}\\). Опасность свободного ребра определим как\n\\[\nD(e)=(1-s^{-c})\\sum_{A\\ni e}a_As^{w_A-cb_A}.\n\\]\nЧёрная окраска \\(e\\) уменьшает потенциал ровно на \\(D(e)\\). Чингиз последовательно выбирает \\(p\\) рёбер наибольшей текущей опасности. Если после его хода максимальная опасность равна \\(D\\), потеря потенциала не меньше \\(pD\\), поскольку чёрные рёбра только уменьшают опасности. За \\(q\\) белых рёбер прирост не превосходит\n\\[\n\\frac{s-1}{1-s^{-c}}D(1+s+\\cdots+s^{q-1})=\\frac{s^q-1}{1-s^{-c}}D\\le pD.\n\\]\nЗначит, потенциал не растёт. Неполный последний раунд обрабатывается так же: неполный чёрный ход забирает все свободные рёбра, а неполный белый ход даёт меньший прирост.\n\nТеперь выберем \\(c\\) настолько близко к \\(q/p\\), чтобы\n\\[\n\\frac1{c+1}>\\frac{p}{p+q}-\\frac{\\varepsilon}{2}.\n\\]\nЗафиксируем соответствующее \\(s\\). Возьмём постоянную \\(C\\) настолько большой, чтобы\n\\[\n\\frac{8}{(c+1)C\\log s}<\\frac{\\varepsilon}{2},\n\\]\nи положим \\(m=\\lceil C\\log n\\rceil\\).\n\nДля каждого множества \\(U\\) из \\(u\\ge m\\) вершин целью служат все рёбра внутри \\(U\\), а коэффициент равен \\(a_U=n^{-2u}\\). Начальный потенциал меньше единицы:\n\\[\n\\sum_{u=m}^n {n\\choose u}n^{-2u}\\le\\sum_{u=m}^{\\infty}n^{-u}<1.\n\\]\nПо доказанной лемме итоговый вес каждой отдельной цели меньше \\(1\\). Обозначив \\(M={u\\choose2}\\), получаем\n\\[\nn^{-2u}s^{M-(c+1)e_B(U)}<1,\n\\]\nпоскольку среди \\(M\\) рёбер внутри \\(U\\) ровно \\(e_B(U)\\) чёрных, а остальные белые. После логарифмирования\n\\[\n\\frac{e_B(U)}M>\\frac1{c+1}-\\frac{2u\\log_s n}{(c+1)M}=\\frac1{c+1}-\\frac{4\\log_s n}{(c+1)(u-1)}.\\tag{2}\n\\]\nПри достаточно больших \\(n\\) из \\(u\\ge m\\) следует \\(u-1\\ge(C/2)\\log n\\), поэтому последний член в (2) не превосходит \\(8/((c+1)C\\log s)<\\varepsilon/2\\). Вместе с выбором \\(c\\) это даёт\n\\[\ne_B(U)>\\left(\\frac{p}{p+q}-\\varepsilon\\right){u\\choose2}\n\\]\nодновременно для всех \\(U\\) размера не меньше \\(m\\). Тем самым доказан пункт б), а при \\(p=q=1\\) — пункт а).\n\nВариант для двух непересекающихся множеств. Для каждой упорядоченной пары непересекающихся множеств \\((X,Y)\\), где \\(|X|=x\\ge m\\) и \\(|Y|=y\\ge m\\), целью служат все \\(xy\\) рёбер между ними, а коэффициент равен \\(a_{X,Y}=n^{-2(x+y)}\\). Число пар данных размеров не превосходит \\(n^{x+y}\\), поэтому начальный потенциал меньше\n\\[\n\\sum_{x,y\\ge m}n^{-(x+y)}<1.\n\\]\nСледовательно, в конце вес каждой цели меньше \\(1\\):\n\\[\nn^{-2(x+y)}s^{xy-(c+1)e_B(X,Y)}<1.\n\\]\nОтсюда\n\\[\n\\frac{e_B(X,Y)}{xy}>\\frac1{c+1}-\\frac{2\\log_s n}{c+1}\\left(\\frac1x+\\frac1y\\right).\\tag{3}\n\\]\nПри \\(x,y\\ge m\\) и достаточно большом \\(n\\) последний член не превосходит \\(4/((c+1)C\\log s)<\\varepsilon/2\\). Вместе с выбором \\(c\\) формула (3) даёт\n\\[\ne_B(X,Y)>\\left(\\frac{p}{p+q}-\\varepsilon\\right)|X||Y|.\n\\]\nЭто доказывает б) одновременно для всех допустимых пар; случай \\(p=q=1\\) даёт а).",
+      "idea_ids": [
+        "idea-subset-weight-normalization"
+      ],
+      "standard_idea_ids": [],
+      "definition_ids": [
+        "complete_graph",
+        "induced_subgraph"
+      ],
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "status": "ai_checked"
+    }
+  ],
+  "difficulty": {
+    "main": "imo_p3_plus",
+    "local_score": 9,
+    "comment": "Подпункты имеют сложность 4/5 и 5/5; помимо весовой леммы требуется одновременно нормировать экспоненциально много целей.",
+    "status": "ai_checked"
+  },
+  "tags": [
+    "extremal_graph_theory",
+    "coloring",
+    "potential_function",
+    "goal_bound",
+    "goal_strategy_game"
+  ],
+  "properties": {
+    "central_method": {
+      "value": [
+        "weighted_potential",
+        "small_initial_target_coefficients"
+      ],
+      "status": "ai_checked"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "src-lktg-2026-project2-page",
+      "role": "official_project_page",
+      "status": "source_verified",
+      "note": "Официальная страница проекта ЛКТГ 2026."
+    },
+    {
+      "source_id": "src-lktg-2026-project2-problems-ru",
+      "role": "problem_statement_official",
+      "statement_ids": [
+        "stmt-original",
+        "stmt-density-between-large-sets"
+      ],
+      "status": "source_verified",
+      "note": "Официальный PDF указывает весовой метод Эрдёша–Селфриджа и составительскую задачу."
+    },
+    {
+      "source_id": "src-lktg-2026-project2-solutions-ru",
+      "role": "official_solutions",
+      "solution_ids": [
+        "sol-official-large-subset-density"
+      ],
+      "status": "source_verified",
+      "note": "Официальное полное решение через весовую лемму II."
+    }
+  ],
+  "editorial": {
+    "created_by": "ai",
+    "created_at": "2026-08-15",
+    "updated_at": "2026-08-15",
+    "review_status": "ai_checked",
+    "public_ready": true,
+    "notes": [
+      "Внутренняя плотность и плотность между двумя множествами используют одну весовую лемму и отличаются только выбором целей и объединяющей оценкой.",
+      "Обе официальные формулировки проекта сохранены в одной карточке без повторения общего доказательства."
+    ],
+    "graph_theory_duplicate_removed": true,
+    "relations_status": "deep_done",
+    "solution_classification": {
+      "type": "official_complete_or_near_complete",
+      "status": "ai_checked",
+      "confidence": 0.99,
+      "basis": "официальный PDF содержит полное доказательство",
+      "notes": "Оба подпункта покрыты общим самодостаточным доказательством.",
+      "label": "официальное полное"
+    }
+  }
+}
